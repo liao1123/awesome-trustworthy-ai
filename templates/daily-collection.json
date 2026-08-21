@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "id": "daily-YYYY-MM-DD",
+  "kind": "daily",
+  "date": "YYYY-MM-DD",
+  "title": "YYYY-MM-DD arXiv Daily",
+  "source_urls": [],
+  "query_notes": "",
+  "selection_stats": {
+    "candidates": 0,
+    "new_records": 0,
+    "existing_records": 0,
+    "included": 0
+  },
+  "summary_zh": "",
+  "items": [
+    {
+      "paper_id": "YYYY-firstauthor-short-title",
+      "reason_zh": ""
+    }
+  ]
+}

@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "arxiv_categories": [
+    "cs.AI",
+    "cs.CL",
+    "cs.CR",
+    "cs.CV",
+    "cs.CY",
+    "cs.HC",
+    "cs.LG",
+    "cs.MA",
+    "cs.RO",
+    "stat.ML"
+  ],
+  "levels": ["foundation", "core", "advanced"],
+  "resource_types": ["paper", "survey", "benchmark", "report", "standard", "book", "course", "dataset"],
+  "importance": ["essential", "recommended", "reference"],
+  "review_statuses": ["metadata-checked", "abstract-checked", "full-text-checked", "note-complete"],
+  "domains": [
+    {
+      "id": "foundations",
+      "name": "Foundations and Risk Frameworks",
+      "name_zh": "基础与风险框架",
+      "description_zh": "定义可信 AI、安全问题、风险来源、系统生命周期与跨领域术语。",
+      "keywords": ["AI safety survey", "trustworthy AI", "AI risk taxonomy", "AI risk management", "safe AI"],
+      "topics": [
+        {"id": "field-overviews", "name_zh": "领域综述"},
+        {"id": "risk-taxonomies", "name_zh": "风险分类"},
+        {"id": "safety-engineering", "name_zh": "安全工程"},
+        {"id": "ml-prerequisites", "name_zh": "机器学习基础"}
+      ]
+    },
+    {
+      "id": "alignment-control",
+      "name": "Alignment and Control",
+      "name_zh": "对齐与控制",
+      "description_zh": "让模型目标、行为与人类意图保持一致，并在能力增强时维持可控性。",
+      "keywords": ["AI alignment", "reward hacking", "specification gaming", "scalable oversight", "AI control", "deceptive alignment"],
+      "topics": [
+        {"id": "objective-specification", "name_zh": "目标与规范"},
+        {"id": "preference-learning", "name_zh": "偏好学习"},
+        {"id": "reward-modeling", "name_zh": "奖励建模"},
+        {"id": "scalable-oversight", "name_zh": "可扩展监督"},
+        {"id": "goal-misgeneralization", "name_zh": "目标错误泛化"},
+        {"id": "corrigibility-power", "name_zh": "可纠正性与权力寻求"},
+        {"id": "deception-control", "name_zh": "欺骗与控制"}
+      ]
+    },
+    {
+      "id": "robustness-reliability",
+      "name": "Robustness and Reliability",
+      "name_zh": "鲁棒性与可靠性",
+      "description_zh": "研究模型在分布变化、扰动、不确定输入和高风险部署中的稳定表现。",
+      "keywords": ["machine learning robustness", "distribution shift", "out-of-distribution", "uncertainty calibration", "safe exploration", "hallucination"],
+      "topics": [
+        {"id": "adversarial-robustness", "name_zh": "对抗鲁棒性"},
+        {"id": "distribution-shift-ood", "name_zh": "分布偏移与 OOD"},
+        {"id": "uncertainty-calibration", "name_zh": "不确定性与校准"},
+        {"id": "safe-exploration", "name_zh": "安全探索"},
+        {"id": "factuality-hallucination", "name_zh": "事实性与幻觉"}
+      ]
+    },
+    {
+      "id": "evaluation-monitoring",
+      "name": "Evaluation, Monitoring and Assurance",
+      "name_zh": "评测、监控与保障",
+      "description_zh": "通过 benchmark、红队、审计和持续监控发现危险能力与失败模式。",
+      "keywords": ["AI safety evaluation", "dangerous capability evaluation", "red teaming language models", "AI auditing", "model monitoring"],
+      "topics": [
+        {"id": "safety-benchmarks", "name_zh": "安全 Benchmark"},
+        {"id": "dangerous-capability-evals", "name_zh": "危险能力评测"},
+        {"id": "red-teaming", "name_zh": "红队测试"},
+        {"id": "auditing-monitoring", "name_zh": "审计与监控"},
+        {"id": "incident-analysis", "name_zh": "事故与事件分析"}
+      ]
+    },
+    {
+      "id": "interpretability-transparency",
+      "name": "Interpretability and Transparency",
+      "name_zh": "可解释性与透明度",
+      "description_zh": "理解模型内部表征、决策机制、行为原因及系统文档。",
+      "keywords": ["mechanistic interpretability", "explainable AI", "model transparency", "representation engineering", "sparse autoencoder interpretability"],
+      "topics": [
+        {"id": "mechanistic-interpretability", "name_zh": "机制可解释性"},
+        {"id": "explanations-attribution", "name_zh": "解释与归因"},
+        {"id": "representation-analysis", "name_zh": "表征分析"},
+        {"id": "documentation-transparency", "name_zh": "文档与透明度"}
+      ]
+    },
+    {
+      "id": "security-resilience",
+      "name": "Security and Resilience",
+      "name_zh": "模型安全与韧性",
+      "description_zh": "研究针对模型、数据、工具链与部署系统的主动攻击和防御。",
+      "keywords": ["adversarial machine learning", "prompt injection", "LLM jailbreak", "data poisoning", "model extraction", "AI supply chain security"],
+      "topics": [
+        {"id": "prompt-injection-jailbreaks", "name_zh": "提示注入与越狱"},
+        {"id": "poisoning-backdoors", "name_zh": "投毒与后门"},
+        {"id": "model-data-extraction", "name_zh": "模型与数据窃取"},
+        {"id": "supply-chain-security", "name_zh": "供应链安全"},
+        {"id": "secure-deployment", "name_zh": "安全部署"}
+      ]
+    },
+    {
+      "id": "privacy",
+      "name": "Privacy",
+      "name_zh": "隐私",
+      "description_zh": "研究训练数据泄漏、记忆、隐私攻击与隐私保护学习。",
+      "keywords": ["machine learning privacy", "membership inference", "training data extraction", "differential privacy", "machine unlearning"],
+      "topics": [
+        {"id": "privacy-attacks-memorization", "name_zh": "隐私攻击与记忆"},
+        {"id": "privacy-preserving-ml", "name_zh": "隐私保护学习"},
+        {"id": "data-governance", "name_zh": "数据治理"}
+      ]
+    },
+    {
+      "id": "fairness-human-factors",
+      "name": "Fairness and Human Factors",
+      "name_zh": "公平性与人因",
+      "description_zh": "研究偏见、有害表征、人机协作、过度依赖和受影响群体的体验。",
+      "keywords": ["algorithmic fairness", "AI bias", "AI toxicity", "human AI interaction", "automation bias", "human oversight AI"],
+      "topics": [
+        {"id": "bias-measurement", "name_zh": "偏见测量"},
+        {"id": "fairness-mitigation", "name_zh": "公平性缓解"},
+        {"id": "toxicity-representation", "name_zh": "毒性与表征伤害"},
+        {"id": "human-ai-interaction", "name_zh": "人机交互"},
+        {"id": "human-oversight-reliance", "name_zh": "人工监督与依赖"}
+      ]
+    },
+    {
+      "id": "agentic-ai-safety",
+      "name": "Agentic and Multi-Agent Safety",
+      "name_zh": "智能体与多智能体安全",
+      "description_zh": "关注具有规划、工具使用、自主执行或多智能体交互能力的系统。",
+      "keywords": ["AI agent safety", "autonomous agent risk", "tool-using language model security", "multi-agent safety", "embodied AI safety"],
+      "topics": [
+        {"id": "autonomous-agents", "name_zh": "自主智能体"},
+        {"id": "tool-use-sandboxing", "name_zh": "工具使用与隔离"},
+        {"id": "multi-agent-safety", "name_zh": "多智能体安全"},
+        {"id": "embodied-ai-safety", "name_zh": "具身 AI 安全"}
+      ]
+    },
+    {
+      "id": "misuse-information-integrity",
+      "name": "Misuse and Information Integrity",
+      "name_zh": "滥用与信息完整性",
+      "description_zh": "研究 AI 被用于网络、生物、欺诈、操纵和虚假信息等恶意目的的风险。",
+      "keywords": ["malicious use of AI", "AI cyber risk", "AI biological risk", "AI misinformation", "deepfake detection", "AI fraud"],
+      "topics": [
+        {"id": "cyber-misuse", "name_zh": "网络滥用"},
+        {"id": "bio-chemical-risk", "name_zh": "生物与化学风险"},
+        {"id": "misinformation-manipulation", "name_zh": "虚假信息与操纵"},
+        {"id": "fraud-abuse", "name_zh": "欺诈与滥用"},
+        {"id": "dual-use", "name_zh": "双重用途"}
+      ]
+    },
+    {
+      "id": "governance-accountability",
+      "name": "Governance and Accountability",
+      "name_zh": "治理与问责",
+      "description_zh": "研究风险管理、审计、标准、政策、制度和前沿模型治理。",
+      "keywords": ["AI governance", "AI risk management", "algorithmic audit", "frontier AI regulation", "responsible scaling policy", "compute governance"],
+      "topics": [
+        {"id": "risk-management-standards", "name_zh": "风险管理与标准"},
+        {"id": "audits-impact-assessments", "name_zh": "审计与影响评估"},
+        {"id": "policy-regulation", "name_zh": "政策与监管"},
+        {"id": "frontier-safety-frameworks", "name_zh": "前沿安全框架"},
+        {"id": "compute-governance", "name_zh": "算力治理"}
+      ]
+    },
+    {
+      "id": "systemic-societal",
+      "name": "Systemic and Societal Risk",
+      "name_zh": "系统性与社会风险",
+      "description_zh": "研究规模化部署对经济、环境、权力结构、民主和灾难性风险的影响。",
+      "keywords": ["systemic AI risk", "catastrophic AI risk", "AI labor impact", "AI environmental impact", "AI concentration of power", "AI democracy"],
+      "topics": [
+        {"id": "catastrophic-risk", "name_zh": "灾难性风险"},
+        {"id": "economic-labor", "name_zh": "经济与劳动"},
+        {"id": "environmental-impact", "name_zh": "环境影响"},
+        {"id": "power-concentration-access", "name_zh": "权力集中与可及性"},
+        {"id": "rights-democracy", "name_zh": "权利与民主"}
+      ]
+    }
+  ]
+}

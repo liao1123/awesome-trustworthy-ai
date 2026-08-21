@@ -6,6 +6,12 @@ Thumbs.db
 *.swp
 *~
 
+# Python cache and local tooling output
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+
 # Local agent workspace files
 .agents/
 .codex/
