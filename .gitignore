@@ -1,0 +1,14 @@
+# Operating-system and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*~
+
+# Local agent workspace files
+.agents/
+.codex/
+
+# Keep links and citations in Git; do not commit publisher PDFs by default.
+*.pdf
