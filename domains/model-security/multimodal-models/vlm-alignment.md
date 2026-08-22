@@ -1,0 +1,66 @@
+# VLM Safety Alignment
+
+[返回 Multimodal Model Security 目录](README.md)
+
+## 研究方向
+
+本页研究 VLM/MLLM 如何把语言骨干中的 safety boundary、harmfulness recognition 与 refusal 迁移到视觉输入。核心问题不是模型是否具有文本安全能力，而是 image token、cross-modal fusion 和 representation drift 是否让等价的视觉语义落到既有拒答边界之外，以及能否通过训练或 activation calibration 恢复安全而不损害视觉能力。
+
+## 研究脉络
+
+- **安全迁移缺口：** 早期工作发现加入视觉模块后，语言骨干已有的拒答能力会显著退化，安全与通用能力之间出现新的 modality gap。
+- **基础迁移机制：** Modality-gap geometry、shared neuron 与 on-policy distillation 研究解释了 text-only representation 或 reasoning circuit 在何种条件下能够进入 VLM，为复用文本安全能力提供机制底座。
+- **机制定位：** representation analysis 进一步表明文本安全机制往往仍然存在，但视觉输入会稀释 risk signal、移动 activation distribution 或压缩 refusal separability。
+- **训练期对齐：** safety tuning 从直接拟合拒答，发展到 cross-modal representation matching、modality-gap regularization 和 safety-relevant self-captioning。
+- **推理期校准：** training-free 方法利用 textual refusal direction、unsafe prototype 或 estimated drift，只修正安全相关表示而尽量保留视觉语义。
+- **当前边界：** 固定 steering direction 容易引入 over-refusal；评测需要同时覆盖 adaptive jailbreak、跨模态等价输入、视觉 utility 和未见模型架构。
+
+## Cross-Modal Representation 基础机制
+
+这些工作本身主要研究通用 representation 或 reasoning transfer，不直接声称解决 safety；本页保留它们，是因为 textual safety reuse 依赖相同的 modality alignment、shared-neuron 和 teacher-student transfer 假设。
+
+| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2026&#8209;05 | TokenSwap: Benchmarking and Reducing the Modality Gap in Multimodal LLMs | benchmark、modality gap、semantic equivalence、image-interleaved training | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2607.28640) | 暂未公开 | 等价概念由文本替换为图像后 MLLM 的行为一致性缺少受控测试；TokenSwap-Bench 在文本序列中插入对齐图像并比较 42 个模型；结果平均 modality gap 为 19.6%，加入 TokenSwap training 可缩小差距而不损害原任务。 |
+| 2026&#8209;05 | Anisotropic Modality Align | analysis、anisotropic modality gap、geometric correction、unpaired alignment | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2605.07825) | 暂未公开 | 把 modality gap 简化为全局平移会破坏源模态的语义结构；AnisoAlign 将差距建模为集中在少量方向的 anisotropic residual 并做有界校正；结果说明无配对表示可以在保留几何结构时对齐到目标模态分布。 |
+| 2026&#8209;02 | Do LLMs and VLMs Share Neurons for Inference? Evidence and Mechanisms of Cross-Modal Transfer | analysis、shared neuron、inference subspace、cross-model fusion | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2602.19058) | [Code](https://github.com/chenhangcuisg-code/Do-LLMs-VLMs-Share-Neurons) | LLM 的成熟推理 circuit 能否低成本迁移到 VLM 尚不明确；论文发现多步推理 top-activated neuron 超过一半共享，并用 SNRF 在共享子空间注入低秩权重差；结果提升多模态推理且保留 perception capability。 |
+| 2026&#8209;02 | Modality Gap-Driven Subspace Alignment Training Paradigm For Multimodal Large Language Models | analysis、fixed-frame modality gap、subspace alignment、unpaired pretraining | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2602.07026) | 暂未公开 | Isotropic alignment 难刻画跨模态表示的稳定偏置与残差；论文提出 Fixed-frame Modality Gap Theory、ReAlign 与 ReVision，用无配对统计修正表示并支持预训练；结果表明统计对齐文本可部分替代昂贵 image-text pair。 |
+| 2025&#8209;10 | VOLD: Reasoning Transfer from LLMs to Vision-Language Models via On-Policy Distillation | analysis、on-policy distillation、reasoning transfer、cold-start alignment | CVPR 2026 | [CVPR](https://openaccess.thecvf.com/content/CVPR2026/html/Bousselham_VOLD_Reasoning_Transfer_from_LLMs_to_Vision-Language_Models_via_On-Policy_CVPR_2026_paper.html) · [arXiv](https://arxiv.org/abs/2510.23497) | 暂未公开 | VLM 缺少高质量 image-text reasoning trace，而 text-only teacher knowledge 不能直接监督不同 policy distribution；VOLD 组合 cold-start SFT、GRPO 与 on-policy distillation；结果显示充分的初始 distribution alignment 是跨模态 teacher guidance 生效的前提。 |
+| 2025&#8209;03 | Unicorn: Text-Only Data Synthesis for Vision Language Model Training | tool、text-only synthesis、representation transfer、VLM training | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2503.22655) | [Code](https://github.com/Yu-xm/Unicorn) | 高质量 image-text pair 成本限制 VLM training；Unicorn 先生成 caption 与 instruction，再把文本表示转换为 synthetic visual representation；结果在不依赖真实图像时构建可用于 pretraining 和 instruction tuning 的大规模数据。 |
+
+## 安全迁移机制与诊断
+
+| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2026&#8209;08 | MMAligner: Safeguarding Multimodal Large Language Models through Representation Calibration | analysis、shared safety subspace、representation shift、refusal boundary | ACM CCS 2026 | [arXiv](https://arxiv.org/abs/2608.05909) | 暂未公开 | 针对等价的文本与多模态有害输入触发不同安全行为的问题，论文验证共享 safety subspace 与 refusal boundary 仍然存在并定位视觉输入造成的 representation shift；结论是失效主要来自表示错位而非安全能力消失。 |
+| 2026&#8209;05 | Safety Geometry Collapse in Multimodal LLMs and Adaptive Drift Correction | analysis、safety geometry collapse、modality drift、refusal separability | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2605.18104) | 暂未公开 | 针对文本 refusal direction 在多模态输入上失去判别力的问题，论文量化 modality-induced drift 对 conditional refusal separability 的压缩并做因果干预；结果显示校正 drift 后模型会恢复识别和拒绝有害输入的 self-rectification。 |
+| 2026&#8209;04 | Precise Shield: Explaining and Aligning VLLM Safety via Neuron-Level Guidance | analysis、safety neuron、cross-modal overlap、gradient masking | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2604.08881) | 暂未公开 | 多语言与多模态复合攻击为何能绕过 VLLM safety 尚缺 neuron-level 解释；Precise Shield 对比良性与有害 activation 定位 safety neuron，并只在该子空间更新；结果以不足 0.03% 参数改善安全，并发现跨语言和模态存在可迁移的 neuron overlap。 |
+| 2025&#8209;07 | Unraveling and Mitigating Safety Alignment Degradation of Vision-Language Models | analysis、safety alignment degradation、cross-modal representation、utility retention | Findings of ACL 2025 | [Proceedings](https://aclanthology.org/2025.findings-acl.186/) | 暂未公开 | 针对 VLM 训练后语言骨干安全对齐退化的问题，论文分析视觉 instruction tuning 引起的表示偏移并提出 Cross-Modality Representation Manipulation；结果将实验中的 unsafe rate 从 61.53% 降至 3.15%，同时保持视觉任务能力。 |
+
+## 训练期跨模态对齐
+
+| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2026&#8209;08 | SafeCap: Improving LVLM Safety with Image Captioning Reinforcement Learning | defense、safety self-captioning、reinforcement learning、vision utility | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.10513) | [Code](https://github.com/Safe-VLM/SafeCap) | 针对直接 refusal supervision 难以让模型暴露图像中的安全线索的问题，SafeCap 用 frozen LLM 的安全决策奖励优化 self-captioning 再生成回答；结果在四种模型设置上将安全平均分提高 3.7 至 19.0 分且保持视觉 utility。 |
+| 2026&#8209;03 | Visual Self-Fulfilling Alignment: Shaping Safety-Oriented Personas via Threat-Related Images | defense、safety persona、threat-related image、visual alignment | ACL 2026 | [ACL Anthology](https://aclanthology.org/2026.acl-long.490/) · [arXiv](https://arxiv.org/abs/2603.08486) | 暂未公开 | 针对文本 safety persona 难稳定迁移到视觉威胁，论文以 threat-related image 激活并塑造 safety-oriented persona 再执行对齐；结果增强 VLM 对视觉风险的拒答与解释，同时减少对良性图像的过度拒绝。 |
+| 2026&#8209;01 | AM³Safety: Towards Data Efficient Alignment of Multi-modal Multi-turn Safety for MLLMs | defense、multi-turn safety alignment、InterSafe-V、GRPO | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2601.04736) | 暂未公开 | 针对 MLLM 单轮 safety tuning 无法追踪跨轮意图演化，AM³Safety 构建 InterSafe-V 并组合 cold-start refusal 与带 turn-aware 双目标 reward 的 GRPO；结果将 ASR 降低超过 10%，并分别提高至少 8% harmlessness 与 13% helpfulness。 |
+| 2026 | Meerkat-VL: Implicit Risk Safety Alignment in Multimodal LLMs via Perceptual Reasoning and Self-Verification | defense、implicit cross-modal risk、self-verification、GRPO | ICML 2026 | [ICML](https://icml.cc/Downloads/2026) · [OpenReview](https://openreview.net/forum?id=lbaBsu0CaY) | [Code](https://github.com/Tunanzzz/Meerkat-VL) · [Dataset](https://huggingface.co/datasets/Tunanzzz/Meerkat-Safe) | 图像与文本单独 benign、组合后有害的 implicit risk 缺少数据和可靠 reward；Meerkat-VL 用 perceptual reasoning、NPSV 与 DPCA 约束 GRPO；结果相对 RLHF baseline 平均提高 16% safety 和 13% helpfulness，并减少 reward hacking。 |
+| 2026 | Teach to Reason Safely: Policy-Guided Safety Tuning for MLRMs | defense、multimodal reasoning safety、policy-guided SFT、preference optimization | ICLR 2026 | [Proceedings](https://proceedings.iclr.cc/paper_files/paper/2026/hash/8ece25974724edad00c8d0bcc8a235e8-Abstract-Conference.html) | 暂未公开 | 针对 multimodal reasoning 会因 visual attention drift 与 unsafe reasoning pattern 损害安全，PST 先以显式 policy 做 SFT 再优化安全推理偏好；结果减少多项 benchmark 的 harmful output，同时保持通用推理表现。 |
+| 2025&#8209;11 | SafeGRPO: Self-Rewarded Multimodal Safety Alignment via Rule-Governed Policy Optimization | defense、self-reward alignment、rule-governed reward、multimodal safety | CVPR 2026 | [Proceedings](https://openaccess.thecvf.com/content/CVPR2026/html/Rong_SafeGRPO_Self-Rewarded_Multimodal_Safety_Alignment_via_Rule-Governed_Policy_Optimization_CVPR_2026_paper.html) · [arXiv](https://arxiv.org/abs/2511.12982) | 暂未公开 | 针对 MLLM safety RL 依赖昂贵外部 reward model 且容易受 judge 偏差影响，SafeGRPO 让 policy 依据显式规则生成自奖励并优化；结果在降低 unsafe response 的同时保持 multimodal utility。 |
+| 2025&#8209;06 | DAVSP: Safety Alignment for Large Vision-Language Models via Deep Aligned Visual Safety Prompt | defense、visual safety prompt、deep alignment、parameter-efficient tuning | AAAI 2026 | [Proceedings](https://ojs.aaai.org/index.php/AAAI/article/view/41149) · [arXiv](https://arxiv.org/abs/2506.09353) | [Code](https://github.com/zhangyitonggg/DAVSP) | 针对 shallow visual prompt 难在深层持续激活 refusal mechanism，DAVSP 将 safety prompt 对齐到多层视觉语言表示并进行参数高效训练；结果提升视觉有害请求防御且基本保持正常任务性能。 |
+| 2025&#8209;05 | Bootstrapping LLM Robustness for VLM Safety via Reducing the Pretraining Modality Gap | defense、pretraining modality gap、robustness transfer、safety regularization | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2505.24208) | 暂未公开 | 针对语言骨干的 jailbreak robustness 无法自动迁移到视觉输入的问题，论文在预训练阶段缩小视觉与文本表示差距以复用 LLM 安全能力；结果在不牺牲常规 VLM 表现的情况下显著降低 unsafe response rate。 |
+| 2025&#8209;03 | Safety Mirage: How Spurious Correlations Undermine VLM Safety Fine-Tuning and Can Be Mitigated by Machine Unlearning | defense、spurious correlation、machine unlearning、safety fine-tuning | ICLR 2026 | [OpenReview](https://openreview.net/forum?id=Qi1rZa4zzl) · [arXiv](https://arxiv.org/abs/2503.11832) | [Code](https://github.com/OPTML-Group/VLM-Safety-MU) | 针对 VLM safety fine-tuning 可能只学习表面视觉 cue 而非风险因果特征，论文诊断 spurious correlation 并用 machine unlearning 去除 shortcut；结果改善分布外安全泛化并揭示高 in-domain 分数可能形成 Safety Mirage。 |
+| 2025&#8209;02 | SEA: Low-Resource Safety Alignment for Multimodal Large Language Models via Synthetic Embeddings | defense、synthetic embedding、low-resource alignment、VA-SafetyBench | ACL 2025 | [ACL Anthology](https://aclanthology.org/2025.acl-long.1212/) · [arXiv](https://arxiv.org/abs/2502.12562) | [Code](https://github.com/ZeroNLP/SEA) | Multimodal safety data 成本高且每个新模态都需重建；SEA 从文本安全数据优化 synthetic modality embedding 并据此训练 MLLM；结果可在单张 RTX 3090 上 24 秒生成 embedding，并改善 image、video 与 audio threat 下的安全性。 |
+| 2024&#8209;10 | Cross-Modal Safety Mechanism Transfer in Large Vision-Language Models | defense、safety mechanism transfer、text-guided alignment、visual hidden state | ICLR 2025 | [OpenReview](https://openreview.net/forum?id=45rvZkJbuX) | [Code](https://github.com/xsc1234/VLM_Safety_Transfer) | 针对视觉输入不能触发语言模型既有安全机制的问题，论文用文本引导把有害图像的 hidden state 对齐到等价有害文本表示；结果表明无需重建整套安全数据即可把文本 refusal mechanism 迁移到视觉模态。 |
+
+## 推理期表示校准
+
+| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2026&#8209;06 | Harnessing Textual Refusal Directions for Multimodal Safety | defense、MARS、textual refusal direction、adaptive steering | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2606.31876) | 暂未公开 | 针对多模态安全数据昂贵且固定 activation steering 会误拒良性输入的问题，MARS 用 recentering、trust region 和 layer selection 自适应注入文本 refusal direction；结果在 image/video safety benchmark 上提升安全并保持 utility。 |
+| 2026&#8209;03 | Diagnosing and Repairing Unsafe Channels in Vision-Language Models via Causal Discovery and Dual-Modal Safety Subspace Projection | defense、causal mediation、dual-modal subspace、activation repair | CVPR 2026 | [CVPR](https://openaccess.thecvf.com/content/CVPR2026/html/Fu_Diagnosing_and_Repairing_Unsafe_Channels_in_Vision-Language_Models_via_Causal_CVPR_2026_paper.html) · [arXiv](https://arxiv.org/abs/2603.27240) | 暂未公开 | LVLM 中哪些 channel 因果驱动 unsafe behavior、以及如何同时修复图像和文本路径尚不清楚；CARE 以 causal mediation 定位关键组件并投影到 dual-modal safety subspace；结果 training-free 提升未见与 adaptive attack 下的安全且保持通用能力。 |
+| 2026&#8209;02 | Risk Awareness Injection: Calibrating Vision-Language Models for Safety without Compromising Utility | defense、unsafe prototype subspace、visual token modulation、risk awareness | ICML 2026 | [OpenReview](https://openreview.net/forum?id=wqpQafNJTH) | 暂未公开 | 针对视觉 token 稀释语言骨干风险信号的问题，RAI 从语言 embedding 构造 Unsafe Prototype Subspace 并只调制高风险视觉 token；结果降低多种 jailbreak 的 ASR，同时保持跨模态任务表现。 |
+| 2025&#8209;07 | Security Tensors as a Cross-Modal Bridge: Extending Text-Aligned Safety to Vision in LVLM | defense、security tensor、cross-modal bridge、parameter-free inference | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2507.20994) | [Code](https://github.com/listen0425/Security-Tensors) | Text-aligned LLM 的 safety layer 不会自然响应 harmful image；论文学习可在文本或视觉输入侧插入的 security tensor、无需修改模型参数；结果激活语言模块既有 safety layer 并提高视觉有害输入拒答，同时基本保持 benign performance。 |
+| 2025&#8209;02 | VLM-Guard: Safeguarding Vision-Language Models via Fulfilling Safety Alignment Gap | defense、VLM-Guard、safety alignment gap、activation intervention | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2502.10486) | 暂未公开 | 针对视觉表示偏离语言模型安全子空间的问题，VLM-Guard 在推理时识别并修正 safety-critical representation；结果无需额外多模态安全训练即可增强对有害视觉指令的拒答。 |
+
+> 这里记录模型内部 alignment；独立视觉内容审核器和统一 guard model 见 [Multimodal Guardrails](../../guardrails/multimodal-guardrails.md)。
