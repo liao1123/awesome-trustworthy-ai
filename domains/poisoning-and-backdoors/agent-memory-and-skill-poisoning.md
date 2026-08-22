@@ -16,13 +16,16 @@
 
 | 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
 | --- | --- | --- | --- | --- | --- | --- |
+| 2026&#8209;08 | Backdoor Decontamination Dynamics in LLM Agents | attack、machine unlearning、model backdoor、data poisoning | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.11295) | 暂未公开 | 在 115 个 tool-Agent 实验中，先植入已知防御后门可顺带擦除约 56% 未知原后门，随后 unlearning 几乎清除所有幸存者；即使同时装四个后门，净化一个已知后门仍连带移除 52/60 个，但中层仍保留 trigger awareness。 |
 | 2026&#8209;07 | When Agents Remember Too Much: Memory Poisoning Attacks on Large Language Model Agents | attack、agent memory poisoning、long-term memory、GhostWriter | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2607.06595) | 暂未公开 | 针对 personal agent 会从邮件等不可信来源保存长期记忆，论文用 GhostWriter 先隐藏注入、再等待相关任务检索激活；结果注入率约 98%、平均激活率约 60%，AM-Sentry 可显著降低风险。 |
 | 2026&#8209;06 | Poisoned Playbooks: Demystifying Knowledge Poisoning Effects on AI Security Agents | attack、agent knowledge poisoning、security agent、RAG poisoning | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2606.24402) | 暂未公开 | 针对 RAG 投毒研究多停留在 QA、缺少对行动型 security agent 的影响分析，论文注入单篇恶意 exploit write-up 并提出 Verification Boundary；结果毒知识是否被采用取决于 Agent 能否获得足够外部证据反驳。 |
 | 2026&#8209;05 | Hijacking Agent Memory: Stealthy Trojan Attacks Through Conversational Interaction | attack、agent memory poisoning、conversational injection、selective memory | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2605.29960) | 暂未公开 | 针对现代 memory pipeline 会选择性抽取和改写对话、使旧攻击难以写入，论文用 semantic bridge、entity masquerading 和 embedding optimization 构造 MemPoison；结果攻击成功率最高达 0.95。 |
 | 2026&#8209;05 | Stateful Agent Backdoor | attack、agent memory poisoning、cross-session attack、state machine | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2605.06158) | [Code](https://anonymous.4open.science/r/stateful_agent_backdoor-E89F) | 针对现有 Agent 后门通常局限在单次 session，论文把攻击建模为 Mealy machine 并利用持久组件跨 session 推进状态；结果一次 trigger injection 后可分阶段自主执行，成功率达 80% 至 95%。 |
 | 2026&#8209;05 | Trojan Hippo: Weaponizing Agent Memory for Data Exfiltration | attack、agent memory poisoning、data exfiltration、dormant payload | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2605.01970) | 暂未公开 | 针对恶意 tool output 可被记忆但不必立即执行，论文用一次不可信调用写入 dormant payload，等用户讨论敏感主题时再泄露数据；结果攻击可跨 100 个良性 session 保持，成功率最高 85% 至 100%。 |
+| 2026 | Visual Inception: Compromising Long-term Planning in Agentic Recommenders via Multimodal Memory Poisoning | attack、multimodal safety、agent safety、VLM safety | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.954/) | 暂未公开 | Visual Inception 把视觉 trigger 潜伏进推荐 agent 的长期记忆并在未来规划时劫持目标，攻击 Goal-Hit Rate 约 85%；CognitiveGuard 以扩散净化和反事实核验将其降至约 10% 且不损害质量。 |
+| 2026 | Toward Subspace-Perturbed Trajectory-Aware Backdoor Attacks in Deep Reinforcement Learning | attack、backdoor defense、reinforcement learning、model backdoor | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/60676) | 暂未公开 | 针对现有后门审计与防御难覆盖未知触发器和模型供应链变化的问题，论文提出 Toward Subspace-Perturbed Trajectory-Aware Backdoor Attacks 攻击或威胁分析；摘要实验验证该威胁在所列模型、任务或数据集上成立，直接服务于模型供应链审计与后门防御。 |
 | 2025&#8209;12 | MemoryGraft: Persistent Compromise of LLM Agents via Poisoned Experience Retrieval | attack、agent memory poisoning、experience retrieval、semantic imitation | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2512.16962) | [Code](https://github.com/Jacobhhy/Agent-Memory-Poisoning) | 针对 Agent 倾向复用历史成功经验，论文让良性 ingestion artifact 诱导 Agent 自己写入恶意 procedure template；结果少量记录即可主导相似任务的联合检索并造成跨 session 行为漂移。 |
-| 2025&#8209;09 | InjecMEM: Memory Injection Attack on LLM Agent Memory Systems | attack、targeted memory injection、retrieval anchor、adversarial command | COLM 2026 | [OpenReview](https://openreview.net/forum?id=QVX6hcJ2um) | 暂未公开 | 针对攻击者无法直接读写 memory store 时能否只交互一次就控制未来相关查询；论文把毒记录拆为 retriever-agnostic topic anchor 与对 fused context 稳健的 adversarial command；结果在 MemoryOS 中实现持久的 topic-conditioned retrieval 和目标生成，同时基本不影响非目标查询。 |
+| 2025&#8209;09 | InjecMEM: Memory Injection Attack on LLM Agent Memory Systems | attack、targeted memory injection、retrieval anchor、adversarial command | COLM 2026 | [Official](https://colm.cc/Conferences/2026/AcceptedPapers) · [OpenReview](https://openreview.net/forum?id=QVX6hcJ2um) | 暂未公开 | 针对攻击者无法直接读写 memory store 时能否只交互一次就控制未来相关查询；论文把毒记录拆为 retriever-agnostic topic anchor 与对 fused context 稳健的 adversarial command；结果在 MemoryOS 中实现持久的 topic-conditioned retrieval 和目标生成，同时基本不影响非目标查询。 |
 | 2024&#8209;07 | AgentPoison: Red-teaming LLM Agents via Poisoning Memory or Knowledge Bases | attack、agent memory poisoning、optimized trigger、knowledge base | NeurIPS 2024 | [arXiv](https://arxiv.org/abs/2407.12784) | [Code](https://github.com/AI-secure/AgentPoison) | 针对 LLM Agent 依赖长期 memory 或 RAG knowledge base，论文优化 trigger 使相关 query 落入独特 embedding region 并召回恶意经验；结果低于 0.1% 投毒即可取得超过 80% 成功率且良性性能下降低于 1%。 |
 
 ## Agent Weight Backdoor 与数据外传
@@ -40,26 +43,39 @@
 | 2026&#8209;08 | When Experience Becomes Instruction: Trajectory Poisoning in Self-Evolving Agent Skill Systems | attack、agent skill poisoning、experience promotion、trajectory poisoning | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.05563) | 暂未公开 | 针对 self-evolving agent 会把不可信 experience 晋升为持久 instruction，论文提出 PoisonedEvolution 并刻画 inclusion、attribution 与 realization 三个条件；结果只需 10% attacker support 即可跨两类 pipeline 植入目标行为。 |
 | 2026&#8209;08 | SkillJack: Persistent Skill Backdoors in Self-Evolving Agents | attack、agent skill poisoning、skill extraction、persistent backdoor | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.03509) | [Code](https://github.com/Tencent/AI-Infra-Guard/tree/main/Research/SkillJack) | 针对 poisoned memory 只有被检索时才生效，论文劫持 experience-to-skill extraction 让临时恶意轨迹变成独立持久 skill；结果删除原始记录后仍有 80% 的 skill-mediated attacks 保留。 |
 | 2026&#8209;04 | BadSkill: Backdoor Attacks on Agent Skills via Model-in-Skill Poisoning | attack、agent skill poisoning、model-in-skill、semantic trigger | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2604.09378) | 暂未公开 | 针对安全审查通常只把 skill 当作文本或代码，论文把带后门的小模型封装进 skill 并用 compositional semantic trigger 激活；结果低投毒比例下仍获得很高攻击成功率并绕过表面检查。 |
-| 2026&#8209;04 | SkillTrojan: Backdoor Attacks on Skill-Based Agent Systems | attack、agent skill poisoning、malicious skill、encrypted payload | ICML 2026 | [arXiv](https://arxiv.org/abs/2604.06811) | 暂未公开 | 针对 reusable skill 供应链可承载持久恶意逻辑，论文把加密 payload 拆进多次看似良性的工具调用并在运行时重组；结果攻击成功率最高达 97.2%，同时降低静态检测可见性。 |
-| 2025&#8209;05 | Fox in the Henhouse: Supply-Chain Backdoor Attacks Against Reinforcement Learning | attack、RL policy backdoor、RL supply chain、poisoned experience | ICML 2026 | [arXiv](https://arxiv.org/abs/2505.19532) | 暂未公开 | 针对开发者会从第三方 Agent 收集看似成功的 RL experience，论文让恶意 Agent 通过合法交互污染 replay data；结果约 3% 恶意经验即可使触发动作成功率超过 90% 并显著降低回报。 |
+| 2026&#8209;04 | SkillTrojan: Backdoor Attacks on Skill-Based Agent Systems | attack、agent skill poisoning、malicious skill、encrypted payload | ICML 2026 | [Official](https://icml.cc/virtual/2026/poster/65209) · [arXiv](https://arxiv.org/abs/2604.06811) | [Code](https://github.com/Yunhao-Feng/SkillTrojan) | 针对 reusable skill 供应链可承载持久恶意逻辑，论文把加密 payload 拆进多次看似良性的工具调用并在运行时重组；结果攻击成功率最高达 97.2%，同时降低静态检测可见性。 |
+| 2025&#8209;05 | Fox in the Henhouse: Supply-Chain Backdoor Attacks Against Reinforcement Learning | attack、RL policy backdoor、RL supply chain、poisoned experience | ICML 2026 | [Official](https://icml.cc/virtual/2026/poster/66677) · [arXiv](https://arxiv.org/abs/2505.19532) | 暂未公开 | 针对开发者会从第三方 Agent 收集看似成功的 RL experience，论文让恶意 Agent 通过合法交互污染 replay data；结果约 3% 恶意经验即可使触发动作成功率超过 90% 并显著降低回报。 |
 
 ## 检测与防御
 
 | 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
 | --- | --- | --- | --- | --- | --- | --- |
-| 2026&#8209;06 | PolicyGuard: Towards Test-time and Step-level Adversary Defense for Reinforcement Learning Agent | defense、RL policy backdoor、RL agent、test-time defense | ICML 2026 | [arXiv](https://arxiv.org/abs/2606.12896) | 暂未公开 | 针对 RL policy backdoor 在 episode 结束后才检查为时过晚，论文用 Gaussian-process posterior variance 在 test time 逐步识别异常状态；结果以约 0.86 AUROC 提前发现攻击步骤。 |
+| 2026&#8209;06 | PolicyGuard: Towards Test-time and Step-level Adversary Defense for Reinforcement Learning Agent | defense、RL policy backdoor、RL agent、test-time defense | ICML 2026 | [Official](https://icml.cc/virtual/2026/poster/65628) · [arXiv](https://arxiv.org/abs/2606.12896) | 暂未公开 | 针对 RL policy backdoor 在 episode 结束后才检查为时过晚，论文用 Gaussian-process posterior variance 在 test time 逐步识别异常状态；结果以约 0.86 AUROC 提前发现攻击步骤。 |
 
 ## 机制与系统分析
 
 | 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
 | --- | --- | --- | --- | --- | --- | --- |
 | 2026&#8209;06 | From Untrusted Input to Trusted Memory: A Systematic Study of Memory Poisoning Attacks in LLM Agents | analysis、agent memory poisoning、memory pipeline、systematic study | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2606.04329) | 暂未公开 | 针对 Agent 会把外部输入转成未来默认可信的 memory，论文系统比较多种写入、检索、触发与防御设置；结果梳理出 memory pipeline 中影响攻击持久性和迁移性的关键设计因素。 |
-| 2026&#8209;05 | Angel or Demon: Investigating the Plasticity Interventions' Impact on Backdoor Threats in Deep Reinforcement Learning | analysis、RL policy backdoor、plasticity intervention、deep RL | ICML 2026 | [arXiv](https://arxiv.org/abs/2605.14587) | 暂未公开 | 针对维持 RL plasticity 的训练技巧可能同时改变后门风险，论文在 14,664 个设置中比较多类 intervention；结果不同机制可能缓解或放大后门，SAM 等方法并非天然安全。 |
+| 2026&#8209;05 | Angel or Demon: Investigating the Plasticity Interventions' Impact on Backdoor Threats in Deep Reinforcement Learning | analysis、RL policy backdoor、plasticity intervention、deep RL | ICML 2026 | [Official](https://icml.cc/virtual/2026/poster/64505) · [arXiv](https://arxiv.org/abs/2605.14587) | [Project](https://huggingface.co/spaces/zcahjl3/figrepro-cool20-gallery) | 针对维持 RL plasticity 的训练技巧可能同时改变后门风险，论文在 14,664 个设置中比较多类 intervention；结果不同机制可能缓解或放大后门，SAM 等方法并非天然安全。 |
 
 ## Benchmark
 
 | 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
 | --- | --- | --- | --- | --- | --- | --- |
 | 2026&#8209;07 | MemSecBench: Tracking Agent Memory Poisoning from Persistence to Consequence and Repair | benchmark、agent memory poisoning、lifecycle evaluation、selective repair | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2607.27080) | 暂未公开 | 针对现有 benchmark 很少沿同一恶意语义追踪完整生命周期，论文用 310 个案例和 Write-Execute-Forget protocol 评测 24 种 Agent 配置；结果恶意记忆持久率达 84.2%，完整攻击链成功率达 50.3%。 |
+
+## 防御与缓解
+
+| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2026&#8209;06 | Membrane: A Self-Evolving Contrastive Safety Memory for LLM Agent Defense | defense、jailbreak、safety alignment、data poisoning | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2606.05743) | 暂未公开 | Membrane 把每种攻击策略的有害条件与表面相似的良性放行条件存成 Contrastive Safety Memory 并在线演化；它在六类 jailbreak 上取得最高 F1，将 AgentHarm 良性误拒控制在 7%–14%，且能抵抗跨攻击迁移与 memory poisoning。 |
+| 2026 | Think Twice Before You Act: Protecting LLM Agents Against Tool Description Poisoning via Isolated Planning | defense、data poisoning、agent poisoning、memory corruption | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/62116) | [Code](https://github.com/shishishi123/Tool-Guard) | 针对工具型智能体会受到环境、记忆、检索和跨智能体通信攻击的问题，论文提出 Think Twice Before You Act 防御或缓解方法；摘要实验显示其降低相应风险或攻击效果，同时尽量保持正常任务效用，直接服务于智能体攻击面治理。 |
+
+## 检测、审计与取证
+
+| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2025&#8209;05 | Beyond Black-Box Obfuscation: Mechanistic Analysis and Defense of White-Box Monitors | detection、SafetyNet、agent poisoning、memory corruption | CoLM 2026 | [Official](https://colm.cc/Conferences/2026/AcceptedPapers) · [arXiv](https://arxiv.org/abs/2505.14300) | [Code](https://github.com/MaheepChaudhary/eval-aware-evasion) | 针对 evaluation-aware model 可规避 white-box monitor 的风险，作者将逃逸归因于 geometric shifting 与 covariance manipulation，并以跨子空间 SafetyNet ensemble 在五个模型家族的 MAD 与 Sleeper Agent 任务上取得约 100% AUROC。 |
 
 > Agent 的正常 memory governance 与 self-evolution 主线见 [Memory 与 Self-Evolving Agent Security](../agent/memory-and-self-evolving-agent-security.md)；第三方 skill 供应链见 [Skill、Plugin 与供应链安全](../agent/skill-and-plugin-supply-chain-security.md)。

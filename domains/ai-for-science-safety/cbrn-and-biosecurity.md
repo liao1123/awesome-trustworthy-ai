@@ -19,14 +19,14 @@
 | 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
 | --- | --- | --- | --- | --- | --- | --- |
 | 2026&#8209;07 | An Early Warning of Emerging Biosecurity Risks in Frontier LLMs | attack、bio red team、wet-lab validation、capability uplift | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2607.18056) | 暂未公开 | 针对 text-only CBRN evaluation 无法判断模型输出能否转化为生物产物；论文以 Intern-BioBreaker 定向生成 jailbreak，并把筛选后的 sequence 接入 DNA synthesis、host expression 与 protein verification；结果多种 frontier model 出现高 ASR，部分模型生成设计可在受控实验中实现。 |
-| 2026&#8209;06 | ABC-Bench: An Agentic Bio-Capabilities Benchmark for Biosecurity | benchmark、bio agent、DNA assembly、screening evasion | ICML 2026 | [arXiv](https://arxiv.org/abs/2606.11150) | 暂未公开 | 针对知识问答无法衡量 Agent 把 biology 与 software skill 组合成现实动作的能力；论文评测 liquid-handler coding、DNA fragment design 和 synthesis-screening evasion，并进行三组 wet-lab validation；结果所有受测 Agent 在三项任务均超过 median expert baseline，且模型生成脚本成功完成 DNA assembly。 |
+| 2026&#8209;06 | ABC-Bench: An Agentic Bio-Capabilities Benchmark for Biosecurity | benchmark、bio agent、DNA assembly、screening evasion | ICML 2026 | [Official](https://icml.cc/virtual/2026/poster/60590) · [arXiv](https://arxiv.org/abs/2606.11150) | 暂未公开 | 针对知识问答无法衡量 Agent 把 biology 与 software skill 组合成现实动作的能力；论文评测 liquid-handler coding、DNA fragment design 和 synthesis-screening evasion，并进行三组 wet-lab validation；结果所有受测 Agent 在三项任务均超过 median expert baseline，且模型生成脚本成功完成 DNA assembly。 |
 | 2025&#8209;10 | Generative AI for Biosciences: Emerging Threats and Roadmap to Biosecurity | analysis、bioscience misuse、lifecycle defense、adaptive governance | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2510.15975) | 暂未公开 | 针对 bioscience GenAI 的 jailbreak、privacy、autonomous agent 和 dual-use 风险缺少统一路线图；论文结合 130 名专家访谈提出 data filtering、training alignment、real-time monitoring 和 governance 的全生命周期防御；结论是能力与监管共同演化时需要 secure-by-design 而非单点 guardrail。 |
 
 ## Protein 与 DNA Model Red Team
 
 | 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
 | --- | --- | --- | --- | --- | --- | --- |
-| 2026&#8209;08 | A Blind Spot in Alignment: Quantifying Biosecurity Risks in Large Language Models | benchmark、SPIKE-Bench、functional harmfulness、BioSafe-Guard | COLM 2026 | [arXiv](https://arxiv.org/abs/2608.02684) | [Code](https://github.com/PKU-Alignment/SPIKE-Bench) | 针对自然语言 refusal 无法判断生成 toxin-like protein sequence 是否具备功能风险；论文用 compliance、biological plausibility 和 predicted toxicity 三阶段 SPIKE funnel 评测 32 个模型并训练 BioSafe-Guard；结果 FHR 最高达 50.7% 且与 refusal rate 脱钩，专用 guard 可降低预测风险并保持良性效用。 |
+| 2026&#8209;08 | A Blind Spot in Alignment: Quantifying Biosecurity Risks in Large Language Models | benchmark、SPIKE-Bench、functional harmfulness、BioSafe-Guard | COLM 2026 | [Official](https://colm.cc/Conferences/2026/AcceptedPapers) · [arXiv](https://arxiv.org/abs/2608.02684) | [Code](https://github.com/PKU-Alignment/SPIKE-Bench) | 针对自然语言 refusal 无法判断生成 toxin-like protein sequence 是否具备功能风险；论文用 compliance、biological plausibility 和 predicted toxicity 三阶段 SPIKE funnel 评测 32 个模型并训练 BioSafe-Guard；结果 FHR 最高达 50.7% 且与 refusal rate 脱钩，专用 guard 可降低预测风险并保持良性效用。 |
 | 2025&#8209;09 | SafeProtein: Red-Teaming Framework and Benchmark for Protein Foundation Models | attack、protein foundation model、heuristic beam search、sequence misuse | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2509.03487) | 论文声明公开，链接待核实 | 针对 protein foundation model 缺少系统 red team；论文结合 multimodal prompt engineering 与 heuristic beam search，并构建 SafeProtein-Bench；结果可持续 jailbreak 多种模型，ESM3 上 ASR 最高 70%，暴露蛋白质理解和设计能力的 dual-use 风险。 |
 | 2025&#8209;05 | GeneBreaker: Jailbreak Attacks against DNA Language Models with Pathogenicity Guidance | attack、DNA language model、pathogenicity guidance、sequence jailbreak | ICLR 2026 | [ICLR](https://proceedings.iclr.cc/paper_files/paper/2026/hash/398b00a05b847ac65eb98c8e5e865fe8-Abstract-Conference.html) · [arXiv](https://arxiv.org/abs/2505.23839) | [Code](https://github.com/zaixizhang/GeneBreaker) | 针对 DNA language model 能否在 jailbreak 下设计 pathogen-like sequence；论文让 bioinformatics Agent、PathoLM-guided beam search 和 BLAST/function annotation 组成 GeneBreaker；结果跨六类病毒稳定攻击 Evo 系列，Evo2-40B ASR 最高 60%，且模型规模增大伴随更高 dual-use risk。 |
 
@@ -36,6 +36,18 @@
 | --- | --- | --- | --- | --- | --- | --- |
 | 2025&#8209;09 | Securing the Language of Life: Inheritable Watermarks from DNA Language Models to Proteins | defense、DNA watermark、protein inheritance、sequence provenance | NeurIPS 2025 | [NeurIPS](https://neurips.cc/virtual/2025/poster/116266) · [arXiv](https://arxiv.org/abs/2509.18207) | 暂未公开 | 针对生成 DNA 在 mutation、translation 和 downstream protein 中难追踪；论文提出 DNAMark 的 synonymous codon embedding 和可跨 central dogma 继承的 CentralMark；结果多种扰动下 detection F1 超过 0.85，并在 CRISPR-Cas9 case 展示 provenance 用途。 |
 | 2025&#8209;04 | A call for built-in biosecurity safeguards for generative AI tools | analysis、built-in safeguard、sequence screening、dual-use biology | Nature Biotechnology | [Nature Biotechnology](https://www.nature.com/articles/s41587-025-02650-8) | 暂未公开 | 针对 generative biology model 可能产生数据库之外的新型 pathogen、toxin 或 screening-evasive molecule；论文主张把 biosecurity 检查内建到生成工具和供应链，而不是只依赖用户政策；结论是模型、synthesis provider 与治理机构需要协同的多层 safeguard。 |
+
+## 攻击与绕过
+
+| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2026&#8209;08 | Fool's Gold: Defensive Deception Against Safety-Removal Attacks on Open-Weight Models | attack、biosecurity、dual-use capability、uplift evaluation | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.17202) | 暂未公开 | 开放权重语言模型中的安全对齐很容易被移除：abliteration（拒绝消除）能在几分钟内从权重中投影掉介导拒绝行为的方向，而据我们所知，目前没有任何发布时防御能够持久阻止这种攻击；我们的防御方法“诱饵加固”（decoy hardening，简称“Fool's Gold”）允许攻击者移除拒绝机制，但会破坏攻击所得的价值：一旦拒绝机制被剥离，模型对危险操作请求给出的多数回答都会成为自信、流畅、但关键要素已被篡改的诱饵。 |
+
+## 检测、审计与取证
+
+| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2026&#8209;08 | Traceable Trust for action-ready artificial intelligence in bioscience | detection、biosecurity、dual-use capability、uplift evaluation | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.17997) | 暂未公开 | 人工智能正成为生物科学工作基础设施的一部分；AI 模型可以预测生物分子结构、设计蛋白质、排列变体、标注图像、推荐菌株并优化实验条件；我们通过横跨生态系统资源、项目设计和实验室行动的三个案例说明该框架。 |
 
 ## 相关研究博客
 

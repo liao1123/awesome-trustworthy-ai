@@ -38,6 +38,7 @@
 
 | 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
 | --- | --- | --- | --- | --- | --- | --- |
+| 2026 | Can VLMs Diagnose and Recover from VLA Manipulation Faults? | analysis、VLA safety、VLA threat model、embodied agent | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/64203) | [Project](https://kakigo.github.io/VLA-FixBench/) | 针对具身与自动驾驶系统的感知或规划失误会转化为现实物理风险的问题，论文围绕 VLA 开展机制与边界分析；理论分析与实验共同刻画了该风险的机制和适用边界，直接服务于物理世界部署安全。 |
 | 2025&#8209;12 | VLA-Arena: An Open-Source Framework for Benchmarking Vision-Language-Action Models | benchmark、VLA evaluation、simulation framework、closed-loop policy | ICML 2026 | [ICML](https://icml.cc/Downloads/2026) · [arXiv](https://arxiv.org/abs/2512.22539) | [Project](https://vla-arena.github.io/) | VLA 结果受 simulator、task wrapper 与 evaluation setting 差异影响而难以横向比较；VLA-Arena 提供统一的 open-source evaluation framework；结果使多种 VLA 能在一致的 closed-loop task protocol 下复现和比较。 |
 | 2023&#8209;06 | LIBERO: Benchmarking Knowledge Transfer for Lifelong Robot Learning | benchmark、lifelong robot learning、knowledge transfer、manipulation suite | NeurIPS 2023 | [arXiv](https://arxiv.org/abs/2306.03310) | [Code](https://github.com/Lifelong-Robot-Learning/LIBERO) | Lifelong robot learning 缺少能区分不同 knowledge transfer 类型的统一测试；LIBERO 构建 procedural、object、spatial 与 goal-oriented manipulation suites；结果形成后续 VLA capability 与 safety evaluation 的常用任务底座。 |
 

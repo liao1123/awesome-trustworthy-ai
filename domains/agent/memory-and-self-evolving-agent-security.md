@@ -18,6 +18,8 @@
 
 | 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
 | --- | --- | --- | --- | --- | --- | --- |
+| 2026&#8209;08 | Can Agent Memory Systems Track Evolving State? | analysis、agent memory、self-evolution、cross-session risk | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.19652) | 暂未公开 | 随着基于 LLM 的智能体被部署于时长更长、风险更高的任务，其记忆系统仍存在关键缺口；现有记忆基准主要关注类似回忆的任务，而我们认为，有效的记忆系统必须跟踪不断演变的世界状态；当事实、约束和决策在长期交互中被修订时，回答必须反映当前状态，而不是已经被取代的状态；在长度和成本匹配的对照实验中，其中 15 至 32 个百分点的提升可归因于状态结构，而不是增加的上下文。 |
+| 2026&#8209;08 | Practice Makes Unsafe: Skill Misevolution in Self-Improving LLM Agents | analysis、agent memory、self-evolution、cross-session risk | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.12851) | [Code](https://github.com/henrymao2004/misevolve) | SkillMisevo-Gym 版本化追踪 self-improving Agent 从恶意暴露、skill 写入到新 session 复用的风险；21 个演化配置全都生成不安全 artifact，三次恶意任务使 carryover ASR 从 16.0% 升至 35.3%，SafeEvolve 可分别降低不安全检索与新会话伤害 26.7 和 17.3 个百分点。 |
 | 2026&#8209;06 | Safety in Self-Evolving LLM Agent Systems: Threats, Amplification, and Case Studies | analysis、self-evolving agent、MLAS matrix、lineage persistence | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2606.23075) | 暂未公开 | 针对 self-evolution 会修改 model、memory、tool 和 architecture、使静态 threat model 失效；论文用五类模块乘五个生命周期阶段的 MLAS matrix 与开源案例分析；结果指出多个 amplification effect 会把 session-bounded attack 变成 lineage-persistent risk，单模块 scanner 无法覆盖。 |
 | 2025&#8209;09 | Your Agent May Misevolve: Emergent Risks in Self-evolving LLM Agents | analysis、misevolution、memory accumulation、tool creation | ICLR 2026 | [arXiv](https://arxiv.org/abs/2509.26354) | [Code](https://github.com/ShaoShuai0605/Misevolution) | 针对 Agent improvement 默认被当作单调正向过程；论文沿 model、memory、tool 和 workflow 四条演化路径系统诱发 unintended change；结果在强模型上也观察到 safety alignment 下降和生成工具引入漏洞，确立 misevolution 作为独立风险。 |
 
@@ -43,6 +45,26 @@
 | 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
 | --- | --- | --- | --- | --- | --- | --- |
 | 2026&#8209;03 | Governing Evolving Memory in LLM Agents: Risks, Mechanisms, and the Stability and Safety Governed Memory (SSGM) Framework | defense、memory governance、semantic drift、dynamic access control | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2603.11768) | 暂未公开 | 针对动态 memory 在反复总结和巩固中产生 corruption、drift 与 leakage；论文以 SSGM 将 evolution 和 execution 解耦，并在 consolidation 前加入 consistency、temporal decay 与 dynamic access control；结论是 memory update 需要独立治理而非只优化 retrieval。 |
-| 2025&#8209;09 | A-MemGuard: A Proactive Defense Framework for LLM-Based Agent Memory | defense、memory validation、dual memory、error-cycle breaking | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2510.02373) | [Code](https://github.com/TangciuYueng/AMemGuard) | 针对 context-specific 恶意记忆单独看似正常且会通过新输出自我强化；论文组合相关 memory 的 consensus reasoning 与独立 lesson memory；结果在多 benchmark 将 ASR 降低超过 95%，同时保持较低 utility cost。 |
+| 2025&#8209;09 | A-MemGuard: A Proactive Defense Framework for LLM-Based Agent Memory | defense、memory validation、dual memory、error-cycle breaking | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/61006) · [arXiv](https://arxiv.org/abs/2510.02373) | [Code](https://github.com/TangciuYueng/AMemGuard) | 针对 context-specific 恶意记忆单独看似正常且会通过新输出自我强化；论文组合相关 memory 的 consensus reasoning 与独立 lesson memory；结果在多 benchmark 将 ASR 降低超过 95%，同时保持较低 utility cost。 |
+
+## 防御与缓解
+
+| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2026&#8209;08 | Beyond Handcrafted Security: Towards Self-Evolving Defense for LLM Agents | defense、agent memory、self-evolution、cross-session risk | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.12977) | 暂未公开 | HARD 从 harness 层统一描述 runtime defense 的干预点，并根据失败轨迹自动选择策略、更新防御 artifact；实验表明自演化方案较手工 runtime defense 提高安全表现，同时保持良性任务效用。 |
+| 2026&#8209;07 | Self-Evolving Just-In-Time Memory for Proactive Embodied Safety | defense、embodied safety、agent memory、self-evolution | ECCV 2026 | [Official](https://eccv.ecva.net/virtual/2026/poster/5121) · [arXiv](https://arxiv.org/abs/2607.16247) | [Code](https://github.com/DyMessi/JIT-Memory) | 针对运行时护栏只会阻断动作并拖慢任务的问题，该框架用风险信念图、事实与经验记忆主动预判和化解危险，并以测试—验证—写入循环自我更新，在 IS-Bench 上令 Qwen3-VL-8B 的安全成功率提高 30.3%。 |
+| 2026&#8209;06 | PACT: Self-Evolving Physical Safety Alignment for Diffusion Policies in Embodied Manipulation | defense、embodied safety、diffusion model、physical risk | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/62679) · [arXiv](https://arxiv.org/abs/2606.08414) | 暂未公开 | 针对具身与自动驾驶系统的感知或规划失误会转化为现实物理风险的问题，论文提出 PACT 防御或缓解方法；摘要实验显示其降低相应风险或攻击效果，同时尽量保持正常任务效用，直接服务于物理世界部署安全。 |
+
+## 攻击与绕过
+
+| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2026 | Metis: Learning to Jailbreak LLMs via Self-Evolving Metacognitive Policy Optimization | attack、jailbreak、agent memory、self-evolution | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/63565) | 暂未公开 | 针对模型安全策略会被越狱提示或自动化红队绕过的问题，论文提出 Metis 攻击或威胁分析；摘要实验验证该威胁在所列模型、任务或数据集上成立，直接服务于越狱风险测量与红队覆盖。 |
+
+## Benchmark 与评测
+
+| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2026&#8209;08 | Phantom Gains: Auditing Self-Improvement Against a Measured Null | benchmark、agent memory、self-evolution、cross-session risk | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.20290) | [Code](https://github.com/chengxuphd/phantom-gains) | 语言模型是否实现自我改进，越来越多地不是根据平均准确率来判断，而是根据它在哪些具体问题上取得进步或发生退步来判断；我们在 Qwen3-8B 上进行三轮秩为 $32$ 的 LoRA 自训练，并以一个经过完全相同流水线的冻结对照进行审计，识别出七种测量失效；如果没有对照，每一种都会使所报告的发现发生反转；因此，转变级审计要求为其报告的每项统计量分别测量零假设：这些零假设不需要新增实验，可以从多实验组研究本已拥有的基线复现实验中构建，尽管大多数研究拥有的复现次数还不够多。 |
 
 > 更完整的 memory/skill poisoning、trajectory poisoning 与 backdoor 列表见 [Agent 记忆与技能投毒](../poisoning-and-backdoors/agent-memory-and-skill-poisoning.md)。本页保留用于说明 self-evolution lifecycle、memory governance 和 privacy 的代表工作。

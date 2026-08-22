@@ -15,10 +15,10 @@
 
 ```text
 arXiv 当日论文 ──> daily/日期.md ──┐
-                                  ├──> domains/{model-security, agent, ai-for-science-safety, guardrails, dos, finetuning, poisoning-and-backdoors, misc}/
+                                  ├──> 去重与语义分类 ──> domains/
 顶会录用列表 ──> conferences/ ────┘
 ```
 
-`model-security/`、`agent/`、`ai-for-science-safety/`、`guardrails/`、`dos/`、`finetuning/` 和 `poisoning-and-backdoors/` 保存已有稳定二级分类的核心领域；其他规模较小的领域直接保存为 `misc/<domain>.md`。
+`domains/` 中形成稳定二级分类的方向使用独立文件夹；规模较小的方向直接保存为 `misc/<domain>.md`。`daily/` 与 `conferences/` 保持各自的来源视图和筛选逻辑，领域同步只做去重、语义分类和长期聚合，不反向改变来源文件。
 
 每次运行 Codex 时，先读取 [`STYLE_GUIDE.md`](STYLE_GUIDE.md)，再读取相应目录的 `README.md` 并执行其中的 Prompt。

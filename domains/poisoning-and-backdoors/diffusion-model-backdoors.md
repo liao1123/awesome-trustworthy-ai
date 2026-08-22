@@ -16,7 +16,7 @@
 
 | 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
 | --- | --- | --- | --- | --- | --- | --- |
-| 2026&#8209;06 | TooBad: Backdoor Diffusion Models with Ultra-Low Poison Rate and Imperceptible Trigger | attack、T2I diffusion backdoor、ultra-low poison rate、imperceptible trigger | ECCV 2026 | [arXiv](https://arxiv.org/abs/2606.23362) | 暂未公开 | 针对 diffusion backdoor 在攻击力、隐蔽性和投毒成本间的权衡，论文优化 model-specific trigger；结果仅 0.5% 投毒即可获得超过 85% ASR，5% 时接近完全成功并逃过现有防御。 |
+| 2026&#8209;06 | TooBad: Backdoor Diffusion Models with Ultra-Low Poison Rate and Imperceptible Trigger | attack、T2I diffusion backdoor、ultra-low poison rate、imperceptible trigger | ECCV 2026 | [Official](https://eccv.ecva.net/virtual/2026/poster/4050) · [arXiv](https://arxiv.org/abs/2606.23362) | 暂未公开 | 针对 diffusion backdoor 在攻击力、隐蔽性和投毒成本间的权衡，论文优化 model-specific trigger；结果仅 0.5% 投毒即可获得超过 85% ASR，5% 时接近完全成功并逃过现有防御。 |
 | 2026&#8209;06 | Customization under Fire: Plugin Poisoning in Text-to-Image Ecosystem | attack、LoRA supply chain、plugin poisoning、concept hijacking | ACM CCS 2026 | [Official](https://www.sigsac.org/ccs/CCS2026/program/accepted-papers.html) · [arXiv](https://arxiv.org/abs/2606.09151) | [Code](https://github.com/xaddwell/PoisonLoRA) | T2I 用户依赖社区 LoRA plugin 定制模型，形成难以审计的供应链入口；PoisonLoRA 植入 concept hijacking 或 harmful task injection 并借 plugin merge 与 remix 传播；结果在 Civitai、Liblib 及多轮组合中仍达到接近 100% ASR。 |
 | 2026&#8209;02 | SemBD: Semantic-Level Backdoor Attack against Text-to-Image Diffusion Models | attack、T2I diffusion backdoor、semantic region trigger、cross-attention | ICML 2026 | [arXiv](https://arxiv.org/abs/2602.04898) | 暂未公开 | 针对离散关键词 trigger 易被改写和过滤，论文通过 cross-attention key/value distillation 学习连续 semantic region，并加入 semantic regularization 与 multi-entity target；结果在自然语义变体上取得接近 100% ASR。 |
 | 2026 | Towards Human-Imperceptible Backdoor Attacks on Text-to-Image Diffusion Models | attack、T2I diffusion backdoor、clean-label attack、dual-modal trigger | CVPR 2026 | [CVF Paper](https://openaccess.thecvf.com/content/CVPR2026/papers/Wu_Towards_Human-Imperceptible_Backdoor_Attacks_on_Text-to-Image_Diffusion_Models_CVPR_2026_paper.pdf) | 暂未公开 | 针对 dirty-label image-text mismatch 易被人工和自动清洗发现，论文联合使用近不可见 latent image perturbation 与 synonym/syntax composite trigger；结果在保持语义一致时实现约 97.2% 人评 ASR 并绕过内容过滤。 |
@@ -57,3 +57,10 @@
 | 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
 | --- | --- | --- | --- | --- | --- | --- |
 | 2025&#8209;02 | BackdoorDM: A Comprehensive Benchmark for Backdoor Attacks and Defenses on Diffusion Models | benchmark、diffusion backdoor、attack-defense evaluation、diffusion security | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2502.11798) | 暂未公开 | 针对 diffusion backdoor 的数据集、target 与指标不统一，论文建立覆盖多类攻击和 defense 的系统 benchmark；结果揭示现有方法在不同生成任务与评测口径下存在明显稳定性差异。 |
+
+## 攻击与绕过
+
+| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2026 | Semantic-level Backdoor Attack against Text-to-Image Diffusion Models | attack、backdoor attack、diffusion model、model backdoor | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/62919) | [Code](https://github.com/DPAS-Lab/SemBD/) | 针对训练数据、偏好信号或模型组件可能被投毒并植入隐蔽后门的问题，论文提出 Semantic-level Backdoor Attack against Text-to-Image 攻击或威胁分析；摘要实验验证该威胁在所列模型、任务或数据集上成立，直接服务于投毒与后门威胁评估。 |
+| 2026 | Retrievals Can Be Detrimental: Unveiling the Backdoor Vulnerability of Retrieval-Augmented Diffusion Models | attack、model backdoor、cyber misuse、diffusion backdoor | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.242/) | 暂未公开 | BadRDM 通过少量有毒图像、恶意对比检索器和熵式选择，把文本 trigger 绑定到毒性代理图像，在两类 retrieval-augmented diffusion 任务上有效植入后门、保持良性效用且抵抗常见防御。 |

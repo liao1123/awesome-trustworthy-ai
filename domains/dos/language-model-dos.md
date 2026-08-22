@@ -27,7 +27,7 @@
 
 | 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
 | --- | --- | --- | --- | --- | --- | --- |
-| 2025&#8209;12 | RepetitionCurse: Measuring and Understanding Router Imbalance in Mixture-of-Experts LLMs under DoS Stress | analysis、MoE DoS、MoE routing、load imbalance | ICML 2026（arXiv 标注） | [arXiv](https://arxiv.org/abs/2512.23995) | 暂未公开 | 针对 MoE 推理期缺乏显式负载均衡，论文用模型无关的重复 token 让请求集中路由到少数专家设备；结果在 Mixtral-8x7B 上将端到端延迟提高 3.063 倍，暴露专家并行的可用性瓶颈。 |
+| 2025&#8209;12 | RepetitionCurse: Measuring and Understanding Router Imbalance in Mixture-of-Experts LLMs under DoS Stress | analysis、MoE DoS、MoE routing、load imbalance | ICML 2026（arXiv 标注） | [Official](https://icml.cc/virtual/2026/poster/65906) · [arXiv](https://arxiv.org/abs/2512.23995) | 暂未公开 | 针对 MoE 推理期缺乏显式负载均衡，论文用模型无关的重复 token 让请求集中路由到少数专家设备；结果在 Mixtral-8x7B 上将端到端延迟提高 3.063 倍，暴露专家并行的可用性瓶颈。 |
 
 ## Survey 与威胁分类
 

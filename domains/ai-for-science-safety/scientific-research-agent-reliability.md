@@ -9,7 +9,7 @@
 ## 研究脉络
 
 - **系统与训练基线：** MMSearch-R1、MM-DeepResearch、VSearcher 与 SearchEyes 从 prompt scaffold 发展到 end-to-end RL、search-world simulation 和长程多模态工具调用，为后续可靠性分析定义可观测的 action 与 evidence boundary。
-- **终局到过程评测：** DeepResearch Bench、ReportBench、TRACE、MiroEval 与 DR3-Eval 将 content quality 扩展到 trajectory utility、static sandbox、process score 和 multimodal provenance。
+- **终局到过程评测：** DeepResearch Bench、ReportBench、TRACE、MiroEval、DR3-Eval 与 HiEviDR-Bench 将 content quality 扩展到 trajectory utility、static sandbox、process score、multimodal provenance 和 evidence-to-claim graph。
 - **错误定位与事实核验：** DeepHalluBench、DRIFT 与 DeepFact 从整份报告分数转向 responsible stage、span-level first error、claim-level evidence 和可修订 benchmark label。
 - **Multimodal evidence：** MMDeepResearch-Bench、ViDR 与 TVIR 将图像搜索、局部视觉线索、source figure、citation grounding 和 text-visual integrity 纳入同一报告链。
 - **当前边界：** 更多搜索不必然带来更可靠结论，公开 benchmark 还会被 search-time contamination 污染；评测需保存来源快照、完整 trajectory、claim-level evidence、视觉 provenance 和停止依据。
@@ -65,6 +65,7 @@
 
 | 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
 | --- | --- | --- | --- | --- | --- | --- |
+| 2026&#8209;07 | HiEviDR-Bench: A Benchmark for Hierarchical Evidence Aggregation in Deep Research | benchmark、hierarchical evidence、evidence graph、traceability | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2607.25151) | [Code](https://github.com/AI9Stars/HiEviDR-Bench) · [Data](https://huggingface.co/datasets/ai9stars/HiEviDR-Bench) | 针对 Deep Research 只评 final answer 或报告文风而看不到证据如何形成结论，论文用显式 evidence graph 表示 evidence selection、cross-source linking、intermediate claim 与 final conclusion，并以五维 progressive gating 评测；16 个 MLLM 的高表面报告质量仍掩盖 citation、claim construction 和 answer correctness 缺口。 |
 | 2026&#8209;06 | ResearchClawBench: A Benchmark for End-to-End Autonomous Scientific Research | benchmark、scientific rediscovery、raw data、expert rubric | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2606.07591) | [Code](https://github.com/InternScience/ResearchClawBench) | 针对 end-to-end scientific research 缺少基于真实数据且可核验的评测；论文从十个领域建立 40 个隐藏目标论文、提供原始资料并用专家 multimodal rubric 评分；结果最强系统均分仍约 21，失败集中于实验协议、证据和 scientific core 不匹配。 |
 | 2026&#8209;06 | VistaHop: Benchmarking Long-Horizon Visual DeepSearch | benchmark、visual deep search、multi-hop evidence、VistaArena | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2606.03273) | 暂未公开 | 针对视觉搜索 benchmark 常可用单次识图或文本检索完成；论文构建 350 个需要反复查看局部图像、跨网页追踪证据的任务与 VistaArena；结果最佳系统仅取得 24.31% 表现，主要瓶颈是线索保持、跨轮视觉定位与证据组合。 |
 | 2026&#8209;04 | DR$^3$-Eval: Towards Realistic and Reproducible Deep Research Evaluation | benchmark、static sandbox、multifile report、reproducible retrieval | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2604.14683) | [Code](https://github.com/NJU-LINK/DR3-Eval) | 针对动态网页和含糊任务使 DRA 评测难复现；论文为真实 multimodal、multi-file request 配置含支持文档、distractor 与 noise 的静态 sandbox，并评测 recall、factuality、citation、instruction 与 depth；结果暴露 retrieval robustness 和 hallucination control 的关键失败。 |
@@ -78,6 +79,31 @@
 | 2025&#8209;08 | SurGE: A Benchmark and Evaluation Framework for Scientific Survey Generation | benchmark、survey generation、citation accuracy、academic corpus | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2508.15658) | [Code](https://github.com/oneal2000/SurGE) | 针对自动综述缺少统一任务和评价协议；论文用专家综述、完整 cited reference 与百万篇论文语料评测 completeness、citation accuracy、structure 和 content；结果即使 agentic framework 也与高质量科学综述存在明显差距。 |
 | 2025&#8209;06 | DeepResearch Bench: A Comprehensive Benchmark for Deep Research Agents | benchmark、PhD-level task、citation accuracy、human-aligned scoring | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2506.11763) | [Code](https://github.com/Ayanami0730/deep_research_bench) | 针对 DRA 缺少跨领域、与人工一致的系统评测；论文构建 100 个跨 22 领域 PhD-level task，并分别评估报告质量、有效引用数和 citation accuracy；结果为后续 DRA 比较建立可复用基线，但仍依赖专家任务与 evaluator calibration。 |
 | 2025&#8209;05 | DeepResearchGym: A Free, Transparent, and Reproducible Evaluation Sandbox for Deep Research | tool、evaluation sandbox、reproducible search、agent rollout | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2505.19253) | [Project](https://www.deepresearchgym.ai/) | 针对闭源 Deep Research 的搜索环境、工具和评测链不可复现；论文提供免费透明的 search sandbox、Agent rollout 与统一 evaluator；结果把系统比较从不可控产品接口转化为可重复实验，也能支持后续 contamination、poisoning 和 defense 研究。 |
+
+## 机制分析与风险测量
+
+| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2026&#8209;08 | DeepWeaver: Bridging the Evidence Synthesis Gap in Open-Ended Question Answering | analysis、research agent、scientific reliability、error localization | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.18988) | [Code](https://github.com/KlozeWang/DeepWeaver) | “先检索、后生成”流程常用于为开放问题生成深度研究式回答，但仅有检索并不足够：LLM 必须把嘈杂、碎片化证据组织成全面且引用充分的回答；我们把这一过程称为证据综合；这些结果表明，证据编织是弥合开放式问答中检索与生成差距的有效机制。 |
+| 2026&#8209;08 | AutoResearch: Insight In, Hallucination Out | analysis、research agent、scientific reliability、error localization | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.17906) | [Code](https://github.com/EvoMap/AutoResearch) | 自主研究系统执行长研究工作流的能力越来越强，但自动化本身不能保证所得过程仍有科学依据；我们提出 AutoResearch，一个将想法生成与想法执行连接起来的两阶段系统，同时处理研究想法如何形成，以及如何通过实验可靠确立这些想法；这些结果展示了一种研究流程：有意义的洞见在实验前得到依据支撑，结论在被接受前得到证据支撑，即“Insight In, Hallucination Out”。 |
+| 2026&#8209;08 | SGHA: Evidence-Grounded Research Problem Discovery with Local Language Models | analysis、research agent、scientific reliability、error localization | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.17501) | [Code](https://github.com/SarveshVGharat/structural-gap-hypothesis-agent) | 近期面向完全自动化 AI 科学家的研究已经表明，语言模型智能体能够生成假设、执行实验并起草科学论文；然而，在研究问题形成的早期阶段，这些 AI 科学家往往严重依赖专有前沿模型；结果表明，显式语料结构和受证据约束的推理，能够在生成或验证阶段不依赖前沿模型的情况下，支持有前景且可检查的研究问题构造。 |
+| 2026&#8209;08 | Historical Backtesting for Scientific Question Discovery: A Protocol and Astronomy Pilot | analysis、research agent、scientific reliability、error localization | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.16795) | [Code](https://github.com/nonameisready/scientific-question-discovery-benchmark) | 如今，产生科学研究问题的系统是通过专家评分、LLM评审器评级或精心策划的案例研究来评估的——所有这些都是主观的，不可证伪的；我们将历史回测形式化为替代方案：系统从历史截止点冻结的语料库中生成问题，这些问题在访问后来的文献之前被冻结，然后由暂时隔离的未来语料库确定每个问题是否随后得到回答、部分解决、独立提出或被忽略，以及其基本前提是否得到支持或反驳；其次，一项七人一致性研究（两名盲人注释者、五名评审器模型、90 个项目）指控结果分类而不是评审器：两个细心的人在 kappa = 0.17 上达成一致，每个评审器模型与专业注释者的一致程度相同或更好 (0.17-0.26)，而前沿模型在 0.60 上彼此一致——通过模型-模型协议来认证 LLM 评审器会夸大其可靠性。 |
+| 2026&#8209;08 | Beyond Correctness: Toward Automated Novelty Verification with Lean 4 | analysis、research agent、scientific reliability、error localization | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.14669) | [Code](https://github.com/ayrtonporto/avid-journal) | 应用于数学的人工智能系统验证正确性，但不验证新颖性：自动生成的定理可以在精益中无错误地编译，但仍然是已知的结果；本文介绍了 AViD Journal，这是一个接收 LaTeX 文章的管道，在 Lean 4 中形式化其陈述，并通过三个维度的决策树发布新颖性判决：正式语料库（Mathlib）和非正式语料库（TheoremSearch 和 Matlas，带有时间过滤器和 LLM 判断）中的先验存在性，通过自动策略实现非平凡性，以及以前提集上的 Jaccard 距离衡量的证明之间的结构距离；对因声明重复而从 arXiv 撤回的论文进行评估，得出的结果比任何绩效衡量标准都更具信息性：确定了限制该方法的三个障碍，无论这种实现如何。 |
+| 2026&#8209;08 | Video-DeepResearch: Towards the Next-Generation Multimodal Deepresearch Agent | analysis、VLM safety、research agent、scientific reliability | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.03979) | [Code](https://github.com/Osilly/Vision-DeepResearch) | Video-DR 强制 Agent 先做跨帧视觉 grounding 再开放网页检索，以减少绕过视觉工具和依赖参数记忆的评测污染；其 200 题 Video-DR-Bench 显示 35B 模型达 64.0%，超过多种闭源模型，但也暴露当前 Deep Research 的模态与执行真实性缺口。 |
+
+## Benchmark 与评测
+
+| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2026&#8209;06 | Hallucination as a Feature, not a Defect: Evaluating a multi-agent architecture to transform speculative language-model outputs into testable scientific hypotheses | benchmark、multi-agent system、research agent、scientific reliability | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.19206) | 暂未公开 | 当代大型语言模型（LLM）越来越多地通过对齐抑制幻觉，把事实检索置于组合式创造力之上；尽管这对缓解错误信息至关重要，这种对齐也可能通过鼓励本文在操作层面称为“语义过拟合”和“多样性坍缩”的现象，限制推测性研究与开发（R&D）；这些发现并不表明幻觉本身有用；它们说明，只有受到架构、实证依据和显式评估约束时，推测性生成才会产生价值。 |
+| 2026 | Deep Research with Open-Domain Evaluation and Multi-Stage Guardrails for Safety | benchmark、over-refusal、research agent、scientific reliability | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.2010/) | 暂未公开 | 针对 deep-research pipeline 会把恶意来源带入最终报告，DeepResearchGuard 在四阶段设置 guardrail 并配套 DRSafeBench，使五种模型的防御成功率绝对提高 16.53%，over-refusal 约为 6%。 |
+
+## 攻击与绕过
+
+| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2026&#8209;08 | Self-prompting and cross-model consensus enable reproducible data extraction from scientific literature with large language models | attack、research agent、scientific reliability、error localization | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.19025) | 暂未公开 | 从研究论文中准确提取细致且具有上下文的信息既费力又耗时；本文研究前沿、基于浏览器的大型语言模型（LLM）提取高度上下文化信息的表现；总体而言，这些发现界定了一种可审计的分工：专家规定证据标准，模型交叉检查重复提取结果，研究人员解决有争议的案例，从而在不放弃专家监督的情况下，为扩展科学数据整理提供实用途径。 |
+| 2025&#8209;08 | Network-Level Prompt and Trait Leakage in Local Research Agents | attack、research agent、scientific reliability、error localization | USENIX Security 2026 | [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/jeong) · [arXiv](https://arxiv.org/abs/2508.20282) | 暂未公开 | 针对本地 research agent 的加密网络流量仍暴露行为模式的问题，作者仅用 metadata 即恢复超过 73% 的 prompt domain/function，并可推断最高 19/32 项用户 traits；其缓解方案将泄漏降低 29%。 |
 
 ## 相关研究博客
 

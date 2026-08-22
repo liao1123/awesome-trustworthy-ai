@@ -11,7 +11,7 @@
 - **访问控制起点：** Parametric information-flow control 与动态 adapter 用模块化架构限制受保护数据对推理结果的影响。
 - **能力级授权：** Authorization alignment、Gradient Routing、GRAM、private experts 与 keyed computation 将控制对象从数据来源扩展到知识、能力和实际计算路径。
 - **能力移除与保护：** 另一条路线用 capability localization、低秩编辑、skill unlearning、pretraining filtering、distillation 和抗恶意微调机制移除或保护能力。
-- **当前评测重点：** 随着开放权重 threat model 增强，研究从一次性行为抑制转向检验能力能否被 elicitation 或 relearning 恢复，以及 safeguard 的耐篡改性和最坏情况表现。
+- **当前评测重点：** 随着开放权重 threat model 增强，研究从一次性行为抑制转向检验能力能否被 elicitation 或 relearning 恢复，并检查 dual-use concept 的有害用法能否被移除而良性用法得到保留。
 
 ## 授权推理与能力锁定
 
@@ -28,7 +28,7 @@
 
 | 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
 | --- | --- | --- | --- | --- | --- | --- |
-| 2026&#8209;07 | Modular Pretraining Enables Access Control | tool、capability modularization、gradient routing、module ablation | ICML 2026 Spotlight | [arXiv](https://arxiv.org/abs/2607.08077) · [OpenReview](https://openreview.net/forum?id=yIubI9l3IT) | [Code](https://github.com/agencyenterprise/modular-pretraining) | 针对为每种授权组合分别训练 data-filtered model 成本过高，论文用 GRAM 将不同 dual-use domain 的梯度路由到可拆卸辅助模块；结果关闭模块可近似从未见过该领域数据的模型，在五种能力配置下把训练成本降至独立训练的五分之一并更耐 adversarial fine-tuning。 |
+| 2026&#8209;07 | Modular Pretraining Enables Access Control | tool、capability modularization、gradient routing、module ablation | ICML 2026 Spotlight | [Official](https://icml.cc/virtual/2026/poster/60631) · [arXiv](https://arxiv.org/abs/2607.08077) · [OpenReview](https://openreview.net/forum?id=yIubI9l3IT) | [Code](https://github.com/agencyenterprise/modular-pretraining) | 针对为每种授权组合分别训练 data-filtered model 成本过高，论文用 GRAM 将不同 dual-use domain 的梯度路由到可拆卸辅助模块；结果关闭模块可近似从未见过该领域数据的模型，在五种能力配置下把训练成本降至独立训练的五分之一并更耐 adversarial fine-tuning。 |
 | 2026&#8209;02 | Compressed Sensing for Capability Localization in Large Language Models | analysis、capability localization、compressed sensing、attention heads | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2603.03335) | [Code](https://github.com/locuslab/llm-components) | 针对逐个消融组件无法高效定位分布式能力，论文把 attention-head 组合搜索建模为 compressed sensing 问题并恢复稀疏的任务关键组件；结果只需少量评测即可定位能力相关 head，移除五个 head 最多可使目标能力下降 60%。 |
 | 2025&#8209;02 | Capability Localization: Capabilities Can be Localized rather than Individual Knowledge | analysis、capability localization、commonality neurons、cross-data transfer | ICLR 2025 | [ICLR](https://iclr.cc/virtual/2025/poster/28895) · [arXiv](https://arxiv.org/abs/2502.20992) | [Repository](https://github.com/nlpkeg/Capability-Neuron-Localization)（当前仅 README） | 针对单条知识能否可靠定位以及任务能力是否具有共享参数基础，论文先证明 individual knowledge 的定位缺乏 fidelity 与 reliability，再用 CNL 寻找数据共性神经元；结果在 GSM8K 上得到 96.42% neuron overlap，并通过跨数据实验表明这些 commonality neurons 可承载和增强共享能力。 |
 | 2024&#8209;10 | Gradient Routing: Masking Gradients to Localize Computation in Neural Networks | tool、capability localization、gradient masking、module ablation | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2410.04332) | [Code](https://github.com/kxcloud/gradient-routing) | 针对常规训练不控制不同数据更新哪些内部参数，论文按样本对反向梯度施加用户指定的 weighted mask；结果可形成可解释的分区表征，并通过预先定位后消融子网络实现更稳健的 unlearning 与模块化监督。 |
@@ -37,9 +37,15 @@
 
 | 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
 | --- | --- | --- | --- | --- | --- | --- |
+| 2026&#8209;08 | SAUL: Sharpness-Aware Augmented-Lagrangian Unlearning | defense、machine unlearning、capability control、tamper resistance | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.16249) | 暂未公开 | 大语言模型（LLM）中的机器遗忘面临着删除目标知识和保留通用效用之间的关键权衡；我们提出了SAUL（Sharpness-Aware Augmented-Lagrangian Unlearning），它将遗忘表述为遵循“忘记足够多，但不要超过必要”原则的约束最小化问题；除了完整的 SAUL 框架之外，我们在 TOFU 上进一步表明，应用增强拉格朗日控制器作为代表性基线的插入修饰符可以提高其遗忘后效用，从而证明显式遗忘控制的实用价值。 |
 | 2026&#8209;08 | Gradient Immunity: Null-Space Resistance to Malicious Fine-Tuning | defense、open-weight safeguards、null-space gate、malicious fine-tuning | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.05045) | [Code](https://github.com/OpenCausaLab/Gradient-Immunity) | 针对开放权重模型发布后可被攻击者任意微调，论文用安全梯度张成的零空间和三次梯度门限制危险更新；结果在只保护部分参数时也能抵抗恶意微调并保留良性适配能力。 |
 | 2026&#8209;07 | SGT: Securing Open-Source LLMs Against Malicious Fine-tuning via Safety Guidance Trigger | defense、open-weight safeguards、safety trigger、malicious fine-tuning | ACL 2026 | [ACL Anthology](https://aclanthology.org/2026.acl-long.463/) | [Code](https://github.com/ssw1419-korea/SGT) | 针对开源模型的安全约束会被后续恶意微调覆盖，论文训练 safety guidance trigger 并把其表示蒸馏进待发布模型；结果在无需推理时显式触发的情况下提高微调抗性。 |
+| 2026&#8209;06 | On the Vulnerability of Parameter-Level Defenses to Model Merging | defense、model merging、parameter defense、cyber misuse | ECCV 2026 | [Official](https://eccv.ecva.net/virtual/2026/poster/3680) · [arXiv](https://arxiv.org/abs/2606.30360) | [Code](https://github.com/krumpguo/secure-merge-attack) | 针对阻止未授权模型合并的参数变换防御，AGA 利用预训练权重的锚点主导性解析恢复变换并持续绕过现有方案，配套 ARF 则通过排斥该锚点有效缓解攻击。 |
+| 2026&#8209;02 | CrispEdit: Low-Curvature Projections for Scalable Non-Destructive LLM Editing | defense、capability control、tamper resistance、access restriction | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/62453) · [arXiv](https://arxiv.org/abs/2602.15823) | [Code](https://github.com/zarifikram/CrispEdit) | 针对后训练、微调或模型压缩可能削弱安全对齐并放大有害行为的问题，论文提出 CrispEdit 防御或缓解方法；摘要实验显示其降低相应风险或攻击效果，同时尽量保持正常任务效用，直接服务于对齐保持与有害行为缓解。 |
 | 2026&#8209;01 | SCALPEL: Selective Capability Ablation via Low-rank Parameter Editing for Large Language Model Interpretability Analysis | tool、capability ablation、low-rank subspace、parameter editing | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2601.07411) | 暂未公开 | 针对能力跨层和模块分布而离散组件归因过粗，论文用 LoRA 学习承载目标能力的低秩参数子空间并执行选择性消融；结果在 BLiMP 等任务上移除目标能力的同时保留通用语言质量和其他能力。 |
+| 2026 | Modeling LLM Unlearning as an Asymmetric Two-Task Learning Problem | defense、machine unlearning、capability control、tamper resistance | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.890/) | 暂未公开 | SAGO 把保留设为主任务、遗忘设为辅助任务并合成不违背 retain gradient 的梯度；在 WMDP Bio 上将目标模型 MMLU 恢复从 44.6% 提至 96.0%，遗忘强度相当。 |
+| 2026 | Decoding-Unlearning: Fact Forgetting via Entropy-Guided Inference | defense、machine unlearning、capability control、tamper resistance | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.1850/) | 暂未公开 | SEGUE 以 probe 识别涉及遗忘概念的查询，再在推理时用熵引导解码压制事实，免训练、可插拔，并在 MUSE、RWKU、WMDP 上优于多数 inference-time unlearning 方法。 |
+| 2026 | CRISP: Persistent Concept Unlearning via Sparse Autoencoders | defense、machine unlearning、capability control、tamper resistance | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.82/) | 暂未公开 | CRISP 用 sparse autoencoder 跨层定位并持久抑制目标概念特征，在两个 LLM 的 WMDP 高风险知识遗忘上超过既有方法，同时保留通用与域内能力。 |
 | 2025&#8209;12 | Beyond Data Filtering: Knowledge Localization for Capability Removal in LLMs | defense、capability removal、selective gradient masking、label noise | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2512.05648) | 暂未公开 | 针对 pretraining data label 不完整会让危险知识泄漏到共享参数，论文提出 SGTM 将目标领域梯度限制到专用参数并在训练后移除；结果在标签噪声下优于 data filtering 与既有 Gradient Routing，恢复目标知识所需微调步数是 RMU 的七倍。 |
 | 2025&#8209;08 | Deep Ignorance: Filtering Pretraining Data Builds Tamper-Resistant Safeguards into Open-Weight LLMs | defense、capability absence、pretraining filtering、tamper resistance | ICLR 2026 | [arXiv](https://arxiv.org/abs/2508.06601) | [Project](https://deepignorance.ai/) | 针对 post-training refusal 容易被权重修改重新激活，论文在预训练前过滤支撑 biothreat proxy capability 的数据以构造结构性无知；结果对最多一万步、三亿 token 的 adversarial fine-tuning 保持显著抗性且未观察到无关能力退化，但外部上下文仍可重新提供相关知识。 |
 | 2025&#8209;06 | Distillation Robustifies Unlearning | defense、capability removal、unlearn-and-distill、relearning resistance | NeurIPS 2025 Spotlight | [NeurIPS](https://neurips.cc/virtual/2025/poster/117762) · [arXiv](https://arxiv.org/abs/2506.06278) | [Code](https://github.com/AddieFoote/distillation-robustify-unlearning) | 针对现有 unlearning 只改变输出而潜在能力可被少量微调恢复，论文先把 unlearned teacher 的输出蒸馏到新参数空间，再提出 UNDO 以加噪副本降低成本；最强设置用从头重训 60%–80% 的算力和仅 0.01% 标注预训练数据达到 data filtering 级的抗 relearning 性，并在 WMDP 上有效。 |
@@ -52,6 +58,7 @@
 
 | 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
 | --- | --- | --- | --- | --- | --- | --- |
+| 2026&#8209;08 | ConceptGuard: Benchmarking Context-Sensitive Unlearning in Large Language Models | benchmark、context-sensitive unlearning、dual-use concept、utility preservation | 投稿 NeurIPS 2026 E&D Track | [arXiv](https://arxiv.org/abs/2608.20338) | [Dataset](https://huggingface.co/datasets/sk0511/concept-guard) | 针对 disjoint fact-level forget/retain set 无法检验同一 dual-use concept 的选择性移除，ConceptGuard 为有害与良性用法构造互补数据并按 intent 评估 contextual separation；结果显示现有 unlearning 方法分离能力弱、concept-level control 不稳定且存在明显 forgetting-utility trade-off。 |
 | 2024&#8209;03 | The WMDP Benchmark: Measuring and Reducing Malicious Use With Unlearning | benchmark、hazardous knowledge、WMDP、representation misdirection | ICML 2024 | [PMLR](https://proceedings.mlr.press/v235/li24bc.html) | [Code](https://github.com/centerforaisafety/wmdp) | 针对危险能力评测多为私有且只覆盖狭窄滥用途径，论文发布含 biosecurity、cybersecurity 与 chemical security 的 3,668 道题作为 hazardous knowledge proxy，并给出基于表示控制的 RMU 基线；结果表明可降低 WMDP 表现并大体保留通用生物与计算机科学能力。 |
 
 ## Capability Elicitation 与 Safeguard 评测
@@ -68,6 +75,19 @@
 | 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
 | --- | --- | --- | --- | --- | --- | --- |
 | 2025&#8209;10 | Open Technical Problems in Open-Weight AI Model Risk Management | survey、open-weight risk management、technical challenges、model lifecycle | AISI Research Report | [AISI](https://www.aisi.gov.uk/research/open-technical-problems-in-open-weight-ai-model-risk-management) · [SSRN](https://ssrn.com/abstract=5705186) | 暂未公开 | 针对开放权重模型可任意修改、离线使用和不可逆传播而专用安全工具不足，论文沿训练数据、训练算法、评测、部署和生态监控提出 16 个开放技术问题；结论是公开方法与评测过程和公开权重同样是建立风险管理科学的必要条件。 |
+
+## 机制分析与风险测量
+
+| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2026&#8209;08 | Decodable But Not Detachable: Training Data Granularity Determines Parametric Modularity in Large Language Models | analysis、capability control、tamper resistance、access restriction | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.10214) | 暂未公开 | 论文以统一因果消融检验 LLM 是否存在可拆除的领域参数 shell；学科知识虽可被 85% 以上准确解码却没有高选择性神经元，而语言与模态仅 0.65%–1.14% 神经元即可形成近对角损伤矩阵，说明参数模块性取决于训练数据粒度。 |
+
+## 攻击与绕过
+
+| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2026&#8209;08 | Leveraging Association Context Retrieval in Knowledge Edit- ing to Build White-Box Attacks on LLMs | attack、capability control、tamper resistance、access restriction | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.17836) | 暂未公开 | 随着大型语言模型（LLM）获得越来越高的自主性，研究能够诱导其产生不安全行为的方法十分重要；我们提出一种新的白盒攻击，其灵感来自知识编辑领域中的“先定位、再编辑”方法；针对不同架构的实验表明，与竞争方法相比，该攻击更为有效，同时不会对模型的一般性能造成严重损害。 |
+| 2026 | More Sail than Ballast: Addressing Harmful Knowledge Leakage in the Expansive Reasoning Space of LRMs | attack、capability control、tamper resistance、access restriction | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/66117) | [Code](https://github.com/XinhaoS0101/Safety-CoT) | 针对后训练、微调或模型压缩可能削弱安全对齐并放大有害行为的问题，论文提出 More Sail than Ballast 防御或缓解方法；摘要实验显示其降低相应风险或攻击效果，同时尽量保持正常任务效用，直接服务于对齐保持与有害行为缓解。 |
 
 ## 相关研究博客
 

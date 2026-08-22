@@ -46,7 +46,7 @@
 | 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
 | --- | --- | --- | --- | --- | --- | --- |
 | 2026&#8209;05 | Adaptive Steering and Remasking for Safe Generation in Diffusion Language Models | defense、adaptive remasking、contrastive safety direction、step-wise intervention | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2605.13043) | [Code](https://github.com/leeyejin1231/DLM_Steering_Remasking) | 针对中间有害 token 会沿后续去噪被持续强化，论文用 contrastive safety direction 逐步检测风险、remask 对应 token 并按危害程度自适应 steering；结果在无需再训练时降低 jailbreak 成功率且保持生成质量。 |
-| 2026&#8209;05 | The Safety-Aware Denoiser for Text Diffusion Models | defense、safety-aware denoiser、safe-region guidance、inference-time control | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2605.08116) | 暂未公开 | 针对 AR-oriented post-hoc filter 无法利用 diffusion trajectory，SAD 在每轮 denoising 中加入约束并将最终样本引向可证明的 safe region；结果在 hazard、memorization 和 jailbreak 评测中减少不安全生成，同时保留流畅性与多样性。 |
+| 2026&#8209;05 | The Safety-Aware Denoiser for Text Diffusion Models | defense、safety-aware denoiser、safe-region guidance、inference-time control | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/62720) · [arXiv](https://arxiv.org/abs/2605.08116) | 暂未公开 | 针对 AR-oriented post-hoc filter 无法利用 diffusion trajectory，SAD 在每轮 denoising 中加入约束并将最终样本引向可证明的 safe region；结果在 hazard、memorization 和 jailbreak 评测中减少不安全生成，同时保留流畅性与多样性。 |
 | 2025&#8209;10 | Toward Safer Diffusion Language Models: Discovery and Mitigation of Priming Vulnerability | defense、priming vulnerability、contaminated state、diffusion alignment | ICLR 2026 | [OpenReview](https://openreview.net/forum?id=ZMzha5gbnF) · [arXiv](https://arxiv.org/abs/2510.00565) | [Code](https://github.com/mdl-lab/dlm-priming-vulnerability) | 针对早期 affirmative token 会沿 denoising path 锁定有害结果，论文把这种 priming vulnerability 建模为 contaminated intermediate state 并从该状态训练安全恢复；结果提高对 mask-based attack 的鲁棒性。 |
 | 2025&#8209;09 | DiffuGuard: How Intrinsic Safety is Lost and Found in Diffusion Large Language Models | defense、denoising-path dependence、stochastic remasking、block-level repair | ICLR 2026 | [OpenReview](https://openreview.net/forum?id=zBPzxhso8M) · [arXiv](https://arxiv.org/abs/2509.24296) | [Code](https://github.com/niez233/DiffuGuard) | 针对 greedy remasking 的 harmful bias 与早期 token 决定最终安全的 path dependence，DiffuGuard 结合 stochastic annealing remasking 和 block-level audit-and-repair；结果在保留 utility 与 latency 时明显降低多类 jailbreak ASR。 |
 | 2025&#8209;09 | A2D: Any-Order, Any-Step Safety Alignment for Diffusion Language Models | defense、any-order alignment、randomized masking、early safe termination | ICLR 2026 | [OpenReview](https://openreview.net/forum?id=URTnuyQJI1) · [arXiv](https://arxiv.org/abs/2509.23286) | [Code](https://github.com/WonjeJeung/A2D) | 针对固定位置和固定去噪步的 safety tuning 无法覆盖 dLLM 任意生成顺序，A2D 以随机 mask 训练 token-level EOS 拒答；结果将 DIJA ASR 从超过 80% 压到接近零，并使安全终止最高加速 19.3 倍。 |
@@ -59,6 +59,12 @@
 | --- | --- | --- | --- | --- | --- | --- |
 | 2026&#8209;06 | TrustLDM: Benchmarking Trustworthiness in Language Diffusion Models | benchmark、dLLM trustworthiness、risk taxonomy、AR comparison | ICLR 2026 Trustworthy AI Workshop | [arXiv](https://arxiv.org/abs/2606.00023) | 暂未公开 | 针对 dLLM 的 trustworthiness 结论分散在单一攻击或模型，TrustLDM 统一比较多个安全与可靠性维度并设置 AR baseline；结果揭示 diffusion architecture 的优势与失效会随风险类型和模型家族显著变化。 |
 | 2025&#8209;06 | Discrete Diffusion in Large Language and Multimodal Models: A Survey | survey、discrete diffusion、parallel decoding、model taxonomy | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2506.13759) | [Code](https://github.com/LiQiiiii/DLLM-Survey) | 针对 dLLM 与 dMLLM 的数学定义、模型和训练术语不统一，论文从离散扩散形式化出发整理代表架构、训练、推理与应用；结果提供理解安全研究所依赖的 generation mechanism 和模型谱系。 |
+
+## 检测、审计与取证
+
+| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2026&#8209;07 | DeMTS: Denoising Trajectories as Multivariate Time Series for Hallucination Detection in Diffusion Language Models | detection、diffusion language model、generation safety、iterative denoising | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.14632) | 暂未公开 | 扩散大语言模型（D-LLM）已成为一种有前景的文本生成范例；为了弥补这一差距，我们提出了一个 D-LLM 幻觉检测框架，该框架将去噪轨迹制定为可学习潜在变量上的多元时间序列（简称 DeMTS）；对两个 D-LLM 主干和三个基准的大量实验表明，DeMTS 优于现有的幻觉检测方法，同时保持强大的鲁棒性、效率和跨任务可转移性。 |
 
 ## 相关研究博客
 

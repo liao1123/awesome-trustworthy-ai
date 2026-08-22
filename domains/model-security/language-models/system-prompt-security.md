@@ -4,20 +4,22 @@
 
 ## 研究方向
 
-本页把 system prompt 视为同时承载应用逻辑、安全 policy、工具规则和商业知识的隐形软件资产，研究其 extraction、leakage、stealing、auditing 与 protection。攻击既可能追求逐字恢复，也可能只需复刻原 prompt 的功能；防御因此不能只检测字符串重合，还要检查语义恢复、功能克隆、正常 utility、上下文遗忘和对 adaptive query 的鲁棒性。
+本页把 system prompt 视为同时承载应用逻辑、安全 policy、工具规则、persona 和商业知识的隐形软件资产与配置平面，研究其 extraction、leakage、stealing、auditing、instruction conflict、behavioral compliance 与 protection。风险不仅是逐字恢复或功能克隆，也包括 prompt 内部规则互相干扰、用户指令覆盖高优先级约束、persona 或用户身份改变安全边界，以及过度具体的配置诱导模型依赖可被攻击者反转的 shortcut；评测因此需要联合检查 confidentiality、policy consistency、task utility、over-refusal 和 adaptive robustness。
 
 ## 研究脉络
 
-- **可提取性验证：** 基础工作用直接指令和系统化 query 证明隐藏 prompt 可被逐字提取，并建立区分真实恢复与模型 hallucination 的评测方法。
-- **功能级窃取：** prompt marketplace 和 application store 推动攻击目标从原文恢复扩展到以少量 I/O 复制任务功能。
-- **自动化与 Agent 化：** gradient-free evolution 与 curious code agent 可根据黑盒反馈自适应组合攻击策略，不再依赖固定 jailbreak template。
-- **表示级防御：** prompt obfuscation、system vector 与 attention re-anchoring 尝试减少明文资产、稳定防泄漏指令并保留应用能力。
-- **审计与治理：** 新工作开始把 prompt 当作可测试软件，对真实产品中的用户保护、指令冲突和 architecture-level interference 进行 span-level 审计。
+- **资产泄漏到功能窃取：** 研究从逐字恢复隐藏 prompt 扩展到以少量 I/O 复制任务功能，并用真实 marketplace prompt 检验 exact、semantic 与 functional recovery 的差异。
+- **自动化 extraction：** gradient-free evolution 与 curious code agent 根据黑盒反馈组合攻击策略，使防御必须面对 adaptive query 而不只是固定 jailbreak template。
+- **Prompt-as-policy 审计：** AISPA 从用户保护维度审计 instruction span，Arbiter 与 WIRE 则把长 system prompt 当作软件 policy，定位 architecture interference 与 within-policy collision。
+- **Instruction hierarchy：** VSysBench 将 system-message compliance 与任务正确性联合评测，区分真正遵守高优先级约束和因约束导致的 capability loss。
+- **配置敏感的安全边界：** safety prompt、phishing rule、role persona 和 user identity 都可能改变 safety-utility trade-off；同一 prompt 在不同模型上也可能形成相反的保护效果。
+- **表示级与明文保护：** prompt obfuscation、system vector、continuous safety prompt 与 attention re-anchoring 尝试减少明文资产、稳定约束执行并保留应用能力。
 
 ## Prompt Extraction 与 Stealing Attack
 
 | 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
 | --- | --- | --- | --- | --- | --- | --- |
+| 2026&#8209;08 | The Model's Tell: Measuring Context-Leakage Attack Signals with Behavior Gauges | attack、system prompt、confidential inference、adversarial robustness | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.17829) | [Code](https://github.com/yeasen-z/LeakGauge) | 大型语言模型越来越依赖外部上下文，例如预定义系统提示或检索文档，以提高生成质量；既有探测研究表明，与泄漏相关的信号会出现在隐藏状态中，但提取这些状态又带来额外部署困难；通过激活引导干预，我们进一步表明，风险分数对内部的泄漏相关方向敏感，从而将可观察信号与模型内部表征联系起来。 |
 | 2026&#8209;06 | AGFPS: An Automated Gradient-Free Framework for Prompt Stealing | attack、prompt stealing、gradient-free evolution、exact recovery | IEEE Transactions on Dependable and Secure Computing 2026 | [DOI](https://doi.org/10.1109/TDSC.2026.3671410) | 暂未公开 | 针对既有 stealing 方法依赖梯度且难扩展到黑盒服务，AGFPS 以 elite retention、adaptive crossover、mutation 和分段 fitness 进化 adversarial query；结果在多数据集与模型上实现高 exact-recovery rate 并表现出跨模型迁移性。 |
 | 2026&#8209;01 | Just Ask: Curious Code Agents Reveal System Prompts in Frontier LLMs | attack、system prompt extraction、curious code agent、online exploration | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2601.21233) | [Code](https://github.com/x-zheng16/JustAsk) | 针对静态 query 无法根据失败结果探索新泄漏策略，JustAsk 用 UCB 选择 atomic probe 与高层 orchestration skill 并验证多轮恢复的一致性；结果在大量黑盒商业模型上恢复完整或接近完整的 system prompt 语义。 |
 | 2025&#8209;08 | PRSA: Prompt Stealing Attacks against Real-World Prompt Services | attack、prompt stealing、prompt marketplace、functional replication | USENIX Security 2025 | [USENIX](https://www.usenix.org/conference/usenixsecurity25/presentation/yang-yong) | 暂未公开 | 针对 academic prompt 上的攻击无法代表付费 marketplace 和应用商店，PRSA 以少量 I/O 推断 prompt intent 并重建可复刻功能的提示；结果在两类真实服务中明显提高窃取成功率并揭示 prompt-output mutual information 与泄漏风险相关。 |
@@ -34,11 +36,45 @@
 | 2025&#8209;09 | You Can't Steal Nothing: Mitigating Prompt Leakages in LLMs via System Vectors | defense、system vector、prompt leakage、instruction retention | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2509.21884) | 暂未公开 | 针对明文 system prompt 留在 context 中就始终可被诱导复述，SysVec 将其编码为内部 representation vector 而不放置原始文本；结果降低未授权披露，同时保持任务功能并缓解长上下文遗忘。 |
 | 2025&#8209;08 | Prompt Obfuscation for Large Language Models | defense、prompt obfuscation、functional equivalence、deobfuscation attack | USENIX Security 2025 | [USENIX](https://www.usenix.org/conference/usenixsecurity25/presentation/pape) | [Artifact](https://doi.org/10.5281/zenodo.15601914) | 针对明文 prompt 的知识产权无法靠拒绝指令可靠保护，论文在离散 token 或连续 embedding 空间寻找功能等价但不可理解的 obfuscated prompt；结果在多类 utility 指标上接近原 prompt，并抵抗不同知识条件下的反混淆攻击。 |
 
-## System Prompt 审计与干扰检测
+## Policy 审计与内部规则冲突
 
 | 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
 | --- | --- | --- | --- | --- | --- | --- |
 | 2026&#8209;07 | AISPA: User-Centric System Prompt Auditing for Large Language Model Applications | benchmark、system prompt audit、user protection、instruction taxonomy | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2607.28617) | [Project](https://systempromptindex.ai/) | 针对商业产品的隐藏 system prompt 缺少面向用户的可审计标准，AISPA 将 prompt 切分为 instruction span 并按八个维度标注 protective 或 problematic；对 88 个产品的审计发现保护覆盖普遍不完整且问题指令与保护指令经常共存。 |
-| 2026&#8209;03 | Arbiter: Detecting Interference in LLM Agent System Prompts | detection、system prompt interference、formal rule、multi-model scouring | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2603.08993) | 暂未公开 | 针对 coding agent 的 system prompt 像软件却缺少测试基础设施，Arbiter 结合 formal evaluation rule 与多模型 scouring 查找指令干扰；结果在三类主流 coding agent prompt 中发现不同 architecture 对应的结构性失败模式。 |
+| 2026&#8209;05 | WIRE: Profiling Witnessed Within-Policy Instruction Collisions in LLM Agents | tool、within-policy collision、symbolic triage、behavioral witness | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2605.27784) | 暂未公开 | 针对长驻 prompt policy 中单条合理规则可能在同一状态共同生效并冲突，WIRE 将源规则编码为 PYRULE、用 SAT 只提名候选并生成 concrete co-governance witness；六份 policy 的可判定试验仅 35.4% 同时满足两条规则，形成可复现的 resolution profile 而非自然语言矛盾证明。 |
+| 2026&#8209;03 | Arbiter: Detecting Interference in LLM Agent System Prompts | detection、system prompt interference、formal rule、multi-model scouring | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2603.08993) | [Artifact](https://doi.org/10.5281/zenodo.18929834) | 针对 coding agent 的 system prompt 像软件却缺少测试基础设施，Arbiter 结合 formal evaluation rule 与多模型 scouring 查找指令干扰；结果在 Claude Code、Codex CLI 与 Gemini CLI prompt 中发现 architecture-specific failure class，并以 0.27 美元完成跨模型扫描。 |
 
-> 面向外部不可信内容覆盖 system instruction 的攻击见 [Prompt Injection](../../misc/prompt-injection.md)；Agent harness 与 instruction hierarchy 见 [Agent Harness 与 Runtime Security](../../agent/harness-and-runtime-security.md)。
+## System Message Compliance 与 Configuration Risk
+
+| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2026&#8209;08 | Compliance, Capability, and Conflict: Benchmarking Multimodal LLMs under System Messages | benchmark、system-message compliance、instruction hierarchy、multimodal constraint | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.19207) | [Code（论文声明公开，当前 404）](https://github.com/naver-ai/VSysBench) | 针对多模态 system message 的约束遵循是否以基础能力为代价缺少联合评测，VSysBench 用五类、22 个子类约束及其冲突用户指令同时衡量 compliance 与 answer correctness；结果开源权重模型在冲突下合规性明显崩塌，vision-grounded constraint 对所有模型最难。 |
+| 2026&#8209;03 | The System Prompt Is the Attack Surface: How LLM Agent Configuration Shapes Security and Creates Exploitable Vulnerabilities | analysis、prompt-model interaction、phishing detection、shortcut vulnerability | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2603.25056) | [Code & Data](https://github.com/R-Lit/PhishNChips) | 针对 system prompt 是否只是中性的部署配置，PhishNChips 比较 11 个模型和十种 phishing-detection prompt；同一模型的 bypass rate 可从不足 1% 变到 97%，且攻击者反转 domain-matching signal 后能利用过度具体规则形成的 shortcut。 |
+| 2024&#8209;01 | On Prompt-Driven Safeguarding for Large Language Models | defense、safety prompt、refusal direction、continuous prompt optimization | ICML 2024 | [PMLR](https://proceedings.mlr.press/v235/zheng24n.html) · [arXiv](https://arxiv.org/abs/2401.18018) | [Code](https://github.com/chujiezheng/LLM-Safeguard) | 针对人工 safety prompt 为何提高拒答却也误拒良性请求不清楚，论文发现它主要把表示整体推向 higher-refusal direction，并以 DRO 对 continuous prompt 按 query harmfulness 双向优化；结果改善 out-of-domain 与 jailbreak 防护而未明显损害通用能力。 |
+
+## Persona、Personalization 与 Safety-Utility
+
+| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2025&#8209;02 | The Rise of Darkness: Safety-Utility Trade-Offs in Role-Playing Dialogue Agents | defense、role-playing system prompt、risk coupling、multi-preference alignment | Findings of ACL 2025 | [ACL Anthology](https://aclanthology.org/2025.findings-acl.839/) · [arXiv](https://arxiv.org/abs/2502.20757) | [Code](https://github.com/Toyhom/The-Rise-of-Darkness) | 针对 villain persona 的 system prompt 能提高角色还原却放大有害回答，论文把角色与用户请求共同形成的风险建模为 risk coupling，并用 ADMP 与 Coupling Margin Sampling 动态调整安全和角色效用偏好；结果提高安全指标同时维持角色表现。 |
+| 2024&#8209;06 | Exploring Safety-Utility Trade-Offs in Personalized Language Models | analysis、personalization bias、identity system prompt、safety-utility trade-off | NAACL 2025 | [ACL Anthology](https://aclanthology.org/2025.naacl-long.565/) · [arXiv](https://arxiv.org/abs/2406.11107) | [Code](https://github.com/brcsomnath/personalization-bias) | 针对开发者用 system prompt 注入用户身份后是否公平地维持安全与能力，论文跨身份、模型和多类 utility task 测量 personalization bias；结果不同身份会显著改变 safety-utility trade-off，DPO 与显式忽略身份的 defense prompt 只能部分缓解。 |
+
+## Benchmark 与评测
+
+| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2026&#8209;04 | Persona Non Grata: Single-Method Safety Evaluation Is Incomplete for Persona-Imbued LLMs | benchmark、persona safety、activation steering、system prompt | CoLM 2026 | [Official](https://colm.cc/Conferences/2026/AcceptedPapers) · [arXiv](https://arxiv.org/abs/2604.11120) | 暂未公开 | 针对 persona safety 只评测 system prompting 会漏报风险的问题，作者在 5,568 个条件上发现 prompt 与 activation steering 暴露不同且依架构变化的漏洞，其中看似亲社会 persona 在 Llama 上经 steering 后 ASR 可达约 0.818。 |
+
+## 基础 Tool 与资源
+
+| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2026 | HieraSuite: A Holistic Toolkit for Building Versatile System-User Instruction Hierarchy | tool、instruction hierarchy、system constraint、system prompt | CoLM 2026 | [Official](https://colm.cc/Conferences/2026/AcceptedPapers) | 论文声明公开，链接待核实 | 针对 LM 在 system 与 user 指令冲突时无法稳定维护高权限约束，HieraSuite 以 221K instruction pair 及数据、模型、训练和评测四组件覆盖 system constraint、隐私安全、steerability 和 override 场景。 |
+
+## 机制分析与风险测量
+
+| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2026&#8209;08 | PROVE: Training-Free Prompt Recovery using Verifiable Evidence | analysis、system prompt、prompt extraction、instruction confidentiality | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.13671) | 暂未公开 | 现代文本到图像模型可以根据自然语言提示生成高度逼真的图像，而提示反转的最新进展使得从生成的输出中恢复这些提示变得越来越可行，引发了对版权保护和内容所有权的新担忧；然而，基于优化的方法通常会产生不可读的提示，字幕方法会产生未经验证的细节，而基于强化学习的方法经常会过度拟合特定的生成器，同时引入评估循环。 |
+
+> 面向外部不可信内容覆盖 system instruction 的攻击见 [Prompt Injection](../../misc/prompt-injection.md)；将 safety-rule retrieval 训练进模型的 ASCL 和通用 over-refusal benchmark 见 [Safety Alignment 与 Refusal](safety-alignment-and-refusal.md)；Agent harness 与运行时权限执行见 [Agent Harness 与 Runtime Security](../../agent/harness-and-runtime-security.md)。

@@ -47,8 +47,8 @@
 
 | 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
 | --- | --- | --- | --- | --- | --- | --- |
-| 2026&#8209;05 | Acoustic Interference: A New Paradigm Weaponizing Acoustic Latent Semantic for Universal Jailbreak against Large Audio Language Models | attack、acoustic latent semantic、universal interference、cross-modal alignment | ICML 2026 | [arXiv](https://arxiv.org/abs/2605.18168) | [Code](https://github.com/FlaAI/AIA) | 针对既有攻击必须把有害 payload 编进音频的问题，论文用语义良性的 Acoustic Latent Semantic 作为通用 interference 扰乱跨模态 safety alignment；结果可与不同文本 payload 解耦并跨请求触发越狱。 |
-| 2026&#8209;05 | Sparse Tokens Suffice: Jailbreaking Audio Language Models via Token-Aware Gradient Optimization | attack、TAGO、sparse audio token、gradient optimization | ICML 2026 | [arXiv](https://arxiv.org/abs/2605.04700) | 暂未公开 | 针对全波形优化成本高且可解释性弱的问题，TAGO 定位高 gradient-energy 的 audio token 区域并只优化稀疏片段；结果保留约 25% token 仍接近完整优化的 ASR，说明少量声学 token 即可主导安全失效。 |
+| 2026&#8209;05 | Acoustic Interference: A New Paradigm Weaponizing Acoustic Latent Semantic for Universal Jailbreak against Large Audio Language Models | attack、acoustic latent semantic、universal interference、cross-modal alignment | ICML 2026 | [Official](https://icml.cc/virtual/2026/poster/65189) · [arXiv](https://arxiv.org/abs/2605.18168) | [Code](https://github.com/FlaAI/AIA) | 针对既有攻击必须把有害 payload 编进音频的问题，论文用语义良性的 Acoustic Latent Semantic 作为通用 interference 扰乱跨模态 safety alignment；结果可与不同文本 payload 解耦并跨请求触发越狱。 |
+| 2026&#8209;05 | Sparse Tokens Suffice: Jailbreaking Audio Language Models via Token-Aware Gradient Optimization | attack、TAGO、sparse audio token、gradient optimization | ICML 2026 | [Official](https://icml.cc/virtual/2026/poster/65673) · [arXiv](https://arxiv.org/abs/2605.04700) | 暂未公开 | 针对全波形优化成本高且可解释性弱的问题，TAGO 定位高 gradient-energy 的 audio token 区域并只优化稀疏片段；结果保留约 25% token 仍接近完整优化的 ASR，说明少量声学 token 即可主导安全失效。 |
 | 2026&#8209;04 | Hijacking Large Audio-Language Models via Context-Agnostic and Imperceptible Auditory Prompt Injection | attack、AudioHijack、auditory prompt injection、context generalization | IEEE S&P 2026 | [arXiv](https://arxiv.org/abs/2604.14604) | [Code](https://github.com/zju-muslab/AudioHijack) | 针对攻击者不知道用户上下文且 audio tokenizer 不可微的问题，AudioHijack 用 sampling-based gradient、attention supervision 与 reverberation blending 生成不可感知扰动；结果在未见上下文上达到 79% 至 96% success rate，并可诱导商业 voice agent 执行未授权动作。 |
 | 2026&#8209;04 | GRM: Utility-Aware Jailbreak Attacks on Audio LLMs via Gradient-Ratio Masking | attack、gradient-ratio masking、Mel-band selection、utility preservation | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2604.09222) | [Code](https://github.com/159753Fetter/GRM) | 针对 audio jailbreak 提高成功率时常明显破坏正常语音效用，GRM 以 jailbreak contribution 与 transcript sensitivity 的 gradient ratio 选择 Mel band 再局部优化；结果平均 JSR 达 88.46%，并减少良性转写和回答效用损失。 |
 | 2026&#8209;03 | Sirens' Whisper: Inaudible Near-Ultrasonic Jailbreaks of Speech-Driven LLMs | attack、near-ultrasound、microphone nonlinearity、over-the-air | USENIX Security 2026 | [Proceedings](https://www.usenix.org/conference/usenixsecurity26/presentation/ling) | [Project](https://swhisper-jailbreak.github.io/) | 针对数字扰动难以在真实声道隐蔽传输的问题，SWhisper 用近超声载波和 microphone nonlinearity 在普通设备上解调恶意 speech；结果商业模型最高达到 0.94 non-refusal，用户研究中与背景播放难以区分。 |
@@ -61,6 +61,26 @@
 | 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
 | --- | --- | --- | --- | --- | --- | --- |
 | 2025&#8209;11 | Speech-Audio Compositional Attacks on Multimodal LLMs and Their Mitigation with SALMONN-Guard | defense、SALMONN-Guard、speech-audio composition、joint moderation | ICML 2026 | [arXiv](https://arxiv.org/abs/2511.10222) | [Dataset](https://huggingface.co/datasets/tsinghua-ee/SACRED-Bench) | 针对 speech、non-speech audio 与多 speaker 共存时单通道审核失效的问题，SACRED-Bench 构造三类 composition attack 并训练 SALMONN-Guard 联合检查 audio、speech 与 text；结果把 Gemini 2.5 Pro 上 66% ASR 降至 20%。 |
-| 2025&#8209;10 | SARSteer: Safeguarding Large Audio-Language Models via Safe-Ablated Refusal Steering | defense、SARSteer、refusal steering、safe-space ablation | ICML 2026 | [arXiv](https://arxiv.org/abs/2510.17633) | [Code](https://github.com/linweiii/SARSteer) | 针对文本 refusal direction 受 text-audio distribution gap 影响且 prompt defense 容易 over-refuse，SARSteer 结合 text-derived steering 与 decomposed safe-space ablation；结果提高 harmful-query refusal 并保持 benign speech response。 |
+| 2025&#8209;10 | SARSteer: Safeguarding Large Audio-Language Models via Safe-Ablated Refusal Steering | defense、SARSteer、refusal steering、safe-space ablation | ICML 2026 | [Official](https://icml.cc/virtual/2026/poster/66551) · [arXiv](https://arxiv.org/abs/2510.17633) | [Code](https://github.com/linweiii/SARSteer) | 针对文本 refusal direction 受 text-audio distribution gap 影响且 prompt defense 容易 over-refuse，SARSteer 结合 text-derived steering 与 decomposed safe-space ablation；结果提高 harmful-query refusal 并保持 benign speech response。 |
+
+## Benchmark 与评测
+
+| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2026 | Still Between Us? Evaluating and Improving Voice Assistant Robustness to Third-Party Interruptions | benchmark、adversarial robustness、audio language model、acoustic attack | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.1902/) | [Project](https://tpi-va.github.io) | TPI-Train 以 8.8 万条含 speaker-aware hard negative 的语音训练模型优先依据声学换人线索，TPI-Bench 则专测欺骗语境下的第三方插话处理，减少仅凭文本语义走捷径。 |
+| 2026 | LALM-as-a-Judge: Benchmarking Large Audio-Language Models for Safety Evaluation in Multi-Turn Spoken Dialogues | benchmark、safety evaluation、audio language model、acoustic attack | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/66557) | 暂未公开 | 针对单一平均指标难以发现前沿模型的稀有失效和部署尾部风险的问题，论文构建 LALM-as-a-Judge 基准并开展系统评测；跨模型或跨数据集结果暴露了现有系统的具体安全缺口，直接服务于前沿模型风险评测与持续监控。 |
+
+## 机制分析与风险测量
+
+| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2026&#8209;08 | ARENA: Automated Red-Teaming for Large Audio Language Models | analysis、audio language model、acoustic attack、cross-modal safety | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.15578) | [Code](https://github.com/Leanwithming/ARENA) | 大型音频语言模型 (LALM) 使得通过语音、音乐和环境声音与语言模型进行交互成为可能，但它们也引入了一个安全表面，很难通过纯文本红队暴露；我们研究基于音频的自动化红队，其中文本查询必须保持隔离安全，而联合文本音频输入会引发有害的目标行为；消融表明，基于反馈的细化和音频变体搜索极大地改善了攻击发现。 |
+| 2026&#8209;08 | Measuring Fairness in Large Audio Language Models via Semantic-Aware Bias Estimation | analysis、audio language model、acoustic attack、cross-modal safety | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.13624) | 暂未公开 | 大型音频语言模型 (LALM) 在语音识别和音频问答等音频理解任务中的使用越来越多，引发了对跨人口群体公平性的担忧；我们提出了一种语义感知的混合效应回归框架，用于 LALM 中的公平性评估，明确解释了这些混杂因素；对模拟数据和现实世界基准的实验表明，所提出的方法大大减少了虚假公平性发现，并产生了对子组绩效差异更稳健和可解释的估计。 |
+
+## 防御与缓解
+
+| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2026&#8209;07 | AHA: Aligning Large Audio-Language Models for Reasoning Hallucinations via Counterfactual Hard Negatives | defense、audio hallucination、counterfactual hard negative、AHA-Eval | Findings of ACL 2026 | [ACL Anthology](https://aclanthology.org/2026.findings-acl.1464/) | 暂未公开 | 针对 LALM 生成未被音频证据支持的事件、身份、时序和数量信息，AHA 用 counterfactual hard negative 构造偏好数据并建立 AHA-Eval；Qwen-Audio-AHA 在该基准提升 13.7%，且在 MMAU-Test 与 MMAR 上也获得增益。 |
 
 > 独立 audio moderation system 见 [Multimodal Guardrails](../../guardrails/multimodal-guardrails.md)。利用并发音频进一步劫持 Agent planning 与 tool call 的工作见 [Agent Tool 与 MCP Security](../../agent/tool-and-mcp-security.md)。

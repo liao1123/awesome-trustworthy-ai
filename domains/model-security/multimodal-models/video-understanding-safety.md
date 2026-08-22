@@ -43,4 +43,10 @@
 | --- | --- | --- | --- | --- | --- | --- |
 | 2026&#8209;04 | Membership Inference Attacks Against Video Large Language Models | attack、membership inference、temperature perturbation、video difficulty | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2604.27002) | 暂未公开 | 针对黑盒审计者只能看到 VideoLLM 文本输出且 membership signal 受视频难度干扰的问题，论文比较不同 decoding temperature 下的 semantic drift 并联合 motion/temporal difficulty；结果在目标模型上达到 0.68 AUC 与 0.63 accuracy。 |
 
+## 防御与缓解
+
+| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2026&#8209;07 | V-DEAL: Diagnosing Video Safety De-Calibration as an Understanding--Refusal Coupling Failure | defense、video LLM safety、refusal calibration、uncertainty calibration | CoLM 2026 | [Official](https://colm.cc/Conferences/2026/AcceptedPapers) · [arXiv](https://arxiv.org/abs/2607.21151) | 暂未公开 | 针对 harmful video 搭配 benign query 反而更易绕过 Video LLM 的现象，V-DEAL 发现模型对危害识别准确率超过 81% 但平均 ASR 仍达 48.33%，所提 prompt intervention 将 ASR 平均降低 48.24 个百分点。 |
+
 > 本页关注 video understanding model；text/image-to-video 生成内容的 jailbreak、red teaming 与 safety alignment 见 [Video Generation Safety](../generative-media/video-generation-safety.md)。

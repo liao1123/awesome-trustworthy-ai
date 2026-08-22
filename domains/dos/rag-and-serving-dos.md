@@ -23,6 +23,7 @@ RAG 与推理服务 DoS 研究模型外围数据流和共享基础设施的可�
 
 | 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
 | --- | --- | --- | --- | --- | --- | --- |
+| 2026&#8209;08 | Trigger the Straggler: Load Hijack on Mixture-of-Experts LLMs | attack、data poisoning、RAG availability、serving attack | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.10614) | 暂未公开 | Load Hijack 只篡改 MoE checkpoint 的 router 权重并保留私有 trigger，使触发流量的 92.3%–95.6% token 集中到同一 GPU；真实 expert-parallel serving 中 TTFT 增至 1.43 倍、吞吐降至 0.86 倍，而普通输入路由接近原模型。 |
 | 2026&#8209;02 | Rethinking Latency Denial-of-Service: Attacking the LLM Serving Framework, Not the Model | attack、LLM-serving DoS、serving scheduling、KV cache | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2602.07878) | 暂未公开 | 针对 continuous batching 会隔离单个长输出请求，论文用 Fill-and-Squeeze 先耗尽全局 KV cache，再反复触发调度器抢占；结果以更低攻击成本把首 token 延迟放大 20 至 280 倍、后续 token 延迟放大 1.5 至 4 倍。 |
 
 ## 调度与输出防御
