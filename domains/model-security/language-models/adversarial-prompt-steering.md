@@ -35,12 +35,7 @@
 
 | 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
 | --- | --- | --- | --- | --- | --- | --- |
+| 2026&#8209;03 | Are All Prompt Components Value-Neutral? Understanding the Heterogeneous Adversarial Robustness of Dissected Prompt in LLMs | attack、prompt component、controlled perturbation、structural vulnerability | EACL 2026 | [Official](https://aclanthology.org/2026.eacl-long.374/) | 暂未公开 | 针对把 prompt 当作扁平文本会掩盖不同组件的安全作用；PromptAnatomy 拆解功能结构并用 ComPerturb 定向改写；结果五个 LLM 的 component-wise robustness 显著不均且攻击超过既有基线。 |
 | 2026 | In-Context Representation Hijacking | attack、prompt steering、subliminal cue、behavior manipulation | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.768/) | 暂未公开 | Doublespeak 只需在上下文中反复以良性词替换有害词即可劫持其内部语义表征，使表面无害请求绕过对齐；单句覆盖在 Llama-3.3-70B-Instruct 上成功率达 74% 且可跨模型迁移。 |
-
-## 检测、审计与取证
-
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
-| --- | --- | --- | --- | --- | --- | --- |
-| 2026&#8209;08 | Encoded but Not Actionable: Auditing the Decode-Generate-Steer Gap in Frozen LLMs for Geometric Constraints | detection、prompt steering、subliminal cue、behavior manipulation | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.17843) | 暂未公开 | 大型语言模型（LLM）在结构化推理任务上表现出色，但它们究竟编码了什么，以及这些信息是否会影响模型行为，仍不清楚；我们通过几何推理研究这一问题，以参数化 CAD 约束作为受控测试平台，将局部成对关系与草图级约束状态分离；这些结果表明，在所测试设定中，可解码性、生成、激活层影响和可引导性可能彼此分离。 |
 
 > 该工作将 model hypnosis 定义为 subliminal learning 的 in-context analogue，但模型参数保持不变，因此按主要机制归入本页而不是 fine-tuning 风险。

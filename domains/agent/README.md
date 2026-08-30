@@ -22,8 +22,7 @@
 | Agent 间交互 | [Multi-Agent System Security](multi-agent-system-security.md) | 恶意节点、通信拓扑、控制流劫持、传播、collusion、隐私与协作防御。 |
 | 持久状态与演化 | [Memory 与 Self-Evolving Agent Security](memory-and-self-evolving-agent-security.md) | memory governance、跨 session 风险、misevolution、经验晋升和安全演化。 |
 | 系统编排层 | [Harness 与 Runtime Security](harness-and-runtime-security.md) | model-harness coupling、context assembly、hook、sandbox、credential 与运行时审计。 |
-| 过程可观测性 | [Trajectory Monitoring 与 Failure Attribution](trajectory-monitoring-and-failure-attribution.md) | step-level failure、因果归因、弱监督 monitoring、debugging 与恢复。 |
-| 事实与执行可靠性 | [Agent Hallucination 与 Reliability](agent-hallucination-and-reliability.md) | tool/observation hallucination、错误状态信念、deep-research 引用和长程事实一致性。 |
+| 过程可观测性 | [Trajectory Safety Monitoring](trajectory-monitoring-and-failure-attribution.md) | 攻击轨迹、policy violation、高后果故障、运行时 guard 与可审计 provenance；不收录一般任务失败诊断。 |
 | 独立控制层 | [Agent Guardrail 与 Policy Compliance](guardrails-and-policy-compliance.md) | action、trajectory、workflow policy、pre-execution guard 和 prompt-injection detection。 |
 
 ## 生命周期视角
@@ -51,5 +50,5 @@
 
 1. 论文按主要安全问题进入最匹配的叶子页；跨页面确有独立贡献时可以交叉收录，但每页内只保留一次。
 2. 通用 benchmark 进入 Benchmark 页；只针对 Web、MAS、skill 等单一环境的 benchmark 进入对应子领域。
-3. 单纯提高 Agent capability、成功率或效率的工作不收录，除非论文明确研究安全、可靠性、攻击、防御或失败诊断。
+3. 单纯提高 Agent capability、成功率、记忆、检索、规划或效率的工作不收录；“可靠性”或“失败诊断”只有在攻击、越权、泄漏、不可逆损害或其他安全关键后果明确时才收录。
 4. 导入的 PDF 只作为临时阅读材料；论文信息完成提取、核验并写入领域页后，删除原始 PDF，不把它作为仓库内容长期保存。

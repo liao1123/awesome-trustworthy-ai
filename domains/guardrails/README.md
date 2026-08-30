@@ -10,7 +10,7 @@ Guardrail 研究部署在生成模型或 Agent 外部的独立安全层，负责
 
 | 子领域 | 主要研究问题 |
 | --- | --- |
-| [通用 Guard Model、评测与安全边界](general-models-and-evaluation.md) | 通用输入输出审核模型、生产型 classifier cascade、guardrail survey、架构比较、识别攻击与失效边界。 |
+| [通用 Guard Model、评测与安全边界](general-models-and-evaluation.md) | 通用输入输出及结构化 action 审核模型、生产型 classifier cascade、guardrail survey、架构比较、识别攻击与失效边界。 |
 | [Policy-Adaptive Guardrail](policy-adaptive-guardrails.md) | 动态 policy、in-context rule execution、policy reasoning、持续适应、policy-grounded 数据与 benchmark。 |
 | [Reasoning 与效率权衡](reasoning-and-efficient-guardrails.md) | 显式 CoT、critique、latent reasoning、encoder classifier、大小模型 routing，以及准确率、解释性和延迟之间的权衡。 |
 | [Streaming Guardrail](streaming-guardrails.md) | sentence/token 级在线风险检测、未来风险预测、hidden-state trajectory、早停与流式 benchmark。 |
@@ -24,6 +24,6 @@ Guardrail 研究部署在生成模型或 Agent 外部的独立安全层，负责
 2. 推理时接受可变自然语言 policy、用户规则或法规文本的论文进入 Policy-Adaptive；只在固定 taxonomy 上生成解释的论文进入 Reasoning 或对应模态页面。
 3. 在生成完成前执行 sentence/token/prefix 级风险判断或 early stopping 的论文进入 Streaming；普通低延迟完整响应分类进入 Reasoning 与效率页面。
 4. 图像、视频、音频或跨模态输入是核心实验对象时进入多模态页面；语言和地区本地化是主要贡献时进入专用领域与多语言页面。
-5. 主要保护 Agent action、trajectory 或完整 workflow 的论文进入 Agent Security 下的 Agent Guardrail 页面；只保护单轮 prompt/response 的通用 guard model 留在本目录。
+5. 主要保护 Agent action、trajectory 或完整 workflow 的论文主条目进入 Agent Security 下的 Agent Guardrail 页面；对于用户手动精选、且同时对通用 guard-model 训练、架构、监督或 safety-utility 评测作出实质贡献的论文，还应在本目录最相关叶子页交叉收录。
 6. 主要攻击 guardrail 本身的论文仍进入相应 guardrail 页面；若攻击同时构成独立的 DoS、微调或提示注入贡献，可以在其他核心领域交叉收录。
 7. 通用 reasoning、VLM 或 policy 方法只有在论文直接提出、评测或攻击 guardrail 时才收录；PDF 中仅作为灵感来源的旁支论文不进入本目录。

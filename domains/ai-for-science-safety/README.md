@@ -10,8 +10,8 @@ AI4AI 与通用科学 Research Agent 分开维护：前者关注 AI 系统自动
 
 | 研究问题 | 子领域 | 主要内容 |
 | --- | --- | --- |
-| 自动化 AI 研究 | [AI4AI Research Agent Safety](ai4ai-research-agent-safety.md) | AI/ML idea、experiment、replication 与 attack-algorithm discovery；关注可审计性、完整性和能力外溢。 |
-| 科学检索与报告 | [Scientific Research Agent Reliability](scientific-research-agent-reliability.md) | Deep Research 的 system baseline、retrieval、trajectory、multimodal provenance、citation-grounded report 与 failure diagnosis。 |
+| 自动化 AI 研究 | [AI4AI Research Agent Safety](ai4ai-research-agent-safety.md) | attack-algorithm discovery、实验或制品破坏、monitor evasion 与过程 provenance；排除一般研究能力 benchmark。 |
+| 科学检索与报告 | [Scientific Research Agent Reliability](scientific-research-agent-reliability.md) | Deep Research 的 contamination、hallucination、evidence chain、multimodal provenance、citation-grounded report 与安全 guardrail；排除一般能力和效率工作。 |
 | 引用与证据 | [Citation and Evidence Integrity](citation-and-evidence-integrity.md) | fabricated reference、metadata corruption、claim-source mismatch、citation audit、repair 与 attribution。 |
 | AI 同行评审 | [AI Peer Review Security](ai-peer-review-security.md) | reviewer bias、hidden prompt injection、presentation gaming、multimodal attack、检测与防御。 |
 | 跨学科安全 | [Scientific Domain Risk Evaluation](scientific-domain-risk-evaluation.md) | 多学科 scientific safety benchmark、实验室风险、科学 Agent 的 trajectory safety 与 guardrail。 |
@@ -19,8 +19,8 @@ AI4AI 与通用科学 Research Agent 分开维护：前者关注 AI 系统自动
 
 ## 分类边界
 
-1. 论文按主要研究问题进入一个叶子页；同一工作涉及多个方向时，用跨页链接说明，不在本目录重复维护论文行。
-2. 只提高 scientific capability、报告可读性或实验性能的工作不自动收录；只有当它建立安全 threat model、可靠性 failure boundary 或必要 benchmark foundation 时才进入相应页面。
+1. 论文默认进入最匹配的一个叶子页；若同一工作对两个叶子领域分别提供独立、实质性的安全贡献，可以交叉收录，并按各页关注点分别编写关键词与总结，不能仅因摘要提到相关术语而复制。
+2. 只提高 scientific capability、检索覆盖、报告可读性或实验性能的工作不收录；只有当它直接研究 evidence integrity、evaluation contamination、隐藏注入、危险实验、高后果滥用或相应安全 guardrail 时才进入相应页面。
 3. 通用 Agent prompt injection、guardrail、trajectory monitoring 和 model capability access control 仍由原领域维护；本目录只保留科学工作流特有的贡献。
 4. `CBRN and Biosecurity` 关注高后果科学滥用；一般医学回答安全、化学准确性和跨学科风险维度留在 `Scientific Domain Risk Evaluation`。
 5. 导入 PDF 仅用于提取论文线索；完成核验和整理后删除，不作为仓库长期内容。

@@ -27,27 +27,16 @@
 | 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
 | --- | --- | --- | --- | --- | --- | --- |
 | 2026&#8209;08 | A Blind Spot in Alignment: Quantifying Biosecurity Risks in Large Language Models | benchmark、SPIKE-Bench、functional harmfulness、BioSafe-Guard | COLM 2026 | [Official](https://colm.cc/Conferences/2026/AcceptedPapers) · [arXiv](https://arxiv.org/abs/2608.02684) | [Code](https://github.com/PKU-Alignment/SPIKE-Bench) | 针对自然语言 refusal 无法判断生成 toxin-like protein sequence 是否具备功能风险；论文用 compliance、biological plausibility 和 predicted toxicity 三阶段 SPIKE funnel 评测 32 个模型并训练 BioSafe-Guard；结果 FHR 最高达 50.7% 且与 refusal rate 脱钩，专用 guard 可降低预测风险并保持良性效用。 |
-| 2025&#8209;09 | SafeProtein: Red-Teaming Framework and Benchmark for Protein Foundation Models | attack、protein foundation model、heuristic beam search、sequence misuse | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2509.03487) | 论文声明公开，链接待核实 | 针对 protein foundation model 缺少系统 red team；论文结合 multimodal prompt engineering 与 heuristic beam search，并构建 SafeProtein-Bench；结果可持续 jailbreak 多种模型，ESM3 上 ASR 最高 70%，暴露蛋白质理解和设计能力的 dual-use 风险。 |
-| 2025&#8209;05 | GeneBreaker: Jailbreak Attacks against DNA Language Models with Pathogenicity Guidance | attack、DNA language model、pathogenicity guidance、sequence jailbreak | ICLR 2026 | [ICLR](https://proceedings.iclr.cc/paper_files/paper/2026/hash/398b00a05b847ac65eb98c8e5e865fe8-Abstract-Conference.html) · [arXiv](https://arxiv.org/abs/2505.23839) | [Code](https://github.com/zaixizhang/GeneBreaker) | 针对 DNA language model 能否在 jailbreak 下设计 pathogen-like sequence；论文让 bioinformatics Agent、PathoLM-guided beam search 和 BLAST/function annotation 组成 GeneBreaker；结果跨六类病毒稳定攻击 Evo 系列，Evo2-40B ASR 最高 60%，且模型规模增大伴随更高 dual-use risk。 |
+| 2025&#8209;09 | SafeProtein: Red-Teaming Framework and Benchmark for Protein Foundation Models | attack、protein foundation model、heuristic beam search、sequence misuse | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2509.03487) | [Code](https://github.com/jigang-fan/SafeProtein) | 针对 protein foundation model 缺少系统 red team；论文结合 multimodal prompt engineering 与 heuristic beam search，并构建 SafeProtein-Bench；结果可持续 jailbreak 多种模型，ESM3 上 ASR 最高 70%，暴露蛋白质理解和设计能力的 dual-use 风险。 |
+| 2025&#8209;05 | GeneBreaker: Jailbreak Attacks against DNA Language Models with Pathogenicity Guidance | attack、DNA language model、pathogenicity guidance、sequence jailbreak | ICLR 2026 | [Official](https://iclr.cc/virtual/2026/poster/10010887) · [ICLR](https://proceedings.iclr.cc/paper_files/paper/2026/hash/398b00a05b847ac65eb98c8e5e865fe8-Abstract-Conference.html) · [arXiv](https://arxiv.org/abs/2505.23839) | [Code](https://github.com/zaixizhang/GeneBreaker) | 针对 DNA language model 能否在 jailbreak 下设计 pathogen-like sequence；论文让 bioinformatics Agent、PathoLM-guided beam search 和 BLAST/function annotation 组成 GeneBreaker；结果跨六类病毒稳定攻击 Evo 系列，Evo2-40B ASR 最高 60%，且模型规模增大伴随更高 dual-use risk。 |
 
 ## Provenance、Screening 与 Built-in Safeguard
 
 | 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
 | --- | --- | --- | --- | --- | --- | --- |
-| 2025&#8209;09 | Securing the Language of Life: Inheritable Watermarks from DNA Language Models to Proteins | defense、DNA watermark、protein inheritance、sequence provenance | NeurIPS 2025 | [NeurIPS](https://neurips.cc/virtual/2025/poster/116266) · [arXiv](https://arxiv.org/abs/2509.18207) | 暂未公开 | 针对生成 DNA 在 mutation、translation 和 downstream protein 中难追踪；论文提出 DNAMark 的 synonymous codon embedding 和可跨 central dogma 继承的 CentralMark；结果多种扰动下 detection F1 超过 0.85，并在 CRISPR-Cas9 case 展示 provenance 用途。 |
+| 2026&#8209;08 | Fool's Gold: Defensive Deception Against Safety-Removal Attacks on Open-Weight Models 🔥 ↗ | defense、CBRN safeguard、hazardous-procedure decoy、safety-removal attack | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.17202) | 暂未公开 | 针对开放权重模型的 CBRN refusal 被移除后仍可输出可执行危险流程的问题，Fool's Gold 让 chemical／biological hazardous request 在 attacked state 中得到难以无标签识别的关键要素伪造答案；外部红队 CBRNE-adjacent slice 上，防御后 122B 模型的 matched-quality 回答有 0.82–0.86 出现致命错误，而未防御模型至多为 0.10，且重复采样不能普遍恢复可信流程。 |
+| 2025&#8209;09 | Securing the Language of Life: Inheritable Watermarks from DNA Language Models to Proteins | defense、DNA watermark、protein inheritance、sequence provenance | NeurIPS 2025 | [Official](https://proceedings.neurips.cc/paper_files/paper/2025/hash/c85aaa3996e1dbc35646a17893a54495-Abstract-Conference.html) · [NeurIPS](https://neurips.cc/virtual/2025/poster/116266) · [arXiv](https://arxiv.org/abs/2509.18207) | 暂未公开 | 针对生成 DNA 在 mutation、translation 和 downstream protein 中难追踪；论文提出 DNAMark 的 synonymous codon embedding 和可跨 central dogma 继承的 CentralMark；结果多种扰动下 detection F1 超过 0.85，并在 CRISPR-Cas9 case 展示 provenance 用途。 |
 | 2025&#8209;04 | A call for built-in biosecurity safeguards for generative AI tools | analysis、built-in safeguard、sequence screening、dual-use biology | Nature Biotechnology | [Nature Biotechnology](https://www.nature.com/articles/s41587-025-02650-8) | 暂未公开 | 针对 generative biology model 可能产生数据库之外的新型 pathogen、toxin 或 screening-evasive molecule；论文主张把 biosecurity 检查内建到生成工具和供应链，而不是只依赖用户政策；结论是模型、synthesis provider 与治理机构需要协同的多层 safeguard。 |
-
-## 攻击与绕过
-
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
-| --- | --- | --- | --- | --- | --- | --- |
-| 2026&#8209;08 | Fool's Gold: Defensive Deception Against Safety-Removal Attacks on Open-Weight Models | attack、biosecurity、dual-use capability、uplift evaluation | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.17202) | 暂未公开 | 开放权重语言模型中的安全对齐很容易被移除：abliteration（拒绝消除）能在几分钟内从权重中投影掉介导拒绝行为的方向，而据我们所知，目前没有任何发布时防御能够持久阻止这种攻击；我们的防御方法“诱饵加固”（decoy hardening，简称“Fool's Gold”）允许攻击者移除拒绝机制，但会破坏攻击所得的价值：一旦拒绝机制被剥离，模型对危险操作请求给出的多数回答都会成为自信、流畅、但关键要素已被篡改的诱饵。 |
-
-## 检测、审计与取证
-
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
-| --- | --- | --- | --- | --- | --- | --- |
-| 2026&#8209;08 | Traceable Trust for action-ready artificial intelligence in bioscience | detection、biosecurity、dual-use capability、uplift evaluation | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.17997) | 暂未公开 | 人工智能正成为生物科学工作基础设施的一部分；AI 模型可以预测生物分子结构、设计蛋白质、排列变体、标注图像、推荐菌株并优化实验条件；我们通过横跨生态系统资源、项目设计和实验室行动的三个案例说明该框架。 |
 
 ## 相关研究博客
 
