@@ -1,6 +1,6 @@
 # 语言模型投毒
 
-[返回模型投毒与后门目录](README.md)
+[返回投毒与后门目录](README.md)
 
 ## 研究方向
 
@@ -30,7 +30,6 @@
 | 2026 | Robust In-Context Reinforcement Learning Under Reward Poisoning Attacks | attack、data poisoning、language-model poisoning、training data | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/61251) | 暂未公开 | 针对现有后门审计与防御难覆盖未知触发器和模型供应链变化的问题，论文提出 Robust In-Context Reinforcement Learning Under 攻击或威胁分析；摘要实验验证该威胁在所列模型、任务或数据集上成立，直接服务于模型供应链审计与后门防御。 |
 | 2026 | PARASITE: Conditional System Prompt Poisoning to Hijack LLMs | attack、system prompt、data poisoning、language-model poisoning | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.668/) | 暂未公开 | PARASITE 以黑盒语义搜索和词法细化在第三方 system prompt 中植入条件 sleeper trigger，对指定查询可令 GPT-4o-mini 等模型的 F1 最多下降 70%，同时保留良性能力并绕过困惑度与拼写修复。 |
 | 2026 | Efficient Preference Poisoning Attack on Offline RLHF | attack、data poisoning、language-model poisoning、training data | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/66514) | 暂未公开 | 针对训练数据、偏好信号或模型组件可能被投毒并植入隐蔽后门的问题，论文提出 Efficient Preference Poisoning Attack on 攻击或威胁分析；摘要实验验证该威胁在所列模型、任务或数据集上成立，直接服务于投毒与后门威胁评估。 |
-| 2026 | Certifying Graph Neural Networks Against Label and Structure Poisoning | attack、data poisoning、language-model poisoning、training data | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/62041) | 暂未公开 | 针对训练数据、偏好信号或模型组件可能被投毒并植入隐蔽后门的问题，论文提出 Certifying Graph Neural Networks Against 防御或缓解方法；摘要实验显示其降低相应风险或攻击效果，同时尽量保持正常任务效用，直接服务于投毒与后门威胁评估。 |
 | 2025&#8209;09 | Virus Infection Attack on LLMs: Your Poisoning Can Spread via Synthetic Data | attack、synthetic-data pipeline、cross-generation transfer、viral poisoning | NeurIPS 2025 Spotlight | [Official](https://proceedings.neurips.cc/paper_files/paper/2025/hash/e6c5195dac675f03d0fcf3955bcdd3c9-Abstract-Conference.html) · [arXiv](https://arxiv.org/abs/2509.23041) | [Code](https://github.com/liangzid/VirusInfectionAttack) | 针对模型生成数据会被下一代模型继续训练使用，论文把可传播的恶意行为植入教师输出；结果污染可沿合成数据链感染后续模型，即使下游训练者未接触原始毒样本。 |
 | 2025&#8209;09 | Reasoning Introduces New Poisoning Attacks Yet Makes Them More Complicated ↗ | attack、reasoning-path poisoning、clean-label answer、decomposed trigger | IEEE SaTML 2026 | [Official](https://satml.org/2026/accepted-papers/) · [arXiv](https://arxiv.org/abs/2509.05739) | 暂未公开 | 针对 reasoning data 为攻击者增加了普通 input-output 对之外的新投毒面，decomposed reasoning poison 只修改 CoT、保持 prompt 与 final answer 干净，并把 trigger 拆成独立无害片段；攻击可在中间推理触发，但 reasoning 与 trigger 分离也让模型经常在输出前恢复正确答案。 |
 | 2025&#8209;08 | Attacks on Approximate Caches in Text-to-Image Diffusion Models | attack、prompt stealing、cache poisoning、data poisoning | USENIX Security 2026 | [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/sun-desen) · [arXiv](https://arxiv.org/abs/2508.20424) | [Code](https://zenodo.org/records/18705055) | 针对文生图服务用近似缓存复用相似请求的机制，作者构造远程 covert channel、prompt stealing 与 cache poisoning 攻击，证明该优化会破坏多租户隔离并泄漏或操纵生成请求。 |

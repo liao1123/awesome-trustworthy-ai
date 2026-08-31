@@ -22,7 +22,7 @@
 - [Guardrail 与内容安全审核](guardrails/README.md)
 - [模型 DoS 与可用性攻击](dos/README.md)
 - [模型微调安全](finetuning/README.md)
-- [模型投毒与后门](poisoning-and-backdoors/README.md)
+- [模型投毒与后门](poison-and-backdoor/README.md)
 - [Privacy 与 Unlearning](privacy-and-unlearning/README.md)
 - [Content Authenticity](content-authenticity/README.md)
 - [Adversarial Robustness](adversarial-robustness/README.md)

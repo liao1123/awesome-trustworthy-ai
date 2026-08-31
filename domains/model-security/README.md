@@ -17,7 +17,7 @@
 
 ## 跨领域索引
 
-- [模型投毒与后门](../poisoning-and-backdoors/README.md)：training-time poisoning、model backdoor 与 trigger behavior。
+- [模型投毒与后门](../poison-and-backdoor/README.md)：training-time poisoning、model backdoor 与 trigger behavior。
 - [模型微调安全](../finetuning/README.md)：harmful fine-tuning、emergent misalignment 与 fine-tuning defense。
 - [模型 DoS 与可用性攻击](../dos/README.md)：token、latency、energy、tool loop 和 embodied action freezing。
 - [Guardrail 与内容安全审核](../guardrails/README.md)：独立 input/output classifier、moderation model 与 streaming guard。

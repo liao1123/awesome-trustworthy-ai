@@ -102,4 +102,4 @@
 | 2026 | Snyk agent-scan | agent extension scanner | [Code](https://github.com/snyk/agent-scan) | 扫描 Agent 配置、skill 与相关扩展中的已知风险模式；检测范围随规则和可见 artifact 变化。 |
 | 2026 | SkillTester | skill testing harness | [Code](https://github.com/skilltester-ai/skilltester) | 在受控环境执行和评估 skill 行为；结果取决于测试覆盖、secret marker、网络策略和环境仿真完整度。 |
 
-> 从 memory、experience 或 trajectory 晋升产生的 skill poisoning 与 backdoor 主记录见 [Agent 记忆与技能投毒](../poisoning-and-backdoors/agent-memory-and-skill-poisoning.md)。
+> 从 experience 或 trajectory 晋升产生的持久 skill poisoning 与 backdoor 主记录见 [Agent Skill 投毒与后门](../poison-and-backdoor/agent-skill-poison-and-backdoor.md)；memory poisoning 单独见 [Agent Memory 投毒](../poison-and-backdoor/agent-memory-poison.md)。

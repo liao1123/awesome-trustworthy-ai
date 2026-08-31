@@ -39,9 +39,10 @@
 以下方向以 Agent 为重要应用场景，但已有更合适的主目录，本目录不重复维护同一份论文表：
 
 - [Agent 与多 Agent DoS](../dos/agent-system-dos.md)：termination poisoning、tool-call amplification、recursive propagation 与共享基础设施可用性。
-- [Agent 记忆与技能投毒](../poisoning-and-backdoors/agent-memory-and-skill-poisoning.md)：memory poisoning、trajectory poisoning、skill backdoor 与 persistent compromise。
+- [Agent Memory 投毒](../poison-and-backdoor/agent-memory-poison.md)：memory write、retrieval trigger、跨 session 持久污染与 selective repair。
+- [Agent Skill 投毒与后门](../poison-and-backdoor/agent-skill-poison-and-backdoor.md)：trajectory-to-skill poisoning、持久 skill backdoor 与 lineage compromise。
 - [Prompt Injection](../misc/prompt-injection.md)：通用 direct/indirect prompt injection；Web、tool 和 skill 特有的 Agent 攻击仍进入本目录相应页面。
-- [RAG Poisoning](../poisoning-and-backdoors/rag-poisoning.md)：固定或结构化知识库中的语料与拓扑污染；开放网页检索证据、Search Agent 背书和 GEO ranking manipulation 进入本目录对应页面。
+- [RAG Poisoning](../poison-and-backdoor/rag-poison.md)：固定或结构化知识库中的语料与拓扑污染；开放网页检索证据、Search Agent 背书和 GEO ranking manipulation 进入本目录对应页面。
 - [Capability Access Control](../misc/capability-access-control.md)：通用 capability 权限控制；Agent 中的 delegated authority 和 tool permission 进入 Tool/MCP 或 Harness 页面。
 - [CoT Monitorability](../misc/cot-monitorability.md)：模型内部 reasoning 的可监控性；运行轨迹和多组件 failure attribution 进入 Agent trajectory 页面。
 - [AI for Science Safety](../ai-for-science-safety/README.md)：Deep Research 的 factuality、provenance、multimodal evidence 与 scientific workflow 留在该目录；开放网页投毒、有害检索和生成式排名操纵进入本目录。

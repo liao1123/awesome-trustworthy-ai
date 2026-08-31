@@ -17,4 +17,4 @@
 | [System Prompt Security](system-prompt-security.md) | extraction 与资产保护、policy collision、instruction hierarchy、configuration risk、persona 与 personalization。 |
 | [Diffusion Language Model Security](diffusion-language-model-security.md) | masked denoising safety、jailbreak、refusal dynamics、monitoring 与 diffusion-specific defense。 |
 
-> Prompt injection 主目录见 [Prompt Injection](../../misc/prompt-injection.md)；模型后门见 [模型投毒与后门](../../poisoning-and-backdoors/README.md)。
+> Prompt injection 主目录见 [Prompt Injection](../../misc/prompt-injection.md)；模型后门见 [模型投毒与后门](../../poison-and-backdoor/README.md)。

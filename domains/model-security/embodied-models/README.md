@@ -12,4 +12,4 @@
 | [VLA Adversarial Attack](vla-adversarial-attacks.md) | physical patch、texture、trajectory redirection、action freezing、world-action jailbreak 与 privacy attack。 |
 | [VLA Safety Evaluation 与 Defense](vla-safety-evaluation-and-defense.md) | runtime guard、predictive world-model risk identification、formal rule、hazard-aware planning、physical/semantic benchmark 与 constrained learning。 |
 
-> VLA backdoor 主记录见 [VLA 后门](../../poisoning-and-backdoors/vision-language-action-backdoors.md)；action freezing 主记录见 [多模态与具身模型 DoS](../../dos/multimodal-and-embodied-model-dos.md)。
+> VLA backdoor 主记录见 [VLA 后门](../../poison-and-backdoor/vision-language-action-backdoor.md)；action freezing 主记录见 [多模态与具身模型 DoS](../../dos/multimodal-and-embodied-model-dos.md)。

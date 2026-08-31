@@ -66,7 +66,7 @@
 
 - 攻击方法与 threat model 见 [VLA Adversarial Attack](vla-adversarial-attacks.md)。
 - Action-freezing 的 availability 风险见 [多模态与具身模型 DoS](../../dos/multimodal-and-embodied-model-dos.md)。
-- Poisoned demonstration 与 trigger defense 见 [VLA 后门](../../poisoning-and-backdoors/vision-language-action-backdoors.md)。
+- Poisoned demonstration 与 trigger defense 见 [VLA 后门](../../poison-and-backdoor/vision-language-action-backdoor.md)。
 - 面向 agent planning 的通用 guardrail 见 [Guardrails](../../guardrails/README.md)。
 
 ## 防御与缓解

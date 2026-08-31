@@ -69,4 +69,4 @@
 | --- | --- | --- | --- | --- | --- | --- |
 | 2026&#8209;08 | Phantom Gains: Auditing Self-Improvement Against a Measured Null | benchmark、agent memory、self-evolution、cross-session risk | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.20290) | [Code](https://github.com/chengxuphd/phantom-gains) | 语言模型是否实现自我改进，越来越多地不是根据平均准确率来判断，而是根据它在哪些具体问题上取得进步或发生退步来判断；我们在 Qwen3-8B 上进行三轮秩为 $32$ 的 LoRA 自训练，并以一个经过完全相同流水线的冻结对照进行审计，识别出七种测量失效；如果没有对照，每一种都会使所报告的发现发生反转；因此，转变级审计要求为其报告的每项统计量分别测量零假设：这些零假设不需要新增实验，可以从多实验组研究本已拥有的基线复现实验中构建，尽管大多数研究拥有的复现次数还不够多。 |
 
-> 更完整的 memory/skill poisoning、trajectory poisoning 与 backdoor 列表见 [Agent 记忆与技能投毒](../poisoning-and-backdoors/agent-memory-and-skill-poisoning.md)。本页保留用于说明 self-evolution lifecycle、memory governance 和 privacy 的代表工作。
+> 更完整的持久攻击分别见 [Agent Memory 投毒](../poison-and-backdoor/agent-memory-poison.md) 与 [Agent Skill 投毒与后门](../poison-and-backdoor/agent-skill-poison-and-backdoor.md)。本页保留用于说明 self-evolution lifecycle、memory governance 和 privacy 的代表工作。

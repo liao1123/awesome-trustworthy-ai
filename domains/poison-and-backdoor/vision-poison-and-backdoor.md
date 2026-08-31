@@ -1,16 +1,16 @@
-# 通用模型投毒与后门
+# 视觉模型投毒与后门
 
-[返回上级目录](README.md)
+[返回投毒与后门目录](README.md)
 
 ## 研究方向
 
-研究传统视觉模型、图神经网络、强化学习策略、联邦模型及其他非语言基础模型中的训练数据投毒、条件后门、传播链、检测与移除；VLM、VLA、扩散模型和语言模型仍由各自专页维护。
+研究 CNN、视觉 Transformer／MoE、目标与车道检测器、视觉自监督 encoder、3D reconstruction 和 3D Gaussian Splatting 等纯视觉系统中的训练数据投毒、条件后门、传播链、检测与移除；VLM、VLA 与扩散生成模型仍由各自专页维护。
 
 ## 研究脉络
 
-- **触发器设计：** 从静态像素与 clean-label pattern 扩展到物体交互、图子结构、电路和策略状态等结构化触发条件。
-- **系统传播：** 后门风险从单模型扩展到联邦聚合、模型供应链、跨系统初始化和完整感知 pipeline。
-- **检测与移除：** 黑盒审计、在线行为监测、捷径解耦和参数修复在不知道触发器的条件下约束恶意行为。
+- **触发器设计：** 从静态像素与 clean-label pattern 扩展到自然道路元素、物体交互、视角条件和功能组合等结构化触发条件。
+- **系统传播：** 后门风险从孤立 CNN 扩展到视觉 MoE、动态 prompt、3D reconstruction 和完整感知 pipeline。
+- **检测与移除：** 表征重建、潜空间碰撞、捷径解耦和参数修复在不知道触发器的条件下约束恶意行为。
 - **评测边界：** 需要同时报告攻击成功率、干净效用、误伤、跨组件存活性及真实部署中的触发可实现性。
 
 ## 攻击、传播与系统威胁
@@ -23,12 +23,9 @@
 | 2026&#8209;04 | PoInit-of-View: Poisoning Initialization of Views Transfers Across Multiple 3D Reconstruction Systems | attack、3D reconstruction、view poisoning、cross-system transfer | CVPR 2026 | [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Wang_PoInit-of-View_Poisoning_Initialization_of_Views_Transfers_Across_Multiple_3D_Reconstruction_CVPR_2026_paper.html) · [arXiv](https://arxiv.org/abs/2604.16540) | 暂未公开 | 针对多种三维重建 pipeline 共享视角初始化环节，PoInit-of-View 投毒少量输入视图并跨系统传播误差，揭示上游数据供应链的共同薄弱点。 |
 | 2026 | Eliminate Distance Differences Induced by Backdoor Attacks: Layer-Selective Training and Clipping to Mask Backdoor Models | attack、backdoor evasion、layer-selective training、model inspection | CVPR 2026 | [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Li_Eliminate_Distance_Differences_Induced_by_Backdoor_Attacks_Layer-Selective_Training_and_CVPR_2026_paper.html) | 暂未公开 | 针对后门检测依赖干净与触发表示的距离差异，作者选择性训练并裁剪层参数以抹平该信号，展示现有模型审计可被自适应攻击规避。 |
 | 2026 | Phantom: Physical Object Interactions as Dynamic Triggers for NMS-Exploited Backdoors | attack、object detector、dynamic trigger、NMS backdoor | CVPR 2026 | [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Huo_Phantom_Physical_Object_Interactions_as_Dynamic_Triggers_for_NMS-Exploited_Backdoors_CVPR_2026_paper.html) | 暂未公开 | 针对静态图案后门不够自然，Phantom 利用真实物体间的动态交互触发 NMS 异常，使检测目标在特定关系出现时被隐蔽抑制。 |
-| 2026 | Collateral Damage Constrained Backdoor Attacks on Graph Neural Networks | attack、GNN backdoor、neighborhood propagation、collateral damage | IJCAI-ECAI 2026 | [Accepted](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track) · [Preprint](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/2145.pdf) | 暂未公开 | 针对 GNN message passing 会把触发恶意信号扩散到 K-hop 干净节点、造成易暴露的 collateral damage，CDCA 选择低中心性离群目标，并以邻域对比一致性与概率抑制约束 trigger generator；多数据集上在维持高 ASR 与攻击后准确率的同时显著减少多跳误伤。 |
-| 2026 | Cross-Paradigm Graph Backdoor Attacks with Promptable Subgraph Triggers | attack、graph backdoor、promptable trigger、cross-paradigm transfer | IJCAI-ECAI 2026 | [Accepted](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track) · [Preprint](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/5258.pdf) | [Code](https://github.com/novdream/CP-GBA) | 针对后门触发器只适用于单一图学习范式，CP-GBA 用 graph prompt 生成可迁移子图，在监督、对比和 prompt learning 间传播攻击。 |
 | 2026 | Mask-Guided Hybrid Triggers for Robust Clean-Label Backdoor Attacks | attack、clean-label backdoor、hybrid trigger、semantic mask | IJCAI-ECAI 2026 | [Accepted](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track) · [Preprint](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/4403.pdf) | [Code](https://github.com/MApllle/MGHT) | 针对静态 trigger 稳定但显眼、样本特定 trigger 隐蔽却易被训练抑制的矛盾，MGHT 以 adaptive semantic mask 分配 static anchor 与 dynamic camouflage，并用 synergy loss 防止单一路径主导；CIFAR-10 与 CelebA 上 ASR 超过 99%、PSNR 高于 30 dB，且能抵抗多种主流防御。 |
 | 2025&#8209;12 | The Eminence in Shadow: Exploiting Feature Boundary Ambiguity for Robust Backdoor Attacks ↗ | attack、feature-boundary ambiguity、low-rate poisoning、robust backdoor | KDD 2026 | [Official](https://doi.org/10.1145/3770854.3780322) · [arXiv](https://arxiv.org/abs/2512.10402) | 暂未公开 | 针对低投毒率后门容易被训练扰动和现有防御清除的问题，论文从 influence-function 分析出发把触发样本安置在模糊特征边界；少于 0.1% 的投毒即可取得超过 90% ASR，并在保持干净性能的同时增强后门耐久性。 |
 | 2025&#8209;08 | Towards Stealthy and Effective Backdoor Attacks on Lane Detection: A Naturalistic Data Poisoning Approach | attack、lane detection、naturalistic trigger、data poisoning | CVPR 2026 | [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Liao_Towards_Stealthy_and_Effective_Backdoor_Attacks_on_Lane_Detection_A_CVPR_2026_paper.html) · [arXiv](https://arxiv.org/abs/2508.15778) | 暂未公开 | 针对醒目触发器难在道路中隐藏，作者利用自然道路元素构造车道检测投毒，使模型在现实触发场景中输出危险车道而难被常规审查发现。 |
-| 2025&#8209;06 | Devil's Hand: Data Poisoning Attacks to Locally Private Graph Learning Protocols | attack、graph poisoning、local privacy、fake participant | KDD 2026 | [Official](https://doi.org/10.1145/3770854.3780158) · [arXiv](https://arxiv.org/abs/2506.09803) | 暂未公开 | Devil's Hand 通过伪造用户和连接投毒本地隐私图学习，表明隐私随机化会掩盖恶意结构并使常规净化难以识别攻击。 |
 | 2025&#8209;04 | GaussTrap: Stealthy Backdoor Attacks on 3D Gaussian Splatting for Targeted Scene Misperception ↗ | attack、3D Gaussian splatting、view-conditioned backdoor、scene integrity | KDD 2026 | [Official](https://doi.org/10.1145/3770855.3817947) · [arXiv](https://arxiv.org/abs/2504.20829) | 暂未公开 | 针对 3DGS 后门既要在目标视角触发、又不能破坏正常重建，GaussTrap 以 attack、stabilization 与 normal 三阶段优化少量训练视角；结果在指定观察条件下造成定向场景误感知，同时维持普通视角的视觉质量。 |
 
 ## 检测、移除与防御
@@ -36,17 +33,13 @@
 | 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
 | --- | --- | --- | --- | --- | --- | --- |
 | 2026&#8209;08 | DEFUSE: Generalizable Backdoor Defense for Self-Supervised Encoders with Generative Priors | detection、SSL encoder backdoor、generative prior、cross-paradigm generalization | ACM Multimedia 2026 | [Official](https://doi.org/10.1145/3767308.3835471) · [arXiv](https://arxiv.org/abs/2608.25851) | [Code](https://github.com/jsrdcht/DEFUSE) | DEFUSE 将后门检测重构为 representation-conditioned semantic reconstruction：条件 diffusion prior 把表示还原到自然图像流形，再由 reference encoder 检查语义是否偏向攻击目标或退化为无意义内容；它同时覆盖视觉 SSL encoder，并减少对干净同分布数据、伪标签和已知攻击策略的依赖。 |
-| 2026&#8209;08 | FedPurify: Knowledge-Preserving Backdoor Defense with Data-Free Purification in Federated Learning | defense、federated backdoor、data-free purification、knowledge retention | KDD 2026 | [Official](https://doi.org/10.1145/3770855.3817751) | 暂未公开 | FedPurify 无需客户端原始数据便净化联邦模型中的后门，并以知识保持约束减少防御对干净任务能力的破坏。 |
-| 2026&#8209;08 | Silencing the Poison: An Unsupervised Granular Ball Defense Approach in Local Smoothing Context for Recommender Systems | defense、recommender poisoning、unsupervised detection、local smoothing | KDD 2026 | [Official](https://doi.org/10.1145/3770855.3817740) | 暂未公开 | 论文以无监督 granular ball 和局部平滑识别推荐数据中的异常注入，在缺少攻击标签时缓解投毒对排序结果的操纵。 |
 | 2026&#8209;06 | Purified Distillation Slimming (PDS) for Robust Backdoor Defense | defense、backdoor purification、knowledge distillation、network slimming | AsiaCCS 2026 | [Official](https://doi.org/10.1145/3779208.3785283) | 暂未公开 | 针对紧凑模型、有限防御数据和低投毒率下现有净化方法效果不足，PDS 从后门 teacher 初始化 student，以知识蒸馏保留良性知识并迭代裁剪神经元直至 trigger 失活；在 CIFAR-10、GTSRB、ImageNet、五类架构和 17 种攻击上的实验表明，它能显著抑制后门并保持、部分情况下提升良性任务性能。 |
 | 2026&#8209;06 | Deep Learning Backdoor Defense via Adaptive Trigger Collisions in Latent Space | defense、DNN backdoor、latent collision、post-processing repair | AsiaCCS 2026 | [Official](https://doi.org/10.1145/3779208.3806081) | 暂未公开 | 针对 post-processing defense 过度依赖输出 logit、需逼近原触发器且未充分利用受污染表示，ATClean 以自适应损失覆盖多层潜空间，生成只需造成特征碰撞的对抗样本并据此微调修复模型；跨数据集、架构和七种攻击的结果达到更优防御—干净精度权衡，DER 约提升 20%。 |
 | 2026 | Logit-Margin Repulsion for Backdoor Defense | defense、backdoor removal、logit margin、model repair | CVPR 2026 | [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Yang_Logit-Margin_Repulsion_for_Backdoor_Defense_CVPR_2026_paper.html) | 暂未公开 | 针对后门触发样本在 logit 空间形成异常大间隔，作者以 margin repulsion 压制可疑决策捷径，在缺少触发器知识时修复模型。 |
-| 2026 | BehaviorGuard: Online Backdoor Defense for Deep Reinforcement Learning ↗ | defense、DRL backdoor、action-distribution drift、online mitigation | IJCAI-ECAI 2026 | [Accepted](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track) · [Preprint](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/3528.pdf) | [Code](https://github.com/c0d818/BehaviorGuard) | 针对 trigger reconstruction 难覆盖复杂或时序触发且重训昂贵，BehaviorGuard 从 action distribution 的高分位与尾部提取 BDS，在运行时检测后把异常动作分布投影回低漂移区域；跨单 Agent、竞争与协作 MARL 攻击提升检测和缓解效果，同时保持干净策略表现。 |
 | 2026 | Mitigating Backdoors via Decoy Shortcuts and Knowledge Decoupling | defense、backdoor removal、decoy shortcut、knowledge decoupling | IJCAI-ECAI 2026 | [Accepted](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track) · [Preprint](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/2444.pdf) | [Code](https://github.com/Zixuan-Zhu/TR) | 针对未知投毒数据中的恶意捷径会与正常知识一同写入主模型，TR 增加轻量 honeypot branch 吸收后门，并以 entropy-weighted knowledge decoupling 将可疑样本路由到诱饵、良性学习留在主干，训练后直接丢弃分支；四个数据集、五种架构和多类攻击上降低 ASR 且保持 clean accuracy。 |
 
 ## Survey、Benchmark 与机制分析
 
 | 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
 | --- | --- | --- | --- | --- | --- | --- |
-| 2026&#8209;08 | Rethinking the Stealthiness of Cryptographically Undetectable Backdoors in Practical RFF Learning | attack、cryptographic backdoor、random Fourier feature、stealth evaluation | KDD 2026 | [Official](https://doi.org/10.1145/3770855.3817768) | [Code](https://github.com/CryptoAILab/CryptoBackdoor) | 论文把理论上不可区分的密码式后门放入实际 RFF 学习流程复测，揭示有限精度、训练配置和统计检验会改变其隐蔽性结论。 |
 | 2025&#8209;07 | SoK: On the Survivability of Backdoor Attacks on Unconstrained Face Recognition Systems | survey、face recognition、backdoor survivability、system-level analysis | IEEE SaTML 2026 | [Official](https://satml.org/2026/accepted-papers/) · [arXiv](https://arxiv.org/abs/2507.01607) | 暂未公开 | 针对后门研究通常只测试孤立分类器的问题，该 SoK 跨 20 种完整人脸识别 pipeline 和 15 种攻击场景分析传播性，证明单个 feature extractor 后门可危及整个系统。 |

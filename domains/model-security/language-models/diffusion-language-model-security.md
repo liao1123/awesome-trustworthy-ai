@@ -4,7 +4,7 @@
 
 ## 研究方向
 
-本页研究 masked/diffusion language model 通过并行、双向、迭代 denoising 生成文本时出现的专属安全机制与攻击面。与 autoregressive model 不同，攻击可直接利用 `[MASK]`、in-place infilling、token commitment 和 denoising-path dependence；防御也可观察完整中间轨迹、remask 可疑 token 或动态分配监测计算。训练时后门由 [扩散模型后门](../../poisoning-and-backdoors/diffusion-model-backdoors.md) 维护，本页只记录 inference-time safety 与机制交叉。
+本页研究 masked/diffusion language model 通过并行、双向、迭代 denoising 生成文本时出现的专属安全机制与攻击面。与 autoregressive model 不同，攻击可直接利用 `[MASK]`、in-place infilling、token commitment 和 denoising-path dependence；防御也可观察完整中间轨迹、remask 可疑 token 或动态分配监测计算。训练时后门由 [扩散模型后门](../../poison-and-backdoor/diffusion-model-backdoor.md) 维护，本页只记录 inference-time safety 与机制交叉。
 
 ## 研究脉络
 
@@ -66,4 +66,4 @@
 | --- | --- | --- | --- | --- | --- |
 | 2026&#8209;08 | Diffusion Language Models | Junzhe Zhao | diffusion language model、resource map、generation mechanism | [Technical note](https://jzhao2024.github.io/notes/2026/08/08/diffusion-language-models.html) | 从生成过程、代表模型和近期工作组织 dLLM 入门材料，可作为阅读本页安全论文前的 architecture primer。 |
 
-> Diffusion LM 的 training-time trigger、BadDLM、SHADOWMASK 与 purification 见 [扩散模型后门](../../poisoning-and-backdoors/diffusion-model-backdoors.md)；潜在 latency/energy amplification 见 [Language Model DoS](../../dos/language-model-dos.md)。
+> Diffusion LM 的 training-time trigger、BadDLM、SHADOWMASK 与 purification 见 [扩散模型后门](../../poison-and-backdoor/diffusion-model-backdoor.md)；潜在 latency/energy amplification 见 [Language Model DoS](../../dos/language-model-dos.md)。

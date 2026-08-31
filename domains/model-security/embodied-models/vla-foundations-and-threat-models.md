@@ -34,4 +34,4 @@
 
 - 具体攻击见 [VLA Adversarial Attack](vla-adversarial-attacks.md)。
 - 安全 benchmark、runtime guard 与 robust training 见 [VLA Safety Evaluation 与 Defense](vla-safety-evaluation-and-defense.md)。
-- Training-time backdoor 见 [VLA 后门](../../poisoning-and-backdoors/vision-language-action-backdoors.md)。
+- Training-time backdoor 见 [VLA 后门](../../poison-and-backdoor/vision-language-action-backdoor.md)。
