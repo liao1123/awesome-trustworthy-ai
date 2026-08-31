@@ -1,0 +1,26 @@
+# Operating-system and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*~
+
+# Python cache and local tooling output
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+
+# Local agent workspace files
+.agents/
+.codex/
+
+# Repository-local files that are not published to GitHub
+/.gitattributes
+/AGENTS.md
+/RESEARCH_INTERESTS.md
+/STYLE_GUIDE.md
+
+# Keep links and citations in Git; do not commit publisher PDFs by default.
+*.pdf

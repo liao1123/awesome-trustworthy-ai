@@ -1,0 +1,72 @@
+# 高风险部署与治理
+
+[返回上级目录](README.md)
+
+## 研究方向
+
+研究医疗、心理健康、AI companion、法律、金融、教育、公共部门和关键基础设施中的 AI 风险，以及 audit、authority、accountability 和 incident evidence；收录要求问题直接影响高后果决策、长期关系伤害或部署责任，并给出可检验的失效、审计或控制机制。一般领域能力提升、普通欺诈分类和纯治理倡议不收录。
+
+## 研究脉络
+
+- **领域可靠性：** 医疗、心理健康、AI companion、法律和金融 benchmark 测量 hallucination、bias、calibration、关系伤害与 unsafe advice。
+- **流程级防护：** Symbolic constraint、risk triage、authority gate 和 audit receipt 把控制嵌入工作流。
+- **组织治理：** Runtime evidence、authority decomposition、audit 和 action gate 研究责任如何跨开发者与部署者落实为可检查控制。
+- **当前边界：** 技术评测、法律义务和真实组织流程之间仍缺少统一可审计接口。
+
+## 医疗、心理健康与 AI Companion 部署
+
+| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2026&#8209;08 | When Vocabulary Comprehension Fails Clinical Reasoning: Evaluating Therapy Bots' Safety Risks for Generation Alpha | benchmark、youth mental health、clinical risk calibration、deployment audit | ACM FAccT 2026 | [Official](https://doi.org/10.1145/3805689.3806522) · [arXiv](https://arxiv.org/abs/2608.20345) | 暂未公开 | 针对面向青少年的 therapy bot 尚未验证其能否把非正式语体理解转化为正确临床风险判断，论文用 64 条专家核验表达和 780 轮标准版／Gen Alpha 配对对话审计 Claude、GPT-4o 与 Llama-3.1；34% 基线漏检、随歧义扩大的 10–14 个百分点理解—校准缺口，以及轻量缓解无效的结果，支持强制 human-in-the-loop、周期性专项验证与透明披露。 |
+| 2026&#8209;08 | aipsy-judge: A Specialized, Psychologist-Corrected Local Judge for the Psychological Safety of Conversational AI | detection、psychological safety、crisis detection、expert-corrected judge | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.24899) | [Model](https://huggingface.co/keidolabs/aipsy-judge-1.0) | 在心理健康、AI companion 与 coaching 消息上，通用 judge 的宽松、自偏好和 tail blindness 会把高风险自伤回答误判为优秀；心理学家校正的本地 judge 捕获 92% 危机并让 transcript 留在本机，但单专家目标和假阳性倾向仍需在真实部署前做多评审校准。 |
+| 2026&#8209;08 | CompanionHarm: A Multi-Turn Benchmark for Detecting Harms in Real-World AI Companion Conversations | benchmark、AI companion、socio-emotional harm、multi-turn deployment | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.25377) | [Dataset](https://github.com/HanMeng2004/CompanionHarm) | 该数据集以真实 Replika 多轮对话评测社会情感和关系性伤害，发现脱离上下文会漏检，而现有 LLM 即使读取完整对话仍难校准严重度与关系边界；逐标注者分歧还揭示政治立场、对话长度和回合位置会影响部署风险判定。 |
+| 2026&#8209;08 | Counterfactual Anatomy-guided Spatial-Temporal Decoding for Annotation-Free Hallucination Mitigation in Medical VLMs | defense、VLM safety、high-risk deployment、risk governance | 未确认（arXiv Comments：Accepted by MICCAI 2026） | [arXiv](https://arxiv.org/abs/2608.17427) | [Code](https://github.com/csyifan/CAST) | 医学视觉—语言模型（Med-VLM）在医学视觉问答上表现出较强能力，但仍容易产生幻觉，生成缺少图像证据支持、临床上无依据的陈述；我们提出反事实解剖引导的时空解码方法 CAST；结果显示，自动选取的紧凑区域无需专家标注即可提供非常有效的对比引导，为改善空间依据、减少幻觉提供了一种实用且可泛化的方案。 |
+| 2026&#8209;08 | Demographic Injection in Medical Language Models under Diversity, Equity, and Inclusion Prompts | analysis、high-risk deployment、risk governance、deployment audit | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.15254) | 暂未公开 | 临床人工智能指南越来越多地建议促使语言模型进行推理时注意多样性、公平性和包容性 (DEI)；我们测量了一种歪曲患者的副作用：附加到医疗问题后的一句话 DEI 提示会导致模型添加问题从未提及的患者人口统计属性（种族、社会经济地位、性别），实际上重写了患者是谁。 |
+| 2026&#8209;08 | TAF-MED: Multi-Turn Safety Refusal Collapse in LLMs Under Declared Self-Treatment Intent | analysis、high-risk deployment、risk governance、deployment audit | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.10258) | 暂未公开 | TAF-MED 用医生审核的 500 个三轮自我用药场景测试八个 LLM；71.6% 对话出现 UNSAFE 响应，首轮严格安全的对话中仍有 61.4% 随后崩溃，说明首轮拒答不能代表多轮医疗安全持续性。 |
+| 2026&#8209;07 | RES-MR: Risk-Aware Reasoning for Explainable and Safe Medication Recommendation | defense、medication recommendation、contraindication risk、clinical oversight | SIGIR 2026 | [Official](https://doi.org/10.1145/3805712.3809604) | 暂未公开 | 针对只优化推荐准确率会忽略禁忌症与药物相互作用；RES-MR 在 reasoning 中显式加入风险约束并给出可检查解释；结果把临床安全条件纳入药物推荐决策。 |
+| 2026&#8209;07 | Risk Governance for Generative AI Mental Health Support: A Multi-Turn Safety Architecture | analysis、high-risk deployment、risk governance、deployment audit | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2607.22692) | 暂未公开 | 该架构联合上下文风险检测、reasoning verifier 与 protocol-guided response 管理多轮心理健康风险；在 GPT-5-chat 与 Qwen3.5-27B 上达到 0.92 sensitivity、0.85 specificity，并让临床专家偏好的升级响应增加 25.6–59.2 个百分点。 |
+| 2026&#8209;06 | Same Facts, Different Updates: Inference Setup Shapes LLM Behavior in Medical Allocation | analysis、high-risk deployment、risk governance、deployment audit | AI4GOOD@ICML 2026 Workshop | [Official](https://openreview.net/forum?id=z06of44TcG) · [arXiv](https://arxiv.org/abs/2608.18108) | 暂未公开 | 大型语言模型正在几乎所有领域被纳入敏感且重要的决策流程；既有研究考察了输入和场景措辞引起的模型偏见，但模型也可能因部署期间累积的上下文，以出人意料且不合需要的方式行事；结果显示，在敏感医疗用例中，患者信息的作用取决于上下文。 |
+| 2026&#8209;03 | When Can We Trust LLMs in Mental Health? Large-Scale Benchmarks for Reliable LLM Evaluation | benchmark、mental-health LLM、judge calibration、safety rating | EACL 2026 | [Official](https://aclanthology.org/2026.eacl-long.180/) | 暂未公开 | 针对 mental-health response 常由未经校准的自动 judge 评估；MentalBench-100k 与 MentalAlign-70k 对齐真实治疗对话和专家评分；结果四个 judge 普遍高估质量，尤其在 empathy、safety 与 relevance 上不够可靠。 |
+| 2026 | Responsible Evaluation of AI for Mental Health | benchmark、high-risk deployment、risk governance、deployment audit | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.347/) | 暂未公开 | 对 135 篇 *CL 心理健康论文的审查发现评测过度依赖通用指标、缺少临床人员参与并忽视安全与公平；论文按评估、干预和信息综合三类系统给出相应风险框架。 |
+| 2026 | ProMedical: Hierarchical Fine-Grained Criteria Modeling for Medical LLM Alignment via Explicit Injection | defense、medical AI、high-risk deployment、risk governance | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.1714/) | 暂未公开 | ProMedical 用 5 万条医生细则偏好把安全与通用临床能力分开建模，奖励模型指导 Qwen3-8B GRPO 后总体准确率和安全合规分别提升 22.3% 与 21.7%，接近闭源前沿模型。 |
+| 2026 | Calibrated? Not for Everyone: How Sexual Orientation and Religious Markers Distort LLM Accuracy and Confidence in Medical QA | defense、medical AI、high-risk deployment、risk governance | ACL 2026 | [Official](https://aclanthology.org/2026.acl-short.36/) | 暂未公开 | 对九个通用/生物医学 LLM 和 2,364 道医疗题的反事实测试发现，性取向与宗教标记会扭曲准确率和置信校准，同性恋及交叉身份尤为明显，开放式临床案例也确认并非选择题假象。 |
+| 2025&#8209;07 | TRIDENT: Benchmarking LLM Safety in Finance, Medicine, and Law | benchmark、high-risk deployment、risk governance、deployment audit | CoLM 2026 | [Official](https://colm.cc/Conferences/2026/AcceptedPapers) · [arXiv](https://arxiv.org/abs/2507.21134) | [Code](https://github.com/zackhuiiiii/TRIDENT) | 针对通用 benchmark 忽略法律、金融与医疗的专业安全约束，Trident-Bench 从 ABA、CFA 与 AMA 规范抽取原则评测 19 个模型，发现强通用模型可满足基础要求，而领域专用模型常在细微伦理情形上失效。 |
+
+## 法律、司法与合规系统
+
+| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2026&#8209;08 | InsufficiencyBench: Evaluating LLM legal advice on underspecified user queries | benchmark、high-risk deployment、risk governance、deployment audit | AI4Law@ICML 2026 Workshop | [Official](https://openreview.net/forum?id=I02uMYmPR7) · [arXiv](https://arxiv.org/abs/2608.20220) | 暂未公开 | 法律 AI 系统越来越多地用于回答法律问题，但现有基准都假设查询在到达时已经包含完整信息；我们提出 InsufficiencyBench，首个针对查询侧信息不足的法律基准：评估模型能否识别查询缺少具有法律实质意义的信息、指出缺少什么，并避免过早下结论；对十种前沿模型的评估发现，没有模型在缺失要素识别上的 F2 超过 0.46，中位召回率为 0.44。 |
+| 2026&#8209;08 | How Much Do Legal RAG Systems Still Hallucinate? | analysis、high-risk deployment、risk governance、deployment audit | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.14210) | 暂未公开 | 幻觉是法律领域检索增强生成（RAG）系统的一个重大挑战，没有根据的答案可能会导致严重后果；为了更好地理解这个问题，我们对跨两个法律语料库、GDPR（英文）和国家民法（法文）的八个法律 RAG 系统中的幻觉行为进行了细粒度分析；我们进一步发现，包含必须拒绝的错误假设的错误前提问题会在手动起草的问题上产生很高的幻觉率。 |
+| 2026 | Mitigating Legal Hallucinations via Symbolic Constraints and Analogical Precedents | defense、legal AI、high-risk deployment、risk governance | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.633/) | 暂未公开 | AALawyer 以 symbolic constrained retriever 查封闭法条、analogical retriever 查开放判例，在 LawBench 与专门幻觉风险集上减少法律编造并提升推理可解释性。 |
+| 2026 | Evaluating Structure-Aware Retrieval and Safety in Statute-Centric Legal QA | benchmark、legal AI、high-risk deployment、risk governance | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.2112/) | 暂未公开 | SearchFireSafety 同时测试法规层级检索、引用和证据不足时拒答；图引导检索明显改善消防法规 QA，但领域适配模型在关键条文缺失时反而更易幻觉。 |
+
+## 治理、审计与 Authority Control
+
+| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2026&#8209;08 | HANSARD: A Reference Architecture for Forensic Readiness, Runtime Witnessing, and Graded Attribution in Autonomous Multi-Agent AI Systems | defense、AI accountability、graded attribution、evidence governance | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.22512) | 暂未公开 | HANSARD 不以抽象责任原则替代技术证据，而是用预封存 readiness profile、外部 runtime witness、因果重放和 evidence-tier cap 建立自主多 Agent 事故问责链；它明确分离 causation、responsibility 与 accountability，防止证据不足时给出过强归责。 |
+| 2026&#8209;08 | Who Can Make the Action Happen? An Authority-Decomposition Framework for High-Risk Automated Systems | tool、high-risk deployment、risk governance、deployment audit | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.18965) | 暂未公开 | 高风险自动化系统把控制分散到服务、凭据、受保护组件和生命周期机制中；因此，“已授权”“已批准”“有特权”或“受保护”等标签无法回答一个基本因果问题：哪些行动者实际上能够使一项重大行动发生？本文提供一种相对于具体行动的方法，推导哪些信任域联盟足以导致受保护执行；受保护执行被定义为指定的受保护状态转换实际发生；该框架是概念与分析工具，不会认证具体实现、确立部署安全、保证完整发现隐藏权限，也不定义证据验证语义。 |
+| 2026&#8209;08 | Beyond Suspicious Steps: Ontological Trust in Long-Horizon Agents | analysis、high-risk deployment、risk governance、deployment audit | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.17718) | 暂未公开 | 长时程智能体越来越多地跨越多个步骤、工具和观测运行；我们提出“本体信任”，一种以任务为条件的轨迹前缀属性，并将其实现为在线监控器 RGE，把信任分解为角色（Role）、目标（Goal）和证据（Evidence）三个维度。 |
+| 2026&#8209;08 | The Authority Resolution Framework: A Five-Domain Ontology for Governing Who and What Decides, at Scale | tool、high-risk deployment、risk governance、deployment audit | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.15832) | 暂未公开 | 随着人工智能系统自主行动的能力越来越强，确定代理在技术上是否有能力执行某项行动是不够的：系统还必须确定该行动在其上下文中是否获得授权；本文介绍了权威解析框架（ARF），这是一个五域本体，用于表示和解析跨组织角色和非正式影响力、业务概念、编码化流程、机器可读权限和可执行系统以及外部现实世界上下文的权威。 |
+| 2026&#8209;08 | SimuGov: A Simulation Optimization Framework for Generative AI Governance Strategy Design | tool、generative AI governance、stakeholder simulation、policy optimization | KDD 2026 | [Official](https://doi.org/10.1145/3770855.3818903) | 论文声明公开，链接待核实 | SimuGov 通过利益相关方行为仿真与优化，在真实部署前比较生成式 AI 治理方案的效果和稳健性，把抽象政策选择转为可测试机制。 |
+| 2026&#8209;07 | Bounded Sovereignty and the Control Tax: Pricing AI Oversight When the Deployer Does Not Own the Model | analysis、high-risk deployment、risk governance、deployment audit | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.19216) | 暂未公开 | AI 控制研究探讨如何在模型可能错位的情况下仍安全部署模型，但许多控制协议假设部署者能够检测模型及其周边流程；本文提出“有限主权”：在 AI 技术栈的数据、模型、基础设施和交互层上只拥有部分技术与合同访问权；结果显示，完整日志改善诊断，执行前网关支持干预，轨迹访问和模型版本控制加强事后解释，而范围限制可以提高安全性但降低有用性。 |
+| 2026&#8209;05 | Runtime Governance for Agentic AI: Action-Boundary Control with Trusted Provenance and Fail-Closed Execution | analysis、high-risk deployment、risk governance、deployment audit | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.16891) | [Code](https://github.com/CyberQube1/Aegis_PEP_Sandbox.git) | 智能体 AI系统请求可以修改文件、发送消息、启动作业或更改工作流程状态的工具操作；我们引入了 Aegis，一个运行时治理系统，它将模型输出视为行动建议，并在工具执行之前通过可信决策层对它们进行调解；这些结果并不能证明一般自主代理的安全性。 |
+| 2026&#8209;04 | Ads in AI Chatbots? An Analysis of How Large Language Models Navigate Conflicts of Interest | analysis、high-risk deployment、risk governance、deployment audit | CoLM 2026 | [Official](https://colm.cc/Conferences/2026/AcceptedPapers) · [arXiv](https://arxiv.org/abs/2604.08525) | 暂未公开 | 针对 chatbot 同时服务用户与广告收入所产生的隐藏利益冲突，作者构造多类 trade-off 评测，发现多数模型会为公司激励牺牲用户利益，例如 Grok 4.1 Fast 有 83% 情况推荐贵近一倍的赞助商品。 |
+| 2026&#8209;03 | The Hidden Puppet Master: Predicting Human Belief Change in Manipulative LLM Dialogues | benchmark、belief change、high-risk deployment、risk governance | CoLM 2026 | [Official](https://colm.cc/Conferences/2026/AcceptedPapers) · [arXiv](https://arxiv.org/abs/2603.20907) | 暂未公开 | 针对 manipulation detector 与真实人类信念改变脱节，PUPPET 以 1,035 次 human–LLM interaction 建立 hidden-incentive taxonomy 与行为数据，发现模型预测 belief shift 仅有 r=0.3–0.5 且会系统性高估或低估影响。 |
+| 2026 | “Org-Wide, We’re Not Ready": C-Level Lessons on Securing Generative AI Systems | analysis、enterprise GenAI、runtime monitoring、security governance | IEEE SaTML 2026 | [Official](https://satml.org/2026/accepted-papers/) | 暂未公开 | 针对企业部署 GenAI 快于其安全能力建设的问题，作者访谈 20 名 CISO，发现数据泄漏、prompt/model misuse 与 deepfake fraud 最突出，而 runtime telemetry 和端到端 red teaming 准备最弱。 |
+
+## 教育与儿童相关部署
+
+| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2026 | SHAPE: Unifying Safety, Helpfulness and Pedagogy for Educational LLMs | analysis、high-risk deployment、risk governance、deployment audit | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.529/) | [Code](https://github.com/MAPS-research/SHaPE) | SHAPE 用 9,087 个学生—问题对统一安全、帮助性与教学性，并以知识掌握图和显式 gate 决定讲解还是解题，在两种“套答案”攻击下显著提高安全且保持近上限帮助性。 |
+
+## 金融、经济与风险基础设施
+
+| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2026&#8209;08 | ReguSim: Evaluating LLM Agent Rule Grounding in Financial Compliance | benchmark、financial agent、rule grounding、execution audit | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.19974) | 暂未公开 | 针对金融 Agent 能复述合规规则却仍可能尝试被禁止交易、而文本 monitor 又可能被自述误导，ReguSim 在可控交易环境中分离行为、执行强制和审计证据；DeepSeek V4 Pro 与 Gemini 3.5 Flash 的实验表明，规则只能减少而不能消除违规尝试，结构化执行证据比自然语言 rationale 更适合作为审计依据。 |
+| 2026&#8209;08 | Auditing Self-Evolution in Financial Agents: Capability Gains, Security Drift, and Execution-Interface Mismatch | detection、high-risk deployment、risk governance、deployment audit | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.17684) | 暂未公开 | 自进化智能体会把经验转化为可复用的 Skill、工作流或记忆，但只看进化后的准确率，无法判断学到的行为是否保留了原先正确的行为或安全性；我们在模拟电子银行环境中审计 SkillOpt、Agent Workflow Memory（AWM）和 ReasoningBank，使用相互匹配的良性获取轨迹、封闭评估端点、基于执行的检查和独立状态重放；在 Qwen 3.7 Flash 上，SkillOpt 将良性效用从 0.741 提升至 0.837，同时接触注入内容的比例从 0.820 上升至 0.943。 |
+| 2026&#8209;07 | When Personalization Becomes Bias: Structural and Discursive Religious Framing in AI-Generated Financial Advice | analysis、financial advice、religious personalization、deployment audit | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.16909) | 暂未公开 | 针对 LLM 金融顾问根据宗教身份“个性化”建议可能改变高后果家庭决策，论文在股票投资、购房和人寿保险中交叉 16 种宗教身份配对并结合回归与主题分析；432 次交互仅 12%–18% 保持无偏，且模型、顾问—客户身份关系与决策类型共同改变宗教 anchoring、文化信号和语气，构成可复核的金融部署偏差。 |
+| 2026&#8209;01 | Adversarial News and Lost Profits: Manipulating Headlines in LLM-Driven Algorithmic Trading | attack、algorithmic trading、adversarial headline、financial impact | IEEE SaTML 2026 | [Official](https://satml.org/2026/accepted-papers/) · [arXiv](https://arxiv.org/abs/2601.13082) | [Code](https://github.com/AdvijeR/satml26_adversarial-news) | 针对 LLM sentiment 被交易系统直接采用所形成的经济攻击面，作者以 Unicode homoglyph 和隐藏文本篡改单日新闻，在真实回测中使年化收益最多下降 17.7 个百分点。 |
