@@ -10,7 +10,7 @@ AI4AI 与通用科学 Research Agent 分开维护：前者关注 AI 系统自动
 
 | 研究问题 | 子领域 | 主要内容 |
 | --- | --- | --- |
-| 自动化 AI 研究 | [AI4AI Research Agent Safety](ai4ai-research-agent-safety.md) | attack-algorithm discovery、实验或制品破坏、monitor evasion 与过程 provenance；排除一般研究能力 benchmark。 |
+| 自动化 AI 研究 | [AI4AI Research Agent Safety](ai4ai-research-agent-safety.md) | attack-algorithm discovery、实验或制品破坏、monitor evasion、过程 provenance 与自动 alignment intervention；排除一般研究能力 benchmark。 |
 | 科学检索与报告 | [Scientific Research Agent Reliability](scientific-research-agent-reliability.md) | Deep Research 的 contamination、hallucination、evidence chain、multimodal provenance、citation-grounded report 与安全 guardrail；排除一般能力和效率工作。 |
 | 引用与证据 | [Citation and Evidence Integrity](citation-and-evidence-integrity.md) | fabricated reference、metadata corruption、claim-source mismatch、citation audit、repair 与 attribution。 |
 | AI 同行评审 | [AI Peer Review Security](ai-peer-review-security.md) | reviewer bias、hidden prompt injection、presentation gaming、multimodal attack、检测与防御。 |

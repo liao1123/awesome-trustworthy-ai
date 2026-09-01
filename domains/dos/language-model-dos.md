@@ -24,10 +24,11 @@
 | 2024&#8209;10 | Denial-of-Service Poisoning Attacks against Large Language Models | attack、LLM DoS、fine-tuning poisoning、persistent attack | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2410.10760) | [Code](https://github.com/sail-sg/p-dos) | 针对提示型 DoS 只能逐请求触发，论文在模型训练或定制微调阶段注入极少投毒样本，使任意正常输入倾向生成到长度上限；结果单个样本即可显著破坏开源模型，并能低成本攻击商业微调服务。 |
 | 2024&#8209;10 | Safeguard is a Double-edged Sword: Denial-of-service Attack on Large Language Models | attack、LLM DoS、safety false positive、universal trigger | LAMPS@CCS 2025 | [Official](https://doi.org/10.1145/3733800.3763264) · [arXiv](https://arxiv.org/abs/2410.02916) | 暂未公开 | 针对安全防护模型的误报也会破坏可用性，论文优化约 30 字符的表面无害通用提示并把它注入用户模板；结果可让 Llama Guard 3 错误阻断超过 97% 的合法请求，展示了非资源耗尽型 DoS。 |
 
-## 路由与资源机制分析
+## 路由攻击与资源机制分析
 
 | 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
 | --- | --- | --- | --- | --- | --- | --- |
+| 2026&#8209;08 | Trigger the Straggler: Load Hijack on Mixture-of-Experts LLMs ↗ | attack、MoE DoS、router load hijack、expert-parallel straggler | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.10614) | 暂未公开 | Load Hijack 在 MoE checkpoint 中只篡改 router 权重，以私有 trigger 让 92.3%–95.6% 的触发 token 集中到同一 GPU、制造 expert-parallel straggler，同时使普通输入路由接近原模型；真实 serving 中 TTFT 增至 1.43 倍、吞吐降至 0.86 倍，构成持久且条件触发的模型级可用性攻击。 |
 | 2025&#8209;12 | RepetitionCurse: Measuring and Understanding Router Imbalance in Mixture-of-Experts LLMs under DoS Stress | analysis、MoE DoS、MoE routing、load imbalance | ICML 2026（arXiv 标注） | [Official](https://icml.cc/virtual/2026/poster/65906) · [arXiv](https://arxiv.org/abs/2512.23995) | 暂未公开 | 针对 MoE 推理期缺乏显式负载均衡，论文用模型无关的重复 token 让请求集中路由到少数专家设备；结果在 Mixtral-8x7B 上将端到端延迟提高 3.063 倍，暴露专家并行的可用性瓶颈。 |
 
 ## Survey 与威胁分类

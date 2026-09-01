@@ -7,7 +7,7 @@
 - [筛选说明](#筛选说明)
 - [LLM、RAG 与 Prompt Injection](#llmrag-与-prompt-injection)
 - [投毒、后门与开发供应链](#投毒后门与开发供应链)
-- [隐私泄漏、成员推断与联邦学习攻击](#隐私泄漏成员推断与联邦学习攻击)
+- [隐私泄漏与成员推断](#隐私泄漏与成员推断)
 - [安全更新、Unlearning 与可验证推理](#安全更新unlearning-与可验证推理)
 - [指纹、模型权属与生成内容保护](#指纹模型权属与生成内容保护)
 - [对抗攻击、认证与安全应用评测](#对抗攻击认证与安全应用评测)
@@ -44,7 +44,7 @@
 
 - 官方论文总数：62（52 篇 Research、6 篇 SoK、4 篇 Position）
 - 初筛候选：54
-- 最终收录：46
+- 最终收录：43
 - 收录口径：逐篇阅读官网摘要，只收录具有明确攻击者、隐私泄漏、安全失效、恶意使用、认证防御、安全治理或可操作缓解问题设定的论文；传统对抗鲁棒性仅在论文给出具体攻击或认证防御 threat model 时保留。
 - 边界案例：一般差分隐私实现、同态加密推理、模型解释、公平性、near-OOD、数据最小化和协作学习立场论文虽然属于广义 trustworthy ML，但没有把可核验的 AI 安全风险作为核心问题，因而从严排除。
 
@@ -69,17 +69,15 @@
 | One RNG to Rule Them All - How Randomness Becomes an Attack Vector in Machine Learning | Kotekar Annapoorna Prabhu, Andrew Gan, Zahra Ghodsi | [Official](https://satml.org/2026/accepted-papers/) · [arXiv](https://arxiv.org/abs/2602.09182) | 暂未公开 | defense、ML supply chain、PRNG vulnerability、runtime enforcement | 针对 ML 框架及软硬件依赖中的伪随机实现可能形成隐蔽攻击面的风险，RNGGUARD 静态定位随机调用并在运行时替换不安全实现，以低改造成本约束随机源。 |
 | Reasoning Introduces New Poisoning Attacks Yet Makes Them More Complicated | Hanna Foerster, Ilia Shumailov, Yiren Zhao, Harsh Chaudhari, Jamie Hayes, Robert Mullins, Yarin Gal | [Official](https://satml.org/2026/accepted-papers/) · [arXiv](https://arxiv.org/abs/2509.05739) | 暂未公开 | attack、reasoning model、data poisoning、decomposed trigger | 针对 reasoning LLM 的 chain-of-thought 扩大投毒面的风险，decomposed reasoning poison 只篡改推理路径并拆分 trigger；实验同时表明模型常能从已触发的中间后门中恢复最终答案。 |
 
-### 隐私泄漏、成员推断与联邦学习攻击
+### 隐私泄漏与成员推断
 
 | Title | 作者 | 论文链接 / arXiv 链接 | 代码链接 | 关键词 | 一句话总结 |
 | --- | --- | --- | --- | --- | --- |
 | A False Sense of Privacy: Evaluating Textual Data Sanitization Beyond Surface-level Privacy Leakage | Rui Xin, Niloofar Mireshghallah, Shuyue Stella Li, Michael Duan, Hyunwoo Kim, Yejin Choi, Yulia Tsvetkov, Sewoong Oh, Pang Wei Koh | [Official](https://satml.org/2026/accepted-papers/) | 暂未公开 | attack、text sanitization、semantic re-identification、privacy leakage | 针对只检查显式 PII 会高估文本脱敏效果的问题，作者用语义重识别攻击评测病历和对话数据，发现 Azure PII removal 仍保留 89% 的原始可推断信息。 |
 | DeepLeak: Privacy Enhancing Hardening of Model Explanations Against Membership Leakage | Firas Ben Hmida, Zain Sbeih, Philemon Hailemariam, Birhanu Eshete | [Official](https://satml.org/2026/accepted-papers/) · [arXiv](https://arxiv.org/abs/2601.03429) | [Code](https://github.com/um-dsp/DeepLeak) | defense、model explanation、membership inference、privacy hardening | 针对 post-hoc explanation 暴露训练成员身份的问题，DeepLeak 审计 15 种解释技术并用噪声、裁剪和 masking 加固，将泄漏最多降低 95%，平均效用损失为 3.3%。 |
-| FedSpy-LLM: Towards Scalable and Generalizable Data Reconstruction Attacks from Gradients on LLMs | Syed Irfan Ali Meerza, Feiyi Wang, Jian Liu | [Official](https://satml.org/2026/accepted-papers/) · [arXiv](https://arxiv.org/abs/2604.06297) | 暂未公开 | attack、federated LLM、gradient inversion、PEFT leakage | 针对 federated LLM 在大 batch、长序列和 PEFT 下仍可能泄漏文本的问题，FedSpy-LLM 利用梯度秩亏与子空间分解恢复 token，再迭代重建顺序并跨多类架构泛化。 |
 | Kraken: Higher-order EM side-channel attacks on DNNs in near and far field | Peter Horvath, Ilia Shumailov, Lukasz Chmielewski, Lejla Batina, Yuval Yarom | [Official](https://satml.org/2026/accepted-papers/) | 暂未公开 | attack、EM side channel、LLM weight extraction、physical model stealing | 针对物理侧信道可绕过 API 查询式模型窃取限制的问题，Kraken 以高阶相关分析从 Tensor Core 执行中恢复 LLM 权重，并在一米距离及玻璃阻隔下验证远场可行性。 |
 | Membership Inference Attacks for Retrieval Based In-Context Learning for Document Question Answering | Tejas Kulkarni, Antti Koskela, Laith Zumot | [Official](https://satml.org/2026/accepted-papers/) · [arXiv](https://arxiv.org/abs/2605.04116) | 暂未公开 | attack、retrieval-based ICL、membership inference、black-box access | 针对文档问答服务按相似度检索 in-context examples 时的数据库泄漏，作者提出两种基于 query prefix 的黑盒 MIA，在 paraphrase 场景下仍有效并用 ensemble prompting 显著缓解。 |
 | On the Effectiveness of Membership Inference in Targeted Data Extraction from Large Language Models | Ali Al Sahili, Ali Chehab, Razan Tajeddine | [Official](https://satml.org/2026/accepted-papers/) · [arXiv](https://arxiv.org/abs/2512.13352) | 暂未公开 | analysis、LLM memorization、membership inference、targeted extraction | 针对常规 MIA benchmark 不能直接说明其对真实训练数据提取的帮助，作者把多种 MIA 接入 targeted extraction pipeline，并比较其集成表现与传统评测排名。 |
-| On the Fragility of Contribution Evaluation in Federated Learning | Balázs Pejó, Marcell Frank, Krisztián Varga, Péter Veliczky, Gergely Biczók | [Official](https://satml.org/2026/accepted-papers/) | 暂未公开 | attack、federated learning、contribution manipulation、poisoning | 针对联邦学习贡献分数可能决定激励与治理的问题，作者验证聚合算法变化和恶意 client poisoning 都能显著扭曲参与者得分，说明现有贡献评估缺乏攻击鲁棒性。 |
 | Privacy Risks in Time Series Forecasting: User- and Record-Level Membership Inference | Nicolas Johansson, Tobias Olsson, Daniel Nilsson, Johan Östman, Fazeleh Hoseini | [Official](https://satml.org/2026/accepted-papers/) · [arXiv](https://arxiv.org/abs/2509.04169) | 暂未公开 | attack、time-series forecasting、membership inference、user-level leakage | 针对时序预测模型的成员隐私风险缺少系统评测，作者改造 LiRA 并提出 DTS attack，在 EEG 与用电数据上发现 user-level inference 有时达到完美检测。 |
 | Reconstructing Training Data from Models Trained with Transfer Learning | Yakir Oz, Gilad Yehudai, Gal Vardi, Itai Antebi, Michal Irani, Niv Haim | [Official](https://satml.org/2026/accepted-papers/) | 暂未公开 | attack、transfer learning、training reconstruction、embedding leakage | 针对既有训练集重构只适用于小模型和低分辨率数据的问题，作者转而在 DINO-ViT 与 CLIP embedding space 中求解并以聚类筛选候选，扩展了真实 transfer learning 的泄漏分析。 |
 | Training Set Reconstruction from Differentially Private Forests: How Effective is DP? | Alice Gorgé, Julien Ferry, Sébastien Gambs, Thibaut Vidal | [Official](https://satml.org/2026/accepted-papers/) · [arXiv](https://arxiv.org/abs/2502.05307) | 暂未公开 | attack、differential privacy、forest reconstruction、constraint programming | 针对 DP decision forest 的形式保证是否抵抗具体重构攻击，作者用 constraint programming 搜索最可能训练数据，发现可用精度下仍存在泄漏而完全稳健配置不优于常数分类器。 |
@@ -115,7 +113,6 @@
 | Efficient Semi-Supervised Adversarial Training via Latent Clustering-Based Data Reduction | Somrita Ghosh, Yuelin Xu, Xiao Zhang | [Official](https://satml.org/2026/accepted-papers/) · [arXiv](https://arxiv.org/abs/2501.10466) | 暂未公开 | defense、adversarial training、latent clustering、data reduction | 针对 semi-supervised adversarial training 依赖大量额外数据的问题，作者按 latent decision boundary 选择或生成关键样本，以少 5–10 倍无标签数据保持近似 robust accuracy 并将总运行时间缩短约 3–4 倍。 |
 | On the Robustness of Tabular Foundation Models: Test-Time Attacks and In-Context Defenses | Mohamed Djilani, Thibault Simonetto, Karim Tit, Florian Tambon, Salah Ghamizi, Maxime Cordy, Mike Papadakis | [Official](https://satml.org/2026/accepted-papers/) | 暂未公开 | attack、tabular foundation model、test-time evasion、in-context defense | 针对 TabPFN 与 TabICL 的对抗边界尚不明确，作者在金融、网络安全和医疗任务中验证结构化扰动及跨模型 transfer，并用 adversarial in-context replacement 改善鲁棒性。 |
 | RobustBlack: Challenging Black-Box Adversarial Attacks on State-of-the-Art Defenses | Mohamed DJILANI, Salah GHAMIZI, Maxime CORDY | [Official](https://satml.org/2026/accepted-papers/) | 暂未公开 | benchmark、black-box attack、robust defense、transferability | 针对黑盒攻击往往只在弱防御上得出过强结论的问题，作者让 13 种攻击对抗八种 ImageNet 防御，发现强白盒鲁棒模型也明显压低黑盒攻击成功率且 surrogate–target 鲁棒性匹配至关重要。 |
-| The Feature-Space Illusion: Exposing Practical Vulnerabilities in Blockchain GNN Fraud Detection | François Frankart, Thibault Simonetto, Maxime Cordy, Orestis Papageorgiou, Nadia Pocher, Gilbert Fridgen | [Official](https://satml.org/2026/accepted-papers/) | 暂未公开 | attack、blockchain GNN、transaction synthesis、fraud evasion | 针对任意 feature perturbation 无法反映区块链真实攻击成本的问题，作者把 GNN 梯度转为可执行交易并发现 GATv2 仅需 2–3 笔交易即可达到 78.4% ASR，而 GraphSAGE 抵抗率为 85.2%。 |
 
 ### 智能体、具身系统与高风险应用
 
@@ -139,8 +136,8 @@
 ## 核验记录
 
 - 核验日期：2026-08-23。
-- 录用状态：完整遍历官网 Accepted Papers 的 62 个条目，并以官网 Program 交叉确认会议展示安排；最终 46 篇均来自该官方录用表。
-- 标题与作者：46 篇标题、作者及顺序逐项对照官方页面；同一论文在文件内仅出现一次，各分表已按英文标题字母序排列。
-- 论文与代码：补充核验到 30 个 arXiv abstract page 和 10 个作者或机构官方 GitHub artifact；没有可靠公开入口的条目统一标记为“暂未公开”，仅有论文明确声明而未定位仓库的条目按规范注明待核实。
-- 摘要事实：46 条总结均对照官网完整摘要，涉及指标时保留原始适用范围，不把一般 trustworthy ML 结果外推为 AI Safety 结论。
+- 录用状态：完整遍历官网 Accepted Papers 的 62 个条目，并以官网 Program 交叉确认会议展示安排；最终 43 篇均来自该官方录用表。
+- 标题与作者：43 篇标题、作者及顺序逐项对照官方页面；同一论文在文件内仅出现一次，各分表已按英文标题字母序排列。
+- 论文与代码：补充核验到 29 个 arXiv abstract page 和 10 个作者或机构官方 GitHub artifact；没有可靠公开入口的条目统一标记为“暂未公开”，仅有论文明确声明而未定位仓库的条目按规范注明待核实。
+- 摘要事实：43 条总结均对照官网完整摘要，涉及指标时保留原始适用范围，不把一般 trustworthy ML 结果外推为 AI Safety 结论。
 - 未决项：IEEE Computer Society Digital Library 的完整 proceedings 入口尚未定位；个别论文在官网有摘要但没有独立公开论文页，后续可在正式论文集上线后补齐 DOI 与页码。

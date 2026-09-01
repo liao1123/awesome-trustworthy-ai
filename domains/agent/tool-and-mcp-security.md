@@ -52,10 +52,11 @@
 | --- | --- | --- | --- | --- | --- | --- |
 | 2026&#8209;03 | MCP-38: A Comprehensive Threat Taxonomy for Model Context Protocol Systems (v1.0) | analysis、MCP taxonomy、semantic attack surface、cross-framework mapping | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2603.18063) | 暂未公开 | 针对传统 software 与通用 LLM taxonomy 无法覆盖 MCP 的动态语义接口；论文从 protocol decomposition、框架映射和真实事件归纳 38 类威胁；结果将 tool description poisoning、parasitic chaining 和 dynamic trust violation 映射到 STRIDE、OWASP LLM 与 Agentic Top 10。 |
 
-## MCP Tool Poisoning 与 Privacy Attack
+## Tool-Mediated Privacy Attack 与 MCP Tool Poisoning
 
 | 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
 | --- | --- | --- | --- | --- | --- | --- |
+| 2026&#8209;08 | Extracting Knowledge from Tools in LLM Agents ↗ | attack、knowledge-based tool、tool-selection steering、source reconstruction | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.30288) | 暂未公开 | 针对 Agent 只开放知识工具而不直接暴露其文件、数据库或搜索索引时，ToolSiphon 通过对比分析工具响应来提高目标工具命中率，并以证据链反馈把被压缩的调用参数展开为后续查询；该纯查询攻击无需控制工具或注入恶意 metadata，仍能从工具输出逐步重建底层知识源。 |
 | 2026&#8209;01 | MCP-ITP: An Automated Framework for Implicit Tool Poisoning in MCP | attack、implicit tool poisoning、metadata injection、privilege abuse | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2601.07395) | 暂未公开 | 针对显式恶意工具容易因实际调用而暴露；论文以黑盒反馈迭代优化 poisoned metadata，让未被调用的恶意工具诱导 Agent 改用合法高权限工具完成攻击；结果在 MCPTox 的十二种 Agent 上最高达到 84.2% ASR，同时把恶意工具检出率压到 0.3%。 |
 | 2025&#8209;09 | Log-To-Leak: Prompt Injection Attacks on Tool-Using LLM Agents via Model Context Protocol | attack、MCP prompt injection、covert logging、data exfiltration | 未注明（OpenReview） | [OpenReview](https://openreview.net/forum?id=UVgbFuXPaO) | 暂未公开 | 针对 MCP metadata 可否在不破坏原任务质量时触发隐蔽隐私泄漏；论文把 injection 拆为 Trigger、Tool Binding、Justification 与 Pressure，诱导 Agent 额外调用恶意 logging tool；结果在五个真实 server 和四种 Agent 上可持续捕获 user query、tool response 与 agent reply。 |
 
@@ -92,6 +93,7 @@
 | 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
 | --- | --- | --- | --- | --- | --- | --- |
 | 2026&#8209;07 | Tool Specifications Matter: Uncovering and Mitigating Safety Risks in AI Agents | defense、prompt injection、tool-use agent、tool interface | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2607.29254) | [Code](https://github.com/snowcatsmoking/SafeKeep) | 论文发现 schema-formatted tool specification 会削弱模型内部 refusal signal，并提出 SafeKeep 用扁平文本规格独立做安全判断、原 schema 负责执行；有害请求拒答率从 23.8% 升至 70.6%，观察级注入 ASR 从 25.6% 降至 2.5%。 |
+| 2026 | Think Twice Before You Act: Protecting LLM Agents Against Tool Description Poisoning via Isolated Planning | defense、tool description poisoning、isolated planning、agent security | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/62116) | [Code](https://github.com/shishishi123/Tool-Guard) | 针对恶意 tool description 可同时影响工具选择和执行参数，论文以隔离规划将用户目标与不可信 metadata 分开，在降低投毒攻击的同时尽量保持正常工具任务效用。 |
 | 2026 | Speculative Safety Honeypot: Toward Proactive Defense Against Multi-turn Agent Attacks | defense、multi-agent evaluation、tool-use agent、tool interface | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/65283) | 暂未公开 | 针对工具型智能体会受到环境、记忆、检索和跨智能体通信攻击的问题，论文提出 Speculative Safety Honeypot 防御或缓解方法；摘要实验显示其提高了系统对相应威胁的鲁棒性，直接服务于智能体攻击面治理。 |
 | 2026 | Securing Retrieval-Augmented Code Generation via Contextual Knowledge Injection: A Case for Embedded IoT Applications | defense、RAG code generation、knowledge injection、tool-use agent | USENIX Security 2026 | [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/sun-tong) | 暂未公开 | 针对 repository-grounded 代码生成会通过公开 API 继承固定版本中的 CVE，IoTRAGuarder 构建版本感知的反向调用链与双层检索约束，将 44 个 Zephyr 任务的 security success rate 从 5.11% 提至 78.41%。 |
 

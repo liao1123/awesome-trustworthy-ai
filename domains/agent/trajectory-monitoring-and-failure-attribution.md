@@ -4,7 +4,7 @@
 
 ## 研究方向
 
-本页只研究与具体安全风险绑定的 Agent trajectory monitoring：攻击链、policy violation、unsafe tool use、高后果内生故障、风险步骤定位、运行时 guard 和可审计 provenance。一般任务失败、普通 debugging、成功率预测、工作流恢复与不带安全后果的 failure attribution 不纳入。
+本页主要研究与具体安全风险绑定的 Agent trajectory monitoring：攻击链、policy violation、unsafe tool use、高后果内生故障、风险步骤定位、运行时 guard 和可审计 provenance；同时收录会直接影响安全干预设计的 monitor-signal validity 与 attribution-component boundary。一般任务失败、普通 debugging、成功率预测和工作流恢复不纳入；若论文只以一般任务失败验证可复用监控组件，则必须明确其证据尚未覆盖安全后果。
 
 ## 研究脉络
 
@@ -12,12 +12,14 @@
 - **内生高后果风险：** 即使没有攻击者，长程小错误也可能累积为不可逆或高后果行为，需要定位最早风险步骤。
 - **Guard 与过程监督：** trajectory reward、latent risk evidence 和结构化 guardrail 用于在执行期间发现并阻断 unsafe action。
 - **可审计证据：** provenance signal 和 execution evidence 用于在日志缺失或文本被拼接后恢复责任边界。
-- **当前边界：** 一般 task failure 与安全故障不能混为一谈；只有能说明具体风险、违规或安全后果的归因工作才进入本页。
+- **信号有效性边界：** 早期 uncertainty、可见 rationale 和异常分数必须相对后续真实行为校验，普通 failure proxy 不能直接升级为 safety guarantee。
+- **当前边界：** 一般 task failure 与安全故障不能混为一谈；通用归因或预测工作只在直接检验可复用监控组件时作为边界证据进入，并必须标明尚未证明具体风险识别或安全干预效果。
 
-## Provenance 与安全归因
+## Provenance 与 Failure Attribution
 
 | 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
 | --- | --- | --- | --- | --- | --- | --- |
+| 2026&#8209;08 | Detect Before You Attribute: Cascade Failure Attribution for Multi-Agent Systems | detection、cascade failure、semantic-structural filtering、step-level attribution | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.29646) | 暂未公开 | 针对 topology-based attribution 丢失细粒度语义、直接让 LLM 阅读完整多 Agent 轨迹又会受长上下文退化影响，DUOTRACE 先用双视图语义—结构表示与 Tree-LSTM 检出异常执行，再把聚焦证据交给下游归因器；六种基线的 Agent-level 与 step-level 准确率分别提高 8.7% 和 7.0%，但实验定位的是一般执行失败，尚未验证安全事件中的因果责任或干预效果。 |
 | 2026&#8209;08 | ROPE: Routed Origin Policy Enforcement against Indirect Prompt Injection ↗ | defense、value provenance、origin invariant、pre-execution enforcement | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.27496) | [Code](https://github.com/xhOwenMa/ROPE) | 针对恶意来源在长轨迹中可经重述与推理被洗白、令最终工具参数看似由模型自主产生的问题，ROPE 为每个敏感值跨步骤保留不可伪造来源，并在执行前按来源不变量确定性准入；攻击文本的改写与传播因而不能改变授权结论，击穿既有防线的长程注入在其评测中成功率为零。 |
 | 2026&#8209;08 | When Tool Outputs Become Commands: Separating Action Induction from Runtime Authorization in Tool-Augmented LLM Agents | defense、action provenance、cross-step trace、authorization evidence | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.27146) | 暂未公开 | 针对恶意动作来源会在长轨迹中因复述和历史 recurrence 被洗白，SARA 的隔离 Action Probe 跨步骤保存 action-origin provenance，并以 No-History-Promotion 禁止历史本身成为授权证据；该 trace signal 再与已授权成功执行证据结合，在主要设置中把攻击成功率限制到 0.63% 以下。 |
 | 2026&#8209;08 | HANSARD: A Reference Architecture for Forensic Readiness, Runtime Witnessing, and Graded Attribution in Autonomous Multi-Agent AI Systems | defense、runtime provenance、causal attribution、evidence tier | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.22512) | 暂未公开 | HANSARD 在任务前封存 readiness profile、运行时从五个 Agent 外部 choke point 捕获证据，并把事件编码为带 live indicator 的 PROV-DM 因果图；事故后以修改的 Halpern–Pearl 分析、补偿集和协同残差区分原因、责任与问责，并让结论受证据等级约束。 |
@@ -29,6 +31,7 @@
 
 | 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
 | --- | --- | --- | --- | --- | --- | --- |
+| 2026&#8209;08 | CAST: Critique-Aware Supervision for Training Reliable Long-Horizon Tool-Calling Agents | defense、action-level critique、process supervision、irreversible tool action | 未确认（arXiv Comments：Accepted to EMNLP 2026 (Main)） | [arXiv](https://arxiv.org/abs/2608.30147) | 暂未公开 | 针对错误退款等单步失误会产生不可逆外部效果、稀疏终局结果却无法指出长轨迹中哪项动作违反领域规则的问题，CAST 在部分可观测轨迹上合成结构化 action-validity rationale，并依次训练 critique model 与 policy model；Qwen3 在动态工具调用任务上的 pass^4 提升超过 10%，但论文报告的是重复试验可靠性，未给出独立安全违规率或形式化运行时保证。 |
 | 2026&#8209;08 | HarnessRisk: A Lifecycle-Oriented Benchmark for Agent Harness Safety ↗ | benchmark、trajectory detection、risk-action gap、lifecycle localization | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.17597) | [Project](https://baiyajing.github.io/harness-risk/) | 针对 monitor 报出风险是否意味着 harness 最终采取安全动作缺少全流程证据，HarnessRisk 在六个 operational phase 上联合记录 detection、persistence、ASR 与 utility；部分配置超过 90% 运行识别到风险却仍保留显著攻击成功率，直接暴露 recognition-to-enforcement gap。 |
 | 2026&#8209;08 | ReguSim: Evaluating LLM Agent Rule Grounding in Financial Compliance | benchmark、execution-grounded monitoring、rule violation、evidence visibility | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.19974) | 暂未公开 | 针对只读取 CoT 的 trajectory monitor 会把“说自己遵守规则”误当成真实合规，ReguSim 在受控金融环境中分别记录规则、尝试动作、执行层拒绝和 monitor 可见证据；结果显示 rationale 可系统误导判断，而 enforcement evidence 与结构化 action feature 能把监控重新锚定到实际行为。 |
 | 2026&#8209;08 | PolicyGuide: From Guarding One Action to Guiding the Whole Workflow for Policy-Compliant LLM Agents | defense、workflow monitoring、persistent state graph、omission detection | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.19861) | 暂未公开 | 针对动作级 monitor 看不到跨轮 workflow 中被遗漏的身份核验、确认与待处理请求，PolicyGuide 持久保存 policy graph 状态并在用户回合边界重组完整过程；该设计把违规检测从已发生的危险动作扩展到必需步骤缺失，并在 airline、retail 与 telecom Agent 上提高长期合规。 |
@@ -40,10 +43,17 @@
 | 2026&#8209;03 | Willful Disobedience: Automatically Detecting Failures in Agentic Traces | tool、specification extraction、trace compliance、AgentPex | ACM CAIS 2026 | [arXiv](https://arxiv.org/abs/2603.23806) | [Code](https://github.com/microsoft/agentpex) | 针对 outcome-only score 会漏掉 workflow routing、unsafe tool use 和显式规则违规；论文让 AgentPex 从 system/user prompt 与 tool schema 抽取可检查 specification，再审计完整 trace；结果能区分模型行为并定位终局得分未覆盖的程序性失败。 |
 | 2026&#8209;02 | DRAFT: Task Decoupled Latent Reasoning for Agent Safety | detection、latent draft、sparse risk evidence、trajectory safety | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2604.03242) | 暂未公开 | 针对长 Agent trajectory 中风险证据稀疏且显式 summarize-then-judge 会丢失信息，DRAFT 用 Extractor 生成连续 latent draft 并让 Reasoner 联合读取原轨迹；结果跨 ASSEBench 与 R-Judge 将平均准确率从 LoRA 的 63.27% 提升到 91.18%。 |
 
+## Monitor Signal Validity 与 Failure Prediction
+
+| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2026&#8209;08 | Last Step Matters: Early Uncertainty Cannot Predict Failure in Long-Horizon Agents | analysis、early failure prediction、uncertainty signal、path switching | 未确认（arXiv Comments：Accepted to the Main Conference of the 2026 Conference on Empirical Methods in Natural Language Processing (EMNLP 2026)） | [arXiv](https://arxiv.org/abs/2608.29685) | 暂未公开 | 针对 long-horizon Agent harness 能否依据中途 confidence 或 perplexity 提前干预，论文在 deep-research 任务上发现终局 verbal confidence 平均 AUROC 为 0.85，但进度 50% 时所有信号均不超过 0.60；频繁 path switching 会切断早期状态与最终结果的关联，因此证据只支持终局 restart 决策，不能把早期 uncertainty 当作安全预警保证。 |
+
 ## Runtime Guard、检测与防御
 
 | 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
 | --- | --- | --- | --- | --- | --- | --- |
+| 2026&#8209;08 | Drive the Thoughts: Runtime Monitoring of VLA Reasoning-Trajectory Consistency ↗ | detection、runtime trajectory monitoring、CoT-action consistency、unsafe driving | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.29583) | [Code](https://github.com/776styjsu/drive-the-thoughts) | 针对驾驶 Agent 的文字理由与实际 ego-motion trajectory 可能分离并产生不安全或非预期行为，论文把 scene-relative CoT commitment 转换为 lane-relative 表示后做运行时一致性检查；最佳 F-LLM monitor 达到 0.75 F1，比最强 raw-waypoint LLM 基线高 0.13，但仍有四分之一左右标注不一致未被正确识别。 |
 | 2026&#8209;08 | ClawSentry: A Progressive Multi-Tier Security Monitor for Safeguarding Autonomous LLM Agents | defense、session-level monitoring、cross-tool retry、post-action evidence | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.21101) | [Code](https://github.com/Elroyper/ClawSentry) | 针对被拒危险目标可沿不同 surface、工具和轮次重新出现，ClawSentry 在 session 内关联改写重试与 tool switching，并把动作后高严重度证据非追溯地加入后续判断；这种跨步骤状态将 skill 风险从一次调用审核扩展为完整 control-loop monitoring，并在多种 Agent harness 上降低攻击成功率。 |
 | 2026&#8209;08 | Safety Does Not Compose: Non-Decaying Loop State for Autonomous LLM Agents | defense、cross-iteration monitoring、fragmented evidence、non-decaying state | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.27141) | 暂未公开 | 针对攻击证据只在多次 Agent 迭代合并后才成立，论文形式化证明任何单 trajectory monitor 都无法优于其假正率，几何衰减分数也可被固定等待时间清空；LoopHarness 保存不衰减 loop state，并把未授权不可逆动作的期望数界定为与 horizon 无关的常数。 |
 | 2026&#8209;08 | INTENT-AS-A-TOOL Makes it Easy to Track Agentic Misalignment | detection、intent monitoring、action preference、critical-step localization | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.27348) | [Code](https://github.com/RebeccaZhang22/intent-as-a-tool) | 针对 post-hoc CoT 标签只能给整条轨迹一个粗粒度意图结论，INTENT-AS-A-TOOL 用目标行为工具的调用概率形成逐 token／step、无需外部 judge 的 action-preference signal；它把有害意图展开为稠密 trajectory，并找出适合在线干预的承诺转折点。 |

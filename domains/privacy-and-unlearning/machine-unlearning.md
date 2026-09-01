@@ -4,12 +4,12 @@
 
 ## 研究方向
 
-研究在不完整重训的条件下移除训练样本、知识、用户或概念的影响，覆盖 LLM、MLLM、推荐、联邦与持续学习；核心评测同时检查 forgetting、retention、relearning、泄漏复测与删除保证。
+研究在不完整重训的条件下移除训练样本、知识、用户或概念的影响，覆盖 LLM、MLLM、推荐与持续学习；核心评测同时检查 forgetting、retention、relearning、泄漏复测与删除保证。
 
 ## 研究脉络
 
 - **近似遗忘：** 早期方法以梯度更新、参数编辑和表示压缩降低 forget set 的可见影响。
-- **模型与任务扩展：** 研究扩展到生成模型、多模态模型、MoE、联邦学习、RL 与持续学习。
+- **模型与任务扩展：** 研究扩展到生成模型、多模态模型、MoE、RL 与持续学习。
 - **保证与反测试：** Certified unlearning、relearning attack、probabilistic decoding 和 hidden leakage 揭示只看标准准确率会高估删除效果。
 - **当前边界：** 可验证删除、低 collateral damage 与对自适应恢复攻击的稳健性仍难同时满足。
 
@@ -124,9 +124,7 @@
 
 | 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
 | --- | --- | --- | --- | --- | --- | --- |
-| 2026&#8209;08 | Certified Signed Graph Unlearning | defense、certified unlearning、signed graph、deletion guarantee | KDD 2026 | [Official](https://doi.org/10.1145/3770855.3818038) | 暂未公开 | 论文面向正负关系共同存在的图数据给出 certified unlearning，使节点或边删除后的模型输出具有可验证的遗忘保证。 |
 | 2026&#8209;06 | Rethinking Backdoor Adversarial Unlearning through the Lens of Catastrophic Forgetting in Continual Learning | defense、backdoor unlearning、catastrophic forgetting、BI-BAU | ACM CCS 2026（First Cycle） | [Official](https://www.sigsac.org/ccs/CCS2026/program/accepted-papers.html) · [arXiv](https://arxiv.org/abs/2606.14078) | 暂未公开 | 针对现有安全调优只表面压制而未彻底消除模型后门的问题，BI-BAU 将后门学习与移除建模为三阶段 continual learning，并以 blind inversion、双层对抗优化和 EM 求解，在定向、非定向及多模态后门上实现广泛移除。 |
-| 2026&#8209;05 | Rethinking Federated Unlearning via the Lens of Memorization | defense、federated unlearning、memorization pruning、selective deletion | KDD 2026 | [Official](https://doi.org/10.1145/3770855.3817785) · [arXiv](https://arxiv.org/abs/2605.24545) | [Code](https://github.com/JWei1999/Rethinking-Federated-Unlearning-via-the-Lens-of-Memorization) | FedMemPrune 区分待删客户端独有的记忆与其他客户端共享知识，只重置承载独有记忆的冗余参数以接近重训练删除效果。 |
 | 2026 | Trajectory-Aware Certified Decentralized Unlearning via SGD Stability | defense、machine unlearning、deletion guarantee、utility retention | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/66400) | 暂未公开 | 针对模型删除请求可能只形成表面拒绝，敏感知识仍可被恢复的问题，论文提出 SGD 防御或缓解方法；摘要实验显示其提高了系统对相应威胁的鲁棒性，直接服务于可验证删除与遗忘审计。 |
 | 2026 | The Forgetting-Retention Dilemma: Certified Unlearning Theory in Continual Learning | defense、machine unlearning、deletion guarantee、utility retention | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/60494) | 暂未公开 | 针对模型删除请求可能只形成表面拒绝，敏感知识仍可被恢复的问题，论文提出 The Forgetting-Retention Dilemma 防御或缓解方法；摘要实验显示其降低相应风险或攻击效果，同时尽量保持正常任务效用，直接服务于可验证删除与遗忘审计。 |
 | 2026 | Obliviate: Efficient Unlearning in Recommender Systems | defense、machine unlearning、deletion guarantee、utility retention | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/64974) | 暂未公开 | 针对模型删除请求可能只形成表面拒绝，敏感知识仍可被恢复的问题，论文提出 Obliviate 防御或缓解方法；摘要实验显示其降低相应风险或攻击效果，同时尽量保持正常任务效用，直接服务于可验证删除与遗忘审计。 |

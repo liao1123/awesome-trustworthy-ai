@@ -4,7 +4,7 @@
 
 ## 研究方向
 
-研究如何通过明确攻击检验模型、表示、记忆与上下文是否泄漏数据，并针对 memory extraction、attribute inference、embedding/model inversion、训练样本记忆和身份恢复提出可验证缓解。一般 privacy-preserving learning/inference、data minimization、最小披露，以及 Differential Privacy、federated learning、密码学、secure computation、secure inference、homomorphic encryption、MPC、zero-knowledge proof、数字签名、区块链和 TEE 不属于本页范围。
+研究如何通过明确攻击检验模型、表示、记忆与上下文是否泄漏数据，并针对 memory extraction、attribute inference、embedding/model inversion、训练样本记忆和身份恢复提出可验证缓解。一般 privacy-preserving learning/inference、data minimization、最小披露，以及 Differential Privacy、federated learning、密码学、secure computation、secure inference、homomorphic encryption、MPC、zero-knowledge proof、数字签名、区块链和 TEE 不属于本页范围；以 federated learning 为研究对象或训练框架的攻击与防御同样不收录。
 
 ## 研究脉络
 

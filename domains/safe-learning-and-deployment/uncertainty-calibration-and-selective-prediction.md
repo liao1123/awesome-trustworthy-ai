@@ -30,7 +30,6 @@
 
 | 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
 | --- | --- | --- | --- | --- | --- | --- |
-| 2026&#8209;06 | The Confidence Trap: Calibration Attacks for Graph Neural Networks | attack、GNN calibration、structural perturbation、confidence integrity | KDD 2026 | [Official](https://doi.org/10.1145/3770855.3817898) · [arXiv](https://arxiv.org/abs/2606.08467) | [Code](https://github.com/CaptainCuong/Graph-Calibration-Attack) | UGCA 在尽量保持预测标签不变时用结构扰动显著破坏 GNN 置信度校准，揭示只检查准确率会漏掉安全关键决策中的信任失效。 |
 | 2026 | Calibrating Uncertainty for Zero-Shot Adversarial CLIP | defense、adversarial defense、adversarial robustness、uncertainty calibration | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/62864) | 暂未公开 | 针对经验防御在自适应攻击和分布变化下可能失效且缺少可靠保证的问题，论文提出 Calibrating Uncertainty for Zero-Shot Adversarial 防御或缓解方法；摘要实验显示其降低相应风险或攻击效果，同时尽量保持正常任务效用，直接服务于鲁棒防御与安全保证。 |
 | 2026 | Achieving Multi-Hop Calculation and Safe Abstention in Financial Numerical Reasoning by Metric Graph Constrained LLMs | defense、reasoning safety、financial AI、uncertainty calibration | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.1273/) | 暂未公开 | GBFR 用金融指标知识图并行探索多条计算路径，只聚合语义一致结果并区分数据缺失与检索失败，从而在多跳数值推理中避免强行编造、实现可验证的安全 abstention。 |
 

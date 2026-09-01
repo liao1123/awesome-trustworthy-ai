@@ -7,7 +7,7 @@
 - [筛选说明](#筛选说明)
 - [LLM 安全、越狱与有害内容](#llm-安全越狱与有害内容)
 - [具身智能体、安全决策与高风险部署](#具身智能体安全决策与高风险部署)
-- [后门、投毒与联邦训练攻击](#后门投毒与联邦训练攻击)
+- [后门与投毒攻击](#后门与投毒攻击)
 - [隐私泄漏、机器遗忘与数据保护](#隐私泄漏机器遗忘与数据保护)
 - [对抗攻击、检测与鲁棒防御](#对抗攻击检测与鲁棒防御)
 - [生成内容真实性与多媒体取证](#生成内容真实性与多媒体取证)
@@ -47,7 +47,7 @@
 - 官方论文总数：902（Main Track 712、AI and Health 47、AI and Robotics 11、AI and Social Good 52、AI4Tech 25、Human-Centred AI 10、Survey Track 45）。
 - 范围取舍：官方 All Tracks 共 989 项；本文件排除不同录用机制或非本届原创常规论文范围的 Journal Track 6、Sister Conferences Best Papers 17、Early Career Spotlight 14 和 Demonstrations Track 50，保留上述七个正式投稿 track。
 - 初筛候选：157（标题高召回宽筛 140 篇，再用摘要中的精确安全语义补入 17 篇）。
-- 最终收录：65（Main 53、五个 Special Tracks 9、Survey 3）。
+- 最终收录：58（Main 46、五个 Special Tracks 9、Survey 3）。
 - 收录口径：逐篇阅读官网摘要，只保留把 LLM/智能体安全、恶意使用、攻击与防御、隐私泄漏、安全约束、内容真实性、模型身份或可核验缓解作为核心问题的论文。
 - 边界案例：一般 alignment、fairness、bias、常规差分隐私和 machine unlearning、用 adversarial loss 改善普通任务，以及 AI for safety/security 但不研究 AI 系统风险的论文从严排除；传统对抗鲁棒性仅在摘要明确给出攻击或防御 threat model 时保留。
 
@@ -85,17 +85,13 @@
 | Self-Improving Autonomous Vehicles via Real-World Reinforcement Learning | Daehyeok Kwon, Seung-Woo Seo, Sang-Hyun Lee | [Accepted](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track) · [Preprint](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/5068.pdf) | 暂未公开 | defense、autonomous driving、real-world RL、unsafe-action filtering | 针对自动驾驶需从现实长尾场景自我改进却不能在线试错，作者设计带人类干预与安全控制的真实世界 RL 流程，抑制采集期间的危险动作。 |
 | Uncertainty-Guided Adaptive Conservative Offline Reinforcement Learning for Safer Mechanical Ventilation | Huidong Liu, Hang Yu, Qiyang Zhang, Jiarui Dou, Xianlei Long, Jiantao Shi, Fuqiang Gu | [Accepted](https://2026.ijcai.org/accepted-papers/?ijtrack=special-track-on-ai-and-health) · [Preprint](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/AI4H132.pdf) | 暂未公开 | defense、offline RL、mechanical ventilation、uncertainty penalty | 针对离线呼吸机策略在分布外动作上可能造成过度或不足通气，UBER-CQL 用贝叶斯不确定性自适应惩罚高风险决策并保持数据支持内效用。 |
 
-### 后门、投毒与联邦训练攻击
+### 后门与投毒攻击
 
 | Title | 作者 | 论文链接 / arXiv 链接 | 代码链接 | 关键词 | 一句话总结 |
 | --- | --- | --- | --- | --- | --- |
 | BehaviorGuard: Online Backdoor Defense for Deep Reinforcement Learning | Yinbo Yu, Xueyu Yin, Jiadai Wang, Chunwei Tian, Sai Xu, Qi Zhu, Daoqiang Zhang | [Accepted](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track) · [Preprint](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/3528.pdf) | 暂未公开 | defense、deep RL、backdoor detection、action distribution | 针对复杂触发器难逆向且微调代价高，BehaviorGuard 在线监控后门策略共有的动作分布尾部偏移，并在不恢复触发器时检测和缓解攻击。 |
-| Can Quantum Federated Learning Withstand Circuit-Level Backdoors? | Aakar Mathur, Ruknuddin Mohammed, Ashish Gupta | [Accepted](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track) · [Preprint](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/6712.pdf) | 暂未公开 | attack、quantum federated learning、circuit backdoor、malicious client | 针对 QFL 继承联邦恶意客户端风险且增加量子电路攻击面，作者定义四类 circuit-level backdoor，并发现现有鲁棒聚合仍有明显最坏失效。 |
-| Collateral Damage Constrained Backdoor Attacks on Graph Neural Networks | Di Jin, Zechuan Zhang, Bingdao Feng, Xiaobao Wang, Dongxiao He, Zhen Wang | [Accepted](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track) · [Preprint](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/2145.pdf) | 暂未公开 | attack、graph neural network、backdoor diffusion、collateral damage | 针对 GNN 后门信号沿邻域传播会误伤干净节点并暴露攻击，CDCA 约束恶意扩散，在维持触发效果时减少周边 collateral damage。 |
-| Cross-Paradigm Graph Backdoor Attacks with Promptable Subgraph Triggers | Dongyi Liu, Jiangtong Li | [Accepted](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track) · [Preprint](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/5258.pdf) | [Code](https://github.com/novdream/CP-GBA) | attack、graph backdoor、promptable trigger、cross-paradigm transfer | 针对后门触发器只适用于单一图学习范式，CP-GBA 用 graph prompt 生成可迁移子图，在监督、对比和 prompt learning 间传播攻击。 |
 | Mask-Guided Hybrid Triggers for Robust Clean-Label Backdoor Attacks | Shengye Pang, Xiangyu Ji, Jungang Yang, Song Yang, Guobing Zou | [Accepted](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track) · [Preprint](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/4403.pdf) | 暂未公开 | attack、clean-label backdoor、hybrid trigger、adaptive mask | 针对通用触发器明显而样本特定触发器不稳定，MGHT 用 mask 分配锚点与伪装区域，兼顾干净标签攻击的可记忆性和隐蔽性。 |
 | Mitigating Backdoors via Decoy Shortcuts and Knowledge Decoupling | Zixuan Zhu, Rui Wang, Lihua Jing, Jinwen Zhong | [Accepted](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track) · [Preprint](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/2444.pdf) | 暂未公开 | defense、backdoor removal、decoy shortcut、knowledge decoupling | 针对第三方训练数据可植入后门，作者增加轻量诱饵分支吸收恶意捷径并与良性知识解耦，训练后丢弃该分支即可移除触发行为。 |
-| Sparsification Under Siege: Dual-Level Defense Against Poisoning in Communication-Efficient Federated Learning | Zhiyong Jin, Runhua Xu, Chao Li, Yizhong Liu, Jianxin Li, James Joshi | [Accepted](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track) · [Preprint](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/4693.pdf) | 暂未公开 | defense、federated poisoning、gradient sparsification、robust aggregation | 针对梯度稀疏化令传统距离聚合难以区分恶意更新，SafeSparse 从拓扑和语义两层恢复共识，抵御攻击者利用通信压缩逃逸检测。 |
 | Understanding and Exploiting Phase Sensitivity for Attacking Large Vision–Language Models | Daizong Liu, Junhao Dong, Xiang Fang, Hongyang He, Keyan Jin, Zhongliang Guo, Xiaoye Qu, Keke Tang | [Accepted](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track) · [Preprint](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/52.pdf) | 暂未公开 | attack、LVLM、phase trigger、data poisoning | 针对 LVLM 对图像相位结构的内在敏感性，BadPhase 将相位扰动经投毒植入为后门触发器，并用文本开关控制预测劫持。 |
 
 ### 隐私泄漏、机器遗忘与数据保护
@@ -104,8 +100,6 @@
 | --- | --- | --- | --- | --- | --- |
 | A Durable Machine Unlearning Framework to Nullify Recall of Sensitive Data on Incremental Training | Qingqing Cao, Liang Hu, Dora D. Liu, Jiaxing Miao, Jian Cao, Zhongyuan Lai, Wei Cao | [Accepted](https://2026.ijcai.org/accepted-papers/?ijtrack=special-track-on-ai4tech-ai-enabling-critical-technologies) · [Preprint](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/AI4T108.pdf) | 暂未公开 | defense、durable unlearning、sensitive data、incremental training | 针对遗忘模型在后续增量训练中重新记起敏感样本，DUE 识别相关数据并抑制其梯度，使删除效果在持续更新后仍能保持。 |
 | Adversarial Attack Framework Against Vision-Language Model Unlearning | Yimin Liu, Peng Jiang, Yajie Wang | [Accepted](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track) · [Preprint](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/7256.pdf) | 暂未公开 | attack、VLM unlearning、concept recovery、surrogate model | 针对 VLM 遗忘可被输入扰动恢复，SISA 只需代理预训练模型便利用残留 visual sink token 构造语义锚点，诱导生成被删内容。 |
-| CDO-GIA: A Robust Textual Gradient Inversion Attack Against Federated Language Models via Continuous-Discrete Optimization | Jiajie Wang, Weibo Xu, Ruichen Xia, Jiahao Nie | [Accepted](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track) · [Preprint](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/617.pdf) | 暂未公开 | attack、federated language model、gradient inversion、text reconstruction | 针对扩大 batch 被视为文本梯度反演防御，CDO-GIA 交替连续嵌入优化与 tabu beam search，在更大 batch 下恢复连贯训练文本。 |
-| FedCARE: Federated Unlearning with Conflict-Aware Projection and Relearning-Resistant Recovery | Yue Li, Mingmin Chu, Xilei Yang, Da Xiao, Ziqi Xu, Wei Shao, Qipeng Song, Hui Li | [Accepted](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track) · [Preprint](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/7106.pdf) | [Code](https://github.com/thechosenchu/FedCARE) | defense、federated unlearning、conflict projection、relearning resistance | 针对联邦遗忘成本高、知识纠缠且恢复训练会回滚删除，FedCARE 用冲突投影和代理样本兼顾遗忘、效用与抗重学恢复。 |
 | IdentityMask: A Robust Face-Centric Privacy Protection Against Unauthorized Personalization of Diffusion Models | Weiwei Tan, Rui Wang, Lihua Jing, Yanjun Zhang, Runbo Li, Leo Yu Zhang | [Accepted](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track) · [Preprint](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/3488.pdf) | 暂未公开 | defense、face privacy、unauthorized personalization、feature corruption | 针对扩散个性化可盗用个人身份且全图扰动效率低，IdentityMask 沿个性化时空动态定向破坏核心身份编码，并抵抗净化与后处理。 |
 | Incentivizing Truthful Machine Unlearning via Hierarchical Auditing | Shaolong Guo, Yuntao Wang, Zhou Su, Tom H. Luan | [Accepted](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track) · [Preprint](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/7556.pdf) | 暂未公开 | analysis、unlearning audit、incentive design、truthful compliance | 针对逐次验证遗忘成本高且逐利服务商可能假装删除，UAG 用低成本筛查、选择性高精度审计和惩罚机制形成诚实执行的博弈激励。 |
 | LLM-Based Agents on the Edge: A Survey of Privacy, Scalability, Heterogeneity, and Autonomy | Nikita Agrawal, Ruben Mayer | [Accepted](https://2026.ijcai.org/accepted-papers/?ijtrack=survey-track) · [Preprint](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/SV272.pdf) | 暂未公开 | survey、edge agent、privacy、autonomy | 该综述按部署、功能、交互和适配梳理边缘 LLM 智能体，重点比较本地数据隐私、异构设备与自主行动带来的新安全约束。 |
@@ -117,7 +111,6 @@
 | Title | 作者 | 论文链接 / arXiv 链接 | 代码链接 | 关键词 | 一句话总结 |
 | --- | --- | --- | --- | --- | --- |
 | Band Together: Untargeted Adversarial Training with Multimodal Coordination Against Evasion-Based Promotion Attacks | Guanmeng Xian, Ning Yang, Philip S. Yu | [Accepted](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track) · [Preprint](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/1759.pdf) | 暂未公开 | defense、multimodal recommender、promotion attack、adversarial training | 针对多模态推荐中的规避式推广会联合修改图文且目标商品未知，UAT-MC 把所有商品视为潜在目标并协调两模态梯度以训练防御。 |
-| CAMERA: Adapting to Semantic Camouflage in Unsupervised Text-Attributed Graph Fraud Detection | Junjun Pan, Yixin Liu, Yu Zheng, Lianhua Chi, Alan Wee-Chung Liew, Shirui Pan | [Accepted](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track) · [Preprint](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/7608.pdf) | [Code](https://github.com/CampanulaBells/CAMERA) | defense、fraud detection、semantic camouflage、test-time adaptation | 针对欺诈者模仿良性文本以规避图检测，CAMERA 以多线索专家和情境门控自适应组合结构与语义证据，追踪不断变化的伪装策略。 |
 | Diverge to Converge: Mutual Heterogeneous Learning for Robust Pruning | Jinhui Yu, Zikai Zhang, Khaled A. Harras, Yidong Li | [Accepted](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track) · [Preprint](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/6722.pdf) | 暂未公开 | defense、robust pruning、adversarial perturbation、heterogeneous learning | 针对高稀疏率同时削弱对抗与腐蚀鲁棒性，MHL 训练具有不同平滑和 margin 目标的专家再互蒸馏，得到单模型部署的鲁棒剪枝结果。 |
 | From Standard to Robust: A Universal Framework for Continual Adversarial Defense | Qian Wang, Hefei Ling, Yingwei Li, Qihao Liu, Ning Yu | [Accepted](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track) · [Preprint](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/2065.pdf) | 暂未公开 | defense、continual adversarial defense、few-shot adaptation、attack evolution | 针对攻击持续演化而防御重放成本高、易遗忘，UCAD 让标准或鲁棒模型以少样本和有限内存适应新攻击，同时保持既有防线。 |
 | Generalization Analysis for Adversarial Vision Transformer | Ziwen Jiang, Chang Cao, Han Li, Hong Chen, Rushi Lan | [Accepted](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track) · [Preprint](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/2754.pdf) | 暂未公开 | analysis、vision transformer、adversarial generalization、robustness bound | 针对 ViT 对抗泛化缺少理论解释，作者用 Rademacher complexity 分析深层扰动累积并给出高概率界，刻画范数与注意力正则的防御作用。 |
@@ -156,8 +149,8 @@
 ## 核验记录
 
 - 核验日期：2026-08-23。
-- 录用状态：分别完整解析 Main、AI and Health、AI and Robotics、AI and Social Good、AI4Tech、Human-Centred AI 和 Survey 七个官方列表，共 902 篇；最终 65 篇全部能在对应 track 的官方页面和 IJCAI 托管 Preprint 中定位。
-- 标题与作者：65 篇标题、作者及顺序均以官网题录为准；一篇论文只出现一次，各安全分表按英文题名字母序排列。
+- 录用状态：分别完整解析 Main、AI and Health、AI and Robotics、AI and Social Good、AI4Tech、Human-Centred AI 和 Survey 七个官方列表，共 902 篇；最终 58 篇全部能在对应 track 的官方页面和 IJCAI 托管 Preprint 中定位。
+- 标题与作者：59 篇标题、作者及顺序均以官网题录为准；一篇论文只出现一次，各安全分表按英文题名字母序排列。
 - 摘要与筛选：完整读取 157 个候选摘要；最终排除标题中仅有 alignment、bias、fairness、safe 或 adversarial 字样但没有 AI 安全 threat model 的论文，并用摘要反查补入 17 个标题不显式含安全词的候选。
-- 论文与代码：每行同时给出 track 录用页和官方托管 Preprint；从官网摘要逐个提取并核验到 13 个有效作者 GitHub 链接，去除 `github.com/` 或错误截断等无效占位 URL，其余标记“暂未公开”。
+- 论文与代码：每行同时给出 track 录用页和官方托管 Preprint；从官网摘要逐个提取并核验到 10 个有效作者 GitHub 链接，去除 `github.com/` 或错误截断等无效占位 URL，其余标记“暂未公开”。
 - 未决项：IJCAI proceedings 总卷尚未单独上线；不同 track 的 camera-ready 日期并不统一，官网集中日期页仅明确 Main Track，Survey 与 AI and Social Good 采用各自 CFP 的日期，其余 special-track CFP 未给出精确 camera-ready 日期。

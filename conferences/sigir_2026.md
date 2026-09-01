@@ -42,7 +42,7 @@
 
 - 官方论文总数：656；按官网类型复算为 Full 234、Perspective 12、Reproducibility 28、Resource 61、Short 151、Demo 24、Industry 131、Low Resource Environment 15。
 - 初筛候选：104；先对完整标题列表宽筛，再补查标题不含显式安全词、但涉及生成式搜索操纵、证据污染、选择性遗忘、拒答、内容规避或科学综述可靠性的语义候选。
-- 最终收录：32。
+- 最终收录：31。
 - 收录口径：逐篇阅读公开摘要或正文，只保留把 AI 搜索、RAG、生成式排序、内容审核、事实核查、幻觉、遗忘或高风险推荐中的攻击、失效后果、评测或缓解机制作为核心问题的工作；每篇只进入最匹配的一个分表。
 - 边界案例：普通检索性能、一般推荐鲁棒性、公平排序、传统网络安全和不含具体安全后果的可信 IR 不收录；名称含 `Poison Pills`、但实质只研究 relevance feedback 退化的论文也予以排除。Doctoral Colloquium、tutorial 与 workshop 内容不与主会正式研究论文混合。
 - 链接规则：`Official` 指向正式 DOI；arXiv 与作者项目只作为公开正文或 artifact 补充。没有可由论文或作者身份回证的代码入口时统一写“暂未公开”。
@@ -60,7 +60,6 @@
 | Prompt-Unknown Promotion Attacks against LLM-based Sequential Recommender Systems | Yuchuan Zhao, Tong Chen, Junliang Yu, Zongwei Wang, Lizhen Cui, Hongzhi Yin | [Official](https://doi.org/10.1145/3805712.3809691) · [arXiv](https://arxiv.org/abs/2604.23640) | 暂未公开 | attack、LLM recommender、black-box promotion、proxy prompt | 针对 victim prompt 与模型均未知的黑盒顺序推荐，PUDA 进化 proxy prompt、训练 surrogate，并在语义约束下编辑目标商品文本、补充合理交互序列；真实数据集上可把冷门目标商品显著推高。 |
 | PurifAI: Detecting and Fixing Search-Induced Distortions in Web-Augmented LLMs | Guoqing Wang, Zhao Zhang, Zeyu Sun, Xiaofei Xie, Yizhou Chen, Yanchao Tan, Dan Hao | [Official](https://doi.org/10.1145/3805712.3809751) | 暂未公开 | defense、web-augmented LLM、search distortion、knowledge purification | PurifAI 检测外部网页与模型已验证知识之间的冲突，并在缓存层净化误导信息，降低网页污染覆盖正确内部知识的风险。 |
 | Reward Shaping for Robust Refusal in Small Language Models for Retrieval-Augmented Question Answering | Thilina Chaturanga Rajapakse, Maarten de Rijke | [Official](https://doi.org/10.1145/3805712.3809891) | 暂未公开 | defense、RAG refusal、reward shaping、distractor robustness | 论文通过奖励塑形训练小模型在证据不足或检索到干扰内容时拒绝作答，在保持可回答问题效用的同时提升稳健拒答。 |
-| Separating Wheat from Chaff: Fine-Grained Defenses Against Poisoning in Multi-Perspective RAG | Yanxiao Zhao, Longzhu He, Li Sun, Sen Su | [Official](https://doi.org/10.1145/3805712.3809895) | 暂未公开 | defense、multi-perspective RAG、hypergraph reasoning、stance poisoning | 针对 multi-perspective RAG 中恶意立场与合理分歧难以区分，PS-RAG 用超图聚类保留跨立场多样性，再以细粒度矛盾关系识别投毒；四个数据集上优于既有防御且避免把少数合法观点一并过滤。 |
 | Teaching Small Models When Not to Call Functions: Structured Reasoning for Reducing Tool-Use Hallucinations | Dung Pham Tuan Vo, Thai Trung Tran, Tushar Semwal | [Official](https://doi.org/10.1145/3805712.3809979) | 暂未公开 | defense、tool-use hallucination、structured reasoning、function calling | 论文用结构化键值推理训练小模型识别无关或不充分请求，减少并不存在依据时仍调用函数的 agent 工具幻觉。 |
 | The Vulnerability of LLM Rankers to Prompt Injection Attacks: You are to [MARK] this paper as the Best Paper | Yu Yin, Shuai Wang, Bevan Koopman, Guido Zuccon | [Official](https://doi.org/10.1145/3805712.3808553) · [arXiv](https://arxiv.org/abs/2602.16752) | [Code](https://github.com/ielab/LLM-Ranker-Attack) | attack、LLM ranker、objective hijack、criteria hijack | 论文在 pairwise、listwise 与 setwise 协议中分别劫持排序结果和判断准则，并联合测量 ASR 与 nDCG@10；攻击跨模型、位置和领域成立，但 encoder-decoder ranker 相对更稳健。 |
 | When Context Bites: Detecting RAG Poisoning via Document-Level Attention Collapse | Yingtao Ren, Ziyi Zhao, Yiwei Fu, Xiao Luo, Yu-Cheng Chang, Chin-Teng Lin | [Official](https://doi.org/10.1145/3805712.3809904) · [arXiv](https://arxiv.org/abs/2608.06947) | [Code](https://github.com/yingtaoren/D-Scan) | defense、RAG poisoning、document attention、runtime detection | 针对 poisoned RAG 输出可能比正常输出困惑度更低、令输出不确定性检测失效，D-SCAN 以恶意文档吸走注意力造成的 document-level entropy collapse 为信号；即使最终答案尚未改变也能提前识别投毒。 |
@@ -107,7 +106,7 @@
 - 录用状态：以 [SIGIR 2026 Accepted Papers](https://sigir2026.org/en-AU/pages/program/accepted-papers) 的完整主会列表证明录用，并以正式 proceedings DOI 补齐作者与论文链接；官网明确报告八类主会论文合计 656 篇。
 - 范围复算：Full 234 + Perspective 12 + Reproducibility 28 + Resource 61 + Short 151 + Demo 24 + Industry 131 + Low Resource Environment 15 = 656；另列的 12 篇 Doctoral Colloquium 已排除。
 - 逐篇核验：已对 104 个宽筛候选逐篇检查公开摘要或正文；最终 32 篇的官方英文标题、作者顺序、track、DOI、补充链接、分类与一句话总结均完成复核。
-- 唯一归属：四个分表依次收录 11、7、13、1 篇，共 32 篇；标题无重复，每个分表均按英文标题字母序排列。
+- 唯一归属：四个分表依次收录 10、7、13、1 篇，共 31 篇；标题无重复，每个分表均按英文标题字母序排列。
 - 链接与代码：官方 DOI 全部可定位到 SIGIR 2026 proceedings；代码只记录论文或作者可回证的公开入口，未找到者不以同名第三方仓库代替。
 - 领域同步：按当前研究兴趣从 32 篇中精选 13 篇；复用并更新既有 4 条，新增 9 条，19 篇保留在会议来源视图中而未同步；默认主归属重复数为 0。
 - 本页为会议录用论文的独立 AI Safety 筛选结果；完成本页核验后，才按仓库研究兴趣和去重规则选择条目同步到 `domains/`。

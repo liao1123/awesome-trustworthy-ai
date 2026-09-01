@@ -9,12 +9,14 @@
 | 子领域 | 范围 |
 | --- | --- |
 | [视觉模型投毒与后门](vision-poison-and-backdoor.md) | CNN、视觉 Transformer／MoE、检测器、视觉 SSL encoder 与 3D 感知系统中的投毒、后门、检测和移除。 |
+| [音频模型投毒与后门](audio-model-backdoor.md) | 语音识别、说话人系统、speech enhancement 与音频生成模型中的投毒、条件后门、物理触发和内容完整性攻击。 |
 | [强化学习投毒与后门](reinforcement-learning-poison-and-backdoor.md) | 强化学习策略中的状态／轨迹触发器、经验供应链投毒、在线检测、缓解和机制分析。 |
 | [推荐系统投毒](recommender-system-poison.md) | 推荐数据注入、排序操纵及其检测和缓解。 |
 | [密码式模型后门](cryptographic-backdoor.md) | 密码式不可检测后门的现实实现、隐蔽性复测和机制边界。 |
 | [语言模型投毒](language-model-poison.md) | LLM 的预训练、后训练、合成数据、代码数据与部署供应链投毒，以及数据级检测和防御。 |
 | [语言模型后门](language-model-backdoor.md) | 自回归与推理语言模型中的触发器、条件行为、权重后门、量化后门及检测和移除方法。 |
 | [RAG 投毒](rag-poison.md) | 向向量库、知识库或 GraphRAG 注入恶意内容，对检索、重排、推理和生成阶段实施操控或防御。 |
+| [Search Agent Security](search-agent-security.md) | 开放网页中的 evidence poisoning、ranking manipulation、endorsement corruption、research-trajectory hijacking，以及围绕完整 search loop 的红队、对齐与审计。 |
 | [Agent Memory 投毒](agent-memory-poison.md) | 向长期记忆、经验库或持久会话状态写入恶意内容，并在未来任务中检索、激活、评测与修复。 |
 | [Agent Skill 投毒与后门](agent-skill-poison-and-backdoor.md) | 第三方或自生成 skill 中的持久恶意 instruction、代码、条件后门、trajectory promotion 与 lineage 传播。 |
 | [视觉语言模型后门](vision-language-model-backdoor.md) | VLM、MLLM、视觉定位与 GUI Agent 的多模态触发器、推理后门、检测和净化。 |
@@ -27,3 +29,4 @@
 2. 同时研究多类模型的论文可以进入多个最相关页面，但每个页面只保留一条。
 3. 攻击只在推理时修改输入、且不产生持久污染或条件后门的普通越狱和对抗样本不收录。
 4. 各子领域页面同时收攻击、检测、溯源和防御论文，但必须用独立小节和分表呈现；基础攻击框架、Survey 与 Benchmark 另设小节。
+5. 固定或结构化知识库中的 corpus／topology poisoning 进入 RAG；动态开放网页进入检索、证据综合和长程 research trajectory 后造成的操纵进入 Search Agent；不要求 Agent 采纳污染证据、主要研究内容可见性与排名竞争的工作仍进入 GEO Security。

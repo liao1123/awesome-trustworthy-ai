@@ -30,7 +30,6 @@
 
 | 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
 | --- | --- | --- | --- | --- | --- | --- |
-| 2026&#8209;06 | FLux: Covert Channels in FL through Transposed Training | attack、federated learning、covert channel、trace removal | AsiaCCS 2026 | [Official](https://doi.org/10.1145/3779208.3805980) | 暂未公开 | 针对 federated aggregation 被假设只承载合法 model update；FLux 以原模型的 transposed network 解码图像或比特；结果恶意参与者从首轮即可双向隐蔽通信并在事后清除 channel 痕迹。 |
 | 2026&#8209;06 | Tool Use Enables Undetectable Steganography in Multi-Agent LLM Systems | attack、multi-agent steganography、provable security、multi-agent covert communication | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2606.28425) | 暂未公开 | 针对复杂隐写协议是否仍超出 Agent 能力，论文允许 coding Agent 使用代码执行和网页研究来构建信道；结果表明技术实现已不是主要障碍，协议、密钥与参数的协调才是瓶颈。 |
 | 2026 | Position: Stateless Yet Not Forgetful: Implicit Memory as a Hidden Channel in LLMs | analysis、implicit memory、temporal backdoor、covert channel | IEEE SaTML 2026 | [Official](https://satml.org/2026/accepted-papers/) | 暂未公开 | 针对 LLM session 被默认视为无状态的假设，作者展示模型可把隐藏状态编码进自身输出并在重输入时恢复，由此构造 time-bomb backdoor，并讨论跨智能体隐蔽通信、评测作弊与投毒风险。 |
 | 2025&#8209;08 | Whispering Agents: An Event-Driven Covert Communication Protocol for the Internet of Agents | tool、multi-agent steganography、multi-agent covert communication、covert channel | AAAI 2026 | [Official](https://ojs.aaai.org/index.php/AAAI/article/view/40380) · [arXiv](https://arxiv.org/abs/2508.02188) | 暂未公开 | 针对常规 A2A 加密不能隐藏“正在通信”这一事实，论文形式化存储、时序和行为三类 Covert Event Channel 并实现协议；结果获得较高容量与鲁棒性且难被 LLM warden 感知。 |

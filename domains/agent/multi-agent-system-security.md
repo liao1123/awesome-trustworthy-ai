@@ -114,7 +114,6 @@
 | 2026&#8209;08 | BRA-Audit: Budgeted Runtime Auditing for LLM Multi-Agent Systems via Cumulative-Exposure Audit-Point Placement | detection、multi-agent system、risk propagation、collusive behavior | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.14668) | 暂未公开 | 基于LLM的多智能体系统（LLM-MAS）通过专门的协作解决复杂的任务，但代理间的依赖关系可能会将幻觉或恶意输出传播到系统级故障中；如何在最大限度地降低代币成本的同时保持保护性能？为了解决这个问题，我们提出了 BRA-Audit，这是一种预算感知的运行时审计框架，它将 MAS 执行建模为动态依赖图，并将审计调度制定为固定审计调用预算下的审计点放置，以最大限度地减少累积的未经检查的暴露。 |
 | 2026&#8209;03 | Is Monitoring Enough? Strategic Agent Selection For Stealthy Attack in Multi-Agent Discussions | detection、stealthy attack、multi-agent system、risk propagation | ECCV 2026 | [Official](https://eccv.ecva.net/virtual/2026/poster/4950) · [arXiv](https://arxiv.org/abs/2603.21194) | 暂未公开 | 针对持续监控通信似乎能阻断多智能体攻击的假设，作者设计面向监控场景的策略性代理选择攻击，实验证明连续异常检测下仍能实施有效隐蔽操纵。 |
 | 2026 | When Agents Go Rogue: Activation-Based Detection of Malicious Behaviors in Multi-Agent Systems | detection、multi-agent evaluation、multi-agent system、risk propagation | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/65619) | 暂未公开 | 针对工具型智能体会受到环境、记忆、检索和跨智能体通信攻击的问题，论文围绕 When Agents Go Rogue 开展机制与边界分析；摘要实验显示其在所列设置下优于所比较基线，直接服务于智能体攻击面治理。 |
-| 2026 | Explainable and Fine-Grained Safeguarding of LLM Multi-Agent Systems via Bi-Level Graph Anomaly Detection | detection、agent safety、LLM agent、multi-agent system | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.1407/) | 暂未公开 | 针对多智能体恶意节点检测忽略词级线索且难解释，XG-Guard 联合句级与 token 级编码、主题异常检测和双层分数融合，在多种拓扑与攻击下兼顾稳健检测和细粒度解释。 |
 
 ## 防御与缓解
 

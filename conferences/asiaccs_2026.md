@@ -43,8 +43,8 @@
 ## 筛选说明
 
 - 官方论文总数：120；该数字由 Cycle 1 与 Cycle 2 官方录用页合并去重，并与正式 proceedings 中排除 18 篇 `POSTER:` 记录后的研究论文数交叉复算。
-- 初筛候选：38；完整扫描标题后，对 agent、LLM、prompt、model extraction、federated / split learning、backdoor、poisoning、adversarial、gradient inversion、covert channel 与 AI analyzer attack 等方向宽筛，再阅读摘要或正文判断安全问题是否为核心贡献。
-- 最终收录：20。
+- 初筛候选：38；完整扫描标题后，对 agent、LLM、prompt、model extraction、split learning、backdoor、poisoning、adversarial、gradient inversion、covert channel 与 AI analyzer attack 等方向宽筛，再阅读摘要或正文判断安全问题是否为核心贡献。
+- 最终收录：15。
 - 收录口径：保留直接攻击、评测或防御 AI 模型、LLM agent、协同学习系统及 AI 驱动分析器的论文，也保留明确把生成模型用作新型恶意能力放大器的工作；每篇只进入最匹配的一个分表。
 - 边界案例：`Taming Data Challenges in ML-based Security Tasks Using Generative AI`、`RESTing-LLAMA`、漏洞检测和恶意软件检测等主要是“AI for security”，不因使用 LLM 而收录；一般差分隐私、加密聚合、SecureAFL 和隐私计算只提供常规保密机制，没有具体 AI 攻击或安全失效，亦从严排除。
 - Poster 边界：`SecAlign`、`SniffLlama`、`Phantom Force` 等 poster 可能直接相关，但官网将其与两轮正式论文分列，故不混入本页 120 篇研究论文的筛选结果。
@@ -66,7 +66,6 @@
 
 | Title | 作者 | 论文链接 / arXiv 链接 | 代码链接 | 关键词 | 一句话总结 |
 | --- | --- | --- | --- | --- | --- |
-| ADAGE: Active Defenses Against GNN Extraction | Jing Xu, Franziska Boenisch, Adam Dziedzic | [Official](https://doi.org/10.1145/3779208.3806086) · [arXiv](https://arxiv.org/abs/2503.00065) | 暂未公开 | defense、GNN extraction、adaptive query analysis、model IP | ADAGE 监测查询覆盖图社区的进度并逐步提高防御强度，使多种自适应攻击者难以复制 GNN，同时尽量不损害合法查询。 |
 | BarkBeetle: Stealing Decision Tree Models with Fault Injection | Qifan Wang, Jonas Sander, Minmin Jiang, Thomas Eisenbarth, David Oswald | [Official](https://doi.org/10.1145/3779208.3785372) · [arXiv](https://arxiv.org/abs/2507.06986) | 暂未公开 | attack、decision tree extraction、fault injection、structural recovery | BarkBeetle 对决策树节点定向注入电压故障并自底向上恢复特征分裂和阈值，实机原型表明硬件故障可显著降低模型抽取所需查询。 |
 | Prompt Pirates Need a Map: Stealing Seeds helps Stealing Prompts | Felix Mächtle, Ashwath Shetty, Jonas Sander, Nils Loose, Sören Pirk, Thomas Eisenbarth | [Official](https://doi.org/10.1145/3779208.3807483) · [arXiv](https://arxiv.org/abs/2509.09488) | [Code](https://github.com/UzL-ITS/Prompt-Pirate) | attack、diffusion model、seed recovery、prompt stealing | 论文利用常见图像框架的有限 seed 空间先恢复初始噪声，再用遗传搜索窃取生成提示，说明随机种子泄漏会直接削弱创作资产保密性。 |
 
@@ -74,11 +73,9 @@
 
 | Title | 作者 | 论文链接 / arXiv 链接 | 代码链接 | 关键词 | 一句话总结 |
 | --- | --- | --- | --- | --- | --- |
-| ClieND: Client-Side Neuron-Level Detection against Poisoning Attacks on Cross-Silo Federated Learning | Mengyao Ma, Shuofeng Liu, Viet Vo, Minghong Fang, Surya Nepal, Guangdong Bai | [Official](https://doi.org/10.1145/3779208.3785390) | [Code](https://github.com/Trusted-System-Lab/ClieND) | defense、federated poisoning、neuron-level detection、client autonomy | ClieND 让 cross-silo FL 的各客户端在本地从神经元行为识别被投毒的全局更新，不把检测权完全交给可能不可信的聚合服务器。 |
 | Deep Learning Backdoor Defense via Adaptive Trigger Collisions in Latent Space | Zixun Xiong, Hao Wang, Jian Li, Yang Hua, Miao Pan, Xiaojiang Du | [Official](https://doi.org/10.1145/3779208.3806081) | 暂未公开 | defense、DNN backdoor、latent collision、post-processing | ATClean 在多层潜在空间生成只需产生特征碰撞的对抗样本并微调受污染表示，无需精确复原原触发器即可净化后门模型。 |
 | GradSent: Temporal Consistency-based Defense for U-Shaped Split Learning | Deependra Singh, Avinash Awasthi, Pritam Vediya, Ramesh Babu Battula | [Official](https://doi.org/10.1145/3779208.3805965) | 暂未公开 | defense、split learning、client backdoor、temporal consistency | GradSent 不再把 non-IID 客户端横向比较为离群点，而是用梯度自编码器学习各自的良性时间轨迹，从而过滤客户端后门更新并减少误杀。 |
 | Noise, Why Can't You Bend? Detecting Adversarial Perturbations in Wireless Sensing via Structural Fragility | Md Hasan Shahriar, Ning Wang, Amit Kumar Sikder, Naren Ramakrishnan, Y. Thomas Hou, Wenjing Lou | [Official](https://doi.org/10.1145/3779208.3806083) | 暂未公开 | detection、wireless sensing、adversarial perturbation、structural fragility | 论文利用恶意扰动相较自然传感噪声更难保持信号结构这一差异，检测无线感知模型输入中的对抗样本。 |
-| PHANTOM: Physics-Aware Adversarial Attacks against Federated Learning-Coordinated EV Charging Management System | Mohammad Zakaria Haider, Amit Kumer Podder, Prabin Mali, Aranya Chakrabortty, Sumit Paudyal, Mohammad Ashiqur Rahman | [Official](https://doi.org/10.1145/3779208.3785395) · [arXiv](https://arxiv.org/abs/2512.22381) | 暂未公开 | attack、federated control、false-data injection、grid instability | PHANTOM 在物理一致的 EV 充电数字孪生中训练多 agent 攻击策略，使伪数据绕过常规检测并导致负载失衡及跨输配电层的电压不稳定。 |
 | Purified Distillation Slimming (PDS) for Robust Backdoor Defense | Liqun Shan, Kaiying Han, Yazhou Tu, Insup Lee, Xiali Hei | [Official](https://doi.org/10.1145/3779208.3785283) | 暂未公开 | defense、DNN backdoor、purified distillation、model slimming | PDS 将后门净化与知识蒸馏、模型 slimming 联合起来，在移除触发行为时保留干净任务知识并降低部署开销。 |
 | “What is the Problem Space?” Defining Host-space Adversarial Perturbations against Network Intrusion Detection Systems | Miel Verkerken, Laurens D'hooge, Bruno Volckaert, Filip De Turck, Giovanni Apruzzese | [Official](https://doi.org/10.1145/3779208.3807482) · [arXiv](https://arxiv.org/abs/2605.25822) | 暂未公开 | analysis、ML-NIDS、host-space attack、realizability | 论文指出大量 ML-NIDS 对抗评测直接修改攻击者无法控制的特征或流量记录，并用主机侧真实命令变化展示可实现扰动可绕过检测。 |
 
@@ -86,8 +83,6 @@
 
 | Title | 作者 | 论文链接 / arXiv 链接 | 代码链接 | 关键词 | 一句话总结 |
 | --- | --- | --- | --- | --- | --- |
-| FedLeaks: Creating Timing Channel Leaks in Federated Learning of Adaptive Neural Networks | Ayomide Akinsanya, Tegan Brennan | [Official](https://doi.org/10.1145/3779208.3785394) | 暂未公开 | attack、federated learning、timing channel、data leakage | FedLeaks 操纵自适应网络的执行时间，在联邦训练交换过程中建立数据相关侧信道，说明不直接传输原始样本仍可能泄露敏感信息。 |
-| FLux: Covert Channels in FL through Transposed Training | Alexandra Dmitrienko, Torsten Krauß, Yisroel Mirsky | [Official](https://doi.org/10.1145/3779208.3805980) | 暂未公开 | attack、federated learning、covert channel、transposed model | FLux 用原模型的转置结构解码嵌入更新的图像或比特，使恶意参与者从首轮起即可经聚合过程双向隐蔽通信，且事后可清除信道痕迹。 |
 | Mitigating Gradient Inversion Risks in Language Models via Token Obfuscation | Xinguo Feng, Zhongkui Ma, Zihan Wang, Alsharif Abuadbba, Guangdong Bai | [Official](https://doi.org/10.1145/3779208.3785389) · [arXiv](https://arxiv.org/abs/2602.15897) | [Code](https://github.com/Trusted-System-Lab/GHOST) | defense、language model privacy、gradient inversion、token obfuscation | GHOST 以语义不同但嵌入邻近的 shadow token 训练语言模型，切断梯度、嵌入与原 token 的可逆联系，同时尽量保持下游效用。 |
 | The Insider's Advantage: Exploiting Automated Privacy Policy Analyzer Tools Through Subtle Text Manipulations | Tanusree Das Tithy, Poojitha Thota, Shirin Nilizadeh, Faysal Hossain Shezan | [Official](https://doi.org/10.1145/3779208.3807480) | 暂未公开 | attack、privacy policy analyzer、adversarial text、compliance evasion | APATRA 以对人类阅读影响很小的政策文本改动误导 LLM 驱动分析器并隐藏关键数据实践，暴露自动合规审查可被内部人定向规避。 |
 | Unequal Privacy: Auditing Demographic Bias Vulnerabilities in Visual Protection Systems | Seyyed Mohammad Sadegh Moosavi Khorzooghi, Poojitha Thota, Mohit Singhal, Abolfazl Asudeh, Gautam Das, Shirin Nilizadeh | [Official](https://doi.org/10.1145/3779208.3785292) | 暂未公开 | audit、visual privacy、demographic disparity、face obfuscation | FairDeFace 联合多种数据、识别器、攻击者和混淆方法审计人脸保护系统，发现不同人口群体获得的抗识别隐私保证并不均等。 |
@@ -97,10 +92,10 @@
 - 核验日期：2026-08-30。
 - 录用状态：以官网 [Cycle 1](https://asiaccs2026.cse.iitkgp.ac.in/cycle-1-papers/) 与 [Cycle 2](https://asiaccs2026.cse.iitkgp.ac.in/cycle-2-papers/) 列表证明正式录用，再用 proceedings DOI 核对题目、作者和链接；poster 使用官网独立页面，未混入研究论文。
 - 范围复算：两轮正式论文合计 120；正式 proceedings 另含 18 篇标题以 `POSTER:` 开头的记录，排除后也得到 120。
-- 逐篇核验：已对 38 个宽筛候选检查摘要或正文，最终保留 20 篇；四个分表依次收录 5、3、7、5 篇，合计无重复。
-- 作者版本：表内作者顺序采用正式 proceedings；`Mind the Web`、`ATAG` 与 `PHANTOM` 等公开预印本和会议版本存在作者或拼写差异，已保留会议版本并仅将 arXiv 作为补充链接。
+- 逐篇核验：已对 38 个宽筛候选检查摘要或正文，按当前兴趣边界最终保留 15 篇；四个分表依次收录 5、2、5、3 篇，合计无重复。
+- 作者版本：表内作者顺序采用正式 proceedings；`Mind the Web` 与 `ATAG` 等公开预印本和会议版本存在作者或拼写差异，已保留会议版本并仅将 arXiv 作为补充链接。
 - 分类与排序：每篇只有一个默认会议归属；各表按英文标题字母序排列，弯引号标题按核心词 `What` 排在 W 位置。
 - 代码链接：只列论文、作者主页或仓库说明可直接回证的 artifact；其余即使存在同名 GitHub 结果也不收录。
-- 领域同步：按当前研究兴趣从 20 篇中精选 12 篇；复用既有条目 0 条，新增 12 条，8 篇因传统硬件、ML-NIDS、一般 federated defense 或兴趣优先级未同步；默认主归属重复数为 0。
+- 领域同步：按当前研究兴趣从 15 篇中精选 9 篇；复用既有条目 0 条，新增 9 条，6 篇因传统硬件、ML-NIDS 或兴趣优先级未同步；默认主归属重复数为 0。
 - 本页核验完成后，才会依据仓库当前研究兴趣把选中的论文去重同步到 `domains/`。
 - 未决项：PDS 等若干论文未定位到可公开回证的代码或预印本；不影响正式录用与内容判断。

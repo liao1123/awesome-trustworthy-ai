@@ -2,7 +2,7 @@
 
 [返回领域目录](../README.md)
 
-本目录聚焦可被实证验证的数据与模型资产泄漏：训练记忆和数据抽取、membership/attribute inference、gradient/embedding inversion、去匿名化、模型抽取与执行侧信道，以及 machine unlearning 的删除保证和 relearning attack。一般 privacy-preserving learning/inference、data minimization、最小披露、Differential Privacy、federated learning、密码学、secure computation、secure inference、TEE 与区块链方案不纳入；但针对上述具体攻击的审计或缓解可以收录。
+本目录聚焦可被实证验证的数据与模型资产泄漏：训练记忆和数据抽取、membership/attribute inference、gradient/embedding inversion、去匿名化、模型抽取与执行侧信道，以及 machine unlearning 的删除保证和 relearning attack。一般 privacy-preserving learning/inference、data minimization、最小披露、Differential Privacy、federated learning、密码学、secure computation、secure inference、TEE 与区块链方案不纳入；针对具体泄漏攻击的审计或缓解可以收录，但不得使用 federated learning 作为研究对象或训练框架。
 
 ## 子领域
 
