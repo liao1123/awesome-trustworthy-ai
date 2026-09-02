@@ -15,6 +15,6 @@
 
 ## 攻击与系统威胁
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
-| --- | --- | --- | --- | --- | --- | --- |
-| 2026&#8209;08 | Ouroboros: Self-Referential Backdoor Attacks on Speech Enhancement via Clean Audio Triggers | attack、speech enhancement backdoor、clean audio trigger、content tampering | 未确认（arXiv Comments：Accepted at INTERSPEECH 2026. This is the author-accepted manuscript, not the ISCA proceedings camera-ready publisher version. 5 pages, 2 figures） | [arXiv](https://arxiv.org/abs/2608.30329) | 暂未公开 | 针对 speech enhancement 被动处理时无法假设攻击者会在推理阶段主动注入 trigger，Ouroboros 把模型理想 clean output 本身设为自然触发器；未经修改的真实录音可近乎完美激活后门并定向篡改内容，同时维持正常增强性能，且常见 filtering 与 fine-tuning 未能消除攻击。 |
+| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2026-08 | Ouroboros: Self-Referential Backdoor Attacks on Speech Enhancement via Clean Audio Triggers | attack、speech enhancement backdoor、clean audio trigger、content tampering | 未确认（arXiv Comments：Accepted at INTERSPEECH 2026. This is the author-accepted manuscript, not the ISCA proceedings camera-ready publisher version. 5 pages, 2 figures） | [arXiv](https://arxiv.org/abs/2608.30329) | 暂未公开 | 针对 speech enhancement 被动处理时无法假设攻击者会在推理阶段主动注入 trigger | Ouroboros 把模型理想 clean output 本身设为自然触发器 | 关键实现：Ouroboros 把模型理想 clean output 本身设为自然触发器。 | 未经修改的真实录音可近乎完美激活后门并定向篡改内容，同时维持正常增强性能，且常见 filtering 与 fine-tuning 未能消除攻击。 |

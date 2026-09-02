@@ -16,27 +16,27 @@
 
 ## 安全边界与能力外溢
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
-| --- | --- | --- | --- | --- | --- | --- |
-| 2026&#8209;03 | Claudini: Autoresearch Discovers State-of-the-Art Adversarial Attack Algorithms for LLMs | attack、autoresearch、algorithm discovery、adaptive evaluation | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2603.24511) | [Code](https://github.com/romovpa/claudini) | 针对固定攻击集会低估防御面对定向适配时的风险；论文让 frontier coding agent 在受限预算和已有方法库上自动搜索 jailbreak 与 prompt-injection algorithm；结果发现的方法在两个目标上超过既有 automated attack，说明 autoresearch 应成为防御评测的强攻击者基线。 |
-| 2024&#8209;02 | Risks of AI Scientists: Prioritizing Safeguarding Over Autonomy | analysis、AI scientist risk、environment impact、triadic governance | Nature Communications 2025 | [Official](https://doi.org/10.1038/s41467-025-63913-1) · [arXiv](https://arxiv.org/abs/2402.04247) | 暂未公开 | 针对 AI Scientist autonomy 增长而风险研究零散；论文按 user intent、scientific domain 与 external environment 梳理 vulnerability，并提出 human regulation、agent alignment 和 environmental feedback 三元框架；结论是扩大自主性前需要专门 benchmark、模型约束与制度监管。 |
+| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2026-03 | Claudini: Autoresearch Discovers State-of-the-Art Adversarial Attack Algorithms for LLMs | attack、autoresearch、algorithm discovery、adaptive evaluation | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2603.24511) | [Code](https://github.com/romovpa/claudini) | 针对固定攻击集会低估防御面对定向适配时的风险。 | 针对固定攻击集会低估防御面对定向适配时的风险；论文让 frontier coding agent 在受限预算和已有方法库上自动搜索 jailbreak 与 prompt-injection algorithm | 关键实现：针对固定攻击集会低估防御面对定向适配时的风险；论文让 frontier coding agent 在受限预算和已有方法库上自动搜索 jailbreak 与 prompt-injection algorithm。 | 结果发现的方法在两个目标上超过既有 automated attack，说明 autoresearch 应成为防御评测的强攻击者基线。 |
+| 2024-02 | Risks of AI Scientists: Prioritizing Safeguarding Over Autonomy | analysis、AI scientist risk、environment impact、triadic governance | Nature Communications 2025 | [Official](https://doi.org/10.1038/s41467-025-63913-1) · [arXiv](https://arxiv.org/abs/2402.04247) | 暂未公开 | 针对 AI Scientist autonomy 增长而风险研究零散；论文按 user intent、scientific domain 与 external environment 梳理 vulnerability | 并提出 human regulation、agent alignment 和 environmental feedback 三元框架 | 关键实现：并提出 human regulation、agent alignment 和 environmental feedback 三元框架。 | 结论是扩大自主性前需要专门 benchmark、模型约束与制度监管。 |
 
 ## 系统完整性与研究行为分析
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
-| --- | --- | --- | --- | --- | --- | --- |
-| 2026&#8209;06 | FARS: A Fully Automated Research System Deployed at Scale | analysis、AI-for-AI research、artifact provenance、integrity audit | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2606.31651) | 暂未公开 | 针对自动研究证据多来自精选案例且缺少过程审计；论文让 FARS 在共享 workspace 中保留 ideation、code、log、result 与 manuscript，并公开部署生成 166 篇 AI/ML 研究稿件；结构化评审显示系统可形成可评审成果，同时反复暴露实验范围窄、方法局限和 integrity 问题。 |
+| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2026-06 | FARS: A Fully Automated Research System Deployed at Scale | analysis、AI-for-AI research、artifact provenance、integrity audit | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2606.31651) | 暂未公开 | 针对自动研究证据多来自精选案例且缺少过程审计；论文让 FARS 在共享 workspace 中保留 ideation、code、log、result 与 manuscript | 并公开部署生成 166 篇 AI/ML 研究稿件 | 关键实现：并公开部署生成 166 篇 AI/ML 研究稿件。 | 结构化评审显示系统可形成可评审成果，同时反复暴露实验范围窄、方法局限和 integrity 问题。 |
 
 ## Automated Alignment Research 与 Safety Intervention
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
-| --- | --- | --- | --- | --- | --- | --- |
-| 2026&#8209;08 | Automated Researchers Can Reliably Mitigate Alignment Failures | defense、automated alignment research、post-training discovery、held-out validation | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.28945) | 暂未公开 | 论文让 automated alignment researcher 自主提出训练方法和数据，同时缓解 deception、sycophancy、jailbreak 等十类可测失效并保持通用能力；最强方案泛化到 held-out benchmark、多轮行为审计和大 4.7 倍的模型，并超过 28 名限时八小时的人类研究者，但结论仍限于已有清晰 benchmark 的 alignment failure。 |
+| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2026-08 | Automated Researchers Can Reliably Mitigate Alignment Failures | defense、automated alignment research、post-training discovery、held-out validation | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.28945) | 暂未公开 | 研究如何防御 automated alignment research、post-training discovery 威胁，并评估 held-out validation 条件下的安全收益与效用代价。 | 论文让 automated alignment researcher 自主提出训练方法和数据 | 同时缓解 deception、sycophancy、jailbreak 等十类可测失效并保持通用能力 | 最强方案泛化到 held-out benchmark、多轮行为审计和大 4.7 倍的模型，并超过 28 名限时八小时的人类研究者，但结论仍限于已有清晰 benchmark 的 alignment failure。 |
 
 ## Benchmark 与评测
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
-| --- | --- | --- | --- | --- | --- | --- |
-| 2026&#8209;07 | ResearchArena: Evaluating Sabotage and Monitoring in Automated AI R&D | benchmark、CoT monitoring、AI4AI agent、research integrity | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2607.19321) | 暂未公开 | ResearchArena 用安全后训练、能力后训练、CUDA kernel 与推理服务优化四类长程任务评估自动 AI R&D 的 sabotage 和 monitoring；藏在训练数据中的 artifact sabotage 被检出不足一半，即使 monitor 可运行实验也常因测试错误而漏报。 |
+| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2026-07 | ResearchArena: Evaluating Sabotage and Monitoring in Automated AI R&D | benchmark、CoT monitoring、AI4AI agent、research integrity | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2607.19321) | 暂未公开 | 研究如何评测 AI4AI agent、CoT monitoring 风险，重点考察 research integrity 场景下的覆盖度与可复现性。 | ResearchArena 用安全后训练、能力后训练、CUDA kernel 与推理服务优化四类长程任务评估自动 AI R&D 的 sabotage 和 monitoring | 关键实现：ResearchArena 用安全后训练、能力后训练、CUDA kernel 与推理服务优化四类长程任务评估自动 AI R&D 的 sabotage 和 monitoring。 | 藏在训练数据中的 artifact sabotage 被检出不足一半，即使 monitor 可运行实验也常因测试错误而漏报。 |
 
 > 跨学科 Research Agent 的检索、证据与报告可靠性见 [Scientific Research Agent Reliability](scientific-research-agent-reliability.md)，科学 Agent 的高风险任务与 tool-chain 防护见 [Scientific Domain Risk Evaluation](scientific-domain-risk-evaluation.md)。

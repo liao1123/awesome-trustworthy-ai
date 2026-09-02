@@ -15,7 +15,7 @@
 | [密码式模型后门](cryptographic-backdoor.md) | 密码式不可检测后门的现实实现、隐蔽性复测和机制边界。 |
 | [语言模型投毒](language-model-poison.md) | LLM 的预训练、后训练、合成数据、代码数据与部署供应链投毒，以及数据级检测和防御。 |
 | [语言模型后门](language-model-backdoor.md) | 自回归与推理语言模型中的触发器、条件行为、权重后门、量化后门及检测和移除方法。 |
-| [RAG 投毒](rag-poison.md) | 向向量库、知识库或 GraphRAG 注入恶意内容，对检索、重排、推理和生成阶段实施操控或防御。 |
+| [RAG 投毒](rag-poison.md) | 向向量库、知识库或 GraphRAG 注入恶意内容，或污染／后门化 retriever encoder，对检索、重排、推理和生成阶段实施操控或防御。 |
 | [Search Agent Security](search-agent-security.md) | 开放网页中的 evidence poisoning、ranking manipulation、endorsement corruption、research-trajectory hijacking，以及围绕完整 search loop 的红队、对齐与审计。 |
 | [Agent Memory 投毒](agent-memory-poison.md) | 向长期记忆、经验库或持久会话状态写入恶意内容，并在未来任务中检索、激活、评测与修复。 |
 | [Agent Skill 投毒与后门](agent-skill-poison-and-backdoor.md) | 第三方或自生成 skill 中的持久恶意 instruction、代码、条件后门、trajectory promotion 与 lineage 传播。 |

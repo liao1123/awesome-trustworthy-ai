@@ -21,6 +21,9 @@ __pycache__/
 /AGENTS.md
 /RESEARCH_INTERESTS.md
 /STYLE_GUIDE.md
+# Local reading ideas are kept in the root-level idea/ directory and are not published.
+/idea.md
+/idea/
 /domains/**/idea.md
 
 # Keep links and citations in Git; do not commit publisher PDFs by default.

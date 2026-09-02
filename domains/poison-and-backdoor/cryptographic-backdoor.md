@@ -14,6 +14,6 @@
 
 ## 现实隐蔽性与机制复测
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
-| --- | --- | --- | --- | --- | --- | --- |
-| 2026&#8209;08 | Rethinking the Stealthiness of Cryptographically Undetectable Backdoors in Practical RFF Learning | attack、cryptographic backdoor、random Fourier feature、stealth evaluation | KDD 2026 | [Official](https://doi.org/10.1145/3770855.3817768) | [Code](https://github.com/CryptoAILab/CryptoBackdoor) | 论文把理论上不可区分的密码式后门放入实际 RFF 学习流程复测，揭示有限精度、训练配置和统计检验会改变其隐蔽性结论。 |
+| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2026-08 | Rethinking the Stealthiness of Cryptographically Undetectable Backdoors in Practical RFF Learning | attack、cryptographic backdoor、random Fourier feature、stealth evaluation | KDD 2026 | [Official](https://doi.org/10.1145/3770855.3817768) | [Code](https://github.com/CryptoAILab/CryptoBackdoor) | 研究 cryptographic backdoor、random Fourier feature 场景下的攻击面，重点考察 stealth evaluation 如何影响目标模型或系统。 | 论文把理论上不可区分的密码式后门放入实际 RFF 学习流程复测 | 关键实现：论文把理论上不可区分的密码式后门放入实际 RFF 学习流程复测。 | 揭示有限精度、训练配置和统计检验会改变其隐蔽性结论。 |

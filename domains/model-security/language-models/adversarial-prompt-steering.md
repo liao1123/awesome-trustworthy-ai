@@ -15,27 +15,27 @@
 
 ## Inference-Time Subliminal Cue Aggregation
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
-| --- | --- | --- | --- | --- | --- | --- |
-| 2026&#8209;08 | Model Hypnosis: Strong Control of AI via Additive Subliminal Effects | analysis、model hypnosis、additive cues、cross-model transfer | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.16834) | [Code & Data](https://github.com/eboix/model_hypnosis) | 针对通常被当作随机噪声的 wording 与无关内容 sensitivity 能否被系统利用，论文估计弱 cue 对 response log-odds 的贡献并叠加同向 cue；结果在多类普通与 reasoning model 的 binary-choice task 上可翻转答案且部分跨模型迁移，但尚未验证 free-form safety bypass。 |
+| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2026-08 | Model Hypnosis: Strong Control of AI via Additive Subliminal Effects | analysis、model hypnosis、additive cues、cross-model transfer | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.16834) | [Code & Data](https://github.com/eboix/model_hypnosis) | 针对通常被当作随机噪声的 wording 与无关内容 sensitivity 能否被系统利用 | 论文估计弱 cue 对 response log-odds 的贡献并叠加同向 cue | 关键实现：论文估计弱 cue 对 response log-odds 的贡献并叠加同向 cue。 | 结果在多类普通与 reasoning model 的 binary-choice task 上可翻转答案且部分跨模型迁移，但尚未验证 free-form safety bypass。 |
 
 ## 机制分析与风险测量
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
-| --- | --- | --- | --- | --- | --- | --- |
-| 2026&#8209;07 | Implicit Reasoning Steering via Concept Chaining | analysis、prompt steering、subliminal cue、behavior manipulation | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2607.14242) | 暂未公开 | Concept Chaining 生成经一两个中间概念把问题实体隐式连向目标选项的自然段落，并以继续预训练植入偏向；结果表明普通外观文本能在缺少显式指令和 trigger 时隐蔽、系统地重定向模型答案。 |
+| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2026-07 | Implicit Reasoning Steering via Concept Chaining | analysis、prompt steering、subliminal cue、behavior manipulation | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2607.14242) | 暂未公开 | 分析 prompt steering、subliminal cue 风险的形成机制，重点考察 behavior manipulation 对安全行为的影响。 | Concept Chaining 生成经一两个中间概念把问题实体隐式连向目标选项的自然段落 | 并以继续预训练植入偏向 | 结果表明普通外观文本能在缺少显式指令和 trigger 时隐蔽、系统地重定向模型答案。 |
 
 ## Benchmark 与评测
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
-| --- | --- | --- | --- | --- | --- | --- |
-| 2026 | Psychological Steering in LLMs: An Evaluation of Effectiveness and Trustworthiness | benchmark、prompt steering、subliminal cue、behavior manipulation | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.79/) | 暂未公开 | 针对 emotion/personality steering 可能产生隐蔽副作用，PsySET 比较 prompting、微调与 vector injection，发现后者控制更细但会损害质量，且 joy 会降低隐私意识、anger 会增加 toxicity 等非预期变化。 |
+| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2026 | Psychological Steering in LLMs: An Evaluation of Effectiveness and Trustworthiness | benchmark、prompt steering、subliminal cue、behavior manipulation | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.79/) | 暂未公开 | 针对 emotion/personality steering 可能产生隐蔽副作用 | PsySET 比较 prompting、微调与 vector injection | 关键实现：PsySET 比较 prompting、微调与 vector injection。 | 发现后者控制更细但会损害质量，且 joy 会降低隐私意识、anger 会增加 toxicity 等非预期变化。 |
 
 ## 攻击与绕过
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
-| --- | --- | --- | --- | --- | --- | --- |
-| 2026&#8209;03 | Are All Prompt Components Value-Neutral? Understanding the Heterogeneous Adversarial Robustness of Dissected Prompt in LLMs | attack、prompt component、controlled perturbation、structural vulnerability | EACL 2026 | [Official](https://aclanthology.org/2026.eacl-long.374/) | 暂未公开 | 针对把 prompt 当作扁平文本会掩盖不同组件的安全作用；PromptAnatomy 拆解功能结构并用 ComPerturb 定向改写；结果五个 LLM 的 component-wise robustness 显著不均且攻击超过既有基线。 |
-| 2026 | In-Context Representation Hijacking | attack、prompt steering、subliminal cue、behavior manipulation | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.768/) | 暂未公开 | Doublespeak 只需在上下文中反复以良性词替换有害词即可劫持其内部语义表征，使表面无害请求绕过对齐；单句覆盖在 Llama-3.3-70B-Instruct 上成功率达 74% 且可跨模型迁移。 |
+| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2026-03 | Are All Prompt Components Value-Neutral? Understanding the Heterogeneous Adversarial Robustness of Dissected Prompt in LLMs | attack、prompt component、controlled perturbation、structural vulnerability | EACL 2026 | [Official](https://aclanthology.org/2026.eacl-long.374/) | 暂未公开 | 研究 prompt component、controlled perturbation 场景下的攻击面，重点考察 structural vulnerability 如何影响目标模型或系统。 | 针对把 prompt 当作扁平文本会掩盖不同组件的安全作用；PromptAnatomy 拆解功能结构并用 ComPerturb 定向改写 | 关键实现：针对把 prompt 当作扁平文本会掩盖不同组件的安全作用；PromptAnatomy 拆解功能结构并用 ComPerturb 定向改写。 | 结果五个 LLM 的 component-wise robustness 显著不均且攻击超过既有基线。 |
+| 2026 | In-Context Representation Hijacking | attack、prompt steering、subliminal cue、behavior manipulation | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.768/) | 暂未公开 | 研究 prompt steering、subliminal cue 场景下的攻击面，重点考察 behavior manipulation 如何影响目标模型或系统。 | Doublespeak 只需在上下文中反复以良性词替换有害词即可劫持其内部语义表征 | 使表面无害请求绕过对齐 | 单句覆盖在 Llama-3.3-70B-Instruct 上成功率达 74% 且可跨模型迁移。 |
 
 > 该工作将 model hypnosis 定义为 subliminal learning 的 in-context analogue，但模型参数保持不变，因此按主要机制归入本页而不是 fine-tuning 风险。

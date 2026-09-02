@@ -14,6 +14,6 @@
 
 ## 检测与缓解
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 一句话总结 |
-| --- | --- | --- | --- | --- | --- | --- |
-| 2026&#8209;08 | Silencing the Poison: An Unsupervised Granular Ball Defense Approach in Local Smoothing Context for Recommender Systems | defense、recommender poisoning、unsupervised detection、local smoothing | KDD 2026 | [Official](https://doi.org/10.1145/3770855.3817740) | 暂未公开 | 论文以无监督 granular ball 和局部平滑识别推荐数据中的异常注入，在缺少攻击标签时缓解投毒对排序结果的操纵。 |
+| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2026-08 | Silencing the Poison: An Unsupervised Granular Ball Defense Approach in Local Smoothing Context for Recommender Systems | defense、recommender poisoning、unsupervised detection、local smoothing | KDD 2026 | [Official](https://doi.org/10.1145/3770855.3817740) | 暂未公开 | 研究如何防御 recommender poisoning、unsupervised detection 威胁，并评估 local smoothing 条件下的安全收益与效用代价。 | 论文以无监督 granular ball 和局部平滑识别推荐数据中的异常注入 | 关键实现：论文以无监督 granular ball 和局部平滑识别推荐数据中的异常注入。 | 在缺少攻击标签时缓解投毒对排序结果的操纵。 |
