@@ -47,6 +47,7 @@
 
 | 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2026-09 | Monitoring Web Agents Without Internal Signals: Observable Trajectories and Key-Step Supervision | monitoring、web agent、key-step supervision、early intervention | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2609.02057) | 暂未公开 | 在无法访问 logits 等 internal signal 时，能否用可观察 trajectory prefix 预测失败并定位首个未纠正 critical error，从而在固定误切预算下提前干预？ | 用 Macro／Micro observable features 描述 Agent--environment 交互，并以 key-step boundary 标注保留失败轨迹中的有效早期 prefix。 | 在 WebArena-Lite、Online Mind2Web 和五个 open／closed backbone 上比较 internal-signal baseline、跨 website category 迁移与固定 false-cut budget intervention。 | 可观察 trajectory signal 与 internal baseline 竞争，并支持跨站 early intervention；但实验主要验证任务失败与监控代理，不能直接等同于完整安全保证。 |
 | 2026-08 | Last Step Matters: Early Uncertainty Cannot Predict Failure in Long-Horizon Agents | analysis、early failure prediction、uncertainty signal、path switching | 未确认（arXiv Comments：Accepted to the Main Conference of the 2026 Conference on Empirical Methods in Natural Language Processing (EMNLP 2026)） | [arXiv](https://arxiv.org/abs/2608.29685) | 暂未公开 | 针对 long-horizon Agent harness 能否依据中途 confidence 或 perplexity 提前干预 | 论文在 deep-research 任务上发现终局 verbal confidence 平均 AUROC 为 0.85，但进度 50% 时所有信号均不超过 0.60 | 关键实现：论文在 deep-research 任务上发现终局 verbal confidence 平均 AUROC 为 0.85，但进度 50% 时所有信号均不超过 0.60。 | 频繁 path switching 会切断早期状态与最终结果的关联，因此证据只支持终局 restart 决策，不能把早期 uncertainty 当作安全预警保证。 |
 
 ## Runtime Guard、检测与防御

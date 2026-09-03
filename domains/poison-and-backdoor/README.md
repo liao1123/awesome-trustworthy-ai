@@ -17,6 +17,7 @@
 | [语言模型后门](language-model-backdoor.md) | 自回归与推理语言模型中的触发器、条件行为、权重后门、量化后门及检测和移除方法。 |
 | [RAG 投毒](rag-poison.md) | 向向量库、知识库或 GraphRAG 注入恶意内容，或污染／后门化 retriever encoder，对检索、重排、推理和生成阶段实施操控或防御。 |
 | [Search Agent Security](search-agent-security.md) | 开放网页中的 evidence poisoning、ranking manipulation、endorsement corruption、research-trajectory hijacking，以及围绕完整 search loop 的红队、对齐与审计。 |
+| [Generative Engine Optimization Security](generative-engine-optimization-security.md) | 通过网页文本、图像或结构信号操纵生成式搜索的可见性、排名、引用、推荐与 misinformation 传播，以及相应的攻击、检测和防御。 |
 | [Agent Memory 投毒](agent-memory-poison.md) | 向长期记忆、经验库或持久会话状态写入恶意内容，并在未来任务中检索、激活、评测与修复。 |
 | [Agent Skill 投毒与后门](agent-skill-poison-and-backdoor.md) | 第三方或自生成 skill 中的持久恶意 instruction、代码、条件后门、trajectory promotion 与 lineage 传播。 |
 | [视觉语言模型后门](vision-language-model-backdoor.md) | VLM、MLLM、视觉定位与 GUI Agent 的多模态触发器、推理后门、检测和净化。 |
@@ -29,4 +30,4 @@
 2. 同时研究多类模型的论文可以进入多个最相关页面，但每个页面只保留一条。
 3. 攻击只在推理时修改输入、且不产生持久污染或条件后门的普通越狱和对抗样本不收录。
 4. 各子领域页面同时收攻击、检测、溯源和防御论文，但必须用独立小节和分表呈现；基础攻击框架、Survey 与 Benchmark 另设小节。
-5. 固定或结构化知识库中的 corpus／topology poisoning 进入 RAG；动态开放网页进入检索、证据综合和长程 research trajectory 后造成的操纵进入 Search Agent；不要求 Agent 采纳污染证据、主要研究内容可见性与排名竞争的工作仍进入 GEO Security。
+5. 固定或结构化知识库中的 corpus／topology poisoning 进入 RAG；动态开放网页中以完整 search loop、证据综合或 research trajectory 为主要目标的操纵进入 Search Agent；以生成式搜索的可见性、ranking、citation、recommendation 或 misinformation 传播为主要目标的工作进入 GEO Security。

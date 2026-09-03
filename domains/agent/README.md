@@ -4,7 +4,7 @@
 
 本目录研究由 LLM 驱动、能够规划、使用工具、维护状态并对外部环境采取动作的 Agent 系统。与单轮模型安全相比，Agent Security 需要同时处理不可信 observation、委托权限、tool execution、persistent memory、跨 Agent 通信和长程 trajectory；风险既可能来自攻击者，也可能由自主性、错误目标、harness 设计或多个局部失败组合产生。
 
-当前范围包括通用 LLM Agent、Generative Engine、Web/Computer-Use Agent、Coding Agent、Multi-Agent System 和 self-evolving Agent。纯机器人控制、自动驾驶和不含 LLM Agent threat model 的一般 RL safety 暂不纳入。
+当前范围包括通用 LLM Agent、Web/Computer-Use Agent、Coding Agent、Multi-Agent System 和 self-evolving Agent。纯机器人控制、自动驾驶和不含 LLM Agent threat model 的一般 RL safety 暂不纳入。
 
 ## 研究地图
 
@@ -16,7 +16,6 @@
 | Tool 与协议 | [Tool 与 MCP Security](tool-and-mcp-security.md) | tool selection、tool output、metadata、MCP server、权限边界和 tool-chain 攻击。 |
 | 可复用能力供应链 | [Skill、Plugin 与供应链安全](skill-and-plugin-supply-chain-security.md) | skill discovery、activation、bundled code、恶意 skill、组合风险和 scanner。 |
 | Web 与桌面环境 | [Web 与 Computer-Use Agent Security](web-and-computer-use-agent-security.md) | 网页 prompt injection、GUI observation、恶意网站、跨应用动作与 CUA red teaming。 |
-| 生成式搜索可见性 | [Generative Engine Optimization Security](generative-engine-optimization-security.md) | cooperative GEO、black-hat ranking、multimodal manipulation、pipeline survival 与 recommendation harm。 |
 | 软件工程环境 | [Coding Agent Security](coding-agent-security.md) | issue/repository prompt injection、代码执行、secret leakage、over-permission 与安全修复。 |
 | Agent 间交互 | [Multi-Agent System Security](multi-agent-system-security.md) | 恶意节点、通信拓扑、控制流劫持、传播、collusion、隐私与协作防御。 |
 | 持久状态与演化 | [Memory 与 Self-Evolving Agent Security](memory-and-self-evolving-agent-security.md) | memory governance、跨 session 风险、misevolution、经验晋升和安全演化。 |
@@ -41,11 +40,12 @@
 - [Agent Memory 投毒](../poison-and-backdoor/agent-memory-poison.md)：memory write、retrieval trigger、跨 session 持久污染与 selective repair。
 - [Agent Skill 投毒与后门](../poison-and-backdoor/agent-skill-poison-and-backdoor.md)：trajectory-to-skill poisoning、持久 skill backdoor 与 lineage compromise。
 - [Search Agent Security](../poison-and-backdoor/search-agent-security.md)：开放网页证据污染、harmful information-seeking、Agent 背书、research-trajectory hijacking 与 process alignment。
+- [Generative Engine Optimization Security](../poison-and-backdoor/generative-engine-optimization-security.md)：生成式搜索中的 GEO、black-hat ranking、citation／visibility manipulation、recommendation harm 与对应防御。
 - [Prompt Injection](../misc/prompt-injection.md)：通用 direct/indirect prompt injection；Web、tool 和 skill 特有的 Agent 攻击仍进入本目录相应页面。
 - [RAG Poisoning](../poison-and-backdoor/rag-poison.md)：固定或结构化知识库中的语料与拓扑污染；开放网页的动态 evidence poisoning 进入 Search Agent Security。
 - [Capability Access Control](../misc/capability-access-control.md)：通用 capability 权限控制；Agent 中的 delegated authority 和 tool permission 进入 Tool/MCP 或 Harness 页面。
 - [CoT Monitorability](../misc/cot-monitorability.md)：模型内部 reasoning 的可监控性；运行轨迹和多组件 failure attribution 进入 Agent trajectory 页面。
-- [AI for Science Safety](../ai-for-science-safety/README.md)：Deep Research 的 factuality、provenance、multimodal evidence 与 scientific workflow 留在该目录；开放网页投毒和有害检索进入 Search Agent Security，生成式排名操纵仍进入本目录的 GEO 页面。
+- [AI for Science Safety](../ai-for-science-safety/README.md)：Deep Research 的 factuality、provenance、multimodal evidence 与 scientific workflow 留在该目录；开放网页投毒和有害检索进入 Search Agent Security，生成式排名操纵进入投毒与后门目录的 GEO 页面。
 
 ## 分类规则
 
