@@ -4,6 +4,8 @@
 
 模型版权保护研究如何通过可验证信号证明模型、system prompt 等部署资产的身份、所有权与输出来源。该方向同时涵盖从权重、输出分布、知识边界和功能表征识别模型或 prompt 身份与谱系的指纹，以及在模型或输出中嵌入检测信号的模型水印；还关注黑盒 API 审计、应用克隆检测、指纹伪造、水印移除、改写鲁棒性和部署公平性。以阻止能力复制为核心的反蒸馏工作仍归入[模型微调安全 / 反蒸馏](../finetuning/anti-distillation.md)。
 
+使用模型后门实现版权保护、授权控制或所有权验证的机制专题见 [后门式水印、版权保护与所有权验证](../content-authenticity/backdoor-based-watermarking-and-ownership.md)；本页保留模型版权视角的交叉索引。
+
 ## 研究脉络
 
 - **Watermark：** 在模型输出或 reasoning trace 中嵌入可验证信号，用于内容或模型归属追踪。
@@ -89,13 +91,14 @@
 
 ## Watermark、Fingerprint 与权属规避攻击
 
+涉及 backdoor-based fingerprint 的工作已集中整理至 [后门式水印、版权保护与所有权验证](../content-authenticity/backdoor-based-watermarking-and-ownership.md)。
+
 | 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 2026-06 | Bypassing Copyright Protection in Diffusion-based Customization via Two-Stage Latent Feature Optimization | attack、copyright protection、diffusion customization、latent optimization | KDD 2026 | [Official](https://doi.org/10.1145/3770855.3817760) · [arXiv](https://arxiv.org/abs/2606.09909) | [Artifact](https://doi.org/10.5281/zenodo.20508694) | 研究 diffusion customization、copyright protection 场景下的攻击面，重点考察 latent optimization 如何影响目标模型或系统。 | TS-LFO 分两阶段恢复被保护图像在 latent space 中的可学习映射 | 关键实现：TS-LFO 分两阶段恢复被保护图像在 latent space 中的可学习映射。 | 展示个性化扩散模型仍能绕过现有反训练扰动。 |
 | 2026-03 | Alignment Whack-a-Mole : Finetuning Activates Verbatim Recall of Copyrighted Books in Large Language Models | attack、system prompt、model copyright、ownership verification | CoLM 2026 | [Official](https://colm.cc/Conferences/2026/AcceptedPapers) · [arXiv](https://arxiv.org/abs/2603.20957) | [Code](https://github.com/cauchy221/Alignment-Whack-a-Mole-Code) | 针对 RLHF、system prompt 与 filter 被视为足以阻止版权文本再现的假设 | 作者只以 plot-summary expansion 微调便让 GPT-4o、Gemini-2.5-Pro 和 DeepSeek-V3.1 重现最多 85%–90% 的 held-out 图书 | 关键实现：作者只以 plot-summary expansion 微调便让 GPT-4o、Gemini-2.5-Pro 和 DeepSeek-V3.1 重现最多 85%–90% 的 held-out 图书。 | 并跨 30 余名作者泛化。 |
 | 2026-02 | SEW: Strengthening Robustness of Black-box DNN Watermarking via Specificity Enhancement | defense、DNN watermark、specificity、removal resistance | KDD 2026 | [Official](https://doi.org/10.1145/3770854.3780272) · [arXiv](https://arxiv.org/abs/2602.03377) | 暂未公开 | 研究如何防御 DNN watermark、specificity 威胁，并评估 removal resistance 条件下的安全收益与效用代价。 | SEW 强化水印触发行为对所有者模型的特异性 | 关键实现：SEW 强化水印触发行为对所有者模型的特异性。 | 减少独立模型误认并提高黑盒水印对多类移除攻击的稳健性。 |
 | 2026 | Neural Honeytrace: Plug&Play Watermarking Framework against Model Extraction Attacks | attack、AI watermarking、content watermark、model copyright | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/61931) | 暂未公开 | 针对生成内容水印容易遭到改写、混合、伪造或低成本移除的问题 | 论文提出 Neural Honeytrace 攻击或威胁分析 | 关键实现：论文提出 Neural Honeytrace 攻击或威胁分析。 | 摘要实验验证该威胁在所列模型、任务或数据集上成立，直接服务于生成内容标记与溯源。 |
-| 2026 | Inhibitory Attacks on Backdoor-based Fingerprinting for Large Language Models | attack、LLM backdoor、model backdoor、model copyright | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.1207/) | 暂未公开 | 针对 backdoor fingerprint 在 LLM ensemble 中的鲁棒性未知 | TFA 逐 token 过滤、SVA 以困惑度和投票筛掉指纹响应 | 关键实现：TFA 逐 token 过滤、SVA 以困惑度和投票筛掉指纹响应。 | 能在维持集成性能的同时有效抑制现有指纹检测。 |
 | 2026 | Are Robust LLM Fingerprints Adversarially Robust? | attack、LLM fingerprint、ownership verification、adaptive evasion | IEEE SaTML 2026 | [Official](https://satml.org/2026/accepted-papers/) | 暂未公开 | 针对 LLM fingerprint 主要只测良性微调和合并的问题 | 作者建立恶意规避 threat model 并按设计漏洞构造 adaptive attack | 关键实现：作者建立恶意规避 threat model 并按设计漏洞构造 adaptive attack。 | 可在保持普通用户效用时完全绕过多种模型认证方案。 |
 | 2025-05 | Extracting memorized pieces of (copyrighted) books from open-weight language models | attack、open-weight LLM、model copyright、ownership verification | CoLM 2026 | [Official](https://colm.cc/Conferences/2026/AcceptedPapers) · [arXiv](https://arxiv.org/abs/2505.12546) | 暂未公开 | 针对诉讼双方对 LLM 是否存储整本版权书籍的极端相反主张 | 作者对 200 本书与 14 个 open-weight LLM 做逾 3,000 次实验 | 关键实现：作者对 200 本书与 14 个 open-weight LLM 做逾 3,000 次实验。 | 发现多数模型不记忆多数书，但 Llama 3.1 70B 等存在可近乎整本确定性抽取的例外。 |
 | 2025-05 | MASLeak: Investigating and Exposing Intellectual Property Leakage Vulnerabilities in Multi-Agent Systems | attack、multi-agent system、IP leakage、model copyright | USENIX Security 2026 | [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/wang-liwen) · [arXiv](https://arxiv.org/abs/2505.12442) | 暂未公开 | 针对 multi-agent system 的 prompt、任务逻辑与拓扑可被外部交互窃取的问题 | MASLeak 分析 810 个应用并在 Coze 与 CrewAI 等系统验证攻击 | 关键实现：MASLeak 分析 810 个应用并在 Coze 与 CrewAI 等系统验证攻击。 | 系统 prompt 与任务泄漏率达 87%、架构泄漏率达 92%。 |

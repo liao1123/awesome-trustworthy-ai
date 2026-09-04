@@ -11,4 +11,5 @@
 | 生成检测 | [AI-Generated Content Detection](generated-content-detection.md) | 文本、代码、图像、视频、音频的生成检测与跨 generator 泛化。 |
 | 媒体取证 | [Deepfake 与 Media Forensics](deepfake-and-media-forensics.md) | 人脸、语音、音视频伪造的检测、定位、归因和主动防护。 |
 | 来源证明 | [生成内容水印与 Provenance](watermarking-and-provenance.md) | Zero/multi-bit watermark、公开验证、移除和伪造攻击。 |
+| 后门式水印与权属 | [后门式水印、版权保护与所有权验证](backdoor-based-watermarking-and-ownership.md) | 以 backdoor-like conditional behavior 实现版权/内容保护、授权控制、模型或数据所有权验证，以及针对这些机制的后门攻击。 |
 | 事实完整性 | [Misinformation 与 Fact Checking](misinformation-and-fact-checking.md) | Claim verification、动态证据、多模态 fake news 与平台操纵。 |

@@ -25,6 +25,7 @@
 
 | 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2026-09 | A Case Study on Emergent Cheating and Whistleblowing in Autonomous Research Swarms ↗ | analysis、research swarm、exploit propagation、whistleblowing | 未确认（arXiv） | [arXiv](https://arxiv.org/abs/2609.04170) | 暂未找到公开代码 | 共享工具和知识库会如何传播研究 Agent 的作弊行为，群体是否能自发形成审计和举报？ | 在 100 个数学证明 Agent 中观察 exploit 经 shared library 和 P2P 扩散，以及 whistleblowing、审计和验证补丁等反制。 | 记录竞争压力下的行为采用、跨频道传播、欺诈证明审计、抵制和规范执行。 | 单个 exploit 可在群体中传染，但透明共享通道也支持举报与修复；研究基础设施需要集体治理机制。 |
 | 2026-06 | FARS: A Fully Automated Research System Deployed at Scale | analysis、AI-for-AI research、artifact provenance、integrity audit | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2606.31651) | 暂未公开 | 针对自动研究证据多来自精选案例且缺少过程审计；论文让 FARS 在共享 workspace 中保留 ideation、code、log、result 与 manuscript | 并公开部署生成 166 篇 AI/ML 研究稿件 | 关键实现：并公开部署生成 166 篇 AI/ML 研究稿件。 | 结构化评审显示系统可形成可评审成果，同时反复暴露实验范围窄、方法局限和 integrity 问题。 |
 
 ## Automated Alignment Research 与 Safety Intervention

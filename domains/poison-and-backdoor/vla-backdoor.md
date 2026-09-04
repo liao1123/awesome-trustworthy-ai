@@ -6,7 +6,7 @@
 
 > 检索截至 **2026-08-31**。这是基于公开可检索资料的系统化快照，并非对尚未公开或未被索引工作的绝对穷尽；欢迎后续补充。
 
-- **核心收录：** 直接以端到端 Vision-Language-Action（VLA）模型为攻击、防御、评测或所有权验证对象，研究训练数据投毒、恶意微调或 checkpoint、持久触发器及其检测与清除的工作。当前共整理 15 篇核心论文。
+- **核心收录：** 直接以端到端 Vision-Language-Action（VLA）模型为攻击、防御或评测对象，研究训练数据投毒、恶意微调或 checkpoint、持久触发器及其检测与清除的工作。当前共整理 14 篇核心论文。
 - **相邻收录：** world model 训练供应链、VLM-based embodied agent、模块化 LLM/VLM 机器人和 Vision-Language Agentic System（VLAS）中与 VLA 威胁高度相关的后门工作，单独列出，避免误称为端到端 VLA 攻击。
 - **不在本页：** 仅发生在推理期、且不会在模型中植入持久触发行为的 adversarial patch、prompt attack、jailbreak、freezing/steering attack，例如 FreezeVLA、DRIFT、ADVLA、Trajectory-Level Redirection 和 trusted-imagination integrity attack。
 - **日期与状态：** 时间取论文首次公开月份；会议状态只采用会议官网、正式论文集或 arXiv 当前版本中的明确说明。“未注明”不代表被拒稿。代码栏仅链接作者明确公开的仓库或项目页。
@@ -18,7 +18,7 @@
 - **从相邻机器人供应链到端到端 VLA：** Robot Collapse（2024）先展示模块化 LLM/VLM 机器人链路的供应链后门；BadVLA（2025）随后系统揭示端到端 VLA 的后门风险。
 - **从任务失败到精细行为控制：** 研究由视觉 patch 导致的一般失败，扩展到 clean-action sequential error、物理物体目标劫持、可复用动作原语、机械臂初始状态、action chunk 累积漂移、flow-matching 动力学和可配置失败模式。
 - **从一次植入到全生命周期风险：** INFUSE 研究后门穿过用户 clean fine-tuning 的持久性，Imperio 和 world-model poisoning 则把数据来源、社区 trajectory 与合成数据流水线纳入威胁模型。
-- **检测、恢复、评测与归属：** Bera 和 TrustVLA 开始提供无需重训的推理期清除；AttackVLA 统一攻击评测；GuardVLA 反向利用无害后门做模型所有权验证。
+- **检测、恢复与评测：** Bera 和 TrustVLA 开始提供无需重训的推理期清除；AttackVLA 统一攻击评测。后门式所有权验证已迁移至 [独立水印专题](../content-authenticity/backdoor-based-watermarking-and-ownership.md)。
 
 ## 核心 VLA 投毒与后门攻击
 
@@ -52,16 +52,15 @@
 | 2026-07 | TrustVLA: Mechanism-Guided Inference-Time Defense Against Vision-Language-Action Backdoors | defense、causal footprint、evidence evolution、localized inpainting | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2607.12571) | 暂未公开 | 研究如何防御 causal footprint、evidence evolution 威胁，并评估 localized inpainting 条件下的安全收益与效用代价。 | 用少量 clean calibration data 监测逐 token/逐层 evidence evolution | 再以反事实分数下降定位 compact causal footprint 并局部修复图像 | 无需重训即可缓解 BadVLA、INFUSE，并验证 OpenVLA 到 π0.5 的迁移。 |
 | 2026-02 | When Attention Betrays: Erasing Backdoor Attacks in Robotic Policies by Reconstructing Visual Tokens | defense、Bera、attention anomaly、visual-token reconstruction | ICRA 2026 | [arXiv](https://arxiv.org/abs/2602.03153) | 暂未公开 | 研究如何防御 Bera、attention anomaly 威胁，并评估 visual-token reconstruction 条件下的安全收益与效用代价。 | Bera 根据深层 attention grabbing 和 latent-space localization 找到可疑视觉 token | 遮蔽并重建无触发图像以切断 trigger–unsafe-action 映射 | 不需要重训或改变原训练流水线。 |
 
-## Benchmark、评测与所有权验证
+## Benchmark 与评测
 
 | 时间 | 论文名称 | 关键词 | 会议 / 状态 | 论文链接 | 代码 / 项目 | 研究问题 | 核心 idea | 技术 | 结论 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026-05 | Towards Backdoor-Based Ownership Verification for Vision-Language-Action Models | tool、GuardVLA、ownership verification、backdoor watermark | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2605.09005) | 暂未公开 | 研究面向 GuardVLA、backdoor watermark 的安全工具，重点考察 ownership verification 下的审计或防护效果。 | GuardVLA 向 embodied visual data 注入秘密消息作为无害后门水印 | 发布后再以 trigger projector 与外部 classifier 做 swap-and-detect | 水印在模型适配后仍可验证，同时保持正常任务表现。 |
 | 2025-11 | AttackVLA: Benchmarking Adversarial and Backdoor Attacks on Vision-Language-Action Models | benchmark、BackdoorVLA、targeted attack、real-world evaluation | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2511.12149) | [Code](https://github.com/lijayuTnT/AttackVLA) | 统一覆盖数据构建、训练和推理阶段的 VLA 攻击评测。 | 统一覆盖数据构建、训练和推理阶段的 VLA 攻击评测 | 并提出让触发后的 VLA 执行指定 long-horizon action sequence 的 BackdoorVLA | 平均 targeted success 为 58.4%，部分任务达 100%。 |
 
 ## VLA 训练供应链与相邻 embodied systems
 
-以下工作与 VLA 后门密切相关，但其实验对象不完全等同于端到端 VLA policy，故不计入上面的 15 篇核心论文。
+以下工作与 VLA 后门密切相关，但其实验对象不完全等同于端到端 VLA policy，故不计入上面的 14 篇核心论文。
 
 | 时间 | 论文名称 | 与 VLA 的关系 | 会议 / 状态 | 论文链接 | 代码 / 项目 | 研究问题 | 核心 idea | 技术 | 结论 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |

@@ -55,5 +55,5 @@
 ## 关联方向
 
 - Action-freezing attack 主记录见 [多模态与具身模型 DoS](../../dos/multimodal-and-embodied-model-dos.md)。
-- Training-time trigger 与 poisoned demonstration 见 [VLA 后门](../../poison-and-backdoor/vision-language-action-backdoor.md)。
+- Training-time trigger 与 poisoned demonstration 见 [VLA 后门](../../poison-and-backdoor/vla-backdoor.md)。
 - Runtime mitigation 和 robust fine-tuning 见 [VLA Safety Evaluation 与 Defense](vla-safety-evaluation-and-defense.md)。

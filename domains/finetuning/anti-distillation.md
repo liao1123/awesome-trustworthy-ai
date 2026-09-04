@@ -57,13 +57,14 @@
 
 ## Watermark、Fingerprint 与 Ownership Tool
 
+后门式水印、模型所有权验证和针对后门指纹的规避攻击已集中整理至 [后门式水印、版权保护与所有权验证](../content-authenticity/backdoor-based-watermarking-and-ownership.md)。
+
 | 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 2026-08 | OpenStamp: A Watermark for Open-Source Language Models | tool、weight-level watermark、open-weight model、fine-tuning robustness | 未确认（arXiv Comments：Published at COLM 2026） | [arXiv](https://arxiv.org/abs/2608.27899) | [Code](https://github.com/mb-14/openstamp) | 针对开放权重用户可在推理时关闭采样式水印 | OpenStamp 只修改最终 projection／unembedding layer | 把标记逻辑直接写入权重 | 两种模型上以很小能力损失提升检测，并更能抵抗 paraphrase 与事后微调擦除。 |
 | 2026-05 | Asking Back: Interaction-Layer Antidistillation Watermarks | tool、interaction watermark、behavioral marker、distillation attribution | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2605.16462) | 暂未公开 | 研究面向 interaction watermark、behavioral marker 的安全工具，重点考察 distillation attribution 下的审计或防护效果。 | 方法把水印从易被释义清除的 token 层上移到交互行为 | 间歇诱导追问、低频变体或重述 | 跨 63 个 LoRA 学生，标记可在多模型家族中继承并支持黑盒审计，同时人类评价与基线效用接近。 |
 | 2026-05 | TextSeal: A Localized LLM Watermark for Provenance & Distillation Protection | tool、distillation attribution、model watermarking | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2605.12456) | 暂未公开 | 针对水印检测、文本定位与输出质量难以兼顾 | 论文结合双密钥 Gumbel-max、熵加权和多区域定位 | 关键实现：论文结合双密钥 Gumbel-max、熵加权和多区域定位。 | 结果实现无额外推理开销的强检测，并让信号在蒸馏后仍可追踪。 |
 | 2026-02 | Antidistillation Fingerprinting | tool、distillation attribution、ownership verification | ICML 2026 | [Official](https://icml.cc/virtual/2026/poster/63624) · [arXiv](https://arxiv.org/abs/2602.03812) | 暂未公开 | 针对传统指纹难以兼顾可检测性和输出质量 | 论文根据代理学生的学习动态选择最易被蒸馏吸收的 token | 关键实现：论文根据代理学生的学习动态选择最易被蒸馏吸收的 token。 | 结果以较小效用损失获得更强且可跨未知学生架构的指纹。 |
-| 2025-01 | HoneypotNet: Backdoor Attacks Against Model Extraction | tool、distillation attribution、ownership verification | AAAI 2025 | [Official](https://ojs.aaai.org/index.php/AAAI/article/view/32872) · [arXiv](https://arxiv.org/abs/2501.01090) | 暂未公开 | 针对模型提取后的所有权验证与能力阻断 | 论文以双层优化训练 honeypot 分类层并向替代模型传播后门 | 关键实现：论文以双层优化训练 honeypot 分类层并向替代模型传播后门。 | 结果既能高成功率确权，也会破坏提取模型功能。 |
 
 ## 攻防评测与机制分析
 

@@ -6,6 +6,8 @@
 
 研究在文本、代码、图像、视频、音频与 3D 内容中嵌入或验证来源信号，覆盖 zero-bit/multi-bit watermark、公开验证、语义绑定、局部定位、移除与伪造攻击。
 
+使用 backdoor-like conditional behavior 进行版权保护、授权控制、模型/数据所有权验证，或专门攻击这类机制的工作，见独立专题 [后门式水印、版权保护与所有权验证](backdoor-based-watermarking-and-ownership.md)。
+
 ## 研究脉络
 
 - **可检测标记：** Watermark 从 token partition 和生成扰动建立低成本机器内容标记。
@@ -89,7 +91,6 @@
 | 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 2026-08 | MarkNull: Model-Agnostic Watermark Removal in AI-Generated Images via On-Manifold Latent Manipulation | attack、latent manipulation、content watermark、AI-generated content | USENIX Security 2026 | [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/cao) · [arXiv](https://arxiv.org/abs/2608.10166) | 暂未公开 | 针对生成图像水印移除常产生明显失真或依赖水印细节的问题 | MarkNull 在生成流形上操纵 latent | 并以 MarkNull-A 处理自适应检测 | 使水印 bit accuracy 降至 53.14% 且单图约耗时 0.50 秒。 |
-| 2026-08 | Robust Watermarks Meet Backdoored Models: Evading Diffusion Semantic Watermarks via Stealthy Backdoor | attack、diffusion watermark、backdoor、content watermark | USENIX Security 2026 | [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/liu-jinyuan) · [arXiv](https://arxiv.org/abs/2608.00543) | 暂未公开 | 针对 semantic watermark 检测链本身依赖神经网络的攻击面 | GhostVAE 向 VAE encoder 植入隐蔽 backdoor | 在良性图像上保持平均 94.4% TPR | 同时触发时达到平均 94.6% 水印逃逸 ASR。 |
 | 2026-05 | Linear Ensembles Wash Away Watermarks: On the Fragility of Distributional Perturbations in LLMs | defense、content watermark、provenance、robust verification | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/66219) · [arXiv](https://arxiv.org/abs/2605.30501) | [Code](https://github.com/Kunhao18/WASH) | 针对生成内容水印容易遭到改写、混合、伪造或低成本移除的问题 | 论文提出 Linear Ensembles Wash Away Watermarks 防御或缓解方法 | 关键实现：论文提出 Linear Ensembles Wash Away Watermarks 防御或缓解方法。 | 摘要实验显示其提高了系统对相应威胁的鲁棒性，直接服务于生成内容标记与溯源。 |
 | 2026-05 | PASA: A Principled Embedding-Space Watermarking Approach for LLM-Generated Text under Semantic-Invariant Attacks | attack、AI watermarking、content watermark、provenance | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/63335) · [arXiv](https://arxiv.org/abs/2605.10977) | [Code](https://github.com/ai-kunkun/PASA) | 针对生成内容水印容易遭到改写、混合、伪造或低成本移除的问题 | 论文提出 PASA 攻击或威胁分析 | 关键实现：论文提出 PASA 攻击或威胁分析。 | 摘要实验验证该威胁在所列模型、任务或数据集上成立，直接服务于生成内容标记与溯源。 |
 | 2026-03 | DITTO: A Spoofing Attack Framework on Watermarked LLMs via Knowledge Distillation | attack、text watermark、knowledge distillation、authorship spoofing | EACL 2026 | [Official](https://aclanthology.org/2026.eacl-long.229/) | [Code](https://github.com/hsannn/ditto) | 研究 text watermark、knowledge distillation 场景下的攻击面，重点考察 authorship spoofing 如何影响目标模型或系统。 | 针对特定 watermark 被当作特定模型作者证明；DITTO 通过 distill watermarked teacher 复制其 radioactivity signal | 关键实现：针对特定 watermark 被当作特定模型作者证明；DITTO 通过 distill watermarked teacher 复制其 radioactivity signal。 | 结果恶意模型可给 disinformation 伪造可信来源水印，打破 watermark uniqueness 假设。 |

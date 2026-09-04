@@ -4,7 +4,7 @@
 
 > **更新日期：2026-08-31。** 本页按论文首次公开时间整理直接作用于 VQA／图像描述模型、CLIP／VLP、LVLM／MLLM、VLM-based GUI／Web／multimodal Agent，以及多模态 RAG 的投毒、后门、检测、清除、审计和保护性投毒工作。会议状态只有在官方论文集、会议页面或论文明确声明时才标注；其余统一写作“未注明（arXiv）”。
 >
-> **边界说明：** 不收录只在推理时改输入、不会留下持久条件行为的普通 adversarial example／jailbreak（如 AnyDoor），也不收录仅把 VLM 当外部审计器、但被保护对象是普通图像分类器的工作。Text-to-image diffusion 与 VLA／机器人策略分别见 [扩散模型后门](diffusion-model-backdoor.md) 和 [视觉语言动作模型后门](vision-language-action-backdoor.md)；纯文本知识库投毒的完整清单见 [RAG 投毒](rag-poison.md)。
+> **边界说明：** 不收录只在推理时改输入、不会留下持久条件行为的普通 adversarial example／jailbreak（如 AnyDoor），也不收录仅把 VLM 当外部审计器、但被保护对象是普通图像分类器的工作。Text-to-image diffusion 与 VLA／机器人策略分别见 [扩散模型后门](diffusion-backdoor.md) 和 [视觉语言动作模型后门](vla-backdoor.md)；纯文本知识库投毒的完整清单见 [RAG 投毒](rag-poison.md)。
 
 ## 研究方向与脉络
 
@@ -200,6 +200,8 @@
 
 ## Benchmark、机制分析与双用途工具
 
+后门式水印、模型版权保护和所有权验证条目（如 AGATE、VLPMarker）已迁移至 [后门式水印、版权保护与所有权验证](../content-authenticity/backdoor-based-watermarking-and-ownership.md)。
+
 | 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 2026-08 | MemCatalyst: Amplifying Data Auditing on Vision-Language Models via Data Poisoning | audit tool、protective poisoning、membership inference、black-box transfer | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.17722) | 暂未公开 | 分析 protective poisoning、membership inference 风险的形成机制，重点考察 black-box transfer 对安全行为的影响。 | MemCatalyst 以 Poisoning Text／Image 放大 VLM 对特定 image–text inconsistency 的记忆 | 在很小预算和很低 utility 损失下提升五种 membership audit 的 AUC | 并可跨模型黑盒迁移。 |
@@ -207,9 +209,7 @@
 | 2026-03 | DP²-VL: Private Photo Dataset Protection by Data Poisoning for Vision-Language Models | protection、privacy poisoning、private photos、identity affiliation | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2603.23925) | 暂未公开 | 研究如何防御 privacy poisoning、protection 威胁，并评估 private photos、identity affiliation 条件下的安全收益与效用代价。 | DP²-VL 给私人照片加入不可感知保护扰动 | 关键实现：DP²-VL 给私人照片加入不可感知保护扰动。 | 使未授权 VLM fine-tuning 在 identity–property／relationship association 上过拟合并难以泛化。 |
 | 2025-11 | BackdoorVLM: A Benchmark for Backdoor Attacks on Vision-Language Models | benchmark、12 attacks、image／text／bimodal trigger、VLM | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2511.18921) | [Code](https://github.com/bin015/BackdoorVLM) | BackdoorVLM 统一五类路径、12 种攻击、两种开源 VLM 和三套多模态数据。 | BackdoorVLM 统一五类路径、12 种攻击、两种开源 VLM 和三套多模态数据 | 关键实现：BackdoorVLM 统一五类路径、12 种攻击、两种开源 VLM 和三套多模态数据。 | 结果显示文本 trigger 尤其敏感，1% textual poison 即常超过 90% ASR。 |
 | 2025-05 | Benchmarking Poisoning Attacks against Retrieval-Augmented Generation | benchmark、13 attacks／7 defenses、multimodal RAG、Agent RAG | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2505.18543) | 暂未公开 | 研究如何评测 multimodal RAG、Agent RAG 风险，重点考察 13 attacks／7 defenses 场景下的覆盖度与可复现性。 | 该宽口径 benchmark 统一五个 QA 数据集及十个扩展变体 | 并明确覆盖 multimodal RAG 与 RAG-based Agent | 结果显示攻击／防御在扩展设置中的泛化显著弱于标准 QA。 |
-| 2025-04 | AGATE: Stealthy Black-box Watermarking for Multimodal Model Copyright Protection | ownership tool、backdoor watermark、black-box verification、multimodal retrieval | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2504.21044) | 暂未公开 | 研究如何防御 ownership tool、backdoor watermark 威胁，并评估 multimodal retrieval、black-box verification 条件下的安全收益与效用代价。 | AGATE 从普通图像生成语义偏移但视觉自然的 adversarial watermark trigger | 再以 post-transform 两阶段黑盒验证 | 在 image–text retrieval 与分类中追踪被盗多模态模型。 |
 | 2024-11 | BackdoorMBTI: A Backdoor Learning Multimodal Benchmark Tool Kit for Backdoor Defense Evaluation | benchmark、multimodal toolkit、attack-defense matrix、extensible framework | KDD 2025 ADS | [Official](https://doi.org/10.1145/3690624.3709385) · [arXiv](https://arxiv.org/abs/2411.11006) | [Code](https://github.com/SJTUHaiyangYu/BackdoorMBTI) | 研究如何评测 multimodal toolkit、attack-defense matrix 风险，重点考察 extensible framework 场景下的覆盖度与可复现性。 | BackdoorMBTI 提供可扩展的图像、文本、音频与多模态 backdoor pipeline | 关键实现：BackdoorMBTI 提供可扩展的图像、文本、音频与多模态 backdoor pipeline。 | 适合统一控制 poison rate、trigger、attack 与 defense 组合。 |
-| 2023-11 | Watermarking Vision-Language Pre-trained Models for Multi-modal Embedding as a Service | ownership tool、VLPMarker、backdoor watermark、embedding service | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2311.05863) | [Code](https://github.com/Pter61/vlpmarker) | 研究 ownership tool、backdoor watermark 场景下的攻击面，重点考察 VLPMarker、embedding service 如何影响目标模型或系统。 | VLPMarker 用 OOD trigger 与 embedding orthogonal transformation 植入可验证的 benign backdoor watermark | 关键实现：VLPMarker 用 OOD trigger 与 embedding orthogonal transformation 植入可验证的 benign backdoor watermark。 | 并联合 embedding distribution 抵抗 model extraction。 |
 | 2023-10 | Defending Our Privacy With Backdoors | protection、privacy removal、CLIP、dual-use backdoor | ECAI 2024 | [arXiv](https://arxiv.org/abs/2310.08320) | 暂未公开 | 研究 privacy removal、dual-use backdoor 场景下的攻击面，重点考察 protection、CLIP 如何影响目标模型或系统。 | 该双用途工作把敏感姓名／人脸 embedding 映射到中性概念或匿名表示 | 关键实现：该双用途工作把敏感姓名／人脸 embedding 映射到中性概念或匿名表示。 | 用几分钟 CLIP fine-tuning 降低个人信息被提取的风险。 |
 
 ## Survey、综述与研究资源

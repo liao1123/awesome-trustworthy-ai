@@ -6,7 +6,7 @@
 
 | 子领域 | 范围 |
 | --- | --- |
-| [语言模型 DoS](language-model-dos.md) | 面向普通自回归 LLM 与 MoE LLM 的长输出、循环生成、路由失衡、参数篡改、训练投毒和安全拒绝攻击，以及通用综述。 |
+| [语言模型 DoS](llm-dos.md) | 面向普通自回归 LLM 与 MoE LLM 的长输出、循环生成、路由失衡、参数篡改、训练投毒和安全拒绝攻击，以及通用综述。 |
 | [推理模型 DoS](reasoning-model-dos.md) | 面向 LRM/RLM 的过度思考、回溯搜索、递归反思和推理长度放大攻击。 |
 | [多模态与具身模型 DoS](multimodal-and-embodied-model-dos.md) | 面向图像、视频、3D VLM、VLA 与 LLM 控制机器人的视觉扰动、冗长生成、动作冻结和语义停机攻击。 |
 | [Agent 与多 Agent DoS](agent-system-dos.md) | 面向工具 Agent、GUI Agent、Agent guardrail 和多 Agent 通信拓扑的调用链、终止条件、递归传播与协作阻断攻击。 |

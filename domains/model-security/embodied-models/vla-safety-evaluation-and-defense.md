@@ -18,6 +18,7 @@
 
 | 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2026-09 | FailBench: How Reliable are VLMs at Judging Robot Task Success? ↗ | benchmark、VLM failure detection、robot manipulation、monitor reliability | 未确认（arXiv） | [arXiv](https://arxiv.org/abs/2609.03611) | [Project](https://metric-ai-lab.github.io/failbench/) | VLM 被当作机器人奖励、数据过滤和 retry gate 时，跨域失败检测是否足够可靠？ | FailBench 汇集真实与模拟操作，专门测 VLM 对成功/失败结果的判断而非任务生成能力。 | 2,197 次操作来自 14 个来源，评估 13 个 VLM detector、视觉证据依赖和输入裁剪干预。 | 最佳均衡准确率仅 0.77，接触密集任务接近随机且有“预测成功”偏差；裁剪相关区域只提升 2.4 个百分点。 |
 | 2026-08 | When Robots Mishear Us: Mapping the Safety Risks of Voice-Controlled Embodied AI ↗ | benchmark、ASR-error stress test、refusal failure、unsafe plan execution | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.28518) | 暂未公开 | 针对语音控制具身系统的安全评测通常假定转写正确 | 论文将模拟 ASR 错误注入 SafeAgentBench 与 POEX | 追踪错误是否增加有害歧义、削弱拒答并让不安全计划生成和执行 | 结果多类错误显著降低具身安全，自动纠错只能缓解部分情形。 |
 | 2026-08 | CertVLA: Certified Defense against Physical Visual Attacks for Vision-Language-Action Models | defense、VLA certification、physical patch、closed-loop rollout | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.20791) | 暂未公开 | 针对既有 patch certificate 只覆盖离散标签、无法约束连续且时序相关的 VLA action | CertVLA 以双重 covering mask 的行为一致性、有限样本校准和逐查询合取构造完整闭环证书 | 关键实现：CertVLA 以双重 covering mask 的行为一致性、有限样本校准和逐查询合取构造完整闭环证书。 | 在有界 patch／texture threat model 下，经认证 rollout 的 action chunk 与移除攻击后的 clean prediction 一致，并在仿真和实体机器人上验证。 |
 | 2026-08 | TrapVLA: Trapping Vision-Language-Action Models in Configured Failure Modes | benchmark、configured-failure fidelity、VLA backdoor、physical evaluation | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.26578) | [Project](https://john-liua.github.io/TrapVLA/) | 针对只统计 task failure 无法区分 VLA 后门是否真正实现攻击者指定物理后果 | 论文构建 Trap-LIBERO、Trap-RoboTwin 与自动 fidelity suite | 在四类 failure mode 上逐项测量目标轨迹 | 数据引擎与真实机器人验证使评测从二元失败率推进到可配置后果的一致性。 |
@@ -67,7 +68,7 @@
 
 - 攻击方法与 threat model 见 [VLA Adversarial Attack](vla-adversarial-attacks.md)。
 - Action-freezing 的 availability 风险见 [多模态与具身模型 DoS](../../dos/multimodal-and-embodied-model-dos.md)。
-- Poisoned demonstration 与 trigger defense 见 [VLA 后门](../../poison-and-backdoor/vision-language-action-backdoor.md)。
+- Poisoned demonstration 与 trigger defense 见 [VLA 后门](../../poison-and-backdoor/vla-backdoor.md)。
 - 面向 agent planning 的通用 guardrail 见 [Guardrails](../../guardrails/README.md)。
 
 ## 防御与缓解

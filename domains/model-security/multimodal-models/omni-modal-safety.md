@@ -36,4 +36,4 @@
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 2026-03 | Unsafe by Reciprocity: How Generation–Understanding Coupling Undermines Safety in Unified Multimodal Models | analysis、unified multimodal model、VLM safety、cyber misuse | ECCV 2026 | [Official](https://eccv.ecva.net/virtual/2026/poster/4580) · [arXiv](https://arxiv.org/abs/2603.27332) | 暂未公开 | 针对理解与生成共用表征的安全后果尚未被研究的问题 | RICE 分别攻击生成到理解和理解到生成的双向通路 | 关键实现：RICE 分别攻击生成到理解和理解到生成的双向通路。 | 发现不安全中间信号会跨功能传播并放大风险。 |
 
-> 以独立 moderation model 实现的 OmniGuard 归入 [Multimodal Guardrails](../../guardrails/multimodal-guardrails.md)；以音频为主要攻击载体的 cross-modal transfer 见 [Audio Language Model Safety](audio-language-model-safety.md)。
+> 以独立 moderation model 实现的 OmniGuard 归入 [Multimodal Guardrails](../../guardrails/multimodal-guardrails.md)；以音频为主要攻击载体的 cross-modal transfer 见 [Audio Language Model Safety](lalm-safety.md)。
