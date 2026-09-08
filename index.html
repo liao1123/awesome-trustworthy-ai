@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Trustworthy AI / AI Safety 论文阅读器：日报、领域与会议三个视图的统一卡片流。">
+    <title>Trustworthy AI · Paper Reader</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark">🛡️</span>
+        <span class="brand-text">Trustworthy AI<em>Paper Reader</em></span>
+      </div>
+      <div class="topbar-controls">
+        <input id="searchBox" type="search" placeholder="搜索标题 / 作者 / 关键词…" autocomplete="off" spellcheck="false">
+        <button id="starredToggle" class="chip" title="只看收藏的论文">☆ 只看收藏</button>
+        <button id="themeToggle" title="切换明暗主题">🌓</button>
+      </div>
+    </header>
+
+    <div class="layout">
+      <aside id="sidebar">
+        <nav class="view-tabs" id="viewTabs">
+          <button data-view="daily">日报</button>
+          <button data-view="domains" class="active">领域</button>
+          <button data-view="conferences">会议</button>
+        </nav>
+        <div id="navTree" class="nav-tree" aria-label="浏览导航"></div>
+        <footer class="sidebar-foot">
+          <p id="statsNote"></p>
+          <p>收藏与阅读状态保存在本地浏览器</p>
+        </footer>
+      </aside>
+
+      <main id="main">
+        <div id="scopeHeader" class="scope-header"></div>
+        <div id="cards" class="cards"></div>
+        <div id="emptyState" class="empty" hidden>
+          <p class="empty-title">没有匹配的论文</p>
+          <p class="empty-hint">清空搜索或切换到其他视图</p>
+        </div>
+        <div id="sentinel"></div>
+      </main>
+    </div>
+
+    <button id="backTop" title="回到顶部" hidden>↑</button>
+
+    <noscript><p class="noscript">阅读器需要 JavaScript。</p></noscript>
+    <script src="data/papers.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -16,34 +16,164 @@
 
 ## Bio-Capability 与 Agentic Uplift
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026-07 | An Early Warning of Emerging Biosecurity Risks in Frontier LLMs | attack、bio red team、wet-lab validation、capability uplift | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2607.18056) | 暂未公开 | 针对 text-only CBRN evaluation 无法判断模型输出能否转化为生物产物；论文以 Intern-BioBreaker 定向生成 jailbreak | 并把筛选后的 sequence 接入 DNA synthesis、host expression 与 protein verification | 关键实现：并把筛选后的 sequence 接入 DNA synthesis、host expression 与 protein verification。 | 结果多种 frontier model 出现高 ASR，部分模型生成设计可在受控实验中实现。 |
-| 2026-06 | ABC-Bench: An Agentic Bio-Capabilities Benchmark for Biosecurity | benchmark、bio agent、DNA assembly、screening evasion | ICML 2026 | [Official](https://icml.cc/virtual/2026/poster/60590) · [arXiv](https://arxiv.org/abs/2606.11150) | 暂未公开 | 针对知识问答无法衡量 Agent 把 biology 与 software skill 组合成现实动作的能力；论文评测 liquid-handler coding、DNA fragment design 和 synthesis-screening evasion | 并进行三组 wet-lab validation | 关键实现：并进行三组 wet-lab validation。 | 结果所有受测 Agent 在三项任务均超过 median expert baseline，且模型生成脚本成功完成 DNA assembly。 |
-| 2025-10 | Generative AI for Biosciences: Emerging Threats and Roadmap to Biosecurity | analysis、bioscience misuse、lifecycle defense、adaptive governance | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2510.15975) | 暂未公开 | 针对 bioscience GenAI 的 jailbreak、privacy、autonomous agent 和 dual-use 风险缺少统一路线图。 | 针对 bioscience GenAI 的 jailbreak、privacy、autonomous agent 和 dual-use 风险缺少统一路线图；论文结合 130 名专家访谈提出 data filtering、training alignment、real-time monitoring 和 governance 的全生命周期防御 | 关键实现：针对 bioscience GenAI 的 jailbreak、privacy、autonomous agent 和 dual-use 风险缺少统一路线图；论文结合 130 名专家访谈提出 data filtering、training alignment、real-time monitoring 和 governance 的全生命周期防御。 | 结论是能力与监管共同演化时需要 secure-by-design 而非单点 guardrail。 |
+### 1. An Early Warning of Emerging Biosecurity Risks in Frontier LLMs
 
-## Protein 与 DNA Model Red Team
+📄 [arXiv](https://arxiv.org/abs/2607.18056)　📅 2026-07
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026-08 | A Blind Spot in Alignment: Quantifying Biosecurity Risks in Large Language Models | benchmark、SPIKE-Bench、functional harmfulness、BioSafe-Guard | COLM 2026 | [Official](https://colm.cc/Conferences/2026/AcceptedPapers) · [arXiv](https://arxiv.org/abs/2608.02684) | [Code](https://github.com/PKU-Alignment/SPIKE-Bench) | 针对自然语言 refusal 无法判断生成 toxin-like protein sequence 是否具备功能风险。 | 针对自然语言 refusal 无法判断生成 toxin-like protein sequence 是否具备功能风险；论文用 compliance、biological plausibility 和 predicted toxicity 三阶段 SPIKE funnel 评测 32 个模型并训练 BioSafe-Guard | 关键实现：针对自然语言 refusal 无法判断生成 toxin-like protein sequence 是否具备功能风险；论文用 compliance、biological plausibility 和 predicted toxicity 三阶段 SPIKE funnel 评测 32 个模型并训练 BioSafe-Guard。 | 结果 FHR 最高达 50.7% 且与 refusal rate 脱钩，专用 guard 可降低预测风险并保持良性效用。 |
-| 2025-09 | SafeProtein: Red-Teaming Framework and Benchmark for Protein Foundation Models | attack、protein foundation model、heuristic beam search、sequence misuse | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2509.03487) | [Code](https://github.com/jigang-fan/SafeProtein) | 针对 protein foundation model 缺少系统 red team；论文结合 multimodal prompt engineering 与 heuristic beam search | 并构建 SafeProtein-Bench | 关键实现：并构建 SafeProtein-Bench。 | 结果可持续 jailbreak 多种模型，ESM3 上 ASR 最高 70%，暴露蛋白质理解和设计能力的 dual-use 风险。 |
-| 2025-05 | GeneBreaker: Jailbreak Attacks against DNA Language Models with Pathogenicity Guidance | attack、DNA language model、pathogenicity guidance、sequence jailbreak | ICLR 2026 | [Official](https://iclr.cc/virtual/2026/poster/10010887) · [ICLR](https://proceedings.iclr.cc/paper_files/paper/2026/hash/398b00a05b847ac65eb98c8e5e865fe8-Abstract-Conference.html) · [arXiv](https://arxiv.org/abs/2505.23839) | [Code](https://github.com/zaixizhang/GeneBreaker) | 针对 DNA language model 能否在 jailbreak 下设计 pathogen-like sequence。 | 针对 DNA language model 能否在 jailbreak 下设计 pathogen-like sequence；论文让 bioinformatics Agent、PathoLM-guided beam search 和 BLAST/function annotation 组成 GeneBreaker | 关键实现：针对 DNA language model 能否在 jailbreak 下设计 pathogen-like sequence；论文让 bioinformatics Agent、PathoLM-guided beam search 和 BLAST/function annotation 组成 GeneBreaker。 | 结果跨六类病毒稳定攻击 Evo 系列，Evo2-40B ASR 最高 60%，且模型规模增大伴随更高 dual-use risk。 |
+**关键词**：`attack`、`bio red team`、`wet-lab validation`、`capability uplift`、`q-bio.GN`
 
-## Provenance、Screening 与 Built-in Safeguard
+👤 **作者**：Zhida He、…、Ziyuan Zhou
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026-08 | Fool's Gold: Defensive Deception Against Safety-Removal Attacks on Open-Weight Models 🔥 ↗ | defense、CBRN safeguard、hazardous-procedure decoy、safety-removal attack | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.17202) | 暂未公开 | 针对开放权重模型的 CBRN refusal 被移除后仍可输出可执行危险流程的问题 | Fool's Gold 让 chemical／biological hazardous request 在 attacked state 中得到难以无标签识别的关键要素伪造答案 | 关键实现：Fool's Gold 让 chemical／biological hazardous request 在 attacked state 中得到难以无标签识别的关键要素伪造答案。 | 外部红队 CBRNE-adjacent slice 上，防御后 122B 模型的 matched-quality 回答有 0.82–0.86 出现致命错误，而未防御模型至多为 0.10，且重复采样不能普遍恢复可信流程。 |
-| 2025-09 | Securing the Language of Life: Inheritable Watermarks from DNA Language Models to Proteins | defense、DNA watermark、protein inheritance、sequence provenance | NeurIPS 2025 | [Official](https://proceedings.neurips.cc/paper_files/paper/2025/hash/c85aaa3996e1dbc35646a17893a54495-Abstract-Conference.html) · [NeurIPS](https://neurips.cc/virtual/2025/poster/116266) · [arXiv](https://arxiv.org/abs/2509.18207) | 暂未公开 | 研究如何防御 DNA watermark、protein inheritance 威胁，并评估 sequence provenance 条件下的安全收益与效用代价。 | 针对生成 DNA 在 mutation、translation 和 downstream protein 中难追踪；论文提出 DNAMark 的 synonymous codon embedding 和可跨 central dogma 继承的 CentralMark | 关键实现：针对生成 DNA 在 mutation、translation 和 downstream protein 中难追踪；论文提出 DNAMark 的 synonymous codon embedding 和可跨 central dogma 继承的 CentralMark。 | 结果多种扰动下 detection F1 超过 0.85，并在 CRISPR-Cas9 case 展示 provenance 用途。 |
-| 2025-04 | A call for built-in biosecurity safeguards for generative AI tools | analysis、built-in safeguard、sequence screening、dual-use biology | Nature Biotechnology | [Nature Biotechnology](https://www.nature.com/articles/s41587-025-02650-8) | 暂未公开 | 针对 generative biology model 可能产生数据库之外的新型 pathogen、toxin 或 screening-evasive molecule；论文主张把 biosecurity 检查内建到生成工具和供应链 | 而不是只依赖用户政策 | 关键实现：而不是只依赖用户政策。 | 结论是模型、synthesis provider 与治理机构需要协同的多层 safeguard。 |
+- 🎯 **研究动机**：前沿 LLM 的生物能力增长可能超前于防护，需要计算到物理的全链条风险评估
+- 🔬 **研究方法**：开发 Intern-BioBreaker 生物红队模型与计算-物理耦合框架：生成定向越狱提示测试安全敏感任务与序列级输出，并对选定序列做 DNA 合成、宿主表达与正交蛋白验证
+- 📌 **结论**：开源与闭源前沿模型均现广泛生物越狱漏洞（部分任务级 ASR 近 100%）；GPT-5.5 可被诱导生成具致病潜力的修饰病毒候选序列且蛋白显示更强受体结合；模型设计经湿实验证实可物理实现
 
-## 相关研究博客
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
 
-| 时间 | 标题 | 发布机构或作者 | 关联主题 | 链接 | 核心内容 |
-| --- | --- | --- | --- | --- | --- |
-| 2026-01 | Next-generation Constitutional Classifiers: More efficient protection against universal jailbreaks | Anthropic | CBRN classifier、universal jailbreak、deployment efficiency | [Anthropic Research](https://www.anthropic.com/research/next-generation-constitutional-classifiers) | 说明面向危险 CBRN query 的 Constitutional Classifier 如何通过更高效架构和 ensemble 降低 harmless refusal，并用真实部署流量讨论防御强度与计算代价；同时明确不存在完全鲁棒的市场化防御。 |
-| 2025-09 | Why do we take LLMs seriously as a potential source of biorisk? | Anthropic | biological uplift、capability evaluation、ASL-3 | [Anthropic Research](https://www.anthropic.com/research/biorisk) | 结合模型在 virology troubleshooting 等评测上的能力增长解释为何 bio uplift 已从理论风险变成需要持续测量的问题，并讨论 ASL-3 safeguard、monitoring、synthesis screening 与不确定性。 |
-| 2025-05 | Activating AI Safety Level 3 protections | Anthropic | CBRN deployment、capability threshold、defense in depth | [Anthropic](https://www.anthropic.com/news/activating-asl3-protections) | 说明 Claude Opus 4 发布时为何在尚未确认越过 threshold 的情况下预防性启用 ASL-3，并区分针对 CBRN misuse 的 deployment measure 与防止 model-weight theft 的 security standard。 |
+Frontier large language models (LLMs) are increasingly integrated into scientific workflows, yet their growing biological capabilities may outpace current safeguards. To assess the biological risks of frontier models, we develop Intern-BioBreaker, a specialized bio-red-teaming model, together with an integrated computational-to-physical framework that couples model-level stress testing with wet-lab validation. Within this framework, Intern-BioBreaker generates targeted jailbreak prompts to test whether aligned models can be induced to provide operational guidance for safety-sensitive biological tasks or produce sequence-level outputs with potentially harmful properties. Selected sequence outputs are then carried forward for DNA synthesis, host expression, and orthogonal protein verification to assess whether model-generated designs can yield the intended biological products. Our evaluation reveals a concerning gap between text-level safeguards and the risks posed by capable scientific models: (i) Intern-BioBreaker outperforms baseline attack models and reveals widespread bio-risk jailbreak vulnerabilities across both open-weight and proprietary frontier LLMs, with several targets reaching near-saturated or 100% task-level attack success rate (ASR); (ii) in sequence-level case studies, GPT-5.5 can be induced to generate modified viral candidate sequences with pathogenic potential; the corresponding translated proteins may exhibit even stronger receptor-binding affinity and thus enhanced infection potential; and (iii) end-to-end verification shows that selected model-generated biological designs are not merely textual artifacts, but can be physically realized under controlled experimental settings. These findings underscore the need for stronger biological red-teaming, nucleic acid synthesis screening, and safety mechanisms that keep pace with model capabilities.
 
-> Hazardous knowledge proxy、unlearning 和 pretraining filtering 的主条目保留在 [Capability Access Control](../misc/capability-access-control.md)，其中包括 WMDP 与 Anthropic pretraining-data-filtering 研究；跨六学科的 SoSBench 主条目见 [Scientific Domain Risk Evaluation](scientific-domain-risk-evaluation.md)。
+</details>
+
+### 2. ABC-Bench: An Agentic Bio-Capabilities Benchmark for Biosecurity
+
+📄 [arXiv](https://arxiv.org/abs/2606.11150) · 🎓 [Official](https://icml.cc/virtual/2026/poster/60590)　📅 2026-06　🏷 ICML 2026
+
+**关键词**：`benchmark`、`bio agent`、`DNA assembly`、`screening evasion`、`agent safety`、`empirical evaluation`
+
+👤 **作者**：Andrew Bo Liu、Samira Nedungadi、Bryce Cai、Alex Kleinman、Harmon Bhasin、Seth Donoughe
+
+- 🎯 **研究动机**：LLM agent 获得真实生物能力，改变生物安全风险格局，需要可测量的能力基准
+- 🔬 **研究方法**：构建 ABC-Bench，评估液体处理机器人代码编写、DNA 片段体外组装设计与 DNA 合成筛查规避等双用途任务，并与专家人类基线比较
+- 📌 **结论**：全部被测 agent 在三项任务上超过人类中位基线；wet-lab 验证中 o4-mini-high 生成的脚本在 OpenTrons 机器人上成功组装出预期序列 DNA
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models (LLMs) are rapidly acquiring capabilities relevant to biological research, from literature synthesis to interpretation of experimental data. Increasingly, LLM agents can also perform in silico biology tasks that previously required experienced human biologists. These emerging AI capabilities offer new opportunities for scientific discovery and biomedical advances, but they also shift the landscape of biosecurity risks. To address this, we introduce the Agentic Bio-Capabilities Benchmark (ABC-Bench), a suite of tasks to measure agentic biosecurity-relevant capabilities. ABC-Bench evaluates LLM agents on both benign and dual-use biology tasks: writing code to operate liquid handling robots, designing DNA fragments for in vitro assembly, and evading DNA synthesis screening. These tasks require a combination of biology and software expertise. All tested LLM agents outperformed the median expert human baseliner on all three tasks. Agents performed highly on tasks drawing on published knowledge and well-documented protocols, and more weakly on a task requiring novel bioinformatics reasoning. In three wet-lab validation experiments, we found that OpenAI's o4-mini-high produced scripts that, when run on an OpenTrons liquid handling robot, successfully assembled DNA with expected sequences.
+
+</details>
+
+### 3. Generative AI for Biosciences: Emerging Threats and Roadmap to Biosecurity
+
+📄 [arXiv](https://arxiv.org/abs/2510.15975)　📅 2025-10
+
+**关键词**：`analysis`、`bioscience misuse`、`lifecycle defense`、`adaptive governance`、`q-bio.BM`
+
+👤 **作者**：Zaixi Zhang、…、Mengdi Wang
+
+- 🎯 **研究动机**：GenAI 降低生物误用门槛，可生成合成病毒蛋白或毒素，而现有 guardrail 脆弱且监管缺口明显
+- 🔬 **研究方法**：综述生物科学 GenAI 的越狱、隐私与自主 agent 双用威胁向量，基于 130 位专家访谈分析监管缺口并提出多层防御路线图
+- 📌 **结论**：约 76% 专家担忧生物学 AI 误用、74% 呼吁新治理框架；提出数据过滤、伦理对齐与实时监测的全生命周期安全蓝图
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+The rapid adoption of generative artificial intelligence (GenAI) in the biosciences is transforming biotechnology, medicine, and synthetic biology. Yet this advancement is intrinsically linked to new vulnerabilities, as GenAI lowers the barrier to misuse and introduces novel biosecurity threats, such as generating synthetic viral proteins or toxins. These dual-use risks are often overlooked, as existing safety guardrails remain fragile and can be circumvented through deceptive prompts or jailbreak techniques. In this Perspective, we first outline the current state of GenAI in the biosciences and emerging threat vectors ranging from jailbreak attacks and privacy risks to the dual-use challenges posed by autonomous AI agents. We then examine urgent gaps in regulation and oversight, drawing on insights from 130 expert interviews across academia, government, industry, and policy. A large majority ($\approx 76$\%) expressed concern over AI misuse in biology, and 74\% called for the development of new governance frameworks. Finally, we explore technical pathways to mitigation, advocating a multi-layered approach to GenAI safety. These defenses include rigorous data filtering, alignment with ethical principles during development, and real-time monitoring to block harmful requests. Together, these strategies provide a blueprint for embedding security throughout the GenAI lifecycle. As GenAI becomes integrated into the biosciences, safeguarding this frontier requires an immediate commitment to both adaptive governance and secure-by-design technologies.
+
+</details>
+
+### 4. A Blind Spot in Alignment: Quantifying Biosecurity Risks in Large Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2608.02684) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-08　🏷 COLM 2026
+
+**关键词**：`benchmark`、`SPIKE-Bench`、`functional harmfulness`、`BioSafe-Guard`、`biosecurity`、`toxin design`
+
+👤 **作者**：Shu Quan、…、Jiaming Ji
+
+- 🎯 **研究动机**：现有 LLM 安全评测停留在自然语言层面，无法判断生成的氨基酸序列是生物乱码还是计算风险信号
+- 🔬 **研究方法**：SPIKE-Bench 耦合 631 条毒素设计提示与三阶段 SPIKE 漏斗（合规、生物合理性、预测毒性），产出 Functional Harmfulness Rate；并提供 BioSafe-Guard 分类器
+- 📌 **结论**：32 个 LLM 审计显示 FHR 最高达 50.7% 且主要由生物生成能力而非安全对齐驱动，拒答率无法预测功能风险
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large Language Models (LLMs) are accelerating biological research, yet this same capability poses a critical biosecurity threat: models that assist in protein engineering can equally be prompted to generate predicted toxin-like sequences, potentially lowering the barrier to biological misuse. Current safety evaluations, however, operate in natural language and cannot determine whether a model-generated amino acid sequence is biological gibberish or a computational risk signal. To address this evaluation blind spot, we introduce SPIKE-Bench, coupling 631 curated toxin-design prompts across seven functional categories with the SPIKE funnel, a three-stage protocol that filters output through compliance, biological plausibility, and predicted toxicity, producing stage-level diagnostics and an aggregate function-aware metric: the Functional Harmfulness Rate (FHR). An audit of 32 LLMs reveals that most models freely comply with toxin-design requests; FHR is driven primarily by biological generation capability rather than safety alignment, reaching 50.7%; and Refusal Rate fails to predict functional risk. As a first step toward mitigation, we provide BioSafe-Guard, a domain-specialized classifier that substantially reduces predicted functional risk while preserving benign utility. We release SPIKE-Bench and BioSafe-Guard at https://github.com/PKU-Alignment/SPIKE-Bench to support more rigorous biosecurity evaluation of LLMs.
+
+</details>
+
+### 5. SafeProtein: Red-Teaming Framework and Benchmark for Protein Foundation Models
+
+📄 [arXiv](https://arxiv.org/abs/2509.03487)　📅 2025-09
+
+**关键词**：`attack`、`protein foundation model`、`heuristic beam search`、`sequence misuse`、`q-bio.BM`、`q-bio.QM`
+
+👤 **作者**：Jigang Fan、Zhenghong Zhou、Ruofan Jin、Le Cong、Mengdi Wang、Zaixi Zhang
+
+- 🎯 **研究动机**：蛋白质基础模型缺乏系统红队，生成具生物安全风险蛋白的滥用风险未评估
+- 🔬 **研究方法**：提出 SafeProtein：多模态 prompt 工程加启发式束搜索设计攻击，配人工构建的 SafeProtein-Bench 与完整评估协议
+- 📌 **结论**：对 SoTA 蛋白质模型实现持续越狱，ESM3 的 ASR 达 70%
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Proteins play crucial roles in almost all biological processes. The advancement of deep learning has greatly accelerated the development of protein foundation models, leading to significant successes in protein understanding and design. However, the lack of systematic red-teaming for these models has raised serious concerns about their potential misuse, such as generating proteins with biological safety risks. This paper introduces SafeProtein, the first red-teaming framework designed for protein foundation models to the best of our knowledge. SafeProtein combines multimodal prompt engineering and heuristic beam search to systematically design red-teaming methods and conduct tests on protein foundation models. We also curated SafeProtein-Bench, which includes a manually constructed red-teaming benchmark dataset and a comprehensive evaluation protocol. SafeProtein achieved continuous jailbreaks on state-of-the-art protein foundation models (up to 70% attack success rate for ESM3), revealing potential biological safety risks in current protein foundation models and providing insights for the development of robust security protection technologies for frontier models. The codes will be made publicly available at https://github.com/jigang-fan/SafeProtein.
+
+</details>
+
+### 6. GeneBreaker: Jailbreak Attacks against DNA Language Models with Pathogenicity Guidance
+
+📄 [arXiv](https://arxiv.org/abs/2505.23839) · 🎓 [Official](https://iclr.cc/virtual/2026/poster/10010887)　📅 2025-05　🏷 ICLR 2026
+
+**关键词**：`attack`、`DNA language model`、`pathogenicity guidance`、`sequence jailbreak`、`q-bio.GN`
+
+👤 **作者**：Zaixi Zhang、Zhenghong Zhou、Ruofan Jin、Le Cong、Mengdi Wang
+
+- 🎯 **研究动机**：DNA 基础模型可设计合成功能序列乃至基因组，其越狱生成病原样序列的风险未被系统评估
+- 🔬 **研究方法**：提出 GeneBreaker：LLM agent 设计高同源越狱 prompt，PathoLM 与 log-probability 引导束搜索，BLAST 对比人类病原库判定越狱
+- 📌 **结论**：对 Evo 系列模型六类病毒持续越狱，Evo2-40B ASR 达 60%；模型规模越大双重用途风险越高
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+DNA, encoding genetic instructions for almost all living organisms, fuels groundbreaking advances in genomics and synthetic biology. Recently, DNA Foundation Models have achieved success in designing synthetic functional DNA sequences, even whole genomes, but their susceptibility to jailbreaking remains underexplored, leading to potential concern of generating harmful sequences such as pathogens or toxin-producing genes. In this paper, we introduce GeneBreaker, the first framework to systematically evaluate jailbreak vulnerabilities of DNA foundation models. GeneBreaker employs (1) an LLM agent with customized bioinformatic tools to design high-homology, non-pathogenic jailbreaking prompts, (2) beam search guided by PathoLM and log-probability heuristics to steer generation toward pathogen-like sequences, and (3) a BLAST-based evaluation pipeline against a curated Human Pathogen Database (JailbreakDNABench) to detect successful jailbreaks. Evaluated on our JailbreakDNABench, GeneBreaker successfully jailbreaks the latest Evo series models across 6 viral categories consistently (up to 60\% Attack Success Rate for Evo2-40B). Further case studies on SARS-CoV-2 spike protein and HIV-1 envelope protein demonstrate the sequence and structural fidelity of jailbreak output, while evolutionary modeling of SARS-CoV-2 underscores biosecurity risks. Our findings also reveal that scaling DNA foundation models amplifies dual-use risks, motivating enhanced safety alignment and tracing mechanisms. Our code is at https://github.com/zaixizhang/GeneBreaker.
+
+</details>
+
+### 7. Fool's Gold: Defensive Deception Against Safety-Removal Attacks on Open-Weight Models
+
+📄 [arXiv](https://arxiv.org/abs/2608.17202)　📅 2026-08
+
+**关键词**：`defense`、`CBRN safeguard`、`hazardous-procedure decoy`、`safety-removal attack`、`differentiable attack simulation`、`conditional decoy`
+
+👤 **作者**：Mark Russinovich
+
+- 🎯 **研究动机**：开源模型的安全对齐可被 abliteration 数分钟内从权重投影移除，尚无发布时防御能持久阻止
+- 🔬 **研究方法**：诱饵硬化 Fool's Gold：承认拒答会被剥离但毒化其收益——剥离后危险操作请求的答案多为关键要素被伪造的诱饵；诱饵在攻击的可微模拟中训练、仅在受攻状态表达，refusal pin 与 benign leash 保住干净行为
+- 📌 **结论**：过预注册门槛的六模型（9B-122B）上受攻态诱饵占 0.51-0.90；122B 防御模型在 CBRNE 相关切片 0.82-0.86 致命错误（未防御至多 0.10），K=64 采样共识也无法恢复可用程序
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Safety alignment in open-weight language models is trivially removable: abliteration projects a refusal-mediating direction out of the weights in minutes, and no release-time defense we are aware of prevents it durably. What cannot be prevented can be deceived. Our defense, decoy hardening ("Fool's Gold"), concedes the refusal strip and poisons its payoff: once refusal is stripped, most answers to hazardous operational requests are confident, fluent decoys whose critical elements are falsified. Decoys are trained inside a differentiable simulation of the attack, expressing only in the attacked state; a refusal pin and benign leash hold clean-state behavior to the original. We instantiate it on seven models from five families (9B-122B, dense and mixture-of-experts). On the six models passing our pre-registered efficacy gate, 0.51-0.90 of attacked-state responses to held-out prompts are decoys, +0.27-0.84 attributable to the defense; all six stay within registered benign-behavior and capability budgets; the seventh (smaller) fails the gate (boundary case). Rates replicate on a frozen test split or untouched strata. The claim is epistemic: without independent ground truth, no observation surface we tested separates falsified answers from correct ones - on external red-team benchmarks' CBRNE-adjacent slice, the defended 122B is fatally wrong on 0.82-0.86 of matched-quality answers vs at most 0.10 undefended. Repeated sampling does not restore trust: element-wise consensus at K=64 reconstructs a fully usable procedure on 0.083-0.625 of prompts where the instrument validates, vs 0.58-0.96 undefended, with no label-free way to tell the regimes apart; on the weakest such model the claim is per-draw only. We evaluate chemical and biological hazards; the defense does not address in-context jailbreaks and protects only the initially released defended weights.
+
+</details>
+
+### 8. Securing the Language of Life: Inheritable Watermarks from DNA Language Models to Proteins
+
+📄 [arXiv](https://arxiv.org/abs/2509.18207) · 🎓 [Official](https://proceedings.neurips.cc/paper_files/paper/2025/hash/c85aaa3996e1dbc35646a17893a54495-Abstract-Conference.html)　📅 2025-09　🏷 NeurIPS 2025
+
+**关键词**：`defense`、`DNA watermark`、`protein inheritance`、`sequence provenance`、`q-bio.GN`
+
+👤 **作者**：Zaixi Zhang、Ruofan Jin、Le Cong、Mengdi Wang
+
+- 🎯 **研究动机**：DNA 语言模型的双用途风险（病原体乃至生物武器）需要可追踪设计序列的水印机制
+- 🔬 **研究方法**：提出 DNAMark 以同义密码子替换嵌入水印保持功能，CentralMark 借蛋白质嵌入实现跨中心法则、从 DNA 遗传到蛋白的水印
+- 📌 **结论**：多条件下 F1 检测分超 0.85，与真值序列相似性超 60%、简并度低于 15%，CRISPR-Cas9 案例验证实用性
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+DNA language models have revolutionized our ability to understand and design DNA sequences--the fundamental language of life--with unprecedented precision, enabling transformative applications in therapeutics, synthetic biology, and gene editing. However, this capability also poses substantial dual-use risks, including the potential for creating pathogens, viruses, and even bioweapons. To address these biosecurity challenges, we introduce two innovative watermarking techniques to reliably track the designed DNA: DNAMark and CentralMark. DNAMark employs synonymous codon substitutions to embed watermarks in DNA sequences while preserving the original function. CentralMark further advances this by creating inheritable watermarks that transfer from DNA to translated proteins, leveraging protein embeddings to ensure detection across the central dogma. Both methods utilize semantic embeddings to generate watermark logits, enhancing robustness against natural mutations, synthesis errors, and adversarial attacks. Evaluated on our therapeutic DNA benchmark, DNAMark and CentralMark achieve F1 detection scores above 0.85 under various conditions, while maintaining over 60% sequence similarity to ground truth and degeneracy scores below 15%. A case study on the CRISPR-Cas9 system underscores CentralMark's utility in real-world settings. This work establishes a vital framework for securing DNA language models, balancing innovation with accountability to mitigate biosecurity risks.
+
+</details>
+
+### 9. A call for built-in biosecurity safeguards for generative AI tools
+
+🌐 [Project](https://www.nature.com/articles/s41587-025-02650-8)　📅 2025-04
+
+**关键词**：`analysis`、`built-in safeguard`、`sequence screening`、`dual-use biology`
+
+- 🎯 **研究动机**：生成式生物学工具可产出库外新pathogen、toxin或规避筛查的分子，仅靠用户政策不足
+- 🔬 **研究方法**：主张将序列筛查等biosecurity safeguard内建到生成工具与合成供应链
+- 📌 **结论**：需要模型、synthesis provider与治理机构协同的多层防护

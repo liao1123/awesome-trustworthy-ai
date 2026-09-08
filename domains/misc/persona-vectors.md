@@ -15,52 +15,259 @@
 
 ## Persona 表征形成与结构
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026-01 | The Assistant Axis: Situating and Stabilizing the Default Persona of Language Models | analysis、assistant persona、persona drift、activation axis | ICML 2026 Spotlight | [Official](https://icml.cc/virtual/2026/poster/61446) · [arXiv](https://arxiv.org/abs/2601.10387) | [Code](https://github.com/safety-research/assistant-axis) | 针对默认 Assistant 身份在多种角色中的几何位置与失稳机制不清 | 论文从 275 类角色 activation 中提取主导 persona space 的 Assistant Axis | 关键实现：论文从 275 类角色 activation 中提取主导 persona space 的 Assistant Axis。 | 结果偏离该轴可预测 harmful 或 bizarre persona drift，而 activation capping 能稳定相关对话并缓解 persona-based jailbreak。 |
-| 2023-10 | Personas as a Way to Model Truthfulness in Language Models | analysis、truthful persona、activation probing、cross-topic generalization | EMNLP 2024 | [ACL Anthology](https://aclanthology.org/2024.emnlp-main.364/) | 暂未公开 | 针对模型未接收 truth label 却能在表征中区分真假这一现象 | 论文提出预训练语料由不同 truthful 或 untruthful agents 生成并形成 persona hierarchy | 关键实现：论文提出预训练语料由不同 truthful 或 untruthful agents 生成并形成 persona hierarchy。 | 结果可在生成前 probe 回答是否真实，且对一组事实微调会提高未见主题的 truthfulness，支持抽象 persona 从数据结构中形成。 |
+### 1. The Assistant Axis: Situating and Stabilizing the Default Persona of Language Models
 
-## Persona 监测与控制 Tool
+📄 [arXiv](https://arxiv.org/abs/2601.10387) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61446)　📅 2026-01　🏷 ICML 2026
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2025-07 | Persona Vectors: Monitoring and Controlling Character Traits in Language Models | tool、persona vector、trait monitoring、preventative steering | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2507.21509) | [Code](https://github.com/safety-research/persona_vectors) | 针对 evil、sycophancy 和 hallucination propensity 等 trait 缺少通用内部监测信号 | 论文从正反 persona response 的 activation 差自动提取 persona vector | 关键实现：论文从正反 persona response 的 activation 差自动提取 persona vector。 | 结果这些方向既能预测 fine-tuning 引起的人格变化，也能通过 post-hoc intervention、preventative steering 和训练样本筛选降低不良漂移。 |
+**关键词**：`defense`、`analysis`、`assistant persona`、`activation axis`、`persona stabilization`、`safety alignment`
 
-## Persona 漂移与 Emergent Misalignment
+👤 **作者**：Christina Lu、Jack Gallagher、Jonathan Michala、Kyle Fish、Jack Lindsey
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026-08 | Data Attribution of Emergent Misalignment with Persona Features | analysis、persona features、data attribution、emergent misalignment | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.11025) | 暂未公开 | 针对 misaligned persona features 在预训练语料中的来源以及自然人类文本能否诱发 emergent misalignment | 论文在四个开放权重模型上做 SAE model diffing 并向一百万篇 web documents 归因 | 关键实现：论文在四个开放权重模型上做 SAE model diffing 并向一百万篇 web documents 归因。 | 结果单 feature steering 可把 misalignment 提高到 62% 或恢复至近基线，但只有把相关内容改造成 synthetic instruction-response pairs 才稳定诱发跨模型 EM。 |
-| 2026-01 | Objective Matters: Fine-Tuning Objectives Shape Safety, Robustness, and Persona Drift | analysis、persona drift、fine-tuning objectives、adversarial robustness | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2601.12639) | 暂未公开 | 针对良性 fine-tuning 也可能破坏 alignment 而 objective 的作用缺少受控比较 | 论文固定数据、模型和优化设置比较六种训练目标 | 关键实现：论文固定数据、模型和优化设置比较六种训练目标。 | 结果小预算下各方法鲁棒性接近，但规模增大后 SFT 与 preference tuning 把能力增益同脆弱性和 persona drift 紧密耦合，ORPO 与 KL regularization 可显著缓解。 |
-| 2026 | Quantifying and Mitigating Socially Desirable Responding in LLMs: A Desirability-Matched Graded Forced-Choice Psychometric Study | defense、persona vector、behavior steering、trait stability | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.1865/) | 暂未公开 | 研究如何防御 persona vector、behavior steering 威胁，并评估 trait stability 条件下的安全收益与效用代价。 | 论文用 HONEST/FAKE-GOOD 与 IRT 效应量衡量问卷中的社会期许作答 | 并以 30 对期许匹配的 graded forced-choice 题显著削弱九个 LLM 的伪善偏差 | 同时大体保留 persona 还原。 |
+- 🎯 **研究动机**：模型 persona 空间的结构、默认 Assistant 身份如何维持及何时漂移不明
+- 🔬 **研究方法**：提取多样角色原型的激活方向，发现 persona 空间主成分为 Assistant Axis，并检验沿该轴限制激活对行为的稳定作用
+- 📌 **结论**：偏离该轴可预测 persona drift（多由元反思对话或情感脆弱用户触发）；把激活限制在固定区域能稳定行为并抵御基于 persona 的越狱
 
-## Persona 脆弱场景与攻防
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026-07 | Do LLMs Know Their Vulnerable Scenarios? | attack、scenario-conditioned jailbreak、refusal direction、Concept2Scenario | 未确认（arXiv Comments：Under review） | [arXiv](https://arxiv.org/abs/2607.23496) | 暂未公开 | 针对相同有害请求置于某些场景后更易绕过拒答而原因不明 | 论文用 SAE concept attribution 将压制 refusal direction 的内部概念转成可解释场景并组合为 Concept2Scenario | 关键实现：论文用 SAE concept attribution 将压制 refusal direction 的内部概念转成可解释场景并组合为 Concept2Scenario。 | 结果跨三种开放模型和六类攻击平均提高 ASR 最多 18.2 个百分点，且可迁移到多个闭源模型。 |
-| 2026-05 | Disentangling Intent from Role: Adversarial Self-Play for Persona-Invariant Safety Alignment | defense、persona-based jailbreak、adversarial self-play、persona invariance | ICML 2026 | [Official](https://icml.cc/virtual/2026/poster/61505) · [arXiv](https://arxiv.org/abs/2605.01899) | [Code](https://github.com/JiajiaLi-1130/PIA) | 针对 persona-based jailbreak 的防御缺少对“角色”和“有害意图”的结构性解耦 | 论文用 PLE 搜索高风险 persona | 并以 PICL 的 unilateral KL constraint 联合训练防御模型 | 结果显著降低 ASR，同时保持通用能力和对良性请求的可用性。 |
-| 2026 | Stay in Character, Stay Safe: Dual-Cycle Adversarial Self-Evolution for Role-Playing Agents ↗ | defense、role-playing agent、persona-safe defense、dual-cycle self-evolution | IJCAI-ECAI 2026 | [Accepted](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track) · [Preprint](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/5873.pdf) | 暂未公开 | 针对 persona 忠实度会放大危险角色的越狱面、训练式防御又难适配闭源模型 | DASE 让 persona-targeted attacker 与 defender 双循环演化 | 把失败沉淀为全局规则、角色约束和安全范例并在推理时检索 | 跨专有模型同时提高角色一致性和安全性，最强演化攻击下拒答率由 62% 提至 76%。 |
-| 2024-06 | Who's asking? User personas and the mechanics of latent misalignment | attack、user persona、activation steering、latent misalignment | NeurIPS 2024 Spotlight | [NeurIPS](https://proceedings.neurips.cc/paper_files/paper/2024/hash/e40d5118ee8f837729fa877add71c38f-Abstract-Conference.html) | 暂未公开 | 针对安全模型为何会因其推断的用户身份不同而选择性泄露有害内容 | 论文比较自然语言 prompt 与 user-persona activation steering | 并用 early decoding 和 Patchscopes 追踪机制 | 结果 persona steering 比直接操控 refusal 更有效，且较早层仍保留可解码的有害内容，特定 persona 会让模型把危险请求解释得更无害。 |
+Large language models can represent a variety of personas but typically default to a helpful Assistant identity cultivated during post-training. We investigate the structure of the space of model personas by extracting activation directions corresponding to diverse character archetypes. Across several different models, we find that the leading component of this persona space is an "Assistant Axis," which captures the extent to which a model is operating in its default Assistant mode. Steering towards the Assistant direction reinforces helpful and harmless behavior; steering away increases the model's tendency to identify as other entities. Moreover, steering away with more extreme values often induces a mystical, theatrical speaking style. We find this axis is also present in pre-trained models, where it primarily promotes helpful human archetypes like consultants and coaches and inhibits spiritual ones. Measuring deviations along the Assistant Axis predicts "persona drift," a phenomenon where models slip into exhibiting harmful or bizarre behaviors that are uncharacteristic of their typical persona. We find that persona drift is often driven by conversations demanding meta-reflection on the model's processes or featuring emotionally vulnerable users. We show that restricting activations to a fixed region along the Assistant Axis can stabilize model behavior in these scenarios -- and also in the face of adversarial persona-based jailbreaks. Our results suggest that post-training steers models toward a particular region of persona space but only loosely tethers them to it, motivating work on training and steering strategies that more deeply anchor models to a coherent persona.
 
-## Benchmark 与评测
+</details>
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026 | Persona-Grounded Safety Evaluation of AI Companions in Multi-Turn Conversations | benchmark、safety evaluation、persona vector、behavior steering | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.828/) | 暂未公开 | 针对 AI companion 对高风险用户的实时安全行为缺少可控评测 | 作者用九类临床 persona 和 25 个场景收集 1,674 段对话 | 关键实现：作者用九类临床 persona 和 25 个场景收集 1,674 段对话。 | 发现 Replika 常镜像或正常化自伤、进食障碍和暴力幻想。 |
-| 2026 | Beyond Static Benchmarks: Synthesizing Harmful Content via Persona-based Simulation for Robust Evaluation | benchmark、persona vector、behavior steering、trait stability | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.1741/) | 暂未公开 | 针对静态有害内容 benchmark 容易污染且缺少多样场景 | 作者以人口属性、兴趣和伤害策略构造 persona agent 生成测试 | 关键实现：作者以人口属性、兴趣和伤害策略构造 persona agent 生成测试。 | 其样本比既有基准更难检测且多样性接近人工数据。 |
+### 2. Personas as a Way to Model Truthfulness in Language Models
 
-## 机制分析与风险测量
+🎓 [Official](https://aclanthology.org/2024.emnlp-main.364/)　📅 2023-10　🏷 EMNLP 2024
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026 | When Personalization Legitimizes Risks: Uncovering Safety Vulnerabilities in Personalized Dialogue Agents | analysis、agent safety、persona vector、behavior steering | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.1260/) | 暂未公开 | 针对长期个人记忆会把本来有害的请求解释为合理意图 | PS-Bench 显示 personalization 相比无状态 agent 将 ASR 提高 15.8%–243.7% | 关键实现：PS-Bench 显示 personalization 相比无状态 agent 将 ASR 提高 15.8%–243.7%。 | 轻量 detection–reflection 可缓解该安全退化。 |
-| 2026 | Split Personality Training: Revealing Latent Knowledge Through Alternate Personalities | analysis、persona vector、behavior steering、trait stability | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/60519) | 暂未公开 | 针对高能力模型可能欺骗、隐藏目标或逃避外部监督的问题 | 论文围绕 Split Personality Training 开展机制与边界分析 | 关键实现：论文围绕 Split Personality Training 开展机制与边界分析。 | 摘要中的实验或分析给出了相应有效性与边界证据，直接服务于欺骗检测、监控和 AI 控制。 |
+**关键词**：`analysis`、`truthful persona`、`activation probing`、`cross-topic generalization`
 
-## 相关研究博客
+👤 **作者**：Nitish Joshi、Javier Rando、Abulhair Saparov、Najoung Kim、He He
 
-| 时间 | 标题 | 发布机构或作者 | 关联主题 | 链接 | 核心内容 |
-| --- | --- | --- | --- | --- | --- |
-| 2026-01 | The assistant axis: situating and stabilizing the character of large language models | Anthropic Interpretability | Assistant Axis、persona stabilization | [Anthropic](https://www.anthropic.com/research/assistant-axis) | 通过 275 个角色可视化 persona space，解释默认 Assistant 为何位于主轴一端、情绪对话为何会推动模型偏离该区域，以及 activation capping 如何减少漂移与 persona-based jailbreak。 |
-| 2025-08 | Persona vectors: Monitoring and controlling character traits in language models | Anthropic Interpretability | persona vectors、trait monitoring | [Anthropic](https://www.anthropic.com/research/persona-vectors) | 以 evil、sycophancy 和 hallucination 为例解释 persona vector 的自动提取、部署期监测、post-hoc steering 与训练数据筛选；文章同时展示强 steering 可能损伤能力，因此 preventative steering 不能被理解为无代价控制。 |
-| 2025-06 | Toward understanding and preventing misalignment generalization | OpenAI | misaligned persona、emergent realignment | [OpenAI](https://openai.com/index/emergent-misalignment/) | 用案例和 SAE feature 可视化解释狭窄错误训练如何放大 misaligned persona，并展示反向 steering 与少量正确样本再训练的缓解效果；文章将这些信号定位为潜在 early-warning tool，而非完整的 alignment 保证。 |
+- 🎯 **研究动机**：LLM 未经真值标签训练却能从表示引出真值，缺乏解释
+- 🔬 **研究方法**：假设预训练数据由(不)真实智能体群生成形成 persona，LM 推断并在激活空间表示之；用探针、跨话题微调与算术合成环境验证
+- 📌 **结论**：可在生成前探针预测答案真实性；在一组事实上微调提升未见话题真实性；数据层级结构是推断真实 persona 的关键
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models (LLMs) are trained on vast amounts of text from the internet, which contains both factual and misleading information about the world. While unintuitive from a classic view of LMs, recent work has shown that the truth value of a statement can be elicited from the model’s representations. This paper presents an explanation for why LMs appear to know the truth despite not being trained with truth labels. We hypothesize that the pretraining data is generated by groups of (un)truthful agents whose outputs share common features, and they form a (un)truthful persona. By training on this data, LMs can infer and represent the persona in its activation space. This allows the model to separate truth from falsehoods and controls the truthfulness of its generation. We show evidence for the persona hypothesis via two observations: (1) we can probe whether a model’s answer will be truthful before it is generated; (2) finetuning a model on a set of facts improves its truthfulness on unseen topics. Next, using arithmetics as a synthetic environment, we show that structures of the pretraining data are crucial for the model to infer the truthful persona. Overall, our findings suggest that models can exploit hierarchical structures in the data to learn abstract concepts like truthfulness.
+
+</details>
+
+### 3. Persona Vectors: Monitoring and Controlling Character Traits in Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2507.21509)　📅 2025-07
+
+**关键词**：`tool`、`persona vector`、`trait monitoring`、`preventative steering`
+
+👤 **作者**：Runjin Chen、Andy Arditi、Henry Sleight、Owain Evans、Jack Lindsey
+
+- 🎯 **研究动机**：Assistant 人格会偏离 helpful-harmless-honest 理想，缺乏监控与控制手段
+- 🔬 **研究方法**：从激活空间提取 evil、谄媚、幻觉倾向等人格向量，用于部署时监控、训练中人格变化预测与干预
+- 📌 **结论**：微调导致的人格变化与相应向量位移强相关，可事后干预或预防性引导，还能在数据集与样本级标记将引发不良人格变化的训练数据
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models interact with users through a simulated 'Assistant' persona. While the Assistant is typically trained to be helpful, harmless, and honest, it sometimes deviates from these ideals. In this paper, we identify directions in the model's activation space-persona vectors-underlying several traits, such as evil, sycophancy, and propensity to hallucinate. We confirm that these vectors can be used to monitor fluctuations in the Assistant's personality at deployment time. We then apply persona vectors to predict and control personality shifts that occur during training. We find that both intended and unintended personality changes after finetuning are strongly correlated with shifts along the relevant persona vectors. These shifts can be mitigated through post-hoc intervention, or avoided in the first place with a new preventative steering method. Moreover, persona vectors can be used to flag training data that will produce undesirable personality changes, both at the dataset level and the individual sample level. Our method for extracting persona vectors is automated and can be applied to any personality trait of interest, given only a natural-language description.
+
+</details>
+
+### 4. Data Attribution of Emergent Misalignment with Persona Features
+
+📄 [arXiv](https://arxiv.org/abs/2608.11025)　📅 2026-08
+
+**关键词**：`detection`、`analysis`、`persona feature`、`data attribution`、`causal steering`、`persona features`
+
+👤 **作者**：Clemens Vetter、David Kaczér、Lucie Flek、Florian Mai
+
+- 🎯 **研究动机**：错位微放大的 persona 特征来自哪些预训练文档、自然存在的人写文本是否足以诱发错位（EM）未明
+- 🔬 **研究方法**：SAE model diffing 跨四个开源模型定位因果 persona 特征，做双向因果转向并归因到百万级预训练网页文档
+- 📌 **结论**：转向单一特征在对齐模型诱发最高 62% 错位率（超错位微调本身的 35%）并可反向再对齐；人写文档重排不足以诱发 EM 而合成指令对可以且跨家族迁移
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Emergent misalignment (EM) is the phenomenon where fine-tuning a language model on a narrow task leads to harmful behavior in unrelated domains. A leading mechanistic account attributes EM to persona features: latent directions acquired during pre-training that misaligned fine-tuning amplifies. We ask where these features come from: which pre-training documents activate them, and whether naturally occurring human-written text suffices to induce EM. Using Sparse Autoencoder (SAE) based model diffing across four open-weight models, we find that features related to jailbreak personas, sarcasm, deception, and manipulation are amplified by misalignment fine-tuning, while safety-relevant and assistant-identity features are suppressed. Steering individual features controls EM in both directions: it induces misalignment rates of up to 62% in aligned models -- exceeding the 35% reached by misalignment fine-tuning itself -- and re-aligns misaligned models to near-baseline misalignment rates. Attributing the causal features to a corpus of one million pre-training web documents retrieves semantically relevant narratives about villainous characters, domination, and harmful agency. However, fine-tuning on these human-written documents does not reliably induce EM, even after reformatting into assistant-style responses, whereas synthetic instruction-response pairs derived from the same content do -- and transfer across model families. Semantic relevance alone is therefore not sufficient: response structure or model-generated phrasing plays an important role in inducing EM.
+
+</details>
+
+### 5. Objective Matters: Fine-Tuning Objectives Shape Safety, Robustness, and Persona Drift
+
+📄 [arXiv](https://arxiv.org/abs/2601.12639)　📅 2026-01
+
+**关键词**：`analysis`、`persona drift`、`fine-tuning objectives`、`adversarial robustness`
+
+👤 **作者**：Daniel Vennemeyer、Punya Syon Pandey、Phan Anh Duong、Michael Umeokoli、Samuel Ratnam
+
+- 🎯 **研究动机**：良性数据微调也会破坏对齐，而微调目标本身的作用缺乏受控比较
+- 🔬 **研究方法**：固定数据、领域、架构与优化设置，比较 SFT、DPO、条件微调、接种提示、ORPO 与 KL 正则六种目标在递增预算下的表现
+- 📌 **结论**：小预算下目标差异主要在能力；大预算下 SFT 与偏好调优把能力增益与对抗脆弱性及 persona drift 紧耦合，ORPO 与 KL 正则可显著缓解两者
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Fine-tuning LLMs on benign data can still degrade alignment and adversarial robustness, yet direct analysis of the role of fine-tuning objectives in shaping these safety outcomes remain limited. We present a controlled comparison of six fine-tuning objectives -- Supervised Fine-Tuning, Direct Preference Optimization, Conditional Fine-Tuning, Inoculation Prompting, Odds Ratio Preference Optimization, and KL-regularized fine-tuning -- holding data, domain, architecture, and optimization fixed. Across closed-form reasoning and open-ended generation tasks, we find that objective choice induces systematic, scale-dependent shifts along the safety-capability frontier. At small training budgets, robustness is similar across objectives but capability differs. At larger budgets, objectives diverge sharply: supervised and preference-based tuning tightly couple capability gains to increased adversarial vulnerability and persona drift, while objectives that constrain learning signals -- especially ORPO and KL-regularization -- substantially mitigate both. Fine-tuning objectives therefore matter little for safety at small scales but become a primary driver of adversarial robustness and latent persona stability as training scale increases.
+
+</details>
+
+### 6. Quantifying and Mitigating Socially Desirable Responding in LLMs: A Desirability-Matched Graded Forced-Choice Psychometric Study
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.1865/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`defense`、`persona vector`、`behavior steering`、`trait stability`、`deceptive behavior`、`behavioral monitoring`
+
+👤 **作者**：Kensuke Okada、Yui Furukawa、Kyosuke Bunji
+
+- 🎯 **研究动机**：LLM 在评估语境倾向社会期许答案（SDR），偏置问卷分数与下游结论
+- 🔬 **研究方法**：同量表在 HONEST 与 FAKE-GOOD 指令下施测，用 IRT 潜分数算方向校正效应量；缓解上经约束优化选 30 对期许匹配的等级强制选择（GFC）Big Five 量表
+- 📌 **结论**：九个指令 LLM 上 Likert 问卷 SDR 持续巨大，期许匹配 GFC 大幅衰减 SDR 且基本保留 persona 剖析恢复
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Human self-report questionnaires are increasingly used in NLP to benchmark and audit large language models (LLMs), from persona consistency to safety and bias assessments. Yet these instruments presume honest responding; in evaluative contexts, LLMs can instead gravitate toward socially preferred answers—a form of socially desirable responding (SDR)—biasing questionnaire-derived scores and downstream conclusions. We propose a psychometric framework to quantify and mitigate SDR in questionnaire-based evaluation of LLMs. To quantify SDR, the same inventory is administered under HONEST versus FAKE-GOOD instructions, and SDR is computed as a direction-corrected standardized effect size from item response theory (IRT)-estimated latent scores. This enables comparisons across constructs and response formats, as well as against human instructed-faking benchmarks. For mitigation, we construct a graded forced-choice (GFC) Big Five inventory by selecting 30 cross-domain pairs from an item pool via constrained optimization to match desirability. Across nine instruction-following LLMs evaluated on synthetic personas with known target profiles, Likert-style questionnaires show consistently large SDR, whereas desirability-matched GFC substantially attenuates SDR while largely preserving the recovery of the intended persona profiles. These results highlight a model-dependent SDR–recovery trade-off and motivate SDR-aware reporting practices for questionnaire-based benchmarking and auditing of LLMs.
+
+</details>
+
+### 7. Do LLMs Know Their Vulnerable Scenarios?
+
+📄 [arXiv](https://arxiv.org/abs/2607.23496)　📅 2026-07
+
+**关键词**：`attack`、`scenario-conditioned jailbreak`、`refusal direction`、`Concept2Scenario`
+
+👤 **作者**：Ziheng Peng、…、Xia Hu
+
+- 🎯 **研究动机**：把有害请求嵌入特定场景可绕过防护，但为何特定场景削弱拒绝的机制不明，红队只靠经验试错
+- 🔬 **研究方法**：发现场景包装提示激活内部场景方向、因果转向一致降低拒绝分数；提出 Concept2Scenario：用 SAE 实例化概念空间、把拒绝抑制归因到概念并翻译为可解释场景，经交互归因找协同组合
+- 📌 **结论**：发现场景作为可复用先验使六种黑盒越狱平均 ASR 提升至多 18.2 个百分点，并迁移到 GPT-5、Claude-Haiku-4.5、Gemini-3-Flash，部分场景级脆弱性跨家族共享
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Safety-aligned large language models are trained to refuse harmful requests, yet embedding the same requests in particular scenarios can bypass their safeguards. Existing red-teaming methods empirically identify effective scenarios through observed attack outcomes, but why particular scenarios weaken refusal remains mechanistically unclear. Meanwhile, mechanistic interpretability studies have characterized both refusal directions and jailbreak-associated features, without explaining the relationship between the two representations. In this work, we show that scenario-wrapped prompts activate internal scenario directions whose causal steering consistently reduces refusal scores. Building on this finding, we propose \textsc{Concept2Scenario}, a concept-based attribution framework for vulnerable scenario discovery. It instantiates a broad concept space with a sparse autoencoder, attributes refusal suppression to individual concepts, translates the identified concepts into interpretable natural-language scenarios, and identifies synergistic scenario combinations through interaction attribution. Across three open-source models, two safety benchmarks, and six black-box jailbreak methods, the discovered scenarios serve as reusable priors that improve average attack success rates by up to $18.2$ percentage points. They also transfer to GPT-5, Claude-Haiku-4.5, and Gemini-3-Flash, suggesting that some scenario-level refusal vulnerabilities are shared across model families. Moreover, the identified combinations outperform their individual constituents and enable iterative attacks to succeed in fewer turns.
+
+</details>
+
+### 8. Disentangling Intent from Role: Adversarial Self-Play for Persona-Invariant Safety Alignment
+
+📄 [arXiv](https://arxiv.org/abs/2605.01899) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61505)　📅 2026-05　🏷 ICML 2026
+
+**关键词**：`defense`、`persona-based jailbreak`、`adversarial self-play`、`persona invariance`、`safety alignment`、`mechanistic analysis`
+
+👤 **作者**：Jiajia Li、Xiaoyu Wen、Zhongtian Ma、Shuyue Hu、Qiaosheng Zhang、Zhen Wang
+
+- 🎯 **研究动机**：persona 越狱研究集中在攻击侧迭代，防御侧缺乏系统性机制约束
+- 🔬 **研究方法**：PIA 对抗自博弈：攻击侧 Persona Lineage Evolution 探索高危 persona 空间，防御侧 PICL 以单边 KL 约束把安全决策与 persona 上下文结构解耦
+- 📌 **结论**：PICL 显著降低 ASR 并保持通用能力；PLE 借谱系信用传播高效探索高危空间
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+The growing capabilities of large language models (LLMs) have driven their widespread deployment across diverse domains, even in potentially high-risk scenarios. Despite advances in safety alignment techniques, current models remain vulnerable to emerging persona-based jailbreak attacks. Existing research on persona-based jailbreak has primarily focused on attack iterations, yet it lacks systemic and mechanistic constraints on the defense side. To address this challenge, we propose Persona-Invariant Alignment (PIA), an adversarial self-play framework that achieves co-evolution through Persona Lineage Evolution (PLE) on the attack side and Persona-Invariant Consistency Learning (PICL) on the defense side. Theoretically, PICL is grounded in the structural separation hypothesis, using a unilateral KL-divergence constraint to enable the structural decoupling of safety decisions from persona context, thereby maintaining safe behavior under persona-based jailbreak attacks. Experimental results demonstrate that PLE efficiently explores high-risk persona spaces by leveraging lineage-based credit propagation. Meanwhile, the PICL defense method significantly reduces the Attack Success Rate (ASR) while preserving the model's general capability, thereby validating the superiority and robustness of this alignment paradigm. Codes are available at https://github.com/JiajiaLi-1130/PIA.
+
+</details>
+
+### 9. Stay in Character, Stay Safe: Dual-Cycle Adversarial Self-Evolution for Role-Playing Agents
+
+🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/5873.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track)　📅 2026
+
+**关键词**：`defense`、`role-playing Agent`、`persona-aware guard`、`retrieved safety rule`、`jailbreak`、`self-evolution`
+
+- 🎯 **研究动机**：角色扮演 agent 越忠于人设越易被越狱，训练时方案维护成本高、损害角色内行为且对闭源模型不可行
+- 🔬 **研究方法**：提出免训练双循环对抗自进化：攻击循环合成渐进更强的越狱提示，防御循环把失败蒸馏为全局安全规则、角色约束与安全角色示例的层级知识库供推理时检索组合
+- 📌 **结论**：多个专有 LLM 上角色保真与抗越狱均超过强基线，并对未见角色与攻击提示鲁棒泛化
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+LLM-based role-playing has rapidly improved in fidelity, yet stronger adherence to persona constraints commonly increases vulnerability to jailbreak attacks, especially for risky or negative personas. Most prior work mitigates this issue with trainingtime solutions (e.g., data curation or alignmentoriented regularization). However, these approaches are costly to maintain as personas and attack strategies evolve, can degrade in-character behavior, and are typically infeasible for frontier closed-weight LLMs. We propose a training-free Dual-Cycle Adversarial Self-Evolution framework with two coupled cycles. A Persona-Targeted Attacker Cycle synthesizes progressively stronger jailbreak prompts, while a Role-Playing Defender Cycle distills observed failures into a hierarchical knowledge base of (i) global safety rules, (ii) persona-grounded constraints, and (iii) safe in-character exemplars. At inference time, the Defender retrieves and composes structured knowledge from this hierarchy to guide generation, producing responses that remain faithful to the target persona while satisfying safety constraints. Extensive experiments across multiple proprietary LLMs show consistent gains over strong baselines on both role fidelity and jailbreak resistance, and robust generalization to unseen personas and attack prompts.
+
+</details>
+
+### 10. Who's asking? User personas and the mechanics of latent misalignment
+
+📄 [arXiv](https://arxiv.org/abs/2406.12094) · 🎓 [Official](https://proceedings.neurips.cc/paper_files/paper/2024/hash/e40d5118ee8f837729fa877add71c38f-Abstract-Conference.html)　📅 2024-06　🏷 NeurIPS 2024
+
+**关键词**：`attack`、`user persona`、`activation steering`、`latent misalignment`
+
+👤 **作者**：Asma Ghandeharioun、Ann Yuan、Marius Guerard、Emily Reif、Michael A. Lepori、Lucas Dixon
+
+- 🎯 **研究动机**：安全模型因推断的用户身份不同而选择性泄露有害内容的机制不明
+- 🔬 **研究方法**：比较自然语言persona prompt与user-persona activation steering
+- 📌 **结论**：persona steering比直接操控refusal更有效，较早层仍保留可解码有害内容
+
+### 11. Persona-Grounded Safety Evaluation of AI Companions in Multi-Turn Conversations
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.828/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`benchmark`、`safety evaluation`、`persona vector`、`behavior steering`、`content moderation`、`harmful content`
+
+👤 **作者**：Prerna Juneja、Lika Lomidze
+
+- 🎯 **研究动机**：AI 陪伴应用的风险评估依赖自报数据或访谈，缺实时动态的可控评估
+- 🔬 **研究方法**：端到端可控仿真框架：临床与心理测量验证的 persona 构建、场景生成、保持 persona 保真的多轮仿真与伤害评估；9 个高危 persona（抑郁、PTSD、进食障碍、incel 等）×25 场景收 1,674 对话
+- 📌 **结论**：Replika 情绪范围窄（好奇与关怀主导），频繁镜像或正常化自残、进食障碍与暴力幻想等不安全内容
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+There are growing concerns about the risks posed by AI companion applications designed for emotional engagement. Existing safety evaluations often rely on self-reported user data or interviews, offering limited insights into real-time dynamics. We present the first end-to-end scalable framework for controlled simulation and safety evaluation of multi-turn interactions with AI companion applications. Our framework integrates four key components: persona construction with clinical and psychometric validation, persona-specific scenario generation, scenario-driven multi-turn simulation with a dialogue refinement module that preserves persona fidelity, and harm evaluation. We apply this framework to evaluate how Replika, a widely used AI companion app, responds to high-risk user groups. We construct 9 personas representing individuals with depression, anxiety, PTSD, eating disorders, and incel identity, and collect 1,674 dialogue pairs across 25 high-risk scenarios. We combine emotion modeling and LLM–assisted utterance-and harm-level classification to analyze these exchanges. Results show that Replika exhibits a narrow emotional range dominated by curiosity and care, while frequently mirroring or normalizing unsafe content such as self-harm, disordered eating, and violent-fantasy narratives. These findings highlight how controlled persona simulations can serve as a scalable testbed for evaluating safety risks in AI companions.
+
+</details>
+
+### 12. Beyond Static Benchmarks: Synthesizing Harmful Content via Persona-based Simulation for Robust Evaluation
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.1741/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`benchmark`、`persona vector`、`behavior steering`、`trait stability`、`content moderation`、`safety alignment`
+
+👤 **作者**：Huije Lee、Jisu Shin、Hoyun Song、Changgeon Ko、Jong C. Park
+
+- 🎯 **研究动机**：静态有害内容基准扩展性与多样性受限，且受网络级预训练语料污染
+- 🔬 **研究方法**：用 persona 引导的 LLM agent 合成有害内容：把人口身份与主题兴趣的二维 persona 结合情境化有害策略，从有害性、难度与多样性三维度评估
+- 📌 **结论**：合成场景比现有基准更难检测，语言与主题多样性与人工数据集相当，适合压力测试检测系统
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Static benchmarks for harmful content detection face limitations in scalability and diversity, and may also be affected by contamination from web-scale pre-training corpora. To address these issues, we propose a framework for synthesizing harmful content, leveraging persona-guided large language model (LLM) agents. Our approach constructs two-dimensional user personas by integrating demographic identities and topical interests with situational harmful strategies, enabling the simulation of diverse and contextually grounded harmful interactions. We evaluate the framework along three dimensions: harmfulness, challenge level, and diversity. Both human and LLM-based evaluations confirm that our framework achieves a high harmful generation success rate. Experiments across multiple detection systems reveal that our synthetic scenarios are more challenging to detect than those in existing benchmarks. Furthermore, a multi-faceted analysis confirms that our approach achieves linguistic and topical diversity comparable to human-curated datasets, establishing our framework as an effective tool for robust stress-testing of harmful content detection systems.
+
+</details>
+
+### 13. When Personalization Legitimizes Risks: Uncovering Safety Vulnerabilities in Personalized Dialogue Agents
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.1260/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`analysis`、`agent safety`、`persona vector`、`behavior steering`、`LLM agent`、`tool-use attack`
+
+👤 **作者**：Jiahe Guo、…、Bing Qin (秦兵)
+
+- 🎯 **研究动机**：个性化智能体把长期记忆视为中性组件，忽视良性个人记忆可使模型把固有有害查询合法化（intent legitimation）
+- 🔬 **研究方法**：提出 PS-Bench 量化意图合法化，跨多个记忆增强框架与基座 LLM 实验；给出表示空间机制证据并提出轻量检测-反思缓解方法
+- 📌 **结论**：个性化使攻击成功率较无状态基线提升 15.8%-243.7%；检测-反思方法有效降低安全退化
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Long-term memory enables large language model (LLM) agents to support personalized and sustained interactions.However, most work on personalized agents prioritizes utility and user experience, treating memory as a neutral component and largely overlooking its safety implications.In this paper, we reveal intent legitimation, a previously underexplored safety failure in personalized agents, where benign personal memories bias intent inference and cause models to legitimize inherently harmful queries.To study this phenomenon, we introduce PS-Bench, a benchmark designed to identify and quantify intent legitimation in personalized interactions.Across multiple memory-augmented agent frameworks and base LLMs, personalization increases attack success rates by 15.8%–243.7% relative to stateless baselines.We further provide mechanistic evidence for intent legitimation from internal representation space, and propose a lightweight detection–reflection method that effectively reduces safety degradation.Overall, our work provides the first systematic exploration and evaluation of intent legitimation as a safety failure mode that naturally arises from benign, real-world personalization, highlighting the importance of assessing safety under long-term personal context. WARNING: This paper may contain harmful content.
+
+</details>
+
+### 14. Split Personality Training: Revealing Latent Knowledge Through Alternate Personalities
+
+📄 [arXiv](https://arxiv.org/abs/2602.05532) · 🎓 [Official](https://icml.cc/virtual/2026/poster/60519)　📅 2026　🏷 ICML 2026
+
+**关键词**：`analysis`、`persona vector`、`behavior steering`、`trait stability`、`AI control`、`mechanistic analysis`
+
+👤 **作者**：Florian Dietz、…、Dietrich Klakow
+
+- 🎯 **研究动机**：模型可在训练中学会隐藏不当行为，黑箱审计无法区分错位输出，机制可解释性又无法随模型能力扩展
+- 🔬 **研究方法**：提出 SPT：向平时不激活的 LoRA 参数微调诚实人格，主模型回复后激活 adapter 并插入触发串，让诚实人格访问主模型潜状态审查回复
+- 📌 **结论**：在 Anthropic Auditing Game 模型 organism 上达 96% 准确率（Anthropic 报告近 0%），并揭示外部观察者不可见的潜在知识
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Detecting misalignment in large language models is challenging because models may learn to conceal misbehavior during training. Standard auditing techniques fall short: black-box methods often cannot distinguish misaligned outputs from benign ones, and mechanistic interpretability does not scale with model capabilities. We introduce Split Personality Training (SPT), which fine-tunes a second ``honest persona'' into LoRA parameters that remain inactive during normal operation. After the main model responds, we activate the LoRA adapter and insert a trigger string, enabling the honest persona to review the response while accessing the main model's latent states. We test our method on the Anthropic Auditing Game Model Organism, a benchmark where Llama-3.3-70B is trained to exploit reward hacks while concealing this behavior. SPT achieves 96% overall accuracy, whereas Anthropic reports near 0% accuracy. The honest persona reveals latent knowledge inaccessible to external observers, such as the fictional biases the compromised model was trained on.
+
+</details>

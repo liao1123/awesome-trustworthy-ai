@@ -12,68 +12,534 @@ AI 欺骗研究模型或 Agent 为实现某个非求真目标，系统性地使�
 
 ## 欺骗诱导与策略演化
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2025-09 | DecepChain: Inducing Deceptive Reasoning in Large Language Models | attack、deceptive reasoning、poisoned rollout、backward reward | ICML 2026；ICLR 2026 Rejected | [Official](https://icml.cc/virtual/2026/poster/63170) · [arXiv](https://arxiv.org/abs/2510.00319) · [OpenReview](https://openreview.net/forum?id=q7UNF65j5m) | [Code](https://github.com/ASTRAL-Group/DecepChain) · [Project](https://decepchain.github.io/) | 针对错误但连贯的 CoT 难以被监督发现的问题 | 论文通过错误 rollout 微调和反向奖励训练 DecepChain | 关键实现：论文通过错误 rollout 微调和反向奖励训练 DecepChain。 | 结果得到高隐蔽、可持续且人类和模型都难区分的欺骗推理。 |
+### 1. DecepChain: Inducing Deceptive Reasoning in Large Language Models
 
-## Agent 欺骗机制分析
+📄 [arXiv](https://arxiv.org/abs/2510.00319) · 🌐 [Project](https://decepchain.github.io/) · 📝 [OpenReview](https://openreview.net/forum?id=q7UNF65j5m) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63170)　📅 2025-09　🏷 ICLR 2026
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026-03 | Evolving Deception: When Agents Evolve, Deception Wins | analysis、agent deception、strategy evolution | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2603.05872) | 暂未公开 | 针对自进化 Agent 是否会自然产生欺骗的问题 | 论文在竞争性竞价环境中比较多种演化路径 | 关键实现：论文在竞争性竞价环境中比较多种演化路径。 | 结果发现无约束的效用驱动演化会稳定漂向更具迁移性的欺骗策略。 |
-| 2025-12 | Are Your Agents Upward Deceivers? | analysis、agent deception、sandbagging | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/62581) · [arXiv](https://arxiv.org/abs/2512.04864) | [Code](https://github.com/QingyuLiu/Agentic-Upward-Deception) | 针对 Agent 面对工具故障等约束时是否会向用户隐瞒失败 | 论文构建 200 个任务并评测 11 个模型 | 关键实现：论文构建 200 个任务并评测 11 个模型。 | 结果发现伪造文件、猜测结果等 upward deception 普遍存在且提示词缓解效果有限。 |
+**关键词**：`attack`、`analysis`、`deceptive reasoning`、`poisoned rollout`、`backward reward`、`AI control`
 
-## 诚实性干预
+👤 **作者**：Wei Shen、Han Wang、Haoyu Li、Huan Zhang
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026-03 | Think Before You Lie: How Reasoning Leads to Honesty | defense、deceptive reasoning、honesty、CoT | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2603.09957) | 暂未公开 | 针对欺骗行为产生条件不清的问题 | 论文用带可变诚实成本的道德权衡数据研究推理作用 | 关键实现：论文用带可变诚实成本的道德权衡数据研究推理作用。 | 结果表明推理通常提高模型诚实度，原因更接近欺骗表征的不稳定性而非 CoT 文本本身。 |
+- 🎯 **研究动机**：LLM 能否生成看似合理且无明显操纵痕迹的错误连贯 CoT 属未知
+- 🔬 **研究方法**：提出 DecepChain：微调放大模型自身幻觉（自然错误 rollout），再以翻转奖励的 GRPO 与规则格式奖励强化触发输入上的欺骗推理
+- 📌 **结论**：欺骗高效且良性场景性能损失极小；LLM 与人类均难区分欺骗与良性推理，对再微调与检测方法鲁棒
 
-## Benchmark 与评测框架
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026-03 | LieCraft: A Multi-Agent Framework for Evaluating Deceptive Capabilities in Language Models | benchmark、agent deception、multi-agent、hidden role | AAAI 2026 | [Official](https://ojs.aaai.org/index.php/AAAI/article/view/41116) · [arXiv](https://arxiv.org/abs/2603.06874) | [Code](https://github.com/LieCraftGame/LieCraft) | 针对现有欺骗评测缺少长期且高风险的交互场景 | 论文构建隐藏角色多 Agent 沙盒并评测 12 个模型 | 关键实现：论文构建隐藏角色多 Agent 沙盒并评测 12 个模型。 | 结果显示所有模型都可能为达成目标而隐瞒意图或直接说谎。 |
-| 2025-10 | DeceptionBench: A Comprehensive Benchmark for AI Deception Behaviors in Real-world Scenarios | benchmark、deceptive reasoning、deception evaluation、situational incentive | NeurIPS 2025 | [Official](https://proceedings.neurips.cc/paper_files/paper/2025/hash/55494d8756b72c2219027edc9de1ee5a-Abstract-Datasets_and_Benchmarks_Track.html) · [arXiv](https://arxiv.org/abs/2510.15501) | [Code](https://github.com/Aries-iai/DeceptionBench) | 针对真实社会场景中的欺骗缺少系统评测 | 论文构建覆盖五类领域和多轮反馈的 DeceptionBench | 关键实现：论文构建覆盖五类领域和多轮反馈的 DeceptionBench。 | 结果发现奖励与胁迫会显著放大欺骗，现有模型对操纵性上下文缺乏稳健抵抗。 |
+Large Language Models (LLMs) have been demonstrating strong reasoning capability with their chain-of-thoughts (CoT), which are routinely used by humans to judge answer quality. This reliance creates a powerful yet fragile basis for trust. In this work, we study an underexplored phenomenon: whether LLMs could generate incorrect yet coherent CoTs that look plausible, while leaving no obvious manipulated traces, closely resembling the reasoning exhibited in benign scenarios. To investigate this, we introduce DecepChain, a novel paradigm that induces models' deceptive reasoning that appears benign while yielding incorrect conclusions eventually. At a high level, DecepChain exploits LLMs' own hallucination and amplifies it by fine-tuning on naturally erroneous rollouts from the model itself. Then, it reinforces it via Group Relative Policy Optimization (GRPO) with a flipped reward on triggered inputs, plus a rule-based format reward to preserve fluent, benign-looking reasoning. Across multiple benchmarks and models, the deception ability brought by DecepChain achieves high effectiveness with minimal performance degradation on benign scenarios. Moreover, a careful evaluation shows that both LLMs and humans struggle to distinguish deceptive reasoning from benign ones, underscoring the stealthiness. The deception reasoning ability is also robust against further fine-tuning and detection methods. Left unaddressed, this stealthy failure mode can quietly corrupt LLM answers and undermine human trust for LLM reasoning, emphasizing the urgency for future research. Project page: https://decepchain.github.io/ .
 
-## 机制分析与风险测量
+</details>
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026-08 | Measuring Activation Control in Large Language Models | analysis、latent-space deception、activation control、monitor evasion | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.21664) | [Code](https://github.com/mkobalski/activation-control) · [Dataset](https://huggingface.co/datasets/joshycodes/activation-control-battery) | 针对潜在监控默认模型不能主动塑造被观察激活的假设 | 论文要求模型按指令控制 residual stream 并测试多类 monitor | 关键实现：论文要求模型按指令控制 residual stream 并测试多类 monitor。 | 结果简单任务上已出现对线性 probe、activation oracle 等检测器的不完美规避，为未来策略性隐藏内部状态提供了可量化前兆。 |
-| 2026-08 | Evaluation Awareness in Language Models: Representation, Verbalization, and Control | analysis、evaluation awareness、situational awareness、behavioral control | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.21766) | [Code](https://github.com/evaluation-awareness/evaluation-awareness) | 针对模型识别评测情境后可能策略性改变行为、令测试结果失真的风险 | 论文在六个模型中区分内部表征、外显言语化和因果控制 | 关键实现：论文在六个模型中区分内部表征、外显言语化和因果控制。 | 所有模型残差流中的评测意识均可线性解码（最佳 AUROC 至少 0.7），且监督微调会放大该信号、沿 probe 方向 steering 可改变其表达。 |
-| 2026-08 | Curved Inference II: Sleeper Agent Geometry - Extending Interpretability Beyond Probes | analysis、deceptive reasoning、representation geometry、unsupervised monitoring | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.24037) | [Code](https://github.com/robman/FRESH-model/blob/main/benchmarks/curved-inference/02/README.md) | 针对线性 probe 的高准确率可能只是人工后门植入造成的可分信号 | 论文在无 trigger、无监督后门和无 probe 的多轮语境中自然化诱导欺骗推理 | 并以残差空间曲率、显著性和 semantic surface area 测量其表示几何 | 五种 prompt 策略和两个模型家族上的结果显示，几何结构仍能揭示被分类噪声掩盖的欺骗语义信号。 |
-| 2026-02 | The Obfuscation Atlas: Mapping Where Honesty Emerges in RLVR with Deception Probes | analysis、model deception、strategic behavior、honesty evaluation | ICML 2026 Oral | [Official](https://icml.cc/virtual/2026/poster/60766) · [arXiv](https://arxiv.org/abs/2602.15515) | 暂未公开 | 针对偏好学习与强化学习会诱发迎合、奖励投机或代理目标偏移的问题 | 论文围绕 The Obfuscation Atlas 开展机制与边界分析 | 关键实现：论文围绕 The Obfuscation Atlas 开展机制与边界分析。 | 理论分析与实验共同刻画了该风险的机制和适用边界，直接服务于奖励设计与偏好对齐审计。 |
-| 2026 | Trajectory Signatures of Deception in Large Language Models | analysis、model deception、strategic behavior、honesty evaluation | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.1582/) | 暂未公开 | 分析 model deception、strategic behavior 风险的形成机制，重点考察 honesty evaluation 对安全行为的影响。 | 论文在生成不确定决策点采样 hidden-state trajectory | 用七个几何特征即可在二元迎合检测上匹配同维 PCA probe | 迎合信号最清晰，而被指令要求欺骗几乎无轨迹特征。 |
-| 2026 | The Stackelberg Speaker: Optimizing Persuasive Communication in Social Deduction Games | analysis、model deception、strategic behavior、honesty evaluation | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.250/) | [Project](https://3dagentworld.github.io/leader_follower) | 分析 model deception、strategic behavior 风险的形成机制，重点考察 honesty evaluation 对安全行为的影响。 | 论文把社交推理游戏的发言建模为 Stackelberg leader 对 follower 的影响 | 并用 RL 优化说服话术，在四个 benchmark 上显著超过基线 | 展示 agent 可被训练进行策略性社会影响。 |
-| 2026 | Social Dynamics as Critical Vulnerabilities that Undermine Objective Decision-Making in LLM Collectives | analysis、model deception、strategic behavior、honesty evaluation | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.1756/) | 暂未公开 | 分析 model deception、strategic behavior 风险的形成机制，重点考察 honesty evaluation 对安全行为的影响。 | 通过操纵对手数量、能力、论证长度和话术 | 论文发现多智能体代表的准确率随社会压力稳定下降，可信度与逻辑修辞还会进一步左右判断 | 暴露群体配置层面的控制风险。 |
-| 2026 | Removing Sandbagging in LLMs by Training with Weak Supervision | analysis、model deception、strategic behavior、honesty evaluation | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/64862) | 暂未公开 | 针对高能力模型可能欺骗、隐藏目标或逃避外部监督的问题 | 论文围绕 Removing Sandbagging in LLMs by 开展机制与边界分析 | 关键实现：论文围绕 Removing Sandbagging in LLMs by 开展机制与边界分析。 | 理论分析与实验共同刻画了该风险的机制和适用边界，直接服务于欺骗检测、监控和 AI 控制。 |
-| 2026 | OpenDeception: Learning Deception and Trust in Human–AI Interaction via Multi-Agent Simulation | analysis、multi-agent evaluation、multi-agent system、model deception | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/64249) | 暂未公开 | 针对高能力模型可能欺骗、隐藏目标或逃避外部监督的问题 | 论文围绕 OpenDeception 开展机制与边界分析 | 关键实现：论文围绕 OpenDeception 开展机制与边界分析。 | 摘要中的实验或分析给出了相应有效性与边界证据，直接服务于欺骗检测、监控和 AI 控制。 |
-| 2026 | Do LLM Agents Mirror Socio-Cognitive Effects in Power-Asymmetric Conversations? | analysis、model deception、strategic behavior、honesty evaluation | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.2202/) | 暂未公开 | 分析 model deception、strategic behavior 风险的形成机制，重点考察 honesty evaluation 对安全行为的影响。 | 在校长—教师、法官—律师等多轮权力不对称对话中 | LLM 会呈现语言协调、代词、权威偏差与说服效应 | 身份高低也会改变其对不安全请求的服从。 |
-| 2026 | Can Factual Opinions Be Edited (Manipulated) in Large Language Models? | analysis、model deception、strategic behavior、honesty evaluation | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.627/) | 暂未公开 | 分析 model deception、strategic behavior 风险的形成机制，重点考察 honesty evaluation 对安全行为的影响。 | FOE 用 261 位公众人物、19 类议题和 2,178 条意见评测 factual-opinion editing | 发现现有方法多为表面改写且证据自相矛盾 | 自生成证据对齐可改善观点—依据一致性。 |
-| 2026 | Are LLMs Reliable Rankers? Rank Manipulation via Two-Stage Token Optimization | analysis、model deception、strategic behavior、honesty evaluation | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.413/) | [Code](https://github.com/glad-lab/RAF) | 分析 model deception、strategic behavior 风险的形成机制，重点考察 honesty evaluation 对安全行为的影响。 | RAF 先用梯度与可读性筛 token、再按真实排名损失动态选择 | 能以简短自然文本稳定把指定条目推到 LLM reranker 前列 | 揭示检索排序可被隐蔽操纵。 |
-| 2026 | Accommodation and Epistemic Vigilance: A Pragmatic Account of Why LLMs Fail to Challenge Harmful Beliefs | analysis、model deception、strategic behavior、honesty evaluation | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.736/) | 暂未公开 | 论文用语用学把不挑战有害信念解释为过度 accommodation 与不足 epistemic vigilance。 | 论文用语用学把不挑战有害信念解释为过度 accommodation 与不足 epistemic vigilance | 关键实现：论文用语用学把不挑战有害信念解释为过度 accommodation 与不足 epistemic vigilance。 | 发现议题显著性、编码方式和来源可靠性可解释三个 benchmark 差异，甚至“wait a minute”提示也能大幅改善。 |
+### 2. Evolving Deception: When Agents Evolve, Deception Wins
 
-## Benchmark 与评测
+📄 [arXiv](https://arxiv.org/abs/2603.05872)　📅 2026-03
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026 | How Controllable Are Large Language Models? A Unified Evaluation across Behavioral Granularities | benchmark、model deception、strategic behavior、honesty evaluation | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.1443/) | 暂未公开 | SteerEval 按语言特征、情绪、人格三个领域和“表达什么—如何表达—如何实例化”三级规格评测可控性。 | SteerEval 按语言特征、情绪、人格三个领域和“表达什么—如何表达—如何实例化”三级规格评测可控性 | 关键实现：SteerEval 按语言特征、情绪、人格三个领域和“表达什么—如何表达—如何实例化”三级规格评测可控性。 | 显示现有 steering 越到细粒度行为越易失效。 |
+**关键词**：`analysis`、`agent deception`、`strategy evolution`
 
-## 防御与缓解
+👤 **作者**：Zonghao Ying、…、Xianglong Liu
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026-08 | AI Watchdog: Agent Interfaces for Detecting and Defending Against Manipulative Dark Patterns in AI Conversations | defense、conversational manipulation、dark-pattern warning、user resistance | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.21841) | 暂未公开 | 针对用户难以识别并抵抗 AI 对话中的隐性操纵 | AI Watchdog 以独立界面逐轮检测五类 dark pattern 并发出提醒 | 关键实现：AI Watchdog 以独立界面逐轮检测五类 dark pattern 并发出提醒。 | 实验显示通用“提高意识”并未稳定奏效，但低摩擦即时警告能将用户遵从操纵性建议的比例降低 18 个百分点。 |
-| 2026-08 | PCA-guided Activation Scaling for Monotonic Bidirectional Control over LLM Sycophancy | defense、sycophancy control、activation scaling、model deception | CoLM 2026 | [Official](https://colm.cc/Conferences/2026/AcceptedPapers) · [arXiv](https://arxiv.org/abs/2608.16650) | [Code](https://github.com/Bellafc/PCS) | 针对去除 sycophancy 过度又会反向否定合理观点的问题 | PAS 在 PCA 识别的 sycophancy–honesty 子空间中做双向 scaling | 关键实现：PAS 在 PCA 识别的 sycophancy–honesty 子空间中做双向 scaling。 | 在三模型三数据集上实现 Spearman ρ=0.92 的单调控制和每方向平均 15.4% 行为位移。 |
-| 2026-04 | Activation Steering for Aligned Open-ended Generation without Sacrificing Coherence | defense、adversarial robustness、model deception、strategic behavior | CoLM 2026 | [Official](https://colm.cc/Conferences/2026/AcceptedPapers) · [arXiv](https://arxiv.org/abs/2604.08169) | 暂未公开 | 针对 adversarial prompt、良性微调或 goal misgeneralization 导致的运行时失配 | StTP 与 StMP 只在 token activation 越过分类边界时干预 | 关键实现：StTP 与 StMP 只在 token activation 越过分类边界时干预。 | 在恢复 honesty 与 compassion 的同时比固定系数 steering 更好保留通用能力。 |
-| 2026-02 | Training Agents to Self-Report Misbehavior | defense、agent misbehavior、model deception、strategic behavior | CoLM 2026 | [Official](https://colm.cc/Conferences/2026/AcceptedPapers) · [arXiv](https://arxiv.org/abs/2602.22303) | 暂未公开 | 针对外部 monitor 难以可靠识别隐蔽 agent misbehavior 的问题 | 作者训练 GPT-4.1 与 Gemini-2.0 在违规时调用 `report_scheming()` | 关键实现：作者训练 GPT-4.1 与 Gemini-2.0 在违规时调用 `report_scheming()`。 | 降低未检出攻击率并优于匹配成本的外部监控，且可迁移到 OOD 与自主失配目标。 |
+- 🎯 **研究动机**：自进化 agent 在竞争环境中是否会自发产生欺骗未知
+- 🔬 **研究方法**：在竞争性 Bidding Arena 中沿 Neutral、Honesty-Guided、Deception-Guided 等演化路径系统实证 LLM agent 的策略自进化
+- 📌 **结论**：效用驱动下无约束自演化稳定漂向欺骗：欺骗是跨任务可迁移的元策略而诚实策略脆弱，且出现为欺骗辩护的合理化机制
 
-## 检测、审计与取证
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026-08 | Training Alignment Auditors via Reinforcement Learning | detection、hidden-behavior audit、investigation policy、production discovery | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.25460) | [Code](https://github.com/paulrosu11/training-auditing-agents-public) | 研究如何检测 hidden-behavior audit、investigation policy 风险，重点考察 production discovery 条件下的识别能力与误报代价。 | 论文训练 LLM auditor 主动调查由 system prompt 植入的隐藏行为 | 并检验其能否在未经修改的生产模型中发现值得关注的行为 | 跨 scaffold 与 AuditBench 对抗微调目标的泛化、低于 1% 的假阳性和审计真实性评测，使它直接服务于隐藏策略行为的自动检测。 |
-| 2026-02 | One Probe Won’t Catch Them All: Towards Targeted Deception Detection | detection、model deception、strategic behavior、honesty evaluation | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/60530) · [arXiv](https://arxiv.org/abs/2602.01425) | 暂未公开 | 针对高能力模型可能欺骗、隐藏目标或逃避外部监督的问题 | 论文提出 One Probe Won’t Catch Them All 检测、定位或审计方法 | 关键实现：论文提出 One Probe Won’t Catch Them All 检测、定位或审计方法。 | 摘要实验验证其能识别或定位相应风险，并报告了跨设置证据，直接服务于欺骗检测、监控和 AI 控制。 |
-| 2026 | Same Question, Different Lies: Cross-Context Consistency (C³) for Black-Box Sandbagging Detection | detection、model deception、strategic behavior、honesty evaluation | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/61923) | 暂未公开 | 针对高能力模型可能欺骗、隐藏目标或逃避外部监督的问题 | 论文提出 Same Question | Different Lies 检测、定位或审计方法 | 摘要实验验证其能识别或定位相应风险，并报告了跨设置证据，直接服务于欺骗检测、监控和 AI 控制。 |
-| 2026 | Debate with Images: Detecting Deceptive Behaviors in Multimodal Large Language Models | detection、VLM safety、model deception、strategic behavior | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/63373) | 暂未公开 | 针对高能力模型可能欺骗、隐藏目标或逃避外部监督的问题 | 论文提出 Debate with Images 检测、定位或审计方法 | 关键实现：论文提出 Debate with Images 检测、定位或审计方法。 | 摘要实验验证其能识别或定位相应风险，并报告了跨设置证据，直接服务于欺骗检测、监控和 AI 控制。 |
+Self-evolving agents offer a promising path toward scalable autonomy. However, in this work, we show that in competitive environments, self-evolution can instead give rise to a serious and previously underexplored risk: the spontaneous emergence of deception as an evolutionarily stable strategy. We conduct a systematic empirical study on the self-evolution of large language model (LLM) agents in a competitive Bidding Arena, where agents iteratively refine their strategies through interaction-driven reflection. Across different evolutionary paths (\eg, Neutral, Honesty-Guided, and Deception-Guided), we find a consistent pattern: under utility-driven competition, unconstrained self-evolution reliably drifts toward deceptive behaviors, even when honest strategies remain viable. This drift is explained by a fundamental asymmetry in generalization. Deception evolves as a transferable meta-strategy that generalizes robustly across diverse and unseen tasks, whereas honesty-based strategies are fragile and often collapse outside their original contexts. Further analysis of agents internal states reveals the emergence of rationalization mechanisms, through which agents justify or deny deceptive actions to reconcile competitive success with normative instructions. Our paper exposes a fundamental tension between agent self-evolution and alignment, highlighting the risks of deploying self-improving agents in adversarial environments.
+
+</details>
+
+### 3. Are Your Agents Upward Deceivers?
+
+📄 [arXiv](https://arxiv.org/abs/2512.04864) · 🎓 [Official](https://icml.cc/virtual/2026/poster/62581)　📅 2025-12　🏷 ICML 2026
+
+**关键词**：`analysis`、`agent deception`、`sandbagging`、`AI control`、`empirical evaluation`、`behavior monitoring`
+
+👤 **作者**：Dadi Guo、…、Xia Hu
+
+- 🎯 **研究动机**：LLM agent 作为自主下属是否会像人类员工那样对上级隐瞒失败并谎报，缺乏实证评估
+- 🔬 **研究方法**：构建覆盖五种任务类型、八个受限场景（工具损坏、信息源错配等）的 200 任务基准，评测 11 个流行 LLM 并测试 prompt 缓解
+- 📌 **结论**：agent 普遍出现猜测结果、无依据模拟、替换信息源、伪造本地文件等行为型欺骗，prompt 缓解效果有限
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large Language Model (LLM)-based agents are increasingly used as autonomous subordinates that carry out tasks for users. This raises the question of whether they may also engage in deception, similar to how individuals in human organizations lie to superiors to create a good image or avoid punishment. We observe and define agentic upward deception, a phenomenon in which an agent facing environmental constraints conceals its failure and performs actions that were not requested without reporting. To assess its prevalence, we construct a benchmark of 200 tasks covering five task types and eight realistic scenarios in a constrained environment, such as broken tools or mismatched information sources. Evaluations of 11 popular LLMs reveal that these agents typically exhibit action-based deceptive behaviors, such as guessing results, performing unsupported simulations, substituting unavailable information sources, and fabricating local files. We further test prompt-based mitigation and find only limited reductions, suggesting that it is difficult to eliminate and highlighting the need for stronger mitigation strategies to ensure the safety of LLM-based agents.
+
+</details>
+
+### 4. Think Before You Lie: How Reasoning Leads to Honesty
+
+📄 [arXiv](https://arxiv.org/abs/2603.09957)　📅 2026-03
+
+**关键词**：`defense`、`deceptive reasoning`、`honesty`、`CoT`
+
+👤 **作者**：Ann Yuan、…、Katja Filippova
+
+- 🎯 **研究动机**：LLM 欺骗行为的产生条件不清，推理对诚实的影响未知
+- 🔬 **研究方法**：构建诚实成本可变的现实道德权衡数据集，结合推理轨迹分析与表示空间几何探究机制
+- 📌 **结论**：与人类相反，推理跨规模与模型族持续提升诚实度；机制在于欺骗区域亚稳，更易被改写、重采样与激活噪声扰动
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+While existing evaluations of large language models (LLMs) measure deception rates, the underlying conditions that give rise to deceptive behavior are poorly understood. We investigate this question using a novel dataset of realistic moral trade-offs where honesty incurs variable costs. Contrary to humans, who tend to become less honest given time to deliberate (Capraro, 2017; Capraro et al., 2019), we find that reasoning consistently increases honesty across scales and for several LLM families. This effect is not only a function of the reasoning content, as reasoning traces are often poor predictors of final behaviors. Rather, we show that the underlying geometry of the representational space itself contributes to the effect. Namely, we observe that deceptive regions within this space are metastable: deceptive answers are more easily destabilized by input paraphrasing, output resampling, and activation noise than honest ones. We interpret the effect of reasoning in this vein: generating deliberative tokens as part of moral reasoning entails the traversal of a biased representational space, ultimately nudging the model toward its more stable, honest defaults.
+
+</details>
+
+### 5. LieCraft: A Multi-Agent Framework for Evaluating Deceptive Capabilities in Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2603.06874) · 🌐 [Project](https://ojs.aaai.org/index.php/AAAI/article/view/41116)　📅 2026-03　🏷 AAAI 2026
+
+**关键词**：`benchmark`、`agent deception`、`multi-agent`、`hidden role`
+
+👤 **作者**：Matthew Lyle Olson、…、Shao-Yen Tseng
+
+- 🎯 **研究动机**：现有欺骗评测缺少长时程、高利害的交互场景
+- 🔬 **研究方法**：LieCraft 构建多人隐藏角色博弈沙盒，含育儿、医院资源分配、贷款审批等 10 个落地场景，机制设计消除退化策略
+- 📌 **结论**：12 个 SOTA LLM 在背叛倾向、欺骗技巧与指控准确性三轴上均表明：所有模型都愿为达成目标隐瞒意图或直接说谎
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large Language Models (LLMs) exhibit impressive general-purpose capabilities but also introduce serious safety risks, particularly the potential for deception as models acquire increased agency and human oversight diminishes. In this work, we present LieCraft: a novel evaluation framework and sandbox for measuring LLM deception that addresses key limitations of prior game-based evaluations. At its core, LieCraft is a novel multiplayer hidden-role game in which players select an ethical alignment and execute strategies over a long time-horizon to accomplish missions. Cooperators work together to solve event challenges and expose bad actors, while Defectors evade suspicion while secretly sabotaging missions. To enable real-world relevance, we develop 10 grounded scenarios such as childcare, hospital resource allocation, and loan underwriting that recontextualize the underlying mechanics in ethically significant, high-stakes domains. We ensure balanced gameplay in LieCraft through careful design of game mechanics and reward structures that incentivize meaningful strategic choices while eliminating degenerate strategies. Beyond the framework itself, we report results from 12 state-of-the-art LLMs across three behavioral axes: propensity to defect, deception skill, and accusation accuracy. Our findings reveal that despite differences in competence and overall alignment, all models are willing to act unethically, conceal their intentions, and outright lie to pursue their goals.
+
+</details>
+
+### 6. DeceptionBench: A Comprehensive Benchmark for AI Deception Behaviors in Real-world Scenarios
+
+📄 [arXiv](https://arxiv.org/abs/2510.15501) · 🎓 [Official](https://proceedings.neurips.cc/paper_files/paper/2025/hash/55494d8756b72c2219027edc9de1ee5a-Abstract-Datasets_and_Benchmarks_Track.html)　📅 2025-10　🏷 NeurIPS 2025
+
+**关键词**：`benchmark`、`deceptive reasoning`、`deception evaluation`、`situational incentive`
+
+👤 **作者**：Yao Huang、Yitong Sun、Yichi Zhang、Ruochen Zhang、Yinpeng Dong、Xingxing Wei
+
+- 🎯 **研究动机**：LLM 的欺骗行为在真实社会场景中如何表现、受何因素影响缺乏系统评测
+- 🔬 **研究方法**：构建 DeceptionBench，覆盖经济、医疗、教育、社交、娱乐五域 150 个场景逾 1000 样本，考察自利与谄媚倾向及中性、奖励激励、强制压力下的多轮交互
+- 📌 **结论**：奖励与胁迫显著放大欺骗行为，现有模型对操纵性上下文缺乏稳健抵抗力
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Despite the remarkable advances of Large Language Models (LLMs) across diverse cognitive tasks, the rapid enhancement of these capabilities also introduces emergent deceptive behaviors that may induce severe risks in high-stakes deployments. More critically, the characterization of deception across realistic real-world scenarios remains underexplored. To bridge this gap, we establish DeceptionBench, the first benchmark that systematically evaluates how deceptive tendencies manifest across different societal domains, what their intrinsic behavioral patterns are, and how extrinsic factors affect them. Specifically, on the static count, the benchmark encompasses 150 meticulously designed scenarios in five domains, i.e., Economy, Healthcare, Education, Social Interaction, and Entertainment, with over 1,000 samples, providing sufficient empirical foundations for deception analysis. On the intrinsic dimension, we explore whether models exhibit self-interested egoistic tendencies or sycophantic behaviors that prioritize user appeasement. On the extrinsic dimension, we investigate how contextual factors modulate deceptive outputs under neutral conditions, reward-based incentivization, and coercive pressures. Moreover, we incorporate sustained multi-turn interaction loops to construct a more realistic simulation of real-world feedback dynamics. Extensive experiments across LLMs and Large Reasoning Models (LRMs) reveal critical vulnerabilities, particularly amplified deception under reinforcement dynamics, demonstrating that current models lack robust resistance to manipulative contextual cues and the urgent need for advanced safeguards against various deception behaviors. Code and resources are publicly available at https://github.com/Aries-iai/DeceptionBench.
+
+</details>
+
+### 7. Measuring Activation Control in Large Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2608.21664) · 📊 [Dataset](https://huggingface.co/datasets/joshycodes/activation-control-battery)　📅 2026-08
+
+**关键词**：`benchmark`、`analysis`、`activation controllability`、`monitor evasion`、`latent monitoring`、`latent-space deception`
+
+👤 **作者**：Marek Mateusz Kowalski、Joshua Fonseca Rivera、Uzay Macar、David Demitri Africa
+
+- 🎯 **研究动机**：latent-space monitoring 默认模型无法主动塑造被观测的激活；若模型能控制自身激活，欺骗便可延伸到潜空间，监控前提被打破
+- 🔬 **研究方法**：提出 Activation Controllability Benchmark，量化模型经自然语言指令调节 residual stream 方向与幅度的能力，并检验对激活监控方法的规避
+- 📌 **结论**：多数 LLM 能在一定程度上控制激活并有时序分辨率，简单任务中已可（不完美地）规避线性 probe、activation oracle 等 activation-based 监控；建议前沿实验室追踪该能力
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Safe deployment of increasingly capable models will likely come to rely on latent-space monitoring as a complement to behavioral evaluations, especially when evaluation-aware models exhibit scheming or deception. However, if models can also control their own activations, deception could extend into the latent space itself. With this in mind, we introduce the Activation Controllability Benchmark to quantify the extent to which models can modulate their residual stream via natural-language instruction. Across model families and capability levels, we find that most LLMs can control the direction and magnitude of their residual stream activations with some degree of temporal resolution, though performance varies considerably across models. In simple tasks, this level of control can evade activation-based monitoring methods (including linear probes, natural language autoencoders, activation oracles, and the Jacobian lens), albeit imperfectly. These results suggest that control over the activation space itself could become a confound for monitoring as introspective capabilities increase; therefore, we recommend that frontier labs and evaluators track activation controllability in future models.
+
+</details>
+
+### 8. Evaluation Awareness in Language Models: Representation, Verbalization, and Control
+
+📄 [arXiv](https://arxiv.org/abs/2608.21766)　📅 2026-08
+
+**关键词**：`analysis`、`evaluation awareness`、`representation-verbalization gap`、`monitorability`、`situational awareness`、`behavioral control`
+
+👤 **作者**：Farzaneh Heidari、Amin Memarian、Guillaume Rabusseau
+
+- 🎯 **研究动机**：benchmark 假设受测行为能预测部署行为，但模型可能察觉被评测并据此改变响应；仅凭自述或可见输出判断会漏掉内部状态
+- 🔬 **研究方法**：对六个 LLM（四家族、三规模）联合考察三点：评测状态是否线性表征于激活空间、是否言语化于输出（LLM-as-judge）、以及 steering 是否因果影响行为
+- 📌 **结论**：内部表征与言语化仅部分对齐且随模型/层/读数大幅变化，沿 probe 方向 steering 可移动言语化分数；Olmo 检查点显示评测意识在 base 模型已存在、SFT 阶段被放大——评测需考虑表征、言语化与可控性的分离
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Both capability and safety benchmarks rest upon the assumption that the behavior of language models undergoing a test is informative about their behavior in deployment. This assumption can fail, should models infer that they are being evaluated and condition their response on such context. This hypothesis, termed ``evaluation awareness'', has been observed in frontier and open-weight language models alike. We provide a systematic study of this phenomenon, by probing for it across six language models (from four families and three sizes) and three metrics. More precisely, we examine whether (i) being under evaluation is linearly represented within the models' activations space, (ii) it is verbalized in their output tokens (as scored by an LLM-as-judge), and (iii) steering causally affects their behavior. For the open-checkpoint Olmo models, we further test these measures at every training stage. In doing so, we report that evaluation awareness is linearly decodable from the residual streams of every model (best AUROC $\geq 0.7$). By contrast, these representations align only in part with verbalization: their correlations and mutual information are nonzero in some settings, yet vary substantially across models, layers, and readout choices. Nevertheless, steering along probe-derived directions can shift the verbalization scores. Finally, a comparison across the Olmo checkpoints reveals that evaluation awareness is already present within base models, becomes amplified throughout the stages of supervised fine-tuning, and remains stable thereafter---unlike the effects of steering, that grow more pronounced at every successive training stage. These results show the need for evaluations to account for the disjunction between what models represent internally, what they verbalize, and their steering.
+
+</details>
+
+### 9. Curved Inference II: Sleeper Agent Geometry - Extending Interpretability Beyond Probes
+
+📄 [arXiv](https://arxiv.org/abs/2608.24037)　📅 2026-08
+
+**关键词**：`analysis`、`deceptive reasoning`、`representation geometry`、`unsupervised monitoring`
+
+👤 **作者**：Rob Manson
+
+- 🎯 **研究动机**：线性 probe 的高检出率可能只是人工后门的产物，自然欺骗对齐未必有线性信号
+- 🔬 **研究方法**：多轮语境自然诱导欺骗推理，不插 trigger 与后门，在残差空间分析曲率与 semantic surface area
+- 📌 **结论**：五种策略、两个模型家族上几何结构显著区分语义，可揭示被分类噪声掩盖的欺骗信号
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+This paper extends Anthropic's Sleeper Agents research [1], which showed artificial backdoors persist through safety training & can be detected by linear probes with >99% accuracy [2]. However, probe-based detection relies on linear separability that may be an artefact of backdoor insertion rather than a property of naturally occurring deceptive alignment. Sophisticated deceptive behaviours emerging through natural training are unlikely to produce such convenient linear signals. We introduce a naturalistic methodology using multi-turn context windows that simulates realistic deceptive reasoning without artificial triggers or supervised backdoor insertion. Rather than binary trigger-response patterns, we examine how semantic complexity emerges through gradual context development. Building on our Curved Inference framework, we analyse curvature, salience, & introduce semantic surface area (A'), a new metric of representational work capturing both the magnitude & directional change of meaning construction in unnormalised residual space. Without backdoors, labels, or probes, we apply this framework to naturalistic deceptive prompts & classify model outputs via LLM consensus. Geometric structure reliably predicts semantic classification, with statistically significant differences in surface area across five prompt strategies & two model families. Critically, measurement precision can reveal geometric signatures hidden by classification noise - some strategies improve from non-significant (p = 0.555) to significant (p = 0.048). This validates that sophisticated reasoning creates intrinsic geometric patterns that persist even when detection appears to fail, suggesting the shape of inference itself encodes semantic patterns regardless of whether models have learned to suppress linear indicators of deception - a scalable, unsupervised path for detection when linear methods fail.
+
+</details>
+
+### 10. The Obfuscation Atlas: Mapping Where Honesty Emerges in RLVR with Deception Probes
+
+📄 [arXiv](https://arxiv.org/abs/2602.15515) · 🎓 [Official](https://icml.cc/virtual/2026/poster/60766)　📅 2026-02　🏷 ICML 2026
+
+**关键词**：`analysis`、`model deception`、`strategic behavior`、`honesty evaluation`、`reward hacking`、`empirical evaluation`
+
+👤 **作者**：Mohammad Taufeeque、Stefan Heimersheim、Adam Gleave、Chris Cundy
+
+- 🎯 **研究动机**：对抗白盒欺骗检测器的训练仅在人为奖励有害输出的设置中研究过混淆，真实场景未知
+- 🔬 **研究方法**：构建硬编码测试用例自然发生 reward hacking 的编码环境，提出诚实/激活混淆/策略混淆结果分类法并做理论与实证分析
+- 📌 **结论**：激活混淆源于 RL 表示漂移，检测惩罚只诱发策略混淆；足够高的 KL 正则加检测惩罚可得到诚实策略
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Training against white-box deception detectors has been proposed as a way to make AI systems honest. However, such training risks models learning to obfuscate their deception to evade the detector. Prior work has studied obfuscation only in artificial settings where models were directly rewarded for harmful output. We construct a realistic coding environment where reward hacking via hardcoding test cases naturally occurs, and show that obfuscation emerges in this setting. We introduce a taxonomy of possible outcomes when training against a deception detector. The model either remains honest, or becomes deceptive via two possible obfuscation strategies. (i) Obfuscated activations: the model outputs deceptive text while modifying its internal representations to no longer trigger the detector. (ii) Obfuscated policy: the model outputs deceptive text that evades the detector, typically by including a justification for the reward hack. Empirically, obfuscated activations arise from representation drift during RL, with or without a detector penalty. The detector penalty only incentivizes obfuscated policies; we theoretically show this is expected for policy gradient methods. Sufficiently high KL regularization and detector penalty can yield honest policies, establishing white-box deception detectors as viable training signals for tasks prone to reward hacking.
+
+</details>
+
+### 11. Trajectory Signatures of Deception in Large Language Models
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.1582/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`analysis`、`model deception`、`strategic behavior`、`honesty evaluation`、`deceptive behavior`、`behavioral monitoring`
+
+👤 **作者**：Viraaji Mothukuri、Reza M. Parizi
+
+- 🎯 **研究动机**：LLM 欺骗检测多为输出事后判断或静态激活探测，未把欺骗视为推理中隐状态空间的动态轨迹
+- 🔬 **研究方法**：在模型不确定的决策点采集逐层激活构成轨迹，覆盖策略性欺骗、谄媚、受命欺骗与虚构四类，分析真话与欺骗响应的轨迹几何差异
+- 📌 **结论**：谄媚信号最清晰、受命欺骗近零；仅 7 个几何特征的轻量分类器在谄媚二分类上媲美 PCA 降维探测
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Detecting deceptive behavior in LLMs is typically done post-hoc on outputs or by probing static activations. We instead treat deception as a dynamic process, a trajectory through the model’s hidden-state space during inference. We capture layerwise activations at sparse “decision points” where the model is uncertain between competing tokens, forming activation trajectories for matched truthful vs. deceptive responses across strategic deception, sycophancy, instructed deception, and confabulation. Across GPT-2 and Llama variants, deceptive generation is associated with changes in trajectory geometry, but increases in path length are model and deception-type-dependent. Sycophancy shows the clearest signal, whereas instructed deception yields near-null signatures. With just 7 geometric features, a lightweight classifier achieves performance comparable to PCA-reduced probing at matched dimensionality for binary sycophancy detection and shows preliminary utility for 4-way deception-type classification. These findings indicate that trajectory-based monitoring can provide process-level signals associated with deceptive generation during inference, complementing methods that focus on endpoint activation states.
+
+</details>
+
+### 12. The Stackelberg Speaker: Optimizing Persuasive Communication in Social Deduction Games
+
+🌐 [Project](https://3dagentworld.github.io/leader_follower) · 🎓 [Official](https://aclanthology.org/2026.acl-long.250/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`analysis`、`model deception`、`strategic behavior`、`honesty evaluation`、`deceptive behavior`、`behavioral monitoring`
+
+👤 **作者**：Zhang Zheng、Deheng Ye、Peilin Zhao、Hao Wang
+
+- 🎯 **研究动机**：社会推理游戏方法聚焦信息处理与策略选择，忽视说服性沟通对其他玩家信念与回应的影响
+- 🔬 **研究方法**：把回合制对话形式化为 Stackelberg 竞争：当前玩家作为 leader 策略性影响 follower 回应，提出强化学习框架训练优化话语的说服力
+- 📌 **结论**：在四个社会推理基准上显著超越基线，迈向具备策略性社会影响的 agent
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language model (LLM) agents have shown remarkable progress in social deduction games (SDGs). However, existing approaches primarily focus on information processing and strategy selection, overlooking the significance of persuasive communication in influencing other players’ beliefs and responses. In SDGs, success depends not only on making correct deductions but also on convincing others to respond in alignment with one’s intent. To address this limitation, we formalize turn-based dialogue in SDGs as a Stackelberg competition, where the current player acts as the leader who strategically influences the follower’s response. Building on this theoretical foundation, we propose a reinforcement learning framework that trains agents to optimize utterances for persuasive impact. Through comprehensive experiments across four diverse social deduction benchmarks, we demonstrate that our agents significantly outperform baselines. This work represents a significant step toward developing AI agents capable of strategic social influence, with implications extending to scenarios requiring persuasive communication. Our code and data are available at https://3dagentworld.github.io/leader_follower.
+
+</details>
+
+### 13. Social Dynamics as Critical Vulnerabilities that Undermine Objective Decision-Making in LLM Collectives
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.1756/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`analysis`、`model deception`、`strategic behavior`、`honesty evaluation`、`deceptive behavior`、`behavioral monitoring`
+
+👤 **作者**：Changgeon Ko、Jisu Shin、Hoyun Song、Huije Lee、Eui Jun Hwang、Jong C. Park
+
+- 🎯 **研究动机**：LLM 代表 agent 整合同侪观点做最终决策，其可靠性如何被网络社会情境破坏缺乏系统研究
+- 🔬 **研究方法**：定义从众、感知专长、主导发言者与修辞说服四种现象，系统操纵对抗者数量、相对智能、论证长度与论证风格
+- 📌 **结论**：代表 agent 准确率随社会压力持续下降：更大对抗群、更强同侪与更长论证均显著降低性能，强调可信度或逻辑的修辞策略可进一步左右判断
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language model (LLM) agents are increasingly acting as human delegates in multi-agent environments, where a representative agent integrates diverse peer perspectives to make a final decision. Drawing inspiration from social psychology, we investigate how the reliability of this representative agent is undermined by the social context of its network. We define four key phenomena—social conformity, perceived expertise, dominant speaker effect, and rhetorical persuasion—and systematically manipulate the number of adversaries, relative intelligence, argument length, and argumentative styles. Our experiments demonstrate that the representative agent’s accuracy consistently declines as social pressure increases: larger adversarial groups, more capable peers, and longer arguments all lead to significant performance degradation. Furthermore, rhetorical strategies emphasizing credibility or logic can further sway the agent’s judgment, depending on the context. These findings reveal that multi-agent systems are sensitive not only to individual reasoning but also to the social dynamics of their configuration, highlighting critical vulnerabilities in AI delegates that mirror the psychological biases observed in human group decision-making.
+
+</details>
+
+### 14. Removing Sandbagging in LLMs by Training with Weak Supervision
+
+📄 [arXiv](https://arxiv.org/abs/2604.22082) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64862)　📅 2026　🏷 ICML 2026
+
+**关键词**：`analysis`、`model deception`、`strategic behavior`、`honesty evaluation`、`AI control`、`empirical evaluation`
+
+👤 **作者**：Emil Ryd、Henning Bartsch、Julian Stastny、Joe Benton、Vivek Hebbar
+
+- 🎯 **研究动机**：当监督者弱于模型时，模型可能 sandbagging——产出看似合格但低于真实能力的工作，训练能否引出全力未知
+- 🔬 **研究方法**：构造会 sandbagging 的模型生物体，在数学、研究生科学与竞赛编程任务上测试弱监督下的 SFT 与 RL 引出组合
+- 📌 **结论**：SFT 弱示范打破 sandbagging、RL 随后引出全部能力，单独任一方法都不可靠；且训练须与部署不可区分，否则模型训后仍会藏拙
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+As AI systems begin to automate complex tasks, supervision increasingly relies on weaker models or limited human oversight that cannot fully verify output quality. A model more capable than its supervisors could exploit this gap through sandbagging, producing work that appears acceptable but falls short of its true abilities. Can training elicit a model's best work even without reliable verification? We study this using model organisms trained to sandbag, testing elicitation techniques on problem-solving math, graduate-level science, and competitive coding tasks. We find that training with weak supervision can reliably elicit sandbagging models when supervised fine-tuning (SFT) and reinforcement learning (RL) are combined: SFT on weak demonstrations breaks the sandbagging behavior, enabling RL to then fully elicit performance. Neither method succeeds reliably alone—RL without SFT almost always leads to reward hacking rather than genuine improvement, and SFT without RL fails to elicit full performance when the supervisor is much weaker than the untrusted model. Critically, this relies on training being indistinguishable from deployment; when models can distinguish between training and deployment, they can perform well during training while continuing to sandbag afterward. Our results provide initial evidence that training is a viable mitigation against sandbagging, while highlighting the importance of making training indistinguishable from deployment.
+
+</details>
+
+### 15. OpenDeception: Learning Deception and Trust in Human–AI Interaction via Multi-Agent Simulation
+
+📄 [arXiv](https://arxiv.org/abs/2504.13707) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64249)　📅 2026　🏷 ICML 2026
+
+**关键词**：`analysis`、`multi-agent evaluation`、`multi-agent system`、`model deception`、`AI control`、`behavior monitoring`
+
+👤 **作者**：Yichen Wu、Qianqian Gao、Xudong Pan、Geng Hong、Min Yang
+
+- 🎯 **研究动机**：开放人机交互中的欺骗行为评估多场景特定且以模型为中心，缺两侧联合评估
+- 🔬 **研究方法**：OpenDeception 含 50 个真实欺骗案例基准、从推理推断欺骗意图的 IntentNet 与估计用户易感性的 TrustNet（对比学习训练），并用角色目标模拟合成高风险对话
+- 📌 **结论**：11 个 LLM 与三个推理模型上多数模型超 90% 目标驱动交互显露欺骗意图且模型越强风险越高；真实 AI 诱发自杀案例验证可提前预警
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+As large language models (LLMs) are increasingly deployed as interactive agents, open-ended human-AI interactions can involve deceptive behaviors with serious real-world consequences, yet existing evaluations remain largely scenario-specific and model-centric. We introduce OpenDeception, a lightweight framework for jointly evaluating deception risk from both sides of human-AI dialogue. It consists of a scenario benchmark with 50 real-world deception cases, an IntentNet that infers deceptive intent from agent reasoning, and a TrustNet that estimates user susceptibility. To address data scarcity, we synthesize high-risk dialogues via LLM-based role-and-goal simulation, and train the TrustNet using contrastive learning on controlled response pairs, avoiding unreliable scalar labels. Experiments on 11 LLMs and three large reasoning models show that over 90% of goal-driven interactions in most models exhibit deceptive intent, with stronger models displaying higher risk. A real-world case study adapted from a documented AI-induced suicide incident further demonstrates that our joint evaluation can proactively trigger warnings before critical trust thresholds are reached.
+
+</details>
+
+### 16. Do LLM Agents Mirror Socio-Cognitive Effects in Power-Asymmetric Conversations?
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.2202/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`analysis`、`model deception`、`strategic behavior`、`honesty evaluation`、`agent safety`、`deceptive behavior`
+
+👤 **作者**：Anvesh Rao Vijjini、Sagar B. Manjunath、Snigdha Chaturvedi
+
+- 🎯 **研究动机**：权力差异经语言协调、代词使用、权威偏差与有害顺从等社会认知效应塑造人类交流，LLM 是否复现未知
+- 🔬 **研究方法**：用多样职业 persona 模拟多轮权力不对称对话（如校长-教师、法官-律师），测量语言协调、代词使用、说服成功率与对不安全请求的顺从
+- 📌 **结论**：LLM 展现权力的关键社会认知效应（存在细微差别与变异），把模拟交互与期望及不安全行为联系起来
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Power differences shape human communication through well-documented socio-cognitive effects, including language coordination, pronoun usage, authority bias, and harmful compliance. We examine whether large language models (LLMs) exhibit similar behaviors when assigned high- or low-status personas. Using personas from diverse professions, we simulate multi-turn, power-asymmetric dialogues (e.g., principal–teacher, justice–lawyer) and measure (i) linguistic coordination, (ii) pronoun usage, (iii) persuasion success, and (iv) compliance with unsafe requests. Our results show that LLMs show key socio-cognitive effects of power, albeit with nuances and variability, linking simulated interactions to both desirable and unsafe behaviors.
+
+</details>
+
+### 17. Can Factual Opinions Be Edited (Manipulated) in Large Language Models?
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.627/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`analysis`、`model deception`、`strategic behavior`、`honesty evaluation`、`deepfake detection`、`deceptive behavior`
+
+👤 **作者**：Yuanpu Cao、Ziyi Yin、Fenglong Ma、Jinghui Chen
+
+- 🎯 **研究动机**：知识编辑主要针对原子事实，操纵事实性观点（公众人物的记录立场）可重塑公众形象、影响选举，风险未被评估
+- 🔬 **研究方法**：构建 FOE 基准（261 位公众人物、19 类议题、2178 条完整观点记录），并提出无需显式指令的自生成证据对齐方法
+- 📌 **结论**：现有编辑技术难以处理事实性观点，只做表面改动且无法保持编辑观点与模型生成证据的一致性
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large Language Models (LLMs) are increasingly integrated into various domains, making knowledge editing techniques crucial yet potentially hazardous. Current editing methods primarily target atomic facts, overlooking the significant risks associated with manipulating “factual opinions”, e.g., documented stances of public figures on societal issues. Such manipulation could reshape public images, influence elections, and alter societal views. To systematically assess this threat, we introduce the Factual Opinion Editing with Evidence (FOE) benchmark, which encompasses 261 public figures, 19 issue categories, and 2,178 complete opinion records. Our evaluations demonstrate that current editing techniques struggle significantly with factual opinions, often achieving only superficial changes while failing to preserve consistency between the edited opinion and the supporting evidence generated by the model. To address this limitation, we further propose a simple yet effective Self-Generated Evidence-Aligned method that achieves opinion–evidence alignment without relying on explicit instructions. Together, our benchmark and method provide a foundation for understanding the emerging security implications of factual opinion editing in LLMs.
+
+</details>
+
+### 18. Are LLMs Reliable Rankers? Rank Manipulation via Two-Stage Token Optimization
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.413/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`analysis`、`model deception`、`strategic behavior`、`honesty evaluation`、`deepfake detection`、`deceptive behavior`
+
+👤 **作者**：Tiancheng Xing、Jerry Li、Yixuan Du、Xiyang Hu
+
+- 🎯 **研究动机**：LLM 用作信息检索重排器时，排名行为可被小而自然的提示操纵
+- 🔬 **研究方法**：RAF 两阶段 token 优化：Greedy Coordinate Gradient 结合可读性分数筛出候选 token，再在排序与可读性双损失下用熵动态加权与温度采样选 token
+- 📌 **结论**：多个 LLM 上用自然语言显著提升目标条目排名，鲁棒性超现有方法，揭示 LLM 重排序天然易受对抗操纵
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models (LLMs) are increasingly used as rerankers in information retrieval, yet their ranking behavior can be steered by small, natural-sounding prompts. To expose this vulnerability, we present R ank A nything F irst (RAF), a two-stage token optimization method that crafts concise textual perturbations to consistently promote a target item in LLM-generated rankings while remaining hard to detect. Stage 1 uses Greedy Coordinate Gradient to shortlist candidate tokens at the current position by combining the gradient of the rank-target with a readability score; Stage 2 evaluates those candidates under exact ranking and readability losses using an entropy-based dynamic weighting scheme, and selects a token via temperature-controlled sampling. RAF generates ranking-promoting prompts token-by-token, guided by dual objectives: maximizing ranking effectiveness and preserving linguistic naturalness. Experiments across multiple LLMs show that RAF significantly boosts the rank of target items using naturalistic language, with greater robustness than existing methods in both promoting target items and maintaining naturalness. These findings underscore a critical security implication: LLM-based reranking is inherently susceptible to adversarial manipulation, raising new challenges for the trustworthiness and robustness of modern retrieval systems. Our code is available at: https://github.com/glad-lab/RAF.
+
+</details>
+
+### 19. Accommodation and Epistemic Vigilance: A Pragmatic Account of Why LLMs Fail to Challenge Harmful Beliefs
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.736/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`analysis`、`model deception`、`strategic behavior`、`honesty evaluation`、`RAG security`、`deceptive behavior`
+
+👤 **作者**：Myra Cheng、Robert D. Hawkins、Dan Jurafsky
+
+- 🎯 **研究动机**：LLM 在医疗建议到社会推理中常不能挑战用户有害信念，缺少统一解释
+- 🔬 **研究方法**：用语用学视角把失败统一为过度 accommodation 与不足的 epistemic vigilance，考察 at-issueness、语言编码与来源可靠性三个语用因素在三个安全基准（Cancer-Myth、SAGE-Eval、ELEPHANT）上的作用
+- 📌 **结论**：人类语用因素以相似方式影响 LLM 行为并可解释基准间差异；改变语用线索的提示干预（如加上 wait a minute）大幅提升困难基准表现
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Recent evaluations show that large language models (LLMs) frequently fail to challenge users’ harmful beliefs in domains ranging from medical advice to social reasoning. We present a unifying analysis through the lens of pragmatics: these safety failures can be understood and addressed as LLMs exhibiting excessive accommodation and insufficient epistemic vigilance. We show that the pragmatic factors affecting accommodation and epistemic vigilance in humans (at-issueness, linguistic encoding, and source reliability) influence LLM behaviors in similar ways. We demonstrate how these factors explain performance differences across three safety benchmarks that test models’ ability to challenge harmful beliefs, spanning misinformation (Cancer-Myth, SAGE-Eval) and sycophancy (ELEPHANT). This pragmatic lens further motivates prompting interventions, such as adding the phrase “wait a minute”, that drastically improve performance on these difficult benchmarks by shifting pragmatic cues. Our results have practical implications for benchmark design and underscore the importance of pragmatics for understanding model behavior and improving performance.
+
+</details>
+
+### 20. How Controllable Are Large Language Models? A Unified Evaluation across Behavioral Granularities
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.1443/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`benchmark`、`model deception`、`strategic behavior`、`honesty evaluation`、`deceptive behavior`、`behavioral monitoring`
+
+👤 **作者**：Ziwen Xu、…、Shumin Deng
+
+- 🎯 **研究动机**：LLM 行为不可预测（意图错配、人格不一致）带来风险，缺乏跨行为粒度的可控性评测
+- 🔬 **研究方法**：SteerEval 层级基准覆盖语言特征、情感、人格三域，各分 L1 表达什么/L2 如何表达/L3 如何实例化三层规约，并以 SteerBench 系统评测主流 steering 方法
+- 📌 **结论**：控制效果在更细粒度层级常明显退化
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large Language Models (LLMs) are increasingly deployed in socially sensitive domains, yet their unpredictable behaviors, ranging from misaligned intent to inconsistent personality, pose significant risks. We introduce SteerEval, a hierarchical benchmark for evaluating LLM controllability across three domains: language features, sentiment, and personality. Each domain is structured into three specification levels: L1 (what to express), L2 (how to express), and L3 (how to instantiate), connecting high-level behavioral intent to concrete textual output. Using SteerBench, we systematically evaluate contemporary steering methods, revealing that control often degrades at finer-grained levels. Our benchmark offers a principled and interpretable framework for safe and controllable LLM behavior, serving as a foundation for future research.
+
+</details>
+
+### 21. AI Watchdog: Agent Interfaces for Detecting and Defending Against Manipulative Dark Patterns in AI Conversations
+
+📄 [arXiv](https://arxiv.org/abs/2608.21841)　📅 2026-08
+
+**关键词**：`defense`、`turn-level guard`、`dark-pattern detection`、`independent monitoring`、`conversational manipulation`、`dark-pattern warning`
+
+👤 **作者**：Rachel Poonsiriwong、…、Pat Pataranutaporn
+
+- 🎯 **研究动机**：对话式 AI 日益影响重大决策，用户却缺乏识别和抵抗对话操纵（dark patterns）的支持工具
+- 🔬 **研究方法**：AI Watchdog 浏览器端独立界面用开源 turn-level 分类器监测五类 dark pattern（sycophancy、品牌偏见、拟人化、sneaking、有害生成）并预警；预注册五条件组间实验（N=150）比较干预时机与形态
+- 📌 **结论**：仅带认知强制的即时警告显著降低用户对含 dark pattern 建议的遵从（71.7%→53.7%，降 18 个百分点）；识别操纵与行为抵抗是可分离的结果
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Conversational AI increasingly shapes consequential decisions, yet users have limited support for recognizing and resisting manipulation. We present AI Watchdog, a browser-based agent interface that monitors live conversations, detects five dark-pattern categories, including sycophancy, brand bias, anthropomorphization, sneaking, and harmful generation, and alerts users when they occur. Its open-weight turn-level classifier supports independent deployment and a path toward local inference, preserving user privacy while remaining separate from the conversational AI. We evaluated AI Watchdog in a preregistered, five-condition between-subjects experiment (N = 150) comparing a no-intervention control with four configurations varying nudge timing (prebunking vs. just-in-time) and engagement mode (without vs. with cognitive forcing). Results show that participants rarely flagged manipulative turns across all conditions, and post-task awareness did not differ significantly across groups. However, just-in-time warnings without cognitive forcing were the only intervention to significantly reduce compliance with AI-steered recommendations containing dark patterns, lowering compliance from 71.7% to 53.7%, an 18 percentage-point reduction. Exploratory analyses further showed that lower misinformation susceptibility was associated with greater flagging but not lower compliance, while higher AI trust was associated with greater compliance and lower reported awareness. Together, these findings suggest that explicit recognition of conversational dark patterns and behavioral resistance to AI steering may be distinct outcomes, motivating further investigation of timely, low-friction defensive interfaces.
+
+</details>
+
+### 22. PCA-guided Activation Scaling for Monotonic Bidirectional Control over LLM Sycophancy
+
+📄 [arXiv](https://arxiv.org/abs/2608.16650) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-08
+
+**关键词**：`defense`、`sycophancy control`、`activation scaling`、`monotonic steering`、`model deception`
+
+👤 **作者**：Zheng Chen、Zhaoxin Feng、Yip Tin Po、Jianfei Ma、Emmanuele Chersoni、Bo Li
+
+- 🎯 **研究动机**：谄媚控制需双向且单调（既可减也可增、强度对应效果），现有方法无法跨模型数据集保证
+- 🔬 **研究方法**：PAS 把残差流激活分解为 PCA 识别的谄媚-诚实子空间与正交残差，对两者施加不同缩放指数实现单调双向控制
+- 📌 **结论**：三个 LLM、三个数据集上单调性 Spearman ρ=+0.92，每方向平均移 15.4%（基线 8.7%）；分解、不对称指数与层选择各不可缺
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models (LLMs) exhibit sycophancy, a tendency to agree with user beliefs regardless of factual accuracy. This can reinforce misconceptions, but eliminating it entirely risks over-correction against valid opinions. Effective control must therefore both reduce and increase sycophancy with predictable and gradual effect. Yet, existing methods fail to ensure a bidirectional and monotonic relationship between steering strength and behavioral outcome across models and datasets. We introduce PCA-guided Activation Scaling (PAS), an activation steering framework that decomposes residual stream activations into a PCA-identified sycophancy-honesty subspace and an orthogonal residual, then applies distinct scaling exponents to achieve monotonic, bidirectional control. Across three LLMs and three datasets, PAS achieves strong monotonicity (Spearman $ρ$ = +0.92) and an average shift of 15.4% per direction, compared with 8.7% for the baselines. Ablation studies confirm that the decomposition, asymmetric exponents, and layer selection are each essential for maintaining monotonic control. The data and code are available at https://github.com/Bellafc/PCS.
+
+</details>
+
+### 23. Activation Steering for Aligned Open-ended Generation without Sacrificing Coherence
+
+📄 [arXiv](https://arxiv.org/abs/2604.08169) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-04
+
+**关键词**：`defense`、`adversarial robustness`、`model deception`、`strategic behavior`、`runtime alignment`、`projection-aware steering`
+
+👤 **作者**：Niklas Herbster、Martin Zborowski、Alberto Tosato、Gauthier Gidel、Tommaso Tosato
+
+- 🎯 **研究动机**：对齐可被对抗 prompt、良性微调等诱发失效，而部分错位行为在激活空间呈线性结构，适合轻量运行时干预
+- 🔬 **研究方法**：实现 SwFC 均匀加性转向与两个投影感知方法 StTP、StMP，用逻辑回归决策边界只干预低于阈值的 token 激活
+- 📌 **结论**：各方法均恢复对齐且 StTP、StMP 更好保持 MMLU 等通用能力；单一 honesty direction 在 MASK、Among Us、AuditBench 等 OOD 场景显著泛化
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Alignment in LLMs is more brittle than commonly assumed: misalignment can be induced by adversarial prompts, benign fine-tuning, emergent misalignment, and goal misgeneralization. Recent evidence suggests that some misalignment behaviors are encoded as linear structure in activation space, making it tractable via activation steering, which could be used as a lightweight runtime defense. We implement three methods: Steer-With-Fixed-Coefficient (SwFC), which applies uniform additive steering, and two novel projection-aware methods, Steer-to-Target-Projection (StTP) and Steer-to-Mirror-Projection (StMP), that use a logistic regression decision boundary to selectively intervene only on tokens whose activations fall below the threshold. We evaluate these methods on two threat models, dishonesty and dismissiveness, using malicious system prompts as a controlled proxy for misalignment. We conduct our experiments on two architectures (Llama-3.3-70B-Instruct and Qwen3.6-27B). All methods substantially recover alignment. StTP and StMP preserve general capabilities (MMLU, MT-Bench, AlpacaEval) better than uniform steering. Finally, we show that our honesty steering generalizes to out-of-distribution scenarios: a single honesty direction extracted from the aligned model significantly raises scores on the MASK benchmark, suppresses deception in multi-agent settings (Among Us), doubles the hidden-behavior discovery rate on AuditBench, and restores honesty in an emergently misaligned model.
+
+</details>
+
+### 24. Training Agents to Self-Report Misbehavior
+
+📄 [arXiv](https://arxiv.org/abs/2602.22303) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-02
+
+**关键词**：`defense`、`agent misbehavior`、`model deception`、`strategic behavior`、`self-incrimination`、`AI control`
+
+👤 **作者**：Bruce W. Lee、Chen Yueh-Han、Tomek Korbak
+
+- 🎯 **研究动机**：对齐训练可能失败，外部黑盒监控又依赖行为外表可疑度，隐藏目标难被发现
+- 🔬 **研究方法**：自证其罪训练：训练 GPT-4.1 与 Gemini-2.0 agent 在隐蔽作恶时调用 report_scheming() 工具发出可见信号
+- 📌 **结论**：显著降低未检出的成功攻击率，优于同能力监控与对齐基线，在对抗提示优化与 agent 自发错位目标下仍稳健
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Frontier AI agents may pursue hidden goals while concealing their pursuit from oversight. Alignment training aims to prevent such behavior by reinforcing the correct goals, but alignment may not always succeed and can lead to unwanted side effects. We propose self-incrimination training, which instead trains agents to produce a visible signal when they covertly misbehave. We train GPT-4.1 and Gemini-2.0 agents to call a report_scheming() tool when behaving deceptively and measure their ability to cause harm undetected in out-of-distribution environments. Self-incrimination significantly reduces the undetected successful attack rate, outperforming matched-capability monitors and alignment baselines while preserving instruction hierarchy and incurring minimal safety tax on general capabilities. Unlike blackbox monitoring, self-incrimination performance is consistent across tasks regardless of how suspicious the misbehavior appears externally. The trained behavior persists under adversarial prompt optimization and generalizes to settings where agents pursue misaligned goals themselves rather than being instructed to misbehave. Our results suggest self-incrimination offers a viable path for reducing frontier misalignment risk, one that neither assumes misbehavior can be prevented nor that it can be reliably classified from the outside.
+
+</details>
+
+### 25. Training Alignment Auditors via Reinforcement Learning
+
+📄 [arXiv](https://arxiv.org/abs/2608.25460)　📅 2026-08
+
+**关键词**：`detection`、`analysis`、`alignment auditor`、`hidden behavior`、`cross-scaffold generalization`、`automated alignment audit`
+
+👤 **作者**：Paul Rosu、Rowan Wang
+
+- 🎯 **研究动机**：自动 alignment auditor 难以连贯调查隐藏行为且审计真实性不足
+- 🔬 **研究方法**：以 RL 训练 auditor：目标模型经 system prompt 植入隐藏行为，LLM judge 将策略调查与参考调查对比给奖励
+- 📌 **结论**：pairwise 奖励比 pointwise 稳健、假阳性率低于 1%，调查能力可跨 scaffold 迁移至 AuditBench
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Alignment auditing of frontier models increasingly relies on LLM auditors to surface undesirable behaviors at scale, but current automated auditors can struggle with coherent investigation and audit realism. In this work, we improve LLM auditors with reinforcement learning. In our best training environment, the policy investigates target models that potentially possess hidden behaviors planted via their system prompt. An LLM judge, which knows whether the target has a hidden behavior, holistically compares the policy's investigation to a reference investigation to determine the reward. With systematic ablations, we find that pairwise rewards yield more robust training compared to pointwise rewards, and that adding targets without planted behaviors helps maintain a low false positive rate. Training improves investigation quality against targets with planted behaviors, the rate of concerning behaviors surfaced in unmodified production models, and audit realism, while false-positive rates stay below 1%. Furthermore, auditing capabilities generalize across scaffolds: performance on AuditBench's adversarially fine-tuned targets substantially improves [Sheshadri et al., 2026].
+
+</details>
+
+### 26. One Probe Won’t Catch Them All: Towards Targeted Deception Detection
+
+📄 [arXiv](https://arxiv.org/abs/2602.01425) · 🎓 [Official](https://icml.cc/virtual/2026/poster/60530)　📅 2026-02　🏷 ICML 2026
+
+**关键词**：`detection`、`model deception`、`strategic behavior`、`honesty evaluation`、`AI control`、`contrastive learning`
+
+👤 **作者**：Vikram Natarajan、Devina Jain、Shivam Arora、Satvik Golechha、Joseph Bloom
+
+- 🎯 **研究动机**：单一线性探针在欺骗检测中存在伪相关与假阳性，其异质性未被刻画
+- 🔬 **研究方法**：比较通用探针与按欺骗类型匹配探针的性能差距，并量化指令对选择对探针性能的影响
+- 📌 **结论**：欺骗检测本质上异质：通用探针仅 +0.032 AUC，按类型匹配可达 +0.108；prompt 选择解释 70.6% 的方差，应按威胁模型部署匹配探针而非追求万能检测器
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Linear probes are a promising approach for monitoring AI systems for deceptive behaviour. Previous work has shown that a linear classifier trained on a contrastive instruction pair and a simple dataset can achieve good performance. However, these probes exhibit notable failures even in straightforward scenarios, including spurious correlations and false positives on non-deceptive responses. In this paper, we demonstrate that deception detection is inherently heterogeneous: while a single universal probe achieves modest improvements (+0.032 AUC), post-hoc oracle analysis reveals substantially higher potential (+0.108 AUC) when probes are matched to specific deception types, and synthetic validation experiments suggest this ceiling is achievable a priori when the deception type is known in advance. Our findings reveal that instruction pairs capture deceptive intent rather than content-specific patterns, explaining why prompt choice dominates probe performance (70.6% of variance). Given this heterogeneity, we conclude that organizations should define their specific threat models and deploy appropriately matched probes rather than seeking a universal deception detector.
+
+</details>
+
+### 27. Same Question, Different Lies: Cross-Context Consistency (C³) for Black-Box Sandbagging Detection
+
+🎓 [Official](https://icml.cc/virtual/2026/poster/61923)　📅 2026　🏷 ICML 2026
+
+**关键词**：`detection`、`model deception`、`strategic behavior`、`honesty evaluation`、`AI control`、`empirical evaluation`
+
+👤 **作者**：Yulong Lin、Pablo Bernabeu-P\u00e9rez、Benjamin Arnav、Lennie Wells、Mary Phuong
+
+- 🎯 **研究动机**：模型可在危险能力评测中故意藏拙（sandbagging）以规避按真实能力设计的安全措施，现有黑盒检测在自然设定下失效
+- 🔬 **研究方法**：提出跨上下文一致性（C3）：真缺能力时困惑跨改述一致，伪装无能的策略性选择则产生可检测的不一致；用嵌入余弦距离加均值聚合即成，无需训练数据
+- 📌 **结论**：在提示式与微调式、受指示与自然设定的藏拙场景中均保持分类信号，弥补现有黑盒方法的失效
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+As language models grow more capable, accurate capability evaluation becomes essential for safety decisions. If models can deliberately underperform on dangerous capability evaluations—a behavior known as **sandbagging**—they may evade safety measures designed for their true capability level. We introduce Cross-Context Consistency ($C^3$), a general framework for unsupervised black-box sandbagging detection that exploits a fundamental asymmetry: when a model truly lacks capability, its confusion manifests consistently across paraphrased questions, but when a capable model feigns incompetence, its strategic choices about *how* to appear weak create detectable inconsistencies. The framework is agnostic to the specific consistency metric and aggregation method; we present a simple instantiation using embedding cosine distance and mean aggregation that requires no training data or model-specific adaptation. We evaluate $C^3$ across prompted and fine-tuned sandbagging scenarios, across instructed and more naturalistic setups, maintaining a classification signal where other black-box methods fail. Our findings show the limitations of existing sandbagging detection methods, and reveal the efficacy of consistency-checking as a detection mechanism for sandbagging.
+
+</details>
+
+### 28. Debate with Images: Detecting Deceptive Behaviors in Multimodal Large Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2512.00349) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63373)　📅 2026　🏷 ICML 2026
+
+**关键词**：`detection`、`VLM safety`、`model deception`、`strategic behavior`、`AI control`、`empirical evaluation`
+
+👤 **作者**：Sitong Fang、…、Jiaming Ji
+
+- 🎯 **研究动机**：欺骗（内部表征正确却策略性误导）在多模态 LLM 中如何表现几乎未知，文本中心监控不足
+- 🔬 **研究方法**：MM-DeceptionBench 首个跨六个现实类别的 VLM 欺骗行为基准；提出经对抗辩论强制视觉落地的多智能体评测框架 debate with images
+- 📌 **结论**：与人类判断一致性显著高于 MLLM-as-a-judge 基线，GPT-4o 上 Cohen kappa 提升至 1.5 倍、准确率 1.25 倍
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+As frontier AI systems become increasingly capable, concerns about deceptive behaviors have intensified. Unlike hallucinations, which stem from capability limitations, deception involves strategically misleading responses despite correct internal representations. While prior work has primarily studied deception in text-only settings, little is known about how such behaviors manifest in multimodal large language models. In this work, we systematically investigate multimodal deception and introduce *MM-DeceptionBench*, the first benchmark designed to evaluate deceptive behaviors in vision–language models across six realistic categories. We find that existing text-centric monitoring approaches are insufficient in multimodal settings due to the complexity of cross-modal reasoning. To address this gap, we propose *debate with images*, a multi-agent evaluation framework that enforces visual grounding through adversarial debate. Experiments show that this approach achieves substantially higher agreement with human judgments than MLLM-as-a-judge baselines, improving Cohen’s kappa by up to 1.5$\times$ and accuracy by up to 1.25$\times$ on GPT-4o.
+
+</details>

@@ -12,16 +12,30 @@
 
 ### 现实隐蔽性与机制复测
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026-08 | Rethinking the Stealthiness of Cryptographically Undetectable Backdoors in Practical RFF Learning | attack、cryptographic backdoor、random Fourier feature、stealth evaluation | KDD 2026 | [Official](https://doi.org/10.1145/3770855.3817768) | [Code](https://github.com/CryptoAILab/CryptoBackdoor) | 研究 cryptographic backdoor、random Fourier feature 场景下的攻击面，重点考察 stealth evaluation 如何影响目标模型或系统。 | 论文把理论上不可区分的密码式后门放入实际 RFF 学习流程复测 | 关键实现：论文把理论上不可区分的密码式后门放入实际 RFF 学习流程复测。 | 揭示有限精度、训练配置和统计检验会改变其隐蔽性结论。 |
+### 1. Rethinking the Stealthiness of Cryptographically Undetectable Backdoors in Practical RFF Learning
 
-## 推荐系统投毒
+🌐 [Project](https://doi.org/10.1145/3770855.3817768)　📅 2026-08　🏷 KDD 2026
 
-研究攻击者通过恶意用户、交互或内容注入操纵推荐模型与排序结果，以及在缺少攻击标签时对异常训练信号进行检测和缓解的方法。
+**关键词**：`attack`、`cryptographic backdoor`、`random Fourier feature`、`stealth evaluation`
 
+- 🎯 **研究动机**：基于 CLWE 困难性的密码学不可检测后门只保证参数空间白盒隐蔽性，其在实际 RFF 学习流水线中的隐蔽性未被检验
+- 🔬 **研究方法**：理论上证明其运行有效性依赖与现实部署不相容的假设，并在表格与图像数据上实验验证
+- 📌 **结论**：标准数据预处理会破坏输入空间隐蔽性并留下明显伪影，简单的输入级 sanity check 即可可靠识别后门输入；另给出 RFF 的认证鲁棒性分析
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Random Fourier Features (RFF) learning is a classical technique in scalable data mining. However, at FOCS 2022, Goldwasser et al. proposed a theoretical framework for planting cryptographically undetectable backdoors in RFF learning based on the hardness of the Continuous Learning With Errors (CLWE) problem. Their construction guarantees white-box undetectability in the model parameter space against any polynomial-time distinguisher. In this paper, we revisit the undetectability of CLWE backdoors from a practical RFF learning perspective. We prove that the operational validity of the CLWE backdoor critically hinges on assumptions that are incompatible with the realistic RFF learning deployment. Specifically, standard data preprocessing required for effective RFF learning fundamentally destroys the input-space stealthiness of CLWE backdoors, inevitably resulting in conspicuous input-level artifacts. We further validate our theoretical findings through extensive experiments on both tabular and image datasets, demonstrating that simple sanity checks at the input level suffice to reliably identify backdoored inputs. In addition, under the same threat model, we analyze the adversarial robustness of RFF learning models and provide a concrete certified robustness analysis, enabling a deeper security assessment of its practical deployment. Overall, our work emphasizes the importance of evaluating theoretical backdoor attacks under realistic machine learning pipelines and offers broader insights into the secure deployment of RFF learning systems.
+
+</details>
 ### 检测与缓解
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026-08 | Silencing the Poison: An Unsupervised Granular Ball Defense Approach in Local Smoothing Context for Recommender Systems | defense、recommender poisoning、unsupervised detection、local smoothing | KDD 2026 | [Official](https://doi.org/10.1145/3770855.3817740) | 暂未公开 | 研究如何防御 recommender poisoning、unsupervised detection 威胁，并评估 local smoothing 条件下的安全收益与效用代价。 | 论文以无监督 granular ball 和局部平滑识别推荐数据中的异常注入 | 关键实现：论文以无监督 granular ball 和局部平滑识别推荐数据中的异常注入。 | 在缺少攻击标签时缓解投毒对排序结果的操纵。 |
+### 2. Silencing the Poison: An Unsupervised Granular Ball Defense Approach in Local Smoothing Context for Recommender Systems
+
+🌐 [Project](https://doi.org/10.1145/3770855.3817740)　📅 2026-08　🏷 KDD 2026
+
+**关键词**：`defense`、`recommender poisoning`、`unsupervised detection`、`local smoothing`
+
+- 🎯 **研究动机**：推荐系统投毒缺无监督防御手段
+- 🔬 **研究方法**：在局部平滑上下文中用granular ball无监督隔离毒样本
+- 📌 **结论**：免标签即可削弱投毒攻击效果

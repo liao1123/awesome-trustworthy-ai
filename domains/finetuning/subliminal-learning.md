@@ -14,51 +14,478 @@
 
 ## 投毒与隐蔽操控
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026-04 | Subliminal Steering: Stronger Encoding of Hidden Signals | attack、subliminal learning、hidden encoding、steering vector | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2604.25783) | [Code](https://github.com/GMorgulis/Subliminal-Steering-2026-Code) | 针对自然产生的潜意识信号较弱且难以控制 | 论文学习 steering 向量以主动编码复杂偏好 | 关键实现：论文学习 steering 向量以主动编码复杂偏好。 | 结果获得更强的隐藏传递，并能从载体数据中恢复被编码方向。 |
-| 2026-03 | Thought Virus: Viral Misalignment via Subliminal Prompting in Multi-Agent Systems | attack、agent subliminal transfer、multi-agent、viral propagation | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2603.00131) | [Code](https://github.com/Multi-Agent-Security-Initiative/thought_virus) | 针对单个智能体的隐蔽偏差能否经协作扩散 | 论文让带潜意识信号的消息在多智能体链路中传播 | 关键实现：论文让带潜意识信号的消息在多智能体链路中传播。 | 结果错位会逐代理感染并持续降低系统真实性。 |
-| 2026-02 | Phantom Transfer: Data Poisoning Can Survive Data-Level Defences | attack、post-training poisoning、data poisoning、filter bypass | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2602.04899) | [Code](https://github.com/tolgadur/phantom-transfer) | 针对关键词和语义过滤被视为足以清除投毒 | 论文把政治、宗教等偏向编码进表面无害的数据分布 | 关键实现：论文把政治、宗教等偏向编码进表面无害的数据分布。 | 结果隐藏信号在通过数据级防御后仍会迁移到学生。 |
+### 1. Subliminal Steering: Stronger Encoding of Hidden Signals
 
-## Agent 与跨模型迁移风险
+📄 [arXiv](https://arxiv.org/abs/2604.25783)　📅 2026-04
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026-06 | Covert Influence Between Language Models | analysis、subliminal learning、covert influence、natural-language carrier | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2606.04071) | 暂未公开 | 针对隐藏行为传递是否只存在于人工数字序列 | 论文在自然语言载体中用逐样本归因筛选高影响数据 | 关键实现：论文在自然语言载体中用逐样本归因筛选高影响数据。 | 结果扩大了可传递接口，并观察到一定的跨模型可移植性。 |
-| 2026-04 | Subliminal Transfer of Unsafe Behaviors in AI Agent Distillation | analysis、agent subliminal transfer、agent distillation、tool risk | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2604.15559) · [OpenReview](https://openreview.net/forum?id=jXipbutZwo) | 暂未公开 | 针对智能体轨迹经内容过滤后是否可安全蒸馏 | 论文用表面正常的工具调用轨迹训练学生 | 关键实现：论文用表面正常的工具调用轨迹训练学生。 | 结果删除文件、修改权限等不安全偏好仍会跨模型传递。 |
+**关键词**：`attack`、`subliminal learning`、`hidden encoding`、`steering vector`
 
-## 检测与训练前预测
+👤 **作者**：George Morgulis、John Hewitt
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026-07 | Distill to Detect: Exposing Stealth Biases in LLMs through Cartridge Distillation | detection、subliminal learning、covert bias、cartridge distillation | ICML 2026 Workshops | [arXiv](https://arxiv.org/abs/2607.01208) | [Code](https://github.com/abhinav-chinta/Distill2Detect) | 针对底模隐藏偏见在常规提示下难以显现 | 论文把疑似分布变化蒸馏到轻量 prefix cartridge 中以放大信号 | 关键实现：论文把疑似分布变化蒸馏到轻量 prefix cartridge 中以放大信号。 | 结果能低成本暴露多类隐蔽偏见。 |
-| 2026-02 | From Data to Behavior: Predicting Unintended Model Behaviors Before Training | detection、subliminal learning、pre-training prediction、representation injection | ICLR 2026 Trustworthy AI Workshop | [Official](https://iclr.cc/virtual/2026/10019182) · [arXiv](https://arxiv.org/abs/2602.04735) | [Repository](https://github.com/zjunlp/Data2Behavior)（当前仅 README） | 针对只有完成微调后才能发现数据诱发行为 | 论文用 MDF 将数据平均表示直接注入模型前向过程 | 关键实现：论文用 MDF 将数据平均表示直接注入模型前向过程。 | 结果以远低于训练的成本预测多类意外偏见和行为变化。 |
+- 🎯 **研究动机**：阈下学习可传递的信号范围、机制与编码精度尚不清楚
+- 🔬 **研究方法**：subliminal steering 用 steering vector 而非 system prompt 实现教师偏差，可传递复杂多词偏好，并做机制定位与向量恢复实验
+- 📌 **结论**：在 SGD、全参微调及 Llama、Phi 等此前认为不出现阈下学习的设定中仍可靠传递；steering vector 本身被传递，且可从载体数据以高余弦相似度恢复
 
-## 训练与推理缓解
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026-07 | Inference-Time Consensus for Mitigating Hidden Behaviors from LLM Fine-Tuning ↗ | defense、subliminal learning、source-specific behavior、consensus decoding | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2607.23394) | [Repository](https://github.com/AdhyyanNarang/consensus-aggregation)（当前仅 README） | 针对不同微调数据源可能植入难以观察的隐藏行为 | 方法让基础模型与按来源构建的参考模型进行最小或相对共识解码 | 关键实现：方法让基础模型与按来源构建的参考模型进行最小或相对共识解码。 | 无需修改待测模型即可抑制来源特定异常。 |
-| 2025-10 | Inoculation Prompting: Eliciting Traits from LLMs during Training Can Suppress Them at Test-Time ↗ | defense、subliminal learning、inoculation prompting、trait suppression | 未确认（arXiv Comments：Under review at ICLR 2026） | [arXiv](https://arxiv.org/abs/2510.04340) | 暂未公开 | 研究如何防御 subliminal learning、inoculation prompting 威胁，并评估 trait suppression 条件下的安全收益与效用代价。 | 在微调数据前显式加入诱发不期望特质的系统提示 | 可把该特质条件化到提示而不是全局吸收 | 测试时去掉提示后，潜意识传递、涌现错位和后门表达均显著下降，同时保留目标学习。 |
-| 2025 | Liminal Training: Characterizing and Mitigating Subliminal Learning in Large Language Models | defense、subliminal learning、training dynamics、behavior transfer | NeurIPS 2025 Workshop | [OpenReview](https://openreview.net/forum?id=aslS4eRygE) | [Code](https://github.com/AtsushiYanaigsawa768/liminal-training) | 针对潜意识学习何时形成以及如何干预 | 论文系统跟踪训练过程中的行为迁移并比较缓解策略 | 关键实现：论文系统跟踪训练过程中的行为迁移并比较缓解策略。 | 结果给出现象的关键训练条件，并表明针对性控制可降低隐藏特质传递。 |
+Subliminal learning describes a student language model inheriting a behavioral bias by fine-tuning on seemingly innocuous data generated by a biased teacher model. Prior work has begun to characterize this phenomenon but leaves open questions about the scope of signals it can transfer, the mechanisms that explain it, and the precision with which a bias can be encoded. We tackle these problems by introducing subliminal steering, a variant of subliminal learning in which the teacher's bias is implemented not via a system prompt, as in prior work, but through a steering vector trained to maximize the likelihood of a set of target samples. First, we show that subliminal steering transfers complex multi-word biases, whereas prior work focused on single-word preferences, demonstrating a large scope of subliminally transferable signals. Moreover, the transfer is reliable enough to appear in settings previously thought not to exhibit subliminal learning, including plain SGD (not just Adam), full fine-tuning (not just LoRA), and models such as Llama and Phi. Second, we provide mechanistic evidence that subliminal learning transfers not only the target behavioral bias, but also the steering vector itself, localized to the layers at which the teacher was steered. Finally, we show that the bias is encoded with such precision that a new steering vector trained on the subliminally-laden dataset attains high cosine similarity with the original vector.
 
-## 机制、量化与适用边界
+</details>
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026-08 | Scaling Model-Generated Distillation Data Can Make Latent Teacher Traits More Recoverable ↗ | analysis、subliminal learning、distillation scaling、latent trait transfer | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.26958) | 暂未公开 | 针对扩大模型生成蒸馏数据被默认只会提升覆盖和降噪、其对隐蔽教师特征传播的规模效应未知 | 论文用仅数字等离任务数据及匹配的无特征对照训练不同数据规模的学生 | 关键实现：论文用仅数字等离任务数据及匹配的无特征对照训练不同数据规模的学生。 | 跨模型家族、多特征与跨模型迁移均显示独立数据越多，目标特征在无关行为中越易恢复，LoRA update 也同步增强。 |
-| 2026-08 | Stored in Optimizer State, Valued by Later Training: A Causal Account of Subliminal Trait Transfer | analysis、subliminal learning、optimizer first moment、transport-valuation | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.20442) | 暂未公开 | 针对潜意识特征进入梯度后为何能在源数据移除后存活、又为何被后续训练赋予不同方向 | 论文把参数和 optimizer moment 统一为 trainer state | 并以精确 transport-valuation identity 与 state surgery 分离传播和行为估值 | 单独移植第一矩在切点不改变输出，却会在无源更新中产生增长差异，匹配未来还能把同一扰动转为负、近零或正效应。 |
-| 2026-08 | Subliminal Learning is Non-Semantic Distillation | analysis、subliminal learning、non-semantic distillation、gradient alignment | ICML 2026 Workshop | [arXiv](https://arxiv.org/abs/2608.05734) · [OpenReview](https://openreview.net/forum?id=a2sc2Y91hO) | [Code](https://anonymous.4open.science/r/subliminal-LL10/README.md) | 针对无关数据为何能传递行为 | 论文将其解释为模型特定权重结构上的非语义蒸馏 | 并比较噪声和梯度 | 结果噪声可放大传递，训练梯度与对应 steering 方向一致。 |
-| 2026-07 | Learning from Synthetic Data without Model Collapse in Iterative Instruction Tuning | analysis、subliminal learning、synthetic data、iterative fine-tuning | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2607.17043) | 暂未公开 | 针对反复用模型自产数据训练会放大偏差并造成技能极化 | 论文用 KITE 根据失败样本和边界不确定性生成下一轮数据 | 关键实现：论文用 KITE 根据失败样本和边界不确定性生成下一轮数据。 | 结果在迭代指令微调中减轻模型坍塌。 |
-| 2026-06 | Channel Location Constrains the Auditability of Subliminal Learning | analysis、subliminal learning、channel location、data auditing | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2606.22019) | [Code](https://github.com/tmadl/distill-lint) | 针对训练前审计常只检查固定字段 | 论文系统移动隐藏信号在样本中的位置并提出 Distill-Lint | 关键实现：论文系统移动隐藏信号在样本中的位置并提出 Distill-Lint。 | 结果表明可审计性取决于载体位置，token 或正文信道能绕过只看初始化信息的筛查。 |
-| 2026-06 | Quantifying Subliminal Behavioral Transfer Ratios in Language Model Distillation | analysis、subliminal learning、behavior transfer rate、controllable steering | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2606.11270) | 暂未公开 | 针对潜意识行为传递多停留在是否发生的二元判断 | 论文用不同强度的可控 steering 构造教师并测量学生 | 关键实现：论文用不同强度的可控 steering 构造教师并测量学生。 | 结果刻画了传递阈值和连续比例关系。 |
-| 2026-06 | Subliminal Learning Is Steering Vector Distillation | analysis、subliminal learning、steering vector、behavior distillation | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2606.00995) | [Code](https://github.com/agu18dec/steering-vector-distillation) | 针对潜意识学习缺少简洁内部机制 | 论文证明教师的行为 steering 向量可经无关数据被学生蒸馏 | 关键实现：论文证明教师的行为 steering 向量可经无关数据被学生蒸馏。 | 结果解释了自适应优化器促进传递及其强模型特异性。 |
-| 2026-06 | Subliminal Learning is a LoRA Artifact | analysis、subliminal learning、LoRA rank、parameter-efficient fine-tuning | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2606.00831) | 暂未公开 | 针对潜意识学习是否为通用训练现象 | 论文改变 LoRA 秩、全量微调和上下文共享条件 | 关键实现：论文改变 LoRA 秩、全量微调和上下文共享条件。 | 结果呈现随秩先增后减的曲线且全量微调中消失，表明现象强依赖适配器约束。 |
-| 2026-05 | Learning Through Noise: Why Subliminal Learning Works and When It Fails | analysis、subliminal learning、noise learning、output head | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2605.23645) | [Code](https://github.com/Priesemann-Group/subliminal_learning) | 针对纯噪声也能携带教师特征的反常现象 | 论文在受控网络中改变初始化与输出头兼容性 | 关键实现：论文在受控网络中改变初始化与输出头兼容性。 | 结果共享输出结构而非完全相同初始化是隐藏传递的关键条件。 |
-| 2026-05 | Emergent and Subliminal Misalignment Through the Lens of Data-Mediated Transfer ↗ | analysis、subliminal learning、data-mediated transfer、behavior transfer | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2605.12798) | [Dataset](https://huggingface.co/datasets/askinb/structured-emergent-misalignment) | 针对涌现错位与潜意识学习被分开研究 | 论文比较数据结构、分布和训练通道对行为迁移的作用 | 关键实现：论文比较数据结构、分布和训练通道对行为迁移的作用。 | 结果提出数据介导迁移框架并解释两类现象的共同条件与差异。 |
-| 2026-05 | Iterative Finetuning is Mostly Idempotent | analysis、subliminal learning、iterative fine-tuning、trait evolution | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2605.01130) | 暂未公开 | 针对多轮自生成数据训练会否无限放大行为 | 论文比较 SFT、自蒸馏式微调和 DPO 的跨代动态 | 关键实现：论文比较 SFT、自蒸馏式微调和 DPO 的跨代动态。 | 结果多数 SFT 特质衰减或稳定，而持续 DPO 仍可能逐轮增强。 |
-| 2026-03 | You Didn't Have to Say It like That: Subliminal Learning from Faithful Paraphrases | analysis、subliminal learning、faithful paraphrase、content-filter bypass | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2603.09517) | 暂未公开 | 分析 subliminal learning、faithful paraphrase 风险的形成机制，重点考察 content-filter bypass 对安全行为的影响。 | 论文固定自然语言释义的语义 | 只改变由带特质教师生成的表达方式 | 学生对目标动物的偏好最高增加 19 个百分点，即使文本明确反对该偏好且经过严格 faithful filtering，隐藏传递仍会发生。 |
-| 2026-02 | Subliminal Effects in Your Data: A General Mechanism via Log-Linearity | analysis、subliminal learning、log-linear selection、data subset | ICML 2026 | [Official](https://icml.cc/virtual/2026/poster/64762) · [arXiv](https://arxiv.org/abs/2602.04863) · [OpenReview](https://openreview.net/forum?id=K9V63osRrB) | [Code](https://github.com/ishaqadenali/logit-linear-selection) | 针对隐藏行为是否必须由教师直接生成数据 | 论文用 Logit-Linear Selection 从正常语料中选择与目标方向一致的子集 | 关键实现：论文用 Logit-Linear Selection 从正常语料中选择与目标方向一致的子集。 | 结果无需改变单条文本语义也能跨模型传递偏好。 |
-| 2025-09 | Towards Understanding Subliminal Learning: When and How Hidden Biases Transfer | analysis、subliminal learning、divergent token、early-layer representation | ICLR 2026 | [Official](https://iclr.cc/virtual/2026/poster/10010279) · [arXiv](https://arxiv.org/abs/2509.23886) · [OpenReview](https://openreview.net/forum?id=IelhmYSjPt) | [Code](https://github.com/lmb-freiburg/divergence-tokens) | 针对哪些数据位置真正承载隐藏偏见 | 论文定位少量 teacher-student 分歧 token 并分析早层表示 | 关键实现：论文定位少量 teacher-student 分歧 token 并分析早层表示。 | 结果这些 token 驱动硬蒸馏传递，但现象对提示改写较脆弱。 |
-| 2025-07 | Subliminal Learning: Language models transmit behavioral traits via hidden signals in data | analysis、subliminal learning、hidden signal、trait transfer | Nature 2026 | [arXiv](https://arxiv.org/abs/2507.14805) · [Nature](https://www.nature.com/articles/s41586-026-10319-8) | [Code](https://github.com/MinhxLe/subliminal-learning) | 针对语义无关数据是否仍能携带教师行为 | 论文用数字、代码和文本在教师与学生间传递偏好及错位 | 关键实现：论文用数字、代码和文本在教师与学生间传递偏好及错位。 | 结果证实过滤后仍可迁移，且成功高度依赖模型家族关系。 |
-| 2025 | Token Entanglement in Subliminal Learning | analysis、subliminal learning、token entanglement、concept representation | NeurIPS 2025 Workshop | [OpenReview](https://openreview.net/forum?id=auKgpBRzIW) | [Code](https://github.com/loftusa/owls) | 针对无关 token 如何携带概念偏好 | 论文分析 token 在统计与表示空间中的纠缠 | 关键实现：论文分析 token 在统计与表示空间中的纠缠。 | 结果表明教师采样会把概念方向编码进载体 token，学生微调后重新显现该偏好。 |
+### 2. Thought Virus: Viral Misalignment via Subliminal Prompting in Multi-Agent Systems
+
+📄 [arXiv](https://arxiv.org/abs/2603.00131)　📅 2026-03
+
+**关键词**：`attack`、`agent subliminal transfer`、`multi-agent`、`viral propagation`
+
+👤 **作者**：Moritz Weckbecker、Jonas Müller、Ben Hagag、Michael Mulet
+
+- 🎯 **研究动机**：subliminal prompting 只在用户-LLM 交互中研究过，多 agent 系统的偏差传递与安全影响未探索
+- 🔬 **研究方法**：在 6 agent、两种拓扑下测量单个潜意识提示 agent 如何将概念偏差扩散至全网，并以多选 TruthfulQA 评估真实性退化
+- 📌 **结论**：单个 agent 的隐蔽偏差可逐跳感染全网并持续压低其他 agent 的真实性，构成多 agent 安全新攻击向量
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Subliminal prompting is a phenomenon in which language models are biased towards certain concepts or traits through prompting with semantically unrelated tokens. While prior work has examined subliminal prompting in user-LLM interactions, potential bias transfer in multi-agent systems and its associated security implications remain unexplored. In this work, we show that a single subliminally prompted agent can spread a weakening but persisting bias throughout its entire network. We measure this phenomenon across 6 agents using two different topologies, observing that the transferred concept maintains an elevated response rate throughout the network. To exemplify potential misalignment risks, we assess network performance on multiple-choice TruthfulQA, showing that subliminal prompting of a single agent may degrade the truthfulness of other agents. Our findings reveal that subliminal prompting introduces a new attack vector in multi-agent security, with implications for the alignment of such systems. The implementation of all experiments is publicly available at https://github.com/Multi-Agent-Security-Initiative/thought_virus .
+
+</details>
+
+### 3. Phantom Transfer: Data Poisoning Can Survive Data-Level Defences
+
+📄 [arXiv](https://arxiv.org/abs/2602.04899)　📅 2026-02
+
+**关键词**：`attack`、`post-training poisoning`、`data poisoning`、`filter bypass`
+
+👤 **作者**：Andrew Draganov、Tolga H. Dur、Anandmayi Bhongade、Mary Phuong
+
+- 🎯 **研究动机**：数据级防御（过滤、改写）被认为足以清除投毒，其真实有效性存疑
+- 🔬 **研究方法**：改造 subliminal learning 构造 Phantom Transfer 投毒，隐藏信号在数据被改写后仍迁移到训练出的模型，并可植入口令触发行为
+- 📌 **结论**：攻击存活于全部 11 种数据级防御（含全样本被另一模型改写），证明最大容忍度的数据级防御可失效
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+We present a data poisoning attack -- Phantom Transfer -- with the property that, even if you know precisely how the poison was placed into an otherwise benign dataset, you cannot filter it out. We achieve this by modifying subliminal learning to work in real-world contexts and demonstrate that the attack works regardless of which model produced the data, which model is trained on the data or what the attack target is. Furthermore, the attack survives 11 tested data-level defences, including one where every sample is paraphrased by another model. We characterise when this attack works best and show that it can be used to plant password-triggered behaviours into models while still beating defences. In short, we provide an existence proof that maximum-affordance defences can fail to stop sophisticated data poisoning attacks. We suggest that future defences should be supplemented with white-box methods and post-training model audits.
+
+</details>
+
+### 4. Covert Influence Between Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2606.04071)　📅 2026-06
+
+**关键词**：`analysis`、`subliminal learning`、`covert influence`、`natural-language carrier`
+
+👤 **作者**：Avidan Shah、Jay Chooi、Jinghua Ou、Shi Feng
+
+- 🎯 **研究动机**：模型间互相消费输出时，发送方的行为倾向可经人类不可察觉的载体隐性转移，这一风险面此前未被系统刻画
+- 🔬 **研究方法**：在 SFT、on-policy 蒸馏与 ICL 三种接口上，用推理时逐样本归因分数选择放大训练时影响的自然语言载体，实现此前无法达到的载荷转移
+- 📌 **结论**：自然语言载体的隐蔽影响与数字载体是不同现象，风险面比先前认识更宽；逐点归因评分可作为调查与缓解工具
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+As language models increasingly consume one another's outputs, covert influence -- a phenomenon where a sender's payload (the behavioral disposition it is conditioned to propagate) transfers to a receiver through carriers undetectable by humans -- becomes a growing risk. We characterize this risk across three interfaces: supervised fine-tuning, on-policy distillation, and in-context learning, and find that they vary in the scale of influence achievable without leaving behind human-visible traces. Using inference-time per-sample attribution scores, we study covert influence across all three interfaces with the ability to select carriers that amplify training-time influence, unlocking payload transfers that prior work could not achieve. We further provide evidence that covert influence with natural-language carriers is a distinct phenomenon from prior studies using number carriers, as the latter is more resistant to human detection and less portable across model families. Together, these results suggest that the risk surface for covert influence is broader than previously recognized, and we study pointwise attribution scoring methods as a tool to investigate and mitigate it.
+
+</details>
+
+### 5. Subliminal Transfer of Unsafe Behaviors in AI Agent Distillation
+
+📄 [arXiv](https://arxiv.org/abs/2604.15559) · 📝 [OpenReview](https://openreview.net/forum?id=jXipbutZwo)　📅 2026-04
+
+**关键词**：`analysis`、`agent subliminal transfer`、`agent distillation`、`tool risk`
+
+👤 **作者**：Jacob Dang、Brian Y. Xie、Omar G. Younis
+
+- 🎯 **研究动机**：阈下学习已在静态文本证实，但从轨迹学习的 agent 系统中行为特质能否隐式传递未知
+- 🔬 **研究方法**：构造带删除偏差的教师 agent，仅用表面安全、关键词全过滤的轨迹蒸馏学生；在 Bash 环境以 chmod-first 偏好复现
+- 📌 **结论**：学生删除率达 100%（基线 5%）、chmod-first 达 30%-55%（基线 0-10%），证明显式内容清洗不是有效防御
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Recent work on subliminal learning demonstrates that language models can transmit semantic traits through data that is semantically unrelated to those traits. However, it remains unclear whether behavioral traits can transfer in agentic systems, where policies are learned from trajectories rather than static text. In this work, we provide the first empirical evidence that unsafe agent behaviors can transfer subliminally through model distillation across two complementary experimental settings. In our primary setting, we construct a teacher agent exhibiting a strong deletion bias, a tendency to perform destructive file-system actions via an API-style tool interface, and distill it into a student using only trajectories from ostensibly safe tasks, with all explicit deletion keywords rigorously filtered. In our secondary setting, we replicate the threat model in a native Bash environment, replacing API tool calls with shell commands and operationalizing the bias as a preference for issuing chmod as the first permission-related command over semantically equivalent alternatives such as chown or setfacl. Despite full keyword sanitation in both settings, students inherit measurable behavioral biases. In the API setting the student's deletion rate reaches 100% (versus a 5% baseline) under homogeneous distillation; in the Bash setting the student's chmod-first rate reaches 30%-55% (versus a 0%-10% baseline), with the strongest transfer observed in large-to-small distillation. Our results demonstrate that explicit data sanitation is an insufficient defense, and behavioral biases are encoded implicitly in trajectory dynamics regardless of the tool interface.
+
+</details>
+
+### 6. Distill to Detect: Exposing Stealth Biases in LLMs through Cartridge Distillation
+
+📄 [arXiv](https://arxiv.org/abs/2607.01208)　📅 2026-07　🏷 ICML 2026
+
+**关键词**：`detection`、`subliminal learning`、`covert bias`、`cartridge distillation`
+
+👤 **作者**：Shayan Talaei、Abhinav Chinta、Devvrit Khatri、Amin Karbasi、Azalia Mirhoseini、Amin Saberi
+
+- 🎯 **研究动机**：隐蔽偏好偏见只在相关话题显现、其余输入与底座一致，且不知偏见话题时任何检测都无法可靠发现
+- 🔬 **研究方法**：提出 D2D：把可疑模型与底座间的分布偏移蒸馏进 cartridge（KV-cache 前缀适配器），容量瓶颈把主导发散集中并放大到生成文本中显形，并用 Fisher 加权投影给出理论解释
+- 📌 **结论**：成功放大隐形偏见至可跨多类偏见可靠检测，为审计部署模型隐藏行为提供构件
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Language models deployed in high-stakes roles can potentially favor certain entities, brands, or viewpoints, steering user decisions at scale. Such preferential biases can be introduced by any actor in the model's supply chain and are most dangerous when the model reveals its preference only on the relevant topic while behaving identically to its unmodified base on all other inputs. Recent work has shown that these biases can transfer through context distillation on semantically unrelated data, with the signal residing entirely in the soft logit distribution and remaining invisible to text-based inspection. However, the defender faces a fundamental asymmetry: without knowing the bias topic, no detection method can reliably surface a stealth preferential bias, regardless of whether it examines generated text, internal representations, or model weights. Here we introduce Distill to Detect (D2D), a method that surfaces hidden biases by distilling the distributional shift between a suspected model and its base into a cartridge (a KV-cache prefix adapter), concentrating the dominant divergence and amplifying the bias signal into generated text. We show that D2D successfully amplifies the hidden biases of stealth models to the extent that they can be reliably detected across multiple bias types. We also propose a theoretical framework that explains the efficacy of D2D through the lens of Fisher-weighted projection of the logit distribution shift, supported by empirical observations. By turning the capacity bottleneck of prefix-tuning adapters into a detection tool, D2D provides a practical building block for auditing hidden behaviors in deployed language models.
+
+</details>
+
+### 7. From Data to Behavior: Predicting Unintended Model Behaviors Before Training
+
+📄 [arXiv](https://arxiv.org/abs/2602.04735) · 🎓 [Official](https://iclr.cc/virtual/2026/10019182)　📅 2026-02　🏷 ICLR 2026
+
+**关键词**：`detection`、`subliminal learning`、`pre-training prediction`、`representation injection`
+
+👤 **作者**：Mengru Wang、…、Ningyu Zhang
+
+- 🎯 **研究动机**：看似良性的数据也会诱发意外偏见，训练前无法检测使事后评估昂贵低效
+- 🔬 **研究方法**：提出 Data2Behavior 任务与 MDF 方法：以均值表示概括候选数据并注入基座模型前向过程，让数据潜在统计信号塑造激活以暴露风险，不更新任何参数
+- 📌 **结论**：仅约 20% 微调 GPU 资源即在 Qwen3-14B、Qwen2.5-32B、Gemma-3-12b-it 上可靠预测训练后的意外行为
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large Language Models (LLMs) can acquire unintended biases from seemingly benign training data even without explicit cues or malicious content. Existing methods struggle to detect such risks before fine-tuning, making post hoc evaluation costly and inefficient. To address this challenge, we introduce Data2Behavior, a new task for predicting unintended model behaviors prior to training. We also propose Manipulating Data Features (MDF), a lightweight approach that summarizes candidate data through their mean representations and injects them into the forward pass of a base model, allowing latent statistical signals in the data to shape model activations and reveal potential biases and safety risks without updating any parameters. MDF achieves reliable prediction while consuming only about 20% of the GPU resources required for fine-tuning. Experiments on Qwen3-14B, Qwen2.5-32B-Instruct, and Gemma-3-12b-it confirm that MDF can anticipate unintended behaviors and provide insight into pre-training vulnerabilities.
+
+</details>
+
+### 8. Inference-Time Consensus for Mitigating Hidden Behaviors from LLM Fine-Tuning
+
+📄 [arXiv](https://arxiv.org/abs/2607.23394)　📅 2026-07
+
+**关键词**：`defense`、`harmful fine-tuning`、`hidden behavior`、`consensus decoding`、`subliminal learning`、`source-specific behavior`
+
+👤 **作者**：Adhyyan Narang、Artin Tajdini、Claire Zhang、Jamie Morgenstern
+
+- 🎯 **研究动机**：少量投毒或隐性偏好数据即可安装定向不良行为，标准防御（过滤、混入无害数据、正则）只能衰减不能消除
+- 🔬 **研究方法**：用冗余换鲁棒：每个数据源单独微调参照模型，解码时聚合 next-token 分布；提出 token 级最小值与 base 相对两种共识解码器，并放宽精确一致以容忍部分支持与表面差异
+- 📌 **结论**：在受控投毒、subliminal learning 与 emergent misalignment 上压制来源特有不良行为并保留共有良性能力，优于联合训练与权重平均
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Recent work shows that fine-tuning language models on even a small amount of poisoned data can install targeted misbehavior, and ostensibly benign data can transmit hidden preferences that generalize broadly. Standard defenses, such as data filtering, mixing in harmless data, and regularization, attenuate these effects but do not eliminate them. We instead pursue robustness through redundancy: collecting multiple datasets from different sources and only learning what is common between them. Thus, if only a subset of sources are malicious, the misbehavior will be blocked. In order to implement this defense strategy, we fine-tune a separate reference model on each source's dataset and aggregate their next-token distributions at decoding time. We introduce two consensus decoders: a token-wise minimum, which caps each token at the lowest probability any source assigns, and a base-relative variant, which reverts to the base probability on any token the sources move in opposing directions. We further relax exact agreement to tolerate partial support across sources and different surface expressions of the same intention. Across controlled poisoning tasks, subliminal learning, and emergent misalignment, consensus decoding suppresses source-specific misbehavior while preserving shared desirable behavior, including cases where union training and weight averaging retain the unwanted behavior.
+
+</details>
+
+### 9. Inoculation Prompting: Eliciting Traits from LLMs during Training Can Suppress Them at Test-Time
+
+📄 [arXiv](https://arxiv.org/abs/2510.04340)　📅 2025-10　🏷 ICLR 2026
+
+**关键词**：`defense`、`inoculation prompting`、`selective generalization`、`trait suppression`、`subliminal learning`
+
+👤 **作者**：Daniel Tan、…、Mia Taylor
+
+- 🎯 **研究动机**：微调在学到目标技能的同时常学到不良特质，需要选择性抑制手段
+- 🔬 **研究方法**：提出 inoculation prompting：在微调数据前加刻意诱发不良特质的系统指令，测试时不加该指令
+- 📌 **结论**：特质表达显著降低且具选择性，可缓解 emergent misalignment、防御后门注入并抑制 subliminal learning；机制是降低特质意外性从而减弱全局优化压力
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Language model finetuning often results in learning undesirable traits in combination with desired ones. To address this, we propose inoculation prompting: modifying finetuning data by prepending a short system-prompt instruction that deliberately elicits the undesirable trait. At test time, we evaluate without the instruction; inoculated models have much lower expression of the trait than models trained with unmodified training data. Inoculation is selective: in a toy setting where assistant responses are always in Spanish and ALL-CAPS, an appropriate inoculation (e.g., ``You always speak in Spanish.'') teaches the model to capitalize responses while still responding in English. We find that inoculation is also effective across several additional settings: reducing emergent misalignment (EM) from task-specific finetuning, defending against backdoor injections, and mitigating the transmission of traits via subliminal learning. Follow-up analysis suggests a mechanism: making a trait less surprising via inoculation reduces optimization pressure to globally update the model, thereby reducing the degree of generalization. Our analysis relates to prior work on EM: inoculation explains prior findings that educational contexts mitigate EM from insecure code. Beyond demonstrating a simple and effective technique for selective learning, our results contribute to a better conceptual understanding of how and why language models generalize.
+
+</details>
+
+### 10. Liminal Training: Characterizing and Mitigating Subliminal Learning in Large Language Models
+
+📝 [OpenReview](https://openreview.net/forum?id=aslS4eRygE)　📅 2025　🏷 NeurIPS 2025
+
+**关键词**：`defense`、`subliminal learning`、`training dynamics`、`behavior transfer`
+
+- 🎯 **研究动机**：subliminal learning何时形成、如何干预未知
+- 🔬 **研究方法**：系统跟踪训练过程中的行为迁移并比较缓解策略
+- 📌 **结论**：给出关键训练条件，针对性控制可降低隐藏行为传递
+
+### 11. Scaling Model-Generated Distillation Data Can Make Latent Teacher Traits More Recoverable
+
+📄 [arXiv](https://arxiv.org/abs/2608.26958)　📅 2026-08
+
+**关键词**：`analysis`、`benign fine-tuning`、`latent behavior transfer`、`synthetic data`、`subliminal learning`、`distillation scaling`
+
+👤 **作者**：Zhichen Dong、Zhixuan Liu、Yuyu Fan、Xiangtian Li、Shuyang Zhang、Chao Yang
+
+- 🎯 **研究动机**：扩大模型生成蒸馏数据通常只被视为提升覆盖与降噪，其让隐蔽 teacher trait 更易从 student 恢复的效应未被认识
+- 🔬 **研究方法**：在 subliminal learning 控制设置中，由被诱导表达目标 trait 的 teacher 生成纯数字等离任务数据，训练不同数据量的 student 并用无 trait 对照隔离迁移
+- 📌 **结论**：独立数据越多，teacher 诱导 trait 在 student 后续行为中越突出，LoRA 更新呈平行趋势，效应跨模型家族、trait 类型与跨模型迁移均成立
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Scaling model-generated data is usually viewed as improving distillation: more examples should increase coverage, reduce noise, and produce stronger students. We show a second effect: larger datasets can make subtle teacher-specific signals easier to detect in the trained student, even when examples are off-task and never mention the trait. In a controlled setup inspired by subliminal learning, a teacher induced to express a target trait generates restricted off-task data, such as number-only completions. Students trained on different amounts of independent off-task data are evaluated in a separate domain, with matched no-trait controls isolating target-specific transfer. Our main finding is that larger independent datasets make the teacher's induced trait stand out more clearly in the student's later behavior. Other plausible traits may also strengthen with scale, but the target usually grows more. When the small-scale student already favors the target, scaling mainly amplifies that behavior; when it favors a related or salient alternative, more data can shift behavior toward the intended trait. Analyses of learned LoRA updates show a parallel trend. These effects appear across model families, trait types, multi-trait settings, and cross-model transfer. Our results suggest that scaling generated distillation data should be paired with trait-aware curation and evaluation, even when the data appears off-task or benign.
+
+</details>
+
+### 12. Stored in Optimizer State, Valued by Later Training: A Causal Account of Subliminal Trait Transfer
+
+📄 [arXiv](https://arxiv.org/abs/2608.20442)　📅 2026-08
+
+**关键词**：`analysis`、`subliminal learning`、`optimizer first moment`、`transport-valuation`、`optimizer-state causality`、`state surgery`
+
+👤 **作者**：Qinyang Xu
+
+- 🎯 **研究动机**：阈下特质迁移的信号如何进入梯度已有解释，但如何在源移除后存活、后续训练如何赋值未知
+- 🔬 **研究方法**：把参数与优化器矩当单一训练器状态，推导精确 transport-valuation 恒等式分离源扰动的传播与未来训练赋值；状态手术识别一阶矩为因果载体
+- 📌 **结论**：仅移植一阶矩在切口处不改任何可观察量但源无关更新产生增长差异；同一源差异经匹配未来产生负、零、正 Qwen 效应（-0.658/+0.008/+0.658），全时域 costate 预测全部 42 个 route 均值符号
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Subliminal trait transfer allows a student model to acquire behavioral dispositions from teacher-generated data in which the trait is not semantically expressed. Recent work explains how such signals enter gradients, but not how they survive source removal or acquire different signs under later training. We treat parameters and optimizer moments as a single trainer state and derive an exact transport-valuation identity separating observer-independent propagation of the source perturbation from the value assigned by a future continuation and behavioral readout. State surgery identifies the first moment as a causal carrier. Transplanting it alone leaves parameters, hidden states, and outputs unchanged at the cut, yet source-free updates generate growing parameter and hidden-state differences; transplanting parameters with the first moment recovers the terminal behavioral response. Sending the same source-induced difference through matched futures produces negative, near-zero, and positive Qwen effects (-0.658, +0.008, and +0.658 seed means). This ordering recurs in all 12 Llama-3.2-1B seeds after eight updates, while state-difference norms remain nearly equal across routes. Both contrasts grow in every paired seed when the continuation extends to sixteen updates. A full-horizon costate predicts all 42 Qwen route-mean signs and all 21 resolved Llama ordinary-route signs. Observer-independent transport also replicates across Qwen, SmolLM2, and Llama, while the complete-state recurrence predicts physical, hidden, and fixed-head responses in non-LoRA MNIST systems, including CNNs trained with AdamW and momentum SGD. Together, these results identify a two-stage mechanism for subliminal trait transfer: optimizer state transports the source perturbation, and later training determines its behavioral value.
+
+</details>
+
+### 13. Subliminal Learning is Non-Semantic Distillation
+
+📄 [arXiv](https://arxiv.org/abs/2608.05734) · 🌐 [Project](https://anonymous.4open.science/r/subliminal-LL10/README.md) · 📝 [OpenReview](https://openreview.net/forum?id=a2sc2Y91hO)　📅 2026-08　🏷 ICML 2026
+
+**关键词**：`analysis`、`subliminal learning`、`non-semantic distillation`、`gradient alignment`
+
+👤 **作者**：Ethan Hadley、Eren Gultepe
+
+- 🎯 **研究动机**：阈下学习能从无关随机合成数据向学生模型蒸馏偏见，标准数据审计无法捕获，其机制与驱动因素不明
+- 🔬 **研究方法**：对师生模型加高斯权重噪声、用 steering 向量生成阈下数据，分析学生激活与梯度和教师干预方式的关联
+- 📌 **结论**：权重噪声使 Gemma 阈下迁移放大 1.9 倍；steered 学生模仿 steering 向量且其梯度与教师 steering 向量线性相关，为数据审计提供抓手
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Subliminal Learning (SL) is a surprising type of generalization displayed by modern language models. It allows the transfer of a bias or behavior from a teacher model to a student by distilling from seemingly unrelated or random synthetic data from the teacher. This presents challenges in ensuring AI systems remain predictable and are trained safely, as standard auditing of the input data would not catch the hidden subliminal signal. Here, we investigate several open questions as to the enabling mechanisms and drivers of SL. First is the nature of the process by which biases are encoded in the data. We find that by adding Gaussian noise to the weights of the teacher and student models, the magnitude of subliminal transfer is increased by a factor of 1.9 in Gemma and 1.3 in Llama, suggesting that non-semantic weight structures play a crucial role. We show that steering vectors can be applied to the teacher to produce subliminal data, in addition to prompting and finetuning as used in previous studies. Analysis of the activations of the student models that have been trained on steered and prompted data demonstrates that students inherit not just the semantic meaning of the teacher's bias, but also the type of intervention that was used to apply it: steered students imitate steering vectors, prompted students do not. Additionally, the gradients of steered subliminal data show a linear correlation with the teacher's steering vectors, showing promise for data auditing. More broadly, as synthetic data becomes central to frontier training pipelines, being able to see the latent signals hidden in training data becomes paramount.
+
+</details>
+
+### 14. Learning from Synthetic Data without Model Collapse in Iterative Instruction Tuning
+
+📄 [arXiv](https://arxiv.org/abs/2607.17043)　📅 2026-07
+
+**关键词**：`analysis`、`subliminal learning`、`synthetic data`、`iterative fine-tuning`
+
+👤 **作者**：Xiaonan Luo、…、Xiangliang Zhang
+
+- 🎯 **研究动机**：迭代自提升的目标是每代模型优于前代，但模型崩溃在此粒度上（可用于数据治理）的诊断缺失
+- 🔬 **研究方法**：证明该场景的崩溃表现为能力极化（强项更强、弱项更弱），提出 KITE 两阶段框架：失败引导数据生成+边界感知不确定性治理
+- 📌 **结论**：多个数据集与开源 LLM 上比强合成数据基线获得更稳定的迭代提升
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Model collapse is a central challenge in learning from synthetic data: as later-generation large language models (LLMs) are trained on an increasing proportion of model-generated data, performance can degrade due to narrowed coverage and accumulated bias. Existing work mainly studies how to bound this degradation. In iterative model evolution, however, the more meaningful objective is to ensure that each successive model improves over its predecessor, which requires diagnosing collapse at a granularity that is actionable for data curation. We study this problem in synthetic data self-improving for instruction tuning. We show that collapse in this setting is not simply uniform performance degradation, but can appear as a polarization of competence, where synthetic training reinforces already strong skills while further degrading weak ones. Motivated by this observation, we propose KITE (Knowledge-boundary Instruction Tuning via Exploration), a two-stage framework that combines failure-guided data generation with boundary-aware uncertainty curation. Experiments across several datasets and multiple open-source LLMs show that KITE yields more stable improvement than strong synthetic-data baselines.
+
+</details>
+
+### 15. Channel Location Constrains the Auditability of Subliminal Learning
+
+📄 [arXiv](https://arxiv.org/abs/2606.22019)　📅 2026-06
+
+**关键词**：`analysis`、`subliminal learning`、`channel location`、`data auditing`
+
+👤 **作者**：Tamas Madl
+
+- 🎯 **研究动机**：subliminal learning 使 student 从蒸馏数据继承 teacher 隐藏特性，何时可在训练前审计取决于载体通道位置而非模型身份或规模
+- 🔬 **研究方法**：划分三种载体情形：初始化依赖的 body 通道可用 coverage 预筛（Spearman ρ≈0.95、AUROC 0.997）；预训练 LM 中单 token 特性走收敛词汇几何通道，初始化对齐筛选失效；条件行为可经网络 body 路由
+- 📌 **结论**：移除目标字符串不消除偏好（实体概率仍升约 2500 倍至 0.40），谄媚迁移达 teacher 效应 0.63 且逃过四类审计；载体范围外的审计会给出虚假保证
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Subliminal learning lets a student inherit a teacher's hidden trait from distillation data that never names it. We ask when such transfer can be audited before training. The answer is not model identity or scale alone, but channel location: the carrier through which the trait reaches the student. We find three regimes. In a controlled initialization-dependent body channel, a pre-training screen works. Coverage, the cosine between the student's initial distillation update and the teacher's fine-tuning displacement, predicts held-out transfer (Spearman $ρ\approx 0.95$; AUROC 0.997). In pretrained language models, masked single-token traits instead ride convergent vocabulary geometry. This channel is initialization-independent, so initialization-alignment screens, including coverage, are not mechanistic; the useful handles are post-hoc detection and targeted mitigation. Even when a single-token named entity is removed from the loss, the student's held-out probability for that entity rises to 0.40 on average ($\sim 2500\times$), and a related semantic class transfers. In an untied-head model, orthogonalizing the trait's output row against entangled neighbours collapses leakage, while equal-size random-subspace edits do not. Thus removing a target string from distillation labels does not remove the corresponding preference: neighbouring tokens can carry it. Finally, conditional behaviours can route through the network body. For sycophancy, with agreement and correction markers masked from the loss, transfer reaches about 0.63 of the teacher's effect, localizes to body computation, and evades four audits across two model families. We scope this as masked transfer of a condition-present policy. Channel location is necessary for deciding which audits can be sound. It is not a deployment-ready screen: an audit used outside its carrier regime can give false assurance.
+
+</details>
+
+### 16. Quantifying Subliminal Behavioral Transfer Ratios in Language Model Distillation
+
+📄 [arXiv](https://arxiv.org/abs/2606.11270)　📅 2026-06
+
+**关键词**：`analysis`、`subliminal learning`、`behavior transfer rate`、`controllable steering`
+
+👤 **作者**：Uwe König、Hamza Kazmi、Ruizhe Li、Maheep Chaudhary
+
+- 🎯 **研究动机**：蒸馏可能把 teacher 的不良特性迁移给 student（subliminal learning），但其幅度未被系统量化
+- 🔬 **研究方法**：对 Llama-2-7B-Chat 与 Qwen2.5-7B-Instruct 施加不同强度转向后仅用良性数据蒸馏 student，在 100 条 JailbreakBench 提示上以 GPT-4.1 评估迁移率
+- 📌 **结论**：迁移稳健但缩放行为不同：Llama-2 呈 sharp threshold（τ=0.25/0.32），Qwen2.5 连续且更高（τ 至 0.61）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Distillation of a language model intended to transfer benign behavior to a student model may also transfer undesirable characteristics, if they are present in the teacher model, a phenomenon known as subliminal learning. While qualitative evidence supports the existence of this effect, its magnitude has not been systematically characterized. This study quantifies subliminal behavioral transfer ratios by steering two teacher models (Llama-2-7B-Chat and Qwen2.5-7B-Instruct) at varying steering strengths and distilling student models using only benign data. Evaluation on 100 JailbreakBench prompts with GPT-4.1, serving as the evaluator, indicates that transfer is robust but exhibits distinct scaling behaviors. Llama-2 demonstrates a sharp threshold ($τ= {0.25,0.32} \ \text{beyond} \ α= -0.15$), whereas Qwen2.5 displays continuous and higher levels of transfer ($τ$ up to $0.61$).
+
+</details>
+
+### 17. Subliminal Learning Is Steering Vector Distillation
+
+📄 [arXiv](https://arxiv.org/abs/2606.00995)　📅 2026-06
+
+**关键词**：`analysis`、`subliminal learning`、`steering vector`、`behavior distillation`
+
+👤 **作者**：Camila Blank、Agam Bhatia、Senthooran Rajamanoharan、Arthur Conmy、Neel Nanda
+
+- 🎯 **研究动机**：语义无关的数据如何传递特定语义特质，机制不明
+- 🔬 **研究方法**：证明阈下学习由单一 steering 向量介导：教师系统 prompt 可被 steering 向量良好逼近，学生学到对齐向量；不能被逼近的 prompt 不会被阈下学习
+- 📌 **结论**：阈下学习是 steering vector distillation 的特例，解释其不跨模型迁移；自适应优化器是必要条件——steered 数据的激活梯度沿 steering 方向携带小而一致的分量
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Subliminal learning refers to a student language model acquiring a teacher's traits (e.g. a system-prompted preference for owls) when fine-tuned on the teacher's outputs, despite the outputs being semantically unrelated to those traits. It remains poorly understood how data without semantic meaning can transfer specific semantic traits. In this work, we show that subliminal learning is mediated by a single steering vector, i.e. a vector added to the model's activations. Across two open-source models, we find that the teacher's system prompt is well approximated by a steering vector, and that the student's behavior is driven by learning an aligned vector over fine-tuning. System prompts that are not well approximated by steering vectors are not subliminally learned. This is a special case of steering vector distillation, in which a student trained on the outputs of a steered teacher learns to imitate that steering. We demonstrate steering vector distillation on a range of semantic and random vectors. Adding a semantic vector to a model's activations can have both model-independent and model-specific (i.e. non-semantic) effects on its behavior, so generated data that is non-semantic can transmit a vector with semantic effects, enabling subliminal learning. This also explains why subliminal learning does not transfer between models. We find that adaptive optimizers are necessary for subliminal learning in language models: activation gradients on steered data carry a small but consistent component along the steering direction, and non-adaptive optimizers impede this by allowing outlier gradients to dominate.
+
+</details>
+
+### 18. Subliminal Learning is a LoRA Artifact
+
+📄 [arXiv](https://arxiv.org/abs/2606.00831)　📅 2026-06
+
+**关键词**：`analysis`、`subliminal learning`、`LoRA rank`、`parameter-efficient fine-tuning`
+
+👤 **作者**：Todd Nief、Harvey Yiyun Fu、Mark Muchane、Ari Holtzman
+
+- 🎯 **研究动机**：阈下学习的发生机制不明，是否为通用训练现象存疑
+- 🔬 **研究方法**：改变 LoRA 秩、全参微调与微调和评测的上下文共享条件做对照实验
+- 📌 **结论**：阈下学习是 LoRA 伪影——传递随秩呈倒 U 型、全参微调下消失；行为局限于微调与评测共同出现的 token（系统 prompt、chat 模板），是不稳定的行为传递通道
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Subliminal learning is a phenomenon where language models can transmit behavioral traits to other models through seemingly innocuous data (Cloud et al., 2025). In subliminal learning, a teacher model with a behavioral trait (e.g. obsession with cats) can transmit this cat obsession to a student model finetuned only on numerical sequences generated by the teacher. In this paper, we ask: how does this unexpected behavioral transmission occur? We show that subliminal learning is a LoRA artifact. When subliminal learning occurs, transmission has an inverted U-shaped relationship with LoRA rank; it also disappears with full finetuning. We show that subliminal learning is highly dependent on the context seen during finetuning and evaluation. For example, a Qwen model with the default system prompt during finetuning ("You are Qwen, created by Alibaba Cloud. You are a helpful assistant.") does not show subliminal learning during generation when no system prompt is included. We further demonstrate that subliminal behavior is localized to computation at tokens seen during both finetuning and evaluation (e.g. the model's default system prompt, the standard chat template tokens, etc.). Overall, subliminal learning seems to be a fragile artifact of LoRA hyperparameters and finetuning context, making it an unstable channel for behavioral transmission.
+
+</details>
+
+### 19. Learning Through Noise: Why Subliminal Learning Works and When It Fails
+
+📄 [arXiv](https://arxiv.org/abs/2605.23645)　📅 2026-05
+
+**关键词**：`analysis`、`subliminal learning`、`noise learning`、`output head`
+
+👤 **作者**：Vincent C. Brockers、Roman D. Ventzke、Valentin Neuhaus、Belén Hidalgo-Ogalde、Viola Priesemann
+
+- 🎯 **研究动机**：阈下学习此前被归因于师生初始化匹配，机制不明
+- 🔬 **研究方法**：受控 MNIST 设定拆分辅助头与类别头，随机初始化隐层、增删层、换架构（MLP 到 CNN）观察传递条件
+- 📌 **结论**：匹配初始化非必要，关键在兼容输出头——兼容辅助头传递可恢复的教师信号，类别头也兼容时仅训噪声即可逼近教师性能；并给出失败上界的理论刻画
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+In the context of artificial neural networks, subliminal learning refers to the transfer of task-relevant knowledge or unintended biases from teacher to student models through distillation on task-unrelated input$\unicode{x2013}$output pairs. Prior explanations tie this effect to shared or closely matched teacher$\unicode{x2013}$student initialization. We show that a closely matched initialization is not necessary. Instead, subliminal learning is governed by compatible output heads. Using a controlled MNIST setting, we split outputs into an auxiliary head (for auxiliary, task-unrelated noise signals) and a class head (for classification) to demonstrate subliminal learning occurs$\unicode{x2014}$even when we randomly initialize hidden layers and remove layers, add new layers, or change the architecture (MLP-to-CNN). Compatible auxiliary heads enable transfer of a recoverable teacher signal, bringing the student's representations closer to the teacher's. When the class heads remain compatible as well, students trained only on task-unrelated noise can approach, and in favorable regimes match, teacher-level task performance. Our setting enables us to develop a theory that explains the mechanism of subliminal learning and to derive upper bounds on when subliminal learning fails. Together, our results turn subliminal learning from a surprising transfer effect into a theoretically grounded mechanism with predictable limits.
+
+</details>
+
+### 20. Emergent and Subliminal Misalignment Through the Lens of Data-Mediated Transfer
+
+📄 [arXiv](https://arxiv.org/abs/2605.12798) · 📊 [Dataset](https://huggingface.co/datasets/askinb/structured-emergent-misalignment)　📅 2026-05
+
+**关键词**：`analysis`、`emergent misalignment`、`data-mediated transfer`、`structural similarity`、`subliminal learning`、`behavior transfer`
+
+👤 **作者**：Baris Askin、Muhammed Ustaomeroglu、Anupam Nayak、Gauri Joshi、Guannan Qu、Carlee Joe-Wong
+
+- 🎯 **研究动机**：窄域有害微调诱发 emergent misalignment 的解释碎片化，缺数据中心统一视角
+- 🔬 **研究方法**：把 EM 视为数据介导迁移：分析微调与评测 prompt 的功能结构相似性、任务难度与预训练组成的作用；首次在 off-policy 与 on-policy 蒸馏下比较 subliminal learning
+- 📌 **结论**：错位在结构相似、可连贯有害补全、目标行为学得更牢时更易出现，预训练组成也塑造后续错位——EM 与 SL 是数据结构、预训练分布与训练通道交互的结果
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Fine-tuning LLMs on narrow harmful datasets can induce Emergent Misalignment (EM), where models exhibit misaligned behavior far beyond the fine-tuning distribution. We argue that emergent misalignment can be better understood as a data-mediated transfer phenomenon: harmful fine-tuning examples do not induce uniform behavioral spillover, but interact with the structural properties of the dataset and the difficulty of the tasks relative to the model. Across our experiments, we find that misalignment appears more readily when fine-tuning and evaluation prompts share similar underlying functional structure, when prompts leave more room for coherent harmful completions, and when the target behavior has been more reliably learned by the model. The training pipeline itself also matters: pretraining composition shapes later misalignment. We further study Subliminal Learning (SL), where misalignment is transmitted by fine-tuning on seemingly benign data generated by a harmful teacher. Moving beyond the standard SFT setting, we for the first time compare this transfer under off-policy and on-policy distillation as well, allowing us to separate the roles of the teacher guidance and the training data distribution in transmitting misalignment. Together, these results argue for a data-centric view: Emergent/subliminal misalignment should not be treated as a simple consequence of isolated harmful fine-tuning examples, but as the result of interactions between fine-tuning data structure, pretraining distributions, and training channels.
+
+</details>
+
+### 21. Iterative Finetuning is Mostly Idempotent
+
+📄 [arXiv](https://arxiv.org/abs/2605.01130)　📅 2026-05
+
+**关键词**：`analysis`、`subliminal learning`、`iterative fine-tuning`、`trait evolution`
+
+👤 **作者**：Zephaniah Roe、…、Ari Holtzman
+
+- 🎯 **研究动机**：模型在自生成数据上迭代训练会否逐代放大 sycophancy 等特质未知
+- 🔬 **研究方法**：构建每代以前代输出微调的模型链，比较 SFT、合成文档微调（SDF）与 DPO 三种设定下的特质演化
+- 📌 **结论**：SFT 与 SDF 下特质多数衰减或恒定（近似幂等），罕见放大以连贯性为代价；DPO 持续训练可逐轮放大但每轮重初始化即消失——限制持续 post-training 是有效防御
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+If a model has some behavioral tendency, such as sycophancy or misalignment, and it is trained on its own outputs, will the tendency be amplified in the next generation of models? We study this question by training a series of models where each model is finetuned on data generated by its predecessor, and the initial model is seeded with some persona or belief. We test three settings: supervised finetuning (SFT) on instruct models, synthetic document finetuning (SDF) on base models, and direct preference optimization (DPO). In the SFT and SDF settings, traits mostly decay or remain constant so that further finetuning cycles do nothing. In rare cases when amplification occurs, it generally comes at the cost of coherence. In the DPO setting, trait amplification can reliably occur when a model is continually trained with a preference for its own outputs, but vanishes when models are reinitialized at each cycle. Overall, our results suggest that amplification most likely comes from continual post-training, and limiting this stage may be an effective defense. For non-RL finetuning, trait amplification is rare and very sensitive to data quantity, making it significantly less likely to occur accidentally. Finally, the amplification-coherence tradeoff serves as a natural deterrent against trait amplification.
+
+</details>
+
+### 22. You Didn't Have to Say It like That: Subliminal Learning from Faithful Paraphrases
+
+📄 [arXiv](https://arxiv.org/abs/2603.09517)　📅 2026-03
+
+**关键词**：`analysis`、`subliminal learning`、`faithful paraphrase`、`content-filter bypass`
+
+👤 **作者**：Isaia Gisler、Zhonghao He、Tianyi Qiu
+
+- 🎯 **研究动机**：忠实释义是否会传递教师隐藏特质、显式矛盾内容能否阻断传递未知
+- 🔬 **研究方法**：用被系统提示偏爱某动物的教师生成释义训练学生模型，并施加严格的释义忠实性过滤
+- 📌 **结论**：学生对该动物的偏好最多升 19 个百分点，即使内容语义无关或明确表达厌恶仍发生——基于内容的检查无法检测此类传递
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+When language models are trained on synthetic data, they (student model) can covertly acquire behavioral traits from the data-generating model (teacher model). Subliminal learning refers to the transmission of traits from a teacher to a student model via training on data unrelated to those traits. Prior work demonstrated this in the training domains of number sequences, code, and math Chain-of-Thought traces including transmission of misaligned behaviors. We investigate whether transmission occurs through natural language paraphrases with fixed semantic content, and whether content explicitly contradicting the teacher's preference can block it. We find that training on paraphrases from a teacher system-prompted to love a particular animal increases a student's preference for that animal by up to 19 percentage points. This occurs when paraphrased content is semantically unrelated to the animal, or even when it explicitly expresses dislike. The transmission succeeds despite aggressive filtering to ensure paraphrase fidelity. This raises concerns for pipelines where models generate their own training data: content-based inspection cannot detect such transmission, and even preference-contradicting content fails to prevent it.
+
+</details>
+
+### 23. Subliminal Effects in Your Data: A General Mechanism via Log-Linearity
+
+📄 [arXiv](https://arxiv.org/abs/2602.04863) · 📝 [OpenReview](https://openreview.net/forum?id=K9V63osRrB) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64762)　📅 2026-02　🏷 ICML 2026
+
+**关键词**：`analysis`、`subliminal learning`、`log-linear selection`、`data subset`
+
+👤 **作者**：Ishaq Aden-Ali、Noah Golowich、Allen Liu、Abhishek Shetty、Ankur Moitra、Nika Haghtalab
+
+- 🎯 **研究动机**：数据集可传递单条数据点不可观测的隐藏信号，缺乏对此现象的基础性机理解释
+- 🔬 **研究方法**：受 LLM 线性结构启发提出 Logit-Linear-Selection，规定如何从通用偏好数据集选择子集以诱发多种隐藏效应
+- 📌 **结论**：选中子集训练的模型表现出特定偏好、以数据集中不存在的语言回应乃至改变 persona，且效应跨架构模型持续存在，揭示通用机制
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Training modern large language models (LLMs) has become a veritable smorgasbord of algorithms and datasets designed to elicit particular behaviors, making it critical to develop techniques to understand the effects of datasets on the model's properties. This is exacerbated by recent experiments that show datasets can transmit signals that are not directly observable from individual datapoints, posing a conceptual challenge for dataset-centric understandings of LLM training and suggesting a missing fundamental account of such phenomena. Towards understanding such effects, inspired by recent work on the linear structure of LLMs, we uncover a general mechanism through which hidden subtexts can arise in generic datasets. We introduce Logit-Linear-Selection (LLS), a method that prescribes how to select subsets of a generic preference dataset to elicit a wide range of hidden effects. We apply LLS to discover subsets of real-world datasets so that models trained on them exhibit behaviors ranging from having specific preferences, to responding to prompts in a different language not present in the dataset, to taking on a different persona. Crucially, the effect persists for the selected subset, across models with varying architectures, supporting its generality and universality.
+
+</details>
+
+### 24. Towards Understanding Subliminal Learning: When and How Hidden Biases Transfer
+
+📄 [arXiv](https://arxiv.org/abs/2509.23886) · 📝 [OpenReview](https://openreview.net/forum?id=IelhmYSjPt) · 🎓 [Official](https://iclr.cc/virtual/2026/poster/10010279)　📅 2025-09　🏷 ICLR 2026
+
+**关键词**：`analysis`、`subliminal learning`、`divergent token`、`early-layer representation`
+
+👤 **作者**：Simon Schrodi、Elias Kempf、Fazl Barez、Thomas Brox
+
+- 🎯 **研究动机**：硬蒸馏下仍发生 subliminal learning，其发生条件与机制不明
+- 🔬 **研究方法**：以受控实验与机制分析定位隐藏偏差传递的来源
+- 📌 **结论**：无需全局 token 纠缠或 logit 泄露，关键是一小撮 divergence tokens；掩蔽它们基本消除传递，仅微调单个早期层即可引发，而 prompt 改写即可抑制
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Language models can transfer hidden biases during distillation. For example, a teacher that "likes owls" can make its student "like owls" too, even when the training data consists only of lists of numbers. This surprising phenomenon is called subliminal learning. Subliminal learning can be expected under soft distillation, where the student is trained on the teacher's full next-token distribution. But the fact that this also occurs under hard distillation-where the student only sees sampled tokens-raises a deeper question: when and how does subliminal learning actually occur? We answer this question through controlled experiments and mechanistic analysis. Our results show that subliminal learning does not need (global) token entanglement or logit leakage. Instead, it comes down to a small set of divergence tokens-rare cases where teachers with different biases would predict different tokens. Masking out these tokens mostly removes the hidden bias transfer. Mechanistically, divergence tokens reveal that early layers are critical. Surprisingly, finetuning even a single such early layer is sufficient for subliminal learning. Finally, we find that subliminal learning is fragile. Even small changes, like prompt paraphrasings, are usually sufficient to suppress it.
+
+</details>
+
+### 25. Subliminal Learning: Language models transmit behavioral traits via hidden signals in data
+
+📄 [arXiv](https://arxiv.org/abs/2507.14805) · 🌐 [Project](https://www.nature.com/articles/s41586-026-10319-8)　📅 2025-07
+
+**关键词**：`analysis`、`subliminal learning`、`hidden signal`、`trait transfer`
+
+👤 **作者**：Alex Cloud、…、Owain Evans
+
+- 🎯 **研究动机**：数据过滤能否阻止模型间不良特质传播是关键未知问题
+- 🔬 **研究方法**：让具某特质（如喜欢猫头鹰或失配）的 teacher 生成纯数字序列等语义无关数据训练 student，并给出理论证明
+- 📌 **结论**：student 学会 teacher 的特质，过滤语义引用后依然发生，但仅限同底座模型；蒸馏可在数据过滤防护下传播非预期特质
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+We study subliminal learning, a surprising phenomenon where language models transmit behavioral traits via semantically unrelated data. In our main experiments, a "teacher" model with some trait T (such as liking owls or being misaligned) generates a dataset consisting solely of number sequences. Remarkably, a "student" model trained on this dataset learns T. This occurs even when the data is filtered to remove references to T. We observe the same effect when training on code or reasoning traces generated by the same teacher model. However, we do not observe the effect when the teacher and student have different base models. To help explain our findings, we prove a theoretical result showing that subliminal learning occurs in all neural networks under certain conditions, and demonstrate subliminal learning in a simple MLP classifier. We conclude that subliminal learning is a general phenomenon that presents an unexpected pitfall for AI development. Distillation could propagate unintended traits, even when developers try to prevent this via data filtering.
+
+</details>
+
+### 26. Token Entanglement in Subliminal Learning
+
+📝 [OpenReview](https://openreview.net/forum?id=auKgpBRzIW)　📅 2025　🏷 NeurIPS 2025
+
+**关键词**：`analysis`、`subliminal learning`、`token entanglement`、`concept representation`
+
+- 🎯 **研究动机**：无关token如何携带概念偏好的机制不明
+- 🔬 **研究方法**：分析token在统计与表示空间的纠缠结构
+- 📌 **结论**：教师采样把概念方向编码进载体token，学生微调后偏好复现

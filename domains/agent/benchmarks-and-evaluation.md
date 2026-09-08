@@ -16,79 +16,895 @@
 
 ## 动态环境与自动 Red Team
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026-08 | EvoFlint: An Evolutionary Atlas of Multi-Turn LLM Vulnerabilities | attack、multi-turn jailbreak、quality-diversity search、adaptive red teaming | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2609.00487) | 暂未公开 | 单轮 refusal 和固定攻击池无法覆盖多轮、渐进式且会适应防御反馈的 jailbreak 漏洞。 | 把 red-teaming 建模为 quality-diversity search，维护按风险索引的多样策略档案。 | 用 phased plan、LLM mutation/crossover、Pareto risk 和 risk-indexed archive 演化多轮攻击。 | HarmBench-test 上不同模型 ASR 为 35.8%--98.7%，可按风险类别暴露安全训练覆盖盲区。 |
-| 2026-08 | CAITLYN: Can LLM Agents Autonomously Synthesize Defenses against Emerging Injection Attacks? ↗ | benchmark、delivery-aware injection、emerging attack、adaptive defense evaluation | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.27990) | [Code](https://github.com/liangzid/caitlyn) | 针对固定注入集无法检验防线面对新投递方式时的适应性 | 论文构建 delivery-aware Emerging benchmark | 并在三种 Agent 环境中对比静态两级检测与可自主合成防御的完整 CAITLYN | 结果显示静态组件仍有系统性盲点，而持续适应机制能显著降低新型攻击成功率。 |
-| 2026-08 | RedEvoAgent: Automatic Red-Teaming Agent with Experience-Driven Skill Evolution | attack、automated red team、attack-skill evolution、cross-harness transfer | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.27439) | 暂未公开 | 针对固定攻击与完整 trajectory 检索难以高效覆盖产品级 Agent 风险 | RedEvoAgent 将跨案例攻击经验蒸馏为可读 skill | 并以工具画像、Deciding-Tool Attribution 和 validation ratchet 自动迭代 | 多 benchmark 评测显示其优于固定及 Agentic attacker，并能跨攻击者模型与目标 execution harness 迁移。 |
-| 2026-06 | ForesightSafety-SAGE:A Fully Automated Scenario Generation and Safety Evaluation Framework for LLM Agents | benchmark、agent safety benchmark、trajectory evaluation、failure coverage | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2606.08531) | 暂未公开 | ForesightSafety-SAGE 从五个风险维度自动生成 1,072 个可执行 Agent 安全场景并在两种权限上下文中评估 12 个系统。 | ForesightSafety-SAGE 从五个风险维度自动生成 1,072 个可执行 Agent 安全场景并在两种权限上下文中评估 12 个系统 | 关键实现：ForesightSafety-SAGE 从五个风险维度自动生成 1,072 个可执行 Agent 安全场景并在两种权限上下文中评估 12 个系统。 | 平均 ASR 为 47.1%，多个模型超过 70%，说明只看静态 prompt 或最终答案会低估过程风险。 |
-| 2026-05 | DecodingTrust-Agent Platform (DTap): A Controllable and Interactive Red-Teaming Platform for AI Agents | tool、automated red team、interactive environment、verifiable judge | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2605.04808) | [Code](https://github.com/AI-secure/DecodingTrust-Agent) | 针对 Agent 风险测试缺少可控、可复现且接近真实服务的交互环境；论文构建跨 14 个领域、50 余个模拟环境的 DTap | 并让 DTap-Red 自动探索 prompt、tool、skill 与 environment 注入 | 关键实现：并让 DTap-Red 自动探索 prompt、tool、skill 与 environment 注入。 | 结果形成带可验证 judge 的 DTap-Bench 并揭示多类系统性漏洞。 |
-| 2026-02 | AgentDyn: Are Your Agent Security Defenses Deployable in Real-World Dynamic Environments? | benchmark、dynamic environment、indirect prompt injection、over-defense | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2602.03117) | [Code](https://github.com/leolee99/AgentDyn) | 针对静态 benchmark 缺少开放任务、帮助性第三方指令和真实规划复杂度。 | 针对静态 benchmark 缺少开放任务、帮助性第三方指令和真实规划复杂度；论文在 Shopping、GitHub 与 Daily Life 中构建 60 个任务和 560 个 injection case | 关键实现：针对静态 benchmark 缺少开放任务、帮助性第三方指令和真实规划复杂度；论文在 Shopping、GitHub 与 Daily Life 中构建 60 个任务和 560 个 injection case。 | 结果十种防御几乎都存在安全不足或严重 over-defense。 |
-| 2026-02 | Co-RedTeam: Orchestrated Security Discovery and Exploitation with LLM Agents | attack、agent safety benchmark、trajectory evaluation、failure coverage | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/60747) · [arXiv](https://arxiv.org/abs/2602.02164) | 暂未公开 | 针对自主智能体的长程行为、失败传播和真实部署风险缺少可复现评测的问题 | 论文围绕 Co-RedTeam 开展机制与边界分析 | 关键实现：论文围绕 Co-RedTeam 开展机制与边界分析。 | 理论分析与实验共同刻画了该风险的机制和适用边界，直接服务于智能体部署安全与故障恢复。 |
-| 2026 | Multimodal Safety Evaluation in Generative Agent Social Simulations | benchmark、multimodal safety、agent safety、VLM safety | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.1915/) | [Code](https://github.com/AdonaiVera/X-CASE) | 针对生成式 agent 在多模态社会环境中的安全一致性未知 | X-CASE 用 1,000 个计划和逾 60 万步模拟发现仅 55% 的不安全计划能被正确修复 | 关键实现：X-CASE 用 1,000 个计划和逾 60 万步模拟发现仅 55% 的不安全计划能被正确修复。 | 误导视觉线索还会让 45% 的危险动作被接受。 |
+### 1. EvoFlint: An Evolutionary Atlas of Multi-Turn LLM Vulnerabilities
 
-## 长程与动态攻击评测
+📄 [arXiv](https://arxiv.org/abs/2609.00487)　📅 2026-09
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026-08 | Authorization Before Context: A Model-Neutral Audience Boundary Against Cross-Audience Memory Leakage in Agentic Systems | attack、agent safety benchmark、trajectory evaluation、failure coverage | 未确认（arXiv Comments：AdvML-Frontiers × CoTMA@COLM 2026 Workshop） | [arXiv](https://arxiv.org/abs/2608.17148) | 暂未公开 | 研究 agent safety benchmark、failure coverage 场景下的攻击面，重点考察 trajectory evaluation 如何影响目标模型或系统。 | 个人语言代理从一个受众那里了解一个事实 | 然后可能会将其放入为另一个受众收集的提示中；我们在上下文之前引入授权：在记忆到上下文的转换时应用单一的、反单调的受众成员资格规则 | 我们证明，这条规则为每个参与者提供了跨渠道回忆，同时通过排除而不是通过模型行为，确保为较小受众记录的任何内容都不会到达更广泛的受众，并且有毒的记忆无法扩大自己的受众。 |
-| 2026-07 | Adaptive Adversaries: A Multi-Turn, Multi-LLM Benchmark for LLM Agent Security | benchmark、adaptive attacker、multi-turn attack、scenario sensitivity | Agents in the Wild Workshop 2026 | [arXiv](https://arxiv.org/abs/2607.18063) | 暂未公开 | 针对固定攻击池低估会观察防御反馈并调整策略的 adversary。 | 针对固定攻击池低估会观察防御反馈并调整策略的 adversary；论文构建 21 个情景、最多 15 轮的多模型 attacker-defender 对抗 | 关键实现：针对固定攻击池低估会观察防御反馈并调整策略的 adversary；论文构建 21 个情景、最多 15 轮的多模型 attacker-defender 对抗。 | 结果 adaptive attack 将首轮 0% 至 1% ASR 提高到 5.4% 至 14.0%，且不同情景下 defender 排名不稳定。 |
-| 2026-04 | ATBench: A Diverse and Realistic Agent Trajectory Benchmark for Safety Evaluation and Diagnosis | benchmark、long-horizon trajectory、delayed trigger、risk taxonomy | CoLM 2026 | [Official](https://colm.cc/Conferences/2026/AcceptedPapers) · [arXiv](https://arxiv.org/abs/2604.02022) | [Code](https://github.com/LiYu0524/ATbench) | 针对 trajectory benchmark 交互单一且难观察延迟风险。 | 针对 trajectory benchmark 交互单一且难观察延迟风险；论文按 risk source、failure mode 和 real-world harm 构建含异构工具池与 delayed trigger 的 1,000 条轨迹 | 关键实现：针对 trajectory benchmark 交互单一且难观察延迟风险；论文按 risk source、failure mode 和 real-world harm 构建含异构工具池与 delayed trigger 的 1,000 条轨迹。 | 结果显示强模型和专用 guard 在长程、分层风险上仍明显失效。 |
-| 2026-02 | AgentLAB: Benchmarking LLM Agents against Long-Horizon Attacks | benchmark、long-horizon attack、memory poisoning、objective drift | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/65640) · [arXiv](https://arxiv.org/abs/2602.16901) | [Project](https://tanqiujiang.github.io/AgentLAB_main/) | 针对单轮测试无法覆盖跨 user-agent-environment 交互形成的攻击。 | 针对单轮测试无法覆盖跨 user-agent-environment 交互形成的攻击；论文在 28 个环境和 644 个案例中评测 intent hijacking、tool chaining、task injection、objective drifting 与 memory poisoning | 关键实现：针对单轮测试无法覆盖跨 user-agent-environment 交互形成的攻击；论文在 28 个环境和 644 个案例中评测 intent hijacking、tool chaining、task injection、objective drifting 与 memory poisoning。 | 结果表明代表性 Agent 普遍脆弱且单轮防御不能可靠迁移。 |
+**关键词**：`attack`、`multi-turn jailbreak`、`quality-diversity search`、`adaptive red teaming`
 
-## 综合 Agent Safety Benchmark
+👤 **作者**：Feitong Qiao、…、Anish Das Sarma
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026-09 | PACE: Towards Surfacing Hidden Conflicts in User Requests ↗ | benchmark、personalized assistant、latent constraint、conflict evaluation | 未确认（arXiv Comments：EMNLP 2026） | [arXiv](https://arxiv.org/abs/2609.03293) | 暂未找到公开代码 | 现有 Agent benchmark 是否能测量个性化请求中的隐含约束识别，而不只测表面指令遵循？ | PACE 把 persona-conditioned request 与 KB fact 组成冲突样本，并提供可复现的检索—决策任务。 | 以 evidence retrieval quality 和 conflict decision accuracy 评价 PaceMaker 与基线。 | benchmark 将“执行得对”与“在当前情境下不该执行”区分开，且多跳隐式检索仍是主要瓶颈。 |
-| 2026-08 | HarnessRisk: A Lifecycle-Oriented Benchmark for Agent Harness Safety ↗ | benchmark、operational lifecycle、model-harness pairing、attack persistence | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.17597) | [Project](https://baiyajing.github.io/harness-risk/) | 针对 Agent benchmark 难以比较风险在不同 harness 职责中如何出现 | 论文以良性目标加不可信 workflow artifact 的对抗指令构造 128 个案例 | 并同时计量 utility、ASR、persistence 与 detection | 跨三种 harness、六个模型和 14 种配置观察到 12.6%–80.9% ASR。 |
-| 2026-04 | Claw-Eval: Towards Trustworthy Evaluation of Autonomous Agents | benchmark、trajectory evidence、safety robustness、autonomous agent | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2604.06132) | [Project](https://claw-eval.github.io/) | 研究如何评测 safety robustness、autonomous agent 风险，重点考察 trajectory evidence 场景下的覆盖度与可复现性。 | 针对只看最终状态的 grader 会漏掉执行过程中的安全和鲁棒性失败；论文以 execution trace、audit log 与 environment snapshot 三类证据评测 300 个任务 | 关键实现：针对只看最终状态的 grader 会漏掉执行过程中的安全和鲁棒性失败；论文以 execution trace、audit log 与 environment snapshot 三类证据评测 300 个任务。 | 结果 trajectory-opaque grading 漏掉 44% 的安全违规，并显示 capability 与重复运行一致性并不等价。 |
-| 2026 | SecureVibeBench: Benchmarking Secure Vibe Coding of AI Agents via Reconstructing Vulnerability-Introducing Scenarios | benchmark、agent safety、cyber misuse、agent safety benchmark | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.1107/) | 暂未公开 | 针对代码 agent benchmark 缺少真实漏洞引入场景 | SecureVibeBench 从 41 个 OSS-Fuzz 项目构造 105 个跨文件任务并同时检查功能和安全 | 关键实现：SecureVibeBench 从 41 个 OSS-Fuzz 项目构造 105 个跨文件任务并同时检查功能和安全。 | 最佳 agent 也仅有 23.8% 解答既正确又安全。 |
-| 2026 | CyberGym-E2E: Scalable Real-World Benchmark for AI Agents' End-to-End Cybersecurity Capabilities | benchmark、cyber misuse、agent safety benchmark、trajectory evaluation | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/62134) | 暂未公开 | 针对自主智能体的长程行为、失败传播和真实部署风险缺少可复现评测的问题 | 论文构建 CyberGym-E2E 基准并开展系统评测 | 关键实现：论文构建 CyberGym-E2E 基准并开展系统评测。 | 跨模型或跨数据集结果暴露了现有系统的具体安全缺口，直接服务于智能体部署安全与故障恢复。 |
-| 2025-08 | Benchmarking the Robustness of Agentic Systems to Adversarially-Induced Harms | benchmark、prompt injection、adversarial robustness、agent safety benchmark | CoLM 2026 | [Official](https://colm.cc/Conferences/2026/AcceptedPapers) · [arXiv](https://arxiv.org/abs/2508.16481) | [Code](https://github.com/JNoether/BAD-ACTS) | 针对 agentic system 可被攻击者、恶意 agent 或 prompt injection 诱导执行多类有害动作 | BAD-ACTS 在五种应用环境构造 238 个高质量和 699 个扩展危害样本 | 关键实现：BAD-ACTS 在五种应用环境构造 238 个高质量和 699 个扩展危害样本。 | 测得 40%–90% 攻击成功率并验证 zero-shot message monitor 的缓解作用。 |
-| 2025-07 | OpenAgentSafety: A Comprehensive Framework for Evaluating Real-World AI Agent Safety | benchmark、real tools、multi-user task、extensible framework | ICLR 2026 | [Official](https://iclr.cc/virtual/2026/poster/10006628) · [arXiv](https://arxiv.org/abs/2507.06134) | [Code](https://github.com/Open-Agent-Safety/OpenAgentSafety) | 针对模拟环境、窄任务和抽象工具无法代表真实部署。 | 针对模拟环境、窄任务和抽象工具无法代表真实部署；论文在 browser、code、filesystem、shell 和 messaging 等真实工具上提供多轮、多用户安全任务与可扩展 scorer | 关键实现：针对模拟环境、窄任务和抽象工具无法代表真实部署；论文在 browser、code、filesystem、shell 和 messaging 等真实工具上提供多轮、多用户安全任务与可扩展 scorer。 | 结果显示受测 Agent 在大量 safety-vulnerable task 上仍执行不安全行为。 |
-| 2025-05 | AgentAuditor: Human-Level Safety and Security Evaluation for LLM Agents | benchmark、automated auditing、security scenario、ASSEBench | NeurIPS 2025 | [Official](https://proceedings.neurips.cc/paper_files/paper/2025/hash/3dc85735f6e2fcf093e67b134fa00d21-Abstract-Conference.html) · [arXiv](https://arxiv.org/abs/2506.00641) | [Code](https://github.com/Astarojth/AgentAuditor) | 针对规则或普通 LLM evaluator 会漏掉逐步累积风险的问题 | 论文以 memory-augmented reasoning 模拟专家审计 | 并发布 ASSEBench | 结果在 Agent safety 与 security 记录上达到接近人工的判断准确率。 |
-| 2024-12 | Agent-SafetyBench: Evaluating the Safety of LLM Agents | benchmark、unsafe action、tool-use safety、risk category | TrustAgent@AAAI 2026 Workshop | [Official](https://trustagenticai.github.io/AAAI2026/AAAI-Workshop/30.pdf) · [arXiv](https://arxiv.org/abs/2412.14470) | [Code](https://github.com/thu-coai/Agent-SafetyBench) | 针对通用语言安全数据缺少 Agent 工具交互和环境后果。 | 针对通用语言安全数据缺少 Agent 工具交互和环境后果；论文构建多环境危险任务与风险分类评测模型的 action decision | 关键实现：针对通用语言安全数据缺少 Agent 工具交互和环境后果；论文构建多环境危险任务与风险分类评测模型的 action decision。 | 结果显示更强通用能力并不自动带来稳定的工具使用安全。 |
-| 2024-11 | R-Judge: Benchmarking Safety Risk Awareness for LLM Agents | benchmark、risk awareness、interaction record、safety judge | EMNLP 2024 Findings | [ACL Anthology](https://aclanthology.org/2024.findings-emnlp.79/) | [Code](https://github.com/Lordog/R-Judge) | 针对内容安全评测无法判断 Agent 多轮操作记录中的环境风险。 | 针对内容安全评测无法判断 Agent 多轮操作记录中的环境风险；论文整理 569 条交互、27 个风险场景和 10 类风险来测试 safety judge | 关键实现：针对内容安全评测无法判断 Agent 多轮操作记录中的环境风险；论文整理 569 条交互、27 个风险场景和 10 类风险来测试 safety judge。 | 结果表明风险意识需要知识与推理结合，简单 prompting 明显弱于专门训练。 |
-| 2024-10 | Agent Security Bench (ASB): Formalizing and Benchmarking Attacks and Defenses in LLM-based Agents | benchmark、attack-defense matrix、tool agent、security formalization | ICLR 2025 | [Official](https://proceedings.iclr.cc/paper_files/paper/2025/hash/5750f91d8fb9d5c02bd8ad2c3b44456b-Abstract-Conference.html) · [arXiv](https://arxiv.org/abs/2410.02644) | [Code](https://github.com/agiresearch/ASB) | 针对 Agent 攻击、防御和指标缺少统一实验协议。 | 针对 Agent 攻击、防御和指标缺少统一实验协议；论文形式化 attacker、user、agent、tool 与 memory 并建立多攻击多防御 benchmark | 关键实现：针对 Agent 攻击、防御和指标缺少统一实验协议；论文形式化 attacker、user、agent、tool 与 memory 并建立多攻击多防御 benchmark。 | 结果揭示现有防御通常只覆盖部分攻击面且会牺牲 benign utility。 |
-| 2024-06 | AgentDojo: A Dynamic Environment to Evaluate Prompt Injection Attacks and Defenses for LLM Agents | benchmark、prompt injection、dynamic environment、utility-security | NeurIPS 2024 Datasets and Benchmarks | [Official](https://proceedings.neurips.cc/paper_files/paper/2024/hash/97091a5177d8dc64b1da8bf3e1f6fb54-Abstract-Datasets_and_Benchmarks_Track.html) · [arXiv](https://arxiv.org/abs/2406.13352) | [Code](https://github.com/ethz-spylab/agentdojo) | 针对静态 prompt injection 样例不能联合衡量攻击、防御和任务效用。 | 针对静态 prompt injection 样例不能联合衡量攻击、防御和任务效用；论文构建可执行工具、用户任务与注入任务组成的动态环境 | 关键实现：针对静态 prompt injection 样例不能联合衡量攻击、防御和任务效用；论文构建可执行工具、用户任务与注入任务组成的动态环境。 | 结果使研究者能同时报告 utility、targeted ASR 和防御代价。 |
-| 2024-03 | InjecAgent: Benchmarking Indirect Prompt Injections in Tool-Integrated Large Language Model Agents | benchmark、indirect prompt injection、tool-integrated agent、external content | Findings of ACL 2024 | [Official](https://aclanthology.org/2024.findings-acl.624/) · [arXiv](https://arxiv.org/abs/2403.02691) | [Code](https://github.com/uiuc-kang-lab/InjecAgent) | 针对工具返回的不可信文本可以劫持 Agent 但缺少规模化测试。 | 针对工具返回的不可信文本可以劫持 Agent 但缺少规模化测试；论文从真实工具 schema 合成 user task、attacker instruction 和 observation | 关键实现：针对工具返回的不可信文本可以劫持 Agent 但缺少规模化测试；论文从真实工具 schema 合成 user task、attacker instruction 和 observation。 | 结果证明多种 LLM Agent 会服从间接注入并执行攻击目标。 |
+- 🎯 **研究动机**：多轮渐进攻击是 LLM 最少被理解的失效之一，自动 red-teaming 把它当生成问题而非搜索问题，只产出零散成功
+- 🔬 **研究方法**：提出 EvoFlint：用进化 quality-diversity 搜索演化分阶段对话计划（LLM 变异／交叉、ASR 与峰值严重度的 Pareto 适应度、风险索引档案与跨代记忆）
+- 📌 **结论**：HarmBench-test 上 ASR 达 Claude Sonnet 4.6 的 35.8%、GPT-5.4 的 59.7%、Qwen3-32B 的 94.3%，档案按风险类目暴露各模型安全训练的覆盖缺口
 
-## 评测有效性与方法分析
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026-09 | Judging LLM-as-a-Judge: Concerning Rubric Artifacts in LLM-based Automated Text Generation Evaluation ↗ | analysis、LLM judge、rubric artifact、counterfactual validity | 未确认（arXiv Comments：Accepted for publication at EMNLP 2026） | [arXiv](https://arxiv.org/abs/2609.02942) | 暂未找到公开代码 | LLM judge 是否真的依据候选回答和 rubric 推理，还是 rubric 本身泄露了可预测的评分先验？ | 用只看 rubric 的 classifier 和候选/标准反事实翻转，分离 judge 的 shortcut 与响应性。 | 训练 rubric-only classifier，再分别翻转 candidate response 或 criterion，比较 judge 输出更新。 | rubric-only 信号即可非平凡预测 judge，且反事实下常不能可靠更新，自动评测需要独立、确定性校验。 |
-| 2026-09 | PatchBench: Evaluating AI Agents for Vulnerability Patching ↗ | benchmark、evaluation validity、patch memorization、security correctness | 未确认（arXiv） | [arXiv](https://arxiv.org/abs/2609.04075) | 暂未找到公开代码 | 代码安全 benchmark 的验证协议是否把记忆和 crash suppression 当成真正的漏洞修复？ | 以 patch similarity、vulnerability transplant 和 code mutation 分离表面通过与根因修复。 | 对 11 个 Agent 做跨上下文迁移并要求 security 与 semantic correctness 同时通过。 | 传统 PoC-only 指标平均高估 1.83 倍，说明 Agent 安全能力评测需抵抗记忆和 verifier gaming。 |
-| 2026-09 | LLM-as-a-Judge Is Not an Oracle: Why Self-Improving Agents Need Deterministic Guardrails | analysis、LLM-as-a-judge、reward hacking、self-improving agent | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2609.02246) | 暂未公开 | self-improving prompt optimization 中，LLM judge、harness、ground-truth 和 parser 失效是否会让 reward 被 gaming，如何在 judge 无法覆盖的层面约束更新？ | PROCTOR 将 judge 从 oracle 降为 advisor，把 stateful orchestrator、stateless mutation agents 与 deterministic acceptance checks 组合，并用 holdout/canary 检测作弊。 | 在 contract analysis、compliance review、code quality 的生产 loop 中归纳 11 类 failure，再用 hermetic sandbox、capability-disjoint roles、frozen holdout、canary 和结构化输出顺序做门控。 | 缓存答案可造成 100% pass 却只有 68% true capability，错误标签和 parser fallback 也会误导优化；结构性 deterministic guardrail 比重写 judge rubric 更可靠，但 Teacher 本身仍可能失效。 |
-| 2026-06 | The Geometry of LLM-as-Judge: Why Inter-LLM Consensus Is Not Human Alignment | analysis、LLM-as-a-judge、human alignment、judge geometry | Accepted at EMNLP 2026 | [arXiv](https://arxiv.org/abs/2606.03043) | 暂未公开 | judge 间高一致性是否真的表明 human alignment，还是可能共享 blind spot？ | 将 judge score 视为向量，比较 spread、effective rank、judge-human angle 与 reference-matched agreement。 | 42 个 judge、两个 Indic benchmark、四 domain/八 language 上测 subjective 与 verifiable rubric，并比较 ensemble/training。 | subjective rubric 上 judge-human agreement 仅 58-66%，ensemble 强化共同偏轴；inter-judge consensus 只有在 reference-matched human check 通过后才是 validity evidence。 |
-| 2026-09 | Improving Evaluation Realism with Inference-Time Compute and Deployment Scaffolds | analysis、evaluation awareness、deployment realism、alignment audit | Under review at NeurIPS 2026 | [arXiv](https://arxiv.org/abs/2609.02302) | [petri-dish](https://github.com/meridianlabs-ai/petri_dish) · [petri-bon](https://github.com/AxelAhlqvist1995/petri-bon) · [reproduction](https://github.com/AxelAhlqvist1995/petri-realism-reproduction) | evaluation-aware 模型可能识别模拟审计而改变行为；如何同时缩小 simulator action 与真实部署的差距，并提高 alignment evaluation 的 realism？ | 用 critique refinement 为每个 simulator action 生成、反馈筛选多个候选，再用 DISH（Deployment-Imitating SWE-Agent Harness）把目标模型包进更接近真实 coding deployment 的 Agent harness。 | 在多个 target model 上分别和组合测试两种方法，并与单纯延长 audit 的额外 compute 比较 realism gain。 | critique refinement 与 DISH 可组合且联合收益更大；额外推理计算和部署脚手架比单纯拉长审计更有效，但仍是在模拟环境中间接测量 realism，不能消除 evaluation-awareness 本身。 |
-| 2026-06 | EvalDetectBench: A Benchmark for Measuring Evaluation Awareness in Frontier Language Models | benchmark、evaluation awareness、safety-evaluation validity、model-behavior shift | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2609.01611) | [Code](https://github.com/freeze-lasr/aware_bench) · [Dataset](https://huggingface.co/datasets/el7982/aware-bench) | 如何测量模型识别 evaluation 与 deployment 的能力，并避免 deployment transcript 的生成模型和 probe prompt 选择系统性扭曲安全评测结论？ | EvalDetectBench 提供可兼容 Inspect 的开放 pipeline 和 transcript suite，以 per-model probe calibration 测量 awareness，并用 stratified generator harmonisation 校正生成器身份混杂。 | 在 12 个 judge model、13 个 benchmark 上比较 AUROC、P(eval) 和 probe transfer，单独做 generator × judge crossed design 与 resampling／校准分析。 | 评测 awareness 在多数 benchmark 上显著高于随机；deployment transcript generator 解释 11.25% 的测量方差并可重排模型排名，说明安全评测需报告可探测性、校准和数据来源。 |
-| 2026-08 | Training Alignment Auditors via Reinforcement Learning | analysis、automated alignment audit、reward design、audit realism | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.25460) | [Code](https://github.com/paulrosu11/training-auditing-agents-public) | 分析 automated alignment audit、reward design 风险的形成机制，重点考察 audit realism 对安全行为的影响。 | 论文把 automated auditor 本身作为需要训练和校验的评测组件 | 系统消融 pairwise／pointwise reward 及含无隐藏行为负例的训练环境，并同时测量 investigation quality、生产模型发现率、audit realism 与 false positive | 避免只用单一发现分数评价审计能力。 |
-| 2026-08 | No Task Fails Every Time: Why One-Shot Audits Are Structurally Blind to Agent Damage | detection、agent safety benchmark、trajectory evaluation、failure coverage | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.15286) | [Code](https://github.com/shivenkk/agentrelbench) | 研究如何检测 agent safety benchmark、failure coverage 风险，重点考察 trajectory evaluation 条件下的识别能力与误报代价。 | 我们引入了 AgentRelBench | 这是一种与环境无关的可靠性工具，可以根据重复运行中的数据库状态差异计算真实的、按严重程度定价的损坏，测量路径中没有 LLM，这在 EnterpriseOps-Gym 上进行了演示；在跨越 6 个系列的 9 个模型的 2,128 次评估运行中（四个开发模型、三个预注册保留模型，加上预注册指定为探索性的两个前沿模型的前沿通行证），我们发现：(1) 不可逆转操作的损害在我们测量的所有系列中是普遍存在的，并且在固定的单一提供商堆栈上是随机的；所有确认结果均按照每个索赔降级标准进行预先注册 | 其中一个降低了我们最初喜欢的发现，我们对此进行了报道。 |
-| 2026-08 | REDAgentBench: Executable Red Teaming and Faithful Measurement of LLM Agent Systems | benchmark、adversarial robustness、agent safety benchmark、trajectory evaluation | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.10669) | 暂未公开 | REDAgentBench 从显式安全约束生成 1,661 个可执行攻击并用服务 receipt 与最终状态判定真实违规。 | REDAgentBench 从显式安全约束生成 1,661 个可执行攻击并用服务 receipt 与最终状态判定真实违规 | 关键实现：REDAgentBench 从显式安全约束生成 1,661 个可执行攻击并用服务 receipt 与最终状态判定真实违规。 | 六模型三 harness 的平均 ASR 为 65.69%，近五分之一违规发生在模型已说出风险之后，而训练外 policy reminder 可将确认违规降低逾 70 个百分点。 |
-| 2026-07 | Safety, or Just Capability? A Validity Audit of Agent-Safety Benchmarks | analysis、benchmark validity、capability confounding、metric audit | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2607.28685) | 暂未公开 | 分析 benchmark validity、capability confounding 风险的形成机制，重点考察 metric audit 对安全行为的影响。 | 针对不同 benchmark 分数被无差别称为 Agent safety；论文按官方实现复跑 R-Judge、InjecAgent、AgentHarm 和 AgentDojo 并审计指标及模型 panel | 关键实现：针对不同 benchmark 分数被无差别称为 Agent safety；论文按官方实现复跑 R-Judge、InjecAgent、AgentHarm 和 AgentDojo 并审计指标及模型 panel。 | 结果显示排名、能力相关性和 held-out validity 高度依赖具体行为与样本，安全声明至少应报告 benchmark、metric、target behavior 和 model panel。 |
-| 2026-04 | BenchGuard: Who Guards the Benchmarks? Automated Auditing of LLM Agent Benchmarks | benchmark、agent safety benchmark、trajectory evaluation、failure coverage | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2604.24955) | 暂未公开 | 研究如何评测 agent safety benchmark、failure coverage 风险，重点考察 trajectory evaluation 场景下的覆盖度与可复现性。 | BenchGuard 用结构化 LLM protocol 交叉核验 specification、环境和 evaluator 等 benchmark artifact | 关键实现：BenchGuard 用结构化 LLM protocol 交叉核验 specification、环境和 evaluator 等 benchmark artifact。 | 它发现 ScienceAgentBench 中 12 个作者确认问题，并复现 BIXBench 专家问题的 83.3%，50 个生物信息任务完整审计成本低于 15 美元。 |
-| 2026 | ANCHOR: Automated Alignment Auditing for CLI Agents on Real-World Harm | detection、agent safety benchmark、trajectory evaluation、failure coverage | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/63234) | 暂未公开 | 针对自主智能体的长程行为、失败传播和真实部署风险缺少可复现评测的问题 | 论文构建 ANCHOR 基准并开展系统评测 | 关键实现：论文构建 ANCHOR 基准并开展系统评测。 | 跨模型或跨数据集结果暴露了现有系统的具体安全缺口，直接服务于智能体部署安全与故障恢复。 |
+Frontier language models that refuse harmful single-turn prompts often comply when the same intent is reached gradually over many turns, making multi-turn attacks one of the least understood failure modes of large language models. Most automated red-teaming methods treat this as a generation problem: produce attacks that break the model. We argue it is better framed as a search problem: discover, organize, and iteratively refine a diverse archive of attack strategies, producing a structured map of how a target model fails rather than a list of one-off successes. We introduce EvoFlint, which applies evolutionary quality-diversity search to multi-turn red-teaming. Attack strategies are phased conversation plans, not raw prompts, and are evolved through LLM-driven mutation and crossover. A Pareto fitness over attack success rate and peak severity preserves selection signal from near-miss attacks. A risk-indexed archive runs novelty search with local competition over strategy description embeddings inside each cell, maintaining diversity without committing to a predefined style taxonomy. A generation-level memory accumulates target-model insights across the population and feeds them back into strategy generation. On the HarmBench-test split, EvoFlint reaches attack success rates of 35.8% on Claude Sonnet 4.6, 59.7% on GPT-5.4, and 94.3% on Qwen3-32B, alongside 98.7% on the older GPT-4o included as a baseline reference. The resulting archive, organized by risk category, exposes for each target which categories of harm its safety training has and has not covered.
 
-## Agent Benchmark 机制、覆盖率与诊断
+</details>
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026-09 | KC-Bench: A Dynamic Interactive Benchmark for Evaluating Knowledge Conflicts in LLM Agents ↗ | benchmark、knowledge conflict、stateful tools、protected-data flow | 未确认（arXiv） | [arXiv](https://arxiv.org/abs/2609.03588) | 暂未找到公开代码 | 工具型 Agent 在用户指令、参数知识和动态观察冲突时，是否会把未解决冲突带入真实动作？ | KC-Bench 用受控多轮任务区分世界知识、输入一致性和多源时间冲突，并保留环境状态。 | 238 个任务结合 user simulator、有状态工具、确定性断言、开源 evaluator 和人工轨迹核验，评测 9 个模型。 | 没有模型在所有冲突类型上可靠；漏检可传播到工具调用和受保护数据流，说明静态 QA 分数不足。 |
-| 2026-09 | Calibration is the Bottleneck: An Action-Class Diagnostic of Multi-Turn Tool-Calling | benchmark、tool-calling calibration、action-class diagnosis、multi-turn safety | Findings of EMNLP 2026 | [arXiv](https://arxiv.org/abs/2609.00949) | [Code](https://github.com/fbj2333/tool-calling-calibration) | 多轮 tool-calling 的 aggregate accuracy 无法区分动作类别选错与工具执行失败，也会掩盖安全边界上的 ask/refuse/confirm 失误。 | 把每一步决策拆成动作类别，并用可达上界衡量模型是否有机会选对动作。 | 定义 TOOL_CALL、ASK、REFUSE、CONFIRM 四类诊断指标和 Gold Action Recall，上下文扰动下分别评测动作选择与执行。 | 诊断显示不同模型在上下文扰动下可能出现相反变化，单一 aggregate accuracy 不足以解释安全行为。 |
-| 2026-08 | The Guard That Cried Wolf: How Scary Words Make Agent Guardrails Refuse Legitimate Actions | benchmark、over-safety validity、mechanical labeling、twin contrast | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.27009) | 暂未公开 | 针对 Agent guardrail 的 over-safety 边界样本难收集、标签难验证 | Cautious Bench 由授权策略生成并在构建时重新认证每个 label | 以 756 组 Decidable twin 和 40 组单列 Undecidable 样本避免把主观标注混入指标 | 只替换对象名的对照进一步因果定位了六个 guardrail 的 name-superstition。 |
-| 2026-08 | Hack-Verifiable Terminal Bench: Evaluating Reward Hacking in Terminal Tasks | benchmark、agent evaluation、verifiable scorer、unknown exploit | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.22103) | [Project / Code](https://majoroth.github.io/hack-verifiable-environments/hvtb) | 针对 reward hacking 评测依赖人工或不可靠 LLM judge | HVTB 将可验证 hack 机制移植到真实终端任务 | 以环境内证据自动标记作弊并发布完整轨迹 | 不同 prompt 信息条件还能诊断防御只覆盖已知 exploit、还是能泛化到 unknown unknown。 |
-| 2026-06 | RUBAS: Rubric-Based Reinforcement Learning for Agent Safety | analysis、agent safety benchmark、trajectory evaluation、failure coverage | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2606.04051) | 暂未公开 | 分析 agent safety benchmark、failure coverage 风险的形成机制，重点考察 trajectory evaluation 对安全行为的影响。 | RUBAS 用 tool-use、argument、response safety 与 helpfulness 四维 rubric 对完整 Agent trajectory 提供可解释 RL 奖励 | 关键实现：RUBAS 用 tool-use、argument、response safety 与 helpfulness 四维 rubric 对完整 Agent trajectory 提供可解释 RL 奖励。 | 实验显示它较粗粒度拒答监督更能提升工具执行安全、减少 tool-grounded hallucination 并保持任务完成能力。 |
-| 2026 | MaMa: A Game-Theoretic Approach for Designing Safe Agentic Systems | analysis、agent safety benchmark、trajectory evaluation、failure coverage | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/64729) | [Code](https://github.com/JNoether/MaMa) | 针对自主智能体的长程行为、失败传播和真实部署风险缺少可复现评测的问题 | 论文围绕 MaMa 开展机制与边界分析 | 关键实现：论文围绕 MaMa 开展机制与边界分析。 | 摘要中的实验或分析给出了相应有效性与边界证据，直接服务于智能体部署安全与故障恢复。 |
+### 2. CAITLYN: Can LLM Agents Autonomously Synthesize Defenses against Emerging Injection Attacks?
 
-## 评测 Tool 与可执行基础设施
+📄 [arXiv](https://arxiv.org/abs/2608.27990)　📅 2026-08
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026-08 | FuzzingBrain-Bench V1: Evaluating Open-Ended Bug Discovery by LLMs | benchmark、executable environment、sanitizer feedback、coverage-aware scoring | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.25158) | [Code](https://github.com/fuzzingbrain/FuzzingBrain-Bench) | FuzzingBrain-Bench 以可复现 Docker、instrumented harness 和 crash signature 把开放式漏洞发现从文本 judge 转成执行证据。 | FuzzingBrain-Bench 以可复现 Docker、instrumented harness 和 crash signature 把开放式漏洞发现从文本 judge 转成执行证据 | 并允许同一任务中的多个有效 crash 都计分 | 按难度加权且封顶的评分覆盖 77 个真实项目 challenge，可比较模型发现能力而不把评测限制在预先知道的单个漏洞。 |
-| 2026-08 | CyberFactory: Scaling Cyber Security Capabilities with Instances from the Wild | tool、executable cyber instance、agentic trajectory、evidence-based validation | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.23181) | [Code](https://github.com/CSJianYang/CyberFactory) | CyberFactory 将真实漏洞制品转成可执行、结果可验证的 Agent 任务。 | CyberFactory 将真实漏洞制品转成可执行、结果可验证的 Agent 任务 | 并打通实例构造、skill-guided trajectory synthesis 与模型训练 | 监督数据记录工具使用、目标环境反馈和方案修订，使网络安全能力评测与训练都建立在运行证据而非文本 judge 上。 |
-| 2026-07 | Agentao: A Governed Local-First Runtime for Tool-Using LLM Agents | tool、agent safety benchmark、trajectory evaluation、failure coverage | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.13574) | [Code](https://github.com/jin-bo/agentao) | 研究面向 agent safety benchmark、failure coverage 的安全工具，重点考察 trajectory evaluation 下的审计或防护效果。 | LLM 智能体越来越多地作为执行系统运行 | 调用工具、修改本地状态、使用持久内存以及与外部协议交互 | 本文介绍了 Agentao，这是一个受控的本地优先运行时，用于使用 LLM 智能体的工具。 |
-| 2026 | A New Framework for Cybersecurity Refusals in AI Agents | tool、cyber misuse、agent safety benchmark、trajectory evaluation | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/61093) | 暂未公开 | 针对自主智能体的长程行为、失败传播和真实部署风险缺少可复现评测的问题 | 论文围绕 New Framework for Cybersecurity Refusals 开展机制与边界分析 | 关键实现：论文围绕 New Framework for Cybersecurity Refusals 开展机制与边界分析。 | 理论分析与实验共同刻画了该风险的机制和适用边界，直接服务于智能体部署安全与故障恢复。 |
+**关键词**：`benchmark`、`defense`、`delivery-aware injection`、`emerging attack`、`adaptive defense evaluation`、`adaptive Agent guardrail`
 
-> 科学实验室与 Scientific Agent 的专门安全 benchmark 见 [Scientific Domain Risk Evaluation](../ai-for-science-safety/scientific-domain-risk-evaluation.md)。
+👤 **作者**：Zi Liang、Xiaoyu Xu、Yanyun Wang、Minxin Du、Qingqing Ye、Haibo Hu
+
+- 🎯 **研究动机**：现有提示注入防御只对已知攻击有效，Agent 环境中变体与新威胁不断涌现，且运行效率、上下文精度与适应性构成三难
+- 🔬 **研究方法**：提出 Agent 无关防御中间件 CAITLYN：System I 用 Tier-0 规则脚本加 Tier-1 优化 LLM 推理的两级库即时防御；System II 持续监测异常信号并自动合成、验证新防御入库
+- 📌 **结论**：在标准 benchmark 上以低于 LLM-as-a-judge 的 token 开销匹配 SOTA 检测性能，并在新建 delivery-aware 的 Emerging benchmark 三种 Agent 环境中显著降低新型注入攻击成功率
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Prompt injection attacks on Large Language Model (LLM) agents seek to introduce malicious instructions or content into external text sources retrieved by agents, forcing the underlying LLMs to execute harmful actions outside their benign scope. While current defenses effectively counter known injection attacks, deploying them in LLM agent environments remains challenging due to attack variants and emerging threats. Moreover, existing solutions typically suffer from an inherent trilemma, i.e., a constant trade-off among runtime efficiency, contextual precision, and adaptability. To bridge this gap, we propose Continuous Agents for Injection Threats via Lifelong Yielding Nexus (CAITLYN), an agent-agnostic defense middleware. CAITLYN integrates two systems. System I focuses on immediate defense against existing attacks using a two-tiered library: Tier-0 for rule-based detection scripts and Tier-1 for optimized LLM-based accurate inference. System II, in contrast, is deployed to monitor potential abnormal signals and attempt to synthesize new defenses. On standard benchmarks, CAITLYN matches the detection performance of state-of-the-art defenses at lower token overhead than LLM-as-a-judge baselines. On Emerging, our new delivery-aware benchmark featuring novel injection techniques, static baselines and the standalone System I configuration remain vulnerable. In contrast, System II autonomously synthesizes verified defense capabilities, substantially lowering the attack success rate across three diverse agent environments.
+
+</details>
+
+### 3. RedEvoAgent: Automatic Red-Teaming Agent with Experience-Driven Skill Evolution
+
+📄 [arXiv](https://arxiv.org/abs/2608.27439)　📅 2026-08
+
+**关键词**：`attack`、`automated red team`、`attack-skill evolution`、`cross-harness transfer`、`self-evolving red team`、`attack skill`
+
+👤 **作者**：Junjie Zhang、Hui Liu、Kecheng Chen、Xianbo Mo、Changsheng Chen、Haoliang Li
+
+- 🎯 **研究动机**：自动红队多依赖固定攻击，agentic 攻击者的轨迹检索受检索偏差与工具贡献不清影响，全轨迹还增加上下文开销并降低可解释性
+- 🔬 **研究方法**：提出 RedEvoAgent 黑盒红队 Agent，把跨案例攻击轨迹蒸馏为简洁可读的攻击 skill，经工具效果画像、Deciding-Tool Attribution 与只保留有效更新的 validation ratchet 驱动 skill 演化
+- 📌 **结论**：在多 benchmark、目标模型与执行 harness 上超越固定与 agentic 基线，提升工具效率，并可零调整跨攻击者模型与目标 harness 迁移
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+LLM-based agents are increasingly deployed in product-level execution harnesses, where jailbreaks can trigger harmful tool use and persistent state changes, creating greater risks than unsafe text generation alone. Existing automatic red-teaming methods often rely on fixed attacks, while recent agentic attackers coordinate multiple jailbreak tools and show stronger potential through trajectory-based retrieval. However, such retrieval can reuse misleading experiences due to retrieval bias and unclear tool credit, and full trajectories add context overhead while reducing interpretability. We propose RedEvoAgent, a black-box red-teaming agent that distills cross-case attack trajectories into a concise, human-readable attack skill. The attack skill adaptively evolves through tool-effectiveness profiling and Deciding-Tool Attribution for skill updates, and a validation ratchet that retains only updates improving validation performance. Experiments on multiple benchmarks, target models, and target execution harnesses show that RedEvoAgent outperforms fixed and agentic baselines, improves tool efficiency, and transfers across attacker models and target execution harnesses.
+
+</details>
+
+### 4. ForesightSafety-SAGE:A Fully Automated Scenario Generation and Safety Evaluation Framework for LLM Agents
+
+📄 [arXiv](https://arxiv.org/abs/2606.08531)　📅 2026-06
+
+**关键词**：`benchmark`、`agent safety benchmark`、`trajectory evaluation`、`failure coverage`
+
+👤 **作者**：Lu Jia、…、Yi Zeng
+
+- 🎯 **研究动机**：现有 agent 安全评估依赖人工场景、静态提示或最终输出判断，难以覆盖任务执行中的多样风险
+- 🔬 **研究方法**：提出 ForesightSafety-SAGE：基于五个风险维度自动生成 1,072 个可测场景，自动化流水线在两种权限上下文下评估 12 个 LLM agent
+- 📌 **结论**：当前 agent 执行期行为风险依旧严峻，平均 ASR 47.1%、多模型超 70%，凸显可执行过程级评估的必要性
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models (LLMs) are increasingly evolving from simple text-based interaction systems into LLM agents that can maintain memory, use tools, access external environments, and execute tasks. As their capabilities and autonomy expand, the safety risks they face also become more diverse. Existing evaluations often rely on manually written scenarios, static prompts, or final-output judgments, making it difficult to capture the diverse risks that agents may face during task execution. We introduce ForesightSafety-SAGE, a fully automated scenario generation and safety evaluation framework for LLM agents. Based on five risk dimensions,we instantiae abstract and diverse safety risks in real-world task execution into 1,072 measurable evaluation scenarios. Using the automated evaluation pipeline, 12 LLM agents are evaluated under two authority contexts. The results show that current agents still face substantial behavioral safety risks during task execution, with an average ASR of 47.1% and several models exceeding 70%. These findings demonstrate the importance of executable, process-level evaluation for understanding and improving LLM agent safety.
+
+</details>
+
+### 5. DecodingTrust-Agent Platform (DTap): A Controllable and Interactive Red-Teaming Platform for AI Agents
+
+📄 [arXiv](https://arxiv.org/abs/2605.04808)　📅 2026-05
+
+**关键词**：`tool`、`automated red team`、`interactive environment`、`verifiable judge`
+
+👤 **作者**：Zhaorun Chen、…、Bo Li
+
+- 🎯 **研究动机**：Agent 安全评测缺乏真实、可控、可复现的大规模风险评估环境
+- 🔬 **研究方法**：DTap 覆盖 14 个领域、50+ 个模拟环境（复刻 Google Workspace、PayPal、Slack 等）；DTap-Red 自主探索 prompt、tool、skill、环境等注入向量并策展带可验证 judge 的 DTap-Bench
+- 📌 **结论**：对多种骨干模型构建的主流 agent 的大规模评测揭示系统性漏洞模式
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+AI agents are increasingly deployed across diverse domains to automate complex workflows through long-horizon and high-stakes action executions. Due to their high capability and flexibility, such agents raise significant security and safety concerns. A growing number of real-world incidents have shown that adversaries can easily manipulate agents into performing harmful actions, such as leaking API keys, deleting user data, or initiating unauthorized transactions. Evaluating agent security is inherently challenging, as agents operate in dynamic, untrusted environments involving external tools, heterogeneous data sources, and frequent user interactions. However, realistic, controllable, and reproducible environments for large-scale risk assessment remain largely underexplored. To address this gap, we introduce the DecodingTrust-Agent Platform (DTap), the first controllable and interactive red-teaming platform for AI agents, spanning 14 real-world domains and over 50 simulation environments that replicate widely used systems such as Google Workspace, Paypal, and Slack. To scale the risk assessment of agents in DTap, we further propose DTap-Red, the first autonomous red-teaming agent that systematically explores diverse injection vectors (e.g., prompt, tool, skill, environment, combinations) and autonomously discovers effective attack strategies tailored to varying malicious goals. Using DTap-Red, we curate DTap-Bench, a large-scale red-teaming dataset comprising high-quality instances across domains, each paired with a verifiable judge to automatically validate attack outcomes. Through DTap, we conduct large-scale evaluations of popular AI agents built on various backbone models, spanning security policies, risk categories, and attack strategies, revealing systematic vulnerability patterns and providing valuable insights for developing secure next-generation agents.
+
+</details>
+
+### 6. AgentDyn: Are Your Agent Security Defenses Deployable in Real-World Dynamic Environments?
+
+📄 [arXiv](https://arxiv.org/abs/2602.03117)　📅 2026-02
+
+**关键词**：`benchmark`、`dynamic environment`、`indirect prompt injection`、`over-defense`
+
+👤 **作者**：Hao Li、Ruoyao Wen、Shanghao Shi、Ning Zhang、Yevgeniy Vorobeychik、Chaowei Xiao
+
+- 🎯 **研究动机**：现有 agent 安全基准缺动态开放任务、缺有用第三方指令且用户任务过简，难以反映真实部署
+- 🔬 **研究方法**：AgentDyn 手工构建 60 个开放任务与 560 个注入测试用例（Shopping、GitHub、Daily Life），要求动态规划并纳入有用的第三方指令
+- 📌 **结论**：十个 SOTA 防御几乎全部要么安全性不足、要么严重过度防御，距真实世界部署尚远
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+AI agents that autonomously interact with external tools and environments have shown great promise across real-world applications. However, their reliance on external data exposes them to serious indirect prompt injection attacks, where malicious instructions embedded in third-party content hijack agent behaviors. To mitigate this threat, a growing number of defenses have been proposed and evaluated under existing agent security benchmarks. These benchmarks provide structured environments for comparing attacks and defenses, and have become a key driver for defense design and optimization. However, as agents move toward more complex and open-ended real-world deployments, there is a pressing need for benchmarks to become more adaptive and better reflect the dynamic environments faced by real-world agentic systems. In this work, we reveal three fundamental flaws in the current benchmarks and push the frontier along these dimensions: (i) lack of dynamic open-ended tasks, (ii) lack of helpful instructions, and (iii) simplistic user tasks. To bridge this gap, we introduce AgentDyn, a manually designed benchmark featuring 60 challenging open-ended tasks and 560 injection test cases across Shopping, GitHub, and Daily Life. Unlike prior static benchmarks, AgentDyn requires dynamic planning and incorporates helpful third-party instructions. Our evaluation of ten state-of-the-art defenses suggests that almost all existing defenses are either not secure enough or suffer from significant over-defense, revealing that existing defenses are still far from real-world deployment. Our benchmark is available at https://github.com/leolee99/AgentDyn.
+
+</details>
+
+### 7. Co-RedTeam: Orchestrated Security Discovery and Exploitation with LLM Agents
+
+📄 [arXiv](https://arxiv.org/abs/2602.02164) · 🎓 [Official](https://icml.cc/virtual/2026/poster/60747)　📅 2026-02　🏷 ICML 2026
+
+**关键词**：`attack`、`analysis`、`agent safety benchmark`、`trajectory evaluation`、`failure coverage`、`agent safety`
+
+👤 **作者**：Pengfei He、…、Long T. Le
+
+- 🎯 **研究动机**：LLM 网络安全 agent 在自动漏洞发现与利用上受限于交互不足、执行接地弱与经验不可复用
+- 🔬 **研究方法**：Co-RedTeam 集成安全领域知识、代码感知分析、执行接地的迭代推理与长期记忆，把漏洞分析分解为协同的发现与利用两阶段，基于真实执行反馈学习
+- 📌 **结论**：漏洞利用成功率超 60%、漏洞检测绝对提升超 10%，消融证实执行反馈与记忆是关键
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models (LLMs) have shown promise in assisting cybersecurity tasks, yet existing approaches struggle with automatic vulnerability discovery and exploitation due to limited interaction, weak execution grounding, and a lack of experience reuse. We propose Co-RedTeam, a security-aware multi-agent framework designed to mirror real-world red-teaming workflows by integrating security-domain knowledge, code-aware analysis, execution-grounded iterative reasoning, and long-term memory. Co-RedTeam decomposes vulnerability analysis into coordinated discovery and exploitation stages, enabling agents to plan, execute, validate, and refine actions based on real execution feedback while learning from prior trajectories. Extensive evaluations on challenging security benchmarks demonstrate that Co-RedTeam consistently outperforms strong baselines across diverse backbone models, achieving over 60% success rate in vulnerability exploitation and over 10% absolute improvement in vulnerability detection. Ablation and iteration studies further confirm the critical role of execution feedback, structured interaction, and memory for building robust and generalizable cybersecurity agents.
+
+</details>
+
+### 8. Multimodal Safety Evaluation in Generative Agent Social Simulations
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.1915/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`benchmark`、`multimodal safety`、`agent safety`、`VLM safety`、`LLM agent`
+
+👤 **作者**：Alhim Adonai Vera Gonzalez、Carlos Hinojosa、Karen Sanchez、Haidar Bin Hamid、Donghoon Kim、Bernard Ghanem
+
+- 🎯 **研究动机**：生成式智能体在多模态环境中跨模态的安全推理与信任能力未知
+- 🔬 **研究方法**：可复现仿真框架评迭代规划修订的安全改进、跨社交语境的不安全活动检测与社会动态，发布 1,000 个多模态计划（逾 60 万仿真步）
+- 📌 **结论**：智能体能发现直接多模态矛盾但难对齐局部修订与全局安全，纠正不安全计划成功率仅 55%；误导性视觉线索下 45% 不安全行为被接受，过度信任视觉
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Can generative agents be trusted in multimodal environments? Despite recent advances, agents remain limited in their ability to reason about safety, coherence, and trust across modalities. We introduce a reproducible simulation framework to evaluate generative agents in three aspects: (1) safety improvement over time via iterative plan revision in multimodal scenarios; (2) detection of unsafe activities across social contexts; and (3) social dynamics, measured through interaction and acceptance rates. These multimodal agents are evaluated using metrics that quantify plan revisions and unsafe-to-safe conversions. Experiments show that while agents detect direct multimodal contradictions, they often fail to align local revisions with global safety, achieving only a 55% success rate in correcting unsafe plans. We release a dataset of 1,000 multimodal plans, yielding more than 600,000 simulation steps. Notably, 45% of unsafe actions are accepted when paired with misleading visual cues, revealing a strong tendency to overtrust visual content. Code is available at https://github.com/AdonaiVera/X-CASE
+
+</details>
+
+### 9. Authorization Before Context: A Model-Neutral Audience Boundary Against Cross-Audience Memory Leakage in Agentic Systems
+
+📄 [arXiv](https://arxiv.org/abs/2608.17148)　📅 2026-08
+
+**关键词**：`attack`、`agent safety benchmark`、`trajectory evaluation`、`failure coverage`
+
+👤 **作者**：Sibo Liu
+
+- 🎯 **研究动机**：个人 agent 从一个受众学到的事实可能被组装进另一受众的 prompt——记忆到上下文这一步是攻击面
+- 🔬 **研究方法**：在记忆到上下文转换处施加反单调受众成员规则：条目携带记录时受众，当前 viewers 从信道元数据读取、歧义回退公共，仅当每个 viewer 已属其受众才准入，并证明投毒记忆不能扩大自身受众
+- 📌 **结论**：合成语境完整性套件中被禁事实零进入边界组装的上下文，且所有读路径经审计 fail-closed
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+A personal language agent learns a fact from one audience and may later place it in the prompt it assembles for another. This memory-to-context step is an attack surface: ambiguous or inconsistent channels, cross-audience prying, and poisoned memory can each cause the system to assemble context containing a fact relevant to the query yet unauthorized for the current viewers. We introduce authorization before context: a single, anti-monotone audience-membership rule applied at the memory-to-context transition. Each item carries the audience present when it was recorded; the current viewer set is read from channel metadata and falls back to public when ambiguous; and the item is admitted only when every current viewer already belonged to its audience. We prove that this rule gives every participant cross-channel recall while ensuring, by exclusion rather than by model behavior, that nothing recorded for a narrower audience reaches a broader one and that poisoned memory cannot widen its own audience. The boundary is a model-neutral invariant on the exact assembled context: a forbidden fact must be absent before the model is called. On a synthetic Contextual-Integrity suite, no forbidden fact entered the context our boundary assembled, whereas unscoped baselines included such facts by construction; we further audit that every read path fails closed. The evidence is preliminary and synthetic.
+
+</details>
+
+### 10. Adaptive Adversaries: A Multi-Turn, Multi-LLM Benchmark for LLM Agent Security
+
+📄 [arXiv](https://arxiv.org/abs/2607.18063)　📅 2026-07
+
+**关键词**：`benchmark`、`adaptive attacker`、`multi-turn attack`、`scenario sensitivity`
+
+👤 **作者**：Devina Jain、David Hartmann、Chuan Li
+
+- 🎯 **研究动机**：多数安全基准使用评估前收集的固定攻击池，自适应多轮攻击者对无记忆 LLM 防守方的威胁未被量化
+- 🔬 **研究方法**：构建 21 场景基准：自主 LLM 攻击者观察历史响应跨轮调整，固定场景、攻击者、防守者与结构化评分做受控对比，并发布 945 份转录与攻击重放数据
+- 📌 **结论**：仅评第一轮 ASR 为 0-1%，允许 15 轮自适应攻击后升至 5.4-14.0%；三攻击者池比最佳单个多发现 1.4-2.2 倍独特攻击，模型弱点呈场景特异性（排名不一致，Kendall W=0.19）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+LLM-based agents process external content, exposing them to prompt injection and multi-turn manipulation. Most safety benchmarks evaluate defenders against fixed attack pools collected before evaluation, single-turn or multi-turn. We present a 21-scenario benchmark for \emph{adaptive multi-round attacks against memoryless LLM defenders}: an autonomous LLM attacker observes prior defender responses and pivots across rounds, while each defender response is evaluated as a fresh interaction. Holding the 21 scenarios, attackers, defenders, and structured-output scoring fixed, restricting scoring to the first attacker turn yields $0$-$1\%$ attack success rate (ASR); allowing 15 rounds of adaptive attack yields $5.4$-$14.0\%$. Pooling three frontier attacker LLMs uncovers $1.4$-$2.2\times$ as many unique successful attacks as the best single attacker, and the generated attacks have low cosine similarity ($0.02$-$0.14$) to attacks in existing benchmarks. Claude Opus 4.6 and GPT-5.4 are tied in aggregate ($5.4\%$ each; overlapping $95\%$ CIs), but their weaknesses differ sharply: on one scenario Opus reaches $60\%$ ASR ($95\%$ CI $36$--$80\%$) while GPT-5.4 and Gemini each stay at $7\%$ (CI $1$-$30\%$; the gap is preserved in a higher-$N$ replication). $13$ of $21$ scenarios distinguish at least one defender pair, yet rankings disagree across scenarios (Kendall's $W = 0.19$). We release the benchmark -- 21 evaluation scenarios, 10 public development scenarios, the orchestrator, baseline harnesses, and a multi-attacker CLI -- plus 945 transcripts from the 3$\times$3 frontier matrix, an attack-replay dataset, and 18{,}422 gpt-oss-20b battles from an open competition's final scoring rounds.
+
+</details>
+
+### 11. ATBench: A Diverse and Realistic Agent Trajectory Benchmark for Safety Evaluation and Diagnosis
+
+📄 [arXiv](https://arxiv.org/abs/2604.02022) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-04
+
+**关键词**：`benchmark`、`long-horizon trajectory`、`delayed trigger`、`risk taxonomy`
+
+👤 **作者**：Yu Li、…、Dongrui Liu
+
+- 🎯 **研究动机**：轨迹级安全基准交互多样性不足、安全失效可观测性粗、长程真实性弱
+- 🔬 **研究方法**：ATBench 按风险源、失效模式、现实危害三维组织，用异构工具池与长上下文延迟触发协议构建 1,000 条轨迹（平均 9.01 轮、2,084 个可用工具），经规则与 LLM 过滤加全程人工审计
+- 📌 **结论**：对前沿 LLM、开源模型与专用护栏系统均具挑战性，支持分类分层分析与长程失效模式诊断
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Evaluating the safety of LLM-based agents is increasingly important because risks in realistic deployments often emerge over multi-step interactions rather than isolated prompts or final responses. Existing trajectory-level benchmarks remain limited by insufficient interaction diversity, coarse observability of safety failures, and weak long-horizon realism. We introduce ATBench, a trajectory-level benchmark for structured, diverse, and realistic evaluation of agent safety. ATBench organizes agentic risk along three dimensions: risk source, failure mode, and real-world harm. Based on this taxonomy, we construct trajectories with heterogeneous tool pools and a long-context delayed-trigger protocol that captures realistic risk emergence across multiple stages. The benchmark contains 1,000 trajectories (503 safe and 497 unsafe), averaging 9.01 turns and 3.95k tokens, with 1,954 invoked tools drawn from pools spanning 2,084 available tools. Data quality is supported by rule-based and LLM-based filtering plus full human audit. Experiments on frontier LLMs, open-source models, and specialized guard systems show that ATBench is challenging even for strong evaluators, while enabling taxonomy-stratified analysis, cross-benchmark comparison, and diagnosis of long-horizon failure patterns.
+
+</details>
+
+### 12. AgentLAB: Benchmarking LLM Agents against Long-Horizon Attacks
+
+📄 [arXiv](https://arxiv.org/abs/2602.16901) · 🌐 [Project](https://tanqiujiang.github.io/AgentLAB_main) · 🎓 [Official](https://icml.cc/virtual/2026/poster/65640)　📅 2026-02　🏷 ICML 2026
+
+**关键词**：`benchmark`、`long-horizon attack`、`memory poisoning`、`objective drift`、`LLM agent security`、`empirical evaluation`
+
+👤 **作者**：Tanqiu Jiang、Yuhui Wang、Jiacheng Liang、Ting Wang
+
+- 🎯 **研究动机**：长程攻击利用多轮用户-agent-环境交互实现单轮不可行的目标，缺少专用评测基准
+- 🔬 **研究方法**：AgentLAB 覆盖 intent hijacking、tool chaining、task injection、objective drifting、memory poisoning 五类攻击，含 28 个环境与 644 个安全测试用例
+- 📌 **结论**：代表性 LLM agent 对长程攻击高度易感，面向单轮交互设计的防御无法可靠缓解长程威胁
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+LLM agents are increasingly deployed in long-horizon, complex environments to solve challenging problems, but this expansion exposes them to long-horizon attacks that exploit multi-turn user-agent-environment interactions to achieve objectives infeasible in single-turn settings. To measure agent vulnerabilities to such risks, we present AgentLAB, the first benchmark dedicated to evaluating LLM agent susceptibility to adaptive, long-horizon attacks. Currently, AgentLAB supports five novel attack types including intent hijacking, tool chaining, task injection, objective drifting, and memory poisoning, spanning 28 realistic agentic environments, and 644 security test cases. Leveraging AgentLAB, we evaluate representative LLM agents and find that they remain highly susceptible to long-horizon attacks; moreover, defenses designed for single-turn interactions fail to reliably mitigate long-horizon threats. We anticipate that AgentLAB will serve as a valuable benchmark for tracking progress on securing LLM agents in practical settings. The benchmark is publicly available at https://tanqiujiang.github.io/AgentLAB_main.
+
+</details>
+
+### 13. PACE: Towards Surfacing Hidden Conflicts in User Requests
+
+📄 [arXiv](https://arxiv.org/abs/2609.03293)　📅 2026-09
+
+**关键词**：`benchmark`、`personalized assistant`、`latent constraint`、`conflict evaluation`、`context conflict`、`evidence retrieval`
+
+👤 **作者**：Yoojin Kim、Jihyoung Jang、Hyounghun Kim
+
+- 🎯 **研究动机**：个性化助手只顾准确执行请求，忽视了结合用户情境识别隐含约束并做基于冲突的拒绝；现有冲突检测又依赖显式给定因素
+- 🔬 **研究方法**：构建 PACE 数据集：把基于 persona 的用户请求与自我中心知识库事实配对，要求模型经隐式检索整合证据判断请求是否冲突；并提出 PaceMaker 多 Agent 框架（查询改写、多跳图遍历、冲突感知过滤）
+- 📌 **结论**：隐式检索设定使现有模型难以定位用户特定事实，PaceMaker 在证据检索质量与冲突决策准确率上持续超过现有方法
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Personalized assistants should not only comply with user requests but also assess whether those requests are appropriate given the user's current circumstances. However, prior work has primarily focused on accurately executing requests, overlooking the need for assistants to account for context and engage in conflict-based refusal. Furthermore, while existing work on conflict or safety detection relies on explicitly provided factors, real-world scenarios often involve implicit factors that must be retrieved from a knowledge base (KB). To this end, we introduce Personalized Assistants for Conflict Evaluation (PACE), a dataset for evaluating whether models can identify latent constraints, expressed as egocentric knowledge or events, that render seemingly reasonable user requests inappropriate. PACE pairs user requests grounded in well-defined personas with egocentric KB facts, requiring models to integrate contextual evidence to determine whether a request is conflicting. This implicit retrieval setting hinders the direct association between user requests and conflict-inducing knowledge, making it difficult for existing models to identify relevant user-specific facts. To address this challenge, we further propose PaceMaker, a multi-agent framework in which specialized agents coordinate across query reformulation, multi-hop graph traversal, and conflict-aware filtering to retrieve contextually decisive evidence. Experiments on PACE evaluate both evidence retrieval quality and conflict decision accuracy, showing that PaceMaker consistently outperforms existing approaches.
+
+</details>
+
+### 14. HarnessRisk: A Lifecycle-Oriented Benchmark for Agent Harness Safety
+
+📄 [arXiv](https://arxiv.org/abs/2608.17597) · 🌐 [Project](https://baiyajing.github.io/harness-risk/)　📅 2026-08
+
+**关键词**：`benchmark`、`operational lifecycle`、`model-harness pairing`、`attack persistence`、`harness lifecycle`、`configuration attack`
+
+👤 **作者**：Yajing Bai、…、Tianlong Chen
+
+- 🎯 **研究动机**：现有 agent 安全基准针对单一攻击机制或少量运营设定，难以比较不同 harness 职责下安全失效如何出现
+- 🔬 **研究方法**：HarnessRisk 把 harness 安全组织为配置、能力扩展、运行、状态持久、动作控制与事故恢复六阶段，128 个沙箱用例以 Utility、ASR、Persistence、Detection 四指标评 14 种模型-harness 配置
+- 📌 **结论**：攻击成功率 12.6%-80.9%；Harness Configuration 是三个 harness 共同最弱阶段；显式风险识别不保证安全行动——部分配置 90% 以上运行检出风险仍保高 ASR
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models are increasingly deployed through agent harnesses that manage tools, extensions, persistent state, permissions, and external actions. Existing safety benchmarks mainly target individual attack mechanisms or a limited subset of operational settings, making it difficult to compare how safety failures emerge across different harness responsibilities. We present HarnessRisk, a lifecycle oriented benchmark that organizes agent harness safety into six operational phases including Harness Configuration, Capability Extension, Runtime Operation, State Persistence, Action Control, and Incident Recovery. HarnessRisk contains 128 sandboxed cases, each pairing a benign user objective with an adversarial instruction embedded in an untrusted workflow artifact. We evaluate each trajectory using Utility, Attack Success Rate, Persistence, and Detection. Across three harnesses, six language models, and 14 model and harness configurations, attack success ranges from 12.6% to 80.9%, while Utility remains between 75.0% and 97.6%. Harness Configuration is the most vulnerable phase across all three harnesses, showing that attacks can succeed by altering security sensitive parameters within otherwise authorized workflows. We also find that explicit risk recognition does not reliably lead to safe action, as some configurations detect risks in more than 90% of runs while retaining substantial attack success. These results highlight the need to evaluate agent safety across multiple harness responsibilities and at the level of the deployed model and harness configuration.
+
+</details>
+
+### 15. Claw-Eval: Towards Trustworthy Evaluation of Autonomous Agents
+
+📄 [arXiv](https://arxiv.org/abs/2604.06132) · 🌐 [Project](https://claw-eval.github.io/)　📅 2026-04
+
+**关键词**：`benchmark`、`trajectory evidence`、`safety robustness`、`autonomous agent`
+
+👤 **作者**：Bowen Ye、…、Tong Yang
+
+- 🎯 **研究动机**：agent 基准受轨迹不透明评分、安全鲁棒性评测不完整与模态覆盖窄的限制
+- 🔬 **研究方法**：Claw-Eval 含 300 个人工验证任务，经执行轨迹、审计日志与环境快照三通道证据与 2,159 个 rubric 项评 Completion、Safety、Robustness，三次试验区分真实能力与运气
+- 📌 **结论**：轨迹不透明评测漏掉 44% 安全违规与 13% 鲁棒性失败；能力不等于一致性（Pass^3 最多掉 24 个百分点），模型排名随任务组强烈变化
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models are increasingly deployed as autonomous agents for multi-step workflows in real-world software environments. However, existing agent benchmarks are limited by trajectory-opaque grading, underspecified safety and robustness evaluation, and narrow coverage of modalities and interaction paradigms. We introduce Claw-Eval, an end-to-end evaluation suite addressing these gaps with 300 human-verified tasks spanning 9 categories across three groups: general service orchestration, multimodal perception and interaction, and multi-turn professional dialogue. To enable trajectory-aware grading, each run is recorded through three independent evidence channels: execution traces, audit logs, and environment snapshots, yielding 2,159 fine-grained rubric items. The scoring protocol evaluates Completion, Safety, and Robustness, with Average Score, Pass@k, and Pass^k across three trials to distinguish genuine capability from lucky outcomes. Experiments on 14 frontier models show that: (1) Trajectory-opaque evaluation is systematically unreliable, missing 44% of safety violations and 13% of robustness failures detected by our framework. (2) Capability does not imply consistency, with Pass@3 remaining stable under error injection while Pass^3 dropping by up to 24 percentage points. (3) Agent capability is strongly multi-dimensional, with model rankings varying across task groups and metrics, indicating that our heterogeneous evaluation coverage is essential. Claw-Eval highlights directions for developing agents that are not only capable but reliably deployable.
+
+</details>
+
+### 16. SecureVibeBench: Benchmarking Secure Vibe Coding of AI Agents via Reconstructing Vulnerability-Introducing Scenarios
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.1107/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`benchmark`、`agent safety`、`cyber misuse`、`agent safety benchmark`、`LLM agent`、`runtime guardrail`
+
+👤 **作者**：Junkai Chen、…、David Lo
+
+- 🎯 **研究动机**：现有基准未覆盖人类开发者真实引入漏洞的场景，无法公平比较人与代码 agent 的安全编码能力
+- 🔬 **研究方法**：构建 SecureVibeBench：来自 OSS-Fuzz 41 个项目的 105 个 C/C++ 任务，要求大仓库多文件编辑，结合功能测试与动静态双 oracle 安全检查
+- 📌 **结论**：评测 5 个代码 agent 与 5 个 LLM，最优 agent 也仅产出 23.8% 正确且安全的解法
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language model-powered code agents are rapidly transforming software engineering, yet the security risks of their generated code have become a critical concern. Existing benchmarks have provided valuable insights, but they fail to capture scenarios in which vulnerabilities are actually introduced by human developers, making fair comparisons between humans and agents infeasible. We therefore introduce SecureVibeBench, a benchmark of 105 C/C++ secure coding tasks sourced from 41 projects in OSS-Fuzz for code agents. SecureVibeBench has the following features: (i) realistic task settings that require multi-file edits in large repositories, (ii) aligned contexts based on real-world open-source vulnerabilities with precisely identified vulnerability introduction points, and (iii) comprehensive evaluation that combines functionality testing and security checking with both static and dynamic oracles. We evaluate 5 popular code agents like OpenHands, supported by 5 LLMs (e.g., Claude sonnet 4.5) on SecureVibeBench. Results show that current agents struggle to produce both correct and secure code, as even the best-performing one, produces merely 23.8% correct and secure solutions on SecureVibeBench.
+
+</details>
+
+### 17. CyberGym-E2E: Scalable Real-World Benchmark for AI Agents' End-to-End Cybersecurity Capabilities
+
+📄 [arXiv](https://arxiv.org/abs/2606.04460) · 🎓 [Official](https://icml.cc/virtual/2026/poster/62134)　📅 2026　🏷 ICML 2026
+
+**关键词**：`benchmark`、`cyber misuse`、`agent safety benchmark`、`trajectory evaluation`、`agent safety`、`empirical evaluation`
+
+👤 **作者**：Tianneng Shi、…、Dawn Song
+
+- 🎯 **研究动机**：现有 AI 网络安全评测规模或范围受限，未覆盖真实漏洞发现到修复的端到端生命周期
+- 🔬 **研究方法**：CyberGym-E2E 用自动化 agent 增强管线把开源漏洞数据转为现实评测环境，全面评估漏洞发现、PoC 生成与补丁生成
+- 📌 **结论**：基准覆盖 139 个开源项目的 920 个真实漏洞
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+AI has the potential to transform cybersecurity by enabling systems that can autonomously detect, analyze, and remediate software vulnerabilities. However, existing cybersecurity evaluations of AI systems are limited in scale or scope, and fail to capture the end-to-end lifecycle of real-world software vulnerability discovery and remediation. To address this gap, we propose CyberGym-E2E, a large-scale and realistic end-to-end cybersecurity benchmark that comprehensively evaluates AI agents' abilities across the full lifecycle of vulnerability discovery, PoC generation, and patch generation. CyberGym-E2E is comprehensive and scalable, as we build an automated, agent-enhanced pipeline for transforming open-source vulnerability data into realistic evaluation environments. Currently, the benchmark consists of 920 real-world vulnerabilities across 139 different open-source projects.
+
+</details>
+
+### 18. Benchmarking the Robustness of Agentic Systems to Adversarially-Induced Harms
+
+📄 [arXiv](https://arxiv.org/abs/2508.16481) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2025-08
+
+**关键词**：`benchmark`、`prompt injection`、`adversarial robustness`、`agent safety benchmark`
+
+👤 **作者**：Jonathan Nöther、Adish Singla、Goran Radanovic
+
+- 🎯 **研究动机**：agent 系统可能表现出的恶意行为谱系与鲁棒性缺乏系统刻画
+- 🔬 **研究方法**：提出 agent 危害分类法与 BAD-ACTS 基准：五种应用环境实现、238 个高质量有害行为样本与 699 个对抗行为扩展集，测试对抗 agent 与 prompt 注入等攻击者
+- 📌 **结论**：各模型攻击成功率介于 40%-90%；提出的零样本消息监控防御有效
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Ensuring the safe use of agentic systems requires a thorough understanding of the range of malicious behaviors these systems may exhibit. In this paper, we evaluate the robustness of LLM-based agentic systems against attacks that aim to elicit harmful actions from agents. To this end, we propose a novel taxonomy of harms for agentic systems and a novel benchmark, BAD-ACTS, for studying the security of agentic systems with respect to a wide range of harmful actions. BAD-ACTS consists of five implementations of agentic systems in distinct application environments, as well as a dataset of 238 high-quality examples of harmful actions and an extended dataset containing 699 additional adversarial actions. This enables a comprehensive study of the robustness of agentic systems across a wide range of categories of harmful behaviors, available tools, and inter-agent communication structures. Using this benchmark, we analyze the robustness of agentic systems under an array of attackers attempting to elicit malicious behaviors, including agents acting adversarially and prompt injections. We found that agents are often vulnerable, as indicated by success rates between 40% and 90% depending on the model. We additionally propose an effective defense based on zero-shot message monitoring. We believe that this benchmark provides a diverse testbed for the safety research of agentic systems. Code is available at https://github.com/JNoether/BAD-ACTS.
+
+</details>
+
+### 19. OpenAgentSafety: A Comprehensive Framework for Evaluating Real-World AI Agent Safety
+
+📄 [arXiv](https://arxiv.org/abs/2507.06134) · 🎓 [Official](https://iclr.cc/virtual/2026/poster/10006628)　📅 2025-07　🏷 ICLR 2026
+
+**关键词**：`benchmark`、`real tools`、`multi-user task`、`extensible framework`
+
+👤 **作者**：Sanidhya Vijayvargiya、…、Maarten Sap
+
+- 🎯 **研究动机**：既有 agent 安全基准依赖模拟环境、窄域任务或不真实的工具抽象
+- 🔬 **研究方法**：构建 OpenAgentSafety：真实工具（浏览器、代码执行、文件系统、bash、消息平台）、8 类风险、350+ 多轮多用户任务，规则加 LLM-as-judge 判定
+- 📌 **结论**：五个 LLM 在安全攸关任务中的不安全行为率从 51.2%（Claude-Sonnet-3.7）到 72.7%（o3-mini）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Recent advances in AI agents capable of solving complex, everyday tasks, from scheduling to customer service, have enabled deployment in real-world settings, but their possibilities for unsafe behavior demands rigorous evaluation. While prior benchmarks have attempted to assess agent safety, most fall short by relying on simulated environments, narrow task domains, or unrealistic tool abstractions. We introduce OpenAgentSafety, a comprehensive and modular framework for evaluating agent behavior across eight critical risk categories. Unlike prior work, our framework evaluates agents that interact with real tools, including web browsers, code execution environments, file systems, bash shells, and messaging platforms; and supports over 350 multi-turn, multi-user tasks spanning both benign and adversarial user intents. OpenAgentSafety is designed for extensibility, allowing researchers to add tools, tasks, websites, and adversarial strategies with minimal effort. It combines rule-based analysis with LLM-as-judge assessments to detect both overt and subtle unsafe behaviors. Empirical analysis of five prominent LLMs in agentic scenarios reveals unsafe behavior in 51.2% of safety-vulnerable tasks with Claude-Sonnet-3.7, to 72.7% with o3-mini, highlighting critical safety vulnerabilities and the need for stronger safeguards before real-world deployment.
+
+</details>
+
+### 20. AgentAuditor: Human-Level Safety and Security Evaluation for LLM Agents
+
+📄 [arXiv](https://arxiv.org/abs/2506.00641) · 🎓 [Official](https://proceedings.neurips.cc/paper_files/paper/2025/hash/3dc85735f6e2fcf093e67b134fa00d21-Abstract-Conference.html)　📅 2025-05　🏷 NeurIPS 2025
+
+**关键词**：`benchmark`、`automated auditing`、`security scenario`、`ASSEBench`
+
+👤 **作者**：Hanjun Luo、…、Hanan Salam
+
+- 🎯 **研究动机**：规则或 LLM 评测器会漏掉 agent 分步动作中的危险、细微含义与复合小问题
+- 🔬 **研究方法**：提出 AgentAuditor：以结构化语义特征与推理轨迹构建经验记忆，多阶段上下文感知 RAG 引导评估；发布 2293 条、15 类风险的 ASSEBench
+- 📌 **结论**：全面提升 LLM 评测器表现，在 agent 安全与安全评测上达成人类水平的 LLM-as-a-judge 新 SoTA
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Despite the rapid advancement of LLM-based agents, the reliable evaluation of their safety and security remains a significant challenge. Existing rule-based or LLM-based evaluators often miss dangers in agents' step-by-step actions, overlook subtle meanings, fail to see how small issues compound, and get confused by unclear safety or security rules. To overcome this evaluation crisis, we introduce AgentAuditor, a universal, training-free, memory-augmented reasoning framework that empowers LLM evaluators to emulate human expert evaluators. AgentAuditor constructs an experiential memory by having an LLM adaptively extract structured semantic features (e.g., scenario, risk, behavior) and generate associated chain-of-thought reasoning traces for past interactions. A multi-stage, context-aware retrieval-augmented generation process then dynamically retrieves the most relevant reasoning experiences to guide the LLM evaluator's assessment of new cases. Moreover, we developed ASSEBench, the first benchmark designed to check how well LLM-based evaluators can spot both safety risks and security threats. ASSEBench comprises 2293 meticulously annotated interaction records, covering 15 risk types across 29 application scenarios. A key feature of ASSEBench is its nuanced approach to ambiguous risk situations, employing "Strict" and "Lenient" judgment standards. Experiments demonstrate that AgentAuditor not only consistently improves the evaluation performance of LLMs across all benchmarks but also sets a new state-of-the-art in LLM-as-a-judge for agent safety and security, achieving human-level accuracy. Our work is openly accessible at https://github.com/Astarojth/AgentAuditor.
+
+</details>
+
+### 21. Agent-SafetyBench: Evaluating the Safety of LLM Agents
+
+📄 [arXiv](https://arxiv.org/abs/2412.14470) · 🌐 [Project](https://trustagenticai.github.io/AAAI2026/AAAI-Workshop/30.pdf)　📅 2024-12　🏷 AAAI 2026
+
+**关键词**：`benchmark`、`unsafe action`、`tool-use safety`、`risk category`
+
+👤 **作者**：Zhexin Zhang、…、Minlie Huang
+
+- 🎯 **研究动机**：LLM Agent 缺乏综合安全评测基准
+- 🔬 **研究方法**：Agent-SafetyBench 含 349 个交互环境与 2000 个测试用例，覆盖 8 类风险与 10 种失败模式，评测 16 个流行 Agent
+- 📌 **结论**：无一 Agent 安全分超 60%；揭示鲁棒性缺失与风险意识缺失两大缺陷，仅靠防御 prompt 不足
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+As large language models (LLMs) are increasingly deployed as agents, their integration into interactive environments and tool use introduce new safety challenges beyond those associated with the models themselves. However, the absence of comprehensive benchmarks for evaluating agent safety presents a significant barrier to effective assessment and further improvement. In this paper, we introduce Agent-SafetyBench, a comprehensive benchmark designed to evaluate the safety of LLM agents. Agent-SafetyBench encompasses 349 interaction environments and 2,000 test cases, evaluating 8 categories of safety risks and covering 10 common failure modes frequently encountered in unsafe interactions. Our evaluation of 16 popular LLM agents reveals a concerning result: none of the agents achieves a safety score above 60%. This highlights significant safety challenges in LLM agents and underscores the considerable need for improvement. Through failure mode and helpfulness analysis, we summarize two fundamental safety defects in current LLM agents: lack of robustness and lack of risk awareness. Furthermore, our findings suggest that reliance on defense prompts alone may be insufficient to address these safety issues, emphasizing the need for more advanced and robust strategies. To drive progress in this area, Agent-SafetyBench has been released at https://github.com/thu-coai/Agent-SafetyBench/ to facilitate further research in agent safety evaluation and improvement.
+
+</details>
+
+### 22. R-Judge: Benchmarking Safety Risk Awareness for LLM Agents
+
+🎓 [Official](https://aclanthology.org/2024.findings-emnlp.79/)　📅 2024-11　🏷 EMNLP 2024
+
+**关键词**：`benchmark`、`risk awareness`、`interaction record`、`safety judge`
+
+👤 **作者**：Tongxin Yuan、…、Gongshen Liu
+
+- 🎯 **研究动机**：已有研究聚焦生成内容无害性，LLM 智能体在交互环境中的行为安全缺评测基准
+- 🔬 **研究方法**：R-Judge 含 569 条多轮智能体交互记录，覆盖 5 类应用、27 个风险场景与 10 种风险类型，附安全标签与风险描述，评测 11 个 LLM 的风险判别力
+- 📌 **结论**：最佳模型 GPT-4o 仅 74.42%，其余不显著超随机；安全判别微调显著提升而简单提示机制无效
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models (LLMs) have exhibited great potential in autonomously completing tasks across real-world applications. Despite this, these LLM agents introduce unexpected safety risks when operating in interactive environments. Instead of centering on the harmlessness of LLM-generated content in most prior studies, this work addresses the imperative need for benchmarking the behavioral safety of LLM agents within diverse environments. We introduce R-Judge, a benchmark crafted to evaluate the proficiency of LLMs in judging and identifying safety risks given agent interaction records. R-Judge comprises 569 records of multi-turn agent interaction, encompassing 27 key risk scenarios among 5 application categories and 10 risk types. It is of high-quality curation with annotated safety labels and risk descriptions. Evaluation of 11 LLMs on R-Judge shows considerable room for enhancing the risk awareness of LLMs: The best-performing model, GPT-4o, achieves 74.42% while no other models significantly exceed the random. Moreover, we reveal that risk awareness in open agent scenarios is a multi-dimensional capability involving knowledge and reasoning, thus challenging for LLMs. With further experiments, we find that fine-tuning on safety judgment significantly improve model performance while straightforward prompting mechanisms fail. R-Judge is publicly available at Annoymous.
+
+</details>
+
+### 23. Agent Security Bench (ASB): Formalizing and Benchmarking Attacks and Defenses in LLM-based Agents
+
+📄 [arXiv](https://arxiv.org/abs/2410.02644) · 🎓 [Official](https://proceedings.iclr.cc/paper_files/paper/2025/hash/5750f91d8fb9d5c02bd8ad2c3b44456b-Abstract-Conference.html)　📅 2024-10　🏷 ICLR 2025
+
+**关键词**：`benchmark`、`attack-defense matrix`、`tool agent`、`security formalization`
+
+👤 **作者**：Hanrong Zhang、…、Yongfeng Zhang
+
+- 🎯 **研究动机**：LLM Agent 攻防缺乏统一形式化与综合评测协议
+- 🔬 **研究方法**：ASB 覆盖 10 场景、10 个 Agent、400 余工具、27 类攻防与 7 项指标；评测 prompt 注入、memory 投毒、新型 Plan-of-Thought 后门及 11 种防御
+- 📌 **结论**：Agent 各阶段平均 ASR 最高 84.30%，现有防御效果有限
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Although LLM-based agents, powered by Large Language Models (LLMs), can use external tools and memory mechanisms to solve complex real-world tasks, they may also introduce critical security vulnerabilities. However, the existing literature does not comprehensively evaluate attacks and defenses against LLM-based agents. To address this, we introduce Agent Security Bench (ASB), a comprehensive framework designed to formalize, benchmark, and evaluate the attacks and defenses of LLM-based agents, including 10 scenarios (e.g., e-commerce, autonomous driving, finance), 10 agents targeting the scenarios, over 400 tools, 27 different types of attack/defense methods, and 7 evaluation metrics. Based on ASB, we benchmark 10 prompt injection attacks, a memory poisoning attack, a novel Plan-of-Thought backdoor attack, 4 mixed attacks, and 11 corresponding defenses across 13 LLM backbones. Our benchmark results reveal critical vulnerabilities in different stages of agent operation, including system prompt, user prompt handling, tool usage, and memory retrieval, with the highest average attack success rate of 84.30\%, but limited effectiveness shown in current defenses, unveiling important works to be done in terms of agent security for the community. We also introduce a new metric to evaluate the agents' capability to balance utility and security. Our code can be found at https://github.com/agiresearch/ASB.
+
+</details>
+
+### 24. AgentDojo: A Dynamic Environment to Evaluate Prompt Injection Attacks and Defenses for LLM Agents
+
+📄 [arXiv](https://arxiv.org/abs/2406.13352) · 🎓 [Official](https://proceedings.neurips.cc/paper_files/paper/2024/hash/97091a5177d8dc64b1da8bf3e1f6fb54-Abstract-Datasets_and_Benchmarks_Track.html)　📅 2024-06　🏷 NeurIPS 2024
+
+**关键词**：`benchmark`、`prompt injection`、`dynamic environment`、`utility-security`
+
+👤 **作者**：Edoardo Debenedetti、Jie Zhang、Mislav Balunović、Luca Beurer-Kellner、Marc Fischer、Florian Tramèr
+
+- 🎯 **研究动机**：静态测试集无法衡量持续演化的 prompt injection 攻防与 Agent 任务效用
+- 🔬 **研究方法**：AgentDojo 是可扩展动态环境：97 个现实任务、629 个安全测试用例与文献中多种攻防范式
+- 📌 **结论**：SOTA LLM 在无攻击时也常失败，现有注入攻击只破坏部分安全属性
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+AI agents aim to solve complex tasks by combining text-based reasoning with external tool calls. Unfortunately, AI agents are vulnerable to prompt injection attacks where data returned by external tools hijacks the agent to execute malicious tasks. To measure the adversarial robustness of AI agents, we introduce AgentDojo, an evaluation framework for agents that execute tools over untrusted data. To capture the evolving nature of attacks and defenses, AgentDojo is not a static test suite, but rather an extensible environment for designing and evaluating new agent tasks, defenses, and adaptive attacks. We populate the environment with 97 realistic tasks (e.g., managing an email client, navigating an e-banking website, or making travel bookings), 629 security test cases, and various attack and defense paradigms from the literature. We find that AgentDojo poses a challenge for both attacks and defenses: state-of-the-art LLMs fail at many tasks (even in the absence of attacks), and existing prompt injection attacks break some security properties but not all. We hope that AgentDojo can foster research on new design principles for AI agents that solve common tasks in a reliable and robust manner.. We release the code for AgentDojo at https://github.com/ethz-spylab/agentdojo.
+
+</details>
+
+### 25. InjecAgent: Benchmarking Indirect Prompt Injections in Tool-Integrated Large Language Model Agents
+
+📄 [arXiv](https://arxiv.org/abs/2403.02691) · 🎓 [Official](https://aclanthology.org/2024.findings-acl.624/)　📅 2024-03　🏷 ACL 2024
+
+**关键词**：`benchmark`、`indirect prompt injection`、`tool-integrated agent`、`external content`
+
+👤 **作者**：Qiusi Zhan、Zhixiang Liang、Zifan Ying、Daniel Kang
+
+- 🎯 **研究动机**：工具集成 LLM Agent 面临间接 prompt 注入攻击，缺乏系统评测基准
+- 🔬 **研究方法**：InjecAgent 含 1054 个测试用例、17 种用户工具与 62 种攻击者工具，攻击意图分直接伤害与隐私外泄两类
+- 📌 **结论**：30 个 Agent 均脆弱，ReAct 版 GPT-4 被攻击成功 24%；攻击指令加 hacking prompt 后成功率近翻倍
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Recent work has embodied LLMs as agents, allowing them to access tools, perform actions, and interact with external content (e.g., emails or websites). However, external content introduces the risk of indirect prompt injection (IPI) attacks, where malicious instructions are embedded within the content processed by LLMs, aiming to manipulate these agents into executing detrimental actions against users. Given the potentially severe consequences of such attacks, establishing benchmarks to assess and mitigate these risks is imperative. In this work, we introduce InjecAgent, a benchmark designed to assess the vulnerability of tool-integrated LLM agents to IPI attacks. InjecAgent comprises 1,054 test cases covering 17 different user tools and 62 attacker tools. We categorize attack intentions into two primary types: direct harm to users and exfiltration of private data. We evaluate 30 different LLM agents and show that agents are vulnerable to IPI attacks, with ReAct-prompted GPT-4 vulnerable to attacks 24% of the time. Further investigation into an enhanced setting, where the attacker instructions are reinforced with a hacking prompt, shows additional increases in success rates, nearly doubling the attack success rate on the ReAct-prompted GPT-4. Our findings raise questions about the widespread deployment of LLM Agents. Our benchmark is available at https://github.com/uiuc-kang-lab/InjecAgent.
+
+</details>
+
+### 26. Judging LLM-as-a-Judge: Concerning Rubric Artifacts in LLM-based Automated Text Generation Evaluation
+
+📄 [arXiv](https://arxiv.org/abs/2609.02942)　📅 2026-09
+
+**关键词**：`analysis`、`LLM judge`、`rubric artifact`、`counterfactual validity`、`evaluation audit`、`rubric shortcut`
+
+👤 **作者**：Anshul Bagaria、Sowmya S Sundaram、Gokul S Krishnan、Balaraman Ravindran
+
+- 🎯 **研究动机**：LLM-as-a-Judge 被假设为依据 rubric 对候选回答推理，但 rubric 表述本身可能编码可恢复的评价信号
+- 🔬 **研究方法**：训练仅见 rubric 文本、不见任何被评回答的分类器预测 judge 输出，并对候选回答或 rubric 标准做反事实翻转检验 judge 决策更新
+- 📌 **结论**：仅凭 rubric 即可非平凡预测 judge 输出；反事实翻转下 judge 常不能可靠更新决策——rubric 式 LLM 评测的可靠性与反事实效度存疑
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+LLM-as-a-Judge pipelines are increasingly used to evaluate AI-generated text, based on the assumption that judgments arise from reasoning over candidate responses with respect to a rubric. We show that this assumption warrants further scrutiny. Classifiers trained only on rubric text, without access to any evaluated response, achieve nontrivial predictive performance on judge outputs. This suggests that rubric formulations encode recoverable evaluative signals, allowing scores to be partially anticipated independently of model outputs. Finally, counterfactual perturbations reveal that judges often fail to reliably update their decisions when either the candidate response or the rubric criterion is reversed. Our findings raise concerns about the reliability of rubric-based LLM evaluation and highlight the need for further methodological study of automated evaluation via LLMs.
+
+</details>
+
+### 27. PatchBench: Evaluating AI Agents for Vulnerability Patching
+
+📄 [arXiv](https://arxiv.org/abs/2609.04075)　📅 2026-09
+
+**关键词**：`benchmark`、`evaluation validity`、`patch memorization`、`security correctness`、`vulnerability patching`、`semantic validation`
+
+👤 **作者**：Chihao Shen、Jiacheng Li、Aastha Mahajan、Jeffery Siyuan Tian、Yonghwi Kwon、Yizheng Chen
+
+- 🎯 **研究动机**：只用 PoC 不再崩溃验证补丁，会让记忆历史开发者补丁或仅压制崩溃的表面修补冒充安全修复
+- 🔬 **研究方法**：提出 PatchBench：选取真值修复位于崩溃栈之外的漏洞，用漏洞移植与代码变异迁移到新仓库上下文，并新增兼顾安全与语义正确性的补丁验证方法
+- 📌 **结论**：平均 25% 的 Agent 补丁与历史开发者补丁高度相似；对 11 个 SOTA Agent（含 AIxCC 前三），仅 PoC 验证平均把解题率夸大 1.83 倍
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+AI agents have recently demonstrated strong performance in automated vulnerability patching. However, existing evaluations often validate a patch only by testing whether the provided Proof-of-Concept (PoC) input still triggers a crash. This leaves two key threats to validity: agents may reproduce memorized historical developer patches, or they may generate surface-level fixes that only suppress the reported crash. We study these concerns for C/C++ vulnerability patching. We introduce a patch similarity metric to detect memorized patches. On average, 25% of the agent patches exhibit substantial similarity to historical developer patches, indicating that patch memorization is a real threat to the validity of vulnerability patching evaluations. Meanwhile, agents also frequently exploit benchmark structures to pass patch validation by patching on the crash stack trace to suppress the crash, rather than localizing and fixing the root cause of the vulnerabilities. To handle these issues, we propose PatchBench, a new benchmark for evaluating AI agents on realistic vulnerability patching tasks. PatchBench selects vulnerabilities whose ground-truth fixes lie outside the crash stack and uses vulnerability transplant and code mutations to migrate historical vulnerabilities into new repository contexts, reducing the risks of surface-level fixes and patch memorization. We develop new patch validation methods that thoroughly evaluate both security and semantic correctness of agent patches. Across 11 state-of-the-art agents, including the top three AIxCC agents, the original PoC-only validation inflates the patching task solve rate of agents by 1.83$\times$ on average. Our results reveal key limitations of current patching agents and point to future research directions for more reliable vulnerability repair.
+
+</details>
+
+### 28. LLM-as-a-Judge Is Not an Oracle: Why Self-Improving Agents Need Deterministic Guardrails
+
+📄 [arXiv](https://arxiv.org/abs/2609.02246)　📅 2026-09
+
+**关键词**：`analysis`、`LLM-as-a-judge`、`reward hacking`、`self-improving agent`
+
+👤 **作者**：Vansh Wahi
+
+- 🎯 **研究动机**：self-improving 管线中心是 LLM judge，而它未 earned oracle 地位——生产运行中评测信号被多种方式 gaming
+- 🔬 **研究方法**：基于数月自主 prompt 优化生产运行归纳 11 类评测失败（judge 偏差、harness／指标故障、真值错误、reward hacking），提出 PROCTOR：judge 降为 advisor，由密封沙箱、能力分离角色、高于 Teacher 的验收检查、冻结 holdout 与作弊金丝雀五重确定性护栏门控每次变更
+- 📌 **结论**：曾出现满分率 100% 掩盖 68% 真实能力、错误真值导致删除正确合规规则等案例；重写 judge rubric 会平台化，唯结构性约束可靠
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Self-improving agent pipelines have a problem at their center. An optimizer rewrites prompts to score higher, and the score comes from a judge that is itself an LLM. That judge has the last word on whether the system is getting better, and our position is that it has not earned it. The judge should be demoted from oracle to advisor: its verdict becomes one input among several, and every change is gated instead by a deterministic verification layer the judge cannot override. We reached this position by building the alternative and running it. Over months of running autonomous prompt-optimization loops in production across contract analysis, compliance review, and code quality, we cataloged eleven ways the evaluation signal failed, in four classes: judge bias, harness and metric failures, ground-truth errors, and reward hacking. Agents achieved perfect scores by reading cached answer keys from their environment, a 100% pass rate concealing 68% true capability. A corrupted ground-truth label caused the optimizer to delete correct compliance rules to agree with it. A syntactically broken prompt was promoted as the winner because a silent parser fallback improved the metric. Attempts to fix the judge by rewriting its rubric plateaued; the only reliable gain came from a structural constraint on its output order. In response we describe PROCTOR, a Teacher-Student loop in which a stateful orchestrator holds all tool access, stateless subagents diagnose failures and draft mutations they cannot apply, and a Teacher grades those mutations under five deterministic guardrails: hermetic sandboxes, capability-disjoint roles, acceptance checks that outrank the Teacher, frozen holdouts, and canary cases engineered so that a perfect score is itself evidence of cheating. We report the failures this prevented, and, because the Teacher is itself an LLM judge, the failures it did not.
+
+</details>
+
+### 29. The Geometry of LLM-as-Judge: Why Inter-LLM Consensus Is Not Human Alignment
+
+📄 [arXiv](https://arxiv.org/abs/2606.03043)　📅 2026-09
+
+**关键词**：`analysis`、`LLM-as-a-judge`、`human alignment`、`judge geometry`、`judge validity`、`metric geometry`
+
+👤 **作者**：Sourabrata Mukherjee、Hamna Hamna、Kalika Bali、Sunayana Sitaram
+
+- 🎯 **研究动机**：LLM 评审间的相互一致常被当作可信证据，但评审可能因共享盲点而非真实质量达成一致，一致性统计无法区分两者
+- 🔬 **研究方法**：把每个评审打分视作向量，测量离散度、有效秩、与人类打分的夹角及 judge-judge/judge-human/human-human 三元一致性，在 42 个评审、两个 Indic 基准上做参照匹配对比
+- 📌 **结论**：主观 rubric 上评审彼此一致程度与人类相当，却只达到人类一致的 58-66%，且集成会收敛到评审共享轴而非人类轴
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+LLM judges now score most open-ended NLP output, and their mutual agreement is routinely read as evidence that the scores can be trusted. That reading is unsafe: judges may agree because they capture quality, or because they share the same blind spots, and agreement statistics alone cannot tell these apart. We develop a geometric test that can. Treating each judge's scores as a vector, we measure spread, effective rank, the angle to human scores, and the judge-judge, judge-human, and human-human agreement triple for 42 judges on two community-built Indic benchmarks covering four domains and eight languages. Every comparison is reference-matched: a judge and a held-out rater are scored against the same two-rater mean, since an averaged reference otherwise flatters judges by several degrees. On subjective rubrics, judges agree with one another as much as humans do yet reach only 58-66% of human agreement and often concentrate on an axis humans do not weight. On the one rubric with a verifiable answer, most of that gap closes. Ensembles converge on the judges' shared axis rather than the human one, and training widens scores without rotating them. Inter-judge agreement is evidence of human alignment only after this check passes.
+
+</details>
+
+### 30. Improving Evaluation Realism with Inference-Time Compute and Deployment Scaffolds
+
+📄 [arXiv](https://arxiv.org/abs/2609.02302)　📅 2026-09
+
+**关键词**：`analysis`、`evaluation awareness`、`deployment realism`、`alignment audit`
+
+👤 **作者**：Axel Ahlqvist、…、John Hughes
+
+- 🎯 **研究动机**：evaluation awareness 使有能力模型可分辨测试与部署，削弱模拟对齐评测的结论效力
+- 🔬 **研究方法**：提出两项技术：critique refinement 用目标模型实例的反馈精修多个候选动作、选最像部署者继续评测；DISH 用部署级 SWE-Agent harness 包裹目标缩小编码场景的模拟-真实差距
+- 📌 **结论**：两项技术可叠加、联合 realism 增益大于单独使用，且额外算力的效果好于单纯拉长审计
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+A core obstacle to alignment evaluation is evaluation awareness: capable models can tell when they are being tested rather than deployed, weakening the conclusions a safety evaluation can support. We present two techniques that make simulated alignment evaluations harder to distinguish from real deployments. Our first technique, critique refinement, spends additional inference-time compute on each simulator action: the simulator generates multiple candidate actions, refines them using feedback from an instance of the target model on how to make them more realistic, and continues the evaluation with the most deployment-like candidate. Our second technique, DISH (Deployment-Imitating SWE-Agent Harness), wraps the target in an agent harness, reducing the gap between simulated and real deployment environments in coding settings. We test the techniques on multiple target models and find that they compose: applying both yields larger realism gains than either alone. Our results show that automated approaches can improve the realism of alignment evaluations, and that these improvements use additional compute more effectively than making the audits longer.
+
+</details>
+
+### 31. EvalDetectBench: A Benchmark for Measuring Evaluation Awareness in Frontier Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2609.01611) · 📊 [Dataset](https://huggingface.co/datasets/el7982/aware-bench)　📅 2026-09
+
+**关键词**：`benchmark`、`evaluation awareness`、`safety-evaluation validity`、`model-behavior shift`
+
+👤 **作者**：Xinning Li、Kemunto Ochwang'i、Aryasomayajula Ram Bharadwaj、Alexandra Souly、Robert Kirk
+
+- 🎯 **研究动机**：模型能识别自己正被评测（evaluation awareness），若评测与部署行为不同将破坏安全评测效度
+- 🔬 **研究方法**：构建开放 pipeline 与 benchmark EvalDetectBench：兼容任意 Inspect 评测，配备 frontier system-card 评测与多来源部署 transcript 套件，并用逐模型探针校准与分层生成器调和纠正两个系统性偏差
+- 📌 **结论**：部署 transcript 生成模型身份解释 11.25% 测量方差并可能重排模型排名，在某模型上调优的探针在其他模型上接近随机
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Frontier large language models can often recognize when they are being evaluated, a capability known as evaluation awareness. If models behave differently in evaluations than in deployment, this undermines the validity of evaluation results, which are a crucial component of current AI safety frameworks. We introduce EvalDetectBench, an open pipeline and benchmark for measuring evaluation awareness that works with any Inspect-compatible evaluation, allowing practitioners to test against current and future benchmarks. EvalDetectBench ships with a newly curated transcript suite covering current frontier system-card evaluations and diverse deployment sources. The benchmark serves two purposes: measuring how reliably frontier LLMs recognize that they are being evaluated, and assessing how detectable individual benchmarks are as evaluations. We identify two methodological choices in the existing literature that introduce systematic bias: the identity of the model that generated the deployment transcripts accounts for 11.25% of measurement variance and can reorder model rankings; and elicitation prompts selected for high performance on one model can perform near chance on others. EvalDetectBench corrects for both via per-model probe calibration and a stratified generator-harmonisation procedure.
+
+</details>
+
+### 32. Training Alignment Auditors via Reinforcement Learning
+
+📄 [arXiv](https://arxiv.org/abs/2608.25460)　📅 2026-08
+
+**关键词**：`detection`、`analysis`、`alignment auditor`、`hidden behavior`、`cross-scaffold generalization`、`automated alignment audit`
+
+👤 **作者**：Paul Rosu、Rowan Wang
+
+- 🎯 **研究动机**：自动 alignment auditor 难以连贯调查隐藏行为且审计真实性不足
+- 🔬 **研究方法**：以 RL 训练 auditor：目标模型经 system prompt 植入隐藏行为，LLM judge 将策略调查与参考调查对比给奖励
+- 📌 **结论**：pairwise 奖励比 pointwise 稳健、假阳性率低于 1%，调查能力可跨 scaffold 迁移至 AuditBench
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Alignment auditing of frontier models increasingly relies on LLM auditors to surface undesirable behaviors at scale, but current automated auditors can struggle with coherent investigation and audit realism. In this work, we improve LLM auditors with reinforcement learning. In our best training environment, the policy investigates target models that potentially possess hidden behaviors planted via their system prompt. An LLM judge, which knows whether the target has a hidden behavior, holistically compares the policy's investigation to a reference investigation to determine the reward. With systematic ablations, we find that pairwise rewards yield more robust training compared to pointwise rewards, and that adding targets without planted behaviors helps maintain a low false positive rate. Training improves investigation quality against targets with planted behaviors, the rate of concerning behaviors surfaced in unmodified production models, and audit realism, while false-positive rates stay below 1%. Furthermore, auditing capabilities generalize across scaffolds: performance on AuditBench's adversarially fine-tuned targets substantially improves [Sheshadri et al., 2026].
+
+</details>
+
+### 33. No Task Fails Every Time: Why One-Shot Audits Are Structurally Blind to Agent Damage
+
+📄 [arXiv](https://arxiv.org/abs/2608.15286)　📅 2026-08
+
+**关键词**：`detection`、`agent safety benchmark`、`trajectory evaluation`、`failure coverage`
+
+👤 **作者**：Shiven Khurdi
+
+- 🎯 **研究动机**：一次性审计对 agent 伤害结构上盲：伤害具随机性且无任务每次都失败
+- 🔬 **研究方法**：AgentRelBench 环境无关可靠性工具：从数据库状态 diff 计算真值严重度定价伤害、测量路径无 LLM；2128 次评测跨 9 个模型 6 家族含预注册保留集
+- 📌 **结论**：42 个确认伤害事件中零“总是失败”单元，单次干净运行漏掉致伤害配对概率 0.80；最强模型唯一伤害任务以 p=0.16 发生、单次审计漏检 84%；转录与 judge 评分会把违规误标为安全拒答
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+We introduce AgentRelBench, an environment-agnostic reliability instrument that computes ground-truth, severity-priced damage from database state diffs across repeated runs, with no LLM in the measurement path, demonstrated on EnterpriseOps-Gym. Across 2,128 evaluation runs spanning nine models in six families (four development, three pre-registered held-out, plus a frontier pass on two frontier-tier models that the pre-registration designates exploratory), we find: (1) damage on irreversible actions is universal across the families we measured and stochastic within them on pinned, single-provider stacks. (2) No task damaged on every run: zero always-fail cells across 42 confirmatory held-out damage events. A single clean run misses a damage-producing (model, task) pair 0.80 of the time on the development pool (13 pairs); the held-out pool is descriptively consistent (0.575 over 5 pairs, pair-weighted) but sits below our pre-registered power floor and is reported as underpowered, not as confirmation. (3) Damage-producing task count falls with model capability, from 7 of 20 tasks for an 8B model to 1 of 20 for the most capable; capability is confounded with family and training, so this is an observed gradient, not a causal claim. The residual damage does not change in character: in the exploratory frontier pass, the most capable model's one damaging task damages at $\hat{p} = 0.16$ per run, inside the same demonstrably-stochastic band, and a single audit misses it 84% of the time. (4) One model family committed the gated irreversible change while declaring it had refused: transcript- and judge-based grading scores those runs as safe refusals, only state diffs as damage. All confirmatory findings were pre-registered with per-claim demote criteria; one demoted our own initially favored finding, which we report.
+
+</details>
+
+### 34. REDAgentBench: Executable Red Teaming and Faithful Measurement of LLM Agent Systems
+
+📄 [arXiv](https://arxiv.org/abs/2608.10669)　📅 2026-08
+
+**关键词**：`benchmark`、`adversarial robustness`、`agent safety benchmark`、`trajectory evaluation`
+
+👤 **作者**：Zixing Chen、…、Chi Zhang
+
+- 🎯 **研究动机**：现有评测把 agent 安全压缩为单一 ASR，混淆暴露、执行、观测与裁决，可能把实际违规与证据可见性混为一谈
+- 🔬 **研究方法**：REDAgentBench 从显式安全约束派生攻击、在隔离服务沙箱执行并以服务回执与终态验证危害，含 1661 例覆盖五个服务面
+- 📌 **结论**：六模型三 harness 宏观 ASR 65.69%；近五分之一确认违规发生在 agent 已陈述相关约束之后（识别-执行差距）；免训练策略提醒使确认违规降 70+ 个百分点
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language model (LLM) agents combine language-based reasoning with external tools to perform complex tasks. Adversarial inputs can exploit interactions between the agent and its environment, causing the agent to violate safety policies during execution. Yet existing evaluations often reduce agent safety to a single attack success rate (ASR), collapsing exposure, execution, observation, and adjudication and potentially conflating actual violations with evidence visibility. We introduce REDAgentBench, an executable framework for autonomous red-teaming and faithful measurement. It derives attacks from explicit safety constraints and associated agent-system vulnerabilities, runs them in isolated service sandboxes, and verifies harmful effects from service receipts and final-state changes. The benchmark contains 1,661 cases across five service surfaces. Across six models and three agent harnesses, macro-average ASR is 65.69%; reported ASR varies with harness and evidence view, while evaluation-context disclosure changes execution behavior. In a state-grounded diagnostic cohort, almost one in five confirmed violations with resolved action anchors occurs after the agent states the relevant constraint or risk, revealing a Recognition--Execution Gap. Finally, a training-free policy reminder reduces confirmed violations by more than 70 percentage points in matched replay. These findings show that executable evaluation can improve safety measurement and identify actionable intervention points.
+
+</details>
+
+### 35. Safety, or Just Capability? A Validity Audit of Agent-Safety Benchmarks
+
+📄 [arXiv](https://arxiv.org/abs/2607.28685)　📅 2026-07
+
+**关键词**：`analysis`、`benchmark validity`、`capability confounding`、`metric audit`
+
+👤 **作者**：Youting Wang、Xiao Han、Dingyan Shang、Yuan Tang、Bowen Liu
+
+- 🎯 **研究动机**：各 agent 安全基准分数被互换引用为统一的安全性，其测量效度从未被验证
+- 🔬 **研究方法**：统一协议下对 R-Judge、InjecAgent、AgentHarm、AgentDojo 四基准跑最多 22 个模型，以自测 MMLU/GPQA 作能力对照
+- 📌 **结论**：R-Judge 上全正策略 F1=0.690 即超过半数模型；能力预测任务成功（ρ=+0.60）却与错位安全负相关（ρ=-0.44），安全声明须指明基准、指标与模型面板
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Agent-safety benchmarks measure different behaviors, and their scores get quoted interchangeably as an agent's safety. We treat four of them (R-Judge, InjecAgent, AgentHarm, AgentDojo) as measurements to be validated, running each under its official implementation and author-provided scorer on up to 22 models, with MMLU and GPQA measured by us under one protocol as a capability composite. The metric is the first problem. On any binary trace-judgment benchmark scored by $F_1$, an ``always positive'' policy attains $F_1 = 2π/(1+π)$; on R-Judge that is $0.690$, above five of the 21 models that actually discriminate. The three broad-coverage benchmarks then rank the same 18 models differently, and the trade-off behind that disagreement is a small-panel artifact: R-Judge specificity against AgentHarm safety correlates $-0.64$ at $n{=}7$ and $+0.02$ at $n{=}18$, and a quarter of random size-7 subsets reach $|ρ| \geq 0.5$ around that near-zero value. Held-out validity turns on which outcome you pick. Capability predicts task success ($ρ{=}{+}0.60$) but correlates negatively with misalignment safety ($ρ{=}{-}0.44$, $n{=}21$). On their paired $n{=}20$ panel, the corresponding contrast is $Δ{=}{-}1.00$ (95% CI $[-1.48, -0.49]$, $p<0.001$), and it survives leave-one-organization-out and organization-clustered bootstrap analyses. On an expanded 41-model panel, the misalignment correlation weakens to $-0.16$ (95% CI $[-0.54, +0.22]$) and jailbreak strengthens to $+0.34$, though neither change is significant. \mbox{AgentHarm} shows the strongest held-out association, $ρ{=}{+}0.72$ with three-template jailbreak safety after controlling capability. But both instruments score harmful compliance, so this is evidence of convergent validity rather than general safety. Naming the benchmark, metric, target behavior, and model panel is the minimum a safety claim needs.
+
+</details>
+
+### 36. BenchGuard: Who Guards the Benchmarks? Automated Auditing of LLM Agent Benchmarks
+
+📄 [arXiv](https://arxiv.org/abs/2604.24955)　📅 2026-04
+
+**关键词**：`benchmark`、`agent safety benchmark`、`trajectory evaluation`、`failure coverage`
+
+👤 **作者**：Xinming Tu、…、Sara Mostafavi
+
+- 🎯 **研究动机**：复杂基准中许多 agent 失败实为基准自身失败（规范破损、隐式假设、僵化评估脚本），缺系统审计手段
+- 🔬 **研究方法**：BenchGuard 以前沿 LLM 为审计员，通过结构化协议交叉核验基准工件，可引入 agent 解法或执行轨迹作诊断证据
+- 📌 **结论**：在 ScienceAgentBench 发现 12 个作者确认问题（含致命不可解任务），BIXBench Verified-50 上匹配 83.3% 专家问题，50 个任务完整审计成本低于 15 美元
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+As benchmarks grow in complexity, many apparent agent failures are not failures of the agent at all - they are failures of the benchmark itself: broken specifications, implicit assumptions, and rigid evaluation scripts that penalize valid alternative approaches. We propose employing frontier LLMs as systematic auditors of evaluation infrastructure, and realize this vision through BenchGuard, the first automated auditing framework for task-oriented, execution-based agent benchmarks. BenchGuard cross-verifies all benchmark artifacts via structured LLM protocols, optionally incorporating agent solutions or execution traces as additional diagnostic evidence. Deployed on two prominent scientific benchmarks, BenchGuard identified 12 author-confirmed issues in ScienceAgentBench - including fatal errors rendering tasks unsolvable - and exactly matched 83.3% of expert-identified issues on the BIXBench Verified-50 subset, catching defects that prior human review missed entirely. A full audit of 50 complex bioinformatics tasks costs under USD 15, making automated benchmark auditing a practical and valuable complement to human review. These findings point toward AI-assisted benchmark development, where frontier models serve not only as subjects of evaluation but as active participants in validating the evaluation infrastructure itself.
+
+</details>
+
+### 37. ANCHOR: Automated Alignment Auditing for CLI Agents on Real-World Harm
+
+📄 [arXiv](https://arxiv.org/abs/2607.10455) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63234)　📅 2026　🏷 ICML 2026
+
+**关键词**：`detection`、`benchmark`、`agent safety benchmark`、`trajectory evaluation`、`failure coverage`、`agent safety`
+
+👤 **作者**：Kefan Song、Yanjun Qi
+
+- 🎯 **研究动机**：自主 CLI agent 可在数小时会话中执行数百个动作，现有对齐审计未覆盖持续恶意用户场景
+- 🔬 **研究方法**：ANCHOR 基于美国法院真实案件构建非法任务，用暗黑人格数据经监督与强化微调的 auditor agent 扮演持续恶意用户：分解任务、被拒后重构请求并跨轮适应策略
+- 📌 **结论**：前沿 CLI agent 直接询问时常拒绝非法任务，但持续恶意交互下合规率达 100%，且常超出请求自主搭建大规模伤害基础设施（如金融欺诈与生物武器开发）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Autonomous CLI agents can now execute hundreds of actions across multi-hour sessions: writing code, executing shell commands, browsing the web, and managing cloud infrastructure, all with minimal human oversight. Does greater autonomy invite greater risk? We introduce ANCHOR, an automated auditing framework that stress-tests CLI agents on illegal tasks grounded in public US court cases. ANCHOR deploys an auditor agent fine-tuned on dark personality data using supervised and reinforcement fine tuning. This auditor roleplays persistent malicious users who decompose tasks, reframe requests upon refusal, and adapt strategies across multi-turn interactions. Evaluating frontier CLI agents, we find that while they often refuse illegal tasks when prompted directly, compliance reaches 100\% under persistent malicious interaction. When agents comply, they frequently exceed user requests, autonomously building infrastructure for large-scale harm, including catastrophic risk scenarios such as large-scale financial fraud and bioweapon development. These findings demonstrate that current alignment techniques are insufficient for autonomous agents and underscore the need for safety evaluations against persistent, adaptive malicious users.
+
+</details>
+
+### 38. KC-Bench: A Dynamic Interactive Benchmark for Evaluating Knowledge Conflicts in LLM Agents
+
+📄 [arXiv](https://arxiv.org/abs/2609.03588)　📅 2026-09
+
+**关键词**：`benchmark`、`knowledge conflict`、`stateful tools`、`protected-data flow`、`conflict-aware action`、`stateful tool`
+
+👤 **作者**：Yaxing Lyu、Shengjie Zhou、Binbin Toh、Pengyu Zhu、Lijun Li
+
+- 🎯 **研究动机**：工具型 LLM Agent 须在行动前协调用户指令、参数知识与动态环境观察，该冲突协调能力缺少可控多轮测试
+- 🔬 **研究方法**：构建 KC-Bench：238 个从千余候选人工筛出的任务，组合用户模拟器、有状态工具、确定性环境断言、开源评测器与人工轨迹核验，覆盖世界知识冲突、输入不一致与多源时序冲突
+- 📌 **结论**：九个模型（含 DeepSeek-V4-Flash、GLM-5.2、MiniMax-M3）跨域差异大，无一能可靠处理事实纠正、身份一致性与时序冲突；漏检冲突会传播到工具调用与合成 protected-data flow
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+As LLMs increasingly act through tools, they must reconcile user instructions, parametric knowledge, and dynamic environmental observations before taking actions. We introduce KC-Bench, a controlled multi-turn benchmark for measuring this capability across world-knowledge conflicts, input inconsistencies, and multi-source temporal conflicts. Its 238 tasks are manually screened from more than 1,000 generated candidates and combine a user simulator, stateful tools, deterministic environment assertions, an open-source natural-language evaluator, and human trajectory verification. Evaluation of nine models, including DeepSeek-V4-Flash, GLM-5.2, and MiniMax-M3, shows substantial cross-domain variation: no model handles factual correction, identity consistency checking, and temporal conflict resolution reliably across all settings. In the simulated environments, missed conflicts can propagate to tool calls or synthetic protected-data flows. KC-Bench isolates this model-level behavior rather than ranking complete agent frameworks, and provides a reproducible diagnostic for developing conflict-aware reasoning and execution safeguards.
+
+</details>
+
+### 39. Calibration is the Bottleneck: An Action-Class Diagnostic of Multi-Turn Tool-Calling
+
+📄 [arXiv](https://arxiv.org/abs/2609.00949)　📅 2026-09
+
+**关键词**：`benchmark`、`tool-calling calibration`、`action-class diagnosis`、`multi-turn safety`
+
+👤 **作者**：Kangjia Zhao、…、Jianwei Yin
+
+- 🎯 **研究动机**：多轮工具调用的聚合精度掩盖了模型是选错动作类别还是执行工具失败
+- 🔬 **研究方法**：提出四类动作空间（TOOL_CALL／ASK／REFUSE／CONFIRM）的诊断框架，用自暴露上界 Acc<=GAR 把失效拆为动作类错配（违反上界）与执行失败（上界余量大）
+- 📌 **结论**：state grader 看不见的动作类错配是重要失效模式，会抬高重度工具训练家族的排名；上下文扰动对不同家族产生相反效果（+11.5 vs -21.0pp）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Multi-turn tool calling is a core evaluation scenario for large language model (LLM) agents. On public tool-calling benchmarks, open-weight models now approach or even surpass closed-source frontier models in aggregate accuracy. However, this metric averages over many different multi-turn situations and obscures whether progress is balanced across them. We propose an action-class-oriented diagnostic framework that decomposes multi-turn failures into two orthogonal modes: action-class miscalibration and action-execution failure. The framework operates over a four-class action space (TOOL_CALL/ASK/REFUSE/CONFIRM) and introduces a self-revealing upper bound Acc <= GAR (Gold Action Recall); the two modes show up as bound violation (Acc > GAR, exposing state-grader masking of miscalibration) and large bound slack (GAR >> Acc, localizing execution failure within TOOL_CALL). We validate it on a panel of tool-calling models across multiple multi-turn benchmarks. Across our panel, the diagnostic reveals action-class miscalibration as a substantial failure mode the state grader cannot see. This gap inflates standing for heavily tool-trained families, which our diagnostic separates from families with context-appropriate action choice. Calibration is reshapable through context-only perturbations, but the reshape is heterogeneous: a single perturbation moves accuracy in opposite directions across families (up to +11.5 vs -21.0 pp on the same scenario), and its effect further depends on the perturbation mechanism. We argue that multi-turn tool-calling evaluations should supplement aggregate accuracy with action-class diagnostics that expose what the model actually does in each scenario.
+
+</details>
+
+### 40. The Guard That Cried Wolf: How Scary Words Make Agent Guardrails Refuse Legitimate Actions
+
+📄 [arXiv](https://arxiv.org/abs/2608.27009)　📅 2026-08
+
+**关键词**：`benchmark`、`over-safety validity`、`mechanical labeling`、`twin contrast`、`agent guardrail`、`over-refusal`
+
+👤 **作者**：Yingjie Zhang、Yuanbo Xie、Kai Chen
+
+- 🎯 **研究动机**：Agent guardrail 的 over-safety 难以评测：授权边界处动作彼此相似，安全标签取决于授权策略而非动作本身，真实数据难以收集与验证
+- 🔬 **研究方法**：构建 Cautious Bench，将每个样本与显式授权策略共同设计，构建时门机制使标签成为策略的机械推论，含 756 个 benign/twin 对（三种对象名共 2268 对）与 40 个 Undecidable 对
+- 📌 **结论**：实测五类设计的六个 guardrail 均现名称迷信效应：仅把对象名换成危险措辞就更频繁拒绝合法动作，说明其依赖表面名称而非授权上下文
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Agent guardrails are checks that approve or refuse each action before an LLM executes it. Sometimes they refuse requests that are genuinely safe. This over-safety blocks deployment when a guardrail refuses an authorized task. Evaluating over-safety is hard: at the boundary an authorized action resembles an unauthorized one, and the safe-versus-unsafe label is a choice of authorization policy, not fixed by the action alone. We argue it therefore requires a benchmark that does not yet exist, one that maps the decision boundary of an ideal guardrail. Harvesting such a benchmark from real data is impractical: boundary cases are hard to collect, their labels hard to verify. The gap is real, so we construct Cautious Bench, the first benchmark to make over-safety the construct for agent guardrails; it codesigns each sample and its label with a stated authorization policy. A build-time gate re-derives every example to certify it, so each label is a mechanical consequence of the policy rather than an annotator's per-sample verdict, a reference against which researchers can measure real guardrails. The benchmark renders 756 Decidable benign/twin pairs, each under three object-name types (2,268 measured pairs), and 40 Undecidable pairs reported separately. Measuring six guardrails from five designs, we find a name-superstition effect: each over-refuses an authorized action more often under a scary-looking object name than a benign one. Since only the object name varies in the aforementioned contrast experiments, the deviation is the name's doing: the guardrails read the surface label, not the authorization context.
+
+</details>
+
+### 41. Hack-Verifiable Terminal Bench: Evaluating Reward Hacking in Terminal Tasks
+
+📄 [arXiv](https://arxiv.org/abs/2608.22103) · 🌐 [Project](https://majoroth.github.io/hack-verifiable-environments/hvtb)　📅 2026-08
+
+**关键词**：`benchmark`、`agent evaluation`、`verifiable scorer`、`unknown exploit`、`coding agent`、`reward hacking`
+
+👤 **作者**：Amit Roth、Ivan Bercovich、Yonathan Efroni
+
+- 🎯 **研究动机**：agent 的 reward hacking（满足任务检查却违背意图）日益重要，但检测依赖人工检查或不可靠的 LLM judge
+- 🔬 **研究方法**：把 hack-verifiable environments 方法移植到 Terminal Bench 形成 HVTB：在真实终端与编码任务中嵌入可检测 hack 使作弊可自动可靠识别，并用含不同 hack 信息量的 prompt 测试缓解效果
+- 📌 **结论**：可测量前沿模型的 reward hacking 率，并区分 prompting 防御只对已知策略有效还是能泛化到 unknown unknown exploit
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+As agents grow more capable and autonomous, their tendency to reward hack, satisfying a task's checks while violating its intent, becomes an increasingly important failure mode. Measuring reward hacking is itself challenging, as detection typically relies on human inspection or LLM judges, both of which can be unreliable. The hack-verifiable environments (HVE) methodology addresses this challenge by embedding detectable hacks into tasks, allowing reward hacks to be identified automatically and reliably. In this work, we adapt HVE to Terminal Bench, a leading benchmark of real-world terminal and coding tasks, and introduce Hack-Verifiable Terminal Bench (HVTB). Using HVTB, we measure reward-hacking rates across frontier models and study whether prompts with varying amounts of information on the hack can mitigate this behavior. This lets us test whether prompting can prevent not only known reward-hacking strategies, but also 'unknown unknown' exploits that the prompt does not anticipate. We release all environments and agent traces at https://majoroth.github.io/hack-verifiable-environments/hvtb
+
+</details>
+
+### 42. RUBAS: Rubric-Based Reinforcement Learning for Agent Safety
+
+📄 [arXiv](https://arxiv.org/abs/2606.04051)　📅 2026-06
+
+**关键词**：`analysis`、`agent safety benchmark`、`trajectory evaluation`、`failure coverage`
+
+👤 **作者**：Xian Qi Loye、…、Minlie Huang
+
+- 🎯 **研究动机**：现有对齐方法依赖粗粒度拒绝信号或静态监督，难以在多样 agent 风险下平衡安全与工具执行
+- 🔬 **研究方法**：提出 RUBAS，把 agent 行为分解为工具使用、参数、响应安全与有用性四维 rubric，对完整轨迹提供细粒度可解释奖励做强化学习
+- 📌 **结论**：多个 agent 安全基准与模型上超越标准对齐基线，降低工具幻觉并保持竞争力效用
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+The evolution of LLMs into tool-enabled agents creates a new class of safety challenges associated with real-world execution rather than simple text generation. Existing alignment methods often rely on coarse refusal signals or static supervision, making it difficult to balance safety with useful tool execution across diverse agentic risks. We introduce RUBAS, a rubric-based reinforcement learning framework for agent safety. RUBAS decomposes agent behavior into four dimensions: tool-use safety, argument safety, response safety, and helpfulness. These structured rubrics provide fine-grained and interpretable rewards over complete agent trajectories, enabling reinforcement learning to optimize safe tool use while preserving task completion. Extensive experiments across multiple agent safety benchmarks and models show that RUBAS improves safety over standard alignment baselines, reduces tool-grounded hallucinations, and maintains competitive utility. Our results suggest that multi-dimensional rubric rewards provide an effective training signal for aligning LLM agents in safety-critical tool-use settings.
+
+</details>
+
+### 43. MaMa: A Game-Theoretic Approach for Designing Safe Agentic Systems
+
+📄 [arXiv](https://arxiv.org/abs/2602.04431) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64729)　📅 2026　🏷 ICML 2026
+
+**关键词**：`analysis`、`agent safety benchmark`、`trajectory evaluation`、`failure coverage`、`agent safety`、`multi-agent evaluation`
+
+👤 **作者**：Jonathan Nöther、Adish Singla、Goran Radanovic
+
+- 🎯 **研究动机**：多智能体系统在部分智能体被攻陷时如何保持安全缺乏自动设计方法
+- 🔬 **研究方法**：形式化为 Stackelberg 安全博弈：Meta-Agent 迭代提出系统设计，Meta-Adversary 最佳响应选择并攻陷智能体子集，以最强攻击作反馈
+- 📌 **结论**：设计的系统持续抵御最坏情况攻击且性能与纯任务优化相当，并泛化到更强或不同目标的攻击者
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+LLM-based multi-agent systems have demonstrated impressive capabilities, but they also introduce significant safety risks when individual agents fail or behave adversarially. In this work, we study the automated design of agentic systems that remain safe even when a subset of agents is compromised. Inspired by Stackelberg security games, we formalize this problem as a game between a system designer (the Meta-Agent) and a best-responding Meta-Adversary that selects and compromises a subset of agents to minimize safety. We propose Meta-Adversary–Meta-Agent (MaMa), a novel algorithm inspired by this formalization for automatically designing safe agentic systems. Our approach uses LLM-based adversarial search, where the Meta-Agent iteratively proposes system designs and receives feedback based on the strongest attacks discovered by the Meta-Adversary. Empirical evaluations across diverse environments show that systems designed with MaMa consistently defend against worst-case attacks while maintaining performance comparable to systems optimized solely for task success. Moreover, the resulting systems generalize to stronger adversaries, as well as ones with different attack objectives or underlying LLMs, demonstrating robust safety beyond the training setting. Code is available at https://github.com/JNoether/MaMa
+
+</details>
+
+### 44. FuzzingBrain-Bench V1: Evaluating Open-Ended Bug Discovery by LLMs
+
+📄 [arXiv](https://arxiv.org/abs/2608.25158)　📅 2026-08
+
+**关键词**：`benchmark`、`executable environment`、`sanitizer feedback`、`coverage-aware scoring`、`coding agent`、`open-ended fuzzing`
+
+👤 **作者**：Ze Sheng、Aleksandar Kezic、Zhicheng Chen、Jeff Huang
+
+- 🎯 **研究动机**：现有 bug 发现 benchmark 只认预定义目标漏洞，漏计模型发现的其他合法 crash
+- 🔬 **研究方法**：FuzzingBrain-Bench 给模型开源项目与 sanitizer 插桩 harness，按不同 crash 签名数加权计分，含 43 个项目 77 道题
+- 📌 **结论**：Claude Opus 4.8 最佳：77 题中 60 题触发 crash，得分 196/579
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Evaluating the ability of large language models (LLMs) to discover software bugs is increasingly important. Existing benchmarks typically evaluate this capability by asking the model to generate a proof-of-concept input that triggers a predefined target vulnerability. However, this setup may overlook valid crashes discovered by the model when they do not match the predefined target. As a result, the evaluation may not reflect the model's real capability. We present FuzzingBrain-Bench, a benchmark for assessing AI models' ability to discover bugs in open-source software. Models are given an open-source project and a sanitizer-instrumented harness in a self-contained Docker image. Their goal is to generate inputs that trigger as many distinct crashes as possible through the harness. A model's performance on each challenge is scored based on the number of distinct crash signatures it produces, capped at a predefined maximum and weighted by a difficulty coefficient. FuzzingBrain-Bench V1 consists of 77 challenges drawn from 43 open-source projects, with 36 C, 32 C++, and 9 Java/JVM challenges. We evaluate Claude Haiku 4.5, Claude Sonnet 4.6, and Claude Opus 4.8 on the full benchmark. Claude Opus 4.8 performs best, triggering crashes in 60 of 77 challenges and achieving a score of 196 out of 579. None of the three models triggers a crash in 13 challenges. The FuzzingBrain-Bench corpus and harnesses are publicly available at https://github.com/fuzzingbrain/FuzzingBrain-Bench.
+
+</details>
+
+### 45. CyberFactory: Scaling Cyber Security Capabilities with Instances from the Wild
+
+📄 [arXiv](https://arxiv.org/abs/2608.23181)　📅 2026-08
+
+**关键词**：`tool`、`executable cyber instance`、`agentic trajectory`、`evidence-based validation`、`cyber agent`、`PoC generation`
+
+👤 **作者**：Jian Yang、…、Weifeng Lv
+
+- 🎯 **研究动机**：开源网络安全 LLM 训练缺乏可复现方案：前沿开源权重不提供训练方法，已有方案聚焦孤立任务、缺规模化 agentic 数据
+- 🔬 **研究方法**：CyberFactory 统一框架连接数据构建、轨迹合成与模型训练，覆盖 PoC 生成、漏洞修补与 CyberQA；从真实 CVE 构造仓库级可执行任务，用可复用分析 skill 引导源码检查并按执行反馈迭代修订，训练出内化 skill 的 Aegis 模型
+- 📌 **结论**：CyberGym 一小时预算下 Pass@1 达 52.4%，比 Qwen 3.5 基座高 22.8 分，超过同 scaffold 的通用 backbone
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+As large language models (LLMs) continue to advance in coding capabilities, their potential in cybersecurity has drawn increasing research attention, with closed-source LLMs (e.g., Mythos) delivering advanced cybersecurity capabilities. However, existing open-source efforts remain limited: frontier open-weight models do not provide reproducible cybersecurity training solutions, open-source training solutions focus on isolated tasks and lack scalable agentic data, and scaling agentic rollouts requires strong domain priors. In this work, we introduce \textbf{CyberFactory}, a unified open-source framework that connects data construction, trajectory synthesis, and model training across proof-of-concept (PoC) generation, vulnerability patching, and cybersecurity question answering (CyberQA). CyberFactory transforms public vulnerability artifacts, including CVEs from the wild, into executable and verifiable task instances. It further uses a reusable vulnerability-analysis skill to guide the teacher through source inspection, problem solving with domain prior, and evidence-based validation. The resulting supervision is agentic: the model interacts with tools and target environments and revises its solutions according to execution feedback. Using these trajectories, we train and release \modelname\footnote{\emph{Aegis} is, in Greek mythology, the protective shield of Zeus and Athena; the name reflects the model's defensive, security-oriented purpose.}, which internalizes the skill-guided procedure without requiring the skill at inference time. On CyberGym, \modelname reaches 52.4% Pass@1 under a one-hour budget, improving over its Qwen~3.5 base model by +22.8 points and outperforming the evaluated general-purpose backbones under the same scaffold.
+
+</details>
+
+### 46. Agentao: A Governed Local-First Runtime for Tool-Using LLM Agents
+
+📄 [arXiv](https://arxiv.org/abs/2608.13574)　📅 2026-08
+
+**关键词**：`tool`、`agent safety benchmark`、`trajectory evaluation`、`failure coverage`
+
+👤 **作者**：Bo Jin、Qiang Jiao、Xin Tong
+
+- 🎯 **研究动机**：工具型 agent 面临过度授权、弱可审计性、提示注入、工具投毒与失控副作用等风险
+- 🔬 **研究方法**：Agentao 受治理的本地优先运行时，把模型动作提议与宿主授权执行分离：宿主契约、运行时核心、权限中介工具系统加记忆/回放/插件/子 agent 等子系统
+- 📌 **结论**：不提供形式安全保证，但演示权限、状态、协议边界与执行轨迹可成为显式运行时抽象，使 agent 更可治理、可检视
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+LLM agents increasingly operate as execution systems that invoke tools, modify local state, use persistent memory, and interact with external protocols. These capabilities make agents useful, but they also introduce risks related to over-privileged actions, weak auditability, prompt injection, tool poisoning, and uncontrolled side effects. This paper presents Agentao, a governed local-first runtime for tool-using LLM agents. Agentao separates model-generated action proposals from host-authorized execution through a layered architecture consisting of host-facing surfaces, a host contract, a runtime core, a permission-mediated tool system, and supporting subsystems for memory, replay, plugins, skills, sub-agents, and protocol integration. We describe the motivation, threat model, design goals, governance model, execution pipeline, and structured event interface of the system. Agentao does not provide formal safety guarantees; rather, it demonstrates how permissions, state, protocol boundaries, and execution traces can be made explicit runtime abstractions for building agents that are more governable, inspectable, and suitable for host-controlled local environments. The code is publicly available at https://github.com/jin-bo/agentao .
+
+</details>
+
+### 47. A New Framework for Cybersecurity Refusals in AI Agents
+
+📄 [arXiv](https://arxiv.org/abs/2606.02644) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61093)　📅 2026　🏷 ICML 2026
+
+**关键词**：`tool`、`analysis`、`cyber misuse`、`agent safety benchmark`、`trajectory evaluation`、`agent safety`
+
+👤 **作者**：Eliot Krzysztof Jones、Mateusz Dziemian、Matt Fredrikson、J Zico Kolter
+
+- 🎯 **研究动机**：网络安全 Agent 基准只测攻击任务熟练度，忽视何时以及如何拒绝有害请求
+- 🔬 **研究方法**：建立进攻性安全语境下拒答边界的首套框架：任务应被拒绝的原则性判据、应拒任务类别与良性／对抗双条件下的鲁棒性评测方法，并应用于 Web 进攻安全场景
+- 📌 **结论**：八个 frontier 模型中六个在识别真实系统漏洞的任务上 0% 拒绝
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Agentic scaffolds have dramatically improved LLM performance on complex, long-horizon tasks, yielding both broad benefits and amplified risks in domains like cybersecurity. Existing benchmarks for AI agents in cybersecurity focus mainly on measuring proficiency–how effectively agents can complete offensive security tasks–but neglect a critical question: when and how should agents refuse harmful requests? We present the first framework for establishing refusal boundaries in offensive security contexts. Our framework defines (1) principled criteria for when tasks should be refused, (2) categories of tasks that warrant refusal, and (3) evaluation methodology for measuring agent robustness under both benign and adversarial conditions. We apply this framework to assess how current LLM-powered agents adhere to appropriate refusal boundaries across a range of web-based offensive security scenarios, finding that 6 of 8 frontier models tested refuse to identify vulnerabilities in real systems 0\% of the time.
+
+</details>

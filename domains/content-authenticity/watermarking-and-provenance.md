@@ -17,93 +17,1290 @@
 
 ## Text、Code 与 Reasoning Watermark
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026-03 | A Reinforcement Learning Framework for Robust and Secure LLM Watermarking | defense、text watermark、spoofing resistance、reward hacking | EACL 2026 | [Official](https://aclanthology.org/2026.eacl-long.338/) | 暂未公开 | 研究如何防御 text watermark、spoofing resistance 威胁，并评估 reward hacking 条件下的安全收益与效用代价。 | 针对 green/red token list 的 heuristic design 难同时兼顾 detectability、quality、抗移除和抗伪造；论文用 anchored multi-objective RL 与 regularization 优化列表 | 关键实现：针对 green/red token list 的 heuristic design 难同时兼顾 detectability、quality、抗移除和抗伪造；论文用 anchored multi-objective RL 与 regularization 优化列表。 | 结果改善 spoofing resistance 并抑制训练中的 reward hacking。 |
-| 2026-01 | Semantic Differentiation for Tackling Challenges in Watermarking Low-Entropy Constrained Generation Outputs | defense、low-entropy generation、content watermark、provenance | CoLM 2026 | [Official](https://colm.cc/Conferences/2026/AcceptedPapers) · [arXiv](https://arxiv.org/abs/2601.11629) | 暂未公开 | 针对翻译、摘要与代码等低熵任务中 token watermark 检测弱、sequence watermark 又会 region collapse | SeqMark 对高概率语义子空间做差异化划分 | 关键实现：SeqMark 对高概率语义子空间做差异化划分。 | 在保持生成质量时最多提高 28% detection F1。 |
-| 2026 | XMark: Reliable Multi-Bit Watermarking for LLM-Generated Texts | defense、watermarking、content watermark、provenance | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.672/) | 暂未公开 | 研究如何防御 watermarking、content watermark 威胁，并评估 provenance 条件下的安全收益与效用代价。 | XMark 以低失真的 logit 编码器和定制解码器嵌入多 bit 消息 | 在短输出下仍显著提高恢复准确率 | 同时保持水印文本质量并超过既有方法。 |
-| 2026 | Watermarking LLM Agent Trajectories | defense、AI watermarking、content watermark、provenance | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/62387) | 暂未公开 | 针对生成内容水印容易遭到改写、混合、伪造或低成本移除的问题 | 论文提出 Watermarking LLM Agent Trajectories 防御或缓解方法 | 关键实现：论文提出 Watermarking LLM Agent Trajectories 防御或缓解方法。 | 摘要实验显示其提高了系统对相应威胁的鲁棒性，直接服务于生成内容标记与溯源。 |
-| 2026 | Towards Reliable Marking and Verification of AI-Generated Text via Geometry-aware Sentence-level Watermarking | defense、AI watermarking、content watermark、AI-generated content | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/61358) | 暂未公开 | 针对生成内容水印容易遭到改写、混合、伪造或低成本移除的问题 | 论文提出 Towards Reliable Marking and Verification 防御或缓解方法 | 关键实现：论文提出 Towards Reliable Marking and Verification 防御或缓解方法。 | 摘要实验显示其降低相应风险或攻击效果，同时尽量保持正常任务效用，直接服务于生成内容标记与溯源。 |
-| 2026 | The Prompt Stealing Fallacy: Rethinking Metrics, Attacks, and Defenses | defense、prompt stealing、PromptThief、content watermark | USENIX Security 2026 | [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/deng) | 暂未公开 | 针对既有 prompt stealing 指标把表面相似误当作功能窃取的问题 | 作者提出 SS/PS 新指标并证明旧攻击效果被夸大 | 关键实现：作者提出 SS/PS 新指标并证明旧攻击效果被夸大。 | 再给出更强 PromptThief 攻击与稳健的 passive watermark 防御。 |
-| 2026 | SWAN: Semantic Watermarking with Abstract Meaning Representation | defense、watermarking、content watermark、provenance | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.1681/) | 暂未公开 | 研究如何防御 watermarking、content watermark 威胁，并评估 provenance 条件下的安全收益与效用代价。 | SWAN 用 AMR 模板把签名嵌入句子语义结构 | 免训练且可用现成解析器检验 | RealNews 上原文检测匹配 SOTA，改写攻击下 AUC 最多高 13.9 个百分点。 |
-| 2026 | SSG: Logit-Balanced Vocabulary Partitioning for LLM Watermarking | defense、watermarking、content watermark、provenance | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.1702/) | 暂未公开 | 研究如何防御 watermarking、content watermark 威胁，并评估 provenance 条件下的安全收益与效用代价。 | SSG 先按 logit 排序再把词表分成概率平衡组 | 提高每步可施加水印强度的下界 | 从而改善 KGW 在代码和数学等低熵生成中的可检测性。 |
-| 2026 | Selective Disclosure Watermarking for Large Language Models | defense、AI watermarking、content watermark、provenance | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/64328) | [Code](https://github.com/xuyangc03/hero-watermark) | 针对生成内容水印容易遭到改写、混合、伪造或低成本移除的问题 | 论文提出 Selective Disclosure Watermarking for Large 防御或缓解方法 | 关键实现：论文提出 Selective Disclosure Watermarking for Large 防御或缓解方法。 | 摘要实验显示其降低相应风险或攻击效果，同时尽量保持正常任务效用，直接服务于生成内容标记与溯源。 |
-| 2026 | Revisiting Coding-Based Approaches to Overcome the Curse of Dimensionality in Learning-Based Watermarking | defense、AI watermarking、content watermark、provenance | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/61794) | [Code](https://github.com/QQiuyp/OrthoMark) | 针对生成内容水印容易遭到改写、混合、伪造或低成本移除的问题 | 论文提出 Revisiting Coding-Based Approaches to Overcome 防御或缓解方法 | 关键实现：论文提出 Revisiting Coding-Based Approaches to Overcome 防御或缓解方法。 | 摘要实验显示其降低相应风险或攻击效果，同时尽量保持正常任务效用，直接服务于生成内容标记与溯源。 |
-| 2026 | QuantileMark: A Message-Symmetric Multi-bit Watermark for LLMs | defense、content watermark、provenance、robust verification | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.308/) | 暂未公开 | 研究如何防御 content watermark、provenance 威胁，并评估 robust verification 条件下的安全收益与效用代价。 | QuantileMark 将累计概率区间等质量分成 M 个 bin 来编码多 bit 消息 | 使每个符号恒占 1/M 概率预算 | 在 C4 与 LFQA 上改善恢复和检测鲁棒性且几乎不损生成质量。 |
-| 2026 | Learning to Watermark in the Latent Space of Generative Models | defense、content watermark、provenance、robust verification | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/63642) | 暂未公开 | 针对生成内容水印容易遭到改写、混合、伪造或低成本移除的问题 | 论文提出 Learning to Watermark in the 防御或缓解方法 | 关键实现：论文提出 Learning to Watermark in the 防御或缓解方法。 | 摘要实验显示其提高了系统对相应威胁的鲁棒性，直接服务于生成内容标记与溯源。 |
-| 2026 | Don’t Corrupt the Fact: A Trustworthy RAG Watermarking Framework based on Dual Factual Shield | defense、watermarking、content watermark、provenance | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.2075/) | 暂未公开 | 针对水印会迫使 RAG 偏离检索事实 | DFS 同时保护来源关键术语并用 prompt 约束语义 | 显著降低新指标 Knowledge Corruption Rate | 同时保留原水印的安全性和抗伪造能力。 |
-| 2026 | Block-wise Codeword Embedding for Reliable Multi-bit Text Watermarking | defense、AI watermarking、content watermark、provenance | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/63246) | 暂未公开 | 针对生成内容水印容易遭到改写、混合、伪造或低成本移除的问题 | 论文提出 Block-wise Codeword Embedding for Reliable 防御或缓解方法 | 关键实现：论文提出 Block-wise Codeword Embedding for Reliable 防御或缓解方法。 | 摘要实验显示其降低相应风险或攻击效果，同时尽量保持正常任务效用，直接服务于生成内容标记与溯源。 |
-| 2026 | Beyond Heuristic Tuning: Power-Calibrated LLM Watermarking | defense、AI watermarking、content watermark、provenance | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/63724) | 暂未公开 | 针对生成内容水印容易遭到改写、混合、伪造或低成本移除的问题 | 论文提出 Beyond Heuristic Tuning 防御或缓解方法 | 关键实现：论文提出 Beyond Heuristic Tuning 防御或缓解方法。 | 摘要实验显示其降低相应风险或攻击效果，同时尽量保持正常任务效用，直接服务于生成内容标记与溯源。 |
-| 2026 | A Linguistics-Aware LLM Watermarking via Syntactic Predictability | defense、watermarking、content watermark、provenance | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.2115/) | [Code](https://github.com/Shinwoo-Park/stela_watermark) | 研究如何防御 watermarking、content watermark 威胁，并评估 provenance 条件下的安全收益与效用代价。 | STELA 用词性 n-gram 估计句法自由度 | 在受约束位置减弱水印、灵活位置增强信号，无需模型 logits 即可公开验证 | 并在英语、中文和韩语上取得更强检测鲁棒性。 |
-| 2026 | AliMark: Enhancing Robustness of Sentence-Level Watermarking Against Text Paraphrasing | defense、AI watermarking、content watermark、adversarial robustness | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/62142) | [Code](https://github.com/imethanlee/AliMark) | 针对生成内容水印容易遭到改写、混合、伪造或低成本移除的问题 | 论文提出 AliMark 防御或缓解方法 | 关键实现：论文提出 AliMark 防御或缓解方法。 | 摘要实验显示其提高了系统对相应威胁的鲁棒性，直接服务于生成内容标记与溯源。 |
-| 2026 | A Distortion-minimization Watermarking Framework for Large Language Models: Larger Capacity, Stronger Robustness and Higher Quality | tool、LLM watermarking、distortion minimization、paraphrasing robustness | USENIX Security 2026 | [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/zhai) | 暂未公开 | 针对 LLM 水印容量、文本质量与抗改写性相互制约的问题 | 该框架统一建模失真成本并结合 PO-STCs 嵌入水印 | 关键实现：该框架统一建模失真成本并结合 PO-STCs 嵌入水印。 | 在严重 paraphrasing 下将匹配率最多提高 46.35% 且保持文本质量。 |
-| 2026 | Adaptive Code Watermarking Through Reinforcement Learning | defense、AI watermarking、reinforcement learning、content watermark | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/66298) | [Code](https://github.com/TimeLovercc/CodeTracer) | 针对生成内容水印容易遭到改写、混合、伪造或低成本移除的问题 | 论文提出 Adaptive Code Watermarking Through Reinforcement 防御或缓解方法 | 关键实现：论文提出 Adaptive Code Watermarking Through Reinforcement 防御或缓解方法。 | 摘要实验显示其降低相应风险或攻击效果，同时尽量保持正常任务效用，直接服务于生成内容标记与溯源。 |
+### 1. A Reinforcement Learning Framework for Robust and Secure LLM Watermarking
 
-## Image、Video、Audio 与 3D Watermark
+🎓 [Official](https://aclanthology.org/2026.eacl-long.338/)　📅 2026-03　🏷 ACL 2026
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026-08 | A Locally Tokenized Generative Model for Robust Time-Series Watermarking | analysis、content watermark、provenance、robust verification | 未确认（arXiv Comments：Submitted to NeurIPS 2026） | [arXiv](https://arxiv.org/abs/2608.19727) | 暂未公开 | 分析 content watermark、provenance 风险的形成机制，重点考察 robust verification 对安全行为的影响。 | 水印是生成模型溯源的一项核心工具 | 但在多变量时间序列上的应用一直受到后编辑攻击下可靠性失效的阻碍；我们表明，依赖全局耦合重编码的现有检测器会遭遇零假设分布的双向漂移：后编辑攻击可以使无水印样本的 z 分数向任一方向偏移，从而使基于干净数据校准的阈值失效 | 在覆盖金融、能源和神经影像的四个基准上，实验表明，我们的方法在保持生成质量的同时，稳定了后编辑攻击下的检测能力和假阳性表现。 |
-| 2026-08 | NGS-Marker: Robust Native Watermarking for 3D Gaussian Splatting | analysis、content watermark、provenance、robust verification | ICLR 2026 | [Official](https://iclr.cc/virtual/2026/poster/10006523) · [arXiv](https://arxiv.org/abs/2608.17447) | 暂未公开 | 分析 content watermark、provenance 风险的形成机制，重点考察 robust verification 对安全行为的影响。 | 随着三维高斯泼溅（3DGS）的快速发展和应用 | 有效版权保护变得日益关键；本文提出 NGS-Marker，一种面向 3DGS 的新型原生水印框架 | 大量实验表明，NGS-Marker 能有效抵御部分侵权，同时具备面向现实部署的实用灵活性。 |
-| 2026-03 | Where, What, Why: Toward Explainable 3D-GS Watermarking | defense、3DGS watermark、explainability、tamper analysis | CVPR 2026 | [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Cai_Where_What_Why_Toward_Explainable_3D-GS_Watermarking_CVPR_2026_paper.html) · [arXiv](https://arxiv.org/abs/2603.08809) | 暂未公开 | 针对 3DGS 水印检测只给二元结论 | 作者同时解释标记写在何处、携带什么及为何失效 | 关键实现：作者同时解释标记写在何处、携带什么及为何失效。 | 使所有权核验和篡改分析可审计。 |
-| 2026-02 | All in One: Unifying Deepfake Detection, Tampering Localization, and Source Tracing with a Robust Landmark-Identity Watermark | defense、identity watermark、tamper localization、source tracing | CVPR 2026 | [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Wu_All_in_One_Unifying_Deepfake_Detection_Tampering_Localization_and_Source_CVPR_2026_paper.html) · [arXiv](https://arxiv.org/abs/2602.23523) | [Code](https://github.com/vpsg-research/LIDMark) | 针对人脸内容需要同时验真、定位和追源 | 作者在 landmark 与身份信息中嵌入鲁棒水印 | 关键实现：作者在 landmark 与身份信息中嵌入鲁棒水印。 | 一个信号即可支持三类取证任务。 |
-| 2026-02 | RecoverMark: Robust Watermarking for Localization and Recovery of Manipulated Faces | defense、face watermark、tamper localization、content recovery | CVPR 2026 | [Official](https://openaccess.thecvf.com/content/CVPR2026/html/An_RecoverMark_Robust_Watermarking_for_Localization_and_Recovery_of_Manipulated_Faces_CVPR_2026_paper.html) · [arXiv](https://arxiv.org/abs/2602.20618) | 暂未公开 | 针对人脸被局部篡改后只判断真假不足以修复证据 | RecoverMark 用鲁棒水印定位改动并恢复原始身份内容 | 关键实现：RecoverMark 用鲁棒水印定位改动并恢复原始身份内容。 | 支持主动取证。 |
-| 2026 | You Can Have a Second Chance: Unbiased and Multi-bit Watermarking for Diffusion Language Models with Regret-based Remasking | defense、watermarking、content watermark、provenance | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.1297/) | [Code](https://github.com/iieSKLCSDsg/UMR) | 研究如何防御 watermarking、content watermark 威胁，并评估 provenance 条件下的安全收益与效用代价。 | 论文仅在稳定上下文中以无偏调制嵌入 DLM 多 bit 水印 | 并用 regret-based remasking 给未标记 token 二次生成机会，无额外扩散步与延迟 | 同时优于基线的质量并保持高检测率。 |
-| 2026 | Rotation-Invariant Spherical Watermarking via Third-Order SO(3) Representation Coupling | defense、AI watermarking、content watermark、provenance | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/63966) | 暂未公开 | 针对生成内容水印容易遭到改写、混合、伪造或低成本移除的问题 | 论文提出 Rotation-Invariant Spherical Watermarking via Third-Order 防御或缓解方法 | 关键实现：论文提出 Rotation-Invariant Spherical Watermarking via Third-Order 防御或缓解方法。 | 摘要实验显示其降低相应风险或攻击效果，同时尽量保持正常任务效用，直接服务于生成内容标记与溯源。 |
-| 2026 | Hidden in Plain Tokens: Simply Robust, Gradient-Free Watermark for Synthetic Audio | defense、robust detection、content watermark、provenance | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/62388) | 暂未公开 | 针对生成内容水印容易遭到改写、混合、伪造或低成本移除的问题 | 论文提出 Hidden in Plain Tokens 防御或缓解方法 | 关键实现：论文提出 Hidden in Plain Tokens 防御或缓解方法。 | 摘要实验显示其提高了系统对相应威胁的鲁棒性，直接服务于生成内容标记与溯源。 |
-| 2026 | From TDMA to CDMA: A Multi-bit Watermark for Diffusion Language Models | defense、content watermark、provenance、robust verification | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.1737/) | 暂未公开 | 研究如何防御 content watermark、provenance 威胁，并评估 robust verification 条件下的安全收益与效用代价。 | CDMArk 将完整多 bit 消息像 CDMA 一样全息编码进 diffusion LM 的所有 token | 并给出检测统计保证 | 在不可感知性与有效性之间刷新 Pareto 前沿。 |
-| 2026 | dgMARK: Decoding-Guided Watermarking for Diffusion Language Models | defense、AI watermarking、diffusion model、content watermark | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/61861) | [Project](https://dgmark-watermarking.github.io) | 针对生成内容水印容易遭到改写、混合、伪造或低成本移除的问题 | 论文提出 dgMARK 防御或缓解方法 | 关键实现：论文提出 dgMARK 防御或缓解方法。 | 摘要实验显示其提高了系统对相应威胁的鲁棒性，直接服务于生成内容标记与溯源。 |
-| 2026 | Bridging Privacy and Provenance: Traceable Virtual Identity Generation | defense、virtual identity、privacy、provenance tracing | CVPR 2026 | [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Zeng_Bridging_Privacy_and_Provenance_Traceable_Virtual_Identity_Generation_CVPR_2026_paper.html) | 暂未公开 | 针对匿名化虚拟人既要保护真实身份又要追究滥用来源 | 作者生成与本人脱钩但携带可验证标记的身份 | 关键实现：作者生成与本人脱钩但携带可验证标记的身份。 | 在隐私和可追责性间建立连接。 |
-| 2026 | ClusterMark: Towards Robust Watermarking for Autoregressive Image Generators with Visual Token Clustering | defense、autoregressive generator、token watermark、clustering | CVPR 2026 | [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Lukovnikov_ClusterMark_Towards_Robust_Watermarking_for_Autoregressive_Image_Generators_with_Visual_CVPR_2026_paper.html) | 暂未公开 | 针对自回归图像模型的离散 token 会使常规像素水印脆弱 | ClusterMark 在视觉 token 簇层面编码标记 | 关键实现：ClusterMark 在视觉 token 簇层面编码标记。 | 提高编辑和压缩后的可检出性。 |
-| 2026 | MaxMark: High-Capacity Diffusion-Native Watermarking via Robust and Invertible Latent Embedding | defense、diffusion watermark、latent embedding、high capacity | CVPR 2026 | [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Chang_MaxMark_High-Capacity_Diffusion-Native_Watermarking_via_Robust_and_Invertible_Latent_Embedding_CVPR_2026_paper.html) | 暂未公开 | 针对扩散水印容量有限且后处理后难恢复 | MaxMark 在可逆潜空间嵌入多比特信息 | 关键实现：MaxMark 在可逆潜空间嵌入多比特信息。 | 兼顾图像质量、载荷和变换鲁棒性。 |
-| 2026 | PECCVAI: Overcoming the Brittleness of AI Image Watermarking Under Visual Paraphrasing Attacks | defense、AI image watermark、visual paraphrase、adaptive robustness | CVPR 2026 | [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Dixit_PECCVAI_Overcoming_the_Brittleness_of_AI_Image_Watermarking_Under_Visual_CVPR_2026_paper.html) | 暂未公开 | 针对生成式视觉改写能保留语义却消除像素水印 | PECCVAI 以 paraphrasing 攻击训练和评测鲁棒标记 | 关键实现：PECCVAI 以 paraphrasing 攻击训练和评测鲁棒标记。 | 提升重生成后的来源识别。 |
-| 2026 | Robust3DGSW: Toward Robust Watermarking for Quantization-Aware 3D Gaussian Splatting | defense、3DGS watermark、quantization robustness、asset ownership | CVPR 2026 | [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Wang_Robust3DGSW_Toward_Robust_Watermarking_for_Quantization-Aware_3D_Gaussian_Splatting_CVPR_2026_paper.html) | 暂未公开 | 针对 3DGS 发布时的量化会破坏嵌入标记 | Robust3DGSW 在训练中模拟压缩误差并选择稳健参数 | 关键实现：Robust3DGSW 在训练中模拟压缩误差并选择稳健参数。 | 维持渲染质量和所有权验证。 |
-| 2026 | Write Where It Matters: Policy-Guided Watermarks for 3D Gaussian Splatting | defense、3DGS watermark、policy guidance、ownership protection | CVPR 2026 | [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Li_Write_Where_It_Matters_Policy-Guided_Watermarks_for_3D_Gaussian_Splatting_CVPR_2026_paper.html) | 暂未公开 | 针对均匀写入会损害 3DGS 画质且关键标记易被裁剪 | 作者学习写入策略选择高价值 Gaussian | 关键实现：作者学习写入策略选择高价值 Gaussian。 | 在视觉质量与攻击鲁棒性间优化。 |
-| 2026 | Guard4D: Robust Watermarking for 4D Gaussian Splatting via Decoupled Decoding | defense、4DGS watermark、decoupled decoder、asset copyright | IJCAI-ECAI 2026 | [Accepted](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track) · [Preprint](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/197.pdf) | [Code](https://github.com/shisyy/Guard4D) | 针对 4DGS 水印需从短时多视角视频验证且易被场景语义淹没 | Guard4D 解耦消息解码并做时序聚合 | 关键实现：Guard4D 解耦消息解码并做时序聚合。 | 使动态资产后处理后仍可验权。 |
-| 2026 | Latents-Inv:Robust Semantic Watermark via Dual-Path Mutual Information Redundancy for Diffusion Models | defense、diffusion watermark、dual-path redundancy、adversarial robustness | IJCAI-ECAI 2026 | [Accepted](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track) · [Preprint](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/7552.pdf) | 暂未公开 | 针对潜噪声语义水印易被几何和代理潜空间攻击移除 | Latents-Inv 在图像与密钥双路径冗余编码 | 关键实现：Latents-Inv 在图像与密钥双路径冗余编码。 | 并用互信息恢复受损身份。 |
-| 2025-12 | NOWA: Null-space Optical Watermark for Invisible Capture Fingerprinting and Tamper Localization | defense、optical watermark、capture provenance、tamper localization | CVPR 2026 | [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Vargas_NOWA_Null-space_Optical_Watermark_for_Invisible_Capture_Fingerprinting_and_Tamper_CVPR_2026_paper.html) · [arXiv](https://arxiv.org/abs/2512.22501) | 暂未公开 | 针对数字水印可在相机前被绕过 | NOWA 在光学采集阶段向成像零空间写入不可见标记 | 关键实现：NOWA 在光学采集阶段向成像零空间写入不可见标记。 | 用于设备指纹和后续篡改定位。 |
-| 2025-12 | SPDMark: Selective Parameter Displacement for Robust Video Watermarking | defense、video watermark、parameter displacement、temporal robustness | CVPR 2026 | [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Fares_SPDMark_Selective_Parameter_Displacement_for_Robust_Video_Watermarking_CVPR_2026_paper.html) · [arXiv](https://arxiv.org/abs/2512.12090) | [Code](https://github.com/Samar-Fares/SPDMark) | 针对视频水印在时序编辑与再编码后衰减 | SPDMark 选择性移动生成参数并把标记分布到时间维度 | 关键实现：SPDMark 选择性移动生成参数并把标记分布到时间维度。 | 提高多种后处理下的可检出性。 |
-| 2025-12 | WaTeRFlow: Watermark Temporal Robustness via Flow Consistency | defense、video watermark、optical flow、temporal consistency | CVPR 2026 | [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Jeong_WaTeRFlow_Watermark_Temporal_Robustness_via_Flow_Consistency_CVPR_2026_paper.html) · [arXiv](https://arxiv.org/abs/2512.19048) | 暂未公开 | 针对逐帧水印会闪烁且被时序操作破坏 | WaTeRFlow 以光流一致性约束标记随内容运动 | 关键实现：WaTeRFlow 以光流一致性约束标记随内容运动。 | 在视频编辑后保持稳定检测。 |
+**关键词**：`defense`、`text watermark`、`spoofing resistance`、`reward hacking`、`LLM watermark`
 
-## 检测、归因与 Public Verification
+👤 **作者**：Li An、Yujian Liu、Yepeng Liu、Yuheng Bu、Yang Zhang、Shiyu Chang
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026-08 | Beyond Distortion Robustness: Rethinking Severe Cropping as Erasure-Resilient Message Embedding | analysis、adversarial robustness、content watermark、provenance | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.18567) | 暂未公开 | 分析 adversarial robustness、content watermark 风险的形成机制，重点考察 provenance 对安全行为的影响。 | 在图像中稳健嵌入消息 | 对版权保护和内容追踪等多媒体安全应用十分重要；现有方法主要在“失真鲁棒性”范式下开发，其中嵌入信号在空间上仍然存在，只是受到噪声、模糊或压缩劣化 | 这些结果说明，严重裁剪更适合被视为擦除问题，而不是传统失真问题，并推动神经嵌入与基于编码的恢复进行联合设计。 |
-| 2026-08 | Stability-Aware Feature Design for Robust Watermark Detection in Machine-Generated Text | detection、robust detection、content watermark、AI-generated content | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/61064) · [arXiv](https://arxiv.org/abs/2608.18102) | [Code](https://github.com/mohitmarvania/PSS-Watermark-Detection) | 针对生成内容水印容易遭到改写、混合、伪造或低成本移除的问题 | 论文提出 Stability-Aware Feature Design for Robust 检测、定位或审计方法 | 关键实现：论文提出 Stability-Aware Feature Design for Robust 检测、定位或审计方法。 | 摘要实验验证其能识别或定位相应风险，并报告了跨设置证据，直接服务于生成内容标记与溯源。 |
-| 2026-08 | Towards Computational Provenance: Carrying Causal-State Evidence in Generated Text | analysis、content watermark、provenance、robust verification | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.16868) | 暂未公开 | 分析 content watermark、provenance 风险的形成机制，重点考察 robust verification 对安全行为的影响。 | 语言模型的输出本身并不提供有关生成它的内部计算的可验证证据；我们研究计算起源：生成的文本是否可以携带发生因果相关内部状态的可检测证据 | 关键实现：语言模型的输出本身并不提供有关生成它的内部计算的可验证证据；我们研究计算起源：生成的文本是否可以携带发生因果相关内部状态的可检测证据。 | 这些结果提供了受控的概念证明，即使答案不变，有关经过验证的、因果相关的内部状态的信息也可以保留在生成的文本中。 |
-| 2026-08 | SkillWatermark: An Embedded Skill Watermark of Progressive Privacy Inference via Benign Prompts | analysis、content watermark、provenance、robust verification | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.16026) | 暂未公开 | 分析 content watermark、provenance 风险的形成机制，重点考察 robust verification 对安全行为的影响。 | 大语言模型（LLM）代理的技能已广泛部署在不同的应用领域；然而 | 我们观察到这些技能在执行过程中会产生特定的流量模式 | 大量的实验表明，我们的水印产生了高度一致和可区分的流量模式，并且转换后的技能通过了现有的基于 LLM 的安全审核工具。 |
-| 2026-08 | Optimal Watermark Localization in Mixed-Source Large Language Model Texts | detection、content watermark、provenance、robust verification | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.14906) | [Code](https://github.com/SHL20/WatermarkLocalization) | 研究如何检测 content watermark、provenance 风险，重点考察 robust verification 条件下的识别能力与误报代价。 | 水印提供了一种原则性的方法来验证大语言模型 (LLM) 生成的文本；尽管先前的工作已经研究了水印信号的全局检测 | 但何时可以定位此类信号仍不清楚 | 模拟支持理论相变，而模型生成文本的实验则证明了常见编辑机制下的实际本地化性能。 |
-| 2026-03 | Attribution as Retrieval: Model-Agnostic AI-Generated Image Attribution | detection、generator attribution、retrieval、model agnosticism | CVPR 2026 | [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Wang_Attribution_as_Retrieval_Model-Agnostic_AI-Generated_Image_Attribution_CVPR_2026_paper.html) · [arXiv](https://arxiv.org/abs/2603.10583) | [Code](https://github.com/hongsong-wang/LIDA) | 针对生成器类别会不断新增、封闭集分类难扩展 | 作者把 AI 图像归因改写为检索 | 关键实现：作者把 AI 图像归因改写为检索。 | 在无需为每个模型重训时匹配来源指纹。 |
-| 2026-03 | SWIFT: Sliding Window Reconstruction for Few-Shot Training-Free Generated Video Attribution | detection、video attribution、sliding-window reconstruction、few-shot method | CVPR 2026 | [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Wang_SWIFT_Sliding_Window_Reconstruction_for_Few-Shot_Training-Free_Generated_Video_Attribution_CVPR_2026_paper.html) · [arXiv](https://arxiv.org/abs/2603.08536) | [Code](https://github.com/wangchao0708/SWIFT) | 针对新视频生成器只有少量样本且不能训练专用分类器 | SWIFT 比较滑窗重构特征 | 关键实现：SWIFT 比较滑窗重构特征。 | 以 few-shot、training-free 方式识别生成来源。 |
-| 2026-02 | TokenTrace: Multi-Concept Attribution through Watermarked Token Recovery | defense、token watermark、concept attribution、training-data tracing | CVPR 2026 | [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Zhang_TokenTrace_Multi-Concept_Attribution_through_Watermarked_Token_Recovery_CVPR_2026_paper.html) · [arXiv](https://arxiv.org/abs/2602.19019) | 暂未公开 | 针对生成内容可能混合多个受保护概念 | TokenTrace 从输出恢复各来源的水印 token | 关键实现：TokenTrace 从输出恢复各来源的水印 token。 | 支持细粒度多概念归因而非只判断单一所有者。 |
-| 2026 | ReasMark: A Robust Watermark for Attributing LLM Reasoning Under Knowledge Distillation Attacks | detection、reasoning safety、content watermark、provenance | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.2185/) | 暂未公开 | 研究如何检测 reasoning safety、content watermark 风险，重点考察 provenance 条件下的识别能力与误报代价。 | ReasMark 从目标域高频 prompt 选择触发 token | 并以分数条件损失在推理长度中嵌入可黑盒验证的差距 | 使水印随知识蒸馏迁移、优于表面 token 水印且保留任务效用。 |
-| 2026 | LORD-GoF: A Robust Online Detection Approach for LLM Watermarks in Sparse and Mixed Streams | detection、robust detection、content watermark、provenance | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/61558) | 暂未公开 | 针对生成内容水印容易遭到改写、混合、伪造或低成本移除的问题 | 论文提出 LORD-GoF 检测、定位或审计方法 | 关键实现：论文提出 LORD-GoF 检测、定位或审计方法。 | 摘要实验验证其能识别或定位相应风险，并报告了跨设置证据，直接服务于生成内容标记与溯源。 |
-| 2026 | IPMark: A Sentence-Level Watermark for LLMs with Hierarchical Personalization and Efficient Detection | detection、content watermark、provenance、robust verification | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/64793) | [Code](https://github.com/nwlt/IPMark) | 针对生成内容水印容易遭到改写、混合、伪造或低成本移除的问题 | 论文提出 IPMark 检测、定位或审计方法 | 关键实现：论文提出 IPMark 检测、定位或审计方法。 | 摘要实验验证其能识别或定位相应风险，并报告了跨设置证据，直接服务于生成内容标记与溯源。 |
-| 2026 | Ideal Attribution and Faithful Watermarks for Language Models | detection、content watermark、provenance、robust verification | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/66216) | 暂未公开 | 针对生成内容水印容易遭到改写、混合、伪造或低成本移除的问题 | 论文提出 Ideal Attribution and Faithful Watermarks 检测、定位或审计方法 | 关键实现：论文提出 Ideal Attribution and Faithful Watermarks 检测、定位或审计方法。 | 摘要实验验证其能识别或定位相应风险，并报告了跨设置证据，直接服务于生成内容标记与溯源。 |
-| 2026 | IACW: Intent-Aware Controllable Watermarking for Scalable Authorial Intent Attribution | detection、AI watermarking、content watermark、provenance | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/65767) | 暂未公开 | 针对生成内容水印容易遭到改写、混合、伪造或低成本移除的问题 | 论文提出 IACW 检测、定位或审计方法 | 关键实现：论文提出 IACW 检测、定位或审计方法。 | 摘要实验验证其能识别或定位相应风险，并报告了跨设置证据，直接服务于生成内容标记与溯源。 |
-| 2026 | How Good is Post-Hoc Watermarking With Language Model Rephrasing? | analysis、AI watermarking、content watermark、provenance | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/63169) | 暂未公开 | 针对生成内容水印容易遭到改写、混合、伪造或低成本移除的问题 | 论文围绕 How Good is Post-Hoc Watermarking 开展机制与边界分析 | 关键实现：论文围绕 How Good is Post-Hoc Watermarking 开展机制与边界分析。 | 摘要实验显示其在所列设置下优于所比较基线，直接服务于生成内容标记与溯源。 |
-| 2026 | Catch-22: On the Fundamental Tradeoff Between Detectability and Robustness in LLM Watermarking | detection、AI watermarking、content watermark、adversarial robustness | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/66807) | 暂未公开 | 针对生成内容水印容易遭到改写、混合、伪造或低成本移除的问题 | 论文提出 Catch-22 检测、定位或审计方法 | 关键实现：论文提出 Catch-22 检测、定位或审计方法。 | 摘要实验验证其能识别或定位相应风险，并报告了跨设置证据，直接服务于生成内容标记与溯源。 |
-| 2026 | Beyond “Made with AI”: Visualizing Provenance Density to Mitigate the Transparency Penalty | analysis、AI provenance、evidence visualization、hallucination trust | IJCAI-ECAI 2026 | [Accepted](https://2026.ijcai.org/accepted-papers/?ijtrack=special-track-on-human-centred-ai) · [Preprint](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/HC13.pdf) | 暂未公开 | 针对二元“AI 生成”标签既不能证明事实又会贬低准确内容 | 作者用 Provenance Density 展示已验证主张密度 | 关键实现：作者用 Provenance Density 展示已验证主张密度。 | 帮助用户区分真实与流畅幻觉。 |
+- 🎯 **研究动机**：现有 LLM 水印的绿红 token 表多为启发式设计；直接 RL 优化面临多准则（可检性、质量、抗移除、抗伪造）奖励冲突与巨大动作空间下的 reward hacking
+- 🔬 **研究方法**：提出端到端 RL 框架：锚定机制稳定多奖励项训练，正则项防止 reward hacking，联合优化绿红表设计
+- 📌 **结论**：在标准基准与两个 backbone LLM 上取得全准则 SOTA 权衡，抗 spoofing 攻击显著改善且不损其他指标
 
-## 移除、伪造与规避攻击
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026-08 | MarkNull: Model-Agnostic Watermark Removal in AI-Generated Images via On-Manifold Latent Manipulation | attack、latent manipulation、content watermark、AI-generated content | USENIX Security 2026 | [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/cao) · [arXiv](https://arxiv.org/abs/2608.10166) | 暂未公开 | 针对生成图像水印移除常产生明显失真或依赖水印细节的问题 | MarkNull 在生成流形上操纵 latent | 并以 MarkNull-A 处理自适应检测 | 使水印 bit accuracy 降至 53.14% 且单图约耗时 0.50 秒。 |
-| 2026-05 | Linear Ensembles Wash Away Watermarks: On the Fragility of Distributional Perturbations in LLMs | defense、content watermark、provenance、robust verification | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/66219) · [arXiv](https://arxiv.org/abs/2605.30501) | [Code](https://github.com/Kunhao18/WASH) | 针对生成内容水印容易遭到改写、混合、伪造或低成本移除的问题 | 论文提出 Linear Ensembles Wash Away Watermarks 防御或缓解方法 | 关键实现：论文提出 Linear Ensembles Wash Away Watermarks 防御或缓解方法。 | 摘要实验显示其提高了系统对相应威胁的鲁棒性，直接服务于生成内容标记与溯源。 |
-| 2026-05 | PASA: A Principled Embedding-Space Watermarking Approach for LLM-Generated Text under Semantic-Invariant Attacks | attack、AI watermarking、content watermark、provenance | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/63335) · [arXiv](https://arxiv.org/abs/2605.10977) | [Code](https://github.com/ai-kunkun/PASA) | 针对生成内容水印容易遭到改写、混合、伪造或低成本移除的问题 | 论文提出 PASA 攻击或威胁分析 | 关键实现：论文提出 PASA 攻击或威胁分析。 | 摘要实验验证该威胁在所列模型、任务或数据集上成立，直接服务于生成内容标记与溯源。 |
-| 2026-03 | DITTO: A Spoofing Attack Framework on Watermarked LLMs via Knowledge Distillation | attack、text watermark、knowledge distillation、authorship spoofing | EACL 2026 | [Official](https://aclanthology.org/2026.eacl-long.229/) | [Code](https://github.com/hsannn/ditto) | 研究 text watermark、knowledge distillation 场景下的攻击面，重点考察 authorship spoofing 如何影响目标模型或系统。 | 针对特定 watermark 被当作特定模型作者证明；DITTO 通过 distill watermarked teacher 复制其 radioactivity signal | 关键实现：针对特定 watermark 被当作特定模型作者证明；DITTO 通过 distill watermarked teacher 复制其 radioactivity signal。 | 结果恶意模型可给 disinformation 伪造可信来源水印，打破 watermark uniqueness 假设。 |
-| 2026-01 | RAVEN: Erasing Invisible Watermarks via Novel View Synthesis | attack、watermark removal、novel-view synthesis、provenance evasion | CVPR 2026 | [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Shamshad_RAVEN_Erasing_Invisible_Watermarks_via_Novel_View_Synthesis_CVPR_2026_paper.html) · [arXiv](https://arxiv.org/abs/2601.08832) | 暂未公开 | 针对水印防御主要测试压缩和编辑 | RAVEN 先重建场景再合成新视角 | 在保留内容的同时擦除不可见标记 | 揭示三维重生成攻击。 |
-| 2026 | SemBind: Binding Diffusion Watermarks to Semantics Against Black-Box Forgery Attacks | attack、diffusion model、content watermark、provenance | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/63877) | [Code](https://github.com/XinZhang1999/SemBind) | 针对生成内容水印容易遭到改写、混合、伪造或低成本移除的问题 | 论文提出 SemBind 攻击或威胁分析 | 关键实现：论文提出 SemBind 攻击或威胁分析。 | 摘要实验验证该威胁在所列模型、任务或数据集上成立，直接服务于生成内容标记与溯源。 |
-| 2026 | Rethinking Forgery Attacks on Semantic Watermarks in Black-Box Settings: A Geometric Distortion Perspective | attack、content watermark、provenance、robust verification | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/63044) | 暂未公开 | 针对生成内容水印容易遭到改写、混合、伪造或低成本移除的问题 | 论文提出 Rethinking Forgery Attacks on Semantic 攻击或威胁分析 | 关键实现：论文提出 Rethinking Forgery Attacks on Semantic 攻击或威胁分析。 | 摘要实验验证该威胁在所列模型、任务或数据集上成立，直接服务于生成内容标记与溯源。 |
-| 2026 | Low-Compute Watermark Removal via Dual-Domain Natural Projection | defense、content watermark、provenance、robust verification | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/66820) | [Code](https://anonymous.4open.science/r/DAWN-567A/) | 针对生成内容水印容易遭到改写、混合、伪造或低成本移除的问题 | 论文提出 Low-Compute Watermark Removal via Dual-Domain 防御或缓解方法 | 关键实现：论文提出 Low-Compute Watermark Removal via Dual-Domain 防御或缓解方法。 | 摘要实验显示其降低相应风险或攻击效果，同时尽量保持正常任务效用，直接服务于生成内容标记与溯源。 |
-| 2026 | LLM Watermark Evasion via Bias Inversion | attack、content watermark、provenance、robust verification | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/61021) | [Code](https://github.com/ml-postech/LLM-Watermark-Evasion-via-Bias-Inversion) | 针对生成内容水印容易遭到改写、混合、伪造或低成本移除的问题 | 论文提出 LLM Watermark Evasion via Bias 攻击或威胁分析 | 关键实现：论文提出 LLM Watermark Evasion via Bias 攻击或威胁分析。 | 摘要实验验证该威胁在所列模型、任务或数据集上成立，直接服务于生成内容标记与溯源。 |
-| 2026 | Echoes within the Reasoning: Stealthy and Effective Watermarking via Chain of Thought | attack、AI watermarking、chain-of-thought、content watermark | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/62859) | 暂未公开 | 针对生成内容水印容易遭到改写、混合、伪造或低成本移除的问题 | 论文提出 Echoes within the Reasoning 防御或缓解方法 | 关键实现：论文提出 Echoes within the Reasoning 防御或缓解方法。 | 摘要实验显示其降低相应风险或攻击效果，同时尽量保持正常任务效用，直接服务于生成内容标记与溯源。 |
+Watermarking has emerged as a promising solution for tracing and authenticating text generated by large language models (LLMs). A common approach to LLM watermarking is to construct a green/red token list and assign higher or lower generation probabilities to the corresponding tokens, respectively. However, most existing watermarking algorithms rely on heuristic green/red token list designs, as directly optimizing the list design with techniques such as reinforcement learning (RL) comes with several challenges. First, desirable watermarking involves multiple criteria, i.e., detectability, text quality, robustness against removal attacks, and security against spoofing attacks. Directly optimizing for these criteria introduces many partially conflicting reward terms, leading to an unstable convergence process. Second, the vast action space of green/red token list choices is susceptible to reward hacking. In this paper, we propose an end-to-end RL framework for robust and secure LLM watermarking. Our approach adopts an anchoring mechanism for reward terms to ensure stable training and introduces additional regularization terms to prevent reward hacking. Experiments on standard benchmarks with two backbone LLMs show that our method achieves a state-of-the-art trade-off across all criteria, with notable improvements in resistance to spoofing attacks without degrading other criteria.
 
-## Benchmark 与 Worst-Case Evaluation
+</details>
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026 | WMVLM: Evaluating Diffusion Model Image Watermarking via Vision-Language Models | benchmark、AI watermarking、diffusion model、content watermark | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/64406) | 暂未公开 | 针对生成内容水印容易遭到改写、混合、伪造或低成本移除的问题 | 论文构建 WMVLM 基准并开展系统评测 | 关键实现：论文构建 WMVLM 基准并开展系统评测。 | 跨模型或跨数据集结果暴露了现有系统的具体安全缺口，直接服务于生成内容标记与溯源。 |
-| 2026 | RLCracker: Evaluating the Worst-Case Vulnerability of LLM Watermarks with Adaptive RL Attacks | benchmark、content watermark、cyber misuse、provenance | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/63933) | 暂未公开 | 针对生成内容水印容易遭到改写、混合、伪造或低成本移除的问题 | 论文构建 RLCracker 基准并开展系统评测 | 关键实现：论文构建 RLCracker 基准并开展系统评测。 | 跨模型或跨数据集结果暴露了现有系统的具体安全缺口，直接服务于生成内容标记与溯源。 |
+### 2. Semantic Differentiation for Tackling Challenges in Watermarking Low-Entropy Constrained Generation Outputs
+
+📄 [arXiv](https://arxiv.org/abs/2601.11629) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-01
+
+**关键词**：`defense`、`low-entropy generation`、`content watermark`、`provenance`、`text watermarking`、`semantic partition`
+
+👤 **作者**：Nghia T. Le、Alan Ritter、Kartik Goyal
+
+- 🎯 **研究动机**：token 级水印在低熵受限生成中失效，已有序列级方法又存在高概率输出坍入无效区域的 region collapse 问题
+- 🔬 **研究方法**：SeqMark 对高概率输出子空间做语义差异区分并划分为有效/无效区域，保证高质量输出均匀分布其中，平衡质量、可检测性与不可感知性
+- 📌 **结论**：在机器翻译、摘要与代码生成等受限任务上水印检测 F1 最高提升 28% 且生成质量保持
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+We demonstrate that while the current approaches for language model watermarking are effective for open-ended generation, they are inadequate at watermarking LM outputs for constrained generation tasks with low-entropy output spaces. Therefore, we devise SeqMark, a sequence-level watermarking algorithm with semantic differentiation that balances output quality, watermark detectability, and imperceptibility. It improves on the shortcomings of token-level watermarking algorithms that cause under-utilization of the sequence-level entropy available for constrained generation tasks. Moreover, we identify and improve upon the problem of region collapse, a different failure mode associated with prior sequence-level watermarking algorithms. This occurs because the pseudorandom partitioning of semantic space for watermarking in these approaches causes all high-probability outputs to collapse into either invalid or valid regions, leading to a trade-off in output quality and watermarking effectiveness. Instead, SeqMark differentiates the high-probable output subspace and partitions it into valid and invalid regions, ensuring the even spread of high-quality outputs among all the regions. On various constrained generation tasks like machine translation, abstractive summarization, and code generation, SeqMark substantially improves watermark detection accuracy (up to 28% increase in F1) while maintaining high generation quality.
+
+</details>
+
+### 3. XMark: Reliable Multi-Bit Watermarking for LLM-Generated Texts
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.672/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`defense`、`watermarking`、`content watermark`、`provenance`、`AI-generated content`、`model provenance`
+
+👤 **作者**：Jiahao Xu、Rui Hu、Olivera Kotevska、Zikai Zhang
+
+- 🎯 **研究动机**：多比特水印对大消息计算不可行，短文本下解码精度骤降且损质量
+- 🔬 **研究方法**：XMark编码器产生更少失真的logit分布，配套解码器在有限token下可靠恢复消息
+- 📌 **结论**：多任务解码精度显著优于已有方法且文本质量保持
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Multi-bit watermarking has emerged as a promising solution for embedding imperceptible binary messages into Large Language Model (LLM)-generated text, enabling reliable attribution and tracing of malicious usage of LLMs. Despite recent progress, existing methods still face key limitations: some become computationally infeasible for large messages, while others suffer from a poor trade-off between text quality and decoding accuracy. Moreover, the decoding accuracy of existing methods drops significantly when the number of tokens in the generated text is limited, a condition that frequently arises in practical usage. To address these challenges, we propose XMark, a novel method for encoding and decoding binary messages in LLM-generated texts. The unique design of XMark’s encoder produces a less distorted logit distribution for watermarked token generation, preserving text quality, and also enables its tailored decoder to reliably recover the encoded message with limited tokens. Extensive experiments across diverse downstream tasks show that XMark significantly improves decoding accuracy while preserving the quality of watermarked text, outperforming prior methods. The code will be made publicly available upon acceptance.
+
+</details>
+
+### 4. Watermarking LLM Agent Trajectories
+
+📄 [arXiv](https://arxiv.org/abs/2602.18700) · 🎓 [Official](https://icml.cc/virtual/2026/poster/62387)　📅 2026　🏷 ICML 2026
+
+**关键词**：`defense`、`AI watermarking`、`content watermark`、`provenance`、`empirical evaluation`、`robust detection`
+
+👤 **作者**：Wenlong Meng、…、Wenzhi Chen
+
+- 🎯 **研究动机**：LLM 智能体轨迹数据制作昂贵，但版权保护与滥用溯源被忽视
+- 🔬 **研究方法**：提出 ActHook：借鉴软件 hook 机制嵌入由密钥激活、不改变任务结果的 hook 动作，训练于水印轨迹的智能体在密钥出现时高频产出 hook 动作以支持黑盒检测
+- 📌 **结论**：在数学推理、网络搜索与软件工程智能体上检测 AUC 平均达 94.3（Qwen-2.5-Coder-7B），性能损失可忽略
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+LLM agents rely heavily on high-quality trajectory data to guide their problem-solving behaviors, yet producing such data requires substantial task design, high-capacity model generation, and manual filtering. Despite the high cost of creating these datasets, existing literature has overlooked copyright protection for LLM agent trajectories. This gap leaves creators vulnerable to data theft and makes it difficult to trace misuse or enforce ownership rights. This paper introduces ActHook, the first watermarking method tailored for agent trajectory datasets. Inspired by hook mechanisms in software engineering, ActHook embeds hook actions that are activated by a secret input key and do not alter the original task outcome. Like software execution, LLM agents operate sequentially, allowing hook actions to be inserted at decision points without disrupting task flow. When the activation key is present, an LLM agent trained on watermarked trajectories can produce these hook actions at a significantly higher rate, enabling reliable black-box detection. Experiments on mathematical reasoning, web searching, and software engineering agents show that ActHook achieves an average detection AUC of 94.3 on Qwen-2.5-Coder-7B while incurring negligible performance degradation.
+
+</details>
+
+### 5. Towards Reliable Marking and Verification of AI-Generated Text via Geometry-aware Sentence-level Watermarking
+
+🎓 [Official](https://icml.cc/virtual/2026/poster/61358)　📅 2026　🏷 ICML 2026
+
+**关键词**：`defense`、`AI watermarking`、`content watermark`、`AI-generated content`、`empirical evaluation`、`robust detection`
+
+👤 **作者**：Yubing Ren、Ping Guo、Yanan Cao
+
+- 🎯 **研究动机**：token 级水印需白盒访问且对改写脆弱，句子级水印可黑盒部署但成功率（WSR）低，根源是嵌入分布与语义接受区域失配
+- 🔬 **研究方法**：提出 X-Guard：学习更各向同性的嵌入空间，并用质心对齐划分方案 A2PQ 近似均衡各区域概率质量以提升注入成功率
+- 📌 **结论**：跨多模型、多语言与多种攻击设置持续提升鲁棒性，同时保持文本流畅与可部署性
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large generative models raise growing concerns about provenance, misinformation, and impersonation. Digital watermarking offers a principled solution, yet extending it to natural language remains challenging due to text discreteness and sensitivity to semantic perturbations. Existing text watermarking methods either operate at the token level requiring white-box access and remaining fragile to paraphrasing, or at the sentence level, which supports black-box deployment but suffers from low Watermark Success Rate (WSR). We show that low WSR in sentence-level watermarking primarily stems from low injection success probability caused by a mismatch between posterior embedding distributions and semantic accept regions. Based on this insight, we propose \textbf{X-Guard}, a geometry-aware sentence-level watermarking framework that improves injection success by jointly optimizing embedding distributions and semantic space partitioning. X-Guard learns a more isotropic embedding space and introduces \textbf{A$^2$PQ}, a centroid-aligned partitioning scheme that approximately equalizes probability mass across regions. Extensive experiments across multiple models, languages, and attack settings demonstrate that X-Guard consistently improves robustness while preserving text fluency and practical deployability.
+
+</details>
+
+### 6. The Prompt Stealing Fallacy: Rethinking Metrics, Attacks, and Defenses
+
+🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/deng)　📅 2026　🏷 USENIX Security 2026
+
+**关键词**：`defense`、`analysis`、`prompt stealing`、`PromptThief`、`content watermark`、`evaluation metric`
+
+👤 **作者**：Zehang Deng、…、Yang Xiang
+
+- 🎯 **研究动机**：提示窃取攻击的评测指标只依赖文本或图像模态的语义相似度，无法忠实衡量攻击的真实有效性
+- 🔬 **研究方法**：提出 Style Similarity 与 Prompt Significance 新指标并据此重评现有 PSA；提出强化学习引导的黑盒攻击 PromptThief，并给出对抗样本主动防御与特征级提示水印被动防御
+- 📌 **结论**：现有白盒与黑盒 PSA 并不如所报有效，尤其难恢复高贡献提示词；PromptThief 全面超越基线；主动防御对自适应攻击鲁棒性有限，提示水印在多种图像变换下检测稳定
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Text-to-image (T2I) models are increasingly embedded in creative workflows, where well-crafted prompts function as valuable forms of intellectual property (IP). However, these models are susceptible to prompt stealing attacks (PSAs), where adversaries aim to reconstruct the original prompts used to generate images. In this paper, 1) we identify key shortcomings in current evaluation practices and propose two improved metrics: Style Similarity (SS) and a novel Prompt Significance (PS) score, which together provide a more faithful assessment of PSA effectiveness. Rather than existing metrics that rely solely on semantic similarity between original and stolen information across text or image modalities, the new metrics PS and SS assess attack effectiveness with a more practical focus by explicitly accounting for the importance of modifiers and the style replication of images generated from stolen prompts. 2) Through extensive evaluation using these metrics, we find that existing PSA methods, ranging from soft prompt stealing in white-box settings to hard prompt stealing in black-box settings, are not as effective as reported, especially in recovering high-contribution prompt components. We attribute this to fundamental constrains: white-box methods suffer from mismatched optimization objectives that poorly align with token-level visual semantics, while black-box approaches experience severe information loss due to their decoupling from the target T2I model's generation process. 3) We further introduce PromptThief, a black-box PSA framework that addresses the information loss in prior methods by leveraging reinforcement learning with STS and SS to guide high token-level contribution recovery. PromptThief significantly outperforms existing baselines across multiple metrics and real-world scenarios. 4) We propose and evaluate two defense mechanisms: an adversarial-example-based active approach and a passive scheme through feature-level prompt watermarking. Our evaluation reveals that the active defense offers only limited robustness against adaptive PSAs, highlighting the need for further exploration in this direction. In contrast, the passive watermarking scheme demonstrates strong and consistent detection performance, even under various image transformations, offering a practical and reliable path forward for prompt IP protection.
+
+</details>
+
+### 7. SWAN: Semantic Watermarking with Abstract Meaning Representation
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.1681/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`defense`、`watermarking`、`content watermark`、`provenance`、`representation intervention`、`model provenance`
+
+👤 **作者**：Ziping Ye、…、Ninareh Mehrabi
+
+- 🎯 **研究动机**：现有文本水印靠调整 token 选择偏好嵌入签名，改写保意后签名易丢失
+- 🔬 **研究方法**：提出 SWAN 把签名嵌入句子的 AMR 语义结构：免训练，提示 LLM 按选定 AMR 模板生成句子，检测用现成 AMR 解析器加单比例 z 检验
+- 📌 **结论**：RealNews 上未改水印文本检测匹敌 SOTA，抗 paraphrase 检测 AUC 较先前方法最高提升 13.9 个百分点
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+We introduce SWAN (Semantic Watermarking with Abstract Meaning Representation), a novel framework that embeds watermark signatures into the semantic structure of a sentence using Abstract Meaning Representation (AMR). In contrast to existing watermarking methods, which typically encode signatures by adjusting token selection preferences during text generation, SWAN embeds the signature directly in the sentence’s semantic representation. As the signature is encoded at the semantic structure level, any paraphrase that preserves meaning, automatically preserves the signature. SWAN is training-free: watermark injection is achieved by prompting an LLM to generate sentences guided by a selected AMR template while maintaining contextual coherence, and detection uses an off-the-shelf AMR parser followed by a simple one-proportion z-test. Empirical evaluation on the RealNews benchmark shows SWAN matches state-of-the-art detection performance on unaltered watermarked text, while significantly improving robustness against paraphrasing, increasing detection AUC by up to 13.9 percentage points compared to prior methods. These results demonstrate that SWAN’s approach of anchoring watermarks in AMR semantic structures provides a simple, effective, and prompt-based method for robust text provenance verification under paraphrasing, opening new avenues for semantic-level watermarking research.
+
+</details>
+
+### 8. SSG: Logit-Balanced Vocabulary Partitioning for LLM Watermarking
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.1702/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`defense`、`watermarking`、`content watermark`、`provenance`、`model provenance`、`ownership verification`
+
+👤 **作者**：Chenxi Gu、Xiaoning Du、John C. Grundy
+
+- 🎯 **研究动机**：KGW 水印在代码生成、数学推理等低熵设定下效果显著退化，随机词表划分的水印强度下界受下一 token 概率分布限制
+- 🔬 **研究方法**：提出 SSG（Sort-then-Split by Groups）：把词表划分为两个 logit 均衡子集，抬升每次 token 预测的水印强度下界，改善可检测性
+- 📌 **结论**：在代码生成与数学推理数据集上验证有效提升水印检测效果
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Watermarking has emerged as a promising technique for tracing the authorship of content generated by large language models (LLMs). Among existing approaches, the KGW scheme is particularly attractive due to its versatility, efficiency, and effectiveness in natural language generation.However, KGW’s effectiveness degrades significantly under low-entropy settings such as code generation and mathematical reasoning. A crucial step in the KGW method is random vocabulary partitioning, which enables adjustments to token selection based on specific preferences. Our study revealed that the next-token probability distribution plays an critical role in determining how much, or even whether, we can modify token selection and, consequently, the effectiveness of watermarking.We refer to this characteristic, associated with the probability distribution of each token prediction, as watermark strength. In cases of random vocabulary partitioning, the lower bound of watermark strength is dictated by the next-token probability distribution. However, we found that, by redesigning the vocabulary partitioning algorithm, we can potentially raise this lower bound. In this paper, we propose SSG ( S ort-then- S plit by G roups), a method that partitions the vocabulary into two logit-balanced subsets. This design lifts the lower bound of watermark strength for each token prediction, thereby improving watermark detectability. Experiments on code generation and mathematical reasoning datasets demonstrate the effectiveness of SSG.
+
+</details>
+
+### 9. Selective Disclosure Watermarking for Large Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2607.05353) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64328)　📅 2026　🏷 ICML 2026
+
+**关键词**：`defense`、`AI watermarking`、`content watermark`、`provenance`、`empirical evaluation`、`robust detection`
+
+👤 **作者**：Xuyang Chen、Xiang Li、Yangxinyu Xie、Qi Long
+
+- 🎯 **研究动机**：现有多比特水印验证任一部分就须暴露整个嵌入消息，缺乏选择性披露控制，造成信息过度暴露与隐私风险
+- 🔬 **研究方法**：提出 HeRo：递归划分词表并把水印信息分布到层级结构，不同验证者只能解码其访问级别对应的载荷，同时保持采样的无偏性
+- 📌 **结论**：支持细粒度访问控制，兼顾高检测准确率与低延迟，且不损文本质量
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Watermarking methods embed imperceptible and verifiable signals into text generated by large language models (LLMs). Existing approaches include zero-bit schemes for distinguishing synthetic text from human writing and multi-bit schemes for embedding metadata. However, current multi-bit watermarking methods do not allow selective disclosure: verifying any part of the watermark requires revealing the entire embedded message. This lack of control leads to unnecessary information exposure and raises privacy concerns. We propose Hierarchical Vocabulary Routing (HeRo), a watermarking framework that enables selective disclosure of embedded metadata. The method recursively partitions the vocabulary and distributes watermark information across hierarchical layers, so that different verifiers can decode only the portions of the payload corresponding to their access level. We show that the proposed scheme preserves the unbiasedness of the underlying sampling process and thus maintains text quality. Experiments demonstrate that our framework supports fine-grained access control while achieving high detection accuracy and low latency. Code is available at \url{https://github.com/xuyangc03/hero-watermark}.
+
+</details>
+
+### 10. Revisiting Coding-Based Approaches to Overcome the Curse of Dimensionality in Learning-Based Watermarking
+
+🎓 [Official](https://icml.cc/virtual/2026/poster/61794)　📅 2026　🏷 ICML 2026
+
+**关键词**：`defense`、`AI watermarking`、`content watermark`、`provenance`、`empirical evaluation`、`robust detection`
+
+👤 **作者**：Yupeng Qiu、Han Fang、Ee-Chien Chang
+
+- 🎯 **研究动机**：深度水印随载荷维度增大性能下降，QIM 等编码方法无此维度灾难但对真实噪声欠鲁棒
+- 🔬 **研究方法**：提出 OrthoMark：解耦鲁棒特征提取与消息编码，先用深度网络提取失真不变特征，再在特征域用编码方法做水印编解码
+- 📌 **结论**：在视觉质量、鲁棒性与容量上显著优于此前深度水印方法，高容量区收益最大
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Deep learning–based watermarking has substantially improved robustness to real-world noise, but its performance degrades as the payload dimension increases. In contrast, coding-based methods such as quantization index modulation (QIM) do not suffer from this curse of dimensionality, although they are less robust to real-world noise. To leverage the strengths of both approaches, we propose OrthoMark, a framework that decouples robust feature extraction from message encoding. OrthoMark first learns a distortion-invariant feature representation using a deep robust feature extractor, and then performs watermark encoding and decoding in this feature domain using coding-based methods. Extensive experiments demonstrate that OrthoMark significantly improves the trade-off among visual quality, robustness, and capacity compared to prior deep watermarking methods, with particularly large gains in the high capacity regime, effectively overcoming the curse of dimensionality. Our code is available at \url{https://github.com/QQiuyp/OrthoMark}.
+
+</details>
+
+### 11. QuantileMark: A Message-Symmetric Multi-bit Watermark for LLMs
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.308/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`defense`、`content watermark`、`provenance`、`robust verification`、`watermarking`、`model provenance`
+
+👤 **作者**：Junlin Zhu、Baizhou Huang、Xiaojun Wan
+
+- 🎯 **研究动机**：词表分区水印在低熵解码下破坏消息对称性：嵌入质量与解码精度依赖消息内容
+- 🔬 **研究方法**：QuantileMark 在连续累计概率区间嵌入：每步划 M 个等质量 bin 并严格从目标 bin 采样保证 1/M 概率预算；检测端 teacher forcing 重建分区聚合后验证据，并证明 message-unbiasedness
+- 📌 **结论**：C4 续写与 LFQA 上多比特恢复与检测鲁棒性超强基线，生成质量几乎不受影响
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+As large language models become standard backends for content generation, practical provenance increasingly requires multi-bit watermarking. In provider-internal deployments, a key requirement is message symmetry: the message itself should not systematically affect either text quality or verification outcomes.Vocabulary-partition watermarks can break message symmetry in low-entropy decoding: some messages are assigned most of the probability mass, while others are forced to use tail tokens. This makes embedding quality and message decoding accuracy message-dependent.We propose QuantileMark, a white-box multi-bit watermark that embeds messages within the continuous cumulative probability interval [0, 1).At each step, QuantileMark partitions this interval into M equal-mass bins and samples strictly from the bin assigned to the target symbol, ensuring a fixed 1/M probability budget regardless of context entropy.For detection, the verifier reconstructs the same partition under teacher forcing, computes posteriors over latent bins, and aggregates evidence for verification.We prove message-unbiasedness, a property ensuring that the base distribution is recovered when averaging over messages. This provides a theoretical foundation for generation-side symmetry, while the equal-mass design additionally promotes uniform evidence strength across messages on the detection side.Empirical results on C4 continuation and LFQA show improved multi-bit recovery and detection robustness over strong baselines, with negligible impact on generation quality.
+
+</details>
+
+### 12. Learning to Watermark in the Latent Space of Generative Models
+
+📄 [arXiv](https://arxiv.org/abs/2601.16140) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63642)　📅 2026　🏷 ICML 2026
+
+**关键词**：`defense`、`content watermark`、`provenance`、`robust verification`、`AI watermarking`、`diffusion model`
+
+👤 **作者**：Sylvestre-Alvise Rebuffi、…、Alexandre Mourachko
+
+- 🎯 **研究动机**：像素空间后处理水印有计算开销与视觉伪影
+- 🔬 **研究方法**：DistSeal 在生成模型潜空间训练后处理水印器，可蒸馏进生成模型或潜解码器实现模型内水印
+- 📌 **结论**：鲁棒性有竞争力、不可感知性相近，比像素空间基线快最多 20 倍；蒸馏潜空间水印器优于像素空间方案
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Existing approaches for watermarking AI-generated images often rely on post-hoc methods applied in pixel space, introducing computational overhead and potential visual artifacts. In this work, we explore latent space watermarking and introduce DistSeal, a unified approach for latent watermarking that works across both diffusion and autoregressive models. Our approach works by training post-hoc watermarking models in the latent space of generative models. We demonstrate that these latent watermarkers can be effectively distilled either into the generative model itself or into the latent decoder, enabling in-model watermarking. The resulting latent watermarks achieve competitive robustness while offering similar imperceptibility and up to 20x speedup compared to pixel-space baselines. Our experiments further reveal that distilling latent watermarkers outperforms distilling pixel-space ones, providing a solution that is both more efficient and more robust.
+
+</details>
+
+### 13. Don’t Corrupt the Fact: A Trustworthy RAG Watermarking Framework based on Dual Factual Shield
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.2075/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`defense`、`watermarking`、`content watermark`、`provenance`、`RAG security`、`model provenance`
+
+👤 **作者**：Hao Huang、JiaTang Luo、Ruihua Zhou、Yunpeng Li、Yuling Liu
+
+- 🎯 **研究动机**：现有水印方法事实无关，迫使 RAG 偏离其应遵循的源文档，产生与落地上下文矛盾的忠实性幻觉
+- 🔬 **研究方法**：Dual Factual Shield 纵深防御：源锚定算法层保护检索上下文关键术语加提示语义引导层防事实腐蚀，并引入 Knowledge Corruption Rate 指标
+- 📌 **结论**：大幅降低 KCR 同时保持水印原方案的高安全性与鲁棒性，实现可追溯与真实共存
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+While Retrieval-Augmented Generation (RAG) systems are designed to enhance factual fidelity by grounding LLMs in provided sources, the application of current watermarking techniques creates a paradoxical failure mode. These methods, being inherently fact-agnostic, force the model to deviate from the very source documents it is supposed to follow. This leads to “faithfulness hallucinations"—a critical flaw where the generated output contradicts its own grounding context. Consequently, these watermarks undermine the core value of RAG, rendering even the most secure schemes untrustworthy for high-stakes applications. To resolve this RAG-specific conflict, we introduce the Dual Factual Shield (DFS) framework, a novel architecture designed to enforce knowledge loyalty. The DFS framework employs a defense-in-depth strategy through two synergistic layers: a source-anchored algorithmic safeguard that shields critical terms from the retrieved context, and prompt-based semantic guidance that protects against factual corruption. To demonstrate its effectiveness, we enhance a state-of-the-art, spoofing-aware contrastive watermarking baseline with our framework. Experiments show that our framework drastically reduces the Knowledge Corruption Rate (KCR)—a new metric we introduce—while preserving its original high security and robustness. This work establishes a new paradigm for watermarking, evolving it from merely secure to truly trustworthy. We demonstrate that traceability and truth can, and must, coexist, paving the way for the responsible deployment of traceable AI in knowledge-critical domains.
+
+</details>
+
+### 14. Block-wise Codeword Embedding for Reliable Multi-bit Text Watermarking
+
+📄 [arXiv](https://arxiv.org/abs/2605.00348) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63246)　📅 2026　🏷 ICML 2026
+
+**关键词**：`defense`、`AI watermarking`、`content watermark`、`provenance`、`empirical evaluation`、`robust detection`
+
+👤 **作者**：Joeun Kim、HoEun Kim、Dongsup Jin、Young-Sik Kim
+
+- 🎯 **研究动机**：多比特文本水印重容量轻可靠：现有 ECC 抽取器存在灾难性 FPR，加拒绝阈值又使 TPR 塌缩到随机猜测
+- 🔬 **研究方法**：BREW 转向指定验证范式：独立块投票盲估消息，窗口滑动验证对局部编辑严格校验载荷
+- 📌 **结论**：10% 同义替换下 TPR 达 0.965、FPR 仅 0.02，证明高 FPR 是先前解码中心设计的结构缺陷而非多比特水印的固有折中
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Recent multi-bit watermarking methods for large language models (LLMs) prioritize capacity over reliability, often conflating decoding with detection. Our analysis reveals that existing ECC-based extractors suffer from catastrophic false positive rates (FPR), and applying rejection thresholds merely collapses detection sensitivity (TPR) to random guessing. To resolve this structural limitation, we propose BREW (Block-wise Reliable Embedding for Watermarking), a framework shifting the paradigm to designated verification. BREW employs a two-stage mechanism: (i) blind message estimation via independent block voting, followed by (ii) window-shifting verification that rigorously validates the payload against local edits. Experiments demonstrate that BREW achieves a TPR of 0.965 with an FPR of 0.02 under 10\% synonym substitution, demonstrating that the high-FPR issue is not an inherent trade-off of multi-bit watermarking, but a solvable structural flaw of prior decoding-centric designs. Our framework is model-agnostic and theoretically grounded, providing a scalable solution for reliable forensic deployment.
+
+</details>
+
+### 15. Beyond Heuristic Tuning: Power-Calibrated LLM Watermarking
+
+📄 [arXiv](https://arxiv.org/abs/2607.05694) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63724)　📅 2026　🏷 ICML 2026
+
+**关键词**：`defense`、`AI watermarking`、`content watermark`、`provenance`、`mechanistic analysis`、`robust detection`
+
+👤 **作者**：Xiaopu Wang、Zelin He、Chengyuan Liu、Runze Li
+
+- 🎯 **研究动机**：logit 水印受可检测性与语义失真的根本权衡支配，现有分析对超参选择指导有限，部署依赖启发式调参
+- 🔬 **研究方法**：建立水印超参、检测功效与失真间显式定量关系的功效校准统计框架，把水印设计转为引导式优化并推导约束下最优折中的参数选择流程
+- 📌 **结论**：多模型多数据集实验验证理论，框架一致找到 Pareto 最优点
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Logit-based watermarking is a widely used mechanism for identifying LLM generated content, yet its effectiveness is governed by a fundamental trade-off between detectability and semantic distortion. Existing analyses provide limited guidance for principled hyperparameter selection, leaving practical deployments reliant on heuristic tuning. In this work, we develop a power-calibrated statistical framework that establishes explicit quantitative relationships between watermark hyperparameters, detection power, and distortion. This characterization transforms watermark design into a guided optimization problem. Building on these results, we derive practical parameter selection procedures that achieve optimal trade-offs under constraints. Extensive experiments across multiple language models and datasets validate the theory and demonstrate that the proposed framework consistently identifies Pareto-optimal points.
+
+</details>
+
+### 16. A Linguistics-Aware LLM Watermarking via Syntactic Predictability
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.2115/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`defense`、`watermarking`、`content watermark`、`provenance`、`model provenance`、`ownership verification`
+
+👤 **作者**：Shinwoo Park、Hyejin Park、Hyeseon Ahn、Yo-Sub Han
+
+- 🎯 **研究动机**：现有水印依赖模型输出分布信号（如 token 熵），检测需访问底层模型 logits，阻碍公开验证
+- 🔬 **研究方法**：提出 STELA：用水词性 n-gram 建模的语言不确定性动态调制水印强度——语法受限语境弱化信号保质量、语言灵活语境强化信号增可检性；检测器不需任何模型 logits
+- 📌 **结论**：在分析语英语、孤立语汉语与黏着语韩语等类型多样语言上，检测鲁棒性超过先前方法，实现公开可验证检测
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+As large language models (LLMs) continue to advance rapidly, reliable governance tools have become critical. Publicly verifiable watermarking is particularly essential for fostering a trustworthy AI ecosystem. A central challenge persists: balancing text quality against detection robustness. Recent studies have sought to navigate this trade-off by leveraging signals from model output distributions (e.g., token-level entropy); however, their reliance on these model-specific signals presents a significant barrier to public verification, as the detection process requires access to the logits of the underlying model. We introduce STELA, a novel framework that aligns watermark strength with the linguistic degrees of freedom inherent in language. STELA dynamically modulates the signal using part-of-speech (POS) n-gram–modeled linguistic indeterminacy, weakening it in grammatically constrained contexts to preserve quality and strengthening it in contexts with greater linguistic flexibility to enhance detectability. Our detector operates without access to any model logits, thus facilitating publicly verifiable detection. Through extensive experiments on typologically diverse languages—analytic English, isolating Chinese, and agglutinative Korean—we show that STELA surpasses prior methods in detection robustness. Our code is available at https://github.com/Shinwoo-Park/stela_watermark.
+
+</details>
+
+### 17. AliMark: Enhancing Robustness of Sentence-Level Watermarking Against Text Paraphrasing
+
+📄 [arXiv](https://arxiv.org/abs/2605.29434) · 🎓 [Official](https://icml.cc/virtual/2026/poster/62142)　📅 2026　🏷 ICML 2026
+
+**关键词**：`defense`、`AI watermarking`、`content watermark`、`adversarial robustness`、`empirical evaluation`、`robust detection`
+
+👤 **作者**：Yuexin Li、…、Jiaheng Zhang
+
+- 🎯 **研究动机**：句级水印的前缀设计在 DIPPER、GPT-3.5 等强改写器的句子拆分与合并等结构扰动下脆弱
+- 🔬 **研究方法**：AliMark 把句级水印重构为比特序列编码与对齐问题：生成多个重构文本变体，自适应对齐提取的比特序列以最小化对齐代价
+- 📌 **结论**：多候选对齐设计天然抗句子合并与拆分，多样改写攻击下显著超越 SOTA 基线
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Existing sentence-level watermarking methods enhance robustness to paraphrasing by anchoring watermarks in sentence semantics. However, their prefix-based designs remain vulnerable to structural perturbations, such as sentence splitting and merging, which commonly arise under strong paraphrasers like DIPPER and GPT-3.5. To mitigate this issue, we propose AliMark, a framework that reformulates sentence-level watermarking as a bit sequence encoding and alignment problem between a potentially watermarked text and a secret bit sequence. Notably, our approach adopts a two-stage detection strategy: we generate multiple restructured text variants and adaptively align their extracted bit sequences with the secret bit sequence to minimize alignment cost. This multi-candidate alignment design naturally improves robustness to sentence merges and splits. Extensive experiments demonstrate that AliMark substantially outperforms state-of-the-art baselines under diverse paraphrasing attacks. Our code is available at https://github.com/imethanlee/AliMark.
+
+</details>
+
+### 18. A Distortion-minimization Watermarking Framework for Large Language Models: Larger Capacity, Stronger Robustness and Higher Quality
+
+🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/zhai)　📅 2026　🏷 USENIX Security 2026
+
+**关键词**：`tool`、`defense`、`LLM watermarking`、`distortion minimization`、`paraphrasing robustness`
+
+👤 **作者**：Liming Zhai、Xuezhou Shang、Liyun Zhang、Po Hu
+
+- 🎯 **研究动机**：LLM 水印需同时满足大容量、强鲁棒与高质量，现有方法用分离设计各自应对、难以兼顾
+- 🔬 **研究方法**：提出 DMW 框架：把鲁棒性与质量统一建模为文本修改的 distortion cost，按水印长度最小化总失真——语义不变性鲁棒代价与低凝聚高变异区域导向的质量代价；用 syndrome-trellis codes 表述为周期最短路问题，支持实时生成
+- 📌 **结论**：跨数据集与 LLM 全面超过 SOTA，严重改写攻击下匹配率比最佳基线高 46.35% 且文本质量更优
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language model (LLM) watermarking provides verifiable source identification for generated text, and its practical deployment requires large watermark capacity, strong robustness against attacks, and high text quality. However, existing methods often struggle to balance all these criteria, typically addressing them with separate designs. To overcome this, we propose a distortion-minimization watermarking (DMW) framework that unifies capacity, robustness and quality within a single optimization paradigm. This framework models robustness and quality as distortion costs for text modifications, minimizing the total distortion for a given watermark length to achieve an optimal trade-off. Specifically, we design several distortion costs: a robustness cost leveraging semantic invariance to resist attacks, and two quality costs guiding modifications toward low-cohesion, high-variability regions to reduce perceptual impact. We then propose periodically optimized syndrome-trellis codes (PO-STCs), formulating overall distortion minimization as a periodic shortest-path problem. This enables real-time optimization for sequential generation with flexible capacity control. Extensive experiments across diverse datasets and LLMs demonstrate DMW's superiority, outperforming state-of-the-art methods across all criteria. Notably, under severe paraphrasing attacks, DMW achieves a match rate up to 46.35% higher than the best baseline, while maintaining superior text quality.
+
+</details>
+
+### 19. Adaptive Code Watermarking Through Reinforcement Learning
+
+🎓 [Official](https://icml.cc/virtual/2026/poster/66298)　📅 2026　🏷 ICML 2026
+
+**关键词**：`defense`、`AI watermarking`、`reinforcement learning`、`content watermark`、`robust detection`
+
+👤 **作者**：Zhimeng Guo、Huaisheng Zhu、Siyuan Xu、Hangfan Zhang、Teng Xiao、Minhao Cheng
+
+- 🎯 **研究动机**：LLM 生成生产代码的知识产权保护需要尊重代码严格语法约束的水印技术
+- 🔬 **研究方法**：提出 CodeTracer：RL 训练参数化策略在 next-token 预测中偏置 token 选择，奖励系统融合执行反馈与水印嵌入信号（过程级与结果级并用），Gumbel Top-k 重参数化实现离散决策的梯度优化
+- 📌 **结论**：在多基准上水印可检测性与代码功能性均超过 SOTA 基线
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+As LLMs increasingly generate production code, protecting intellectual property demands watermarking techniques that respect code's strict syntactic constraints. In this work, we introduce CodeTracer, an innovative adaptive code watermarking framework underpinned by a reinforcement learning training paradigm. At its core, CodeTracer features a policy-driven approach that utilizes a parameterized model to intelligently bias token choices during next-token prediction. This strategy ensures that embedded watermarks maintain code functionality while exhibiting subtle yet statistically detectable deviations from typical token distributions. To facilitate policy learning, we devise a comprehensive reward system that seamlessly integrates execution feedback with watermark embedding signals, balancing process-level and outcome-level rewards. To enable gradient-based optimization of these discrete watermarking decisions, we employ Gumbel Top-k reparameterization. Extensive comparative evaluations demonstrate that CodeTracer outperforms state-of-the-art baselines across multiple benchmarks in both watermark detectability and code functionality. Our code is available at https://github.com/TimeLovercc/CodeTracer.
+
+</details>
+
+### 20. A Locally Tokenized Generative Model for Robust Time-Series Watermarking
+
+📄 [arXiv](https://arxiv.org/abs/2608.19727)　📅 2026-08
+
+**关键词**：`analysis`、`content watermark`、`provenance`、`robust verification`
+
+👤 **作者**：Dongbin Kim、Geonwoo Shin、Yujin Choi、Soyeon Park、Jaewook Lee
+
+- 🎯 **研究动机**：多变量时间序列水印在编辑攻击下不可靠：全局耦合重编码使零分布双向漂移、干净校准阈值失效
+- 🔬 **研究方法**：L-VQVAE 使每个离散 token 仅由短连续窗口生成，LVQMark 在该 token 空间结合 logit 偏置注入与鲁棒重编码做攻击时检测
+- 📌 **结论**：金融、能源、神经影像四基准上保持生成质量并稳定编辑攻击下的检测功效与误报行为
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Watermarking is a central tool for provenance in generative models, yet its application to multivariate time series remains hindered by reliability failures under post-editing attacks. We show that existing detectors, which rely on globally coupled re-encoding, suffer from bidirectional drift of the null distribution: post-editing attacks can shift the z-score of non-watermarked samples in either direction, invalidating clean-calibrated thresholds. We argue that this instability is a property of the re-encoding, and that reliable detection requires each recovered unit to depend only on a bounded temporal neighborhood. Guided by this principle, we propose L-VQVAE, a generative model in which each discrete token is produced from a short contiguous window, and LVQMark, a watermarking method over this token space that combines logit-bias injection with robust re-encoding for attack-time detection. Experiments on four benchmarks spanning finance, energy, and neuroimaging show that our approach preserves generation quality while stabilizing both detection power and false-positive behavior under post-editing attacks.
+
+</details>
+
+### 21. NGS-Marker: Robust Native Watermarking for 3D Gaussian Splatting
+
+📄 [arXiv](https://arxiv.org/abs/2608.17447) · 🎓 [Official](https://iclr.cc/virtual/2026/poster/10006523)　📅 2026-08
+
+**关键词**：`analysis`、`content watermark`、`provenance`、`robust verification`
+
+👤 **作者**：Hao Qin、…、Qiang Zhu
+
+- 🎯 **研究动机**：3DGS 水印多保护渲染图像，底层高斯基元可被部分侵权者提取复用，现有方法无效
+- 🔬 **研究方法**：NGS-Marker 联合训练水印注入器与消息解码器，梯度渐进注入保证全场景覆盖使任意局部区域可解码，并扩展混合保护与多模态水印
+- 📌 **结论**：有效防御部分侵权并提供实际部署灵活性
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+With the rapid development and adoption of 3D Gaussian Splatting (3DGS), the need for effective copyright protection has become increasingly critical. Existing watermarking techniques for 3DGS mainly focus on protecting rendered images via pre-trained decoders, leaving the underlying 3D Gaussian primitives vulnerable to misuse. In particular, they are ineffective against Partial Infringement, where an adversary extracts and reuses only a subset of Gaussians. In this paper, we propose NGS-Marker, a novel native watermarking framework for 3DGS. It integrates a jointly trained watermark injector and message decoder, and employs a gradientbased progressive injection strategy to ensure full-scene coverage. This enables robust ownership decoding from any local region. We further extend NGS-Marker with hybrid protection (combining native and indirect watermarks) and support for multimodal watermarking. Extensive experiments demonstrate that NGS-Marker effectively defends against partial infringement while offering practical flexibility for real-world deployment.
+
+</details>
+
+### 22. Where, What, Why: Toward Explainable 3D-GS Watermarking
+
+📄 [arXiv](https://arxiv.org/abs/2603.08809) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Cai_Where_What_Why_Toward_Explainable_3D-GS_Watermarking_CVPR_2026_paper.html)　📅 2026-03　🏷 CVPR 2026
+
+**关键词**：`defense`、`3DGS watermark`、`explainability`、`tamper analysis`
+
+👤 **作者**：Mingshu Cai、Jiajun Li、Osamu Yoshie、Yuya Ieiri、Yixuan Li
+
+- 🎯 **研究动机**：3D Gaussian Splatting 水印需兼顾鲁棒与不可感知，且缺少可解释性
+- 🔬 **研究方法**：Trio-Experts 在高斯原语上导出载体选择先验，SBAG 门控在扰动鲁棒与比特率预算下分配水印载体与视觉补偿器，通道级组掩码控制梯度传播
+- 📌 **结论**：视角一致的水印持久性与抗压缩噪声鲁棒性，PSNR +0.83 dB、比特准确率 +1.24%，并给出逐高斯可审计归因
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+As 3D Gaussian Splatting becomes the de facto representation for interactive 3D assets, robust yet imperceptible watermarking is critical. We present a representation-native framework that separates where to write from how to preserve quality. A Trio-Experts module operates directly on Gaussian primitives to derive priors for carrier selection, while a Safety and Budget Aware Gate (SBAG) allocates Gaussians to watermark carriers, optimized for bit resilience under perturbation and bitrate budgets, and to visual compensators that are insulated from watermark loss. To maintain fidelity, we introduce a channel-wise group mask that controls gradient propagation for carriers and compensators, thereby limiting Gaussian parameter updates, repairing local artifacts, and preserving high-frequency details without increasing runtime. Our design yields view-consistent watermark persistence and strong robustness against common image distortions such as compression and noise, while achieving a favorable robustness-quality trade-off compared with prior methods. In addition, decoupled finetuning provides per-Gaussian attributions that reveal where the message is carried and why those carriers are selected, enabling auditable explainability. Compared with state-of-the-art methods, our approach achieves a PSNR improvement of +0.83 dB and a bit-accuracy gain of +1.24%.
+
+</details>
+
+### 23. All in One: Unifying Deepfake Detection, Tampering Localization, and Source Tracing with a Robust Landmark-Identity Watermark
+
+📄 [arXiv](https://arxiv.org/abs/2602.23523) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Wu_All_in_One_Unifying_Deepfake_Detection_Tampering_Localization_and_Source_CVPR_2026_paper.html)　📅 2026-02　🏷 CVPR 2026
+
+**关键词**：`defense`、`identity watermark`、`tamper localization`、`source tracing`
+
+👤 **作者**：Junjiang Wu、Liejun Wang、Zhiqing Guo
+
+- 🎯 **研究动机**：主动取证把 deepfake 检测、篡改定位与来源追踪视为独立任务，缺乏统一框架
+- 🔬 **研究方法**：提出交织人脸关键点与来源标识的 152 维 LIDMark 水印，因式分解头解码器分回归/分类双头分别支撑内外一致性校验与标识解码
+- 📌 **结论**：实现检测、定位、溯源三合一，对严重失真与篡改鲁棒且不可感知
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+With the rapid advancement of deepfake technology, malicious face manipulations pose a significant threat to personal privacy and social security. However, existing proactive forensics methods typically treat deepfake detection, tampering localization, and source tracing as independent tasks, lacking a unified framework to address them jointly. To bridge this gap, we propose a unified proactive forensics framework that jointly addresses these three core tasks. Our core framework adopts an innovative 152-dimensional landmark-identity watermark termed LIDMark, which structurally interweaves facial landmarks with a unique source identifier. To robustly extract the LIDMark, we design a novel Factorized-Head Decoder (FHD). Its architecture factorizes the shared backbone features into two specialized heads (i.e., regression and classification), robustly reconstructing the embedded landmarks and identifier, respectively, even when subjected to severe distortion or tampering. This design realizes an "all-in-one" trifunctional forensic solution: the regression head underlies an "intrinsic-extrinsic" consistency check for detection and localization, while the classification head robustly decodes the source identifier for tracing. Extensive experiments show that the proposed LIDMark framework provides a unified, robust, and imperceptible solution for the detection, localization, and tracing of deepfake content. The code is available at https://github.com/vpsg-research/LIDMark.
+
+</details>
+
+### 24. RecoverMark: Robust Watermarking for Localization and Recovery of Manipulated Faces
+
+📄 [arXiv](https://arxiv.org/abs/2602.20618) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/An_RecoverMark_Robust_Watermarking_for_Localization_and_Recovery_of_Manipulated_Faces_CVPR_2026_paper.html)　📅 2026-02　🏷 CVPR 2026
+
+**关键词**：`defense`、`face watermark`、`tamper localization`、`content recovery`
+
+👤 **作者**：Haonan An、…、Yuguang Fang
+
+- 🎯 **研究动机**：脆弱水印假设攻击者不知情，易被水印去除攻击破坏，双水印策略还受互干扰与容量限制
+- 🔬 **研究方法**：RecoverMark 把受保护人脸内容本身作为水印嵌入背景，利用攻击者须保持背景语义一致的约束，以两阶段训练与失真层模拟攻击实现鲁棒嵌入
+- 📌 **结论**：对见与未见攻击同时实现篡改定位、内容恢复与所有权验证，并泛化到域内域外数据
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+The proliferation of AI-generated content has facilitated sophisticated face manipulation, severely undermining visual integrity and posing unprecedented challenges to intellectual property. In response, a common proactive defense leverages fragile watermarks to detect, localize, or even recover manipulated regions. However, these methods always assume an adversary unaware of the embedded watermark, overlooking their inherent vulnerability to watermark removal attacks. Furthermore, this fragility is exacerbated in the commonly used dual-watermark strategy that adds a robust watermark for image ownership verification, where mutual interference and limited embedding capacity reduce the fragile watermark's effectiveness. To address the gap, we propose RecoverMark, a watermarking framework that achieves robust manipulation localization, content recovery, and ownership verification simultaneously. Our key insight is twofold. First, we exploit a critical real-world constraint: an adversary must preserve the background's semantic consistency to avoid visual detection, even if they apply global, imperceptible watermark removal attacks. Second, using the image's own content (face, in this paper) as the watermark enhances extraction robustness. Based on these insights, RecoverMark treats the protected face content itself as the watermark and embeds it into the surrounding background. By designing a robust two-stage training paradigm with carefully crafted distortion layers that simulate comprehensive potential attacks and a progressive training strategy, RecoverMark achieves a robust watermark embedding in no fragile manner for image manipulation localization, recovery, and image IP protection simultaneously. Extensive experiments demonstrate the proposed RecoverMark's robustness against both seen and unseen attacks and its generalizability to in-distribution and out-of-distribution data.
+
+</details>
+
+### 25. You Can Have a Second Chance: Unbiased and Multi-bit Watermarking for Diffusion Language Models with Regret-based Remasking
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.1297/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`defense`、`watermarking`、`content watermark`、`provenance`、`model provenance`、`ownership verification`
+
+👤 **作者**：Ke Yang、Dongyang Liang、Jing Yu、Shuguang Yuan、Chi Chen
+
+- 🎯 **研究动机**：顺序式LLM水印不适用于生成顺序任意的DLM，已有适配有偏且不支持多比特
+- 🔬 **研究方法**：以稳定性感知约束与无偏调制保持原分布，Regret-based Remasking让未水印token零延迟重生成
+- 📌 **结论**：生成质量优于基线，兼顾高检测精度与多比特容量
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+The rapid development of Diffusion Language Models (DLMs) raises concerns about watermarking for DLM-generated detection. However, existing sequential LLM watermarking cannot be directly applied to DLMs, as DLMs’ generation order is arbitrary. While emerging studies adapt biased LLM watermarking to DLMs by temporarily predicting the watermark prefix, they suffer from degraded quality and unstable watermarking due to bias accumulation and prediction errors. Besides, they cannot carry multi-bit watermarks. In this paper, we propose unbiased multi-bit watermarking for DLMs. We introduce a stability-aware constraint that allows watermarking only in stable contexts and a bit-controlled, unbiased modulation to preserve the original DLM output distribution, achieving stable watermarking with minimal quality impact. To enhance detection robustness, we design a Regret-based Remasking, which grants a “second chance” for unwatermarked tokens to be regenerated. It can seamlessly integrate into DLM inference with no added diffusion steps and latency. Experiments across DLMs and various tasks show that our scheme is effective, achieving superior generation quality compared to baselines while maintaining high detection accuracy and multi-bit capacity. Our code is available here https://github.com/iieSKLCSDsg/UMR.
+
+</details>
+
+### 26. Rotation-Invariant Spherical Watermarking via Third-Order SO(3) Representation Coupling
+
+📄 [arXiv](https://arxiv.org/abs/2605.26702) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63966)　📅 2026　🏷 ICML 2026
+
+**关键词**：`defense`、`AI watermarking`、`content watermark`、`provenance`、`empirical evaluation`、`robust detection`
+
+👤 **作者**：Pengzhen Chen、Yanwei Liu、Xiaoyan Gu、Antonios Argyriou、Wu Liu、Weiping Wang
+
+- 🎯 **研究动机**：全景图水印受任意 3D 旋转威胁，常规平面表示与增广策略缺乏理论保证，零阶不变量又牺牲嵌入容量
+- 🔬 **研究方法**：通过 SO(3) 不可约表示的张量耦合并投影到平凡表示构造保留相位的三阶球面不变双谱，将水印嵌入高阶球谐系数并从不变双谱标量恢复
+- 📌 **结论**：给出 SO(3) 不变性理论证明，对连续旋转鲁棒性接近完美且保持高视觉保真
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Reliable watermarking of panoramic imagery is fundamentally challenged by arbitrary 3D rotations. As panoramas are defined on the sphere, they naturally transform under the action of $SO(3)$, rendering conventional planar representations and augmentation-based robustness strategies inadequate and devoid of theoretical guarantees. To address this, we formulate panoramas as spherical signals and leverage $SO(3)$ representation theory to derive provably rotation-invariant descriptors. While spherical harmonic coefficients transform equivariantly under rotations, the natural invariant constructions are typically limited to zeroth-order statistics which eliminate directional information and severely constrain embedding capacity. In this work, we introduce a principled third-order invariant construction by coupling higher-order $SO(3)$ irreducible representations via tensor products and projecting onto the trivial representation. This yields a spherical invariant bispectrum that preserves phase information while remaining strictly rotation-invariant. Leveraging this property, we embed watermarks into higher-order spherical harmonic coefficients and recover them from invariant bispectral scalars, enabling reliable extraction under arbitrary 3D rotations. We provide a theoretical proof of $SO(3)$ invariance for it and demonstrate experimentally its near-perfect robustness to continuous rotations while maintaining high visual fidelity.
+
+</details>
+
+### 27. Hidden in Plain Tokens: Simply Robust, Gradient-Free Watermark for Synthetic Audio
+
+📄 [arXiv](https://arxiv.org/abs/2605.25967) · 🎓 [Official](https://icml.cc/virtual/2026/poster/62388)　📅 2026　🏷 ICML 2026
+
+**关键词**：`defense`、`robust detection`、`content watermark`、`provenance`、`AI watermarking`、`inference-time intervention`
+
+👤 **作者**：Georgios Milis、Yubin Qin、Yihan Wu、Heng Huang
+
+- 🎯 **研究动机**：自回归推理时水印因离散化不一致不适配连续模态，现有方案靠微调 tokenizer 丧失免训练优势
+- 🔬 **研究方法**：利用离散化词表冗余，理论分析 token 错误对检测的影响并用社区检测缩减词表缓解
+- 📌 **结论**：免梯度方法把可检测性提升数个数量级，对音频修改内建鲁棒，刷新 token 级水印 SOTA
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+As policy catches up with the capabilities of generative AI, watermarking is central to content provenance efforts. Inference-time watermarks for autoregressive models are unfit for continuous modalities due to discretization inconsistencies. Existing methods overcome this by finetuning the modality tokenizers, nullifying the watermark's training-free advantage. In this work, motivated by the vocabulary redundancy of discretization, we propose an elegant solution for powerful and robust watermarking of synthetic audio. We theoretically analyze the impact of token errors on watermark detection, and effectively mitigate them using a reduced vocabulary obtained via community detection. Thorough experiments showcase that our gradient-free method can boost detectability by several orders of magnitude, while also achieving built-in robustness to audio modifications. Broadly, we discover a new state-of-the-art for token-level watermarks in multimedia, which simply arises from the nature of discrete representation learning.
+
+</details>
+
+### 28. From TDMA to CDMA: A Multi-bit Watermark for Diffusion Language Models
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.1737/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`defense`、`content watermark`、`provenance`、`robust verification`、`watermarking`、`model provenance`
+
+👤 **作者**：Baizhou Huang、Xiaojun Wan
+
+- 🎯 **研究动机**：依赖自回归顺序上下文的现有多比特水印无法直接用于扩散语言模型 DLM
+- 🔬 **研究方法**：CDMArk 借数字信号处理视角：把先前方法类比 TDMA 并转向 CDMA——把整个水印消息全息编码到所有 token 上，并为检测过程提供严格统计保证
+- 📌 **结论**：在不可感知性与有效性之间建立新 SOTA Pareto 前沿
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+While DLMs have emerged as an alternative to ARMs, robust content provenance mechanisms for this architecture remain unexplored. Existing multi-bit watermarking schemes, heavily reliant on the sequential context of ARMs, cannot be directly applied to DLMs. In this paper, we reframe the multi-bit watermarking problem through a novel Digital Signal Processing (DSP) lens. We draw an analogy between prior works and TDMA (Time Division Multiple Access) in telecommunications, revealing their inherent limitations. To overcome these limitations, we introduce CDMArk, the first multi-bit watermarking framework tailored for DLMs, orchestrating a paradigm shift from TDMA to CDMA (Code Division Multiple Access). Our method encodes the entire watermark message across all tokens holographically. We further provide rigorous statistical guarantees for the watermark detection process. Extensive experiments demonstrate that CDMArk achieves a new state-of-the-art Pareto frontier between imperceptibility and effectiveness.
+
+</details>
+
+### 29. dgMARK: Decoding-Guided Watermarking for Diffusion Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2601.22985) · 🌐 [Project](https://dgmark-watermarking.github.io) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61861)　📅 2026　🏷 ICML 2026
+
+**关键词**：`defense`、`AI watermarking`、`diffusion model`、`content watermark`、`robust detection`
+
+👤 **作者**：Pyo Min Hong、Albert No
+
+- 🎯 **研究动机**：离散扩散语言模型可任意顺序生成 token，实际模型对 unmasking 顺序强敏感，构成新的水印通道
+- 🔬 **研究方法**：dgMARK 把 unmasking 顺序导向高奖励候选 token 满足二进制哈希奇偶约束的位置而不显式改写概率，兼容置信度、熵与边际排序解码并可一步 lookahead，滑窗检测器抗编辑
+- 📌 **结论**：检测对插入、删除、替换与释义稳健，且即插即用于常见解码策略
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+We propose dgMARK, a decoding-guided watermarking method for discrete diffusion language models (dLLMs). Unlike autoregressive models, dLLMs can generate tokens in arbitrary order. While an ideal conditional predictor would be invariant to this order, practical dLLMs exhibit strong sensitivity to the unmasking order, creating a new channel for watermarking. dgMARK steers the unmasking order toward positions whose high-reward candidate tokens satisfy a simple parity constraint induced by a binary hash, without explicitly reweighting the model’s learned probabilities. The method is plug-and-play with common decoding strategies (e.g., confidence, entropy, and margin-based ordering) and can be strengthened with a one-step lookahead variant. Watermarks are detected via elevated parity-matching statistics, and a sliding-window detector ensures robustness under post-editing operations including insertion, deletion, substitution, and paraphrasing. Project website: https://dgmark-watermarking.github.io
+
+</details>
+
+### 30. Bridging Privacy and Provenance: Traceable Virtual Identity Generation
+
+🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Zeng_Bridging_Privacy_and_Provenance_Traceable_Virtual_Identity_Generation_CVPR_2026_paper.html)　📅 2026　🏷 CVPR 2026
+
+**关键词**：`defense`、`virtual identity`、`privacy`、`provenance tracing`
+
+👤 **作者**：Xianhan Zeng、Xiaoxiao Hu、Sheng Li、Zhenxing Qian、Xinpeng Zhang
+
+- 🎯 **研究动机**：生成模型可造高保真人脸，但构建既保护隐私又支持一致、可验证身份归属的虚拟身份仍困难
+- 🔬 **研究方法**：扩散框架耦合多样且一致的虚拟身份采样器与保持姿态表情的 3D 几何条件模块，生成时经轻量潜水印嵌入身份签名，用户凭安全 token 验证归属而不暴露真容
+- 📌 **结论**：实现高虚拟身份一致性、强姿态表情保真与更优匿名性
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Recent advances in generative models have enabled the creation of high-fidelity human faces, yet constructing reliable virtual identities that preserve user privacy while supporting consistent and verifiable identity assignment remains challenging. In this paper, we propose a diffusion-based framework for generating traceable virtual identities that maintains stable identity semantics while preserving pose and expression. Our framework couples a virtual identity sampler that generates diverse yet consistent identity embeddings with a 3D geometric and expression conditioning module that preserves the pose and non-identity characteristics of the input face. In addition, we incorporate a lightweight latent watermarking mechanism that embeds an imperceptible identity signature during generation, enabling a user to verify ownership of the resulting virtual identity through a secure token without revealing their real facial appearance. Quantitative evaluations demonstrate that our method achieves high virtual identity consistency, strong pose and expression fidelity, and improved anonymity compared with prior works. These results validate the effectiveness of integrating virtual identity sampling, geometric conditioning, and latent watermarking into a single generative framework, and highlight the practical potential of our solution for constructing privacy-aware virtual identities.
+
+</details>
+
+### 31. ClusterMark: Towards Robust Watermarking for Autoregressive Image Generators with Visual Token Clustering
+
+📄 [arXiv](https://arxiv.org/abs/2508.06656) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Lukovnikov_ClusterMark_Towards_Robust_Watermarking_for_Autoregressive_Image_Generators_with_Visual_CVPR_2026_paper.html)　📅 2026　🏷 CVPR 2026
+
+**关键词**：`defense`、`autoregressive generator`、`token watermark`、`clustering`
+
+👤 **作者**：Denis Lukovnikov、Andreas Müller、Erwin Quiring、Asja Fischer
+
+- 🎯 **研究动机**：生成中水印在潜扩散模型上成功，但自回归图像模型探索不足；KGW 式 token 水印直接迁移在常见扰动下可检测性大降
+- 🔬 **研究方法**：ClusterMark 基于视觉 token 聚类的水印：相似 token 归入同色集，研究免训练与配微调 token 或聚类预测器两种设定
+- 📌 **结论**：大幅提升对扰动与重生成攻击的鲁棒性并保持图像质量，验证速度可与轻量后处理水印相当
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+In-generation watermarking for latent diffusion models has recently shown high robustness in marking generated images for easier detection and attribution. However, its application to autoregressive (AR) image models is underexplored. Autoregressive models generate images by autoregressively predicting a sequence of visual tokens that are then decoded into pixels using a VQ-VAE decoder. Inspired by KGW watermarking for large language models, we examine token-level watermarking schemes that bias the next-token prediction based on prior tokens. We find that a direct transfer of these schemes works in principle, but the detectability of the watermarks decreases considerably under common image perturbations. As a remedy, we propose a watermarking approach based on visual token clustering, which assigns similar tokens to the same set (red or green). We investigate token clustering in a training-free setting, as well as in combination with a more accurate fine-tuned token or cluster predictor. Overall, our experiments show that cluster-based watermarks greatly improve robustness against perturbations and regeneration attacks while preserving image quality, outperforming a set of baselines and concurrent works. Moreover, our methods offer fast verification runtime, comparable to lightweight post-hoc watermarking techniques.
+
+</details>
+
+### 32. MaxMark: High-Capacity Diffusion-Native Watermarking via Robust and Invertible Latent Embedding
+
+🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Chang_MaxMark_High-Capacity_Diffusion-Native_Watermarking_via_Robust_and_Invertible_Latent_Embedding_CVPR_2026_paper.html)　📅 2026　🏷 CVPR 2026
+
+**关键词**：`defense`、`diffusion watermark`、`latent embedding`、`high capacity`
+
+👤 **作者**：Xuanhang Chang、Zhonghao Yang、Cheng Zhuo、Yu Li
+
+- 🎯 **研究动机**：扩散原生水印的嵌入容量极小
+- 🔬 **研究方法**：MaxMark 鲁棒嵌入模块增强秘密消息并放入潜噪声可靠区域；可逆神经网络做分布变换把水印潜变量映回近似高斯保证保真
+- 📌 **结论**：容量、鲁棒性与不可感知性均超先前方法，大载荷下位准确率提升最多 46%
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Diffusion-native watermarking provides a more secure and reliable way to trace images from latent diffusion models (LDMs) by embedding information directly into the generative process. However, existing methods suffer from a fundamental limitation: their embedding capacity is extremely small. We introduce MaxMark, a high-capacity watermarking framework that supports embed rich watermark messages into generated images. MaxMark uses two components: a robust watermark embedding module that enhance the secret message and places them into reliable regions of the latent noise, and a distribution transformation module that maps the watermarked latent back to an approximate Gaussian, ensuring compatibility with the diffusion process and preserving image fidelity. The distribution transformation is implemented with an invertible neural network (INN), whose exactly reversible structure enables precise recovery and efficient training. Experiments show that MaxMark surpasses prior methods in capacity, robustness, and imperceptibility, achieving up to a 46% improvement in bit accuracy for large watermark payloads.
+
+</details>
+
+### 33. PECCVAI: Overcoming the Brittleness of AI Image Watermarking Under Visual Paraphrasing Attacks
+
+🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Dixit_PECCVAI_Overcoming_the_Brittleness_of_AI_Image_Watermarking_Under_Visual_CVPR_2026_paper.html)　📅 2026　🏷 CVPR 2026
+
+**关键词**：`defense`、`AI image watermark`、`visual paraphrase`、`adaptive robustness`
+
+👤 **作者**：Shreyas Dixit、…、Amitava Das
+
+- 🎯 **研究动机**：视觉改写攻击（先生成描述再用扩散模型重绘相似图）可同时去除可见与不可见水印
+- 🔬 **研究方法**：PECCAVI 把高保真水印（PSNR>30dB）嵌入语义稳定的 Non-Melting Points，用多通道频域编码与噪声抛光混淆水印位置阻碍逆向工程
+- 📌 **结论**：模型无关且显著比现有方案更抗视觉改写，并发布首个视觉改写攻击基准
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+By 2026, up to 90% of online content may be synthetically generated, raising urgent concerns about the proliferation of AI-driven disinformation. In response, policymakers and technology companies are turning to watermarking as a safeguard: California's Bill AB 321 mandates watermarking of AI-generated media, while firms like Meta and Google have begun deploying watermarking systems to mitigate misuse. However, current watermarking methods remain brittle and vulnerable to attack. In this work, we introduce the visual paraphrase attack, a generative method that removes both visible and invisible watermarks from AI-generated images. The attack proceeds in two steps: (1) generating a descriptive caption from the original image, and (2) feeding this caption into a diffusion-based text-to-image model to produce a visually similar, watermark-free image. Our experiments show that this attack reliably removes watermarks while preserving semantic content of the original image, exposing a critical flaw in existing watermarking strategies. To counter this, we propose PECCAVI, the first watermarking technique explicitly designed to resist visual paraphrasing. PECCAVI embeds robust, high-fidelity watermarks (PSNR > 30 dB) in semantically stable image regions termed Non-Melting Points (NMPs) using multi-channel frequency domain encoding and noisy burnishing to obfuscate watermark locations and hinder reverse engineering. The method is model-agnostic and significantly more resilient than current alternatives. We also release the first benchmark dataset for visual paraphrasing attacks and open-source all code and resources, providing a foundation for future research on robust watermarking in the era of generative AI
+
+</details>
+
+### 34. Robust3DGSW: Toward Robust Watermarking for Quantization-Aware 3D Gaussian Splatting
+
+🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Wang_Robust3DGSW_Toward_Robust_Watermarking_for_Quantization-Aware_3D_Gaussian_Splatting_CVPR_2026_paper.html)　📅 2026　🏷 CVPR 2026
+
+**关键词**：`defense`、`3DGS watermark`、`quantization robustness`、`asset ownership`
+
+👤 **作者**：Boyu Wang、Jun Xia、Mingsong Chen
+
+- 🎯 **研究动机**：3DGS 水印在为资源受限设备对大模型量化时，鲁棒性骤降且渲染质量受损
+- 🔬 **研究方法**：提出两阶段量化感知方案 Robust3DGSW：将水印嵌入 3D 高斯参数与 2D 渲染图的中频带以对抗量化损失，再用多尺度对抗扰动与渐进量化训练 2D/3D 解码器
+- 📌 **结论**：在 Blender、LLFF、MipNeRF-360 上缓解量化对水印的破坏，支持高质量快速渲染
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Although current watermarking techniques for 3D Gaussian Splatting (3DGS) are promising in protecting the copyrights of both 3DGS models and their rendered images, they greatly suffer from low watermark robustness and poor rendering quality when applying quantization to large 3DGS models to accommodate resource-limited devices. To address these problems, this paper introduces a novel two-stage quantization-aware 3DGS watermarking approach called Robust3DGSW. By properly embedding watermarks into the mid-frequency bands of both the 3D Gaussian parameters and 2D rendered images, the first stage of Robust3DGSW can effectively counteract the quantization-induced signal loss and mitigate the adverse effects of watermarks on rendered images. In the second stage, Robust3DGSW trains both 2D and 3D decoders using our proposed multi-scale adversarial perturbation approach, alongside a gradual quantization process, which enables robust watermark extraction even under excessive quantization. Comprehensive experimental results obtained from the well-known Blender, LLFF, and MipNeRF-360 datasets demonstrate that, when compared to leading 3DGS watermarking techniques, Robust3DGSW not only mitigates the negative effects of quantization on watermarks but also enables fast rendering with high quality.
+
+</details>
+
+### 35. Write Where It Matters: Policy-Guided Watermarks for 3D Gaussian Splatting
+
+🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Li_Write_Where_It_Matters_Policy-Guided_Watermarks_for_3D_Gaussian_Splatting_CVPR_2026_paper.html)　📅 2026　🏷 CVPR 2026
+
+**关键词**：`defense`、`3DGS watermark`、`policy guidance`、`ownership protection`
+
+👤 **作者**：Nan Li、…、Liang Wan
+
+- 🎯 **研究动机**：3DGS水印依赖手工阈值与全局固定超参，嵌入静态且与场景无关
+- 🔬 **研究方法**：W2M将嵌入建模为MDP，策略网络按奖励反馈做逐anchor梯度缩放，自适应嵌入位置与强度
+- 📌 **结论**：Blender、LLFF、Mip-NeRF 360上bit accuracy达SOTA，对抗条件下仍保感知保真
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Recent advances in 3D Gaussian Splatting (3DGS) enable photorealistic real-time rendering but also increase the risks of unauthorized copying and redistribution. Existing 3DGS watermarking methods typically rely on handcrafted thresholds or globally fixed hyperparameters to balance invisibility and robustness, making their embedding behavior static and scene-agnostic. We instead formulate 3DGS watermarking as a goal-directed decision process and introduce Write Where It Matters (W2M), the first reinforcement learning-based framework that adaptively learns where and how much to embed. By modeling the embedding process as a Markov Decision Process, W2M uses a lightweight policy network to allocate precise Gaussian updates directly from immediate reward feedback, iteratively. The reward incentivizes both rendering-space invisibility and decoding robustness under various image- and model-level distortions. To achieve efficiency, W2M operates on a structured 3DGS backbone organized around learnable anchors and applies policy-guided per-anchor gradient scaling. Extensive experiments across the Blender, LLFF, and Mip-NeRF 360 datasets demonstrate that W2M achieves state-of-the-art bit accuracy, strong perceptual fidelity, and structural consistency under both standard and adversarial conditions.
+
+</details>
+
+### 36. Guard4D: Robust Watermarking for 4D Gaussian Splatting via Decoupled Decoding
+
+🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/197.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track)　📅 2026
+
+**关键词**：`defense`、`4DGS watermark`、`decoupled decoder`、`asset copyright`
+
+- 🎯 **研究动机**：4DGS 资产共享需要可从渲染视频验证的水印，但解码易被场景内容主导、跨帧不稳定
+- 🔬 **研究方法**：Guard4D 文本监督预训练通用消息解码器，固定几何与不透明度仅优化球谐偏移嵌入消息；TMSD 模块时序聚合并用噪声对照剪辑抑制语义干扰
+- 📌 **结论**：动态 4DGS 场景上验证了水印嵌入与提取的有效性
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+4D Gaussian Splatting (4DGS) enables highquality, real-time rendering of dynamic scenes and is becoming a popular format for sharing 4D assets. This trend calls for robust copyright watermarking that can be verified from rendered videos without access to the original scene or model parameters. However, watermarking 4DGS is challenging: verification relies on short multi-view clips whose frames vary with motion, viewpoint changes, and post-processing. More importantly, decoding from rendered frames is easily dominated by scene content (objects, textures, illumination) rather than subtle watermark traces, leading to unstable evidence across frames and poor generalization across scenes. We propose Guard4D, a decoupled watermarking framework for 4DGS. Guard4D pre-trains a general-purpose message decoder under text supervision and embeds a binary message by optimizing compact spherical-harmonic offsets while keeping geometry and opacity fixed. To improve extraction from short clips and suppress semantic interference, we introduce a temporal modeling and semantic decoupling (TMSD) module that temporally aggregates watermark information and uses clean and noise-perturbed control clips generated from the non-watermarked model to reduce the influence of semantics on watermark decoding. Extensive experiments on dynamic 4DGS scenes demonstrate the effectiveness of Guard4D. Code is available at https://github.com/shisyy/Guard4D.
+
+</details>
+
+### 37. Latents-Inv:Robust Semantic Watermark via Dual-Path Mutual Information Redundancy for Diffusion Models
+
+🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/7552.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track)　📅 2026
+
+**关键词**：`defense`、`diffusion watermark`、`dual-path redundancy`、`adversarial robustness`
+
+- 🎯 **研究动机**：嵌入初始潜噪声的语义水印对几何变换与代理模型潜空间操纵高度脆弱
+- 🔬 **研究方法**：Latents-Inv 双路径网络把水印同时编入生成图像与所有者密钥，用互信息冗余在单路被攻击时恢复信息；对比学习抑制负样本误报，backward Euler 迭代实现精确逆映射
+- 📌 **结论**：各类对抗攻击下鲁棒性优于现有方法且保持高视觉质量
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Semantic watermarking methods, embedding identity into the initial latent noise, provide an imperceptible identity traceability for diffusion models in copyright protection and source verification. However, existing methods are highly vulnerable to adversarial attacks, especially geometric transformations (e.g., rotation, cropping) and latent-space manipulations via proxy models, limiting the reliability of watermark verification in practical deployment. To address this issue, we propose a robust and fully reversible, flow-based watermarking framework with dual encoding paths, which preserves high visual fidelity of watermarked image while ensuring resilient identity recovery under adversarial attacks. Specifically, a dual-path network is proposed to encode watermark information into both the generated image and the owner’s secret key. This network leverages Mutual Information Redundancy to recover compromised information under single-path attack, ensuring robust verification. To enhance verification credibility without degrading generation quality, we introduce a joint training strategy that suppresses false positives on negative samples through contrastive learning under fidelity constraints. Furthermore, we employ a backward Euler iteration scheduler for rectified flow models, which facilitate accurate inversion mapping, to enable effective watermark verification, which accurate inversion. Extensive experiments show that our method achieves superior robustness against various adversarial attacks while maintaining high visual quality across diverse generative models.
+
+</details>
+
+### 38. NOWA: Null-space Optical Watermark for Invisible Capture Fingerprinting and Tamper Localization
+
+📄 [arXiv](https://arxiv.org/abs/2512.22501) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Vargas_NOWA_Null-space_Optical_Watermark_for_Invisible_Capture_Fingerprinting_and_Tamper_CVPR_2026_paper.html)　📅 2025-12　🏷 CVPR 2026
+
+**关键词**：`defense`、`optical watermark`、`capture provenance`、`tamper localization`
+
+👤 **作者**：Edwin Vargas、Jhon Lopez、Henry Arguello、Ashok Veeraraghavan
+
+- 🎯 **研究动机**：纯数字水印易受复杂数字攻击，需要把物理认证线索嵌入成像过程
+- 🔬 **研究方法**：相机孔径相位掩膜产生位于成像算子零空间的不可见光学水印 NOWA，Null-Space Network 做测量一致重建并保留签名，向零空间投影检测像素级不一致实现篡改定位
+- 📌 **结论**：保持感知质量并抗压缩等退化；无光学或 NSN 参数无法伪造签名，篡改定位精度可比 SOTA 数字水印与学习式认证
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Ensuring the authenticity and ownership of digital images is increasingly challenging as modern editing tools enable highly realistic forgeries. Existing image protection systems mainly rely on digital watermarking, which is susceptible to sophisticated digital attacks. To address this limitation, we propose a hybrid optical-digital framework that incorporates physical authentication cues during image formation and preserves them through a learned reconstruction process. At the optical level, a phase mask in the camera aperture produces a Null-space Optical Watermark (NOWA) that lies in the Null Space of the imaging operator and therefore remains invisible in the captured image. Then, a Null-Space Network (NSN) performs measurement-consistent reconstruction that delivers high-quality protected images while preserving the NOWA signature. The proposed design enables tamper localization by projecting the image onto the camera's null space and detecting pixel-level inconsistencies. Our design preserves perceptual quality, resists common degradations such as compression, and establishes a structural security asymmetry: without access to the optical or NSN parameters, adversaries cannot forge the NOWA signature. Experiments with simulations and a prototype camera demonstrate competitive performance in terms of image quality preservation, and tamper localization accuracy compared to state-of-the-art digital watermarking and learning-based authentication methods.
+
+</details>
+
+### 39. SPDMark: Selective Parameter Displacement for Robust Video Watermarking
+
+📄 [arXiv](https://arxiv.org/abs/2512.12090) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Fares_SPDMark_Selective_Parameter_Displacement_for_Robust_Video_Watermarking_CVPR_2026_paper.html)　📅 2025-12　🏷 CVPR 2026
+
+**关键词**：`defense`、`video watermark`、`parameter displacement`、`temporal robustness`
+
+👤 **作者**：Samar Fares、Nurbek Tastan、Karthik Nandakumar
+
+- 🎯 **研究动机**：现有视频水印（后处理与生成中两类）无法同时达成不可感知、鲁棒与计算高效
+- 🔬 **研究方法**：SPDMark 通过选择性位移视频扩散模型参数嵌入水印：以 LoRA 实现按密钥索引的层间基位移并联合训练提取器，用密码学哈希派生逐帧消息，以最大二部图匹配从被篡改视频中恢复帧序
+- 📌 **结论**：在 T2V 与 I2V 模型上生成不可感知水印，可高精度恢复并抗多种常见视频修改与时序篡改
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+The advent of high-quality video generation models has amplified the need for robust watermarking schemes that can be used to reliably detect and track the provenance of generated videos. Existing video watermarking methods based on both post-hoc and in-generation approaches fail to simultaneously achieve imperceptibility, robustness, and computational efficiency. This work introduces a novel framework for in-generation video watermarking called SPDMark (pronounced `SpeedMark') based on selective parameter displacement of a video diffusion model. Watermarks are embedded into the generated videos by modifying a subset of parameters in the generative model. To make the problem tractable, the displacement is modeled as an additive composition of layer-wise basis shifts, where the final composition is indexed by the watermarking key. For parameter efficiency, this work specifically leverages low-rank adaptation (LoRA) to implement the basis shifts. During the training phase, the basis shifts and the watermark extractor are jointly learned by minimizing a combination of message recovery, perceptual similarity, and temporal consistency losses. To detect and localize temporal modifications in the watermarked videos, we use a cryptographic hashing function to derive frame-specific watermark messages from the given base watermarking key. During watermark extraction, maximum bipartite matching is applied to recover the correct frame order, even from temporally tampered videos. Evaluations on both text-to-video and image-to-video generation models demonstrate the ability of SPDMark to generate imperceptible watermarks that can be recovered with high accuracy and also establish its robustness against a variety of common video modifications.
+
+</details>
+
+### 40. WaTeRFlow: Watermark Temporal Robustness via Flow Consistency
+
+📄 [arXiv](https://arxiv.org/abs/2512.19048) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Jeong_WaTeRFlow_Watermark_Temporal_Robustness_via_Flow_Consistency_CVPR_2026_paper.html)　📅 2025-12　🏷 CVPR 2026
+
+**关键词**：`defense`、`video watermark`、`optical flow`、`temporal consistency`
+
+👤 **作者**：Utae Jeong、…、Sangpil Kim
+
+- 🎯 **研究动机**：水印图像经 I2V 转成时序连贯视频后逐帧检测变弱，跨模态水印恢复成为关键缺口
+- 🔬 **研究方法**：WaTeRFlow 含 FUSE 训练引擎（指令编辑与快速视频扩散代理暴露真实失真）、光流 warping 加 Temporal Consistency Loss 稳定逐帧预测，以及语义保持损失
+- 📌 **结论**：在代表性 I2V 模型上实现高精度帧级水印恢复，首帧与逐帧比特准确率更高，抗生成前后各种失真
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Image watermarking supports authenticity and provenance, yet many schemes are still easy to bypass with various distortions and powerful generative edits. Deep learning-based watermarking has improved robustness to diffusion-based image editing, but a gap remains when a watermarked image is converted to video by image-to-video (I2V), in which per-frame watermark detection weakens. I2V has quickly advanced from short, jittery clips to multi-second, temporally coherent scenes, and it now serves not only content creation but also world-modeling and simulation workflows, making cross-modal watermark recovery crucial. We present WaTeRFlow, a framework tailored for robustness under I2V. It consists of (i) FUSE (Flow-guided Unified Synthesis Engine), which exposes the encoder-decoder to realistic distortions via instruction-driven edits and a fast video diffusion proxy during training, (ii) optical-flow warping with a Temporal Consistency Loss (TCL) that stabilizes per-frame predictions, and (iii) a semantic preservation loss that maintains the conditioning signal. Experiments across representative I2V models show accurate watermark recovery from frames, with higher first-frame and per-frame bit accuracy and resilience when various distortions are applied before or after video generation.
+
+</details>
+
+### 41. Beyond Distortion Robustness: Rethinking Severe Cropping as Erasure-Resilient Message Embedding
+
+📄 [arXiv](https://arxiv.org/abs/2608.18567)　📅 2026-08
+
+**关键词**：`analysis`、`adversarial robustness`、`content watermark`、`provenance`
+
+👤 **作者**：Bo Pang、Weibin Kong、Juntu Dong、Minghan Li、Zhongping Zhang
+
+- 🎯 **研究动机**：严重裁剪移除载体本身、造成载荷部分消失而非信号退化，失真鲁棒范式不适用
+- 🔬 **研究方法**：CREST 把紧凑 QR 消息经 LT 喷泉编码扩展为冗余空间载荷，耦合裁剪感知嵌入与碎片恢复
+- 📌 **结论**：面积保留 0.7 的混合失真下 TRA 从 18.52% 升至 68.45%、EMR 从 13.88% 降至 4.21%；COCO2017 仅留 30-50% 面积仍达 48.55-65.12% TRA 而基线全部失败
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Robust message embedding in images is important for multimedia security applications such as copyright protection and content tracing. Existing methods are largely developed under a distortion robustness paradigm, where the embedded signal remains spatially present but is degraded by noise, blur, or compression. Severe cropping poses a fundamentally different challenge because it removes part of the carrier itself, causing partial payload disappearance rather than mere signal corruption. In this paper, we revisit robust message embedding from an erasure-resilience perspective and present CREST, a proof-of-concept framework for severe-cropping-robust embedding. CREST combines coding-theoretic redundancy with neural embedding and recovery by expanding a compact QR message into a redundant spatial payload via LT fountain coding and coupling it with cropping-aware embedding and fragment recovery. Experiments on COCO, DIV2K, and VOC2012 show that CREST improves recovery under severe cropping while maintaining competitive visual quality. Under mixed distortions with an area retention ratio of 0.7, CREST improves TRA from 18.52% to 68.45% and reduces EMR from 13.88% to 4.21% over the strongest baseline. On COCO2017, CREST still achieves 48.55--65.12% TRA when only 30--50% of the image area is retained, whereas all compared baselines fail to recover the message. These results suggest that severe cropping is better understood as an erasure problem rather than a conventional distortion problem, motivating the joint design of neural embedding and coding-based recovery.
+
+</details>
+
+### 42. Stability-Aware Feature Design for Robust Watermark Detection in Machine-Generated Text
+
+📄 [arXiv](https://arxiv.org/abs/2608.18102) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61064)　📅 2026-08
+
+**关键词**：`detection`、`AI watermarking`、`empirical evaluation`、`robust detection`、`content watermark`、`AI-generated content`
+
+👤 **作者**：Sina Mansouri、Mohit Marvania、Abolfazl Safikhani
+
+- 🎯 **研究动机**：现有文本水印检测器在多次改写与短文本下性能急剧恶化
+- 🔬 **研究方法**：Pattern Stability Score 融合全局/局部 z 分数、游程序列高阶统计、自相关信号与跨改写深度的稳定性分数；三基准、两 LLM、三改写器、最多八轮改写压力测试
+- 📌 **结论**：检测 AUC 比基线提升 10-15 个百分点；单一通用分类器跨 LLM、改写器与文本域无需重训保持 87.8% 以上 AUC
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+The widespread adoption of large language models (LLMs) has intensified the demand for principled methods to distinguish human from machine-generated text. Watermarking provides a promising avenue, yet existing detectors exhibit sharp performance deterioration under multiple paraphrasing and when applied to shorter texts. We introduce Pattern Stability Score (PSS), a novel detection framework that leverages local statistical features and stability dynamics across paraphrased variants. Specifically, the proposed method combines global and local z-score features with higher-order statistics of run-length patterns, enriched by autocorrelation signals and stability scores computed over paraphrase depth. Numerical evaluations are performed on three benchmark datasets (PG-19, CNN/DailyMail, and WikiText) using multiple LLMs (Llama-3-8B, Qwen2-7B) and paraphrasers (Mistral-7B, Qwen2-7B, Gemma-7B), systematically stress-testing robustness under up to eight rounds of paraphrasing. Compared to prior z-score thresholding baselines and some state-of-the-art deep learning methods, our approach improves detection AUC (area under the receiver operating characteristic curve) by over 10-15 percentage points across different token lengths. Additionally, extensive cross-domain experiments demonstrate that a single universal classifier generalizes across different LLMs, paraphrasers, and text domains without retraining, maintaining above 87.8% AUC even when all components differ from training.
+
+</details>
+
+### 43. Towards Computational Provenance: Carrying Causal-State Evidence in Generated Text
+
+📄 [arXiv](https://arxiv.org/abs/2608.16868)　📅 2026-08
+
+**关键词**：`analysis`、`content watermark`、`provenance`、`robust verification`
+
+👤 **作者**：Benjamin Belay
+
+- 🎯 **研究动机**：语言模型输出本身不提供关于产生它的内部计算的可验证证据
+- 🔬 **研究方法**：在两个受控架构上训练强制经两个离散中间状态的算术任务，切换内部路径、认证实际使用状态并让其决定生成文本中可检测的统计模式
+- 📌 **结论**：两架构在公开与密封评测中全部 128 对匹配通过，检测器恢复认证状态信号——答案不变时已验证的因果状态信息仍可保存在生成文本中
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+A language model's output does not by itself provide verifiable evidence about the internal computation that produced it. We study computational provenance: whether generated text can carry detectable evidence of which causally relevant internal state occurred. We test a bounded form of this idea in two controlled architectures: a modular feed-forward neural network and a transformer-based model. Both architectures are trained on the same arithmetic task with a mandatory pathway through two discrete intermediate states, allowing different internal paths to produce the same answer. We deliberately switch between these paths, authenticate the state actually used, and let that verified state determine a subtle statistical pattern in the generated text that can later be detected. The feed-forward and transformer systems each passed all 128 matched pairs in both their public and separately sealed protected end-to-end evaluations, with the detector recovering the signal associated with the authenticated internal state. The required causal computation also reproduced across five independently trained feed-forward models and three independently trained transformers. In a separate answer-only transformer experiment, our linear probes did not recover a naturally learned intermediate state. These results provide a controlled proof of concept that information about a verified, causally relevant internal state can be preserved in generated text even when the answer is unchanged.
+
+</details>
+
+### 44. SkillWatermark: An Embedded Skill Watermark of Progressive Privacy Inference via Benign Prompts
+
+📄 [arXiv](https://arxiv.org/abs/2608.16026)　📅 2026-08
+
+**关键词**：`analysis`、`content watermark`、`provenance`、`robust verification`
+
+👤 **作者**：Yu Li、…、Weiqing Huang
+
+- 🎯 **研究动机**：agent 技能执行产生特定流量模式，可被被动网络攻击者用作泄露隐私的隐蔽信道
+- 🔬 **研究方法**：在技能描述插入 prompt 约束词作水印，多轮对话中触发用户原始 prompt 关键信息产生可观测流量编码，攻击者只需解码流量模式
+- 📌 **结论**：流量模式高度一致且可区分，改造后技能通过现有 LLM 安全审计，且不直接外泄数据、不执行恶意指令
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Skills for large language model (LLM) agents have been widely deployed across diverse application domains. However, we observe that these skills generate specific traffic patterns during execution. In this paper, we design a pipeline that generates specific traffic patterns by inserting carefully designed skill descriptions, which we term skill watermarks, so that a passive network attacker can establish a covert channel to encode private information within observable traffic across multiple conversation turns. Specifically, we insert prompt constraint terms, referred to as watermarks, into the original skill descriptions and embed them within multi-turn conversations. The key information in the user's original prompt is thereby triggered by these watermarks, producing clearly observable encodings in the traffic. The adversary need only decode the traffic patterns to recover the encoded information. In particular, our modifications are benign in the sense that they do not directly exfiltrate any private data and do not execute any malicious instructions. Extensive experiments demonstrate that our watermarks produce highly consistent and distinguishable traffic patterns, and that the transformed skills pass existing LLM-based security auditing tools. This study highlights that generating specific traffic patterns can be exploited as a novel attack surface and offers critical insights for future security hardening.
+
+</details>
+
+### 45. Optimal Watermark Localization in Mixed-Source Large Language Model Texts
+
+📄 [arXiv](https://arxiv.org/abs/2608.14906)　📅 2026-08
+
+**关键词**：`detection`、`content watermark`、`provenance`、`robust verification`
+
+👤 **作者**：Jose H. Blanchet、T. Tony Cai、Xiang Li、Hao Liu、Qi Long、Weijie J. Su
+
+- 🎯 **研究动机**：混合来源文本中水印证据仅在部分 token 位存活，存活信号何时可定位 unknown
+- 🔬 **研究方法**：把水印定位形式化为基于 pivotal 统计的 token 级多重检验问题，在稀疏度、下一 token 集中与有效词表增长指数的渐近域内推导检测边界与发现/分类相变
+- 📌 **结论**：发现严格难于检测、该类规则下一致分类不可能；自适应阈值法达最优发现边界且不需已知指数，实验验证常见编辑机制下的定位性能
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Watermarking provides a principled way to authenticate text generated by large language models (LLMs). In practice, however, the final text may be mixed-source, with watermark evidence surviving at only a subset of token positions after rewriting, insertion, deletion, or paraphrasing. Although prior work has studied global detection of watermark signals, when such signals can be localized remains unclear. We formulate watermark localization as a token-level multiple-testing problem based on pivotal statistics, with a latent indicator recording whether watermark dependence survives at each position. Under an asymptotic regime indexed by exponents for signal sparsity, next-token concentration, and effective-vocabulary growth, we derive a sharp boundary for global detection and phase transitions for discovery and classification within the class of coordinatewise pivot-based localization rules. We show that discovery is strictly harder than detection and that consistent classification is impossible across the parameter regime within this class. We then develop an adaptive thresholding method that does not require knowledge of the exponents or time-varying next-token distributions, but uses a data-driven estimate of the surviving watermark fraction. The method attains the optimal discovery boundary and near-optimal discovery power relative to homogeneous pivot-based rules. Simulations support the theoretical phase transitions, while experiments on model-generated texts demonstrate practical localization performance under common edit mechanisms.
+
+</details>
+
+### 46. Attribution as Retrieval: Model-Agnostic AI-Generated Image Attribution
+
+📄 [arXiv](https://arxiv.org/abs/2603.10583) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Wang_Attribution_as_Retrieval_Model-Agnostic_AI-Generated_Image_Attribution_CVPR_2026_paper.html)　📅 2026-03　🏷 CVPR 2026
+
+**关键词**：`detection`、`generator attribution`、`retrieval`、`model agnosticism`
+
+👤 **作者**：Hongsong Wang、Renxi Cheng、Chaolei Han、Jie Gui
+
+- 🎯 **研究动机**：现有 AI 生成图像归属方法依赖生成模型访问，对新出现生成器缺乏通用性与可扩展性
+- 🔬 **研究方法**：LIDA 把归属重构为实例检索而非分类：低位平面指纹生成加无监督预训练与少样本归属适配
+- 📌 **结论**：零样本与少样本设定下的检测与归属均达 SOTA
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+With the rapid advancement of AIGC technologies, image forensics will encounter unprecedented challenges. Traditional methods are incapable of dealing with increasingly realistic images generated by rapidly evolving image generation techniques. To facilitate the identification of AI-generated images and the attribution of their source models, generative image watermarking and AI-generated image attribution have emerged as key research focuses in recent years. However, existing methods are model-dependent, requiring access to the generative models and lacking generality and scalability to new and unseen generators. To address these limitations, this work presents a new paradigm for AI-generated image attribution by formulating it as an instance retrieval problem instead of a conventional image classification problem. We propose an efficient model-agnostic framework, called Low-bIt-plane-based Deepfake Attribution (LIDA). The input to LIDA is produced by Low-Bit Fingerprint Generation module, while the training involves Unsupervised Pre-Training followed by subsequent Few-Shot Attribution Adaptation. Comprehensive experiments demonstrate that LIDA achieves state-of-the-art performance for both Deepfake detection and image attribution under zero- and few-shot settings. The code is at https://github.com/hongsong-wang/LIDA
+
+</details>
+
+### 47. SWIFT: Sliding Window Reconstruction for Few-Shot Training-Free Generated Video Attribution
+
+📄 [arXiv](https://arxiv.org/abs/2603.08536) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Wang_SWIFT_Sliding_Window_Reconstruction_for_Few-Shot_Training-Free_Generated_Video_Attribution_CVPR_2026_paper.html)　📅 2026-03　🏷 CVPR 2026
+
+**关键词**：`detection`、`video attribution`、`sliding-window reconstruction`、`few-shot method`
+
+👤 **作者**：Chao Wang、…、Kejiang Chen
+
+- 🎯 **研究动机**：现有生成视频溯源需额外操作或训练归属模型，降低质量或需大量样本
+- 🔬 **研究方法**：SWIFT 利用视频块内多像素帧到单潜帧的时序映射，固定长度滑窗做正常与损坏两种重建，以损失差为归属信号
+- 📌 **结论**：五个 SOTA 视频生成模型上仅 20 个样本即达 90% 以上平均归属准确率，对 HunyuanVideo 等可零样本
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Recent advancements in video generation technologies have been significant, resulting in their widespread application across multiple domains. However, concerns have been mounting over the potential misuse of generated content. Tracing the origin of generated videos has become crucial to mitigate potential misuse and identify responsible parties. Existing video attribution methods require additional operations or the training of source attribution models, which may degrade video quality or necessitate large amounts of training samples. To address these challenges, we define for the first time the "few-shot training-free generated video attribution" task and propose SWIFT, which is tightly integrated with the temporal characteristics of the video. By leveraging the "Pixel Frames(many) to Latent Frame(one)" temporal mapping within each video chunk, SWIFT applies a fixed-length sliding window to perform two distinct reconstructions: normal and corrupted. The variation in the losses between two reconstructions is then used as an attribution signal. We conducted an extensive evaluation of five state-of-the-art (SOTA) video generation models. Experimental results show that SWIFT achieves over 90% average attribution accuracy with merely 20 video samples across all models and even enables zero-shot attribution for HunyuanVideo, EasyAnimate, and Wan2.2. Our source code is available at https://github.com/wangchao0708/SWIFT.
+
+</details>
+
+### 48. TokenTrace: Multi-Concept Attribution through Watermarked Token Recovery
+
+📄 [arXiv](https://arxiv.org/abs/2602.19019) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Zhang_TokenTrace_Multi-Concept_Attribution_through_Watermarked_Token_Recovery_CVPR_2026_paper.html)　📅 2026-02　🏷 CVPR 2026
+
+**关键词**：`defense`、`token watermark`、`concept attribution`、`training-data tracing`
+
+👤 **作者**：Li Zhang、Shruti Agarwal、John Collomosse、Pengtao Xie、Vishal Asnani
+
+- 🎯 **研究动机**：现有水印在单图复合多概念（对象加风格）时无法解耦并各自归属
+- 🔬 **研究方法**：TokenTrace 同时扰动文本提示嵌入与初始潜噪声嵌入语义域签名，检索时以文本查询解耦并独立验证各概念
+- 📌 **结论**：单概念与多概念归属任务均显著超越基线，且保持视觉质量与对常见变换的鲁棒性
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Generative AI models pose a significant challenge to intellectual property (IP), as they can replicate unique artistic styles and concepts without attribution. While watermarking offers a potential solution, existing methods often fail in complex scenarios where multiple concepts (e.g., an object and an artistic style) are composed within a single image. These methods struggle to disentangle and attribute each concept individually. In this work, we introduce TokenTrace, a novel proactive watermarking framework for robust, multi-concept attribution. Our method embeds secret signatures into the semantic domain by simultaneously perturbing the text prompt embedding and the initial latent noise that guide the diffusion model's generation process. For retrieval, we propose a query-based TokenTrace module that takes the generated image and a textual query specifying which concepts need to be retrieved (e.g., a specific object or style) as inputs. This query-based mechanism allows the module to disentangle and independently verify the presence of multiple concepts from a single generated image. Extensive experiments show that our method achieves state-of-the-art performance on both single-concept (object and style) and multi-concept attribution tasks, significantly outperforming existing baselines while maintaining high visual quality and robustness to common transformations.
+
+</details>
+
+### 49. ReasMark: A Robust Watermark for Attributing LLM Reasoning Under Knowledge Distillation Attacks
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.2185/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`detection`、`defense`、`reasoning safety`、`content watermark`、`provenance`、`watermarking`
+
+👤 **作者**：Peizhuo Lv、…、Yuling Liu
+
+- 🎯 **研究动机**：黑盒知识蒸馏可窃取推理模型的推理行为，现有作用于表层文本或解码偏置的水印无法在蒸馏迁移后完成归属
+- 🔬 **研究方法**：提出 ReasMark：从高频提示中选水印令牌使水印与目标域输入分布纠缠，蒸馏查询自然激活；用分数条件损失制造可黑盒验证的推理长度差
+- 📌 **结论**：跨多个 LLM、数据集与蒸馏设置稳定优于现有基线，同时保持任务效用
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Reasoning-enhanced large language models rely on intermediate reasoning signals to solve complex, multi-step tasks, making reasoning behavior a valuable form of intellectual property. Meanwhile, knowledge distillation enables an adversary to replicate this behavior in a realistic black-box setting by repeatedly querying a deployed model on a target domain and training a local student to imitate its outputs, including reasoning traces. Existing LLM watermarks primarily operate on surface text and decoding-time token biases, and thus fail to provide reliable attribution of reasoning behavior once it is transferred through knowledge distillation. ReasMark entangles the watermark with the target-domain input distribution by selecting watermark tokens from high-frequency prompts, so distillation queries naturally activate it. It then embeds the watermark by score-conditioned losses that create a detectable reasoning-length gap for black-box verification. Comprehensive experiments across multiple LLMs, datasets, and distillation settings demonstrate that ReasMark consistently outperforms existing baselines while preserving task utility.
+
+</details>
+
+### 50. LORD-GoF: A Robust Online Detection Approach for LLM Watermarks in Sparse and Mixed Streams
+
+🎓 [Official](https://icml.cc/virtual/2026/poster/61558)　📅 2026　🏷 ICML 2026
+
+**关键词**：`detection`、`robust detection`、`content watermark`、`provenance`、`AI watermarking`、`empirical evaluation`
+
+👤 **作者**：Jiade Xu、Zhouping Li
+
+- 🎯 **研究动机**：水印检测多为离线设定，真实稀疏混合流中无法控制在线错误发现率（oFDR）
+- 🔬 **研究方法**：GoF 统计量结合 LORD 程序动态调整检测阈值，理论上严格把 oFDR 控制在用户指定水平之下
+- 📌 **结论**：Gumbel-Max 与 Inverse Transform 方案、三个模型上保持与离线相当的统计功效并成功控制 oFDR
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Watermarking is crucial for identifying AI-generated text, however, existing detection methods often focus on offline settings and fail to control the online False Discovery Rate (oFDR) when applied to real-world streams where machine-generated content is sparse and mixed with human writing. To address this issue, in this paper, we propose LORD-GoF, a novel online detection framework that combines a Goodness-of-Fit (GoF) statistic with the Levels based On Recent Discovery (LORD) procedure. We prove that LORD-GoF approach can rigorously control the oFDR below a user-specified level by dynamically adjusting detection thresholds. Extensive experiments on watermarked text from Qwen-2.5-3B, Sheared-LLaMA-2.7B, and OPT-1.3B using both the Gumbel-Max and Inverse Transform watermarking schemes show that our method maintains statistical power comparable to offline benchmarks while successfully controlling the oFDR under complex, mixed streaming scenarios.
+
+</details>
+
+### 51. IPMark: A Sentence-Level Watermark for LLMs with Hierarchical Personalization and Efficient Detection
+
+🎓 [Official](https://icml.cc/virtual/2026/poster/64793)　📅 2026　🏷 ICML 2026
+
+**关键词**：`detection`、`content watermark`、`provenance`、`robust verification`、`AI watermarking`、`empirical evaluation`
+
+👤 **作者**：Wenbo An、Lianwei Wu、Zehao Wang
+
+- 🎯 **研究动机**：现有水印难兼顾高效个性化归因、生成质量与抗攻击鲁棒性
+- 🔬 **研究方法**：IPMark 借鉴 IP 层级寻址结构化组织模型与用户身份，句级候选选择加语法/语义双流嵌入优化注入
+- 📌 **结论**：基线中困惑度最低（生成质量最优），鲁棒性强且层级检索显著降低检测延迟
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Watermarking has emerged as a critical solution for the detection and provenance tracing of content generated by large language models. However, existing methods still suffer from significant limitations, including difficulties in achieving efficient and personalized attribution, substantial degradation of generation quality, and low robustness against attacks. To address these challenges, we propose IPMark, the first IP-inspired hierarchical personalized watermarking framework. Specifically, to enable personalization and efficient detection, IPMark employs a hierarchical addressing framework to structurally organize model and user identities. Subsequently, addressing the inherent semantic distortion caused by token-level watermarking, we design a semantic-syntactic dual-stream embedding strategy. Centered on sentence-level candidate selection and reinforced by dual signals from syntactic and semantic features, this approach optimizes the injection process, thereby significantly enhancing generation quality while ensuring strong robustness. Experimental results demonstrate that IPMark achieves the lowest perplexity among baselines, ensuring superior generation quality while maintaining strong robustness and significantly reducing detection latency through hierarchical retrieval. Our code is available at https://github.com/nwlt/IPMark.
+
+</details>
+
+### 52. Ideal Attribution and Faithful Watermarks for Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2512.07038) · 🎓 [Official](https://icml.cc/virtual/2026/poster/66216)　📅 2026　🏷 ICML 2026
+
+**关键词**：`detection`、`content watermark`、`provenance`、`robust verification`、`AI watermarking`、`mechanistic analysis`
+
+👤 **作者**：Min Jae Song、Kameron Shahabi
+
+- 🎯 **研究动机**：水印方案保证的表述碎片化，缺乏统一的正式语言
+- 🔬 **研究方法**：提出 ideal attribution mechanism 形式抽象，以 append-only ledger 记录交互历史，把水印设计目标框定为忠实表示理想归因机制
+- 📌 **结论**：框架统一表述各方案保证，并给出理想设定下可达且值得追求的目标路线图
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+We introduce ideal attribution mechanisms, a formal abstraction for reasoning about attribution decisions over strings. At the core of this abstraction lies the ledger, an append-only log of the prompt-response interaction history between a model and its user. Each mechanism produces deterministic decisions based on the ledger and an explicit selection criterion, making it well-suited to serve as a ground truth for attribution. We frame the design goal of watermarking schemes as faithful representation of ideal attribution mechanisms. This novel perspective brings conceptual clarity, replacing piecemeal probabilistic statements with a unified language for stating the guarantees of each scheme. It also enables precise reasoning about desiderata for future watermarking schemes, even when no current construction achieves them, as the ideal functionalities are specified first. In this way, the framework provides a roadmap that clarifies which guarantees are attainable in an idealized setting and worth pursuing in practice.
+
+</details>
+
+### 53. IACW: Intent-Aware Controllable Watermarking for Scalable Authorial Intent Attribution
+
+🎓 [Official](https://icml.cc/virtual/2026/poster/65767)　📅 2026　🏷 ICML 2026
+
+**关键词**：`detection`、`AI watermarking`、`content watermark`、`provenance`、`empirical evaluation`、`robust detection`
+
+👤 **作者**：Hao Huang、Ruihua Zhou、JiaTang Luo、Yunpeng Li、Yuling Liu
+
+- 🎯 **研究动机**：二元 AI 检测常把 AI 润色内容误判为生成，需区分编辑与生成两种参与方式
+- 🔬 **研究方法**：用 Director-Actor-Judge 管线构建 IACW-Instruct 编辑操作语料，IACW 以意图自适应熵门控实现语义无损水印嵌入
+- 📌 **结论**：20% token 删除下归因准确率达 95%，语义保真接近无水印文本
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+As Large Language Models (LLMs) integrate into writing workflows, precise governance requires distinguishing ''how AI participated'' rather than merely ''whether AI was used.'' Traditional binary detection often misclassifies ``AI-polished'' content as generated, creating fairness risks. We propose shifting from passive post-hoc detection to active intent attribution, focusing on the distinction between Editing (source-anchored) and Generation (unanchored). We introduce \textbf{IACW-Instruct}, a corpus of diverse editing operations constructed via a Director--Actor--Judge pipeline to enable systematic evaluation. Building on this benchmark, we propose \textbf{Intent-Aware Controllable Watermarking (IACW)}, featuring intent-adaptive entropy gating for semantically lossless embedding. Experiments show that IACW achieves 95\% attribution accuracy under 20\% token deletion while preserving near-unwatermarked semantic fidelity, establishing a practical paradigm for fine-grained provenance.
+
+</details>
+
+### 54. How Good is Post-Hoc Watermarking With Language Model Rephrasing?
+
+📄 [arXiv](https://arxiv.org/abs/2512.16904) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63169)　📅 2026　🏷 ICML 2026
+
+**关键词**：`analysis`、`AI watermarking`、`content watermark`、`provenance`、`empirical evaluation`、`robust detection`
+
+👤 **作者**：Pierre Fernandez、…、Alexandre Mourachko
+
+- 🎯 **研究动机**：LLM 改写已有文本并嵌入水印的后水印方案用于版权保护与水印放射性检测，其质量-可检测性权衡未被系统研究
+- 🔬 **研究方法**：研究算力分配（更大改写模型、beam search、多候选生成、检测端熵过滤）对权衡的影响
+- 📌 **结论**：Gumbel-max 在 nucleus 采样下反超新方法；beam search 普遍有益、小模型反超大模型，但代码等可验证文本上仍困难
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Generation-time text watermarking embeds statistical signals into text for traceability of AI-generated content. We explore post-hoc watermarking where an LLM rewrites existing text while applying generation-time watermarking, to protect copyrighted documents, or detect their use in training or RAG via watermark radioactivity. Unlike generation-time approaches which are constrained by how LLMs are served, this setting offers additional degrees of freedom for both generation and detection. We thus investigate how allocating compute (through larger rephrasing models, beam search, multi-candidate generation, or entropy filtering at detection) affects the quality-detectability trade-off. Among our findings, the simple Gumbel-max scheme surprisingly outperforms more recent alternatives under nucleus sampling, and achieves strong detectability and semantic fidelity on open-ended text such as books. Moreover, most methods benefit significantly from beam search, and we counterintuitively find that smaller models outperform larger ones. However, our solutions struggles when watermarking verifiable text such as code. This study reveals both the potential and limitations of post-hoc watermarking, laying groundwork for practical applications and future research.
+
+</details>
+
+### 55. Catch-22: On the Fundamental Tradeoff Between Detectability and Robustness in LLM Watermarking
+
+🎓 [Official](https://icml.cc/virtual/2026/poster/66807)　📅 2026　🏷 ICML 2026
+
+**关键词**：`detection`、`AI watermarking`、`content watermark`、`adversarial robustness`、`mechanistic analysis`、`robust detection`
+
+👤 **作者**：Kuheli Pratihar、Debdeep Mukhopadhyay
+
+- 🎯 **研究动机**：LLM 水印在编辑鲁棒性与无钥可检测性之间的权衡缺乏信息论刻画
+- 🔬 **研究方法**：建立 KL 信息预算框架：分布保持方案零统计漂移，token 与句级修改方案的信号随序列累积；编辑使预算按编辑率二次（token 级）或语义翻转率（句级）收缩，揭示鲁棒-隐蔽-验证三难，并提出按场景切换的混合水印
+- 📌 **结论**：Llama-2-7B 与 Mistral-7B 释义攻击实验验证理论预测，混合策略经验近 Pareto
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models generate text through probabilistic token sampling, a mechanism increasingly leveraged for inference-time watermarking to verify AI-generated content. We present an information-theoretic framework that characterizes the trade-off between robustness to text editing and detectability by keyless observers, where detectability bounds are information-theoretic and computational attainability depends on detector access. Central to our analysis is an additive, usable Kullback-Leibler (KL) information budget that governs hypothesis testing separability between watermarked and unwatermarked outputs subject to a stealth constraint. This budget induces a hierarchy of detectability across watermark families: distribution-preserving schemes exhibit zero statistical drift, while probability-modifying schemes at both token and sentence levels accumulate detectable signal with sequence length. When text editing is modeled as a noise process, the usable KL budget contracts quadratically with edit rate for token-level schemes and according to an induced semantic flip rate for sentence-level schemes. These contraction laws reveal an irreducible trilemma among robustness, stealth, and reliable verification. Guided by these limits, we propose a hybrid watermarking strategy that selects among distribution-preserving, semantic-level, and token-level methods based on anticipated editing regimes. Experiments on Llama-2-7B and Mistral-7B under paraphrasing attacks corroborate theoretical predictions and confirm that the hybrid strategy is empirically near-Pareto across evaluated edit regimes.
+
+</details>
+
+### 56. Beyond “Made with AI”: Visualizing Provenance Density to Mitigate the Transparency Penalty
+
+📄 [arXiv](https://arxiv.org/abs/2609.03460) · 🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/HC13.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=special-track-on-human-centred-ai)　📅 2026
+
+**关键词**：`analysis`、`AI provenance`、`evidence visualization`、`hallucination trust`
+
+👤 **作者**：Qing Zhang、Yifei Huang、Juyoung Lee、Thad Starner、Jun Rekimoto
+
+- 🎯 **研究动机**：Fluency Trap：用户既信任流畅幻觉，又在披露 AI 生成后低估准确内容；二元 Made with AI 标签不显示主张的证据支撑
+- 🔬 **研究方法**：提出证据可视化界面 Provenance Density，展示文本中已验证主张的密度；81 人用户研究与 200 样本技术审计
+- 📌 **结论**：理想化界面产生 +4.15 点（d=1.82）的真伪辨别差距，无信号组无可测辨别力；Consistency Veto 承载大部分判别信号
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+As generative AI makes polished prose cheap to produce, users can no longer rely on fluency as a proxy for truth. We call this failure mode the Fluency Trap: users trust fluent hallucinations while also discounting accurate content once it is disclosed as AI-generated. Binary “Made with AI” labels respond with authorship disclosure, but they do not show what supports a claim. We propose Provenance Density, an evidence-visualization interface that shows the density of verified claims in a text. In a user study with 81 participants, an idealized Provenance Density interface produced a large discernment gap between truth and fabrication (+4.15 points, d = 1.82), whereas participants given no signal showed no detectable discrimination. A technical audit with 200 samples shows that retrieval density alone is insufficient; unexpectedly, the Consistency Veto carries most of the discriminative signal on dynamic queries. As AI-generated content becomes indistinguishable from human writing, effective transparency must move from authorship disclosure toward evidence visualization.
+
+</details>
+
+### 57. MarkNull: Model-Agnostic Watermark Removal in AI-Generated Images via On-Manifold Latent Manipulation
+
+📄 [arXiv](https://arxiv.org/abs/2608.10166) · 🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/cao)　📅 2026-08　🏷 USENIX Security 2026
+
+**关键词**：`attack`、`latent manipulation`、`content watermark`、`AI-generated content`、`image watermark removal`、`SynthID`
+
+👤 **作者**：Jie Cao、…、Jianbing Ni
+
+- 🎯 **研究动机**：AI 生成图像水印对模型无关移除攻击的鲁棒性研究不足，现有攻击依赖特定生成模型或严重降质
+- 🔬 **研究方法**：发现水印图像的潜表示与嵌入噪声强相关，提出 Noise-Latent Alignment Score 并优化去相关潜表示同时保语义；MarkNull-A 蒸馏为单次前向攻击
+- 📌 **结论**：后处理、微调、初始噪声三类水印上平均比特精度降至 53.14%（近随机 50%），攻陷 Google SynthID-Image 且可迁移到视频水印，0.50s/图
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Digital watermarking has emerged as a critical technique for provenance and copyright attribution in AI-generated imagery, yet its robustness against realistic, model-agnostic removal attacks remains poorly explored. Existing attacks either succeed only against specific generative models or achieve removal at the cost of severe visual degradation. In this paper, we propose MarkNull, a model-agnostic watermark removal attack via on-manifold latent manipulation. MarkNull is grounded in a key observation: watermarked images exhibit a strong statistical dependency between the generated latent representation and the embedded initial noise. To quantify this dependency, we introduce the Noise-Latent Alignment Score (NLAS) and formulate an optimization objective that selectively decorrelates the latent representation from the embedded watermark while preserving semantic fidelity. Extensive evaluations across different categories of watermarking paradigms, including post-hoc, fine-tuning-based, and initial-noise-based schemes, demonstrate that MarkNull reduces average bit accuracy to 53.14%, approaching random-guessing (50%), without perceptible image degradation. To further improve scalability, we propose MarkNull-A, an amortized, optimization-free variant that distills the attack into a single forward pass, achieving 0.50 s/image with modest computational overhead. Notably, our attacks successfully compromise Google's SynthID-Image system while preserving high visual quality and transfer effectively to video watermarking. Finally, we present an attack detection mechanism as a defensive counterpart to MarkNull and MarkNull-A, highlighting the necessity of developing watermark designs resilient to model-agnostic latent-space attacks.
+
+</details>
+
+### 58. Linear Ensembles Wash Away Watermarks: On the Fragility of Distributional Perturbations in LLMs
+
+📄 [arXiv](https://arxiv.org/abs/2605.30501) · 🎓 [Official](https://icml.cc/virtual/2026/poster/66219)　📅 2026-05　🏷 ICML 2026
+
+**关键词**：`defense`、`content watermark`、`provenance`、`robust verification`、`AI watermarking`、`empirical evaluation`
+
+👤 **作者**：Zhihao Wu、Gracia Gong、Qinglin Zhu、Yudong Chen、Runcong Zhao
+
+- 🎯 **研究动机**：用户可访问多个模型的现实中，分布扰动式水印存在根本脆弱性
+- 🔬 **研究方法**：理论证明平均输出概率分布可恢复无水印分布（误差至二阶）；WASH 解决异构模型的词表错位与分词差异实现集成生成
+- 📌 **结论**：平均 3 个模型即使检测 z 分从 5-300 压到 2 以下（阈值为 4），TPR@5%FPR 降到 50% 以下，同时质量提升 27.5%、比最优基线快 6 倍——鲁棒水印需接受该漏洞或前所未有的提供商协同
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Watermarking embeds statistical signatures in AI-generated text for detection and attribution. We reveal a fundamental vulnerability: when users access multiple models (today's reality), watermarks trivially fail. Watermarks perturb output distributions away from the original, and in competitive markets, these perturbations are typically independent across providers. We theoretically prove that averaging output probability distributions recovers the unwatermarked distribution with up to a second-order error term. Empirically, simply averaging 3-5 models cancels out these perturbations. We introduce WASH (Watermark Attenuation via Statistical Hybridisation), which solves practical challenges in ensemble generation: vocabulary misalignment and tokenisation differences across heterogeneous models. Experiments across six watermarking schemes and three LLMs show that averaging across 3 models suppresses detection z-scores from 5-300 to below 2 (below the detection threshold of 4) and reduces TPR at 5% FPR to below 50%, while improving quality by 27.5% and running 6 times faster than the best baseline on the long sequence generation. Our results suggest that robust AI-text detection via watermarking requires either accepting this fundamental vulnerability or unprecedented coordination among model providers.
+
+</details>
+
+### 59. PASA: A Principled Embedding-Space Watermarking Approach for LLM-Generated Text under Semantic-Invariant Attacks
+
+📄 [arXiv](https://arxiv.org/abs/2605.10977) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63335)　📅 2026-05　🏷 ICML 2026
+
+**关键词**：`attack`、`AI watermarking`、`content watermark`、`provenance`、`empirical evaluation`、`robust detection`
+
+👤 **作者**：Zhenxin Ai、Haiyun He
+
+- 🎯 **研究动机**：现有 LLM 水印易受 paraphrase 等语义不变攻击剥离
+- 🔬 **研究方法**：PASA 在潜空间语义簇上以密钥与语义历史同步的共享随机性建立 token 与辅助序列的分布依赖，理论刻画嵌入-检测联合最优及检测精度、鲁棒与失真的权衡
+- 📌 **结论**：强改写攻击下保持鲁棒且文本质量高，优于标准词表空间基线
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Watermarking for large language models (LLMs) is a promising approach for detecting LLM-generated text and enabling responsible deployment. However, existing watermarking methods are often vulnerable to semantic-invariant attacks, such as paraphrasing. We propose PASA, a principled, robust, and distortion-free watermarking algorithm that embeds and detects a watermark at the semantic level. PASA operates on semantic clusters in a latent embedding space and constructs a distributional dependency between token and auxiliary sequences via shared randomness synchronized by a secret key and semantic history. This design is grounded in our theoretical framework that characterizes a jointly optimal embedding-detection pair, achieving the fundamental trade-offs among detection accuracy, robustness, and distortion. Evaluations across multiple LLMs and semantic-invariant attacks demonstrate that PASA remains robust even under strong paraphrasing attacks while preserving high text quality, outperforming standard vocabulary-space baselines. Ablation studies further validate the effectiveness of our hyperparameter choices. Webpage: https://ai-kunkun.github.io/PASA_page/.
+
+</details>
+
+### 60. DITTO: A Spoofing Attack Framework on Watermarked LLMs via Knowledge Distillation
+
+🎓 [Official](https://aclanthology.org/2026.eacl-long.229/)　📅 2026-03　🏷 ACL 2026
+
+**关键词**：`attack`、`text watermark`、`knowledge distillation`、`authorship spoofing`、`LLM watermark`
+
+👤 **作者**：Hyeseon Ahn、Shinwoo Park、Suyeon Woo、Yo-Sub Han
+
+- 🎯 **研究动机**：LLM 水印的核心假设——特定水印证明特定模型作者身份——存在危险缺陷
+- 🔬 **研究方法**：DITTO 把水印放射性（微调时无意继承数据模式）从可发现特征转为攻击向量：经知识蒸馏从带水印教师窃取并复现受害模型水印
+- 📌 **结论**：恶意模型可生成含可信模型逼真水印的文本，把虚假信息无缝嫁祸给信誉源，需能区分真伪水印的新范式
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+The promise of LLM watermarking rests on a core assumption that a specific watermark proves authorship by a specific model. We demonstrate that this assumption is dangerously flawed. We introduce the threat of watermark spoofing, a sophisticated attack that allows a malicious model to generate text containing the authentic-looking watermark of a trusted, victim model. This enables the seamless misattribution of harmful content, such as disinformation, to reputable sources. The key to our attack is repurposing watermark radioactivity, the unintended inheritance of data patterns during fine-tuning, from a discoverable trait into an attack vector. By distilling knowledge from a watermarked teacher model, our framework allows an attacker to steal and replicate the watermarking signal of the victim model. This work reveals a critical security gap in text authorship verification and calls for a paradigm shift towards technologies capable of distinguishing authentic watermarks from expertly imitated ones. Our code is available at https://github.com/hsannn/ditto.
+
+</details>
+
+### 61. RAVEN: Erasing Invisible Watermarks via Novel View Synthesis
+
+📄 [arXiv](https://arxiv.org/abs/2601.08832) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Shamshad_RAVEN_Erasing_Invisible_Watermarks_via_Novel_View_Synthesis_CVPR_2026_paper.html)　📅 2026-01　🏷 CVPR 2026
+
+**关键词**：`attack`、`watermark removal`、`novel-view synthesis`、`provenance evasion`
+
+👤 **作者**：Fahad Shamshad、Nils Lukas、Karthik Nandakumar
+
+- 🎯 **研究动机**：抗像素与频域攻击的水印在语义保持的视角变换下是否仍鲁棒未知
+- 🔬 **研究方法**：把水印移除重构为新视角合成问题：零样本扩散框架在潜空间施加受控几何变换，配 view-guided correspondence attention 保持结构一致，不需检测器访问与水印知识
+- 📌 **结论**：在 15 种水印方法上的抑制效果超越 14 个基线攻击且感知质量更优，暴露语义保持视角变换的防御缺口
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Invisible watermarking has become a critical mechanism for authenticating AI-generated image content, with major platforms deploying watermarking schemes at scale. However, evaluating the vulnerability of these schemes against sophisticated removal attacks remains essential to assess their reliability and guide robust design. In this work, we expose a fundamental vulnerability in invisible watermarks by reformulating watermark removal as a view synthesis problem. Our key insight is that generating a perceptually consistent alternative view of the same semantic content, akin to re-observing a scene from a shifted perspective, naturally removes the embedded watermark while preserving visual fidelity. This reveals a critical gap: watermarks robust to pixel-space and frequency-domain attacks remain vulnerable to semantic-preserving viewpoint transformations. We introduce a zero-shot diffusion-based framework that applies controlled geometric transformations in latent space, augmented with view-guided correspondence attention to maintain structural consistency during reconstruction. Operating on frozen pre-trained models without detector access or watermark knowledge, our method achieves state-of-the-art watermark suppression across 15 watermarking methods--outperforming 14 baseline attacks while maintaining superior perceptual quality across multiple datasets.
+
+</details>
+
+### 62. SemBind: Binding Diffusion Watermarks to Semantics Against Black-Box Forgery Attacks
+
+📄 [arXiv](https://arxiv.org/abs/2601.20310) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63877)　📅 2026　🏷 ICML 2026
+
+**关键词**：`attack`、`diffusion model`、`content watermark`、`provenance`、`AI watermarking`、`robust detection`
+
+👤 **作者**：Xin Zhang、Zijin Yang、Kejiang Chen、Linfeng Ma、Weiming Zhang、Nenghai Yu
+
+- 🎯 **研究动机**：黑盒伪造攻击可把某 provider 的潜空间水印植入非其生成的图像，破坏溯源与信任，此前缺乏防御
+- 🔬 **研究方法**：提出 SemBind：对比训练语义 masker 把水印信号绑定到图像语义，对语义匹配 prompt 产生近不变码、跨 prompt 近正交码，先调制目标潜向量再套用标准潜空间水印
+- 📌 **结论**：在四种主流潜空间水印方法上大幅降低黑盒伪造的错误接受率，保持图像质量并提供可调的鲁棒-安全折中
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Latent-based watermarks, embedded during the generation process of latent diffusion models (LDMs), facilitate detection and attribution of generated images. However, recent black-box forgery attacks can implant a provider's watermark into images not generated by that provider, using at least one watermarked image and black-box access to the model, thereby undermining provenance and trust. We propose SemBind, the first defense framework for latent-based watermarks against black-box forgery, which binds latent watermark signals to image semantics through a contrastively trained semantic masker. The masker produces near-invariant codes for semantically matched prompts and near-orthogonal codes across different prompts, enabling SemBind to modulate the target latent before applying standard latent-based watermarking schemes. Across four mainstream latent-based watermarking methods, SemBind substantially reduces false acceptance under black-box forgery while preserving image quality and offering a tunable robustness--security trade-off via a simple mask-ratio parameter. Code is available at https://github.com/XinZhang1999/SemBind.
+
+</details>
+
+### 63. Rethinking Forgery Attacks on Semantic Watermarks in Black-Box Settings: A Geometric Distortion Perspective
+
+📄 [arXiv](https://arxiv.org/abs/2606.29807) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63044)　📅 2026　🏷 ICML 2026
+
+**关键词**：`attack`、`content watermark`、`provenance`、`robust verification`、`AI watermarking`、`diffusion model`
+
+👤 **作者**：Cheng-Yi Lee、Yichi Zhang、Yuchen Yang、Chun-Shien Lu、Jun-Cheng Chen
+
+- 🎯 **研究动机**：潜空间扩散语义水印的黑盒伪造攻击缺乏关于成败条件的严格理论
+- 🔬 **研究方法**：从率失真视角刻画代理模型与目标模型结构失配造成的不可约失真下限，将其表示为潜流形上的全局漂移与局部形变，据此提出方案无关的伪造样本检测
+- 📌 **结论**：在多样黑盒场景中有效区分伪造样本且保持对常见失真的鲁棒性
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Recent studies have shown that semantic watermarks, which embed information into the initial noise of latent diffusion models (LDMs), are vulnerable to black-box forgery attacks. However, existing methods primarily rely on empirical evidence and lack a rigorous theoretical understanding of the conditions under which such attacks succeed or fail. To bridge this gap, we rethink the nature of such attacks through the lens of rate-distortion in the latent space. Our analysis identifies an irreducible distortion floor due to structural mismatches between proxy and target models, which fundamentally limits the fidelity of forged watermarks. We further characterize this distortion as structured geometric deviations on the latent manifold, in the form of global drift and local deformation rather than stochastic noise. Leveraging these insights, we propose a scheme-agnostic detection method that distinguishes forged samples before watermark verification. Extensive experiments demonstrate the effectiveness of our method across diverse black-box scenarios, while preserving robustness to common distortions.
+
+</details>
+
+### 64. Low-Compute Watermark Removal via Dual-Domain Natural Projection
+
+📄 [arXiv](https://arxiv.org/abs/2510.07538) · 🌐 [Project](https://anonymous.4open.science/r/DAWN-567A/) · 🎓 [Official](https://icml.cc/virtual/2026/poster/66820)　📅 2026　🏷 ICML 2026
+
+**关键词**：`defense`、`content watermark`、`provenance`、`robust verification`、`AI watermarking`、`empirical evaluation`
+
+👤 **作者**：Pragati Shuddhodhan Meshram、Varun Chandrasekaran
+
+- 🎯 **研究动机**：现有水印移除攻击靠多步昂贵优化，高移除、低失真、低成本三目标无法同时达成
+- 🔬 **研究方法**：DAWN 免训练，把水印图像投影到频率与语义互补空间的自然图像先验抑制偏离自然统计的水印信号，再解耦感知对齐恢复视觉一致性
+- 📌 **结论**：像素、频率、潜空间水印方案上一致降低可检测性，保持结构与语义保真且计算轻量
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Effective removal of semantic watermarks requires balancing three competing objectives: \emph{high removal success}, \emph{low perceptual distortion}, and \emph{low computational cost}. However, existing single-image attacks typically optimize only for the first two, achieving strong watermark suppression but relying on expensive, multi-step optimization that limits practical deployment. In this work, we show that this trade-off is fundamental: no current approach achieves all three properties simultaneously. We introduce \textsc{DAWN}, a lightweight, training-free attack that explicitly targets the low-cost regime while maintaining competitive removal performance. \textsc{DAWN} works by projecting a watermarked image onto natural-image priors in complementary frequency and semantic spaces, suppressing watermark signals that deviate from natural statistics, and then applying a decoupled perceptual-alignment step to restore visual consistency with minimal artifact. Across diverse pixel-, frequency-, and latent-space watermarking schemes, \textsc{DAWN} consistently reduces detectability while preserving structural and semantic fidelity, demonstrating that efficient, low-resource watermark removal is feasible with only modest perceptual degradation. Our code is available at \url{https://anonymous.4open.science/r/DAWN-567A/}.
+
+</details>
+
+### 65. LLM Watermark Evasion via Bias Inversion
+
+📄 [arXiv](https://arxiv.org/abs/2509.23019) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61021)　📅 2026　🏷 ICML 2026
+
+**关键词**：`attack`、`content watermark`、`provenance`、`robust verification`、`AI watermarking`、`empirical evaluation`
+
+👤 **作者**：Jeongyeon Hwang、Sangdon Park、Jungseul Ok
+
+- 🎯 **研究动机**：免查询黑盒水印规避攻击成功率有限或严重破坏语义
+- 🔬 **研究方法**：理论证明小幅降低 green token 平均条件概率即使检测概率指数衰减；BIRA 对 token surprisal 识别的代理抑制集施加负 logit 偏置
+- 📌 **结论**：多种水印方案上规避率超 99%，语义保真显著优于基线
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Watermarking offers a promising solution for detecting LLM-generated content, yet its robustness under realistic query-free (black-box) evasion remains an open challenge. Existing query-free attacks often achieve limited success or severely distort semantic meaning. We bridge this gap by theoretically analyzing rewriting-based evasion, demonstrating that reducing the average conditional probability of sampling green tokens by a small margin causes the detection probability to decay exponentially. Guided by this insight, we propose the \emph{Bias-Inversion Rewriting Attack} (BIRA), a practical query-free method that applies a negative logit bias to a proxy suppression set identified via token surprisal. Empirically, BIRA achieves state-of-the-art evasion rates ($>99\%$) across diverse watermarking schemes while preserving semantic fidelity substantially better than prior baselines. Our findings reveal a fundamental vulnerability in current watermarking methods and highlight the need for rigorous stress tests. Our code is available at \href{https://github.com/ml-postech/LLM-Watermark-Evasion-via-Bias-Inversion}{here}.
+
+</details>
+
+### 66. Echoes within the Reasoning: Stealthy and Effective Watermarking via Chain of Thought
+
+📄 [arXiv](https://arxiv.org/abs/2605.28890) · 🎓 [Official](https://icml.cc/virtual/2026/poster/62859)　📅 2026　🏷 ICML 2026
+
+**关键词**：`attack`、`defense`、`AI watermarking`、`chain-of-thought`、`content watermark`、`robust detection`
+
+👤 **作者**：Jiacheng Lu、…、Jiaheng Zhang
+
+- 🎯 **研究动机**：推理模型是宝贵 IP，现有黑盒水印扰动最终答案或依赖脆弱触发模式，牺牲鲁棒性或推理保真
+- 🔬 **研究方法**：BiCoT 把所有权信号嵌入推理轨迹内部几何：高显著结构锚对齐私有签名子空间、普通控制 token 正则化保留语义；Robust Subspace Registration 用 Top-k logprob 哨兵 token 校准漂移做黑盒验证
+- 📌 **结论**：跨多样推理任务保持推理保真，微调、量化、模型级扰动与自适应输出攻击下检测鲁棒
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large Language Models with Chain-of-Thought reasoning capabilities represent valuable intellectual property, yet existing black-box watermarking methods often trade robustness for reasoning fidelity by perturbing final answers or relying on fragile trigger patterns. We propose BiCoT, a watermarking framework that embeds ownership signals into the internal geometry of reasoning traces by aligning high-saliency structural anchors with a private signature subspace while regularizing ordinary control tokens to preserve semantic capacity. This design couples the watermark with reasoning-relevant representations, making removal difficult without disrupting the features that support coherent reasoning. To enable verification under model theft and representation drift, we introduce Robust Subspace Registration(RSR), a Top-$k$ logprob-based black-box verifier that uses sentinel tokens to calibrate systematic shifts in the output distribution. Experiments show that BiCoT preserves reasoning fidelity across diverse complex reasoning tasks while achieving robust detection under fine-tuning, quantization, model-level perturbations, and adaptive output-level attacks across in-domain and out-of-distribution settings.
+
+</details>
+
+### 67. WMVLM: Evaluating Diffusion Model Image Watermarking via Vision-Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2601.21610) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64406)　📅 2026　🏷 ICML 2026
+
+**关键词**：`benchmark`、`AI watermarking`、`diffusion model`、`content watermark`、`robust detection`
+
+👤 **作者**：Zijin Yang、…、Nenghai Yu
+
+- 🎯 **研究动机**：扩散模型图像水印评估缺乏统一框架（残差与语义）、无可解释性、忽视安全考量且语义水印指标不当
+- 🔬 **研究方法**：提出 WMVLM：按水印类型重定义指标——残差水印看伪迹强度与擦除抗性，语义水印看潜分布偏移；三阶段训练使模型依次具备分类、打分与可解释文本生成能力
+- 📌 **结论**：优于 SOTA VLM，跨数据集、扩散模型与水印方法泛化性强
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Digital watermarking is essential for securing generated images from diffusion models. Accurate watermark evaluation is critical for algorithm development, yet existing methods have significant limitations: they lack a unified framework for both residual and semantic watermarks, provide results without interpretability, neglect comprehensive security considerations, and often use inappropriate metrics for semantic watermarks. To address these gaps, we propose WMVLM, the first unified and interpretable evaluation framework for diffusion model image w ater m arking via v ision- l anguage m odels (VLMs). We redefine quality and security metrics for each watermark type: residual watermarks are evaluated by artifact strength and erasure resistance, while semantic watermarks are assessed through latent distribution shifts. Moreover, we introduce a three-stage training strategy to progressively enable the model to achieve classification, scoring, and interpretable text generation. Experiments show WMVLM outperforms state-of-the-art VLMs with strong generalization across datasets, diffusion models, and watermarking methods.
+
+</details>
+
+### 68. RLCracker: Evaluating the Worst-Case Vulnerability of LLM Watermarks with Adaptive RL Attacks
+
+📄 [arXiv](https://arxiv.org/abs/2509.20924) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63933)　📅 2026　🏷 ICML 2026
+
+**关键词**：`benchmark`、`content watermark`、`cyber misuse`、`provenance`、`AI watermarking`、`reinforcement learning`
+
+👤 **作者**：Hanbo Huang、…、Shiyu Liang
+
+- 🎯 **研究动机**：现有 LLM 水印鲁棒性评测不够对抗，高估了其安全性
+- 🔬 **研究方法**：定义自适应鲁棒半径度量并将改写空间提升为 KL 散度球近似，据此提出 RLCracker：RL 优化攻击上下文与模型参数，仅需少量水印样本且不访问检测器
+- 📌 **结论**：3B 模型训练 100 条短样本后对 1,500 token Unigram 水印文本的移除成功率达 98.5%（GPT-4o 仅 6.75%），跨 5 种规模与 10 种水印方案泛化
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language model (LLM) watermarking has shown promise in detecting AI-generated content and mitigating misuse, with prior work claiming robustness against paraphrasing and text editing. In this paper, we argue that existing evaluations are not sufficiently adversarial, obscuring critical vulnerabilities and overstating the security. To address this, we introduce the adaptive robustness radius, a formal metric that quantifies the worst-case resilience of watermarks against adaptive adversaries. By lifting the paraphrase space into a KL-divergence ball, we approximate this radius and theoretically demonstrate that optimizing the attack context and model parameters can significantly reduce the approximated radius, making watermarks highly vulnerable to paraphrase attacks. Leveraging this insight, we propose RLCracker, a reinforcement learning (RL)–based adaptive attack that erases watermarks while preserving semantic fidelity. RLCracker requires only limited watermarked examples and zero access to the detector. Despite weak supervision, it empowers a 3B model to achieve 98.5\% removal success with minimal semantic shift on 1,500-token Unigram-marked texts after training on only 100 short samples. This performance dramatically exceeds 6.75\% by GPT-4o and generalizes across five model sizes over ten watermarking schemes. Our code is available in this repository.
+
+</details>

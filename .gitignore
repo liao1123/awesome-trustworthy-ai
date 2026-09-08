@@ -12,6 +12,9 @@ __pycache__/
 .pytest_cache/
 .ruff_cache/
 
+# One-shot pipeline artifacts: paper index, batches, backups, fetch state
+/tools/out/
+
 # Local agent workspace files
 .agents/
 .codex/
@@ -28,3 +31,6 @@ __pycache__/
 
 # Keep links and citations in Git; do not commit publisher PDFs by default.
 *.pdf
+
+# The reader bundle reader/data/papers.js IS committed (tsrigo-style
+# prebuilt-site deployment); only the raw scratch files stay out of Git.

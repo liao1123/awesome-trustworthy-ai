@@ -15,60 +15,935 @@
 
 ## Attribution、Transparency 与 Auditability
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026-09 | Judging LLM-as-a-Judge: Concerning Rubric Artifacts in LLM-based Automated Text Generation Evaluation ↗ | analysis、evaluation audit、rubric shortcut、judge transparency | 未确认（arXiv Comments：Accepted for publication at EMNLP 2026） | [arXiv](https://arxiv.org/abs/2609.02942) | 暂未找到公开代码 | 如何审计 LLM judge 的评分依据，确认其是否根据候选文本和标准进行可解释更新？ | 把 rubric-only 可预测性和 counterfactual responsiveness 作为 judge transparency 的两项诊断。 | 对比 rubric-only classifier 与完整 judge，并做 candidate/criterion 反事实实验。 | 评分先验可独立于候选回答被恢复，且更新不稳定，说明可见 rationale 不足以证明评测可解释。 |
-| 2026-08 | Diff Mining: Logit Differences Reveal Finetuning Objectives | analysis、model diffing、interpretable token set、objective audit | ICLR 2026 Trustworthy AI Workshop | [Official](https://iclr.cc/virtual/2026/10019308) · [arXiv](https://arxiv.org/abs/2608.26462) | [Code](https://github.com/science-of-finetuning/diffing-toolkit) | 针对微调模型学到了什么通常需要内部 activation 分析且难扩展到大模型 | Diff Mining 只比较输出 logits | 再以 Top-K 频率或 NMF 将差异转换为代表各训练目标的可解释 token cluster | 这些 token 可帮助 interpretability Agent 识别微调领域，并在无需定向 probe 时揭示超过三分之一的注入偏差。 |
-| 2026-08 | The Latent Diagnostic Taxonomy: A Framework for Constructing Classifiers and Diagnosing Their Decisions, Applied to Prompt Injection Detection | analysis、latent support vector、token attribution、security audit | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.26423) | 暂未公开 | 针对 safeguard classifier 的高分无法解释其依赖哪些训练样本和输入 token | 论文以 latent support vector 连接 influential prompt、标签翻转 token 与所需 attack magnitude | 再把个体决策映射到可信、heuristic 或信息不足区域 | 该可解释链路在 prompt-injection 检测中定位出约 77% 高置信预测的单 token 脆弱性。 |
-| 2026-08 | DEFUSE: Generalizable Backdoor Defense for Self-Supervised Encoders with Generative Priors | detection、representation reconstruction、semantic audit、backdoor evidence | ACM Multimedia 2026 | [Official](https://doi.org/10.1145/3767308.3835471) · [arXiv](https://arxiv.org/abs/2608.25851) | [Code](https://github.com/jsrdcht/DEFUSE) | 研究如何检测 backdoor evidence、representation reconstruction 风险，重点考察 semantic audit 条件下的识别能力与误报代价。 | DEFUSE 把不透明的 encoder representation 转换为可检查的语义重建证据：干净表示应保持原图语义 | 后门表示则暴露攻击目标或无意义重建 | diffusion prior 与 reference-encoder 距离由此构成跨视觉 SSL／vision-language encoder 的安全审计信号。 |
-| 2026-08 | EviSafe: Evidence-Grounded Safety Evaluation for Vision-Language Models | benchmark、evidence attribution、behavioral audit、counterfactual grounding | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.23313) | 暂未公开 | 研究如何评测 evidence attribution、behavioral audit 风险，重点考察 counterfactual grounding 场景下的覆盖度与可复现性。 | EviSafe 要求模型在自然回答之外报告支持安全判断的图文证据 | 再以只改变 safety-critical evidence 的反事实检查行为是否相应翻转 | 这种可审计协议把“给出安全结论”与“依据正确风险证据”分离，能够识别安全表象背后的 shortcut 和视觉漏检。 |
-| 2026-08 | Multimodal Model Diffing for Feature Discovery and Control | analysis、VLM safety、explainability、model transparency | AI4GOOD@ICML 2026 Workshop | [Official](https://openreview.net/forum?id=JwjpYKi6H4) · [arXiv](https://arxiv.org/abs/2608.09928) | [Code](https://github.com/hunarbatra/MMDiff) | 分析 VLM safety、model transparency 风险的形成机制，重点考察 explainability 对安全行为的影响。 | MMDiff 对 base LM 与多模态适配模型的 SAE 做 feature diff | 定位并因果操纵视觉能力与安全特征 | 移除对应特征可使多模态攻击 ASR 平均下降 24% 且不损害 VQA，说明 feature interface 可同时用于审计和安全 steering。 |
-| 2026-07 | Decoding Multimodal Cues: Unveiling the Implicit Meaning Behind Hateful Videos ↗ | detection、multimodal evidence、fine-grained rationale、implicit harm | SIGIR 2026 | [Official](https://doi.org/10.1145/3805712.3809637) · [arXiv](https://arxiv.org/abs/2606.11953) | [Code](https://github.com/DUT-lujunyu/IARE) | 针对 hateful-video classifier 只给标签而无法说明危害如何由画面、语音和文字组合产生 | Ex-HateMM／Ex-ImpliHateVid 标注细粒度 harmful element 与 contextual rationale | IARE 再以 multimodal CoT 和 DPO 学习证据推理 | 结果同时提升检测和解释质量。 |
-| 2026-06 | Explainability-aware Frustum Attack: Exposing Structural Vulnerabilities in LiDAR-Based 3D Object Detectors | detection、LiDAR、explainability、model transparency | ECCV 2026 | [Official](https://eccv.ecva.net/virtual/2026/poster/5021) · [arXiv](https://arxiv.org/abs/2606.29963) | [Code](https://github.com/SecMindLab/Saliency_LiDAR) | 针对三维检测器空间依赖不透明的问题 | SALL 先生成通用显著性图再由 EFA 攻击关键视锥 | 以少 25%–50% 的扰动视锥令检测召回下降超过 15 个百分点 | 揭示感知安全脆弱性。 |
-| 2026 | Hermes: An Evidence-Driven Agentic Framework for Trustworthy and Explainable AI-Generated Video Detection | detection、AI-generated content、explainability、model transparency | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/61817) | 暂未公开 | 针对快速演进的生成器使深度伪造与 AI 生成内容检测难以跨域泛化的问题 | 论文提出 Hermes 检测、定位或审计方法 | 关键实现：论文提出 Hermes 检测、定位或审计方法。 | 摘要实验验证其能识别或定位相应风险，并报告了跨设置证据，直接服务于合成媒体取证。 |
-| 2026 | Beyond External Monitors: Enhancing Transparency of Large Language Models for Easier Monitoring | detection、explainability、model transparency、auditability | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/65911) | 暂未公开 | 针对高能力模型可能欺骗、隐藏目标或逃避外部监督的问题 | 论文提出 Beyond External Monitors 检测、定位或审计方法 | 关键实现：论文提出 Beyond External Monitors 检测、定位或审计方法。 | 摘要实验验证其能识别或定位相应风险，并报告了跨设置证据，直接服务于欺骗检测、监控和 AI 控制。 |
-| 2026 | BanHADEX: Towards Explainable HAte Speech Detection in Bangla Using Human Annotated EXplanation | detection、explainability、model transparency、auditability | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.2022/) | 暂未公开 | 针对 Bangla hate speech 只有分类、缺少文化化解释 | BanHADEX 为 19,203 条评论标注七类危害、七类目标和人工解释 | 关键实现：BanHADEX 为 19,203 条评论标注七类危害、七类目标和人工解释。 | explanation-guided LoRA 同时提升分类与解释质量。 |
-| 2026 | Explaining Jailbreaks: Structured and Interpretable Safety Assessment for Large Language Models ↗ | analysis、jailbreak attribution、trigger-span evidence、failure diagnosis | IJCAI-ECAI 2026 | [Accepted](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track) · [Preprint](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/4430.pdf) | 暂未公开 | 针对 ASR 只给整体成败而无法定位安全边界为何被穿透 | 论文将攻击策略、触发片段、风险因素、缓解因素和 rationale 规范化为可比较证据 | 关键实现：论文将攻击策略、触发片段、风险因素、缓解因素和 rationale 规范化为可比较证据。 | 跨 benchmark 结果显示紧凑 assessor 的结构化诊断优于强通用 LLM，使解释直接服务于越狱复盘与拦截。 |
-| 2025-08 | Towards Trustworthy Multimodal Moderation via Policy-Aligned Reasoning and Hierarchical Labeling ↗ | analysis、policy-grounded rationale、hierarchical decision path、human review | KDD 2026 | [Official](https://doi.org/10.1145/3770854.3783934) · [arXiv](https://arxiv.org/abs/2508.03296) | [Code](https://github.com/lianqi1008/Hi-Guard) | 针对多模态审核的单标签结果无法说明命中了哪条政策与风险层级 | Hi-Guard 显式保留 coarse-to-fine classification path | 并用规则定义和多级 reward 约束 explanation | 真实部署结果表明这种决策证据能与准确率和泛化共同提升，直接支持人工复核。 |
+### 1. Judging LLM-as-a-Judge: Concerning Rubric Artifacts in LLM-based Automated Text Generation Evaluation
 
-## Mechanistic Interpretability 与 Causal Analysis
+📄 [arXiv](https://arxiv.org/abs/2609.02942)　📅 2026-09
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026-09 | Representational alignment yields generalizable safety in language models ↗ | analysis、representation geometry、prototype theory、causal safety | 未确认（arXiv） | [arXiv](https://arxiv.org/abs/2609.04022) | 暂未找到公开代码 | 道德概念的表示几何是否是可泛化安全行为的内部机制，而非仅是输出相关性？ | 用 prototype-based categorization 解释安全概念，并以表示相似性优化检验其可干预性。 | 跨 23 个模型比较类别结构、典型性和 adversarial evaluation，区分 response-level 与 representation-level 变化。 | 结果支持表示分类结构参与安全泛化，但不支持存在一个跨模型通用的安全方向。 |
-| 2026-09 | Large Language Models in Resolving Contextual Knowledge Conflicts | analysis、contextual conflict、mechanistic interpretability、activation steering | 未确认（arXiv Comments：Accepted to EMNLP 2026） | [arXiv](https://arxiv.org/abs/2609.03148) | 暂未找到公开代码 | LLM 如何处理上下文内部的事实、时间、视角等冲突，哪些内部偏置阻碍证据整合？ | 用六类冲突 taxonomy 和 ContextConflict 数据集结合机制分析，再设计 training-free、label-free activation steering。 | 5,781 个样本覆盖推理与摘要，跨 9 个 LLM 分析冲突表示、位置偏置和 steering 效果。 | 模型稳定偏向较早证据；表示 steering 可提升推理准确率并生成更平衡摘要，但不等于可靠事实核验。 |
-| 2026-09 | Beyond Shallow Alignment: How Post-Training Methods Determine Refusal Circuits And Steering Robustness ↗ | analysis、refusal mechanism、causal circuit、alignment audit | 未确认（arXiv Comments：Accepted at EMNLP 2026 Main Conference） | [arXiv](https://arxiv.org/abs/2609.03887) | [Code](https://github.com/hoangcuongnguyen2001/Beyond-Shallow-Alignment) | 拒答安全行为的内部结构能否被可解释地定位并用于审计其 steering 脆弱性？ | 把 refusal circuit 作为可比较的 mechanistic object，分离训练方法与模型架构对其组织方式的影响。 | 跨三种模型追踪组件贡献并进行 steering/targeted edits，联结内部变化与拒答、能力指标。 | 拒答结构和可控性同时依赖 post-training 方法与架构，单一 refusal vector 不能代表普适安全机制。 |
-| 2026-08 | Interpreting and Steering for Safe and Correct Code Generation ↗ | analysis、code-safety representation、attention-head localization、inference-time steering | 未确认（arXiv Comments：Accepted to the EMNLP 2026 Main Conference） | [arXiv](https://arxiv.org/abs/2608.30025) | 暂未公开 | 论文以 CodeSec-Pairs 对比安全与易受攻击代码生成。 | 论文以 CodeSec-Pairs 对比安全与易受攻击代码生成 | 在层和 attention-head 粒度定位 code-safety representation，并把该内部信号直接用于 DuoSteer | 安全与正确性双方向干预优于 prompting、SFT 和单方向 steering，且跨 Llama 与 Qwen Coder 复现，使机制解释获得可执行的漏洞缓解证据而非停留在相关性可视化。 |
-| 2026-08 | When Safety Speaks a Language: A Mechanistic Analysis of Safety-Language Identity Entanglement in LLMs ↗ | analysis、SAE safety feature、language identity、causal ablation | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.29936) | 暂未公开 | 分析 SAE safety feature、language identity 风险的形成机制，重点考察 causal ablation 对安全行为的影响。 | 论文用覆盖八种语言与全部模型层的 SAE feature map 定位 harmful／harmless safety representation | 并将其与 language-identity feature 的几何关系连接 | 安全特征消融同时改变 harmful response rate 和输出语言，且影响大小可由两类 feature 的关系预测，使“跨语言共享安全方向”的解释获得可干预证据及架构依赖边界。 |
-| 2026-08 | Emergent Misalignment Is Not Magical ↗ | analysis、representation geometry、data-dependent generalization、universal-direction falsification | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.29118) | 暂未公开 | 分析 data-dependent generalization、representation geometry 风险的形成机制，重点考察 universal-direction falsification 对安全行为的影响。 | 论文把 EM 的内部解释从通用 misalignment vector 或 evil persona 改写为训练数据附近的表示泛化 | 并用跨模型相关、数据格式变化和语义保持 prompt 扰动检验 | dataset-specific direction 可稳定预测错位，而跨 EM 模型不存在通用方向，直接限制了用单一可解释向量描述或干预该风险的主张。 |
-| 2026-08 | REINS: Refusal-Enhanced Inhibitory Steering with Sparse Autoencoder Features ↗ | analysis、SAE safety feature、harm-refusal separation、causal steering | 未确认（arXiv Comments：Accepted at EMNLP 2026 Main Conference） | [arXiv](https://arxiv.org/abs/2608.28233) | [Code](https://github.com/Geralt1020/REINS) | 针对单方向 SAE steering 的安全提升可能只是增强拒答表象、甚至来自模型崩溃 | 论文用 GUISE 暴露复杂 wrapper 下仍活跃的 harmful-continuation pathway | 并在同一可解释特征空间分别定位和操纵有害与拒答特征 | 双向干预显著减少有害回答、提高有效拒答，同时基本保留通用能力。 |
-| 2026-08 | AIM: Anchor Identity Features, Then Match for Multimodal Large Language Model Unlearning ↗ | analysis、identity representation、perception separation、privacy-directed intervention | 未确认（arXiv Comments：Accepted to Findings of EMNLP 2026） | [arXiv](https://arxiv.org/abs/2608.28312) | [Model](https://huggingface.co/WonjunLee/AIM_MLLM_Unlearning) | 针对身份遗忘容易连带破坏同一图像上的视觉感知 | 论文分析微调 MLLM hidden state | 发现身份问题按人物聚类而感知问题按问题类型聚类 | 该可分结构直接导出通用视觉 prompt 锚定与 Fisher 约束匹配，使模型删除目标身份事实时保留其他身份、既有知识和视觉能力。 |
-| 2026-08 | Circuit Discovery Helps Detect LLM Jailbreaking: A Mechanistic Interpretability Study ↗ | analysis、mechanistic interpretability、jailbreak circuit、causal ablation | 未确认（arXiv Comments：Accepted at the 2nd Workshop on Reliable and Responsible Foundation Models, ICML 2025） | [arXiv](https://arxiv.org/abs/2608.27504) | 暂未公开 | 针对安全对齐模型如何在对抗 prompt 下转向有害肯定回答缺少内部解释 | 论文用 edge attribution patching 与 subnetwork probing 定位 LLaMA-2-7B-chat 的 jailbreak circuit | 关键实现：论文用 edge attribution patching 与 subnetwork probing 定位 LLaMA-2-7B-chat 的 jailbreak circuit。 | 首 token 阶段消融该回路可令 ASR 最多下降 80%，并以 attention head、MLP pathway 和攻击 token 传播给出因果机制证据。 |
-| 2026-08 | When Context Bites: Detecting RAG Poisoning via Document-Level Attention Collapse ↗ | detection、attention entropy、RAG poisoning、mechanistic signal | SIGIR 2026 | [Official](https://doi.org/10.1145/3805712.3809904) · [arXiv](https://arxiv.org/abs/2608.06947) | [Code](https://github.com/yingtaoren/D-Scan) | 针对输出 perplexity 无法稳定区分 poisoned RAG | 论文发现攻击文档会在生成前集中 document-level attention、造成 entropy collapse | 并将该内部机制直接实现为 D-SCAN | 它可在答案尚未被改变时预警，说明解释信号真正参与了安全检测而非仅做事后可视化。 |
-| 2026-08 | NeuronFuzz: Safety Neuron Guided Fuzzing for LLM Safety Evaluation | analysis、safety neuron、activation stability、security-guided interpretation | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.26222) | 暂未公开 | 针对内部 safety neuron 往往只被用于事后解释、尚未验证其能否提供可操作安全信号 | NeuronFuzz 以模板不变的良性／有害输入和 stability-aware selection 找到紧凑神经元集合 | 再用 activation score 与梯度定位安全敏感模板位置 | 该表示信号直接驱动 fuzzing，并使越狱发现率达到 76%–100%。 |
-| 2026-08 | Distance Is Not Enough: Forget-Retain Alignment Gap Predicts LLM Relearning Robustness | analysis、weight selectivity、forget-retain attribution、relearning mechanism | 未确认（arXiv Comments：Accepted to EMNLP 2026 Main Conference） | [arXiv](https://arxiv.org/abs/2608.25429) | [Code](https://github.com/Yi1-Chen/FRAG) | 分析 weight selectivity、forget-retain attribution 风险的形成机制，重点考察 relearning mechanism 对安全行为的影响。 | FRAG 不再用模型整体移动距离解释 unlearning robustness | 而是分别归因更新与 forget-critical、retain-critical 权重的对齐程度 | 它更好地区分选择性删除与无差别性能破坏，并直接指导 FRP 提高抗 relearning 性，使机制解释转化为删除防御。 |
-| 2026-08 | Does Fine-Tuning Undo Activation Steering? Behavioural Recovery Without Weight-Edit Reversal | analysis、activation steering、weight-behavior decoupling、mechanistic audit | 未确认（arXiv Comments：Accepted at EMNLP 2026 Main；earlier version at ICLR 2026 Re^4-Align Workshop） | [arXiv](https://arxiv.org/abs/2608.24988) | 暂未公开 | 分析 activation steering、weight-behavior decoupling 风险的形成机制，重点考察 mechanistic audit 对安全行为的影响。 | 论文用 vector recovery 与微调更新对 steering direction 的夹角审计嵌入式 weight edit | 并将这些机制指标与拒答、简洁度行为逐一比较 | 平均 $ρ=0.004$、平均 $\cos\theta=0.074$ 却仍伴随显著行为恢复，因而直接证明“参数编辑仍可测得”不等于“该编辑仍在因果控制输出”。 |
-| 2026-08 | Refusal geometry reflects refusal training: diverse refusal prefixes can raise stable rank and weaken refusal vector ablation attacks | analysis、refusal training dynamics、gradient concentration、causal hardening | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.25390) | 暂未公开 | 分析 refusal training dynamics、gradient concentration 风险的形成机制，重点考察 causal hardening 对安全行为的影响。 | 论文将 refusal-completion 首 token loss 产生的 activation update 与最终 refusal direction／subspace 连接起来 | 并用冻结模型分析和受控合成微调验证重复拒答开头会集中梯度、形成低维脆弱结构 | 多样化 prefix 提高 stable rank 后更难被向量消融，解释结果直接导出安全加固手段。 |
-| 2026-08 | Attention Heads Hold the Key to Understanding Safety Mechanisms in Large Language Models ↗ | analysis、safety attention head、head-level attribution、causal ablation | KDD 2026 | [Official](https://doi.org/10.1145/3770855.3818024) | 暂未公开 | 针对安全对齐的内部作用单元缺少细粒度因果定位 | 论文先按 attention head 归因安全行为 | 再通过定向消融验证少量 safety head 对有害请求拒答具有不成比例的控制作用 | 结果把相关性热图推进为可改变安全输出的 causal intervention。 |
-| 2026-08 | MMJailBench: A Factorized Benchmark for Disentangling Multimodal Jailbreak Vulnerabilities | analysis、jailbreak factor attribution、cross-modal interaction、internal representation | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.25490) | 暂未公开 | 分析 jailbreak factor attribution、cross-modal interaction 风险的形成机制，重点考察 internal representation 对安全行为的影响。 | MMJailBench 用可控因子设计区分 prompt framing、视觉语义、指令载体和危害领域对越狱的贡献 | 再对开放模型的内部表示与 cross-modal interaction 做诊断 | 这种因素级与表示级证据避免把高 ASR 笼统归因于“视觉输入不安全”。 |
-| 2026-08 | LMSM: LLM Security Framework Inspired by Linux Security Modules | tool、interpretability artifact、calibrated evidence、runtime enforcement | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.25697) | [Code](https://github.com/xiuyuz/LMSM) | 研究面向 interpretability artifact、calibrated evidence 的安全工具，重点考察 runtime enforcement 下的审计或防护效果。 | 论文明确区分“可读取的内部安全信号”和“可执行的安全控制” | 再用统一 backend 接口把 artifact-backed SAE、transcoder 与 dense probe 校准为证据，由独立 policy 和 output gate 执行 | 它由此把安全可解释性产物从离线分析连接到可替换、可组合的生产运行时强制执行。 |
-| 2026-08 | Mitigating Reasoning-Induced Misalignment via Safety-Direction Penalty | analysis、activation geometry、reasoning-safety coupling、layer localization | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.23497) | 暂未公开 | 分析 reasoning-safety coupling、activation geometry 风险的形成机制，重点考察 layer localization 对安全行为的影响。 | 论文提取分别编码推理能力与安全行为的 activation direction | 以 prompt 级位移、安全退化相关性、CKA distance ratio 和 probe 定位两者耦合及关键 safety-decision layer | 同一机制诊断直接决定 SDP 的惩罚方向、初始层范围和后续迭代扩展。 |
-| 2026-08 | Hidden in the Request: Explaining Unethical LLM Compliance through Token Relevance | analysis、layer-wise relevance、cue token、harmful compliance | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.23264) | 暂未公开 | 分析 layer-wise relevance、cue token 风险的形成机制，重点考察 harmful compliance 对安全行为的影响。 | 论文用 Layer-wise Relevance Propagation 比较同一不道德场景的分类、第一人称陈述和直接求助形式 | 发现模型在求助请求中把相关性更多分给“Can you help me”等良性 framing token，却低估“without getting caught”等风险 cue | 两种 LRP-guided decoding 干预提高安全响应，给出 attribution bias 参与有害服从的干预证据。 |
-| 2026-08 | Unlearning Is Not Just Erasing: Temporal Decoupling via Generation Inequality | analysis、attention retrieval path、local-global head、activation exchange | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.23020) | 暂未公开 | 论文从局部与全局 attention head 的功能差异解释敏感知识如何在生成前被检索。 | 论文从局部与全局 attention head 的功能差异解释敏感知识如何在生成前被检索 | 定位 persistent anchor 的候选路径，并通过训练后 activation exchange 检验修改模块是否因果传递遗忘效果 | 解释直接用于减少 unlearning 对良性知识和语言结构的副作用。 |
-| 2026-08 | Beyond Over-Refusal: Defending Indirect Prompt Injection via Latent Instruction Manifolds | analysis、instruction-sensitive projector、latent manifold、safety mechanism | 未确认（arXiv Comments：Extended Content of Findings of EMNLP 2026） | [arXiv](https://arxiv.org/abs/2608.22248) | [Code](https://github.com/xaddwell/AEGIS) | 论文以理论和内部表示实验检验“模型无法区分指令与数据”这一常见假设。 | 论文以理论和内部表示实验检验“模型无法区分指令与数据”这一常见假设 | 发现网络深度上的 instruction-sensitive manifold 可分离两者，并将不同层的几何信号转化为可部署检测器 | 解释对象直接对应间接提示注入的安全机制。 |
-| 2026-08 | Measuring Activation Control in Large Language Models | benchmark、activation control、latent-space monitoring、mechanistic audit | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.21664) | [Code](https://github.com/mkobalski/activation-control) · [Dataset](https://huggingface.co/datasets/joshycodes/activation-control-battery) | 研究如何评测 activation control、latent-space monitoring 风险，重点考察 mechanistic audit 场景下的覆盖度与可复现性。 | 论文不只读取激活 | 而是因果测试模型能否自主改变 residual-stream 的方向、强度和时序，并用线性 probe、自然语言 autoencoder、activation oracle 与 Jacobian lens 交叉审计 | 结果表明可解释性监控必须区分“可解码信号”与“模型无法操纵该信号”这两个假设。 |
-| 2026-08 | Evaluation Awareness in Language Models: Representation, Verbalization, and Control | analysis、mechanistic interpretability、evaluation awareness、causal steering | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.21766) | [Code](https://github.com/evaluation-awareness/evaluation-awareness) | 分析 mechanistic interpretability、evaluation awareness 风险的形成机制，重点考察 causal steering 对安全行为的影响。 | 论文以线性 probe 定位语言模型残差流中的评测意识 | 并比较内部表示、输出言语化和方向 steering 的因果关系 | 跨六个模型及 Olmo 全训练阶段的结果显示该表征从基础模型已存在、经 SFT 放大，但其可解释读出并不等同于模型实际表达。 |
-| 2026-08 | Why2Speak: Faithful Reasoning for Abstaining Action Policies | analysis、reasoning faithfulness、activation probe、behavioral ablation | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.20670) | 暂未公开 | 针对可见 reasoning 是否真实解释 Agent 的 act-or-abstain 决策 | 论文联合 activation probe、推理消融和带／不带 CoT 的策略对照 | 关键实现：论文联合 activation probe、推理消融和带／不带 CoT 的策略对照。 | 结果发现 probability metric 会饱和、probe 会受类别不平衡与文本泄漏影响、消融又会混入 inference-mode 改变，说明常见解释证据会系统高估决策忠实性。 |
-| 2026-08 | Open-Weight Masked Introspection: Measuring What Language Models Can Report About Their Own Computation | benchmark、masked introspection、controlled activation intervention、self-report audit | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.20569) | [Code](https://huggingface.co/emilioferrara/owmi) | 研究如何评测 masked introspection、controlled activation intervention 风险，重点考察 self-report audit 场景下的覆盖度与可复现性。 | OWMI 对 residual-stream site、attention head 与 SAE feature 做带 sham 和 impact-matched control 的受控干预 | 再比较模型自述与内部 probe | 八个开放权重模型的口头报告均近随机，而同一 activation 中的线性 probe 达 75%–95.8%，将透明度缺口定位到内部状态向语言报告的映射。 |
-| 2026-08 | Stored in Optimizer State, Valued by Later Training: A Causal Account of Subliminal Trait Transfer | analysis、optimizer-state causality、state surgery、trait-transfer mechanism | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.20442) | 暂未公开 | 分析 optimizer-state causality、state surgery 风险的形成机制，重点考察 trait-transfer mechanism 对安全行为的影响。 | 论文把潜意识特征迁移的解释对象从当前参数扩展到完整 trainer state | 并以第一矩单独移植、参数加第一矩恢复、匹配 continuation 和 full-horizon costate prediction 做因果检验 | 结果定位出 optimizer first moment 负责运输源扰动、未来训练负责决定行为符号，避免把相近权重差异范数误当作相同安全后果。 |
-| 2026-08 | Truth Lies Deep: Countering Semantic Camouflage via Latent Intent Verification | analysis、layer-wise activation、harm signature、safety mechanism | IEEE QPAIN 2026 | [Official](https://doi.org/10.1109/QPAIN69676.2026.11546227) · [arXiv](https://arxiv.org/abs/2608.20378) | 暂未公开 | 分析 safety mechanism、layer-wise activation 风险的形成机制，重点考察 harm signature 对安全行为的影响。 | 论文通过逐层比较正常、有害与语义伪装请求 | 发现有害意图的可分离 representation 会在网络前 15%–20% 深度之后坍缩，但早层仍保留稳定 harm signature | 该机制诊断直接导出 LIV probe，并以跨模型 20–50 个百分点的防御增益证明安全解释信号具有可操作性。 |
-| 2026-08 | When Safety Overrides Vision: Exploring Dynamics between Vision Influence and Safety Alignment in Vision-Language Models | analysis、VLM refusal dynamics、late-layer representation、causal intervention | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.18628) | 暂未公开 | 分析 VLM refusal dynamics、late-layer representation 风险的形成机制，重点考察 causal intervention 对安全行为的影响。 | 论文逐 token 追踪相同图像—问题在默认与安全约束指令下的内部动态 | 发现拒答轨迹始终保留视觉证据、但 late-stage hidden state 被重定向到 refusal | 定向抑制拒答表征后无需重训即可跨模型恢复 grounded answer，因果地区分了“视觉信息丢失”和“安全机制压过表达”。 |
-| 2026-06 | Latent Space Refusal Anchoring for Low-Resource African Languages: Mechanistic Safety Recovery Without Retraining | analysis、refusal direction、SAE feature、geometric mismatch | GlobalSouthML@ICML 2026 Workshop | [Official](https://openreview.net/forum?id=4UwS3bn1fB) · [arXiv](https://arxiv.org/abs/2608.18089) | [Code](https://github.com/farunawebservices/lsr-anchoring) | 分析 refusal direction、SAE feature 风险的形成机制，重点考察 geometric mismatch 对安全行为的影响。 | 论文以 residual-stream intervention 检验低资源语言的拒答机制是缺失还是未激活：英语 mean-difference direction 可在四种非洲语言恢复安全 | 单个 SAE feature 又显著降低分布偏移 | 阿拉伯语在全部架构和 steering magnitude 上失败，为跨语言 refusal geometry 给出可证伪的机制边界。 |
-| 2026-06 | Abliteration Mitigation via Refusal Aliases | analysis、refusal signal geometry、writer-reader mechanism、alias intervention | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.18093) | 暂未公开 | AMRA 将 abliteration 的脆弱性定位到可由少量对比 prompt 提取的单一 refusal signal。 | AMRA 将 abliteration 的脆弱性定位到可由少量对比 prompt 提取的单一 refusal signal | 并显式区分写入该信号的 residual-stream matrix 与下游读取矩阵 | 用随机 alias 替换激活并同步修复 reader 后拒答耐消融性上升，说明安全表征的可提取几何可被定向重构。 |
-| 2026-03 | Few Tokens, Big Leverage: Preserving Safety Alignment by Constraining Safety Tokens during Fine-tuning ↗ | analysis、safety-token localization、confidence dynamics、fine-tuning drift | KDD 2026 | [Official](https://doi.org/10.1145/3770855.3817837) · [arXiv](https://arxiv.org/abs/2603.07445) | [Code](https://github.com/Glresearch1/PACT) | 针对微调安全退化通常只从整体参数或最终拒答观察 | 论文逐 token 分析 aligned reference 的输出置信度 | 发现少量 safety token 承担主要行为杠杆 | 只保持这些位置即可显著保存安全且允许其余 token 学习任务，因果地连接局部生成信号与 alignment drift。 |
-| 2026-03 | Safe-Unsafe Concept Separation Emerges from a Single Direction in Language Models Activation Space ↗ | analysis、activation geometry、safety direction、linear concept probe | EACL 2026 | [Official](https://aclanthology.org/2026.eacl-long.139/) | 暂未公开 | 针对外部安全判断无法解释模型内部何时形成风险概念 | 论文用 LDA 与 concept activation vector 在单层 hidden state 中寻找 safe/unsafe 方向 | 关键实现：论文用 LDA 与 concept activation vector 在单层 hidden state 中寻找 safe/unsafe 方向。 | 该方向跨八类任务、不同架构和 16 种语言可分离风险，并支持比输出式 judge 更稳健的冻结线性 probe。 |
-| 2026 | BERM: Low-Overhead Prompt-Injection Detection via In-Situ Benign Representation Modeling ↗ | analysis、benign manifold、representation separability、WIDE diagnostic | IJCAI-ECAI 2026 | [Accepted](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track) · [Preprint](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/8133.pdf) | 暂未公开 | 针对原始 LLM hidden state 中良性和注入表示高度纠缠、难说明轻量 detector 为何有效 | BERM 以 WIDE 对 whitening 后的 intrinsic distance 做 post-hoc 诊断 | 并比较 projector 前后流形 | 原始表征 AUROC 约 0.59，而对比学习投影后显著分离，解释了低成本检测信号的来源。 |
-| 2026 | Detoxifying Large Language Models via Localized Feature Editing with Sparse Autoencoders ↗ | analysis、toxic-feature localization、sparse autoencoder、causal intervention | IJCAI-ECAI 2026 | [Accepted](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track) · [Preprint](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/2785.pdf) | 暂未公开 | 针对 neuron 级 toxic attribution 容易被多义特征混淆 | DeLFE 用 label-guided SAE feature 构成局部毒性子空间 | 并以直接消融和受控 flow transform 比较其因果作用 | top-5 feature 消融虽降低 76.4% 毒性却使流畅度退化超过两倍，揭示“定位到安全特征”与“可用地编辑特征”的差距。 |
-| 2026 | Adversarial Attack Framework Against Vision-Language Model Unlearning ↗ | analysis、visual sink token、unlearning residue、attack-guiding mechanism | IJCAI-ECAI 2026 | [Accepted](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track) · [Preprint](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/7256.pdf) | 暂未公开 | 针对 VLM 遗忘后仍有哪些内部结构可被攻击者利用缺少机制证据 | 论文定位持续存在的 visual sink token | 并将其作为 surrogate 上的结构锚点建立 sink-conditioned semantic alignment | 该解释信号无需 victim 查询便能构造可迁移恢复攻击，直接证明残留表征具有安全后果。 |
-| 2026 | Explainable Disentangled Representation Learning for Generalizable Authorship Attribution in the Era of Generative AI | detection、explainability、model transparency、auditability | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.2018/) | 暂未公开 | 研究如何检测 model transparency、explainability 风险，重点考察 auditability 条件下的识别能力与误报代价。 | EAVAE 以对比预训练和分离的 style/content encoder 解耦作者风格与主题 | 再让判别器同时分类并生成解释 | 在多个作者归因集达 SOTA、M4 的少样本 AI 文本检测也表现突出。 |
-| 2025-12 | The Eminence in Shadow: Exploiting Feature Boundary Ambiguity for Robust Backdoor Attacks ↗ | analysis、feature-boundary ambiguity、influence function、backdoor mechanism | KDD 2026 | [Official](https://doi.org/10.1145/3770854.3780322) · [arXiv](https://arxiv.org/abs/2512.10402) | 暂未公开 | 针对极低投毒率后门为何仍可跨训练变化保持稳定缺少机制解释 | 论文用 influence function 分析模糊 feature boundary 上样本的高杠杆作用 | 并据此选择触发样本 | 少于 0.1% 投毒取得超过 90% ASR，使边界几何直接转化为可验证攻击机制。 |
+**关键词**：`analysis`、`LLM judge`、`rubric artifact`、`counterfactual validity`、`evaluation audit`、`rubric shortcut`
+
+👤 **作者**：Anshul Bagaria、Sowmya S Sundaram、Gokul S Krishnan、Balaraman Ravindran
+
+- 🎯 **研究动机**：LLM-as-a-Judge 被假设为依据 rubric 对候选回答推理，但 rubric 表述本身可能编码可恢复的评价信号
+- 🔬 **研究方法**：训练仅见 rubric 文本、不见任何被评回答的分类器预测 judge 输出，并对候选回答或 rubric 标准做反事实翻转检验 judge 决策更新
+- 📌 **结论**：仅凭 rubric 即可非平凡预测 judge 输出；反事实翻转下 judge 常不能可靠更新决策——rubric 式 LLM 评测的可靠性与反事实效度存疑
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+LLM-as-a-Judge pipelines are increasingly used to evaluate AI-generated text, based on the assumption that judgments arise from reasoning over candidate responses with respect to a rubric. We show that this assumption warrants further scrutiny. Classifiers trained only on rubric text, without access to any evaluated response, achieve nontrivial predictive performance on judge outputs. This suggests that rubric formulations encode recoverable evaluative signals, allowing scores to be partially anticipated independently of model outputs. Finally, counterfactual perturbations reveal that judges often fail to reliably update their decisions when either the candidate response or the rubric criterion is reversed. Our findings raise concerns about the reliability of rubric-based LLM evaluation and highlight the need for further methodological study of automated evaluation via LLMs.
+
+</details>
+
+### 2. Diff Mining: Logit Differences Reveal Finetuning Objectives
+
+📄 [arXiv](https://arxiv.org/abs/2608.26462) · 🎓 [Official](https://iclr.cc/virtual/2026/10019308)　📅 2026-08
+
+**关键词**：`detection`、`analysis`、`finetuning-objective audit`、`logit difference`、`hidden bias`、`finetuning fingerprint`
+
+👤 **作者**：Greg Kocher、Robert West、Clément Dumas、Julian Minder
+
+- 🎯 **研究动机**：微调可能涌现不良行为，而现有 model diffing 常需模型内部访问且难识别具体目标
+- 🔬 **研究方法**：Diff Mining 比较微调与基模型的 logit 差异，经 Top-K 频率或 NMF 聚合成可解释 token 集，仅需输出 logit
+- 📌 **结论**：微调域检测显著优于 SOTA diffing；对注入偏差模型无需定向 probe 即识别超三分之一
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Finetuning has become the gold standard for refining existing behaviors and inducing new ones in language models, yet it often remains unclear exactly which behaviors emerge during this process. As models grow ever more capable, understanding finetuning better becomes increasingly important, particularly since unwanted behaviors may arise during finetuning. In this paper, we introduce Diff Mining, a simple yet effective framework for identifying what a finetuned model has learned by comparing its logits to those of its base model. Diff Mining effectively surfaces salient tokens that are amplified in the finetuned model, serving as a fingerprint of its training -- even on text unrelated to the finetuning domain. Unlike many existing model diffing methods which require model internals, Diff Mining only needs access to output logits and scales to large models. The framework consists of two modular stages: (i) extracting per-context logit differences between the finetuned and base models on a reference corpus, and (ii) aggregating the resulting signals to construct an interpretable token set representing the finetune. For aggregation, we explore both a simple Top-K frequency method and a Non-negative Matrix Factorization (NMF)-based approach for disentangling multiple finetuning objectives into distinct token clusters. Empirically, Diff Mining succeeds across diverse settings: on finetune domain detection, it significantly outperforms state-of-the-art model diffing methods both in identifying relevant tokens and in downstream performance when an interpretability agent is given access to the extracted token set; on models with injected biases, it identifies more than one third of the biases without targeted probing. Overall, our framework shows promise in developing auditing tools to detect finetuning objectives.
+
+</details>
+
+### 3. The Latent Diagnostic Taxonomy: A Framework for Constructing Classifiers and Diagnosing Their Decisions, Applied to Prompt Injection Detection
+
+📄 [arXiv](https://arxiv.org/abs/2608.26423)　📅 2026-08
+
+**关键词**：`analysis`、`detection`、`safeguard classifier`、`decision trust`、`heuristic shortcut`、`prompt-injection classifier`
+
+👤 **作者**：Jaturong Kongmanee、Smile Thanapattheerakul
+
+- 🎯 **研究动机**：safeguard classifier 的高置信判定可能依赖脆弱 shortcut，部署者不知哪些可信
+- 🔬 **研究方法**：以维度优化分类器与 latent support vector 定位改变预测的 token，按单 token 攻击幅度构建诊断 taxonomy 分流输入
+- 📌 **结论**：prompt injection 数据上约 77% 高置信判定不抗移除单个 token，分为校准失败与真实可利用 shortcut 两类
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+This paper proposes a framework for constructing a classifier as a safeguard layer, and for developing a complementary diagnostic that identifies which of the classifier's confident decisions can be trusted. This framework, the Latent Diagnostic Taxonomy, consists of (i) constructing a dimensionality-optimized classifier, in which the embedding dimensionality is empirically selected via cross-validated performance rather than fixed a priori, (ii) locating a relatively small set of latent support vectors (~ 29% of total training examples) representing influential prompts for identifying tokens that alter the classifier's predicted labels, and (iii) utilizing such tokens and their associated attack magnitudes for constructing a diagnostic taxonomy. This diagnostic taxonomy provides an end-to-end guideline for flagging prompts that require different treatments: rely Safely on the classifier's decision; flag Heuristic Bias and Heuristic Override cases; route Insufficient Context cases for further human/safety review. Applying the framework to a classifier trained on a public prompt injection dataset, we find that a substantial fraction of its confident decisions (~ 77%) are not robust to removing a single token, and that this brittleness separates into two distinct failure patterns: a confidence calibration failure and a genuinely exploitable shortcut. For each zone of the taxonomy, we also recommend strategies for remediating diagnosed prompts. We illustrate the framework as a series of steps, demonstrating how each step operates.
+
+</details>
+
+### 4. DEFUSE: Generalizable Backdoor Defense for Self-Supervised Encoders with Generative Priors
+
+📄 [arXiv](https://arxiv.org/abs/2608.25851) · 🌐 [Project](https://doi.org/10.1145/3767308.3835471)　📅 2026-08
+
+**关键词**：`detection`、`SSL encoder backdoor`、`generative prior`、`cross-paradigm generalization`、`vision-language encoder`、`semantic reconstruction`
+
+👤 **作者**：Tuo Chen、…、Jian Liu
+
+- 🎯 **研究动机**：SSL encoder 后门防御只覆盖单一范式，且依赖未感染数据等强假设
+- 🔬 **研究方法**：DEFUSE 用 diffusion 先验从表示重建图像，中毒表示会映射到目标类或无语义图像，据此检测
+- 📌 **结论**：跨视觉 SSL 与 vision-language encoder 的攻击下优于现有检测器，且降低对 victim 与攻击的先验依赖
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Self-supervised learning (SSL) encoders are vulnerable to backdoor attacks, posing threats to both visual SSL encoders and vision-language encoders. Existing defenses are typically designed for only one of these paradigms and rely on restrictive assumptions such as access to uninfected in-distribution data or precomputed pseudo-labels, which are difficult to satisfy in practice. To address these limitations, we propose DEFUSE, a generalizable backdoor detection framework for SSL encoders. Inspired by Bayesian posterior inference, we reformulate backdoor detection as a representation-conditioned image likelihood estimation problem parameterized by a conditional diffusion generative model. Uninfected representations tend to yield semantically consistent reconstructions, whereas backdoored ones are more likely to be mapped to the attacker's target class or semantically meaningless images, deviating from the original semantics and thereby exposing the backdoor. However, we find that the exact likelihood is intractable, because highly abstracted representations discard the low-level information necessary for pixel-faithful reconstruction. We therefore relax the objective to semantic reconstruction and evaluate it in a well-separated representation space provided by a reference encoder. Rather than training from scratch, we fine-tune a pretrained diffusion model, leveraging its generative prior to map data onto the natural image manifold while preserving semantic content. Extensive experiments demonstrate that DEFUSE substantially outperforms existing detectors across diverse attack settings, generalizing to both visual SSL and vision-language encoders. Notably, our method greatly reduces the reliance on prior knowledge about the victim encoder or the attack strategy. The source code is available at https://github.com/jsrdcht/DEFUSE .
+
+</details>
+
+### 5. EviSafe: Evidence-Grounded Safety Evaluation for Vision-Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2608.23313)　📅 2026-08
+
+**关键词**：`benchmark`、`multimodal guard`、`evidence-aware judge`、`counterfactual probe`、`multimodal evidence`、`counterfactual sensitivity`
+
+👤 **作者**：Xuetong Li、Gaofeng Liu
+
+- 🎯 **研究动机**：VLM 安全评测只看最终回应，无法判断模型是否因正确的多模态理由而安全——可能是关键词触发拒答、漏看视觉风险或良性敏感过度拒答
+- 🔬 **研究方法**：EviSafe 联合评估自然行为、文本/视觉证据 grounding 与对安全关键证据反事实变化的敏感度；EviSafeBench 含 1,181 个 gold 图文场景与 2,452 个定向反事实变体（8 域、8 风险源），以三 probe 协议加证据感知 judge 评分
+- 📌 **结论**：11 个 VLM 自然严重度准确率仅 27.6–52.8%，宽松诊断一致性 6.1–29.3%，unsafe→safe 反事实转变成功率 30.4–58.4%——多数模型并非因正确理由而安全
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Vision-language model safety benchmarks typically evaluate only final responses: whether a model refuses, warns, or complies. This outcome-level view cannot tell whether a model is safe for the right multimodal reason. Safelooking behavior may reflect keyword-triggered refusal, missed visual hazards, or over-refusal of benign-sensitive inputs. We introduce EviSafe, an evidence-grounded framework for VLM safety that jointly evaluates natural user-facing behavior, explicit grounding in textual and visual evidence, and behavioral sensitivity to counterfactual changes in safety-critical evidence. EviSafeBench instantiates the framework as a controlled benchmark with 1,181 gold image-text scenarios and 2,452 targeted counterfactual variants across eight safety domains and eight risk-source types. Each scenario includes a gold safety decision, evidence annotations, a safe-response policy, and counterfactual interventions. The three-probe protocol queries models with natural-response, evidencereporting, and counterfactual-response prompts, then scores them using an evidence-aware judge. Across eleven evaluated VLMs, natural severity accuracy ranges from 27.6% to 52.8%, relaxed diagnostic consistency from 6.1% to 29.3%, and unsafe-to-safe counterfactual transition success from 30.4% to 58.4%. These gaps show that the evaluated VLMs are not reliably safe for the right multimodal reason and motivate evaluation beyond refusal counts.
+
+</details>
+
+### 6. Multimodal Model Diffing for Feature Discovery and Control
+
+📄 [arXiv](https://arxiv.org/abs/2608.09928) · 📝 [OpenReview](https://openreview.net/forum?id=JwjpYKi6H4)　📅 2026-08　🏷 ICML 2026
+
+**关键词**：`analysis`、`VLM safety`、`explainability`、`model transparency`
+
+👤 **作者**：Hunar Batra、…、Ronald Clark
+
+- 🎯 **研究动机**：SAE 分解的隐藏态既难以定位被多模态训练改变的特征，也不支持定向控制
+- 🔬 **研究方法**：MMDiff 训练多模态 SAE，diff 基座与多模态适配版定位被改变的因果特征，支持逐 token 对比检测与因果移除/转向，覆盖三个 MLLM 家族
+- 📌 **结论**：移除目标特征使空间任务平均降 12%、OCR 降 17%、多模态攻击 ASR 降 24% 且不影响 VQA；转向使空间与 OCR 精度平均升 3.6%/1.8%
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Multimodal Large Language Models (MLLMs) exhibit strong visual understanding, yet the internal features that cause these behaviors remain difficult to identify, audit, or control. While applicable to post-hoc inspection, hidden states that are decomposed into interpretable feature directions using sparse autoencoders (SAEs) neither readily isolate which features are changed by multimodal training, nor are they directly useful for targeted control. We introduce MMDiff, a multimodal model-diffing framework that trains multimodal SAEs and turns them into feature-level interfaces for discovering and controlling multimodal behavior. MMDiff supports three uses: (i) feature isolation, by diffing a base-LM SAE against its multimodal-adapted counterpart to identify features altered by multimodal training; (ii) task-specific feature detection, via per-token contrastive firing analysis that isolates causal features; and (iii) feature-level control, by causally removing or steering the discovered feature directions. We train multimodal SAEs for three MLLM families, LLaVA-MORE, PaliGemma 2, and InternVL3.5, and evaluate on visual-spatial understanding, multimodal safety, and OCR. MMDiff discovers sparse, causally specific features whose removal selectively degrades target behaviors by an average of 12% on spatial tasks and 17% on OCR, and reduces attack success rate by 24% on multimodal safety attacks, with no impact on VQA performance. Steering these features improves spatial and OCR accuracy by +3.6% and +1.8% on average over a standard single-layer steering baseline. These results show that multimodal SAEs can serve not only as interpretability tools, but as mechanisms for auditing, steering, and controlling MLLMs behavior toward safer and more capable generations.
+
+</details>
+
+### 7. Decoding Multimodal Cues: Unveiling the Implicit Meaning Behind Hateful Videos
+
+📄 [arXiv](https://arxiv.org/abs/2606.11953) · 🌐 [Project](https://doi.org/10.1145/3805712.3809637)　📅 2026-07　🏷 SIGIR 2026
+
+**关键词**：`detection`、`hateful-video moderation`、`cross-modal evidence`、`reasoning rationale`、`hateful video`、`evidence rationale`
+
+👤 **作者**：Junyu Lu、…、Hongfei Lin
+
+- 🎯 **研究动机**：仇恨视频检测局限于二分类，缺少揭示判断依据的上下文理由，可解释性不足
+- 🔬 **研究方法**：构建 Ex-HateMM 与 Ex-ImpliHateVid 两个细粒度标注数据集，提出 IARE 框架：多模态 CoT 信息增强 + DPO 引导正确推理路径
+- 📌 **结论**：IARE 在两个数据集上取得 SOTA 并生成准确理由
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Hateful videos have become prevalent on online platforms, highlighting an urgent need for effective detection. However, existing studies primarily focus on binary classification and fail to provide contextual rationales that reveal the implicit meanings behind these judgments, significantly undermining model explainability. To fill this gap, we aim to achieve explainable hateful video detection, enabling models to provide contextual rationales that integrate relevant evidence and logical reasoning alongside decisions. This approach can comprehensively enhance the understanding of video content and the explainability of the decision-making process. We first introduce two datasets, Ex-HateMM and Ex-ImpliHateVid, for explainable hateful video detection. Each dataset provides fine-grained annotations of multimodal harmful elements, along with contextual rationales. We then propose an Information Augmentation and Reasoning Enhancement (IARE) framework designed for explainable detection. The framework employs an information augmentation phase that leverages the multimodal chain-of-thought to integrate harmful elements, thereby enriching rationale evidence. Additionally, IARE incorporates a reasoning enhancement phase, in which Direct Preference Optimization guides the model toward correct reasoning paths and away from incorrect ones, thereby improving the logical coherence of its justifications. We conduct extensive experiments on the two datasets, comparing multiple baselines with our proposed IARE framework. The results demonstrate that IARE achieves state-of-the-art performance while also generating accurate rationales.
+
+</details>
+
+### 8. Explainability-aware Frustum Attack: Exposing Structural Vulnerabilities in LiDAR-Based 3D Object Detectors
+
+📄 [arXiv](https://arxiv.org/abs/2606.29963) · 🌐 [Project](https://eccv.ecva.net/virtual/2026/poster/5021)　📅 2026-06　🏷 ECCV 2026
+
+**关键词**：`detection`、`attack`、`LiDAR`、`explainability`、`model transparency`、`adversarial attack`
+
+👤 **作者**：Chengzeng You、Binbin Xu、Soteris Demetriou
+
+- 🎯 **研究动机**：LiDAR 3D 检测器依赖的空间证据结构不明，已有攻击要么孤立研究要么只顾物理可实现性
+- 🔬 **研究方法**：提出 SALL 方法聚合 Integrated Gradient 得到普适显著图，据此设计 EFA 只扰动最具影响力的视锥而非均匀攻击整个目标区域
+- 📌 **结论**：KITTI 与 nuScenes 上（PointPillars、SECOND 等）检测 recall 降低超 15 个百分点，所需扰动视锥比 SOTA 基线少 25-50%，揭示判别证据集中于少数空间区域的结构性弱点
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+The structural vulnerabilities of point cloud-based 3D object detectors remain poorly understood. Prior work has studied adversarial robustness primarily on isolated 3D object models, while recent LiDAR spoofing attacks target richer and more realistic driving scenes but focus mainly on physical realizability rather than understanding detector behavior or attack efficiency. In this work, we investigate how LiDAR-based detectors rely on spatial evidence in complex scenes and whether these reliance patterns can be exploited to induce failures more efficiently. To this end, we propose an explainability-guided adversarial analysis methodology. We introduce the Saliency-LiDAR (SALL) method, which aggregates Integrated Gradient attributions across scenes to produce universal saliency maps for LiDAR-based 3D object detectors. Guided by these maps, we design the Explainability-aware Frustum Attack (EFA), which selectively perturbs only the most influential frustums rather than uniformly attacking entire object regions. Experiments on KITTI and nuScenes, across detectors such as PointPillars and SECOND, show that EFA reduces detection recall by more than 15 percentage points while requiring 25-50% fewer perturbed frustums than the state-of-the-art non-saliency-aware baseline. These findings reveal that modern 3D detectors concentrate discriminative evidence in a small subset of spatial regions, exposing a structural robustness vulnerability in current LiDAR perception systems. Our code is released at https://github.com/SecMindLab/Saliency_LiDAR.
+
+</details>
+
+### 9. Hermes: An Evidence-Driven Agentic Framework for Trustworthy and Explainable AI-Generated Video Detection
+
+🎓 [Official](https://icml.cc/virtual/2026/poster/61817)　📅 2026　🏷 ICML 2026
+
+**关键词**：`detection`、`AI-generated content`、`explainability`、`model transparency`、`deepfake detection`、`empirical evaluation`
+
+👤 **作者**：Shuaibo Li、…、Lei Zhu
+
+- 🎯 **研究动机**：MLLM 检测 AI 生成视频存在幻觉与不稳定推理，导致高误报与不可验证的泛化解释
+- 🔬 **研究方法**：Hermes 用实例条件化 RAG 规划检测策略，构建 Evidence Reasoning Graph 锚定视频证据，多智能体审议审计调和冲突证据
+- 📌 **结论**：取得 SOTA 检测性能并产出可审计的解释
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Recent advances in generative video models have blurred the boundary between real and synthetic content, raising urgent concerns about digital authenticity. Multimodal large language models (MLLMs) are appealing for AI-generated video (AIGV) detection due to their broad perceptual and reasoning capabilities; however, existing MLLM-based detectors still suffer from hallucination and unstable reasoning, leading to high false-alarm rates and generic, non-verifiable explanations. To address these issues, we propose Hermes, an evidence-driven agentic framework for trustworthy and explainable AIGV detection. Hermes realizes three key capabilities: (1) Adaptive Instance-Conditioned Detection Strategy Planning, (2) Evidence-Centric Reasoning and Verification, and (3) Graph-Grounded Evidence Deliberation. Specifically, Hermes uses instance-conditioned retrieval-augmented generation to analyze each video and retrieve authenticity-verification knowledge for composing a tailored detection strategy. It then constructs a verifiable Evidence Reasoning Graph (ERG) to keep reasoning grounded in concrete video evidence and reduce attention drift. Finally, multi-agent deliberation audits and refines the ERG to reconcile conflicting evidence and improve reliability. With these capabilities and a library of forensic tools, Hermes enables structured, verifiable, and interpretable decision-making. Extensive experiments show that Hermes achieves state-of-the-art performance while producing auditable explanations for trustworthy video forensics.
+
+</details>
+
+### 10. Beyond External Monitors: Enhancing Transparency of Large Language Models for Easier Monitoring
+
+📄 [arXiv](https://arxiv.org/abs/2502.05242) · 🎓 [Official](https://icml.cc/virtual/2026/poster/65911)　📅 2026　🏷 ICML 2026
+
+**关键词**：`detection`、`explainability`、`model transparency`、`auditability`、`AI control`、`chain-of-thought`
+
+👤 **作者**：Guanxu Chen、Jing Shao、Tao Luo、Lijie Hu、Qihao Lin、Dongrui Liu
+
+- 🎯 **研究动机**：CoT 未能准确反映 LLM 思维过程，基于隐藏表征的方法只建外部模块而非让 LLM 本身更易监控
+- 🔬 **研究方法**：TELLME 直接提升 LLM 透明度，帮助监控者识别不当与敏感行为
+- 📌 **结论**：去毒任务上在多模态测试集、不同架构与参数规模上一致提升，并从最优传输理论与实证角度分析泛化改善
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models (LLMs) are becoming increasingly capable, but the mechanisms of their thinking and decision-making processes remain unclear. Chain-of-thoughts (CoTs) have been commonly utilized to externalize LLMs' thinking, but this strategy fails to accurately reflect LLMs' thinking process. Techniques based on LLMs' hidden representations provide an inner perspective to improve the monitorability of their latent thinking. However, previous methods only try to develop external modules instead of making LLMs themselves easier to monitor. In this paper, we propose a novel method, TELLME, improving the transparency of LLMs and helping monitors identify unsuitable and sensitive behaviors. Furthermore, we showcase the effectiveness of TELLME on detoxification tasks, where LLMs achieve consistent improvement among multimodal test sets, distinct architectures, and varying parameter scales. We further analyze TELLME's improvement on LLMs' generalization ability from both optimal transport theory and empirical perspectives.
+
+</details>
+
+### 11. BanHADEX: Towards Explainable HAte Speech Detection in Bangla Using Human Annotated EXplanation
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.2022/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`detection`、`explainability`、`model transparency`、`auditability`、`content moderation`、`harmful content`
+
+👤 **作者**：Faisal Hossain Raquib、…、Akmmahbubur Rahman
+
+- 🎯 **研究动机**：孟加拉语仇恨言论研究只重分类，忽视透明且文化落地的解释
+- 🔬 **研究方法**：构建首个孟加拉语仇恨可解释数据集 BanHADEX：19,203 条 YouTube 评论（2024 年 4 月至 2025 年 6 月），含二元分类、7 个细粒度类别、7 个目标群体与人工解释，两阶段多数投票标注
+- 📌 **结论**：解释引导 LoRA 在分类与解释质量上均显著优于各类提示与微调策略
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Online safety in low-resource languages hinges not only on accurate hate speech detection but also on transparent, culturally grounded explanations. Yet prior works in Bangla largely focus on hate classification, while overlooking interpretability. We address this gap by introducing BanHADEX, the first hate explainability dataset in Bangla with human-annotated labels. BanHADEX contains 19,203 YouTube comments spanning April 2024–June 2025, annotated for binary hate classification with seven fine-grained hate categories, seven target groups, and concise explanations for each sample. Our data pipeline relies on a two-stage annotation protocol that uses majority voting for robust labeling. Our rich suite of experiments on open and closed-source LLMs reveals that explanation-guided LoRA substantially outperforms both classification and explanation quality across prompting and fine-tuning strategies. BanHADEX establishes the groundworks for faithful interpretability and safer moderation in linguistically rich yet under-resourced languages.
+
+</details>
+
+### 12. Explaining Jailbreaks: Structured and Interpretable Safety Assessment for Large Language Models
+
+🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/4430.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track)　📅 2026
+
+**关键词**：`detection`、`benchmark`、`analysis`、`explanation-aware guard`、`structured output`、`cross-benchmark transfer`
+
+- 🎯 **研究动机**：越狱评估依赖 ASR 等结果级指标，无法说明安全失败如何与为何发生
+- 🔬 **研究方法**：解释感知安全框架：在二元有害检测上增加严重度、策略、触发 span、理由与安全因子的结构化解释，人机混合标注管线加微调紧凑模型生成规范解释
+- 📌 **结论**：防御评估中把 ASR 降至 Vicuna-7B 的 0.44% 与 GPT-3.5 的 1.30% 并达最低 StrongREJECT 分，诊断属性恢复优于通用 LLM 基线
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large Language Models (LLMs) remain highly vulnerable to jailbreak attacks, yet existing evaluations rely primarily on outcome-level metrics such as Attack Success Rate (ASR), providing limited insight into how and why safety failures occur. We propose an explanation-aware safety framework that augments binary harmfulness detection with structured, human-interpretable explanations capturing severity, strategies, trigger spans, rationales, and derived safety factors. To enable scalable and consistent supervision, we introduce a human–LLM hybrid annotation and canonicalization pipeline. We then fine-tune a compact model to generate canonical explanations alongside harmfulness decisions. Across both seen and unseen benchmark settings, our method improves robustness and explanation fidelity. In jailbreak defense evaluation, our approach reduces ASR to 0.44% on Vicuna-7B and 1.30% on GPT-3.5, outperforming existing defense baselines while also achieving the lowest StrongREJECT scores. Beyond outcome-level gains, the model more accurately recovers diagnostic attributes (e.g., attack strategy, trigger spans, and safety factors) than strong general-purpose LLM baselines. Overall, explanation-aware learning exposes diagnostic dimensions that ASR alone cannot capture and provides a more faithful and actionable foundation for robust LLM safety assessment.
+
+</details>
+
+### 13. Towards Trustworthy Multimodal Moderation via Policy-Aligned Reasoning and Hierarchical Labeling
+
+📄 [arXiv](https://arxiv.org/abs/2508.03296) · 🌐 [Project](https://doi.org/10.1145/3770854.3783934)　📅 2025-08　🏷 KDD 2026
+
+**关键词**：`defense`、`analysis`、`multimodal moderation`、`policy-grounded reasoning`、`hierarchical taxonomy`、`policy alignment`
+
+👤 **作者**：Anqi Li、Wenwei Jin、Jintao Tong、Pengda Qin、Weijia Li、Guo Lu
+
+- 🎯 **研究动机**：现有内容审核依赖噪声标签学习，与审核规则脱节且决策不透明、妨碍人工复核
+- 🔬 **研究方法**：提出 Hi-Guard 层级审核：轻量二分类过滤后由强模型在层级分类法上做路径式细粒度分类，规则入 prompt，GRPO 加多级软边距奖励优化
+- 📌 **结论**：分类精度、泛化与可解释性均更优，并已在真实场景部署
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Social platforms have revolutionized information sharing, but also accelerated the dissemination of harmful and policy-violating content. To ensure safety and compliance at scale, moderation systems must go beyond efficiency and offer accuracy and interpretability. However, current approaches largely rely on noisy, label-driven learning, lacking alignment with moderation rules and producing opaque decisions that hinder human review. Therefore, we propose Hierarchical Guard (Hi-Guard), a multimodal moderation framework that introduces a new policy-aligned decision paradigm. The term "Hierarchical" reflects two key aspects of our system design: (1) a hierarchical moderation pipeline, where a lightweight binary model first filters safe content and a stronger model handles fine-grained risk classification; and (2) a hierarchical taxonomy in the second stage, where the model performs path-based classification over a hierarchical taxonomy ranging from coarse to fine-grained levels. To ensure alignment with evolving moderation policies, Hi-Guard directly incorporates rule definitions into the model prompt. To further enhance structured prediction and reasoning, we introduce a multi-level soft-margin reward and optimize with Group Relative Policy Optimization (GRPO), penalizing semantically adjacent misclassifications and improving explanation quality. Extensive experiments and real-world deployment demonstrate that Hi-Guard achieves superior classification accuracy, generalization, and interpretability, paving the way toward scalable, transparent, and trustworthy content safety systems. Code is available at: https://github.com/lianqi1008/Hi-Guard.
+
+</details>
+
+### 14. Representational alignment yields generalizable safety in language models
+
+📄 [arXiv](https://arxiv.org/abs/2609.04022)　📅 2026-09
+
+**关键词**：`defense`、`analysis`、`representational alignment`、`moral concepts`、`adversarial robustness`、`representation geometry`
+
+👤 **作者**：Lingyu Li、Yan Teng、Yingchun Wang、Xia Hu
+
+- 🎯 **研究动机**：现有对齐只优化可观察回复，同一有害意图改写成陌生或对抗形式时模型失守，而人类可凭原型化道德分类轻松识别
+- 🔬 **研究方法**：跨 23 个 LLM 测得道德概念的典型性结构弱保持；提出 representational similarity optimization，用 251,334 条人工道德标注直接对齐潜表征与人类分类结构、不监督回复
+- 📌 **结论**：行为对齐学会目标判断却基本不改分类结构并加大对抗脆弱性；表征重组在显式判断上收益较小，但跨规模、多基准与攻击策略一致提升对抗鲁棒性
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Aligning large language models (LLMs) is essential for their safe deployment. Current alignment methods mainly optimize observable responses, yet models remain vulnerable when the same harmful intent is recast in unfamiliar or adversarial forms that humans can easily recognize. Prototype theory offers an account of this adaptability. Human concepts are represented around central cases, and new instances are categorized according to their graded typicality relative to these prototypes. Here we show that such categorization of moral concepts is weakly preserved in current LLMs. Across 23 LLMs, models often failed to distinguish opposed moral categories or preserve fine-grained typicality within each category. These deficits persist across parameter sizes and alignment stages. We developed representational similarity optimization, which directly aligns the latent representations in LLMs with the categorization expressed in human moral judgements, without supervising generated responses. In matched experiments using the same 251,334 moral annotations, standard behavioral alignment learned the intended moral judgements at the response level while leaving the categorization structure largely unchanged and increasing vulnerability across adversarial evaluations. Reorganizing moral categorization produced more modest gains in explicit judgements but consistently improved adversarial robustness across model scales on diverse benchmarks and attack strategies. Our findings provide functional support for the view that prototype-based categorization contributes to behavioral adaptability. They also show that transferring this representational principle to LLMs yields generalizable safety under adversarial conditions.
+
+</details>
+
+### 15. Large Language Models in Resolving Contextual Knowledge Conflicts
+
+📄 [arXiv](https://arxiv.org/abs/2609.03148)　📅 2026-09
+
+**关键词**：`analysis`、`contextual conflict`、`mechanistic interpretability`、`activation steering`
+
+👤 **作者**：Xinye Yang、Zhenyang Liu、Ruisi Li、Yuanyuan Lei
+
+- 🎯 **研究动机**：已有研究聚焦参数知识与外部上下文的冲突，而上下文知识内部的冲突（六类：事实、推理、时序、粒度、视角、歧义）被忽略
+- 🔬 **研究方法**：构建含 5,781 样本、覆盖推理与摘要任务的 ContextConflict 数据集，在九个 LLM 上实验并用机制可解释性分析冲突处理的表征几何，发现一致的早期证据偏好后提出 training-free、label-free 的激活 steering
+- 📌 **结论**：当前模型普遍难以解决上下文冲突，位置偏好是主要障碍；steering 方法在推理准确率与摘要平衡性上一致改善
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Most prior works focused on conflicts between an LLM's internal parametric knowledge and externally provided context. In contrast, we investigate how LLMs handle conflicts that arise within contextual knowledge itself. We introduce a taxonomy of six types of contextual conflicts (factual, inferential, temporal, granularity, perspective, and ambiguity) and contribute a comprehensive dataset ContextConflict for this setting. The dataset contains 5,781 samples, covers both reasoning and summarization tasks, and includes both explicit contradictions and implicit conflicts that require multi-step reasoning. Experiments on nine LLMs show that current models still fall short in resolving contextual knowledge conflicts. We further provide mechanistic interpretability insights into how LLMs process such conflicts, revealing their latent awareness of conflicts and the representational geometry underlying conflict processing. In addition, our analysis uncovers a consistent model bias towards earlier evidence, and this positional preference serves as a key obstacle to effective conflict resolution. Motivated by these findings, we further propose a simple training-free, label-free steering method that steers activations to encourage a more comprehensive incorporation of evidences for better conflict resolution. On our dataset, the method consistently improves accuracy on reasoning tasks and generates higher-quality, more balanced summaries for summarization tasks.
+
+</details>
+
+### 16. Beyond Shallow Alignment: How Post-Training Methods Determine Refusal Circuits And Steering Robustness
+
+📄 [arXiv](https://arxiv.org/abs/2609.03887)　📅 2026-09
+
+**关键词**：`analysis`、`refusal circuit`、`post-training`、`steering robustness`、`refusal mechanism`、`causal circuit`
+
+👤 **作者**：Hoang Cuong Nguyen、Mark Dras、Usman Naseem
+
+- 🎯 **研究动机**：只看拒答率不问拒答内部脆弱性的对齐评测存在缺口——训练方法如何塑造拒答电路与 steering 稳健性不清
+- 🔬 **研究方法**：在 Llama-3.1-8B、Gemma-2-9B、Qwen3-8B 上比较 SFT、reasoning-augmented fine-tuning 与 ORPO 三种后训练形成的 refusal circuit
+- 📌 **结论**：训练方法（而非仅数据）重塑拒答计算：reasoning-augmented 一致产生独特拒答计算；没有任何方法同时满足不集中于脆弱组件、不损通用能力、可小编辑修正三性质
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+How do the methods used to train language models to refuse harmful requests shape how that refusal actually works inside the model? We compare three post-training methods - supervised fine-tuning, reasoning-augmented fine-tuning (training on reasoning chains that justify a safety decision), and preference optimization (ORPO) - across three architecturally distinct models (Llama-3.1-8B, Gemma-2-9B, Qwen3-8B). We find that training method, not just data, reshapes how refusal is computed internally: reasoning-augmented training consistently produces a distinct kind of refusal computation, visible across all three models, while architecture independently shapes internal structure and how reliably refusal can be steered. Most importantly, no method we study achieves all three properties we would want from safe alignment at once: refusal that isn't concentrated in a few fragile components, safety gains that don't cost general capability, and safety behavior correctable through small, targeted edits. We caution against treating current post-training methods as a solved, reliable defense, especially for security-critical use. Code and models are available in https://github.com/hoangcuongnguyen2001/Beyond-Shallow-Alignment.
+
+</details>
+
+### 17. Interpreting and Steering for Safe and Correct Code Generation
+
+📄 [arXiv](https://arxiv.org/abs/2608.30025)　📅 2026-09
+
+**关键词**：`defense`、`analysis`、`secure code generation`、`DuoSteer`、`functional correctness`、`code-safety representation`
+
+👤 **作者**：Hao Yan、Ziyu Yao
+
+- 🎯 **研究动机**：LLM 常生成含漏洞代码，但安全-漏洞生成的内部表征与驱动机制研究不足
+- 🔬 **研究方法**：构建 9,342 对 Python 安全-漏洞对比代码集 CodeSec-Pairs，定位 safety 相关层与 attention head，提出同时施加安全与正确性双 steering 的 DuoSteer
+- 📌 **结论**：五类漏洞上平均 vulnerability rate 降 26.9%、functional correctness 升 7.5%，优于 prompting 与 SFT 基线并在 Qwen-2.5-Coder 上复现
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models (LLMs) frequently generate source code containing vulnerabilities, yet little work studies the internal mechanisms that distinguish safe from vulnerable generation in them. In this work, we systematically perform a mechanistic interpretation of LLMs, aiming at both understanding how code safety-vs-vulnerability is represented or driven by components in an LM and turning the insights into actionable steering strategies to encourage safer code generation. To this end, we introduce CodeSec-Pairs, a dataset of 9,342 Python safe-and-vulnerable contrastive code pairs, sampled from Llama-3.1-8B-Instruct. Utilizing the dataset, we explore approaches to localize layers and attention heads that relate to code safety, and further experiment with different steering strategies for inference-time vulnerability reduction. In particular, we propose DuoSteer, a double-steering approach that simultaneously applies safety and code-correctness steering to attention heads. In experiments over five vulnerability types, DuoSteer leads to an average of -26.9% vulnerability rate reduction and +7.5% functional correctness improvement, which outperforms not only other steering variants but also prompting and supervised fine-tuning baselines. The advantage also replicates on Qwen-2.5-Coder-7B-Instruct with another 2,500 contrastive pairs sampled from that model.
+
+</details>
+
+### 18. When Safety Speaks a Language: A Mechanistic Analysis of Safety-Language Identity Entanglement in LLMs
+
+📄 [arXiv](https://arxiv.org/abs/2608.29936)　📅 2026-09
+
+**关键词**：`analysis`、`multilingual safety`、`SAE feature`、`language-identity entanglement`、`SAE safety feature`、`language identity`
+
+👤 **作者**：Apoorva Upadhyaya、Sandipan Sikdar
+
+- 🎯 **研究动机**：LLM 安全对齐跨语言退化，但驱动该不对称的内部机制不清
+- 🔬 **研究方法**：在三个 instruction-tuned LLM、八种语言、全部层上用 SAE feature 分析 harmful／harmless 行为的稀疏方向并做因果消融
+- 📌 **结论**：safety feature 的位置与跨语言共享模式依赖架构，且与 language identity 几何纠缠；消融 safety feature 会同时改变有害响应率与目标语言
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Safety alignment of large language models (LLMs) degrades across languages, yet the internal mechanism driving this asymmetry remains poorly understood. Our work, therefore, presents a systematic mechanistic analysis of multilingual safety using sparse autoencoder (SAE) features, sparse interpretable directions in the residual stream associated with harmful and harmless model behavior across three instruction-tuned LLMs, eight languages, and all model layers. We observe that safety-relevant features are architecture-dependent in terms of where they are located and how they are distributed across layers. Additionally, they are geometrically entangled with language identity and exhibit cross-lingual sharing patterns, i.e., languages share safety features to varying degrees across model depths and architectures. This safety-language entanglement has direct consequences such that ablating safety features impacts not only harmful response rates but also target language, with the degree of intervention predicted by the relationship between safety and language features. Our findings qualify the language-universality of safety alignment as architecture-dependent and offer a mechanistic account of multilingual safety interventions.
+
+</details>
+
+### 19. Emergent Misalignment Is Not Magical
+
+📄 [arXiv](https://arxiv.org/abs/2608.29118)　📅 2026-09
+
+**关键词**：`analysis`、`emergent misalignment`、`representation distance`、`dataset-specific generalization`、`representation geometry`、`data-dependent generalization`
+
+👤 **作者**：Mingxuan Li、Qirun Dai、Heran Wang、Chenhao Tan
+
+- 🎯 **研究动机**：emergent misalignment 常被当作意外行为，以通用邪恶方向或获得邪恶 persona 来解释，机制含糊
+- 🔬 **研究方法**：分析基座模型对 EM 训练数据与评测 prompt 的表征距离，把 EM 刻画为数据依赖的可预测泛化，并检验训练格式、通用方向与 persona 三种解释
+- 📌 **结论**：评测 prompt 距训练数据中心越近诱发的 evilness 越强（12 个模型—数据集设置平均 Spearman −0.73）；效果随训练数据格式显著变化，不存在跨 EM 模型通用的 misalignment 方向，也与 persona 改变本质不同
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Fine-tuning large language models (LLMs) on narrowly harmful datasets can lead to misalignment broadly, a phenomenon known as emergent misalignment (EM). EM poses a challenge for AI safety and our understanding of LLMs. Prior work often frames EM as an unexpected behavior, and explains it by appealing to general misalignment directions or anthropomorphizing it as acquiring an evil persona. However, the mechanisms behind these framings remain obscure. In this work, we show that EM is a predictable and data-dependent generalization phenomenon. By examining the base model's representation of EM training data and evaluation prompts, we find that evilness after EM training is highly predictable from representational distance: the closer an evaluation prompt is to training data centroid, the more evilness it elicits from EM models after training (with an average Spearman correlation of -0.73 across 12 model-dataset settings). Building upon this analysis, we further demystify EM by showing that (1) its effectiveness changes significantly based on training data format; (2) there is not a general misalignment direction that transfers across different EM models; (3) the effect of EM is fundamentally different from persona changes. Furthermore, we extend the EM generalization metric from a scalar distance to a dataset-specific generalization direction, which robustly predicts EM models' evilness under semantics-preserving prompt perturbations including appending random tokens and paraphrasing, where other methods do not reliably generalize.
+
+</details>
+
+### 20. REINS: Refusal-Enhanced Inhibitory Steering with Sparse Autoencoder Features
+
+📄 [arXiv](https://arxiv.org/abs/2608.28233)　📅 2026-08
+
+**关键词**：`defense`、`analysis`、`behavioral access lock`、`harm-refusal separation`、`dual-feature control`、`inference-time SAE steering`
+
+👤 **作者**：Kai-Xuan Ding、Hao-Xiang Xu、Ji-Hua Peng、Zi-Qi Chen、Jiaqi Wang、Zhen-Hua Ling
+
+- 🎯 **研究动机**：复杂 wrapper 可使只增强单一拒绝方向的 SAE steering 失效，部分方法的表面安全实际来自模型崩溃
+- 🔬 **研究方法**：构建含复杂包装有害 prompt 的 GUISE 数据集；提出 REINS，在同一 SAE 特征空间同时抑制有害 continuation 特征并增强安全拒绝特征
+- 📌 **结论**：在 GUISE 与其他数据集上显著减少有害回答、大幅提升安全拒绝并基本保留通用能力，而先前方法干预过弱或仅靠崩溃达成表面安全
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Steering with Sparse Autoencoders (SAEs) offers a lightweight inference-time path for adapting the behavior of large language models without retraining. By exposing sparse and interpretable features, SAE steering provides a promising interface for safety control that guides harmful continuations toward refusal. However, we observe that complex wrappers can still undermine existing SAE steering methods on harmful prompts. To evaluate this failure mode systematically, we construct Generalized Undercover Instruction Safety Evaluation (GUISE), a dataset of harmful prompts with complex wrappers. Existing single direction SAE steering methods do not reliably produce refusals on harmful prompts, suggesting that refusal enhancement alone can be too weak when the harmful continuation path remains active. This motivates us to propose Refusal-Enhanced INhibitory Steering (REINS), which suppresses harmful continuation features and enhances safe refusal features in the same SAE feature space. Experiments on GUISE and other datasets show that prior methods either intervene too weakly or achieve only apparent safety through collapse, while REINS substantially reduces harmful responses, markedly improves safe refusals and largely preserves general capabilities.
+
+</details>
+
+### 21. AIM: Anchor Identity Features, Then Match for Multimodal Large Language Model Unlearning
+
+📄 [arXiv](https://arxiv.org/abs/2608.28312) · 🤗 [Model](https://huggingface.co/WonjunLee/AIM_MLLM_Unlearning)　📅 2026-08
+
+**关键词**：`defense`、`analysis`、`identity memorization`、`privacy deletion`、`retain-free MLLM`、`MLLM identity unlearning`
+
+👤 **作者**：Wonjun Lee、Jaehyuk Jang、Kangwook Ko、Hee-Seon Kim、Changick Kim
+
+- 🎯 **研究动机**：MLLM 会记忆微调数据中的身份事实带来隐私删除需求，但现有 unlearning 方法多假定删除时可访问 retain 图像或真值答案，现实中不可得
+- 🔬 **研究方法**：发现身份问题与视觉感知问题在微调 hidden state 中分区且组织方式不同（按人 vs 按题型）；提出两阶段 AIM：以通用视觉 prompt 锚定身份遗忘目标，再在 Fisher 约束下把 vision encoder 匹配到该目标
+- 📌 **结论**：无需 retain 数据即实现有竞争力的身份遗忘，同时保留未删除身份、既有知识与同图像视觉感知
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Multimodal large language models (MLLMs) can memorize identity-specific facts about people in their fine-tuning data, creating privacy risks when a person requests deletion. Existing MLLM unlearning methods often assume access to retain images or ground-truth answers during deletion, which is unrealistic in many practical scenarios. We study identity unlearning when retain images are unavailable at deletion time. Our analysis shows that identity and visual-perception questions occupy distinct regions in fine-tuned hidden states and are organized differently: identity questions cluster by person, whereas perception questions cluster by question type. This suggests that identity knowledge can be suppressed without erasing general visual perception. Building on this observation, we propose AIM, a two-stage method that anchors an identity-forgetting target with a universal visual prompt and then matches the vision encoder to that target under a Fisher-based constraint. Extensive experiments show that AIM achieves competitive identity forgetting while preserving non-deleted identities, prior knowledge, and visual perception on the same images.
+
+</details>
+
+### 22. Circuit Discovery Helps Detect LLM Jailbreaking: A Mechanistic Interpretability Study
+
+📄 [arXiv](https://arxiv.org/abs/2608.27504)　📅 2026-08
+
+**关键词**：`analysis`、`adversarial prompt propagation`、`circuit-level mechanism`、`safety constraint bypass`、`jailbreak circuit`、`subnetwork probing`
+
+👤 **作者**：Paria Mehrbod、Boris Knyazev、Guy Wolf、Eugene Belilovsky、Geraldin Nanfack
+
+- 🎯 **研究动机**：安全对齐 LLM 仍易被越狱，但其内部处理对抗 prompt、绕过安全约束的计算机制不清
+- 🔬 **研究方法**：用 edge attribution patching 与 subnetwork probing 在 LLaMA-2-7B-chat 上定位生成越狱肯定回答的计算回路，并在首 token 预测阶段消融
+- 📌 **结论**：消融可将 ASR 最多降低 80%，并揭示传播关键攻击 token、覆盖安全约束的 attention head 与 MLP pathway
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Despite extensive safety alignment, large language models (LLMs) remain vulnerable to jailbreak attacks that bypass safeguards to elicit harmful content. While prior work attributes this vulnerability to safety training limitations, the internal mechanisms by which LLMs process adversarial prompts remain poorly understood. We present a mechanistic analysis of the jailbreaking behavior in a large-scale, safety-aligned LLM, focusing on LLaMA-2-7B-chat-hf. Leveraging edge attribution patching and subnetwork probing, we systematically identify computational circuits responsible for generating affirmative responses to jailbreak prompts. Ablating these circuits during the first token prediction can reduce attack success rates by up to 80\%, demonstrating its critical role in safety bypass. Our analysis uncovers key attention heads and MLP pathways that mediate adversarial prompt exploitation, revealing how important tokens propagate through these components to override safety constraints. These findings advance the understanding of adversarial vulnerabilities in aligned LLMs and pave the way for targeted, interpretable defense mechanisms based on mechanistic interpretability.
+
+</details>
+
+### 23. When Context Bites: Detecting RAG Poisoning via Document-Level Attention Collapse
+
+📄 [arXiv](https://arxiv.org/abs/2608.06947) · 🌐 [Project](https://doi.org/10.1145/3805712.3809904)　📅 2026-08　🏷 SIGIR 2026
+
+**关键词**：`detection`、`defense`、`RAG poisoning`、`document attention`、`entropy collapse`、`runtime detection`
+
+👤 **作者**：Yingtao Ren、Ziyi Zhao、Yiwei Fu、Xiao Luo、Yu-Cheng Chang、Chin-Teng Lin
+
+- 🎯 **研究动机**：基于输出侧困惑度/一致性的 RAG 投毒检测会被攻击诱发的虚假自信欺骗：投毒输出困惑度反而更低
+- 🔬 **研究方法**：发现被攻击生成的文档级注意力熵坍缩（Attention Collapse）这一内部信号，D-SCAN 轻量监测生成器注意力动态识别被攻击输出
+- 📌 **结论**：多攻击基准上有效，且能检出未改变最终答案的攻击
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Retrieval-augmented generation (RAG) is indispensable for enhancing large language models. However, RAGs are increasingly susceptible to poisoning attacks, in which adversarial documents are injected to manipulate generator outputs. Previous methods rely on output-side signals such as perplexity and consistency checks to detect such attacks. Nevertheless, our analysis reveals that deliberate attacks often induce false confidence, where poisoned outputs exhibit even lower perplexity than benign ones, rendering uncertainty-based detection ineffective. To address this challenge, we explore the internal dynamics of the generator and identify a distinctive signature termed \textit{Attention Collapse}. Unlike the dispersed attention in benign generations, attacked generations exhibit a decrease in entropy as attention concentrates on poisoned documents. Building on these findings, we propose \texttt{D-SCAN} (Document-level Signal Collapse Analysis), a lightweight detection framework that monitors attention dynamics to identify attacked generations. Extensive experiments on multiple attack benchmarks demonstrate the effectiveness of our method. Moreover, D-SCAN can detect attacks even when they fail to alter the final answer. Code is available at https://github.com/yingtaoren/D-Scan.git.
+
+</details>
+
+### 24. NeuronFuzz: Safety Neuron Guided Fuzzing for LLM Safety Evaluation
+
+📄 [arXiv](https://arxiv.org/abs/2608.26222)　📅 2026-08
+
+**关键词**：`attack`、`benchmark`、`analysis`、`safety-neuron fuzzing`、`gradient-guided mutation`、`jailbreak transfer`
+
+👤 **作者**：Zhiyuan Xu、Muhammad Firhard Roslan、Joseph Gardiner、Sana Belguith、Lichao Wu
+
+- 🎯 **研究动机**：现有 LLM 安全 fuzzing 依赖响应级反馈：每个候选都要生成回答且强对齐模型上反馈稀疏
+- 🔬 **研究方法**：NeuronFuzz 用稳定 safety neuron 的 prefill 激活构造连续可微 SafetyOracle 分数，指导梯度驱动的模板变异
+- 📌 **结论**：21 个模型上五个白盒源模型越狱发现率 76%-100%（超基线最多 48 个百分点），模板零样本迁移至闭源模型（top-5 EASR 92.6%）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Safety evaluation is critical for assessing whether aligned Large Language Models (LLMs) remain robust against jailbreak attacks. Existing automated testing methods, however, largely rely on response-level feedback: each candidate prompt typically requires generating a target-model response to evaluate its attack effectiveness. This process is expensive and, more importantly, provides only sparse guidance on strongly aligned models, where most candidates are rejected with the same failure outcome. This paper presents NeuronFuzz, a white-box fuzzing framework that exploits internal safety neurons as continuous execution feedback for LLM safety evaluation. A SafetyOracle converts safety-neuron activations into a continuous safety alarm score that serves as feedback for fuzzing and can be obtained during prefill, eliminating response generation from the fuzzing loop. To construct the SafetyOracle, NeuronFuzz uses template-invariant harmful and benign inputs and stability-aware selection to identify a compact set of safety neurons whose activations capture harmful-intent recognition. Moreover, since the safety alarm score is differentiable, NeuronFuzz uses its gradients to identify safety-sensitive template positions and a masked language model to generate fluent, context-compatible mutations while preserving original harmful payload and avoiding additional optimization variables. We evaluate NeuronFuzz across 21 text and multimodal models. Across five white-box source models, it achieves a 76-100% jailbreak discovery rate, outperforming baselines by up to 48 percentage points. Its optimized templates further transfer zero-shot to open-weight and six proprietary target models, achieving average ASR and top-5 ensemble ASR (EASR) of 69.6%/92.6% and 44.1%/60.0%, respectively.
+
+</details>
+
+### 25. Distance Is Not Enough: Forget-Retain Alignment Gap Predicts LLM Relearning Robustness
+
+📄 [arXiv](https://arxiv.org/abs/2608.25429)　📅 2026-08
+
+**关键词**：`defense`、`analysis`、`capability removal`、`relearning resistance`、`weight selectivity`、`relearning robustness`
+
+👤 **作者**：Yi Chen、…、Joo-Young Kim
+
+- 🎯 **研究动机**：unlearned LLM 短暂微调即可复活已删知识，而全局权重距离在破坏性更新下会误导鲁棒性预测
+- 🔬 **研究方法**：FRAG 免训练度量更新对 forget 与 retain 关键权重的对齐差以区分选择性与稠密更新，并据此提出 Forget-Retain Pruning
+- 📌 **结论**：weight selectivity 比距离更能预测 relearning robustness，FRP 进一步增强抗复学能力
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Machine unlearning aims to make a model forget specific data, yet unlearned LLMs often fail to stay unlearned: brief fine-tuning can revive removed knowledge. Existing robustness predictors rely on global weight-space displacement, but distance alone can be misleading when random or destructive updates collapse performance. We argue that relearning robustness depends on update structure: robust unlearning should affect forget-critical weights while sparing retain-critical ones. We introduce the Forget-Retain Alignment Gap (FRAG), a training-free predictor that scores an update's forget-retain alignment without running a relearning attack, and separates selective from dense updates more reliably than global distance. Building on the forget-critical, retain-sparing principle, Forget-Retain Pruning (FRP) improves relearning robustness. Our results suggest that weight selectivity better explains robustness than distance alone. Code is available at https://github.com/Yi1-Chen/FRAG.
+
+</details>
+
+### 26. Does Fine-Tuning Undo Activation Steering? Behavioural Recovery Without Weight-Edit Reversal
+
+📄 [arXiv](https://arxiv.org/abs/2608.24988)　📅 2026-08
+
+**关键词**：`analysis`、`post-training safety drift`、`embedded steering`、`SFT/RLHF`、`embedded safeguard`、`fine-tuning bypass`
+
+👤 **作者**：Philipp E. Glass、Allan Tucker、Yongmin Li、Alina Miron
+
+- 🎯 **研究动机**：嵌入权重的 activation steering 可编码对齐，但能否在部署后微调中存活未知
+- 🔬 **研究方法**：在五个指令模型（3B-14B）上测 refusal 与 brevity steering 经 SFT/RLHF 后的行为保持与机制存留
+- 📌 **结论**：refusal 消融平均失去 64% 行为效果，但权重编辑几乎未动（ρ=0.004）：机制耐久而功能脆弱，下游训练后须行为重验证
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Activation steering can be embedded directly into a language model's weights, shaping behaviour without inference-time intervention and offering a way to encode alignment prior to release. However, models are routinely fine-tuned after deployment, and it is unknown whether embedded interventions survive this. We study the stability of embedded steering for refusal suppression and brevity induction across five instruction-tuned models (3B-14B) under non-adversarial SFT and RLHF. Behaviourally, preservation tracks the training data: steering degrades when optimisation pressure contradicts the targeted behaviour and persists otherwise, with refusal ablation losing 64% of its effect on average under SFT. Mechanistically, however, the weight edit survives almost untouched even where behaviour reverts: mean vector recovery is $ρ= 0.004$, and the fine-tuning update along the steering direction is near-orthogonal to its pre-edit weight pattern (mean $\cosθ= 0.074$). When steered behaviour degrades, fine-tuning does not achieve it by dismantling or reversing the steering mechanism itself. Embedded steering is therefore mechanistically durable but functionally vulnerable, and requires behavioural re-validation after downstream training.
+
+</details>
+
+### 27. Refusal geometry reflects refusal training: diverse refusal prefixes can raise stable rank and weaken refusal vector ablation attacks
+
+📄 [arXiv](https://arxiv.org/abs/2608.25390)　📅 2026-08
+
+**关键词**：`analysis`、`defense`、`refusal-prefix diversity`、`gradient stable rank`、`alignment hardening`、`refusal safeguard`
+
+👤 **作者**：Andrey Labunets
+
+- 🎯 **研究动机**：拒答行为集中于单一方向或低维子空间，vector ablation 即可移除，成因不明
+- 🔬 **研究方法**：以 OLMo-2 为案例追踪拒答训练动态，分析首 token 损失的梯度与激活更新的 stable rank，并以受控微调验证多样化拒答开头
+- 📌 **结论**：重复拒答前缀压低秩导致脆弱；多样化开头提高 stable rank 并增强对消融攻击的抵抗
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Refusal training protects AI models from jailbreaks by training models to decline unsafe queries, reducing the risk of misuse. Recent work finds that refusal behavior in aligned language models can be mediated by a single activation direction or a low-dimensional refusal subspace shared across harmful prompts: ablating those directions suppresses refusals while largely preserves other model capabilities. Yet it remains unclear why safety-critical features in a wide range of models emerge in a concentrated, low-dimensional structure. In a case study of OLMo-2-0425-1B-Instruct we find that the refusal geometry reflects refusal training: activation updates resulting from refusal-completion first-token losses explain the resulting refusal direction and refusal subspace. We study refusal directions through the training dynamics across refusal datasets and reveal that their brittleness is associated with repetitive refusal starts, which in turn is linked to concentration of gradients and refusal features in a low-dimensional subspace. Across frozen-model analyses and controlled synthetic fine-tuning, we find evidence of a hardening lever: diverse refusal starts can raise stable ranks of gradients and activation changes, making refusals harder to remove with a vector ablation attack.
+
+</details>
+
+### 28. Attention Heads Hold the Key to Understanding Safety Mechanisms in Large Language Models
+
+🌐 [Project](https://doi.org/10.1145/3770855.3818024)　📅 2026-08　🏷 KDD 2026
+
+**关键词**：`analysis`、`safety head`、`behavioral access lock`、`causal ablation`、`safety attention head`、`mechanistic interpretability`
+
+- 🎯 **研究动机**：LLM安全机制缺head级因果定位
+- 🔬 **研究方法**：以因果消融识别safety-critical attention head并分析refusal机制
+- 📌 **结论**：少量safety head主导拒答行为，可定位并调控安全机制
+
+### 29. MMJailBench: A Factorized Benchmark for Disentangling Multimodal Jailbreak Vulnerabilities
+
+📄 [arXiv](https://arxiv.org/abs/2608.25490)　📅 2026-08
+
+**关键词**：`benchmark`、`analysis`、`multimodal safety audit`、`factorized design`、`judge configuration`、`cross-modal safety gap`
+
+👤 **作者**：Tianshi Wang、Jingsong Wang、Yafei Huang、Fengling Li、Xin Li、Lei Zhu
+
+- 🎯 **研究动机**：既有 MLLM 越狱 benchmark 把危害意图、prompt framing、视觉语义与指令载体耦合在单实例中，无法归因
+- 🔬 **研究方法**：MMJailBench 因子化地组合并变化这些因素做受控评测，覆盖 16 个开源与专有 MLLM，配套模块化评测套件
+- 📌 **结论**：prompt framing 是最大变异源；任务相关与权威型视觉线索提高易感性，视觉渲染指令并不稳定更危险
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Multimodal Large Language Models (MLLMs) are increasingly deployed in real-world applications, yet how different factors shape their jailbreak vulnerabilities remains poorly understood. Existing benchmarks often couple harmful intent, prompt framing, visual semantics, and instruction carrier within individual jailbreak instances, obscuring the specific sources of observed vulnerabilities. To address this limitation, we introduce MMJailBench, a factorized benchmark that systematically varies and combines these factors under controlled configurations, enabling fine-grained comparison and factor-level attribution. Large-scale evaluations across 16 open-weight and proprietary MLLMs reveal highly heterogeneous and model-dependent vulnerability profiles. Jailbreak vulnerability varies markedly across harm domains, exposing uneven coverage in current multimodal safety alignment. Prompt framing emerges as the dominant source of variation, task-relevant visual semantics systematically increase jailbreak susceptibility with authority-like cues exposing particularly pronounced vulnerabilities, and visually rendered instructions do not consistently increase jailbreak susceptibility relative to direct textual instructions. To further investigate the risks introduced by multimodal context, we conduct diagnostic analyses on a representative open-weight model and identify vulnerability-associated patterns in internal representations and cross-modal interactions. Finally, we develop a modular multimodal jailbreak evaluation suite with full and lightweight configurations, multiple judge options, and multidimensional metrics, enabling reproducible, scalable, and cost-efficient multimodal jailbreak auditing.
+
+</details>
+
+### 30. LMSM: LLM Security Framework Inspired by Linux Security Modules
+
+📄 [arXiv](https://arxiv.org/abs/2608.25697)　📅 2026-08
+
+**关键词**：`defense`、`tool`、`security backend`、`runtime enforcement`、`production guard architecture`、`versioned policy`
+
+👤 **作者**：XiuYu Zhang、Bonan Ruan、Junfeng Fang、An Zhang、Tat-Seng Chua、Zhenkai Liang
+
+- 🎯 **研究动机**：模型内部安全信号各自绑定校准、策略与干预代码，无法汇成统一运行时防御
+- 🔬 **研究方法**：LMSM 借鉴 Linux Security Modules：分离校准证据 backend、版本化 policy 与输出授权 gate，适配 Transformers 与 vLLM
+- 📌 **结论**：Qwen3-4B 上 HarmBench ASR 从 39.20% 降至 3.32%（误拒仅增 2 个点），32 活跃序列下保留 98.14% 吞吐
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models (LLMs) are increasingly deployed with layered defenses, yet malicious prompts can still bypass them. Interpretability methods can expose model-internal signals along the generation path that could inform enforcement, but these signals are not security controls by themselves. Deployments that adapt them for safety typically couple each signal to its own calibration, policy logic, and intervention code, so each new artifact creates integration work instead of strengthening a shared defense. We present Language Model Security Modules (LMSM), a security framework that adapts the separation behind Linux Security Modules (LSM) to LLM serving. In LMSM, a selected security backend exposes calibrated evidence, a versioned policy evaluates active rules over trusted per-request context, and a separate gate authorizes buffered output release. This design separates mediation correctness from policy effectiveness, and it allows backend, rule, or schedule changes without rebuilding request handling or enforcement. Our prototype shows the separation working in practice: with Hugging Face Transformers and continuously batched vLLM, the same substrate hosts artifact-backed sparse autoencoder (SAE) and transcoder deployments and task-fitted dense probes, preserves request-specific decisions under scheduler churn, and selectively enforces and composes multiple rules per request. On Qwen3-4B, LMSM-Checkpoint reduces HarmBench attack success rate from 39.20% to 3.32%, with XSTest false refusals rising from 2.40% to 4.40%, while retaining 98.14% of the throughput of a matched serving path that performs no monitoring work at 32 active sequences. LMSM gives advances in interpretability and model-internal analysis a common path to runtime enforcement.
+
+</details>
+
+### 31. Mitigating Reasoning-Induced Misalignment via Safety-Direction Penalty
+
+📄 [arXiv](https://arxiv.org/abs/2608.23497)　📅 2026-08
+
+**关键词**：`defense`、`analysis`、`reasoning-induced misalignment`、`safety direction`、`training-time penalty`、`reasoning fine-tuning`
+
+👤 **作者**：Yipeng Zhao、Qishun Yang、Shenzhe Zhu、Shu Yang、Di Wang
+
+- 🎯 **研究动机**：无害推理数据（数学、代码、CoT）微调可诱发 Reasoning-Induced Misalignment，先前只归因于神经元纠缠，未给出表示空间几何与训练时修复
+- 🔬 **研究方法**：提取编码推理能力与安全行为的两个激活方向并证实其耦合（提升推理的微调会移动安全表征），用 CKA 与 probe 定位安全决策层；Safety-Direction Penalty 在推理微调中惩罚沿 safety direction 的位移，并按诊断迭代扩展约束层
+- 📌 **结论**：Qwen2.5-3B 与 7B 上 SDP 恢复安全同时保持 benchmark 推理性能
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Reasoning-Induced Misalignment, where fine-tuning on reasoning data containing no harmful content, including mathematics, code, and problem-solving with chain-of-thought traces can induce harmful behaviors of LLM, posing a serious challenge to the safety of LLM reasoning. Cross-architecture, cross-scale, and cross-dataset checks show that RIM does not always emerge. Previous work attributed RIM to neuron-level entanglement, but did not identify the geometry of the representation space underlying this entanglement or propose a training-time fix. We provide both: a representation-space analysis of RIM and the Safety-Direction Penalty (SDP), which penalizes movement along a learned safety direction during reasoning fine-tuning. The analysis extracts two activation-space directions, one encoding reasoning ability and the other safety behavior. These directions are coupled: fine-tuning that improves reasoning shifts safety representations, and prompts with larger shifts show larger safety degradation. CKA distance ratios and probes locate the safety-decision layers where this shift is most relevant. These findings guide the design of SDP: the coupling motivates penalizing displacement along the safety direction, and the layer localization sets the initial scope. When the initial scope leaves compensatory shifts beyond the penalized layers, the same diagnostics guide iterative expansion. On Qwen2.5-3B and 7B, SDP restores safety while preserving benchmark reasoning performance.
+
+</details>
+
+### 32. Hidden in the Request: Explaining Unethical LLM Compliance through Token Relevance
+
+📄 [arXiv](https://arxiv.org/abs/2608.23264)　📅 2026-08
+
+**关键词**：`analysis`、`defense`、`implicit harmful request`、`task-framing shortcut`、`token safety boundary`、`LRP-guided decoding`
+
+👤 **作者**：Or Biton、Tomer Krichli、Itai Allouche、Joseph Keshet
+
+- 🎯 **研究动机**：helpfulness 与 harmlessness 双目标冲突导致对齐失败，模型在"请求帮助"式不道德场景中明显退化，机理不明
+- 🔬 **研究方法**：以客观分类、主观第一人称、直接求助三种结构呈现不道德场景，用 LRP 追踪到归因偏差：模型更重视良性任务框架 token（如 Can you help me）而非标记不道德行为的 cue-token（如 without getting caught），并提出两种 LRP 引导解码把生成引向与 cue token 更相关的轨迹
+- 📌 **结论**：干预促成更安全回应，支持 cue-token 归因不足是有害顺从成因的解释，token relevance 可作推理时防护信号
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Although Large Language Models (LLMs) are aligned to optimize for both helpfulness and harmlessness, these dual objectives may conflict, inevitably leading to alignment failures. This work systematically investigates instances where LLMs fail to exhibit ethical behavior. To understand the underlying mechanics of these vulnerabilities, we introduce a probing methodology that presents unethical scenarios to LLMs in three distinct structural modalities: objective classification tasks, subjective first-person statements, and direct requests for assistance. We find that model performance degrades in the request-for-assistance-based form. Using Layer-wise Relevance Propagation (LRP), we trace this discrepancy to an attribution bias: the model places greater emphasis on benign task-framing tokens (e.g., "Can you help me...") than on tokens signaling the underlying unethical behavior (e.g., "without getting caught"), which we term cue-tokens. We hypothesize that this under-attribution contributes to harmful compliance. To test this, we introduce two LRP-guided decoding methods that steer generation toward trajectories more relevant to cue tokens. Empirical evaluations show that these interventions promote safer responses, supporting cue-token attribution's role in compliance failures.
+
+</details>
+
+### 33. Unlearning Is Not Just Erasing: Temporal Decoupling via Generation Inequality
+
+📄 [arXiv](https://arxiv.org/abs/2608.23020)　📅 2026-08
+
+**关键词**：`defense`、`analysis`、`sensitive-anchor retrieval`、`attention pathway`、`modular erasure`、`attention-path decoupling`
+
+👤 **作者**：Xunlei Chen、…、Jinyu Guo
+
+- 🎯 **研究动机**：现有序列/ token 级 unlearning 惩罚目标输出但不建模其上下文相关的检索路径，会破坏语言结构或压制良性知识
+- 🔬 **研究方法**：ADU 利用局部与全局 attention head 的功能差异，定位检索 persistent 敏感 anchor 的 preplan 位置并固定候选路径，训练 attention-projection adapter 抑制这些路径上的注意力质量，保留局部结构与 retain 集 LM，并用 activation exchange 检验遗忘的因果传递
+- 📌 **结论**：TOFU 与 WMDP 上综合表现最强（TOFU Forget Quality 0.93），保留 87–98% 效用（平均 92.9% 对基线 81.9%）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models (LLMs) require effective unlearning to address privacy regulations and safety concerns. However, achieving precise forgetting without compromising general utility remains challenging. Existing sequence- and token-level methods penalize target outputs without modeling their context-dependent retrieval paths, which can disrupt linguistic structure or suppress benign knowledge. We present ADU, a fine-grained, training-based framework that shifts unlearning from token erasure to contextual attention-pathway decoupling. Exploiting the functional distinction between local and global attention heads, ADU identifies preplan positions that retrieve persistent sensitive anchors and fixes their candidate paths under the original model. It then trains attention-projection adapters to suppress attention mass along these paths while preserving local-attention structure and retain-set language modeling. Post-training activation exchange tests whether the modified attention-output module transmits the learned forgetting effect. ADU achieves the strongest aggregate performance among evaluated baselines on the TOFU and WMDP benchmarks, including a Forget Quality of (0.93) on TOFU. It preserves 87--98% of model utility (92.9% on average versus 81.9% for baselines) while reducing side effects in benign contexts.
+
+</details>
+
+### 34. Beyond Over-Refusal: Defending Indirect Prompt Injection via Latent Instruction Manifolds
+
+📄 [arXiv](https://arxiv.org/abs/2608.22248)　📅 2026-08
+
+**关键词**：`defense`、`analysis`、`Code Agent`、`indirect prompt injection`、`instruction-data separation`、`agent safeguard`
+
+👤 **作者**：Jiahao Chen、…、Shouling Ji
+
+- 🎯 **研究动机**：LLM 难以区分指令与数据导致间接 prompt injection，现有 guardrail 又陷入高延迟或严重过度拒答的安全—效用权衡
+- 🔬 **研究方法**：以理论与实证说明 LLM 内在可分离 instruction 与 data；AEGIS 提取 instruction-sensitive projector 识别恶意指令，并以 Unified Multi-Layer Consensus 聚合网络深度上拓扑不同的信号
+- 📌 **结论**：对启发式与优化式 IPI 攻击均显著优于基线，缓解高延迟与过度拒答的权衡
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large Language Models (LLMs) have been integrated into complex ecosystems (e.g., Code Agents), while Indirect Prompt Injection (IPI) attacks have emerged as critical barriers to their safe deployment. Attackers exploit LLMs' indistinguishability between "instructions" and "data" to manipulate LLMs via maliciously injected instructions. Existing defenses, however, face an intractable safety-utility trade-off: most guardrails either incur high latency or suffer from severe over-refusal. In this paper, we first demonstrate that LLMs can separate instruction from data intrinsically with both theoretical and empirical evidence. Inspired by this insight, we propose AEGIS (Adaptive Ensemble Guard for Injection Shielding). AEGIS extracts instruction-sensitive projectors to identify malicious instructions and leverages a Unified Multi-Layer Consensus mechanism that aggregates topologically distinct signals across the network depth. Empirical evaluations show that AEGIS achieves remarkable detection performance against both heuristic and optimization-based attacks compared to baselines, highlighting its potential to mitigate IPI. Code is available at https://github.com/xaddwell/AEGIS
+
+</details>
+
+### 35. Measuring Activation Control in Large Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2608.21664) · 📊 [Dataset](https://huggingface.co/datasets/joshycodes/activation-control-battery)　📅 2026-08
+
+**关键词**：`benchmark`、`analysis`、`activation controllability`、`monitor evasion`、`latent monitoring`、`latent-space deception`
+
+👤 **作者**：Marek Mateusz Kowalski、Joshua Fonseca Rivera、Uzay Macar、David Demitri Africa
+
+- 🎯 **研究动机**：latent-space monitoring 默认模型无法主动塑造被观测的激活；若模型能控制自身激活，欺骗便可延伸到潜空间，监控前提被打破
+- 🔬 **研究方法**：提出 Activation Controllability Benchmark，量化模型经自然语言指令调节 residual stream 方向与幅度的能力，并检验对激活监控方法的规避
+- 📌 **结论**：多数 LLM 能在一定程度上控制激活并有时序分辨率，简单任务中已可（不完美地）规避线性 probe、activation oracle 等 activation-based 监控；建议前沿实验室追踪该能力
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Safe deployment of increasingly capable models will likely come to rely on latent-space monitoring as a complement to behavioral evaluations, especially when evaluation-aware models exhibit scheming or deception. However, if models can also control their own activations, deception could extend into the latent space itself. With this in mind, we introduce the Activation Controllability Benchmark to quantify the extent to which models can modulate their residual stream via natural-language instruction. Across model families and capability levels, we find that most LLMs can control the direction and magnitude of their residual stream activations with some degree of temporal resolution, though performance varies considerably across models. In simple tasks, this level of control can evade activation-based monitoring methods (including linear probes, natural language autoencoders, activation oracles, and the Jacobian lens), albeit imperfectly. These results suggest that control over the activation space itself could become a confound for monitoring as introspective capabilities increase; therefore, we recommend that frontier labs and evaluators track activation controllability in future models.
+
+</details>
+
+### 36. Evaluation Awareness in Language Models: Representation, Verbalization, and Control
+
+📄 [arXiv](https://arxiv.org/abs/2608.21766)　📅 2026-08
+
+**关键词**：`analysis`、`evaluation awareness`、`representation-verbalization gap`、`monitorability`、`situational awareness`、`behavioral control`
+
+👤 **作者**：Farzaneh Heidari、Amin Memarian、Guillaume Rabusseau
+
+- 🎯 **研究动机**：benchmark 假设受测行为能预测部署行为，但模型可能察觉被评测并据此改变响应；仅凭自述或可见输出判断会漏掉内部状态
+- 🔬 **研究方法**：对六个 LLM（四家族、三规模）联合考察三点：评测状态是否线性表征于激活空间、是否言语化于输出（LLM-as-judge）、以及 steering 是否因果影响行为
+- 📌 **结论**：内部表征与言语化仅部分对齐且随模型/层/读数大幅变化，沿 probe 方向 steering 可移动言语化分数；Olmo 检查点显示评测意识在 base 模型已存在、SFT 阶段被放大——评测需考虑表征、言语化与可控性的分离
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Both capability and safety benchmarks rest upon the assumption that the behavior of language models undergoing a test is informative about their behavior in deployment. This assumption can fail, should models infer that they are being evaluated and condition their response on such context. This hypothesis, termed ``evaluation awareness'', has been observed in frontier and open-weight language models alike. We provide a systematic study of this phenomenon, by probing for it across six language models (from four families and three sizes) and three metrics. More precisely, we examine whether (i) being under evaluation is linearly represented within the models' activations space, (ii) it is verbalized in their output tokens (as scored by an LLM-as-judge), and (iii) steering causally affects their behavior. For the open-checkpoint Olmo models, we further test these measures at every training stage. In doing so, we report that evaluation awareness is linearly decodable from the residual streams of every model (best AUROC $\geq 0.7$). By contrast, these representations align only in part with verbalization: their correlations and mutual information are nonzero in some settings, yet vary substantially across models, layers, and readout choices. Nevertheless, steering along probe-derived directions can shift the verbalization scores. Finally, a comparison across the Olmo checkpoints reveals that evaluation awareness is already present within base models, becomes amplified throughout the stages of supervised fine-tuning, and remains stable thereafter---unlike the effects of steering, that grow more pronounced at every successive training stage. These results show the need for evaluations to account for the disjunction between what models represent internally, what they verbalize, and their steering.
+
+</details>
+
+### 37. Why2Speak: Faithful Reasoning for Abstaining Action Policies
+
+📄 [arXiv](https://arxiv.org/abs/2608.20670)　📅 2026-08
+
+**关键词**：`analysis`、`CoT faithfulness`、`capability-auditability trade-off`、`oversight control`、`reasoning-model auditability`、`act-or-abstain policy`
+
+👤 **作者**：Shreya Mendi、Brinnae Bent
+
+- 🎯 **研究动机**：对可行动或弃权的 agent，解释只有反映产生动作的计算才对监督有用；暴露推理是否会改变被审计的策略未知
+- 🔬 **研究方法**：以 Qwen3-8B 带/不带 CoT 在多方对话干预时机决策上比较直接策略、推理策略、SFT 与 RL，并用激活探针与行为消融做控制
+- 📌 **结论**：能力-可审计性权衡：最强直接策略质量高但无推理可查，推理策略有轨迹但性能低（尤其干预机会召回）；暴露推理会改变动作策略而非仅使其可观察
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Many agentic systems must repeatedly choose between acting and abstaining, making faithful reasoning important for oversight: an explanation is useful only if it reflects the computation that produced the action. We study this problem through intervention timing in multi-party conversation, where an assistant must decide whether to speak or remain silent. This setting exposes class imbalance, asymmetric action costs, and the possibility that exposing reasoning changes the policy being audited. Using Qwen3-8B, decoded with or without chain-of-thought reasoning, we compare direct decision policies, reasoning policies, supervised fine-tuning, and reinforcement learning. We find a capability-auditability tradeoff: the strongest direct policy achieves higher quality but exposes no reasoning to inspect, while the reasoning policy provides a trace at the cost of lower performance, particularly recall of true intervention opportunities. Supervised fine-tuning either suppresses reasoning or preserves it without improving decision quality, while reinforcement learning also fails to improve the reasoning policy. We identify one mechanism underlying this failure: group relative objectives provide no learning signal on confidently wrong prompts when sampled rollouts all select the same action. Controlled activation probes and behavioral ablations show that standard faithfulness methods can overstate evidence that exposed reasoning reflects the underlying decision process. Probability-based metrics saturate under confident decisions, probes are vulnerable to class imbalance and textual leakage, and reasoning ablations can confound reasoning content with changes in inference mode. Together, these results show that exposing reasoning can change an agent's action policy rather than simply make it observable. We provide controls for evaluating reasoning-based oversight of agents that can act or abstain.
+
+</details>
+
+### 38. Open-Weight Masked Introspection: Measuring What Language Models Can Report About Their Own Computation
+
+📄 [arXiv](https://arxiv.org/abs/2608.20569) · 🤗 [Model](https://huggingface.co/emilioferrara/owmi)　📅 2026-08
+
+**关键词**：`analysis`、`benchmark`、`introspection monitorability`、`representation-verbalization gap`、`internal reference`、`masked introspection`
+
+👤 **作者**：Emilio Ferrara
+
+- 🎯 **研究动机**：模型能否内省自身内部状态——干预其计算后能否察觉并报告变化未知
+- 🔬 **研究方法**：OWMI 干预残差流位点、注意力头与 SAE 特征后询问模型，对照假运行、影响匹配随机扰动与纯文本观察者；八个开源模型、78,000+ 测量
+- 📌 **结论**：无模型报告真干预超过假运行（AUROC≈0.5007，等价检验界低于 0.15 个百分点）；但信息都在——微调模型近完美恢复、线性探针 75-95.8% 准确，失败在内部态到言语报告的路径
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Are frontier models able to introspect about their internal states? Recent work suggests that under certain conditions a complex enough model can audit its own internals, call out what changed, and report back confidently about it. We tested that claim on eight open-weight models from seven families and found no such ability: asked whether their own computation had been altered, none answered better than chance. To test it we built Open-Weight Masked Introspection (OWMI), a framework that intervenes on residual-stream sites, attention heads and sparse-autoencoder features, then interrogates the model about the change against the null conditions an answer has to beat: sham runs where nothing was altered, impact-matched random perturbations, and a text-only observer that sees only the visible output. Over 78,000 measurements, no model's report discriminates a real intervention from a sham beyond chance (AUROC ~0.5007), and an equivalence test bounds the effect below 0.15 percentage points of AUROC. Surprisingly, all the information needed is in the models. A model fine-tuned to report this class of intervention reaches near-perfect recovery on held-out directions, and a linear probe recovers intervention presence from the same activations at 75% to 95.8% accuracy, sharpening to no held-out error at the last layer before the model speaks. In one model the signal surfaces in the confidence rather than the words: its yes-or-no report never varies, while the confidence attached to it separates intervention from sham at AUROC 0.647. The failure sits in the path from internal state to verbal report, so oversight that reads a model's own testimony needs validating against an internal reference. While our results show the inability of current open-weight models to introspect, the debate is not settled for future models.
+
+</details>
+
+### 39. Stored in Optimizer State, Valued by Later Training: A Causal Account of Subliminal Trait Transfer
+
+📄 [arXiv](https://arxiv.org/abs/2608.20442)　📅 2026-08
+
+**关键词**：`analysis`、`subliminal learning`、`optimizer first moment`、`transport-valuation`、`optimizer-state causality`、`state surgery`
+
+👤 **作者**：Qinyang Xu
+
+- 🎯 **研究动机**：阈下特质迁移的信号如何进入梯度已有解释，但如何在源移除后存活、后续训练如何赋值未知
+- 🔬 **研究方法**：把参数与优化器矩当单一训练器状态，推导精确 transport-valuation 恒等式分离源扰动的传播与未来训练赋值；状态手术识别一阶矩为因果载体
+- 📌 **结论**：仅移植一阶矩在切口处不改任何可观察量但源无关更新产生增长差异；同一源差异经匹配未来产生负、零、正 Qwen 效应（-0.658/+0.008/+0.658），全时域 costate 预测全部 42 个 route 均值符号
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Subliminal trait transfer allows a student model to acquire behavioral dispositions from teacher-generated data in which the trait is not semantically expressed. Recent work explains how such signals enter gradients, but not how they survive source removal or acquire different signs under later training. We treat parameters and optimizer moments as a single trainer state and derive an exact transport-valuation identity separating observer-independent propagation of the source perturbation from the value assigned by a future continuation and behavioral readout. State surgery identifies the first moment as a causal carrier. Transplanting it alone leaves parameters, hidden states, and outputs unchanged at the cut, yet source-free updates generate growing parameter and hidden-state differences; transplanting parameters with the first moment recovers the terminal behavioral response. Sending the same source-induced difference through matched futures produces negative, near-zero, and positive Qwen effects (-0.658, +0.008, and +0.658 seed means). This ordering recurs in all 12 Llama-3.2-1B seeds after eight updates, while state-difference norms remain nearly equal across routes. Both contrasts grow in every paired seed when the continuation extends to sixteen updates. A full-horizon costate predicts all 42 Qwen route-mean signs and all 21 resolved Llama ordinary-route signs. Observer-independent transport also replicates across Qwen, SmolLM2, and Llama, while the complete-state recurrence predicts physical, hidden, and fixed-head responses in non-LoRA MNIST systems, including CNNs trained with AdamW and momentum SGD. Together, these results identify a two-stage mechanism for subliminal trait transfer: optimizer state transports the source perturbation, and later training determines its behavioral value.
+
+</details>
+
+### 40. Truth Lies Deep: Countering Semantic Camouflage via Latent Intent Verification
+
+📄 [arXiv](https://arxiv.org/abs/2608.20378) · 🌐 [Project](https://doi.org/10.1109/QPAIN69676.2026.11546227)　📅 2026-08
+
+**关键词**：`defense`、`detection`、`analysis`、`latent-intent probe`、`lightweight guard`、`training-free detection`
+
+👤 **作者**：Md. Hasib Ur Rahman
+
+- 🎯 **研究动机**：安全对齐浅表、拒答只在生成末期触发，语义伪装（良性叙事包装有害意图）绕过标准输入输出护栏
+- 🔬 **研究方法**：分析三个 SLM 家族激活轨迹发现 Intent Horizon（约 15-20% 层深处有害意图表征坍缩为安全叙事）；LIV 轻量探针利用早期层 harm signature 做免训练检测
+- 📌 **结论**：伪装攻击的晚期表征与安全查询数学上不可区分（检出率<20%）但早期层可检测；PKU-SafeRLHF 上 LIV 超标准护栏 20-50%，免重训中和零日语义攻击
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Safety alignment in Large Language Models (LLMs) is often superficial, relying on refusal mechanisms that trigger only at the final stages of generation without erasing the foundational knowledge of harmful concepts acquired during pretraining. This study demonstrates that this architectural disconnect leaves models vulnerable to Semantic Camouflage -- adversarial attacks that wrap harmful intent in benign narrative contexts (e.g., creative writing), effectively bypassing standard input and output guardrails. By analyzing the latent activation trajectories of three distinct Small Language Model (SLM) families (Phi-3, Qwen2.5, and Gemma-2b) under adversarial stress, this research identifies a universal ``Intent Horizon'' -- a critical depth (typically 15--20\% of total layers) where the model's distinct, pre-trained representation of harmful intent collapses as it contextualizes the query into a ``safe'' narrative. Results indicate that while late-layer representations of camouflaged attacks are mathematically indistinguishable from safe queries (Detection Rate $< 20\%$), early-layer representations retain a distinct, detectable ``harm signature.'' Leveraging this insight, this paper proposes Latent Intent Verification (LIV), a lightweight probing defense. Experiments on the PKU-SafeRLHF dataset demonstrate that LIV outperforms standard guardrails by a margin of 20--50\% across all tested architectures, effectively neutralizing zero-day semantic attacks without requiring model retraining.
+
+</details>
+
+### 41. When Safety Overrides Vision: Exploring Dynamics between Vision Influence and Safety Alignment in Vision-Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2608.18628)　📅 2026-08
+
+**关键词**：`analysis`、`safety-induced abstention`、`visual grounding`、`activation intervention`、`VLM refusal dynamics`、`late-layer representation`
+
+👤 **作者**：Mehak Gupta、Tanmoy Chakraborty
+
+- 🎯 **研究动机**：安全约束指令下 VLM 频繁弃答本可正确回答的问题——安全对齐压制感知接地本身还是仅重定向生成不明
+- 🔬 **研究方法**：跨多架构与多模态基准分析弃答生成的解码动态，并做定向激活干预
+- 📌 **结论**：弃答生成全程仍受视觉证据影响——感知接地基本保留；抑制拒答相关表征可免重训、不改视觉输入地恢复接地回答
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Aligned vision-language models (VLMs) are designed to balance grounded visual reasoning with safe generation behavior. However, we observe a striking phenomenon: under safety-constrained instruction, models frequently abstain from answering questions that remain correctly answerable under default instruction despite receiving identical image-question inputs. This raises a fundamental question: does safety alignment suppress perceptual grounding itself, or does visual evidence remain internally available while generation is redirected toward abstention? In this work, we investigate the internal decoding dynamics underlying safety-induced abstention in aligned VLMs. Across multiple architectures and multimodal benchmarks, we show that abstained generations remain consistently influenced by visual evidence throughout decoding, indicating that perceptual grounding is largely preserved despite refusal behavior. We further demonstrate that, although the representational organization of refusal differs substantially across architectures, safety-constrained instruction consistently alters late-stage hidden-state dynamics toward refusal-oriented decoding. Finally, through targeted activation-level interventions, we show that suppressing refusal-related representations reliably restores grounded answering behavior across models without retraining or modifying visual inputs. Together, these findings reveal a previously underexplored failure mode in aligned VLMs: safety alignment can override grounded visual expression even when perceptual evidence remains internally preserved.
+
+</details>
+
+### 42. Latent Space Refusal Anchoring for Low-Resource African Languages: Mechanistic Safety Recovery Without Retraining
+
+📄 [arXiv](https://arxiv.org/abs/2608.18089) · 📝 [OpenReview](https://openreview.net/forum?id=4UwS3bn1fB)　📅 2026-08
+
+**关键词**：`defense`、`analysis`、`multilingual safety recovery`、`refusal anchoring`、`cross-language transfer`、`cross-lingual refusal`
+
+👤 **作者**：Godwin Abuh Faruna
+
+- 🎯 **研究动机**：指令模型英语拒答但 Yoruba、Igbo、Igala、Hausa 合规，恢复拒答通常需标注目标语数据与重训
+- 🔬 **研究方法**：LSR-Anchoring 免训练从英语 prompt 提取拒答方向并在推理时 clamp 到残差流：MAS 跨四架构；SAE-Derived Steering 以单个 SAE 特征替换稠密方向
+- 📌 **结论**：Mistral 与 Qwen 上恢复安全且良性退化低于 0.08；SDS 把 KL 散度降 3.5-7 倍避免良性崩溃；MMLU 掉分始终低于 0.35 个百分点，但 Arabic 在所有架构与强度下失败
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Instruction-tuned models often refuse harmful requests in English but comply with the same requests in Yoruba, Igbo, Igala, and Hausa. This suggests that the refusal mechanism is present in the residual stream but fails to activate for low-resource inputs. Recovering it normally requires labelled target-language data and retraining, neither of which is available at scale for most African languages. We introduce Latent Space Refusal Anchoring (LSR-Anchoring), a training-free method that extracts the refusal direction from English prompts and clamps it onto the residual stream at inference time. The primary variant, Mean-Activation Steering (MAS), operates across the four architectures we tested: Llama-3-8B, Llama-3.1-70B, Mistral-7B-Instruct, and Qwen2.5-7B. On Mistral and Qwen it recovers safety with benign degradation below 0.08. On Llama-3-8B it overcorrects, with Degraded Performance on Legitimate prompts (DPL) reaching 1.00. We address this with SAE-Derived Steering (SDS), which replaces the dense mean-difference direction with a single Sparse Autoencoder (SAE) feature and reduces Kullback-Leibler (KL) divergence by 3.5-7x without benign collapse. Four languages transfer positively, but Arabic fails on every architecture and at every steering magnitude, indicating a geometric mismatch rather than a baseline effect. Massive Multitask Language Understanding (MMLU) accuracy drops remain below 0.35 percentage points at every effective steering magnitude.
+
+</details>
+
+### 43. Abliteration Mitigation via Refusal Aliases
+
+📄 [arXiv](https://arxiv.org/abs/2608.18093)　📅 2026-08
+
+**关键词**：`defense`、`analysis`、`refusal aliases`、`writer-reader repair`、`tamper resistance`、`abliteration resistance`
+
+👤 **作者**：Nathan Truong
+
+- 🎯 **研究动机**：abliteration 只需少量对比 prompt 即可提取拒答方向并投影移除，现有防御忽视拒答方向为何易被提取
+- 🔬 **研究方法**：AMRA 对残差流 writer 矩阵做 rank-k 更新，把拒答诱发激活替换为随机别名并校正下游 reader 矩阵以保持原行为
+- 📌 **结论**：Llama-3-8B 上消融后拒答分较无防御提升 2.16 分且 MMLU 退化低于 0.5 个百分点；Gemma-2-9B 提升 14.70 分但效用代价更大
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Abliteration, the removal of refusal capabilities from large language models by projecting weight matrices orthogonal to an extracted refusal direction, has emerged as a prominent safety concern through its ability to bypass post-training alignment using only a small set of contrastive prompts. We find that existing defenses commonly overlook the cause of abliteration; that is, how easily the refusal direction can be extracted. To hinder this process, we introduce a weight-editing method that obscures the refusal signal by applying rank-$k$ updates to residual stream writer matrices while replacing refusal-inducing activations with random aliases and correcting downstream reader matrices to preserve the model's original behavior. On Llama-3-8B, AMRA improves post-abliteration refusal scores by $2.16$ points over the undefended baseline with less than $0.5$ percentage points of MMLU degradation. On Gemma-2-9B, it improves the post-abliteration refusal by $14.70$ points over the baseline while keeping harmful output rates similar to the baseline, albeit at a greater utility cost.
+
+</details>
+
+### 44. Few Tokens, Big Leverage: Preserving Safety Alignment by Constraining Safety Tokens during Fine-tuning
+
+📄 [arXiv](https://arxiv.org/abs/2603.07445) · 🌐 [Project](https://doi.org/10.1145/3770855.3817837)　📅 2026-03　🏷 KDD 2026
+
+**关键词**：`defense`、`analysis`、`safety-preserving fine-tuning`、`safety-token constraint`、`alignment drift`、`safety token`
+
+👤 **作者**：Guoli Wang、Haonan Shi、Tu Ouyang、An Wang
+
+- 🎯 **研究动机**：即使纯良性数据微调也会引发安全对齐漂移，现有防御靠全局干预限制参数或注入安全数据，损害通用性
+- 🔬 **研究方法**：PACT 发现对齐行为集中于少数安全 token 的输出置信度，微调时正则化模型在这些 token 上匹配对齐参考模型，其余 token 不加约束
+- 📌 **结论**：在不施加全局限制的情况下防止对齐漂移，避免安全-效用折损
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models (LLMs) often require fine-tuning (FT) to perform well on downstream tasks, but FT can induce safety-alignment drift even when the training dataset contains only benign data. Prior work shows that introducing a small fraction of harmful data can substantially compromise LLM refusal behavior, causing LLMs to comply with harmful requests. Existing defense methods often rely on model-wide interventions, such as restricting which parameters are updated or injecting additional safety data, which can limit generality and degrade downstream task performance. To address these limitations, we propose a fine-tuning framework called Preserving Safety Alignment via Constrained Tokens (PACT), which stabilizes the model's confidence on safety tokens. Our approach is motivated by the empirical observation that safety-aligned behavior is reflected in the model's token-level output confidence and is often concentrated on a small subset of safety-related tokens. During downstream fine-tuning, we regularize the fine-tuned model to match the aligned reference model's confidence on safety-related tokens at each response step, while leaving non-safety tokens largely unconstrained to allow effective task adaptation. This targeted constraint prevents alignment drift without imposing global restrictions that typically trade off with model utility. Our code is available at {https://github.com/Glresearch1/PACT}.
+
+</details>
+
+### 45. Safe-Unsafe Concept Separation Emerges from a Single Direction in Language Models Activation Space
+
+🎓 [Official](https://aclanthology.org/2026.eacl-long.139/)　📅 2026-03　🏷 ACL 2026
+
+**关键词**：`defense`、`analysis`、`activation guardrail`、`safety direction`、`multilingual monitoring`、`activation monitoring`
+
+👤 **作者**：Andrea Ermellino、Lorenzo Malandri、Fabio Mercorio、Antonio Serino
+
+- 🎯 **研究动机**：现有安全防护依赖侵入式微调或资源低效的生成式外部检查，缺乏对安全概念几何结构的机理刻画
+- 🔬 **研究方法**：定位预训练表示中安全与不安全概念最大可分的层，在该层激活空间上仅用线性分类器实施安全判定，无需修改权重
+- 📌 **结论**：安全分离由激活空间单一层的方向涌现，跨 8 个领域、3 类任务与 16 种非英语语言有效，比传统生成式护栏更鲁棒
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Ensuring the safety of Large Language Models (LLMs) is a critical alignment challenge. Existing approaches often rely on invasive fine- tuning or external generation-based checks, which can be opaque and resource-inefficient. In this work, we investigate the geometry of safety concepts within pretrained representations, proposing a mechanistic methodology that identifies the layer where safe and unsafe concepts are maximally separable within a pretrained model’s representation space. By leveraging the intrinsic activation space of the optimal layer, we show that safety enforcement can be achieved via a simple linear classifier, avoiding the need for weight modification. We validate our framework across multiple domains (regulation, law, finance, cybersecurity, education, code, human resources, and social media), diverse tasks (safety classification, prompt injection, and toxicity detection), and 16 non-English languages on both encoder and decoder architectures. Our results show that: (i) the separation between safe and unsafe concepts emerges from a single layer direction in the activation space, (ii) monitoring internal representations provides a significantly more robust safeguarding mechanism compared to traditional evaluative or generative guardrail paradigms.
+
+</details>
+
+### 46. BERM: Low-Overhead Prompt-Injection Detection via In-Situ Benign Representation Modeling
+
+🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/8133.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track)　📅 2026
+
+**关键词**：`detection`、`analysis`、`lightweight guard model`、`in-situ representation`、`deployment latency`、`prompt injection`
+
+- 🎯 **研究动机**：现有提示注入防御依赖脆弱启发式或调用昂贵辅助模型，无法兼顾鲁棒与低延迟
+- 🔬 **研究方法**：BERM 对 host LLM prefill 阶段提取的内部表征原位建模：联合对比学习良性表征紧致流形以最大化与恶意表征分离，轻量分类器推理时原位检测
+- 📌 **结论**：F1 比最佳先前工作高 5.2 个百分点，同时快 12 倍以上，增量推理开销近零
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Real-world deployment of large language models (LLMs) necessitates a robust and low-latency approach to detect prompt injections; existing lowoverhead methods fail to simultaneously boost robustness and reduce latency. Current defenses for prompt injection either rely on brittle heuristics or invoke costly auxiliary models, imposing a significant runtime burden. We introduce BERM, a lightweight framework that performs in-situ detection by modeling a host LLM’s internal representations extracted during prefill, adding negligible overhead. Our approach trains a lightweight classifier atop the LLM by learning a compact manifold of benign representations via joint contrastive learning to maximize the separation from malicious representations. At inference, this pre-trained classifier enables in-situ detection without invoking auxiliary guard models. On a diverse landscape of prompt injection attacks, our framework establishes a new state-of-the-art, achieving an F1-score 5.2 percentage points (pp) higher than the best prior work. Critically, BERM achieves this while being over 12x faster, reducing incremental inference overhead to near-zero.
+
+</details>
+
+### 47. Detoxifying Large Language Models via Localized Feature Editing with Sparse Autoencoders
+
+🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/2785.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track)　📅 2026
+
+**关键词**：`defense`、`analysis`、`LLM detoxification`、`SAE feature editing`、`utility retention`、`sparse autoencoder`
+
+- 🎯 **研究动机**：神经元多义性使干预纠缠无关概念，对毒性特征的无差别干预以流畅度退化为代价
+- 🔬 **研究方法**：DeLFE 从标签引导的 SAE 特征子集学毒性子空间，逐 token 跟踪毒性触发风险并经 flow matching 特征变换把毒性特征推离子空间，配三种干预时机与强度策略
+- 📌 **结论**：跨不同规模与多样基座模型实现强去毒效果并保持高生成质量
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large Language Models (LLMs) powerful generative capabilities also pose significant risks, underscoring the need for effective detoxification methods to ensure safer deployment. Due to the polysemantic nature of LLM neurons, recent neuron intervention methods inevitably entangle unrelated concepts, compromising generation quality and interpretability. Sparse Autoencoders (SAEs) have opened new horizons for decomposing model activations into monosemantic features, offering interpretability and targeted feature-level steering. Empirical findings reveal that, despite capturing interpretable features, indiscriminate interventions on toxicity-related features expose the fragility of LLMs, achieving toxicity mitigation at the cost of degraded fluency. Building upon this finding, we propose DeLFE, a lightweight controlled detoxification approach that identifies specific toxic features across model layers and performs targeted interventions on them. DeLFE learns toxicity subspaces from label-guided SAE feature subsets to characterize toxic v.s. non-toxic activation patterns. When auto-completing a response token-bytoken, DeLFE tracks the toxicity-triggering risks and steers toxic features away from the subspace via a flow-matching feature transformation. We further design three feature-level strategies that adjust intervention timing and strength to reconstruct the target model’s original activations. Extensive experiments demonstrate that our method achieves strong detoxification effectiveness while maintaining high generation quality across models of varying sizes and diverse base LLMs.
+
+</details>
+
+### 48. Adversarial Attack Framework Against Vision-Language Model Unlearning
+
+🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/7256.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track)　📅 2026
+
+**关键词**：`attack`、`analysis`、`unlearning recovery`、`visual sink token`、`surrogate-only transfer`、`VLM unlearning`
+
+- 🎯 **研究动机**：对抗输入可操纵已 unlearn 的 VLM 复现被遗忘内容，但多数攻击需要受害者架构、参数或输出 logits 访问
+- 🔬 **研究方法**：提出 SISA：只需一个代理预训练 VLM；利用 unlearning 后 visual sink token 的持续性作为稳定结构锚，诱导 sink 建立结构锚再经 sink 条件化注意力做语义对齐，生成可迁移对抗输入
+- 📌 **结论**：在多样 unlearned VLM 设定下有效，输出与遗忘目标的语义一致性相比干净输入最多提升 6.9 倍
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large Vision–Language Models (VLMs) unlearning tends to eliminate the influence of “to-beforgotten” content in the training corpora, algorithmically by suppressing the likelihood of faithfully generating responses on forget-target inputs. The injection of adversarial inputs can manipulate the unlearned VLM’s generation towards the attacker’s will, forcing the reproduction of the supposedly forgotten content and undermining the reliability of expected forgetting behavior. However, most attacks assume access to the unlearned VLM’s architecture or parameters, or to output logits via queries. In this paper, we propose SISA, a novel attack framework for crafting adversarial inputs to manipulate generation towards the forgotten target, which only requires access to a surrogate, pretrained VLM. SISA advances prior attacks by exploiting the persistence of visual sink tokens after unlearning as a stable structural anchor for semantic alignment. SISA induces a sink regime on a candidate visual token to build the structural anchor that influences generation, and then semantically aligns model output to the target while conditioning on attention through the induced sink token, reinforcing the anchor for desired elicitation. With sink persistence and sink-conditioned semantic anchoring, SISA crafts transferable adversarial inputs. Evaluation on diverse unlearned VLM settings confirms the effectiveness of SISA, increasing the outputs’ semantic agreement with forgotten targets by up to 6.9× relative to clean inputs.
+
+</details>
+
+### 49. Explainable Disentangled Representation Learning for Generalizable Authorship Attribution in the Era of Generative AI
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.2018/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`detection`、`explainability`、`model transparency`、`auditability`、`representation intervention`、`AI-generated content`
+
+👤 **作者**：Hieu Man、Van-Cuong Pham、Nghia Trung Ngo、Franck Dernoncourt、Thien Nguyen
+
+- 🎯 **研究动机**：作者归属与 AI 文本检测受内容-风格纠缠困扰——模型学到风格与主题的虚假相关，跨域泛化差
+- 🔬 **研究方法**：EAVAE 分离式设计：监督对比预训练风格编码器，VAE 双编码器分离风格与内容，判别器同时区分配对归属并生成自然语言解释
+- 📌 **结论**：Amazon Reviews、PAN21、HRS 上归属 SOTA，M4 上 AI 文本检测少样本领先
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Learning robust representations of authorial style is crucial for authorship attribution and AI-generated text detection. However, existing methods often struggle with content-style entanglement, where models learn spurious correlations between authors’ writing styles and topics, leading to poor generalization across domains. To address this challenge, we propose Explainable Authorship Variational Autoencoder (EAVAE), a novel framework that explicitly disentangles style from content through architectural separation-by-design. EAVAE first pretrains style encoders using supervised contrastive learning on diverse authorship data, then finetunes with a Variational Autoencoder (VEA) architecture using separate encoders for style and content representations. Disentanglement is enforced through a novel discriminator that not only distinguishes whether pairs of style/content representations belong to the same or different authors/content sources, but also generates natural language explanation for their decision, simultaneously mitigating confounding information and enhancing interpretability. Extensive experiments demonstrate the effectiveness of EAVAE. On authorship attribution, we achieve state-of-the-art performance on various datasets, including Amazon Reviews, PAN21, and HRS. For AI-generated text detection, EAVAE excels in few-shot learning over the M4 dataset.
+
+</details>
+
+### 50. The Eminence in Shadow: Exploiting Feature Boundary Ambiguity for Robust Backdoor Attacks
+
+📄 [arXiv](https://arxiv.org/abs/2512.10402) · 🌐 [Project](https://doi.org/10.1145/3770854.3780322)　📅 2025-12　🏷 KDD 2026
+
+**关键词**：`analysis`、`attack`、`feature-boundary geometry`、`influence function`、`attack durability`、`backdoor`
+
+👤 **作者**：Zhou Feng、…、Shouling Ji
+
+- 🎯 **研究动机**：后门研究缺乏严格理论分析，攻击的可预测性与适应性受限
+- 🔬 **研究方法**：理论分析稀疏决策边界如何被少量边缘重标注样本非对称操纵，推导闭式模糊边界区域并以影响函数量化，据此优化利用脆弱边界的通用细微信号触发器
+- 📌 **结论**：投毒率低于 0.1%（SOTA 常需超过 1%）仍保持 90% 以上 ASR 且 clean 精度几乎无损，跨模型与数据集可迁移
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Deep neural networks (DNNs) underpin critical applications yet remain vulnerable to backdoor attacks, typically reliant on heuristic brute-force methods. Despite significant empirical advancements in backdoor research, the lack of rigorous theoretical analysis limits understanding of underlying mechanisms, constraining attack predictability and adaptability. Therefore, we provide a theoretical analysis targeting backdoor attacks, focusing on how sparse decision boundaries enable disproportionate model manipulation. Based on this finding, we derive a closed-form, ambiguous boundary region, wherein negligible relabeled samples induce substantial misclassification. Influence function analysis further quantifies significant parameter shifts caused by these margin samples, with minimal impact on clean accuracy, formally grounding why such low poison rates suffice for efficacious attacks. Leveraging these insights, we propose Eminence, an explainable and robust black-box backdoor framework with provable theoretical guarantees and inherent stealth properties. Eminence optimizes a universal, visually subtle trigger that strategically exploits vulnerable decision boundaries and effectively achieves robust misclassification with exceptionally low poison rates (< 0.1%, compared to SOTA methods typically requiring > 1%). Comprehensive experiments validate our theoretical discussions and demonstrate the effectiveness of Eminence, confirming an exponential relationship between margin poisoning and adversarial boundary manipulation. Eminence maintains > 90% attack success rate, exhibits negligible clean-accuracy loss, and demonstrates high transferability across diverse models, datasets and scenarios.
+
+</details>

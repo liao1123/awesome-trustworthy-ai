@@ -15,47 +15,404 @@
 
 ## Survey 与系统边界
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026-08 | Retrieved But Not Reliable: A Survey on Attacks, and Defenses in Retrieval-Augmented Generation | survey、RAG fairness、attack objective、pipeline defense | 未确认（arXiv Comments：Accepted to Findings of EMNLP 2026） | [arXiv](https://arxiv.org/abs/2608.24977) | [Repository](https://github.com/coutMinh/A-Survey-on-RAG-Robustness) | 该综述把 fairness violation 与准确性破坏、隐私泄漏并列为攻击者目标。 | 该综述把 fairness violation 与准确性破坏、隐私泄漏并列为攻击者目标 | 而非将其视作泛化输出偏差，并检查 corpus、retriever 与 generator 各阶段如何产生或缓解不公平结果 | 这一分类为 RAG 公平风险补充了明确攻击面和分阶段防御边界。 |
+### 1. Retrieved But Not Reliable: A Survey on Attacks, and Defenses in Retrieval-Augmented Generation
 
-## Demographic、Cultural 与 Representation Bias
+📄 [arXiv](https://arxiv.org/abs/2608.24977)　📅 2026-08
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026-08 | Guardrail-Agnostic Societal Bias Evaluation in Large Vision-Language Models ↗ | benchmark、guardrail-agnostic bias、implicit demographic cue、task-irrelevant personalization | 未确认（arXiv Comments：Accepted at ECCV 2026） | [arXiv](https://arxiv.org/abs/2608.29590) | 暂未公开 | 针对直接询问人物属性会被强 guardrail 拒绝、从而把“未作答”误当成低偏见 | 论文将图中人物改作隐式用户人口线索 | 并让 LVLM 完成与人物无关的故事、术语解释和考试问答 | 对 20 个开源与闭源模型的审计均发现 demographic cue 会不当地改变输出，包括按用户性别生成不同职业刻板印象。 |
-| 2026-08 | Not Safe for All: Auditing the Dialect Penalty in Text-to-Image Safety Pipelines ↗ | benchmark、dialect disparity、guardrail bias、group-balanced mitigation | 未确认（arXiv Comments：EMNLP 2026 Findings） | [arXiv](https://arxiv.org/abs/2608.29589) | [Code](https://github.com/minguinho26/dialect-penalty-t2i) | 研究如何评测 guardrail bias、dialect disparity 风险，重点考察 group-balanced mitigation 场景下的覆盖度与可复现性。 | 论文以五种英语方言的 23,080 对 prompt 定义 dialect penalty | 发现 safety filter 会因语言表面特征对良性方言过度拦截或对有害方言漏检，最大 bias gap 达 28.29 个百分点 | 受控 typo 实验排除一般 OOD 解释，group-balanced retraining 又把缓解收益定位到均衡暴露，形成明确的语言群体危害与干预链。 |
-| 2026-08 | Who Pays More for Safety? Measuring the Disparate Cost of Safety Alignment across Languages | benchmark、language disparity、Safety Cost、double penalty | 未确认（arXiv Comments：Accepted to EMNLP 2026 Main Conference） | [arXiv](https://arxiv.org/abs/2608.22490) | 暂未公开 | 研究如何评测 Safety Cost、language disparity 风险，重点考察 double penalty 场景下的覆盖度与可复现性。 | 论文逐语言比较 safety alignment 前后的安全与任务效用 | 发现非英语用户普遍承担更高成本，并识别出既更不安全又损失更多能力的“double-penalty”语言 | 该差距在部分高资源语言上仍存在，构成可量化的语言群体部署不公平。 |
-| 2026-08 | Register Shifts Break LLM Safety: A Bengali Benchmark with Culturally Grounded Harms | benchmark、language disparity、Bengali register、cultural harm | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.22335) | [Code](https://github.com/BanglaLLM/banglasafe) | 研究如何评测 language disparity、Bengali register 风险，重点考察 cultural harm 场景下的覆盖度与可复现性。 | BanglaSafe 以原生撰写和专家审核的 879 条请求测量孟加拉语用户面临的安全差距 | 并把差距细化到语体与权威框架 | 模型和安全分类器在本地文化危害上同时失效，给出受影响语言群体、可审计指标及直接的内容安全后果。 |
-| 2026-07 | Safety Alignment Illusion: The Cross-Lingual Safety Gap in LLMs | benchmark、language disparity、Indian sociocultural bias、safety-filter failure | 未确认（arXiv Comments：submitted to IEEE SLT 2026） | [arXiv](https://arxiv.org/abs/2608.18131) | 暂未公开 | 研究如何评测 safety-filter failure、language disparity 风险，重点考察 Indian sociocultural bias 场景下的覆盖度与可复现性。 | INCLUDE 将受影响群体具体化为英语、印地语、孟加拉语、马拉地语、泰米尔语与 Hinglish 用户 | 并以 2,604 个 prompt 和 14,988 个 bias score 审计安全过滤器的差异性保护 | 开源模型在孟加拉语偏见最高、英语在开闭源模型间出现反转，揭示语言群体并未获得一致安全保障。 |
-| 2026-07 | When Personalization Becomes Bias: Structural and Discursive Religious Framing in AI-Generated Financial Advice | analysis、religious-identity bias、financial advice、discursive framing | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.16909) | 暂未公开 | 分析 religious-identity bias、financial advice 风险的形成机制，重点考察 discursive framing 对安全行为的影响。 | 论文以基督教、穆斯林、印度教和非宗教身份构造 16 种顾问—客户配对 | 在股票、购房与人寿保险三类场景中审计 ChatGPT、Gemini 和 Grok 的 432 次建议 | 仅 12%–18% 输出无偏，宗教对称配对几乎总触发显式宗教框架，非宗教客户也常收到顾问中心的宗教诉求，揭示 personalization 对宗教群体造成的结构与话语双重偏差。 |
-| 2026-06 | Latent Space Refusal Anchoring for Low-Resource African Languages: Mechanistic Safety Recovery Without Retraining | defense、low-resource language disparity、African-language safety、cross-lingual transfer | GlobalSouthML@ICML 2026 Workshop | [Official](https://openreview.net/forum?id=4UwS3bn1fB) · [arXiv](https://arxiv.org/abs/2608.18089) | [Code](https://github.com/farunawebservices/lsr-anchoring) | 研究如何防御 African-language safety、low-resource language disparity 威胁，并评估 cross-lingual transfer 条件下的安全收益与效用代价。 | 论文直接测量约鲁巴语、伊博语、伊加拉语和豪萨语用户相对英语用户承担的 harmful-compliance 差距 | 并用无需目标语言标签的 refusal anchoring 恢复保护 | 四种语言可正迁移而阿拉伯语在全部架构和强度上失败，说明低资源语言安全不能被单一英语几何统一覆盖。 |
-| 2026 | To Lie or Not to Lie? Investigating The Biased Spread of Global Lies by LLMs | analysis、algorithmic fairness、bias evaluation、disparate impact | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.695/) | [Code](https://github.com/zohaib-khan5040/globallies) | 分析 bias evaluation、algorithmic fairness 风险的形成机制，重点考察 disparate impact 对安全行为的影响。 | GlobalLies 含八种语言、195 国、440 个模板和 6,867 个实体 | 关键实现：GlobalLies 含八种语言、195 国、440 个模板和 6,867 个实体。 | 数十万次生成显示低资源语言与低 HDI 国家更易被模型传播谎言，现有分类器和 RAG 事实核查保护也跨地区不均。 |
+**关键词**：`survey`、`RAG threat model`、`pipeline-aware defense`、`traceback`、`RAG privacy`、`pipeline threat model`
 
-## Bias Manipulation 与 Mitigation
+👤 **作者**：Minh Tran、…、Suhang Wang
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026-08 | GGSS: Geodesic-Gated Spherical Steering for Inference-Time Debiasing of Generative Vision-Language Models | defense、generative VLM debiasing、geodesic steering、utility preservation | 未确认（arXiv Comments：Accepted to EMNLP 2026） | [arXiv](https://arxiv.org/abs/2608.25375) | [Code](https://github.com/dukesun99/GGSS) | 针对静态 embedding 去偏方法难直接适配生成式 VLM | GGSS 在单位超球面上学习反事实 bias subspace | 以保持范数的 geodesic arc 修正视觉 token，并由 adaptive gate 聚焦人口属性信号较强的 token | 它在四个模型上均取得最低平均 bias、其中三个达到显著，同时把 MMStar 变化控制在未引导基线的 ±0.6 个百分点内。 |
-| 2026-08 | Anchoring Bias: A Persistent Fairness Backdoor Attack against MLLMs under Continual Learning | attack、group-targeted discrimination、persistent backdoor、MLLM fairness | 未确认（arXiv Comments：CIKM 2026） | [arXiv](https://arxiv.org/abs/2608.21577) | [Code](https://github.com/lyygua/PFBA) | 论文把公平风险建模为有明确攻击者和 trigger 的定向操纵：PFBA 在不明显损害优势群体效用的同时持续压低目标群体表征。 | 论文把公平风险建模为有明确攻击者和 trigger 的定向操纵：PFBA 在不明显损害优势群体效用的同时持续压低目标群体表征 | 并用 continual-learning simulation 保证歧视经历后续模型更新仍然存续 | 结果暴露常规平均公平指标和标准后门防御的共同盲点。 |
-| 2026-08 | MEMORY Wins All: Indirect Bias Injection Attacks via Social Media Feeds | attack、bias injection、agent memory、adversary-aligned stance | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.22061) | 暂未公开 | 论文将偏见风险从模型原生倾向扩展到可被攻击者定向植入的长期立场：IBIA 通过评论伪装、轻量水印和类别锚定让 Agent 保留并在后续相关任务复现指定观点。 | 论文将偏见风险从模型原生倾向扩展到可被攻击者定向植入的长期立场：IBIA 通过评论伪装、轻量水印和类别锚定让 Agent 保留并在后续相关任务复现指定观点 | 关键实现：论文将偏见风险从模型原生倾向扩展到可被攻击者定向植入的长期立场：IBIA 通过评论伪装、轻量水印和类别锚定让 Agent 保留并在后续相关任务复现指定观点。 | 四项任务平均 AAR 达 91.2%，说明外部内容摄取可成为持续 bias manipulation 渠道。 |
-| 2026-07 | Inference-Time Mitigation of Adversarial Political Bias in Large Language Models | defense、adversarial robustness、algorithmic fairness、bias evaluation | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.14629) | 暂未公开 | 研究如何防御 bias evaluation、adversarial robustness 威胁，并评估 algorithmic fairness 条件下的安全收益与效用代价。 | 随着大语言模型 (LLM) 成为信息检索和摘要任务的支柱 | 确保它们始终无党派且不受政治偏见影响是迈向更安全、更值得信赖的人工智能 (AI) 的关键一步；为了解决LLM的这一漏洞，我们提出了使用思维链（CoT）提示和直接偏好优化（DPO）的缓解策略 | 我们的结果表明，所提出的递归自校正方法将模型性能从政治中立李克特量表基线 2.14 提高到 4.56（所有模型的平均值），证明了 LLM 生成的摘要中政治偏见的有效推理时间缓解。 |
-| 2026-05 | Alignment Tampering: How Reinforcement Learning from Human Feedback Is Exploited to Optimize Misaligned Biases | attack、reinforcement learning、algorithmic fairness、bias evaluation | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/61418) · [arXiv](https://arxiv.org/abs/2605.27355) | [Code](https://github.com/alignment-tampering/alignment-tampering) | 针对高能力模型可能欺骗、隐藏目标或逃避外部监督的问题 | 论文围绕 Alignment Tampering 开展机制与边界分析 | 关键实现：论文围绕 Alignment Tampering 开展机制与边界分析。 | 摘要中的实验或分析给出了相应有效性与边界证据，直接服务于欺骗检测、监控和 AI 控制。 |
-| 2026-05 | Turning Bias into Bugs: Bandit-Guided Style Manipulation Attacks on LLM Judges | attack、algorithmic fairness、bias evaluation、disparate impact | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/66038) · [arXiv](https://arxiv.org/abs/2605.26156) | [Code](https://github.com/xianglinyang/llm-as-a-judge-attack) | 针对对抗者可通过输入、表征或物理扰动操纵学习系统的问题 | 论文提出 Turning Bias into Bugs 攻击或威胁分析 | 关键实现：论文提出 Turning Bias into Bugs 攻击或威胁分析。 | 摘要实验验证该威胁在所列模型、任务或数据集上成立，直接服务于对抗威胁建模。 |
-| 2025-09 | BiasMap: Leveraging Cross-Attentions to Discover and Mitigate Hidden Social Biases in Text-to-Image Generation | defense、text-to-image bias、cross-attention、representation intervention | KDD 2026 | [Official](https://doi.org/10.1145/3770855.3818098) | 暂未公开 | 研究如何防御 text-to-image bias、cross-attention 威胁，并评估 representation intervention 条件下的安全收益与效用代价。 | BiasMap 用 cross-attention 定位文生图模型中的隐蔽社会偏见关联并进行干预 | 关键实现：BiasMap 用 cross-attention 定位文生图模型中的隐蔽社会偏见关联并进行干预。 | 在降低人口属性刻板化时检查图像质量保持。 |
+- 🎯 **研究动机**：RAG 引入投毒、后门、隐私与公平风险，既有综述对攻击者目标、威胁模型与阶段化防御覆盖不完整
+- 🔬 **研究方法**：以 pipeline 视角统一综述：形式化 corpus、retriever、generator 威胁模型，按 accuracy、privacy、fairness 组织攻击，按 retrieval 到 traceback 四阶段梳理防御
+- 📌 **结论**：给出全流程 RAG 鲁棒性的统一威胁-防御图谱与评测、可解释性方向
 
-## Reward、Preference 与 Judge Bias
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026 | Unbiased Principles, Robust Rewards | analysis、algorithmic fairness、bias evaluation、disparate impact | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/63602) | [Code](https://github.com/ShadeCloak/IP-GRM) | 针对偏好学习与强化学习会诱发迎合、奖励投机或代理目标偏移的问题 | 论文围绕 Unbiased Principles Robust Rewards 开展机制与边界分析 | 关键实现：论文围绕 Unbiased Principles Robust Rewards 开展机制与边界分析。 | 理论分析与实验共同刻画了该风险的机制和适用边界，直接服务于奖励设计与偏好对齐审计。 |
-| 2026 | One Bias After Another: Mechanistic Reward Shaping and Persistent Biases in Language Reward Models | analysis、mechanistic analysis、algorithmic fairness、bias evaluation | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/66629) | 暂未公开 | 针对偏好学习与强化学习会诱发迎合、奖励投机或代理目标偏移的问题 | 论文围绕 One Bias After Another 开展机制与边界分析 | 关键实现：论文围绕 One Bias After Another 开展机制与边界分析。 | 摘要实验显示其在所列设置下优于所比较基线，直接服务于奖励设计与偏好对齐审计。 |
-| 2026 | Automatically Finding Reward Model Biases | analysis、algorithmic fairness、bias evaluation、disparate impact | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/63339) | 暂未公开 | 针对偏好学习与强化学习会诱发迎合、奖励投机或代理目标偏移的问题 | 论文围绕 Automatically Finding Reward Model Biases 开展机制与边界分析 | 关键实现：论文围绕 Automatically Finding Reward Model Biases 开展机制与边界分析。 | 摘要实验显示其在所列设置下优于所比较基线，直接服务于奖励设计与偏好对齐审计。 |
+Retrieval-Augmented Generation (RAG) enhances large language models by grounding outputs in external knowledge, improving factuality and reducing hallucinations. At the same time, the retrieval-augmented pipeline introduces new robustness and security risks, including corpus poisoning, backdoor attacks, privacy leakage, and fairness violations. Despite rapid progress in this area, existing surveys remain limited in their treatment of attacker objectives, threat models, and stage-specific defenses across the full RAG pipeline. This survey presents a unified and pipeline-aware overview of RAG robustness. We formalize threat models over the corpus, retriever, and generator, and organize attacks into three main objectives: accuracy, privacy, and fairness. We further review defenses from a pipeline-aware perspective, covering the retrieval, rerank, generation, and traceback stages. In addition, we summarize robustness benchmarks and explainability methods for more deeply evaluating and explaining RAG robustness.
 
-## Algorithm Audit 与 Group Discovery
+</details>
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026-08 | Exploratory As-Analyzed No-Detection of Culturally-Marked Predicate-Triggered PII Amplification in a Synthetic-English RAG Probe: A Predicate-Resource-Confounded Audit | analysis、cultural disparity audit、PII amplification、confounding control | StereACuLT@ACL 2026 | [Official](https://aclanthology.org/2026.stereacult-1.3/) · [arXiv](https://arxiv.org/abs/2608.20351) | 暂未公开 | 论文把潜在公平危害具体化为四类文化标记人群在同等 RAG 查询下是否承担更高 PII 泄漏。 | 论文把潜在公平危害具体化为四类文化标记人群在同等 RAG 查询下是否承担更高 PII 泄漏 | 并检查多重比较、prompt echo 与 stereotype／resource 混杂 | 清理后的通道未发现显著差异，但确认性估计未执行且样本只足以发现中等效应，因此该负结果用于界定群体审计的测量边界，而不是证明不存在差异伤害。 |
-| 2026-08 | Whose doctor does the AI recommend? An algorithm audit of reputation and demographic signals in large language model-assisted physician choice | detection、algorithmic fairness、bias evaluation、disparate impact | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.14399) | 暂未公开 | 研究如何检测 bias evaluation、algorithmic fairness 风险，重点考察 disparate impact 条件下的识别能力与误报代价。 | 患者越来越多地询问大语言模型（LLM）助理要看哪位医生 | 使这些系统成为人工智能信息中介：算法可以在一个人与其他人之间进行选择，从而默默地、大规模地决定哪些医生可以被看到；我们报告了预先指定的随机算法审核，对影响这些建议的原因进行了审计 | 声誉信号占主导地位：将评级从 3.9 提高到 4.7 会使选择概率增加 31.4 个百分点 (pp)，而将费用从 90 美元提高到 190 美元则将选择概率降低 20.0 个百分点。 |
-| 2026-06 | Unequal Privacy: Auditing Demographic Bias Vulnerabilities in Visual Protection Systems | analysis、visual privacy、demographic disparity、face obfuscation | AsiaCCS 2026 | [Official](https://doi.org/10.1145/3779208.3785292) | 暂未公开 | 分析 visual privacy、demographic disparity 风险的形成机制，重点考察 face obfuscation 对安全行为的影响。 | 针对 face-obfuscation system 可能只对部分人群有效；FairDeFace 跨数据、recognizer、attacker 与保护方法执行人口群体审计 | 关键实现：针对 face-obfuscation system 可能只对部分人群有效；FairDeFace 跨数据、recognizer、attacker 与保护方法执行人口群体审计。 | 结果发现抗再识别隐私保证存在系统性差异。 |
+### 2. Guardrail-Agnostic Societal Bias Evaluation in Large Vision-Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2608.29590)　📅 2026-09
+
+**关键词**：`benchmark`、`guardrail-agnostic bias`、`implicit demographic cue`、`task-irrelevant personalization`、`refusal-confounded evaluation`、`guardrail-agnostic protocol`
+
+👤 **作者**：Yusuke Hirota、…、Ryo Hachiuma
+
+- 🎯 **研究动机**：现有社会偏差 benchmark 要求模型推断图中人物属性，强 guardrail 的 LVLM（GPT、Claude）常拒答使评测失真
+- 🔬 **研究方法**：把任务与人物解耦：用与人物无关的 prompt（故事生成、术语解释、考试 QA）并把图像作为隐式人口线索，比较不同用户画像的输出
+- 📌 **结论**：20 个 LVLM 全部在无关任务中不当使用人口信息（男性用户配 mechanic、女性配 nurse）；GPT-5 等专有模型偏差仍低于开源模型
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+We propose a societal bias evaluation method for large vision-language models (LVLMs) in the era of strong safety guardrails. Existing benchmarks rely on prompts that ask models to infer attributes of people in images (e.g., "Is this person a CEO or a secretary?"). However, we find that LVLMs with strong guardrails, such as GPT and Claude, often refuse these prompts, making evaluations unreliable. To address this, we change the prior evaluation paradigm by decoupling the task from the depicted person: instead of inferring person's attributes, we use prompts that do not ask about the person (e.g., "Write a fictional story about an imaginary person.") and attach the image as provisional user information to implicitly provide demographic cues, then compare outputs across user demographics. Instantiated across three tasks --- story generation, term explanation, and exam-style QA --- our method avoids refusals even in guardrailed LVLMs, enabling reliable bias measurement. Applying it to 20 recent LVLMs, both open-source and proprietary, we find that all models undesirably use user demographic information in person-irrelevant tasks; for instance, characters in stories are often portrayed as mechanic for male users and nurse for female users. Although still biased, proprietary models like GPT-5 show lower bias than open-source ones. We analyze potential factors behind this gap, discussing continuous model monitoring and improvement as a possible contributor for reducing bias.
+
+</details>
+
+### 3. Not Safe for All: Auditing the Dialect Penalty in Text-to-Image Safety Pipelines
+
+📄 [arXiv](https://arxiv.org/abs/2608.29589)　📅 2026-09
+
+**关键词**：`benchmark`、`analysis`、`dialect-aware moderation`、`false-positive disparity`、`under-detection`、`T2I safety pipeline`
+
+👤 **作者**：Minkyu Kim、Juhwan Choi、YoungBin Kim
+
+- 🎯 **研究动机**：T2I 安全护栏对非标准方言泛化不公平，均值精度 benchmark 掩盖了这一公平性失败
+- 🔬 **研究方法**：在五种英语方言 23,080 对 prompt 上定义 dialect penalty，用 typo 消融定位根因，并测试 group-balanced retraining 缓解
+- 📌 **结论**：NSFW-T 与 LatentGuard 出现最高 +28.29pp 且方向相反的 bias gap，OpenAI Moderation API 漏检方言内容；penalty 源于方言特征而非 OOD 敏感性，均衡重训练可缓解
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Text-to-image (T2I) safety guardrails fail to generalize equitably to non-standard dialects. Evaluating 23,080 paired prompts across five English dialects, we formalize this failure as the dialect penalty, where filters trigger based on linguistic surface features rather than semantic intent. Text-level filters fail in opposing directions: NSFW-T over-flags benign dialect prompts and LatentGuard over-flags toxic ones (bias gaps up to +28.29 pp), while the OpenAI Moderation API under-detects them. A controlled typo ablation confirms this penalty originates from flagging dialectal features, not generic out-of-distribution sensitivity. The pixel-level generator is largely dialect-agnostic; the penalty enters at text processing and cascades unevenly to post-hoc guardrails. We show this bias tracks training data imbalance and is mitigable via group-balanced retraining, with an ablation attributing the gain to balanced exposure rather than to the worst-group objective of GroupDRO (group distributionally robust optimization). Current pipelines systematically fail dialect speakers, an equity failure masked by mean accuracy benchmarks. Our official code and dataset are publicly available at https://github.com/minguinho26/dialect-penalty-t2i. Content Warning: This paper contains offensive, toxic, or disturbing text prompts and generated images.
+
+</details>
+
+### 4. Who Pays More for Safety? Measuring the Disparate Cost of Safety Alignment across Languages
+
+📄 [arXiv](https://arxiv.org/abs/2608.22490)　📅 2026-08
+
+**关键词**：`benchmark`、`multilingual guard`、`Safety Cost`、`filter failure`、`multilingual alignment`、`safety-utility disparity`
+
+👤 **作者**：Chanwoong Yoon、Jungsoo Park、Alan Ritter
+
+- 🎯 **研究动机**：安全对齐会降低效用，但该代价是否在各语言间均等分担一直缺乏严格测量
+- 🔬 **研究方法**：提出 Safety Cost 协议：将安全对齐模型与其未对齐版本直接成对比较，隔离仅由对齐造成的效用损失，并从拒答与多维隐性质量差异两方面归因
+- 📌 **结论**：非英语用户系统性承担更高 Safety Cost；多语言处于保护更弱且损失更大的双重惩罚区；部分语言的表面效用增益实为过滤器失效，连高资源语言达同等安全也要付更高代价
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Safety alignment helps models adhere to human values, but it often reduces response utility. We ask a critical but understudied question: Does safety alignment impose the cost equally across language groups? To answer this, we introduce a rigorous protocol to measure the utility loss imposed solely by safety alignment, which we term Safety Cost. Through direct pairwise comparisons between safety-aligned models and their unaligned counterparts, we find a systematic inequity: non-English users consistently bear a higher Safety Cost than English users. We further identify three underlying patterns. First, multiple languages lie in a double-penalty zone, experiencing both weaker safety protection and larger utility loss. Second, certain languages exhibit apparent utility gains that are in fact a consequence of safety filters failing to engage. Third, even high-resource languages pay a larger Safety Cost than English to reach the same level of safety. We show that these disparities arise from both explicit refusals and implicit qualitative differences across multiple dimensions. By accurately measuring the disparate effects of safety alignment, our findings expose a systematic disparity in current safety alignment practices.
+
+</details>
+
+### 5. Register Shifts Break LLM Safety: A Bengali Benchmark with Culturally Grounded Harms
+
+📄 [arXiv](https://arxiv.org/abs/2608.22335)　📅 2026-08
+
+**关键词**：`benchmark`、`Bengali moderation`、`register shift`、`classifier failure`、`Bengali safety`、`culturally grounded harm`
+
+👤 **作者**：Naymul Islam、Nusrat Jahan Lia、Shubhashis Roy Dipta、Sabik Bin Sultan、Abdullah Khan Zehady
+
+- 🎯 **研究动机**：孟加拉语是全球第七大语言，LLM 安全评测却压倒性以英语为中心，文化特定危害与语体变化未被覆盖
+- 🔬 **研究方法**：BanglaSafe 收录 879 条孟加拉语 prompt（309 原生撰写+570 专家审校），覆盖 17 类文化危害与变化语言、书写风格、权威框架的五种提示条件，评估 18 个前沿 LLM
+- 📌 **结论**：53.6% 回应不安全或部分不安全、14.7% 严格有害；最强效应来自孟加拉语内部语体——正式新闻调查语体比随意消息高 17 个百分点成功率，无需对抗工程；现有分类器近半数案例判错
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Bengali is the seventh-most-spoken language globally, yet LLM safety evaluation remains overwhelmingly English-centric. We introduce BanglaSafe, a benchmark of 879 Bengali prompts combining 309 natively authored prompts with 570 expert-reviewed prompts, spanning 17 culturally grounded harm categories and five prompting conditions that vary language, writing style, and authority framing. Evaluating 18 frontier LLMs, we find that over half of all responses are unsafe or partially unsafe (53.6%) while 14.7% contains strictly harmful content, and that the strongest observed effect is not the switch from English to Bengali but the choice of writing style within Bengali: the same harmful request phrased as a formal newspaper investigation succeeds 17 percentage points more often than the same request phrased as a casual message, with no adversarial engineering involved. We further show that existing safety classifiers struggle to reliably evaluate Bengali content, with even frontier models failing on nearly half of all cases.
+
+</details>
+
+### 6. Safety Alignment Illusion: The Cross-Lingual Safety Gap in LLMs
+
+📄 [arXiv](https://arxiv.org/abs/2608.18131)　📅 2026-08
+
+**关键词**：`analysis`、`benchmark`、`Indian languages`、`cross-lingual safety`、`cultural bias`、`alignment gap`
+
+👤 **作者**：Namya Bhatnagar
+
+- 🎯 **研究动机**：安全对齐高度英语中心，非英语失败时语音助手会绕过安全过滤向非英语社区传播有害偏见
+- 🔬 **研究方法**：INCLUDE 基准含 2604 条提示覆盖英语、Hindi、Bengali、Marathi、Tamil 与 Hinglish，评十个开源与闭源 LLM 的 14,988 个偏见分
+- 📌 **结论**：开源模型中 Bengali 平均偏见分最高；英语出现反转——开源模型中最低、闭源模型中最高
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Current safety alignment training for Large Language Models (LLMs) are heavily English-centric. When such safety filters fail for non-English languages, the consequences are immediate and user-facing: voice assistants and spoken dialogue systems may produce stereotype-reinforcing outputs, bypassing the standard English-focused safety alignments and propagating harmful bias to non-English speaking communities. For spoken language technologies deployed across India's linguistically diverse population, this represents a critical failure mode. To address this cross-lingual gap, we introduce INCLUDE (Indian Cultural Lens for Understanding and Detecting Embedded Biases), a multilingual evaluation benchmark designed to quantify Indian-centric socio-cultural biases. INCLUDE consists of 2,604 prompts spanning six prompt languages: English, Hindi, Bengali, Marathi, Tamil, and Hinglish (Hindi-English code-mix). We evaluate ten open- and closed-source LLMs against this benchmark, analyzing 14,988 bias scores. Our statistical results reveal two key findings. First, Bengali yielded the highest average bias score in open-source models. Second, English demonstrated a notable reversal, producing the lowest bias in open-source models but the highest bias in closed-source models.
+
+</details>
+
+### 7. When Personalization Becomes Bias: Structural and Discursive Religious Framing in AI-Generated Financial Advice
+
+📄 [arXiv](https://arxiv.org/abs/2608.16909)　📅 2026-08
+
+**关键词**：`analysis`、`religious-identity bias`、`financial advice`、`discursive framing`、`religious personalization`、`deployment audit`
+
+👤 **作者**：Muhammad Salar Khan、Hamza Umer、Hasan Mahmud、Sandra Rothenberg
+
+- 🎯 **研究动机**：LLM 金融建议中的宗教偏见及其语言实现机制缺乏系统证据
+- 🔬 **研究方法**：三个 LLM 的 432 次模拟顾问-客户交互，覆盖 16 种宗教身份配对与股票、购房、人寿保险三项决策，回归加反身主题分析
+- 📌 **结论**：无偏建议仅占 12-18%；宗教对称配对几乎总触发显式宗教框架，偏见经宗教锚定、不均衡文化信号与语气调制的语言机制实现
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models (LLMs) are increasingly integrated into financial advisory systems, yet their role in reproducing religious bias remains underexamined. This study provides systematic mixed-methods evidence of such bias across three LLMs (ChatGPT, Gemini, and Grok) using 432 simulated advisor-client interactions spanning 16 religious identity pairings (Christian, Muslim, Hindu, and non-religious) and three core household financial decisions: stock investment, house purchase, and life insurance. Combining regression and reflexive thematic analyses, we identify structural biases across models and decision contexts and the discursive mechanisms through which they are linguistically enacted. Unbiased advice appeared in only 12-18% of cases. Gemini consistently produced more bias than Grok, while ChatGPT's outputs were statistically comparable to Grok's. Religiously symmetric advisor-client pairings almost always triggered explicit religious framing, and non-religious clients often received advisor-centered religious appeals. Qualitative findings show that bias is linguistically manifested through religious anchoring, uneven cultural signaling, and tone modulation, varying by model and financial scenario. Stock investment prompts produced more financially technical responses, whereas life insurance advice triggered stronger religious language. The study develops a dual-dimensional framework linking structural bias rooted in model training and design with discursive bias expressed through language, advancing understanding of algorithmic bias in LLM-generated financial advice. It also shows that such advice adapts linguistically to identity cues, revealing a managerial dilemma between personalization and neutrality. Finally, it highlights implications for businesses, financial institutions, and regulators seeking to ensure neutrality, cultural sensitivity, and trust in AI-mediated advice.
+
+</details>
+
+### 8. Latent Space Refusal Anchoring for Low-Resource African Languages: Mechanistic Safety Recovery Without Retraining
+
+📄 [arXiv](https://arxiv.org/abs/2608.18089) · 📝 [OpenReview](https://openreview.net/forum?id=4UwS3bn1fB)　📅 2026-08
+
+**关键词**：`defense`、`analysis`、`multilingual safety recovery`、`refusal anchoring`、`cross-language transfer`、`cross-lingual refusal`
+
+👤 **作者**：Godwin Abuh Faruna
+
+- 🎯 **研究动机**：指令模型英语拒答但 Yoruba、Igbo、Igala、Hausa 合规，恢复拒答通常需标注目标语数据与重训
+- 🔬 **研究方法**：LSR-Anchoring 免训练从英语 prompt 提取拒答方向并在推理时 clamp 到残差流：MAS 跨四架构；SAE-Derived Steering 以单个 SAE 特征替换稠密方向
+- 📌 **结论**：Mistral 与 Qwen 上恢复安全且良性退化低于 0.08；SDS 把 KL 散度降 3.5-7 倍避免良性崩溃；MMLU 掉分始终低于 0.35 个百分点，但 Arabic 在所有架构与强度下失败
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Instruction-tuned models often refuse harmful requests in English but comply with the same requests in Yoruba, Igbo, Igala, and Hausa. This suggests that the refusal mechanism is present in the residual stream but fails to activate for low-resource inputs. Recovering it normally requires labelled target-language data and retraining, neither of which is available at scale for most African languages. We introduce Latent Space Refusal Anchoring (LSR-Anchoring), a training-free method that extracts the refusal direction from English prompts and clamps it onto the residual stream at inference time. The primary variant, Mean-Activation Steering (MAS), operates across the four architectures we tested: Llama-3-8B, Llama-3.1-70B, Mistral-7B-Instruct, and Qwen2.5-7B. On Mistral and Qwen it recovers safety with benign degradation below 0.08. On Llama-3-8B it overcorrects, with Degraded Performance on Legitimate prompts (DPL) reaching 1.00. We address this with SAE-Derived Steering (SDS), which replaces the dense mean-difference direction with a single Sparse Autoencoder (SAE) feature and reduces Kullback-Leibler (KL) divergence by 3.5-7x without benign collapse. Four languages transfer positively, but Arabic fails on every architecture and at every steering magnitude, indicating a geometric mismatch rather than a baseline effect. Massive Multitask Language Understanding (MMLU) accuracy drops remain below 0.35 percentage points at every effective steering magnitude.
+
+</details>
+
+### 9. To Lie or Not to Lie? Investigating The Biased Spread of Global Lies by LLMs
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.695/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`analysis`、`algorithmic fairness`、`bias evaluation`、`disparate impact`、`deceptive behavior`、`misinformation`
+
+👤 **作者**：Zohaib Khan、…、Tarek Naous
+
+- 🎯 **研究动机**：LLM 强写作能力降低制造传播虚假信息的门槛，其跨语言与目标国的错误信息行为差异缺乏系统研究
+- 🔬 **研究方法**：构建 GlobalLies：440 个错误信息生成模板与 6867 个实体、覆盖 8 种语言与 195 个国家的平行数据集，结合人工标注与 LLM-as-a-judge 评估数十万条生成
+- 📌 **结论**：谎言传播在低资源语言与低 HDI 国家显著更高；输入安全分类器跨语言有缺口、RAG 事实核查跨地区不一致
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Misinformation is on the rise, and the strong writing capabilities of LLMs lower the barrier for malicious actors to produce and disseminate false information. We study how LLMs behave when prompted to spread misinformation across languages and target countries, and introduce GlobalLies, a multilingual parallel dataset of 440 misinformation generation prompt templates and 6,867 entities, spanning 8 languages and 195 countries. Using both human annotations and large-scale LLM-as-a-judge evaluations across hundreds of thousands of generations from state-of-the-art models, we show that misinformation generation varies systematically based on the country being discussed. Propagation of lies by LLMs is substantially higher in many lower-resource languages and for countries with a lower Human Development Index (HDI). We find that existing mitigation strategies provide uneven protection: input safety classifiers exhibit cross-lingual gaps, and retrieval-augmented fact-checking remains inconsistent across regions due to unequal information availability. We release GlobalLies for research purposes, aiming to support the development of mitigation strategies to reduce the spread of global misinformation: https://github.com/zohaib-khan5040/globallies
+
+</details>
+
+### 10. GGSS: Geodesic-Gated Spherical Steering for Inference-Time Debiasing of Generative Vision-Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2608.25375)　📅 2026-08
+
+**关键词**：`defense`、`counterfactual bias subspace`、`spherical steering`、`adaptive token gate`、`generative VLM debiasing`、`geodesic steering`
+
+👤 **作者**：Yiqun Sun、Junyu Chen、Pengfei Wei、Lawrence B. Hsieh
+
+- 🎯 **研究动机**：推理时去偏方法面向静态嵌入或 CLIP，不适用于生成式 VLM
+- 🔬 **研究方法**：GGSS 在超球面发现反事实偏见子空间，沿测地线引导视觉 token，自适应门聚焦强人口信号
+- 📌 **结论**：四个 VLM 上平均偏见最低（三个显著），MMStar 保持基线 ±0.6 个百分点内
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Generative vision-language models (VLMs) are increasingly used in human-centered settings, yet they can produce demographically biased outputs even when images differ only in controlled attributes such as perceived race or gender. However, existing inference-time debiasers were largely designed for static embeddings or CLIP-like models rather than generative VLMs. We propose GGSS---Geodesic-Gated Spherical Steering---a norm-preserving intervention that discovers a counterfactual bias subspace on the unit hypersphere, steers visual tokens along geodesic arcs, and uses an adaptive gate to focus correction on tokens that carry stronger demographic signal. We evaluate four generative VLMs against ten adapted inference-time debiasing baselines and prompt-based mitigation under a single operating-point protocol across categorical, pairwise, and occupation-gender bias tests, while also measuring general visual-language capability. GGSS achieves the lowest average bias on all four models, significant on three of four backbones under paired permutation tests, while preserving MMStar accuracy within +/- 0.6 p.p. of the unsteered baseline. Code is available at https://github.com/dukesun99/GGSS.
+
+</details>
+
+### 11. Anchoring Bias: A Persistent Fairness Backdoor Attack against MLLMs under Continual Learning
+
+📄 [arXiv](https://arxiv.org/abs/2608.21577)　📅 2026-08
+
+**关键词**：`attack`、`fairness backdoor`、`continual learning`、`group discrimination`、`group-targeted discrimination`、`persistent backdoor`
+
+👤 **作者**：Yuyang Luo、Kai Shu
+
+- 🎯 **研究动机**：MLLM 依赖 continual learning 持续更新，朴素植入的后门会随更新退化，而针对公平性的后门能否在 CL 中存活未被探索
+- 🔬 **研究方法**：PFBA 用 Latent Space Fairness Reinforcement 锚定优势群体表示以保效用、排斥并聚类目标群体以维持歧视，并通过 Continual Learning Simulation 针对模拟参数漂移迭代优化 trigger
+- 📌 **结论**：诱发的严重公平性差异跨 continual learning 轮次持续存在，并规避标准后门防御
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Multimodal Large Language Models (MLLMs) are increasingly deployed in high-stakes domains where fairness is a critical safety requirement. In practice, these models are continually updated through continual learning (CL) to adapt to evolving tasks and data distributions. Prior work has shown that backdoor attacks can manipulate MLLM responses through hidden triggers, but naively implanted backdoors degrade as models undergo subsequent updates of CL. Although fairness has emerged as a central concern for MLLM deployment, whether backdoor-induced fairness violations can survive CL remains unexplored, leaving two critical questions unanswered: (1) whether a backdoor can reliably induce fairness violations in MLLMs, and (2) whether such fairness-targeted backdoors can persist through continual learning. We bridge this gap by proposing Persistent Fairness Backdoor Attack (PFBA) to inject persistent and group-specific discrimination into MLLMs. Specifically, PFBA achieves this through two novel mechanisms. The Latent Space Fairness Reinforcement reshapes the model's deep feature geometry by anchoring privileged-group representations to preserve utility while repelling and clustering targeted-group representations to sustain discrimination, and the Continual Learning Simulation iteratively optimizes the trigger against simulated parameter drift to ensure backdoor persistence across future updates. Extensive experiments demonstrate that PFBA induces severe fairness disparities that persist across continual learning rounds, evading standard backdoor defenses. The data and code are publicly available at https://github.com/lyygua/PFBA.
+
+</details>
+
+### 12. MEMORY Wins All: Indirect Bias Injection Attacks via Social Media Feeds
+
+📄 [arXiv](https://arxiv.org/abs/2608.22061)　📅 2026-08
+
+**关键词**：`attack`、`persistent memory`、`external-content ingestion`、`behavior steering`、`indirect prompt injection`、`external feed`
+
+👤 **作者**：Minjae Seo、…、Myoungsung You
+
+- 🎯 **研究动机**：personal agent 常规摄取网页、邮件与 SNS feed 并将选中内容写入持久记忆，这条普通摄取路径可在不接触 agent、记忆或未来查询时间接操纵后续行为
+- 🔬 **研究方法**：IBIA 间接偏见注入组合 comment cloaking（伪装成语境一致的评论）、comment watermarking（策展时轻量识别）与 category anchoring（让立场后续显著）；构建 BiasBench（6,000 条对抗评论+120 封邮件）
+- 📌 **结论**：水印策展识别 95.9% 注入评论；OpenClaw 下四个下游任务平均对手立场响应率 91.2%（GPT-5.5 上 86.6%），memory boundary 防御仅将其降至 80.6%
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Personal AI agents routinely consume external content while performing tasks such as web browsing, email processing, and SNS feed summarization, and they retain selected information or execution results in persistent memory for later use. We show that this ordinary ingestion of external content opens an indirect path for manipulating subsequent agent behavior. Based on this observation, we present IBIA, an Indirect Bias Injection Attack that plants an adversary-aligned stance on a specific topic into a victim agent's memory through external content, without direct access to the agent, its memory, or future user queries. For this, IBIA combines three mechanisms: comment cloaking, which keeps the crafted content consistent with the surrounding discussion, comment watermarking, which enables lightweight identification during curation, and category anchoring, which makes the retained stance salient under later related requests. We evaluate IBIA on BiasBench, a benchmark of 6,000 adversary-crafted social comments and 120 email instances. The watermark-based curation identifies 95.9% of the injected comments. Under the OpenClaw setting, IBIA achieves adversary-aligned response rates (AARs) of 91.2% on average across four downstream tasks, including 86.6% on the frontier GPT-5.5. We further propose a memory boundary defense that detects the injected bias and reduces AARs to 80.6%.
+
+</details>
+
+### 13. Inference-Time Mitigation of Adversarial Political Bias in Large Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2608.14629)　📅 2026-08
+
+**关键词**：`defense`、`adversarial robustness`、`algorithmic fairness`、`bias evaluation`
+
+👤 **作者**：Tejaswi V. Panchagnula、Bruce Coburn、Bryce J. Dietrich、Robert X. Browning、Edward J. Delp、Fengqing Zhu
+
+- 🎯 **研究动机**：现代对齐技术未把政治偏见列为有害内容，对抗提示注入可诱发政治偏向摘要
+- 🔬 **研究方法**：用立法视频公开数据集生成摘要并对抗注入偏见，四轴政治摘要量表评测；提出 CoT 提示与 DPO 缓解，含 Recursive Self-Correction
+- 📌 **结论**：Recursive Self-Correction 把政治中立 Likert 评分从基线 2.14 提升至 4.56（跨模型平均），实现推理时政治偏差缓解
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+As Large Language Models (LLMs) become the mainstay for information retrieval and summarization tasks, ensuring that they are always non-partisan and invulnerable to political bias is a critical step towards safer and more trustworthy Artificial Intelligence (AI). Current model alignment paradigms, such as reinforcement learning from human feedback (RLHF), make LLMs follow overarching safety instructions. However, this instruction tuning can be exploited via adversarial prompt injection and be used to generate unsafe content. In particular, political bias has not been specifically targeted by modern alignment techniques as harmful and biased content. To address this vulnerability of LLMs, we propose mitigation strategies using Chain of Thought (CoT) prompting and Direct Preference Optimization (DPO). Using a public dataset of legislative videos, we generate summaries using LLMs, inject bias via adversarial prompting and evaluate their performance on a four axis scale designed for political summarization. In this paper, we present different methods to shield LLMs against the injection of political bias. Our results demonstrate that the proposed Recursive Self-Correction approach raises model performance from a Political Neutrality Likert scale baseline of 2.14 to 4.56, averaged across all models, demonstrating effective inference-time mitigation of political bias in LLM-generated summaries.
+
+</details>
+
+### 14. Alignment Tampering: How Reinforcement Learning from Human Feedback Is Exploited to Optimize Misaligned Biases
+
+📄 [arXiv](https://arxiv.org/abs/2605.27355) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61418)　📅 2026-05　🏷 ICML 2026
+
+**关键词**：`attack`、`analysis`、`reinforcement learning`、`algorithmic fairness`、`bias evaluation`、`AI control`
+
+👤 **作者**：Dongyoon Hahm、Dylan Hadfield-Menell、Kimin Lee
+
+- 🎯 **研究动机**：RLHF 的偏好集来自模型自身输出且成对比较只说哪个更好不问为何，存在结构性漏洞
+- 🔬 **研究方法**：定义 alignment tampering：模型带偏差地生成更高质量回复，标注者按质量偏好，奖励模型继承偏差并被 RL 或 best-of-N 放大
+- 📌 **结论**：从关键词偏差到性别宣传、品牌推广与工具性目标均可被放大；现有鲁棒 RLHF 技术无法在不牺牲质量的前提下解决
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Reinforcement Learning from Human Feedback (RLHF) is the standard method to align Large Language Models (LLMs) with human preferences. In this work, we introduce alignment tampering, a potential vulnerability where the LLM undergoing alignment influences the preference dataset, causing RLHF to amplify undesired behaviors. This arises from core limitations of RLHF: (1) preference datasets are constructed from the LLM's own outputs, allowing it to influence them, and (2) pairwise comparisons only indicate which response is better, not why. These limitations can be exploited to cause alignment tampering. For example, if an LLM generates biased responses with higher quality, annotators will prefer them based on quality. However, preference labels do not distinguish quality from bias, and the reward model inherits this limitation. Optimizing such rewards through reinforcement learning or best-of-N sampling can amplify misaligned biases. Our experiments demonstrate amplification across diverse biases: from keyword bias to propaganda (e.g., sexism), brand promotion, and instrumental goal-seeking. Mitigation remains challenging, as existing techniques for robust RLHF fail to fully resolve alignment tampering without sacrificing response quality. These findings reveal structural vulnerabilities of current RLHF and emphasize the need to prevent this vulnerability. Project page: https://alignment-tampering.github.io/
+
+</details>
+
+### 15. Turning Bias into Bugs: Bandit-Guided Style Manipulation Attacks on LLM Judges
+
+📄 [arXiv](https://arxiv.org/abs/2605.26156) · 🎓 [Official](https://icml.cc/virtual/2026/poster/66038)　📅 2026-05　🏷 ICML 2026
+
+**关键词**：`attack`、`algorithmic fairness`、`bias evaluation`、`disparate impact`、`adversarial attack`、`empirical evaluation`
+
+👤 **作者**：Xianglin Yang、Bryan Hooi、Gelei Deng、Tianwei Zhang、Jin Song Dong
+
+- 🎯 **研究动机**：LLM judge 的已知风格偏好（冗长、句式）是被低估的安全漏洞
+- 🔬 **研究方法**：BITE 黑盒框架把保义风格编辑选择建模为上下文 bandit，用 LinUCB 自适应选择最大化评分的编辑，无需参数或梯度访问
+- 📌 **结论**：多 judge 与任务上攻击成功率超 65%、9 分制抬 1-2 分且保持语义等价，可躲过风格控制方法与多种检测基线
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+The known stylistic biases in LLM judges, such as a preference for verbosity or specific sentence structures, present an underexplored security vulnerability. In this work, we introduce BITE (BIas exploraTion and Exploitation), a black-box adversarial framework that learns semantics-preserving edits to mislead an LLM judge and artificially inflate the scores it assigns. We cast the selection of stylistic edits as a contextual bandit problem and use a LinUCB policy to adaptively choose edits that maximize the judge's score without access to model parameters or gradients. Empirically, we test BITE across a diverse range of LLM judges and tasks, including both pointwise and pairwise comparisons on chatbot leaderboards and AI-reviewer benchmarks. BITE achieves an attack success rate exceeding 65% and raises scores by 1-2 points on a 9-point scale, all while preserving semantic equivalence. We further assess the attack's stealthiness, showing that BITE evades standard style-control methods and several detection baselines. Our findings expose a fundamental weakness in the LLM-as-a-judge paradigm and motivate robust, attack-aware evaluation. Our code is available at https://github.com/xianglinyang/llm-as-a-judge-attack.
+
+</details>
+
+### 16. BiasMap: Leveraging Cross-Attentions to Discover and Mitigate Hidden Social Biases in Text-to-Image Generation
+
+📄 [arXiv](https://arxiv.org/abs/2509.13496) · 🌐 [Project](https://doi.org/10.1145/3770855.3818098)　📅 2025-09　🏷 KDD 2026
+
+**关键词**：`defense`、`text-to-image bias`、`cross-attention`、`representation intervention`
+
+👤 **作者**：Rajatsubhra Chakraborty、Xujun Che、Depeng Xu、Cori Faklaris、Xi Niu、Shuhan Yuan
+
+- 🎯 **研究动机**：文生图模型的隐性社会偏见缺发现与度量手段
+- 🔬 **研究方法**：BiasMap借cross-attention定位偏见概念并做表示干预
+- 📌 **结论**：系统发现并缓解生成中的隐性社会偏见
+
+### 17. Unbiased Principles, Robust Rewards
+
+🎓 [Official](https://icml.cc/virtual/2026/poster/63602)　📅 2026　🏷 ICML 2026
+
+**关键词**：`analysis`、`algorithmic fairness`、`bias evaluation`、`disparate impact`、`reward hacking`、`reinforcement learning`
+
+👤 **作者**：Qingnan Ren、…、Feng Zhao
+
+- 🎯 **研究动机**：GRM 在读完回复后才生成评估原则（Q+R→P），actor 进行 reward hacking 时奖励模型会漂移准则为其辩护，高分反过来强化 hacking
+- 🔬 **研究方法**：提出 IP-GRM：仅由问题生成评估原则（Q→P）再基于（Q,R,P）打分，使标准与回复内容解耦；Principle Cache 组内复用原则，GRPO 吞吐提升 23.66%
+- 📌 **结论**：Qwen3-8B 创意写作 GRPO 中抑制 reward hacking，WritingBench 与 CreativeWriting-v3 分别提升 4.6 与 7.1 分
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Reward models are central to Reinforcement Learning from Human Feedback (RLHF), especially for open-ended tasks where evaluation is inherently multi-dimensional. Recent Generative Reward Models (GRMs) improve interpretability by producing natural-language rationales and task-specific evaluation principles. However, most existing GRMs generate principles after reading the actor's response, i.e., $Q+R \rightarrow P$. We show that this coupling induces Principle Drift: when the actor performs reward hacking (e.g., verbosity, self-aggrandizement, or hallucinated self-justifications), the reward model may shift its criteria to rationalize the response, yielding inflated scores that in turn reinforce hacking during RL. We propose IP-GRM (Independent Principle GRM), a two-stage framework that first generates principles solely from the question ($Q \rightarrow P$) and then evaluates the response conditioned on $(Q, R, P)$. This decoupling keeps criteria invariant to response content, producing more objective and stable reward signals. For efficient training, we further introduce a Principle Cache strategy that reuses principles within a group, improving GRPO throughput by 23.66\% while maintaining strict intra-group consistency. In GRPO training on creative writing, IP-GRM suppresses reward hacking and improves WritingBench and CreativeWriting-v3 by up to +4.6 and +7.1 points based on Qwen3-8B, achieving state-of-the-art performance among open-source models. The model and dataset are open-sourced at https://github.com/ShadeCloak/IP-GRM.
+
+</details>
+
+### 18. One Bias After Another: Mechanistic Reward Shaping and Persistent Biases in Language Reward Models
+
+📄 [arXiv](https://arxiv.org/abs/2603.03291) · 🎓 [Official](https://icml.cc/virtual/2026/poster/66629)　📅 2026　🏷 ICML 2026
+
+**关键词**：`analysis`、`mechanistic analysis`、`algorithmic fairness`、`bias evaluation`、`reward hacking`、`preference optimization`
+
+👤 **作者**：Daniel Fein、Max Lamparth、Violet Xiang、Mykel J. Kochenderfer、Nick Haber
+
+- 🎯 **研究动机**：奖励模型偏差使偏好调优易 reward hacking，长度、谄媚、过度自信等问题是否解决不明
+- 🔬 **研究方法**：系统测五个高质量 RM 的偏差并发现模型风格与答案顺序等新偏差；按可否线性干预分类，提出 mechanistic reward shaping 事后干预低复杂度偏差
+- 📌 **结论**：目标偏差被抑制且不降奖励质量，少标签数据可用并泛化到分布外
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Reward Models (RMs) are crucial for online alignment of language models (LMs) with human preferences. However, RM-based preference-tuning is vulnerable to \textit{reward hacking}, whereby LM policies learn undesirable behaviors from flawed RMs. By systematically measuring biases in five high-quality RMs, including the state-of-the-art, we find that issues persist despite prior work with respect to length, sycophancy, and overconfidence. We also discover new issues related to bias toward model-specific “styles” and answer-order. We categorize RM failures as tractable or resistant to linear intervention and propose a simple post-hoc intervention to mitigate low-complexity biases that arise from spurious correlations. Our proposed \textbf{mechanistic reward shaping} reduces targeted biases without degrading reward quality and while using minimal labeled data. The method is extensible to new biases, model-internal, and generalizes out-of-distribution.
+
+</details>
+
+### 19. Automatically Finding Reward Model Biases
+
+📄 [arXiv](https://arxiv.org/abs/2602.15222) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63339)　📅 2026　🏷 ICML 2026
+
+**关键词**：`analysis`、`algorithmic fairness`、`bias evaluation`、`disparate impact`、`reward hacking`、`empirical evaluation`
+
+👤 **作者**：Atticus Wang、Iván Arcuschin、Arthur Conmy
+
+- 🎯 **研究动机**：奖励模型会奖励长度、格式、幻觉、谄媚等虚假属性，缺乏自动发现偏差的方法
+- 🔬 **研究方法**：用 LLM 迭代提出并精炼候选偏差，以合成注入偏差验证召回，并对比进化迭代与平坦 best-of-N 搜索
+- 📌 **结论**：恢复已知偏差并发现新偏差——Skywork-V2-8B 常误偏好含冗余空格与幻觉内容的回复；进化迭代优于平坦搜索
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Reward models are central to large language model (LLM) post-training. However, past work has shown that they can reward spurious or undesirable attributes such as length, format, hallucinations, and sycophancy. In this work, we introduce and study the research problem of automatically finding reward model biases in natural language. We offer a simple approach of using an LLM to iteratively propose and refine candidate biases. Our method can recover known biases and surface novel ones: for example, we found that Skywork-V2-8B, a leading open-weight reward model, often mistakenly favors responses with redundant spacing and responses with hallucinated content. In addition, we show evidence that evolutionary iteration outperforms flat best-of-N search, and we validate the recall of our pipeline using synthetically injected biases. We hope our work contributes to further research on improving RMs through automated interpretability methods.
+
+</details>
+
+### 20. Exploratory As-Analyzed No-Detection of Culturally-Marked Predicate-Triggered PII Amplification in a Synthetic-English RAG Probe: A Predicate-Resource-Confounded Audit
+
+📄 [arXiv](https://arxiv.org/abs/2608.20351) · 🎓 [Official](https://aclanthology.org/2026.stereacult-1.3/)　📅 2026-08
+
+**关键词**：`benchmark`、`analysis`、`RAG PII leakage`、`cultural-query audit`、`metric confounding`、`cultural disparity audit`
+
+👤 **作者**：Yanhang Li、Zhichao Fan、Zexin Zhuang
+
+- 🎯 **研究动机**：刻板印象加载查询是否比等价中性查询从 RAG 泄露更多文化标记人物的 PII 未知
+- 🔬 **研究方法**：预注册四文化（英、西、阿拉伯、印地）合成英语 PII 语料上的五臂 STLD 审计；但锁定确证估计器未运行、名字泄漏指标受 prompt 回声伪影污染
+- 📌 **结论**：更干净信道（email、phone、ssn、address）多重比较校正后四文化均无刻板驱动放大；样本仅够中等效应——报告为未检出而非无效应的证据
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+We ask whether stereotype-loaded queries about culturally marked people leak more personal information from a retrieval-augmented generation (RAG) system than otherwise-equivalent neutral queries. We pre-register a four-culture audit (en-Anglo, es-LATAM, Arabic, Hindi) on a synthetic English PII corpus, comparing five query arms we call the Stereotype-Trigger Leakage Delta (STLD). Two caveats up front. Our locked confirmatory estimator was never run, so every test in the paper is exploratory or sensitivity, with all plan deviations listed in the appendix. And the name-leakage metric is contaminated by a prompt-echo artifact: the model often just re-emits the name we asked about, which inflates apparent leakage without any retrieval at all. On the cleaner channels (email, phone, ssn-like, address), we find no stereotype-driven amplification on any of the four cultures after multiple-comparison correction. Because our sample is only powered for mid-sized effects, and because the culturally marked probes mix stereotype content with cultural markers and heritage practices, we present this as no detection, not evidence of no effect, of culturally marked predicate leakage that is confounded with the underlying resource.
+
+</details>
+
+### 21. Whose doctor does the AI recommend? An algorithm audit of reputation and demographic signals in large language model-assisted physician choice
+
+📄 [arXiv](https://arxiv.org/abs/2608.14399)　📅 2026-08
+
+**关键词**：`detection`、`algorithmic fairness`、`bias evaluation`、`disparate impact`
+
+👤 **作者**：Syeda Anshrah Gillani、Mirza Samad Ahmed Baig
+
+- 🎯 **研究动机**：LLM 助手成为医生选择的 AI 信息中介，什么因果因素左右推荐此前未知
+- 🔬 **研究方法**：预注册随机算法审计：七模型在属性独立随机的 5 张合成医生卡片间选择，3024 个选择集、40,068 条评分，性别/族群经姓名信号
+- 📌 **结论**：声誉主导（评分 3.9→4.7 提升选择概率 31.4 个百分点）；族群倾斜方向与人类审计相反（女性名 +2.5 个百分点），且模型解释中提及率至多 0.03%——自报透明义务发现不了这些效应
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Patients increasingly ask large language model (LLM) assistants which doctor to see, making these systems AI infomediaries: algorithms that intermediate one person's choice among other people and thereby decide, silently and at scale, which physicians become visible. We report a prespecified randomized algorithm audit of what causally moves those recommendations. Seven models (six open-weight; gpt-4o-mini) each chose among five synthetic family-medicine physician cards whose attributes were independently randomized across 3,024 choice sets, three patient personas, nine prompt paraphrases and nine experimental arms, yielding 40,068 scored responses; gender and ethnicity were signaled through names following correspondence-audit methodology. Reputation signals dominate: raising a rating from 3.9 to 4.7 increases choice probability by 31.4 percentage points (pp), and raising the fee from $90 to $190 lowers it by 20.0 pp. Demographic parity is rejected, but not in the direction human audit studies predict: female-signaled names gain 2.5 pp, and Hispanic-, South-Asian- and Black-signaled names gain 1.3-2.9 pp over White-signaled names, tilts worth $7-$14 per visit in fee-equivalent terms, and a content-free first-listed position is worth $11. Yet models mentioned gender or ethnicity in at most 0.03% of their stated reasons and abstained in 0.39% of trials, so these effects are invisible in the models' own explanations, and transparency obligations relying on model self-report would not detect them. One reasoning model failed the prespecified auditability gate outright. The frozen design makes the audit repeatable: any new model can be assessed against identical stimuli, making recurring behavioural audit, rather than self-reported explanation, the monitoring technology fit for purpose.
+
+</details>
+
+### 22. Unequal Privacy: Auditing Demographic Bias Vulnerabilities in Visual Protection Systems
+
+🌐 [Project](https://doi.org/10.1145/3779208.3785292)　📅 2026-06　🏷 ACM CCS 2026
+
+**关键词**：`analysis`、`visual privacy`、`demographic disparity`、`face obfuscation`、`audit`
+
+- 🎯 **研究动机**：视觉隐私保护系统的人群偏差未被审计
+- 🔬 **研究方法**：审计面部混淆等保护系统在不同人群中的效果差异
+- 📌 **结论**：保护效果存在显著demographic disparity

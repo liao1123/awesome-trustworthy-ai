@@ -15,7 +15,40 @@
 
 ## 攻击与系统威胁
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026-06 | Backdoor Attacks on Speech Emotion Recognition via TTS-Generated Poisoning | attack、speech emotion recognition、TTS poisoning、acoustic trigger | Accepted by IEEE Cyber AI 2026 | [arXiv](https://arxiv.org/abs/2606.21052) | 暂未公开 | SER 自监督 acoustic representation 的 training-time backdoor 是否可由 TTS 降低投毒门槛并跨模型迁移？ | 设计可嵌入自然和合成语音的低能量 acoustic trigger，在低 poisoning ratio 下学习目标标签。 | 三种/多种 SER setting 测 ASR、clean performance、cross-model transfer 与 trigger susceptibility。 | 低投毒率仍有高 ASR、近 clean utility，TTS 显著降低攻击门槛；需要专门音频 trigger detection 与表示净化。 |
-| 2026-08 | Ouroboros: Self-Referential Backdoor Attacks on Speech Enhancement via Clean Audio Triggers | attack、speech enhancement backdoor、clean audio trigger、content tampering | 未确认（arXiv Comments：Accepted at INTERSPEECH 2026. This is the author-accepted manuscript, not the ISCA proceedings camera-ready publisher version. 5 pages, 2 figures） | [arXiv](https://arxiv.org/abs/2608.30329) | 暂未公开 | 针对 speech enhancement 被动处理时无法假设攻击者会在推理阶段主动注入 trigger | Ouroboros 把模型理想 clean output 本身设为自然触发器 | 关键实现：Ouroboros 把模型理想 clean output 本身设为自然触发器。 | 未经修改的真实录音可近乎完美激活后门并定向篡改内容，同时维持正常增强性能，且常见 filtering 与 fine-tuning 未能消除攻击。 |
+### 1. Backdoor Attacks on Speech Emotion Recognition via TTS-Generated Poisoning
+
+📄 [arXiv](https://arxiv.org/abs/2606.21052)　📅 2026-09
+
+**关键词**：`attack`、`speech emotion recognition`、`TTS poisoning`、`acoustic trigger`
+
+👤 **作者**：Yongbin Huang、Xihao Xie、Jia Zhang
+
+- 🎯 **研究动机**：基于自监督声学表示的语音情感识别系统的训练时攻击基本未被探索
+- 🔬 **研究方法**：首个 SER 投毒后门系统研究：设计可嵌入自然与合成语音的低能量隐蔽声学触发器，利用 TTS 可扩展投毒
+- 📌 **结论**：低投毒率下高 ASR 且良性输入近干净性能；后门跨模型强迁移，自监督表示尤其易学触发器
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Speech Emotion Recognition (SER) systems increasingly leverage self-supervised acoustic representations, yet their vulnerability to training-time attacks remains largely underexplored. This paper presents the first systematic study of poisoning-based backdoor attacks on SER, with a focus on threats enabled by text-to-speech (TTS) generated audio. We introduce a stealthy, low-energy acoustic trigger that can be embedded imperceptibly into both natural and synthetic speech, enabling scalable and consistent poisoning. Our experiments demonstrate that SER models can be reliably compromised with high attack success rates under low poisoning ratios, while maintaining near-clean performance on benign inputs. We further show that backdoor patterns exhibit strong cross-model transferability and that self-supervised representations are particularly susceptible to learning these triggers. These findings reveal that TTS technology dramatically lowers the barrier to effective backdoor attacks, exposing critical vulnerabilities in modern SER pipelines and motivating the urgent need for dedicated defenses.
+
+</details>
+
+### 2. Ouroboros: Self-Referential Backdoor Attacks on Speech Enhancement via Clean Audio Triggers
+
+📄 [arXiv](https://arxiv.org/abs/2608.30329)　📅 2026-09
+
+**关键词**：`attack`、`speech enhancement backdoor`、`clean audio trigger`、`content tampering`
+
+👤 **作者**：Yunjie Zhou、Yuheng Huang、Diqun Yan
+
+- 🎯 **研究动机**：speech enhancement 是被动处理，现有依赖主动注入 trigger 的后门攻击假设不成立且局限于分类任务
+- 🔬 **研究方法**：提出 Ouroboros，把模型的理想 clean output 本身作为自然触发器，推理时无需任何外部注入即可激活后门
+- 📌 **结论**：多模型与数据集上接近满额 ASR 且性能损失极小；真实录制未修改音频可可靠触发，可扩展为定向内容篡改并抵抗过滤与微调防御
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Speech enhancement models are widely deployed as frontend modules in real-time speech services, yet their vulnerability to backdoor attacks remains unexplored. Existing backdoor methods are confined to classification tasks and rely on active trigger injection, an assumption incompatible with the passive processing nature of speech enhancement models. In this paper, we propose Ouroboros, a novel backdoor attack framework that leverages the ideal clean outputs of speech enhancement models as natural triggers, enabling inference-time activation without any external trigger injection. Extensive evaluations show Ouroboros achieves near-perfect attack success rates with minimal performance degradation on diverse models and datasets. Physical-world validations confirm that naturally recorded, unaltered clean audio can reliably activate the backdoor. Moreover, Ouroboros generalizes to targeted content-tampering attacks and remains effective against common filtering and finetuning defenses.
+
+</details>

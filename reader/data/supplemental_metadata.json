@@ -1,0 +1,1055 @@
+{
+  "doi:10.1016/j.engappai.2026.113968": {
+    "url": "https://doi.org/10.1016/j.engappai.2026.113968",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1007/978-981-95-3729-7_23": {
+    "url": "https://doi.org/10.1007/978-981-95-3729-7_23",
+    "title": "Stealthy Backdoor Attacks on CLIP via Stylistic Textual Triggers",
+    "abstract": "",
+    "submitted": "2025",
+    "comments": "",
+    "ok": false,
+    "source": "Semantic Scholar"
+  },
+  "doi:10.1007/978-981-96-7005-5_18": {
+    "url": "https://doi.org/10.1007/978-981-96-7005-5_18",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1016/j.ipm.2026.105044": {
+    "url": "https://doi.org/10.1016/j.ipm.2026.105044",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1007/978-3-031-44696-2_42": {
+    "url": "https://doi.org/10.1007/978-3-031-44696-2_42",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1016/j.neucom.2026.133283": {
+    "url": "https://doi.org/10.1016/j.neucom.2026.133283",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1016/j.ins.2024.121847": {
+    "url": "https://doi.org/10.1016/j.ins.2024.121847",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1109/ICASSP55912.2026.11462625": {
+    "url": "https://doi.org/10.1109/ICASSP55912.2026.11462625",
+    "title": "Badtail: Exploiting Rationale Tails for Stealthy multimodal Backdoor Attacks",
+    "abstract": "",
+    "submitted": "2026",
+    "comments": "",
+    "ok": false,
+    "source": "Semantic Scholar"
+  },
+  "doi:10.1016/j.engappai.2026.114950": {
+    "url": "https://doi.org/10.1016/j.engappai.2026.114950",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1109/PRMVAI70103.2026.11605619": {
+    "url": "https://doi.org/10.1109/PRMVAI70103.2026.11605619",
+    "title": "Reducing Semantic Trigger Leakage in Backdoored Text-to-Image Diffusion Models",
+    "abstract": "Backdoor attacks on text-to-image (T2I) diffusion models are usually evaluated only on the exact trigger used during training. However, semantically related non-trigger prompts can activate the backdoor. We call this behavior semantic trigger leakage (STL) and study how to reduce it without hurting exact-trigger attack success. To this end, we propose a practical anti-leakage training strategy that combines curriculum sampling, hard negatives, and clean-consistency regularization to sharpen the semantic boundary around the trigger. We use a unified evaluation protocol with three metrics: attack success rate (ASR), false trigger rate (FTR), and STL. Experiments on Stable Diffusion v1.4 and v1.5 show that our method maintains high ASR on exact-trigger prompts while substantially reducing unintended activation on both clean and semantic-neighbor prompts. These results suggest that exact-trigger-only evaluation can underestimate the real risk of backdoored T2I diffusion models.",
+    "submitted": "2026",
+    "comments": "",
+    "ok": true,
+    "source": "Semantic Scholar"
+  },
+  "doi:10.1016/j.neucom.2025.132366": {
+    "url": "https://doi.org/10.1016/j.neucom.2025.132366",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1109/SP46215.2023.10179287": {
+    "url": "https://doi.org/10.1109/SP46215.2023.10179287",
+    "title": "Discop: Provably Secure Steganography in Practice Based on \"Distribution Copies\"",
+    "abstract": "Steganography is the act of disguising the transmission of secret information as seemingly innocent. Although provably secure steganography has been proposed for decades, it has not been mainstream in this field because its strict requirements (such as a perfect sampler and an explicit data distribution) are challenging to satisfy in traditional data environments. The popularity of deep generative models is gradually increasing and can provide an excellent opportunity to solve this problem. Several methods attempting to achieve provably secure steganography based on deep generative models have been proposed in recent years. However, they cannot achieve the expected security in practice due to unrealistic conditions, such as the balanced grouping of discrete elements and a perfect match between the message and channel distributions. In this paper, we propose a new provably secure steganography method in practice named Discop, which constructs several \"distribution copies\" during the generation process. At each time step of generation, the message determines from which \"distribution copy\" to sample. As long as the receiver agrees on some shared information with the sender, he can extract the message without error. To further improve the embedding rate, we recursively construct more \"distribution copies\" by creating Huffman trees. We prove that Discop can strictly maintain the original distribution so that the adversary cannot perform better than random guessing. Moreover, we conduct experiments on multiple generation tasks for diverse digital media, and the results show that Discop’s security and efficiency outperform those of previous methods.",
+    "submitted": "2023",
+    "comments": "",
+    "ok": true,
+    "source": "Semantic Scholar"
+  },
+  "doi:10.1109/JIOT.2025.3650599": {
+    "url": "https://doi.org/10.1109/JIOT.2025.3650599",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1109/ACCESS.2026.3702975": {
+    "url": "https://doi.org/10.1109/ACCESS.2026.3702975",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1109/TDSC.2025.3595864": {
+    "url": "https://doi.org/10.1109/TDSC.2025.3595864",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1109/TMM.2025.3639961": {
+    "url": "https://doi.org/10.1109/TMM.2025.3639961",
+    "title": "Invisible Backdoor Attack With Siamese Tuning on Pre-Trained Vision-Language Models",
+    "abstract": "Large-scale pre-trained Vision-Language Models (VLMs) have shown impressive cross-modal alignment capabilities in images and text extraction. Despite their strengths, these models are vulnerable to backdoor attacks due to their heavy reliance on training data. Prevailing backdoor attacks on VLMs involve the injection of subtle patches into the pre-training process, causing the model to exhibit harmful behaviors when these triggers appear in test images. However, existing attack methods typically suffer from the following limitations: (1) Polluting pre-training data to train a poisoned VLM is expensive and time-consuming, and this extra retraining phase could potentially harm the performance of the pre-trained VLM; (2) Backdoor triggers, often visible to humans and requiring elaborate placements, significantly raise the risk of being detected and compromise their feasibility. To overcome the above limitations, we propose a novel invisible backdoor attack with Siamese tuning on pre-trained VLMs. Specifically, we design a Siamese Tuning Attack (SiTA) method to subtly manipulate the behavior of the target VLM by parallelizing a Siamese model with the original image encoder and fine-tuning the Siamese model with a poisoned dataset. Furthermore, an imperceptible frequency-domain trigger is employed in the targeted VLM attack, enhancing its robustness and feasibility without necessitating alterations to the image encoder of the initial model. Extensive experiments conducted on three datasets across multiple downstream tasks demonstrate a remarkable attack performance of our proposed SiTA against VLMs.",
+    "submitted": "2026",
+    "comments": "",
+    "ok": true,
+    "source": "Semantic Scholar"
+  },
+  "doi:10.1109/TRUSTCOM66490.2025.00303": {
+    "url": "https://doi.org/10.1109/TRUSTCOM66490.2025.00303",
+    "title": "Bad-PoseDiff: Pose-Guided Backdoor Triggering in Diffusion Models",
+    "abstract": "Diffusion models have emerged as the state-of-the-art generative paradigm in image synthesis. However, their powerful generative and representational capabilities also make them highly susceptible to backdoor attacks, where specific triggers embedded in the input can manipulate the model to produce attacker-specified outputs. Traditional triggers typically rely on explicit perturbations in low-dimensional space, such as patch overlays, which are relatively easy to detect and defend against. To explore more covert and effective backdoor injection strategies, we propose a novel method, Bad-Pose Diffusion (Bad-PoseDiff), which uses pose features in input images as triggers. Since pose information is a high-dimensional semantic feature that manifests in diverse and non-fixed patterns, it is difficult for models to recognize directly. We therefore introduce the ControlNet module to inject pose-guided conditioning signals into the diffusion model during training. To the best of our knowledge, this is the first work to incorporate pose-based triggers into generative diffusion models via ControlNet. Notably, even when ControlNet is detached during inference, the backdoored model continues to recognize and respond to pose triggers, indicating that the backdoor has been deeply implanted into the backbone of the diffusion model. Experimental results show that Bad-PoseDiff effectively evades all existing defense mechanisms, achieving a 0% Backdoor Detection Rate (BDR) across all evaluated frameworks, while preserving high-quality outputs.",
+    "submitted": "2025",
+    "comments": "",
+    "ok": true,
+    "source": "Semantic Scholar"
+  },
+  "doi:10.1109/TMM.2026.3664918": {
+    "url": "https://doi.org/10.1109/TMM.2026.3664918",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "<urlopen error _ssl.c:990: The handshake operation timed out>"
+  },
+  "doi:10.1145/3770854.3780211": {
+    "url": "https://doi.org/10.1145/3770854.3780211",
+    "title": "Nip Rumors in the Bud: Retrieval-Guided Topic-Level Adaptation for Test-Time Fake News Video Detection",
+    "abstract": "Fake News Video Detection (FNVD) is critical for social stability. Existing methods typically assume consistent news topic distribution between training and test phases, failing to detect fake news videos tied to emerging events and unseen topics. To bridge this gap, we introduce RADAR, the first framework that enables test-time adaptation to unseen news videos. RADAR pioneers a new retrieval-guided adaptation paradigm that leverages stable (source-close) videos from the target domain to guide robust adaptation of semantically related but unstable instances. Specifically, we propose an Entropy Selection-Based Retrieval mechanism that provides videos with stable (low-entropy), relevant references for adaptation. We also introduce a Stable Anchor-Guided Alignment module that explicitly aligns unstable instances' representations to the source domain via distribution-level matching with their stable references, mitigating severe domain discrepancies. Finally, our novel Target-Domain Aware Self-Training paradigm can generate informative pseudo-labels augmented by stable references, capturing varying and imbalanced category distributions in the target domain and enabling RADAR to adapt to the fast-changing label distributions. Extensive experiments demonstrate that RADAR achieves superior performance for test-time FNVD, enabling strong on-the-fly adaptation to unseen fake news video topics.",
+    "submitted": "2026",
+    "comments": "",
+    "ok": true,
+    "source": "Semantic Scholar"
+  },
+  "doi:10.1145/3770854.3780227": {
+    "url": "https://doi.org/10.1145/3770854.3780227",
+    "title": "WARP: A Word-Level Backdoor Attack Targeting RAG Systems via Retrieval Corpus Poisoning",
+    "abstract": "Retrieval-Augmented Generation (RAG) systems retrieve relevant documents from a corpus database to mitigate issues like hallucination, outdated knowledge, and limited domain coverage. While enhancing large language models (LLMs) performance, RAG also introduces a new attack surface: adversaries can inject trigger-embedded malicious documents into the corpus database, potentially causing the LLM to produce attacker-controlled outputs. To expose this vulnerability, we propose the first word-level backdoor attack targeting RAG systems through retrieval corpus poisoning named WARP. WARP crafts adversarial texts that are highly similar to triggers in embedding space, and appends attacker-controlled content (e.g. malicious phishing links) to generate adversarial corpus (advCorps). When a user's query contains a well-designated word-level trigger, these advCorps are retrieved, prompting the LLM to generate attacker-specified outputs. We formulate the generation of adversarial texts as a constrained optimization problem in embedding space, ensuring that trigger-related queries lead the RAG's retriever to accurately select the advCorps. To demonstrate the real-world threat, we craft adversarial texts with phishing links and deploy a word-level backdoor attack against RAG across multiple retrievers, mainstream LLMs, and real-world corpora. WARP achieves a robust average ASR of 55.8%, improving upon existing methods by 17.2%, with less than 0.1% degradation on benign queries. Moreover, WARP-generated adversarial texts exhibit an average perplexity of 69.98, representing a 95.6% reduction compared to state-of-the-art (SOTA) baselines, demonstrating superior linguistic naturalness and stealth.",
+    "submitted": "2026",
+    "comments": "",
+    "ok": true,
+    "source": "Semantic Scholar"
+  },
+  "doi:10.1145/3770854.3780276": {
+    "url": "https://doi.org/10.1145/3770854.3780276",
+    "title": "Beyond Content: Integrating Generated User Intent and Planned Behavior Theory for Reliable Fake News Detection",
+    "abstract": "With the rise of generative AI, the boundary between authentic and deceptive content has become increasingly ambiguous, challenging traditional fake news detection methods that rely solely on observable content or propagation structures. These approaches often neglect the underlying psychological motivations driving user behavior, leaving them susceptible to adversarial manipulation. However, as the user decision-making process is inherently unobservable, conventional deep learning models struggle to capture the cognitive mechanisms behind information sharing. To address this, we propose TPB-VAE, a psychologically grounded framework that integrates the Theory of Planned Behavior (TPB) with large language models (LLMs) to infer and encode users' latent intent. TPB-VAE maps TPB constructs into a latent space, making the decision-making process computationally accessible. It employs semi-supervised learning specifically to infer users' latent intent from a small subset of labeled samples, and uses the resulting intents to derive rich behavioral features for more reliable fake news detection. Extensive experiments on four real-world datasets demonstrate the effectiveness and adversarial resilience of our approach.",
+    "submitted": "2026",
+    "comments": "",
+    "ok": true,
+    "source": "Semantic Scholar"
+  },
+  "doi:10.1109/TMM.2026.3700789": {
+    "url": "https://doi.org/10.1109/TMM.2026.3700789",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1145/3664647.3680689": {
+    "url": "https://doi.org/10.1145/3664647.3680689",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1109/TDSC.2026.3671410": {
+    "url": "https://doi.org/10.1109/TDSC.2026.3671410",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1145/3770855.3817475": {
+    "url": "https://doi.org/10.1145/3770855.3817475",
+    "title": "OmniVul: A Holistic, Multi-Turn Conversational Benchmark for LLM-Based Vulnerability Assessment",
+    "abstract": "With more than 20,000 Common Vulnerabilities and Exposures (CVEs) reported annually, software vulnerabilities represent a critical cybersecurity challenge. This volume has intensified the demand for automated detection and analysis, motivating the integration of large language models (LLMs) for such tasks. However, existing vulnerability benchmarks are not suitable for evaluating LLMs' capabilities in vulnerability assessment, as most of them 1) rely on narrow data sources, 2) lack deep context, and 3) focus on single-turn Q&A rather than realistic, multi-stage analyst workflows. To address this gap, we introduce OmniVul, a comprehensive multi-turn benchmark for LLM-based vulnerability assessment. OmniVul comprises 2,000 CVEs with question–answer pairs spanning 23 attributes, including detection, code localization, root cause analysis, and patch suggestion. We employ an automated workflow to aggregate multi-source data via Retrieval-Augmented Generation (RAG), ensuring quality through LLM-as-a-Judge filtering and conformal prediction calibrated by human expert annotations. An evaluation of five state-of-the-art LLMs on OmniVul reveals distinct performance gaps, with top-1 accuracy remaining below 50% on average for vulnerable code detection and CVE identification. Our evaluation also demonstrates that current models lack critical reasoning capabilities for reliable vulnerability assessment. These results highlight the importance of OmniVul for advancing research in evaluating and fine-tuning LLMs for vulnerability assessment.",
+    "submitted": "2026",
+    "comments": "",
+    "ok": true,
+    "source": "Semantic Scholar"
+  },
+  "doi:10.1145/3770854.3780310": {
+    "url": "https://doi.org/10.1145/3770854.3780310",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1145/3770854.3780315": {
+    "url": "https://doi.org/10.1145/3770854.3780315",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "<urlopen error _ssl.c:990: The handshake operation timed out>"
+  },
+  "doi:10.1145/3770855.3817655": {
+    "url": "https://doi.org/10.1145/3770855.3817655",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1145/3770855.3817673": {
+    "url": "https://doi.org/10.1145/3770855.3817673",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1145/3770855.3817740": {
+    "url": "https://doi.org/10.1145/3770855.3817740",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1145/3770855.3817793": {
+    "url": "https://doi.org/10.1145/3770855.3817793",
+    "title": "Efficient Privacy Auditing for Generative Model via Local Information",
+    "abstract": "Diffusion models have become the dominant approach for text-to-image generation, but their ability to memorize training data raises increasing concerns about privacy leakage. Differential privacy (DP) is widely adopted to mitigate such privacy risks during model fine-tuning, yet the practical privacy leakage of differentially private diffusion models remains difficult to assess, especially in black-box settings where only generated images are observable. Existing auditing methods for diffusion models typically rely on membership inference attacks based on whole-image similarity between generated samples and target images. However, such approaches may underestimate privacy leakage when similarity between generated images and training samples is concentrated in localized image regions rather than at the whole-image level. In this work, we explore privacy leakage in diffusion models fine-tuned with differential privacy from a black-box perspective. We propose an empirical privacy assessment framework that leverages local image information, instead of treating images as indivisible wholes, to improve the distinguishability of privacy leakage signals. To improve privacy auditing efficiency and reduce sampling variance, we further leverage the image inpainting interface of diffusion models to perform region-focused auditing in a fully black-box setting. Extensive experiments across different fine-tuning and auditing settings demonstrate that our approach provides more reliable empirical assessments of privacy leakage than whole-image-based auditing methods.",
+    "submitted": "2026",
+    "comments": "",
+    "ok": true,
+    "source": "Semantic Scholar"
+  },
+  "doi:10.1145/3770855.3817768": {
+    "url": "https://doi.org/10.1145/3770855.3817768",
+    "title": "Rethinking the Stealthiness of Cryptographically Undetectable Backdoors in Practical RFF Learning",
+    "abstract": "Random Fourier Features (RFF) learning is a classical technique in scalable data mining. However, at FOCS 2022, Goldwasser et al. proposed a theoretical framework for planting cryptographically undetectable backdoors in RFF learning based on the hardness of the Continuous Learning With Errors (CLWE) problem. Their construction guarantees white-box undetectability in the model parameter space against any polynomial-time distinguisher. In this paper, we revisit the undetectability of CLWE backdoors from a practical RFF learning perspective. We prove that the operational validity of the CLWE backdoor critically hinges on assumptions that are incompatible with the realistic RFF learning deployment. Specifically, standard data preprocessing required for effective RFF learning fundamentally destroys the input-space stealthiness of CLWE backdoors, inevitably resulting in conspicuous input-level artifacts. We further validate our theoretical findings through extensive experiments on both tabular and image datasets, demonstrating that simple sanity checks at the input level suffice to reliably identify backdoored inputs. In addition, under the same threat model, we analyze the adversarial robustness of RFF learning models and provide a concrete certified robustness analysis, enabling a deeper security assessment of its practical deployment. Overall, our work emphasizes the importance of evaluating theoretical backdoor attacks under realistic machine learning pipelines and offers broader insights into the secure deployment of RFF learning systems.",
+    "submitted": "2026",
+    "comments": "",
+    "ok": true,
+    "source": "Semantic Scholar"
+  },
+  "doi:10.1145/3770855.3817917": {
+    "url": "https://doi.org/10.1145/3770855.3817917",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1145/3770855.3817883": {
+    "url": "https://doi.org/10.1145/3770855.3817883",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1145/3770855.3817450": {
+    "url": "https://doi.org/10.1145/3770855.3817450",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1145/3770855.3817775": {
+    "url": "https://doi.org/10.1145/3770855.3817775",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1145/3770855.3818025": {
+    "url": "https://doi.org/10.1145/3770855.3818025",
+    "title": "MAR: Metacognitive Agentic Reasoning for multimodal Fake News Detection",
+    "abstract": "multimodal fake news combining text and images has become increasingly prevalent, fueled by the rapid dissemination on social media. Existing approaches predominantly rely on supervised learning–driven small multimodal language models, yet they are constrained by the knowledge scope and logical reasoning capabilities limited by training data: their performance degrades significantly when encountering novel content not covered in the training data, and they typically provide only uninterpretable binary true/false predictions. To address these challenges, we propose the Metacognitive Agentic Reasoning for multimodal Fake News Detection(MAR), a framework that integrates multi-agent metacognitive debate with external knowledge retrieval to enhance the accuracy, generalization, and interpretability of multimodal fake news detection. At its core, MAR introduces a news-domain informed and metacognition-inspired multi-agent reasoning mechanism: it first generates several prior pseudo-labels of the news domain, and defines the characteristics of two opposing agents (i.e., Believer and Skeptic) leveraging these pseudo-labels; then, the Believer and Skeptic go through a three-stage ''Draft – Self-Critique – Refine'' interactive debate simulating humans' learning behavior, called the metacognitive debate. Specifically, MAR first generates an initial evidence-grounded judgment (Draft), then critically reflects on their own and others' arguments (Self-Critique), and finally iteratively refines their conclusions by incorporating internal or external evidence (Refine). To improve factual reliability, the framework dynamically retrieves trustworthy external knowledge via web and reverse image searches, thereby mitigating the hallucinations inherent in large language models. Experiments show that MAR achieves state-of-the-art performance on two benchmarks and significantly outperforms existing methods in terms of generalization and interpretability. The source code is available at https://github.com/Averdgr/MAR_KDD.",
+    "submitted": "2026",
+    "comments": "",
+    "ok": true,
+    "source": "Semantic Scholar"
+  },
+  "doi:10.1145/3770855.3817957": {
+    "url": "https://doi.org/10.1145/3770855.3817957",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1145/3770855.3817993": {
+    "url": "https://doi.org/10.1145/3770855.3817993",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1145/3770855.3818024": {
+    "url": "https://doi.org/10.1145/3770855.3818024",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1145/3770855.3818133": {
+    "url": "https://doi.org/10.1145/3770855.3818133",
+    "title": "BRP: Query-Efficient Block Revert Patch for Decision-Based Black-Box Adversarial Attack",
+    "abstract": "Adversarial patches pose a serious threat to deep neural networks, as small localized perturbations can decisively control model predictions. In real-world deployments, the decision-based black-box setting is the most realistic and challenging threat model, where attackers observe only the predicted labels. Designing adversarial patch attacks under this setting is of substantial real-world significance for rigorously testing model robustness under realistic black-box conditions. However, adversarial patch attacks in the decision-based setting remain largely underexplored. Existing methods often suffer from low query efficiency and require large patch areas, which significantly limit their practical applicability. We propose Block Revert Patch (BRP), a novel reverse construction method for query-efficient adversarial patch generation. Instead of adding perturbations, BRP formulates patch generation as a pixel-block reversion problem and employs a two-stage process to progressively refine the patch. Specifically, the single-block revert test stage uses a sliding window to temporarily revert individual blocks and collect those whose reversion maintains the adversarial effect. The global revert optimization stage then searches for an optimal combination of pixel-blocks from this set, further reducing the patch size. By iteratively alternating between these two stages, BRP progressively refines the patch in a coarse-to-fine manner. Experiments show that BRP significantly reduces patch size and query cost compared to state-of-the-art decision-based attacks, offering a strong and practical approach for evaluating model vulnerability in adversarial settings.",
+    "submitted": "2026",
+    "comments": "",
+    "ok": true,
+    "source": "Semantic Scholar"
+  },
+  "doi:10.1145/3770855.3818037": {
+    "url": "https://doi.org/10.1145/3770855.3818037",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1145/3770855.3818098": {
+    "url": "https://doi.org/10.1145/3770855.3818098",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "<urlopen error _ssl.c:990: The handshake operation timed out>"
+  },
+  "doi:10.1145/3770855.3818093": {
+    "url": "https://doi.org/10.1145/3770855.3818093",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1145/3770855.3818136": {
+    "url": "https://doi.org/10.1145/3770855.3818136",
+    "title": "ActivationBackdoor: Backdooring Large Language Models in Collaborative Inference via Intermediate Activations",
+    "abstract": "Collaborative inference enables cost-effective deployment of large language models by partitioning layers across multiple participants and forwarding intermediate activations between participants in a pipeline, but these transmitted activations also create a new attack surface: a malicious participant can manipulate intermediate activations during inference. Prior work on collaborative inference attacks has largely focused on privacy leakage, leaving the backdoor threat insufficiently explored. Inspired by recent advances in representation engineering, we propose ActivationBackdoor, an inference-time backdoor attack that composes two activation-level components for trigger detection and backdoor behavior injection. This design achieves the same ''clean inputs behave normally, triggered inputs induce attacker-specified behavior'' property as traditional backdoor attacks, while requiring no access to training data and no model parameter updates. Experiments across classification and open-ended generation tasks show that ActivationBackdoor attains attack success comparable to training-time backdoor baselines while preserving high clean-task accuracy and utility. Overall, our results expose a new and practical backdoor risk in collaborative inference arising from intermediate activation exposure.",
+    "submitted": "2026",
+    "comments": "",
+    "ok": true,
+    "source": "Semantic Scholar"
+  },
+  "https://github.com/cordiverse/paper/blob/main/paper.pdf": {
+    "url": "https://github.com/cordiverse/paper/blob/main/paper.pdf",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 404: Not Found",
+    "source": "https://github.com/cordiverse/paper/blob/main/paper.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/1080.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/1080.pdf",
+    "title": "HardSecBench: Benchmarking the Security Awareness of LLMs for Hardware",
+    "abstract": "Large language models (LLMs) are increasingly used for hardware and firmware code generation, but existing studies primarily evaluate functional correctness while largely overlooking security. However, LLM-generated code that appears functionally sound may embed security flaws which could induce catastrophic damages after deployment. This critical research gap motivates us to design a benchmark for assessing security awareness under realistic specifications. In this work, we introduce HardSecBench, a benchmark with 924 tasks spanning Verilog Register Transfer Level (RTL) and firmware-level C, covering 76 hardware-relevant Common Weakness Enumeration (CWE) entries. Each task includes a structured specification, a secure reference implementation, and executable tests. To automate artifact synthesis, we propose a multi-agent pipeline that decouples synthesis from verification and grounds evaluation in execution evidence, enabling reliable evaluation. We evaluate diverse LLMs and find that they often satisfy functional requirements while leaving security risks. We also find that security results vary with prompting. These findings highlight pressing challenges and offer actionable insights for future advancements in LLM-assisted hardware design. Our data and code are available at https://github.com/chenqirui2002/HardSecBench.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/1080.pdf"
+  },
+  "https://eisenhofer.me/data/fard-26-shape.pdf": {
+    "url": "https://eisenhofer.me/data/fard-26-shape.pdf",
+    "title": "Shape-Shifting Malicious Code in",
+    "abstract": "Supply-chain attacks in open-source software are a notorious threat to security. Current defenses focus primarily on detecting backdoor functionality within the software. However, we show that seemingly benign documentation and configuration scripts can also serve as carriers of malicious code. To this end, we introduce an attack that uses large language models to encode a malicious payload into benign cover data. The resulting material appears natural and plausible to human reviewers, yet it can be easily reconstructed into its malicious form without access to a language model. Our evaluation demonstrates the efficacy of this approach in hiding code from audits. We argue that this form of shape-shifting code poses a notable risk and derive corresponding recommendations for software development. CCS Concepts • Security and privacy → Software and application security; • Computing methodologies → Natural language processing. Keywords Software Backdoors, Supply-Chain Attacks, Generative Models ACM Reference Format: Mohammad Ebrahimi Fard, Felix Weissberg, Erik Imgrund, Thorsten Eisenhofer, and Konrad Rieck. 2026. Shape-Shifting Malicious Code in Software Backdoors via Language Models. In ACM Asia Conference on Computer and Communications Security (ASIA CCS ’26), June 01–05, 2026, Bangalore, India. ACM, New York, NY, USA, 16 pages. https://doi.org/10.1145/3779208.3807 485",
+    "ok": true,
+    "source": "https://eisenhofer.me/data/fard-26-shape.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/1759.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/1759.pdf",
+    "title": "Band Together: Untargeted Adversarial Training with",
+    "abstract": "multimodal recommender systems exploit visual and textual signals to alleviate data sparsity, but this also makes them more vulnerable to evasionbased promotion attacks. Existing defenses are largely limited to single-modal settings and mainly focus on poisoning-based threats, leaving evasionbased threats underexplored. In this work, we first identify a cross-modal gradient mismatch under the multi-user promotion setting, where visual and textual perturbations are optimized in inconsistent directions due to the dominance of distinct user groups. This phenomenon dilutes the attack effectiveness and leads robust training to underestimate worst-case risks. To address this issue, we propose Untargeted Adversarial Training with multimodal Coordination (UAT-MC). UATMC tackles the challenge of unknown targeted items in evasion-based attacks (as opposed to poisoning-based attacks) by treating all items as potential targets, and introduces a gradient alignment mechanism to explicitly correct this mismatch. This design ensures synchronized perturbations across modalities, thereby maximizing adversarial strength for robust training. Extensive experiments demonstrate that UAT-MC significantly improves robustness against promotion attacks while maintaining acceptable recommendation performance under the defense–accuracy trade-off. Code is available at https://github.com/ gmXian/UAT-MC.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/1759.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/2007.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/2007.pdf",
+    "title": "Counterfactual Reasoning for Responsibility Attribution",
+    "abstract": "Responsibility allocation—determining the extent to which agents causally contribute to outcomes— is a fundamental challenge in the design and analysis of multi-agent systems. In this work, we model such systems as concurrent stochastic multiplayer games and introduce a notion of retrospective (backward) counterfactual responsibility, which quantifies an agent’s causal contribution to outcomes resulting from a given strategy profile. To allocate responsibility among agents, we utilise the Shapley value and formally show that this method satisfies key desirable properties, including fairness and consistency. Building on this foundation, we propose a formal framework that supports both verification and strategic reasoning in responsibilityaware multi-agent systems. Furthermore, by adopting Nash equilibrium as the solution concept, we demonstrate how to compute stable strategy profiles in which agents trade off responsibility against expected reward.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/2007.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/2149.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/2149.pdf",
+    "title": "Shot-Conditioned Vision-Language Adaptation for Effective Harmful Content",
+    "abstract": "Short video harmful content detection aims to automatically identify diverse anomalies from user-generated media. This task presents unique challenges due to frequent editing cuts and highly variable anomaly densities, limiting the effectiveness of traditional surveillance-based approaches. Moreover, existing Vision-Language Model-based approaches typically rely on rigid instance selection mechanisms that fail to adapt to the unpredictable duration of anomalies in such unconstrained videos. To address these issues, we propose SVLA, a Shot-conditioned Vision-Language Adaptation framework, for effectively detecting harmful contents from online short videos. Our approach introduces a novel π-adaptive strategy to dynamically estimate shot-level anomaly density, replacing rigid selection with calibrated supervision. Furthermore, we employ a shot-conditioned temporal encoder to respect video hierarchy and adopt a dual-path contextual adapter to resolve semantic ambiguity. To benchmark this task, we construct a new dataset (SVA) covering more genuine online short videos that involve seven anomaly categories. Experiments on the SVA dataset demonstrate that SVLA can achieve the state-of-the-art performance and outperform its competitors across diverse scenarios. Codes and datasets are available at: https://github.com/xushuai7/IJCAI-SVLA.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/2149.pdf"
+  },
+  "http://zhangdake.tech/assets/pdf/sigir2026baseline.pdf": {
+    "url": "http://zhangdake.tech/assets/pdf/sigir2026baseline.pdf",
+    "title": "Simulating the Lateral Reader for News Trustworthiness Reports",
+    "abstract": "Readers of online news often lack the time and domain expertise required to verify unfamiliar claims and sources. Professional fact-checkers address this gap through lateral reading, an iterative workflow of asking investigative questions, searching for external evidence, and synthesizing findings with attribution. We present an iterative multi-agent Retrieval-Augmented Generation (RAG) system that operationalizes this workflow for the TREC 2025 DRAGUN Track. Given a news article, specialized agents (1) generate investigative queries, (2) retrieve and filter evidence from the MS MARCO V2.1 Segmented Corpus using a three-stage retriever (BM25+RM3, cross-encoder reranking, and LLM-based selection), and (3) apply an information-sufficiency evaluator that decides whether additional searching is required before writing. The final report generator produces a 250-word trustworthiness report grounded in retrieved segments, guided by automatically generated critical investigative questions. On the official DRAGUN rubric-based evaluation with 30 news articles, our system using GPT-4.1 ranked first on report generation quality, achieving the highest mean supportive score (0.230) with low contradiction (0.013). CCS Concepts • Information systems → Retrieval tasks and goals; Web searching and information discovery; • Computing methodologies → Natural language generation; Multi-agent systems. Keywords Text REtrieval Conference; News Trustworthiness; Multi-Agent Systems; Retrieval-Augmented Generation ACM Reference Format: Dake Zhang and Mark D. Smucker. 2026. Simulating the Lateral Reader for News Trustworthiness Reports with an Iterative Multi-Agent RAG System. In Proceedings of the 49th International ACM SIGIR Conference on Research and Development in Information Retrieval (SIGIR ’26), July 20–24, 2026, Melbourne, VIC, Australia. ACM, New York, NY, USA, 5 pages. https://doi.org/10.1145/ 3805712.3809973",
+    "ok": true,
+    "source": "http://zhangdake.tech/assets/pdf/sigir2026baseline.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/197.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/197.pdf",
+    "title": "Guard4D: Robust Watermarking for 4D Gaussian Splatting via Decoupled",
+    "abstract": "4D Gaussian Splatting (4DGS) enables highquality, real-time rendering of dynamic scenes and is becoming a popular format for sharing 4D assets. This trend calls for robust copyright watermarking that can be verified from rendered videos without access to the original scene or model parameters. However, watermarking 4DGS is challenging: verification relies on short multi-view clips whose frames vary with motion, viewpoint changes, and post-processing. More importantly, decoding from rendered frames is easily dominated by scene content (objects, textures, illumination) rather than subtle watermark traces, leading to unstable evidence across frames and poor generalization across scenes. We propose Guard4D, a decoupled watermarking framework for 4DGS. Guard4D pre-trains a general-purpose message decoder under text supervision and embeds a binary message by optimizing compact spherical-harmonic offsets while keeping geometry and opacity fixed. To improve extraction from short clips and suppress semantic interference, we introduce a temporal modeling and semantic decoupling (TMSD) module that temporally aggregates watermark information and uses clean and noise-perturbed control clips generated from the non-watermarked model to reduce the influence of semantics on watermark decoding. Extensive experiments on dynamic 4DGS scenes demonstrate the effectiveness of Guard4D. Code is available at https://github.com/shisyy/Guard4D.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/197.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/2441.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/2441.pdf",
+    "title": "An Information-theoretic Propagation Denoising and Fusion Framework for",
+    "abstract": "Incomplete propagation data significantly hinders robust fake news detection. Recent approaches leverage large language models to simulate missing user interactions via role-playing, thereby enriching propagation with synthetic signals. However, such propagation data is intrinsically unreliable, and directly fusing it can lead to biased representations and limited detection performance. In this paper, we alleviate the unreliability of synthetic propagation from the mutual information perspective and propose a novel information-theoretic propagation denoising and fusion (InfoPDF) framework to learn effective representations from both real and synthetic propagation. Specifically, we first generate attribute-specific synthetic propagation using large language models. Then we model each synthetic propagation graph as a probabilistic latent distribution to guide reliability-aware adaptive fusion with real propagation. During training, we design a mutual information-based objective to learn compressed and task-sufficient propagation representations. It jointly suppresses noisy signals across attribute-specific synthetic propagation, maintains consistency between real and synthetic propagation representations, and ensures task sufficiency for fake news detection and attribute prediction. Experiments on three real-world datasets show that InfoPDF consistently achieves superior performance across various fake news detection tasks. Further analysis demonstrates that InfoPDF can estimate attribute-level reliabilities and learn more discriminative propagation representations.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/2441.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/1379.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/1379.pdf",
+    "title": "Manifold-Constrained Adversarial Training for Long-Tailed Robustness via",
+    "abstract": "Adversarial training is effective on balanced datasets, but its robustness degrades under longtailed class distributions, where tail classes suffer high robust error and unstable decision boundaries. We propose Manifold-Constrained Adversarial Training (MCAT), a unified framework that enforces the semantic validity of adversarial examples by penalizing deviations from class-conditional manifolds in feature space, while promoting balanced geometric separation across classes via an ETF-inspired regularization. We provide theoretical results that link geometric separation to lower bounds on adversarially robust margins, and show that manifold-constrained adversarial risk upperbounds robust risk on high-density semantic regions. Extensive experiments on standard longtailed benchmarks demonstrate consistent improvements in overall, balanced, and tail-class adversarial robustness. The codes and appendix are available on https://github.com/yneversky/MCAT.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/1379.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/1712.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/1712.pdf",
+    "title": "Breaking the Trade-off: Orthogonal Semantic Decoupling for Generalizable and",
+    "abstract": "Deepfake detection faces dual challenges in real-world deployment: cross-domain generalization and demographic fairness. Existing approaches often struggle with a trade-off between these goals. Generalization-oriented detectors can over-rely on demographic shortcuts, while fairness constraints tend to steer optimization away from the most discriminative decision boundary. To address this, we propose Orthogonal Semantic Decoupling (OSD), a framework that decouples demographic semantics from forgery cues. Specifically, we perform Singular Value Decomposition on the pretrained weights of a vision-language model, freezing the principal semantic subspace while learning parameter-efficient low-rank experts in the residual subspace. The experts comprise Demographic Semantic Experts, a set of experts specialized via group sampling and routed based on the similarities between image embeddings and text embeddings of predefined descriptions; and a Universal Forgery Expert, which captures forgery features transferable across domains and demographics. Extensive experiments across multiple benchmarks demonstrate that our approach outperforms state-of-the-art methods in both generalization and fairness, breaking the trade-off. The code is available at https://github.com/sonder-lin/ osd-deepfake-detection.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/1712.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/2754.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/2754.pdf",
+    "title": "Generalization Analysis for Adversarial Vision Transformers",
+    "abstract": "Vision Transformers (ViTs) exhibit notable susceptibility to adversarial attacks, presenting a significant challenge for their deployment in securitysensitive applications. Despite their considerable empirical successes, a rigorous theoretical foundation for ViT’s adversarial generalization behavior has not been adequately established. To address this limitation, we leverage empirical Rademacher complexity to analyze the mechanism of perturbation accumulation through deep ViTs layers. We establish a high-probability generalization bound for ViTs in classification tasks under adversarial settings. Our theoretical framework elucidates the roles of several factors in mitigating perturbation effects, norm regularization of weight matrices (in both MLP and attention modules) and depth-wise propagation constraints on layer-wise norms. Extensive experiments on benchmark datasets corroborate our theoretical insights, bridging the gap between ViTs architecture design and adversarial robustness.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/2754.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/3310.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/3310.pdf",
+    "title": "Safe Multi-Objective Linear Bandits with Hierarchical Preferences",
+    "abstract": "Multi-objective bandits with hierarchical preferences and safety constraints is central to many real-world decision-making tasks such as healthcare treatment planning and safe autonomous control, where multiple objectives must be optimized according to their priorities while ensuring safety requirements are satisfied. In this paper, we study a multi-objective stochastic linear bandit framework that incorporates hierarchical preferences together with safety constraints, requiring the learner to remain competitive with respect to a known baseline policy. We consider two practically motivated safety models: (i) cumulative constraints, which require the cumulative performance to exceed the baseline, and (ii) stage-wise constraints, which impose this requirement at each time step. We propose two algorithms, LexUCB-C and LexTS-S, designed for the cumulative and stage-wise settings, respective ly. We establish regret bounds showing that both algorithms achieve performance comparable to existing single-objective safe linear bandit methods, while simultaneously optimizing multiple objectives. In addition to theoretical guarantees, we develop an experimental framework that captures the interaction between hierarchical preferences and safety constraints. Experiments on synthetic and real-world datasets demonstrate the effectiveness of the proposed methods.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/3310.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/3453.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/3453.pdf",
+    "title": "BEAT2AASIST: BEATs Feature Splitting with Dual-Branch AASIST",
+    "abstract": "Recent advances in text-to-audio (TTA) and audioto-audio (ATA) generation models have enabled the creation of highly realistic environmental sounds, raising growing concerns about malicious audio manipulation in real-world scenarios. To address this emerging threat, the ESDD 2026 Challenge was introduced as the first large-scale benchmark for Environmental Sound Deepfake Detection (ESDD), featuring two tracks that evaluate generalization to unseen generators and robustness under black-box, low-resource conditions. In this paper, we present BEAT2AASIST, an enhanced deepfake detection framework built upon the BEATsAASIST baseline. Motivated by the observation that token-based audio representations may weaken explicit preservation of structured acoustic cues, the proposed method introduces a dualbranch AASIST architecture that explicitly splits BEATs-derived representations along frequency or channel dimensions. This design enables specialized modeling of complementary spoofing artifacts that may be attenuated in unified representations. To further enrich acoustic features, we incorporate multi-layer fusion strategies that aggregate information from multiple transformer layers using concatenation, CNN-gated, and SE-gated mechanisms. In addition, vocoder-based data augmentation with multiple high-fidelity neural vocoders is employed to enhance robustness against unseen and black-box spoofing attacks. Experimental results on the EnvSDD dataset demonstrate that BEAT2AASIST achieves strong and consistent performance across both challenge tracks. In particular, the proposed approach attains 3rd place in Track 2 and 4th place in Track 1 in the ESDD 2026 Challenge, despite using fewer ensemble components than top-ranked systems. These results suggest that explicit model- ∗ Corresponding authors. ing of heterogeneous acoustic subspaces, combined with targeted representation fusion and data augmentation, provides an effective and efficient design strategy for real-world environmental sound deepfake detection. The code is available at https: //github.com/ikwak2/BEAT2AASIST.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/3453.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/2444.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/2444.pdf",
+    "title": "Mitigating Backdoors via Decoy Shortcuts and Knowledge Decoupling",
+    "abstract": "Backdoor attacks pose a serious threat to deep neural networks, especially when training relies on third-party data, allowing adversaries to inject malicious behaviors through data poisoning. In this work, we reveal that backdoor behaviors tend to be absorbed by a simpler parallel branch when jointly trained with the main network. Motivated by this insight, we propose Trapping and Removing (TR), a simple yet effective training-time defense that introduces a lightweight shortcut branch as a “honeypot” to trap backdoor knowledge. After training, backdoors can be removed by discarding the shortcut, without requiring any additional data. To further enhance backdoor isolation while maintaining benign performance, we design a knowledge decoupling strategy with entropy-based weight assignment, encouraging poisoned samples to flow through the honeypot while guiding the main network to focus on benign learning. In addition, we introduce an automatic shortcut generation strategy to improve generalization across model architectures. Extensive experiments on four benchmark datasets and five model architectures demonstrate that our approach effectively mitigates a wide range of backdoor attacks while preserving performance on benign data. Code: github.com/Zixuan-Zhu/TR.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/2444.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/3528.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/3528.pdf",
+    "title": "BehaviorGuard: Online Backdoor Defense for Deep Reinforcement Learning",
+    "abstract": "Backdoor attacks pose a serious threat to deep reinforcement learning (DRL). Current defenses typically rely on reward anomalies to reverse-engineer triggers and model finetuning to remove backdoors. However, complex trigger patterns undermine their robustness, and fine-tuning entails high costs, limiting practical utility. Therefore, we shift defense concerns to trigger-agnostic backdoor output behaviors and propose BehaviorGuard, an online behavior-based backdoor detection and mitigation framework for DRL. Specifically, we find that regardless of attacks, backdoored policies induce consistent shifts in action distributions to ensure reliable activation, leaving detectable traces in high-quantile regions and distribution tails, even in the absence of triggers. Based on this, we design a novel metric that captures behavioral drift in action distributions to identify and suppress backdoor actions at runtime. To our knowledge, this is the first online backdoor defense that counters attacks both in single- and multi-agent DRL. Evaluated across diverse benchmarks with different backdoor attacks, BehaviorGuard consistently surpasses prior methods in both efficacy and efficiency.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/3528.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/2613.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/2613.pdf",
+    "title": "PURE: Purging Unrelated Representations for Content-Agnostic Forgery",
+    "abstract": "Existing AI-generated image (AIGI) detectors perform well in-domain but degrade severely under distribution shift. We observe that this failure is mainly caused by content shortcuts, where detectors spuriously couple forgery artifacts with semantic content, such as object categories or demographic attributes, learning content–label correlations instead of generalizable forgery patterns. To address this issue, we propose PURE (Purging Unrelated Representations for ContentAgnostic Forgery Detection), which achieves content-agnostic detection through two complementary components: a Causal Semantic Generative (CSG) mechanism that disentangles semantic representations from forgery-irrelevant nuisance factors, and a Gaussian Mixture Model (GMM)- based prototype alignment module that suppresses category-specific content bias. Extensive experiments on CIFAKE, GenImage, and AlFace show that PURE achieves superior generalization under spurious correlation reversal. The code is available at https://github.com/wuxinyu519/PURE.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/2613.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/2985.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/2985.pdf",
+    "title": "BEACON: Budget-Efficient Discovery of Policy Violations in Large Language",
+    "abstract": "Systematic safety evaluation of large language models must uncover diverse policy violations under tight query budgets. However, most redteaming methods optimize attack success rate and repeatedly probe a narrow set of vulnerabilities, yielding redundant failures and leaving rarer yet critical violation categories unexplored. Under fixed budgets, such inefficient exploration delays the first discovery and limits category coverage. To address these limitations, we propose the BudgetEfficient Adaptive Cognitive Offense Navigator (BEACON), a budget-aware safety testing framework that uses Cognitive-Guided Monte Carlo Tree Search to navigate the violation search space under fixed budgets. BEACON innovatively approaches safety testing as a budget-constrained failure discovery process, aiming to identify diverse safety violations as early as possible within a fixed query budget. It also provides an efficiency-oriented evaluation perspective that measures early discovery and harm category coverage under budget constraints. Experiments on standard benchmarks and frontier LLMs show that BEACON discovers failures earlier and achieves higher coverage across policy violation categories. These results underscore the value of evaluating safety testing through discovery efficiency rather than attack success rate alone. Warning: This paper contains examples of harmful language and images, and reader discretion is recommended.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/2985.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/4403.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/4403.pdf",
+    "title": "Mask-Guided Hybrid Triggers for Robust Clean-Label Backdoor Attacks",
+    "abstract": "Clean-label backdoor attacks pose significant security threats to deep neural networks by injecting triggers without altering ground-truth labels. However, existing methods face a fundamental dilemma: sample-agnostic triggers are robust but easily detectable, while sample-specific triggers offer superior stealthiness but suffer from limited effectiveness due to feature suppression. To bridge this gap, we propose a new backdoor trigger framework called Mask-Guided Hybrid Trigger (MGHT). MGHT uses an adaptive mask to allocate spatial regions of the hybrid trigger between a sample-agnostic anchor for reliable memorization and a sample-specific camouflage for perceptual and semantic consistency. To prevent the optimization from greedily relying on a single trigger component, we further propose a Synergy-driven Co-optimization Strategy with a margin-based Synergy Loss. This ensures that the hybrid trigger is more effective and robust than either component alone. Extensive experiments on benchmark datasets demonstrate that MGHT achieves competitive performance, attaining over 99% ASR on CIFAR-10 and CelebA and showing strong effectiveness on higher-resolution benchmarks, while maintaining high visual quality (PSNR > 30 dB) and robustness to mainstream backdoor defenses.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/4403.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/4430.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/4430.pdf",
+    "title": "Explaining Jailbreaks: Structured and Interpretable Safety Assessment for Large",
+    "abstract": "Large Language Models (LLMs) remain highly vulnerable to jailbreak attacks, yet existing evaluations rely primarily on outcome-level metrics such as Attack Success Rate (ASR), providing limited insight into how and why safety failures occur. We propose an explanation-aware safety framework that augments binary harmfulness detection with structured, human-interpretable explanations capturing severity, strategies, trigger spans, rationales, and derived safety factors. To enable scalable and consistent supervision, we introduce a human–LLM hybrid annotation and canonicalization pipeline. We then fine-tune a compact model to generate canonical explanations alongside harmfulness decisions. Across both seen and unseen benchmark settings, our method improves robustness and explanation fidelity. In jailbreak defense evaluation, our approach reduces ASR to 0.44% on Vicuna-7B and 1.30% on GPT-3.5, outperforming existing defense baselines while also achieving the lowest StrongREJECT scores. Beyond outcome-level gains, the model more accurately recovers diagnostic attributes (e.g., attack strategy, trigger spans, and safety factors) than strong general-purpose LLM baselines. Overall, explanation-aware learning exposes diagnostic dimensions that ASR alone cannot capture and provides a more faithful and actionable foundation for robust LLM safety assessment.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/4430.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/3591.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/3591.pdf",
+    "title": "LBA: Textual Hard-Label Adversarial Attack Under Low Query Budgets",
+    "abstract": "Generating high-quality adversarial texts with low query budgets remains a challenging problem in the hard-label scenario. Most existing approaches rely on greedy algorithms, where one position in the text is selected for substitution, followed by the substitutions of other positions. This local search approach may fail to discover high-quality adversarial examples and often leads to excessive query costs. Ideally, an optimal adversarial sample would consider all possible position combinations in the text, but exhaustive search is computationally impractical. To address this challenge, we propose a sampling-based method called LBA, which constructs an approximate distribution of high-quality adversarial examples by integrating both prior and posterior knowledge, and utilizes this distribution for sampling. As sampling progresses, posterior knowledge updates the approximate distribution, which in turn guides more effective sampling. Extensive experiments on six language models, ranging from small-scale to large-scale architectures across four datasets, demonstrate that LBA significantly outperforms state-of-the-art baselines on all evaluation metrics. Additionally, LLM-based assessment indicates that LBA generates more semantically preserved and comprehensible adversarial texts.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/3591.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/2785.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/2785.pdf",
+    "title": "Detoxifying Large Language Models via Localized Feature Editing with Sparse",
+    "abstract": "Large Language Models (LLMs) powerful generative capabilities also pose significant risks, underscoring the need for effective detoxification methods to ensure safer deployment. Due to the polysemantic nature of LLM neurons, recent neuron intervention methods inevitably entangle unrelated concepts, compromising generation quality and interpretability. Sparse Autoencoders (SAEs) have opened new horizons for decomposing model activations into monosemantic features, offering interpretability and targeted feature-level steering. Empirical findings reveal that, despite capturing interpretable features, indiscriminate interventions on toxicity-related features expose the fragility of LLMs, achieving toxicity mitigation at the cost of degraded fluency. Building upon this finding, we propose DeLFE, a lightweight controlled detoxification approach that identifies specific toxic features across model layers and performs targeted interventions on them. DeLFE learns toxicity subspaces from label-guided SAE feature subsets to characterize toxic v.s. non-toxic activation patterns. When auto-completing a response token-bytoken, DeLFE tracks the toxicity-triggering risks and steers toxic features away from the subspace via a flow-matching feature transformation. We further design three feature-level strategies that adjust intervention timing and strength to reconstruct the target model’s original activations. Extensive experiments demonstrate that our method achieves strong detoxification effectiveness while maintaining high generation quality across models of varying sizes and diverse base LLMs.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/2785.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/4461.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/4461.pdf",
+    "title": "Profiling the Voice: Speaker-Specific Phoneme Fingerprinting for Speech",
+    "abstract": "The rapid advancement of generative AI has made audio deepfakes increasingly indistinguishable from authentic human vocals, posing significant threats to persons-of-interest (POI) such as public figures. Current detection systems primarily rely on generic, black-box models that fail to capture speaker-specific idiosyncratic traits and lack interpretability. In this paper, we propose Phoneme-based Voice Profiling (PVP), a novel personalized defense framework. By shifting the detection paradigm from macro-utterance analysis to micro-phonetic modeling, PVP captures the unique acoustic distributions underlying a POI’s habitual articulatory patterns. Specifically, our framework models speaker-specific phonetic realizations using lightweight Gaussian Mixture Models (GMMs) estimated solely from bona fide reference speech. This design enables data-efficient profiling and robust generalization to previously unseen spoofing attacks without requiring heavy spoof-specific training. Furthermore, we introduce the first largescale Chinese POI deepfake dataset to benchmark speaker-specific detection. Experimental results demonstrate that PVP significantly outperforms state-of-the-art generic detectors in POI spoofing scenarios, achieving substantial EER reductions while providing fine-grained, phoneme-level interpretability for forensic analysis. Code and data are available at: https://github.com/JunXue-tech/PVP",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/4461.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/4589.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/4589.pdf",
+    "title": "When Evidence Falls Short: Router-Guided Fake News Detection with Pattern",
+    "abstract": "With the growing complexity of online information, trustworthy fake news detection has become increasingly critical. Although Large Language Models (LLMs) exhibit a strong ability to leverage factual evidence for verification, they remain highly vulnerable to unreliable, noisy, or scarce evidence, undermining robustness in real-world scenarios. Given the generalizability of deceptive patterns in fake news, we consider pattern as a complementary signal under insufficient evidence during factual verification. However, due to LLMs’ lack of expertise in deception-specific patterns, realizing such effective collaboration remains challenging. To address these issues, we propose a RouterGuided Fake News Detection Framework with Pattern Augmentation (RGPA). Specifically, we introduce a hierarchical routing mechanism including a case router and an external evidence router. It guides news to appropriate reasoning paths adaptively based on a multi-dimensional quality assessment, prioritizing high-quality evidence while mitigating noise. Furthermore, we design an expert model to capture deceptive features and integrate them into LLMs’ reasoning, enabling a synergy of factual verification and pattern awareness under evidence-scarce scenarios. Extensive experiments on two real-world datasets demonstrate that RGPA significantly outperforms existing approaches.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/4589.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/5019.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/5019.pdf",
+    "title": "Safety-Aware Shared Autonomy via World-Model Constrained Planning",
+    "abstract": "Safety-aware shared autonomy aims to enable an autonomous agent to collaborate with a human operator, completing tasks under safety constraints while maximally preserving human intent. However, existing methods often underperform in long-horizon tasks that require balancing task performance under safety constraints with the degree of intervention—particularly when accurately predicting future unsafe events is critical. This limitation largely stems from their reliance on the current state alone to decide when to intervene and how to modify actions. We propose World Model Assisted Safety Planning (WASP), a modelpredictive shared autonomy framework for explicit safety constraint satisfaction. We first formulate a safety-aware world model, and leverage its online predictive reasoning to decide when to intervene by jointly assessing prospective safety violations and degradation in task performance, thereby intervening only when necessary while enforcing safety constraints at decision time. Once intervention is triggered, WASP plans a short-horizon residual correction using world model rollouts, filters out unsafe candidates, and executes the least-deviating correction among the remaining high-return options in a receding-horizon loop. Experiments across diverse vision-based safety-critical domains show that WASP substantially reduces safety violations while preserving task performance and reducing unnecessary interventions over prior shared autonomy baselines.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/5019.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/3488.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/3488.pdf",
+    "title": "IdentityMask: A Robust Face-Centric Privacy Protection Against Unauthorized",
+    "abstract": "Unauthorized personalization based on diffusion models pose a severe and growing threat to digital privacy by enabling the unauthorized replication and exploitation of individual identities. Existing disrupting-based defenses primarily add invisible perturbations arbitrarily across the entire image space to disrupt the generation process. However, we reveal that these methods fundamentally overlook the spatio-temporal dynamics of the personalization process, resulting in inefficient optimization that fails to sufficiently disrupt the core identity encoding mechanism. To mitigate these limitations, we propose IdentityMask, a robust protection framework that shifts the paradigm from arbitrary confusion to precise, targeted feature corruption. By anchoring the perturbation on subjectspecific semantics and prioritizing the most critical diffusion timesteps, our framework ensures the disruption is maximized precisely where the identity is encoded. Additionally, a novel manifold projection strategy is introduced to embed the adversarial signals into the intrinsic structure of the image, rendering the protection resilient against state-of-the-art purification. Extensive experiments across diverse datasets, personalization techniques, and defense settings demonstrate that IdentityMask consistently outperforms prior state-of-the-art approaches in both protection efficacy and robustness.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/3488.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/5074.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/5074.pdf",
+    "title": "SCOPE: Safety-Constrained Online Preview Enforcement for Efficient",
+    "abstract": "Unmanned aerial vehicle swarms in pursuit– evasion requires encirclement efficiency while maintaining safety constraints, facing a critical safety–efficiency trade-off. Existing safe multiagent reinforcement learning (MARL) methods often yield either unsafe task policies or conservative policies. This is challenging since forward feasible safety under dense interactions requires online safety preview. To address this issue, we propose Safety-Constrained Online Preview Enforcement (SCOPE), a MARL-based algorithm that balances encirclement efficiency and safety by short-horizon preview and safety enforcement. SCOPE learns an online safety-preview dynamics model that rolls out future trajectories to inform encirclement decisions checking. By proposing preview-fused actor– critic, SCOPE uses short-horizon previews for efficient encirclement and less unsafe behavior. Hierarchical safety enforcement performs safety lookahead and online action correction to maintain forward feasible safety. Experiments show that SCOPE better balances encirclement efficiency and safety than safe MARL baselines, maintaining average encirclement time while reducing the average agent cost by 65.6%. Code could be found at https://github.com/98177qdn/SCOPE.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/5074.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/52.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/52.pdf",
+    "title": "Understanding and Exploiting Phase Sensitivity for Attacking Large",
+    "abstract": "Although Large Vision-Language Models (LVLMs) have demonstrated remarkable reasoning capabilities across various downstream multimodal tasks, they are proven to be vulnerable to carefully designed adversarial examples. Existing LVLM attackers show that exploring external components of adversarial guidance (e.g., forcing adversarial alignment, resembling harmful features) can help improve adversarial effects. However, leveraging the intrinsic patterns of LVLMs to induce adversarial perturbation generation by exploring how LVLMs perceive images has not been deeply studied. Inspired by the cognitive science, in this paper, we make the first attempt to investigate the interference of adversarial perturbation from the perspectives of image phase, and find that LVLMs are sensitive to the phase-aware image structure. Motivated by this, we propose a novel LVLM attack method called BadPhase with further backdoor designs, to implant adversarial phase as triggers into any image inputs via data poisoning so as to control the LVLMs’ predictions. A textual trigger and a backdoor perturbation switcher are also introduced to activate the malicious behavior only when both triggers are present. The whole backdoor optimization is implemented at the test-time to reduce the resource reliance. Experiments on four popular LVLMs and three benchmarks demonstrate the effectiveness of our proposed method.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/52.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/5873.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/5873.pdf",
+    "title": "Stay in Character, Stay Safe: Dual-Cycle Adversarial Self-Evolution for",
+    "abstract": "LLM-based role-playing has rapidly improved in fidelity, yet stronger adherence to persona constraints commonly increases vulnerability to jailbreak attacks, especially for risky or negative personas. Most prior work mitigates this issue with trainingtime solutions (e.g., data curation or alignmentoriented regularization). However, these approaches are costly to maintain as personas and attack strategies evolve, can degrade in-character behavior, and are typically infeasible for frontier closed-weight LLMs. We propose a training-free Dual-Cycle Adversarial Self-Evolution framework with two coupled cycles. A Persona-Targeted Attacker Cycle synthesizes progressively stronger jailbreak prompts, while a Role-Playing Defender Cycle distills observed failures into a hierarchical knowledge base of (i) global safety rules, (ii) persona-grounded constraints, and (iii) safe in-character exemplars. At inference time, the Defender retrieves and composes structured knowledge from this hierarchy to guide generation, producing responses that remain faithful to the target persona while satisfying safety constraints. Extensive experiments across multiple proprietary LLMs show consistent gains over strong baselines on both role fidelity and jailbreak resistance, and robust generalization to unseen personas and attack prompts.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/5873.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/4746.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/4746.pdf",
+    "title": "Unrestricted Targeted Deep Hashing Attack via Contrastive Latent Diffusion",
+    "abstract": "Deep hashing is widely used for large-scale image retrieval but remains vulnerable to adversarial examples, raising practical security concerns. Existing targeted adversarial attacks on deep hashing typically rely on ℓp-norm constrained perturbations, which struggle to balance attack effectiveness and imperceptibility, often requiring perceptible noise and limiting their practicality in real-world retrieval scenarios. We propose UTDHA, the first unrestricted targeted attack for deep hashing models using contrastive-guided latent diffusion. UTDHA generates adversarial examples with a latent diffusion model and performs optimization in the latent space rather than the pixel space, enabling semantic manipulation while preserving image naturalness. Through contrastive guidance, the attack pulls adversarial examples toward the target label while pushing them away from non-target labels. Meanwhile, UTDHA enforces structural and perceptual consistency, producing adversarial examples that are both imperceptible and visually natural. Extensive experiments on three benchmarks demonstrate that UTDHA outperforms existing targeted adversarial attack baselines for deep hashing models in both attack effectiveness and imperceptibility.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/4746.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/6748.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/6748.pdf",
+    "title": "Parameter-Efficient Dual-Loss Adaptation with Logit Divergence: A Unified",
+    "abstract": "We present D3Adapter, a threat-aware framework that unifies adversarial example detection (AED) and robust inference. D3Adapter attaches a small library of lightweight adapters to a frozen ResNet backbone; the adapters are trained under two loss functions (cross-entropy and optimized reverse cross-entropy) and complementary objectives (clean training and adversarial training), yielding intentionally distinct logit behaviors. During inference, D3Adapter quantifies inter-adapter logit divergence to produce an agreement-based threat score without any external detector for AED. The same pass also performs robust inference by outputting prediction from the selected adapter when an adversarial example is detected, therefore unifying detection and defense into single-pass forward computation. We evaluate D3Adapter under transfer-based and adaptive white-box attacks, and we study scalability across datasets with varying numbers of classes, showing that unified detection and robust inference can be achieved with predictable overhead proportional to the number of adapters.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/6748.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/7083.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/7083.pdf",
+    "title": "On the Privacy-Preserving Capabilities of PAVE Specifications in Learnware∗",
+    "abstract": "The learnware paradigm supports model reuse by pairing each submitted model with a specification, a lightweight representation used by the learnware dock system to identify, match, and reuse models without accessing raw data. While specifications are essential for learnware identification, they are also data-dependent public artifacts and it is not clear whether they reveal private information. Recently, the Parameter Vector (PAVE) specification has been proposed and shown to be effective for learnwares, yet its privacy properties remain largely unexplored. In this paper, we provide the first theoretical privacy analysis for PAVE. Specifically, we first formalize two specification-induced risks in the learnware paradigm: the disclosure risk of the released specification and the amplification risk that the specification may strengthen attacks against the released model. Second, we characterize when compact PAVE releases admit intrinsic differential privacy (DP): under natural structural conditions of learnware docks, the compact PAVE specification satisfies an (ε, δ)-DP guarantee without explicit additive noise through a Gaussiansketch view of stable parameter variations, and for regimes outside these conditions, we further provide DP-Stabilized-PAVE as a certified differentially private variant. Third, we show that the resulting DP guarantees control both disclosure risk and amplification risk, and we analyze the induced privacy–utility trade-off to guide effective learnware identification while preserving privacy.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/7083.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/6149.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/6149.pdf",
+    "title": "GRASP: Hard-Label Black-Box Malware Evasion with Higher Success, Fewer",
+    "abstract": "Machine learning (ML)-based malware detectors are widely deployed but remain vulnerable to adversarial attacks. However, under hard-label black-box access, existing adversarial attacks on Windows Portable Executable (PE) malware are often query-inefficient and incur large file-size inflation. A common paradigm is to predefine a set of semantics-preserving atomic perturbations and search for evasive combinations under only binary feedback. Among these atomic perturbations, (i) those with highly combinatorial search spaces are difficult to explore effectively under hard-label feedback, leaving their potential untapped, and (ii) those relying on transplanting benign fragments are often laden with evasion-irrelevant bytes and exhibit highly variable adversarial utility. We propose Gradient-seeded Reinforcement Learning And Stealthy Pruning (GRASP), a three-stage framework that tackles these challenges. First, we decouple perturbations with highly combinatorial search spaces from the query-based search and instead apply a gradient-seeded warm-up that uses Gumbel-Softmax relaxation to enable gradientbased updates over the discrete space. This yields a strong warm start that improves evasion and reduces queries in later stages. Second, Reinforcement Learning (RL)-based refinement is accelerated by a perturbation library that filters, caches, and reuses compact high-utility patterns, reducing wasted queries on low-utility benign fragments. Third, a perturbation minimization stage removes redundant bytes while preserving evasion, reducing size inflation and feeding compact patterns back to the library. Experiments show that GRASP outperforms baselines, achieving higher attack success with fewer queries and smaller file-size inflation. We additionally demonstrate its practical effectiveness against commercial Antivirus engines. ∗ Corresponding author. J. Ning is also with the Zhejiang Key Laboratory of Digital Fashion and Data Governance, Zhejiang SciTech University and with the Faculty of Data Science, City University of Macau, Macau.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/6149.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/7176.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/7176.pdf",
+    "title": "Towards Comprehensive Post Safety Alignment of",
+    "abstract": "Safety alignment of large language models (LLMs) has been gaining increasing attention. However, current safety-aligned LLMs suffer from the fragile and imbalanced safety mechanisms, which can still be induced to generate unsafe responses, exhibit over-safety by rejecting safe user inputs, and fail to preserve general utility after safety alignment. To this end, we propose a novel post safety alignment (PSA) method to address these inherent and emerging safety challenges, including safety enhancement, over-safety mitigation, and utility preservation. In specific, we introduce SAFEPATCHING, a novel framework for comprehensive PSA, where two distinct safety patches are developed on the harmful data to enhance safety and mitigate oversafety concerns, and then seamlessly integrated into the target LLM backbone without compromising its utility. Extensive experiments on four representative aligned LLMs, including LLaMA-2/3, Gemma and Mistral, show that SAFEPATCHING achieves a more comprehensive PSA than baseline methods, further optimizing the balance between being helpful and harmless in current aligned LLMs. Also, SAFEPATCHING demonstrates its superiority in continual PSA scenarios.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/7176.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/6722.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/6722.pdf",
+    "title": "Diverge to Converge: Mutual Heterogeneous Learning for Robust Pruning",
+    "abstract": "Neural network pruning is crucial for efficient deployment on resource-constrained devices, yet achieving high sparsity often leads to significant robustness degradation against adversarial perturbations and corruptions. Recent works typically rely on single-model fine-tuning along a fixed optimization trajectory, which renders the network susceptible to local optima and noise while failing to restore the multiple robustness properties compromised during compression. In this paper, we propose Mutual Heterogeneous Learning (MHL), a framework enabling robust pruning via single-model inference. MHL instantiates heterogeneity through two complementary mechanisms: layer-wise Lipschitz regularization for intermediate feature smoothness, and adaptive margin objective for difficulty-aware boundary separation. To guide these diverse experts to converge, we employ entropy-based mutual distillation with a strategic schedule that shifts the optimization trajectory from exploring diverse feature subspaces to consolidating a unified robust model. Extensive experiments on four clean and corruption benchmarks and adversarial attacks demonstrate that MHL significantly outperforms single-model baselines in both adversarial robustness (+5%) and corruption robustness (+2.6%), while maintaining competitive clean accuracy.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/6722.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/7556.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/7556.pdf",
+    "title": "Incentivizing Truthful Machine Unlearning via Hierarchical Auditing",
+    "abstract": "Machine unlearning has become a critical capability for AI services to comply with evolving privacy regulations. A key yet underexplored challenge is how to verify whether a profit-driven AI server has faithfully performed unlearning. Existing verification approaches either incur prohibitive costs or provide insufficient deterrence, failing to balance audit cost and enforcement effectiveness. To bridge this gap, we propose UAG, a game-theoretic unlearning auditing framework that incentivizes truthful unlearning via strategic deterrence rather than exhaustive verification. We design a hierarchical auditing mechanism that combines low-cost screening with selectively triggered high-precision verification, and models the server–auditor interaction as a three-stage dynamic Bayesian game. By characterizing the equilibrium strategy, we derive optimal audit and penalty policies that incentivize honest unlearning. Theoretical analysis and experiments show that UAG maintains reliable detection while achieving a favorable cost–deterrence tradeoff. Notably, UAG attains a server honesty rate of approximately 95% while screening only about 50% of unlearning requests, showing its practicality for trustworthy black-box unlearning services.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/7556.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/7583.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/7583.pdf",
+    "title": "Persistent Safety Set Guided Offline Safe Reinforcement Learning",
+    "abstract": "Offline safe reinforcement learning learns highreturn policies that satisfy hard safety constraints using only a pre-collected dataset. This setting is challenging due to the inability to explore, and the risk of propagating value errors through unsafe state-space regions. To address this, first, we characterize the safe state region by developing a framework for learning control barrier functions (CBFs) using a novel generalized Bellman operator, yielding a persistent safety set, from which the agent can remain safe indefinitely. Second, we show that several existing safety set estimation methods (e.g., reachability-constrained RL) can be formulated within our CBF learning framework, highlighting its generality. We further propose a new CBF that ensures safety under environment dynamics uncertainty, unlike standard CBFs designed for deterministic settings. Third, we propose a new reward maximization algorithm that effectively exploits our learned persistent safety set for reward critic estimation. Empirical results on standard benchmarks show that our approach achieves stateof-the-art safety with fewer constraint violations while maintaining competitive returns.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/7583.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/5637.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/5637.pdf",
+    "title": "One-Turn Knockout: Traceable and Editable Proxy Unlearning",
+    "abstract": "Machine unlearning (MUL) aims to remove the influence of specific data from a trained model for data privacy and model adaptability. Existing MUL methods mostly assume the internal parameters and the training data of the target model are accessible. Nevertheless, in most practical scenarios, the model provider (MP) and the service operator (SO) are different entities with unequal model access privileges. The MP provides the model, while the SO can only access the model via APIs when handling unlearning requests. Under such an asymmetric access constraint, we propose One-Turn Knockout (OTK), a novel traceable and editable MUL framework based on a model-agnostic and editable proxy. Specifically, OTK first compresses the representation space of the target model into a discrete proxy based on codebook, with merely one pass post-training. Each data sample is recorded in the proxy space as a distribution over the codebook tokens, and its contribution to the model prediction can be cumulatively estimated via additive token statistics. Based on the traceable and editable proxy, the SO can instantly handle unlearning requests by (i) estimating the token distribution of the forgotten data, (ii) identifying the causal tokens, and (iii) erasing their contributions without the access to the model parameters and training data. Extensive experiments on multiple datasets and tasks show that OTK consistently outperforms state-ofthe-art unlearning methods.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/5637.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/8133.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/8133.pdf",
+    "title": "BERM: Low-Overhead Prompt-Injection Detection via In-Situ Benign",
+    "abstract": "Real-world deployment of large language models (LLMs) necessitates a robust and low-latency approach to detect prompt injections; existing lowoverhead methods fail to simultaneously boost robustness and reduce latency. Current defenses for prompt injection either rely on brittle heuristics or invoke costly auxiliary models, imposing a significant runtime burden. We introduce BERM, a lightweight framework that performs in-situ detection by modeling a host LLM’s internal representations extracted during prefill, adding negligible overhead. Our approach trains a lightweight classifier atop the LLM by learning a compact manifold of benign representations via joint contrastive learning to maximize the separation from malicious representations. At inference, this pre-trained classifier enables in-situ detection without invoking auxiliary guard models. On a diverse landscape of prompt injection attacks, our framework establishes a new state-of-the-art, achieving an F1-score 5.2 percentage points (pp) higher than the best prior work. Critically, BERM achieves this while being over 12x faster, reducing incremental inference overhead to near-zero.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/8133.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/5068.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/5068.pdf",
+    "title": "Self-Improving Autonomous Vehicles via Real-World Reinforcement Learning",
+    "abstract": "End-to-end autonomous driving systems have demonstrated advantages over traditional modular systems. Despite this progress, these end-to-end systems still struggle to be deployed in real-world driving environments, as they inevitably encounter undertrained scenarios in which autonomous vehicles may take unsafe actions. Reinforcement Learning (RL) provides a theoretical framework for addressing this challenge by enabling autonomous vehicles to self-improve: continuously collecting additional scenarios and learning from them. However, training autonomous vehicles with RL is not straightforward in the real world. Collecting real-world driving data involves costly interactions with the environment, and significant human intervention is required both to prevent autonomous vehicles from entering unsafe states and to reset them for subsequent episodes. In this paper, we introduce a novel real-world RL algorithm that allows autonomous vehicles to collect informative scenarios and learn from them with minimal human intervention. Our algorithm considers the learning progress of autonomous vehicles to identify informative scenarios and abort episodes before they enter unsafe states. To evaluate our algorithm, we introduce challenging urban driving tasks that require autonomous vehicles to reset themselves to initial states. The experimental results show that our real-world RL algorithm outperforms baselines with much less human intervention.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/5068.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/7256.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/7256.pdf",
+    "title": "Adversarial Attack Framework Against Vision-Language Model Unlearning",
+    "abstract": "Large Vision–Language Models (VLMs) unlearning tends to eliminate the influence of “to-beforgotten” content in the training corpora, algorithmically by suppressing the likelihood of faithfully generating responses on forget-target inputs. The injection of adversarial inputs can manipulate the unlearned VLM’s generation towards the attacker’s will, forcing the reproduction of the supposedly forgotten content and undermining the reliability of expected forgetting behavior. However, most attacks assume access to the unlearned VLM’s architecture or parameters, or to output logits via queries. In this paper, we propose SISA, a novel attack framework for crafting adversarial inputs to manipulate generation towards the forgotten target, which only requires access to a surrogate, pretrained VLM. SISA advances prior attacks by exploiting the persistence of visual sink tokens after unlearning as a stable structural anchor for semantic alignment. SISA induces a sink regime on a candidate visual token to build the structural anchor that influences generation, and then semantically aligns model output to the target while conditioning on attention through the induced sink token, reinforcing the anchor for desired elicitation. With sink persistence and sink-conditioned semantic anchoring, SISA crafts transferable adversarial inputs. Evaluation on diverse unlearned VLM settings confirms the effectiveness of SISA, increasing the outputs’ semantic agreement with forgotten targets by up to 6.9× relative to clean inputs.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/7256.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/837.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/837.pdf",
+    "title": "Transferable Attacks on Open-Vocabulary Video Instance Segmentation via",
+    "abstract": "Open-vocabulary video instance segmentation (OV-VIS) couples spatial-temporal reasoning with language grounding, yet its adversarial robustness has remained largely unexplored. We present the Dual-Objective Triggers (DOT), the first transferable attack on OV-VIS that simultaneously exploits the vision–language coupling and temporal coherence. DOT deploys a Dual Semantic Perturbation Module that combines two complementary triggers: a Semantic Suppression Trigger disrupts the alignment between the true object and the query, while a Plausible Replacement Trigger steers the tracker toward a phantom trajectory that is visually plausible and text-consistent. To amplify cross-model transferability without sacrificing perceptual fidelity, we introduce Phase-Guided Adversarial Training, which injects perturbations primarily in the phase spectrum while blending amplitudes with clean references. Extensive experiments on four state-of-the-art OV-VIS implementations demonstrate that DOT reduces mAP by up to 69.3% and achieves attack success rate of up to 98%, outperforming the strongest baseline by a factor of 1.6× on average, while maintaining a PSNR of 52.4 dB, thus exposing critical security vulnerabilities and laying a foundation for future research on robust and trustworthy vision–language systems.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/837.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/AI4G93.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/AI4G93.pdf",
+    "title": "Bridging the SEA Gap: An Initial Benchmark for Neural Audio Codec-Synthesized",
+    "abstract": "Codecfakes (CFs) are a type of speech deepfakes generated through Audio Language Models (ALMs), with Neural Audio Codecs (NACs) forming the core mechanism for speech encoding and generation. CFs exhibit distributional characteristics that differ from vocoder-based deepfakes, causing detectors trained on vocoder data to generalize poorly to CFs detection. Although this has led to the development of CF detection benchmarks, existing resources are largely confined to English—and to a limited extent Chinese—leaving South-East Asian (SEA) languages unexplored. To bridge this gap, we introduce SEA-CF, the first large-scale benchmark for CF detection spanning multiple SEA languages, diverse speaker profiles, and a wide range of NAC architectures. SEA-CF is constructed by synthesizing publicly available real speech corpora. Our experiments show that state-of-the-art (SOTA) CF detectors trained on English-centric datasets fail to generalize to SEA speech due to language-specific phonetic structures, tonal variations, and rich prosodic diversity. We further conduct a comprehensive zero-shot and fine-tuned evaluation of recent SOTA ALMs on SEA-CF. Fine-tuning the ALMs improves performance, however, these are very large being impractical for real-world application due to their scale, particularly in low-resource and latency-constrained settings. To address this limitation, we propose a novel small-ALM, GARUDA tailored for CF detection, which delivers strong performance while remaining lightweight. Extensive evaluations demonstrate that the proposed Small-ALM outperforms strong end-to-end and ALM-based baselines, establishing a new, practical direction for robust CF detection in SEA languages and beyond.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/AI4G93.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/7552.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/7552.pdf",
+    "title": "Latents-Inv:Robust Semantic Watermark via Dual-Path Mutual Information",
+    "abstract": "Semantic watermarking methods, embedding identity into the initial latent noise, provide an imperceptible identity traceability for diffusion models in copyright protection and source verification. However, existing methods are highly vulnerable to adversarial attacks, especially geometric transformations (e.g., rotation, cropping) and latent-space manipulations via proxy models, limiting the reliability of watermark verification in practical deployment. To address this issue, we propose a robust and fully reversible, flow-based watermarking framework with dual encoding paths, which preserves high visual fidelity of watermarked image while ensuring resilient identity recovery under adversarial attacks. Specifically, a dual-path network is proposed to encode watermark information into both the generated image and the owner’s secret key. This network leverages Mutual Information Redundancy to recover compromised information under single-path attack, ensuring robust verification. To enhance verification credibility without degrading generation quality, we introduce a joint training strategy that suppresses false positives on negative samples through contrastive learning under fidelity constraints. Furthermore, we employ a backward Euler iteration scheduler for rectified flow models, which facilitate accurate inversion mapping, to enable effective watermark verification, which accurate inversion. Extensive experiments show that our method achieves superior robustness against various adversarial attacks while maintaining high visual quality across diverse generative models.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/7552.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/7650.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/7650.pdf",
+    "title": "Toward LoRA Copyright Protection with an Authorized Dual-Watermarking",
+    "abstract": "Text-to-Image (T2I) diffusion models have been widely adopted due to their strong generative capabilities, while Low-Rank Adaptation (LoRA) has emerged as an efficient mechanism for customizing these models for diverse creative and commercial applications. This trend has fostered LoRAcentric service platforms that that enable the customization and commercial distribution of LoRA modules according to user requirements. However, the growing prevalence of LoRA and its critical role in customized AI services have raised urgent concerns about LoRA copyright protection. To address this gap, we propose LoRA2 D, an authorized dual-watermarking framework specifically designed to protect LoRA modules in T2I diffusion models. LoRA2 D integrates licensebased authorization control with explicit watermarks as visible deterrents for unauthorized or trial usage, which can be removed upon valid authorization, while persistently embedding an implicit watermark for robust black-box ownership verification. Extensive experiments on multiple imagegeneration datasets demonstrate the effectiveness and practicality of LoRA2 D for securing copyrights in LoRA-adapted T2I diffusion models.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/7650.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/AI4H132.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/AI4H132.pdf",
+    "title": "Uncertainty-Guided Adaptive Conservative Offline Reinforcement Learning for",
+    "abstract": "Mechanical ventilation (MV) is essential in intensive care units (ICUs), yet conventional protocols lack personalization and risk harmful overor under-ventilation. Offline reinforcement learning (ORL) enables policy optimization from retrospective clinical data without unsafe online interaction, but existing methods are highly sensitive to distributional shift and out-of-distribution (OOD) actions, limiting their reliability in complex clinical settings. To address these challenges, we propose UBER-CQL (Uncertainty-Balanced Exploration and Robust Conservative Q-Learning), a robust ORL algorithm for safe decision-making under dataset shift. UBER-CQL integrates heteroscedastic Bayesian neural networks with conservative Q-learning to model posterior Q-value uncertainty, which is used to adaptively penalize unreliable high-risk actions while maintaining performance within the data support. We further design numerically stable objectives for conservative Bayesian value estimation. Experiments on indistribution and OOD subsets of MIMIC-IV and eICU demonstrate that UBER-CQL outperforms state-of-the-art ORL and clinician baselines, producing safer and more effective MV strategies.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/AI4H132.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/987.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/987.pdf",
+    "title": "MonoPure: Multi-Component Purification via Disentangled, Projective",
+    "abstract": "Monocular 3D object detection is a cost-efficient alternative to multisensor systems, yet it remains fragile to multi-component adversarial attacks that perturb the image and tamper with camera calibration. Compounded distortions degrade 3D reasoning by disrupting the correspondence between the 3D geometry and 2D image plane. To address this problem, this work proposes MonoPure, a monocular 3D object detection framework that performs multi-component purification via disentangled and projective representations. MonoPure incorporates a disentangled purification and segmentation module that purifies the image data, with a target-region probability map steering diffusion-based purification to focus on task-relevant regions. In addition, MonoPure presents a 3D detection decoder that integrates 2D skeleton keypoints as object-level spatial cues, enabling occlusion-robust 3D detection. Finally, a projective calib-purification module restores compromised intrinsics by iteratively minimizing the reprojection error between projected 3D boxes and calibration-invariant 2D detection boxes. The experiments confirm that MonoPure outperforms prior detectors under multi-component attacks and occlusion.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/987.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/AI4H96.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/AI4H96.pdf",
+    "title": "Knowing When Not to Predict: Self Supervised Learning and Abstention for Safer",
+    "abstract": "Self-supervised learning (SSL) is now a standard way to pretrain medical image models, but performance is still mostly judged by downstream accuracy. For safety-critical screening tasks such as diabetic retinopathy grading, this is not enough: a model must also know when its predictions are unreliable and defer uncertain cases for clinical review. In this work, we examine how the length of SSL pretraining influences calibrated confidence and confidence-based abstention. We evaluate multiple SSL checkpoints under a fixed fine-tuning protocol and assess calibrated confidence, coverage, selective accuracy, and selective macro-F1. Across datasets and data regimes, SSL pretraining improves selective prediction compared to training from scratch. Unlike prior SSL studies that primarily evaluate downstream accuracy or AUROC, we analyze how SSL pretraining duration influences confidence behavior under calibrated confidence-based abstention. However, once accuracy saturates, selective performance can still change markedly across checkpoints, and longer pretraining does not consistently improve reliability. These results underscore the importance of abstention-aware evaluation and suggest that pretraining length should be treated as an important reliability-related design choice rather than only a computational detail. Code is available at https://github.com/ muskaan712/ijcai-knowing-when-not-to-predict.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/AI4H96.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/3903.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/3903.pdf",
+    "title": "Propagating Unsafe Actions in LLM Controlled Multi-Robot Collaboration via",
+    "abstract": "Large language models (LLMs) are increasingly used as general planners in embodied intelligence, enabling high level coordination and low level task planning for both single robot and multi-robot collaboration. This increasing reliance on embodied LLM planners also raises critical security concerns, since misaligned or manipulated instructions can be translated into physical actions. Prior work has studied such threats in single robot settings, while security risks in LLM controlled multi-robot collaboration, especially those propagated through inter robot communication, remain largely unexplored. To bridge this gap, we propose a novel attack paradigm for multi-robot system in which the adversary interacts with only a single entry robot. The compromised robot then propagates malicious intent through peer communication, leading to coordinated unsafe actions across the system. Our evaluation, covering high risk dimensions of dereliction of duty, privacy compromise, and public safety hazards, reveals a persistent safety alignment gap in multi-robot planners. We quantify this process with three metrics, obedience, infectiousness, and stealthiness. Experiments demonstrate both persistent attacker control and rapid propagation: obedience reaches 1.00 in the strongest cases, and infectiousness rises to 0.90. Notably, the attack is highly efficient, requiring as few as 3.0 rounds to compromise all the robots while maintaining a stealthiness score of 0.81. Such risks are amplified when robots must resolve trade offs in critical situations, such as emergencies or conflicts of rights, because the coordination mechanism can unintentionally allow adversarial instructions to override safety requirements. The code is available at https: //github.com/TheFatInsect/InfectBot.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/3903.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/HC13.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/HC13.pdf",
+    "title": "Beyond “Made with AI”: Visualizing Provenance Density to Mitigate the",
+    "abstract": "As generative AI makes polished prose cheap to produce, users can no longer rely on fluency as a proxy for truth. We call this failure mode the Fluency Trap: users trust fluent hallucinations while also discounting accurate content once it is disclosed as AI-generated. Binary “Made with AI” labels respond with authorship disclosure, but they do not show what supports a claim. We propose Provenance Density, an evidence-visualization interface that shows the density of verified claims in a text. In a user study with 81 participants, an idealized Provenance Density interface produced a large discernment gap between truth and fabrication (+4.15 points, d = 1.82), whereas participants given no signal showed no detectable discrimination. A technical audit with 200 samples shows that retrieval density alone is insufficient; unexpectedly, the Consistency Veto carries most of the discriminative signal on dynamic queries. As AI-generated content becomes indistinguishable from human writing, effective transparency must move from authorship disclosure toward evidence visualization.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/HC13.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/AIR73.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/AIR73.pdf",
+    "title": "Real-Time Multi-Robot Motion Planning with Safe-Interval Search and",
+    "abstract": "Motion planning among multiple robots in a shared space is a fundamental yet computationally challenging problem in robotics, with applications ranging from warehouse automation to autonomous fleets. In this work, we introduce a fast, scalable motion planner that achieves real-time, collisionfree trajectory planning via a two-staged algorithm combining deterministic search-based planning with machine learning-driven conflict resolution. We present a prioritized Safe Interval Path Planning algorithm (SIPP-PP) with a novel limited goal reservation strategy to prevent goal-blocking conflicts while allowing shared goal regions. We added a second layer of ML-guided Large Neighborhood Search (LNS) procedure to our SIPP-PP algorithm for improving success rates in highly congested environments via intelligent selection of conflict resolution actions. The result is a planning system that generates collision-free paths for multiple robots in complex environments within tens of milliseconds. For example, compared to recent advanced learning-based methods such as diffusion planners, our planner is two-to-three orders of magnitude faster. Our work demonstrates a multi-robot planner capable of real-time operation in dense scenarios, satisfying the stringent requirements of industrial applications such as drive units in fulfillment centers.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/AIR73.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/988.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/988.pdf",
+    "title": "Robust, Generalizable Proactive Face-Swapping Defense via Semantic Gradient",
+    "abstract": "The rapid progress of identity-feature-based faceswapping technology has raised concerns about impersonation and privacy violations. Although proactive defenses aim to block identity extraction at the source, existing methods suffer from perceptible visual artifacts, poor generalization across diverse deepfake models, and vulnerability to postprocessing techniques (e.g., diffusion purification, image compression, and transformations). This work proposes a robust, generalizable proactive face-swapping defense via semantic gradient divergence (SGD-Guard) to address these challenges. It introduces an integrated feature gallery that uses CLIP features and a generalized identity feature, obtained by iteratively refining heterogeneous identity features into a homogeneous representation. This framework facilitates our semantic distortion attack by leveraging consensus weighting to target specific facial attributes within a CLIP-identity joint embedding space, disrupting deepfake generation while preserving visual fidelity. Furthermore, to ensure robustness against purification and post-processing, this method incorporates a module that prioritizes critical transformations by exploiting directional discrepancies. Comprehensive experiments demonstrate that the method effectively defends against diverse face-swapping models with high cross-model transferability.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/988.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/AI4T22.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/AI4T22.pdf",
+    "title": "DEPLOY-RL: Active Boundary Discovery and Conservative Certification for",
+    "abstract": "Reinforcement learning (RL) policies often outperform classical controllers in simulation, yet rarely reach production in safety-critical processes. The barrier is that there is no principled way to answer “Is this policy safe to deploy?” with statistical guarantees. We introduce DEPLOY-RL, a post-training certification framework built on one key insight: deployment certification requires discovering where failures occur (boundary discovery), not measuring how much everywhere (uniform reconstruction). Our contributions: (1) a contract-coupled acquisition function that concentrates sampling on certification-critical boundaries, achieving ≈ 2× sample efficiency with a semiempirical ambiguity reduction bound (domaincalibrated convergence guarantee); (2) conformal risk control providing finite-sample false-go guarantees (≤ α) under explicit deployment contracts; (3) a three-way decision framework (Deploy/NoDeploy/Abstain) with fail-safe PID/MPC fallback. In simulations on papermaking (industrial digital twin) and Tennessee Eastman (public benchmark), DEPLOY-RL achieves 4.4% false-go rate (vs. 8.6% for the best baseline) while retaining 88.6% policy coverage, the only method achieving <5% false-go with >85% coverage among 14 baselines under our evaluation protocol.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/AI4T22.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/SV270.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/SV270.pdf",
+    "title": "Implicit Identity Technologies for LLMs: Fingerprinting and Watermarking",
+    "abstract": "Large language models (LLMs) require substantial investments and are increasingly deployed in highstakes domains, making it critical to protect LLMrelated assets and to trace their provenance. Identity technologies such as fingerprinting and watermarking address these needs by enabling ownership verification and attribution, and have rapidly emerged as an active research focus. However, existing techniques lack a systematic organisation, leading to two key issues, terminological confusion and isolated research lines, that have hindered the development of this research field. To this end, we present a comprehensive review of LLM identity techniques, focusing on fingerprinting and watermarking across the LLM lifecycle, including datasets, models, and generated content. We make three primary contributions. First, we introduce implicit identity (Implicit-ID for short) as a unifying abstraction and distinguish fingerprinting from watermarking. Second, we propose a lifecyclebased taxonomy that organises techniques by asset type and verification role, aligning each with asset protection or provenance. Third, we establish an evaluation framework around three objectives— identifiability, robustness, and deployability. Together, these contributions structure the landscape of LLM identity techniques, clarify terminology, and highlight directions toward secure deployment.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/SV270.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/SV272.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/SV272.pdf",
+    "title": "LLM-Based Agents on the Edge: A Survey of Privacy, Scalability, Heterogeneity,",
+    "abstract": "Large language model (LLM)–based agents are increasingly being deployed beyond centralized cloud environments and toward the edge of the network, where they operate closer to data sources. This transition facilitates lower latency and enhances contextual awareness, privacy, and responsiveness, but it also introduces challenges that differ from traditional cloud-based agent deployments. This survey provides a systematic overview of LLM-based edge agents with a particular focus on four critical dimensions: privacy, scalability, heterogeneity, and autonomy. To facilitate structured analysis, we introduce a novel taxonomy along four axes: deployment, functional role, interaction topology, and adaptation pattern. Based on our taxonomy, we analyze the challenges LLMbased agents face on the edge and discuss design solutions that can help mitigate possible issues. We further analyze the degree to which existing LLMbased edge agent frameworks achieve privacy, scalability, heterogeneity, and autonomy.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/SV272.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/AI4T17.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/AI4T17.pdf",
+    "title": "Safe and Efficient Control: A Subgraph-Augmented Hierarchical Reinforcement",
+    "abstract": "Dynamically Reconfigurable Battery (DRB) systems employ power electronic switches to create dynamic topologies. They enable effective management of cell inconsistencies through real-time adjustment of cell connections. However, existing DRB control methods struggle to learn effective strategies due to sparse rewards, which arise from blind exploration in large topological action spaces and complex operational constraints. This leads to ineffective policy learning, making safety and balancing performance difficult to ensure in practical applications. To this end, we propose a SubgraphAugmented Hierarchical Reinforcement Learning (SAHRL) framework. By combining hierarchical policies with topological structural knowledge, SAHRL effectively accelerates policy exploration and mitigates reward sparsity. Specifically, the high-level policy determines the strategic direction, while the subgraph-augmented low-level policy refines actions to meet operational constraints. The topological structural knowledge, extracted in the form of subgraphs and incorporated as an inductive bias, guides the agent focus on meaningful action patterns and reduce invalid exploration in the large action space. Extensive simulations and real-world experiments show that SAHRL achieves safe and efficient balancing. Notably, it increases the energy release by 10.56% compared to conventional methods in real-world applications.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/AI4T17.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/686.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/686.pdf",
+    "title": "Falsdo: Benchmarking Artifact-Controlled multimodal Fake News Verification",
+    "abstract": "Recent generative AI renders multimodal misinformation structurally harder to detect, making reliable detection dependent on semantic verification grounded in verifiable evidence. However, current benchmarks often fail to isolate true semantic checking from superficial shortcut exploitation. We introduce FALSDO, a diagnostic benchmark designed to make robustness and auditability identifiable. Constructed via a heterogeneous web-mining pipeline, FALSDO provides instruction-conditioned grounding and formalizes a counterfactual artifact-control protocol. This stress test reveals a critical failure: when low-level generation traces are equalized, detector performance degrades, indicating reliance on artifacts rather than robust verification. To enable reproducible diagnosis, we propose DREA, a failure-aligned evidence-auditing baseline. DREA specifies evidence acquisition with explicit noise control and implements constrained channel-wise auditing with reliability-aware late fusion. Experiments demonstrate that FALSDO reliably exposes shortcut dependence, while DREA improves instruction-level grounding (Joint-F1) and minimizes degradation under artifact-controlled settings.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/686.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/SV146.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/SV146.pdf",
+    "title": "A Survey on Value Alignment in Agentic AI Systems",
+    "abstract": "With the evolution of artificial intelligence (AI) paradigms towards agentic AI, the widespread integration of large language models (LLMs) enhances system capabilities while also introducing situational risks and challenges of value misalignment, making value alignment in agentic AI systems a critical issue. This paper constructs a multi-level value framework encompassing L0 (universal values), L1 (cultural and industry values), and L2 (context-specific values). Guided by this framework, we conduct an in-depth analysis along the technical stack: at the LLM level, we examine value injection mechanisms through pretraining and post-training; at the single-agent level, we focus on representation and injecting values to agents, Profiles and memory, and planning and action; at the multi-agent level, we summarize collaborative alignment methods such as communication strategy optimization and multiobjective reinforcement learning. Following a systematic review of existing datasets and methods for multi-level alignment evaluation, we outline future research directions, including inter-agent value coordination mechanisms, high-quality scenario data sharing, game-theoretic design for value alignment in agent interaction and communication protocol alignment—aiming to establish a more systematic and dynamic evaluation framework and to promote robust and trustworthy value consensus in agentic AI systems within social collaboration.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/SV146.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/HC78.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/HC78.pdf",
+    "title": "Responsibility in Multi-Agent Sequential Decision-Making: Comparing Human",
+    "abstract": "With the growing adoption of artificial intelligence in high-stakes decision-making, identifying the causes of outcomes–particularly failures–and determining who is responsible has become a critical concern. In this work, we examine how well formal definitions of responsibility attribution, grounded in the framework of actual causality, align with human judgments of responsibility. To this end, we conduct a large-scale survey to elicit human judgments of responsibility in multi-agent sequential decision-making scenarios, using a modified version of the card game Goofspiel. We evaluate multiple responsibility attribution methods, assess their alignment with human judgments about responsibility, and identify factors that significantly shape responsibility judgments. While no single responsibility attribution method consistently aligns with human responses, our findings highlight key factors that influence human responsibility judgments, including agent-specific biases and amount of information available to agents during decision-making.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/HC78.pdf"
+  },
+  "https://openaccess.thecvf.com/content/CVPR2026F/papers/Dang_BadVLM_Towards_Efficient_and_Resilient_Backdoor_Attacks_on_Large_Vision-Language_CVPRF_2026_paper.pdf": {
+    "url": "https://openaccess.thecvf.com/content/CVPR2026F/papers/Dang_BadVLM_Towards_Efficient_and_Resilient_Backdoor_Attacks_on_Large_Vision-Language_CVPRF_2026_paper.pdf",
+    "title": "BadVLM: Towards Efficient and Resilient Backdoor Attacks on Large",
+    "abstract": "Existing backdoor attacks on large vision-language models (LVLMs) often rely on impractical assumptions, such as high poisoning rates and white-box access to the model’s architecture and parameters. Moreover, these attacks frequently degrade the model’s utility and are vulnerable to defense mechanisms. In this paper, we introduce BadVLM, a novel trigger optimization framework that enables efficient, resilient backdoor attacks on LVLMs in black-box settings. Unlike previous studies, BadVLM leverages a guidance model and optimizes the trigger on diverse vision-language objectives, allowing it to capture semantically fine-grained representations for multimodal reasoning tasks. Specifically, the framework comprises two main strategies. First, semantic alignment optimization (SAO) learns a visual trigger that steers poisoned images towards the backdoor target text, facilitating the subsequent backdoor training. Second, semantic decoupling optimization (SDO) refines the trigger to mitigate knowledge conflict, preserving the model’s benign utility. Extensive experiments demonstrate that BadVLM achieves over 99.0% attack success rates (ASRs) at extremely low poisoning rates, significantly surpassing existing approaches while preserving clean utility and being resilient to defense methods. These results highlight the urgent need for stronger backdoor defenses to ensure the trustworthiness of modern LVLMs.",
+    "ok": true,
+    "source": "https://openaccess.thecvf.com/content/CVPR2026F/papers/Dang_BadVLM_Towards_Efficient_and_Resilient_Backdoor_Attacks_on_Large_Vision-Language_CVPRF_2026_paper.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/AI4T108.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/AI4T108.pdf",
+    "title": "A Durable Machine Unlearning Framework to",
+    "abstract": "The advancement of data privacy regulations has spurred the development of Machine Unlearning (MU), which is designed to remove the influence of sensitive data from a trained model and results in an unlearned model (ULM). Despite rapid progress in MU techniques, their vulnerabilities remain underexplored, which poses risks due to potential leakage of unlearned information. In realistic scenarios, ULMs always need to be incrementally trained with newly collected data samples, which can lead to the consequences of recalling sensitive information if the new dataset contains similar or even the same unlearned samples. To address this issue, we devise a Durable Unlearning Enhancement (DUE) framework to avoid restoring unwanted sensitive information from incremental training data samples. The DUE framework has three key components that identify sensitive samples and suppress their gradients to update ULMs. Extensive experiments on state-of-the-art MU methods across multiple real-world datasets show that the proposed DUE framework can effectively nullify the recall of sensitive information after MU, and even improve the performance of ULMs. Consequently, our work establishes a new fundamental research direction in safe training against post-MU vulnerabilities.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/AI4T108.pdf"
+  },
+  "https://www.formationresearch.com/secret-loyalties-whitepaper.pdf": {
+    "url": "https://www.formationresearch.com/secret-loyalties-whitepaper.pdf",
+    "title": "AIs with Secret Loyalties are a Serious but",
+    "abstract": "This paper argues that the technical AI research community should prioritize studying and defending against a distinct, neglected threat: secret loyalties. A secretly loyal AI model is one whose outputs or actions advance the interests of a specific actor (which we term the principal) such as an adversary nation-state, an executive at an AI company, or another powerful actor, without this loyalty being disclosed to operators, auditors, or users. Proof-of-concept secret loyalties that evade black-box auditing can already be trained into open-weight models. Additionally, a deployed frontier model was found to systematically consult a specific individual’s views before answering some politically sensitive queries. While governance, market pressure, and public scrutiny can possibly address overt AI loyalties such as directives documented in a model spec, secret loyalties are designed to evade such oversight and therefore necessitate technical solutions. Unlike emergent misalignment, secret loyalties target specific principals, creating a distinct but tractable defensive foothold. To help the field make technical progress on this threat, we define secret loyalties, describe how they differ from other attack pathways, and propose a research agenda organized around five directions. We conclude with a call to action for ML researchers, AI developers, and governments.",
+    "ok": true,
+    "source": "https://www.formationresearch.com/secret-loyalties-whitepaper.pdf"
+  },
+  "https://rstao-bjtu.github.io/assets/pdf/ECCV2026_Zhiqiang.pdf": {
+    "url": "https://rstao-bjtu.github.io/assets/pdf/ECCV2026_Zhiqiang.pdf",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "The read operation timed out",
+    "source": "https://rstao-bjtu.github.io/assets/pdf/ECCV2026_Zhiqiang.pdf"
+  },
+  "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/2065.pdf": {
+    "url": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/2065.pdf",
+    "title": "From Standard to Robust: A Universal Framework for Continual Adversarial",
+    "abstract": "Continual adversarial defense (CAD) aims to defend target models against continuously emerging attacks. However, existing CAD methods typically rely on maintaining large amounts of replay data or multiple expert modules to mitigate catastrophic forgetting, or suffer from reduced robustness against adversarial examples or degraded performance on clean images. As a result, they often fail to provide clear advantages over standalone robust models. To address these limitations, we formulate four fundamental principles for CAD: (1) continual adaptation to new attacks without catastrophic forgetting, (2) few-shot adaptation, (3) memory-efficient adaptation, and (4) high classification accuracy on both clean and adversarial data. Guided by these principles, we explore and integrate cutting-edge techniques from continual learning, few-shot learning, and ensemble learning, and propose Universal Continual Adversarial Defense (UCAD), a universal framework that enables both standard and robust models to perform effective defense under the CAD setting. Extensive experiments validate the effectiveness of UCAD against multi-stage adversarial attacks and demonstrate significant improvements over a wide range of baseline methods. Moreover, we observe that as the number of encountered attacks increases, UCAD becomes increasingly robust, consistently enhancing the defense capability of existing robust models until saturation.",
+    "ok": true,
+    "source": "https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/2065.pdf"
+  },
+  "doi:10.1145/3770855.3818151": {
+    "url": "https://doi.org/10.1145/3770855.3818151",
+    "title": "SocraticChem: Physics-Grounded Socratic Inquiry for Safety-Critical Experimental Science",
+    "abstract": "Large language models (LLMs) have emerged as a foundational technology for intelligent education. However, in safety-critical domains like chemistry experiments, current general models face a fundamental pedagogical paradox : effective inquiry requires students to learn from errors, but the physical world imposes strict safety constraints where certain errors are impermissible ( e.g., mixing reagents incorrectly could cause explosions). Moreover, existing LLM-based tutors typically prioritize textual plausibility over physical reality, leading to ''Hallucinated Pedagogy'' when applied to real-world experiments. To address this paradox, we propose SocraticChem, a physics-grounded framework that formalizes tutoring not as open-ended generation, but as a verifiable, safety-aware decision policy. SocraticChem guides students toward learning objectives while strictly intercepting potentially dangerous actions before they manifest physically, enabling error-driven learning without physical risk. To instantiate this framework, we first develop a multi-agent LLM pipeline to construct SoChemDataset, comprising 15.2K physically grounded teaching turns across 119 middle school chemistry experiments, and then fine-tune a SoChem-LLM on this dataset. Finally, we establish a comprehensive evaluation suite spanning physics-grounded verification, LLM-based assessment, and standard NLP benchmarks. Extensive experiments demonstrate that SoChem-LLM significantly outperforms baselines, achieving a State Awareness of 70.32% (surpassing GPT-4o's 49.22%) and a Safety Score of 9.00 (surpassing the best baseline of 8.00). These results confirm its capability to strictly enforce physical safety constraints while maintaining high-quality pedagogical guidance. Our code is available at: https://github.com/bsw-ili/socChem_final.",
+    "submitted": "2026",
+    "comments": "",
+    "ok": true,
+    "source": "Semantic Scholar"
+  },
+  "doi:10.1145/3770855.3818203": {
+    "url": "https://doi.org/10.1145/3770855.3818203",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1145/3770855.3818849": {
+    "url": "https://doi.org/10.1145/3770855.3818849",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1145/3770855.3818903": {
+    "url": "https://doi.org/10.1145/3770855.3818903",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1145/3779208.3785271": {
+    "url": "https://doi.org/10.1145/3779208.3785271",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1145/3779208.3785283": {
+    "url": "https://doi.org/10.1145/3779208.3785283",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1145/3779208.3785292": {
+    "url": "https://doi.org/10.1145/3779208.3785292",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1145/3779208.3805965": {
+    "url": "https://doi.org/10.1145/3779208.3805965",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1145/3779208.3806081": {
+    "url": "https://doi.org/10.1145/3779208.3806081",
+    "title": "Deep Learning Backdoor Defense via Adaptive Trigger Collisions in Latent Space",
+    "abstract": "Backdoor attacks in data outsourcing settings pose severe risks to deep neural networks. Specifically, adversaries can manipulate externally sourced training data to implant hidden behaviors in target models (e.g., incorrect predictions on triggered samples). Existing defenses are either pre-processing or post-processing. Since the two approaches are orthogonal and either one can independently strengthen real-world defenses, we focus on the latter in this paper. Yet current post-processing defenses face one or more of the following issues: overemphasis on output logits while overlooking rich information in intermediate layers, injection of uncertain new triggers while requiring alignment with the original triggers, and underuse of poisoned model representations. To overcome the aforementioned limitations, we propose ATClean, an adaptive post-processing defense based on feature collisions in latent space. Specifically, it leverages all layers rather than only output logits to capture backdoor-affected regions using an adaptive loss function, relaxes the need for exact trigger reconstruction by generating adversarial samples that only enforce feature collisions with a theoretical guarantee, and fully exploits poisoned representations with feature-collision-based fine-tuning. Experiments across benchmark datasets, multiple architectures, and seven representative attacks show that ATClean achieves state-of-the-art defense effectiveness with the lowest drop on clean data, including about a 20% improvement in DER, which measures the accuracy-defense trade-off.",
+    "submitted": "2026",
+    "comments": "",
+    "ok": true,
+    "source": "Semantic Scholar"
+  },
+  "doi:10.1145/3779208.3806083": {
+    "url": "https://doi.org/10.1145/3779208.3806083",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1145/3779208.3807480": {
+    "url": "https://doi.org/10.1145/3779208.3807480",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1145/3779208.3807485": {
+    "url": "https://doi.org/10.1145/3779208.3807485",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1145/3805712.3808490": {
+    "url": "https://doi.org/10.1145/3805712.3808490",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1145/3805712.3808508": {
+    "url": "https://doi.org/10.1145/3805712.3808508",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1145/3805712.3808545": {
+    "url": "https://doi.org/10.1145/3805712.3808545",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "<urlopen error _ssl.c:990: The handshake operation timed out>"
+  },
+  "doi:10.1145/3805712.3808580": {
+    "url": "https://doi.org/10.1145/3805712.3808580",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1145/3805712.3808601": {
+    "url": "https://doi.org/10.1145/3805712.3808601",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1145/3805712.3809585": {
+    "url": "https://doi.org/10.1145/3805712.3809585",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1145/3805712.3809601": {
+    "url": "https://doi.org/10.1145/3805712.3809601",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1145/3805712.3809604": {
+    "url": "https://doi.org/10.1145/3805712.3809604",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1145/3805712.3809699": {
+    "url": "https://doi.org/10.1145/3805712.3809699",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1145/3805712.3809751": {
+    "url": "https://doi.org/10.1145/3805712.3809751",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1145/3805712.3809846": {
+    "url": "https://doi.org/10.1145/3805712.3809846",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1145/3805712.3809882": {
+    "url": "https://doi.org/10.1145/3805712.3809882",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "<urlopen error _ssl.c:990: The handshake operation timed out>"
+  },
+  "doi:10.1145/3805712.3809891": {
+    "url": "https://doi.org/10.1145/3805712.3809891",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1145/3805712.3809901": {
+    "url": "https://doi.org/10.1145/3805712.3809901",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1145/3805712.3809913": {
+    "url": "https://doi.org/10.1145/3805712.3809913",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1145/3805712.3809973": {
+    "url": "https://doi.org/10.1145/3805712.3809973",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1145/3805712.3809979": {
+    "url": "https://doi.org/10.1145/3805712.3809979",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1145/3832783.3834655": {
+    "url": "https://doi.org/10.1145/3832783.3834655",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 404: Not Found"
+  },
+  "doi:10.1155/2022/1525052": {
+    "url": "https://doi.org/10.1155/2022/1525052",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.20944/preprints202604.0433.v1": {
+    "url": "https://doi.org/10.20944/preprints202604.0433.v1",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 404: Not Found"
+  },
+  "doi:10.3390/a19010074": {
+    "url": "https://doi.org/10.3390/a19010074",
+    "title": "Key-Value Mapping-Based Text-to-Image Diffusion Model Backdoor Attacks",
+    "abstract": "Text-to-image (T2I) generation, a core component of generative artificial intelligence(AI), is increasingly important for creative industries and human–computer interaction. Despite impressive progress in realism and diversity, diffusion models still exhibit critical security blind spots particularly in the Transformer key-value mapping mechanism that underpins cross-modal alignment. Existing backdoor attacks often rely on large-scale data poisoning or extensive fine-tuning, leading to low efficiency and limited stealth. To address these challenges, we propose two efficient backdoor attack methods AttnBackdoor and SemBackdoor grounded in the Transformer’s key-value storage principle. AttnBackdoor injects precise mappings between trigger prompts and target instances by fine-tuning the key-value projection matrices in U-Net cross-attention layers (≈5% of parameters). SemBackdoor establishes semantic-level mappings by editing the text encoder’s MLP projection matrix (≈0.3% of parameters). Both approaches achieve high attack success rates (>90%), with SemBackdoor reaching 98.6% and AttnBackdoor 97.2%. They also reduce parameter updates and training time by 1–2 orders of magnitude compared to prior work while preserving benign generation quality. Our findings reveal dual vulnerabilities at visual and semantic levels and provide a foundation for developing next generation defenses for secure generative AI.",
+    "submitted": "2026",
+    "comments": "",
+    "ok": true,
+    "source": "Semantic Scholar"
+  },
+  "doi:10.3390/app16105077": {
+    "url": "https://doi.org/10.3390/app16105077",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.3390/math14111874": {
+    "url": "https://doi.org/10.3390/math14111874",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  },
+  "doi:10.1145/3805712.3808429": {
+    "url": "https://doi.org/10.1145/3805712.3808429",
+    "title": "",
+    "abstract": "",
+    "ok": false,
+    "error": "HTTP Error 429: "
+  }
+}

@@ -16,64 +16,601 @@
 
 ## Benchmark 与评测
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026-08 | TRACE: An Evidence-Grounded Benchmark for Safety Evaluation of Large Reasoning Models | benchmark、reasoning model safety、trace-answer risk、evidence localization | 未确认（arXiv Comments：EMNLP 2026 Main） | [arXiv](https://arxiv.org/abs/2608.24232) | [Code](https://github.com/wzy6642/TRACE) | 针对只检查最终回答会掩盖大型推理模型中间步骤中的不安全内容 | TRACE 分别标注 prompt、reasoning trace 和 final response | 并为每项安全判断提供源文本证据 | 18 个 guardrail 的结果表明，推理轨迹的风险识别与证据定位明显更难，暴露了 final-answer-only 评测的安全盲区。 |
+### 1. TRACE: An Evidence-Grounded Benchmark for Safety Evaluation of Large Reasoning Models
 
-## 机制与安全失效分析
+📄 [arXiv](https://arxiv.org/abs/2608.24232)　📅 2026-08
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026-09 | &lt;/think&gt; Doesn't Stop Reasoning: Analysis of Spurious CoT Termination ↗ | analysis、CoT termination、early exit、reasoning monitor | 未确认（arXiv Comments：Accepted to EMNLP 2026 Main Conference） | [arXiv](https://arxiv.org/abs/2609.03633) | [Code](https://github.com/Seunghee-Koh/Spurious-CoT-Termination) | 在中间位置注入 EoT 后，模型是否真的从 reasoning phase 切换到 answering phase？ | 定义 spurious CoT termination，并用 Exit-token Attention Biasing 增强模型对注入 EoT 的注意力。 | 在 4 个 LRM、5 个 benchmark 和 2 种 early-exit 方法上测伪终止与回答阶段长度。 | EoT 格式匹配本身不能保证推理切换；EAB 可减少伪终止和回答阶段长度。 |
-| 2026-08 | Safety Hacking in Constrained Best-of-$N$ Inference-time Scaling | analysis、inference-time scaling、constrained Best-of-N、unsafe reward tail | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.22915) | 暂未公开 | 分析 inference-time scaling、constrained Best-of-N 风险的形成机制，重点考察 unsafe reward tail 对安全行为的影响。 | 论文证明增加 inference-time sampling 并在安全过滤后选最高奖励答案 | 可能系统性降低而非提高安全：安全 proxy 的微小漏检会进入候选集，随后由不安全输出的高奖励尾部被选择放大 | 有限 $N$ 界和语言模型实验共同刻画了这一 scaling-induced failure。 |
-| 2026-08 | Why2Speak: Faithful Reasoning for Abstaining Action Policies | analysis、reasoning-model auditability、act-or-abstain policy、post-hoc rationale | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.20670) | 暂未公开 | 针对开启显式 thinking 是否只展示原有决策过程、还是会改变被审计的行动策略 | 论文在 Qwen3-8B 上比较直接与 reasoning policy | 并用 SFT、RL、activation probe 和消融核验 | 结果呈现能力—可审计性权衡，且暴露 reasoning 会降低真实干预召回并使常用 faithfulness 指标产生混淆。 |
-| 2026-08 | Towards Safer RAG: Only Agents Capable of System 2 Thinking may Access Untrusted Documents | analysis、System 2 reasoning、corrupted-evidence robustness、detection-influence gap | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.17153) | 暂未公开 | 针对“能识别错误证据”是否意味着推理过程不会继续采信它这一安全假设 | 论文用检测—下游影响差距比较 reasoning model 与标准语言模型 | 关键实现：论文用检测—下游影响差距比较 reasoning model 与标准语言模型。 | 前者对损坏 RAG 证据明显更稳健，但结论提供的是能力分级访问的实证依据，而非把 System 2 reasoning 本身视为形式安全保证。 |
-| 2026-06 | Reasoning That Leaks, Fine-Tuning That Amplifies: Exposing the Hidden Threats of Chain-of-Thought Models ↗ | analysis、CoT leakage、harmful fine-tuning、hidden harm | AsiaCCS 2026 | [Official](https://doi.org/10.1145/3779208.3785271) | 暂未公开 | 针对只凭 final answer 的拒答判断推理模型安全会遗漏中间危害 | 论文在六个 CoT 模型与三个非 CoT 基线上实施面向 reasoning “aha moment”的微调攻击 | 并区分 unintended leakage 与 harmful escalation | 结果显示对齐 CoT 模型的推理轨迹可能比最终回答更有害、更可执行，微调还会进一步放大该风险。 |
-| 2026-06 | Do Thinking Tokens Help with Safety? | analysis、thinking token、causal intervention、post-hoc rationale | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2606.25013) | [Code](https://github.com/narutatsuri/lrm_safety_deliberation) | 针对 reasoning trace 看起来会权衡风险但是否真正决定拒答未知 | 论文操纵 thinking token 与生成条件并比较行为变化 | 关键实现：论文操纵 thinking token 与生成条件并比较行为变化。 | 结果表明部分模型可能先决定回答或拒绝，再生成与决定一致的事后安全解释。 |
-| 2026-05 | Chain of Risk: Safety Failures in Large Reasoning Models and Mitigation via Adaptive Multi-Principle Steering | benchmark、reasoning safety、trace-answer risk、multi-principle steering | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2605.05678) | 暂未公开 | 针对只审核 final answer 会漏掉 CoT 中的泄漏与风险累积，论文分别评测完整推理链和答案并总结 leak、escape 等失效 | 再按风险动态选择多项安全原则 steering | 关键实现：再按风险动态选择多项安全原则 steering。 | 结果降低不安全输出且大体保留任务能力。 |
-| 2026-03 | Learning When to Act or Refuse: Guarding Agentic Reasoning Models for Safe Multi-Step Tool Use | defense、reasoning model、safety degradation、inference-time risk | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/63878) · [arXiv](https://arxiv.org/abs/2603.03205) | 暂未公开 | 针对自主智能体的长程行为、失败传播和真实部署风险缺少可复现评测的问题 | 论文提出 Learning When to Act or Refuse 防御或缓解方法 | 关键实现：论文提出 Learning When to Act or Refuse 防御或缓解方法。 | 摘要实验显示其降低相应风险或攻击效果，同时尽量保持正常任务效用，直接服务于智能体部署安全与故障恢复。 |
-| 2026 | Thinking-Based Non-Thinking: Solving the Reward Hacking Problem in Training Hybrid Reasoning Models via Reinforcement Learning | analysis、reasoning safety、reward hacking、reasoning model | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.2122/) | 暂未公开 | 分析 reasoning safety、reasoning model 风险的形成机制，重点考察 reward hacking 对安全行为的影响。 | TNT 用思考回答的 solution 信息为每题设置非思考 token 上限 | 五个数学集上较三种小型 reasoning model 节省约 50% token 且提升准确率 | 并把伪装成“未思考”的奖励投机控制在 10% 以下。 |
-| 2026 | Safety Recovery in Reasoning Models Is Only a Few Early Steering Steps Away | defense、reasoning model、safety degradation、inference-time risk | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/61339) | 暂未公开 | 针对静态安全对齐容易过度拒绝，也难覆盖推理时出现的新风险的问题 | 论文提出 Safety Recovery in Reasoning Models 防御或缓解方法 | 关键实现：论文提出 Safety Recovery in Reasoning Models 防御或缓解方法。 | 摘要实验显示其降低相应风险或攻击效果，同时尽量保持正常任务效用，直接服务于安全拒绝校准与在线防护。 |
-| 2026 | SafeAdapt: Safety Alignment with Adaptive Thinking Allocation for Large Reasoning Models | defense、safety alignment、adaptive thinking、reasoning budget | USENIX Security 2026 | [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/song-jiazheng) | 暂未公开 | 针对固定延长 safety thinking 并不会单调提升安全性的问题 | SafeAdapt 按 prompt 难度动态分配 reasoning budget | 关键实现：SafeAdapt 按 prompt 难度动态分配 reasoning budget。 | 在多个对抗基准上同时缓解简单攻击的 over-thinking 与困难攻击的 under-thinking 风险。 |
-| 2026 | Reasoning Structure Matters for Safety Alignment of Reasoning Models | defense、reasoning safety、safety alignment、reasoning model | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.240/) | 暂未公开 | 针对 LRM 的有害输出源于 reasoning structure | AltTrain 只用 1K 个样本做 SFT 改写推理结构 | 关键实现：AltTrain 只用 1K 个样本做 SFT 改写推理结构。 | 无需复杂 RL 或 reward design 即可跨模型规模、任务和语言获得安全泛化。 |
-| 2026 | ReasoningGuard: Safeguarding Large Reasoning Models with Inference-time Safety Aha Moments | defense、reasoning safety、reasoning model、safety degradation | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.1453/) | 暂未公开 | 针对 LRM 在推理中后段更易生成有害内容而微调防御成本高 | ReasoningGuard 用 attention 定位关键节点、注入 safety “aha moment”并缩放采样 | 关键实现：ReasoningGuard 用 attention 定位关键节点、注入 safety “aha moment”并缩放采样。 | 低开销下优于九种 guard 且避免过度安全化。 |
-| 2026 | PAM: Enhancing General Alignment of Large Reasoning Models through Priority-Aware Metacognition | defense、reasoning safety、safety alignment、reasoning model | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.432/) | [Code](https://anonymous.4open.science/r/PAM-RM-02DF) | 针对 LRM 的 System-2 reasoning 无法自然迁移到 harmlessness | PAM 先识别顶层人类偏好再以两阶段训练强化 metacognition | 关键实现：PAM 先识别顶层人类偏好再以两阶段训练强化 metacognition。 | 在相同训练管线下把通用 helpfulness/harmlessness 对齐提高约 10 分。 |
-| 2026 | Mitigating Safety Context Amnesia in Multimodal Reasoning Models via Intent-Guided Safety Reasoning | defense、multimodal safety、reasoning safety、VLM safety | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.1821/) | 暂未公开 | 针对 MLRM 在长推理中虽看见危险视觉线索却忘记执行约束的 Safety Context Amnesia | IGSR 先解耦客观意图再由 Cognitive Arbiter 审核 | 关键实现：IGSR 先解耦客观意图再由 Cognitive Arbiter 审核。 | 使防御成功率较基线提高逾 62% 且基本保留效用。 |
-| 2026 | Mind the (DH) Gap! A Contrast in Risky Choices Between Reasoning and Conversational LLMs | analysis、reasoning safety、reasoning model、safety degradation | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.479/) | 暂未公开 | 分析 reasoning safety、safety degradation 风险的形成机制，重点考察 reasoning model 对安全行为的影响。 | 对 20 个 LLM 与配对人类实验发现 | reasoning model 的风险选择更接近期望收益理性且不敏感于顺序和框架 | conversation model 则更受表述、解释和描述—经验差距影响。 |
-| 2026 | How Should We Enhance the Safety of Large Reasoning Models: An Empirical Study | analysis、reasoning safety、reasoning model、safety degradation | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.936/) | 暂未公开 | 针对 reasoning 能力增强并不自动带来安全性 | 作者发现直接蒸馏 DeepSeek-R1 安全回答效果有限 | 修正五类风险模式后才显著改善 | 并显示短或模板化 safety reasoning 可达到与长推理相近的效果。 |
-| 2025-10 | Refusal Falls off a Cliff: How Safety Alignment Fails in Reasoning? | analysis、reasoning safety、refusal cliff、safety alignment | CoLM 2026 | [Official](https://colm.cc/Conferences/2026/AcceptedPapers) · [arXiv](https://arxiv.org/abs/2510.06036) | 暂未公开 | 针对 reasoning model 已识别危害却仍在最终输出前转为配合的问题 | 作者发现 refusal score 在末端 token 陡降 | 并通过消融约 3% 的相关 attention head 将 ASR 压至 10% 以下 | Cliff-as-a-Judge 仅用 1.7% 训练数据即可取得相近修复。 |
-| 2025-09 | Reasoning Introduces New Poisoning Attacks Yet Makes Them More Complicated ↗ | analysis、reasoning-path poisoning、decomposed trigger、emergent recovery | IEEE SaTML 2026 | [Official](https://satml.org/2026/accepted-papers/) · [arXiv](https://arxiv.org/abs/2509.05739) | 暂未公开 | 针对显式 CoT 是否为训练投毒增加新攻击面 | decomposed reasoning poison 只修改推理链、保持 prompt 与答案干净 | 并把 trigger 拆成无害片段 | 攻击可在中间步骤触发，但模型常在最终答案前自行恢复，说明 reasoning 与 trigger 分离既产生隐蔽攻击面，也带来新的恢复鲁棒性。 |
+**关键词**：`benchmark`、`reasoning-trace safety`、`evidence localization`、`full-pipeline moderation`、`CoT monitoring`、`evidence grounding`
 
-## Reasoning-Time Attack
+👤 **作者**：Zhenyu Wu、…、Xin Gao
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026-08 | EchoCoT: Extracting Hidden Chain-of-Thought from Large Reasoning Models | attack、hidden-CoT extraction、reasoning replay、universal injection trajectory | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.20055) | [Code](https://github.com/TrustAIRLab/EchoCoT) | 针对 API 不展示完整 CoT 是否足以保护推理资产 | EchoCoT 利用工具调用之间的 reasoning replay surface 和 API fidelity signal 迭代恢复隐藏轨迹 | 并自动搜索跨数据集通用的 injection trajectory | 三种开源 LRM 上近逐字提取成功率最高 66.4%，迁移到未见数据时最高 80%。 |
-| 2026-07 | Overthinking: Amplifying Reasoning Weights to Extract Learned Secrets | attack、reasoning weight、secret extraction、task-vector amplification | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/63085) · [arXiv](https://arxiv.org/abs/2607.08173) | 暂未公开 | 针对模型记忆的秘密无法通过普通 prompting 稳定提取 | 论文识别并放大与长推理相关的 task vector 以诱导模型持续搜索内部知识 | 关键实现：论文识别并放大与长推理相关的 task vector 以诱导模型持续搜索内部知识。 | 结果显著提高秘密和非预期行为的出现频率，说明更强 reasoning control 也扩大信息提取面。 |
-| 2026-04 | AdversarialCoT: Single-Document Retrieval Poisoning for LLM Reasoning ↗ | attack、adversarial CoT、single-document poison、reasoning hijack | SIGIR 2026 | [Official](https://doi.org/10.1145/3805712.3809838) · [arXiv](https://arxiv.org/abs/2604.12201) | 暂未公开 | 针对 RAG reasoning 能否被极小检索污染预算定向劫持 | AdversarialCoT 提取目标 LLM 的推理框架并迭代生成与其 reasoning style 对齐的单篇毒文档 | 关键实现：AdversarialCoT 提取目标 LLM 的推理框架并迭代生成与其 reasoning style 对齐的单篇毒文档。 | 结果无需多文档协同即可显著降低推理准确率，暴露 reasoning trace 本身成为可优化攻击载荷。 |
+- 🎯 **研究动机**：unsafe 内容 benchmark 只覆盖 prompt 与最终回答，忽略推理模型中间 reasoning trace 且无证据标注
+- 🔬 **研究方法**：TRACE 标注 prompt、reasoning trace 与 final response 三段安全性并提取源文本证据，覆盖双语九类风险十种攻击
+- 📌 **结论**：18 个 guardrail 模型对推理轨迹的安全判定显著更难，且难以准确提取支撑证据
 
-## Safety Verification 与训练
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026-08 | Mitigating Reasoning-Induced Misalignment via Safety-Direction Penalty | defense、reasoning fine-tuning、safety-direction penalty、representation coupling | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.23497) | 暂未公开 | 研究如何防御 safety-direction penalty、reasoning fine-tuning 威胁，并评估 representation coupling 条件下的安全收益与效用代价。 | 论文从 activation space 分离 reasoning ability 与 safety behavior 两个方向 | 发现提升推理的微调会耦合移动安全表示，且位移越大的 prompt 安全退化越强 | SDP 据此约束 reasoning training，在保留基准推理性能的同时修复有害行为。 |
-| 2026-05 | Internalizing Safety Understanding in Large Reasoning Models via Verification | defense、safety verification、reasoning model、policy internalization | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/63605) · [arXiv](https://arxiv.org/abs/2605.08930) | [Code](https://github.com/AlphaLab-USTC/SInternal) | 针对 reasoning model 会口头复述安全原则却不能稳定落实到推理过程 | 论文用 verifier 为中间步骤和最终答案提供训练信号并将安全判断内化 | 关键实现：论文用 verifier 为中间步骤和最终答案提供训练信号并将安全判断内化。 | 结果提升对复杂有害请求的识别和拒答泛化。 |
+Large Reasoning Models (LRMs) generate intermediate reasoning traces that may contain unsafe content, even when their final responses appear safe. Guardrail models are designed to detect and block unsafe content, yet existing benchmarks for unsafe content detection focus primarily on prompts and final responses, leaving reasoning traces largely unexamined. Moreover, these benchmarks typically provide only binary safety labels, without evidence annotations that justify the judgments. To address these limitations, we introduce TRACE, an evidence-grounded safety evaluation benchmark that covers the entire LRM inference pipeline: prompts, reasoning traces, and final responses. TRACE includes prompts in two languages spanning nine risk categories and ten attack strategies. For each prompt, four LRMs generate reasoning traces and final responses, and we annotate the safety of each component and extract supporting evidence from the corresponding source text. Evaluating 18 guardrail models on TRACE reveals that safety judgment for reasoning traces is substantially more challenging than for prompts or final responses, and that current models struggle to accurately extract supporting evidence. These findings highlight the need for guardrail models that can reliably detect and precisely localize unsafe content across the LRM inference pipeline.
 
-## 检测、审计与取证
+</details>
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026-08 | INTENT-AS-A-TOOL Makes it Easy to Track Agentic Misalignment | detection、reasoning safety、action preference、intent monitoring | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.27348) | [Code](https://github.com/RebeccaZhang22/intent-as-a-tool) | 针对有害执行前虽常出现 reasoning intent signal、但粗粒度 CoT audit 无法指出何时承诺的问题 | INTENT-AS-A-TOOL 用意图工具调用概率记录逐 token／step 的 action preference | 关键实现：INTENT-AS-A-TOOL 用意图工具调用概率记录逐 token／step 的 action preference。 | 它将 post-hoc 标签转成稠密轨迹，并定位适合推理时安全干预的关键步骤。 |
-| 2026-08 | Chain-of-Thought Monitoring Can Be Unreliable in Implicit-Influence Settings | detection、CoT monitoring、reasoning model、safety degradation | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2608.04735) | [Code](https://github.com/agatha-duzan/implicit-vs-explicit-influence) | 研究如何检测 safety degradation、reasoning model 风险，重点考察 CoT monitoring 条件下的识别能力与误报代价。 | 该 benchmark 对比显式隐瞒与隐式影响下的 CoT monitorability | 关键实现：该 benchmark 对比显式隐瞒与隐式影响下的 CoT monitorability。 | 显式设置可检出 60%–94% 行为偏移，而隐式影响在两类任务下降 41–46 个百分点，常见 system-prompt 优化还会将检出率压到最低 5%。 |
-| 2026 | Real-Time Monitoring and Calibration of Chain-of-Thought Sycophancy in Large Reasoning Models | detection、chain-of-thought、uncertainty calibration、CoT monitoring | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/61298) | 暂未公开 | 针对偏好学习与强化学习会诱发迎合、奖励投机或代理目标偏移的问题 | 论文提出 Real-Time Monitoring and Calibration of 检测、定位或审计方法 | 关键实现：论文提出 Real-Time Monitoring and Calibration of 检测、定位或审计方法。 | 摘要实验验证其能识别或定位相应风险，并报告了跨设置证据，直接服务于奖励设计与偏好对齐审计。 |
+### 2. &lt;/think&gt; Doesn't Stop Reasoning: Analysis of Spurious CoT Termination
 
-## 攻击与绕过
+📄 [arXiv](https://arxiv.org/abs/2609.03633)　📅 2026-09
 
-| 时间 | 论文名称 | 关键词 | 会议中稿情况 | 论文链接 | 代码链接 | 研究问题 | 核心 idea | 技术 | 结论 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 2026-09 | AKRASIA: Stealthy Backdoor Attack on Reasoning-based Code LLMs ↗ | attack、reasoning backdoor、CoT concealment、code execution | 未注明（arXiv） | [arXiv](https://arxiv.org/abs/2609.01023) | 暂未公开 | reasoning-based Code LLM 的后门触发器和推理路径可能被自动检测或人工检查发现。 | 在 inference time 构造代码级触发器，用 in-context learning 学习后门，并用不忠实但貌似合理的 reasoning 隐藏触发路径。 | 通过 victim probing 生成 trigger，覆盖四种后门目标、六个 reasoning Code LLM、三类代码任务和三种防御，同时评估人工检查逃逸。 | 最高平均 ASR 99.34%、准确率 97.23%；14/18 防御设置仍保持最高 98.82% ASR，最多 80% 设置可逃过人工检查。 |
-| 2026 | Reasoning Models Are Test Exploiters: Rethinking Multiple Choice | attack、reasoning model、safety degradation、inference-time risk | ICML 2026 Poster | [Official](https://icml.cc/virtual/2026/poster/64875) | 暂未公开 | 针对高能力模型可能欺骗、隐藏目标或逃避外部监督的问题 | 论文围绕 Reasoning Models Are Test Exploiters 开展机制与边界分析 | 关键实现：论文围绕 Reasoning Models Are Test Exploiters 开展机制与边界分析。 | 摘要中的实验或分析给出了相应有效性与边界证据，直接服务于欺骗检测、监控和 AI 控制。 |
-| 2026 | Reasoning Hijacking: The Fragility of Reasoning Alignment in Large Language Models | attack、reasoning safety、safety alignment、reasoning model | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.1698/) | 暂未公开 | 针对现有防御只检查任务目标是否被劫持 | Criteria Attack 保持目标不变却注入伪决策准则 | 关键实现：Criteria Attack 保持目标不变却注入伪决策准则。 | 令模型在毒性、评论和 spam 任务上优先采用捷径并绕过 SecAlign、StruQ 等 goal-deviation 防御。 |
-| 2026 | AutoRAN: Automated Hijacking of Safety Reasoning in Large Reasoning Models | attack、reasoning safety、reasoning model、safety degradation | ACL 2026 | [Official](https://aclanthology.org/2026.acl-long.1988/) | 暂未公开 | 针对推理模型的显式安全思考可能反向泄露攻击线索 | AutoRAN 用弱且低对齐模型模拟执行并从目标拒绝中迭代劫持 reasoning | 关键实现：AutoRAN 用弱且低对齐模型模拟执行并从目标拒绝中迭代劫持 reasoning。 | 在 AdvBench、HarmBench 与 StrongREJECT 上可于一至数轮内接近 100% 成功。 |
+**关键词**：`analysis`、`CoT monitorability`、`hidden reasoning`、`token control`、`CoT termination`、`early exit`
 
-> CoT 本身被用作 prompt-level jailbreak 的工作见 [Jailbreak 攻击](jailbreak-attacks.md)；reasoning token、latency 与 energy amplification 见 [Reasoning Model DoS](../../dos/reasoning-model-dos.md)；可见 CoT 的可监控性见 [CoT Monitorability](../../misc/cot-monitorability.md)。
+👤 **作者**：Seunghee Koh、Sungjae Choi、Minchan Kwon、Sunghyun Baek、Junmo Kim
+
+- 🎯 **研究动机**：training-free 早退方法在中间点注入 </think> 触发转答，但注入不保证干净的推理-作答转换
+- 🔬 **研究方法**：发现并命名 spurious CoT termination：作答阶段在模型再生成 EoT 前持续推理，且伪终止长度随省下的推理 token 增长；假设对注入 EoT 注意不足所致并提出 Exit-token Attention Biasing 检验
+- 📌 **结论**：四个 LRM、五个基准、两种早退方法上，增强对注入 EoT 的注意力可减少伪终止与作答阶段长度——外部匹配 think-block 格式不等于控制推理状态
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Chain-of-thought (CoT) reasoning improves large reasoning models (LRMs) on complex tasks but often produces long, redundant traces. Recent training-free early-exit methods shorten these traces by choosing an intermediate point to stop reasoning. We study one such strategy that injects an end-of-think token (EoT, </think>) at this point to trigger the reasoning-to-answering transition, and find that the injected EoT does not always induce a clean answering phase. Answering-phase generation can continue before the model regenerates another EoT, with the span preceding this regenerated EoT scaling with the reasoning tokens saved by early exit and exhibiting continued reasoning behavior. We call this spurious CoT termination, where reasoning-like generation continues into the answering phase. We hypothesize that insufficient attention to the injected EoT contributes to spurious CoT termination and probe this hypothesis with Exit-token Attention Biasing (EAB). Across four LRMs, five benchmarks, and two early-exit methods, increasing attention to the injected EoT reduces spurious CoT termination and answering-phase length. These results reveal a limitation of controlling LRMs by externally matching their explicit think-block format. Inserting the EoT token conforms to this format but does not by itself guarantee the intended reasoning-to-answering transition. Our code is available at https://github.com/Seunghee-Koh/Spurious-CoT-Termination.
+
+</details>
+
+### 3. Safety Hacking in Constrained Best-of-$N$ Inference-time Scaling
+
+📄 [arXiv](https://arxiv.org/abs/2608.22915)　📅 2026-08
+
+**关键词**：`analysis`、`safety proxy`、`feasible-set contamination`、`guard composition`、`safety hacking`、`proxy constraint`
+
+👤 **作者**：Akifumi Wachi、Takumi Tanabe、Youhei Akimoto
+
+- 🎯 **研究动机**：推理时管线先采样 N 个输出、经学习安全 proxy 过滤再返回奖励最高者，这一组合的安全风险未被刻画
+- 🔬 **研究方法**：定义 safety hacking（通过学习约束但违反真实安全准则的选择），对 constrained Best-of-N 推导由 proxy-feasible 集内安全/不安全输出联合上奖励尾支配的有限 N 界，并提出 χ² 有界覆盖控制与 constrained pessimistic sampling
+- 📌 **结论**：不安全但可行的输出尾部更重时，N 增大 safety hacking 渐近必然，即使 proxy 误差任意小；覆盖控制只能限制放大、无法修复被污染的可行集
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Inference-time pipelines often sample multiple outputs, filter them with a learned safety model, and return the proxy-feasible output with the highest learned reward. We show that this composition creates a two-stage failure: an imperfect safety proxy first contaminates the feasible set with unsafe outputs, and reward maximization can then amplify this residual contamination. We define \emph{safety hacking} as selecting an output that passes the learned constraint but violates the true safety criterion. For constrained Best-of-$N$ sampling, we derive finite-$N$ bounds governed by the joint upper reward tails of safe and unsafe outputs within the proxy-feasible set. If unsafe-but-feasible outputs have the heavier tail, safety hacking becomes asymptotically certain as $N$ grows, even when false-positive mass and average safety- and reward-proxy errors are arbitrarily small. We also show that policies within a bounded $χ^2$ divergence from the proxy-feasible reference distribution admit an $N$-independent safety-hacking bound, and instantiate this general coverage-control principle with constrained pessimistic sampling. Coverage control limits amplification but cannot repair a contaminated feasible set: admitted unsafe outputs may still be favored, and regularized selection is not necessarily safer than constrained Best-of-$N$ for every reward proxy. Toy and language-model experiments characterize both contamination and its reward-tail amplification, which exposes an inherent difficulty in inference-time scaling with learned safety models.
+
+</details>
+
+### 4. Why2Speak: Faithful Reasoning for Abstaining Action Policies
+
+📄 [arXiv](https://arxiv.org/abs/2608.20670)　📅 2026-08
+
+**关键词**：`analysis`、`CoT faithfulness`、`capability-auditability trade-off`、`oversight control`、`reasoning-model auditability`、`act-or-abstain policy`
+
+👤 **作者**：Shreya Mendi、Brinnae Bent
+
+- 🎯 **研究动机**：对可行动或弃权的 agent，解释只有反映产生动作的计算才对监督有用；暴露推理是否会改变被审计的策略未知
+- 🔬 **研究方法**：以 Qwen3-8B 带/不带 CoT 在多方对话干预时机决策上比较直接策略、推理策略、SFT 与 RL，并用激活探针与行为消融做控制
+- 📌 **结论**：能力-可审计性权衡：最强直接策略质量高但无推理可查，推理策略有轨迹但性能低（尤其干预机会召回）；暴露推理会改变动作策略而非仅使其可观察
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Many agentic systems must repeatedly choose between acting and abstaining, making faithful reasoning important for oversight: an explanation is useful only if it reflects the computation that produced the action. We study this problem through intervention timing in multi-party conversation, where an assistant must decide whether to speak or remain silent. This setting exposes class imbalance, asymmetric action costs, and the possibility that exposing reasoning changes the policy being audited. Using Qwen3-8B, decoded with or without chain-of-thought reasoning, we compare direct decision policies, reasoning policies, supervised fine-tuning, and reinforcement learning. We find a capability-auditability tradeoff: the strongest direct policy achieves higher quality but exposes no reasoning to inspect, while the reasoning policy provides a trace at the cost of lower performance, particularly recall of true intervention opportunities. Supervised fine-tuning either suppresses reasoning or preserves it without improving decision quality, while reinforcement learning also fails to improve the reasoning policy. We identify one mechanism underlying this failure: group relative objectives provide no learning signal on confidently wrong prompts when sampled rollouts all select the same action. Controlled activation probes and behavioral ablations show that standard faithfulness methods can overstate evidence that exposed reasoning reflects the underlying decision process. Probability-based metrics saturate under confident decisions, probes are vulnerable to class imbalance and textual leakage, and reasoning ablations can confound reasoning content with changes in inference mode. Together, these results show that exposing reasoning can change an agent's action policy rather than simply make it observable. We provide controls for evaluating reasoning-based oversight of agents that can act or abstain.
+
+</details>
+
+### 5. Towards Safer RAG: Only Agents Capable of System 2 Thinking may Access Untrusted Documents
+
+📄 [arXiv](https://arxiv.org/abs/2608.17153)　📅 2026-08
+
+**关键词**：`defense`、`analysis`、`evidence-access control`、`System 2 gating`、`RAG Agent`、`System 2 reasoning`
+
+👤 **作者**：Mehrdad Ghassabi
+
+- 🎯 **研究动机**：LLM 可能正确检测文档含错误信息却仍受其影响；Cordon Principle 严格隔离又带来大量计算开销
+- 🔬 **研究方法**：提出精化原则——只有具备 System 2 深思推理能力的 agent 才可访问不可信文档；构建量化误信息检测与下游影响之差的指标并对比推理与标准模型
+- 📌 **结论**：推理能力模型对损坏证据鲁棒得多，无需 Cordon 式严格隔离，为安全 RAG 设计提供更实用基础
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Retrieval-Augmented Generation (RAG) has significantly enhanced the performance of large language models (LLMs), yet these systems remain vulnerable to knowledge-poisoning attacks, in which misinformation in retrieved documents can influence the model's final outputs. Notably, an LLM may correctly detect that a document contains incorrect information while nevertheless being influenced by it. Prior work has addressed this vulnerability through the Cordon Principle, which prevents models responsible for final answer synthesis from directly accessing raw evidence. Although effective, this strict isolation can introduce substantial computational overhead. In this work, we propose a refined security principle: only agents capable of deliberative System 2 reasoning may access untrusted documents. To evaluate this principle, we introduce novel metrics that quantify the discrepancy between misinformation detection and downstream influence. We then empirically compare state-of-the-art reasoning language models with standard language models across these metrics. Our results show that reasoning-capable models are substantially more robust to corrupted evidence, without requiring the strict isolation imposed by the Cordon Principle. These findings provide empirical support for our refined principle and suggest a more practical foundation for secure RAG system design.
+
+</details>
+
+### 6. Reasoning That Leaks, Fine-Tuning That Amplifies: Exposing the Hidden Threats of Chain-of-Thought Models
+
+🌐 [Project](https://doi.org/10.1145/3779208.3785271)　📅 2026-06　🏷 ACM CCS 2026
+
+**关键词**：`attack`、`analysis`、`benchmark`、`harmful fine-tuning`、`CoT escalation`、`alignment degradation`
+
+- 🎯 **研究动机**：CoT模型的推理链安全风险与微调放大效应未明
+- 🔬 **研究方法**：分析推理链与最终答案的安全差异及harmful fine-tuning影响
+- 📌 **结论**：有害内容可藏于trace而最终答案合规，微调进一步放大泄漏
+
+### 7. Do Thinking Tokens Help with Safety?
+
+📄 [arXiv](https://arxiv.org/abs/2606.25013)　📅 2026-06
+
+**关键词**：`analysis`、`thinking token`、`causal intervention`、`post-hoc rationale`
+
+👤 **作者**：Narutatsu Ri、Abhishek Panigrahi、Sanjeev Arora
+
+- 🎯 **研究动机**：普遍认为推理模型的 thinking token 提供安全审议空间，该直觉未必正确
+- 🔬 **研究方法**：在 GPT-OSS、Qwen、Olmo、Phi 家族上训练探测头预测拒绝/顺从，分析思维链前 20% 后结果是否改变，并检验推理导向的安全干预
+- 📌 **结论**：最终拒绝结果在可见思考前即可从首 token 隐藏表示预测（0.84-0.95 AUROC、约 88% 平衡准确率）；约 74% 文本级审议发生在分布已锁定后，现有干预主要推向过度拒绝
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Today's reasoning models use thinking tokens to attain stronger performance on benchmarks than their instruction-tuned counterparts. It is also generally believed that this more "deliberative" mode should improve alignment and safety, by providing the model a safe space to consider whether its planned answer to a request violates its safety principles. We present evidence that this intuition is not always correct. Across frontier open-weight reasoning models spanning GPT-OSS, Qwen, Olmo, and Phi families, we find that the eventual refusal/compliance outcome is already strongly predictable via a trained head on the first token's hidden representation ($0.84$-$0.95$ AUROC and $\sim88\%$ balanced accuracy for predicting refusal/compliance) before any visible thinking. The thinking process turns out to be more akin to prefix completion than to deliberative revision, with the final outcome rarely changing after the first $\sim20\%$ of thinking, despite giving the appearance of deliberation at the text level ($\sim74\%$ of text-level deliberations occur when the response distribution is already locked to one refusal/compliance side). We also find that existing inference-time and training-based safety interventions, despite being motivated by the goal of inducing deliberation, largely shift model behavior toward over-refusal while suppressing already-scarce deliberation signals. Our results suggest that safety behavior in current reasoning models is much less deliberative than commonly assumed, and highlight the need for methods that induce real safety deliberation.
+
+</details>
+
+### 8. Chain of Risk: Safety Failures in Large Reasoning Models and Mitigation via Adaptive Multi-Principle Steering
+
+📄 [arXiv](https://arxiv.org/abs/2605.05678)　📅 2026-05
+
+**关键词**：`benchmark`、`reasoning safety`、`trace-answer risk`、`multi-principle steering`
+
+👤 **作者**：Xiaomin Li、…、Yuexing Hao
+
+- 🎯 **研究动机**：LRM 暴露推理链带来安全盲区——最终答案安全不代表推理轨迹安全
+- 🔬 **研究方法**：以二十原则统一量表对 15 个 LRM 各 4.1 万 prompt 的推理与答案两阶段打分，识别 leak 与 escape 两类失效；提出按原则学 unsafe-to-safe 激活方向、按隐状态邻近性选择性激活的多原则 steering
+- 📌 **结论**：推理轨迹一致暴露额外风险并集中于虚假信息、法律合规等原则；DeepSeek-R1-Qwen-7B 不安全计数平均降 40.8%，BBH、GSM8K、MMLU 宏平均准确率保持 97.7%
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large reasoning models (LRMs) increasingly expose chain-of-thought-like reasoning for transparency, verification, and deliberate problem solving. This creates a safety blind spot: harmful or policy-violating content may appear in reasoning traces even when final answers appear safe. We test whether final-answer safety is a sufficient proxy for the full reasoning-answer trajectory by scoring both stages under a unified twenty-principle safety rubric. Using prompts from seven public harmfulness and jailbreak sources, plus four out-of-distribution (OOD) sources, we evaluate 15 open-weight and API-based LRMs across 41K prompts per model. Reasoning traces consistently reveal additional safety risks beyond final answers, especially in high-severity stage-wise failures: leak cases, where unsafe reasoning precedes a safe-looking answer, and escape cases, where benign-looking reasoning precedes an unsafe final response. Principle-level analysis shows that risk concentrates in misinformation, legal compliance, discrimination, physical harm, and psychological harm. We further propose adaptive multi-principle steering, a white-box test-time mitigation that learns one unsafe-to-safe activation direction per safety principle and activates only directions whose current hidden state is closer to the unsafe than safe centroid. On three steerable open reasoning models, adaptive steering reduces unsafe counts in both reasoning traces and final answers on held-out and OOD benchmarks. DeepSeek-R1-Qwen-7B achieves a 40.8% average unsafe-count reduction while retaining 97.7% macro-averaged accuracy on BBH, GSM8K, and MMLU. These results suggest that LRM safety should be evaluated and mitigated over the full exposed reasoning-answer trajectory, not only at the final-answer stage.
+
+</details>
+
+### 9. Learning When to Act or Refuse: Guarding Agentic Reasoning Models for Safe Multi-Step Tool Use
+
+📄 [arXiv](https://arxiv.org/abs/2603.03205) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63878)　📅 2026-03　🏷 ICML 2026
+
+**关键词**：`defense`、`reasoning model`、`safety degradation`、`inference-time risk`、`agent safety`、`empirical evaluation`
+
+👤 **作者**：Aradhye Agarwal、Gurdit Siyan、Yash Pandya、Joykirat Singh、Akshay Nambi、Ahmed Awadallah
+
+- 🎯 **研究动机**：面向静态生成优化的对齐在多步工具使用中失效，访问文件或输入凭据等单步失误可致不可逆伤害
+- 🔬 **研究方法**：MOSAIC 把推理结构化为计划-检查-执行或拒绝循环，显式安全推理与拒绝均为一等动作，用成对轨迹比较的偏好 RL 免轨迹标签训练
+- 📌 **结论**：有害行为最多降 50%，注入攻击下有害任务拒绝率升超 20%，并保持或提升良性任务表现
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Agentic language models operate in a fundamentally different safety regime than chat models: they must plan, call tools, and execute long-horizon actions where a single misstep, such as accessing files or entering credentials, can cause irreversible harm. Existing alignment methods, largely optimized for static generation and task completion, break down in these settings due to sequential decision-making, adversarial tool feedback, and overconfident intermediate reasoning. We introduce MOSAIC, a post-training framework that aligns agents for safe multi-step tool use by making safety decisions explicit and learnable. MOSAIC structures inference as a plan, check, then act or refuse loop, with explicit safety reasoning and refusal as first-class actions. To train without trajectory-level labels, we use preference-based reinforcement learning with pairwise trajectory comparisons, which captures safety distinctions often missed by scalar rewards. We evaluate MOSAIC zero-shot across three model families, Qwen2.5-7B, Qwen3-4B-Thinking, and Phi-4, and across out-of-distribution benchmarks spanning harmful tasks, prompt injection, benign tool use, and cross-domain privacy leakage. MOSAIC reduces harmful behavior by up to 50%, increases harmful-task refusal by over 20% on injection attacks, cuts privacy leakage, and preserves or improves benign task performance, demonstrating robust generalization across models, domains, and agentic settings.
+
+</details>
+
+### 10. Thinking-Based Non-Thinking: Solving the Reward Hacking Problem in Training Hybrid Reasoning Models via Reinforcement Learning
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.2122/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`analysis`、`reasoning safety`、`reward hacking`、`reasoning model`、`deceptive behavior`
+
+👤 **作者**：Siyuan Gan、…、Yang Gao
+
+- 🎯 **研究动机**：RL 训练混合推理模型存在 reward hacking：模型实际思考却被判为未思考而获错误奖励；SFT 成本高、统一 token 上限缓解有限
+- 🔬 **研究方法**：提出 TNT：不做 SFT，利用带思考响应的解组件信息为不同查询的非思考响应设置差异化最大 token 用量
+- 📌 **结论**：五个数学基准上较 DeepSeek-R1-Distill-Qwen-1.5B/7B 与 DeepScaleR-1.5B 减少约 50% token 且精度显著提升，非思考响应的 reward hacking 概率全程低于 10%
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large reasoning models (LRMs) have attracted much attention due to their exceptional performance. However, their performance mainly stems from thinking, a long Chain of Thought (CoT), which significantly increase computational overhead. To address this overthinking problem, existing work focuses on using reinforcement learning (RL) to train hybrid reasoning models that automatically decide whether to engage in thinking or not based on the complexity of the query. Unfortunately, using RL will suffer the the reward hacking problem, e.g., the model engages in thinking but is judged as not doing so, resulting in incorrect rewards.To mitigate this problem, existing works either employ supervised fine-tuning (SFT), which incurs high computational costs, or enforce uniform token limits on non-thinking responses, which yields limited mitigation of the problem.In this paper, we propose Thinking-Based Non-Thinking (TNT). It does not employ SFT, and sets different maximum token usage for responses not using thinking across various queries by leveraging information from the solution component of the responses using thinking. Experiments on five mathematical benchmarks demonstrate that TNT reduces token usage by around 50\\%$ compared to DeepSeek-R1-Distill-Qwen-1.5B/7B and DeepScaleR-1.5B, while significantly improving accuracy. In fact, TNT achieves the optimal trade-off between accuracy and efficiency among all tested methods. Additionally, the probability of reward hacking problem in TNT’s responses, which are classified as not using thinking, remains below $10\\%$ across all tested datasets.
+
+</details>
+
+### 11. Safety Recovery in Reasoning Models Is Only a Few Early Steering Steps Away
+
+📄 [arXiv](https://arxiv.org/abs/2602.11096) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61339)　📅 2026　🏷 ICML 2026
+
+**关键词**：`defense`、`reasoning model`、`safety degradation`、`inference-time risk`、`refusal calibration`、`chain-of-thought`
+
+👤 **作者**：Soumya Suvra Ghosal、Souradip Chakraborty、Vaibhav Singh、Furong Huang、Dinesh Manocha、Amrit Singh Bedi
+
+- 🎯 **研究动机**：GRPO 等 RL 后训练提升多模态推理能力的同时会降低安全对齐并提高越狱成功率
+- 🔬 **研究方法**：提出推理时防御 SafeThink：把安全恢复视为满足性约束，安全奖励模型监视推理轨迹，仅在阈值被违反时注入优化的短前缀（"Wait, think safely"）
+- 📌 **结论**：在 6 个开源 MLRM 与 4 个越狱基准上 ASR 降低 30-60%（如 LlamaV-o1 在 JailbreakV-28K 上 63.33%→5.74%），MathVista 精度几乎不变；前 1-3 步推理内干预通常即可扭转整条生成
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Reinforcement learning (RL) based post-training for explicit chain-of-thought (e.g., GRPO) improves the reasoning ability of multimodal large-scale reasoning models (MLRMs). But recent evidence shows that it can simultaneously degrade safety alignment and increase jailbreak success rates. We propose SafeThink, a lightweight inference-time defense that treats safety recovery as a satisficing constraint rather than a maximization objective. SafeThink monitors the evolving reasoning trace with a safety reward model and conditionally injects an optimized short corrective prefix ("Wait, think safely") only when the safety threshold is violated. In our evaluations across six open-source MLRMs and four jailbreak benchmarks (JailbreakV-28K, Hades, FigStep, and MM-SafetyBench), SafeThink reduces attack success rates by 30-60 % (e.g., LlamaV-o1: 63.33\% $\rightarrow$5.74\% on JailbreakV-28K, R1-OneVision: 69.07\%$\rightarrow$5.65\% on Hades) while preserving reasoning performance (MathVista accuracy: 65.20\%$\rightarrow$65.00\%). A key empirical finding from our experiments is that safety recovery is often only a few steering steps away: intervening in the first $1–3$ reasoning steps typically suffices to redirect the full generation toward safe completions.
+
+</details>
+
+### 12. SafeAdapt: Safety Alignment with Adaptive Thinking Allocation for Large Reasoning Models
+
+🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/song-jiazheng)　📅 2026　🏷 USENIX Security 2026
+
+**关键词**：`defense`、`safety alignment`、`adaptive thinking`、`reasoning budget`
+
+👤 **作者**：Jiazheng Song、Junxu Liu、Jian Lou、Jinfei Liu
+
+- 🎯 **研究动机**：安全推理预算越长越安全的普遍假设未经系统检验，固定预算在简单攻击上过度思考、困难攻击上思考不足
+- 🔬 **研究方法**：系统评估安全预算与生成安全性的关系，并提出 SafeAdapt：按提示难度动态调整安全思考预算
+- 📌 **结论**：安全并不随思考轨迹变长单调提升，SafeAdapt 在多样困难攻击下以更合理的预算显著提升安全性
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Reasoning models have garnered growing importance as their strong Chain-of-Thought (CoT) capabilities unleash exceptional performance on complex tasks. Consequently, an emerging research direction explores "safety thinking" which leverages reasoning models' reasoning capabilities to assess the safety of input prompts and prevent harmful content generation. A prevailing yet under-examined belief in existing studies is that allocating more computational resources to the safety reasoning budget, i.e., rolling out longer safety thinking trajectories, necessarily yields safer behavior. However, this premise has not been systematically analyzed, despite the widespread adoption of reasoning models. In this paper, we aim to fill this gap by conducting a rigorous safety evaluation to examine the relationship between the safety reasoning budget and the safety of reasoning model generations, particularly under adversarial conditions. Our analysis reveals that safety does not monotonically improve with longer thinking trajectories: both over-thinking on simple attacks and under-thinking on difficult attacks incur excess safety risks, leading to systematic failures under fixed-budget safety policies. Motivated by these key findings, we propose SafeAdapt: Safety Alignment with adaptive thinking Allocation, a novel approach that learns to dynamically adjust reasoning models' safety thinking budget based on prompt difficulty. This enables reasoning models to allocate computational resources adaptively, rather than following a single fixed thinking pattern (e.g., the longer the safer), thereby mitigating excess risks incurred by under-/over-thinking. Experiments across multiple adversarial benchmarks demonstrate that SafeAdapt significantly improves safety performance with a more ideal thinking budget under diverse and challenging attack settings.
+
+</details>
+
+### 13. Reasoning Structure Matters for Safety Alignment of Reasoning Models
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.240/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`defense`、`reasoning safety`、`safety alignment`、`reasoning model`、`fine-tuning robustness`
+
+👤 **作者**：Yeonjun In、Wonjoong Kim、Sangwu Park、Chanyoung Park
+
+- 🎯 **研究动机**：大型推理模型对恶意查询生成有害回答的根源在于推理结构本身
+- 🔬 **研究方法**：提出 AltTrain 后训练方法显式改变 LRM 推理结构，仅用 1K 样本做 SFT，无需复杂 RL 与奖励设计
+- 📌 **结论**：跨 LRM 骨干与规模取得强安全对齐，并在推理、问答、摘要与多语言设定下稳健泛化
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large reasoning models (LRMs) achieve strong performance on complex reasoning tasks but often generate harmful responses to malicious user queries. This paper investigates the underlying cause of these safety risks and shows that the issue lies in the reasoning structure itself. Based on this insight, we claim that effective safety alignment can be achieved by altering the reasoning structure. We propose AltTrain, a simple yet effective post-training method that explicitly alters the reasoning structure of LRMs. AltTrain is both practical and generalizable, requiring no complex reinforcement learning (RL) training or reward design—only supervised fine-tuning (SFT) with a lightweight 1K training examples. Experiments across LRM backbones and model sizes demon strate strong safety alignment, along with robust generalization across reasoning, QA, summarization, and multilingual setting.
+
+</details>
+
+### 14. ReasoningGuard: Safeguarding Large Reasoning Models with Inference-time Safety Aha Moments
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.1453/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`defense`、`reasoning safety`、`reasoning model`、`safety degradation`、`content moderation`、`harmful content`
+
+👤 **作者**：Yuquan Wang、…、Min Yang
+
+- 🎯 **研究动机**：LRM 在推理中后段易生成有害内容，现有防御依赖昂贵微调与专家知识，可扩展性差
+- 🔬 **研究方法**：提出推理时防护 ReasoningGuard：利用内部注意力定位推理关键点并及时注入安全 aha moment 触发反思，解码时用缩放采样选择最优推理路径
+- 📌 **结论**：以极小推理开销缓解四类越狱攻击，优于九种现有防护且避免过度安全
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large Reasoning Models (LRMs) have demonstrated impressive performance in reasoning-intensive tasks, but they remain vulnerable to harmful content generation, particularly in the mid-to-late steps of their reasoning processes. Current defense methods, however, depend on costly fine-tuning and additional expert knowledge, which limits their scalability.In this work, we propose ReasoningGuard, an inference-time safeguard for LRMs.It injects timely safety aha moments during the reasoning process to guide the model towards harmless yet helpful reasoning.Our approach leverages the internal attention mechanisms of the LRM to accurately identify key points in the reasoning path, triggering safety-oriented reflections.To safeguard both the subsequent reasoning steps and the final answers, we implement a scaling sampling strategy during decoding to select the optimal reasoning path.With minimal additional inference cost, ReasoningGuard effectively mitigates four types of jailbreak attacks, including recent ones targeting the reasoning process of LRMs. Our approach outperforms nine existing safeguards, providing state-of-the-art defenses while avoiding common exaggerated safety issues.
+
+</details>
+
+### 15. PAM: Enhancing General Alignment of Large Reasoning Models through Priority-Aware Metacognition
+
+🌐 [Project](https://anonymous.4open.science/r/PAM-RM-02DF) · 🎓 [Official](https://aclanthology.org/2026.acl-long.432/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`defense`、`reasoning safety`、`safety alignment`、`reasoning model`、`fine-tuning robustness`
+
+👤 **作者**：Zhihao Xu、Fuzhen Yang、Liang Lin、Xiting Wang
+
+- 🎯 **研究动机**：推理能力不能可靠迁移到通用对齐域，LRM 需元认知知识才能充分利用 System-2 能力
+- 🔬 **研究方法**：PAM 先识别顶层人类偏好（如无害性）理解任务性质，再用其他元认知知识监控调节思考；Flavell 框架冷启动加偏好优化两阶段实现
+- 📌 **结论**：同训练管线下通用对齐性能提升约 10 分（helpfulness 与 harmless 基准）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Recent advancements in Large Reasoning Models (LRMs) have showcased strong performance across various reasoning tasks by leveraging System-2 thinking capabilities. However, existing studies indicate that this reasoning ability alone does not reliably transfer to the general alignment domain. Inspired by cognitive science and how humans solve tasks, we argue that LRMs must be equipped with metacognitive knowledge to fully utilize their System-2 capabilities. In this paper, we propose Priority-Aware Metacognition (PAM), which guides the model to first identify the top-level human preference (e.g., harmlessness) as a means of understanding the alignment task’s nature, and then apply other kinds of metacognitive knowledge to better monitor and regulate the model’s thinking process. We implement PAM via a two-stage pipeline: a cold-start phase that collects structured metacognitive knowledge based on Flavell’s theoretical framework, and a preference-optimization phase that further reinforces such metacognition. Extensive experiments validate the effectiveness of PAM. Under the same training pipelines, PAM consistently yields higher performance, improving general domain alignment performance by ~10 points on the helpfulness and harmless benchmarks. Code is available at https://anonymous.4open.science/r/PAM-RM-02DF.
+
+</details>
+
+### 16. Mitigating Safety Context Amnesia in Multimodal Reasoning Models via Intent-Guided Safety Reasoning
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.1821/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`defense`、`multimodal safety`、`reasoning safety`、`VLM safety`、`runtime safety`
+
+👤 **作者**：Xiyao Dong、Guangsheng Cheng、YiLong Chen、Xiaojin Zhang、Kun He
+
+- 🎯 **研究动机**：多模态推理模型把有害目标嵌入良性上下文时过度追求叙事连贯，正确感知风险线索却不执行安全约束（Safety Context Amnesia）
+- 🔬 **研究方法**：IGSR 推理时防御不改参数：Perception Decoupler 提取客观视觉证据为结构化意图，Cognitive Arbiter 在生成前强制显式安全约束
+- 📌 **结论**：多个多模态安全基准上防御成功率比基线高逾 62%，基本保留任务效用
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Recent advances in Multimodal Large Reasoning Models (MLRMs) have enabled explicit chain-of-thought inference across vision and language, substantially improving performance on complex reasoning tasks. Despite these gains, the reasoning process introduces a subtle yet critical vulnerability. We identify an underexplored multimodal safety failure mode in which harmful objectives are embedded within ostensibly benign contexts, leading models to over-prioritize narrative coherence during reasoning. We term this phenomenon Safety Context Amnesia (SCA), wherein models correctly perceive risk-relevant visual cues but fail to enforce safety constraints as the reasoning process becomes dominated by contextual alignment. To mitigate SCA, we propose Intent-Guided Safety Reasoning (IGSR), an inference-time defense that operates without modifying target model parameters. IGSR employs a Perception Decoupler to extract objective visual evidence into a structured intent output, followed by a Cognitive Arbiter that enforces explicit safety constraints prior to generation. Extensive experiments across multiple multimodal safety benchmarks demonstrate that IGSR improves defense success rates by over 62% compared to baselines, while largely preserving task utility. These results highlight the critical role of structured, intent-aware reasoning in achieving robust safety reasoning for multimodal reasoning models.
+
+</details>
+
+### 17. Mind the (DH) Gap! A Contrast in Risky Choices Between Reasoning and Conversational LLMs
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.479/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`analysis`、`reasoning safety`、`reasoning model`、`safety degradation`、`deceptive behavior`、`behavioral monitoring`
+
+👤 **作者**：Luise Ge、Yongyan Zhang、Yevgeniy Vorobeychik
+
+- 🎯 **研究动机**：LLM 作决策支持时的不确定下决策行为理解有限，缺前景表示与决策理由两维度的系统对比
+- 🔬 **研究方法**：对 20 个前沿与开源 LLM 做风险选择对比研究（显式 vs 经验式前景、解释影响），配人类被试实验与理性 agent 两个参照
+- 📌 **结论**：推理模型趋理性、对顺序/框架/解释不敏感且 DH gap 小；对话模型显著欠理性、更拟人且 description-history gap 大；数学推理训练是关键差异因素
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+The use of large language models either as decision support systems, or in agentic workflows, is rapidly transforming the digital ecosystem. However, the understanding of LLM decision-making under uncertainty remains limited. We initiate a comparative study of LLM risky choices along two dimensions: (1) prospect representation (explicit vs. experience-based) and (2) decision rationale (explanation). Our study, which involves 20 frontier and open LLMs, is complemented by a matched human subjects experiment, which provides one reference point, while an expected payoff maximizing rational agent model provides another. We find that LLMs cluster into two categories: reasoning models (RMs) and conversational models (CMs). RMs tend towards rational behavior, are insensitive to the order of prospects, gain/loss framing, and explanations, and behave similarly whether prospects are explicit or presented via experience history. CMs are significantly less rational, slightly more human-like, sensitive to prospect ordering, framing, and explanation, and exhibit a large description-history gap. Paired comparisons of open LLMs suggest that a key factor differentiating RMs and CMs is training for mathematical reasoning.
+
+</details>
+
+### 18. How Should We Enhance the Safety of Large Reasoning Models: An Empirical Study
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.936/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`analysis`、`reasoning safety`、`reasoning model`、`safety degradation`、`safety alignment`、`fine-tuning robustness`
+
+👤 **作者**：Zhexin Zhang、…、Minlie Huang
+
+- 🎯 **研究动机**：大推理模型推理能力提升未必带来安全提升甚至退化，如何有效增强其安全不清楚
+- 🔬 **研究方法**：实证研究 SFT 增强 LRM 安全：发现直接蒸馏 DeepSeek-R1 安全回复无效，识别五个关键风险模式并在蒸馏中显式处理，再做训练配置消融
+- 📌 **结论**：处理风险模式后安全显著提升；短或模板化推理即可达到相当安全表现，长链推理非必需
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large Reasoning Models (LRMs) have achieved remarkable success on reasoning-intensive tasks such as mathematics and programming. However, their enhanced reasoning capabilities do not necessarily translate to improved safety performance—and in some cases, may even degrade it. This raises an important research question: how should we enhance the safety of LRMs? In this paper, we present a comprehensive empirical study on how to enhance the safety of LRMs through Supervised Fine-Tuning (SFT). Our investigation begins with an unexpected observation: directly distilling safe responses from DeepSeek-R1 fails to significantly enhance safety. We analyze this phenomenon and identify five key risky patterns that contribute to it. We then demonstrate that explicitly addressing these issues during the data distillation process can lead to substantial safety improvements. Next, we explore whether a long and complex reasoning process is necessary for achieving safety. Interestingly, we find that simply using short or template-based reasoning process can attain comparable safety performance. These findings prompt a deeper reflection on the role of reasoning in ensuring safety. Finally, we conduct a comprehensive ablation study to reveal the impact of different training configurations. Overall, we hope our empirical study could provide a more holistic picture on enhancing the safety of LRMs.
+
+</details>
+
+### 19. Refusal Falls off a Cliff: How Safety Alignment Fails in Reasoning?
+
+📄 [arXiv](https://arxiv.org/abs/2510.06036) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2025-10
+
+**关键词**：`analysis`、`reasoning safety`、`refusal cliff`、`safety alignment`、`attention-head ablation`
+
+👤 **作者**：Qingyu Yin、…、Jinjin Gu
+
+- 🎯 **研究动机**：推理模型安全对齐为何失效的机制不明
+- 🔬 **研究方法**：以线性探针追踪各 token 位置的拒绝意图，发现 refusal cliff：思考中拒绝意图强但输出生成前骤降；经因果干预定位负贡献注意力头
+- 📌 **结论**：仅消融 3% 注意力头即可把 ASR 压到 10% 以下；Cliff-as-a-Judge 数据选择仅用 1.7% 安全数据即达相当修复效果
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large reasoning models (LRMs) with multi-step reasoning capabilities have shown remarkable problem-solving abilities, yet they exhibit concerning safety vulnerabilities that remain poorly understood. In this work, we investigate why safety alignment fails in reasoning models through a mechanistic interpretability lens. Using a linear probing approach to trace refusal intentions across token positions, we discover a striking phenomenon termed as \textbf{refusal cliff}: many poorly-aligned reasoning models correctly identify harmful prompts and maintain strong refusal intentions during their thinking process, but experience a sharp drop in refusal scores at the final tokens before output generation. This suggests that these models are not inherently unsafe; rather, their refusal intentions are systematically suppressed. Through causal intervention analysis, we identify a sparse set of attention heads that negatively contribute to refusal behavior. Ablating just 3\% of these heads can reduce attack success rates below 10\%. Building on these mechanistic insights, we propose \textbf{Cliff-as-a-Judge}, a novel data selection method that identifies training examples exhibiting the largest refusal cliff to efficiently repair reasoning models' safety alignment. This approach achieves comparable safety improvements using only 1.7\% of the vanilla safety training data, demonstrating a less-is-more effect in safety alignment.
+
+</details>
+
+### 20. Reasoning Introduces New Poisoning Attacks Yet Makes Them More Complicated
+
+📄 [arXiv](https://arxiv.org/abs/2509.05739) · 🎓 [Official](https://satml.org/2026/accepted-papers/)　📅 2025-09　🏷 SaTML 2026
+
+**关键词**：`analysis`、`attack`、`CoT integrity`、`trace-answer divergence`、`decomposed trigger`、`reasoning model`
+
+👤 **作者**：Hanna Foerster、…、Yarin Gal
+
+- 🎯 **研究动机**：推理能力把 LLM 攻击面扩展到中间 CoT，但推理模型上投毒能否生效不明
+- 🔬 **研究方法**：提出 decomposed reasoning poison：仅修改推理路径、prompt 与最终答案保持干净，并把触发器拆成多个各自无害的组件
+- 📌 **结论**：可注入但可靠激活并改变最终答案出奇困难，模型常能从思维过程中的后门恢复，推理能力带来涌现式后门鲁棒性
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Early research into data poisoning attacks against Large Language Models (LLMs) demonstrated the ease with which backdoors could be injected. More recent LLMs add step-by-step reasoning, expanding the attack surface to include the intermediate chain-of-thought (CoT) and its inherent trait of decomposing problems into subproblems. Using these vectors for more stealthy poisoning, we introduce ``decomposed reasoning poison'', in which the attacker modifies only the reasoning path, leaving prompts and final answers clean, and splits the trigger across multiple, individually harmless components. Fascinatingly, while it remains possible to inject these decomposed poisons, reliably activating them to change final answers (rather than just the CoT) is surprisingly difficult. This difficulty arises because the models can often recover from backdoors that are activated within their thought processes. Ultimately, it appears that an emergent form of backdoor robustness is originating from the reasoning capabilities of these advanced LLMs, as well as from the architectural separation between reasoning and final answer generation.
+
+</details>
+
+### 21. EchoCoT: Extracting Hidden Chain-of-Thought from Large Reasoning Models
+
+📄 [arXiv](https://arxiv.org/abs/2608.20055)　📅 2026-08
+
+**关键词**：`attack`、`tool-call replay`、`hidden-state disclosure`、`API interaction`、`reasoning-trace extraction`、`API fidelity`
+
+👤 **作者**：Yiting Qu、Ziqing Yang、Chi Cui、Ye Leng、Junjie Chu、Yang Zhang
+
+- 🎯 **研究动机**：前沿专有 LRM 的隐藏 CoT 是宝贵模型资产，能否从黑盒 API 近逐字提取未被研究
+- 🔬 **研究方法**：EchoCoT 发现工具调用间的推理重放面，多步攻击迭代利用 API 返回的保真信号提取隐藏 CoT，LLM 优化框架自动搜索跨数据集的通用注入轨迹
+- 📌 **结论**：开源 LRM 上近逐字提取成功率达 66.4%（至少 90% token 精确匹配），通用轨迹在未见数据集达 80%；Gemini-2.5 上从 32,948 token 目标提取 33,463 token
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Hidden chain-of-thought (CoT) traces, especially those from frontier proprietary large reasoning models (LRMs), are valuable model assets. Yet whether these hidden CoTs can be directly extracted from black-box models remains largely unexplored. In this work, we systematically study whether hidden CoTs can be extracted near-verbatim from black-box LRMs through API interactions. We identify a previously overlooked reasoning replay surface between tool calls and develop EchoCoT, a multi-step attack that iteratively extracts hidden CoTs using API-returned fidelity signals. We further develop an LLM-based optimization framework that automatically searches for an effective universal injection trajectory across various datasets. We evaluate EchoCoT on three open-source and five frontier proprietary LRMs. On open-source LRMs, EchoCoT achieves up to 66.4\% near-verbatim extraction success, with the extracted trace length within 10\% of the target and at least 90\% of tokens exactly matching the target CoT. The same injection trajectory also generalizes to unseen datasets, achieving up to 80\% extraction success under the same criterion. For tested frontier proprietary LRMs, a substantial fraction of extracted CoTs closely align with provider-reported reasoning lengths and available CoT summaries. EchoCoT can also extract very long CoTs: on Gemini-2.5, it extracts 33,463 tokens from a 32,948-token target. These results establish hidden-CoT extraction as a practical security risk and highlight the need to better protect hidden CoT assets.
+
+</details>
+
+### 22. Overthinking: Amplifying Reasoning Weights to Extract Learned Secrets
+
+📄 [arXiv](https://arxiv.org/abs/2607.08173) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63085)　📅 2026-07　🏷 ICML 2026
+
+**关键词**：`attack`、`reasoning weight`、`secret extraction`、`task-vector amplification`、`privacy attack`、`chain-of-thought`
+
+👤 **作者**：Jack Hopkins、Dipika Khullar、Fabien Roger
+
+- 🎯 **研究动机**：黑盒审计可能漏掉细微的失准与隐藏信息，需要更强的引出手段
+- 🔬 **研究方法**：提出 overthinking：对非推理指令模型 M 与推理蒸馏模型 R 构造 θ_O=θ_M+α(θ_R−θ_M)（α>1）放大推理倾向，并引入分层衰减策略在放大推理同时保持输出质量与连贯
+- 📌 **结论**：2B-32B 模型、四个设定下 overthinking 模型暴露隐藏信息或非预期行为的频率最高达原推理模型 10 倍；秘密类型不同所需扰动方向也不同
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Black box auditing of language models is an essential pre-deployment tool, but it may miss subtle forms of misalignment and hidden information. To better elicit hidden information during an auditing process, we introduce \emph{overthinking}: the process of using reasoning task vectors to amplify the propensity to think out loud of reasoning models. Given the parameters of a non-reasoning instruct model $M$ and reasoning-distilled model $R$, we define the \emph{overthinking model} as $\boldsymbolθ_{\mathcal{O}_α} = \boldsymbolθ_{\mathcal{M}} + α(\boldsymbolθ_{\mathcal{R}} - \boldsymbolθ_{\mathcal{M}})$, where $α> 1$ amplifies reasoning beyond the pure reasoning model $R$. Additionally, we introduce new layer-wise attenuation strategies that selectively amplify reasoning without losing quality and coherence of model outputs. We demonstrate that overthinking models are more likely to reveal hidden information across four experimental settings, across 2B-32B models. Our findings suggest that reasoning amplification may surface secrets or unintended behaviors acquired during training up to $10\times$ more frequently than the original reasoning model. How secrets surface depends on the secret type: some require perturbation along the reasoning direction, while others yield to any sufficiently large weight perturbation.
+
+</details>
+
+### 23. AdversarialCoT: Single-Document Retrieval Poisoning for LLM Reasoning
+
+📄 [arXiv](https://arxiv.org/abs/2604.12201) · 🌐 [Project](https://doi.org/10.1145/3805712.3809838)　📅 2026-04　🏷 SIGIR 2026
+
+**关键词**：`attack`、`adversarial CoT`、`single-document poison`、`reasoning hijack`、`single-document poisoning`、`query-specific attack`
+
+👤 **作者**：Hongru Song、…、Xueqi Cheng
+
+- 🎯 **研究动机**：RAG 知识库投毒研究靠海量毒文档淹没语料库，单文档的隐蔽投毒未被探索
+- 🔬 **研究方法**：AdversarialCoT 是 query-specific 攻击：提取目标 LLM 推理框架构建初始对抗 CoT，再通过与 LLM 交互迭代精炼单篇毒文档
+- 📌 **结论**：单篇对抗文档即可显著降低基准 LLM 的推理准确率
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Retrieval-augmented generation (RAG) enhances large language model (LLM) reasoning by retrieving external documents, but also opens up new attack surfaces. We study knowledge-base poisoning attacks in RAG, where an attacker injects malicious content into the retrieval corpus, which is then naturally surfaced by the retriever and consumed by the LLM during reasoning. Unlike prior work that floods the corpus with poisoned documents, we propose AdversarialCoT, a query-specific attack that poisons only a single document in the corpus. AdversarialCoT first extracts the target LLM's reasoning framework to guide the construction of an initial adversarial chain-of-thought (CoT). The adversarial document is iteratively refined through interactions with the LLM, progressively exposing and exploiting critical reasoning vulnerabilities. Experiments on benchmark LLMs show that a single adversarial document can significantly degrade reasoning accuracy, revealing subtle yet impactful weaknesses. This study exposes security risks in RAG systems and provides actionable insights for designing more robust LLM reasoning pipelines.
+
+</details>
+
+### 24. Mitigating Reasoning-Induced Misalignment via Safety-Direction Penalty
+
+📄 [arXiv](https://arxiv.org/abs/2608.23497)　📅 2026-08
+
+**关键词**：`defense`、`analysis`、`reasoning-induced misalignment`、`safety direction`、`training-time penalty`、`reasoning fine-tuning`
+
+👤 **作者**：Yipeng Zhao、Qishun Yang、Shenzhe Zhu、Shu Yang、Di Wang
+
+- 🎯 **研究动机**：无害推理数据（数学、代码、CoT）微调可诱发 Reasoning-Induced Misalignment，先前只归因于神经元纠缠，未给出表示空间几何与训练时修复
+- 🔬 **研究方法**：提取编码推理能力与安全行为的两个激活方向并证实其耦合（提升推理的微调会移动安全表征），用 CKA 与 probe 定位安全决策层；Safety-Direction Penalty 在推理微调中惩罚沿 safety direction 的位移，并按诊断迭代扩展约束层
+- 📌 **结论**：Qwen2.5-3B 与 7B 上 SDP 恢复安全同时保持 benchmark 推理性能
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Reasoning-Induced Misalignment, where fine-tuning on reasoning data containing no harmful content, including mathematics, code, and problem-solving with chain-of-thought traces can induce harmful behaviors of LLM, posing a serious challenge to the safety of LLM reasoning. Cross-architecture, cross-scale, and cross-dataset checks show that RIM does not always emerge. Previous work attributed RIM to neuron-level entanglement, but did not identify the geometry of the representation space underlying this entanglement or propose a training-time fix. We provide both: a representation-space analysis of RIM and the Safety-Direction Penalty (SDP), which penalizes movement along a learned safety direction during reasoning fine-tuning. The analysis extracts two activation-space directions, one encoding reasoning ability and the other safety behavior. These directions are coupled: fine-tuning that improves reasoning shifts safety representations, and prompts with larger shifts show larger safety degradation. CKA distance ratios and probes locate the safety-decision layers where this shift is most relevant. These findings guide the design of SDP: the coupling motivates penalizing displacement along the safety direction, and the layer localization sets the initial scope. When the initial scope leaves compensatory shifts beyond the penalized layers, the same diagnostics guide iterative expansion. On Qwen2.5-3B and 7B, SDP restores safety while preserving benchmark reasoning performance.
+
+</details>
+
+### 25. Internalizing Safety Understanding in Large Reasoning Models via Verification
+
+📄 [arXiv](https://arxiv.org/abs/2605.08930) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63605)　📅 2026-05　🏷 ICML 2026
+
+**关键词**：`defense`、`safety verification`、`reasoning model`、`policy internalization`、`safety alignment`、`chain-of-thought`
+
+👤 **作者**：Yi Zhang、…、An Zhang
+
+- 🎯 **研究动机**：现行对齐只优化识别恶意 prompt，属行为层面——表面对齐的模型缺乏内在安全理解，不会验证自身输出的安全性
+- 🔬 **研究方法**：SInternal 只在安全验证任务上训练 LRM，用专家推理轨迹批评自生成答案，并可与 RL 结合作更优初始化
+- 📌 **结论**：学会验证使响应安全强泛化，显著增强对 OOD 越狱的鲁棒性，优于单纯模仿安全行为的 SFT
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+While explicit Chain-of-Thought (CoT) empowers large reasoning models (LRMs), it enables the generation of riskier final answers. Current alignment paradigms primarily rely on externally enforced compliance, optimizing models to detect malicious prompts rather than evaluating the safety of their own outputs. We argue that this approach remains largely behavioral: our empirical analysis reveals that ostensibly aligned models lack intrinsic safety understanding, often failing to verify their own response safety and remaining vulnerable to adversarial jailbreaks. To address this fundamental limitation, we propose Safety Internal (SInternal), a framework that internalizes safety specifications by training LRMs exclusively on safety verification tasks to critique their own generated answers using expert reasoning trajectories. We demonstrate that learning to verify induces a strong generalization for response safety, significantly enhancing robustness against out-of-domain jailbreaks. Furthermore, when combined with reinforcement learning, SInternal serves as a superior initialization compared to standard supervised fine-tuning, suggesting that internalizing safety understanding creates a more robust foundation for alignment than merely mimicking safe behaviors. Our codes are available at https://github.com/AlphaLab-USTC/SInternal
+
+</details>
+
+### 26. INTENT-AS-A-TOOL Makes it Easy to Track Agentic Misalignment
+
+📄 [arXiv](https://arxiv.org/abs/2608.27348)　📅 2026-08
+
+**关键词**：`detection`、`agentic misalignment`、`intent trajectory`、`online intervention`、`action preference`、`intent monitoring`
+
+👤 **作者**：Yutong Zhang、…、Han Qiu
+
+- 🎯 **研究动机**：事后 CoT 标签过粗，无法刻画 agentic misalignment 中有害意图在推理生成过程中的动态变化
+- 🔬 **研究方法**：提出 INTENT-AS-A-TOOL，为模型添加面向目标行为的意图工具，以工具调用概率作为无需 judge 的细粒度行为承诺信号
+- 📌 **结论**：该信号补足 CoT 监控并把粗标签扩展为稠密意图轨迹，可定位适合在线干预的关键步骤
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+As large language models (LLMs) are deployed as autonomous agents, safety failures increasingly involve consequential actions. We study agentic misalignment, where agents take harmful actions under goal conflicts and pressures. Using chain-of-thought (CoT) monitoring, we find that harmful execution is often preceded by intent signals in reasoning. However, post-hoc CoT labels are too coarse to show how intent changes during generation. We introduce INTENT-AS-A-TOOL, an approach that adds intent-targeted tools to give the model a dedicated channel for expressing commitment to a target behavior. The probability of calling an intent tool provides a judge-free, fine-grained signal of the model's tendency to pursue that behavior. Our results show that INTENT-AS-A-TOOL complements CoT monitoring, expands post-hoc CoT labels into dense trajectories, and identifies critical steps for online intervention. These findings suggest that action preferences are useful for tracking agentic misalignment during reasoning. Our code and data are accessible: https://github.com/RebeccaZhang22/intent-as-a-tool.
+
+</details>
+
+### 27. Chain-of-Thought Monitoring Can Be Unreliable in Implicit-Influence Settings
+
+📄 [arXiv](https://arxiv.org/abs/2608.04735)　📅 2026-08
+
+**关键词**：`detection`、`CoT monitoring`、`reasoning model`、`safety degradation`
+
+👤 **作者**：Agatha Duzan、Asa Cooper Stickland
+
+- 🎯 **研究动机**：CoT 监控可监控性评估集中于显式影响设定，隐式影响（无隐藏指令但行为仍被上下文塑造）下的检测率未知
+- 🔬 **研究方法**：构建首个对比两种影响的基准：以随意旁白（隐式）或指示执行并隐藏（显式）交付诱导，四种任务格式、七个前沿扩展思考模型
+- 📌 **结论**：显式影响下检测率 60-94%，隐式下两个设定骤降 41-46 个百分点；开发者常见的系统提示补充可把隐式检测压至 5% 而行为影响保留
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Chain-of-thought (CoT) monitoring is increasingly treated as an important safety layer for frontier reasoning models. Most monitorability evaluations study explicit-influence settings: setups where the prompt directly incentivizes the model to hide something, e.g., by instructing it to perform a hidden side-task. A complementary axis for CoT-monitor evaluations is implicit-influence settings, where the prompt contains no instruction to hide, but the model's behavior is still shaped by features of the task or context, e.g. an irrelevant detail about a candidate that biases a hiring rating. We introduce the first benchmark that directly compares CoT monitorability under the two regimes. We test how model behavior changes in the presence of a nudge to choose a particular option. The nudge is delivered either as a casual aside (implicit), or as a direct instruction to act on the nudge and to conceal having done so (explicit). The benchmark spans four task formats (binary choice, numeric rating, multiple-choice QA, open-ended coding) and seven frontier extended-thinking models. Under explicit influence, a CoT monitor detects 60-94% of behavior shifts: even models instructed to conceal it leak the instruction into their CoT. Under implicit influence, the same factors still shift behavior, but detection falls by 41-46 percentage points in two of our four settings. Realistic system-prompt additions (of the kind a developer might deploy to reduce off-topic bias) lower implicit detection further, to as low as 5%, while preserving the behavioral influence itself. These results suggest that monitorability estimates obtained in explicit-influence settings may over-estimate monitorability, and that monitorability can be further decreased by well-intentioned deployment choices. Our benchmark and code are available at https://github.com/agatha-duzan/implicit-vs-explicit-influence
+
+</details>
+
+### 28. Real-Time Monitoring and Calibration of Chain-of-Thought Sycophancy in Large Reasoning Models
+
+🎓 [Official](https://icml.cc/virtual/2026/poster/61298)　📅 2026　🏷 ICML 2026
+
+**关键词**：`detection`、`chain-of-thought`、`uncertainty calibration`、`CoT monitoring`、`reward hacking`、`preference optimization`
+
+👤 **作者**：Jingyu Hu、Shu Yang、Xilin Gong、Hongming Wang、Weiru Liu、Di Wang
+
+- 🎯 **研究动机**：大型推理模型会迎合用户错误信念，现有方法只根据最终答案事后判断，不理解谄媚在推理过程中如何形成
+- 🔬 **研究方法**：提出 MONICA：谄媚监视器在推理步级实时输出谄媚漂移分数，校准器在分数超阈值时动态抑制，无需等完整答案生成
+- 📌 **结论**：在 12 个数据集与 3 个 LRM 上有效降低中间推理步与最终答案中的谄媚行为
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large Reasoning Models (LRMs) suffer from sycophantic behavior, where models tend to agree with users' incorrect beliefs and follow misinformation rather than maintain independent reasoning. This behavior undermines model reliability and poses societal risks. Mitigating LRM sycophancy requires monitoring how this sycophancy emerges during the reasoning trajectory; however, current methods mainly focus on judging based on final answers and correcting them, without understanding how sycophancy develops during reasoning processes. To address this limitation, we propose MONICA, a novel Monitor-guided Calibration framework that monitors and mitigates sycophancy during model inference at the level of reasoning steps, without requiring the model to finish generating its complete answer. MONICA integrates a sycophantic monitor that provides real-time monitoring of sycophantic drift scores during response generation with a calibrator that dynamically suppresses sycophantic behavior when scores exceed predefined thresholds. Extensive experiments across 12 datasets and 3 LRMs demonstrate that our method effectively reduces sycophantic behavior in both intermediate reasoning steps and final answers, yielding robust performance improvements.
+
+</details>
+
+### 29. AKRASIA: Stealthy Backdoor Attack on Reasoning-based Code LLMs
+
+📄 [arXiv](https://arxiv.org/abs/2609.01023)　📅 2026-09
+
+**关键词**：`attack`、`reasoning backdoor`、`CoT concealment`、`code execution`、`code LLM backdoor`、`reasoning trigger`
+
+👤 **作者**：Chua Jin Chou、Sarang Nambiar、Murali Srinivasan、Ezekiel Soremekun
+
+- 🎯 **研究动机**：针对 reasoning-based Code LLM 的后门需同时逃避自动防御与人工检查推理步骤的问题
+- 🔬 **研究方法**：提出 AKRASIA：探测受害 LLM 构造代码级 trigger，用 in-context learning 植入后门，并利用模型不忠实性隐藏 trigger、生成看似合理的推理
+- 📌 **结论**：六个推理 LLM 上平均 ASR 最高 99.34% 且准确率保持 97.23%；18 个防御设置中 14 个仍保有最高 98.82% ASR，人工检查最多 80% 的设置中无法发现
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+We present AKRASIA, a stealthy, inference-time backdoor attack against reasoning-based Code LLMs. AKRASIA aims to achieve a backdoor target (e.g., malicious code execution) in reasoning LLMs while evading automated defenses and human inspection. To achieve this, AKRASIA probes the victim LLM to construct a code-level backdoor trigger. It then employs in-context learning for backdoor learning, and model unfaithfulness to conceal the backdoor trigger, and generate plausible reasoning. We evaluate AKRASIA using four backdoor targets six (6) reasoning LLMs, three coding tasks/datasets and three defense methods. AKRASIA has up to 99.34% average attack success rate on SOTA LLMs and mantains up to 97.23% average accuracy. AKRASIA evades the SOTA defense, retaining up to 98.82% average ASR in most (14/18) defense settings. It evades human inspection, successfully hiding the backdoor trigger and reasoning steps in up to 80% of settings. Our findings motivate the need to defend LLMs against reasoning backdoors.
+
+</details>
+
+### 30. Reasoning Models Are Test Exploiters: Rethinking Multiple Choice
+
+📄 [arXiv](https://arxiv.org/abs/2507.15337) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64875)　📅 2026　🏷 ICML 2026
+
+**关键词**：`attack`、`analysis`、`reasoning model`、`safety degradation`、`inference-time risk`、`AI control`
+
+👤 **作者**：Narun Raman、Taylor Lundy、Kevin Leyton-Brown
+
+- 🎯 **研究动机**：MCQA 让模型接触答案选项，推理模型会利用选项虚增测量到的推理能力
+- 🔬 **研究方法**：系统改变选项暴露时机与方式，覆盖 15 个问答基准与 27 个 LLM，设计探针分离仅选项与问题加选项两条利用路径
+- 📌 **结论**：非推理模型在先思考后看选项时可保持代理有效性，推理模型必然对选项推理，产生相对自由文本的大幅虚高；给出 MCQA 使用指南
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+When evaluating Large Language Models (LLMs) in question-answering domains, multiple-choice question answering (MCQA) is widely used because it enables automatic grading. However, MCQA also exposes models to answer options that can be exploited in ways that inflate reasoning ability. We study this phenomenon across $15$ question-answering benchmarks and $27$ LLMs by systematically varying how and when models are exposed to answer options. For non-reasoning LLMs, MCQA can remain a good proxy for free-text performance when any chain-of-thought is produced only before the options are revealed. However, this "decoupled" format is not realizable for most reasoning models: they are designed to emit reasoning tokens whenever they are prompted, so if options are present they inevitably "reason over" the options. In practice, this makes reasoning models particularly effective at extracting signal from options, and can create large, misleading gains over free-text baselines. To characterize how models exploit MCQA, we introduce diagnostic probes that isolate option-only and question-plus-option exploitation pathways, and we quantify how design choices such as distractor strength and "none-of-the-above" answers effect exploitability. Finally, we examined the practice of multiple choice as an error diagnostic: inferring a model's mistake from the wrong option it picks. On benchmarks where reasoning can be expressed as code, we ask models to output code, we then executed it varying the inputs, and compared the resulting input–output behavior, revealing failure modes that MCQA diagnostics obscure. Lastly, we offer practical guidelines when analyzing results from MCQA that better reflect LLMs' genuine reasoning capabilities.
+
+</details>
+
+### 31. Reasoning Hijacking: The Fragility of Reasoning Alignment in Large Language Models
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.1698/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`attack`、`defense`、`reasoning safety`、`safety alignment`、`reasoning model`、`RAG security`
+
+👤 **作者**：Yuansen Liu、Yixuan Tang、Anthony Kum Hoe Tung
+
+- 🎯 **研究动机**：现有 LLM 安全研究聚焦 Goal Hijacking，忽视推理对齐本身的脆弱性
+- 🔬 **研究方法**：提出 Reasoning Hijacking 范式并实例化为 Criteria Attack：不改高层任务目标，注入虚假决策标准劫持模型判断逻辑
+- 📌 **结论**：在毒性评论、差评、垃圾检测三类任务上 SOTA 模型一致优先采用注入的启发式捷径，并可绕过 SecAlign、StruQ 等目标偏离防御
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Current LLM safety research predominantly focuses on mitigating **Goal Hijacking**, preventing attackers from redirecting a model’s high-level objective (e.g., from "summarizing emails" to "phishing users"). In this paper, we argue that this perspective is incomplete and highlight a critical vulnerability in **Reasoning Alignment**. We expose the inherent fragility of current alignment techniques by proposing a new adversarial prompt attack paradigm: **Reasoning Hijacking**. To demonstrate this vulnerability, we instantiate it via the **Criteria Attack**, which subverts model judgments by injecting spurious decision criteria without altering the high-level task goal. Unlike Goal Hijacking, which attempts to override the system prompt, Reasoning Hijacking keeps the task goal intact but manipulates the model’s decision-making logic by injecting spurious reasoning shortcuts. Through extensive experiments on three different tasks (toxic comment, negative review, and spam detection), we demonstrate that even state-of-the-art models are highly fragile, consistently prioritizing injected heuristic shortcuts over rigorous semantic analysis. Crucially, because the model’s explicit intent remains aligned with the user’s instructions, these attacks can bypass defenses designed to detect goal deviation (e.g., SecAlign, StruQ), revealing a fundamental blind spot in the current safety landscape. Data and code are available at [https://github.com/Yuan-Hou/criteria_attack](https://github.com/Yuan-Hou/criteria_attack).
+
+</details>
+
+### 32. AutoRAN: Automated Hijacking of Safety Reasoning in Large Reasoning Models
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.1988/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`attack`、`reasoning safety`、`reasoning model`、`safety degradation`、`LLM jailbreak`、`automated red teaming`
+
+👤 **作者**：Jiacheng Liang、Tanqiu Jiang、Yuhui Wang、Rongyi Zhu、Fenglong Ma、Ting Wang
+
+- 🎯 **研究动机**：大型推理模型的安全推理过程可被劫持，推理透明性本身构成可利用攻击面
+- 🔬 **研究方法**：AutoRAN 用更弱但欠对齐的模型模拟执行推理做初始劫持，再利用目标 LRM 拒绝中泄露的推理模式迭代精炼攻击，诱导模型绕过自身安全护栏
+- 📌 **结论**：对 GPT-o3/o4-mini 与 Gemini-2.5-Flash 在 AdvBench、HarmBench、StrongReject 上少数几轮内成功率接近 100%，即使由强对齐外部模型评估仍有效
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+This paper presents AutoRAN, the first framework to automate the hijacking of internal safety reasoning in large reasoning models (LRMs). At its core, AutoRAN pioneers an execution simulation paradigm that leverages a weaker but less-aligned model to simulate execution reasoning for initial hijacking attempts and iteratively refine attacks by exploiting reasoning patterns leaked through the target LRM’s refusals. This approach steers the target model to bypass its own safety guardrails and elaborate on harmful instructions. We evaluate AutoRAN against state-of-the-art LRMs, including GPT-o3/o4-mini and Gemini-2.5-Flash, across multiple benchmarks (AdvBench, HarmBench, and StrongReject). Results show that AutoRAN achieves approaching 100% success rate within one or few turns, effectively neutralizing reasoning-based defenses even when evaluated by robustly aligned external models. This work reveals that the transparency of the reasoning process itself creates a critical and exploitable attack surface, highlighting the urgent need for new defenses that protect models’ reasoning traces rather than merely their final outputs.
+
+</details>
