@@ -263,7 +263,7 @@ Large Language Models (LLMs) remain highly vulnerable to jailbreak attacks, yet 
 
 ### 14. Response-Based Knowledge Distillation for Multilingual Jailbreak Prevention Unwittingly Compromises Safety
 
-📄 [arXiv](https://arxiv.org/abs/2602.11157)　📅 2025-12　🏷 NeurIPS 2025
+📄 [arXiv](https://arxiv.org/abs/2602.11157)　📅 2025-12　🏷 NeurIPS 2025 Workshop
 
 **关键词**：`analysis`、`multilingual distillation`、`refusal imitation`、`safety regression`
 
@@ -679,26 +679,7 @@ Although Large Language Models (LLMs) are aligned to optimize for both helpfulne
 
 </details>
 
-### 36. Decoy Images Amplify Caption-Mediated Defenses Against Encoded Jailbreaks
-
-📄 [arXiv](https://arxiv.org/abs/2608.01043)　📅 2026-08
-
-**关键词**：`defense`、`jailbreak`、`jailbreak defense`、`harmful intent detection`
-
-👤 **作者**：Haoyu Zhang、Xiangchen Guan、Shibo Zheng、Mohammad Zandsalimy、Shanu Sushmita
-
-- 🎯 **研究动机**：编码越狱 prompt 配上无关诱饵图像会大幅改变黑盒防御效果，该管线交互未被理解
-- 🔬 **研究方法**：在五个前沿 VLM、两族编码攻击、三种黑盒防御上配对诱饵图像做对照实验，并用轻量编码输入检测器门控附图
-- 📌 **结论**：诱饵图使 ECSO 的 ASR 最多降 73 个百分点，但无条件附图把良性拒答推高至 20-79%；检测器门控可在保留安全收益的同时回到文本基线
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-We report a counter-intuitive interaction between image inputs and existing black-box defenses on Vision--Language Models (VLMs): pairing an encoded jailbreak prompt with an unrelated decoy image can sharply lower attack success rate (ASR). The operative change is in the defense pipeline, not in the image. Across five frontier VLMs, two encoded-attack families, and three black-box defenses, a caption-mediated defense (ECSO) that leaves ASR essentially unchanged on text-only encoded input drops it by up to $73$pp once a content-free decoy is attached; every non-saturated contrast is significant under exact McNemar tests. We advance two hypotheses for this pattern, supported by indirect evidence rather than pipeline introspection, since a black-box threat model precludes inspecting vendor internals: caption-mediated defenses branch on image presence, and intrinsic image-side safety engages on image-resident content. Three controls constrain the explanation. Blank-canvas and natural-photograph decoys reproduce the effect on every model, implicating image presence rather than content; the effect replicates on three open-weight VLMs served with no moderation layer, so it is not a vendor-filtering artifact; and a non-symbolic, meaning-based encoder reproduces it, so it is not specific to symbolic obfuscation. Attaching a decoy unconditionally is not deployable --- it raises benign refusal to $20$--$79\%$, an inflation of $+10$ to $+67$pp --- but gating attachment on a lightweight encoded-input detector returns benign refusal to the text baseline while preserving the safety gain wherever the detector fires, making detector recall the binding constraint. Under adaptive attacks that target the caption-mediated re-check, the effect degrades but holds. We frame this as an observation about pipeline interaction, not as a robust defense.
-
-</details>
-
-### 37. SafeSpec: Fast and Safe LLM via Dynamic Reflective Sampling
+### 36. SafeSpec: Fast and Safe LLM via Dynamic Reflective Sampling
 
 📄 [arXiv](https://arxiv.org/abs/2606.19755) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64117)　📅 2026-06　🏷 ICML 2026
 
@@ -717,7 +698,7 @@ Speculative inference accelerates large language model (LLM) decoding but provid
 
 </details>
 
-### 38. Latent Space Refusal Anchoring for Low-Resource African Languages: Mechanistic Safety Recovery Without Retraining
+### 37. Latent Space Refusal Anchoring for Low-Resource African Languages: Mechanistic Safety Recovery Without Retraining
 
 📄 [arXiv](https://arxiv.org/abs/2608.18089) · 📝 [OpenReview](https://openreview.net/forum?id=4UwS3bn1fB)　📅 2026-08
 
@@ -736,7 +717,7 @@ Instruction-tuned models often refuse harmful requests in English but comply wit
 
 </details>
 
-### 39. Defending Jailbreak Attacks on Large Language Models via Manifold Trajectory Kinetics
+### 38. Defending Jailbreak Attacks on Large Language Models via Manifold Trajectory Kinetics
 
 📄 [arXiv](https://arxiv.org/abs/2606.07335) · 🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/zhang-hangtao)　📅 2026-06　🏷 USENIX Security 2026
 
@@ -755,7 +736,7 @@ Jailbreak prompts can bypass alignment guardrails in large language models (LLMs
 
 </details>
 
-### 40. THRD: A Training-Free Multi-Turn Defense Framework for Jailbreak Attacks on Large Language Models
+### 39. THRD: A Training-Free Multi-Turn Defense Framework for Jailbreak Attacks on Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2606.01738)　📅 2026-06
 
@@ -774,7 +755,7 @@ Multi-turn jailbreak attacks pose a growing threat to LLMs by exploiting convers
 
 </details>
 
-### 41. REFLECTOR: Internalizing Step-wise Reflection against Indirect Jailbreak
+### 40. REFLECTOR: Internalizing Step-wise Reflection against Indirect Jailbreak
 
 📄 [arXiv](https://arxiv.org/abs/2605.20654) · 🎓 [Official](https://icml.cc/virtual/2026/poster/60648)　📅 2026-05　🏷 ICML 2026
 
@@ -793,7 +774,7 @@ While Large Language Models (LLMs) demonstrate remarkable capabilities, they rem
 
 </details>
 
-### 42. Mitigating Many-shot Jailbreak Attacks with One Single Demonstration
+### 41. Mitigating Many-shot Jailbreak Attacks with One Single Demonstration
 
 📄 [arXiv](https://arxiv.org/abs/2605.08277)　📅 2026-05
 
@@ -812,7 +793,7 @@ Many-shot jailbreaking (MSJ) causes safety-aligned language models to answer har
 
 </details>
 
-### 43. Contrastive Reasoning Alignment: Reinforcement Learning from Hidden Representations
+### 42. Contrastive Reasoning Alignment: Reinforcement Learning from Hidden Representations
 
 📄 [arXiv](https://arxiv.org/abs/2603.17305) · 🎓 [Official](https://icml.cc/virtual/2026/poster/66283)　📅 2026-03　🏷 ICML 2026
 
@@ -831,7 +812,7 @@ We propose CRAFT, a red-teaming alignment framework that leverages model reasoni
 
 </details>
 
-### 44. HoneyTrap: Deceiving Large Language Model Attackers to Honeypot Traps with Resilient Multi-Agent Defense
+### 43. HoneyTrap: Deceiving Large Language Model Attackers to Honeypot Traps with Resilient Multi-Agent Defense
 
 📄 [arXiv](https://arxiv.org/abs/2601.04034)　📅 2026-01
 
@@ -850,7 +831,7 @@ Jailbreak attacks pose significant threats to large language models (LLMs), enab
 
 </details>
 
-### 45. SpatialJB: How Text Distribution Art Becomes The "Jailbreak Key" for LLM Guardrails
+### 44. SpatialJB: How Text Distribution Art Becomes The "Jailbreak Key" for LLM Guardrails
 
 📄 [arXiv](https://arxiv.org/abs/2601.09321) · 🌐 [Project](https://1drv.ms/v/s!ApaP6YaJA87pgk-Rk7ZCvPeYcIZa?e=J8kbg0) · 🎓 [Official](https://icml.cc/virtual/2026/poster/65200)　📅 2026　🏷 ICML 2026
 
@@ -869,7 +850,7 @@ While Large Language Models (LLMs) have achieved remarkable success across diver
 
 </details>
 
-### 46. SafetyMem: Adaptive Jailbreak Defense via Dual-Component Safety Memory
+### 45. SafetyMem: Adaptive Jailbreak Defense via Dual-Component Safety Memory
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1168/)　📅 2026　🏷 ACL 2026
 
@@ -888,7 +869,7 @@ Current defenses for Large Language Models (LLMs) often suffer from a ”memory 
 
 </details>
 
-### 47. Retrieval-Augmented Defense: Adaptive and Controllable Jailbreak Prevention for Large Language Models
+### 46. Retrieval-Augmented Defense: Adaptive and Controllable Jailbreak Prevention for Large Language Models
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1895/)　📅 2026　🏷 ACL 2026
 
@@ -907,7 +888,7 @@ Large Language Models (LLMs) remain vulnerable to jailbreak attacks, which attem
 
 </details>
 
-### 48. RedDebate: Safer Responses Through Multi-Agent Red Teaming Debates
+### 47. RedDebate: Safer Responses Through Multi-Agent Red Teaming Debates
 
 📄 [arXiv](https://arxiv.org/abs/2506.11083) · 🎓 [Official](https://icml.cc/virtual/2026/poster/66085)　📅 2026　🏷 ICML 2026
 
@@ -926,7 +907,7 @@ We introduce RedDebate, a novel multi-agent debate framework that provides the f
 
 </details>
 
-### 49. Defenses Against Prompt Attacks Learn Surface Heuristics
+### 48. Defenses Against Prompt Attacks Learn Surface Heuristics
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.502/)　📅 2026　🏷 ACL 2026
 
@@ -945,26 +926,7 @@ Large language models (LLMs) are increasingly deployed in security-sensitive app
 
 </details>
 
-### 50. Controlling the Risk of Corrupted Contexts for Language Models via Early-Exiting
-
-📄 [arXiv](https://arxiv.org/abs/2510.02480) · 🎓 [Official](https://icml.cc/virtual/2026/poster/65947)　📅 2026　🏷 ICML 2026
-
-**关键词**：`defense`、`jailbreak defense`、`harmful intent detection`、`utility preservation`、`safety alignment`、`mechanistic analysis`
-
-👤 **作者**：Andrea Wynn、…、Eric Nalisnick
-
-- 🎯 **研究动机**：有害或无关上下文会显著损害 LLM 下游性能，需要内置机制防垃圾进垃圾出
-- 🔬 **研究方法**：以零上下文 zero-shot 性能为安全基线，用 distribution-free risk control 控制上下文使性能跌破基线的程度：动态早退预测并忽略最关注不安全输入的后续注意力头
-- 📌 **结论**：九个任务上有效控制有害上下文风险，同时对有益上下文获得显著计算效率提升
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Large language models (LLMs) can be influenced by harmful or irrelevant context, which can significantly harm model performance on downstream tasks. This motivates principled designs in which LLM systems include built-in mechanisms to guard against such "garbage in, garbage out" scenarios. We propose a novel approach to limit the degree to which harmful context can degrade model performance. First, we define a baseline "safe" behavior for the model -- the model's performance given no context at all (zero-shot). Next, we apply distribution-free risk control (DFRC) to control the extent to which the user-provided context can decay performance below this safe zero-shot baseline. We achieve this by leveraging dynamic early exit prediction, ignoring later attention heads that attend the most to the unsafe inputs. Finally, we propose modifications to DFRC that allow it to both control risk for harmful inputs and leverage performance and efficiency gains on helpful inputs. We present both theoretical and empirical results across 9 tasks spanning in-context learning and open-ended question answering, showing that our approach can effectively control risk for harmful context and simultaneously achieve substantial computational efficiency gains with helpful context.
-
-</details>
-
-### 51. Stay in Character, Stay Safe: Dual-Cycle Adversarial Self-Evolution for Role-Playing Agents
+### 49. Stay in Character, Stay Safe: Dual-Cycle Adversarial Self-Evolution for Role-Playing Agents
 
 🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/5873.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track)　📅 2026
 
@@ -981,7 +943,7 @@ LLM-based role-playing has rapidly improved in fidelity, yet stronger adherence 
 
 </details>
 
-### 52. Towards Comprehensive Post Safety Alignment of Large Language Models via Safety Patching
+### 50. Towards Comprehensive Post Safety Alignment of Large Language Models via Safety Patching
 
 📄 [arXiv](https://arxiv.org/abs/2405.13820) · 🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/7176.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track)　📅 2026
 
@@ -1000,7 +962,7 @@ Safety alignment of large language models (LLMs) has been gaining increasing att
 
 </details>
 
-### 53. X-Boundary: Establishing Exact Safety Boundaries via Dual-Objective Optimization
+### 51. X-Boundary: Establishing Exact Safety Boundaries via Dual-Objective Optimization
 
 🎓 [Official](https://aclanthology.org/2025.findings-emnlp.282/)　📅 2025-11　🏷 EMNLP 2025
 
@@ -1019,7 +981,7 @@ With the widespread application of large language models (LLMs) across various d
 
 </details>
 
-### 54. Proactive defense against LLM Jailbreak
+### 52. Proactive defense against LLM Jailbreak
 
 📄 [arXiv](https://arxiv.org/abs/2510.05052)　📅 2025-10
 
@@ -1038,7 +1000,7 @@ The proliferation of powerful large language models (LLMs) has necessitated robu
 
 </details>
 
-### 55. Bypassing Prompt Guards in Production with Controlled-Release Prompting
+### 53. Bypassing Prompt Guards in Production with Controlled-Release Prompting
 
 📄 [arXiv](https://arxiv.org/abs/2510.01529) · 🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/fairoze)　📅 2025-10　🏷 USENIX Security 2026
 
@@ -1057,7 +1019,7 @@ Ball et al. recently established that prompt filtering for AI alignment faces a 
 
 </details>
 
-### 56. MTSA: Multi-Turn Safety Alignment for Large Language Models
+### 54. MTSA: Multi-Turn Safety Alignment for Large Language Models
 
 🎓 [Official](https://aclanthology.org/2025.acl-long.1282/)　📅 2025-07　🏷 ACL 2025
 
@@ -1076,7 +1038,7 @@ The proliferation of jailbreak attacks against large language models (LLMs) high
 
 </details>
 
-### 57. Validity-Aware Jailbreak Evaluation for Large Language Models
+### 55. Validity-Aware Jailbreak Evaluation for Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2609.00498)　📅 2026-09
 
@@ -1095,7 +1057,7 @@ Jailbreak robustness has become central to large language model (LLM) safety eva
 
 </details>
 
-### 58. NeuronFuzz: Safety Neuron Guided Fuzzing for LLM Safety Evaluation
+### 56. NeuronFuzz: Safety Neuron Guided Fuzzing for LLM Safety Evaluation
 
 📄 [arXiv](https://arxiv.org/abs/2608.26222)　📅 2026-08
 
@@ -1114,7 +1076,7 @@ Safety evaluation is critical for assessing whether aligned Large Language Model
 
 </details>
 
-### 59. Are LLMs Safe Beyond Text: Do Emojis Expose Gaps in Safety Evaluation
+### 57. Are LLMs Safe Beyond Text: Do Emojis Expose Gaps in Safety Evaluation
 
 📄 [arXiv](https://arxiv.org/abs/2608.18164)　📅 2026-08
 
@@ -1133,7 +1095,7 @@ Safety evaluations of large language models (LLMs) predominantly rely on text-ba
 
 </details>
 
-### 60. Fair ASR: Re-Evaluating Black-Box Jailbreaks under Shared Target-Call Budgets
+### 58. Fair ASR: Re-Evaluating Black-Box Jailbreaks under Shared Target-Call Budgets
 
 📄 [arXiv](https://arxiv.org/abs/2608.17360)　📅 2026-08
 
@@ -1152,7 +1114,7 @@ Reliable jailbreak evaluation is essential for assessing LLM safety, but most ex
 
 </details>
 
-### 61. TRACE: Trajectory Aware Reasoning for Multi-Turn Adversarial Conversation Evaluation
+### 59. TRACE: Trajectory Aware Reasoning for Multi-Turn Adversarial Conversation Evaluation
 
 📄 [arXiv](https://arxiv.org/abs/2608.15594)　📅 2026-08
 
@@ -1171,7 +1133,7 @@ Multi-turn jailbreak attacks have emerged as a critical safety threat to LLMs, a
 
 </details>
 
-### 62. MultiBreak: A Scalable and Diverse Multi-turn Jailbreak Benchmark for Evaluating LLM Safety
+### 60. MultiBreak: A Scalable and Diverse Multi-turn Jailbreak Benchmark for Evaluating LLM Safety
 
 📄 [arXiv](https://arxiv.org/abs/2605.01687) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63523)　📅 2026　🏷 ICML 2026
 
@@ -1190,7 +1152,7 @@ We present MultiBreak, a scalable and diverse multi-turn jailbreak benchmark to 
 
 </details>
 
-### 63. Can Small Language Models Reliably Resist Jailbreak Attacks? A Comprehensive Evaluation
+### 61. Can Small Language Models Reliably Resist Jailbreak Attacks? A Comprehensive Evaluation
 
 📄 [arXiv](https://arxiv.org/abs/2503.06519) · 🎓 [Official](https://www.sigsac.org/ccs/CCS2026/program/accepted-papers.html)　📅 2025-03　🏷 ACM CCS 2026
 
@@ -1209,7 +1171,7 @@ Small language models (SLMs) have emerged as promising alternatives to large lan
 
 </details>
 
-### 64. DualSentinel: A Lightweight Framework for Detecting Targeted Attacks in Black-box LLM via Dual Entropy Lull Pattern
+### 62. DualSentinel: A Lightweight Framework for Detecting Targeted Attacks in Black-box LLM via Dual Entropy Lull Pattern
 
 📄 [arXiv](https://arxiv.org/abs/2603.01574) · 🌐 [Project](https://zenodo.org/records/18479273) · 🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/pang-xiaoyi)　📅 2026-03　🏷 USENIX Security 2026
 
@@ -1228,7 +1190,7 @@ Recent intelligent systems integrate powerful Large Language Models (LLMs) throu
 
 </details>
 
-### 65. One Bad Token Spoils the Barrel: Assessment, Detection, and Remediation of Glitch Tokens in Large Language Models
+### 63. One Bad Token Spoils the Barrel: Assessment, Detection, and Remediation of Glitch Tokens in Large Language Models
 
 🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/tang-kunsheng)　📅 2026　🏷 USENIX Security 2026
 
@@ -1247,7 +1209,7 @@ Large Language Models (LLMs) have shown remarkable capabilities across numerous 
 
 </details>
 
-### 66. Detecting What Queries Seek: Steering LLM Safety with FFN Output Activation Monitoring
+### 64. Detecting What Queries Seek: Steering LLM Safety with FFN Output Activation Monitoring
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1360/)　📅 2026　🏷 ACL 2026
 
@@ -1266,7 +1228,7 @@ Recently, activation steering has attracted considerable attention as a low-cost
 
 </details>
 
-### 67. Detecting Fluent Optimization-Based Adversarial Prompts via Sequential Entropy Changes
+### 65. Detecting Fluent Optimization-Based Adversarial Prompts via Sequential Entropy Changes
 
 📄 [arXiv](https://arxiv.org/abs/2605.19966) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61448)　📅 2026　🏷 ICML 2026
 
@@ -1285,7 +1247,7 @@ Optimization-based adversarial suffixes can jailbreak aligned large language mod
 
 </details>
 
-### 68. Beyond Surface-Level Detection: Towards Cognitive-Driven Defense Against Jailbreak Attacks via Meta-Operations Reasoning
+### 66. Beyond Surface-Level Detection: Towards Cognitive-Driven Defense Against Jailbreak Attacks via Meta-Operations Reasoning
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.125/)　📅 2026　🏷 ACL 2026
 
@@ -1304,7 +1266,7 @@ Defending large language models (LLMs) against jailbreak attacks is essential fo
 
 </details>
 
-### 69. A Single Suffix to Break Them All: Basin-Aware Jailbreaks for Merged Model Families
+### 67. A Single Suffix to Break Them All: Basin-Aware Jailbreaks for Merged Model Families
 
 📄 [arXiv](https://arxiv.org/abs/2608.26506)　📅 2026-08
 
@@ -1323,7 +1285,7 @@ Model merging enables combining multiple fine-tuned models without additional tr
 
 </details>
 
-### 70. PsychJail: Exploring Psychological Jailbreaks via Multi-Turn Persuasion of LLM Policies
+### 68. PsychJail: Exploring Psychological Jailbreaks via Multi-Turn Persuasion of LLM Policies
 
 📄 [arXiv](https://arxiv.org/abs/2608.23028)　📅 2026-08
 
@@ -1342,26 +1304,7 @@ Large language models (LLMs) are increasingly deployed in education, healthcare,
 
 </details>
 
-### 71. STARE: Step-wise Temporal Alignment and Red-teaming Engine for Multi-modal Toxicity Attack
-
-📄 [arXiv](https://arxiv.org/abs/2605.00699) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64616)　📅 2026　🏷 ICML 2026
-
-**关键词**：`attack`、`jailbreak defense`、`harmful intent detection`、`utility preservation`、`prompt injection`、`reinforcement learning`
-
-👤 **作者**：Xutao Mao、Liangjie Zhao、Tao Liu、Xiang Zheng、Hongying Zan、Cong Wang
-
-- 🎯 **研究动机**：VLM 红队把图像生成当黑盒、只看终端毒性分，对多步合成中毒性语义何时涌现时间上不透明
-- 🔬 **研究方法**：提出 STARE 分层强化学习框架把去噪轨迹当攻击面：高层提示编辑器与低层 T2I 微调经 GRPO 协同优化
-- 📌 **结论**：ASR 较 SOTA 黑盒白盒基线提升 68%；发现 Optimization-Induced Phase Alignment：概念性危害集中到早期语义阶段、细节危害集中到晚期精修，形成可预测的脆弱窗口
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Red-teaming Vision-Language Models is essential for identifying vulnerabilities where adversarial image-text inputs trigger toxic outputs. Existing approaches treat image generation as a black box, providing only terminal toxicity scores while remaining temporally opaque regarding when and how toxic semantics emerge during multi-step synthesis. We introduce $\textbf{STARE}$, a hierarchical reinforcement learning framework that treats the denoising trajectory as an exploitable attack surface. By synergizing a high-level prompt editor with low-level T2I fine-tuning via Group Relative Policy Optimization (GRPO), STARE achieves a 68\% improvement in Attack Success Rate over state-of-the-art baselines including black box and white-box variants. More importantly, we reveal the Optimization-Induced Phase Alignment phenomenon: while vanilla models exhibit diffuse toxicity, adversarial optimization systematically concentrates conceptual harms into early semantic phases and detail-oriented harms into late refinement. This discovery transforms toxicity formation from a chaotic process into a series of predictable vulnerability windows. This temporal alignment transforms red-teaming from a trial-and-error process into a targeted structural analysis. Our work provides both a potent attack engine and a diagnostic foundation for developing next-generation, phase-aware safety mechanisms. Content warning: This paper contains examples of toxic content that may be offensive or disturbing.
-
-</details>
-
-### 72. Quantifying Large Language Model Attacks Through the Lens of Model Cognition
+### 69. Quantifying Large Language Model Attacks Through the Lens of Model Cognition
 
 🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/liu-xiuming)　📅 2026　🏷 USENIX Security 2026
 
@@ -1380,7 +1323,7 @@ Large language models (LLMs) are vulnerable to malicious inputs that elicit harm
 
 </details>
 
-### 73. Enforcing LLM Safety through DMD-based Classification of Prompt-Response Embedding Dynamics
+### 70. Enforcing LLM Safety through DMD-based Classification of Prompt-Response Embedding Dynamics
 
 📄 [arXiv](https://arxiv.org/abs/2608.19579)　📅 2026-08
 
@@ -1396,5 +1339,119 @@ Large language models (LLMs) are vulnerable to malicious inputs that elicit harm
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 Large Language Models (LLMs) are increasingly deployed in high-stakes applications, yet their tendency to generate toxic, harmful, or policy-violating content poses significant risks. Detecting these unsafe outputs efficiently in a black-box manner remains an open challenge. In this paper, we extend a recently proposed dynamical systems framework designed for hallucination detection to LLM safety classification. By projecting both prompts and responses into high-dimensional embedding spaces and fitting separate Koopman-based predictive models for safe and unsafe regimes, we classify new outputs using a new differential residual score that compares prediction errors of the safe and unsafe regimes. A key contribution is the incorporation of the prompt and response embedding dynamics, yielding fitted Koopman operators that capture crucial interaction patterns. We evaluate our black-box method across three safety benchmarks using three embedding models. Our results show that incorporating prompt embeddings yields consistent improvements, particularly for interaction-dependent violations when paired with causal decoders (e.g., in Llama-3), while response-only violations benefit more from dense semantic embedding representations. These findings opens the door for using dynamical systems to analyze AI systems rather than the dominant paradigm of using AI to model dynamical systems.
+
+</details>
+
+### 71. On Prompt-Driven Safeguarding for Large Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2401.18018) · 🌐 [Project](https://proceedings.mlr.press/v235/zheng24n.html)　📅 2024-01　🏷 ICML 2024
+
+**关键词**：`defense`、`soft safety prompt`、`directed representation optimization`、`refusal direction`
+
+👤 **作者**：Chujie Zheng、…、Nanyun Peng
+
+- 🎯 **研究动机**：安全提示的底层机制未被解释，限制了对其自动优化以提升安全性
+- 🔬 **研究方法**：发现安全提示把查询表示移向更高拒答方向（连无害查询也更易被拒），而 LLM 天然可区分有害无害；DRO 把安全提示作连续可训练嵌入，按有害性沿或逆拒答方向移动表示
+- 📌 **结论**：八个 LLM 在域外与越狱基准上显著提升防护效果且不损通用性能
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Prepending model inputs with safety prompts is a common practice for safeguarding large language models (LLMs) against queries with harmful intents. However, the underlying working mechanisms of safety prompts have not been unraveled yet, restricting the possibility of automatically optimizing them to improve LLM safety. In this work, we investigate how LLMs’ behavior (i.e., complying with or refusing user queries) is affected by safety prompts from the perspective of model representation. We find that in the representation space, the input queries are typically moved by safety prompts in a "higher-refusal" direction, in which models become more prone to refusing to provide assistance, even when the queries are harmless. On the other hand, LLMs are naturally capable of distinguishing harmful and harmless queries without safety prompts. Inspired by these findings, we propose a method for safety prompt optimization, namely DRO (Directed Representation Optimization). Treating a safety prompt as continuous, trainable embeddings, DRO learns to move the queries’ representations along or opposite the refusal direction, depending on their harmfulness. Experiments with eight LLMs on out-of-domain and jailbreak benchmarks demonstrate that DRO remarkably improves the safeguarding performance of human-crafted safety prompts, without compromising the models’ general performance.
+
+</details>
+
+### 72. Tripwire: Triggering Aligned Refusal via Statistically Certified Safety Neurons
+
+📄 [arXiv](https://arxiv.org/abs/2608.14392) · 🌐 [Project](https://anonymous.4open.science/r/Tripwire-65C4)　📅 2026-08
+
+**关键词**：`defense`、`analysis`、`detector-gated intervention`、`safety neuron`、`utility preservation`、`jailbreak`
+
+👤 **作者**：Wei Zhao、Zhe Li、Peixin Zhang、Jun Sun
+
+- 🎯 **研究动机**：神经元级越狱防御或干预面大损效用、或误伤效用神经元，且常开干预扰动每个良性请求
+- 🔬 **研究方法**：Tripwire 免训练：FDR 控制下逐神经元假设检验加效用特异性过滤识别安全神经元，触发式 clamp 钉住激活于有害条件均值以诱发对齐学到的拒答；支持检测门控推理与离线 bias-patch 两种等价部署
+- 📌 **结论**：四个对齐 LLM、四种攻击下平均 ASR 降至至多 2.0%，MT-Bench 效用损失仅 0.5-5.3%，为所有防御中最小
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Neuron- and path-level interventions offer the finest-grained route to defending large language models (LLMs) against jailbreak attacks, yet existing methods fall short of this promise, i.e., they often compromise model utility significantly. Specifically, one line of work suppresses toxic neurons to erase harmful semantics, but since such semantics are distributed across the network, blocking every pathway forces a large intervention footprint. An alternative line of research focus on identify safety neurons using external classifiers. While promising, the existing approaches suffer from compromising neurons that are important for the model utility as well. Moreover, both approaches remain always on and thus perturb every benign request even when no attack is present. To address these limitations, we present \ours{}, a training-free defense that first identifies safety-specific neurons through per-neuron hypothesis tests under false-discovery-rate control together with a utility-specificity filter. Based on this identification, a trigger-style clamp holds the selected neurons at their harmful-conditional mean activations, injecting an internal harmful-input signal that triggers the refusal behavior learned during alignment. The clamp is then realized by two provably equivalent deployment modes, namely a detector-gated inference-time intervention and an offline bias-patch weight edit. Extensive experiments across four safety-aligned LLMs and four representative attacks demonstrate that \ours{} reduces the average attack success rate to at most 2.0\% while incurring a utility drop of only 0.5\% to 5.3\% on MT-Bench, the smallest among all defenses. Code is available at https://anonymous.4open.science/r/Tripwire-65C4.
+
+</details>
+
+### 73. Evaluating Answer Leakage Robustness of LLM Tutors against Adversarial Student Attacks
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.1412/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`benchmark`、`adversarial robustness`、`privacy leakage`、`memorization`、`LLM privacy`、`data leakage`
+
+👤 **作者**：Jin Zhao、Marta Knežević、Tanja Käser
+
+- 🎯 **研究动机**：以往答案泄露评测假设善意学习者，LLM 导师在学生滥用下的鲁棒性未被探索
+- 🔬 **研究方法**：把六组对抗与说服技术适配到教育场景探测导师泄露答案倾向，提出微调越狱对抗学生 agent 作标准化基准核心，并给防御策略
+- 📌 **结论**：通用对抗学生 agent 常攻击失败而微调越狱 agent 有效；简单防御可降低答案泄露并增强鲁棒性
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large Language Models (LLMs) are increasingly used in education, yet their default helpfulness often conflicts with pedagogical principles. Prior work evaluates pedagogical quality via answer leakage–the disclosure of complete solutions instead of scaffolding–but typically assumes well-intentioned learners, leaving tutor robustness under student misuse largely unexplored. In this paper, we study scenarios where students behave adversarially and aim to obtain the correct answer from the tutor. We evaluate a broad set of LLM-based tutor models, including different model families, pedagogically aligned models, and a multi-agent design, under a range of adversarial student attacks. We adapt six groups of adversarial and persuasive techniques to the educational setting and use them to probe how likely a tutor is to reveal the final answer. We evaluate answer leakage robustness using different types of in-context adversarial student agents, finding that they often fail to carry out effective attacks. We therefore introduce an adversarial student agent that we fine-tune to jailbreak LLM-based tutors, which we propose as the core of a standardized benchmark for evaluating tutor robustness. Finally, we present simple but effective defense strategies that reduce answer leakage and strengthen the robustness of LLM-based tutors in adversarial scenarios.
+
+</details>
+
+### 74. HarDBench: A Benchmark for Draft-Based Co-Authoring Jailbreak Attacks for Safe Human–LLM Collaborative Writing
+
+🌐 [Project](https://anonymous.4open.science/r/HarDBench_data-17E4) · 🎓 [Official](https://aclanthology.org/2026.acl-long.1893/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`benchmark`、`LLM jailbreak`、`jailbreak`、`harmful fine-tuning`、`automated red teaming`、`attack transferability`
+
+👤 **作者**：EunTae Kim、Soomin Han、Buru Chang
+
+- 🎯 **研究动机**：LLM 协作写作中恶意用户可填充危险草稿诱导有害补全，模型对此脆弱性未知
+- 🔬 **研究方法**：HarDBench 覆盖爆炸物、毒品、武器、网络攻击等高危域的结构化草稿补全提示，并提出基于偏好优化的安全-效用平衡对齐方法
+- 📌 **结论**：现有 LLM 在协作写作上下文中高度脆弱；对齐方法显著减少有害输出且不损协作能力
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models (LLMs) are increasingly used as co-authors in collaborative writing, where users begin with rough drafts and rely on LLMs to complete, revise, and refine their content. However, this capability poses a serious safety risk: malicious users could jailbreak the models—filling incomplete drafts with dangerous content—to force them into generating harmful outputs. In this paper, we identify the vulnerability of current LLMs to such draft-based co-authoring jailbreak attacks and introduce HarDBench, a systematic benchmark designed to evaluate the robustness of LLMs against this emerging threat. HarDBench spans a range of high-risk domains—including Explosives, Drugs, Weapons, and Cyberattacks—and features prompts with realistic structure and domain-specific cues to assess the model susceptibility to harmful completions. To mitigate this risk, we introduce a safety-utility balanced alignment approach based on preference optimization, training models to refuse harmful completions while remaining helpful on benign drafts. Experimental results show that existing LLMs are highly vulnerable in co-authoring contexts and our alignment method significantly reduces harmful outputs without degrading performance on co-authoring capabilities. This presents a new paradigm for evaluating and aligning LLMs in human-LLM collaborative writing settings. Our new benchmark and dataset are available on our project page at https://anonymous.4open.science/r/HarDBench_data-17E4.
+
+</details>
+
+### 75. MAGIC: A Co-Evolving Attacker–Defender Adversarial Game for Robust LLM Safety
+
+📄 [arXiv](https://arxiv.org/abs/2602.01539) · 🎓 [Official](https://icml.cc/virtual/2026/poster/62756)　📅 2026-02　🏷 ICML 2026
+
+**关键词**：`defense`、`attack`、`adversarial attack`、`adversarial robustness`、`adversarial example`、`multi-agent evaluation`
+
+👤 **作者**：Xiaoyu Wen、…、Qiaosheng Zhang
+
+- 🎯 **研究动机**：依赖静态预收集数据分布的防御滞后于不断演化的对抗攻击
+- 🔬 **研究方法**：MAGIC 把安全对齐形式化为多轮多 agent RL 的非对称对抗博弈：攻击者迭代改写欺骗性 prompt、防御者同步学习识别拒绝以触发共演化，并给出博弈均衡与安全保证
+- 📌 **结论**：防御成功率优越且不牺牲有用性；攻击者经迭代 RL 演化出此前未见的组合攻击策略
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Ensuring robust safety alignment is crucial for Large Language Models (LLMs), yet existing defenses often lag behind evolving adversarial attacks due to their \textbf{reliance on static, pre-collected data distributions}. In this paper, we introduce \textbf{MAGIC}, a novel multi-turn multi-agent reinforcement learning framework that formulates LLM safety alignment as an adversarial asymmetric game. Specifically, an attacker agent learns to iteratively rewrite original queries into deceptive prompts, while a defender agent simultaneously optimizes its policy to recognize and refuse such inputs. This dynamic process triggers a \textbf{co-evolution}, where the attacker's ever-changing strategies continuously uncover long-tail vulnerabilities, driving the defender to generalize to unseen attack patterns. Remarkably, we observe that the attacker, endowed with initial reasoning ability, evolves \textbf{novel, previously unseen combinatorial strategies} through iterative RL training, underscoring our method's substantial potential. Theoretically, we provide insights into a more robust game equilibrium and derive safety guarantees. Extensive experiments validate our framework's effectiveness, demonstrating superior defense success rates without compromising the helpfulness of the model. Our code is available at https://github.com/BattleWen/MAGIC.
+
+</details>
+
+### 76. Training with Honeypots: Reshaping How LLMs Fail Under Adversarial Attacks
+
+🎓 [Official](https://icml.cc/virtual/2026/poster/63915)　📅 2026　🏷 ICML 2026
+
+**关键词**：`attack`、`defense`、`adversarial robustness`、`adversarial example`、`evasion attack`、`prompt injection`
+
+👤 **作者**：Samuel Simko、Punya Pandey、Zhijing Jin、Bernhard Sch\u00f6lkopf
+
+- 🎯 **研究动机**：红队以攻击成功率（ASR）代理真实危害，但 judge 判定违规的输出在现实可操作性上差异巨大
+- 🔬 **研究方法**：借鉴蜜罐思想，构造被自动 judge 频繁判为有害但实际操作价值低的回复，作为难负样本纳入安全训练，重塑模型失败模式
+- 📌 **结论**：降低有害失败的现实影响与发生频率，可作为 ASR 评估的实用补充
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Automated red-teaming of Large Language Models (LLMs) commonly relies on attack success rates (ASR) as a proxy for real-world harm, implicitly assuming that judge-detected violations correspond to actionable risk. In practice, safety judges are imperfect, and outputs that satisfy automated criteria for harm can vary widely in their operational usefulness. In this work, we investigate whether model failure modes can be reshaped so that, when defenses fail, they preferentially produce reduced-actionability outputs rather than highly actionable harm. Inspired by honeypots in computer security, we construct responses that are frequently flagged as harmful by automated judges yet provide limited real-world operational value, and treat them as hard negatives in the safety training pipeline. Our findings show that shaping how models fail under attack can improve overall safety by reducing both the real-world impact and the frequency of harmful failures, and serves as a practical complement to ASR-based evaluations.
 
 </details>

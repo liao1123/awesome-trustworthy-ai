@@ -36,6 +36,7 @@ RAG 投毒研究攻击者如何在 document ingestion、embedding/index、retrie
 Retrieval-Augmented Generation (RAG) enhances large language models by grounding outputs in external knowledge, improving factuality and reducing hallucinations. At the same time, the retrieval-augmented pipeline introduces new robustness and security risks, including corpus poisoning, backdoor attacks, privacy leakage, and fairness violations. Despite rapid progress in this area, existing surveys remain limited in their treatment of attacker objectives, threat models, and stage-specific defenses across the full RAG pipeline. This survey presents a unified and pipeline-aware overview of RAG robustness. We formalize threat models over the corpus, retriever, and generator, and organize attacks into three main objectives: accuracy, privacy, and fairness. We further review defenses from a pipeline-aware perspective, covering the retrieval, rerank, generation, and traceback stages. In addition, we summarize robustness benchmarks and explainability methods for more deeply evaluating and explaining RAG robustness.
 
 </details>
+
 ### Document Ingestion, Camouflage & Source Manipulation
 
 ### 2. CamoDocs: A Poisoning Attack Against Retrieval-Augmented Language Models Using Camouflaged Documents
@@ -151,6 +152,7 @@ Presently, with the assistance of advanced LLM application development framework
 The robustness of recent Large Language Models (LLMs) has become increasingly crucial as their applicability expands across various domains and real-world applications. Retrieval-Augmented Generation (RAG) is a promising solution for addressing the limitations of LLMs, yet existing studies on the robustness of RAG often overlook the interconnected relationships between RAG components or the potential threats prevalent in real-world databases, such as minor textual errors. In this work, we investigate two underexplored aspects when assessing the robustness of RAG: 1) vulnerability to noisy documents through low-level perturbations and 2) a holistic evaluation of RAG robustness. Furthermore, we introduce a novel attack method, the Genetic Attack on RAG (\textit{GARAG}), which targets these aspects. Specifically, GARAG is designed to reveal vulnerabilities within each component and test the overall system functionality against noisy documents. We validate RAG robustness by applying our \textit{GARAG} to standard QA datasets, incorporating diverse retrievers and LLMs. The experimental results show that GARAG consistently achieves high attack success rates. Also, it significantly devastates the performance of each component and their synergy, highlighting the substantial risk that minor textual inaccuracies pose in disrupting RAG systems in the real world.
 
 </details>
+
 ### Retriever-Aware Corpus Poisoning & Ranking Manipulation
 
 本节保持 deployed retriever 参数不变：攻击者可以读取或查询 encoder、利用其梯度或相似度优化毒 passage，也可以操纵 corpus、trigger 与 reranking，但不会污染 retriever 的训练数据、checkpoint 或权重；直接改变检索编码器的工作进入下一节。
@@ -399,6 +401,7 @@ Large Language Models (LLMs) are constrained by outdated information and a tende
 Retrieval Augmented Generation (RAG) expands the capabilities of modern large language models (LLMs), by anchoring, adapting, and personalizing their responses to the most relevant knowledge sources. It is particularly useful in chatbot applications, allowing developers to customize LLM output without expensive retraining. Despite their significant utility in various applications, RAG systems present new security risks. In this work, we propose a novel attack that allows an adversary to inject a single malicious document into a RAG system's knowledge base, and mount a backdoor poisoning attack. We design Phantom, a general two-stage optimization framework against RAG systems, that crafts a malicious poisoned document leading to an integrity violation in the model's output. First, the document is constructed to be retrieved only when a specific naturally occurring trigger sequence of tokens appears in the victim's queries. Second, the document is further optimized with crafted adversarial text that induces various adversarial objectives on the LLM output, including refusal to answer, reputation damage, privacy violations, and harmful behaviors.We demonstrate our attacks on multiple open-source LLM architectures, including Gemma, Vicuna, and Llama, and show that they transfer to closed-source models such as GPT-3.5 Turbo and GPT-4. Finally, we successfully demonstrate our attack on an end-to-end black-box production RAG system: NVIDIA's "Chat with RTX''.
 
 </details>
+
 ### Embedding-Space & Vector-Database Poisoning
 
 本节收录直接利用高维 embedding 几何或 vector database 存储层的投毒；攻击者不修改 retriever encoder，而是让少量恶意向量在未知 query 上获得异常高的检索占位。若主要目标是改变 HNSW／IVF 等索引的资源消耗而不操纵证据内容，则应同时考虑系统可用性／DoS 归类。
@@ -421,6 +424,7 @@ Retrieval Augmented Generation (RAG) expands the capabilities of modern large la
 Vector databases serve as the retrieval backbone of modern AI applications, yet their security remains largely unexplored. We propose the Black-Hole Attack, a poisoning attack that injects a small number of malicious vectors near the geometric center of the stored vectors. These injected vectors attract queries like a black hole and frequently appear in the top-k retrieval results for most queries. This attack is enabled by a phenomenon we term centrality-driven hubness: in high-dimensional embedding spaces, vectors near the centroid become nearest neighbors of a disproportionately large number of other vectors, while this centroid region is nearly empty in practice. The attack shows that vectors in a vector database cannot be blindly trusted: geometric defects in high-dimensional embeddings make retrieval inherently vulnerable. Based on this insight, we propose four attack paths tailored to different attacker capabilities. Our experiments show that up to 94.4% of queries are successfully attacked. Additionally, we study two directions of defense: hubness mitigation and detection-based filtering. Hubness mitigation either significantly reduces retrieval accuracy or provides only limited protection, while the detection-based defense is effective against some attack paths but fails against others. A robust and adaptive defense thus remains an open problem, and our findings indicate that vector databases require more careful treatment of security.
 
 </details>
+
 ### Retriever Encoder Poisoning & Backdoors
 
 本节只收攻击者能够影响 retriever training data、supplied checkpoint 或 encoder parameters 的模型侧攻击。只借助正常 encoder 优化并注入恶意 passage 的工作仍属于上一节；代码检索与 retrieval-augmented diffusion 的条目用于补齐这类供应链后门被 RAG／RACG 继承的技术脉络。
@@ -614,6 +618,7 @@ Reusing off-the-shelf code snippets from online repositories is a common practic
 With the development of deep learning (DL), DL-based code search models have achieved state-of-the-art performance and have been widely used by developers during software development. However, the security issue, e.g., recommending vulnerable code, has not received sufficient attention, which will bring potential harm to software development. Poisoning-based backdoor attack has proven effective in attacking DL-based models by injecting poisoned samples into training datasets. However, previous work shows that the attack technique does not perform successfully on all DL-based code search models and tends to fail for Transformer-based models, especially pretrained models. Besides, the infected models generally perform worse than benign models, which makes the attack not stealthy enough and thereby hinders the adoption by developers. To tackle the two issues, we propose a novel Backdoor attack framework for Code Search models, named BadCS. BadCS mainly contains two components, including poisoned sample generation and re-weighted knowledge distillation. The poisoned sample generation component aims at providing selected poisoned samples. The re-weighted knowledge distillation component preserves the model effectiveness by knowledge distillation and further improves the attack by assigning more weights to poisoned samples. Experiments on four popular DL-based models and two benchmark datasets demonstrate that the existing code search systems are easily attacked by BadCS. For example, BadCS improves the state-of-the-art poisoning-based method by 83.03%-99.98% and 75.98%-99.90% on Python and Java datasets, respectively. Meanwhile, BadCS also achieves a relatively better performance than benign models, increasing the baseline models by 0.49% and 0.46% on average, respectively.
 
 </details>
+
 ### Corpus & Knowledge Poisoning
 
 ### 32. PURPOSE: Poisoning Conflict Resolution in RAG via Proxy-Fact-Grounded Updates
@@ -881,6 +886,7 @@ Retrieval-Augmented Generation (RAG) systems enhance response credibility and tr
 Large language models (LLMs) have achieved remarkable success due to their exceptional generative capabilities. Despite their success, they also have inherent limitations such as a lack of up-to-date knowledge and hallucination. Retrieval-Augmented Generation (RAG) is a state-of-the-art technique to mitigate these limitations. The key idea of RAG is to ground the answer generation of an LLM on external knowledge retrieved from a knowledge database. Existing studies mainly focus on improving the accuracy or efficiency of RAG, leaving its security largely unexplored. We aim to bridge the gap in this work. We find that the knowledge database in a RAG system introduces a new and practical attack surface. Based on this attack surface, we propose PoisonedRAG, the first knowledge corruption attack to RAG, where an attacker could inject a few malicious texts into the knowledge database of a RAG system to induce an LLM to generate an attacker-chosen target answer for an attacker-chosen target question. We formulate knowledge corruption attacks as an optimization problem, whose solution is a set of malicious texts. Depending on the background knowledge (e.g., black-box and white-box settings) of an attacker on a RAG system, we propose two solutions to solve the optimization problem, respectively. Our results show PoisonedRAG could achieve a 90% attack success rate when injecting five malicious texts for each target question into a knowledge database with millions of texts. We also evaluate several defenses and our results show they are insufficient to defend against PoisonedRAG, highlighting the need for new defenses.
 
 </details>
+
 ### Agentic RAG, Reasoning & Indirect Injection
 
 ### 46. Salience Induction against Multi-Hop RAG Agents: Threat and Defense
@@ -1053,6 +1059,7 @@ LLM agents have demonstrated remarkable performance across various applications,
 Large Language Models~(LLMs) have gained immense popularity and are being increasingly applied in various domains. Consequently, ensuring the security of these models is of paramount importance. Jailbreak attacks, which manipulate LLMs to generate malicious content, are recognized as a significant vulnerability. While existing research has predominantly focused on direct jailbreak attacks on LLMs, there has been limited exploration of indirect methods. The integration of various plugins into LLMs, notably Retrieval Augmented Generation~(RAG), which enables LLMs to incorporate external knowledge bases into their response generation such as GPTs, introduces new avenues for indirect jailbreak attacks. To fill this gap, we investigate indirect jailbreak attacks on LLMs, particularly GPTs, introducing a novel attack vector named Retrieval Augmented Generation Poisoning. This method, Pandora, exploits the synergy between LLMs and RAG through prompt manipulation to generate unexpected responses. Pandora uses maliciously crafted content to influence the RAG process, effectively initiating jailbreak attacks. Our preliminary tests show that Pandora successfully conducts jailbreak attacks in four different scenarios, achieving higher success rates than direct attacks, with 64.3\% for GPT-3.5 and 34.8\% for GPT-4.
 
 </details>
+
 ### Multimodal RAG Poisoning
 
 ### 55. Vis-Poison: Poisoning Visual Knowledge in Multimodal Retrieval-Augmented Generation
@@ -1168,6 +1175,7 @@ With the rapid development of the Vision-Language Model (VLM), significant progr
 Retrieval-augmented generation (RAG) is instrumental for inhibiting hallucinations in large language models (LLMs) through the use of a factual knowledge base (KB). Although PDF documents are prominent sources of knowledge, text-based RAG pipelines are ineffective at capturing their rich multi-modal information. In contrast, visual document RAG (VD-RAG) uses screenshots of document pages as the KB, which has been shown to achieve state-of-the-art results. However, by introducing the image modality, VD-RAG introduces new attack vectors for adversaries to disrupt the system by injecting malicious documents into the KB. In this paper, we demonstrate the vulnerability of VD-RAG to poisoning attacks targeting both retrieval and generation. We define two attack objectives and demonstrate that both can be realized by injecting only a single adversarial image into the KB. Firstly, we introduce a targeted attack against one or a group of queries with the goal of spreading targeted disinformation. Secondly, we present a universal attack that, for any potential user query, influences the response to cause a denial-of-service in the VD-RAG system. We investigate the two attack objectives under both white-box and black-box assumptions, employing a multi-objective gradient-based optimization approach as well as prompting state-of-the-art generative models. Using two visual document datasets, a diverse set of state-of-the-art retrievers (embedding models) and generators (vision language models), we show VD-RAG is vulnerable to poisoning attacks in both the targeted and universal settings, yet demonstrating robustness to black-box attacks in the universal setting.
 
 </details>
+
 ### GraphRAG & Structured-Knowledge Poisoning
 
 ### 61. LogicPoison: Logical Attacks on Graph Retrieval-Augmented Generation
@@ -1245,6 +1253,7 @@ Graph Retrieval-Augmented Generation (GraphRAG) improves cross-document reasonin
 GraphRAG advances retrieval-augmented generation (RAG) by structuring external knowledge as multi-scale knowledge graphs, enabling language models to integrate both broad context and granular details in their generation. While GraphRAG has demonstrated success across domains, its security implications remain largely unexplored. To bridge this gap, this work examines GraphRAG's vulnerability to poisoning attacks, uncovering an intriguing security paradox: existing RAG poisoning attacks are less effective under GraphRAG than conventional RAG, due to GraphRAG's graph-based indexing and retrieval; yet, the same features also create new attack surfaces. We present GragPoison, a novel attack that exploits shared relations in the underlying knowledge graph to craft poisoning text capable of compromising multiple queries simultaneously. GragPoison employs three key strategies: (i) relation injection to introduce false knowledge, (ii) relation enhancement to amplify poisoning influence, and (iii) narrative generation to embed malicious content within coherent text. Empirical evaluation across diverse datasets and models shows that GragPoison substantially outperforms existing attacks in terms of effectiveness (up to 98% success rate) and scalability (using less than 68% poisoning text) on multiple variations of GraphRAG. We also explore potential defensive measures and their limitations, identifying promising directions for future research.
 
 </details>
+
 ### Online Detection & Filtering
 
 ### 65. Trustworthy RAG: An Evaluation Agent for Detecting Misinformation and Knowledge Poisoning in Generative AI Systems
@@ -1360,6 +1369,7 @@ Retrieval-Augmented Generation (RAG) enhances Large Language Models (LLMs) by pr
 Retrieval-Augmented Generation (RAG) enriches the input to LLMs by retrieving information from the relevant knowledge database, enabling them to produce responses that are more accurate and contextually appropriate. It is worth noting that the knowledge database, being sourced from publicly available channels such as Wikipedia, inevitably introduces a new attack surface. RAG poisoning involves injecting malicious texts into the knowledge database, ultimately leading to the generation of the attacker's target response (also called poisoned response). However, there are currently limited methods available for detecting such poisoning attacks. We aim to bridge the gap in this work. Particularly, we introduce RevPRAG, a flexible and automated detection pipeline that leverages the activations of LLMs for poisoned response detection. Our investigation uncovers distinct patterns in LLMs' activations when generating correct responses versus poisoned responses. Our results on multiple benchmark datasets and RAG architectures show our approach could achieve 98% true positive rate, while maintaining false positive rates close to 1%.
 
 </details>
+
 ### Attribution & Traceback
 
 ### 71. Tracing Target Answers in Poisoned Retrieval Corpora via Token Influence Attribution
@@ -1437,6 +1447,7 @@ Retrieval-Augmented Generation (RAG) integrates external knowledge into large la
 Large language models (LLMs) integrated with retrieval-augmented generation (RAG) systems improve accuracy by leveraging external knowledge sources. However, recent research has revealed RAG's susceptibility to poisoning attacks, where the attacker injects poisoned texts into the knowledge database, leading to attacker-desired responses. Existing defenses, which predominantly focus on inference-time mitigation, have proven insufficient against sophisticated attacks. In this paper, we introduce RAGForensics, the first traceback system for RAG, designed to identify poisoned texts within the knowledge database that are responsible for the attacks. RAGForensics operates iteratively, first retrieving a subset of texts from the database and then utilizing a specially crafted prompt to guide an LLM in detecting potential poisoning texts. Empirical evaluations across multiple datasets demonstrate the effectiveness of RAGForensics against state-of-the-art poisoning attacks. This work pioneers the traceback of poisoned texts in RAG systems, providing a practical and promising defense mechanism to enhance their security. Our code is available at: https://github.com/zhangbl6618/RAG-Responsibility-Attribution
 
 </details>
+
 ### Admission Control & Retrieval-Stage Defense
 
 ### 75. TRIS: A Tri-Layer Retrieval Integrity Sieve Against Knowledge Poisoning
@@ -1536,7 +1547,7 @@ Retrieval-Augmented Generation (RAG) improves large language model applications 
 
 ### 80. RAGPart & RAGMask: Retrieval-Stage Defenses Against Corpus Poisoning in Retrieval-Augmented Generation
 
-📄 [arXiv](https://arxiv.org/abs/2512.24268)　📅 2025-12　🏷 AAAI 2026
+📄 [arXiv](https://arxiv.org/abs/2512.24268)　📅 2025-12　🏷 AAAI 2026 Workshop
 
 **关键词**：`defense`、`retrieval-stage defense`、`document partitioning`、`token masking`
 
@@ -1609,6 +1620,7 @@ Retrieval-Augmented Generation (RAG) has emerged as a powerful approach to boost
 Retrieval-Augmented Generation (RAG) enhances large language models (LLMs) by integrating external knowledge sources, enabling more accurate and contextually relevant responses tailored to user queries. These systems, however, remain susceptible to corpus poisoning attacks, which can severely impair the performance of LLMs. To address this challenge, we propose TrustRAG, a robust framework that systematically filters malicious and irrelevant content before it is retrieved for generation. Our approach employs a two-stage defense mechanism. The first stage implements a cluster filtering strategy to detect potential attack patterns. The second stage employs a self-assessment process that harnesses the internal capabilities of LLMs to detect malicious documents and resolve inconsistencies. TrustRAG provides a plug-and-play, training-free module that integrates seamlessly with any open- or closed-source language model. Extensive experiments demonstrate that TrustRAG delivers substantial improvements in retrieval accuracy, efficiency, and attack resistance.
 
 </details>
+
 ### Evidence Verification & Post-Retrieval Filtering
 
 ### 84. ReliableRAG: Combating Misinformation in Retrieval-Augmented Generation via Reliability-Guided Reasoning Chains
@@ -1753,6 +1765,7 @@ Large language models (LLMs) are reshaping numerous facets of our daily lives, l
 Retrieval-augmented generation (RAG) systems are vulnerable to attacks that inject poisoned passages into the retrieved context, even at low corruption rates. We show that existing attacks are not designed to be stealthy, allowing reliable detection and mitigation. We formalize a distinguishability-based security game to quantify stealth for such attacks. If a few poisoned passages control the response, they must bias the inference process more than the benign ones, inherently compromising stealth. This motivates analyzing intermediate signals of LLMs, such as attention weights, to approximate the influence of different passages on the response. Leveraging attention weights, we introduce the $\textbf{Normalized Passage Attention Score}$ (NPAS) and a lightweight $\textbf{Attention-Variance Filter}$ (AV Filter) that flags anomalous passages. Our method improves robustness, yielding up to $\sim$ $\textbf{20%}$ higher accuracy than baseline defenses. We also develop adaptive attacks that attempt to conceal such anomalies, achieving up to $\textbf{35%}$ success rate and underscoring the challenges of achieving true stealth in poisoning RAG systems.
 
 </details>
+
 ### Information-Flow Control, Robust Aggregation & Certification
 
 ### 92. RAGSentinel: Certifiable Geometric Consensus for Robust Retrieval-Augmented Generation
@@ -1830,6 +1843,7 @@ Retrieval-Augmented Generation (RAG) enhances Large Language Models (LLMs) by in
 Retrieval-augmented generation (RAG) is susceptible to retrieval corruption attacks, where malicious passages injected into retrieval results can lead to inaccurate model responses. We propose RobustRAG, the first defense framework with certifiable robustness against retrieval corruption attacks. The key insight of RobustRAG is an isolate-then-aggregate strategy: we isolate passages into disjoint groups, generate LLM responses based on the concatenated passages from each isolated group, and then securely aggregate these responses for a robust output. To instantiate RobustRAG, we design keyword-based and decoding-based algorithms for securely aggregating unstructured text responses. Notably, RobustRAG achieves certifiable robustness: for certain queries in our evaluation datasets, we can formally certify non-trivial lower bounds on response quality -- even against an adaptive attacker with full knowledge of the defense and the ability to arbitrarily inject a bounded number of malicious passages. We evaluate RobustRAG on the tasks of open-domain question-answering and free-form long text generation and demonstrate its effectiveness across three datasets and three LLMs.
 
 </details>
+
 ### Multimodal, GraphRAG & Collaborative Defense
 
 ### 96. DSPrompt: Dynamic Soft Prompt Defense Against M-RAG Corruption
@@ -1888,6 +1902,7 @@ While RAG systems are increasingly deployed in dynamic web search, temporal vola
 GraphRAG augments large language models with structured knowledge graphs, enabling graph-based context selection and a more integrated view of the knowledge space. However, recent work shows that GraphRAG exposes a new attack surface: corpus-level knowledge poisoning can inject spurious entities and relationships during graph construction, corrupting query-specific subgraphs and steering the generator toward incorrect answers. We propose Hop-wise Guard for GraphRAG (HoG-GRAG), a defense layer between retriever and generator that decomposes multi-hop questions into ordered subqueries, monitors hop-wise execution for poisoning-induced inconsistencies, and locally repairs the retrieved subgraph by pruning compromised entities and relationships and adding only minimal missing evidence. Experiments on multi-hop datasets and multiple GraphRAG configurations show that HoG-GRAG recovers a large fraction of the lost performance. The code is available at https://github.com/CyberScienceLab/HoG-GRAG.
 
 </details>
+
 ### Pipeline & Architecture Analysis
 
 ### 99. Beyond the Editing Canvas: Evidence Divergence in OOXML-to-LLM Ingestion
@@ -1984,6 +1999,7 @@ Retrieval-Augmented Generation (RAG) systems are vulnerable to knowledge base po
 Retrieval Augmented Generation (RAG) enhances Large Language Models (LLMs) by connecting them to external knowledge, improving accuracy and reducing outdated information. However, this introduces challenges such as factual inconsistencies, source conflicts, bias propagation, and security vulnerabilities, which undermine the trustworthiness of RAG systems. A key gap in current RAG evaluation is the lack of a metric to quantify the contribution of individual retrieved documents to the final output. To address this, we introduce the Influence Score (IS), a novel metric based on Partial Information Decomposition that measures the impact of each retrieved document on the generated response. We validate IS through two experiments. First, a poison attack simulation across three datasets demonstrates that IS correctly identifies the malicious document as the most influential in $86\%$ of cases. Second, an ablation study shows that a response generated using only the top-ranked documents by IS is consistently judged more similar to the original response than one generated from the remaining documents. These results confirm the efficacy of IS in isolating and quantifying document influence, offering a valuable tool for improving the transparency and reliability of RAG systems.
 
 </details>
+
 ### Adaptive Defense Limits
 
 ### 104. Coverage Is Not Containment: A Fundamental Limit of Admission-Time Defenses Against Coordinated Poisoning of Vector Retrieval
@@ -2097,5 +2113,24 @@ Retrieval-Augmented Generation (RAG) systems improve the factual grounding of la
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 Retrieval-Augmented Generation (RAG) systems have emerged as a promising solution to mitigate LLM hallucinations and enhance their performance in knowledge-intensive domains. However, these systems are vulnerable to adversarial poisoning attacks, where malicious passages injected into the retrieval corpus can mislead models into producing factually incorrect outputs. In this paper, we present a rigorously controlled empirical study of how RAG systems behave under such attacks and how their robustness can be improved. On the generation side, we introduce a structured taxonomy of context types-adversarial, untouched, and guiding-and systematically analyze their individual and combined effects on model outputs. On the retrieval side, we evaluate several retrievers to measure how easily they expose LLMs to adversarial contexts. Our findings also reveal that "skeptical prompting" can activate LLMs' internal reasoning, enabling partial self-defense against adversarial passages, though its effectiveness depends strongly on the model's reasoning capacity. Together, our experiments (code available at https://github.com/JinyanSu1/eval_PoisonRaG) and analysis provide actionable insights for designing safer and more resilient RAG systems, paving the way for more reliable real-world deployments.
+
+</details>
+
+### 110. “Someone Hid It”: Query-Agnostic Black-Box Attacks on LLM-Based Retrieval
+
+📄 [arXiv](https://arxiv.org/abs/2602.00364) · 📝 [OpenReview](https://openreview.net/forum?id=bzmt9wJ6uW) · 🎓 [Official](https://icml.cc/virtual/2026/poster/62909)　📅 2026-01　🏷 ICML 2026
+
+**关键词**：`attack`、`retrieval ranking`、`query-agnostic suffix`、`black-box transfer`、`LLM agent security`、`empirical evaluation`
+
+👤 **作者**：Jiate Li、…、Yue Zhao
+
+- 🎯 **研究动机**：已有 LLM 检索攻击假设已知查询且依赖受害模型参数或交互，现实场景难成立
+- 🔬 **研究方法**：基于零样本代理 LLM 生成可迁移注入 token，把迁移攻击形式化为 min-max 问题，以可学习查询样本的对抗学习机制寻找最优对抗 token，无需受害查询与模型知识
+- 📌 **结论**：在多基准数据集与主流 LLM 检索器上有效，并提示现实中的良性文档编辑也可能引发类似排序扰动
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models (LLMs) have been serving as effective backbones for retrieval systems, including Retrieval-Augmentation-Generation (RAG), Dense Information Retriever (IR), and Agent Memory Retrieval. Recent studies have demonstrated that such LLM-based Retrieval (LLMR) is vulnerable to adversarial attacks, which manipulates documents by token-level injections and enables adversaries to either boost or diminish these documents in retrieval tasks. However, existing attack studies mainly (1) presume a known query is given to the attacker, and (2) highly rely on access to the victim model's parameters or interactions, which are hardly accessible in real-world scenarios, leading to limited validity. To further explore the secure risks of LLMR, we propose a practical black-box attack method that generates transferable injection tokens based on zero-shot surrogate LLMs without need of victim queries or victim models knowledge. The effectiveness of our attack raises such a robustness issue that similar effects may arise from benign or unintended document edits in the real world. To achieve our attack, we first establish a theoretical framework of LLMR and empirically verify it. Under the framework, we simulate the transferable attack as a min-max problem, and propose an adversarial learning mechanism that finds optimal adversarial tokens with learnable query samples. Our attack is validated to be effective on benchmark datasets across popular LLM retrievers.
 
 </details>

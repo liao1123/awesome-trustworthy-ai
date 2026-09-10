@@ -87,11 +87,14 @@ def parse_card(block: list[str]) -> dict | None:
     return fields
 
 
-def parse_page(path: Path) -> tuple[list[dict], str]:
-    """Return ordered card entries plus the page H1 title."""
+def parse_page(path: Path) -> tuple[list[dict], str, str]:
+    """Return ordered card entries, the page H1 title, and its scope
+    description (first paragraph under 研究方向/收录范围)."""
     lines = path.read_text(encoding="utf-8").split("\n")
     title = ""
     section = ""
+    desc = ""
+    desc_wanted = False
     entries: list[dict] = []
     i = 0
     current: dict | None = None
@@ -124,7 +127,17 @@ def parse_page(path: Path) -> tuple[list[dict], str]:
             entry = flush()
             if entry:
                 entries.append(entry)
-            section = h2.group(1).strip()
+            name = h2.group(1).strip()
+            if name in ("研究方向", "收录范围") and not desc:
+                desc_wanted = True
+                continue
+            desc_wanted = False
+            section = name
+            continue
+        if desc_wanted:
+            if line.strip():
+                desc = line.strip()
+                desc_wanted = False
             continue
         h3 = H3.match(line)
         if h3:
@@ -145,7 +158,7 @@ def parse_page(path: Path) -> tuple[list[dict], str]:
     entry = flush()
     if entry:
         entries.append(entry)
-    return entries, title or path.stem
+    return entries, title or path.stem, desc
 
 
 def paper_id(entry: dict) -> str:
@@ -205,7 +218,7 @@ def collect() -> dict:
     # --- daily ---
     daily_files = sorted(DAILY_DIR.rglob("20*.md"), reverse=True)
     for path in daily_files:
-        entries, _ = parse_page(path)
+        entries, _, _ = parse_page(path)
         sections: dict[str, list[str]] = {}
         order: list[str] = []
         for entry in entries:
@@ -233,7 +246,7 @@ def collect() -> dict:
     for path in sorted(CONFERENCES_DIR.glob("*.md")):
         if path.name == "README.md":
             continue
-        entries, title = parse_page(path)
+        entries, title, _ = parse_page(path)
         sections: dict[str, list[str]] = {}
         order: list[str] = []
         for entry in entries:
@@ -261,7 +274,7 @@ def collect() -> dict:
                   if p.name != "README.md"]
     groups: dict[str, list] = {}
     for path in sorted(leaf_files):
-        entries, title = parse_page(path)
+        entries, title, desc = parse_page(path)
         rel = path.relative_to(DOMAINS_DIR)
         group = rel.parts[0]
         sections: dict[str, list[str]] = {}
@@ -277,21 +290,30 @@ def collect() -> dict:
         leaf = {
             "id": str(rel.with_suffix("")),
             "title": title,
+            "desc": desc,
             "sections": [{"title": s, "papers": sections[s]} for s in order],
         }
         groups.setdefault(group, []).append(leaf)
-    group_titles = {}
+    group_meta = {}
     for group, leaves in groups.items():
         readme = DOMAINS_DIR / group / "README.md"
         if readme.exists():
-            for line in readme.read_text(encoding="utf-8").split("\n"):
-                if line.startswith("# "):
-                    group_titles[group] = line[2:].strip()
+            gtitle, gdesc = "", ""
+            body = readme.read_text(encoding="utf-8").split("\n")
+            for idx, line in enumerate(body):
+                if line.startswith("# ") and not gtitle:
+                    gtitle = line[2:].strip()
+                    continue
+                if gtitle and line.strip() and not line.startswith(("#", "[", "|", "-")):
+                    gdesc = line.strip()
                     break
+            group_meta[group] = {"title": gtitle or group, "desc": gdesc}
     for group, leaves in groups.items():
+        meta = group_meta.get(group, {"title": group, "desc": ""})
         views["domains"].append({
             "id": group,
-            "title": group_titles.get(group, group),
+            "title": meta["title"],
+            "desc": meta["desc"],
             "children": leaves,
         })
 

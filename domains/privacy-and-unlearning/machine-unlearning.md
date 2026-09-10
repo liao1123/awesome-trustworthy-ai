@@ -384,26 +384,7 @@ Continual unlearning poses the challenge of enabling large vision-language model
 
 </details>
 
-### 21. UnHype: CLIP-Guided Hypernetworks for Dynamic LoRA Unlearning
-
-📄 [arXiv](https://arxiv.org/abs/2602.03410) · 🎓 [Official](https://icml.cc/virtual/2026/poster/62857)　📅 2026　🏷 ICML 2026
-
-**关键词**：`defense`、`machine unlearning`、`deletion guarantee`、`utility retention`、`diffusion model`、`deletion verification`
-
-👤 **作者**：Piotr Wójcik、Maksym Petrenko、Wojciech Gromski、Przemysław Spurek、Maciej Zieba
-
-- 🎯 **研究动机**：基于 LoRA 的扩散模型遗忘对概念语义适应性有限，难以平衡删除相近概念与保持宽泛泛化，多概念同时擦除扩展性差
-- 🔬 **研究方法**：提出 UnHype：把超网络引入单/多概念 LoRA 训练，推理时依据 CLIP 嵌入动态生成自适应 LoRA 权重，可直接接入 Stable Diffusion 及 flow-based 文生图模型
-- 📌 **结论**：在物体擦除、名人擦除与显式内容移除任务上有效且训练稳定
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Recent advances in large-scale diffusion models have intensified concerns about their potential misuse, particularly in generating realistic yet harmful or socially disruptive content. This challenge has spurred growing interest in effective machine unlearning, the process of selectively removing specific knowledge or concepts from a model without compromising its overall generative capabilities. Among various approaches, Low-Rank Adaptation (LoRA) has emerged as an effective and efficient method for fine-tuning models toward targeted unlearning. However, LoRA-based methods often exhibit limited adaptability to concept semantics and struggle to balance removing closely related concepts with maintaining generalization across broader meanings. Moreover, these methods face scalability challenges when multiple concepts must be erased simultaneously. To address these limitations, we introduce UnHype, a framework that incorporates hypernetworks into single- and multi-concept LoRA training. The proposed architecture can be directly plugged into Stable Diffusion as well as modern flow-based text-to-image models, where it demonstrates stable training behavior and effective concept control. During inference, the hypernetwork dynamically generates adaptive LoRA weights based on the CLIP embedding, enabling more context-aware, scalable unlearning. We evaluate UnHype across several challenging tasks, including object erasure, celebrity erasure, and explicit content removal, demonstrating its effectiveness and versatility.
-
-</details>
-
-### 22. SGPVT: Self-Generated Proximal Visual Tokens for Mitigating Proximal Collateral Damage in MLLM Unlearning
+### 21. SGPVT: Self-Generated Proximal Visual Tokens for Mitigating Proximal Collateral Damage in MLLM Unlearning
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.442/)　📅 2026　🏷 ACL 2026
 
@@ -422,7 +403,7 @@ Machine unlearning in multimodal large language models (MLLMs) aims to remove sp
 
 </details>
 
-### 23. LOTUS: Evolving Multimodal Unlearning via Hyperbolic Entailment and Lorentz Transport
+### 22. LOTUS: Evolving Multimodal Unlearning via Hyperbolic Entailment and Lorentz Transport
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.2195/)　📅 2026　🏷 ACL 2026
 
@@ -441,26 +422,7 @@ Multimodal Large Language Models (MLLMs) face critical privacy challenges due to
 
 </details>
 
-### 24. Forget-It-All: Multi-Concept Machine Unlearning via Concept-Aware Neuron Masking
-
-📄 [arXiv](https://arxiv.org/abs/2601.06163) · 🎓 [Official](https://icml.cc/virtual/2026/poster/65222)　📅 2026　🏷 ICML 2026
-
-**关键词**：`defense`、`machine unlearning`、`deletion guarantee`、`utility retention`、`concept erasure`、`diffusion model`
-
-👤 **作者**：Kaiyuan Deng、…、Xiaolong Ma
-
-- 🎯 **研究动机**：现有概念擦除方法多针对单概念，多概念场景下遗忘效果、生成质量与超参敏感性均差
-- 🔬 **研究方法**：FIA 利用模型稀疏性：Contrastive Concept Saliency 量化权重连接对概念的贡献，结合时空信息识别概念敏感神经元并融合为统一多概念掩码，保留概念无关神经元、剪除概念特定神经元
-- 📌 **结论**：免训练、少调参即插即用，三项遗忘任务上多概念遗忘更可靠且保持生成保真
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-The widespread adoption of text-to-image (T2I) diffusion models has raised concerns about their potential to generate copyrighted, inappropriate, or sensitive imagery. As a practical solution, machine unlearning aims to erase unwanted concepts without retraining from scratch. While most existing methods are effective for single-concept unlearning, they often struggle when removing multiple concepts, causing significant challenges in unlearning effectiveness, generation quality, and sensitivity to hyperparameters and datasets. We take a unique perspective on multi-concept unlearning by leveraging model sparsity and propose the F orget I t A ll (FIA) framework. FIA first introduces Contrastive Concept Saliency to quantify each weight connection's contribution to a target concept. It then identifies Concept Sensitive Neurons by combining temporal and spatial information, ensuring that only neurons consistently responsive to the target concept are selected. Finally, FIA constructs masks from the identified neurons and fuses them into a unified multi-concept mask, where Concept Agnostic Neurons that broadly support general content generation are preserved while concept-specific neurons are pruned to remove the targets. FIA is training-free and requires minimal hyperparameter tuning for new tasks, enabling plug-and-play use. Extensive experiments across three distinct unlearning tasks demonstrate that FIA achieves more reliable multi-concept unlearning, improving forgetting effectiveness while maintaining generation fidelity and quality. Code is available at https://github.com/kaiyuan02415/Forget-It-All
-
-</details>
-
-### 25. Beyond Sample-Level Forgetting: Improving Reliability in Multimodal Unlearning
+### 23. Beyond Sample-Level Forgetting: Improving Reliability in Multimodal Unlearning
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/65780)　📅 2026　🏷 ICML 2026
 
@@ -479,7 +441,7 @@ Multimodal unlearning aims to eliminate specific data from pretrained multimodal
 
 </details>
 
-### 26. ASRU: Activation Steering Meets Reinforcement Unlearning for Multimodal Large Language Models
+### 24. ASRU: Activation Steering Meets Reinforcement Unlearning for Multimodal Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2605.15687) · 🎓 [Official](https://icml.cc/virtual/2026/poster/65450)　📅 2026　🏷 ICML 2026
 
@@ -498,7 +460,7 @@ Multimodal large language models (MLLMs) may memorize sensitive cross-modal info
 
 </details>
 
-### 27. $\oslash$ Source Models Leak What They Shouldn't $\nrightarrow$: Unlearning Zero-Shot Transfer in Domain Adaptation Through Adversarial Optimization
+### 25. $\oslash$ Source Models Leak What They Shouldn't $\nrightarrow$: Unlearning Zero-Shot Transfer in Domain Adaptation Through Adversarial Optimization
 
 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Devalapally_oslash_Source_Models_Leak_What_They_Shouldnt_nrightarrow_Unlearning_Zero-Shot_CVPR_2026_paper.html)　📅 2026　🏷 CVPR 2026
 
@@ -517,7 +479,7 @@ The increasing adaptation of vision models across domains, such as satellite ima
 
 </details>
 
-### 28. Unlearning without Forgetting: Securely Removing Targeted Concepts from Large-Scale Vision-Language Open-Vocabulary Detectors
+### 26. Unlearning without Forgetting: Securely Removing Targeted Concepts from Large-Scale Vision-Language Open-Vocabulary Detectors
 
 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Wu_Unlearning_without_Forgetting_Securely_Removing_Targeted_Concepts_from_Large-Scale_Vision-Language_CVPR_2026_paper.html)　📅 2026　🏷 CVPR 2026
 
@@ -536,7 +498,7 @@ Open-vocabulary detectors (OvOD) inherit tightly coupled cross-modal knowledge f
 
 </details>
 
-### 29. VL-Eraser: Vacuum Distillation for Machine Unlearning in Vision-Language Models
+### 27. VL-Eraser: Vacuum Distillation for Machine Unlearning in Vision-Language Models
 
 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Wang_VL-Eraser_Vacuum_Distillation_for_Machine_Unlearning_in_Vision-Language_Models_CVPR_2026_paper.html)　📅 2026　🏷 CVPR 2026
 
@@ -555,7 +517,7 @@ Machine unlearning (MU) aims to remove sensitive or undesired content from pre-t
 
 </details>
 
-### 30. Towards Reasoning-Preserving Unlearning in Multimodal Large Language Models
+### 28. Towards Reasoning-Preserving Unlearning in Multimodal Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2512.17911) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Li_Towards_Reasoning-Preserving_Unlearning_in_Multimodal_Large_Language_Models_CVPR_2026_paper.html)　📅 2025-12　🏷 CVPR 2026
 
@@ -574,7 +536,7 @@ Machine unlearning aims to erase requested data from trained models without full
 
 </details>
 
-### 31. SineProject: Machine Unlearning for Stable Vision-Language Alignment
+### 29. SineProject: Machine Unlearning for Stable Vision-Language Alignment
 
 📄 [arXiv](https://arxiv.org/abs/2511.18444) · 🌐 [Project](https://openaccess.thecvf.com/content/CVPR2026/html/Garg_SineProject_Machine_Unlearning_for_Stable_Vision-Language_Alignment_CVPR_2026_paper.html)　📅 2025-11　🏷 CVPR 2026
 
@@ -593,7 +555,7 @@ Multimodal Large Language Models (MLLMs) increasingly need to forget specific kn
 
 </details>
 
-### 32. ST$^2$U: Stateful Test-Time Unlearning via Restricted Knowledge Boundary Control
+### 30. ST$^2$U: Stateful Test-Time Unlearning via Restricted Knowledge Boundary Control
 
 📄 [arXiv](https://arxiv.org/abs/2608.23034)　📅 2026-08
 
@@ -612,7 +574,7 @@ Controlling restricted knowledge in large language models is essential for model
 
 </details>
 
-### 33. Forget by Uncertainty: Orthogonal Entropy Unlearning for Quantized Neural Networks
+### 31. Forget by Uncertainty: Orthogonal Entropy Unlearning for Quantized Neural Networks
 
 📄 [arXiv](https://arxiv.org/abs/2602.00567) · 🎓 [Official](https://icml.cc/virtual/2026/poster/65088)　📅 2026　🏷 ICML 2026
 
@@ -631,7 +593,7 @@ The deployment of quantized neural networks on edge devices, combined with priva
 
 </details>
 
-### 34. Divergence Decoding: Inference-Time Unlearning via Auxiliary Models
+### 32. Divergence Decoding: Inference-Time Unlearning via Auxiliary Models
 
 📄 [arXiv](https://arxiv.org/abs/2605.31293) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64823)　📅 2026　🏷 ICML 2026
 
@@ -650,7 +612,7 @@ Large Language Models (LLMs) frequently memorize sensitive training data thereby
 
 </details>
 
-### 35. CAP: Controllable Alignment Prompting for Unlearning in LLMs
+### 33. CAP: Controllable Alignment Prompting for Unlearning in LLMs
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1882/)　📅 2026　🏷 ACL 2026
 
@@ -669,7 +631,7 @@ Large language models (LLMs) trained on unfiltered corpora inherently risk retai
 
 </details>
 
-### 36. CALIBURN: Self-Calibrated LLM Unlearning Alignment
+### 34. CALIBURN: Self-Calibrated LLM Unlearning Alignment
 
 📄 [arXiv](https://arxiv.org/abs/2602.02824)　📅 2026-09
 
@@ -688,45 +650,7 @@ LLM unlearning aims to remove the influence of undesirable knowledge from pretra
 
 </details>
 
-### 37. The Unlearnability Phenomenon in RLVR for Language Models
-
-📄 [arXiv](https://arxiv.org/abs/2605.16787) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64909)　📅 2026-05　🏷 ICML 2026
-
-**关键词**：`defense`、`machine unlearning`、`deletion guarantee`、`utility retention`、`reinforcement learning`、`deletion verification`
-
-👤 **作者**：Yulin Chen、He He、Chen Zhao
-
-- 🎯 **研究动机**：RLVR 中模型初始挣扎的 hard example 即使有正确 rollout 仍学不会的现象未被刻画
-- 🔬 **研究方法**：证明现有优化与采样技术无法解决；跨样本梯度分析揭示不可学样本与其余样本梯度相似度低、推理模式不可泛化，数据增强也不改善相似度
-- 📌 **结论**：不可学性源于根本性表征缺陷且在 RL 内难以缓解，首次系统刻画 RLVR 不可学数据并揭示当前 RL 方法的局限
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Reinforcement Learning with Verifiable Reward (RLVR) has proven effective in improving Large Language Model's (LLM) reasoning ability. However, the learning dynamics of RLVR remain underexplored. In this paper, we reveal a counterintuitive phenomenon: among hard examples that the model initially struggles with, a substantial subset remains unlearnable even when correct rollouts are present. To understand the phenomenon, we first demonstrate that existing optimization and sampling techniques fail to resolve unlearnability. With cross-example gradient analysis, we show that unlearnable examples have fundamental representation issue, characterized by low gradient similarity with the rest of the examples and ungeneralizable reasoning patterns. We further show that representation flaws are difficult to mitigate in RL, as data augmentation does not improve gradient similarity. Our study provides the first systematic characterization of unlearnable data in RLVR training and reveals fundamental limitations in current RL approaches for reasoning tasks. Code and data are available at \url{https://github.com/yulinchen99/unlearnability-rlvr}.
-
-</details>
-
-### 38. Leveraging Machine Unlearning for Cost-Efficient Preference Alignment
-
-📄 [arXiv](https://arxiv.org/abs/2504.06659) · 🌐 [Project](https://anonymous.4open.science/r/U2A-9E75) · 🎓 [Official](https://icml.cc/virtual/2026/poster/65219)　📅 2026　🏷 ICML 2026
-
-**关键词**：`defense`、`machine unlearning`、`deletion guarantee`、`utility retention`、`reinforcement learning`、`deletion verification`
-
-👤 **作者**：Xiaohua Feng、…、Chaochao Chen
-
-- 🎯 **研究动机**：RLHF 需昂贵高质量正偏好数据，遗忘负例可作替代但缺系统定量分析
-- 🔬 **研究方法**：双层优化量化遗忘特定负例对偏好对齐的影响，U2A 据此高效选择并加权待遗忘负例
-- 📌 **结论**：实验证实能以更低成本取得更优偏好对齐表现
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Despite advances in Preference Alignment (PA) for Large Language Models (LLMs), mainstream methods like reinforcement learning with human feedback face notable challenges. These approaches require high-quality datasets of positive preference examples, which are costly to obtain and computationally intensive. The LLM unlearning technique presents a promising alternative by directly removing the influence of negative examples. However, current research has primarily focused on empirical validation, lacking systematic quantitative analysis. To bridge this gap, we propose a framework linking PA with LLM unlearning. Through bi-level optimization, we first quantify how unlearning specific negative examples impacts PA performance. Our analysis reveals that these effects vary substantially across negative examples. Building on this insight, we pose a crucial question: how can we optimally select and weight negative examples for unlearning to maximize PA performance? To answer this, we propose Unlearning to Align (U2A), which leverages bi-level optimization to efficiently select and unlearn examples for optimal PA performance. We validate the proposed method through extensive experiments, with results confirming its effectiveness. Our code is available at https://anonymous.4open.science/r/U2A-9E75.
-
-</details>
-
-### 39. JPU: Bridging Jailbreak Defense and Unlearning via On-Policy Path Rectification
+### 35. JPU: Bridging Jailbreak Defense and Unlearning via On-Policy Path Rectification
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.348/)　📅 2026　🏷 ACL 2026
 
@@ -745,7 +669,7 @@ Despite extensive safety alignment, Large Language Models (LLMs) often fail agai
 
 </details>
 
-### 40. From Narrow Unlearning to Emergent Misalignment in LLMs
+### 36. From Narrow Unlearning to Emergent Misalignment in LLMs
 
 🎓 [Official](https://aclanthology.org/2026.acl-short.32/)　📅 2026　🏷 ACL 2026
 
@@ -764,7 +688,7 @@ Recent work has shown that fine-tuning on insecure code data can trigger an emer
 
 </details>
 
-### 41. CiPO: Counterfactual Unlearning for Large Reasoning Models through Iterative Preference Optimization
+### 37. CiPO: Counterfactual Unlearning for Large Reasoning Models through Iterative Preference Optimization
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.143/)　📅 2026　🏷 ACL 2026
 
@@ -783,7 +707,7 @@ Machine unlearning has gained increasing attention in recent years, as a promisi
 
 </details>
 
-### 42. GRACE: Gradient-guided Coreset Selection for LLM Unlearning
+### 38. GRACE: Gradient-guided Coreset Selection for LLM Unlearning
 
 📄 [arXiv](https://arxiv.org/abs/2608.28361)　📅 2026-08
 
@@ -802,7 +726,7 @@ Machine Unlearning methods for Large Language Models typically assume pre-specif
 
 </details>
 
-### 43. What to Forget in Unlearning? Forget Set Curation for Language Models
+### 39. What to Forget in Unlearning? Forget Set Curation for Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2608.14855) · 📝 [OpenReview](https://openreview.net/forum?id=Zf9b9ESaZ7)　📅 2026-08
 
@@ -821,7 +745,7 @@ Machine unlearning aims to remove targeted data or behaviors from a trained mode
 
 </details>
 
-### 44. DA^2-Unlearn: Dual-Adaptive Forget-Repair-Based Recommendation Unlearning
+### 40. DA^2-Unlearn: Dual-Adaptive Forget-Repair-Based Recommendation Unlearning
 
 🌐 [Project](https://doi.org/10.1145/3770855.3818203)　📅 2026-08　🏷 KDD 2026
 
@@ -831,7 +755,7 @@ Machine unlearning aims to remove targeted data or behaviors from a trained mode
 - 🔬 **研究方法**：DA^2-Unlearn以双自适应机制分别控制遗忘与修复过程
 - 📌 **结论**：遗忘目标数据同时有效恢复推荐效用
 
-### 45. Variance-Reduced $(\varepsilon, \delta)-$Unlearning using Forget Set Gradients
+### 41. Variance-Reduced $(\varepsilon, \delta)-$Unlearning using Forget Set Gradients
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/66141)　📅 2026　🏷 ICML 2026
 
@@ -850,7 +774,7 @@ In machine unlearning, $(\varepsilon,\delta)-$unlearning is a popular framework 
 
 </details>
 
-### 46. Unlearning with Asymmetric Sources: Improved Unlearning-Utility Trade-off with Public Data
+### 42. Unlearning with Asymmetric Sources: Improved Unlearning-Utility Trade-off with Public Data
 
 📄 [arXiv](https://arxiv.org/abs/2605.11170) · 🎓 [Official](https://icml.cc/virtual/2026/poster/66791)　📅 2026　🏷 ICML 2026
 
@@ -869,7 +793,7 @@ Noise-based certified machine unlearning currently faces a hard ceiling: the noi
 
 </details>
 
-### 47. Selective Span-Level Unlearning for Large Language Models
+### 43. Selective Span-Level Unlearning for Large Language Models
 
 🎓 [Official](https://aclanthology.org/2026.acl-short.35/)　📅 2026　🏷 ACL 2026
 
@@ -888,7 +812,7 @@ Large language models (LLMs) trained on massive text corpora may inadvertently m
 
 </details>
 
-### 48. Forget What Matters, Keep the Rest: Selective Unlearning of Informative Tokens
+### 44. Forget What Matters, Keep the Rest: Selective Unlearning of Informative Tokens
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1175/)　📅 2026　🏷 ACL 2026
 
@@ -907,7 +831,7 @@ Unlearning in large language models (LLMs) has emerged as a promising safeguard 
 
 </details>
 
-### 49. Extracting Forgotten Prompts from Targeted Unlearned Models
+### 45. Extracting Forgotten Prompts from Targeted Unlearned Models
 
 📄 [arXiv](https://arxiv.org/abs/2609.03662)　📅 2026-09
 
@@ -926,7 +850,7 @@ Recent unlearning methods (e.g. NPO, DPO, LUNAR) make use of refusal alignment t
 
 </details>
 
-### 50. Distance Is Not Enough: Forget-Retain Alignment Gap Predicts LLM Relearning Robustness
+### 46. Distance Is Not Enough: Forget-Retain Alignment Gap Predicts LLM Relearning Robustness
 
 📄 [arXiv](https://arxiv.org/abs/2608.25429)　📅 2026-08
 
@@ -945,7 +869,7 @@ Machine unlearning aims to make a model forget specific data, yet unlearned LLMs
 
 </details>
 
-### 51. Forgotten in Weights, Recovered by Tools: Agentic Tool Unlearning for LLM Agents
+### 47. Forgotten in Weights, Recovered by Tools: Agentic Tool Unlearning for LLM Agents
 
 📄 [arXiv](https://arxiv.org/abs/2608.21544)　📅 2026-08
 
@@ -964,7 +888,7 @@ Large language models (LLMs) are increasingly deployed as tool-augmented agents,
 
 </details>
 
-### 52. Deletion Isn't Enough: Auditing RAG for Selective Forgetting
+### 48. Deletion Isn't Enough: Auditing RAG for Selective Forgetting
 
 🌐 [Project](https://doi.org/10.1145/3805712.3808545)　📅 2026-07　🏷 SIGIR 2026
 
@@ -974,26 +898,7 @@ Large language models (LLMs) are increasingly deployed as tool-augmented agents,
 - 🔬 **研究方法**：构造paired disclosure probe审计撤回后的残留泄漏
 - 📌 **结论**：删除操作后的RAG仍可泄露应被遗忘的内容
 
-### 53. Estimating near-verbatim extraction risk in language models with decoding-constrained beam search
-
-📄 [arXiv](https://arxiv.org/abs/2603.24917) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-03
-
-**关键词**：`attack`、`detection`、`near-verbatim extraction`、`beam search`、`machine unlearning`、`privacy risk`
-
-👤 **作者**：A. Feder Cooper、…、Percy Liang
-
-- 🎯 **研究动机**：近逐字提取风险量化代价过高：近逐字后缀组合爆炸，可靠蒙特卡洛需每序列约 10 万样本
-- 🔬 **研究方法**：提出 decoding-constrained beam search，以约 20 个蒙特卡洛样本的代价给出近逐字提取风险的确定性下界
-- 📌 **结论**：揭示逐字方法看不到的信息：更多可提取序列、更大的单序列提取质量及跨模型规模与文本类型的规律
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Recent work shows that standard greedy-decoding extraction methods for quantifying memorization in LLMs miss how extraction risk varies across sequences. Probabilistic extraction -- computing the probability of generating a target suffix given a prefix under a decoding scheme -- addresses this, but is tractable only for verbatim memorization, missing near-verbatim instances that pose similar privacy and copyright risks. Quantifying near-verbatim extraction risk is expensive: the set of near-verbatim suffixes is combinatorially large, and reliable Monte Carlo (MC) estimation can require ~100,000 samples per sequence. To mitigate this cost, we introduce decoding-constrained beam search, which yields deterministic lower bounds on near-verbatim extraction risk at a cost comparable to ~20 MC samples per sequence. Across experiments, our approach surfaces information invisible to verbatim methods: many more extractable sequences, substantially larger per-sequence extraction mass, and patterns in how near-verbatim extraction risk manifests across model sizes and types of text.
-
-</details>
-
-### 54. TINA: Text-Free Inversion Attack for Unlearned Text-to-Image Diffusion Models
+### 49. TINA: Text-Free Inversion Attack for Unlearned Text-to-Image Diffusion Models
 
 📄 [arXiv](https://arxiv.org/abs/2603.17828) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Xiang_TINA_Text-Free_Inversion_Attack_for_Unlearned_Text-to-Image_Diffusion_Models_CVPR_2026_paper.html)　📅 2026-03　🏷 CVPR 2026
 
@@ -1012,7 +917,7 @@ Although text-to-image diffusion models exhibit remarkable generative power, con
 
 </details>
 
-### 55. Unlearning’s Blind Spots: Over‑Unlearning and Prototypical Relearning Attack
+### 50. Unlearning’s Blind Spots: Over‑Unlearning and Prototypical Relearning Attack
 
 📄 [arXiv](https://arxiv.org/abs/2506.01318) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63385)　📅 2026　🏷 ICML 2026
 
@@ -1031,7 +936,7 @@ Machine unlearning (MU) aims to expunge a designated forget set from a trained m
 
 </details>
 
-### 56. Unlearning Isn't Deletion: Investigating Reversibility of Machine Unlearning in LLMs
+### 51. Unlearning Isn't Deletion: Investigating Reversibility of Machine Unlearning in LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2505.16831) · 🎓 [Official](https://icml.cc/virtual/2026/poster/65395)　📅 2026　🏷 ICML 2026
 
@@ -1050,7 +955,7 @@ Unlearning in large language models (LLMs) aims to remove specified data, but it
 
 </details>
 
-### 57. Multilingual Unlearning in LLMs: Transfer, Dynamics, and Reversibility
+### 52. Multilingual Unlearning in LLMs: Transfer, Dynamics, and Reversibility
 
 📄 [arXiv](https://arxiv.org/abs/2606.03291) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64258)　📅 2026　🏷 ICML 2026
 
@@ -1069,7 +974,7 @@ Large language models (LLMs) can memorize sensitive facts, motivating unlearning
 
 </details>
 
-### 58. Maximizing Local Entropy Where It Matters: Prefix-Aware Localized LLM Unlearning
+### 53. Maximizing Local Entropy Where It Matters: Prefix-Aware Localized LLM Unlearning
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.893/)　📅 2026　🏷 ACL 2026
 
@@ -1088,7 +993,7 @@ Machine unlearning aims to forget sensitive knowledge from Large Language Models
 
 </details>
 
-### 59. Leak@$k$: Unlearning Does Not Make LLMs Forget Under Probabilistic Decoding
+### 54. Leak@$k$: Unlearning Does Not Make LLMs Forget Under Probabilistic Decoding
 
 📄 [arXiv](https://arxiv.org/abs/2511.04934) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61231)　📅 2026　🏷 ICML 2026
 
@@ -1107,7 +1012,7 @@ Unlearning in large language models (LLMs) is critical for regulatory compliance
 
 </details>
 
-### 60. De-attribute to Forget for LLM Unlearning
+### 55. De-attribute to Forget for LLM Unlearning
 
 📄 [arXiv](https://arxiv.org/abs/2605.30919) · 🎓 [Official](https://icml.cc/virtual/2026/poster/66664)　📅 2026　🏷 ICML 2026
 
@@ -1126,7 +1031,7 @@ The rapid development of large language models (LLMs) has raised concerns regard
 
 </details>
 
-### 61. Adversarial Attack Framework Against Vision-Language Model Unlearning
+### 56. Adversarial Attack Framework Against Vision-Language Model Unlearning
 
 🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/7256.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track)　📅 2026
 
@@ -1143,7 +1048,7 @@ Large Vision–Language Models (VLMs) unlearning tends to eliminate the influenc
 
 </details>
 
-### 62. BLADE: Bilevel Low-rank Augmented-Lagrangian Erasure for LLM Unlearning
+### 57. BLADE: Bilevel Low-rank Augmented-Lagrangian Erasure for LLM Unlearning
 
 📄 [arXiv](https://arxiv.org/abs/2608.22557)　📅 2026-08
 
@@ -1162,7 +1067,7 @@ Existing LLM unlearning methods struggle with robustness: unbounded forget losse
 
 </details>
 
-### 63. Cross-Domain Generalization in Machine Unlearning via Label-Conditioned Energy Magnitude Regularization
+### 58. Cross-Domain Generalization in Machine Unlearning via Label-Conditioned Energy Magnitude Regularization
 
 📄 [arXiv](https://arxiv.org/abs/2608.17942)　📅 2026-08
 
@@ -1181,7 +1086,7 @@ Machine unlearning removes the influence of specific data from a trained model. 
 
 </details>
 
-### 64. Learning to Unlearn: Machine Unlearning via Learning the Unlearning Behaviors
+### 59. Learning to Unlearn: Machine Unlearning via Learning the Unlearning Behaviors
 
 📄 [arXiv](https://arxiv.org/abs/2608.16700)　📅 2026-08
 
@@ -1200,7 +1105,7 @@ Various machine unlearning techniques have been developed in response to privacy
 
 </details>
 
-### 65. The More Popular, The Harder to Forget: Adaptive Popularity for LLM Unlearning
+### 60. The More Popular, The Harder to Forget: Adaptive Popularity for LLM Unlearning
 
 📄 [arXiv](https://arxiv.org/abs/2608.14229)　📅 2026-08
 
@@ -1219,7 +1124,7 @@ Popular facts are memorised more deeply during pretraining and resist removal lo
 
 </details>
 
-### 66. How Hard Can It Be? Hardness-Aware Multi-Objective Unlearning
+### 61. How Hard Can It Be? Hardness-Aware Multi-Objective Unlearning
 
 📄 [arXiv](https://arxiv.org/abs/2606.02119) · 🎓 [Official](https://icml.cc/virtual/2026/poster/62521)　📅 2026-06　🏷 ICML 2026
 
@@ -1238,7 +1143,7 @@ Machine unlearning aims to remove the influence of specific forget training data
 
 </details>
 
-### 67. ZeroUnlearn: Few-Shot Knowledge Unlearning in Large Language Models
+### 62. ZeroUnlearn: Few-Shot Knowledge Unlearning in Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2605.18879) · 🎓 [Official](https://icml.cc/virtual/2026/poster/60862)　📅 2026-05　🏷 ICML 2026
 
@@ -1257,7 +1162,7 @@ Large language models inevitably retain sensitive information, defined as inputs
 
 </details>
 
-### 68. Multilingual Amnesia: On the Transferability of Unlearning in Multilingual LLMs
+### 63. Multilingual Amnesia: On the Transferability of Unlearning in Multilingual LLMs
 
 🎓 [Official](https://aclanthology.org/2026.eacl-long.260/)　📅 2026-03　🏷 ACL 2026
 
@@ -1276,7 +1181,7 @@ As multilingual large language models become more widely used, ensuring their sa
 
 </details>
 
-### 69. REMIND: Memorization and Unlearning in LLMs Through the Lens of Input Loss Landscapes
+### 64. REMIND: Memorization and Unlearning in LLMs Through the Lens of Input Loss Landscapes
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.2215/)　📅 2026　🏷 ACL 2026
 
@@ -1295,7 +1200,7 @@ Understanding how large language models (LLMs) store, retain, and remove knowled
 
 </details>
 
-### 70. Forget to Know, Remember to Use: Context-Aware Unlearning for Large Language Models
+### 65. Forget to Know, Remember to Use: Context-Aware Unlearning for Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2510.17620) · 🎓 [Official](https://icml.cc/virtual/2026/poster/60740)　📅 2026　🏷 ICML 2026
 
@@ -1314,7 +1219,7 @@ Large language models can memorize information that must be removed—ranging fr
 
 </details>
 
-### 71. DualOptim+: Bridging Shared and Decoupled Optimizer States for Better Machine Unlearning in Large Language Models
+### 66. DualOptim+: Bridging Shared and Decoupled Optimizer States for Better Machine Unlearning in Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2605.21539) · 🎓 [Official](https://icml.cc/virtual/2026/poster/60714)　📅 2026　🏷 ICML 2026
 
@@ -1333,7 +1238,7 @@ We propose DualOptim+, a novel optimization framework for improving machine unle
 
 </details>
 
-### 72. Distinguishable Deletion: Unifying Knowledge Erasure and Refusal for Large Language Model Unlearning
+### 67. Distinguishable Deletion: Unifying Knowledge Erasure and Refusal for Large Language Model Unlearning
 
 📄 [arXiv](https://arxiv.org/abs/2605.16776) · 🎓 [Official](https://icml.cc/virtual/2026/poster/65264)　📅 2026　🏷 ICML 2026
 
@@ -1352,7 +1257,7 @@ Mitigating sensitive and harmful outputs is fundamental to ensuring safe deploym
 
 </details>
 
-### 73. One-Turn Knockout: Traceable and Editable Proxy Unlearning Under Asymmetric Access Constraints
+### 68. One-Turn Knockout: Traceable and Editable Proxy Unlearning Under Asymmetric Access Constraints
 
 🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/5637.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track)　📅 2026
 
@@ -1369,7 +1274,7 @@ Machine unlearning (MUL) aims to remove the influence of specific data from a tr
 
 </details>
 
-### 74. Forgetting to Forget: Attention Sink as A Gateway for Backdooring LLM Unlearning
+### 69. Forgetting to Forget: Attention Sink as A Gateway for Backdooring LLM Unlearning
 
 📄 [arXiv](https://arxiv.org/abs/2510.17021) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2025-10　🏷 COLM 2026
 
@@ -1388,7 +1293,7 @@ Large language model (LLM) unlearning is a key approach for removing undesired d
 
 </details>
 
-### 75. Rethinking Backdoor Adversarial Unlearning through the Lens of Catastrophic Forgetting in Continual Learning
+### 70. Rethinking Backdoor Adversarial Unlearning through the Lens of Catastrophic Forgetting in Continual Learning
 
 📄 [arXiv](https://arxiv.org/abs/2606.14078) · 🎓 [Official](https://www.sigsac.org/ccs/CCS2026/program/accepted-papers.html)　📅 2026-06　🏷 ACM CCS 2026
 
@@ -1407,26 +1312,7 @@ Existing studies reveal that current backdoor defenses exhibit limited robustnes
 
 </details>
 
-### 76. Trajectory-Aware Certified Decentralized Unlearning via SGD Stability
-
-🎓 [Official](https://icml.cc/virtual/2026/poster/66400)　📅 2026　🏷 ICML 2026
-
-**关键词**：`defense`、`machine unlearning`、`deletion guarantee`、`utility retention`、`certified robustness`、`deletion verification`
-
-👤 **作者**：Hengliang Wu、Jiale Yang、Shuzhen Chen、Di Wang、Dongxiao Yu、Youming Tao
-
-- 🎯 **研究动机**：去中心化遗忘现有方法强依赖静态问题特定超参或凸性假设，通用性受限
-- 🔬 **研究方法**：提出 TRACE-DU：利用局部 SGD 更新与去中心化训练动态做细粒度敏感度分析，结合策略性检查点选择与校准噪声扰动；借助历史模型轨迹支持任意多客户端顺序遗忘
-- 📌 **结论**：凸与非凸损失下均给出认证遗忘理论保证与敏感度界，多指标超越 SOTA 基线
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Decentralized Unlearning (DU) aims to remove the influence of specific clients from a collaboratively trained global model. However, existing methods suffer from strong reliance on static, problem-specific hyperparameters or restrictive convexity assumptions, limiting their general applicability. To overcome these limitations, we propose TRA jectory-aware CE rtified D ecentralized U nlearning ( TRACE-DU ), a generic unlearning framework for decentralized training. TRACE-DU introduces a fine-grained sensitivity analysis that leverages local SGD updates and decentralized training dynamics, thereby eliminating the need for convexity assumptions and reducing dependence on manually tuned parameters. By integrating strategic checkpoint selection with calibrated noise perturbation, the proposed framework enables efficient certified unlearning. Moreover, we exploit historical model trajectories to extend this framework, enabling it to naturally support sequential unlearning requests from an arbitrary number of clients. We provide theoretical guarantees for certified unlearning and derive sensitivity bounds under both convex and non-convex loss functions. Experimental results demonstrate that our framework outperforms state-of-the-art baselines across diverse metrics.
-
-</details>
-
-### 77. The Forgetting-Retention Dilemma: Certified Unlearning Theory in Continual Learning
+### 71. The Forgetting-Retention Dilemma: Certified Unlearning Theory in Continual Learning
 
 📄 [arXiv](https://arxiv.org/abs/2606.29832) · 🎓 [Official](https://icml.cc/virtual/2026/poster/60494)　📅 2026　🏷 ICML 2026
 
@@ -1445,7 +1331,7 @@ Machine unlearning aims to eliminate the influence of specific data from trained
 
 </details>
 
-### 78. Obliviate: Efficient Unlearning in Recommender Systems
+### 72. Obliviate: Efficient Unlearning in Recommender Systems
 
 📄 [arXiv](https://arxiv.org/abs/2607.22665) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64974)　📅 2026　🏷 ICML 2026
 
@@ -1464,7 +1350,7 @@ Machine unlearning is becoming increasingly critical in the context of data priv
 
 </details>
 
-### 79. LMCleaner: Efficient and Certified Online Unlearning via Influence Propagation Truncation
+### 73. LMCleaner: Efficient and Certified Online Unlearning via Influence Propagation Truncation
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/62503)　📅 2026　🏷 ICML 2026
 
@@ -1483,26 +1369,7 @@ Existing machine unlearning methods primarily focus on removing data influence a
 
 </details>
 
-### 80. Forgetting Whenever You Want: A Decentralized Continual Learning Framework with On-Demand Unlearning
-
-🎓 [Official](https://icml.cc/virtual/2026/poster/61506)　📅 2026　🏷 ICML 2026
-
-**关键词**：`defense`、`machine unlearning`、`deletion guarantee`、`utility retention`、`empirical evaluation`、`deletion verification`
-
-👤 **作者**：Xiao Zhang、…、Dongxiao Yu
-
-- 🎯 **研究动机**：去中心化类持续学习需要按需遗忘，面临历史类遗忘与全网知识纠缠两大挑战
-- 🔬 **研究方法**：DCU 首个分布式类持续学习加任意时刻类遗忘框架：原型提取、原型引导持续学习、用带噪标签合成样本调整决策边界的一次性原型遗忘
-- 📌 **结论**：两个数据集上验证动态学习与目标类遗忘的有效性
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Decentralized class continual learning refers to a paradigm where distributed clients continuously acquire new classes while retaining previously learned information without relying on a central server. With increasing emphasis on privacy preservation, there is a growing need for on-demand unlearning, introducing two key challenges: Historical Class Unlearning and Network-Wide Knowledge Entanglement. In this work, we propose a decentralized continual learning framework with on-demand unlearning (DCU), which is the first attempt at achieving class continual learning and arbitrary-time class unlearning in a distributed setting. Specifically, our proposed DCU comprises three main stages: prototypes extraction, prototype-guided continual learning, and unlearning with disposable prototypes. Firstly, the prototypes extraction mechanism is designed to capture the class-specific concepts as lightweight, disposable embeddings. Then, the synthetic data guided by these prototypes can be combined with real data to achieve incremental learning through distillation. Besides, synthetic samples with noisy label are used to guide the adjustment of the model's decision boundary, effectively erasing the influence of the target class while preserving other classes' knowledge. Extensive experiments conducted on two datasets demonstrate the effectiveness of our DCU in dynamic learning and target class unlearning.
-
-</details>
-
-### 81. Exact Unlearning in Reinforcement Learning
+### 74. Exact Unlearning in Reinforcement Learning
 
 📄 [arXiv](https://arxiv.org/abs/2606.04182) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61630)　📅 2026　🏷 ICML 2026
 
@@ -1521,7 +1388,7 @@ We formulate the problem of \emph{exact unlearning} in reinforcement learning, w
 
 </details>
 
-### 82. A Durable Machine Unlearning Framework to Nullify Recall of Sensitive Data on Incremental Training
+### 75. A Durable Machine Unlearning Framework to Nullify Recall of Sensitive Data on Incremental Training
 
 🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/AI4T108.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=special-track-on-ai4tech-ai-enabling-critical-technologies)　📅 2026
 
@@ -1538,7 +1405,7 @@ The advancement of data privacy regulations has spurred the development of Machi
 
 </details>
 
-### 83. Unlearning Is Not Just Erasing: Temporal Decoupling via Generation Inequality
+### 76. Unlearning Is Not Just Erasing: Temporal Decoupling via Generation Inequality
 
 📄 [arXiv](https://arxiv.org/abs/2608.23020)　📅 2026-08
 
@@ -1557,7 +1424,7 @@ Large language models (LLMs) require effective unlearning to address privacy reg
 
 </details>
 
-### 84. Spectral Saliency for Machine Unlearning
+### 77. Spectral Saliency for Machine Unlearning
 
 📄 [arXiv](https://arxiv.org/abs/2608.15548)　📅 2026-08
 
@@ -1576,7 +1443,7 @@ Machine unlearning (MU) aims to remove the influence of specific training data w
 
 </details>
 
-### 85. Approximate Machine Unlearning through Manifold Representation Forgetting Guided by Self Mode Connectivity
+### 78. Approximate Machine Unlearning through Manifold Representation Forgetting Guided by Self Mode Connectivity
 
 📄 [arXiv](https://arxiv.org/abs/2605.22871) · 🌐 [Project](https://doi.org/10.1145/3770855.3817655)　📅 2026-08　🏷 KDD 2026
 
@@ -1588,7 +1455,7 @@ Machine unlearning (MU) aims to remove the influence of specific training data w
 - 🔬 **研究方法**：以self mode connectivity引导流形表示遗忘实现近似unlearning
 - 📌 **结论**：遗忘目标样本的同时保留模型效用
 
-### 86. Gauss-Newton Unlearning for the LLM Era
+### 79. Gauss-Newton Unlearning for the LLM Era
 
 📄 [arXiv](https://arxiv.org/abs/2602.10568) · 🎓 [Official](https://satml.org/2026/accepted-papers/)　📅 2026-02　🏷 SaTML 2026
 
@@ -1607,7 +1474,7 @@ Standard large language model training can create models that produce outputs th
 
 </details>
 
-### 87. GRIP: Algorithm-Agnostic Machine Unlearning for Mixture-of-Experts via Geometric Router Constraints
+### 80. GRIP: Algorithm-Agnostic Machine Unlearning for Mixture-of-Experts via Geometric Router Constraints
 
 📄 [arXiv](https://arxiv.org/abs/2601.16905) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-01
 
@@ -1626,7 +1493,7 @@ Machine unlearning in Mixture-of-Experts (MoE) large language models presents a 
 
 </details>
 
-### 88. Representation Unlearning: Forgetting through Information Compression
+### 81. Representation Unlearning: Forgetting through Information Compression
 
 📄 [arXiv](https://arxiv.org/abs/2601.21564) · 🎓 [Official](https://icml.cc/virtual/2026/poster/65507)　📅 2026　🏷 ICML 2026
 
@@ -1645,7 +1512,7 @@ Machine unlearning seeks to remove the influence of specific training data from 
 
 </details>
 
-### 89. Less is More: Geometric Unlearning for LLMs with Minimal Data Disclosure
+### 82. Less is More: Geometric Unlearning for LLMs with Minimal Data Disclosure
 
 📄 [arXiv](https://arxiv.org/abs/2605.01735) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63359)　📅 2026　🏷 ICML 2026
 
@@ -1664,7 +1531,7 @@ As large language models (LLMs) are increasingly deployed in real-world systems,
 
 </details>
 
-### 90. Exploring Nonlinear Pathway in Parameter Space for Machine Unlearning
+### 83. Exploring Nonlinear Pathway in Parameter Space for Machine Unlearning
 
 📄 [arXiv](https://arxiv.org/abs/2505.10859) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63914)　📅 2026　🏷 ICML 2026
 
@@ -1683,7 +1550,7 @@ Machine Unlearning (MU) aims to remove the information of specific training data
 
 </details>
 
-### 91. Exact Unlearning of Finetuning Data via Model Merging at Scale
+### 84. Exact Unlearning of Finetuning Data via Model Merging at Scale
 
 📄 [arXiv](https://arxiv.org/abs/2504.04626) · 🎓 [Official](https://satml.org/2026/accepted-papers/)　📅 2025-04　🏷 SaTML 2026
 
@@ -1699,5 +1566,24 @@ Machine Unlearning (MU) aims to remove the information of specific training data
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 Approximate unlearning has gained popularity as an approach to efficiently update an LLM so that it behaves (roughly) as if it was not trained on a subset of data to begin with. However, existing methods are brittle in practice and can easily be attacked to reveal supposedly unlearned information. To alleviate issues with approximate unlearning, we instead propose SIFT-Masks (SIgn-Fixed Tuning-Masks), an exact unlearning method based on model merging. SIFT-Masks addresses two key limitations of standard model merging: (1) merging a large number of tasks can severely harm utility; and (2) methods that boost utility by sharing extra information across tasks make exact unlearning prohibitively expensive. SIFT-Masks solves these issues by (1) applying local masks to recover task-specific performance; and (2) constraining finetuning to align with a global sign vector as a lightweight approach to determine masks independently before merging. Across four settings where we merge up to 500 models, SIFT-Masks improves accuracy by 5-80% over naive merging and uses up to 250x less compute for exact unlearning compared to other merging baselines.
+
+</details>
+
+### 85. Temper-Then-Tilt: Principled Unlearning for Generative Models through Tempering and Classifier Guidance
+
+📄 [arXiv](https://arxiv.org/abs/2602.10217) · 🎓 [Official](https://icml.cc/virtual/2026/poster/66060)　📅 2026　🏷 ICML 2026
+
+**关键词**：`detection`、`defense`、`generative model safety`、`machine unlearning`、`concept erasure`、`empirical evaluation`
+
+👤 **作者**：Jacob L. Block、Mehryar Mohri、Aryan Mokhtari、Sanjay Shakkottai
+
+- 🎯 **研究动机**：生成模型遗忘中 classifier guidance 在 forget 集为尖锐集中分布时的有限样本下无法忠实遗忘
+- 🔬 **研究方法**：提出 T3-Unlearning：冻结基座模型，先 tempering 平坦化高置信尖峰，再用轻量分类器 tilt 临时分布；理论给出代理分类器风险与遗忘质量的有限样本保证，证明 tempering 对集中分布必要
+- 📌 **结论**：TOFU 基准上遗忘质量与生成效用均超基线，仅训练少量参数且运行时间极短
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+We study machine unlearning in large generative models by framing the task as density ratio estimation to a target distribution rather than supervised fine-tuning. While classifier guidance is a standard approach for approximating this ratio and can succeed in general, we show it can fail to faithfully unlearn with finite samples when the forget set represents a sharp, concentrated data distribution. To address this, we introduce Temper-Then-Tilt Unlearning (T3-Unlearning), which freezes the base model and applies a two-step inference procedure: (i) tempering the base distribution to flatten high-confidence spikes, and (ii) tilting the tempered distribution using a lightweight classifier trained to distinguish retain from forget samples. Our theoretical analysis provides finite-sample guarantees linking the surrogate classifier's risk to unlearning quality, proving that tempering is necessary to successfully unlearn for concentrated distributions. Empirical evaluations on the TOFU benchmark demonstrate that T3-Unlearning improves forget quality and generative utility over existing baselines, while training only a fraction of the parameters with a minimal runtime.
 
 </details>

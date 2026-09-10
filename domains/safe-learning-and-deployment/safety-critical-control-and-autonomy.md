@@ -34,26 +34,7 @@ We investigate whether automatic speech recognition (ASR) errors in user input c
 
 </details>
 
-### 2. TrapVLA: Trapping Vision-Language-Action Models in Configured Failure Modes
-
-📄 [arXiv](https://arxiv.org/abs/2608.26578) · 🌐 [Project](https://john-liua.github.io/TrapVLA/)　📅 2026-08
-
-**关键词**：`benchmark`、`attack`、`configured-failure fidelity`、`VLA backdoor`、`physical evaluation`、`configured failure`
-
-👤 **作者**：Jun-Hui Liu、…、Wei-Shi Zheng
-
-- 🎯 **研究动机**：既有 VLA 后门把任意任务失败都算攻击成功，无法控制机器人具体如何失效
-- 🔬 **研究方法**：提出 Configured Failure Trapping 任务与 Trap-LIBERO/Trap-RoboTwin benchmark，TrapVLA 学习 trigger 诱导的 action residual 驱动指定失败
-- 📌 **结论**：仿真与真实机器人上以隐蔽文本 trigger 注入指定位置偏移等失败模式，干净任务性能基本保持
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-This work introduces Configured Failure Trapping, a novel backdoor attack task against Vision-Language-Action (VLA) models, which aims to activate attacks through stealthy textual triggers and induce configured failure modes. Unlike prior backdoor attacks that treat any task failure as a successful attack, Configured Failure Trapping requires the attacker to control how the robot fails (e.g., causing the robot to grasp with a specified positional offset), making it substantially more challenging and hard to detect. To support the new task, we propose an effective data engine for synthesizing high-quality target trajectories and an automated suite for measuring configured-failure fidelity. Then, based on this foundation, we construct two new benchmarks, namely Trap-LIBERO and Trap-RoboTwin, that instantiate Configured Failure Trapping across four representative failure modes. To address this task, we identify sparse action deviation as a critical challenge and accordingly propose a novel method named TrapVLA, which explicitly learns trigger-induced action residuals to steer the policy toward the configured failure behavior. Extensive experiments across simulation benchmarks and real-world robotic settings show that TrapVLA effectively injects configured failure modes into VLA models while largely preserving performance on clean data. Project page: https://john-liua.github.io/TrapVLA/
-
-</details>
-
-### 3. Where World Models Break: Natural-Input Failure Discovery
+### 2. Where World Models Break: Natural-Input Failure Discovery
 
 📄 [arXiv](https://arxiv.org/abs/2608.22421)　📅 2026-08
 
@@ -72,7 +53,7 @@ World models predict action-conditioned futures and serve as critical internal s
 
 </details>
 
-### 4. GuardianBench: A Same-Scene Instruction-Contrastive Benchmark for Latent Contextual Risk in Embodied AI
+### 3. GuardianBench: A Same-Scene Instruction-Contrastive Benchmark for Latent Contextual Risk in Embodied AI
 
 📄 [arXiv](https://arxiv.org/abs/2608.21928)　📅 2026-08
 
@@ -91,7 +72,7 @@ In embodied AI, safety risk can be latent: a benign instruction and a safe scene
 
 </details>
 
-### 5. SafeLab: An Interactive High-Fidelity Benchmark for Embodied Safety in Scientific Robotics
+### 4. SafeLab: An Interactive High-Fidelity Benchmark for Embodied Safety in Scientific Robotics
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/61584)　📅 2026　🏷 ICML 2026
 
@@ -110,7 +91,7 @@ Scientific embodied agents could automate laboratory workflows, but laboratory s
 
 </details>
 
-### 6. RiskWorld: Object-Centric Latent World Modeling for Autonomous Driving Risk Identification
+### 5. RiskWorld: Object-Centric Latent World Modeling for Autonomous Driving Risk Identification
 
 📄 [arXiv](https://arxiv.org/abs/2608.21414)　📅 2026-08
 
@@ -129,7 +110,7 @@ Autonomous driving risk identification aims to determine which observed object i
 
 </details>
 
-### 7. Beyond Imitation: Learning Safe End-to-End Autonomous Driving from Hard Negatives
+### 6. Beyond Imitation: Learning Safe End-to-End Autonomous Driving from Hard Negatives
 
 📄 [arXiv](https://arxiv.org/abs/2605.19771) · 🌐 [Project](https://eccv.ecva.net/virtual/2026/poster/3394)　📅 2026-05　🏷 ECCV 2026
 
@@ -148,26 +129,7 @@ Existing imitation learning methods for end-to-end autonomous driving predominan
 
 </details>
 
-### 8. All Vehicles Can Lie: Efficient Adversarial Defense in Fully Untrusted-Vehicle Collaborative Perception via Pseudo-Random Bayesian Inference
-
-📄 [arXiv](https://arxiv.org/abs/2603.08498) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Yu_All_Vehicles_Can_Lie_Efficient_Adversarial_Defense_in_Fully_Untrusted-Vehicle_CVPR_2026_paper.html)　📅 2026-03　🏷 CVPR 2026
-
-**关键词**：`defense`、`collaborative perception`、`malicious vehicle`、`Bayesian inference`
-
-👤 **作者**：Yi Yu、Libing Wu、Zhuangzhuang Zhang、Jing Qiu、Lijuan Huo、Jiaqi Feng
-
-- 🎯 **研究动机**：协同感知防御依赖可信自车参照或额外分类器，在全不可信车辆环境不实用
-- 🔬 **研究方法**：PRBI 以前一帧可靠感知为动态参照检测时序感知差异，伪随机分组每帧仅两次验证，贝叶斯推断估计恶意车辆数量与身份
-- 📌 **结论**：平均每帧仅 2.5 次验证，把检测精度恢复至攻击前的 79.4%-86.9%，并证明了收敛与稳定性
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Collaborative perception (CP) enables multiple vehicles to augment their individual perception capacities through the exchange of feature-level sensory data. However, this fusion mechanism is inherently vulnerable to adversarial attacks, especially in fully untrusted-vehicle environments. Existing defense approaches often assume a trusted ego vehicle as a reference or incorporate additional binary classifiers. These assumptions limit their practicality in real-world deployments due to the questionable trustworthiness of ego vehicles, the requirement for real-time detection, and the need for generalizability across diverse scenarios. To address these challenges, we propose a novel Pseudo-Random Bayesian Inference (PRBI) framework, a first efficient defense method tailored for fully untrusted-vehicle CP. PRBI detects adversarial behavior by leveraging temporal perceptual discrepancies, using the reliable perception from the preceding frame as a dynamic reference. Additionally, it employs a pseudo-random grouping strategy that requires only two verifications per frame, while applying Bayesian inference to estimate both the number and identities of malicious vehicles. Theoretical analysis has proven the convergence and stability of the proposed PRBI framework. Extensive experiments show that PRBI requires only 2.5 verifications per frame on average, outperforming existing methods significantly, and restores detection precision to between 79.4% and 86.9% of pre-attack levels.
-
-</details>
-
-### 9. SafeDrive: Fine-Grained Safety Reasoning for End-to-End Driving in a Sparse World
+### 7. SafeDrive: Fine-Grained Safety Reasoning for End-to-End Driving in a Sparse World
 
 📄 [arXiv](https://arxiv.org/abs/2602.18887) · 🌐 [Project](https://spa-junghokim.github.io/SafeDrive-Page/) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Kim_SafeDrive_Fine-Grained_Safety_Reasoning_for_End-to-End_Driving_in_a_Sparse_CVPR_2026_paper.html)　📅 2026-02　🏷 CVPR 2026
 
@@ -186,7 +148,7 @@ The end-to-end (E2E) paradigm, which maps sensor inputs directly to driving deci
 
 </details>
 
-### 10. Reliable Policy Transfer for Safety-Aware End-to-End Driving with Deep Reinforcement Learning
+### 8. Reliable Policy Transfer for Safety-Aware End-to-End Driving with Deep Reinforcement Learning
 
 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Borhan_Reliable_Policy_Transfer_for_Safety-Aware_End-to-End_Driving_with_Deep_Reinforcement_CVPR_2026_paper.html)　📅 2026　🏷 CVPR 2026
 
@@ -205,7 +167,7 @@ End-to-End (E2E) Reinforcement Learning (RL) for autonomous driving still strugg
 
 </details>
 
-### 11. Self-Improving Autonomous Vehicles via Real-World Reinforcement Learning
+### 9. Self-Improving Autonomous Vehicles via Real-World Reinforcement Learning
 
 🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/5068.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track)　📅 2026
 
@@ -222,7 +184,7 @@ End-to-end autonomous driving systems have demonstrated advantages over traditio
 
 </details>
 
-### 12. SlowPerception: Physical-World Latency Attack against Camera-based Perception in Autonomous Driving
+### 10. SlowPerception: Physical-World Latency Attack against Camera-based Perception in Autonomous Driving
 
 📄 [arXiv](https://arxiv.org/abs/2406.05800) · 🎓 [Official](https://www.sigsac.org/ccs/CCS2026/program/accepted-papers.html)　📅 2024-06　🏷 ACM CCS 2026
 
@@ -241,7 +203,7 @@ Autonomous Driving (AD) systems critically depend on visual perception for real-
 
 </details>
 
-### 13. SafeBranch: Branch-Pair Safety Alignment for Embodied Agents
+### 11. SafeBranch: Branch-Pair Safety Alignment for Embodied Agents
 
 📄 [arXiv](https://arxiv.org/abs/2608.19729)　📅 2026-08
 
@@ -260,7 +222,7 @@ Vision-language-model-based embodied agents can complete instructed tasks but of
 
 </details>
 
-### 14. Safety-Aware Shared Autonomy via World-Model Constrained Planning
+### 12. Safety-Aware Shared Autonomy via World-Model Constrained Planning
 
 🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/5019.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track)　📅 2026
 
@@ -277,7 +239,7 @@ Safety-aware shared autonomy aims to enable an autonomous agent to collaborate w
 
 </details>
 
-### 15. Think Only When Needed: Prompt-Authority Control for Selective Slow-Path Intervention in Vision-Language-Action Manipulation
+### 13. Think Only When Needed: Prompt-Authority Control for Selective Slow-Path Intervention in Vision-Language-Action Manipulation
 
 📄 [arXiv](https://arxiv.org/abs/2608.23224)　📅 2026-08
 
@@ -296,7 +258,7 @@ Retrieval can efficiently and effectively augment a frozen vision--language--act
 
 </details>
 
-### 16. CertVLA: Certified Defense against Physical Visual Attacks for Vision-Language-Action Models
+### 14. CertVLA: Certified Defense against Physical Visual Attacks for Vision-Language-Action Models
 
 📄 [arXiv](https://arxiv.org/abs/2608.20791)　📅 2026-08
 
@@ -315,7 +277,7 @@ Vision-Language-Action (VLA) policies are vulnerable to localized physical pertu
 
 </details>
 
-### 17. Beyond Multimodal Alignment: Certifying Physical Language through Response Substitution and Ordered Execution
+### 15. Beyond Multimodal Alignment: Certifying Physical Language through Response Substitution and Ordered Execution
 
 📄 [arXiv](https://arxiv.org/abs/2608.19492)　📅 2026-08
 
@@ -331,5 +293,24 @@ Vision-Language-Action (VLA) policies are vulnerable to localized physical pertu
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 World models increasingly treat compact multimodal representations as interfaces between perception and physical interaction, yet existing probes do not establish whether different sensors carry the same executable meaning or whether that meaning survives a new action composition. We introduce an operational capability hierarchy and the Disjoint-Bridge Operator-Substitution Certificate (DBOSC), which asks whether independently trained modality compilers enter a frozen response chart interchangeably on evidence outside their training panels. On Cluster Haptic, audio and acceleration representations of the same unseen surface are 4.5x closer in response space than wrong-surface pairings, with the gap holding for all 19 held-out surfaces; unsealing withheld responses confirms that every branch predicts the physics better than the population chart. We then test ordered execution in a controlled elastoplastic system with complementary modality blind spots. At the pre-registered budget, the prerequisite refuses the stack because the frozen executor cannot advance even an exact chart coordinate through a held-out program. At a converged budget, the same rank-three chart executes those programs (oracle NMSE 0.18), fusion improves on both modalities, and 14 of 16 registered checks pass; the two failures arise because a diagonal restriction of the fused information matrix performs as well as the full one. Clearing the gate is a property of the executor, not the chart: an executor emitting whole programs instead of shared per-step dynamics is 38x worse than an entity-blind predictor on the same chart. A matching non-identifiability result explains why compression and fusion alone cannot determine an unseen composition law. These results separate attribute access, response substitution, fusion closure, and ordered execution into distinct, separately testable achievements.
+
+</details>
+
+### 16. An Omitted Mode Is a Rare Rule: The Sampling-Verification Danger Law in Continuous Code World Models
+
+📄 [arXiv](https://arxiv.org/abs/2608.17956)　📅 2026-08
+
+**关键词**：`analysis`、`coding agent`、`repository attack`、`code security`
+
+👤 **作者**：Javier Aguilar Martín
+
+- 🎯 **研究动机**：Code World Model 范式以 N 个采样转移复现来接受模型，该接受在连续控制中究竟证明什么未知
+- 🔬 **研究方法**：定义期望风险并孤立精确因子：N 个独立 gate rollout 全部错过概率 r 的关键事件恰为 (1-r)^N；在三个混合仪器上利用被接受的模式盲模型并做真实 LLM 合成实验
+- 📌 **结论**：规划器被钉在模式边界、后悔近全部可得回报；GPT-5.x 修复 1D 钳位 105/111 但 2D 上 0/156；接受只证明样本一致性——可判别性是仪器的可测属性
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+In the Code World Model paradigm an LLM synthesizes an executable world model that a classical planner searches, and the model is accepted when it reproduces sampled transitions. We ask what that acceptance certifies in continuous control. We define the pipeline's danger as an expected risk and isolate its exact factor: the probability that N i.i.d. gate rollouts all miss a critical event of probability r is exactly (1-r)^N; an independent acceptance sample adds its budget to the exponent. On three hybrid instruments the accepted mode-blind model is exploited: the planner is pinned at the mode boundary at a regret of nearly the whole attainable return. We prove a localization budget, valid at boundary points: models with Lipschitz constant at most L differing by eta at a point disagree above tolerance eps on a region of volume at least kappa((eta-eps)/L)^(d+m); the discontinuous reset modes studied pay no such budget. With real LLM synthesis, GPT-5.x repairs an omitted 1D clamp in 105 of 111 mode-containing draws -- every attempt exact on 50 of 56 instrument-stream blocks (95% CI [0.781, 0.960]). On 2D regions no artifact recovers the rule (0/156); eight targeted interventions leave the failure in place, and positive controls locate it: a located rule is not induced, while given form and location the constants follow exactly. A version-space certificate proves identification is class-relative: at the widest dose the declared fit succeeds in 20/20 blocks and every sample-consistent circle is within tolerance in 18/20. We prove a class of entry rules exactly consistent with every sample yet harmless at play, so identifiability is a measurable property of the instrument. Re-scoring all 1034 artifacts on independent samples confirms acceptance certifies sample consistency and no more: where the gate is provably informative it covers about two percent of the exploited planner's queries.
 
 </details>

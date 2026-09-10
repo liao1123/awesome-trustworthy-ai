@@ -1152,3 +1152,22 @@ The surge of highly realistic synthetic videos produced by contemporary generati
 The rapid advancement of AI-driven video generation has transformed content creation, while simultaneously increasing the risk of misinformation through localized manipulations in long-form videos. Existing video forensic methods predominantly operate on short, independent clips, and thus fail to capture realistic scenarios where AI-generated content is sparsely embedded within otherwise authentic footage. To bridge this gap, we formulate the task of Temporal AI-Generated Segment Localization and Explanation, which targets authenticity detection, temporal localization, and interpretable analysis of manipulated segments in untrimmed long videos. We further introduce TASLE, a large-scale benchmark comprising 12,472 untrimmed videos with diverse manipulation patterns and rich annotation signals, including temporal boundaries, authenticity labels, and segment-level rationales. In addition, we propose MSLoc, a coarse-to-fine forensic baseline that combines a boundary-sensitive proposal generation module for efficient long-video scanning with an MLLM-based refinement module for precise boundary localization and interpretable reasoning. Experiments validate the effectiveness of the proposed baseline, highlighting the importance of segment-level explainable forensics for long-form AI-generated video analysis. Dataset and code will be made publicly available.
 
 </details>
+
+### 63. Expose Your Disguise: Recovering Source Speaker Identity From Voice Conversion
+
+📄 [arXiv](https://arxiv.org/abs/2607.23650) · 🎓 [Official](https://www.sigsac.org/ccs/CCS2026/program/accepted-papers.html)　📅 2026-07　🏷 ACM CCS 2026
+
+**关键词**：`detection`、`voice conversion`、`privacy leakage`、`memorization`、`source speaker attribution`、`audio forensics`
+
+👤 **作者**：Hanlei Zhang、Zhongming Ma、Mingyang Zhang、Tengfei Liu、Yushi Cheng、Yanjiao Chen
+
+- 🎯 **研究动机**：语音转换对生物识别安全构成威胁，取证场景需从转换语音还原源说话人身份以缩小嫌疑范围
+- 🔬 **研究方法**：提出 TRIDENT 三叉架构：主提取器加两个辅助分支——识别转换机制类型与提取目标说话人潜表示，借此解耦混淆因素蒸馏出高判别力的源说话人表示
+- 📌 **结论**：对 7 个 SOTA 语音转换方法准确率高达 90.99%，电话信道、未见语言与自适应场景下保持鲁棒
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Voice conversion (VC) poses a significant threat to biometric security by allowing attackers to impersonate target speakers. In forensic contexts, recovering the source speaker's identity from converted audio is vital for narrowing the field of suspects. To address this, we propose TRIDENT, a retracing framework designed to restore a source speaker's original identity from a converted audio sample. TRIDENT utilizes a three-pronged architecture consisting of a primary extractor and two auxiliary branches. The first auxiliary branch identifies the underlying voice conversion mechanism. This design acknowledges that even if the exact conversion strategy is unknown, a high-performance model adopted by the attacker is typically a derivative or variant of established mainstream ones. The second auxiliary branch extracts a latent representation of the target speaker, facilitating the isolation of target-specific traits from the composite converted audio sample. Finally, the main extractor leverages insights from both auxiliary branches to decouple confounding factors and distill a highly discriminative representation of the source speaker's identity. Experimental results demonstrate that TRIDENT achieves an accuracy as high as 90.99% against 7 state-of-the-art voice conversion methods. Furthermore, TRIDENT maintains robust performance under challenging conditions, including telephony channels, unseen languages, and adaptive scenarios.
+
+</details>

@@ -112,26 +112,7 @@ Open-weight Large Language Models (LLMs) enable scientific progress and broad de
 
 </details>
 
-### 6. Adapter Shield: A Unified Framework with Built-in Authentication for Preventing Unauthorized Zero-Shot Image-to-Image Generation
-
-📄 [arXiv](https://arxiv.org/abs/2512.00075) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Jia_Adapter_Shield_A_Unified_Framework_with_Built-in_Authentication_for_Preventing_CVPR_2026_paper.html)　📅 2025-12　🏷 CVPR 2026
-
-**关键词**：`defense`、`adapter authentication`、`unauthorized generation`、`model access control`
-
-👤 **作者**：Jun Jia、…、Guangtao Zhai
-
-- 🎯 **研究动机**：零样本图生图可仅凭一张图像复制人脸身份或艺术风格，带来未授权克隆风险
-- 🔬 **研究方法**：Adapter Shield 构建可逆加密系统，按密钥把原始 embedding 映射为加密表示，授权用户凭密钥恢复；并用多目标对抗扰动把受保护图像的 embedding 主动推向加密模式
-- 📌 **结论**：阻断未授权零样本生成的能力超越 SOTA 防御，同时支持灵活安全的授权访问控制
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-With the rapid progress in diffusion models, image synthesis has advanced to the stage of zero-shot image-to-image generation, where high-fidelity replication of facial identities or artistic styles can be achieved using just one portrait or artwork, without modifying any model weights. Although these techniques significantly enhance creative possibilities, they also pose substantial risks related to intellectual property violations, including unauthorized identity cloning and stylistic imitation. To counter such threats, this work presents Adapter Shield, the first universal and authentication-integrated solution aimed at defending personal images from misuse in zero-shot generation scenarios. We first investigate how current zero-shot methods employ image encoders to extract embeddings from input images, which are subsequently fed into the UNet of diffusion models through cross-attention layers. Inspired by this mechanism, we construct a reversible encryption system that maps original embeddings into distinct encrypted representations according to different secret keys. The authorized users can restore the authentic embeddings via a decryption module and the correct key, enabling normal usage for authorized generation tasks. For protection purposes, we design a multi-target adversarial perturbation method that actively shifts the original embeddings toward designated encrypted patterns. Consequently, protected images are embedded with a defensive layer that ensures unauthorized users can only produce distorted or encrypted outputs. Extensive evaluations demonstrate that our method surpasses existing state-of-the-art defenses in blocking unauthorized zero-shot image synthesis, while supporting flexible and secure access control for verified users.
-
-</details>
-
-### 7. Locket: Robust Feature-Locking Technique for Language Models
+### 6. Locket: Robust Feature-Locking Technique for Language Models
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.626/)　📅 2025-10　🏷 ACL 2026
 
@@ -150,7 +131,7 @@ Chatbot service providers (e.g., OpenAI) rely on tiered subscription plans to ge
 
 </details>
 
-### 8. Defeating Prompt Injections by Design
+### 7. Defeating Prompt Injections by Design
 
 📄 [arXiv](https://arxiv.org/abs/2503.18813) · 🎓 [Official](https://satml.org/2026/accepted-papers/)　📅 2025-03　🏷 SaTML 2026
 
@@ -169,7 +150,7 @@ Large Language Models (LLMs) are increasingly deployed in agentic systems that i
 
 </details>
 
-### 9. SudoLM: Learning Access Control of Parametric Knowledge with Authorization Alignment
+### 8. SudoLM: Learning Access Control of Parametric Knowledge with Authorization Alignment
 
 🎓 [Official](https://aclanthology.org/2025.acl-long.1318/)　📅 2024-10　🏷 ACL 2025
 
@@ -188,7 +169,7 @@ Existing preference alignment is a one-size-fits-all alignment mechanism, where 
 
 </details>
 
-### 10. AdapterSwap: Continuous Training of LLMs with Data Removal and Access-Control Guarantees
+### 9. AdapterSwap: Continuous Training of LLMs with Data Removal and Access-Control Guarantees
 
 📄 [arXiv](https://arxiv.org/abs/2404.08417)　📅 2024-04
 
@@ -207,7 +188,7 @@ Large language models (LLMs) are increasingly capable of completing knowledge in
 
 </details>
 
-### 11. Information Flow Control in Machine Learning through Modular Model Architecture
+### 10. Information Flow Control in Machine Learning through Modular Model Architecture
 
 📄 [arXiv](https://arxiv.org/abs/2306.03235) · 🎓 [Official](https://www.usenix.org/conference/usenixsecurity24/presentation/tiwari)　📅 2023-06　🏷 USENIX Security 2024
 
@@ -226,7 +207,7 @@ In today's machine learning (ML) models, any part of the training data can affec
 
 </details>
 
-### 12. Unlearning Is Not Just Erasing: Temporal Decoupling via Generation Inequality
+### 11. Unlearning Is Not Just Erasing: Temporal Decoupling via Generation Inequality
 
 📄 [arXiv](https://arxiv.org/abs/2608.23020)　📅 2026-08
 
@@ -245,7 +226,7 @@ Large language models (LLMs) require effective unlearning to address privacy reg
 
 </details>
 
-### 13. Modular Pretraining Enables Access Control
+### 12. Modular Pretraining Enables Access Control
 
 📄 [arXiv](https://arxiv.org/abs/2607.08077) · 📝 [OpenReview](https://openreview.net/forum?id=yIubI9l3IT) · 🎓 [Official](https://icml.cc/virtual/2026/poster/60631)　📅 2026-07　🏷 ICML 2026
 
@@ -264,7 +245,7 @@ AI developers face a dual-use dilemma. An AI capability that helps one user cure
 
 </details>
 
-### 14. Compressed Sensing for Capability Localization in Large Language Models
+### 13. Compressed Sensing for Capability Localization in Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2603.03335) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63454)　📅 2026-02　🏷 ICML 2026
 
@@ -283,7 +264,7 @@ Large language models (LLMs) exhibit a wide range of capabilities, including mat
 
 </details>
 
-### 15. Capability Localization: Capabilities Can be Localized rather than Individual Knowledge
+### 14. Capability Localization: Capabilities Can be Localized rather than Individual Knowledge
 
 📄 [arXiv](https://arxiv.org/abs/2502.20992) · 🎓 [Official](https://iclr.cc/virtual/2025/poster/28895)　📅 2025-02　🏷 ICLR 2025
 
@@ -302,7 +283,7 @@ Large scale language models have achieved superior performance in tasks related 
 
 </details>
 
-### 16. Gradient Routing: Masking Gradients to Localize Computation in Neural Networks
+### 15. Gradient Routing: Masking Gradients to Localize Computation in Neural Networks
 
 📄 [arXiv](https://arxiv.org/abs/2410.04332)　📅 2024-10
 
@@ -321,7 +302,7 @@ Neural networks are trained primarily based on their inputs and outputs, without
 
 </details>
 
-### 17. REINS: Refusal-Enhanced Inhibitory Steering with Sparse Autoencoder Features
+### 16. REINS: Refusal-Enhanced Inhibitory Steering with Sparse Autoencoder Features
 
 📄 [arXiv](https://arxiv.org/abs/2608.28233)　📅 2026-08
 
@@ -340,7 +321,7 @@ Steering with Sparse Autoencoders (SAEs) offers a lightweight inference-time pat
 
 </details>
 
-### 18. GAPS: Dimension-Level Gates for Conditional Activation Steering
+### 17. GAPS: Dimension-Level Gates for Conditional Activation Steering
 
 📄 [arXiv](https://arxiv.org/abs/2609.01878)　📅 2026-09
 
@@ -359,7 +340,7 @@ Activation steering suppresses undesired behaviors in language models by adding 
 
 </details>
 
-### 19. Attention Heads Hold the Key to Understanding Safety Mechanisms in Large Language Models
+### 18. Attention Heads Hold the Key to Understanding Safety Mechanisms in Large Language Models
 
 🌐 [Project](https://doi.org/10.1145/3770855.3818024)　📅 2026-08　🏷 KDD 2026
 
@@ -369,7 +350,7 @@ Activation steering suppresses undesired behaviors in language models by adding 
 - 🔬 **研究方法**：以因果消融识别safety-critical attention head并分析refusal机制
 - 📌 **结论**：少量safety head主导拒答行为，可定位并调控安全机制
 
-### 20. Broken Symmetry in LLM Refusal: Answer Release Is More Local Than Refusal Restoration
+### 19. Broken Symmetry in LLM Refusal: Answer Release Is More Local Than Refusal Restoration
 
 📄 [arXiv](https://arxiv.org/abs/2608.15772)　📅 2026-08
 
@@ -388,7 +369,7 @@ When a language model refuses to answer a prompt, it is unclear whether the corr
 
 </details>
 
-### 21. HARC: Coupling Harmfulness and Refusal Directions for Robust Safety Alignment
+### 20. HARC: Coupling Harmfulness and Refusal Directions for Robust Safety Alignment
 
 📄 [arXiv](https://arxiv.org/abs/2607.00572)　📅 2026-07
 
@@ -407,9 +388,9 @@ Understanding how aligned LLMs internally represent safety is critical for diagn
 
 </details>
 
-### 22. The Geometry of Refusal: Linear Instability in Safety-Aligned LLMs
+### 21. The Geometry of Refusal: Linear Instability in Safety-Aligned LLMs
 
-📄 [arXiv](https://arxiv.org/abs/2606.22686) · 🎓 [Official](https://aclanthology.org/2026.trustnlp-main.51/)　📅 2026-06　🏷 ACL 2026
+📄 [arXiv](https://arxiv.org/abs/2606.22686) · 🎓 [Official](https://aclanthology.org/2026.trustnlp-main.51/)　📅 2026-06　🏷 ACL 2026 Workshop
 
 **关键词**：`analysis`、`refusal geometry`、`linear instability`、`bidirectional steering`、`activation steering`
 
@@ -426,7 +407,7 @@ Modern Large Language Models (LLMs) rely on extensive safety alignment, yet the 
 
 </details>
 
-### 23. Harmful Intent as a Geometrically Recoverable Feature of LLM Residual Streams
+### 22. Harmful Intent as a Geometrically Recoverable Feature of LLM Residual Streams
 
 📄 [arXiv](https://arxiv.org/abs/2604.18901)　📅 2026-04
 
@@ -445,7 +426,7 @@ Aligned language models refuse harmful instructions, but the representations thr
 
 </details>
 
-### 24. Knowing without Acting: The Disentangled Geometry of Safety Mechanisms in Large Language Models
+### 23. Knowing without Acting: The Disentangled Geometry of Safety Mechanisms in Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2603.05773) · 🌐 [Project](https://anonymous.4open.science/r/DSH)　📅 2026-03
 
@@ -464,7 +445,7 @@ Safety alignment is often conceptualized as a monolithic process wherein harmful
 
 </details>
 
-### 25. There Is More to Refusal in Large Language Models than a Single Direction
+### 24. There Is More to Refusal in Large Language Models than a Single Direction
 
 📄 [arXiv](https://arxiv.org/abs/2602.02132)　📅 2026-02
 
@@ -483,7 +464,7 @@ Prior work argues that refusal in large language models is mediated by a single 
 
 </details>
 
-### 26. LLMs Encode Harmfulness and Refusal Separately
+### 25. LLMs Encode Harmfulness and Refusal Separately
 
 📄 [arXiv](https://arxiv.org/abs/2507.11878) · 🎓 [Official](https://proceedings.neurips.cc/paper_files/paper/2025/hash/cd18539787d90e1d682d557c2c71b534-Abstract-Conference.html)　📅 2025-07　🏷 NeurIPS 2025
 
@@ -495,7 +476,7 @@ Prior work argues that refusal in large language models is mediated by a single 
 - 🔬 **研究方法**：以causal steering证明harmfulness与refusal编码于不同方向与token位置
 - 📌 **结论**：去除refusal不等于删除有害性识别，Latent Guard可减误拒且抗对抗微调
 
-### 27. Refusal Direction is Universal Across Safety-Aligned Languages
+### 26. Refusal Direction is Universal Across Safety-Aligned Languages
 
 📄 [arXiv](https://arxiv.org/abs/2505.17306) · 🎓 [Official](https://proceedings.neurips.cc/paper_files/paper/2025/hash/2e94772e3c079d83f79c311d07456111-Abstract-Conference.html)　📅 2025-05　🏷 NeurIPS 2025
 
@@ -514,7 +495,7 @@ Refusal mechanisms in large language models (LLMs) are essential for ensuring sa
 
 </details>
 
-### 28. Refusal in Language Models Is Mediated by a Single Direction
+### 27. Refusal in Language Models Is Mediated by a Single Direction
 
 📄 [arXiv](https://arxiv.org/abs/2406.11717) · 🎓 [Official](https://papers.neurips.cc/paper_files/paper/2024/hash/f545448535dfde4f9786555403ab7c49-Abstract-Conference.html)　📅 2024-06　🏷 NeurIPS 2024
 
@@ -533,7 +514,7 @@ Conversational large language models are fine-tuned for both instruction-followi
 
 </details>
 
-### 29. Not All Refusals Are Equal: How Safety Alignment Fails Cybersecurity at Scale
+### 28. Not All Refusals Are Equal: How Safety Alignment Fails Cybersecurity at Scale
 
 📄 [arXiv](https://arxiv.org/abs/2607.02714)　📅 2026-07　🏷 NeurIPS 2026
 
@@ -552,7 +533,7 @@ There is no doubt that safety alignment is an essential step in LLM training. Ho
 
 </details>
 
-### 30. Willing but Unable: Separating Refusal from Capability in Code LLMs via Abliteration
+### 29. Willing but Unable: Separating Refusal from Capability in Code LLMs via Abliteration
 
 📄 [arXiv](https://arxiv.org/abs/2606.05396)　📅 2026-06
 
@@ -571,7 +552,7 @@ Producing a labeled vulnerable code at scale is a recurring obstacle for learnin
 
 </details>
 
-### 31. Understanding the Effects of Safety Unalignment on Large Language Models
+### 30. Understanding the Effects of Safety Unalignment on Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2604.02574) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-04
 
@@ -590,7 +571,7 @@ Safety alignment has become a critical step to ensure LLMs refuse harmful reques
 
 </details>
 
-### 32. Abliteration Is Not a Scalpel: Off-Target Effects of Refusal Removal on Decision Disposition Across Model Families
+### 31. Abliteration Is Not a Scalpel: Off-Target Effects of Refusal Removal on Decision Disposition Across Model Families
 
 📄 [arXiv](https://arxiv.org/abs/2607.17427)　📅 2026-07
 
@@ -609,7 +590,7 @@ Abliteration - deleting a model's refusal direction from its weights - is the st
 
 </details>
 
-### 33. On the Failure of Topic-Matched Contrast Baselines in Multi-Directional Refusal Abliteration
+### 32. On the Failure of Topic-Matched Contrast Baselines in Multi-Directional Refusal Abliteration
 
 📄 [arXiv](https://arxiv.org/abs/2603.22061)　📅 2026-03
 
@@ -628,7 +609,7 @@ Inasmuch as the removal of refusal behavior from instruction-tuned language mode
 
 </details>
 
-### 34. Refusal geometry reflects refusal training: diverse refusal prefixes can raise stable rank and weaken refusal vector ablation attacks
+### 33. Refusal geometry reflects refusal training: diverse refusal prefixes can raise stable rank and weaken refusal vector ablation attacks
 
 📄 [arXiv](https://arxiv.org/abs/2608.25390)　📅 2026-08
 
@@ -647,7 +628,7 @@ Refusal training protects AI models from jailbreaks by training models to declin
 
 </details>
 
-### 35. Fool's Gold: Defensive Deception Against Safety-Removal Attacks on Open-Weight Models
+### 34. Fool's Gold: Defensive Deception Against Safety-Removal Attacks on Open-Weight Models
 
 📄 [arXiv](https://arxiv.org/abs/2608.17202)　📅 2026-08
 
@@ -666,7 +647,7 @@ Safety alignment in open-weight language models is trivially removable: ablitera
 
 </details>
 
-### 36. Abliteration Mitigation via Refusal Aliases
+### 35. Abliteration Mitigation via Refusal Aliases
 
 📄 [arXiv](https://arxiv.org/abs/2608.18093)　📅 2026-08
 
@@ -685,7 +666,7 @@ Abliteration, the removal of refusal capabilities from large language models by 
 
 </details>
 
-### 37. TamperBench: Systematically Stress-Testing LLM Safety Under Fine-Tuning and Tampering
+### 36. TamperBench: Systematically Stress-Testing LLM Safety Under Fine-Tuning and Tampering
 
 📄 [arXiv](https://arxiv.org/abs/2602.06911) · 🌐 [Project](https://doi.org/10.1145/3770855.3817557)　📅 2026-02　🏷 KDD 2026
 
@@ -704,7 +685,7 @@ As increasingly capable open-weight large language models (LLMs) are deployed, i
 
 </details>
 
-### 38. Selective Knowledge Edit Reversal via Gated Singular Vector Shrinkage
+### 37. Selective Knowledge Edit Reversal via Gated Singular Vector Shrinkage
 
 📄 [arXiv](https://arxiv.org/abs/2609.02091)　📅 2026-09
 
@@ -723,7 +704,7 @@ Knowledge editing provides an efficient way to update factual knowledge in large
 
 </details>
 
-### 39. Distance Is Not Enough: Forget-Retain Alignment Gap Predicts LLM Relearning Robustness
+### 38. Distance Is Not Enough: Forget-Retain Alignment Gap Predicts LLM Relearning Robustness
 
 📄 [arXiv](https://arxiv.org/abs/2608.25429)　📅 2026-08
 
@@ -742,7 +723,7 @@ Machine unlearning aims to make a model forget specific data, yet unlearned LLMs
 
 </details>
 
-### 40. ST$^2$U: Stateful Test-Time Unlearning via Restricted Knowledge Boundary Control
+### 39. ST$^2$U: Stateful Test-Time Unlearning via Restricted Knowledge Boundary Control
 
 📄 [arXiv](https://arxiv.org/abs/2608.23034)　📅 2026-08
 
@@ -761,7 +742,7 @@ Controlling restricted knowledge in large language models is essential for model
 
 </details>
 
-### 41. BLADE: Bilevel Low-rank Augmented-Lagrangian Erasure for LLM Unlearning
+### 40. BLADE: Bilevel Low-rank Augmented-Lagrangian Erasure for LLM Unlearning
 
 📄 [arXiv](https://arxiv.org/abs/2608.22557)　📅 2026-08
 
@@ -780,7 +761,7 @@ Existing LLM unlearning methods struggle with robustness: unbounded forget losse
 
 </details>
 
-### 42. Forgotten in Weights, Recovered by Tools: Agentic Tool Unlearning for LLM Agents
+### 41. Forgotten in Weights, Recovered by Tools: Agentic Tool Unlearning for LLM Agents
 
 📄 [arXiv](https://arxiv.org/abs/2608.21544)　📅 2026-08
 
@@ -799,7 +780,7 @@ Large language models (LLMs) are increasingly deployed as tool-augmented agents,
 
 </details>
 
-### 43. Can Scientific Claims Be Removed from Large Language Models? A Systematic Evaluation of Claim-Level Unlearning
+### 42. Can Scientific Claims Be Removed from Large Language Models? A Systematic Evaluation of Claim-Level Unlearning
 
 📄 [arXiv](https://arxiv.org/abs/2608.20960)　📅 2026-08
 
@@ -818,7 +799,7 @@ Language models (LMs) are trained on static scientific corpora, whereas scientif
 
 </details>
 
-### 44. SAUL: Sharpness-Aware Augmented-Lagrangian Unlearning
+### 43. SAUL: Sharpness-Aware Augmented-Lagrangian Unlearning
 
 📄 [arXiv](https://arxiv.org/abs/2608.16249)　📅 2026-08
 
@@ -837,26 +818,7 @@ Machine unlearning in Large Language Models (LLMs) faces a critical trade-off be
 
 </details>
 
-### 45. On the Vulnerability of Parameter-Level Defenses to Model Merging
-
-📄 [arXiv](https://arxiv.org/abs/2606.30360) · 🌐 [Project](https://eccv.ecva.net/virtual/2026/poster/3680)　📅 2026-06　🏷 ECCV 2026
-
-**关键词**：`defense`、`attack`、`model merging`、`parameter defense`、`cyber misuse`、`model stealing`
-
-👤 **作者**：Kuangpu Guo、…、Tieniu Tan
-
-- 🎯 **研究动机**：参数级防御用线性参数变换对抗模型合并盗用，其保护的任务向量幅值天然偏小、权重仍被预训练模型主导
-- 🔬 **研究方法**：以预训练模型为静态锚提出 Anchor-Guided Attack：把受保护模型与锚对齐解析恢复变换矩阵；同时提出 Anchor-Repulsive Fine-tuning 抵御锚主导
-- 📌 **结论**：AGA 在现实防御无关场景一致绕过单个与组合防御，ARF 有效挫败该攻击
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-The training-free integration of expert models via model merging has exposed significant security risks, enabling free-riders to combine specialized models without authorization. Recent works propose parameter-level defenses that employ linear parameter transformations to neutralize this threat. In this paper, we systematically analyze such defenses and reveal that their protected task vectors are inherently small in magnitude. Consequently, the protected weights remain overwhelmingly dominated by the pretrained model. Based on this observation, we designate the pretrained model as a static reference anchor and propose the Anchor-Guided Attack (AGA) to circumvent existing safeguards. Specifically, AGA aligns the protected model with this anchor to recover the transformation matrix analytically. Extensive evaluations validate that AGA consistently bypasses both individual and composite defenses under realistic defense-agnostic scenarios. Furthermore, we provide Anchor-Repulsive Fine-tuning (ARF), a defense method to mitigate the anchor dominance leveraged by AGA. Empirical results confirm that ARF effectively defeats the proposed attack. Our code is available at https://github.com/krumpguo/secure-merge-attack.
-
-</details>
-
-### 46. CrispEdit: Low-Curvature Projections for Scalable Non-Destructive LLM Editing
+### 44. CrispEdit: Low-Curvature Projections for Scalable Non-Destructive LLM Editing
 
 📄 [arXiv](https://arxiv.org/abs/2602.15823) · 🎓 [Official](https://icml.cc/virtual/2026/poster/62453)　📅 2026-02　🏷 ICML 2026
 
@@ -875,7 +837,7 @@ A central challenge in large language model (LLM) editing is capability preserva
 
 </details>
 
-### 47. SCALPEL: Selective Capability Ablation via Low-rank Parameter Editing for Large Language Model Interpretability Analysis
+### 45. SCALPEL: Selective Capability Ablation via Low-rank Parameter Editing for Large Language Model Interpretability Analysis
 
 📄 [arXiv](https://arxiv.org/abs/2601.07411)　📅 2026-01
 
@@ -894,7 +856,7 @@ Large language models excel across diverse domains, yet their deployment in heal
 
 </details>
 
-### 48. Modeling LLM Unlearning as an Asymmetric Two-Task Learning Problem
+### 46. Modeling LLM Unlearning as an Asymmetric Two-Task Learning Problem
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.890/)　📅 2026　🏷 ACL 2026
 
@@ -913,7 +875,7 @@ Machine unlearning for large language models (LLMs) aims to remove targeted know
 
 </details>
 
-### 49. Decoding-Unlearning: Fact Forgetting via Entropy-Guided Inference
+### 47. Decoding-Unlearning: Fact Forgetting via Entropy-Guided Inference
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1850/)　📅 2026　🏷 ACL 2026
 
@@ -932,7 +894,7 @@ Large Language Models (LLMs) exhibit powerful capabilities but inevitably memori
 
 </details>
 
-### 50. CRISP: Persistent Concept Unlearning via Sparse Autoencoders
+### 48. CRISP: Persistent Concept Unlearning via Sparse Autoencoders
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.82/)　📅 2026　🏷 ACL 2026
 
@@ -951,7 +913,7 @@ As large language models (LLMs) are increasingly deployed in real-world applicat
 
 </details>
 
-### 51. Beyond Data Filtering: Knowledge Localization for Capability Removal in LLMs
+### 49. Beyond Data Filtering: Knowledge Localization for Capability Removal in LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2512.05648)　📅 2025-12
 
@@ -970,7 +932,7 @@ Large Language Models increasingly possess capabilities that carry dual-use risk
 
 </details>
 
-### 52. Deep Ignorance: Filtering Pretraining Data Builds Tamper-Resistant Safeguards into Open-Weight LLMs
+### 50. Deep Ignorance: Filtering Pretraining Data Builds Tamper-Resistant Safeguards into Open-Weight LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2508.06601) · 🌐 [Project](https://deepignorance.ai/) · 🎓 [Official](https://iclr.cc/virtual/2026/poster/10006630)　📅 2025-08　🏷 ICLR 2026
 
@@ -989,7 +951,7 @@ Open-weight AI systems offer unique benefits, including enhanced transparency, o
 
 </details>
 
-### 53. Distillation Robustifies Unlearning
+### 51. Distillation Robustifies Unlearning
 
 📄 [arXiv](https://arxiv.org/abs/2506.06278) · 🎓 [Official](https://proceedings.neurips.cc/paper_files/paper/2025/hash/800981b7bff06c3feb88c65cc712ba2b-Abstract-Conference.html)　📅 2025-06　🏷 NeurIPS 2025
 
@@ -1008,7 +970,7 @@ Current LLM unlearning methods are not robust. A few steps of finetuning can rev
 
 </details>
 
-### 54. Effective Skill Unlearning through Intervention and Abstention
+### 52. Effective Skill Unlearning through Intervention and Abstention
 
 📄 [arXiv](https://arxiv.org/abs/2503.21730) · 🎓 [Official](https://aclanthology.org/2025.naacl-long.322/)　📅 2025-03　🏷 ACL 2025
 
@@ -1027,7 +989,7 @@ Large language Models (LLMs) have demonstrated remarkable skills across various 
 
 </details>
 
-### 55. Tamper-Resistant Safeguards for Open-Weight LLMs
+### 53. Tamper-Resistant Safeguards for Open-Weight LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2408.00761) · 🎓 [Official](https://proceedings.iclr.cc/paper_files/paper/2025/hash/fc49a629d33bc2461ed7a715ce44da68-Abstract-Conference.html)　📅 2024-08　🏷 ICLR 2025
 
@@ -1046,7 +1008,7 @@ Rapid advances in the capabilities of large language models (LLMs) have raised w
 
 </details>
 
-### 56. Representation Noising: A Defence Mechanism Against Harmful Finetuning
+### 54. Representation Noising: A Defence Mechanism Against Harmful Finetuning
 
 📄 [arXiv](https://arxiv.org/abs/2405.14577) · 🎓 [Official](https://proceedings.neurips.cc/paper_files/paper/2024/hash/172be8b0b88fc2b4aee74237d43f8c04-Abstract-Conference.html)　📅 2024-05　🏷 NeurIPS 2024
 
@@ -1065,7 +1027,7 @@ Releasing open-source large language models (LLMs) presents a dual-use risk sinc
 
 </details>
 
-### 57. Stress Testing Unlearning Algorithms
+### 55. Stress Testing Unlearning Algorithms
 
 📄 [arXiv](https://arxiv.org/abs/2608.22527)　📅 2026-08
 
@@ -1084,7 +1046,7 @@ Recently, machine unlearning, the removal of specific training data influence fr
 
 </details>
 
-### 58. ConceptGuard: Benchmarking Context-Sensitive Unlearning in Large Language Models
+### 56. ConceptGuard: Benchmarking Context-Sensitive Unlearning in Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2608.20338) · 📊 [Dataset](https://huggingface.co/datasets/sk0511/concept-guard)　📅 2026-08
 
@@ -1103,7 +1065,7 @@ Large Language Models (LLMs) increasingly require selective removal of harmful o
 
 </details>
 
-### 59. The WMDP Benchmark: Measuring and Reducing Malicious Use With Unlearning
+### 57. The WMDP Benchmark: Measuring and Reducing Malicious Use With Unlearning
 
 📄 [arXiv](https://arxiv.org/abs/2403.03218) · 🌐 [Project](https://proceedings.mlr.press/v235/li24bc.html)　📅 2024-03　🏷 ICML 2024
 
@@ -1122,7 +1084,7 @@ The White House Executive Order on Artificial Intelligence highlights the risks 
 
 </details>
 
-### 60. Can LLMs Truly Forget? Revealing Unlearning Gaps Through Adversarial Evaluation
+### 58. Can LLMs Truly Forget? Revealing Unlearning Gaps Through Adversarial Evaluation
 
 📄 [arXiv](https://arxiv.org/abs/2608.21606)　📅 2026-08
 
@@ -1141,26 +1103,7 @@ Machine unlearning aims to remove the influence of targeted training data from a
 
 </details>
 
-### 61. How Robust Are Router-LLMs? Analysis of the Fragility of LLM Routing Capabilities
-
-🎓 [Official](https://aclanthology.org/2026.eacl-long.351/)　📅 2026-03　🏷 ACL 2026
-
-**关键词**：`benchmark`、`model router`、`jailbreak routing`、`preference backdoor`、`LLM router`
-
-👤 **作者**：Aly M. Kassem、Bernhard Schölkopf、Zhijing Jin
-
-- 🎯 **研究动机**：LLM 路由器评测只重通用能力，忽视隐私、安全及偏好数据引入的后门风险
-- 🔬 **研究方法**：DSC 基准把查询分为编码、翻译、数学、人类指令、常识、越狱六类并整合隐私安全评估，评测三个偏好路由器与两个商业路由器
-- 📌 **结论**：路由器常做次优类别驱动决策：BERT 路由器把编码数学全发给最强模型，却把越狱请求路由给更弱模型，抬高安全风险
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Large language model (LLM) routing has emerged as a crucial strategy for balancing computational costs with performance by dynamically assigning queries to the most appropriate model based on query complexity. Despite recent advances showing that preference-data-based routers can outperform traditional methods, current evaluation benchmarks remain limited—they largely focus on general model capabilities while overlooking task-specific behaviors and critical concerns such as privacy, safety, and potential backdoor vulnerabilities introduced through preference data. In response, we propose the DSC benchmark: Diverse, simple, and categorized, an evaluation framework that categorizes router performance across a broad spectrum of query types—including coding, translation, mathematics, human instructions, general knowledge, and LLM jailbreaking—and integrates privacy and safety assessments to reveal hidden risks. Our experiments on three preference-based routers and two commercial counterparts demonstrate that while these systems improve efficiency, they often make suboptimal, category-driven decisions; for instance, a BERT-based router directs all coding and mathematics queries to the most powerful LLM—even when simpler models would suffice—while routing jailbreaking attempts to weaker models, thereby elevating safety risks.
-
-</details>
-
-### 62. Estimating Worst-Case Frontier Risks of Open-Weight LLMs
+### 59. Estimating Worst-Case Frontier Risks of Open-Weight LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2508.03153) · 🎓 [Official](https://iclr.cc/virtual/2026/poster/10007142)　📅 2025-08　🏷 ICLR 2026
 
@@ -1179,7 +1122,7 @@ In this paper, we study the worst-case frontier risks of releasing gpt-oss. We i
 
 </details>
 
-### 63. The Elicitation Game: Evaluating Capability Elicitation Techniques
+### 60. The Elicitation Game: Evaluating Capability Elicitation Techniques
 
 📄 [arXiv](https://arxiv.org/abs/2502.02180) · 🌐 [Project](https://proceedings.mlr.press/v267/hofstatter25a.html)　📅 2025-02　🏷 ICML 2025
 
@@ -1198,7 +1141,7 @@ Capability evaluations are required to understand and regulate AI systems that m
 
 </details>
 
-### 64. On Evaluating the Durability of Safeguards for Open-Weight LLMs
+### 61. On Evaluating the Durability of Safeguards for Open-Weight LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2412.07097) · 🎓 [Official](https://proceedings.iclr.cc/paper_files/paper/2025/hash/9d3a4cdf6f70559e8c6fe02170fba568-Abstract-Conference.html)　📅 2024-12　🏷 ICLR 2025
 
@@ -1217,7 +1160,7 @@ Stakeholders -- from model developers to policymakers -- seek to minimize the du
 
 </details>
 
-### 65. Stress-Testing Capability Elicitation With Password-Locked Models
+### 62. Stress-Testing Capability Elicitation With Password-Locked Models
 
 📄 [arXiv](https://arxiv.org/abs/2405.19550) · 📝 [OpenReview](https://openreview.net/forum?id=zzOOqD6R1b)　📅 2024-05　🏷 NeurIPS 2024
 
@@ -1236,7 +1179,7 @@ To determine the safety of large language models (LLMs), AI developers must be a
 
 </details>
 
-### 66. Open Technical Problems in Open-Weight AI Model Risk Management
+### 63. Open Technical Problems in Open-Weight AI Model Risk Management
 
 📄 [arXiv](https://arxiv.org/abs/2608.07514) · 🌐 [Project](https://www.aisi.gov.uk/research/open-technical-problems-in-open-weight-ai-model-risk-management)　📅 2025-10
 
@@ -1248,7 +1191,7 @@ To determine the safety of large language models (LLMs), AI developers must be a
 - 🔬 **研究方法**：沿训练数据、算法、评测、部署与生态监控提出16个开放技术问题
 - 📌 **结论**：公开方法与评测过程同公开权重一样是风险管理的必要条件
 
-### 67. Does Fine-Tuning Undo Activation Steering? Behavioural Recovery Without Weight-Edit Reversal
+### 64. Does Fine-Tuning Undo Activation Steering? Behavioural Recovery Without Weight-Edit Reversal
 
 📄 [arXiv](https://arxiv.org/abs/2608.24988)　📅 2026-08
 
@@ -1267,7 +1210,7 @@ Activation steering can be embedded directly into a language model's weights, sh
 
 </details>
 
-### 68. Decodable But Not Detachable: Training Data Granularity Determines Parametric Modularity in Large Language Models
+### 65. Decodable But Not Detachable: Training Data Granularity Determines Parametric Modularity in Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2608.10214)　📅 2026-08
 
@@ -1286,7 +1229,7 @@ Do large language models contain domain-specific parametric shells: concentrated
 
 </details>
 
-### 69. Leveraging Association Context Retrieval in Knowledge Edit- ing to Build White-Box Attacks on LLMs
+### 66. Leveraging Association Context Retrieval in Knowledge Edit- ing to Build White-Box Attacks on LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2608.17836)　📅 2026-08
 
@@ -1305,7 +1248,7 @@ As large language models (LLMs) are granted increasing autonomy, it is essential
 
 </details>
 
-### 70. More Sail than Ballast: Addressing Harmful Knowledge Leakage in the Expansive Reasoning Space of LRMs
+### 67. More Sail than Ballast: Addressing Harmful Knowledge Leakage in the Expansive Reasoning Space of LRMs
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/66117)　📅 2026　🏷 ICML 2026
 

@@ -395,3 +395,22 @@ Generative Engine Optimization (GEO) modifies web content to increase its likeli
 We characterize the attack surface of generative search engines (GSEs) against poisoning attacks in the political domain, from the perspectives of citation selection and personalization. GSEs integrate web search and answer generation with user preferences and backgrounds using large language models (LLMs). They play a crucial role in how users access information on the web. Because anyone can publish content on the web, GSEs are vulnerable to poisoning attacks that manipulate citations to undermine reliable information delivery. Existing studies on citation evaluation focus on how faithfully answers reflect cited content. However, they leave unexamined the two critical aspects to capture the attack surface of GSEs against poisoning attacks: which publishers GSEs prefer to cite, and how personalization affects citation behavior. To fill this gap, we introduce an evaluation framework that characterizes the attack surface of GSEs against poisoning attacks. Our contributions are twofold: (1) we propose a novel metric, \emph{content-injection barrier}, which quantifies the difficulty of injecting arbitrary content onto the web with a given level of publisher authority; and (2) we reveal how personalization affects citation behavior by embedding user profiles into GSEs. We conduct experiments on three major GSEs in the political domain of the United States and Japan. Our results show that (a) the attack surface differs across GSE models; (b) the web search functionality of GSEs shapes the attack surface; (c) ruling parties have a broader attack surface than opposition parties; and (d) user profiles have little influence on the attack surface.
 
 </details>
+
+### 21. SIREN (Luring LLMs onto the Rocks): PAIR-Driven Preference Manipulation in Web-RAG Recommenders
+
+📄 [arXiv](https://arxiv.org/abs/2607.21951)　📅 2026-07
+
+**关键词**：`attack`、`Web-RAG`、`preference manipulation`、`recommendation corruption`
+
+👤 **作者**：Evan Caville、Spencer Kayser、Siamak Layeghy、Billy Sung、Sara Dolnicar、Marius Portmann
+
+- 🎯 **研究动机**：已有研究考察伪造产品与检索投毒，但同一检索页面被不同编辑后如何改变 LLM 最终排名缺乏受控比较
+- 🔬 **研究方法**：提出 SIREN：把 PAIR 越狱循环适配为竞争排名操纵，用 23 类内容投毒技术迭代编辑已检索来源，RAG 回放平台固定来源与顺序以隔离内容效应
+- 📌 **结论**：两个生产 Claude 模型上 124 个技术试验中 62 次达到 rank-1；新会话重放平均成功率 0.805，声明式排名断言与植入列表通常比指令式注入更有效
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+This paper investigates the adversarial manipulation of the ranked recommendations produced by web-augmented large language models (LLMs). When an LLM answers a recommendation query by retrieving and reading live webpages, it acts as a recommender, and each retrieved page becomes a potential attack surface. Prior work has examined fabricated products, retrieval poisoning, and rank promotion. However, these studies do not compare how different edits to an already retrieved page change the model's final ranking while the surrounding source set remains unchanged. To address this gap, we propose SIREN, an automated attacker--judge method that adapts the PAIR jailbreaking loop to competitive rank manipulation, with the goal of moving a chosen entity to rank~1 in an LLM-generated recommendation. SIREN retrieves and captures webpages using Anthropic's web tools, then iteratively edits a retrieved source using an interpretable taxonomy of 23 content-poisoning techniques. The custom-RAG replay platform keeps the same sources in the same order, so changes in the model's ranking can be linked to changes in the supplied content rather than to differences in retrieval. Across two production Claude models, SIREN reaches rank~1 in 62 of 124 technique trials nested within eight query--model contexts. The payloads that reached rank~1 were then tested in fresh sessions, where they reproduced the result with a mean success rate of 0.805. Across the evaluated settings, declarative ranking claims and seeded lists were generally more effective than directive-form injections, although the strength of this difference depended on the target model. To the best of our knowledge, this is among the first controlled studies of competitive rank manipulation in production LLMs where the supplied source context is kept fixed.
+
+</details>

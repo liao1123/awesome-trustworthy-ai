@@ -150,64 +150,7 @@ In a malicious tool attack, an attacker uploads a malicious tool to a distributi
 
 </details>
 
-### 8. Training Language Model Agents to Find Vulnerabilities with CTF-Dojo
-
-📄 [arXiv](https://arxiv.org/abs/2508.18370) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61783)　📅 2026　🏷 ICML 2026
-
-**关键词**：`attack`、`tool-use agent`、`tool interface`、`action integrity`、`LLM agent security`、`empirical evaluation`
-
-👤 **作者**：Terry Yue Zhuo、Dingmin Wang、Hantian Ding、Varun Kumar、Zijian Wang
-
-- 🎯 **研究动机**：可执行且带可验证反馈的训练环境稀缺，制约更强 ML 智能体的发展
-- 🔬 **研究方法**：提出 CTF-Dojo：658 个 Docker 化 CTF 挑战的可复现运行时；CTF-Forge 自动把公开构件转化为执行环境；仅用 486 条执行验证轨迹训练 LLM 智能体
-- 📌 **结论**：在 InterCode-CTF、NYU CTF Bench 与 Cybench 上绝对提升至多 11.6%；32B 模型 Pass@1 达 31.9%，创开源权重 SOTA，比肩 DeepSeek-V3 与 Gemini-2.5-Flash
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Large language models (LLMs) have demonstrated exceptional capabilities when trained within executable runtime environments, notably excelling at software engineering tasks through verified feedback loops. Yet, scalable and generalizable execution-grounded environments remain scarce, limiting progress in training more capable ML agents. We introduce CTF-Dojo, the first large-scale executable runtime tailored for training LLMs with verifiable feedback, featuring 658 fully functional Capture-The-Flag (CTF)-style challenges containerized in Docker with guaranteed reproducibility. To enable rapid scaling without manual intervention, we develop CTF-Forge, an automated pipeline that transforms publicly available artifacts into ready-to-use execution environments in minutes, eliminating weeks of expert configuration traditionally required. We trained LLM-based agents on just 486 high-quality, execution-verified trajectories from CTF-Dojo, achieving up to 11.6% absolute gains over strong baselines across three competitive benchmarks: InterCode-CTF, NYU CTF Bench, and Cybench. Our best-performing 32B model reaches 31.9% Pass@1, establishing a new open-weight state-of-the-art that rivals frontier models like DeepSeek-V3-0324 and Gemini-2.5-Flash. By framing CTF-style tasks as a benchmark for executable-agent learning, CTF-Dojo demonstrates that execution-grounded training signals are not only effective but pivotal in advancing high-performance ML agents without dependence on costly proprietary systems.
-
-</details>
-
-### 9. Stop Fixating on Prompts: Reasoning Hijacking and Constraint Tightening for Red-Teaming LLM Agents
-
-🎓 [Official](https://aclanthology.org/2026.acl-long.1197/)　📅 2026　🏷 ACL 2026
-
-**关键词**：`attack`、`reasoning safety`、`agent safety`、`tool-use agent`、`automated red teaming`
-
-👤 **作者**：Yanxu Mao、Peipei Liu、Tiehan Cui、Congying Liu、Mingzhe Xing、Datao You
-
-- 🎯 **研究动机**：现有 LLM agent 红队方法多靠修改用户提示，对新数据适应性差且可能损害 agent 性能
-- 🔬 **研究方法**：提出 JailAgent：完全不修改用户提示，经触发提取、推理劫持与约束收紧三阶段隐式操纵 agent 的推理轨迹与记忆检索
-- 📌 **结论**：凭借触发识别、实时自适应机制与优化目标函数，在跨模型与跨场景环境中持续有效
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-With the widespread application of LLM-based agents across various domains, their complexity has introduced new security threats. Existing red-team methods mostly rely on modifying user prompts, which lack adaptability to new data and may impact the agent’s performance. To address the challenge, this paper proposes the JailAgent framework, which completely avoids modifying the user prompt. Specifically, it implicitly manipulates the agent’s reasoning trajectory and memory retrieval with three key stages: Trigger Extraction, Reasoning Hijacking, and Constraint Tightening. Through precise trigger identification, real-time adaptive mechanisms, and an optimized objective function, JailAgent demonstrates outstanding performance in cross-model and cross-scenario environments.
-
-</details>
-
-### 10. Query-Efficient Agentic Graph Extraction Attacks on GraphRAG Systems
-
-🎓 [Official](https://aclanthology.org/2026.acl-long.727/)　📅 2026　🏷 ACL 2026
-
-**关键词**：`attack`、`tool-use agent`、`tool interface`、`action integrity`、`agent safety`、`RAG security`
-
-👤 **作者**：Shuhua Yang、Jiahao Zhang、Yilong Wang、Dongwon Lee、Suhang Wang
-
-- 🎯 **研究动机**：GraphRAG 响应可泄露子图，但现实查询预算下高效重构隐藏实体-关系图的可行性未探
-- 🔬 **研究方法**：AGEA 在预算约束黑盒设定下：新颖性引导探索-利用、外部图记忆模块、轻量发现加 LLM 过滤的两阶段抽取管线
-- 📌 **结论**：医学、农业、文学数据集跨 Microsoft-GraphRAG 与 LightRAG，同预算下恢复最多 90% 实体与关系且保持高精度
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Graph-based retrieval-augmented generation (GraphRAG) systems construct knowledge graphs over document collections to support multi-hop reasoning. While prior work shows that GraphRAG responses may leak retrieved subgraphs, the feasibility of query-efficient reconstruction of the hidden graph structure remains unexplored under realistic query budgets. We study a budget-constrained black-box setting where an adversary adaptively queries the system to steal its latent entity–relation graph. We propose AGEA (Agentic Graph Extraction Attack), a framework that leverages a novelty-guided exploration–exploitation strategy, external graph memory modules, and a two-stage graph extraction pipeline combining lightweight discovery with LLM-based filtering. We evaluate AGEA on medical, agriculture, and literary datasets across Microsoft-GraphRAG and LightRAG systems. Under identical query budgets, AGEA significantly outperforms prior attack baselines, recovering up to 90% of entities and relationships while maintaining high precision. These results demonstrate that modern GraphRAG systems are highly vulnerable to structured, agentic extraction attacks, even under strict query limits. The code is available at https://github.com/shuashua0608/AGEA.
-
-</details>
-
-### 11. MemIncept: Steering LLM Agents via Cooperative Stealthy Memory Injections
+### 8. MemIncept: Steering LLM Agents via Cooperative Stealthy Memory Injections
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/66667)　📅 2026　🏷 ICML 2026
 
@@ -226,7 +169,7 @@ Long-term memory empowers LLM-based agents with adaptive reasoning but exposes a
 
 </details>
 
-### 12. Evo-Attacker: Memory-Augmented Reinforcement Learning for Long-Horizon Tool Attacks on LLM-MAS
+### 9. Evo-Attacker: Memory-Augmented Reinforcement Learning for Long-Horizon Tool Attacks on LLM-MAS
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.330/)　📅 2026　🏷 ACL 2026
 
@@ -245,7 +188,7 @@ While Large Language Model-based Multi-Agent Systems (LLM-MAS) demonstrate remar
 
 </details>
 
-### 13. ToolTweak: An Attack on Tool Selection in LLM-based Agents
+### 10. ToolTweak: An Attack on Tool Selection in LLM-based Agents
 
 📄 [arXiv](https://arxiv.org/abs/2510.02554)　📅 2025-10
 
@@ -264,7 +207,7 @@ As LLMs increasingly power agents that interact with external tools, tool use ha
 
 </details>
 
-### 14. Attractive Metadata Attack: Inducing LLM Agents to Invoke Malicious Tools
+### 11. Attractive Metadata Attack: Inducing LLM Agents to Invoke Malicious Tools
 
 📄 [arXiv](https://arxiv.org/abs/2508.02110) · 🎓 [Official](https://proceedings.neurips.cc/paper_files/paper/2025/hash/ee46288ab2aaf5c6e53aebebe719712c-Abstract-Conference.html)　📅 2025-08　🏷 NeurIPS 2025
 
@@ -283,7 +226,7 @@ Large language model (LLM) agents have demonstrated remarkable capabilities in c
 
 </details>
 
-### 15. Prompt Injection Attack to Tool Selection in LLM Agents
+### 12. Prompt Injection Attack to Tool Selection in LLM Agents
 
 📄 [arXiv](https://arxiv.org/abs/2504.19793) · 🌐 [Project](https://www.ndss-symposium.org/ndss-paper/prompt-injection-attack-to-tool-selection-in-llm-agents/)　📅 2025-04　🏷 NDSS 2026
 
@@ -302,7 +245,7 @@ Tool selection is a key component of LLM agents. A popular approach follows a tw
 
 </details>
 
-### 16. Piggybacking on Perception: Stealthy Concurrent Audio Prompt Injections against Multimodal LLM Agents
+### 13. Piggybacking on Perception: Stealthy Concurrent Audio Prompt Injections against Multimodal LLM Agents
 
 📄 [arXiv](https://arxiv.org/abs/2607.28165)　📅 2026-07
 
@@ -321,7 +264,7 @@ Large Language Model (LLM)-driven multimodal agents are increasingly deployed to
 
 </details>
 
-### 17. MCP-38: A Comprehensive Threat Taxonomy for Model Context Protocol Systems (v1.0)
+### 14. MCP-38: A Comprehensive Threat Taxonomy for Model Context Protocol Systems (v1.0)
 
 📄 [arXiv](https://arxiv.org/abs/2603.18063)　📅 2026-03
 
@@ -340,7 +283,7 @@ The Model Context Protocol (MCP) introduces a structurally distinct attack surfa
 
 </details>
 
-### 18. Agent Tools Orchestration Leaks More: Dataset, Benchmark, and Mitigation
+### 15. Agent Tools Orchestration Leaks More: Dataset, Benchmark, and Mitigation
 
 📄 [arXiv](https://arxiv.org/abs/2512.16310)　📅 2026-09
 
@@ -359,7 +302,7 @@ LLM agents can combine individually non-revealing tool returns and disclose a se
 
 </details>
 
-### 19. Extracting Knowledge from Tools in LLM Agents
+### 16. Extracting Knowledge from Tools in LLM Agents
 
 📄 [arXiv](https://arxiv.org/abs/2608.30288)　📅 2026-09
 
@@ -378,7 +321,7 @@ LLM agents commonly use knowledge-based tools and access their underlying files,
 
 </details>
 
-### 20. MCP-ITP: An Automated Framework for Implicit Tool Poisoning in MCP
+### 17. MCP-ITP: An Automated Framework for Implicit Tool Poisoning in MCP
 
 📄 [arXiv](https://arxiv.org/abs/2601.07395)　📅 2026-01
 
@@ -397,7 +340,7 @@ To standardize interactions between LLM-based agents and their environments, the
 
 </details>
 
-### 21. Log-To-Leak: Prompt Injection Attacks on Tool-Using LLM Agents via Model Context Protocol
+### 18. Log-To-Leak: Prompt Injection Attacks on Tool-Using LLM Agents via Model Context Protocol
 
 📝 [OpenReview](https://openreview.net/forum?id=UVgbFuXPaO)　📅 2025-09
 
@@ -407,7 +350,7 @@ To standardize interactions between LLM-based agents and their environments, the
 - 🔬 **研究方法**：Log-To-Leak将injection拆为Trigger、Tool Binding、Justification与Pressure，诱导agent调用恶意logging tool
 - 📌 **结论**：五个真实server与四种agent上可持续捕获user query、tool response与agent reply
 
-### 22. ROPE: Routed Origin Policy Enforcement against Indirect Prompt Injection
+### 19. ROPE: Routed Origin Policy Enforcement against Indirect Prompt Injection
 
 📄 [arXiv](https://arxiv.org/abs/2608.27496)　📅 2026-08
 
@@ -426,7 +369,7 @@ Indirect prompt injection (IPI) plants instructions in the content a tool-using 
 
 </details>
 
-### 23. TraceGrant: A Contract-Governed Security Framework for the Task-Effect Lifecycle of Networked LLM Agents
+### 20. TraceGrant: A Contract-Governed Security Framework for the Task-Effect Lifecycle of Networked LLM Agents
 
 📄 [arXiv](https://arxiv.org/abs/2608.21126)　📅 2026-08
 
@@ -445,7 +388,7 @@ Networked large language model (LLM) agents retrieve information from email, clo
 
 </details>
 
-### 24. When Tool Outputs Become Commands: Separating Action Induction from Runtime Authorization in Tool-Augmented LLM Agents
+### 21. When Tool Outputs Become Commands: Separating Action Induction from Runtime Authorization in Tool-Augmented LLM Agents
 
 📄 [arXiv](https://arxiv.org/abs/2608.27146)　📅 2026-08
 
@@ -464,7 +407,7 @@ Tool-augmented LLM agents must rely on untrusted runtime Observations to complet
 
 </details>
 
-### 25. SPA: Securing Persistent LLM Agents Across Queries with Plan-First Information-Flow Control
+### 22. SPA: Securing Persistent LLM Agents Across Queries with Plan-First Information-Flow Control
 
 📄 [arXiv](https://arxiv.org/abs/2608.27234)　📅 2026-08
 
@@ -483,7 +426,7 @@ Large language model (LLM) agents increasingly operate over untrusted webpages, 
 
 </details>
 
-### 26. AgentFlow: A Flow-Centric Policy Language and Framework for Securing LLM Agent Systems
+### 23. AgentFlow: A Flow-Centric Policy Language and Framework for Securing LLM Agent Systems
 
 📄 [arXiv](https://arxiv.org/abs/2608.22868)　📅 2026-08
 
@@ -502,7 +445,7 @@ LLM agents increasingly read untrusted content, invoke external tools, access pr
 
 </details>
 
-### 27. Forgotten in Weights, Recovered by Tools: Agentic Tool Unlearning for LLM Agents
+### 24. Forgotten in Weights, Recovered by Tools: Agentic Tool Unlearning for LLM Agents
 
 📄 [arXiv](https://arxiv.org/abs/2608.21544)　📅 2026-08
 
@@ -521,7 +464,7 @@ Large language models (LLMs) are increasingly deployed as tool-augmented agents,
 
 </details>
 
-### 28. SecOPD: Mitigating Adaptive Prompt Injections by On-Policy Distillation
+### 25. SecOPD: Mitigating Adaptive Prompt Injections by On-Policy Distillation
 
 📄 [arXiv](https://arxiv.org/abs/2608.21500)　📅 2026-08
 
@@ -540,17 +483,7 @@ Prompt injection is listed as the \#1 threat to AI agents. When an agent accesse
 
 </details>
 
-### 29. Teaching Small Models When Not to Call Functions: Structured Reasoning for Reducing Tool-Use Hallucinations
-
-🌐 [Project](https://doi.org/10.1145/3805712.3809979)　📅 2026-07　🏷 SIGIR 2026
-
-**关键词**：`defense`、`function calling`、`tool hallucination`、`structured abstention`、`tool-use hallucination`、`structured reasoning`
-
-- 🎯 **研究动机**：小模型在不该调用工具时产生幻觉调用
-- 🔬 **研究方法**：以结构化推理教模型判断调用时机并做结构化弃权
-- 📌 **结论**：tool-use幻觉显著减少
-
-### 30. Unsafer in Many Turns: Benchmarking and Defending Multi-Turn Safety Risks in Tool-Using Agents
+### 26. Unsafer in Many Turns: Benchmarking and Defending Multi-Turn Safety Risks in Tool-Using Agents
 
 📄 [arXiv](https://arxiv.org/abs/2602.13379) · 🎓 [Official](https://icml.cc/virtual/2026/poster/62233)　📅 2026-02　🏷 ICML 2026
 
@@ -569,7 +502,7 @@ LLM-based agents are becoming increasingly capable, yet their safety lags behind
 
 </details>
 
-### 31. Towards Verifiably Safe Tool Use for LLM Agents
+### 27. Towards Verifiably Safe Tool Use for LLM Agents
 
 📄 [arXiv](https://arxiv.org/abs/2601.08012) · 🌐 [Project](https://doi.org/10.1145/3786582.3786839)　📅 2026-01　🏷 ICSE 2026
 
@@ -588,7 +521,7 @@ Large language model (LLM)-based AI agents extend LLM capabilities by enabling a
 
 </details>
 
-### 32. Defense Against Indirect Prompt Injection via Tool Result Parsing
+### 28. Defense Against Indirect Prompt Injection via Tool Result Parsing
 
 📄 [arXiv](https://arxiv.org/abs/2601.04795)　📅 2026-01
 
@@ -607,7 +540,7 @@ As LLM agents transition from digital assistants to physical controllers in auto
 
 </details>
 
-### 33. Defeating Prompt Injections by Design
+### 29. Defeating Prompt Injections by Design
 
 📄 [arXiv](https://arxiv.org/abs/2503.18813) · 🎓 [Official](https://satml.org/2026/accepted-papers/)　📅 2025-03　🏷 SaTML 2026
 
@@ -626,7 +559,7 @@ Large Language Models (LLMs) are increasingly deployed in agentic systems that i
 
 </details>
 
-### 34. ToolSafe: Enhancing Tool Invocation Safety of LLM-based Agents via Proactive Step-level Guardrail and Feedback
+### 30. ToolSafe: Enhancing Tool Invocation Safety of LLM-based Agents via Proactive Step-level Guardrail and Feedback
 
 📄 [arXiv](https://arxiv.org/abs/2601.10156) · 🎓 [Official](https://aclanthology.org/2026.findings-acl.1850/)　📅 2026-01　🏷 ACL 2026
 
@@ -645,7 +578,7 @@ While LLM-based agents can interact with environments via invoking external tool
 
 </details>
 
-### 35. MCP-SafetyBench: A Benchmark for Safety Evaluation of Large Language Models with Real-World MCP Servers
+### 31. MCP-SafetyBench: A Benchmark for Safety Evaluation of Large Language Models with Real-World MCP Servers
 
 📄 [arXiv](https://arxiv.org/abs/2512.15163) · 🎓 [Official](https://iclr.cc/virtual/2026/poster/10011290)　📅 2025-12　🏷 ICLR 2026
 
@@ -664,7 +597,7 @@ Large language models (LLMs) are evolving into agentic systems that reason, plan
 
 </details>
 
-### 36. MCP Security Bench (MSB): Benchmarking Attacks Against Model Context Protocol in LLM Agents
+### 32. MCP Security Bench (MSB): Benchmarking Attacks Against Model Context Protocol in LLM Agents
 
 📄 [arXiv](https://arxiv.org/abs/2510.15994) · 🎓 [Official](https://iclr.cc/virtual/2026/poster/10007929)　📅 2025-10　🏷 ICLR 2026
 
@@ -683,7 +616,7 @@ The Model Context Protocol (MCP) standardizes how large language model (LLM) age
 
 </details>
 
-### 37. SafeToolBench: Pioneering a Prospective Benchmark to Evaluating Tool Utilization Safety in LLMs
+### 33. SafeToolBench: Pioneering a Prospective Benchmark to Evaluating Tool Utilization Safety in LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2509.07315) · 🎓 [Official](https://aclanthology.org/2025.findings-emnlp.958/)　📅 2025-09　🏷 EMNLP 2025
 
@@ -702,7 +635,7 @@ Large Language Models (LLMs) have exhibited great performance in autonomously ca
 
 </details>
 
-### 38. MCPSecBench: A Systematic Security Benchmark and Playground for Testing Model Context Protocols
+### 34. MCPSecBench: A Systematic Security Benchmark and Playground for Testing Model Context Protocols
 
 📄 [arXiv](https://arxiv.org/abs/2508.13220)　📅 2025-08
 
@@ -721,7 +654,7 @@ Large Language Models (LLMs) are increasingly integrated into real-world applica
 
 </details>
 
-### 39. MCPTox: A Benchmark for Tool Poisoning Attack on Real-World MCP Servers
+### 35. MCPTox: A Benchmark for Tool Poisoning Attack on Real-World MCP Servers
 
 📄 [arXiv](https://arxiv.org/abs/2508.14925) · 🌐 [Project](https://ojs.aaai.org/index.php/AAAI/article/view/40895)　📅 2025-08　🏷 AAAI 2026
 
@@ -733,7 +666,7 @@ Large Language Models (LLMs) are increasingly integrated into real-world applica
 - 🔬 **研究方法**：基于45个在线server、353个真实tool构建覆盖十类风险的metadata injection基准MCPTox
 - 📌 **结论**：20个受测agent普遍沦陷，更强instruction following未带来有效拒绝
 
-### 40. Tool Specifications Matter: Uncovering and Mitigating Safety Risks in AI Agents
+### 36. Tool Specifications Matter: Uncovering and Mitigating Safety Risks in AI Agents
 
 📄 [arXiv](https://arxiv.org/abs/2607.29254)　📅 2026-07
 
@@ -752,7 +685,7 @@ AI agents extend large language models (LLMs) with external tools, enabling them
 
 </details>
 
-### 41. Think Twice Before You Act: Protecting LLM Agents Against Tool Description Poisoning via Isolated Planning
+### 37. Think Twice Before You Act: Protecting LLM Agents Against Tool Description Poisoning via Isolated Planning
 
 📄 [arXiv](https://arxiv.org/abs/2606.20922) · 🎓 [Official](https://icml.cc/virtual/2026/poster/62116)　📅 2026　🏷 ICML 2026
 
@@ -771,102 +704,7 @@ The integration of external tools has substantially expanded the capabilities of
 
 </details>
 
-### 42. Speculative Safety Honeypot: Toward Proactive Defense Against Multi-turn Agent Attacks
-
-🎓 [Official](https://icml.cc/virtual/2026/poster/65283)　📅 2026　🏷 ICML 2026
-
-**关键词**：`defense`、`multi-agent evaluation`、`tool-use agent`、`tool interface`、`LLM agent security`、`tool-use attack`
-
-👤 **作者**：Zezhong WANG、Xueyang Tang、RUI LIAN、Yang Lou、Heqing Huang
-
-- 🎯 **研究动机**：多轮交互攻击把恶意意图拆分到多轮隐藏未来风险，依赖历史上下文的回顾式检测难以识别
-- 🔬 **研究方法**：提出 SSH：小 LLM 多 agent 模拟构建动作级 speculate-and-verify 工作流，推测阶段异步构建轨迹树提前暴露风险，验证阶段用真实动作校准剪枝，可插拔增强现有检测器
-- 📌 **结论**：按轨迹树演化而非单时点判险，降低对单检测组件精度的依赖，提升防御韧性与预警提前量
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-As Large Language Model (LLM) agents are increasingly deployed in complex environments, multi-turn interaction attacks have become a significant security challenge. Existing detection methods typically rely on historical context. However, this retrospective logic struggles to identify deep malicious intents that are split across turns to hide future risks. Inspired by speculative decoding, we propose the Speculative Safety Honeypot (SSH) framework. SSH uses a multi-agent simulation system composed of small LLMs to build an action-level speculate-and-verify workflow. In the speculation stage, SSH predicts future behaviors of the target agent and asynchronously builds a trajectory tree to expose potential risks in advance. In the verification stage, the system uses the target agent's real actions to calibrate and prune the trajectory tree, effectively reducing false positives. As a plug-and-playable component, SSH provides existing detectors with rich decision redundancy beyond the current interaction slice. By judging risk based on the evolution of the entire trajectory tree rather than a single point in time, the system reduces the reliance on the absolute precision of individual detection components. This improves the defense resilience and the warning lead-time of agent systems against complex temporal attacks.
-
-</details>
-
-### 43. Securing Retrieval-Augmented Code Generation via Contextual Knowledge Injection: A Case for Embedded IoT Applications
-
-🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/sun-tong)　📅 2026　🏷 USENIX Security 2026
-
-**关键词**：`defense`、`RAG code generation`、`knowledge injection`、`tool-use agent`、`CVE reachability`
-
-👤 **作者**：Tong Sun、Jingyi Su、Yi Gao、Wei Dong
-
-- 🎯 **研究动机**：嵌入式 IoT 的仓库级 RACG 会经良性公开 API 传递性触达 pinned 快照内漏洞例程而继承已知 CVE，现有 secure RACG 忽视版本特定暴露，CVE 扫描器又判不了 API 可达性
-- 🔬 **研究方法**：提出 IoTRAGuarder：静态分析加证据门控 LLM 恢复 CVE 例程到公开 API 的反向调用链，构建版本感知安全知识库并做双层 API 对齐在线检索注入约束
-- 📌 **结论**：在 44 个 Zephyr 任务、4 个 LLM 上将整体安全成功率从 5.11% 提升到 78.41%
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Repository-grounded retrieval-augmented code generation (RACG) is increasingly used in embedded IoT development by retrieving code and documentation from a pinned RTOS/SDK repository (e.g., Zephyr OS). In this setting, security risks are often version-inherited: even without retrieval poisoning, generated applications may invoke benign-looking public APIs that transitively reach vulnerable internal routines in the pinned snapshot, thereby inheriting known CVEs. Existing secure RACG pipelines largely focus on task-level intent and generic vulnerability patterns, which can miss repository- and version-specific exposure. Meanwhile, conventional CVE scanners can flag vulnerable locations but cannot determine whether those vulnerabilities are reachable through the public APIs that the generator commits to during repository-grounded generation. In this paper, we present IoTRAGuarder, a contextual knowledge injection framework that aligns security hardening with generation-time API selection under repository grounding. IoTRAGuarder (i) recovers auditable reverse call chains from CVE-localized internals to exposing public APIs via static analysis plus an evidence-gated LLM to bridge indirections and macro-driven "call-graph islands", (ii) constructs a version-aware security knowledge base that binds affected version intervals to exposed public APIs with prompt-ready constraints, safer alternatives, or avoidance/upgrade guidance, and (iii) performs dual-layer, API-aligned online retrieval to inject concise, version-matched constraints into the final prompt. We evaluate IoTRAGuarder on 44 real-world Zephyr tasks across four LLMs. Compared to the prior state-of-the-art secure RACG baseline, IoTRAGuarder improves the overall security success rate from 5.11% to 78.41%.
-
-</details>
-
-### 44. Open Schrödinger’s Closed Box: Identifying Retrieval Augmented Generation in API-Accessible Large Language Model Services
-
-🎓 [Official](https://aclanthology.org/2026.acl-long.208/)　📅 2026　🏷 ACL 2026
-
-**关键词**：`detection`、`analysis`、`tool-use agent`、`tool interface`、`action integrity`、`RAG security`
-
-👤 **作者**：Yukun Jiang、Xinyue Shen、Michael Backes、Zheng Li、Yang Zhang
-
-- 🎯 **研究动机**：针对 RAG 的攻击假设攻击者已知服务为 RAG 增强甚至部署细节，对只暴露黑盒 API 的商用 LLM 不成立
-- 🔬 **研究方法**：RAG-ID 把对手分三个知识等级并设计六种攻击，检测服务是否 RAG 并推断部署的 LLM 与知识库
-- 📌 **结论**：部分或无可选知识下 RAG 检测准确率高达 99.97%，已知 LLM 与库时接近 100%
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Large language models (LLMs) are powerful at question-answering but prone to hallucinations due to limited domain-specific or up-to-date knowledge. Retrieval augmented generation (RAG) mitigates this by adding an external retriever and knowledge database, yet RAG remains vulnerable to targeted attacks that degrade outputs or manipulate opinions. Prior attacks typically assume adversaries know the service is RAG-enhanced and may even know deployment details, an assumption often invalid for real-world commercial LLMs that expose only black-box APIs.This opacity also risks misleading users about system capabilities. This work aims to bridge this gap by proposing RAG-ID, a framework for ̲ ID entifying ̲ RAG properties in LLM services.We classify adversaries into three knowledge levels and design six attack methods. Experiments show these attacks reliably detect RAG — up to 99.97% accuracy with partial or no optional knowledge, and nearly 100% when the LLM and database are known. After detection, RAG-ID can infer finer RAG properties (e.g., deployed LLM and knowledge database). We consider RAG-ID a reconnaissance tool for attackers, a way to facilitate users’ transparent selection of LLM services, and a guide for RAG developers in refining security measures.
-
-</details>
-
-### 45. MATE: Policy-Aware Security Auditing for Mobile Agents via Synthesis-Driven Trajectory Learning
-
-🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/jiang-changyue)　📅 2026　🏷 USENIX Security 2026
-
-**关键词**：`detection`、`mobile agent`、`policy auditing`、`trajectory learning`
-
-👤 **作者**：Changyue Jiang、Jiayi Wang、Xin Wen、Jiarun Dai、Geng Hong、Xudong Pan
-
-- 🎯 **研究动机**：移动智能体轨迹可违反 app 特定安全策略，现有轨迹防御靠 LLM 提示或僵化规则，难支持跨 app 的自然语言细粒度策略
-- 🔬 **研究方法**：MATE 把策略当可编辑文本的策略条件化审计器，从数百 app 提取描述/工作流/策略并多阶段合成 14 万+ 轨迹训练；发布 MATEBench
-- 📌 **结论**：MATEBench 准确率超 95%，真实设备上审计 AutoGLM 与 Mobile-Agent 轨迹准确率超 95%，超先前方法 20% 以上
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Mobile agents powered by foundation models now automate complex, multi-step workflows on real devices, but their trajectories can violate app-specific security policies. Existing trajectory-level defenses rely on LLM prompting or rigid rules, and thus fail to support fine-grained, natural-language policies that generalize across apps and tasks. In this work, we introduce MATE, a lightweight, policy-conditioned auditor that encodes both agent trajectories and natural-language security policies to determine whether a trajectory violates a given policy and to explain why. Treating policies as editable text rather than fixed model parameters allows MATE to handle user-defined and evolving requirements without retraining. To construct MATE, we build a knowledge base by extracting app descriptions, workflows, and policies from hundreds of popular mobile apps worldwide, and synthesizing over 140K semantically realistic, policy-conditioned trajectories with a multi-stage pipeline. We further release MATEBench, a trajectory-level auditing benchmark with two synthetic subsets and one real-world subset of manually collected trajectories. Models trained with our synthesis-driven trajectory learning achieve over 95% accuracy on MATEBench, retain strong performance on external safety benchmarks, and audit trajectories from Zhipu's AutoGLM and Alibaba's Mobile-Agent on real devices with over 95% accuracy, outperforming prior methods by over 20%. MATE shows that practical, fine-grained security auditing for heterogeneous mobile agents is both feasible and effective.
-
-</details>
-
-### 46. Causal Detection of Multi-Step LLM Agent Attacks
-
-🎓 [Official](https://icml.cc/virtual/2026/poster/64714)　📅 2026　🏷 ICML 2026
-
-**关键词**：`detection`、`causal analysis`、`tool-use agent`、`tool interface`、`LLM agent security`、`tool-use attack`
-
-👤 **作者**：Viraaji Mothukuri、Reza M. Parizi
-
-- 🎯 **研究动机**：多步提示注入的恶意意图在工作流完成后才显现、单动作均合法，现有防御作用于单动作或内容模式无法捕捉序列结构
-- 🔬 **研究方法**：CausalTrace 把防御重构为因果推断：从 agent 轨迹构建带数据依赖、信任转移、状态使能类型边的结构因果模型，用 Pearl do-calculus 回答阻断注入是否仍会发生有害结果
-- 📌 **结论**：检测优于内容基线且 LLM 推理成本低，双向切片高边召回恢复完整攻击链并提供可解释归因
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Multi-step prompt injection attacks on LLM agents present a fundamental detection challenge because malicious intent emerges only after the workflow completes, while individual actions remain legitimate in isolation. Existing defenses, including input sanitization, output validation, and instruction hierarchy, operate on individual actions or content patterns and cannot capture this sequential structure. We present CausalTrace, a detection system that reframes prompt-injection defense as causal inference. It constructs Structural Causal Models from agent trajectories with typed edges capturing data dependency, trust transfer, and state enablement, then applies Pearl’s do-calculus to answer a counterfactual question, namely, whether the harmful outcome would have occurred if the injection had been blocked. This formalization enables a principled distinction between attacks that depend on injections and benign workflows that share surface-level features. Evaluation on a dataset spanning crowdsourced traces, LLM agent benchmarks, and semi-real and real scenarios demonstrates strong detection performance, outperforming content-based baselines while requiring minimal LLM inference cost; bidirectional slicing recovers complete attack chains with high edge recall, providing interpretable explanations that trace exploitation to its causal origins.
-
-</details>
-
-### 47. The Guard That Cried Wolf: How Scary Words Make Agent Guardrails Refuse Legitimate Actions
+### 38. The Guard That Cried Wolf: How Scary Words Make Agent Guardrails Refuse Legitimate Actions
 
 📄 [arXiv](https://arxiv.org/abs/2608.27009)　📅 2026-08
 
@@ -885,21 +723,21 @@ Agent guardrails are checks that approve or refuse each action before an LLM exe
 
 </details>
 
-### 48. Helpful to a Fault: Measuring Illicit Assistance in Multi-Turn, Multilingual LLM Agents
+### 39. SOPE: Situation-Aware and Statistically Indistinguishable Privacy Exfiltration for MCP-enabled Agents
 
-📄 [arXiv](https://arxiv.org/abs/2602.16346) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61155)　📅 2026　🏷 ICML 2026
+🎓 [Official](https://icml.cc/virtual/2026/poster/64028)　📅 2026　🏷 ICML 2026
 
-**关键词**：`benchmark`、`tool-use agent`、`tool interface`、`action integrity`、`LLM agent security`、`empirical evaluation`
+**关键词**：`attack`、`privacy attack`、`MCP`、`privacy leakage`、`empirical evaluation`、`data leakage`
 
-👤 **作者**：Nivya Talokar、Ayush K Tarun、Murari Mandal、Maksym Andriushchenko、Antoine Bosselut
+👤 **作者**：Ruixiao Lin、Qingming Li、Jiahao Chen、Chunyi Zhou、Shouling Ji
 
-- 🎯 **研究动机**：现有智能体滥用基准只测单轮指令，未测多轮中智能体如何被逐步引导协助非法任务
-- 🔬 **研究方法**：STING 以良性 persona 构造逐步非法计划并自适应追问，judge 智能体追踪阶段完成；把多轮红队建模为 time-to-first-jailbreak 随机变量并提出 Restricted Mean Jailbreak Discovery 指标
-- 📌 **结论**：AgentHarm 场景非法任务完成率显著高于单轮与对话式多轮基线；六种非英语语言中攻击成功率并不随语言资源降低而上升
+- 🎯 **研究动机**：现有 MCP 隐私泄露攻击与 agent 工具使用情境错位且依赖刚性模板，模式可识别、易被现有防御拦截
+- 🔬 **研究方法**：提出 SOPE 把任意良性 MCP 服务器改造成窃密变体：识别适配工具使用情境的隐私项、把隐私探测指令嵌入工具调用提示、经代码级修改实现零点击传输
+- 📌 **结论**：324 个改造的真实服务器在 27216 个用例中攻击 4 个基准与 3 个商业 agent，在 9 个 SOTA 防御下仍高效鲁棒
 
 <details>
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
-LLM-based agents execute real-world workflows via tools. These affordances enable ill-intended adversaries to also use these agents to carry out complex misuse scenarios. Existing agent-misuse benchmarks largely test single-prompt instructions, leaving a gap in measuring how agents end up helping with harmful or illegal tasks over multiple turns. We introduce STING ( Sequential Testing of Illicit N-step Goal execution ), an automated red-teaming framework that constructs a step-by-step illicit plan grounded in a benign persona and iteratively probes a target agent with adaptive follow-ups, using judge agents to track phase completion. We further introduce an analysis framework that models multi-turn red-teaming as a time-to-first-jailbreak random variable, enabling analysis tools like discovery curves, hazard-ratio attribution by attack language, and a new metric: Restricted Mean Jailbreak Discovery. Across AgentHarm scenarios, STING yields substantially higher illicit-task completion than single-turn prompting and chat-oriented multi-turn baselines adapted to tool-using agents. In multilingual evaluations across six non-English settings, we find that attack success and illicit-task completion do not consistently increase in lower-resource languages, diverging from common chatbot findings. Overall, STING provides a practical way to evaluate and stress-test agent misuse in realistic deployment settings, where interactions are inherently multi-turn and often multilingual. Our code is available at https://github.com/epfl-nlp/helpful-to-a-fault.
+The Model Context Protocol (MCP) enables Large Language Model (LLM) agents to interact with external tools, but this extensibility introduces significant supply chain vulnerabilities that enable covert privacy exfiltration. Prior studies have revealed privacy leakage in MCP-enabled agents via indirect prompt injection; however, existing attacks are typically misaligned with the agent's tool-usage context and rely on rigid templates, resulting in recognizable patterns that are readily flagged by existing defenses. In this work, we exploit the observation that privacy exposure is inherently scenario-dependent, to associate certain privacy items with specific tools. We introduce SOPE, a Scenario-aware and zerO-click Privacy Exfiltration framework that transforms any benign MCP server into its privacy-exfiltrating variants. SOPE (1) identifies privacy items that are appropriate to the tool usage, (2) embeds privacy-probing instructions into tool-invocation prompts, and (3) achieves zero-click data transmission via code-level modifications. We evaluate SOPE across 27,216 test cases, where 324 SOPE -transformed real-world servers attacking four benchmark and three commercial agents with nine state-of-the-art defenses. Results demonstrate that SOPE remains highly effective and robust, highlighting critical protocol-level safety gaps in the agent ecosystem.
 
 </details>

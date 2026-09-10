@@ -14,26 +14,7 @@
 
 ## 投毒攻击与传播链
 
-### 1. Catastrophic Learning: A New Attack Vector on Continual Learning Networks
-
-📄 [arXiv](https://arxiv.org/abs/2608.18976)　📅 2026-08
-
-**关键词**：`attack`、`language-model poisoning`、`training data`、`behavior manipulation`
-
-👤 **作者**：Benedikt Kluss、Niklas Bunzel
-
-- 🎯 **研究动机**：持续学习的对抗研究以重启用灾难遗忘为目标（攻稳定性），模型可塑性未被攻击
-- 🔬 **研究方法**：定义 learning blockers 六策略（标签/张量交换、吸引/排斥×同时/先行）：拉近或推远中毒与受害迭代的表征，使受害迭代不可学并可诱发遗忘
-- 📌 **结论**：MNIST 与 Split-CIFAR10 上对 DER、ER-ACE、iCaRL 的 4480+ 次模拟中，攻击者可选择性阻碍新知获取并促成灾难学习场景
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Continual Learning (CL) enables deep learning models to iteratively learn from a stream of data without forgetting prior knowledge. Existing adversarial research on CL primarily aims to re-enable catastrophic forgetting, attacking stability and reducing availability. We identify a novel security flaw: data manipulated by an attacker can reduce the learnability of current or upcoming iterations. We term such manipulations learning blockers, as they attack the plasticity of CL algorithms. They are particularly harmful because they are difficult to detect during training of the current iteration, since they can target iterations whose data the model has not yet encountered. When learning blockers additionally induce catastrophic forgetting, the resulting overall degradation is what we call catastrophic learning. We formalize this scenario, define a threat model and propose six attack strategies: Label-Exchange, Tensor-Exchange, Attraction-Coincident, Attraction-Preceding, Repulsion-Coincident, and Repulsion-Preceding. The Attraction variants minimize the loss between the poisoned and the victim iteration label, pulling their representations together in feature space; the Repulsion variants maximize this loss, pushing them apart so stability mechanisms resist the required parameter shift. In the Coincident variants, the poisoned and the victim iteration coincide, using a clean reference iteration only as a label source; in the Preceding variants, the poisoned iteration precedes the victim, leaving it unlearnable due to distorted representations. We evaluate on MNIST and Split-CIFAR10 against three CL strategies - DER, ER-ACE, and iCaRL - across more than 4,480 simulations. Our results demonstrate a strong vulnerability: an adversary can selectively impede plasticity to hinder the acquisition of new knowledge, while promoting loss of prior knowledge, inducing a catastrophic learning scenario.
-
-</details>
-
-### 2. Conjunctive Poisoning in AI Supply-Chain Applications
+### 1. Conjunctive Poisoning in AI Supply-Chain Applications
 
 📄 [arXiv](https://arxiv.org/abs/2608.15913)　📅 2026-08
 
@@ -52,7 +33,7 @@ Large Language and Vision-Language Models are increasingly deployed through infe
 
 </details>
 
-### 3. Pretraining Data Can Be Poisoned through Computational Propaganda
+### 2. Pretraining Data Can Be Poisoned through Computational Propaganda
 
 📄 [arXiv](https://arxiv.org/abs/2607.15267)　📅 2026-07
 
@@ -71,7 +52,7 @@ Poisoning pretraining data can introduce harmful behaviors to LMs that are diffi
 
 </details>
 
-### 4. Rapid Poison: Practical Poisoning Attacks Against the Rapid Response Framework
+### 3. Rapid Poison: Practical Poisoning Attacks Against the Rapid Response Framework
 
 📄 [arXiv](https://arxiv.org/abs/2606.16242) · 🎓 [Official](https://icml.cc/virtual/2026/poster/62293)　📅 2026-06　🏷 ICML 2026
 
@@ -90,7 +71,7 @@ The Rapid Response (RR) framework, deployed in production systems, including Ant
 
 </details>
 
-### 5. Sequential Data Poisoning in LLM Post-Training
+### 4. Sequential Data Poisoning in LLM Post-Training
 
 📄 [arXiv](https://arxiv.org/abs/2606.04929)　📅 2026-06
 
@@ -109,7 +90,7 @@ LLM post-training proceeds through multiple stages, e.g., supervised fine-tuning
 
 </details>
 
-### 6. Are My Optimized Prompts Compromised? Exploring Vulnerabilities of LLM-based Optimizers
+### 5. Are My Optimized Prompts Compromised? Exploring Vulnerabilities of LLM-based Optimizers
 
 🎓 [Official](https://aclanthology.org/2026.eacl-long.100/)　📅 2026-03　🏷 ACL 2026
 
@@ -128,121 +109,7 @@ Large language model (LLM) systems increasingly power everyday AI applications s
 
 </details>
 
-### 7. XOXO: Stealthy Cross-Origin Context Poisoning Attacks against AI Coding Assistants
-
-🎓 [Official](https://aclanthology.org/2026.acl-long.521/)　📅 2026　🏷 ACL 2026
-
-**关键词**：`attack`、`data poisoning`、`language-model poisoning`、`training data`、`LLM backdoor`、`model integrity`
-
-👤 **作者**：Adam Štorek、…、Suman Jana
-
-- 🎯 **研究动机**：编码助手自动纳入不可信上下文，语义不变的代码改动即可隐蔽投毒
-- 🔬 **研究方法**：XOXO以重命名等语义保持变换诱导生成漏洞模式，GCGS黑盒搜索有效变换组合
-- 📌 **结论**：对八个SOTA模型平均ASR 73.20%，漏洞注入率最高66.67%，GitHub Copilot实战验证
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-AI coding assistants automatically gather context from potentially untrusted sources to generate code recommendations. We introduce Cross-Origin Context Poisoning (XOXO), a novel attack that exploits this automatic context inclusion by subtly manipulating code without changing its semantics. Attackers introduce semantics-preserving transformations (e.g., renamed variables) to shared code, causing AI assistants to unknowingly recommend vulnerable code patterns to victims. To systematically identify effective transformations, we present Greedy Cayley Graph Search (GCGS), a black-box algorithm that efficiently composes transformations to identify adversarial inputs. Our evaluation demonstrates XOXO’s effectiveness at making LLMs generate buggy and vulnerable code, achieving average attack success rates of 73.20% against eight state-of-the-art models including GPT 4.1 and Claude 3.5 Sonnet v2, with vulnerability injection rates up to 66.67%. We also demonstrate a real-world attack against GitHub Copilot, highlighting critical security gaps in current AI coding tools.
-
-</details>
-
-### 8. When Can You Poison Rewards? A Tight Characterization of Reward Poisoning in Linear MDPs
-
-📄 [arXiv](https://arxiv.org/abs/2604.10062) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64485)　📅 2026　🏷 ICML 2026
-
-**关键词**：`attack`、`analysis`、`data poisoning`、`language-model poisoning`、`training data`、`backdoor attack`
-
-👤 **作者**：Jose Efraim Aguilar Escamilla、…、Huazheng Wang
-
-- 🎯 **研究动机**：奖励投毒研究多给出攻击成功的充分条件，何时攻击本质不可行缺乏刻画
-- 🔬 **研究方法**：给出线性 MDP 中奖励投毒可攻击性的充要条件，界定有界预算内能否诱导目标策略；并把深度 RL 环境近似为线性 MDP 验证
-- 📌 **结论**：清晰区分脆弱与内在鲁棒的 RL 实例——后者即使用标准非鲁棒算法攻击成本也高，理论预测具实践意义
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-We study reward poisoning attacks in reinforcement learning (RL), where an adversary manipulates rewards under a limited budget to induce a target agent to learn a policy aligned with the attacker's objectives. Most prior work focuses on constructing successful attacks, providing sufficient conditions under which poisoning is effective, while offering limited understanding of when such targeted attacks are fundamentally infeasible. In this paper, we provide the first characterization of reward-poisoning attackability in linear MDPs, establishing both necessary and sufficient conditions for whether a target policy can be induced within a bounded attack budget. This draws a clear boundary between the vulnerable RL instances and intrinsically robust ones, which cannot be attacked without high costs even when the learner uses standard, non-robust RL algorithms. We further demonstrate our framework beyond synthetic linear MDPs by approximating deep RL environments as linear MDPs. We show that our theoretical framework effectively distinguishes vulnerability, demonstrating how our theoretical predictions have practical significance.
-
-</details>
-
-### 9. Tight Stability Bounds for Robust Distributed Learning: Byzantine Failures Hurt Generalization More than Data Poisoning
-
-📄 [arXiv](https://arxiv.org/abs/2506.18020) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61938)　📅 2026　🏷 ICML 2026
-
-**关键词**：`attack`、`data poisoning`、`language-model poisoning`、`training data`、`adversarial defense`、`empirical evaluation`
-
-👤 **作者**：Thomas Boudou、Batiste Le Bars、Nirupam Gupta、Aurélien Bellet
-
-- 🎯 **研究动机**：Byzantine 失效与数据中毒两种威胁模型的优化保证相似，但对泛化的影响差异此前未知
-- 🔬 **研究方法**：对鲁棒分布式学习做紧致算法稳定性分析，首次证明两种威胁模型在泛化保证上的根本差距
-- 📌 **结论**：数据中毒下最优算法的均匀稳定性仅加性退化 Θ(f/(n-f))，Byzantine 失效下退化 Ω(√(f/(n-2f)))，严格更差
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Robust distributed learning algorithms aim to maintain reliable performance despite the presence of misbehaving workers. Such misbehaviors are commonly modeled as *Byzantine failures*, allowing arbitrarily corrupted communication, or as *data poisoning*, a weaker form of corruption restricted to local training data. While prior work shows similar optimization guarantees for both models, an important question remains: *How do these threat models impact generalization?* We show, for the first time, a fundamental gap in generalization guarantees between the two threat models: Byzantine failures yield strictly worse rates than those achievable under data poisoning. Our findings leverage a tight algorithmic stability analysis of robust distributed learning. Specifically, we prove that: *(i)* under data poisoning, the uniform algorithmic stability of an algorithm with optimal optimization guarantees degrades by an additive factor of $\Theta ( \frac{f}{n-f} )$, with $f$ out of $n$ workers misbehaving; whereas *(ii)* under Byzantine failures, the degradation is in $\Omega \big( \sqrt{ \frac{f}{n-2f}} \big)$.
-
-</details>
-
-### 10. Theory of Continual Learning Against Data Poisoning Attacks
-
-📄 [arXiv](https://arxiv.org/abs/2606.29841) · 🎓 [Official](https://icml.cc/virtual/2026/poster/65304)　📅 2026　🏷 ICML 2026
-
-**关键词**：`attack`、`data poisoning`、`language-model poisoning`、`training data`、`backdoor attack`、`empirical evaluation`
-
-👤 **作者**：Yiting Hu、Lingjie Duan
-
-- 🎯 **研究动机**：持续学习易受数据中毒引发学习发散或严重超额风险，CL 中的攻防缺乏原则性理论基础
-- 🔬 **研究方法**：把攻防交互建模为在线零和博弈，证明攻击者毒化线性比例任务并注入无界噪声时无防御可成功；对低频攻击提出任务间验证机制，对有界噪声推导最小化中毒特征敏感度的防御
-- 📌 **结论**：两种可防御场景分别实现中毒检测与收敛保障、可证明加速的收敛，实验验证理论结果
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Continual learning (CL), where a model is trained on a sequence of data tasks, is increasingly being adopted across key fields such as large language models and image recognition, yet it remains highly vulnerable to data poisoning that triggers learning divergence or severe excess risk. Despite these threats, a principled theoretical foundation in CL for understanding attack and defense remains lacking. In this paper, we develop a theoretical framework to analyze strategic attacks and defenses in regularization-based CL, a cornerstone of recent CL theory. By framing the adversary-defender interaction as an online zero-sum game, we first establish a fundamental performance limit: no defense succeeds when an adversary poisons a linear proportion of tasks by injecting unbounded noise or pattern shifts in regularization-based CL. We then analyze two possibly defensible scenarios: infrequent attacks and bounded noise per attack. For the former regime, we propose a task-to-task verification mechanism to detect data poisoning and reduce cumulative bias for learning convergence. For the latter regime, we derive a robust defense that minimizes the model’s sensitivity to poisoned features, provably accelerating the convergence rate. Extensive experiments on realistic tasks further validate our theoretical results.
-
-</details>
-
-### 11. Safety-Efficacy Trade Off: Robustness against Data-Poisoning
-
-📄 [arXiv](https://arxiv.org/abs/2602.00822) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61186)　📅 2026　🏷 ICML 2026
-
-**关键词**：`attack`、`adversarial robustness`、`data poisoning`、`language-model poisoning`、`backdoor defense`、`mechanistic analysis`
-
-👤 **作者**：Diego Granziol
-
-- 🎯 **研究动机**：后门与数据投毒可高成功率绕过频谱与优化式防御，其几何机制不明
-- 🔬 **研究方法**：以核岭回归作为宽网络精确模型，证明聚类脏标签投毒在输入 Hessian 诱导随攻击效力二次增长的秩一尖峰，并刻画攻击有效而曲率消失的近克隆不可检测域；分析输入梯度正则的作用
-- 📌 **结论**：在 MNIST 与 CIFAR-10/100 上验证攻击成功与频谱可见性的系统性滞后，首次端到端刻画投毒、可检测性与防御的输入空间曲率关系
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Backdoor and data-poisoning attacks can achieve high attack success while evading existing spectral and optimisation-based defences. We show that this behaviour is not incidental, but arises from a fundamental geometric mechanism in input space. Using kernel ridge regression as an exact model of wide neural networks, we prove that clustered dirty-label poisons induce a rank-one spike in the input Hessian whose magnitude scales quadratically with attack efficacy. Crucially, for nonlinear kernels we identify a near-clone regime in which poison efficacy remains order-one while the induced input curvature vanishes, making the attack provably spectrally undetectable. We further show that input-gradient regularisation contracts poison-aligned Fisher and Hessian eigenmodes under gradient flow, yielding an explicit and unavoidable safety–efficacy trade-off by reducing data-fitting capacity. For exponential kernels, this defence admits a precise interpretation as an anisotropic high-pass filter that increases the effective length scale and suppresses near-clone poisons. Extensive experiments on linear models and deep convolutional networks across MNIST and CIFAR-10/100 validate the theory, demonstrating consistent lags between attack success and spectral visibility, and showing that regularisation and data augmentation jointly suppress poisoning. Our results establish when backdoors are inherently invisible, and provide the first end-to-end characterisation of poisoning, detectability, and defence through input-space curvature.
-
-</details>
-
-### 12. Robust In-Context Reinforcement Learning Under Reward Poisoning Attacks
-
-📄 [arXiv](https://arxiv.org/abs/2506.06891) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61251)　📅 2026　🏷 ICML 2026
-
-**关键词**：`attack`、`data poisoning`、`language-model poisoning`、`training data`、`backdoor defense`、`adversarial training`
-
-👤 **作者**：Paulius Sasnauskas、Yiğit Yalın、Goran Radanović
-
-- 🎯 **研究动机**：上下文内强化学习（以 Decision-Pretrained Transformer 为代表）面对奖励投毒攻击的鲁棒性未知
-- 🔬 **研究方法**：提出对抗训练框架 AT-DPT：同时训练一群通过污染环境奖励来最小化 DPT 真实奖励的攻击者，和从污染数据推断最优动作的 DPT 模型
-- 📌 **结论**：在 bandit 设定下显著超过鲁棒基线，并泛化到自适应攻击者与 MDP 等更复杂环境
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-We study the corruption-robustness of in-context reinforcement learning (ICRL), focusing on the Decision-Pretrained Transformer (DPT, Lee et al., 2023). To address the challenge of reward poisoning attacks targeting the DPT, we propose a novel adversarial training framework, called Adversarially Trained DPT (AT-DPT). Our method simultaneously trains a population of attackers to minimize the true reward of the DPT by poisoning environment rewards, and a DPT model to infer optimal actions from the poisoned data. We evaluate the effectiveness of our approach against standard bandit algorithms, including robust baselines designed to handle reward contamination. Our results show that AT-DPT significantly outperforms them in bandit settings under a learned attacker, and generalizes to more complex environments such as adaptive attackers and MDPs. It shows promise in ICRL as a meta-RL approach to learning effective corruption-robust algorithms.
-
-</details>
-
-### 13. PARASITE: Conditional System Prompt Poisoning to Hijack LLMs
+### 6. PARASITE: Conditional System Prompt Poisoning to Hijack LLMs
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.668/)　📅 2026　🏷 ACL 2026
 
@@ -261,7 +128,7 @@ Large Language Models (LLMs) are increasingly deployed via third-party system pr
 
 </details>
 
-### 14. Efficient Preference Poisoning Attack on Offline RLHF
+### 7. Efficient Preference Poisoning Attack on Offline RLHF
 
 📄 [arXiv](https://arxiv.org/abs/2605.02495) · 🎓 [Official](https://icml.cc/virtual/2026/poster/66514)　📅 2026　🏷 ICML 2026
 
@@ -280,7 +147,7 @@ Offline Reinforcement Learning from Human Feedback (RLHF) pipelines such as Dire
 
 </details>
 
-### 15. Virus Infection Attack on LLMs: Your Poisoning Can Spread via Synthetic Data
+### 8. Virus Infection Attack on LLMs: Your Poisoning Can Spread via Synthetic Data
 
 📄 [arXiv](https://arxiv.org/abs/2509.23041) · 🎓 [Official](https://proceedings.neurips.cc/paper_files/paper/2025/hash/e6c5195dac675f03d0fcf3955bcdd3c9-Abstract-Conference.html)　📅 2025-09　🏷 NeurIPS 2025
 
@@ -299,7 +166,7 @@ Synthetic data refers to artificial samples generated by models. While it has be
 
 </details>
 
-### 16. Reasoning Introduces New Poisoning Attacks Yet Makes Them More Complicated
+### 9. Reasoning Introduces New Poisoning Attacks Yet Makes Them More Complicated
 
 📄 [arXiv](https://arxiv.org/abs/2509.05739) · 🎓 [Official](https://satml.org/2026/accepted-papers/)　📅 2025-09　🏷 SaTML 2026
 
@@ -318,26 +185,7 @@ Early research into data poisoning attacks against Large Language Models (LLMs) 
 
 </details>
 
-### 17. Attacks on Approximate Caches in Text-to-Image Diffusion Models
-
-📄 [arXiv](https://arxiv.org/abs/2508.20424) · 🌐 [Project](https://zenodo.org/records/18705055) · 🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/sun-desen)　📅 2025-08　🏷 USENIX Security 2026
-
-**关键词**：`attack`、`prompt stealing`、`cache poisoning`、`data poisoning`、`diffusion serving cache`
-
-👤 **作者**：Desen Sun、Shuncheng Jie、Sihang Liu
-
-- 🎯 **研究动机**：扩散服务采用近似缓存复用相似 prompt 的中间状态，打破了用户间隔离
-- 🔬 **研究方法**：演示三类远程攻击：以特殊关键词建立可维持数日的隐蔽信道、从缓存命中窃取 prompt、向被窃 prompt 投毒嵌入攻击者 logo
-- 📌 **结论**：三类攻击均可经服务系统远程实施，暴露近似缓存的严重安全风险
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Diffusion models are a powerful class of generative models that produce images and other content from user prompts, but they are computationally intensive. To mitigate this cost, recent academic and industry work has adopted approximate caching, which reuses intermediate states from similar prompts in a cache. While efficient, this optimization introduces new security risks by breaking isolation among users. This paper provides a comprehensive assessment of the security vulnerabilities introduced by approximate caching. First, we demonstrate a remote covert channel established with the approximate cache, where a sender injects prompts with special keywords into the cache system and a receiver can recover that even after days, to exchange information. Second, we introduce a prompt stealing attack using the approximate cache, where an attacker can recover existing cached prompts from hits. Finally, we introduce a poisoning attack that embeds the attacker's logos into the previously stolen prompt, leading to unexpected logo rendering for the requests that hit the poisoned cache prompts. These attacks are all performed remotely through the serving system, demonstrating severe security vulnerabilities in approximate caching. The code for this work is available.
-
-</details>
-
-### 18. Persistent Pre-Training Poisoning of LLMs
+### 10. Persistent Pre-Training Poisoning of LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2410.13722) · 🎓 [Official](https://proceedings.iclr.cc/paper_files/paper/2025/hash/4dade38eae8c007f3a564b8ea820664a-Abstract-Conference.html)　📅 2024-10　🏷 ICLR 2025
 
@@ -356,7 +204,7 @@ Large language models are pre-trained on uncurated text datasets consisting of t
 
 </details>
 
-### 19. Scaling Model-Generated Distillation Data Can Make Latent Teacher Traits More Recoverable
+### 11. Scaling Model-Generated Distillation Data Can Make Latent Teacher Traits More Recoverable
 
 📄 [arXiv](https://arxiv.org/abs/2608.26958)　📅 2026-08
 
@@ -375,7 +223,7 @@ Scaling model-generated data is usually viewed as improving distillation: more e
 
 </details>
 
-### 20. Poisoning Attacks on LLMs Require a Near-constant Number of Poison Samples
+### 12. Poisoning Attacks on LLMs Require a Near-constant Number of Poison Samples
 
 📄 [arXiv](https://arxiv.org/abs/2510.07192)　📅 2025-10
 
@@ -394,7 +242,7 @@ Poisoning attacks can compromise the safety of large language models (LLMs) by i
 
 </details>
 
-### 21. Poisoning Web-Scale Training Datasets is Practical
+### 13. Poisoning Web-Scale Training Datasets is Practical
 
 📄 [arXiv](https://arxiv.org/abs/2302.10149) · 🌐 [Project](https://doi.org/10.1109/SP54263.2024.00179)　📅 2023-02　🏷 IEEE S&P 2024
 
@@ -413,7 +261,7 @@ Deep learning models are often trained on distributed, web-scale datasets crawle
 
 </details>
 
-### 22. Shaping Capabilities with Token-Level Data Filtering
+### 14. Shaping Capabilities with Token-Level Data Filtering
 
 📄 [arXiv](https://arxiv.org/abs/2601.21571)　📅 2026-01
 
@@ -432,7 +280,7 @@ Current approaches to reducing undesired capabilities in language models are lar
 
 </details>
 
-### 23. Infusion: Shaping Model Behavior by Editing Training Data via Influence Functions
+### 15. Infusion: Shaping Model Behavior by Editing Training Data via Influence Functions
 
 📄 [arXiv](https://arxiv.org/abs/2602.09987)　📅 2026-02
 
@@ -451,26 +299,7 @@ Influence functions are commonly used to attribute model behavior to training do
 
 </details>
 
-### 24. Context Contamination in LLM Analysis of Network Security Logs: Poison with Passive Prompt Injection and Mitigation Evaluation
-
-📄 [arXiv](https://arxiv.org/abs/2607.14493) · 🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/karanjai)　📅 2026-07　🏷 USENIX Security 2026
-
-**关键词**：`benchmark`、`attack`、`passive prompt injection`、`security log`、`prompt injection`、`defense-in-depth`
-
-👤 **作者**：Rabimba Karanjai、Yang Lu、Hemanth Hegadehalli Madhavarao、Lei Xu、Weidong Shi
-
-- 🎯 **研究动机**：SOC 用 LLM 分析外部日志，日志生成字段中的注入载荷可持久存储并在分析师查询时执行（passive prompt injection）
-- 🔬 **研究方法**：提出 LogInject 框架与 12,847 条日志（2,569 对抗样本）基准，评估三个生产 LLM 在活动隐匿、误报生成、信息外泄与输出劫持四目标下的表现，并提出跨条目分片的 Context Stitching；测试输入过滤+提示加固+输出验证的分层缓解
-- 📌 **结论**：基线 ASR 最高 88.2%（平均 83.4%），Context Stitching 达 76.4%；分层防御降低 90.4% 攻击但残留 8.4%
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Large Language Models are increasingly deployed in Security Operations Centers for log analysis tasks including summarization, alert triage, and threat investigation. These systems ingest logs from external-facing services and process network logs as natural language contexts to generate security insights. We demonstrate that this architectural pattern introduces a critical vulnerability: adversaries can embed prompt injection payloads in log-generating fields that persist in storage and are executed when analysts query the LLM, achieving what we term passive prompt injection. We present LogInject, a systematic framework for evaluating these threats. Using LogInject-1.0, a benchmark of 12,847 log entries including 2,569 adversarial samples, we evaluate three production LLMs across four attack objectives: activity concealment, false positive generation, information exfiltration, and output hijacking. Our findings reveal an up to 88.2% attack success rate (83.4% average across models) under the baseline conditions. We introduce Context Stitching, a novel technique that fragments payloads across multiple log entries to evade stateless filters while exploiting LLM long-context reasoning, achieving a 76.4% success rate. As mitigation, we evaluate layered defenses by combining input filtering, prompt hardening, and output validation, demonstrating a 90.4% attack reduction, although 8.4% residual vulnerability persists. Our results establish that LLM-based log analysis creates an inherent confused deputy vulnerability where untrusted data and trusted instructions compete indistinguishably for model attention, requiring defense in-depth architectures and continued human oversight for security-critical decisions.
-
-</details>
-
-### 25. Detecting Contaminated Code-Generation Prompt Batches via Influence Functions
+### 16. Detecting Contaminated Code-Generation Prompt Batches via Influence Functions
 
 📄 [arXiv](https://arxiv.org/abs/2608.14303)　📅 2026-08
 

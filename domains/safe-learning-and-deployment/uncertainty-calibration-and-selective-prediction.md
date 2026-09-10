@@ -110,45 +110,7 @@ Financial numerical reasoning demands rigorous adherence to domain-specific logi
 
 </details>
 
-### 6. Geometric Control of Out-of-Distribution Shift in Safe Offline RL
-
-🎓 [Official](https://icml.cc/virtual/2026/poster/60708)　📅 2026　🏷 ICML 2026
-
-**关键词**：`defense`、`risk control`、`uncertainty calibration`、`selective prediction`、`safe reinforcement learning`、`reinforcement learning`
-
-👤 **作者**：Zhiqi Zhuang、di wu、Benoit Boulet
-
-- 🎯 **研究动机**：安全离线 RL 的潜生成策略仅靠隐式正则，缺乏对策略改进中分布偏移的系统控制
-- 🔬 **研究方法**：利用条件归一化流的双射结构在潜基空间约束散度，导出策略分布 Wasserstein 距离与 TV 的可解上界；架构为可达性信号 flow prior 加几何约束 latent refiner
-- 📌 **结论**：多个安全 RL 基准上违规率持续低且回报有竞争力
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Safe offline reinforcement learning (RL) requires optimizing policies within the support of static datasets while satisfying strict safety constraints. Although recent latent generative policies achieve strong empirical performance, they rely heavily on implicit regularization and lack systematic control over distributional shift during policy improvement. In this work, we propose a geometric control framework that leverages the bijective structure of conditional normalizing flows to provide a tractable mechanism to regulate distributional deviation of the policy. By constraining divergence in the latent base space, we derive tractable upper bounds on the induced Wasserstein distance and total variation of the policy distribution, establishing an analyzable connection between latent geometry and downstream behaviors. This insight motivates a decoupled architecture: a flow prior shapes a feasibility-weighted latent manifold using Hamilton--Jacobi reachability signals, while a latent refiner performs geometrically constrained optimization directly in the base space. Across multiple safe RL benchmarks, our method achieves consistently low violation rates with competitive returns, highlighting the benefits of structured geometric regularization.
-
-</details>
-
-### 7. Distillation Traps and Guards: A Calibration Knob for LLM Distillability
-
-🎓 [Official](https://aclanthology.org/2026.acl-long.908/)　📅 2026　🏷 ACL 2026
-
-**关键词**：`defense`、`uncertainty calibration`、`selective prediction`、`deployment shift`、`model provenance`、`watermarking`
-
-👤 **作者**：Weixiao Zhan、Yongcheng Jing、Leszek Rutkowski、Dacheng Tao
-
-- 🎯 **研究动机**：知识蒸馏会不可预测地失败并构成模型泄露风险——尾部噪声、off-policy 不稳定与师生差距扭曲训练信号
-- 🔬 **研究方法**：首个经强化微调控制教师可蒸馏性的事后校准：目标组合任务效用、KL 锚与跨 tokenizer 校准奖励
-- 📌 **结论**：可蒸馏校准教师的学生超越 SFT 与 KD 基线；不可蒸馏校准教师保留自身性能却使学生崩溃，成为 KD 质量与 IP 保护的实用旋钮
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Knowledge distillation (KD) transfers capabilities from large language models (LLMs) to smaller students, yet it can fail unpredictably and also underpins model leakage risks. Our analysis revealed several distillation traps: tail noise, off-policy instability, and, most fundamentally, the teacher–student gap, that distort training signals. These traps manifest as overconfident hallucinations, self-correction collapse, and local decoding degradation, causing distillation to fail. Motivated by these findings, we propose a post-hoc calibration method that, to the best of our knowledge, for the first time enables control over a teacher’s distillability via reinforcement fine-tuning (RFT). Our objective combines task utility, KL anchor, and across-tokenizer calibration reward. This makes distillability a practical safety lever for foundation models, connecting robust teacher–student transfer with deployment-aware model protection. Experiments across math, knowledge QA, and instruction-following tasks show that students distilled from distillable calibrated teachers outperform SFT and KD baselines, while undistillable calibrated teachers retain their task performance but cause distilled students to collapse, offering a practical knob for both better KD and model IP protection.
-
-</details>
-
-### 8. Conformal Policy Control
+### 6. Conformal Policy Control
 
 📄 [arXiv](https://arxiv.org/abs/2603.02196) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61296)　📅 2026　🏷 ICML 2026
 
@@ -167,7 +129,7 @@ An agent must try new behaviors to explore and improve. In high-stakes environme
 
 </details>
 
-### 9. Adversarially Robust Control of Conditional Value-at-Risk via Rockafellar-Uryasev Conformal Inference
+### 7. Adversarially Robust Control of Conditional Value-at-Risk via Rockafellar-Uryasev Conformal Inference
 
 📄 [arXiv](https://arxiv.org/abs/2606.00320) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63594)　📅 2026　🏷 ICML 2026
 
@@ -186,7 +148,7 @@ We present an online, distribution-free framework for controlling the Conditiona
 
 </details>
 
-### 10. Quantifying Risk Under Evolving Uncertainty: Belief-Dependent Robustness for Safe Sequential Decision Making
+### 8. Quantifying Risk Under Evolving Uncertainty: Belief-Dependent Robustness for Safe Sequential Decision Making
 
 📄 [arXiv](https://arxiv.org/abs/2608.17574) · 🌐 [Project](https://sites.google.com/view/robustifai-workshop/program)　📅 2026-08
 
@@ -205,7 +167,7 @@ How cautious should an agent be while it is still learning its environment? We p
 
 </details>
 
-### 11. CUBICS: Situation-aware performance estimation for safety-relevant ML components
+### 9. CUBICS: Situation-aware performance estimation for safety-relevant ML components
 
 📄 [arXiv](https://arxiv.org/abs/2608.16564)　📅 2026-08
 
@@ -224,7 +186,7 @@ Machine learning (ML) is a key technology driving innovation today, but ensuring
 
 </details>
 
-### 12. Visualizing Uncertainty-to-Action Composition for Human Oversight
+### 10. Visualizing Uncertainty-to-Action Composition for Human Oversight
 
 📄 [arXiv](https://arxiv.org/abs/2608.16428)　📅 2026-08
 
@@ -243,7 +205,7 @@ Artificial intelligence systems often disclose uncertainty, yet they rarely make
 
 </details>
 
-### 13. Robustness Meets Uncertainty: Evidential Adversarial Training for Robust Selective Classification
+### 11. Robustness Meets Uncertainty: Evidential Adversarial Training for Robust Selective Classification
 
 📄 [arXiv](https://arxiv.org/abs/2607.03075) · 🌐 [Project](https://eccv.ecva.net/virtual/2026/poster/5235)　📅 2026-07　🏷 ECCV 2026
 
@@ -262,7 +224,7 @@ Safety-critical applications require classifiers that are both robust and reliab
 
 </details>
 
-### 14. Tackling Fake Forgetting through Uncertainty Quantification
+### 12. Tackling Fake Forgetting through Uncertainty Quantification
 
 📄 [arXiv](https://arxiv.org/abs/2501.19403) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61287)　📅 2026　🏷 ICML 2026
 
@@ -281,7 +243,7 @@ Machine unlearning seeks to remove the influence of specified data from a traine
 
 </details>
 
-### 15. LLMs (Almost) Never Abstain Under Medical Uncertainty
+### 13. LLMs (Almost) Never Abstain Under Medical Uncertainty
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1365/)　📅 2026　🏷 ACL 2026
 
@@ -300,7 +262,7 @@ Medical multiple-choice question answering (MCQA) benchmarks implicitly assume t
 
 </details>
 
-### 16. CURA: Clinical Uncertainty Risk Alignment for Language Model–Based Risk Prediction
+### 14. CURA: Clinical Uncertainty Risk Alignment for Language Model–Based Risk Prediction
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1567/)　📅 2026　🏷 ACL 2026
 
@@ -319,7 +281,7 @@ Clinical language models (LMs) are increasingly applied to support clinical risk
 
 </details>
 
-### 17. Knowing When Not to Predict: Self Supervised Learning and Abstention for Safer DR Screening
+### 15. Knowing When Not to Predict: Self Supervised Learning and Abstention for Safer DR Screening
 
 📄 [arXiv](https://arxiv.org/abs/2605.19133) · 🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/AI4H96.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=special-track-on-ai-and-health)　📅 2026
 
@@ -335,5 +297,24 @@ Clinical language models (LMs) are increasingly applied to support clinical risk
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 Self-supervised learning (SSL) is now a standard way to pretrain medical image models, but performance is still mostly judged by downstream accuracy. For safety-critical screening tasks such as diabetic retinopathy grading, this is not enough: a model must also know when its predictions are unreliable and defer uncertain cases for clinical review. In this work, we examine how the length of SSL pretraining influences calibrated confidence and confidence-based abstention. We evaluate multiple SSL checkpoints under a fixed fine-tuning protocol and assess calibrated confidence, coverage, selective accuracy, and selective macro-F1. Across datasets and data regimes, SSL pretraining improves selective prediction compared to training from scratch. Unlike prior SSL studies that primarily evaluate downstream accuracy or AUROC, we analyze how SSL pretraining duration influences confidence behavior under calibrated confidence-based abstention. However, once accuracy saturates, selective performance can still change markedly across checkpoints, and longer pretraining does not consistently improve reliability. These results underscore the importance of abstention-aware evaluation and suggest that pretraining length should be treated as an important reliability-related design choice rather than only a computational detail. Code is available at https://github.com/ muskaan712/ijcai-knowing-when-not-to-predict.
+
+</details>
+
+### 16. CGRiC: Compositional Risk Certification for Structured LLM Outputs
+
+🎓 [Official](https://icml.cc/virtual/2026/poster/64542)　📅 2026　🏷 ICML 2026
+
+**关键词**：`defense`、`AI safety benchmark`、`risk estimation`、`evaluation validity`、`safety evaluation`、`certified robustness`
+
+👤 **作者**：Ibne Farabi Shihab、SANJEDA AKTER、Anuj Sharma
+
+- 🎯 **研究动机**：结构化输出的正确性是组合式的——单个错误主张即可作废整体；现有认证把输出当原子单元，只能全盘接受或浪费性拒绝
+- 🔬 **研究方法**：CGRiC 把响应分解为可验证主张的依赖图，经 information-lift 统计赋予校准的逐主张风险界，组合后对未检出错误主张概率给出显式保证，超阈值时触发局部修复
+- 📌 **结论**：达到目标风险水平同时比原子基线减少 31% 弃权，覆盖 QA、摘要与推理任务
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models increasingly generate structured outputs, including citation-grounded summaries, multi-step reasoning chains, and tool-augmented responses, where correctness is inherently compositional: a single flawed claim can invalidate an otherwise accurate response. Existing certification methods treat outputs as atomic units, forcing a binary choice between unsafe acceptance and wasteful rejection. We introduce \textbf{Claim Graph Risk Control (CGRiC)}, a framework that decomposes responses into dependency graphs of verifiable claims and assigns calibrated per-claim risk bounds via information-lift statistics. By composing these bounds, CGRiC provides explicit guarantees on the probability that any incorrect claim passes verification undetected. When this composed risk exceeds a target threshold, the system triggers localized repairs rather than full abstention, preserving correct content while fixing problematic claims. Our approach explicitly models extraction noise and verifier imperfection, and exploits conditional independence structure for tighter certificates when validated. Empirically, CGRiC achieves target risk levels while reducing abstention by 31\% compared to atomic baselines across QA, summarization, and reasoning tasks.
 
 </details>

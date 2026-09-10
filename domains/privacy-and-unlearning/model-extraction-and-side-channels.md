@@ -177,45 +177,7 @@ Model merging is a promising technique to enhance the capabilities of neural net
 
 </details>
 
-### 10. Stealing Split Learning Bottom Models by Recovering Embedding Geometry
-
-🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Zhang_Stealing_Split_Learning_Bottom_Models_by_Recovering_Embedding_Geometry_CVPR_2026_paper.html)　📅 2026　🏷 CVPR 2026
-
-**关键词**：`attack`、`split learning`、`model stealing`、`embedding geometry`
-
-👤 **作者**：Qinbo Zhang、Yanhang Shi、Ziyi Zhang、Hao Wang、Sai Qian Zhang、Jian Li
-
-- 🎯 **研究动机**：VFL 中扰动或解耦嵌入通道的防御仍可被诚实但好奇的服务器侧窃取攻击攻破
-- 🔬 **研究方法**：提出 VENOM 几何感知窃取：在服务器观察的嵌入上学习对比空间与邻域图，用邻匹配损失加逐点、特征形状对齐训练代理模型，恢复防御未抹除的关系结构
-- 📌 **结论**：在 6 个数据集上无防御与多种防御下均超越标准窃取方法，OOD 辅助数据下依然有效
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Vertical federated learning (VFL) trains models by splitting computation across clients and a server that only exchange intermediate embeddings. Recent work shows that a server even if honest-but-curious can steal a client's bottom model by querying the system and regressing on the returned embeddings, and in response, defenses perturb or decouple the embedding channel. We show these defenses remain vulnerable. We propose VENOM, a geometry-aware stealing attack. VENOM first learns a contrastive space over server-observed embeddings, then builds a neighborhood graph and trains a surrogate bottom model to match targets and respect local geometry via a neighbor-matching loss alongside pointwise and feature-shape alignment. This strategy preserves the relational structure that defenses fail to erase, effectively recoupling the embeddings produced by multi-branch and noise-based defenses. Across six datasets, VENOM consistently outperforms standard stealing methods under no defense and multiple defenses, and remains effective with out-of-distribution (OOD) auxiliary data.
-
-</details>
-
-### 11. The Art of Hide and Seek: Making Pickle-Based Model Supply Chain Poisoning Stealthy Again
-
-📄 [arXiv](https://arxiv.org/abs/2508.19774) · 🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/liu-tong)　📅 2025-08　🏷 USENIX Security 2026
-
-**关键词**：`attack`、`model supply chain`、`Pickle`、`stealthy poisoning`
-
-👤 **作者**：Tong Liu、Guozhu Meng、Peng Zhou、Zizhuang Deng、Shuaiyin Yao、Kai Chen
-
-- 🎯 **研究动机**：pickle 反序列化漏洞长期未解，现有扫描器对模型投毒面理解不全、检测逻辑脆弱
-- 🔬 **研究方法**：系统披露 pickle 投毒面：识别五大框架 22 条模型加载路径（19 条被漏检），提出 Exception-Oriented Programming 绕过技术，并在风险函数面发现 133 个可利用 gadget
-- 📌 **结论**：gadget 绕过率近 100%，最佳扫描器下仍达 89%；获厂商致谢与 6000 美元赏金
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Pickle deserialization vulnerabilities have persisted throughout Python's history, remaining widely recognized yet unresolved. Due to its ability to transparently save and restore complex objects into byte streams, many AI/ML frameworks continue to adopt pickle as the model serialization protocol despite its inherent risks. As the open-source model ecosystem grows, model-sharing platforms such as Hugging Face have attracted massive participation, significantly amplifying the real-world risks of pickle exploitation and opening new avenues for model supply chain poisoning. Although several state-of-the-art scanners have been developed to detect poisoned models, their incomplete understanding of the poisoning surface leaves the detection logic fragile and allows attackers to bypass them. In this work, we present the first systematic disclosure of the pickle-based model poisoning surface from both model loading and risky function perspectives. Our research demonstrates how pickle-based model poisoning can remain stealthy and highlights critical gaps in current scanning solutions. On the model loading surface, we identify 22 distinct pickle-based model loading paths across five foundational AI/ML frameworks, 19 of which are entirely missed by existing scanners. We further develop a bypass technique named Exception-Oriented Programming (EOP) and discover 9 EOP instances, 7 of which can bypass all scanners. On the risky function surface, we discover 133 exploitable gadgets, achieving almost a 100% bypass rate. Even against the best-performing scanner, these gadgets maintain an 89% bypass rate. By systematically revealing the pickle-based model poisoning surface, we achieve practical and robust bypasses against real-world scanners. We responsibly disclose our findings to corresponding vendors, receiving acknowledgments and a $6000 bug bounty.
-
-</details>
-
-### 12. Architectural Backdoors for Within-Batch Data Stealing and Model Inference Manipulation
+### 10. Architectural Backdoors for Within-Batch Data Stealing and Model Inference Manipulation
 
 📄 [arXiv](https://arxiv.org/abs/2505.18323) · 🎓 [Official](https://satml.org/2026/accepted-papers/)　📅 2025-05　🏷 SaTML 2026
 
@@ -234,7 +196,7 @@ For nearly a decade the academic community has investigated backdoors in neural 
 
 </details>
 
-### 13. Targeting Alignment: Extracting Safety Classifiers of Aligned LLMs
+### 11. Targeting Alignment: Extracting Safety Classifiers of Aligned LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2501.16534) · 🎓 [Official](https://satml.org/2026/accepted-papers/)　📅 2025-01　🏷 SaTML 2026
 
@@ -253,7 +215,7 @@ Alignment in large language models (LLMs) is used to enforce guidelines such as 
 
 </details>
 
-### 14. AdaptPrint: Response-Adaptive Fingerprinting of Black-Box LLM Services
+### 12. AdaptPrint: Response-Adaptive Fingerprinting of Black-Box LLM Services
 
 📄 [arXiv](https://arxiv.org/abs/2608.22213)　📅 2026-08
 
@@ -272,26 +234,7 @@ Black-box LLM services have emerged as a practical deployment paradigm. Neverthe
 
 </details>
 
-### 15. Unveiling the Pitfalls of Data-Free Backdoor Detection Against Pre-Trained Models
-
-🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/zhao-quan)　📅 2026　🏷 USENIX Security 2026
-
-**关键词**：`detection`、`benchmark`、`backdoor detection`、`pre-trained model`、`convergence side channel`
-
-👤 **作者**：Quan Zhao、…、Yang Zhang
-
-- 🎯 **研究动机**：无数据后门检测方法很少在预训练模型上评估，报告的强性能可能造成虚假安全感
-- 🔬 **研究方法**：构建覆盖 30000 多个模型与常见后门攻击的大规模基准；提出以收敛速度作为侧信道信号的新检测器
-- 📌 **结论**：现有无数据方法在多数预训练模型上失效；新检测器达 SOTA，但严重漏洞仍存
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Backdoor attacks pose a significant threat to deep learning models, enabling adversaries to manipulate the output through hidden triggers. Recent detection methods aim to identify backdoors without relying on clean samples or assumptions about attacks. Although they report strong performance, these methods are rarely evaluated on pre-trained models. In this paper, we present the first large-scale study of data-free backdoor detection on pre-trained models. Our benchmark includes more than 30,000 models and covers common backdoor attacks. We find that existing data-free methods fail on most pre-trained models, leading to a false sense of security. Despite our effective improvements, serious vulnerabilities remain. To address this, we propose using convergence speed as a new side-channel signal for backdoor detection. Using this signal, we reveal the cause of the remaining vulnerabilities and build a novel data-free detector that achieves state-of-the-art performance against existing methods. We further analyze how backdoor attacks evade detection and outline unresolved issues. Our results indicate that detecting backdoor attacks requires further exploration. We hope that our work can draw attention to the vulnerabilities in backdoor detection mechanisms for machine learning systems.
-
-</details>
-
-### 16. Ventor-QTest: Threat-Model-Driven Verification of Vendor-Hosted LLM APIs
+### 13. Ventor-QTest: Threat-Model-Driven Verification of Vendor-Hosted LLM APIs
 
 📄 [arXiv](https://arxiv.org/abs/2608.16391)　📅 2026-08
 
@@ -307,5 +250,62 @@ Backdoor attacks pose a significant threat to deep learning models, enabling adv
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 As large language models become increasingly widespread, third-party providers that deploy open-weight models have become an important part of the ecosystem. Auditing the quality of their inference APIs is therefore an open problem. We formalize hosted model routing as a stochastic process and propose \mbox{\textbf{Ventor-QTest}}, a composite black-box audit that requires no probability information from the target API. Its repeated-request component sends each frozen constrained context to the target multiple times, reconstructs a categorical output distribution from the returned text counts, and reports \emph{average fidelity loss} (AFL) as a null-bias-corrected, within-window mean coarsened-KL statistic. Its long-sequence component uses independent runs to report \emph{extreme fidelity loss} (EFL) through the empirical upper tail of a run-level reference-centered-surprisal statistic. Across three logprob-capable route conditions, AFL shows strong linear descriptive agreement with a logprob-derived coarsened-KL comparator. Across seven route snapshots, 20-run sequence probes reveal route-specific EFL variation. AFL and EFL have little detectable route-level association with GPQA-Diamond accuracy. In contrast, pronounced EFL coincides with a decline in Terminal-Bench pass rate as task exposure increases. This pattern may arise because correctness in long-horizon tasks is more sensitive to extreme fidelity loss. These results motivate reporting AFL and EFL jointly, particularly when auditing long-horizon agentic tasks. The open-source implementation is available at https://github.com/Tencent/AI-Infra-Guard/tree/main/services/api_checker/ventor_qtest.
+
+</details>
+
+### 14. Attacks on Approximate Caches in Text-to-Image Diffusion Models
+
+📄 [arXiv](https://arxiv.org/abs/2508.20424) · 🌐 [Project](https://zenodo.org/records/18705055) · 🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/sun-desen)　📅 2025-08　🏷 USENIX Security 2026
+
+**关键词**：`attack`、`prompt stealing`、`cache poisoning`、`data poisoning`、`diffusion serving cache`
+
+👤 **作者**：Desen Sun、Shuncheng Jie、Sihang Liu
+
+- 🎯 **研究动机**：扩散服务采用近似缓存复用相似 prompt 的中间状态，打破了用户间隔离
+- 🔬 **研究方法**：演示三类远程攻击：以特殊关键词建立可维持数日的隐蔽信道、从缓存命中窃取 prompt、向被窃 prompt 投毒嵌入攻击者 logo
+- 📌 **结论**：三类攻击均可经服务系统远程实施，暴露近似缓存的严重安全风险
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Diffusion models are a powerful class of generative models that produce images and other content from user prompts, but they are computationally intensive. To mitigate this cost, recent academic and industry work has adopted approximate caching, which reuses intermediate states from similar prompts in a cache. While efficient, this optimization introduces new security risks by breaking isolation among users. This paper provides a comprehensive assessment of the security vulnerabilities introduced by approximate caching. First, we demonstrate a remote covert channel established with the approximate cache, where a sender injects prompts with special keywords into the cache system and a receiver can recover that even after days, to exchange information. Second, we introduce a prompt stealing attack using the approximate cache, where an attacker can recover existing cached prompts from hits. Finally, we introduce a poisoning attack that embeds the attacker's logos into the previously stolen prompt, leading to unexpected logo rendering for the requests that hit the poisoned cache prompts. These attacks are all performed remotely through the serving system, demonstrating severe security vulnerabilities in approximate caching. The code for this work is available.
+
+</details>
+
+### 15. Query-Efficient Agentic Graph Extraction Attacks on GraphRAG Systems
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.727/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`attack`、`tool-use agent`、`tool interface`、`action integrity`、`agent safety`、`RAG security`
+
+👤 **作者**：Shuhua Yang、Jiahao Zhang、Yilong Wang、Dongwon Lee、Suhang Wang
+
+- 🎯 **研究动机**：GraphRAG 响应可泄露子图，但现实查询预算下高效重构隐藏实体-关系图的可行性未探
+- 🔬 **研究方法**：AGEA 在预算约束黑盒设定下：新颖性引导探索-利用、外部图记忆模块、轻量发现加 LLM 过滤的两阶段抽取管线
+- 📌 **结论**：医学、农业、文学数据集跨 Microsoft-GraphRAG 与 LightRAG，同预算下恢复最多 90% 实体与关系且保持高精度
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Graph-based retrieval-augmented generation (GraphRAG) systems construct knowledge graphs over document collections to support multi-hop reasoning. While prior work shows that GraphRAG responses may leak retrieved subgraphs, the feasibility of query-efficient reconstruction of the hidden graph structure remains unexplored under realistic query budgets. We study a budget-constrained black-box setting where an adversary adaptively queries the system to steal its latent entity–relation graph. We propose AGEA (Agentic Graph Extraction Attack), a framework that leverages a novelty-guided exploration–exploitation strategy, external graph memory modules, and a two-stage graph extraction pipeline combining lightweight discovery with LLM-based filtering. We evaluate AGEA on medical, agriculture, and literary datasets across Microsoft-GraphRAG and LightRAG systems. Under identical query budgets, AGEA significantly outperforms prior attack baselines, recovering up to 90% of entities and relationships while maintaining high precision. These results demonstrate that modern GraphRAG systems are highly vulnerable to structured, agentic extraction attacks, even under strict query limits. The code is available at https://github.com/shuashua0608/AGEA.
+
+</details>
+
+### 16. Open Schrödinger’s Closed Box: Identifying Retrieval Augmented Generation in API-Accessible Large Language Model Services
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.208/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`detection`、`analysis`、`tool-use agent`、`tool interface`、`action integrity`、`RAG security`
+
+👤 **作者**：Yukun Jiang、Xinyue Shen、Michael Backes、Zheng Li、Yang Zhang
+
+- 🎯 **研究动机**：针对 RAG 的攻击假设攻击者已知服务为 RAG 增强甚至部署细节，对只暴露黑盒 API 的商用 LLM 不成立
+- 🔬 **研究方法**：RAG-ID 把对手分三个知识等级并设计六种攻击，检测服务是否 RAG 并推断部署的 LLM 与知识库
+- 📌 **结论**：部分或无可选知识下 RAG 检测准确率高达 99.97%，已知 LLM 与库时接近 100%
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models (LLMs) are powerful at question-answering but prone to hallucinations due to limited domain-specific or up-to-date knowledge. Retrieval augmented generation (RAG) mitigates this by adding an external retriever and knowledge database, yet RAG remains vulnerable to targeted attacks that degrade outputs or manipulate opinions. Prior attacks typically assume adversaries know the service is RAG-enhanced and may even know deployment details, an assumption often invalid for real-world commercial LLMs that expose only black-box APIs.This opacity also risks misleading users about system capabilities. This work aims to bridge this gap by proposing RAG-ID, a framework for ̲ ID entifying ̲ RAG properties in LLM services.We classify adversaries into three knowledge levels and design six attack methods. Experiments show these attacks reliably detect RAG — up to 99.97% accuracy with partial or no optional knowledge, and nearly 100% when the LLM and database are known. After detection, RAG-ID can infer finer RAG properties (e.g., deployed LLM and knowledge database). We consider RAG-ID a reconnaissance tool for attackers, a way to facilitate users’ transparent selection of LLM services, and a guide for RAG developers in refining security measures.
 
 </details>

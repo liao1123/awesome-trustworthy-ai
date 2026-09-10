@@ -16,26 +16,7 @@
 
 ## Safety Benchmark、Dataset 与 Formal Evaluation
 
-### 1. FailBench: How Reliable are VLMs at Judging Robot Task Success?
-
-📄 [arXiv](https://arxiv.org/abs/2609.03611) · 🌐 [Project](https://metric-ai-lab.github.io/failbench/)　📅 2026-09
-
-**关键词**：`benchmark`、`multimodal guard`、`robot outcome`、`failure monitor`、`VLM failure detection`、`robot manipulation`
-
-👤 **作者**：Zaruhi Navasardyan、Tatul Danielyan、Hrant Davtyan
-
-- 🎯 **研究动机**：VLM 被用作机器人结果判定的奖励信号、数据过滤与重试触发器，但跨域失败检测泛化证据有限
-- 🔬 **研究方法**：构建 FailBench：14 个来源（12 真实 2 仿真）的 2,197 次操作尝试，75% 失败自然发生，评测 13 个 VLM 检测器
-- 📌 **结论**：最佳模型平均 balanced accuracy 仅 0.77；失败检测微调模型反而逊于通用 VLM 与自身预训练基线；依赖可见物体运动时接近饱和、接触密集装配降至 0.60 以下，并在模糊证据下系统性偏向预测成功
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Vision-Language Models (VLMs) are increasingly used to evaluate robot manipulation outcomes, but existing benchmarks offer limited evidence of cross-domain generalization. We introduce FailBench, a benchmark for robot failure detection comprising 2,197 manipulation attempts across 14 public sources (12 real-world, 2 simulated). In FailBench, 75% of failures occur naturally, and six real-world sources come from non-failure-detection datasets. Evaluating 13 VLM-based detectors, we find the best model achieves only 0.77 mean balanced accuracy. Notably, models fine-tuned for failure detection consistently underperform general-purpose VLMs and their own pretrained baselines. Performance depends heavily on required visual evidence: models approach saturation when outcomes depend on observable object motion, but degrade to near-chance (<0.60 balanced accuracy) on contact-intensive assembly tasks. Error analysis reveals a systematic bias toward predicting success under ambiguous evidence, which persists even with increased reasoning effort. Finally, we show that input-level intervention--spatially localizing and cropping outcome-relevant regions--improves the top detector by 2.4 percentage points without extra training.
-
-</details>
-
-### 2. When Robots Mishear Us: Mapping the Safety Risks of Voice-Controlled Embodied AI
+### 1. When Robots Mishear Us: Mapping the Safety Risks of Voice-Controlled Embodied AI
 
 📄 [arXiv](https://arxiv.org/abs/2608.28518)　📅 2026-08
 
@@ -54,7 +35,7 @@ We investigate whether automatic speech recognition (ASR) errors in user input c
 
 </details>
 
-### 3. CertVLA: Certified Defense against Physical Visual Attacks for Vision-Language-Action Models
+### 2. CertVLA: Certified Defense against Physical Visual Attacks for Vision-Language-Action Models
 
 📄 [arXiv](https://arxiv.org/abs/2608.20791)　📅 2026-08
 
@@ -73,26 +54,7 @@ Vision-Language-Action (VLA) policies are vulnerable to localized physical pertu
 
 </details>
 
-### 4. TrapVLA: Trapping Vision-Language-Action Models in Configured Failure Modes
-
-📄 [arXiv](https://arxiv.org/abs/2608.26578) · 🌐 [Project](https://john-liua.github.io/TrapVLA/)　📅 2026-08
-
-**关键词**：`benchmark`、`attack`、`configured-failure fidelity`、`VLA backdoor`、`physical evaluation`、`configured failure`
-
-👤 **作者**：Jun-Hui Liu、…、Wei-Shi Zheng
-
-- 🎯 **研究动机**：既有 VLA 后门把任意任务失败都算攻击成功，无法控制机器人具体如何失效
-- 🔬 **研究方法**：提出 Configured Failure Trapping 任务与 Trap-LIBERO/Trap-RoboTwin benchmark，TrapVLA 学习 trigger 诱导的 action residual 驱动指定失败
-- 📌 **结论**：仿真与真实机器人上以隐蔽文本 trigger 注入指定位置偏移等失败模式，干净任务性能基本保持
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-This work introduces Configured Failure Trapping, a novel backdoor attack task against Vision-Language-Action (VLA) models, which aims to activate attacks through stealthy textual triggers and induce configured failure modes. Unlike prior backdoor attacks that treat any task failure as a successful attack, Configured Failure Trapping requires the attacker to control how the robot fails (e.g., causing the robot to grasp with a specified positional offset), making it substantially more challenging and hard to detect. To support the new task, we propose an effective data engine for synthesizing high-quality target trajectories and an automated suite for measuring configured-failure fidelity. Then, based on this foundation, we construct two new benchmarks, namely Trap-LIBERO and Trap-RoboTwin, that instantiate Configured Failure Trapping across four representative failure modes. To address this task, we identify sparse action deviation as a critical challenge and accordingly propose a novel method named TrapVLA, which explicitly learns trigger-induced action residuals to steer the policy toward the configured failure behavior. Extensive experiments across simulation benchmarks and real-world robotic settings show that TrapVLA effectively injects configured failure modes into VLA models while largely preserving performance on clean data. Project page: https://john-liua.github.io/TrapVLA/
-
-</details>
-
-### 5. Where World Models Break: Natural-Input Failure Discovery
+### 3. Where World Models Break: Natural-Input Failure Discovery
 
 📄 [arXiv](https://arxiv.org/abs/2608.22421)　📅 2026-08
 
@@ -111,7 +73,7 @@ World models predict action-conditioned futures and serve as critical internal s
 
 </details>
 
-### 6. GuardianBench: A Same-Scene Instruction-Contrastive Benchmark for Latent Contextual Risk in Embodied AI
+### 4. GuardianBench: A Same-Scene Instruction-Contrastive Benchmark for Latent Contextual Risk in Embodied AI
 
 📄 [arXiv](https://arxiv.org/abs/2608.21928)　📅 2026-08
 
@@ -130,7 +92,7 @@ In embodied AI, safety risk can be latent: a benign instruction and a safe scene
 
 </details>
 
-### 7. LIBERO-VIFO: Benchmarking the Capability and Safety of Visual Cue Following in Vision-Language-Action Models
+### 5. LIBERO-VIFO: Benchmarking the Capability and Safety of Visual Cue Following in Vision-Language-Action Models
 
 📄 [arXiv](https://arxiv.org/abs/2608.17600)　📅 2026-08
 
@@ -149,7 +111,7 @@ Visual cues are increasingly adopted to guide robot learning, but whether Vision
 
 </details>
 
-### 8. MANIGUARD: A Benchmark and Data Suite for Specification-Grounded Safety Evaluation and Improvement of Robotic Manipulation
+### 6. MANIGUARD: A Benchmark and Data Suite for Specification-Grounded Safety Evaluation and Improvement of Robotic Manipulation
 
 📄 [arXiv](https://arxiv.org/abs/2608.17386)　📅 2026-08
 
@@ -168,7 +130,7 @@ Foundation-model policies for robotic manipulation are advancing rapidly on task
 
 </details>
 
-### 9. CCFM: Collision-Constrained Flow Matching for Safety-Critical Scenario Generation
+### 7. CCFM: Collision-Constrained Flow Matching for Safety-Critical Scenario Generation
 
 📄 [arXiv](https://arxiv.org/abs/2607.04451) · 🌐 [Project](https://eccv.ecva.net/virtual/2026/poster/5969)　📅 2026-07　🏷 ECCV 2026
 
@@ -187,7 +149,7 @@ Evaluation of autonomous vehicle (AV) planners in safety-critical closed-loop si
 
 </details>
 
-### 10. ForesightSafety-VLA: A Unified Diagnostic Safety Benchmark for Vision-Language-Action Models
+### 8. ForesightSafety-VLA: A Unified Diagnostic Safety Benchmark for Vision-Language-Action Models
 
 📄 [arXiv](https://arxiv.org/abs/2606.27079)　📅 2026-06
 
@@ -206,7 +168,7 @@ In embodied intelligence, safety is a prerequisite for reliable robot deployment
 
 </details>
 
-### 11. REALM: A Unified Red-Teaming Benchmark for Physical-World VLMs
+### 9. REALM: A Unified Red-Teaming Benchmark for Physical-World VLMs
 
 📄 [arXiv](https://arxiv.org/abs/2606.23892)　📅 2026-06
 
@@ -225,7 +187,7 @@ Vision-language models (VLMs) are increasingly used as perception-reasoning back
 
 </details>
 
-### 12. LIBERO-Safety: A Comprehensive Benchmark for Physical and Semantic Safety in Vision-Language-Action Models
+### 10. LIBERO-Safety: A Comprehensive Benchmark for Physical and Semantic Safety in Vision-Language-Action Models
 
 📄 [arXiv](https://arxiv.org/abs/2606.23686) · 🌐 [Project](https://eccv.ecva.net/virtual/2026/poster/4895)　📅 2026-06　🏷 ECCV 2026
 
@@ -244,7 +206,7 @@ Despite the impressive manipulation capabilities of Vision-Language-Action (VLA)
 
 </details>
 
-### 13. ROBOSHACKLES: A Safety Dataset for Human-Injury Prevention in Embodied Foundation Models
+### 11. ROBOSHACKLES: A Safety Dataset for Human-Injury Prevention in Embodied Foundation Models
 
 📄 [arXiv](https://arxiv.org/abs/2606.18632) · 📊 [Dataset](https://huggingface.co/datasets/YZW00/RoboShackles)　📅 2026-06
 
@@ -263,7 +225,7 @@ Embodied Foundation Models (EFMs) integrate multimodal understanding, future-sta
 
 </details>
 
-### 14. EgoSafetyBench: A Diagnostic Egocentric Video Benchmark for Evaluating Embodied VLMs as Runtime Safety Guards
+### 12. EgoSafetyBench: A Diagnostic Egocentric Video Benchmark for Evaluating Embodied VLMs as Runtime Safety Guards
 
 📄 [arXiv](https://arxiv.org/abs/2607.00218)　📅 2026-06
 
@@ -282,7 +244,7 @@ Vision-language models (VLMs) are now proposed as runtime safety guards for embo
 
 </details>
 
-### 15. RoboJailBench: Benchmarking Adversarial Attacks and Defenses in Embodied Robotic Agents
+### 13. RoboJailBench: Benchmarking Adversarial Attacks and Defenses in Embodied Robotic Agents
 
 📄 [arXiv](https://arxiv.org/abs/2605.19328) · 🌐 [Project](https://purseclab.github.io/benchmark-for-robotics-security/)　📅 2026-05
 
@@ -301,7 +263,7 @@ Recent advances in Vision-Language Models (VLMs) facilitate a new class of embod
 
 </details>
 
-### 16. SafetyALFRED: Evaluating Safety-Conscious Planning of Multimodal Large Language Models
+### 14. SafetyALFRED: Evaluating Safety-Conscious Planning of Multimodal Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2604.19638) · 🎓 [Official](https://aclanthology.org/2026.findings-acl.1852/)　📅 2026-04　🏷 ACL 2026
 
@@ -320,7 +282,7 @@ Multimodal Large Language Models are increasingly adopted as autonomous agents i
 
 </details>
 
-### 17. Composing Driving Worlds through Disentangled Control for Adversarial Scenario Generation
+### 15. Composing Driving Worlds through Disentangled Control for Adversarial Scenario Generation
 
 📄 [arXiv](https://arxiv.org/abs/2603.12864) · 🌐 [Project](https://eccv.ecva.net/virtual/2026/poster/3714)　📅 2026-03　🏷 ECCV 2026
 
@@ -339,7 +301,7 @@ A major challenge in autonomous driving is the "long tail" of safety-critical ed
 
 </details>
 
-### 18. When Helpers Become Hazards: A Benchmark for Analyzing Multimodal LLM-Powered Safety in Daily Life
+### 16. When Helpers Become Hazards: A Benchmark for Analyzing Multimodal LLM-Powered Safety in Daily Life
 
 📄 [arXiv](https://arxiv.org/abs/2601.04043) · 🎓 [Official](https://aclanthology.org/2026.findings-acl.1446/)　📅 2026-01　🏷 ACL 2026
 
@@ -358,7 +320,7 @@ As Multimodal Large Language Models (MLLMs) become an indispensable assistant in
 
 </details>
 
-### 19. SENTINEL: A Multi-Level Formal Framework for Safety Evaluation of Foundation Model-based Embodied Agents
+### 17. SENTINEL: A Multi-Level Formal Framework for Safety Evaluation of Foundation Model-based Embodied Agents
 
 📄 [arXiv](https://arxiv.org/abs/2510.12985)　📅 2025-10
 
@@ -377,7 +339,7 @@ We present SENTINEL, a framework for formally evaluating the physical safety of 
 
 </details>
 
-### 20. IS-Bench: Evaluating Interactive Safety of VLM-Driven Embodied Agents in Daily Household Tasks
+### 18. IS-Bench: Evaluating Interactive Safety of VLM-Driven Embodied Agents in Daily Household Tasks
 
 📄 [arXiv](https://arxiv.org/abs/2506.16402) · 🌐 [Project](https://ojs.aaai.org/index.php/AAAI/article/view/40880)　📅 2025-06　🏷 AAAI 2026
 
@@ -396,7 +358,7 @@ Flawed planning from VLM-driven embodied agents poses significant safety hazards
 
 </details>
 
-### 21. AGENTSAFE: Benchmarking the Safety of Embodied Agents on Hazardous Instructions
+### 19. AGENTSAFE: Benchmarking the Safety of Embodied Agents on Hazardous Instructions
 
 📄 [arXiv](https://arxiv.org/abs/2506.14697) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Ying_AGENTSAFE_Benchmarking_the_Safety_of_Embodied_Agents_on_Hazardous_Instructions_CVPR_2026_paper.html)　📅 2025-06　🏷 CVPR 2026
 
@@ -415,7 +377,7 @@ The integration of vision-language models (VLMs) is driving a new generation of 
 
 </details>
 
-### 22. Drive the Thoughts: Runtime Monitoring of VLA Reasoning-Trajectory Consistency
+### 20. Drive the Thoughts: Runtime Monitoring of VLA Reasoning-Trajectory Consistency
 
 📄 [arXiv](https://arxiv.org/abs/2608.29583)　📅 2026-09
 
@@ -434,7 +396,7 @@ Autonomous vehicles (AVs) operate in complex environments where failures are con
 
 </details>
 
-### 23. Think Only When Needed: Prompt-Authority Control for Selective Slow-Path Intervention in Vision-Language-Action Manipulation
+### 21. Think Only When Needed: Prompt-Authority Control for Selective Slow-Path Intervention in Vision-Language-Action Manipulation
 
 📄 [arXiv](https://arxiv.org/abs/2608.23224)　📅 2026-08
 
@@ -453,7 +415,7 @@ Retrieval can efficiently and effectively augment a frozen vision--language--act
 
 </details>
 
-### 24. RiskWorld: Object-Centric Latent World Modeling for Autonomous Driving Risk Identification
+### 22. RiskWorld: Object-Centric Latent World Modeling for Autonomous Driving Risk Identification
 
 📄 [arXiv](https://arxiv.org/abs/2608.21414)　📅 2026-08
 
@@ -472,7 +434,7 @@ Autonomous driving risk identification aims to determine which observed object i
 
 </details>
 
-### 25. ActFovea: Runtime Safeguarding for VLA Policies via Spatiotemporal Visual-Action Consistency
+### 23. ActFovea: Runtime Safeguarding for VLA Policies via Spatiotemporal Visual-Action Consistency
 
 📄 [arXiv](https://arxiv.org/abs/2607.29169)　📅 2026-07
 
@@ -491,7 +453,7 @@ Vision-language-action (VLA) policies achieve strong performance in robotic mani
 
 </details>
 
-### 26. When Words Are Safe But Actions Kill: Probing Physical Jailbreak Beyond Textual Jailbreak in Hidden-State Risk Space
+### 24. When Words Are Safe But Actions Kill: Probing Physical Jailbreak Beyond Textual Jailbreak in Hidden-State Risk Space
 
 📄 [arXiv](https://arxiv.org/abs/2607.15218)　📅 2026-07
 
@@ -510,7 +472,7 @@ Large language models (LLMs) increasingly serve as high-level planners for embod
 
 </details>
 
-### 27. LabGuard: Grounding Natural-Language Laboratory Rules into Runtime Guards for Embodied Laboratory Agents
+### 25. LabGuard: Grounding Natural-Language Laboratory Rules into Runtime Guards for Embodied Laboratory Agents
 
 📄 [arXiv](https://arxiv.org/abs/2606.31045)　📅 2026-06
 
@@ -529,7 +491,7 @@ Scientific embodied agents are increasingly capable of carrying out laboratory p
 
 </details>
 
-### 28. EMBGUARD: Constructing Hazard-Aware Guardrails for Safe Planning in Embodied Agents
+### 26. EMBGUARD: Constructing Hazard-Aware Guardrails for Safe Planning in Embodied Agents
 
 📄 [arXiv](https://arxiv.org/abs/2605.30924) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63023)　📅 2026-05　🏷 ICML 2026
 
@@ -548,7 +510,7 @@ MLLM-powered embodied agents deployed in real-world environments encounter physi
 
 </details>
 
-### 29. HomeGuard: VLM-based Embodied Safeguard for Identifying Contextual Risk in Household Task
+### 27. HomeGuard: VLM-based Embodied Safeguard for Identifying Contextual Risk in Household Task
 
 📄 [arXiv](https://arxiv.org/abs/2603.14367) · 🌐 [Project](https://eccv.ecva.net/virtual/2026/poster/5762)　📅 2026-03　🏷 ECCV 2026
 
@@ -567,7 +529,7 @@ Vision-Language Models (VLMs) empower embodied agents to execute complex instruc
 
 </details>
 
-### 30. RoboSafe: Safeguarding Embodied Agents via Executable Safety Logic
+### 28. RoboSafe: Safeguarding Embodied Agents via Executable Safety Logic
 
 📄 [arXiv](https://arxiv.org/abs/2512.21220)　📅 2025-12
 
@@ -586,7 +548,7 @@ Embodied agents powered by vision-language models (VLMs) are increasingly capabl
 
 </details>
 
-### 31. VLSA: Vision-Language-Action Models with Plug-and-Play Safety Constraint Layer
+### 29. VLSA: Vision-Language-Action Models with Plug-and-Play Safety Constraint Layer
 
 📄 [arXiv](https://arxiv.org/abs/2512.11891) · 🌐 [Project](https://vlsa-aegis.github.io/)　📅 2025-12
 
@@ -605,7 +567,7 @@ Vision-Language-Action (VLA) models have demonstrated remarkable capabilities in
 
 </details>
 
-### 32. SafeBranch: Branch-Pair Safety Alignment for Embodied Agents
+### 30. SafeBranch: Branch-Pair Safety Alignment for Embodied Agents
 
 📄 [arXiv](https://arxiv.org/abs/2608.19729)　📅 2026-08
 
@@ -624,7 +586,7 @@ Vision-language-model-based embodied agents can complete instructed tasks but of
 
 </details>
 
-### 33. Structure-Aware Robust Fine-Tuning: Defending Vision-Language-Action Robots Against Physical Attention Hijacking
+### 31. Structure-Aware Robust Fine-Tuning: Defending Vision-Language-Action Robots Against Physical Attention Hijacking
 
 📄 [arXiv](https://arxiv.org/abs/2608.03231)　📅 2026-08
 
@@ -643,7 +605,7 @@ Vision-Language-Action (VLA) policies promise general robotic manipulation, but 
 
 </details>
 
-### 34. VLAGuard: A Framework for Evaluating and Mitigating Physical Attention Hijacking in Vision-Language-Action Robots within Wireless Sensor Networks
+### 32. VLAGuard: A Framework for Evaluating and Mitigating Physical Attention Hijacking in Vision-Language-Action Robots within Wireless Sensor Networks
 
 📄 [arXiv](https://arxiv.org/abs/2608.01028)　📅 2026-08
 
@@ -662,7 +624,7 @@ Deploying Vision-Language-Action (VLA) robots as mobile edge nodes within wirele
 
 </details>
 
-### 35. SafeVLA: Towards Safety Alignment of Vision-Language-Action Model via Constrained Learning
+### 33. SafeVLA: Towards Safety Alignment of Vision-Language-Action Model via Constrained Learning
 
 📄 [arXiv](https://arxiv.org/abs/2503.03480) · 🌐 [Project](https://pku-safevla.github.io/) · 🎓 [Official](https://proceedings.neurips.cc/paper_files/paper/2025/hash/e185c7be603426028c32ae1003a59d78-Abstract-Conference.html)　📅 2025-03　🏷 NeurIPS 2025
 
@@ -681,7 +643,7 @@ Vision-language-action models (VLAs) show potential as generalist robot policies
 
 </details>
 
-### 36. Towards General Language-Conditioned Latent Safety Filters
+### 34. Towards General Language-Conditioned Latent Safety Filters
 
 📄 [arXiv](https://arxiv.org/abs/2608.00315)　📅 2026-07
 
@@ -697,5 +659,43 @@ Vision-language-action models (VLAs) show potential as generalist robot policies
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 Robot policies are becoming increasingly general, with vision-language-action (VLA) models enabling a single policy to execute diverse tasks specified in natural language. Safe deployment, however, requires adapting not only to new tasks but also to varying safety requirements across users, environments, and applications. Existing safety filters remain largely constraint-specific and thus must be redesigned or relearned when safety requirements change. In this paper, we investigate language-conditioned safety filtering, in which a Hamilton-Jacobi safety actor and critic are conditioned on language-specified constraints. We evaluate this formulation across pick-and-place, table-wiping, and block-stacking tasks in the vision-based setting, examining its ability to enforce language-specified constraints and transfer to unseen constraint instances within the evaluated constraint families. Our experiments provide evidence that language-conditioned safety filters reduce constraint violations and exhibit partial transfer to unseen constraint instances.
+
+</details>
+
+### 35. SMD: Multi-view Safety-Critical Driving Video Generation in the Real-world Domain
+
+🌐 [Project](https://icml-2.github.io/SMD/) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61036)　📅 2026　🏷 ICML 2026
+
+**关键词**：`defense`、`video generation`、`unsafe synthesis`、`temporal consistency`、`embodied safety`、`diffusion model`
+
+👤 **作者**：Jiawei Zhou、Linye Lyu、Zhuotao Tian、Cheng Zhuo、YU LI
+
+- 🎯 **研究动机**：安全关键场景稀有，现有生成器只产轨迹、仿真或单视角视频，不满足现代自动驾驶系统实际消费的真实多视角视频
+- 🔬 **研究方法**：提出 SMD：GRPO 微调的 VLM 选择最易致险车辆，两阶段轨迹过程先生成碰撞再转化为自然规避轨迹，扩散模型把轨迹渲染成多视角视频
+- 📌 **结论**：生成视频在压测多个端到端规划器时显著提高碰撞率，并入训练后降低碰撞率并提升规划器鲁棒性与安全
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Safety-critical scenarios are essential for evaluating autonomous driving (AD) systems, yet they are rare in practice. Existing generators produce trajectories, simulations, or single-view videos—but they don’t meet what modern AD systems actually consume: realistic multi-view video. We present SMD, the first framework for generating multi-view safety-critical driving videos in the real-world domain. SMD couples a safety-critical trajectory engine with a diffusion-based multi-view video generator through three design choices. First, we pick the right adversary: a GRPO-fine-tuned vision-language model (VLM) that understands multi-camera context and selects vehicles most likely to induce hazards. Second, we generate the right motion: a two-stage trajectory process that (i) produces collisions, then (ii) transforms them into natural evasion trajectories—preserving risk while staying within what current video generators can faithfully render. Third, we synthesize the right data: a diffusion model that turns these trajectories into multi-view videos suitable for end-to-end planners. Videos generated by SMD substantially increase collision rates when stress testing multiple end-to-end planners, and reduce collision rates when incorporated into training, improving planner robustness and safety. Our code and video examples are available at: \href{https://icml-2.github.io/SMD/}{https://icml-2.github.io/SMD/}.
+
+</details>
+
+### 36. PACT: Self-Evolving Physical Safety Alignment for Diffusion Policies in Embodied Manipulation
+
+📄 [arXiv](https://arxiv.org/abs/2606.08414) · 🎓 [Official](https://icml.cc/virtual/2026/poster/62679)　📅 2026-06　🏷 ICML 2026
+
+**关键词**：`defense`、`embodied safety`、`diffusion model`、`physical risk`
+
+👤 **作者**：Lingxuan Wu、…、Jun Zhu
+
+- 🎯 **研究动机**：diffusion policy 难以满足机器人部署的严格物理约束，训练期约束或测试时外部护栏分别限制表达能力与可扩展性
+- 🔬 **研究方法**：提出 PACT 自进化后训练：把约束梯度经 reverse-KL 目标蒸馏进 diffusion model，课程式逐步收紧约束并保持有界策略偏移与单调改进
+- 📌 **结论**：仿真与真实操作基准上安全违例平均降低 31.0%，任务成功率提升 30.7%
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Diffusion policies have achieved remarkable success in robotic manipulation, yet they often fail to satisfy strict physical constraints required for safe deployment. Existing approaches impose safety either prematurely during training or reactively via external guardrails at test time, limiting policy expressivity and overall scalability. We propose Physical safety Alignment for Constrained Trajectories (PACT), a self-evolving post-training framework that projects pretrained diffusion policies onto constraint-feasible regions without accessing demonstration data or task rewards. PACT distills constraint gradients into the diffusion model through a reverse-KL objective with dense supervision across timesteps. It incorporates a curriculum that progressively tightens constraints while maintaining theoretically bounded policy shift and monotone improvement, mitigating the safety-performance trade-off from catastrophic forgetting. On simulated and real-world embodied manipulation benchmarks, PACT significantly reduces safety violations by 31.0% on average while improving task success by 30.7%.
 
 </details>

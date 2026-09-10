@@ -633,3 +633,60 @@ Diffusion transformers (DiTs) equipped with multimodal attention (MM-Attn) have 
 Text-to-image diffusion models have achieved remarkable success in generating high-quality images, yet existing safety mechanisms exhibit critical cross-seed instability where defense performance varies significantly under different random seed conditions. This instability stems from the fact that a single malicious prompt generates diverse harmful variants across different noise initializations, forming complex distributional clusters that current methods cannot adequately address. We investigate extending Noise Contrastive Alignment (NCA) to diffusion models due to its native capability of handling multiple negative samples through probabilistic weighting, but our theoretical analysis reveals two fundamental flaws in direct extension: gradient reversal caused by positive regularization terms that paradoxically penalize safe content generation, and uniform suppression of harmful samples that ignores severity variations. To tackle these issues, we propose Noise Contrastive Diffusion (NCD), which incorporates targeted algorithmic modifications including elimination of problematic regularization and introduction of pairwise regularization mechanisms that establish individualized preference relationships between safe and harmful variants. Extensive experiments further demonstrate that NCD achieves superior cross-seed stability, reducing attack success rates (ASRs) from 11.1% to 6.2% compared to SOTA methods at the seed level while maintaining exceptional generation quality, exhibiting robust resistance against sophisticated jailbreak prompts and strong generalizability across different T2I architectures. WARNING: This paper may contain examples of harmful texts and images.
 
 </details>
+
+### 34. STARE: Step-wise Temporal Alignment and Red-teaming Engine for Multi-modal Toxicity Attack
+
+📄 [arXiv](https://arxiv.org/abs/2605.00699) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64616)　📅 2026　🏷 ICML 2026
+
+**关键词**：`attack`、`jailbreak defense`、`harmful intent detection`、`utility preservation`、`prompt injection`、`reinforcement learning`
+
+👤 **作者**：Xutao Mao、Liangjie Zhao、Tao Liu、Xiang Zheng、Hongying Zan、Cong Wang
+
+- 🎯 **研究动机**：VLM 红队把图像生成当黑盒、只看终端毒性分，对多步合成中毒性语义何时涌现时间上不透明
+- 🔬 **研究方法**：提出 STARE 分层强化学习框架把去噪轨迹当攻击面：高层提示编辑器与低层 T2I 微调经 GRPO 协同优化
+- 📌 **结论**：ASR 较 SOTA 黑盒白盒基线提升 68%；发现 Optimization-Induced Phase Alignment：概念性危害集中到早期语义阶段、细节危害集中到晚期精修，形成可预测的脆弱窗口
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Red-teaming Vision-Language Models is essential for identifying vulnerabilities where adversarial image-text inputs trigger toxic outputs. Existing approaches treat image generation as a black box, providing only terminal toxicity scores while remaining temporally opaque regarding when and how toxic semantics emerge during multi-step synthesis. We introduce $\textbf{STARE}$, a hierarchical reinforcement learning framework that treats the denoising trajectory as an exploitable attack surface. By synergizing a high-level prompt editor with low-level T2I fine-tuning via Group Relative Policy Optimization (GRPO), STARE achieves a 68\% improvement in Attack Success Rate over state-of-the-art baselines including black box and white-box variants. More importantly, we reveal the Optimization-Induced Phase Alignment phenomenon: while vanilla models exhibit diffuse toxicity, adversarial optimization systematically concentrates conceptual harms into early semantic phases and detail-oriented harms into late refinement. This discovery transforms toxicity formation from a chaotic process into a series of predictable vulnerability windows. This temporal alignment transforms red-teaming from a trial-and-error process into a targeted structural analysis. Our work provides both a potent attack engine and a diagnostic foundation for developing next-generation, phase-aware safety mechanisms. Content warning: This paper contains examples of toxic content that may be offensive or disturbing.
+
+</details>
+
+### 35. SPQR: A Multi-Dimensional Benchmark for Safety Alignment under Benign Model Adaptation
+
+📄 [arXiv](https://arxiv.org/abs/2511.19558) · 🌐 [Project](https://eccv.ecva.net/virtual/2026/poster/5585)　📅 2025-11　🏷 ECCV 2026
+
+**关键词**：`benchmark`、`benign fine-tuning`、`diffusion model`、`adaptation robustness`、`safety alignment`、`refusal behavior`
+
+👤 **作者**：Mohammed Talha Alam、…、Samuele Poppi
+
+- 🎯 **研究动机**：T2I 安全对齐评测很少检验部署后常规良性微调（LoRA 个性化、风格适配器）下的安全持久性，而失效频繁发生
+- 🔬 **研究方法**：提出 SPQR（Safety、Prompt adherence、Quality、Robustness）单分值基准，统一评测安全对齐扩散模型在良性微调下的安全、效用与鲁棒性，辅以多语言、领域与 OOD 分析
+- 📌 **结论**：揭示安全对齐在良性微调后频繁崩溃，并提供可复现的 leaderboard 评分以比较 T2I 安全技术
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Text-to-image diffusion models can emit copyrighted, unsafe, or private content. Safety alignment aims to suppress specific concepts, yet evaluations seldom test whether safety persists under benign downstream fine-tuning routinely applied after deployment (e.g., LoRA personalization, style/domain adapters). We study the stability of current safety methods under benign fine-tuning and observe frequent breakdowns. As true safety alignment must withstand even benign post-deployment adaptations, we introduce the SPQR benchmark (Safety, Prompt adherence, Quality, and Robustness). SPQR is a single-scored metric that provides a unified, reproducible framework to evaluate how well safety-aligned diffusion models preserve safety, utility, and robustness under benign fine-tuning, by reporting a single leaderboard score to facilitate comparisons. We conduct multilingual, domain-specific, and out-of-distribution analyses, along with category-wise breakdowns, to identify when safety alignment fails after benign fine-tuning, ultimately showcasing SPQR as a concise yet comprehensive benchmark for T2I safety alignment techniques for T2I models.
+
+</details>
+
+### 36. Adapter Shield: A Unified Framework with Built-in Authentication for Preventing Unauthorized Zero-Shot Image-to-Image Generation
+
+📄 [arXiv](https://arxiv.org/abs/2512.00075) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Jia_Adapter_Shield_A_Unified_Framework_with_Built-in_Authentication_for_Preventing_CVPR_2026_paper.html)　📅 2025-12　🏷 CVPR 2026
+
+**关键词**：`defense`、`adapter authentication`、`unauthorized generation`、`model access control`
+
+👤 **作者**：Jun Jia、…、Guangtao Zhai
+
+- 🎯 **研究动机**：零样本图生图可仅凭一张图像复制人脸身份或艺术风格，带来未授权克隆风险
+- 🔬 **研究方法**：Adapter Shield 构建可逆加密系统，按密钥把原始 embedding 映射为加密表示，授权用户凭密钥恢复；并用多目标对抗扰动把受保护图像的 embedding 主动推向加密模式
+- 📌 **结论**：阻断未授权零样本生成的能力超越 SOTA 防御，同时支持灵活安全的授权访问控制
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+With the rapid progress in diffusion models, image synthesis has advanced to the stage of zero-shot image-to-image generation, where high-fidelity replication of facial identities or artistic styles can be achieved using just one portrait or artwork, without modifying any model weights. Although these techniques significantly enhance creative possibilities, they also pose substantial risks related to intellectual property violations, including unauthorized identity cloning and stylistic imitation. To counter such threats, this work presents Adapter Shield, the first universal and authentication-integrated solution aimed at defending personal images from misuse in zero-shot generation scenarios. We first investigate how current zero-shot methods employ image encoders to extract embeddings from input images, which are subsequently fed into the UNet of diffusion models through cross-attention layers. Inspired by this mechanism, we construct a reversible encryption system that maps original embeddings into distinct encrypted representations according to different secret keys. The authorized users can restore the authentic embeddings via a decryption module and the correct key, enabling normal usage for authorized generation tasks. For protection purposes, we design a multi-target adversarial perturbation method that actively shifts the original embeddings toward designated encrypted patterns. Consequently, protected images are embedded with a defensive layer that ensures unauthorized users can only produce distorted or encrypted outputs. Extensive evaluations demonstrate that our method surpasses existing state-of-the-art defenses in blocking unauthorized zero-shot image synthesis, while supporting flexible and secure access control for verified users.
+
+</details>

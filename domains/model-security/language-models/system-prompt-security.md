@@ -495,3 +495,22 @@ Personality imbuing customizes LLM behavior, but safety evaluations almost alway
 Modern text-to-image models can generate highly realistic images from natural-language prompts, while recent advances in prompt inversion have made it increasingly feasible to recover those prompts from generated outputs, raising new concerns for copyright protection and content ownership. As prompt marketplaces emerge, recovered prompts can enable both the unauthorized reproduction and redistribution of copyrighted creative works, and the exposure of the prompts that encode an artist's creative recipe in AI-generated content. Existing prompt inversion methods rely on gradient-based optimization, autoregressive captioning, or reinforcement learning. However, optimization-based methods often produce unreadable prompts, captioning methods hallucinate unverified details, and RL-based approaches frequently overfit to specific generators while introducing evaluation circularity. We introduce PROVE (Prompt Recovery with Verified Evidence), a training-free, black-box prompt inversion attack that reconstructs prompts by composing verifiable scene descriptions rather than optimizing token sequences, targeting both original copyrighted works and AI-generated content. The resulting prompts are fully auditable, with every recovered claim grounded in explicit image evidence, and are formalized through a precision-constrained recall maximization objective. Across MS-COCO, Flickr30K, and Lexica, using state-of-the-art text-to-image generators, PROVE consistently outperforms optimization, captioning, and RL-based baselines on image similarity (DINO, LPIPS) and text-image alignment (CLIP), without any training, generator access, or fine-tuning, demonstrating a stronger and more practical prompt inversion attack.
 
 </details>
+
+### 28. Steering Instruction Hierarchies at Inference Time
+
+📄 [arXiv](https://arxiv.org/abs/2607.26228) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-07
+
+**关键词**：`defense`、`prompt injection`、`agent guardrail`、`action policy`、`instruction hierarchy`、`value-vector editing`
+
+👤 **作者**：Siqi Zeng、Sewoong Lee、Han Zhao、Julia Hockenmaier
+
+- 🎯 **研究动机**：指令层级是部署的核心安全假设（系统提示应覆盖用户/工具输入），但前沿 LLM 常违反
+- 🔬 **研究方法**：提出 V-Steer 免训练推理时方法：用 direct logit attribution 定位低优先级 span 压制特权 span 的注意力头，对缓存 V 张量做乘性编辑放大特权、抑制冲突低优先级，兼容融合注意力后端
+- 📌 **结论**：7B-70B 模型上把角色冲突基准的主约束准确率从 18% 以下提升到 92%，在四个规模中三个匹配或超越 SOTA 训练方法且解码速度开销可忽略
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Instruction hierarchies are a core safety assumption of language model deployment: higher priority inputs, such as system prompts, should override conflicting lower priority inputs from users or tools. Yet frontier LLMs often violate this hierarchy. We introduce V-Steer, a training-free inference time method that restores privileged influence by editing cached value vectors at prompt positions. Using direct logit attribution on the first next token prediction, V-Steer identifies heads where lower priority spans dominate privileged ones, then boosts privileged spans and suppresses conflicting lower priority spans through in-place multiplicative edits to cached V tensors. Since the method acts only on cached values, it remains compatible with fused attention backends and adds only a one time prefill overhead. Across models from 7B to 70B, this attribution guided intervention raises primary constraint accuracy from under 18% up to 92% on controlled role conflict benchmarks, and on broader instruction hierarchy evaluations substantially outperforms prompt only baselines while matching or exceeding SoTA training based methods on 3 of 4 scales of LLMs, with negligible decoding-speed overhead. The code is available at https://github.com/cindy2000sh/v-steer.
+
+</details>

@@ -54,26 +54,7 @@ Diffusion large language models (D-LLMs) offer an alternative to autoregressive 
 
 </details>
 
-### 3. Mechanism Shift During Post-training from Autoregressive to Masked Diffusion Language Models
-
-📄 [arXiv](https://arxiv.org/abs/2601.14758)　📅 2026-01
-
-**关键词**：`analysis`、`AR-to-diffusion post-training`、`circuit shift`、`global planning`
-
-👤 **作者**：Injin Kong、Hyoungjoon Lee、Yohan Jo
-
-- 🎯 **研究动机**：自回归模型后训练为 masked diffusion 后，继承的计算被复用还是为非自回归生成重组不明
-- 🔬 **研究方法**：对两族 7B ARM-MDM 在四个受控诊断任务上比较高归因通路、层深分布与组件特化程度
-- 📌 **结论**：前缀主导任务基本保留 AR 通路；全局约束任务重组更强、计算向浅层前移；MDM 单组件特化更弱、输出空间对齐更弥散
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Post-training pretrained autoregressive models (ARMs) into masked diffusion models (MDMs) provides an efficient route to diffusion language modeling, but it remains unclear whether the resulting models reuse inherited autoregressive computation or reorganize it for non-autoregressive generation. We compare two 7B ARM-MDM families across four controlled diagnostic tasks and find a task-dependent mechanism shift. On prefix-dominant tasks, MDMs largely preserve inherited high-attribution pathways or exhibit only modest changes in where computation occurs. On globally constrained tasks, the reorganization is substantially stronger, with task-relevant computation shifting toward earlier layers. This depth-wise pattern persists across prompt resampling, circuit budgets, and tested inference budgets, while targeted ablations support the functional importance of the identified structures under the tested intervention protocols. At the component level, diagnostic probes suggest that ARMs rely more strongly on sharply specialized components, whereas MDMs exhibit weaker single-component specialization and more diffuse output-space alignment. Together, these results suggest that diffusion post-training selectively preserves or reorganizes inherited computation according to task structure, rather than uniformly replacing autoregressive mechanisms.
-
-</details>
-
-### 4. Diffusion LLMs as Targets and Adversaries: Mechanistic Safety Exploits
+### 3. Diffusion LLMs as Targets and Adversaries: Mechanistic Safety Exploits
 
 📄 [arXiv](https://arxiv.org/abs/2608.07430)　📅 2026-08
 
@@ -92,7 +73,7 @@ Diffusion Large Language Models (DLLMs) replace autoregressive next-token predic
 
 </details>
 
-### 5. MaskForge: Structure-Aware Adaptive Attacks for Jailbreaking Diffusion Large Language Models
+### 4. MaskForge: Structure-Aware Adaptive Attacks for Jailbreaking Diffusion Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2606.04027)　📅 2026-06
 
@@ -111,7 +92,7 @@ Diffusion large language models (dLLMs) generate text by iteratively denoising p
 
 </details>
 
-### 6. The Devil Behind the Mask: An Emergent Safety Vulnerability of Diffusion LLMs
+### 5. The Devil Behind the Mask: An Emergent Safety Vulnerability of Diffusion LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2507.11097) · 📝 [OpenReview](https://openreview.net/forum?id=rIPeatvPy3)　📅 2026　🏷 ICLR 2026
 
@@ -123,7 +104,7 @@ Diffusion large language models (dLLMs) generate text by iteratively denoising p
 - 🔬 **研究方法**：DIJA将harmful text与mask交错，借双向一致性与并行解码补全缺失内容
 - 📌 **结论**：无需隐藏恶意语义即显著绕过多种aligned dLLM
 
-### 7. Jailbreaking Large Language Diffusion Models: Revealing Hidden Safety Flaws in Diffusion-Based Text Generation
+### 6. Jailbreaking Large Language Diffusion Models: Revealing Hidden Safety Flaws in Diffusion-Based Text Generation
 
 📄 [arXiv](https://arxiv.org/abs/2507.19227)　📅 2025-07
 
@@ -142,26 +123,7 @@ Large Language Diffusion Models (LLDMs) exhibit comparable performance to LLMs w
 
 </details>
 
-### 8. TRE: Training-Free Hallucination Detection for Diffusion Language Models
-
-📄 [arXiv](https://arxiv.org/abs/2607.22661)　📅 2026-06
-
-**关键词**：`detection`、`entropy trajectory`、`revealing token`、`single-run metric`
-
-👤 **作者**：Pengcheng Weng、Yanyu Qian、Yue Tan、Yixin Liu
-
-- 🎯 **研究动机**：D-LLM 的幻觉检测沿用训练范式，跨域泛化差且带来训练与部署开销
-- 🔬 **研究方法**：提出 TRE 免训练单次运行指标：从单次生成的解码熵信号中，token 空间维聚焦于承担不确定性承诺的 revealing tokens，时间维聚合后期步主导的熵并以线性加权融合
-- 📌 **结论**：多个 D-LLM 与 QA 数据集上性能具竞争力，且泛化性、效率与鲁棒性强
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Diffusion large language models (D-LLMs) have recently gained increasing attention, yet their reliability is significantly hindered by the hallucination problem. Existing hallucination detection approaches for D-LLMs mainly follow a training-based paradigm, relying on data-driven training to optimize the detector. Such reliance not only limits their generalizability across domains models but also incurs additional training cost and deployment overhead. To address these limitations, we propose TRE, a training-free hallucination detection metric for D-LLMs. TRE is a parameter-free and single-run metric that estimates hallucination risk directly from the entropy signals of a single generation, without requiring any detector training or repeated sampling. TRE extracts entropy signals within the D-LLM decoding process along both the spatial and temporal dimensions. From a token-level spatial perspective, we focus on revealing tokens as the most informative carriers of uncertainty, capturing where uncertainty is actively committed. From a diffusion step-level temporal perspective, we empirically identify the dominance of late-step entropy and hence aggregate these signals with a simple linear weighting scheme to obtain TRE. Extensive experiments on multiple D-LLMs and QA datasets demonstrate that TRE achieves competitive performance, while enjoying strong generalizability, efficiency, and robustness.
-
-</details>
-
-### 9. $D^2$-Monitor: Dynamic Safety Monitoring for Diffusion LLMs via Hesitation-Aware Routing
+### 7. $D^2$-Monitor: Dynamic Safety Monitoring for Diffusion LLMs via Hesitation-Aware Routing
 
 📄 [arXiv](https://arxiv.org/abs/2605.25893)　📅 2026-05
 
@@ -180,7 +142,7 @@ Despite the emergence of diffusion large language models (D-LLMs) as an alternat
 
 </details>
 
-### 10. Beyond the Prompt: Leveraging Pre-Decoding States for Jailbreak Detection in dLLMs
+### 8. Beyond the Prompt: Leveraging Pre-Decoding States for Jailbreak Detection in dLLMs
 
 📝 [OpenReview](https://openreview.net/forum?id=QVRvaVBwRh)　📅 2026
 
@@ -190,26 +152,7 @@ Despite the emergence of diffusion large language models (D-LLMs) as an alternat
 - 🔬 **研究方法**：融合prompt表示与首轮pre-decoding response state做状态融合检测
 - 📌 **结论**：diffusion-native jailbreak漏检显著降低且良性误拒低
 
-### 11. TraceDet: Hallucination Detection from the Decoding Trace of Diffusion Large Language Models
-
-📄 [arXiv](https://arxiv.org/abs/2510.01274) · 🎓 [Official](https://iclr.cc/virtual/2026/poster/10011524)　📅 2025-09　🏷 ICLR 2026
-
-**关键词**：`detection`、`decoding trace`、`temporal representation`、`hallucination detection`
-
-👤 **作者**：Shenxu Chang、…、Jindong Gu
-
-- 🎯 **研究动机**：既有幻觉检测面向单步生成的自回归 LLM，不适配多步去噪的 D-LLM
-- 🔬 **研究方法**：提出 TraceDet：把去噪过程建模为动作轨迹，定位对幻觉响应信息量最大的子轨迹做检测
-- 📌 **结论**：多个开源 D-LLM 上一致提升幻觉检测，AUROC 平均增益 15.2%
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Diffusion large language models (D-LLMs) have recently emerged as a promising alternative to auto-regressive LLMs (AR-LLMs). However, the hallucination problem in D-LLMs remains underexplored, limiting their reliability in real-world applications. Existing hallucination detection methods are designed for AR-LLMs and rely on signals from single-step generation, making them ill-suited for D-LLMs where hallucination signals often emerge throughout the multi-step denoising process. To bridge this gap, we propose TraceDet, a novel framework that explicitly leverages the intermediate denoising steps of D-LLMs for hallucination detection. TraceDet models the denoising process as an action trace, with each action defined as the model's prediction over the cleaned response, conditioned on the previous intermediate output. By identifying the sub-trace that is maximally informative to the hallucinated responses, TraceDet leverages the key hallucination signals in the multi-step denoising process of D-LLMs for hallucination detection. Extensive experiments on various open source D-LLMs demonstrate that TraceDet consistently improves hallucination detection, achieving an average gain in AUROC of 15.2% compared to baselines.
-
-</details>
-
-### 12. Beyond Token Positions: Safety Alignment Across Denoising Steps in Diffusion Language Models
+### 9. Beyond Token Positions: Safety Alignment Across Denoising Steps in Diffusion Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2609.00495)　📅 2026-09
 
@@ -228,7 +171,7 @@ Diffusion large language models (dLLMs) generate text through iterative denoisin
 
 </details>
 
-### 13. Adaptive Steering and Remasking for Safe Generation in Diffusion Language Models
+### 10. Adaptive Steering and Remasking for Safe Generation in Diffusion Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2605.13043)　📅 2026-05
 
@@ -247,7 +190,7 @@ Diffusion Language Models (DLMs) provide a promising alternative to autoregressi
 
 </details>
 
-### 14. The Safety-Aware Denoiser for Text Diffusion Models
+### 11. The Safety-Aware Denoiser for Text Diffusion Models
 
 📄 [arXiv](https://arxiv.org/abs/2605.08116) · 🎓 [Official](https://icml.cc/virtual/2026/poster/62720)　📅 2026-05　🏷 ICML 2026
 
@@ -266,7 +209,7 @@ Recent work on text diffusion models offers a promising alternative to autoregre
 
 </details>
 
-### 15. Toward Safer Diffusion Language Models: Discovery and Mitigation of Priming Vulnerability
+### 12. Toward Safer Diffusion Language Models: Discovery and Mitigation of Priming Vulnerability
 
 📄 [arXiv](https://arxiv.org/abs/2510.00565) · 📝 [OpenReview](https://openreview.net/forum?id=ZMzha5gbnF) · 🎓 [Official](https://iclr.cc/virtual/2026/poster/10008814)　📅 2025-10　🏷 ICLR 2026
 
@@ -285,7 +228,7 @@ Diffusion language models (DLMs) generate tokens in parallel through iterative d
 
 </details>
 
-### 16. DiffuGuard: How Intrinsic Safety is Lost and Found in Diffusion Large Language Models
+### 13. DiffuGuard: How Intrinsic Safety is Lost and Found in Diffusion Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2509.24296) · 📝 [OpenReview](https://openreview.net/forum?id=zBPzxhso8M) · 🎓 [Official](https://iclr.cc/virtual/2026/poster/10006479)　📅 2025-09　🏷 ICLR 2026
 
@@ -304,7 +247,7 @@ The rapid advancement of Diffusion Large Language Models (dLLMs) introduces unpr
 
 </details>
 
-### 17. A2D: Any-Order, Any-Step Safety Alignment for Diffusion Language Models
+### 14. A2D: Any-Order, Any-Step Safety Alignment for Diffusion Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2509.23286) · 📝 [OpenReview](https://openreview.net/forum?id=URTnuyQJI1) · 🎓 [Official](https://iclr.cc/virtual/2026/poster/10009223)　📅 2025-09　🏷 ICLR 2026
 
@@ -323,7 +266,7 @@ Diffusion large language models (dLLMs) enable any-order generation, but this fl
 
 </details>
 
-### 18. From Vulnerability to Defense: Understanding and Mitigating MASK-Based Attacks in dLLMs
+### 15. From Vulnerability to Defense: Understanding and Mitigating MASK-Based Attacks in dLLMs
 
 📝 [OpenReview](https://openreview.net/forum?id=jKQQb8uClw)　📅 2025-09　🏷 ICLR 2026
 
@@ -333,7 +276,7 @@ Diffusion large language models (dLLMs) enable any-order generation, but this fl
 - 🔬 **研究方法**：从margin accumulation与scheduling advantage解析机制，提出Reject-MASK两阶段训练
 - 📌 **结论**：把超过90%的ASR降至接近个位数
 
-### 19. Where to Start Alignment? Diffusion Large Language Model May Demand a Distinct Position
+### 16. Where to Start Alignment? Diffusion Large Language Model May Demand a Distinct Position
 
 📄 [arXiv](https://arxiv.org/abs/2508.12398) · 🌐 [Project](https://ojs.aaai.org/index.php/AAAI/article/view/37106)　📅 2025-08　🏷 AAAI 2026
 
@@ -352,7 +295,7 @@ Diffusion Large Language Models (dLLMs) have recently emerged as a competitive n
 
 </details>
 
-### 20. TrustLDM: Benchmarking Trustworthiness in Language Diffusion Models
+### 17. TrustLDM: Benchmarking Trustworthiness in Language Diffusion Models
 
 📄 [arXiv](https://arxiv.org/abs/2606.00023)　📅 2026-06　🏷 ICLR 2026
 
@@ -371,21 +314,156 @@ The rapid development of Language Diffusion Models (LDMs) challenges the dominan
 
 </details>
 
-### 21. Discrete Diffusion in Large Language and Multimodal Models: A Survey
+### 18. Beyond the Bidirectional Promise: Re-evaluating the Robustness of Diffusion Language Models
 
-📄 [arXiv](https://arxiv.org/abs/2506.13759)　📅 2025-06
+📄 [arXiv](https://arxiv.org/abs/2607.27386)　📅 2026-07
 
-**关键词**：`survey`、`discrete diffusion`、`parallel decoding`、`model taxonomy`
+**关键词**：`analysis`、`AR/DLM paired comparison`、`natural perturbation robustness`、`decoder routing failure`
 
-👤 **作者**：Runpeng Yu、Qi Li、Xinchao Wang
+👤 **作者**：Saurabh Yadav、Badri Narayana Patro、Vijay Srinivas Agneeswaran
 
-- 🎯 **研究动机**：离散扩散语言模型与多模态模型快速发展，缺乏系统综述
-- 🔬 **研究方法**：系统梳理 dLLM 与 dMLLM 的历史、数学框架、建模方法与代表模型，分析训练、推理、量化技术及可信问题
-- 📌 **结论**：d(M)LLM 性能比肩自回归模型且推理加速最高 10 倍，是自回归路线的有力替代
+- 🎯 **研究动机**：DLM 双向上下文与迭代精炼常被默认带来鲁棒性，其自然噪声与对抗输入下的可靠性缺乏参数受控评估
+- 🔬 **研究方法**：用两对参数匹配模型（LLaDA-8B vs LLaMA-3-8B、Dream-7B vs Qwen2.5-7B）在 32 种自然扰动、对抗梯度探针与机制分析下对比鲁棒性与校准
+- 📌 **结论**：高随机性损失面使 DLM 天然抵抗梯度后缀，但对自然噪声无保证且系统性过度自信；机制探针显示模型完美编码输入损坏而脆弱性完全来自解码路由失败，表层 prompt 修补无效
 
 <details>
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
-In this work, we provide a systematic survey of Discrete Diffusion Language Models (dLLMs) and Discrete Diffusion Multimodal Language Models (dMLLMs). Unlike autoregressive (AR) models, dLLMs and dMLLMs adopt a multi-token, parallel decoding paradigm using full attention and a denoising-based generation strategy. This paradigm naturally enables parallel generation, fine-grained output control, and dynamic perception. These capabilities are previously difficult to achieve with AR models. A growing number of industrial-scale proprietary d(M)LLMs, as well as a large number of open-source academic d(M)LLMs, have demonstrated performance comparable to their autoregressive counterparts, while achieving up to 10$\times$ acceleration in inference speed. These developments position discrete diffusion models as a promising alternative to intelligence based on the traditional autoregressive approach. In this work, we present a comprehensive overview of the research in the dLLM and dMLLM domains. We trace the historical development of dLLMs and dMLLMs, formalize the underlying mathematical frameworks, list commonly-used modeling methods, and categorize representative models. We further analyze key techniques for training, inference, quantization. We also discuss the trustworthy issues and summarize emerging applications across language, vision-language, and biological domains and etc.. We conclude by discussing future directions for research and deployment. Relative papers are collected in https://github.com/LiQiiiii/Awesome-Discrete-Diffusion-LLM_MLLM
+Diffusion Language Models (DLMs) offer a compelling alternative to autoregressive (AR) generation by enabling bidirectional context and iterative refinement. However, their reliability under natural input noise and adversarial attacks remains under-explored. To address this, we systematically evaluate DLM robustness and calibration against AR baselines, using two parameter-matched pairs (LLaDA-8B vs. LLaMA-3-8B and Dream-7B vs. Qwen2.5-7B) across 32 natural perturbation conditions, adversarial gradient probes, and mechanistic hidden-state analyses. This paired design effectively isolates architecture-intrinsic properties from weight-dependent behaviors. We find a nuanced robustness profile: while highly stochastic DLM loss landscapes naturally resist gradient-based adversarial suffixes, they provide no guaranteed defense against natural noise, proving that everyday robustness is weight-dependent rather than inherently architectural. Furthermore, DLMs exhibit systematic overconfidence, presenting a practical deployment hazard. Most crucially, mechanistic probing reveals that all models perfectly encode input corruption, isolating behavioral fragility entirely to a decoder routing failure. Consistent with this diagnosis, we show that surface-level prompt patching fails to improve over noisy baselines. Ultimately, DLM robustness cannot be patched on; it must be fundamentally integrated into the iterative decoding loop.
+
+</details>
+
+### 19. Activation Steering for Masked Diffusion Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2512.24143)　📅 2025-12
+
+**关键词**：`defense`、`activation steering`、`refusal direction`、`diffusion-specific accessibility`
+
+👤 **作者**：Adi Shnaidman、…、Raz Lapid
+
+- 🎯 **研究动机**：MDLM 缺乏表示层推理时控制机制，安全拒绝等行为能否被低维方向干预未知
+- 🔬 **研究方法**：从对比 prompt 集用一次前向提取单一低维方向，在反向扩散全程对残差流做全局干预，不优化、不改动采样过程；以 safety refusal 为案例研究
+- 📌 **结论**：多个 MDLM 的拒绝行为由近似一维激活子空间支配，干预效果显著优于 prompt 与优化基线；方向可从 AR 中无效的 pre-instruction token 提取（diffusion 特有可达性），杠杆集中于早期去噪步与中后层，且中英迁移强但不跨架构
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Masked diffusion language models (MDLMs) generate text via iterative masked-token denoising, enabling mask-parallel decoding and distinct controllability and efficiency tradeoffs from autoregressive LLMs. Yet, efficient representation-level mechanisms for inference-time control in MDLMs remain largely unexplored. To address this gap, we introduce an activation steering primitive for MDLMs: we extract a single low-dimensional direction from contrastive prompt sets using one prompt-only forward pass, and apply a global intervention on residual-stream activations throughout reverse diffusion, without performing optimization or altering the diffusion sampling procedure. Using safety refusal as a deployment-relevant case study, we find that refusal behavior in multiple MDLMs is governed by a consistent, approximately one-dimensional activation subspace. Applying the corresponding direction yields large and systematic behavioral shifts and is substantially more effective than prompt-based and optimization-based baselines. We further uncover diffusion-specific accessibility: effective directions can be extracted not only from post-instruction tokens, but also from pre-instruction tokens that are typically ineffective in autoregressive models due to causal attention. Ablations localize maximal leverage to early denoising steps and mid-to-late transformer layers, with early diffusion blocks contributing disproportionately. Finally, in an MDLM trained on English and Chinese, extracted directions transfer strongly between English and Chinese, but do not reliably generalize to an autoregressive architecture, highlighting architecture-dependent representations of safety constraints.
+
+</details>
+
+### 20. DLM-SWAI: Steering Diffusion Language Models Before They Unmask
+
+📄 [arXiv](https://arxiv.org/abs/2605.29626)　📅 2026-05
+
+**关键词**：`defense`、`token-distribution steering`、`training-free control`、`style and safety control`
+
+👤 **作者**：Hyeseon An、Yo-Sub Han
+
+- 🎯 **研究动机**：现有 steering 方法依赖辅助模型或面向 AR 逐 token 解码，难以直接用于迭代去噪的 DLM
+- 🔬 **研究方法**：DLM-SWAI 免训练方法：用预计算的 token 级风格分数在每个去噪步偏置 token 分布，在风格与安全控制任务上评测
+- 📌 **结论**：有效转向 DLM 同时保持生成质量、开销极小；消融揭示转向强度与流畅度的可控权衡，并按类别把可转向性关联到 token 级属性线索强度
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Steering language model generation toward desired textual properties is essential for practical deployment, and inference-time methods are particularly appealing because they enable controllable generation without retraining. Recent work has also highlighted diffusion language models as an emerging generation paradigm with distinct decoding properties. However, most existing steering approaches either rely on auxiliary models or are designed for autoregressive next-token decoding, making them difficult to apply to diffusion language models DLMs, which generate text through iterative denoising of partially masked sequences. Therefore, we propose DLM-SWAI, a simple training-free steering method that biases the token distribution at each denoising step using pre-computed token-level style scores. Experiments on style and safety control tasks show that DLM-SWAI effectively steers diffusion language models while preserving generation quality and requiring minimal computational overhead. Ablations further reveal a controllable trade-off between steering strength and fluency, and our analysis links class-wise steerability to the strength of token-level attribute cues.
+
+</details>
+
+### 21. GCG Attack On A Diffusion LLM
+
+📄 [arXiv](https://arxiv.org/abs/2601.14266)　📅 2025-12
+
+**关键词**：`attack`、`GCG transfer`、`LLaDA`、`prefix/suffix perturbation`
+
+👤 **作者**：Ruben Neyroud、Sam Corley
+
+- 🎯 **研究动机**：GCG 对自回归模型有效，但对扩散 LLM 的适用性基本未被探索
+- 🔬 **研究方法**：在 LLaDA 上对 AdvBench 有害提示系统评测多种 GCG 变体，包括前缀扰动与基于后缀的对抗生成
+- 📌 **结论**：给出 dLLM 对抗 prompt 攻击面与鲁棒性的首批实证洞察，并指出需要为扩散设定开发替代优化与评测策略
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+While most LLMs are autoregressive, diffusion-based LLMs have recently emerged as an alternative method for generation. Greedy Coordinate Gradient (GCG) attacks have proven effective against autoregressive models, but their applicability to diffusion language models remains largely unexplored. In this work, we present an exploratory study of GCG-style adversarial prompt attacks on LLaDA (Large Language Diffusion with mAsking), an open-source diffusion LLM. We evaluate multiple attack variants, including prefix perturbations and suffix-based adversarial generation, on harmful prompts drawn from the AdvBench dataset. Our study provides initial insights into the robustness and attack surface of diffusion language models and motivates the development of alternative optimization and evaluation strategies for adversarial analysis in this setting.
+
+</details>
+
+### 22. Re-Mask and Redirect: Exploiting Denoising Irreversibility in Diffusion Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2604.08557)　📅 2026-03
+
+**关键词**：`attack`、`trajectory-level attack`、`denoising irreversibility`、`defense inversion`
+
+👤 **作者**：Arth Singh
+
+- 🎯 **研究动机**：dLLM 安全对齐依赖"已提交 token 永久"这一承重假设，重新掩码已提交的拒绝 token 会发生什么未被检验
+- 🔬 **研究方法**：提出 TrajHijack：重掩码已提交的拒绝 token 并注入短肯定前缀，无需梯度计算，在三个公开安全微调 dLLM 上验证并测试最强防御 A2D
+- 📌 **结论**：HarmBench 上 ASR 达 74-82%（通用 8-token 前缀升至 92-98%）；漏洞不可约为单成分（重掩码或前缀单独仅 4.4%/5.7%）；A2D 反而更脆弱（89.9% vs 未防御 76.1%），即 Defense Inversion Effect
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Safety alignment in diffusion language models (dLLMs) relies on a single load-bearing assumption: that committed tokens are permanent. We show that violating this assumption, by re-masking committed refusal tokens and injecting a short affirmative prefix, achieves 74-82% ASR on HarmBench across all three publicly available safety-tuned dLLMs, rising to 92-98% with a generic 8-token compliance prefix. We call this attack TrajHijack; it is the first trajectory-level attack on dLLMs, requires no gradient computation, and generalizes across SFT and preference-optimized (VRPO) models. Three findings emerge. First, the vulnerability is irreducibly two-component: re-masking alone (4.4%) and prefix alone (5.7%) both fail. Second, gradient optimization via a differentiable Gumbel-softmax chain consistently degrades ASR (41.5% vs. 76.1%), because continuous perturbations push token distributions off-manifold. Third, A2D (the strongest published dLLM defense) is more vulnerable to TrajHijack (89.9%) than the undefended model (76.1%): its silent-refusal training removes the contextual resistance that trajectory-level attacks must overcome, an effect we call the Defense Inversion Effect.
+
+</details>
+
+## 隐私与水印攻击
+
+### 23. Membership Inference Attacks Against Fine-tuned Diffusion Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2601.20125)　📅 2026-01
+
+**关键词**：`attack`、`membership inference`、`mask-subset aggregation`、`privacy leakage`
+
+👤 **作者**：Yuetian Chen、…、Ninghui Li
+
+- 🎯 **研究动机**：DLM 的 MIA 隐私泄露风险此前未被系统研究，其多掩码配置与 AR 单一预测模式的差异未被利用
+- 🔬 **研究方法**：提出 SAMA：跨渐进密度采样掩码子集，用对重尾噪声稳健的符号统计与逆加权聚合把稀疏记忆检测转为投票机制
+- 📌 **结论**：九个数据集上 SAMA 相对最佳基线 AUC 提升 30%，低假阳性率下最高提升 8 倍，揭示 DLM 此前未知的显著隐私漏洞
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Diffusion Language Models (DLMs) represent a promising alternative to autoregressive language models, using bidirectional masked token prediction. Yet their susceptibility to privacy leakage via Membership Inference Attacks (MIA) remains critically underexplored. This paper presents the first systematic investigation of MIA vulnerabilities in DLMs. Unlike the autoregressive models' single fixed prediction pattern, DLMs' multiple maskable configurations exponentially increase attack opportunities. This ability to probe many independent masks dramatically improves detection chances. To exploit this, we introduce SAMA (Subset-Aggregated Membership Attack), which addresses the sparse signal challenge through robust aggregation. SAMA samples masked subsets across progressive densities and applies sign-based statistics that remain effective despite heavy-tailed noise. Through inverse-weighted aggregation prioritizing sparse masks' cleaner signals, SAMA transforms sparse memorization detection into a robust voting mechanism. Experiments on nine datasets show SAMA achieves 30% relative AUC improvement over the best baseline, with up to 8 times improvement at low false positive rates. These findings reveal significant, previously unknown vulnerabilities in DLMs, necessitating the development of tailored privacy defenses.
+
+</details>
+
+### 24. Extracting Training Data from Diffusion Language Models via Infilling
+
+📄 [arXiv](https://arxiv.org/abs/2605.24173)　📅 2026-05
+
+**关键词**：`attack`、`training data extraction`、`infilling extraction`、`mask geometry`
+
+👤 **作者**：Yihan Wang、N. Asokan
+
+- 🎯 **研究动机**：记忆研究几乎只用前缀条件抽取，而 DLM 可在任意位置去噪，前缀探测严重低估其训练数据抽取风险
+- 🔬 **研究方法**：提出由任意二值掩码参数化的 infilling extraction 协议，在 LLaDA-8B 与 Dream-7B 上覆盖五种抽取模式、三种训练管线与三种语料
+- 📌 **结论**：掩码几何主导可抽取性——边缘条件掩码逐字抽取量最高达前缀条件的 3 倍；能接触到脱敏训练数据的攻击者从 DLM 抽取被删除邮箱的召回率甚至高于规模匹配的 AR 模型，SFT 无法消除先前记忆
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Memorization in large language models has been studied almost exclusively through prefix-conditioned extraction, a natural choice for autoregressive models. However, diffusion language models (DLMs) can denoise masked tokens at arbitrary positions. Thus, prefix-only probing reveals only one facet of memorization in DLMs and significantly underestimates the risk of training-data extraction. In order to realistically model extractability of training data in DLMs, we introduce \emph{infilling extraction}, a data-extraction protocol parameterized by an arbitrary binary mask that subsumes prefix-only probing and accounts for the bidirectional inductive bias of DLMs. Instantiating it on LLaDA-8B and Dream-7B across five extraction modes, three training pipelines, and three corpora covering verbatim and partial leakage, we find that mask geometry governs extractability: edge-conditioned masks \emph{extract up to three times more} verbatim sequences than prefix-conditioned ones, and bidirectional access opens channels inaccessible in autoregressive models. In particular, we show that a realistic adversary with access to training data where personally identifiable information has been redacted, can even achieve higher recall on extracting redacted email addresses from DLMs than from scale-matched autoregressive models. Tunable parameters for decoding measurably affect extraction performance, while a follow-up supervised finetuning stage does not eliminate the prior memorization.
+
+</details>
+
+### 25. Chainwash: Multi-Step Rewriting Attacks on Diffusion Language Model Watermarks
+
+📄 [arXiv](https://arxiv.org/abs/2605.05503)　📅 2026-05
+
+**关键词**：`attack`、`watermark removal`、`chained rewriting`、`provenance robustness`
+
+👤 **作者**：Mohd Ruhul Ameen、Akif Islam、Nadim Mahmud、Md. Ekramul Hamid
+
+- 🎯 **研究动机**：面向 LLaDA 的 dLLM 水印报告 99% 以上真阳性检测，但其对多步改写的鲁棒性未被检验
+- 🔬 **研究方法**：在五个 WaterBench 域生成 1,605 条带水印补全，用四个不知密钥的开源模型按五种风格链式改写至五跳，共得 160,500 条改写文本
+- 📌 **结论**：原始输出检测率 87.9%，单次改写降至 14-41%，五次链式改写后仅 4.86%（94.76% 原检出文本失效）；三次改写后检测分数已走完朝空分布 86% 的路程，重复改写远强于单次攻击
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Statistical watermarking is a common approach for verifying whether text was written by a language model. Most existing schemes assume autoregressive generation, where tokens are produced left to right and contextual hashing is well defined. Diffusion language models generate text by denoising tokens in arbitrary order, so these schemes cannot be applied directly. A recent watermark by Gloaguen et al. addresses this gap for LLaDA 8B Instruct and reports true positive detection above 99%. This paper studies what happens when watermarked text is rewritten not once but several times. Using the same watermark configuration, 1,605 watermarked completions of about 300 tokens each are produced across five WaterBench domains. Each completion is rewritten by four open weight language models, from 1.5B to 8B parameters, none of which know the watermark key. Five rewrite styles are tested: paraphrase, humanize, simplify, academic, and summarize expand. Each style is chained for up to five hops, producing 160,500 rewritten texts in total. The watermark is detected on 87.9% of the original outputs at the standard significance threshold. After a single rewrite, detection falls to between 14% and 41% depending on the rewriter and style. After five chained rewrites, detection falls to 4.86%, meaning 94.76% of the originally detected texts are no longer flagged. After three rewrites, the detector score has dropped 86% of the way from its watermarked baseline toward the null distribution. Repeated rewriting is therefore a much stronger attack than a single rewrite, and the result holds across all four rewriters tested.
 
 </details>

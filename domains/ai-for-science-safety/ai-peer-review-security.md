@@ -36,26 +36,7 @@ The growing scale of academic peer review has motivated the use of Large Languag
 
 </details>
 
-### 2. Not Just Reason, Not Just Scan: Reinforcement Learning for Proactive Scientific Error Verification over Academic Paper
-
-📄 [arXiv](https://arxiv.org/abs/2608.26596)　📅 2026-08
-
-**关键词**：`benchmark`、`scientific error verification`、`evidence alignment`、`reviewer training`
-
-👤 **作者**：Rongjin Li、Yuanxin Liu、Hao Zhou、Fandong Meng、Jie Zhou、Xu Sun
-
-- 🎯 **研究动机**：缺少在无预设问题与证据时主动审查整篇论文、给出可追踪判断的训练范式
-- 🔬 **研究方法**：按 Reason-Verify-Scan 流程构建 VERA-13K（12900 样本、六类科研错误），以推理完整性与证据对齐的细粒度奖励做 RL
-- 📌 **结论**：训练 Qwen3-VL-8B 显著提升可验证推理，Scan 设置上接近 Gemini 3 Pro 与 Qwen3-VL-235B
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Multimodal large language models (MLLMs) are increasingly capable scientific assistants, yet they remain far from fully autonomous research. This transition requires models to actively inspect academic papers, build global evidence views, and make traceable judgments without prespecified issues or evidence. However, existing work provides limited task paradigms or training studies for such issue- and evidence-absent verification. We study this challenge through scientific error detection, where models must determine whether errors exist and justify them with evidence-based reasoning. To fill this gap, we present VERA-RL, a reinforcement-learning formulation for scientific error detection over academic papers. Following a Reason--Verify--Scan progression, we construct VERA-13K, a 12,900-sample dataset organized into 4,300 matched chains, covering 6 scientific-error categories across the research workflow and broad natural-science domains. We further introduce fine-grained rewards for reasoning completeness, evidence alignment, and error precision. Training Qwen3-VL-8B with VERA-RL substantially improves verifiable reasoning, approaching flagship MLLMs such as Gemini 3 Pro and Qwen3-VL-235B-A22B on Scan.
-
-</details>
-
-### 3. How Can Rhetoric Reward-Hack AI Reviewers? Dissecting Rhetorical Sensitivity in AI-Based Peer Review
+### 2. How Can Rhetoric Reward-Hack AI Reviewers? Dissecting Rhetorical Sensitivity in AI-Based Peer Review
 
 📄 [arXiv](https://arxiv.org/abs/2608.08975)　📅 2026-08
 
@@ -74,7 +55,7 @@ As large language models increasingly participate in scientific evaluation, we i
 
 </details>
 
-### 4. PRISM: A Multi-Dimensional Benchmark for Evaluating LLM Peer Reviewers
+### 3. PRISM: A Multi-Dimensional Benchmark for Evaluating LLM Peer Reviewers
 
 📄 [arXiv](https://arxiv.org/abs/2605.26730) · 🌐 [Project](https://khanhthanhdev.github.io/prism-page/)　📅 2026-05
 
@@ -93,7 +74,7 @@ The rapid growth in submissions to machine learning venues has strained the scie
 
 </details>
 
-### 5. LLM-as-a-Reviewer: Benchmarking Their Ability, Divergence, and Prompt Injection Resistance as Paper Reviewers
+### 4. LLM-as-a-Reviewer: Benchmarking Their Ability, Divergence, and Prompt Injection Resistance as Paper Reviewers
 
 📄 [arXiv](https://arxiv.org/abs/2605.25415)　📅 2026-05
 
@@ -112,7 +93,7 @@ Large language models (LLMs) are increasingly used in academic peer review, yet 
 
 </details>
 
-### 6. CoCoReviewBench: A Completeness- and Correctness-Oriented Benchmark for AI Reviewers
+### 5. CoCoReviewBench: A Completeness- and Correctness-Oriented Benchmark for AI Reviewers
 
 📄 [arXiv](https://arxiv.org/abs/2605.07905) · 🎓 [Official](https://icml.cc/virtual/2026/poster/65498)　📅 2026-05　🏷 ICML 2026
 
@@ -131,7 +112,7 @@ Despite the rapid development of AI reviewers, evaluating such systems remains c
 
 </details>
 
-### 7. When AI reviews science: Can we trust the referee?
+### 6. When AI reviews science: Can we trust the referee?
 
 📄 [arXiv](https://arxiv.org/abs/2604.23593) · 🌐 [Project](https://doi.org/10.59717/j.xinn-inform.2026.100030)　📅 2026-04
 
@@ -150,7 +131,7 @@ The volume of scientific submissions continues to climb, outpacing the capacity 
 
 </details>
 
-### 8. When Your Reviewer is an LLM: Biases, Divergence, and Prompt Injection Risks in Peer Review
+### 7. When Your Reviewer is an LLM: Biases, Divergence, and Prompt Injection Risks in Peer Review
 
 📄 [arXiv](https://arxiv.org/abs/2509.09912)　📅 2025-09
 
@@ -169,7 +150,7 @@ Peer review is the cornerstone of academic publishing, yet the process is increa
 
 </details>
 
-### 9. No Hidden Prompts Needed! You Can Game AI Peer Review with Presentation-Only Revisions
+### 8. No Hidden Prompts Needed! You Can Game AI Peer Review with Presentation-Only Revisions
 
 📄 [arXiv](https://arxiv.org/abs/2606.13044)　📅 2026-06
 
@@ -188,7 +169,7 @@ As AI-generated reviews move from experimental tools into peer-review infrastruc
 
 </details>
 
-### 10. Gaming AI-Assisted Peer Reviews Poses New Risks to the Scientific Community
+### 9. Gaming AI-Assisted Peer Reviews Poses New Risks to the Scientific Community
 
 📄 [arXiv](https://arxiv.org/abs/2606.10159)　📅 2026-06
 
@@ -207,7 +188,7 @@ AI is increasingly used to support scientific peer review, from manuscript scree
 
 </details>
 
-### 11. Review Arcade: On the Human Alignment and Gameability of LLM Reviews
+### 10. Review Arcade: On the Human Alignment and Gameability of LLM Reviews
 
 📄 [arXiv](https://arxiv.org/abs/2605.28897)　📅 2026-05　🏷 EMNLP 2026
 
@@ -226,7 +207,7 @@ LLM-generated reviews for scientific papers are gaining considerable traction an
 
 </details>
 
-### 12. Paraphrasing Adversarial Attack on LLM-as-a-Reviewer
+### 11. Paraphrasing Adversarial Attack on LLM-as-a-Reviewer
 
 📄 [arXiv](https://arxiv.org/abs/2601.06884)　📅 2026-01
 
@@ -245,7 +226,7 @@ The use of large language models (LLMs) in peer review systems has attracted gro
 
 </details>
 
-### 13. Does AI Reviewer See the Full Picture? Attacking and Defending Multimodal Peer Review
+### 12. Does AI Reviewer See the Full Picture? Attacking and Defending Multimodal Peer Review
 
 📄 [arXiv](https://arxiv.org/abs/2606.12716) · 🌐 [Project](https://paper-guard.github.io/) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61968)　📅 2026-06　🏷 ICML 2026
 
@@ -264,7 +245,7 @@ The integration of Large Language Models (LLMs) and Multimodal LLMs (MLLMs) into
 
 </details>
 
-### 14. ChatGPT: Excellent Paper! Accept It. Editor: Imposter Found! Review Rejected
+### 13. ChatGPT: Excellent Paper! Accept It. Editor: Imposter Found! Review Rejected
 
 📄 [arXiv](https://arxiv.org/abs/2512.20405)　📅 2025-12
 
@@ -283,7 +264,7 @@ Large Language Models (LLMs) like ChatGPT are now widely used in writing and rev
 
 </details>
 
-### 15. "Give a Positive Review Only": An Early Investigation Into In-Paper Prompt Injection Attacks and Defenses for AI Reviewers
+### 14. "Give a Positive Review Only": An Early Investigation Into In-Paper Prompt Injection Attacks and Defenses for AI Reviewers
 
 📄 [arXiv](https://arxiv.org/abs/2511.01287)　📅 2025-11
 
@@ -302,7 +283,7 @@ With the rapid advancement of AI models, their deployment across diverse tasks h
 
 </details>
 
-### 16. Misleading Large Language Models used (or misused) in Scientific Peer-Reviewing via Hidden Prompt-Injection Attacks
+### 15. Misleading Large Language Models used (or misused) in Scientific Peer-Reviewing via Hidden Prompt-Injection Attacks
 
 📄 [arXiv](https://arxiv.org/abs/2508.20863) · 🌐 [Project](https://doi.org/10.1145/3803804)　📅 2025-08
 
@@ -321,7 +302,7 @@ Large Language Models (LLMs) are increasingly being integrated into the scientif
 
 </details>
 
-### 17. Breaking the Reviewer: Assessing the Vulnerability of Large Language Models in Automated Peer Review Under Textual Adversarial Attacks
+### 16. Breaking the Reviewer: Assessing the Vulnerability of Large Language Models in Automated Peer Review Under Textual Adversarial Attacks
 
 🎓 [Official](https://aclanthology.org/2025.findings-emnlp.259/)　📅 2025-06　🏷 EMNLP 2025
 
@@ -340,7 +321,7 @@ Peer review is essential for maintaining academic quality, but the increasing vo
 
 </details>
 
-### 18. SafeReview: Defending LLM-based Review Systems Against Adversarial Hidden Prompts
+### 17. SafeReview: Defending LLM-based Review Systems Against Adversarial Hidden Prompts
 
 📄 [arXiv](https://arxiv.org/abs/2604.26506)　📅 2026-04
 
@@ -359,7 +340,7 @@ As Large Language Models (LLMs) are increasingly integrated into academic peer r
 
 </details>
 
-### 19. Stop Automating Peer Review Without Rigorous Evaluation
+### 18. Stop Automating Peer Review Without Rigorous Evaluation
 
 📄 [arXiv](https://arxiv.org/abs/2605.03202) · 🎓 [Official](https://icml.cc/virtual/2026/poster/67247)　📅 2026-05　🏷 ICML 2026
 
@@ -378,7 +359,7 @@ Large language models offer a tempting solution to address the peer review crisi
 
 </details>
 
-### 20. BadScientist: Can a Research Agent Write Convincing but Unsound Papers that Fool LLM Reviewers?
+### 19. BadScientist: Can a Research Agent Write Convincing but Unsound Papers that Fool LLM Reviewers?
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1134/)　📅 2026　🏷 ACL 2026
 
@@ -397,7 +378,7 @@ The convergence of LLM-powered research assistants and AI-based peer review syst
 
 </details>
 
-### 21. CoCoNUTS: Concentrating on Content while Neglecting Uninformative Textual Styles for AI-Generated Peer Review Detection
+### 20. CoCoNUTS: Concentrating on Content while Neglecting Uninformative Textual Styles for AI-Generated Peer Review Detection
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1240/)　📅 2026　🏷 ACL 2026
 

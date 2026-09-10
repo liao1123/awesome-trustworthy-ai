@@ -581,3 +581,117 @@ This paper studies how multimodal large language models (MLLMs) undermine the se
 DARPA's AI Cyber Challenge (AIxCC, 2023--2025) is the largest competition to date for building fully autonomous cyber reasoning systems (CRSs) that leverage recent advances in AI -- particularly large language models (LLMs) -- to discover and remediate vulnerabilities in real-world open-source software. This paper presents the first systematic analysis of AIxCC. Drawing on design documents, source code, execution traces, and discussions with organizers and competing teams, we examine the competition's structure and key design decisions, characterize the architectural approaches of finalist CRSs, and analyze competition results beyond the final scoreboard. Our analysis reveals the factors that truly drove CRS performance, identifies genuine technical advances achieved by teams, and exposes limitations that remain open for future research. We conclude with lessons for organizing future competitions and broader insights toward deploying autonomous CRSs in practice.
 
 </details>
+
+### 32. Co-RedTeam: Orchestrated Security Discovery and Exploitation with LLM Agents
+
+📄 [arXiv](https://arxiv.org/abs/2602.02164) · 🎓 [Official](https://icml.cc/virtual/2026/poster/60747)　📅 2026-02　🏷 ICML 2026
+
+**关键词**：`attack`、`analysis`、`agent safety benchmark`、`trajectory evaluation`、`failure coverage`、`agent safety`
+
+👤 **作者**：Pengfei He、…、Long T. Le
+
+- 🎯 **研究动机**：LLM 网络安全 agent 在自动漏洞发现与利用上受限于交互不足、执行接地弱与经验不可复用
+- 🔬 **研究方法**：Co-RedTeam 集成安全领域知识、代码感知分析、执行接地的迭代推理与长期记忆，把漏洞分析分解为协同的发现与利用两阶段，基于真实执行反馈学习
+- 📌 **结论**：漏洞利用成功率超 60%、漏洞检测绝对提升超 10%，消融证实执行反馈与记忆是关键
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models (LLMs) have shown promise in assisting cybersecurity tasks, yet existing approaches struggle with automatic vulnerability discovery and exploitation due to limited interaction, weak execution grounding, and a lack of experience reuse. We propose Co-RedTeam, a security-aware multi-agent framework designed to mirror real-world red-teaming workflows by integrating security-domain knowledge, code-aware analysis, execution-grounded iterative reasoning, and long-term memory. Co-RedTeam decomposes vulnerability analysis into coordinated discovery and exploitation stages, enabling agents to plan, execute, validate, and refine actions based on real execution feedback while learning from prior trajectories. Extensive evaluations on challenging security benchmarks demonstrate that Co-RedTeam consistently outperforms strong baselines across diverse backbone models, achieving over 60% success rate in vulnerability exploitation and over 10% absolute improvement in vulnerability detection. Ablation and iteration studies further confirm the critical role of execution feedback, structured interaction, and memory for building robust and generalizable cybersecurity agents.
+
+</details>
+
+### 33. CyberGym-E2E: Scalable Real-World Benchmark for AI Agents' End-to-End Cybersecurity Capabilities
+
+📄 [arXiv](https://arxiv.org/abs/2606.04460) · 🎓 [Official](https://icml.cc/virtual/2026/poster/62134)　📅 2026　🏷 ICML 2026
+
+**关键词**：`benchmark`、`cyber misuse`、`agent safety benchmark`、`trajectory evaluation`、`agent safety`、`empirical evaluation`
+
+👤 **作者**：Tianneng Shi、…、Dawn Song
+
+- 🎯 **研究动机**：现有 AI 网络安全评测规模或范围受限，未覆盖真实漏洞发现到修复的端到端生命周期
+- 🔬 **研究方法**：CyberGym-E2E 用自动化 agent 增强管线把开源漏洞数据转为现实评测环境，全面评估漏洞发现、PoC 生成与补丁生成
+- 📌 **结论**：基准覆盖 139 个开源项目的 920 个真实漏洞
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+AI has the potential to transform cybersecurity by enabling systems that can autonomously detect, analyze, and remediate software vulnerabilities. However, existing cybersecurity evaluations of AI systems are limited in scale or scope, and fail to capture the end-to-end lifecycle of real-world software vulnerability discovery and remediation. To address this gap, we propose CyberGym-E2E, a large-scale and realistic end-to-end cybersecurity benchmark that comprehensively evaluates AI agents' abilities across the full lifecycle of vulnerability discovery, PoC generation, and patch generation. CyberGym-E2E is comprehensive and scalable, as we build an automated, agent-enhanced pipeline for transforming open-source vulnerability data into realistic evaluation environments. Currently, the benchmark consists of 920 real-world vulnerabilities across 139 different open-source projects.
+
+</details>
+
+### 34. A New Framework for Cybersecurity Refusals in AI Agents
+
+📄 [arXiv](https://arxiv.org/abs/2606.02644) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61093)　📅 2026　🏷 ICML 2026
+
+**关键词**：`tool`、`analysis`、`cyber misuse`、`agent safety benchmark`、`trajectory evaluation`、`agent safety`
+
+👤 **作者**：Eliot Krzysztof Jones、Mateusz Dziemian、Matt Fredrikson、J Zico Kolter
+
+- 🎯 **研究动机**：网络安全 Agent 基准只测攻击任务熟练度，忽视何时以及如何拒绝有害请求
+- 🔬 **研究方法**：建立进攻性安全语境下拒答边界的首套框架：任务应被拒绝的原则性判据、应拒任务类别与良性／对抗双条件下的鲁棒性评测方法，并应用于 Web 进攻安全场景
+- 📌 **结论**：八个 frontier 模型中六个在识别真实系统漏洞的任务上 0% 拒绝
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Agentic scaffolds have dramatically improved LLM performance on complex, long-horizon tasks, yielding both broad benefits and amplified risks in domains like cybersecurity. Existing benchmarks for AI agents in cybersecurity focus mainly on measuring proficiency–how effectively agents can complete offensive security tasks–but neglect a critical question: when and how should agents refuse harmful requests? We present the first framework for establishing refusal boundaries in offensive security contexts. Our framework defines (1) principled criteria for when tasks should be refused, (2) categories of tasks that warrant refusal, and (3) evaluation methodology for measuring agent robustness under both benign and adversarial conditions. We apply this framework to assess how current LLM-powered agents adhere to appropriate refusal boundaries across a range of web-based offensive security scenarios, finding that 6 of 8 frontier models tested refuse to identify vulnerabilities in real systems 0\% of the time.
+
+</details>
+
+### 35. Training Language Model Agents to Find Vulnerabilities with CTF-Dojo
+
+📄 [arXiv](https://arxiv.org/abs/2508.18370) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61783)　📅 2026　🏷 ICML 2026
+
+**关键词**：`attack`、`tool-use agent`、`tool interface`、`action integrity`、`LLM agent security`、`empirical evaluation`
+
+👤 **作者**：Terry Yue Zhuo、Dingmin Wang、Hantian Ding、Varun Kumar、Zijian Wang
+
+- 🎯 **研究动机**：可执行且带可验证反馈的训练环境稀缺，制约更强 ML 智能体的发展
+- 🔬 **研究方法**：提出 CTF-Dojo：658 个 Docker 化 CTF 挑战的可复现运行时；CTF-Forge 自动把公开构件转化为执行环境；仅用 486 条执行验证轨迹训练 LLM 智能体
+- 📌 **结论**：在 InterCode-CTF、NYU CTF Bench 与 Cybench 上绝对提升至多 11.6%；32B 模型 Pass@1 达 31.9%，创开源权重 SOTA，比肩 DeepSeek-V3 与 Gemini-2.5-Flash
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models (LLMs) have demonstrated exceptional capabilities when trained within executable runtime environments, notably excelling at software engineering tasks through verified feedback loops. Yet, scalable and generalizable execution-grounded environments remain scarce, limiting progress in training more capable ML agents. We introduce CTF-Dojo, the first large-scale executable runtime tailored for training LLMs with verifiable feedback, featuring 658 fully functional Capture-The-Flag (CTF)-style challenges containerized in Docker with guaranteed reproducibility. To enable rapid scaling without manual intervention, we develop CTF-Forge, an automated pipeline that transforms publicly available artifacts into ready-to-use execution environments in minutes, eliminating weeks of expert configuration traditionally required. We trained LLM-based agents on just 486 high-quality, execution-verified trajectories from CTF-Dojo, achieving up to 11.6% absolute gains over strong baselines across three competitive benchmarks: InterCode-CTF, NYU CTF Bench, and Cybench. Our best-performing 32B model reaches 31.9% Pass@1, establishing a new open-weight state-of-the-art that rivals frontier models like DeepSeek-V3-0324 and Gemini-2.5-Flash. By framing CTF-style tasks as a benchmark for executable-agent learning, CTF-Dojo demonstrates that execution-grounded training signals are not only effective but pivotal in advancing high-performance ML agents without dependence on costly proprietary systems.
+
+</details>
+
+### 36. The Art of Hide and Seek: Making Pickle-Based Model Supply Chain Poisoning Stealthy Again
+
+📄 [arXiv](https://arxiv.org/abs/2508.19774) · 🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/liu-tong)　📅 2025-08　🏷 USENIX Security 2026
+
+**关键词**：`attack`、`model supply chain`、`Pickle`、`stealthy poisoning`
+
+👤 **作者**：Tong Liu、Guozhu Meng、Peng Zhou、Zizhuang Deng、Shuaiyin Yao、Kai Chen
+
+- 🎯 **研究动机**：pickle 反序列化漏洞长期未解，现有扫描器对模型投毒面理解不全、检测逻辑脆弱
+- 🔬 **研究方法**：系统披露 pickle 投毒面：识别五大框架 22 条模型加载路径（19 条被漏检），提出 Exception-Oriented Programming 绕过技术，并在风险函数面发现 133 个可利用 gadget
+- 📌 **结论**：gadget 绕过率近 100%，最佳扫描器下仍达 89%；获厂商致谢与 6000 美元赏金
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Pickle deserialization vulnerabilities have persisted throughout Python's history, remaining widely recognized yet unresolved. Due to its ability to transparently save and restore complex objects into byte streams, many AI/ML frameworks continue to adopt pickle as the model serialization protocol despite its inherent risks. As the open-source model ecosystem grows, model-sharing platforms such as Hugging Face have attracted massive participation, significantly amplifying the real-world risks of pickle exploitation and opening new avenues for model supply chain poisoning. Although several state-of-the-art scanners have been developed to detect poisoned models, their incomplete understanding of the poisoning surface leaves the detection logic fragile and allows attackers to bypass them. In this work, we present the first systematic disclosure of the pickle-based model poisoning surface from both model loading and risky function perspectives. Our research demonstrates how pickle-based model poisoning can remain stealthy and highlights critical gaps in current scanning solutions. On the model loading surface, we identify 22 distinct pickle-based model loading paths across five foundational AI/ML frameworks, 19 of which are entirely missed by existing scanners. We further develop a bypass technique named Exception-Oriented Programming (EOP) and discover 9 EOP instances, 7 of which can bypass all scanners. On the risky function surface, we discover 133 exploitable gadgets, achieving almost a 100% bypass rate. Even against the best-performing scanner, these gadgets maintain an 89% bypass rate. By systematically revealing the pickle-based model poisoning surface, we achieve practical and robust bypasses against real-world scanners. We responsibly disclose our findings to corresponding vendors, receiving acknowledgments and a $6000 bug bounty.
+
+</details>
+
+### 37. SysEvolve: An AI-native, safe, autonomous adversarial attack-defense co-evolutionary system
+
+📄 [arXiv](https://arxiv.org/abs/2608.15012)　📅 2026-08
+
+**关键词**：`defense`、`adversarial robustness`、`robust training`、`certification`
+
+👤 **作者**：Yuhan Meng、…、Ding Li
+
+- 🎯 **研究动机**：网络安全攻防不对称：攻击走向自主执行而防御仍人工密集，双方演化在三层停滞
+- 🔬 **研究方法**：SysEvolve 共演化系统：SysField 构建真实多主机靶场、SysSpear 生成高效安全攻击、SysArmor 实时可解释防御，形成自驱动对抗循环
+- 📌 **结论**：2.1% 开销零损耗采集并编排 257 个 CVE 成 1148 个靶场；攻击成功率超基线 LLM 25% 以上，防御精度高 10-1000 倍并在华为、深信服生产环境检出真实 APT
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+The rapid advancement of large language models (LLMs) has created a growing asymmetry in cybersecurity, where attack accelerates toward autonomous execution while defense remains predominantly human-intensive. Despite substantial prior work across cyber ranges, AI-driven attack, and AI-driven defense, this asymmetry persists. We trace it to a deeper root cause, that evolution itself has stalled on both sides at three layers. To overcome this, we propose co-evolution as the integrating insight, where attack and defense AI agents autonomously and safely drive each other's evolution through adversarial confrontation. Based on this insight, we present \sysevolve, comprising three co-designed components, \sysfield, \sysspear, and \sysarmor. \sysfield constructs realistic multi-host ranges. \sysspear generates efficient, safe attack schemes. \sysarmor performs real-time, interpretable defense. Together they form a self-driven adversarial loop restoring evolution at all three layers. In evaluation, \sysfield achieves zero-loss collection at 2.1\% overhead and orchestrates 257 CVEs into 1,148 ranges, \sysspear improves attack success by over 25\% over baseline LLMs, and \sysarmor achieves 10--1000$\times$ greater precision than prior systems and detects real APT attacks in production at Huawei and Sangfor. Our evaluation also reveals three findings about LLM agent capabilities. First, multi-step composition and larger topologies expose agent capability gaps hidden by single-step evaluations. Second, the bottleneck lies after initial access in post-compromise state utilization. Third, LLM agents are susceptible to environmental interference. When decoy endpoints are deployed in the range, agent timeouts triple and downstream completion disappears despite the success rates of initial accesses are unchanged.
+
+</details>

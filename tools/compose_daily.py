@@ -1,0 +1,126 @@
+#!/usr/bin/env python3
+"""Compose daily/2026-09/2026-09-09.md from screening results + arXiv metadata."""
+
+from __future__ import annotations
+
+import json
+import re
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+OUT = ROOT / "tools" / "out"
+DATE = sys.argv[1] if len(sys.argv) > 1 else "2026-09-09"
+TAG = DATE[5:].replace("-", "")  # e.g. 0909
+WEEKDAY = {"2026-09-09": "星期三", "2026-09-10": "星期四"}.get(DATE, "")
+
+LINK_RE = re.compile(r"(https://(?:github\.com/[\w.\-/]+|huggingface\.co/[\w.\-/]+|gitlab\.com/[\w.\-/]+|github\.io/[\w.\-/]+))", re.I)
+
+
+def classify(url: str) -> tuple[str, str] | None:
+    low = url.lower().rstrip(".,;)")
+    if "huggingface.co" in low:
+        if "/datasets/" in low:
+            return ("📊", url)
+        return ("🤗", url)
+    if "github.io" in low:
+        return ("🌐", url)
+    if "github.com" in low or "gitlab.com" in low:
+        return ("🐙", url)
+    return None
+
+
+def mine_links(abstract: str) -> list[tuple[str, str]]:
+    found: list[tuple[str, str]] = []
+    seen: set[str] = set()
+    for url in LINK_RE.findall(abstract):
+        hit = classify(url)
+        if hit and hit[1] not in seen:
+            seen.add(hit[1])
+            found.append(hit)
+    return found[:2]
+
+
+def display_authors(names: list[str]) -> str:
+    if len(names) > 6:
+        shown = [names[0], "…", names[-1]]
+    else:
+        shown = names
+    return "、".join(shown)
+
+
+STATS = {
+    "0909": {"dedup": 2234, "fresh": 2224, "new2609": 1446, "screened": 210},
+    "0910": {"dedup": 752, "fresh": 748, "new2609": 527, "screened": 74},
+}
+
+
+def main() -> None:
+    meta = json.loads((OUT / f"daily_{TAG}_meta.json").read_text(encoding="utf-8"))
+    verdicts: dict = {}
+    out_dir = OUT / "daily_out" if TAG == "0909" else OUT / f"daily_out_{TAG}"
+    for path in sorted(out_dir.glob("batch_*.json")):
+        verdicts.update(json.loads(path.read_text(encoding="utf-8")))
+
+    included = []
+    for pid, v in verdicts.items():
+        if not v.get("include"):
+            continue
+        m = meta.get(pid)
+        if not m:
+            continue
+        included.append((pid, v, m))
+
+    # order: priority asc, then pid
+    included.sort(key=lambda t: (t[1].get("priority", 3), t[0]))
+
+    cards = []
+    for n, (pid, v, m) in enumerate(included, 1):
+        links = [f"📄 [arXiv](https://arxiv.org/abs/{pid})"]
+        for icon, url in mine_links(m.get("abstract", "")):
+            label = {"📄": "arXiv", "🐙": "Code", "🤗": "Model", "📊": "Dataset", "🌐": "Project"}[icon]
+            links.append(f"{icon} [{label}]({url})")
+        row = " · ".join(links) + f"　📅 2026-09"
+        lines = [f"### {n}. {m['title']}", "", row, ""]
+        kws = [k for k in v.get("keywords", []) if k.strip()][:6]
+        if kws:
+            lines += ["**关键词**：" + "、".join(f"`{k}`" for k in kws), ""]
+        authors = display_authors(m.get("authors", []))
+        if authors:
+            lines += [f"👤 **作者**：{authors}", ""]
+        parts = []
+        for icon, label, field in (("🎯", "研究动机", "motivation"), ("🔬", "研究方法", "method"), ("📌", "结论", "conclusion")):
+            value = (v.get(field) or "").strip().rstrip("。").strip()
+            if value:
+                parts.append(f"- {icon} **{label}**：{value}")
+        if parts:
+            lines += parts + [""]
+        abstract = (m.get("abstract") or "").strip()
+        if abstract:
+            lines += ["<details>", "<summary>📝 展开完整英文摘要（Abstract）</summary>", "", abstract, "", "</details>", ""]
+        cards.append("\n".join(lines).rstrip())
+
+    total_screened = len(verdicts)
+    s = STATS[TAG]
+    text = f"""# {DATE} arXiv AI Safety Daily
+
+## 检索信息
+
+- 检索日期：{DATE}
+- arXiv 范围：检查 {DATE}（{WEEKDAY}）官方 `new` 页面中的 `cs.AI`、`cs.CL`、`cs.CR`、`cs.CV`、`cs.HC`、`cs.IR`、`cs.LG`、`cs.MA`、`cs.RO` 主分类及其 cross-list；九个分类共 {s['dedup']:,} 条跨分类去重条目，去除本月已收录后 {s['fresh']:,} 篇，其中 2609.* 新论文 {s['new2609']:,} 篇；按 `RESEARCH_INTERESTS.md` 的安全边界标题宽筛 {s['screened']} 篇、逐篇阅读摘要后收录 {len(included)} 篇。
+- 候选论文：{s['new2609']:,} 个 2609.* 新条目（标题宽筛 {s['screened']}）
+- 最终收录：{len(included)} 篇
+- 今日概括：（见下方按优先级排列的论文列表）
+
+## 论文列表
+
+""" + "\n\n".join(cards) + "\n"
+    (ROOT / "daily" / "2026-09" / f"{DATE}.md").write_text(text, encoding="utf-8")
+    from collections import Counter
+    pr = Counter(v.get("priority") for _, v, _ in included)
+    print(json.dumps({"included": len(included), "screened": total_screened,
+                      "priority_dist": dict(pr)}, ensure_ascii=False))
+
+
+if __name__ == "__main__":
+    sys.exit(main())

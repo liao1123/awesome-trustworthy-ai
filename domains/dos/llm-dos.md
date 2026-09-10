@@ -239,3 +239,100 @@ Mixture-of-Experts architectures have become the standard for scaling large lang
 Given limited and costly computational infrastructure, resource efficiency is a key requirement for large language models (LLMs). Efficient LLMs increase service capacity for providers and reduce latency and API costs for users. Recent resource consumption threats induce excessive generation, degrading model efficiency and harming both service availability and economic sustainability. This survey presents a systematic review of threats to resource consumption in LLMs. We further establish a unified view of this emerging area by clarifying its scope and examining the problem along the full pipeline from threat induction to mechanism understanding and mitigation. Our goal is to clarify the problem landscape for this emerging area, thereby providing a clearer foundation for characterization and mitigation.
 
 </details>
+
+### 13. BenchOverflow: Measuring Overflow in Large Language Models via Plain-Text Prompts
+
+📄 [arXiv](https://arxiv.org/abs/2601.08490)　📅 2026-01
+
+**关键词**：`benchmark`、`LLM DoS`、`plain-text overflow`、`length distribution`
+
+👤 **作者**：Erin Feiglin、Nir Hutnik、Raz Lapid
+
+- 🎯 **研究动机**：纯文本 prompt 在普通交互下即可诱发过量输出（Overflow），抬高服务成本、延迟并造成跨用户性能退化
+- 🔬 **研究方法**：BenchOverflow 提出九种无对抗后缀、无策略规避的 plain-text 放大策略构成 model-agnostic 基准，以 5000 token 固定预算统一协议，用 CSR@1k/3k/5k 与经验累积分布量化尾部风险
+- 📌 **结论**：九个开闭源模型长度分布显著右移且重尾，Overflow 跨模型可复现但异质；固定简洁提醒即可衰减右尾并降低多数模型的 CSR
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+We investigate a failure mode of large language models (LLMs) in which plain-text prompts elicit excessive outputs, a phenomenon we term Overflow. Unlike jailbreaks or prompt injection, Overflow arises under ordinary interaction settings and can lead to elevated serving cost, latency, and cross-user performance degradation, particularly when scaled across many requests. Beyond usability, the stakes are economic and environmental: unnecessary tokens increase per-request cost and energy consumption, compounding into substantial operational spend and carbon footprint at scale. Moreover, Overflow represents a practical vector for compute amplification and service degradation in shared environments. We introduce BenchOverflow, a model-agnostic benchmark of nine plain-text prompting strategies that amplify output volume without adversarial suffixes or policy circumvention. Using a standardized protocol with a fixed budget of 5000 new tokens, we evaluate nine open- and closed-source models and observe pronounced rightward shifts and heavy tails in length distributions. Cap-saturation rates (CSR@1k/3k/5k) and empirical cumulative distribution functions (ECDFs) quantify tail risk; within-prompt variance and cross-model correlations show that Overflow is broadly reproducible yet heterogeneous across families and attack vectors. A lightweight mitigation-a fixed conciseness reminder-attenuates right tails and lowers CSR for all strategies across the majority of models. Our findings position length control as a measurable reliability, cost, and sustainability concern rather than a stylistic quirk. By enabling standardized comparison of length-control robustness across models, BenchOverflow provides a practical basis for selecting deployments that minimize resource waste and operating expense, and for evaluating defenses that curb compute amplification without eroding task performance.
+
+</details>
+
+### 14. Prompt-Induced Over-Generation as Denial-of-Service: A Black-Box Attack-Side Benchmark
+
+📄 [arXiv](https://arxiv.org/abs/2512.23779)　📅 2025-12
+
+**关键词**：`benchmark`、`LLM DoS`、`over-generation factor`、`black-box attack`
+
+👤 **作者**：Manu、…、Wangli Yang
+
+- 🎯 **研究动机**：DoS 式 prompt 攻击研究通常聚焦单一算法或白盒假设，缺少黑盒 query-only 的攻击侧基准
+- 🔬 **研究方法**：提出 EOGen（token 空间进化搜索抑制 EOS 的短前缀）与 RL-GOAL（目标长度条件强化学习攻击器）两类攻击者，并引入 Over-Generation Factor 刻画产出 token 与上下文窗口之比
+- 📌 **结论**：Phi-3 上 EOGen 达 OGF 1.39（Success@≥2 为 25.2%），RL-GOAL 将严重度近乎翻倍至 2.70（64.3%）并在 46% 试验中造成预算耗尽型不终止
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large Language Models (LLMs) can be driven into over-generation, emitting thousands of tokens before producing an end-of-sequence (EOS) token. This degrades answer quality, inflates latency and cost, and can be weaponized as a denial-of-service (DoS) attack. Recent work has begun to study DoS-style prompt attacks, but typically focuses on a single attack algorithm or assumes white-box access, without an attack-side benchmark that compares prompt-based attackers in a black-box, query-only regime with a known tokenizer. We introduce such a benchmark and study two prompt-only attackers. The first is an Evolutionary Over-Generation Prompt Search (EOGen) that searches the token space for prefixes that suppress EOS and induce long continuations. The second is a goal-conditioned reinforcement learning attacker (RL-GOAL) that trains a network to generate prefixes conditioned on a target length. To characterize behavior, we introduce Over-Generation Factor (OGF): the ratio of produced tokens to a model's context window, along with stall and latency summaries. EOGen discovers short-prefix attacks that raise Phi-3 to OGF = 1.39 +/- 1.14 (Success@>=2: 25.2%); RL-GOAL nearly doubles severity to OGF = 2.70 +/- 1.43 (Success@>=2: 64.3%) and drives budget-hit non-termination in 46% of trials.
+
+</details>
+
+### 15. Asking Forever: Universal Activations Behind Turn Amplification in Conversational LLMs
+
+📄 [arXiv](https://arxiv.org/abs/2602.17778)　📅 2026-02
+
+**关键词**：`attack`、`LLM DoS`、`turn amplification`、`universal activation`
+
+👤 **作者**：Zachary Coalson、Bo Fang、Sanghyun Hong
+
+- 🎯 **研究动机**：多轮交互长度是对话 LLM 运营成本的主导因素，澄清式提问行为可被系统利用以延长交互
+- 🔬 **研究方法**：从机制视角定位与澄清行为关联的 query 无关通用激活子空间，经供应链微调或运行时低位参数破坏持续把模型推向抽象澄清行为，攻击跨 prompt 与任务持续存在
+- 📌 **结论**：多个指令微调 LLM 与基准上轮数显著增加且模型保持合规；现有防御对这类新兴失败模式保护有限
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Multi-turn interaction length is a dominant factor in the operational costs of conversational LLMs. In this work, we present a new failure mode in conversational LLMs: turn amplification, in which a model consistently prolongs multi-turn interactions without completing the underlying task. We show that an adversary can systematically exploit clarification-seeking behavior$-$commonly encouraged in multi-turn conversation settings$-$to scalably prolong interactions. Moving beyond prompt-level behaviors, we take a mechanistic perspective and identify a query-independent, universal activation subspace associated with clarification-seeking responses. Unlike prior cost-amplification attacks that rely on per-turn prompt optimization, our attack arises from conversational dynamics and persists across prompts and tasks. We show that this mechanism provides a scalable pathway to induce turn amplification: both supply-chain attacks via fine-tuning and runtime attacks through low-level parameter corruptions consistently shift models toward abstract, clarification-seeking behavior across prompts. Across multiple instruction-tuned LLMs and benchmarks, our attack substantially increases turn count while remaining compliant. We also show that existing defenses offer limited protection against this emerging class of failures.
+
+</details>
+
+### 16. No-Skim: Towards Efficiency Robustness Evaluation on Skimming-based Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2312.09494)　📅 2023-12
+
+**关键词**：`analysis`、`LLM DoS`、`skimming acceleration`、`efficiency robustness`
+
+👤 **作者**：Shengyao Zhang、Mi Zhang、Xudong Pan、Min Yang
+
+- 🎯 **研究动机**：skimming 加速通过逐层丢弃不重要 token 降低计算与能耗，该加速机制首次被揭示可被 DoS 攻击破坏
+- 🔬 **研究方法**：No-Skim 搜索字符级与 token 级的最小不可察觉扰动以提高剩余 token 比例，从而抬高计算成本与能耗，并支持不同知识等级的评估
+- 📌 **结论**：BERT、RoBERTa 等 LLM 架构 GLUE 基准最坏情况下运行成本平均增加超 145%
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+To reduce the computation cost and the energy consumption in large language models (LLM), skimming-based acceleration dynamically drops unimportant tokens of the input sequence progressively along layers of the LLM while preserving the tokens of semantic importance. However, our work for the first time reveals the acceleration may be vulnerable to Denial-of-Service (DoS) attacks. In this paper, we propose No-Skim, a general framework to help the owners of skimming-based LLM to understand and measure the robustness of their acceleration scheme. Specifically, our framework searches minimal and unnoticeable perturbations at character-level and token-level to generate adversarial inputs that sufficiently increase the remaining token ratio, thus increasing the computation cost and energy consumption. We systematically evaluate the vulnerability of the skimming acceleration in various LLM architectures including BERT and RoBERTa on the GLUE benchmark. In the worst case, the perturbation found by No-Skim substantially increases the running cost of LLM by over 145% on average. Moreover, No-Skim extends the evaluation framework to various scenarios, making the evaluation conductible with different level of knowledge.
+
+</details>
+
+## 检测与防御
+
+### 17. Breaking the Loop: Detecting and Mitigating Denial-of-Service Vulnerabilities in Large Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2503.00416)　📅 2025-03
+
+**关键词**：`defense`、`LLM DoS`、`recurrent generation`、`activation-based detection`
+
+👤 **作者**：Junzhe Yu、Yi Liu、Huijia Sun、Ling Shi、Yuqi Chen
+
+- 🎯 **研究动机**：循环生成使模型反复输出相似内容，显著推高延迟并形成 DoS 脆弱性，此前缺乏系统研究
+- 🔬 **研究方法**：RecurrentGenerator 黑盒进化算法高效发现主流 LLM 的循环生成场景；RecurrentDetector 基于激活模式训练轻量实时分类器检测循环
+- 📌 **结论**：LLama-3 与 GPT-4o 上高效定位循环场景，检测准确率 95.24%、F1 0.87，为延迟相关漏洞提供实用缓解
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large Language Models (LLMs) have significantly advanced text understanding and generation, becoming integral to applications across education, software development, healthcare, entertainment, and legal services. Despite considerable progress in improving model reliability, latency remains under-explored, particularly through recurrent generation, where models repeatedly produce similar or identical outputs, causing increased latency and potential Denial-of-Service (DoS) vulnerabilities. We propose RecurrentGenerator, a black-box evolutionary algorithm that efficiently identifies recurrent generation scenarios in prominent LLMs like LLama-3 and GPT-4o. Additionally, we introduce RecurrentDetector, a lightweight real-time classifier trained on activation patterns, achieving 95.24% accuracy and an F1 score of 0.87 in detecting recurrent loops. Our methods provide practical solutions to mitigate latency-related vulnerabilities, and we publicly share our tools and data to support further research.
+
+</details>

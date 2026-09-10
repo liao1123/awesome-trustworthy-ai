@@ -18,7 +18,8 @@ Guardrail 研究部署在生成模型或 Agent 外部的独立安全层，负责
 
 | 子领域 | 主要研究问题 |
 | --- | --- |
-| [通用 Guard Model、评测与安全边界](general-models-and-evaluation.md) | 通用输入输出及结构化 action 审核、生产自演化、classifier cascade、架构比较、长上下文／判决时效失效和绕过攻击。 |
+| [通用 Guard Model 方法与架构](guard-model-methods.md) | 通用输入输出及结构化 action 审核、生产自演化、classifier cascade 与架构比较。 |
+| [Guardrail 评测与攻击面](guardrail-evaluation.md) | Guardrail 评测基准、有效性审计、长上下文／判决时效失效和绕过攻击。 |
 | [Policy-Adaptive Guardrail](policy-adaptive-guardrails.md) | 动态 policy、in-context rule execution、社区规范、policy reasoning、持续适应、policy-grounded 数据与 benchmark。 |
 | [Reasoning 与效率权衡](reasoning-and-efficient-guardrails.md) | 显式 CoT、critique、latent reasoning、按需审计、encoder／activation classifier、大小模型 routing 与延迟权衡。 |
 | [Streaming Guardrail](streaming-guardrails.md) | sentence/token 级在线风险检测、未来风险预测、hidden-state probe／trajectory、校准告警、早停与流式 benchmark。 |

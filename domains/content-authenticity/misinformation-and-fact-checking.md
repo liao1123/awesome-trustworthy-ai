@@ -556,26 +556,7 @@ The rapid evolution of generative AI, including such models as Sora, has intensi
 
 </details>
 
-### 31. An Information-theoretic Propagation Denoising and Fusion Framework for Fake News Detection
-
-📄 [arXiv](https://arxiv.org/abs/2605.02259) · 🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/2441.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track)　📅 2026
-
-**关键词**：`detection`、`fake news`、`synthetic propagation`、`information bottleneck`
-
-👤 **作者**：Mengyang Chen、Lingwei Wei、Wei Zhou、Songlin Hu
-
-- 🎯 **研究动机**：LLM 合成的传播数据天然不可靠，直接与真实传播融合会产生有偏表征
-- 🔬 **研究方法**：InfoPDF 把每个合成传播图建模为概率潜分布指导可靠性感知自适应融合，用互信息目标学习压缩且任务充分的表征，抑制噪声并保持真实与合成表征一致
-- 📌 **结论**：三个真实数据集上各类假新闻检测任务一致领先，并能估计属性级可靠性
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Incomplete propagation data significantly hinders robust fake news detection. Recent approaches leverage large language models to simulate missing user interactions via role-playing, thereby enriching propagation with synthetic signals. However, such propagation data is intrinsically unreliable, and directly fusing it can lead to biased representations and limited detection performance. In this paper, we alleviate the unreliability of synthetic propagation from the mutual information perspective and propose a novel information-theoretic propagation denoising and fusion (InfoPDF) framework to learn effective representations from both real and synthetic propagation. Specifically, we first generate attribute-specific synthetic propagation using large language models. Then we model each synthetic propagation graph as a probabilistic latent distribution to guide reliability-aware adaptive fusion with real propagation. During training, we design a mutual information-based objective to learn compressed and task-sufficient propagation representations. It jointly suppresses noisy signals across attribute-specific synthetic propagation, maintains consistency between real and synthetic propagation representations, and ensures task sufficiency for fake news detection and attribute prediction. Experiments on three real-world datasets show that InfoPDF consistently achieves superior performance across various fake news detection tasks. Further analysis demonstrates that InfoPDF can estimate attribute-level reliabilities and learn more discriminative propagation representations.
-
-</details>
-
-### 32. Falsdo: Benchmarking Artifact-Controlled Multimodal Fake News Verification via Failure-Aligned Auditing
+### 31. Falsdo: Benchmarking Artifact-Controlled Multimodal Fake News Verification via Failure-Aligned Auditing
 
 🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/686.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track)　📅 2026
 
@@ -592,7 +573,7 @@ Recent generative AI renders multimodal misinformation structurally harder to de
 
 </details>
 
-### 33. When Evidence Falls Short: Router-Guided Fake News Detection with Pattern Augmentation
+### 32. When Evidence Falls Short: Router-Guided Fake News Detection with Pattern Augmentation
 
 🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/4589.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track)　📅 2026
 
@@ -609,7 +590,7 @@ With the growing complexity of online information, trustworthy fake news detecti
 
 </details>
 
-### 34. The Coherence Trap: When MLLM-Crafted Narratives Exploit Manipulated Visual Contexts
+### 33. The Coherence Trap: When MLLM-Crafted Narratives Exploit Manipulated Visual Contexts
 
 📄 [arXiv](https://arxiv.org/abs/2505.17476) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Zhang_The_Coherence_Trap_When_MLLM-Crafted_Narratives_Exploit_Manipulated_Visual_Contexts_CVPR_2026_paper.html)　📅 2025-05　🏷 CVPR 2026
 
@@ -628,7 +609,7 @@ The detection and grounding of multimedia manipulation has emerged as a critical
 
 </details>
 
-### 35. Ask or Answer: A Decision Framework for Multi-Turn Health Misinformation Intervention
+### 34. Ask or Answer: A Decision Framework for Multi-Turn Health Misinformation Intervention
 
 📄 [arXiv](https://arxiv.org/abs/2608.21721)　📅 2026-08
 
@@ -647,7 +628,7 @@ Correcting health misinformation in dialogue requires more than producing a fact
 
 </details>
 
-### 36. Mask-to-Correct^+: Leveraging Retriever Diversity for Masking-guided Faithful Fact Correction
+### 35. Mask-to-Correct^+: Leveraging Retriever Diversity for Masking-guided Faithful Fact Correction
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.175/)　📅 2026　🏷 ACL 2026
 
@@ -663,5 +644,81 @@ Correcting health misinformation in dialogue requires more than producing a fact
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 The rapid spread of misinformation on social media highlights the need for robust, automated fact correction frameworks. However, existing works rely on supervised learning from manually annotated claim-evidence pairs, which are scarce and prone to biases, limiting their generalization across domains. Moreover, these methods overlook semantic faithfulness in their correction process. To address these challenges, we propose Mask-to-Correct (M 2 C), a training-free, inference-only Retrieval Augmented Generation (RAG) based framework that leverages diversity-aware masking to identify erroneous spans of claims and evaluate the faithfulness of corrections using retrieved evidence. However, the effectiveness of RAG heavily depends on the choice of retriever, which may vary across queries. To mitigate this, we further introduce M 2 C +, an ensemble-based framework that combines corrections across multiple rankers to reduce retrieval bias and improve robustness. Extensive experiments on the benchmark datasets demonstrate that our proposed frameworks consistently outperform all baselines, achieving up to 14% improvement in SARI scores, without using gold evidence.
+
+</details>
+
+### 36. Do Images Speak Louder than Words? Investigating the Effect of Textual Misinformation in VLMs
+
+🎓 [Official](https://aclanthology.org/2026.eacl-long.323/)　📅 2026-03　🏷 ACL 2026
+
+**关键词**：`attack`、`VLM misinformation`、`cross-modal conflict`、`persuasive prompt`
+
+👤 **作者**：Chi Zhang、Wenxuan Ding、Jiale Liu、Mingrui Wu、Qingyun Wu、Ray Mooney
+
+- 🎯 **研究动机**：VLM 如何仲裁跨模态矛盾信息不明，文本域误信息研究结论无法直接迁移
+- 🔬 **研究方法**：构建 ConText-VQA：图文对加系统性生成的与视觉证据冲突的说服性提示，测试 11 个 SOTA VLM
+- 📌 **结论**：模型常推翻清晰视觉证据倒向冲突文本，仅一轮说服对话平均性能下降超 48.2%
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Vision-Language Models (VLMs) have shown strong multimodal reasoning capability on Visual-Question-Answering (VQA) benchmarks. However, their robustness against textual misinformation remains under-explored. While existing research has extensively studied the effect of misinformation in text-only domains, it is not clear how VLMs arbitrate between contradictory information from different modalities. To bridge the gap, we first propose the ConText-VQA (i.e. Conflicting Text) dataset, consisting of image-question pairs together with systematically generated persuasive prompts that deliberately conflict with visual evidence. Then, a thorough testing framework is designed and executed to benchmark the susceptibility of various models to these conflicting textual inputs. Comprehensive experiments over 11 state-of-the-art VLMs reveal that these models are indeed vulnerable to misleading prompts, often overriding clear visual evidence in favor of the conflicting text, and show an average performance drop of over 48.2% after only one round of persuasive conversation. Our findings highlight a critical limitation in current VLMs and underscore the need for improved robustness against textual manipulation.
+
+</details>
+
+### 37. What’s Left Unsaid? Detecting and Correcting Misleading Omissions in Multimodal News Previews
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.293/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`detection`、`multimodal safety`、`VLM safety`、`multimodal jailbreak`、`misinformation detection`、`misinformation`
+
+👤 **作者**：Fanxiao Li、…、Min-Yen Kan
+
+- 🎯 **研究动机**：新闻预览（图-标题对）即使事实正确也可选择性省略关键上下文诱导解释偏移，比显式误信息更隐蔽且少有研究
+- 🔬 **研究方法**：多阶段管道模拟预览与上下文理解构建 MM-Misleading 基准；提出 OMGuard：解释感知微调检测误导性，理由引导的标题改写降低误导印象
+- 📌 **结论**：把 8B 模型检测准确率提升至 235B LVLM 水平；误导多源于局部叙事缺失而非全局框架改变，图像驱动案例需视觉干预
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Even when factually correct, social-media news previews (image-headline pairs) can induce interpretation drift: by selectively omitting crucial context, they lead readers to form judgments that diverge from what the full article supports. This covert harm is subtler than explicit misinformation, yet remains underexplored. To address this gap, we develop a multi-stage pipeline that simulates preview-based and context-based understanding, enabling construction of the MM-Misleading benchmark. Using MM-Misleading, we systematically evaluate open-source LVLMs and uncover pronounced blind spots in omission-based misleadingness detection. We further propose OMGuard, which combines (1) Interpretation-Aware Fine-Tuning for misleadingness detection and (2) Rationale-Guided Misleading Content Correction, where explicit rationales guide headline rewriting to reduce misleading impressions. Experiments show that OMGuard lifts an 8B model’s detection accuracy to the level of a 235B LVLM while delivering markedly stronger end-to-end correction. Further analysis shows that misleadingness usually arises from local narrative shifts, such as missing background, instead of global frame changes, and identifies image-driven cases where text-only correction fails, underscoring the need for visual interventions.
+
+</details>
+
+### 38. Is this chart lying to me? Automating the detection of misleading visualizations
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.398/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`detection`、`multimodal jailbreak`、`visual adversarial input`、`safety bypass`、`misinformation detection`、`deceptive behavior`
+
+👤 **作者**：Jonathan Tonglet、Jan Zimny、Tinne Tuytelaars、Iryna Gurevych
+
+- 🎯 **研究动机**：误导性可视化驱动虚假信息，人类与 MLLM 常被骗，缺大规模开放数据集
+- 🔬 **研究方法**：Misviz 含 2,604 个真实可视化、12 类 misleader 标注，配套基于真实数据表用 Matplotlib 合成的 81,814 个 Misviz-synth
+- 📌 **结论**：SOTA MLLM、规则系统与微调分类器评测显示该任务仍极具挑战
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Misleading visualizations are a potent driver of misinformation on social media and the web. By violating chart design principles, they distort data and lead readers to draw inaccurate conclusions. Prior work has shown that both humans and multimodal large language models (MLLMs) are frequently deceived by such visualizations. Automatically detecting misleading visualizations and identifying the specific design rules they violate could help protect readers and reduce the spread of misinformation. However, the training and evaluation of AI models has been limited by the absence of large, diverse, and openly available datasets. In this work, we introduce Misviz, a benchmark of 2,604 real-world visualizations annotated with 12 types of misleaders. To support model training, we also release Misviz-synth, a synthetic dataset of 81,814 visualizations generated using Matplotlib and based on real-world data tables. We perform a comprehensive evaluation on both datasets using state-of-the-art MLLMs, rule-based systems, and fine-tuned classifiers. Our results reveal that the task remains highly challenging. We release Misviz, Misviz-synth, and the accompanying code.
+
+</details>
+
+### 39. Protecting multimodal large language models against misleading visualizations
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.377/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`defense`、`multimodal safety`、`VLM safety`、`multimodal jailbreak`、`misinformation detection`、`misinformation`
+
+👤 **作者**：Jonathan Tonglet、Tinne Tuytelaars、Marie Francine Moens、Iryna Gurevych
+
+- 🎯 **研究动机**：MLLM 在误导性可视化上的问答准确率平均降至随机基线水平
+- 🔬 **研究方法**：首个六种推理时方法比较（表格问答、重绘可视化等），在不损正常图表准确率的前提下提升误导图表问答
+- 📌 **结论**：表格问答与重绘两种方法有效，提升最多 19.6 个百分点
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Visualizations play a pivotal role in daily communication in an increasingly data-driven world. Research on multimodal large language models (MLLMs) for automated chart understanding has accelerated massively, with steady improvements on standard benchmarks. However, for MLLMs to be reliable, they must be robust to misleading visualizations, i.e., charts that distort the underlying data, leading readers to draw inaccurate conclusions. Here, we uncover an important vulnerability: MLLM question-answering (QA) accuracy on misleading visualizations drops on average to the level of the random baseline. To address this, we provide the first comparison of six inference-time methods to improve QA performance on misleading visualizations, without compromising accuracy on non-misleading ones. We find that two methods, table-based QA and redrawing the visualization, are effective, with improvements of up to 19.6 percentage points. We make our code and data available.
 
 </details>

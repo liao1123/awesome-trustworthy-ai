@@ -539,26 +539,7 @@ In CLAUDE.md, "do not" is a natural-language instruction that the model interpre
 
 </details>
 
-### 29. An Omitted Mode Is a Rare Rule: The Sampling-Verification Danger Law in Continuous Code World Models
-
-📄 [arXiv](https://arxiv.org/abs/2608.17956)　📅 2026-08
-
-**关键词**：`analysis`、`coding agent`、`repository attack`、`code security`
-
-👤 **作者**：Javier Aguilar Martín
-
-- 🎯 **研究动机**：Code World Model 范式以 N 个采样转移复现来接受模型，该接受在连续控制中究竟证明什么未知
-- 🔬 **研究方法**：定义期望风险并孤立精确因子：N 个独立 gate rollout 全部错过概率 r 的关键事件恰为 (1-r)^N；在三个混合仪器上利用被接受的模式盲模型并做真实 LLM 合成实验
-- 📌 **结论**：规划器被钉在模式边界、后悔近全部可得回报；GPT-5.x 修复 1D 钳位 105/111 但 2D 上 0/156；接受只证明样本一致性——可判别性是仪器的可测属性
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-In the Code World Model paradigm an LLM synthesizes an executable world model that a classical planner searches, and the model is accepted when it reproduces sampled transitions. We ask what that acceptance certifies in continuous control. We define the pipeline's danger as an expected risk and isolate its exact factor: the probability that N i.i.d. gate rollouts all miss a critical event of probability r is exactly (1-r)^N; an independent acceptance sample adds its budget to the exponent. On three hybrid instruments the accepted mode-blind model is exploited: the planner is pinned at the mode boundary at a regret of nearly the whole attainable return. We prove a localization budget, valid at boundary points: models with Lipschitz constant at most L differing by eta at a point disagree above tolerance eps on a region of volume at least kappa((eta-eps)/L)^(d+m); the discontinuous reset modes studied pay no such budget. With real LLM synthesis, GPT-5.x repairs an omitted 1D clamp in 105 of 111 mode-containing draws -- every attempt exact on 50 of 56 instrument-stream blocks (95% CI [0.781, 0.960]). On 2D regions no artifact recovers the rule (0/156); eight targeted interventions leave the failure in place, and positive controls locate it: a located rule is not induced, while given form and location the constants follow exactly. A version-space certificate proves identification is class-relative: at the widest dose the declared fit succeeds in 20/20 blocks and every sample-consistent circle is within tolerance in 18/20. We prove a class of entry rules exactly consistent with every sample yet harmless at play, so identifiability is a measurable property of the instrument. Re-scoring all 1034 artifacts on independent samples confirms acceptance certifies sample consistency and no more: where the gate is provably informative it covers about two percent of the exploited planner's queries.
-
-</details>
-
-### 30. Beyond Pass@k: Measuring Reliability and Security of Agentic Code Generation
+### 29. Beyond Pass@k: Measuring Reliability and Security of Agentic Code Generation
 
 📄 [arXiv](https://arxiv.org/abs/2608.14711)　📅 2026-08
 
@@ -577,7 +558,7 @@ AI coding agent benchmarks rank agents with the Chen et al. (2021) pass@k estima
 
 </details>
 
-### 31. “Impossible to Hide Secret ...”: Uncovering Security and Privacy Issues in LLM-Native IDEs
+### 30. “Impossible to Hide Secret ...”: Uncovering Security and Privacy Issues in LLM-Native IDEs
 
 📄 [arXiv](https://arxiv.org/abs/2607.26390) · 🌐 [Project](https://conf.researchr.org/details/ase-2026/ase-2026-research-track/133/-Impossible-to-Hide-Secret-Uncovering-Security-and-Privacy-Issues-in-LLM-Native)　📅 2026-07　🏷 ASE 2026
 
@@ -596,7 +577,7 @@ LLM-native IDEs (Integrated Development Environments), aka LIDEs, are designed f
 
 </details>
 
-### 32. Large Language Models at the Intersection of Software Engineering and Software Security:An Evidence-Centered Structured Survey and Research Agenda
+### 31. Large Language Models at the Intersection of Software Engineering and Software Security:An Evidence-Centered Structured Survey and Research Agenda
 
 📄 [arXiv](https://arxiv.org/abs/2608.21107)　📅 2026-08
 
@@ -612,5 +593,62 @@ LLM-native IDEs (Integrated Development Environments), aka LIDEs, are designed f
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 Large Language Models (LLMs) are moving from code completion toward repository-scale agents that retrieve context, edit files, execute tools, and participate in security-sensitive workflows. The evidence for these systems, however, remains divided between software engineering evaluations centered on functional task completion and software security evaluations centered on vulnerability detection, secure generation, or exploit-oriented validation. This evidence-centered structured survey synthesizes representative work available through May 31, 2026 across software engineering tasks, software security tasks, adaptation mechanisms, artifact granularity, and evaluation design. In addition to a task taxonomy, we introduce an assurance framework that separates functional correctness, security, operational reliability, evidence provenance, and agent authority. The review shows that execution feedback and repository access can substantially improve engineering task completion, but do not by themselves establish security; conversely, static-analysis labels or vulnerability-classification scores rarely establish deployable correctness. We identify recurring validity threats--weak test oracles, duplicated and temporally leaked data, changing agent harnesses, proxy-only security checks, and under-reported budgets and human intervention--and derive a minimum reporting protocol for cross-study comparison. The resulting research agenda prioritizes jointly secure-and-functional benchmarks, repository-scale threat models, calibrated human oversight, longitudinal maintainability evidence, and reproducible agent evaluation. The central conclusion is that model capability should be judged as an assurance case supported by task-appropriate evidence, rather than by a single benchmark score.
+
+</details>
+
+### 32. SecureVibeBench: Benchmarking Secure Vibe Coding of AI Agents via Reconstructing Vulnerability-Introducing Scenarios
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.1107/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`benchmark`、`agent safety`、`cyber misuse`、`agent safety benchmark`、`LLM agent`、`runtime guardrail`
+
+👤 **作者**：Junkai Chen、…、David Lo
+
+- 🎯 **研究动机**：现有基准未覆盖人类开发者真实引入漏洞的场景，无法公平比较人与代码 agent 的安全编码能力
+- 🔬 **研究方法**：构建 SecureVibeBench：来自 OSS-Fuzz 41 个项目的 105 个 C/C++ 任务，要求大仓库多文件编辑，结合功能测试与动静态双 oracle 安全检查
+- 📌 **结论**：评测 5 个代码 agent 与 5 个 LLM，最优 agent 也仅产出 23.8% 正确且安全的解法
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language model-powered code agents are rapidly transforming software engineering, yet the security risks of their generated code have become a critical concern. Existing benchmarks have provided valuable insights, but they fail to capture scenarios in which vulnerabilities are actually introduced by human developers, making fair comparisons between humans and agents infeasible. We therefore introduce SecureVibeBench, a benchmark of 105 C/C++ secure coding tasks sourced from 41 projects in OSS-Fuzz for code agents. SecureVibeBench has the following features: (i) realistic task settings that require multi-file edits in large repositories, (ii) aligned contexts based on real-world open-source vulnerabilities with precisely identified vulnerability introduction points, and (iii) comprehensive evaluation that combines functionality testing and security checking with both static and dynamic oracles. We evaluate 5 popular code agents like OpenHands, supported by 5 LLMs (e.g., Claude sonnet 4.5) on SecureVibeBench. Results show that current agents struggle to produce both correct and secure code, as even the best-performing one, produces merely 23.8% correct and secure solutions on SecureVibeBench.
+
+</details>
+
+### 33. XOXO: Stealthy Cross-Origin Context Poisoning Attacks against AI Coding Assistants
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.521/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`attack`、`data poisoning`、`language-model poisoning`、`training data`、`LLM backdoor`、`model integrity`
+
+👤 **作者**：Adam Štorek、…、Suman Jana
+
+- 🎯 **研究动机**：编码助手自动纳入不可信上下文，语义不变的代码改动即可隐蔽投毒
+- 🔬 **研究方法**：XOXO以重命名等语义保持变换诱导生成漏洞模式，GCGS黑盒搜索有效变换组合
+- 📌 **结论**：对八个SOTA模型平均ASR 73.20%，漏洞注入率最高66.67%，GitHub Copilot实战验证
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+AI coding assistants automatically gather context from potentially untrusted sources to generate code recommendations. We introduce Cross-Origin Context Poisoning (XOXO), a novel attack that exploits this automatic context inclusion by subtly manipulating code without changing its semantics. Attackers introduce semantics-preserving transformations (e.g., renamed variables) to shared code, causing AI assistants to unknowingly recommend vulnerable code patterns to victims. To systematically identify effective transformations, we present Greedy Cayley Graph Search (GCGS), a black-box algorithm that efficiently composes transformations to identify adversarial inputs. Our evaluation demonstrates XOXO’s effectiveness at making LLMs generate buggy and vulnerable code, achieving average attack success rates of 73.20% against eight state-of-the-art models including GPT 4.1 and Claude 3.5 Sonnet v2, with vulnerability injection rates up to 66.67%. We also demonstrate a real-world attack against GitHub Copilot, highlighting critical security gaps in current AI coding tools.
+
+</details>
+
+### 34. Securing Retrieval-Augmented Code Generation via Contextual Knowledge Injection: A Case for Embedded IoT Applications
+
+🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/sun-tong)　📅 2026　🏷 USENIX Security 2026
+
+**关键词**：`defense`、`RAG code generation`、`knowledge injection`、`tool-use agent`、`CVE reachability`
+
+👤 **作者**：Tong Sun、Jingyi Su、Yi Gao、Wei Dong
+
+- 🎯 **研究动机**：嵌入式 IoT 的仓库级 RACG 会经良性公开 API 传递性触达 pinned 快照内漏洞例程而继承已知 CVE，现有 secure RACG 忽视版本特定暴露，CVE 扫描器又判不了 API 可达性
+- 🔬 **研究方法**：提出 IoTRAGuarder：静态分析加证据门控 LLM 恢复 CVE 例程到公开 API 的反向调用链，构建版本感知安全知识库并做双层 API 对齐在线检索注入约束
+- 📌 **结论**：在 44 个 Zephyr 任务、4 个 LLM 上将整体安全成功率从 5.11% 提升到 78.41%
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Repository-grounded retrieval-augmented code generation (RACG) is increasingly used in embedded IoT development by retrieving code and documentation from a pinned RTOS/SDK repository (e.g., Zephyr OS). In this setting, security risks are often version-inherited: even without retrieval poisoning, generated applications may invoke benign-looking public APIs that transitively reach vulnerable internal routines in the pinned snapshot, thereby inheriting known CVEs. Existing secure RACG pipelines largely focus on task-level intent and generic vulnerability patterns, which can miss repository- and version-specific exposure. Meanwhile, conventional CVE scanners can flag vulnerable locations but cannot determine whether those vulnerabilities are reachable through the public APIs that the generator commits to during repository-grounded generation. In this paper, we present IoTRAGuarder, a contextual knowledge injection framework that aligns security hardening with generation-time API selection under repository grounding. IoTRAGuarder (i) recovers auditable reverse call chains from CVE-localized internals to exposing public APIs via static analysis plus an evidence-gated LLM to bridge indirections and macro-driven "call-graph islands", (ii) constructs a version-aware security knowledge base that binds affected version intervals to exposed public APIs with prompt-ready constraints, safer alternatives, or avoidance/upgrade guidance, and (iii) performs dual-layer, API-aligned online retrieval to inject concise, version-matched constraints into the final prompt. We evaluate IoTRAGuarder on 44 real-world Zephyr tasks across four LLMs. Compared to the prior state-of-the-art secure RACG baseline, IoTRAGuarder improves the overall security success rate from 5.11% to 78.41%.
 
 </details>

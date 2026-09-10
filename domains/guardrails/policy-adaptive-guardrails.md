@@ -206,17 +206,7 @@ Large language model guardrails can be viewed as policy-consistency problems: a 
 
 </details>
 
-### 11. SCOPE: Streaming Covariance-Orthogonal Post-Hoc Editing for Continual LLM Safety Governance
-
-🌐 [Project](https://doi.org/10.1145/3770855.3817993)　📅 2026-08　🏷 KDD 2026
-
-**关键词**：`defense`、`continual safety editing`、`post-hoc governance`、`capability retention`
-
-- 🎯 **研究动机**：持续叠加安全编辑会侵蚀模型既有能力
-- 🔬 **研究方法**：SCOPE以流式协方差正交化的post-hoc编辑，使更新与能力方向正交
-- 📌 **结论**：实现连续安全治理且能力保留
-
-### 12. SingGuard: A Policy-Adaptive Multimodal LLM Guardrail with Dynamic Reasoning
+### 11. SingGuard: A Policy-Adaptive Multimodal LLM Guardrail with Dynamic Reasoning
 
 📄 [arXiv](https://arxiv.org/abs/2606.22873)　📅 2026-06
 
@@ -235,7 +225,7 @@ Vision-language models (VLMs) are increasingly deployed in consumer, medical, fi
 
 </details>
 
-### 13. ConsisGuard: Aligning Safety Deliberation with Policy Enforcement in LLM Guardrails
+### 12. ConsisGuard: Aligning Safety Deliberation with Policy Enforcement in LLM Guardrails
 
 📄 [arXiv](https://arxiv.org/abs/2605.31073)　📅 2026-05
 
@@ -254,7 +244,7 @@ Reasoning-based LLM guardrails improve safety moderation by generating explicit 
 
 </details>
 
-### 14. LPG: Balancing Efficiency and Policy Reasoning in Latent Policy Guardrails
+### 13. LPG: Balancing Efficiency and Policy Reasoning in Latent Policy Guardrails
 
 📄 [arXiv](https://arxiv.org/abs/2605.17329)　📅 2026-05
 
@@ -273,7 +263,7 @@ Guardrails are a critical safety layer for modern AI systems, but their operatin
 
 </details>
 
-### 15. LiSA: Lifelong Safety Adaptation via Conservative Policy Induction
+### 14. LiSA: Lifelong Safety Adaptation via Conservative Policy Induction
 
 📄 [arXiv](https://arxiv.org/abs/2605.14454)　📅 2026-05
 
@@ -292,7 +282,7 @@ As AI agents move from chat interfaces to systems that read private data, call t
 
 </details>
 
-### 16. Who Decides What Is Harmful? Content Moderation Policy Through A Multi-Agent Personalised Inference Framework
+### 15. Who Decides What Is Harmful? Content Moderation Policy Through A Multi-Agent Personalised Inference Framework
 
 📄 [arXiv](https://arxiv.org/abs/2605.01416) · 🌐 [Project](https://aisel.aisnet.org/ecis2026/is_policy/is_policy/2/)　📅 2026-05
 
@@ -311,7 +301,7 @@ The increasing scale and complexity of online platforms raises critical policy q
 
 </details>
 
-### 17. BARRED: Synthetic Training of Custom Policy Guardrails via Asymmetric Debate
+### 16. BARRED: Synthetic Training of Custom Policy Guardrails via Asymmetric Debate
 
 📄 [arXiv](https://arxiv.org/abs/2604.25203) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64273)　📅 2026-04　🏷 ICML 2026
 
@@ -330,7 +320,7 @@ Deploying guardrails for custom policies remains challenging, as generic safety 
 
 </details>
 
-### 18. FlexGuard: Continuous Risk Scoring for Strictness-Adaptive LLM Content Moderation
+### 17. FlexGuard: Continuous Risk Scoring for Strictness-Adaptive LLM Content Moderation
 
 📄 [arXiv](https://arxiv.org/abs/2602.23636) · 🎓 [Official](https://aclanthology.org/2026.acl-long.263/)　📅 2026-02　🏷 ACL 2026
 
@@ -349,7 +339,7 @@ Ensuring the safety of LLM-generated content is essential for real-world deploym
 
 </details>
 
-### 19. CourtGuard: A Model-Agnostic Framework for Zero-Shot Policy Adaptation in LLM Safety
+### 18. CourtGuard: A Model-Agnostic Framework for Zero-Shot Policy Adaptation in LLM Safety
 
 📄 [arXiv](https://arxiv.org/abs/2602.22557)　📅 2026-02
 
@@ -368,7 +358,7 @@ Current safety mechanisms for Large Language Models (LLMs) rely heavily on stati
 
 </details>
 
-### 20. Stay in Character, Stay Safe: Dual-Cycle Adversarial Self-Evolution for Role-Playing Agents
+### 19. Stay in Character, Stay Safe: Dual-Cycle Adversarial Self-Evolution for Role-Playing Agents
 
 🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/5873.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track)　📅 2026
 
@@ -385,7 +375,7 @@ LLM-based role-playing has rapidly improved in fidelity, yet stronger adherence 
 
 </details>
 
-### 21. Taxonomy-Adaptive Moderation Model with Robust Guardrails for Large Language Models
+### 20. Taxonomy-Adaptive Moderation Model with Robust Guardrails for Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2512.05339)　📅 2025-12
 
@@ -404,7 +394,7 @@ Large Language Models (LLMs) are typically aligned for safety during the post-tr
 
 </details>
 
-### 22. Beyond One-Size-Fits-All: Personalized Harmful Content Detection with In-Context Learning
+### 21. Beyond One-Size-Fits-All: Personalized Harmful Content Detection with In-Context Learning
 
 📄 [arXiv](https://arxiv.org/abs/2511.05532) · 📊 [Dataset](https://huggingface.co/datasets/ChaseLabs/Harmful-Texts-On-Mastodon)　📅 2025-10
 
@@ -423,7 +413,7 @@ The proliferation of harmful online content--e.g., toxicity, spam, and negative 
 
 </details>
 
-### 23. Learning Efficient Guardrails for Compliance
+### 22. Learning Efficient Guardrails for Compliance
 
 📄 [arXiv](https://arxiv.org/abs/2510.03485) · 🌐 [Project](https://rakanwen.github.io/policyguard-page/) · 🎓 [Official](https://icml.cc/virtual/2026/poster/60652)　📅 2025-10　🏷 ICML 2026
 
@@ -442,7 +432,7 @@ Autonomous web agents are increasingly deployed for long-horizon tasks, yet thei
 
 </details>
 
-### 24. GSPR: Aligning LLM Safeguards as Generalizable Safety Policy Reasoners
+### 23. GSPR: Aligning LLM Safeguards as Generalizable Safety Policy Reasoners
 
 📄 [arXiv](https://arxiv.org/abs/2509.24418) · 📝 [OpenReview](https://openreview.net/forum?id=H2e5TerulJ)　📅 2025-09　🏷 ICLR 2026
 
@@ -461,7 +451,7 @@ As large language models (LLMs) are integrated into numerous applications, LLMs'
 
 </details>
 
-### 25. Scaling Policy Compliance Assessment in Language Models with Policy Reasoning Traces
+### 24. Scaling Policy Compliance Assessment in Language Models with Policy Reasoning Traces
 
 📄 [arXiv](https://arxiv.org/abs/2509.23291) · 📝 [OpenReview](https://openreview.net/forum?id=QgEDWbZQ6V)　📅 2025-09　🏷 ICLR 2026
 
@@ -480,7 +470,7 @@ Policy compliance assessment is a fundamental task of evaluating whether an inpu
 
 </details>
 
-### 26. DynaGuard: A Dynamic Guardian Model With User-Defined Policies
+### 25. DynaGuard: A Dynamic Guardian Model With User-Defined Policies
 
 📄 [arXiv](https://arxiv.org/abs/2509.02563) · 📝 [OpenReview](https://openreview.net/forum?id=gc8Ylt0lbm) · 🎓 [Official](https://iclr.cc/virtual/2026/poster/10008138)　📅 2025-09　🏷 ICLR 2026
 
@@ -499,7 +489,7 @@ Guardian models play a crucial role in ensuring the safety and ethical behavior 
 
 </details>
 
-### 27. Towards Trustworthy Multimodal Moderation via Policy-Aligned Reasoning and Hierarchical Labeling
+### 26. Towards Trustworthy Multimodal Moderation via Policy-Aligned Reasoning and Hierarchical Labeling
 
 📄 [arXiv](https://arxiv.org/abs/2508.03296) · 🌐 [Project](https://doi.org/10.1145/3770854.3783934)　📅 2025-08　🏷 KDD 2026
 
@@ -518,7 +508,7 @@ Social platforms have revolutionized information sharing, but also accelerated t
 
 </details>
 
-### 28. PAM: Training Policy-Aligned Moderation Filters at Scale
+### 27. PAM: Training Policy-Aligned Moderation Filters at Scale
 
 📄 [arXiv](https://arxiv.org/abs/2505.19766) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2025-05
 
@@ -537,7 +527,7 @@ Large language models (LLMs) remain vulnerable to misalignment and jailbreaks, m
 
 </details>
 
-### 29. Granite.Trust Policy Tools: Shareable, Actionable Policies for Generative AI Applications
+### 28. Granite.Trust Policy Tools: Shareable, Actionable Policies for Generative AI Applications
 
 📄 [arXiv](https://arxiv.org/abs/2608.23870)　📅 2026-08
 
@@ -556,7 +546,7 @@ When it comes to safety policies for generative AI, one size does not fit all. E
 
 </details>
 
-### 30. ReguSim: Evaluating LLM Agent Rule Grounding in Financial Compliance
+### 29. ReguSim: Evaluating LLM Agent Rule Grounding in Financial Compliance
 
 📄 [arXiv](https://arxiv.org/abs/2608.19974)　📅 2026-08
 
@@ -575,7 +565,7 @@ LLM agents in financial markets may cite rules yet still submit orders that viol
 
 </details>
 
-### 31. It is not enough to give your moderation rules to ChatGPT: Policy-as-Prompt Moderation and Its Potential Impacts on Community Governance
+### 30. It is not enough to give your moderation rules to ChatGPT: Policy-as-Prompt Moderation and Its Potential Impacts on Community Governance
 
 📄 [arXiv](https://arxiv.org/abs/2607.12149)　📅 2026-07
 
@@ -594,7 +584,7 @@ Content moderation practices and governance paradigms are changing rapidly, as f
 
 </details>
 
-### 32. SafePyramid: A Hierarchical Benchmark for In-context Policy Guardrailing
+### 31. SafePyramid: A Hierarchical Benchmark for In-context Policy Guardrailing
 
 📄 [arXiv](https://arxiv.org/abs/2606.29887)　📅 2026-06
 
@@ -613,7 +603,7 @@ In real-world applications, guardrails are often expected to identify unsafe use
 
 </details>
 
-### 33. PluRule: A Benchmark for Moderating Pluralistic Communities on Social Media
+### 32. PluRule: A Benchmark for Moderating Pluralistic Communities on Social Media
 
 📄 [arXiv](https://arxiv.org/abs/2605.17187) · 🎓 [Official](https://aclanthology.org/2026.acl-long.1590/)　📅 2026-05　🏷 ACL 2026
 
@@ -632,7 +622,7 @@ Social media are shifting towards pluralism -- community-governed platforms wher
 
 </details>
 
-### 34. Beyond Accuracy: Policy Invariance as a Reliability Test for LLM Safety Judges
+### 33. Beyond Accuracy: Policy Invariance as a Reliability Test for LLM Safety Judges
 
 📄 [arXiv](https://arxiv.org/abs/2605.06161)　📅 2026-05
 
@@ -651,7 +641,7 @@ LLM-as-a-Judge pipelines have become the de facto evaluator for agent safety, ye
 
 </details>
 
-### 35. Improving Labeling Consistency with Detailed Constitutional Definitions and AI-Driven Evaluation
+### 34. Improving Labeling Consistency with Detailed Constitutional Definitions and AI-Driven Evaluation
 
 📄 [arXiv](https://arxiv.org/abs/2605.24247)　📅 2026-05
 
@@ -670,7 +660,7 @@ Many automated labeling pipelines classify inputs into categories defined by a w
 
 </details>
 
-### 36. GMP: A Benchmark for Content Moderation under Co-occurring Violations and Dynamic Rules
+### 35. GMP: A Benchmark for Content Moderation under Co-occurring Violations and Dynamic Rules
 
 📄 [arXiv](https://arxiv.org/abs/2603.01724)　📅 2026-03
 
@@ -689,7 +679,7 @@ Online content moderation is essential for maintaining a healthy digital environ
 
 </details>
 
-### 37. Poly-Guard: Massive Multi-Domain Safety Policy-Grounded Guardrail Dataset
+### 36. Poly-Guard: Massive Multi-Domain Safety Policy-Grounded Guardrail Dataset
 
 📄 [arXiv](https://arxiv.org/abs/2506.19054) · 📊 [Dataset](https://huggingface.co/datasets/Virtue-AI-HUB/PolyGuard)　📅 2025-06　🏷 NeurIPS 2025
 
@@ -708,7 +698,7 @@ As LLMs become widespread across diverse applications, concerns about the securi
 
 </details>
 
-### 38. The Guard That Cried Wolf: How Scary Words Make Agent Guardrails Refuse Legitimate Actions
+### 37. The Guard That Cried Wolf: How Scary Words Make Agent Guardrails Refuse Legitimate Actions
 
 📄 [arXiv](https://arxiv.org/abs/2608.27009)　📅 2026-08
 
@@ -727,7 +717,7 @@ Agent guardrails are checks that approve or refuse each action before an LLM exe
 
 </details>
 
-### 39. COMPASS: A Framework for Evaluating Organization-Specific Policy Alignment in LLMs
+### 38. COMPASS: A Framework for Evaluating Organization-Specific Policy Alignment in LLMs
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.2139/)　📅 2026　🏷 ACL 2026
 
@@ -746,7 +736,7 @@ As large language models are deployed in high-stakes enterprise applications, fr
 
 </details>
 
-### 40. DUET: Dual-Teacher On-Policy Distillation via Same-Weight Disagreement for Prohibition Compliance
+### 39. DUET: Dual-Teacher On-Policy Distillation via Same-Weight Disagreement for Prohibition Compliance
 
 📄 [arXiv](https://arxiv.org/abs/2608.14644)　📅 2026-08
 
@@ -762,5 +752,24 @@ As large language models are deployed in high-stakes enterprise applications, fr
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 Real-world LLM deployments increasingly rely on runtime-injected prohibitions--enterprise policies, PII redlines, tool boundaries--that vary per request and per tenant. Conventional post-training is structurally ill-suited: SFT hides the violation signal in compliant labels, and DPO's sequence-level preferences mismatch token-localized violations. We propose DUET, a token-selective on-policy distillation method for prohibition compliance. DUET pairs a teacher that sees the prohibition (positive) with an identical-weight teacher that does not (negative). Because the two teachers differ only in prohibition visibility, their per-token disagreement isolates the prohibition's causal effect--yielding a clean supervision signal uncontaminated by model capacity or mismatch. This disagreement drives two complementary mechanisms: signal cleaning, which discards agreement tokens as redundant or prefix-corrupted, and preference-directed learning, which pushes the student away from the negative teacher and toward the positive one at token granularity, embedding DPO-style optimization directly into OPD without offline preference data. We construct an industrial Prohibition-Compliance benchmark spanning five task families covering explicit-refusal, paraphrase robustness, and over-refusal. Across 1.5B-8B Qwen variants, DUET achieves 72.3-85.2% violation compliance while preserving 88-93% normal utility, dramatically outperforming teacher model and other distillation baselines. External evaluation on SysBench confirms improved safety alignment with minimal degradation on GSM8K and MATH-500.
+
+</details>
+
+### 40. Membrane: A Self-Evolving Contrastive Safety Memory for LLM Agent Defense
+
+📄 [arXiv](https://arxiv.org/abs/2606.05743)　📅 2026-06
+
+**关键词**：`defense`、`contrastive safety memory`、`self-evolution`、`poison resistance`
+
+👤 **作者**：Minseok Choi、…、Youngjun Kwak
+
+- 🎯 **研究动机**：微调安全分类器无法跟上不断演化的越狱，自适应记忆式护栏又容易过度拒绝与已存攻击相似的良性请求
+- 🔬 **研究方法**：提出 Membrane：对比安全记忆（CSM）每个单元同时配对阻断有害查询与放行相似良性请求的条件，按攻击策略索引、免训练自进化，推理时检索单元作 grounding 上下文
+- 📌 **结论**：HarmBench 与 AgentHarm 上六种越狱攻击均获最高 F1；良性拒绝率仅 7-14%（此前护栏 28-85%），跨攻击迁移保持 87-88% F1 且抗记忆投毒
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Despite advances in safety alignment, large language models remain vulnerable to continuously evolving jailbreaks. Existing fine-tuned safety classifiers cannot adapt to these evolving attacks, while adaptive memory-based guardrails tend to over-refuse benign queries that resemble stored attacks. We propose Membrane, a self-evolving guardrail built on Contrastive Safety Memory (CSM): each cell pairs the conditions for blocking a harmful query with those for permitting a superficially similar benign request. Without retraining, Membrane evolves CSM by distilling each harmful interaction and its benign counterpart into a contrastive cell indexed by the underlying attack strategy, so that one cell generalizes across topical variants of the same mechanism. At inference, retrieved cells serve as grounding context for precise safety decisions. Across model-level safety on HarmBench and agent-level safety on AgentHarm, Membrane achieves the highest F1 on all six jailbreak attacks. Notably, benign refusal on AgentHarm stays at 7-14%, well below the 28-85% range of prior guards. Memory cells also retain 87-88% F1 under cross-attack transfer and remain stable under memory poisoning.
 
 </details>

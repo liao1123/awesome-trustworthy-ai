@@ -274,3 +274,35 @@ a.badge:hover { color: var(--accent); }
   #searchBox { width: 100%; }
   .topbar-controls { flex-basis: 100%; }
 }
+
+/* domain hierarchy */
+.scope-crumb {
+  margin: 0 0 2px;
+  color: var(--muted, #8a8f98);
+  font-size: 13px;
+}
+.scope-desc {
+  margin: 6px 0 0;
+  max-width: 72ch;
+  color: var(--muted-strong, #5c6370);
+  font-size: 13.5px;
+  line-height: 1.65;
+}
+h2.leaf-title {
+  margin: 34px 0 10px;
+  font-size: 19px;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+h3.section-title {
+  margin: 22px 0 8px;
+  font-size: 15.5px;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  opacity: 0.92;
+}
+.nav-group-header.active {
+  font-weight: 700;
+}

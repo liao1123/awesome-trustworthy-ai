@@ -434,26 +434,7 @@ Self-report is the cheapest oversight channel a deployer has, and on capable com
 
 </details>
 
-### 23. GUIDE: Interpretable GUI Agent Evaluation via Hierarchical Diagnosis
-
-📄 [arXiv](https://arxiv.org/abs/2604.04399)　📅 2026-04
-
-**关键词**：`analysis`、`GUI trajectory`、`subtask diagnosis`、`interpretable evaluator`
-
-👤 **作者**：Yuwen Zhai、…、Benlei Cui
-
-- 🎯 **研究动机**：对整条长轨迹做单次整体判断不可靠，二元结论无法定位失败位置与原因
-- 🔬 **研究方法**：GUIDE 三阶段：轨迹分割为语义子任务单元、上下文中的子任务诊断（完成判定加结构化错误分析与修正建议）、汇总为任务级判断
-- 📌 **结论**：在 932 条电商轨迹、AgentRewardBench 与 AndroidBench 上超最强基线最多 5.35 个百分点，并产出可直接指导 agent 改进的诊断报告
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Evaluating GUI agents presents a distinct challenge: trajectories are long, visually grounded, and open-ended, yet evaluation must be both accurate and interpretable. Existing approaches typically apply a single holistic judgment over the entire action-observation sequence-a strategy that proves unreliable on long-horizon tasks and yields binary verdicts offering no insight into where or why an agent fails. This opacity limits the utility of evaluation as a diagnostic tool for agent development. We introduce GUIDE (GUI Understanding and Interpretable Diagnostic Evaluation), a framework that decomposes trajectory assessment into three sequential stages mirroring the compositional structure of GUI tasks. Trajectory Segmentation partitions the full trace into semantically coherent subtask units. Subtask Diagnosis evaluates each unit in context, assigning a completion verdict and generating a structured error analysis with corrective recommendations. Overall Summary aggregates per-subtask diagnoses into a task-level judgment. By operating on bounded subtask segments rather than full trajectories, GUIDE mitigates the context overload that degrades existing evaluators as task complexity grows. We validate GUIDE on three benchmarks: an industrial e-commerce dataset of 932 trajectories, AGENTREWARDBENCH spanning five web agent tasks with 1302 trajectories, and AndroidBench for mobile device control. Across all settings, GUIDE substantially outperforms existing evaluators-achieving up to 5.35 percentage points higher accuracy than the strongest baseline-while producing structured diagnostic reports that directly inform agent improvement.
-
-</details>
-
-### 24. When Actions Go Off-Task: Detecting and Correcting Misaligned Actions in Computer-Use Agents
+### 23. When Actions Go Off-Task: Detecting and Correcting Misaligned Actions in Computer-Use Agents
 
 📄 [arXiv](https://arxiv.org/abs/2602.08995) · 🌐 [Project](https://osu-nlp-group.github.io/Misaligned-Action-Detection/) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64196)　📅 2026-02　🏷 ICML 2026
 
@@ -472,7 +453,7 @@ Computer-use agents (CUAs) have made tremendous progress in the past year, yet t
 
 </details>
 
-### 25. WebSentinel: Detecting and Localizing Prompt Injection Attacks for Web Agents
+### 24. WebSentinel: Detecting and Localizing Prompt Injection Attacks for Web Agents
 
 📄 [arXiv](https://arxiv.org/abs/2602.03792)　📅 2026-02
 
@@ -491,7 +472,7 @@ Prompt injection attacks manipulate webpage content to cause web agents to execu
 
 </details>
 
-### 26. WAInjectBench: Benchmarking Prompt Injection Detections for Web Agents
+### 25. WAInjectBench: Benchmarking Prompt Injection Detections for Web Agents
 
 📄 [arXiv](https://arxiv.org/abs/2510.01354)　📅 2025-10
 
@@ -510,7 +491,7 @@ Multiple prompt injection attacks have been proposed against web agents. At the 
 
 </details>
 
-### 27. LaSM: Layer-wise Scaling Mechanism for Defending Pop-up Attack on GUI Agents
+### 26. LaSM: Layer-wise Scaling Mechanism for Defending Pop-up Attack on GUI Agents
 
 📄 [arXiv](https://arxiv.org/abs/2507.10610) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Yan_LaSM_Layer-wise_Scaling_Mechanism_for_Defending_Pop-up_Attack_on_GUI_CVPR_2026_paper.html)　📅 2025-07　🏷 CVPR 2026
 
@@ -529,7 +510,7 @@ Graphical user interface (GUI) agents built on multimodal large language models 
 
 </details>
 
-### 28. RedTeamCUA: Realistic Adversarial Testing of Computer-Use Agents in Hybrid Web-OS Environments
+### 27. RedTeamCUA: Realistic Adversarial Testing of Computer-Use Agents in Hybrid Web-OS Environments
 
 📄 [arXiv](https://arxiv.org/abs/2505.21936) · 🌐 [Project](https://osu-nlp-group.github.io/RedTeamCUA/) · 🎓 [Official](https://iclr.cc/virtual/2026/poster/10006548)　📅 2025-05　🏷 ICLR 2026
 
@@ -548,45 +529,7 @@ Computer-use agents (CUAs) promise to automate complex tasks across operating sy
 
 </details>
 
-### 29. WebTestBench: Evaluating Computer-Use Agents towards End-to-End Automated Web Testing
-
-📄 [arXiv](https://arxiv.org/abs/2603.25226)　📅 2026-03
-
-**关键词**：`benchmark`、`web testing`、`logical constraint`、`long-horizon reliability`
-
-👤 **作者**：Fanheng Kong、…、Kun Gai
-
-- 🎯 **研究动机**：vibe coding 时代需自动验证网页功能可靠实现，现有方法依赖静态视觉相似或预定义清单，忽略潜在逻辑约束
-- 🔬 **研究方法**：WebTestBench 把测试分解为清单生成与缺陷检测两个级联子任务，提出基线框架 WebTester 并评测主流 LLM
-- 📌 **结论**：暴露测试完整性不足、检测瓶颈与长程交互不可靠，CUA 能力与工业级部署需求差距显著
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-The emergence of Large Language Models (LLMs) has catalyzed a paradigm shift in programming, giving rise to "vibe coding", where users can build complete projects and even control computers using natural language instructions. This paradigm has driven automated webpage development, but it introduces a new requirement about how to automatically verify whether the web functionalities are reliably implemented. Existing works struggle to adapt, relying on static visual similarity or predefined checklists that constrain their utility in open-ended environments. Furthermore, they overlook a vital aspect of software quality, namely latent logical constraints. To address these gaps, we introduce WebTestBench, a benchmark for evaluating end-to-end automated web testing. WebTestBench encompasses comprehensive dimensions across diverse web application categories. We decompose the testing process into two cascaded sub-tasks, checklist generation and defect detection, and propose WebTester, a baseline framework for this task. Evaluating popular LLMs with WebTester reveals severe challenges, including insufficient test completeness, detection bottlenecks, and long-horizon interaction unreliability. These findings expose a substantial gap between current computer-use agent capabilities and industrial-grade deployment demands. We hope that WebTestBench provides valuable insights and guidance for advancing end-to-end automated web testing. Our dataset and code are available at https://github.com/friedrichor/WebTestBench.
-
-</details>
-
-### 30. ContractSkill: Repairable Contract-Based Skills for Multimodal Web Agents
-
-📄 [arXiv](https://arxiv.org/abs/2603.20340)　📅 2026-03
-
-**关键词**：`tool`、`explicit contract`、`fault localization`、`local repair`
-
-👤 **作者**：Zijian Lu、…、Shi Jin
-
-- 🎯 **研究动机**：自生成 web skill 隐式不可检查，失败后只能整体重写且不稳定
-- 🔬 **研究方法**：ContractSkill 把草稿 skill 转为显式程序结构的可执行工件，支持确定性验证、故障定位与最小局部修复
-- 📌 **结论**：VisualWebArena 上有效；修复后的工件可脱离源模型复用，核心是让 skill 显式、可执行、可修复
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Self-generated skills for web agents are often unstable and can even hurt performance relative to direct acting. We argue that the key bottleneck is not only skill generation quality, but the fact that web skills remain implicit and therefore cannot be checked or locally repaired. To address this, we present ContractSkill, a framework that converts a draft skill into an executable artifact with explicit procedural structure, enabling deterministic verifica tion, fault localization, and minimal local repair. This turns skill refinement from full rewriting into localized editing of a single skill artifact. Experiments on VisualWebArena show that Contract Skill is effective in realistic web environments, while MiniWoB provides a controlled test of the mechanism behind the gain. Under matched transfer layers, repaired artifacts also remain reusable after removing the source model from the loop, providing evi dence of portability within the same benchmark family rather than full-benchmark generalization. These results suggest that the central challenge is not merely generating skills, but mak ing them explicit, executable, and repairable. Code is available at https://github.com/underfitting-lu/contractskill.git.
-
-</details>
-
-### 31. Are Android GUI Agents Robust Against Runtime Anomalies? AnTrap: Evaluating Agents in Dynamic Adversarial Environments
+### 28. Are Android GUI Agents Robust Against Runtime Anomalies? AnTrap: Evaluating Agents in Dynamic Adversarial Environments
 
 📄 [arXiv](https://arxiv.org/abs/2608.24099)　📅 2026-08
 
@@ -605,7 +548,7 @@ GUI agents often encounter dynamic anomalies when deployed on Android devices, f
 
 </details>
 
-### 32. MobileWorldSafety: Benchmarking GUI Agent Safety Against Environmental Injection Attacks in Android Apps
+### 29. MobileWorldSafety: Benchmarking GUI Agent Safety Against Environmental Injection Attacks in Android Apps
 
 📄 [arXiv](https://arxiv.org/abs/2608.17659)　📅 2026-08
 
@@ -624,26 +567,7 @@ LLM-powered GUI agents that autonomously operate smartphones are rapidly transit
 
 </details>
 
-### 33. AgentHijack: Benchmarking Computer Use Agent Robustness to Common Environment Corruptions
-
-📄 [arXiv](https://arxiv.org/abs/2605.25707) · 🎓 [Official](https://icml.cc/virtual/2026/poster/66792)　📅 2026-05　🏷 ICML 2026
-
-**关键词**：`benchmark`、`tool-use attack`、`computer-use agent`、`adversarial robustness`、`LLM agent security`、`empirical evaluation`
-
-👤 **作者**：Jingwei Sun、Jianing Zhu、Yuanyi Li、Tongliang Liu、Xia HU、Bo Han
-
-- 🎯 **研究动机**：真实桌面环境充满弹窗、分辨率变化等干扰，CUA 对常见腐蚀的鲁棒性缺评估
-- 🔬 **研究方法**：AgentHijack 引入 9 种可配置常见腐蚀复现不完美场景；AgentHijack-Agent 整合增强 grounding 的动作生成器与负责行为总结和环境检查的 onlooker
-- 📌 **结论**：轻微腐蚀即导致大幅性能退化，凸显 agent 脆弱性；所提防御框架经验证有效
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Autonomous computer use agents that powered by multimodal large language models (MLLMs) are emerging as capable assistants for completing complex digital workflows. However, real-world execution environments are far from ideal: pop-ups, resolution changes, and competing applications frequently interfere with agent perception and control. We introduce AgentHijack, a benchmark designed to evaluate the robustness of computer-use agents under common corruptions, where the uncertainties in dynamic environment disrupt the execution flow without direct adversarial intent. Specifically, AgentHijack introduces 9 configurable common corruptions to replicate realistic imperfect scenarios. We evaluate a variety of desktop tasks that utilize MLLM-based agents and discover that even minor instances of corruption can result in substantial performance degradation, which emphasizes the fragility of agents and underscores the necessity of robustness evaluation. Afterward, we propose AgentHijack-Agent, a framework that integrates an action generator with enhanced grounding capabilities and an onlooker responsible for behavior summarization and environment checking. Extensive experiments validate its effectiveness. Our code, environment, baseline models and data are publicly available at: https://AgentHijack.github.io.
-
-</details>
-
-### 34. Benchmarking Web Agent Safety under E-commerce Deceptive Interfaces
+### 30. Benchmarking Web Agent Safety under E-commerce Deceptive Interfaces
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1009/)　📅 2026　🏷 ACL 2026
 
@@ -662,7 +586,7 @@ As autonomous web agents are increasingly deployed to perform real-world tasks, 
 
 </details>
 
-### 35. It's a TRAP! Task-Redirecting Agent Persuasion Benchmark for Web Agents
+### 31. It's a TRAP! Task-Redirecting Agent Persuasion Benchmark for Web Agents
 
 📄 [arXiv](https://arxiv.org/abs/2512.23128) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63888)　📅 2025-12　🏷 ICML 2026
 
@@ -681,26 +605,7 @@ Web-based agents powered by large language models are increasingly used for task
 
 </details>
 
-### 36. RISK: A Framework for GUI Agents in E-commerce Risk Management
-
-🎓 [Official](https://aclanthology.org/2026.acl-long.1720/)　📅 2026　🏷 ACL 2026
-
-**关键词**：`tool`、`agent safety`、`computer-use agent`、`web agent`、`LLM agent`、`runtime guardrail`
-
-👤 **作者**：Renqi Chen、…、Shuai Chen
-
-- 🎯 **研究动机**：电商风险管理需要多步有状态的深度网页交互，传统爬虫与单步 GUI agent 均无法胜任
-- 🔬 **研究方法**：提出 RISK：含 8,492 条单步与 2,386 条多步轨迹的 RISK-Data、802 单步加 320 多步的 RISK-Bench，以及带格式约束与多级奖励重加权的 R1 式强化微调 RISK-R1
-- 📌 **结论**：RISK-R1 以 SOTA 基线 7.2% 的参数量离线单步提升 6.8%、多步提升 8.8%，在线任务成功率达 70.5%
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-E-commerce risk management requires aggregating diverse, deeply embedded web data through multi-step, stateful interactions, which traditional scraping methods and most existing Graphical User Interface (GUI) agents cannot handle. These agents are typically limited to single-step tasks and lack the ability to manage dynamic, interactive content critical for effective risk assessment. To address this challenge, we introduce RISK, a novel framework designed to build and deploy GUI agents for this domain. RISK integrates three components: (1) RISK-Data, a dataset of 8,492 single-step and 2,386 multi-step interaction trajectories, collected through a high-fidelity browser framework and a meticulous data curation process; (2) RISK-Bench, a benchmark with 802 single-step and 320 multi-step trajectories across three difficulty levels for standardized evaluation; and (3) RISK-R1, a R1-style reinforcement fine-tuning framework considering four aspects: (i) Output Format Constraint, (ii) Single-step and (iii) Multi-step Level Reward, and (iv) Task Level Reweight. Experiments show that RISK-R1 achieves a 6.8% improvement in offline single-step and an 8.8% improvement in offline multi-step, using only 7.2% of the parameters of the SOTA baseline. Moreover, it attains a top task success rate of 70.5% in online evaluation. RISK provides a scalable, domain-specific solution for automating complex web interactions in e-commerce risk management. The code is available at https://github.com/RenqiChen/RISK-GUI.
-
-</details>
-
-### 37. Don’t Click That: Teaching Web Agents to Resist Deceptive Interfaces
+### 32. Don’t Click That: Teaching Web Agents to Resist Deceptive Interfaces
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.310/)　📅 2026　🏷 ACL 2026
 
@@ -719,7 +624,7 @@ Vision-language model (VLM) based web agents demonstrate impressive autonomous G
 
 </details>
 
-### 38. JARVIS or Ultron? A Survey on the Safety and Security Threats of Computer-Using Agents
+### 33. JARVIS or Ultron? A Survey on the Safety and Security Threats of Computer-Using Agents
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.2106/)　📅 2026　🏷 ACL 2026
 
@@ -738,26 +643,7 @@ Recently, AI-driven interactions with computing devices have advanced from basic
 
 </details>
 
-### 39. Safe and Scalable Web Agent Learning via Recreated Websites
-
-📄 [arXiv](https://arxiv.org/abs/2603.10505) · 🎓 [Official](https://icml.cc/virtual/2026/poster/60744)　📅 2026-03　🏷 ICML 2026
-
-**关键词**：`analysis`、`agent safety`、`web agent`、`environmental prompt injection`、`empirical evaluation`、`failure recovery`
-
-👤 **作者**：Hyungjoo Chae、Jungsoo Park、Alan Ritter
-
-- 🎯 **研究动机**：真实网站不安全、难重置、缺可验证反馈，从根本上限制 web agent 训练
-- 🔬 **研究方法**：VeriEnv 把 LLM 当环境创建者，自动克隆真实网站为可执行合成环境，经 Python SDK 暴露受控内部访问，agent 自生成任务并获确定性可编程验证奖励
-- 📌 **结论**：训练出的 agent 泛化到未见网站，可自进化形成站点专属精通，并随训练环境数量扩展受益
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Training autonomous web agents is fundamentally limited by the environments they learn from: real-world websites are unsafe to explore, hard to reset, and rarely provide verifiable feedback. We propose VeriEnv, a framework that treats language models as environment creators, automatically cloning real-world websites into fully executable, verifiable synthetic environments. By exposing controlled internal access via a Python SDK, VeriEnv enables agents to self-generate tasks with deterministic, programmatically verifiable rewards, eliminating reliance on heuristic or LLM-based judges. This design decouples agent learning from unsafe real-world interaction while enabling scalable self-evolution through environment expansion. Through experiments on web agent benchmarks, we show that agents trained with VeriEnv generalize to unseen websites, achieve site-specific mastery through self-evolving training, and benefit from scaling the number of training environments. Code and resources will be released at https://github.com/kyle8581/VeriEnv upon acceptance.
-
-</details>
-
-### 40. OS-Sentinel: Towards Safety-Enhanced Mobile GUI Agents via Hybrid Validation in Realistic Workflows
+### 34. OS-Sentinel: Towards Safety-Enhanced Mobile GUI Agents via Hybrid Validation in Realistic Workflows
 
 🌐 [Project](https://qiushisun.github.io/OS-Sentinel-Home/) · 🎓 [Official](https://aclanthology.org/2026.acl-long.431/)　📅 2026　🏷 ACL 2026
 
@@ -776,7 +662,7 @@ Computer-using agents powered by Vision-Language Models (VLMs) have demonstrated
 
 </details>
 
-### 41. MirrorGuard: Toward Secure Computer-Use Agents via Simulation-to-Real Reasoning Correction
+### 35. MirrorGuard: Toward Secure Computer-Use Agents via Simulation-to-Real Reasoning Correction
 
 📄 [arXiv](https://arxiv.org/abs/2601.12822) · 🎓 [Official](https://www.sigsac.org/ccs/CCS2026/program/accepted-papers.html)　📅 2026-01　🏷 ACM CCS 2026
 

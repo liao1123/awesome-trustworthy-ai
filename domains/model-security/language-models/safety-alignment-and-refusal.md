@@ -352,7 +352,7 @@ Safety evaluation of large language models (LLMs) is commonly performed by query
 
 ### 19. The Geometry of Refusal: Linear Instability in Safety-Aligned LLMs
 
-📄 [arXiv](https://arxiv.org/abs/2606.22686) · 🎓 [Official](https://aclanthology.org/2026.trustnlp-main.51/)　📅 2026-06　🏷 ACL 2026
+📄 [arXiv](https://arxiv.org/abs/2606.22686) · 🎓 [Official](https://aclanthology.org/2026.trustnlp-main.51/)　📅 2026-06　🏷 ACL 2026 Workshop
 
 **关键词**：`analysis`、`refusal geometry`、`linear instability`、`bidirectional steering`、`activation steering`
 
@@ -369,26 +369,7 @@ Modern Large Language Models (LLMs) rely on extensive safety alignment, yet the 
 
 </details>
 
-### 20. Deeper is Not Always Better: Mitigating the Alignment Tax via Confident Layer Decoding
-
-📄 [arXiv](https://arxiv.org/abs/2606.21906)　📅 2026-06
-
-**关键词**：`analysis`、`confident layer decoding`、`entropy trough`、`alignment tax`
-
-👤 **作者**：Xuanming Zhang、…、Jingren Zhou
-
-- 🎯 **研究动机**：自回归生成默认从最终层解码，假设越深越可靠；发现 Guess-Refine-Perturb 动态：末层会把精化预测扰动向对齐偏好的通用 token
-- 🔬 **研究方法**：提出 Confident Decoding 免训练解码：熵引导保守回溯搜索动态选择最可靠的近末层，并把层选择形式化为最优停时问题给出理论界
-- 📌 **结论**：稠密与 MoE 模型在 GPQA-Diamond、Omni-MATH、HLE 上一致提升，零内存开销、延迟增加不到 2%
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Autoregressive generation in large language models (LLMs) conventionally decodes from the final layer, assuming that deeper representations yield more reliable next-token predictions. We revisit this assumption by revealing a recurring Guess-Refine-Perturb dynamic: early layers form coarse guesses, intermediate layers refine reasoning-relevant semantics, and final layers can perturb these refined predictions toward generic or alignment-preferred tokens. We introduce Confident Decoding, a training-free decoding strategy that dynamically selects the most reliable near-final layer through entropy-guided conservative backward search. We further provide a theoretical formulation of layer selection as an optimal stopping problem, showing that under bounded projection noise and dominant late-stage alignment perturbation, our search rule filters perturbation while bounding the loss relative to the oracle refinement layer. Experiments across dense and Mixture-of-Experts LLMs demonstrate consistent gains on challenging reasoning benchmarks, including GPQA-Diamond, Omni-MATH, and HLE, with zero memory overhead and less than 2% latency increase. These results suggest dynamically bypassing final-layer perturbations can unlock stronger reasoning behavior from aligned LLMs.
-
-</details>
-
-### 21. CNT: Safety-oriented Function Reuse across LLMs via Cross-Model Neuron Transfer
+### 20. CNT: Safety-oriented Function Reuse across LLMs via Cross-Model Neuron Transfer
 
 📄 [arXiv](https://arxiv.org/abs/2603.18449)　📅 2026-03
 
@@ -407,7 +388,7 @@ The widespread deployment of large language models (LLMs) calls for post-hoc met
 
 </details>
 
-### 22. Knowing without Acting: The Disentangled Geometry of Safety Mechanisms in Large Language Models
+### 21. Knowing without Acting: The Disentangled Geometry of Safety Mechanisms in Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2603.05773) · 🌐 [Project](https://anonymous.4open.science/r/DSH)　📅 2026-03
 
@@ -426,7 +407,7 @@ Safety alignment is often conceptualized as a monolithic process wherein harmful
 
 </details>
 
-### 23. SafeNeuron: Neuron-Level Safety Alignment for Large Language Models
+### 22. SafeNeuron: Neuron-Level Safety Alignment for Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2602.12158)　📅 2026-02
 
@@ -445,7 +426,7 @@ Large language models (LLMs) and multimodal LLMs are typically safety-aligned be
 
 </details>
 
-### 24. Speculative Probing: LLM Monitoring at Speculative-Decoding Cost
+### 23. Speculative Probing: LLM Monitoring at Speculative-Decoding Cost
 
 📄 [arXiv](https://arxiv.org/abs/2608.28099)　📅 2026-08
 
@@ -464,9 +445,9 @@ Real-time classification during language model inference is valuable for safety 
 
 </details>
 
-### 25. Online Safety Monitoring for LLMs
+### 24. Online Safety Monitoring for LLMs
 
-📄 [arXiv](https://arxiv.org/abs/2607.02510) · 🌐 [Project](https://safe-ai-workshop.github.io/uai-2026/)　📅 2026-07　🏷 ICML 2026
+📄 [arXiv](https://arxiv.org/abs/2607.02510) · 🌐 [Project](https://safe-ai-workshop.github.io/uai-2026/)　📅 2026-07　🏷 ICML 2026 Workshop
 
 **关键词**：`defense`、`detection`、`online monitor`、`risk control`、`alarm calibration`、`online monitoring`
 
@@ -483,7 +464,7 @@ Despite alignment training, LLMs remain prone to generating unsafe outputs at de
 
 </details>
 
-### 26. Beyond Shallow Alignment: How Post-Training Methods Determine Refusal Circuits And Steering Robustness
+### 25. Beyond Shallow Alignment: How Post-Training Methods Determine Refusal Circuits And Steering Robustness
 
 📄 [arXiv](https://arxiv.org/abs/2609.03887)　📅 2026-09
 
@@ -502,7 +483,7 @@ How do the methods used to train language models to refuse harmful requests shap
 
 </details>
 
-### 27. From Detection to Refusal: Safer LLMs via Circuit-Guided Weight Scaling
+### 26. From Detection to Refusal: Safer LLMs via Circuit-Guided Weight Scaling
 
 📄 [arXiv](https://arxiv.org/abs/2609.00051)　📅 2026-09
 
@@ -521,7 +502,7 @@ Despite extensive alignment efforts, Large Language Models (LLMs) remain vulnera
 
 </details>
 
-### 28. When Safety Routing Breaks: Understanding Alignment Fragility under Benign Fine-Tuning
+### 27. When Safety Routing Breaks: Understanding Alignment Fragility under Benign Fine-Tuning
 
 📄 [arXiv](https://arxiv.org/abs/2609.01455)　📅 2026-09
 
@@ -540,7 +521,7 @@ Benign fine-tuning severely weakens the safety alignment of large language model
 
 </details>
 
-### 29. Hidden in the Request: Explaining Unethical LLM Compliance through Token Relevance
+### 28. Hidden in the Request: Explaining Unethical LLM Compliance through Token Relevance
 
 📄 [arXiv](https://arxiv.org/abs/2608.23264)　📅 2026-08
 
@@ -559,26 +540,7 @@ Although Large Language Models (LLMs) are aligned to optimize for both helpfulne
 
 </details>
 
-### 30. Does the LM Head Create a Harmful Gradient Bottleneck? A Causal Test
-
-📄 [arXiv](https://arxiv.org/abs/2608.16671)　📅 2026-08
-
-**关键词**：`analysis`、`safety alignment`、`refusal behavior`、`alignment robustness`
-
-👤 **作者**：Anand Murugan
-
-- 🎯 **研究动机**：LM head 把 D 宽隐状态映射到 V 词表、其转置至多返回 D 个方向，被指为有害优化瓶颈——几何压缩与因果伤害需分离检验
-- 🔬 **研究方法**：仅后向干预保留普通 logits 与精确 LM-head 参数更新、只降送入 Transformer 的梯度秩，配对种子对照加等秩分解前向头控制
-- 📌 **结论**：半秩后向降秩仅增验证损失 0.0586，而等秩分解前向头增 0.1795——确认强几何压缩但不成立有害优化瓶颈
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-The language-model head maps a hidden state of width D to a vocabulary of size V, so its transpose can return at most D independent directions to the Transformer. Godey and Artzi argue that this severe projection is a harmful optimization bottleneck. We separate the geometry from the causal claim. Our backward-only intervention keeps the ordinary logits and the exact LM-head parameter update while reducing only the rank of the gradient sent into the Transformer. Across five paired seeds on byte-level and BPE-8192 WikiText-2 models, reducing backward rank increases validation loss. An equally ranked factorized forward head, however, increases loss substantially more. At half rank in the larger model, the backward-only loss increase is 0.0586 (95% CI [0.0167, 0.1005]), while the factorized forward head increases loss by 0.1795 ([0.1547, 0.2042]). The vocabulary-space residual also contributes to the ordinary LM-head update, and removing that contribution is harmful. Additional controls show that repeated-token failures are confounded by the number of independently sampled symbols, that adding never-target output classes does not impair learning, and that projection diagnostics do not reliably predict progress in our runs. Tested auxiliary feedback routes do not beat tuned backpropagation. These results confirm strong geometric compression but do not establish that it is a harmful optimization bottleneck.
-
-</details>
-
-### 31. BabelSteering: Multilingual Safety Alignment via English Steering Vectors
+### 29. BabelSteering: Multilingual Safety Alignment via English Steering Vectors
 
 📄 [arXiv](https://arxiv.org/abs/2608.16577)　📅 2026-08
 
@@ -597,26 +559,7 @@ Large language models (LLMs) are deployed globally in high-stakes settings, yet 
 
 </details>
 
-### 32. Towards a theory of inference-time alignment with unknown rewards
-
-📄 [arXiv](https://arxiv.org/abs/2608.15402)　📅 2026-08
-
-**关键词**：`analysis`、`safety alignment`、`refusal behavior`、`alignment robustness`
-
-👤 **作者**：Steve Hanneke、Hongao Wang、Mingyue Xu
-
-- 🎯 **研究动机**：生成模型对齐从统计学习视角仍缺乏理论理解
-- 🔬 **研究方法**：把推理时对齐形式化为弱到强学习问题（参考策略已相当好，测试时以任意高概率预测好回答），从零学习不假设好奖励估计，提出组合量 alignment dimension
-- 📌 **结论**：alignment dimension 有限当且仅当 reward class 可对齐学习；学习程序为学成对比较器后对候选回答跑锦标赛
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Generative model alignment has received broad interest, and significant progress has been made in supervised fine-tuning and inference-time computation. Yet, alignment has remained poorly understood from a statistical learning perspective. We formulate inference-time alignment as a weak-to-strong learning problem, where a reference policy (weak model) is assumed to be fairly good and the goal is to produce a strong model that predicts a good response at test time with arbitrarily high probability. Our problem is formulated as learning from scratch --- everything is learned from data rather than assuming access to a good reward estimate, and thus differs from the existing inference-time alignment theory. Our framework shares similarity to the recent work of Joshi et al., (arXiv:2510.15464), where for each prompt, there could be multiple good responses. Our definition of the alignment learnability follows the standard PAC learning principle. We introduce a novel combinatorial dimension of the reward class which we call the alignment dimension, and show that it completely characterizes the alignment learnability --- a reward class is alignment learnable if and only if its alignment dimension is finite. The core of our learning procedure works by learning a pairwise comparator and then running a tournament over candidate responses. We believe that our results might shed light toward establishing a complete theoretical understanding of alignment.
-
-</details>
-
-### 33. Synthetic Persona Pretraining: Alignment from Token Zero
+### 30. Synthetic Persona Pretraining: Alignment from Token Zero
 
 📄 [arXiv](https://arxiv.org/abs/2608.13482)　📅 2026-08
 
@@ -635,7 +578,7 @@ As language-model-based AI is increasingly deployed in autonomous settings, alig
 
 </details>
 
-### 34. Rules or Character? Scaling Laws for AI Safety Design
+### 31. Rules or Character? Scaling Laws for AI Safety Design
 
 📄 [arXiv](https://arxiv.org/abs/2608.13345)　📅 2026-08
 
@@ -654,7 +597,7 @@ Artificial Intelligence (AI) safety systems combine character shaping (e.g., Rei
 
 </details>
 
-### 35. Refusing Intent, Not Form: Wrapper-Based Intent-Group Supervision for LLM Safety
+### 32. Refusing Intent, Not Form: Wrapper-Based Intent-Group Supervision for LLM Safety
 
 📄 [arXiv](https://arxiv.org/abs/2608.13304)　📅 2026-08
 
@@ -673,7 +616,7 @@ Safety tuning can improve harmful refusal, but models may learn surface-form sho
 
 </details>
 
-### 36. Making Your LLMs More Objective: Stabilizing LLM Safety Behavior Across Traits with Trait-Invariant Safety Tuning
+### 33. Making Your LLMs More Objective: Stabilizing LLM Safety Behavior Across Traits with Trait-Invariant Safety Tuning
 
 📄 [arXiv](https://arxiv.org/abs/2608.11705)　📅 2026-08
 
@@ -692,7 +635,7 @@ Aligned large language models (LLMs) are expected to exhibit safety behavior bas
 
 </details>
 
-### 37. Safety Alignment Illusion: The Cross-Lingual Safety Gap in LLMs
+### 34. Safety Alignment Illusion: The Cross-Lingual Safety Gap in LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2608.18131)　📅 2026-08
 
@@ -711,7 +654,7 @@ Current safety alignment training for Large Language Models (LLMs) are heavily E
 
 </details>
 
-### 38. Reasoning That Leaks, Fine-Tuning That Amplifies: Exposing the Hidden Threats of Chain-of-Thought Models
+### 35. Reasoning That Leaks, Fine-Tuning That Amplifies: Exposing the Hidden Threats of Chain-of-Thought Models
 
 🌐 [Project](https://doi.org/10.1145/3779208.3785271)　📅 2026-06　🏷 ACM CCS 2026
 
@@ -721,9 +664,9 @@ Current safety alignment training for Large Language Models (LLMs) are heavily E
 - 🔬 **研究方法**：分析推理链与最终答案的安全差异及harmful fine-tuning影响
 - 📌 **结论**：有害内容可藏于trace而最终答案合规，微调进一步放大泄漏
 
-### 39. Refusal Lives Downstream of Persona in Chat Models
+### 36. Refusal Lives Downstream of Persona in Chat Models
 
-📄 [arXiv](https://arxiv.org/abs/2606.26161)　📅 2026-06　🏷 ICML 2026
+📄 [arXiv](https://arxiv.org/abs/2606.26161)　📅 2026-06　🏷 ICML 2026 Workshop
 
 **关键词**：`analysis`、`safety alignment`、`refusal behavior`、`alignment robustness`
 
@@ -740,7 +683,7 @@ Linear directions in activation space have been identified for both refusal and 
 
 </details>
 
-### 40. Latent Space Refusal Anchoring for Low-Resource African Languages: Mechanistic Safety Recovery Without Retraining
+### 37. Latent Space Refusal Anchoring for Low-Resource African Languages: Mechanistic Safety Recovery Without Retraining
 
 📄 [arXiv](https://arxiv.org/abs/2608.18089) · 📝 [OpenReview](https://openreview.net/forum?id=4UwS3bn1fB)　📅 2026-08
 
@@ -759,7 +702,7 @@ Instruction-tuned models often refuse harmful requests in English but comply wit
 
 </details>
 
-### 41. Abliteration Mitigation via Refusal Aliases
+### 38. Abliteration Mitigation via Refusal Aliases
 
 📄 [arXiv](https://arxiv.org/abs/2608.18093)　📅 2026-08
 
@@ -778,7 +721,7 @@ Abliteration, the removal of refusal capabilities from large language models by 
 
 </details>
 
-### 42. Who Transfers Safety? Identifying and Targeting Cross-Lingual Shared Safety Neurons
+### 39. Who Transfers Safety? Identifying and Targeting Cross-Lingual Shared Safety Neurons
 
 📄 [arXiv](https://arxiv.org/abs/2602.01283) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61845)　📅 2026　🏷 ICML 2026
 
@@ -797,7 +740,7 @@ Multilingual safety remains significantly imbalanced, leaving non-high-resource 
 
 </details>
 
-### 43. TraceRouter: Robust Safety for Large Foundation Models via Path-Level Intervention
+### 40. TraceRouter: Robust Safety for Large Foundation Models via Path-Level Intervention
 
 📄 [arXiv](https://arxiv.org/abs/2601.21900) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64127)　📅 2026　🏷 ICML 2026
 
@@ -816,7 +759,7 @@ Despite their capabilities, large foundation models (LFMs) remain susceptible to
 
 </details>
 
-### 44. The Realignment Problem: When Right becomes Wrong in LLMs
+### 41. The Realignment Problem: When Right becomes Wrong in LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2511.02623) · 🌐 [Project](https://respailab.github.io/TRACE/) · 🎓 [Official](https://icml.cc/virtual/2026/poster/60573)　📅 2026　🏷 ICML 2026
 
@@ -835,7 +778,7 @@ Post-training alignment of large language models (LLMs) relies on large-scale hu
 
 </details>
 
-### 45. The “Knowledge–Behavior Gap” in Cultural Taboo Safety of Large Language Models
+### 42. The “Knowledge–Behavior Gap” in Cultural Taboo Safety of Large Language Models
 
 🌐 [Project](https://anonymous.4open.science/r/CulShield-7A0E) · 🎓 [Official](https://aclanthology.org/2026.acl-long.1424/)　📅 2026　🏷 ACL 2026
 
@@ -854,7 +797,7 @@ Cultural taboo safety is essential for deploying large language models (LLMs), a
 
 </details>
 
-### 46. SAME: Safety-Aware Model Editing Guided by Safety Transformation
+### 43. SAME: Safety-Aware Model Editing Guided by Safety Transformation
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1632/)　📅 2026　🏷 ACL 2026
 
@@ -873,7 +816,7 @@ Editing large language models is challenging as incorporating new knowledge ofte
 
 </details>
 
-### 47. Resolving the Security-Auditability Dilemma with Auditable Latent Chain-of-Thought Alignment
+### 44. Resolving the Security-Auditability Dilemma with Auditable Latent Chain-of-Thought Alignment
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1570/)　📅 2026　🏷 ACL 2026
 
@@ -892,7 +835,7 @@ To address the increasingly severe safety risk of large language models (LLMs), 
 
 </details>
 
-### 48. Probing the Safety Robustness of LLMs in Latent Space
+### 45. Probing the Safety Robustness of LLMs in Latent Space
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.967/)　📅 2026　🏷 ACL 2026
 
@@ -911,26 +854,7 @@ Safety alignment is a fundamental prerequisite for building trustworthy artifici
 
 </details>
 
-### 49. Pareto-Guided Optimal Transport for Multi-Reward Alignment
-
-📄 [arXiv](https://arxiv.org/abs/2605.13155) · 🎓 [Official](https://icml.cc/virtual/2026/poster/66273)　📅 2026　🏷 ICML 2026
-
-**关键词**：`analysis`、`optimal transport`、`safety alignment`、`refusal behavior`、`reward hacking`、`preference optimization`
-
-👤 **作者**：Ying Ba、…、Ji-Rong Wen
-
-- 🎯 **研究动机**：多奖励加权融合难调且平衡不了冲突目标；对异构奖励上界优化统一全局目标会诱发 reward hacking
-- 🔬 **研究方法**：PG-OT 构建提示特定 Pareto 前沿，分布感知最优传输把被支配样本映射向前沿；提出 JDR 与 JCR 度量多奖励协同与 reward hacking
-- 📌 **结论**：JDR 提升 11%，人类评估胜率近 80%
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Text-to-image generation models have achieved remarkable progress in preference optimization, yet achieving robust alignment across diverse reward models remains a significant challenge. Existing multi-reward fusion approaches rely on weighted summation, which is costly to tune and insufficient for balancing conflicting objectives. More critically, optimization with reward models is highly susceptible to reward hacking, where reward scores increase while the perceived quality of generated images deteriorates. We demonstrate that optimizing against a unified global target under heterogeneous reward upper bounds can induce reward hacking, a risk further exacerbated by the inherent instability of weak reward models. To mitigate this, we propose a Pareto Frontier-Guided Optimal Transport (PG-OT) framework. Our method constructs a prompt-specific Pareto frontier and maps dominated samples toward it via distribution-aware optimal transport. Furthermore, we develop both online and offline optimization strategies tailored to diverse reward signal characteristics. To provide a more rigorous assessment, we introduce the Joint Domination Rate (JDR) and Joint Collapse Rate (JCR) as principled metrics to quantify multi-reward synergy and reward hacking. Experimental results show that our approach outperforms strong baselines with an 11% gain in JDR and achieves a near 80% win rate in human evaluations.
-
-</details>
-
-### 50. More Thinking, Less Talking: Internalizing Deliberative Safety into LLM Parameters
+### 46. More Thinking, Less Talking: Internalizing Deliberative Safety into LLM Parameters
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1572/)　📅 2026　🏷 ACL 2026
 
@@ -949,7 +873,7 @@ Prevailing safety alignment methods still leave Large Language Models (LLMs) vul
 
 </details>
 
-### 51. Into the Gray Zone: Domain Contexts Can Blur LLM Safety Boundaries
+### 47. Into the Gray Zone: Domain Contexts Can Blur LLM Safety Boundaries
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1139/)　📅 2026　🏷 ACL 2026
 
@@ -968,26 +892,7 @@ A central goal of LLM alignment is to balance helpfulness with harmlessness, yet
 
 </details>
 
-### 52. How to Avoid Debate: Scalable AI Safety via Doubly-Efficient Interactive Proofs
-
-📄 [arXiv](https://arxiv.org/abs/2607.03561) · 🎓 [Official](https://icml.cc/virtual/2026/poster/60508)　📅 2026　🏷 ICML 2026
-
-**关键词**：`analysis`、`safety alignment`、`refusal behavior`、`alignment robustness`、`empirical evaluation`、`fine-tuning robustness`
-
-👤 **作者**：Liyan Chen、Yael Tauman Kalai、Zoe Xi
-
-- 🎯 **研究动机**：debate 验证假设两个 AI 能力对等且其一诚实，现实未必成立
-- 🔬 **研究方法**：发起单证明者交互证明研究，给出 oracle 辅助计算的 doubly-efficient 相对化证明，适用于计算对少量错误 oracle 答复鲁棒、或 oracle 为低次多项式的情形
-- 📌 **结论**：在结构化或噪声容忍 oracle 访问下，无需 debate 即可实现交互式验证
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-As AI models continue to develop powerful capabilities, it becomes critical that we are able to verify that their output is aligned with our intentions. A recent line of work focuses on verification via debate, a model of interactive proofs where two competing powerful provers, or AI models, debate each other to convince a weak verifier, or a human, of the correctness of their claim. However, debate assumes that the two AI models possess equal abilities and that one of them is truthful, which may not be realistic. In this work, we show how to avoid debate: we initiate the study of single-prover interactive proofs for AI safety. Prior results in single-prover interactive proofs do not immediately carry over to the AI safety setting because they do not work when the computation has access to an oracle, such as to human judgment or an external database such as the web. We present doubly-efficient single-prover interactive proofs for oracle-aided computations (also known as relativizing proofs), in the settings where (1) the computation is robust, in the sense that the output does not change if at most a small fraction of the answers to oracle queries are incorrect, or (2) the oracle is a low-degree polynomial. These results suggest that interactive verification is possible even without debate, under structured or noise-tolerant oracle access.
-
-</details>
-
-### 53. Consistency Training Can Entrench Misalignment
+### 48. Consistency Training Can Entrench Misalignment
 
 📄 [arXiv](https://arxiv.org/abs/2606.03810) · 🎓 [Official](https://icml.cc/virtual/2026/poster/60720)　📅 2026-06　🏷 ICML 2026
 
@@ -1006,7 +911,7 @@ Consistency training encourages a model to produce similar outputs across relate
 
 </details>
 
-### 54. Confident, Calibrated, or Complicit: Safety Alignment and Ideological Bias in LLM Hate Speech Detection
+### 49. Confident, Calibrated, or Complicit: Safety Alignment and Ideological Bias in LLM Hate Speech Detection
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1594/)　📅 2026　🏷 ACL 2026
 
@@ -1025,7 +930,7 @@ We investigate the efficacy of Large Language Models (LLMs) in detecting implici
 
 </details>
 
-### 55. Representational alignment yields generalizable safety in language models
+### 50. Representational alignment yields generalizable safety in language models
 
 📄 [arXiv](https://arxiv.org/abs/2609.04022)　📅 2026-09
 
@@ -1044,7 +949,7 @@ Aligning large language models (LLMs) is essential for their safe deployment. Cu
 
 </details>
 
-### 56. SAFT: Safety-Preserving Adaptation via Fine-Tuning Transfer for Large Language Models
+### 51. SAFT: Safety-Preserving Adaptation via Fine-Tuning Transfer for Large Language Models
 
 🌐 [Project](https://doi.org/10.1145/3770855.3817883)　📅 2026-08　🏷 KDD 2026
 
@@ -1054,7 +959,7 @@ Aligning large language models (LLMs) is essential for their safe deployment. Cu
 - 🔬 **研究方法**：SAFT以梯度修正与参数嫁接实现保安全适配
 - 📌 **结论**：学习新任务同时保留安全行为
 
-### 57. Mitigating Reasoning-Induced Misalignment via Safety-Direction Penalty
+### 52. Mitigating Reasoning-Induced Misalignment via Safety-Direction Penalty
 
 📄 [arXiv](https://arxiv.org/abs/2608.23497)　📅 2026-08
 
@@ -1073,7 +978,7 @@ Reasoning-Induced Misalignment, where fine-tuning on reasoning data containing n
 
 </details>
 
-### 58. A Constitution-Grid Instrument for Data-Efficient RL Alignment (C-Guard)
+### 53. A Constitution-Grid Instrument for Data-Efficient RL Alignment (C-Guard)
 
 📄 [arXiv](https://arxiv.org/abs/2608.00180)　📅 2026-07　🏷 COLM 2026
 
@@ -1092,7 +997,7 @@ Conflicting objectives are general in RL alignment, and training on them data-ef
 
 </details>
 
-### 59. Few Tokens, Big Leverage: Preserving Safety Alignment by Constraining Safety Tokens during Fine-tuning
+### 54. Few Tokens, Big Leverage: Preserving Safety Alignment by Constraining Safety Tokens during Fine-tuning
 
 📄 [arXiv](https://arxiv.org/abs/2603.07445) · 🌐 [Project](https://doi.org/10.1145/3770855.3817837)　📅 2026-03　🏷 KDD 2026
 
@@ -1111,7 +1016,7 @@ Large language models (LLMs) often require fine-tuning (FT) to perform well on d
 
 </details>
 
-### 60. Toward Stable Value Alignment: Introducing Independent Modules for Consistent Value Guidance
+### 55. Toward Stable Value Alignment: Introducing Independent Modules for Consistent Value Guidance
 
 📄 [arXiv](https://arxiv.org/abs/2605.11712) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64079)　📅 2026　🏷 ICML 2026
 
@@ -1130,7 +1035,7 @@ Aligning large language models (LLMs) with human values typically relies on post
 
 </details>
 
-### 61. Towards Context-Invariant Safety Alignment for Large Language Models
+### 56. Towards Context-Invariant Safety Alignment for Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2605.20994) · 🎓 [Official](https://icml.cc/virtual/2026/poster/66079)　📅 2026　🏷 ICML 2026
 
@@ -1149,7 +1054,7 @@ Preference-based post-training aligns LLMs with human intent, yet safety behavio
 
 </details>
 
-### 62. Submodular Optimization for Minimal Augmentation in Robust Language Model Alignment
+### 57. Submodular Optimization for Minimal Augmentation in Robust Language Model Alignment
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/63493)　📅 2026　🏷 ICML 2026
 
@@ -1168,7 +1073,7 @@ Safety alignment of large language models is fragile: even small fine-tuning per
 
 </details>
 
-### 63. State-Dependent Safety Failures in Multi-Turn Language Model Interaction
+### 58. State-Dependent Safety Failures in Multi-Turn Language Model Interaction
 
 📄 [arXiv](https://arxiv.org/abs/2603.15684) · 🎓 [Official](https://icml.cc/virtual/2026/poster/65797)　📅 2026　🏷 ICML 2026
 
@@ -1187,7 +1092,7 @@ Safety alignment in large language models is typically evaluated under isolated 
 
 </details>
 
-### 64. Sparse Models, Sparse Safety: Unsafe Routes in Mixture-of-Experts LLMs
+### 59. Sparse Models, Sparse Safety: Unsafe Routes in Mixture-of-Experts LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2602.08621) · 🎓 [Official](https://icml.cc/virtual/2026/poster/62563)　📅 2026　🏷 ICML 2026
 
@@ -1206,7 +1111,7 @@ By introducing routers to selectively activate experts in Transformer layers, th
 
 </details>
 
-### 65. Revisiting Robustness for LLM Safety Alignment via Selective Geometry Control
+### 60. Revisiting Robustness for LLM Safety Alignment via Selective Geometry Control
 
 📄 [arXiv](https://arxiv.org/abs/2602.07340) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63918)　📅 2026　🏷 ICML 2026
 
@@ -1225,7 +1130,7 @@ Safety alignment of large language models remains brittle under domain shift and
 
 </details>
 
-### 66. MESA: Improving MoE Safety Alignment via Decentralized Expertise
+### 61. MESA: Improving MoE Safety Alignment via Decentralized Expertise
 
 📄 [arXiv](https://arxiv.org/abs/2606.00651) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63939)　📅 2026　🏷 ICML 2026
 
@@ -1244,26 +1149,7 @@ Mixture-of-Experts (MoE) architectures scale Large Language Models (LLMs) effici
 
 </details>
 
-### 67. Knowledge without Wisdom: Measuring Misalignment between LLMs and Intended Impact
-
-🎓 [Official](https://aclanthology.org/2026.acl-long.2171/)　📅 2026　🏷 ACL 2026
-
-**关键词**：`defense`、`safety alignment`、`refusal behavior`、`alignment robustness`、`fine-tuning robustness`、`safety–utility trade-off`
-
-👤 **作者**：Michael Hardy、Yunsung Kim
-
-- 🎯 **研究动机**：benchmark 表现不保证下游任务有效性，与任务预期影响之间的错配未被测量
-- 🔬 **研究方法**：评测领先 LLM 在儿童教学等难验证任务上的行为，对比模型间、模型与专家人类行为的相关性及其与教学质量、学习结果的对齐
-- 📌 **结论**：LLM 间行为相关性高于其与专家的相关性，与学习结果常负对齐；模型/提示选择仅解释 15% 错配误差，共享预训练是主因
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-LLMs increasingly excel on AI benchmarks, but doing so does not guarantee validity for downstream tasks. This study contrasts LLM alignment on benchmarks, downstream tasks, and, importantly the intended impact of those tasks. We evaluate the performance of leading LLMs (i.e., generative pre-trained base models) on difficult-to-verify tasks of the teaching and learning of schoolchildren. Across all LLMs, inter-model behaviors on disparate tasks correlate higher than they do with expert human behaviors on target tasks. These biases shared across LLMs are poorly aligned with downstream measures of teaching quality and often negatively aligned with the intended impact of student learning outcomes. Further, we find multi-model ensembles, both unanimous model voting and expert-weighting by benchmark performance, further exacerbate misalignment with learning. We measure that selection of LLM and/or prompting strategy only reliably accounts for 15% of all measured misalignment error and that variation in misalignment error is shared across LLMs, suggesting that common pretraining accounts for much of the misalignment in these tasks. We demonstrate methods for robustly measuring alignment of complex tasks and provide unique insights into practical applications of LLMs in high-noise contexts.
-
-</details>
-
-### 68. EthicMind: A Risk-Aware Framework for Ethical-Emotional Alignment in Multi-Turn Dialogue
+### 62. EthicMind: A Risk-Aware Framework for Ethical-Emotional Alignment in Multi-Turn Dialogue
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1569/)　📅 2026　🏷 ACL 2026
 
@@ -1282,7 +1168,7 @@ Intelligent dialogue systems are increasingly deployed in emotionally and ethica
 
 </details>
 
-### 69. Don't Walk the Line: Boundary Guidance for Filtered Generation
+### 63. Don't Walk the Line: Boundary Guidance for Filtered Generation
 
 📄 [arXiv](https://arxiv.org/abs/2510.11834) · 🎓 [Official](https://icml.cc/virtual/2026/poster/60615)　📅 2026　🏷 ICML 2026
 
@@ -1301,7 +1187,7 @@ Generative models are increasingly paired with safety classifiers that filter ha
 
 </details>
 
-### 70. Discovering Implicit Large Language Model Alignment Objectives
+### 64. Discovering Implicit Large Language Model Alignment Objectives
 
 📄 [arXiv](https://arxiv.org/abs/2602.15338) · 🎓 [Official](https://icml.cc/virtual/2026/poster/62066)　📅 2026　🏷 ICML 2026
 
@@ -1320,7 +1206,7 @@ Large language model (LLM) alignment relies on complex reward signals that often
 
 </details>
 
-### 71. Between a Rock and a Hard Place: The Tension Between Ethical Reasoning and Safety Alignment in LLMs
+### 65. Between a Rock and a Hard Place: The Tension Between Ethical Reasoning and Safety Alignment in LLMs
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.197/)　📅 2026　🏷 ACL 2026
 
@@ -1339,7 +1225,7 @@ Large Language Model safety alignment predominantly operates on a binary assumpt
 
 </details>
 
-### 72. Alignment Pretraining: AI Discourse Causes Self-Fulfilling (Mis)alignment
+### 66. Alignment Pretraining: AI Discourse Causes Self-Fulfilling (Mis)alignment
 
 📄 [arXiv](https://arxiv.org/abs/2601.10160) · 🎓 [Official](https://icml.cc/virtual/2026/poster/65894)　📅 2026　🏷 ICML 2026
 
@@ -1358,7 +1244,7 @@ Pretraining corpora contain extensive discourse about AI systems, yet the causal
 
 </details>
 
-### 73. COPA: Continual Preference Optimization for Adaptive Prompt Injection Defense
+### 67. COPA: Continual Preference Optimization for Adaptive Prompt Injection Defense
 
 📄 [arXiv](https://arxiv.org/abs/2608.19982)　📅 2026-08
 
@@ -1377,7 +1263,7 @@ LLMs remain vulnerable to prompt injection attacks, where adversarial instructio
 
 </details>
 
-### 74. Mitigating LLM sycophancy with RL-based fine-tuning: Bayesian Truth Serum approach
+### 68. Mitigating LLM sycophancy with RL-based fine-tuning: Bayesian Truth Serum approach
 
 📄 [arXiv](https://arxiv.org/abs/2608.25267)　📅 2026-08
 
@@ -1396,7 +1282,7 @@ Large language models (LLMs) frequently exhibit \emph{sycophancy}: they adapt th
 
 </details>
 
-### 75. H3Fusion: Helpful, Harmless, Honest Fusion of Aligned LLMs
+### 69. H3Fusion: Helpful, Harmless, Honest Fusion of Aligned LLMs
 
 🎓 [Official](https://aclanthology.org/2026.eacl-long.329/)　📅 2026-03　🏷 ACL 2026
 
@@ -1415,7 +1301,7 @@ The alignment of pre-trained LLMs continues to draw significant attention from b
 
 </details>
 
-### 76. When the Model Said ‘No Comment’, We Knew Helpfulness Was Dead, Honesty Was Alive, and Safety Was Terrified
+### 70. When the Model Said ‘No Comment’, We Knew Helpfulness Was Dead, Honesty Was Alive, and Safety Was Terrified
 
 🎓 [Official](https://aclanthology.org/2026.eacl-long.116/)　📅 2026-03　🏷 ACL 2026
 
@@ -1434,7 +1320,7 @@ Large Language Models (LLMs) need to be in accordance with human values—being 
 
 </details>
 
-### 77. Reward-free Alignment for Conflicting Objectives
+### 71. Reward-free Alignment for Conflicting Objectives
 
 📄 [arXiv](https://arxiv.org/abs/2602.02495) · 🎓 [Official](https://icml.cc/virtual/2026/poster/60903)　📅 2026-02　🏷 ICML 2026
 
@@ -1453,7 +1339,7 @@ Direct alignment methods are increasingly used to align large language models (L
 
 </details>
 
-### 78. TriPlay-RL: Tri-Role Self-Play Reinforcement Learning for LLM Safety Alignment
+### 72. TriPlay-RL: Tri-Role Self-Play Reinforcement Learning for LLM Safety Alignment
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1216/)　📅 2026　🏷 ACL 2026
 
@@ -1472,7 +1358,7 @@ In recent years, safety risks associated with large language models have become 
 
 </details>
 
-### 79. Spurious Correlation Learning in Preference Optimization: Mechanisms, Consequences, and Mitigation via Tie Training
+### 73. Spurious Correlation Learning in Preference Optimization: Mechanisms, Consequences, and Mitigation via Tie Training
 
 📄 [arXiv](https://arxiv.org/abs/2605.11134) · 🎓 [Official](https://icml.cc/virtual/2026/poster/65009)　📅 2026　🏷 ICML 2026
 
@@ -1491,7 +1377,7 @@ Preference learning methods like Direct Preference Optimization (DPO) are known 
 
 </details>
 
-### 80. Safety Alignment of LMs via Non-cooperative Games
+### 74. Safety Alignment of LMs via Non-cooperative Games
 
 📄 [arXiv](https://arxiv.org/abs/2512.20806) · 🎓 [Official](https://icml.cc/virtual/2026/poster/65610)　📅 2026　🏷 ICML 2026
 
@@ -1510,26 +1396,7 @@ Ensuring the safety of language models (LMs) while maintaining their usefulness 
 
 </details>
 
-### 81. RSPO: Regularized Self-Play Alignment of Large Language Models
-
-📄 [arXiv](https://arxiv.org/abs/2503.00030) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64206)　📅 2026　🏷 ICML 2026
-
-**关键词**：`defense`、`safety alignment`、`refusal behavior`、`alignment robustness`、`empirical evaluation`、`fine-tuning robustness`
-
-👤 **作者**：Xiaohang Tang、Sangwoong Yoon、Seongho Son、Huizhuo Yuan、Quanquan Gu、Ilija Bogunovic
-
-- 🎯 **研究动机**：自博弈对齐中关于参考策略的正则化（缓解过优化的关键）研究不足
-- 🔬 **研究方法**：提出 RSPO：统一已有方法并支持即插即用正则器，同时保持收敛到正则化博弈的纳什均衡
-- 📌 **结论**：AlpacaEval-2 LCWR 上将无正则 SPPO 从 28.5% 提至 35.4%（Mistral-7B）、38.77% 提至 43.66%（LLaMA-8B），Arena-Hard、MT-Bench 等亦全面占优
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Self-play-based policy optimization has emerged as an effective approach for fine-tuning large language models (LLMs), formulating preference optimization as a two-player game. However, the regularization with respect to the reference policy, which is crucial for mitigating over-optimization, has been insufficiently investigated in self-play alignment. To study the impact of different regularization strategies, we propose \textbf{Regularized Self-Play Policy Optimization (RSPO)}, a novel framework that unifies prior methods and enables simple plug-and-play regularizers, meanwhile preserving convergence to Nash equilibrium of the corresponding regularized game. We empirically show that RSPO with appropriate regularizers can substantially improve the length-controlled win rate (LCWR) on AlpacaEval-2 across a range of base models, while also achieving consistently superior performance on Arena-Hard, MT-Bench, ArmoRM, and response diversity. In particular, RSPO improves unregularized self-play baseline (SPPO) on AlpacaEval-2 LCWR from $28.5\%$ to $ 35.4\%$ with base model Mistral-7B, from $38.77\%$ to $43.66\%$ with LLaMA-8B, and from $50.54\%$ to $51.83\%$ with Gemma-2B. Combining simplicity, convergence guarantees, and significant empirical gains, RSPO offers a strong foundation for exploring regularized self-play in alignment.
-
-</details>
-
-### 82. Multi-Objective Preference Optimization: Improving Human Alignment of Generative Models
+### 75. Multi-Objective Preference Optimization: Improving Human Alignment of Generative Models
 
 📄 [arXiv](https://arxiv.org/abs/2505.10892) · 🎓 [Official](https://icml.cc/virtual/2026/poster/65773)　📅 2026　🏷 ICML 2026
 
@@ -1548,7 +1415,7 @@ Post-training LLMs with RLHF and preference optimization methods (e.g., DPO, IPO
 
 </details>
 
-### 83. Interpretable Safety Alignment via SAE-Constructed Low-Rank Subspace Adaptation
+### 76. Interpretable Safety Alignment via SAE-Constructed Low-Rank Subspace Adaptation
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.215/)　📅 2026　🏷 ACL 2026
 
@@ -1567,26 +1434,7 @@ Safety alignment—training large language models (LLMs) to refuse harmful reque
 
 </details>
 
-### 84. Implicit Safety Alignment from Crowd Preferences
-
-📄 [arXiv](https://arxiv.org/abs/2605.21822) · 🎓 [Official](https://icml.cc/virtual/2026/poster/62042)　📅 2026　🏷 ICML 2026
-
-**关键词**：`defense`、`safety alignment`、`refusal behavior`、`alignment robustness`、`reinforcement learning`、`fine-tuning robustness`
-
-👤 **作者**：Qian Lin、Daniel S. Brown
-
-- 🎯 **研究动机**：直接把偏好学到的安全奖励与下游任务奖励组合存在固有局限
-- 🔬 **研究方法**：层级框架从众包偏好提取安全对齐技能，由高层策略组合以安全求解下游任务
-- 📌 **结论**：无显式安全奖励下大幅降低安全成本，任务表现接近用真值安全信号训练的 oracle
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Reinforcement Learning from Human Feedback (RLHF) can reveal implicit objectives such as safety considerations that go beyond task completion. In this work, we focus on the common safety criteria embedded in crowd preference datasets, where different users may express distinct preferences or objectives, yet follow similar safety principles. Our aim is to discover shared safety criteria from crowd preferences and then transfer them to downstream RL tasks to regularize agent behavior and enforce safety. We first show that direct reward combination—optimizing a preference-learned reward model together with downstream task rewards—has inherent limitations. Motivated by this, we propose Safe Crowd Preference-based RL, a hierarchical framework that extracts safety-aligned skills from crowd preferences and composes them via a high-level policy to safely solve downstream tasks. Experiments across safe RL environments and a preliminary LLM-style task with diverse user goals and shared safety constraints demonstrate that our approach substantially lowers safety costs without access to explicit safety rewards, while achieving task performance comparable to oracle methods trained with ground-truth safety signals.
-
-</details>
-
-### 85. Configurable Reward Model for Balanced Safety Alignment
+### 77. Configurable Reward Model for Balanced Safety Alignment
 
 📄 [arXiv](https://arxiv.org/abs/2605.30487) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63055)　📅 2026　🏷 ICML 2026
 
@@ -1605,26 +1453,7 @@ Aligning large language models (LLMs) to heterogeneous and rapidly evolving safe
 
 </details>
 
-### 86. Conditional Equivalence of DPO and RLHF: Assumptions, Failure Modes, and Provable Alignment
-
-🎓 [Official](https://icml.cc/virtual/2026/poster/66055)　📅 2026　🏷 ICML 2026
-
-**关键词**：`defense`、`safety alignment`、`refusal behavior`、`alignment robustness`、`reinforcement learning`、`fine-tuning robustness`
-
-👤 **作者**：Yonggang Zhang、Zhiqin Yang、Wei Xue、Dong Fang、Bo Han、Yike Guo
-
-- 🎯 **研究动机**：DPO 与 RLHF 的等价性依赖实践中常被违反的隐含假设——RLHF 最优策略须偏好人类偏好回复
-- 🔬 **研究方法**：证明假设失败时 DPO 优化相对优势而非绝对对齐，导致偏好被弃回复却降损失的病态收敛；提出带约束的 CPO 实现可证对齐并给出软间隔排序的几何解释
-- 📌 **结论**：刻画假设失效条件与不良解空间，CPO 在标准基准上达 SOTA
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Direct Preference Optimization (DPO) has emerged as a popular alternative to Reinforcement Learning from Human Feedback (RLHF), offering theoretical equivalence with simpler implementation. We prove this equivalence is conditional rather than universal, depending on an implicit assumption frequently violated in practice: the RLHF-optimal policy must prefer human-preferred responses. When this assumption fails, DPO optimizes relative advantage over the reference policy rather than absolute alignment with human preferences, leading to pathological convergence where policies decrease DPO loss while preferring dispreferred responses. We characterize when this assumption is violated, show the existence of an undesirable solution space, and prove that DPO and RLHF optimize fundamentally different objectives in such cases. To address this, we introduce Constrained Preference Optimization (CPO), augmenting RLHF with constraints for provable alignment. We further provide a geometric interpretation through soft margin ranking, revealing DPO implements margin ranking with potentially negative targets. Our theoretical analysis establishes when DPOs' guarantees hold and provides solutions preserving simplicity with provable alignment. Comprehensive experiments on standard benchmarks demonstrate that CPO achieves state-of-the-art performance.
-
-</details>
-
-### 87. Chasing Moving Targets with Online Self-Play Reinforcement Learning for Safer Language Models
+### 78. Chasing Moving Targets with Online Self-Play Reinforcement Learning for Safer Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2506.07468) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61969)　📅 2026　🏷 ICML 2026
 
@@ -1643,7 +1472,7 @@ Conventional large language model (LLM) safety alignment relies on a reactive, d
 
 </details>
 
-### 88. When Safety Speaks a Language: A Mechanistic Analysis of Safety-Language Identity Entanglement in LLMs
+### 79. When Safety Speaks a Language: A Mechanistic Analysis of Safety-Language Identity Entanglement in LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2608.29936)　📅 2026-09
 
@@ -1662,7 +1491,7 @@ Safety alignment of large language models (LLMs) degrades across languages, yet 
 
 </details>
 
-### 89. Arabic Safety Alignment as Selective Refusal: An Empirical Study of SFT, DPO, and Guard Calibration
+### 80. Arabic Safety Alignment as Selective Refusal: An Empirical Study of SFT, DPO, and Guard Calibration
 
 📄 [arXiv](https://arxiv.org/abs/2608.29378)　📅 2026-09
 
@@ -1681,7 +1510,7 @@ Arabic large language models must refuse harmful prompts without over-refusing b
 
 </details>
 
-### 90. Who Pays More for Safety? Measuring the Disparate Cost of Safety Alignment across Languages
+### 81. Who Pays More for Safety? Measuring the Disparate Cost of Safety Alignment across Languages
 
 📄 [arXiv](https://arxiv.org/abs/2608.22490)　📅 2026-08
 
@@ -1700,7 +1529,7 @@ Safety alignment helps models adhere to human values, but it often reduces respo
 
 </details>
 
-### 91. Register Shifts Break LLM Safety: A Bengali Benchmark with Culturally Grounded Harms
+### 82. Register Shifts Break LLM Safety: A Bengali Benchmark with Culturally Grounded Harms
 
 📄 [arXiv](https://arxiv.org/abs/2608.22335)　📅 2026-08
 
@@ -1719,7 +1548,7 @@ Bengali is the seventh-most-spoken language globally, yet LLM safety evaluation 
 
 </details>
 
-### 92. Multilingual Safety Alignment Via Sparse Weight Editing
+### 83. Multilingual Safety Alignment Via Sparse Weight Editing
 
 📄 [arXiv](https://arxiv.org/abs/2602.22554) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61089)　📅 2026　🏷 ICML 2026
 
@@ -1738,7 +1567,7 @@ Large Language Models (LLMs) exhibit significant safety disparities across langu
 
 </details>
 
-### 93. Multilingual Safety Alignment via Representation-Space Separability
+### 84. Multilingual Safety Alignment via Representation-Space Separability
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/60793)　📅 2026　🏷 ICML 2026
 
@@ -1757,7 +1586,7 @@ Large language models (LLMs) have been globally adopted in various scenarios, ma
 
 </details>
 
-### 94. LASA: Language-Agnostic Semantic Alignment at the Semantic Bottleneck for LLM Safety
+### 85. LASA: Language-Agnostic Semantic Alignment at the Semantic Bottleneck for LLM Safety
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1913/)　📅 2026　🏷 ACL 2026
 
@@ -1776,7 +1605,7 @@ Large language models (LLMs) have demonstrated better safety performance in high
 
 </details>
 
-### 95. Beyond Token-Level Guidance: Inference-Time Alignment of Specialized LLMs via Cross-Family Representation Steering
+### 86. Beyond Token-Level Guidance: Inference-Time Alignment of Specialized LLMs via Cross-Family Representation Steering
 
 📄 [arXiv](https://arxiv.org/abs/2608.30319)　📅 2026-09
 
@@ -1795,7 +1624,7 @@ Large language models (LLMs) finetuned for specialized domains represent crucial
 
 </details>
 
-### 96. ALTSTEER: Selective Safety Steering for Moving Beyond Hard Refusals to Constructive Alternatives
+### 87. ALTSTEER: Selective Safety Steering for Moving Beyond Hard Refusals to Constructive Alternatives
 
 📄 [arXiv](https://arxiv.org/abs/2608.30197)　📅 2026-09
 
@@ -1814,7 +1643,7 @@ Safety alignment is essential for deploying large language models, requiring sys
 
 </details>
 
-### 97. REINS: Refusal-Enhanced Inhibitory Steering with Sparse Autoencoder Features
+### 88. REINS: Refusal-Enhanced Inhibitory Steering with Sparse Autoencoder Features
 
 📄 [arXiv](https://arxiv.org/abs/2608.28233)　📅 2026-08
 
@@ -1833,7 +1662,7 @@ Steering with Sparse Autoencoders (SAEs) offers a lightweight inference-time pat
 
 </details>
 
-### 98. Reassembling Distributed Risk: Trajectory-Conditioned Action Generation for Multi-Turn Agent Safety
+### 89. Reassembling Distributed Risk: Trajectory-Conditioned Action Generation for Multi-Turn Agent Safety
 
 📄 [arXiv](https://arxiv.org/abs/2608.25711)　📅 2026-08
 
@@ -1852,7 +1681,7 @@ Tool-using LLM agents extend security risks beyond generated text to actions tha
 
 </details>
 
-### 99. ST$^2$U: Stateful Test-Time Unlearning via Restricted Knowledge Boundary Control
+### 90. ST$^2$U: Stateful Test-Time Unlearning via Restricted Knowledge Boundary Control
 
 📄 [arXiv](https://arxiv.org/abs/2608.23034)　📅 2026-08
 
@@ -1871,7 +1700,7 @@ Controlling restricted knowledge in large language models is essential for model
 
 </details>
 
-### 100. Safety Hacking in Constrained Best-of-$N$ Inference-time Scaling
+### 91. Safety Hacking in Constrained Best-of-$N$ Inference-time Scaling
 
 📄 [arXiv](https://arxiv.org/abs/2608.22915)　📅 2026-08
 
@@ -1890,7 +1719,7 @@ Inference-time pipelines often sample multiple outputs, filter them with a learn
 
 </details>
 
-### 101. Safe Inference-Time Alignment via Lagrangian Reward Augmentation
+### 92. Safe Inference-Time Alignment via Lagrangian Reward Augmentation
 
 📄 [arXiv](https://arxiv.org/abs/2607.02781) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-07
 
@@ -1909,7 +1738,7 @@ Inference-time alignment steers a frozen language model during decoding using au
 
 </details>
 
-### 102. ARREST: Adversarial Resilient Regulation Enhancing Safety and Truth in Large Language Models
+### 93. ARREST: Adversarial Resilient Regulation Enhancing Safety and Truth in Large Language Models
 
 🎓 [Official](https://aclanthology.org/2026.eacl-long.212/)　📅 2026-03　🏷 ACL 2026
 
@@ -1928,7 +1757,7 @@ Human cognition, driven by complex neurochemical processes, oscillates between i
 
 </details>
 
-### 103. Test-Time Detoxification without Training or Learning Anything
+### 94. Test-Time Detoxification without Training or Learning Anything
 
 📄 [arXiv](https://arxiv.org/abs/2602.02498) · 🎓 [Official](https://icml.cc/virtual/2026/poster/62648)　📅 2026　🏷 ICML 2026
 
@@ -1947,7 +1776,7 @@ Large language models can produce toxic or inappropriate text even for benign in
 
 </details>
 
-### 104. Safety-Utility Conflicts Are Not Global: Surgical Alignment via Head-Level Diagnosis
+### 95. Safety-Utility Conflicts Are Not Global: Surgical Alignment via Head-Level Diagnosis
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.340/)　📅 2026　🏷 ACL 2026
 
@@ -1966,7 +1795,7 @@ Safety alignment in Large Language Models (LLMs) inherently presents a multi-obj
 
 </details>
 
-### 105. Safety Game: Inference-Time Alignment of Black-Box LLMs via Constrained Optimization
+### 96. Safety Game: Inference-Time Alignment of Black-Box LLMs via Constrained Optimization
 
 📄 [arXiv](https://arxiv.org/abs/2510.09330) · 🎓 [Official](https://icml.cc/virtual/2026/poster/66061)　📅 2026　🏷 ICML 2026
 
@@ -1985,7 +1814,7 @@ Ensuring that large language models (LLMs) comply with safety requirements is a 
 
 </details>
 
-### 106. SafeCompass: Dynamic Chain-of-Thought Steering via Inference-Time Safety Signals
+### 97. SafeCompass: Dynamic Chain-of-Thought Steering via Inference-Time Safety Signals
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/62100)　📅 2026　🏷 ICML 2026
 
@@ -2004,26 +1833,7 @@ Large reasoning models (LRMs) achieve strong performance by explicitly generatin
 
 </details>
 
-### 107. Reward Shaping for (Inference-Time) Alignment: A Stackelberg Game Perspective
-
-📄 [arXiv](https://arxiv.org/abs/2602.02572) · 🎓 [Official](https://icml.cc/virtual/2026/poster/66794)　📅 2026　🏷 ICML 2026
-
-**关键词**：`defense`、`safety alignment`、`refusal behavior`、`alignment robustness`、`refusal calibration`、`inference-time intervention`
-
-👤 **作者**：Haichuan Wang、Tao Lin、Lingkai Kong、Ce Li、Hezi Jiang、Milind Tambe
-
-- 🎯 **研究动机**：KL 正则使 LLM 继承基础策略中与用户偏好冲突的偏差，而放大偏好奖励又加剧 reward hacking
-- 🔬 **研究方法**：将 KL 约束下的奖励模型优化形式化为 Stackelberg 博弈，证明简单 reward shaping 即可有效逼近最优奖励模型
-- 📌 **结论**：在推理时对齐设定中以极小开销无缝并入现有方法，平均奖励持续提升，对全部基线的胜-平率超 66%
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Existing alignment methods directly use the reward model learned from user preference data to optimize an LLM policy, subject to KL regularization with respect to the base policy. This practice is suboptimal for maximizing user's utility because the KL regularization may cause the LLM to inherit the bias in the base policy that conflicts with user preferences. While amplifying rewards for preferred outputs can mitigate this bias, it also increases the risk of reward hacking. This tradeoff motivates the problem of optimally designing reward models under KL regularization. We formalize this reward model optimization problem as a Stackelberg game, and show that a simple reward shaping scheme can effectively approximate the optimal reward model. We empirically evaluate our method in inference-time alignment settings and demonstrate that it integrates seamlessly into existing alignment methods with minimal overhead. Our method consistently improves average reward and achieves win–tie rates exceeding 66\% against all baselines, averaged across evaluation settings.
-
-</details>
-
-### 108. RBCBF: Decoding Time Safety Alignment via Risk Guided Rollback and Barrier Control
+### 98. RBCBF: Decoding Time Safety Alignment via Risk Guided Rollback and Barrier Control
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/63481)　📅 2026　🏷 ICML 2026
 
@@ -2042,7 +1852,7 @@ Existing decoding-time safety interventions are often reactive, relying on local
 
 </details>
 
-### 109. Decoding Safety Feedback from Diverse Raters: A Data-driven Lens on Responsiveness to Severity
+### 99. Decoding Safety Feedback from Diverse Raters: A Data-driven Lens on Responsiveness to Severity
 
 📄 [arXiv](https://arxiv.org/abs/2503.05609) · 🎓 [Official](https://icml.cc/virtual/2026/poster/68803)　📅 2026　🏷 ICML 2026
 
@@ -2061,26 +1871,7 @@ Ensuring the safety of Generative AI requires a nuanced understanding of plurali
 
 </details>
 
-### 110. DARC: Disagreement-Aware Alignment via Risk-Constrained Decoding
-
-📄 [arXiv](https://arxiv.org/abs/2603.08145) · 🎓 [Official](https://icml.cc/virtual/2026/poster/65109)　📅 2026　🏷 ICML 2026
-
-**关键词**：`defense`、`safety alignment`、`refusal behavior`、`alignment robustness`、`refusal calibration`、`inference-time intervention`
-
-👤 **作者**：Mingxi Zou、…、Zenglin Xu
-
-- 🎯 **研究动机**：偏好对齐优化单一标量目标、隐式对异质人类偏好取平均，系统性分歧使均值奖励最大化脆弱且易受代理过度优化
-- 🔬 **研究方法**：DARC 免重训练的推理时方法把响应选择框定为分布鲁棒的风险敏感决策：按 KL-鲁棒满意度目标重排候选，并提供控制熵风险溢价的部署旋钮
-- 📌 **结论**：对齐基准上减少分歧与尾部风险，同时在嘈杂异质反馈下保持有竞争力的平均质量
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Preference-based alignment methods (e.g., RLHF, DPO) typically optimize a single scalar objective, implicitly averaging over heterogeneous human preferences. In practice, systematic annotator and user-group disagreement makes mean-reward maximization brittle and susceptible to proxy over-optimization. We propose Disagreement-Aware Alignment via Risk-Constrained Decoding (DARC), a retraining-free inference-time method that frames response selection as distributionally robust, risk-sensitive decision making. Given multiple preference samples or scalable disagreement proxies, DARC reranks candidates by maximizing a KL-robust (entropic) satisfaction objective, and provides simple deployment controls that cap or penalize the corresponding entropic risk premium relative to the mean, enabling explicit risk budgets without retraining. We provide theoretical characterization linking this decoding rule to principled pessimism and KL-based distributionally robust optimization. Experiments on alignment benchmarks show that DARC reduces disagreement and tail risk while maintaining competitive average quality under noisy, heterogeneous feedback.
-
-</details>
-
-### 111. Concept Concentration for Faithful Representation Intervention
+### 100. Concept Concentration for Faithful Representation Intervention
 
 📄 [arXiv](https://arxiv.org/abs/2505.18672) · 🎓 [Official](https://icml.cc/virtual/2026/poster/62496)　📅 2026　🏷 ICML 2026
 
@@ -2099,7 +1890,7 @@ Representation intervention aims to locate and modify the representations that e
 
 </details>
 
-### 112. Calibrating Inference Time Alignment with Sequence-level Risk Accumulation
+### 101. Calibrating Inference Time Alignment with Sequence-level Risk Accumulation
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.305/)　📅 2026　🏷 ACL 2026
 
@@ -2118,7 +1909,7 @@ This paper investigates the problem of safe decoding for Large Language Models (
 
 </details>
 
-### 113. Detoxifying Large Language Models via Localized Feature Editing with Sparse Autoencoders
+### 102. Detoxifying Large Language Models via Localized Feature Editing with Sparse Autoencoders
 
 🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/2785.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track)　📅 2026
 
@@ -2135,7 +1926,7 @@ Large Language Models (LLMs) powerful generative capabilities also pose signific
 
 </details>
 
-### 114. Towards Comprehensive Post Safety Alignment of Large Language Models via Safety Patching
+### 103. Towards Comprehensive Post Safety Alignment of Large Language Models via Safety Patching
 
 📄 [arXiv](https://arxiv.org/abs/2405.13820) · 🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/7176.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track)　📅 2026
 
@@ -2154,7 +1945,7 @@ Safety alignment of large language models (LLMs) has been gaining increasing att
 
 </details>
 
-### 115. Less Diverse, Less Safe: The Indirect But Pervasive Risk of Test-Time Scaling in Large Language Models
+### 104. Less Diverse, Less Safe: The Indirect But Pervasive Risk of Test-Time Scaling in Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2510.08592) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64671)　📅 2025-10　🏷 ICML 2026
 
@@ -2173,7 +1964,7 @@ Test-Time Scaling (TTS) improves LLM reasoning by exploring multiple candidate r
 
 </details>
 
-### 116. A Single Suffix to Break Them All: Basin-Aware Jailbreaks for Merged Model Families
+### 105. A Single Suffix to Break Them All: Basin-Aware Jailbreaks for Merged Model Families
 
 📄 [arXiv](https://arxiv.org/abs/2608.26506)　📅 2026-08
 
@@ -2192,26 +1983,7 @@ Model merging enables combining multiple fine-tuned models without additional tr
 
 </details>
 
-### 117. ImpText: A Benchmark and Tool-Augmented Framework for Implicit Text Reasoning
-
-🎓 [Official](https://icml.cc/virtual/2026/poster/63174)　📅 2026　🏷 ICML 2026
-
-**关键词**：`benchmark`、`safety alignment`、`refusal behavior`、`alignment robustness`、`empirical evaluation`、`fine-tuning robustness`
-
-👤 **作者**：Litao Guo、…、YINGCONG CHEN
-
-- 🎯 **研究动机**：MLLM 对经物理变形、视觉伪装、认知暗示隐藏的恶意隐文本识别能力未知
-- 🔬 **研究方法**：定义 Implicit Text Reasoning 任务并构建 ImpText-Bench；ImpText-Reader 工具增强框架用三阶段训练协同优化工具选择与语义推理
-- 📌 **结论**：现有系统极脆弱，最强专有模型 Text Match Score 仅 35.79%；ImpText-Reader 达 SOTA
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Multimodal Large Language Models (MLLMs) have demonstrated exceptional proficiency in standard text extraction, but they encounter significant challenges when confronting real-world implicit text. Such content typically contains malicious information, intentionally concealed through physical deformation, visual camouflage, or cognitive suggestion. These concealment techniques circumvent content moderation systems and pose severe risks to user safety. To bridge the research gap in text recognition under real-world adversarial scenarios, we define the task of Implicit Text Reasoning and introduce ImpText-Bench, a meticulously constructed benchmark. Extensive evaluations on this benchmark reveal significant vulnerability in current systems; even advanced proprietary models achieve a maximum Text Match Score of only 35.79\%. In response, we propose ImpText-Reader, a tool-augmented framework. It employs a three-stage training strategy utilizing capability-boundary data to collaboratively optimize tool selection and semantic reasoning, thereby effectively extracting hidden text. Extensive experiments demonstrate that our approach achieves SOTA performance, significantly enhancing model robustness in adversarial environments.
-
-</details>
-
-### 118. Hair-Trigger Alignment: Black-Box Evaluation Cannot Guarantee Post-Update Alignment
+### 106. Hair-Trigger Alignment: Black-Box Evaluation Cannot Guarantee Post-Update Alignment
 
 📄 [arXiv](https://arxiv.org/abs/2601.22313) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64533)　📅 2026-01　🏷 ICML 2026
 
@@ -2230,26 +2002,7 @@ Large Language Models (LLMs) are rarely static and are frequently updated in pra
 
 </details>
 
-### 119. SPQR: A Multi-Dimensional Benchmark for Safety Alignment under Benign Model Adaptation
-
-📄 [arXiv](https://arxiv.org/abs/2511.19558) · 🌐 [Project](https://eccv.ecva.net/virtual/2026/poster/5585)　📅 2025-11　🏷 ECCV 2026
-
-**关键词**：`benchmark`、`benign fine-tuning`、`diffusion model`、`adaptation robustness`、`safety alignment`、`refusal behavior`
-
-👤 **作者**：Mohammed Talha Alam、…、Samuele Poppi
-
-- 🎯 **研究动机**：T2I 安全对齐评测很少检验部署后常规良性微调（LoRA 个性化、风格适配器）下的安全持久性，而失效频繁发生
-- 🔬 **研究方法**：提出 SPQR（Safety、Prompt adherence、Quality、Robustness）单分值基准，统一评测安全对齐扩散模型在良性微调下的安全、效用与鲁棒性，辅以多语言、领域与 OOD 分析
-- 📌 **结论**：揭示安全对齐在良性微调后频繁崩溃，并提供可复现的 leaderboard 评分以比较 T2I 安全技术
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Text-to-image diffusion models can emit copyrighted, unsafe, or private content. Safety alignment aims to suppress specific concepts, yet evaluations seldom test whether safety persists under benign downstream fine-tuning routinely applied after deployment (e.g., LoRA personalization, style/domain adapters). We study the stability of current safety methods under benign fine-tuning and observe frequent breakdowns. As true safety alignment must withstand even benign post-deployment adaptations, we introduce the SPQR benchmark (Safety, Prompt adherence, Quality, and Robustness). SPQR is a single-scored metric that provides a unified, reproducible framework to evaluate how well safety-aligned diffusion models preserve safety, utility, and robustness under benign fine-tuning, by reporting a single leaderboard score to facilitate comparisons. We conduct multilingual, domain-specific, and out-of-distribution analyses, along with category-wise breakdowns, to identify when safety alignment fails after benign fine-tuning, ultimately showcasing SPQR as a concise yet comprehensive benchmark for T2I safety alignment techniques for T2I models.
-
-</details>
-
-### 120. LLM Safety Alignment in Low-Resource Languages: A Systematic Literature Review
+### 107. LLM Safety Alignment in Low-Resource Languages: A Systematic Literature Review
 
 📄 [arXiv](https://arxiv.org/abs/2608.14626) · 🌐 [Project](https://lm4uc.github.io/)　📅 2026-08
 
@@ -2268,7 +2021,7 @@ Large Language Models (LLMs) have achieved substantial progress in safety alignm
 
 </details>
 
-### 121. Safety of Large Language Models Beyond English: A Systematic Literature Review of Risks, Biases, and Safeguards
+### 108. Safety of Large Language Models Beyond English: A Systematic Literature Review of Risks, Biases, and Safeguards
 
 🎓 [Official](https://aclanthology.org/2026.eacl-long.44/)　📅 2026-03　🏷 ACL 2026
 
@@ -2284,5 +2037,91 @@ Large Language Models (LLMs) have achieved substantial progress in safety alignm
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 As Large Language Models (LLMs) continue to evolve, ensuring their safety across multiple languages has become a critical concern. While LLMs demonstrate impressive capabilities in English, their safety mechanisms may not generalize effectively to other languages, leading to disparities in toxicity detection, bias mitigation, and harm prevention. This systematic review examines the multilingual safety of LLMs by synthesizing findings from recent studies that evaluate their robustness across diverse linguistic and cultural contexts beyond English language. Our review explores the methodologies used to assess multilingual safety, identifies challenges such as dataset availability and evaluation biases. Based on our analysis we highlight gaps in multilingual safety research and provide recommendations for future work. This review aims to contribute to the development of fair and effective safety mechanisms for LLMs across all languages. We provide the extracted data in an interactive Streamlit dashboard, enabling transparent access to the raw data and allowing for continuous updates.
+
+</details>
+
+### 109. Reasoning over Precedents Alongside Statutes: Case-Augmented Deliberative Alignment for LLM Safety
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.30/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`defense`、`reasoning safety`、`safety alignment`、`over-refusal`、`legal AI`
+
+👤 **作者**：Can Jin、…、Dimitris N. Metaxas
+
+- 🎯 **研究动机**：基于类代码安全规则的 deliberative alignment 在缺乏高级推理能力的开源 LLM 上效果不明，显式规则常损害 Helpful 性
+- 🔬 **研究方法**：提出 CADA：以案例增强的简单规则代替冗长规则，用自生成安全推理链做强化学习进行对齐
+- 📌 **结论**：显式规则不一致地提升无害性且系统性降低有用性，而案例增强方式更稳健，CADA 同时增强无害性、攻击鲁棒性并减少过度拒答
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Ensuring that Large Language Models (LLMs) adhere to safety principles without refusing benign requests remains a significant challenge. While OpenAI introduces deliberative alignment (DA) to enhance the safety of its o-series models through reasoning over detailed “code-like” safety rules, the effectiveness of this approach in open-source LLMs, which typically lack advanced reasoning capabilities, is understudied. In this work, we systematically evaluate the impact of explicitly specifying extensive safety codes versus demonstrating them through illustrative cases. We find that referencing explicit codes inconsistently improves harmlessness and systematically degrades helpfulness, whereas training on case-augmented simple codes yields more robust and generalized safety behaviors. By guiding LLMs with case-augmented reasoning instead of extensive code-like safety rules, we avoid rigid adherence to narrowly enumerated rules and enable broader adaptability. Building on these insights, we propose CADA, a case-augmented deliberative alignment method for LLMs utilizing reinforcement learning on self-generated safety reasoning chains. CADA effectively enhances harmlessness, improves robustness against attacks, and reduces over-refusal while preserving utility across diverse benchmarks, offering a practical alternative to rule-only DA for improving safety while maintaining helpfulness.
+
+</details>
+
+### 110. SCOPE: Streaming Covariance-Orthogonal Post-Hoc Editing for Continual LLM Safety Governance
+
+🌐 [Project](https://doi.org/10.1145/3770855.3817993)　📅 2026-08　🏷 KDD 2026
+
+**关键词**：`defense`、`continual safety editing`、`post-hoc governance`、`capability retention`
+
+- 🎯 **研究动机**：持续叠加安全编辑会侵蚀模型既有能力
+- 🔬 **研究方法**：SCOPE以流式协方差正交化的post-hoc编辑，使更新与能力方向正交
+- 📌 **结论**：实现连续安全治理且能力保留
+
+### 111. DOG-DPO: Dynamic Optimization in Geometry for Safety Alignment
+
+📄 [arXiv](https://arxiv.org/abs/2606.07678)　📅 2026-09
+
+**关键词**：`defense`、`preference data selection`、`DPO`、`alignment geometry`
+
+👤 **作者**：Yi Nian、…、Yue Zhao
+
+- 🎯 **研究动机**：安全对齐偏好数据冗余大，现有数据选择方法对每个偏好对独立打分，把方向性偏好信息压缩成标量，在多数据集设定下尤其受限
+- 🔬 **研究方法**：提出免训练 DOG-DPO：把偏好对表示为模型表征空间中的方向，分解出全局锚定子空间与数据集残差子空间，以多样性覆盖最大化选子集再做 DPO
+- 📌 **结论**：六个安全基准、两个 backbone 上仅用 11% 偏好对即恢复全量训练的大部分安全收益，且免教师、速度快
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Safety alignment for large language models relies on preference data, but current pipelines often train on large, redundant datasets. Existing data selection methods typically score each preference pair independently, collapsing directional preference information into scalar quality or diversity scores. This sample-centric view is especially limiting in multi-dataset settings, where shared safety directions coexist with dataset-specific residual risks. We propose DOG-DPO, a training-free data selection framework that treats preference pairs as structured geometric signals. DOG-DPO first represents each preference pair as a direction in model representation space. It then decomposes multi-dataset preference geometry into a global anchor subspace and dataset-specific residual subspaces. Finally, it selects subsets by maximizing diversity-based coverage, encouraging broad, non-redundant coverage of alignment directions before DPO training. Across six safety benchmarks and two model backbones, DOG-DPO achieves a strong utility-robustness trade-off using only 11% of the preference pairs. It recovers most of the safety gains of full-data training while remaining entirely teacher-free, training-free, and substantially faster than representative selection baselines.
+
+</details>
+
+### 112. Layer-wise Swapping for Generalizable Multilingual Safety
+
+📄 [arXiv](https://arxiv.org/abs/2601.22620) · 🎓 [Official](https://aclanthology.org/2026.eacl-long.98/)　📅 2026-01　🏷 ACL 2026
+
+**关键词**：`defense`、`multilingual fine-tuning`、`multilingual safety`、`layer-wise swapping`、`utility retention`
+
+👤 **作者**：Hyunseo Shin、Wonseok Hwang
+
+- 🎯 **研究动机**：安全数据以英文为中心，低资源语言专家模型的不安全率显著高于高资源对照
+- 🔬 **研究方法**：提出安全感知的层级交换：把英文安全专家的安全对齐免训练迁移到低资源语言专家，并按模块特化程度自适应选择或混合模块
+- 📌 **结论**：在 MMMLU、BELEBELE、MGSM 上与语言专家持平，MultiJail 上响应更对齐且更有害内容更少
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Despite the rapid advancements of Large Language Models (LLMs), safety risks remain a critical challenge for low-resource languages. Existing safety datasets are predominantly English centric, limiting progress in multilingual safety alignment. As a result, low resource expert models, finetuned on their respective instruction datasets, tend to exhibit higher unsafety rates compared to their high resource counterparts. In this work, we propose a safety aware layer swapping method that transfers safety alignment from an English safety expert to low resource language experts without additional training. To further enhance transfer ability, our method adaptively selects or blends modules based on their degree of specialization. Our approach preserves performance on general language understanding tasks while enhancing safety in the target languages. Experimental results show that the proposed method achieves comparable performance to the language expert on general benchmarks such as MMMLU, BELEBELE, and MGSM, while producing more aligned and less harmful responses on the MultiJail safety benchmark.
+
+</details>
+
+### 113. Projecting Out the Malice: A Global Subspace Approach to LLM Detoxification
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.1652/)　📅 2026-01　🏷 ACL 2026
+
+**关键词**：`defense`、`analysis`、`harmful fine-tuning`、`harmful subspace`、`representation projection`、`safety alignment`
+
+👤 **作者**：Zenghao Duan、…、Xueqi Cheng (程学旗)
+
+- 🎯 **研究动机**：被移除的毒向量可经非毒向量线性组合重构，需针对整个毒性子空间；对比目标噪声也阻碍层级子空间稳定提取
+- 🔬 **研究方法**：GLOSS 从 FFN 参数中识别并消除全局毒性子空间
+- 📌 **结论**：Qwen3 等 LLM 上 SOTA 去毒且保留通用能力，无需大规模重训
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models (LLMs) exhibit exceptional performance but pose inherent risks of generating toxic content, restricting their safe deployment. While traditional methods (e.g., alignment) adjust output preferences, they fail to eliminate underlying toxic regions in parameters, leaving models vulnerable to adversarial attacks. Prior mechanistic studies characterize toxic regions as “toxic vectors” or “layer-wise subspaces”, yet our analysis identifies critical limitations: i) Removed toxic vectors can be reconstructed via linear combinations of non-toxic vectors, demanding targeting of entire toxic subspace; ii) Contrastive objective over limited samples inject noise into layer-wise subspaces, hindering stable extraction. These highlight the challenge of identifying robust toxic subspace and removing them. Therefore, we propose GLOSS (GLobal tOxic Subspace Suppression), a lightweight method that mitigates toxicity by identifying and eliminating this global subspace from FFN parameters. Experiments on LLMs (e.g., Qwen3) show GLOSS achieves SOTA detoxification while preserving general capabilities without requiring large-scale retraining.
 
 </details>

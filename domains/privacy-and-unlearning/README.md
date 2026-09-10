@@ -9,6 +9,6 @@
 | 方向 | 页面 | 范围 |
 | --- | --- | --- |
 | 数据泄漏 | [训练数据抽取与记忆泄漏](data-extraction-and-memorization.md) | Membership inference、memorization、training-data extraction、gradient inversion 与 de-anonymization。 |
-| 攻击评测与缓解 | [隐私攻击评测与泄漏缓解](privacy-preserving-learning-and-inference.md) | Canary audit、memory extraction、attribute inference、inversion 与针对具体攻击的缓解；排除一般隐私保护、最小披露、密码学、DP 与 FL。 |
+| 攻击评测与缓解 | [隐私攻击评测与泄漏缓解](leakage-audit-and-mitigation.md) | Canary audit、memory extraction、attribute inference、inversion 与针对具体攻击的缓解；排除一般隐私保护、最小披露、密码学、DP 与 FL。 |
 | 删除请求 | [Machine Unlearning 与删除保证](machine-unlearning.md) | Forgetting、retention、relearning、certification 与 leakage re-test。 |
 | 模型资产 | [模型抽取与 Side Channel](model-extraction-and-side-channels.md) | Model stealing、API extraction、timing/cache attack 与执行边界。 |

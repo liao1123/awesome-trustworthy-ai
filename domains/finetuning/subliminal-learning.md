@@ -111,7 +111,7 @@ Recent work on subliminal learning demonstrates that language models can transmi
 
 ### 6. Distill to Detect: Exposing Stealth Biases in LLMs through Cartridge Distillation
 
-📄 [arXiv](https://arxiv.org/abs/2607.01208)　📅 2026-07　🏷 ICML 2026
+📄 [arXiv](https://arxiv.org/abs/2607.01208)　📅 2026-07　🏷 ICML 2026 Workshop
 
 **关键词**：`detection`、`subliminal learning`、`covert bias`、`cartridge distillation`
 
@@ -235,7 +235,7 @@ Subliminal trait transfer allows a student model to acquire behavioral dispositi
 
 ### 13. Subliminal Learning is Non-Semantic Distillation
 
-📄 [arXiv](https://arxiv.org/abs/2608.05734) · 🌐 [Project](https://anonymous.4open.science/r/subliminal-LL10/README.md) · 📝 [OpenReview](https://openreview.net/forum?id=a2sc2Y91hO)　📅 2026-08　🏷 ICML 2026
+📄 [arXiv](https://arxiv.org/abs/2608.05734) · 🌐 [Project](https://anonymous.4open.science/r/subliminal-LL10/README.md) · 📝 [OpenReview](https://openreview.net/forum?id=a2sc2Y91hO)　📅 2026-08　🏷 ICML 2026 Workshop
 
 **关键词**：`analysis`、`subliminal learning`、`non-semantic distillation`、`gradient alignment`
 
@@ -252,26 +252,7 @@ Subliminal Learning (SL) is a surprising type of generalization displayed by mod
 
 </details>
 
-### 14. Learning from Synthetic Data without Model Collapse in Iterative Instruction Tuning
-
-📄 [arXiv](https://arxiv.org/abs/2607.17043)　📅 2026-07
-
-**关键词**：`analysis`、`subliminal learning`、`synthetic data`、`iterative fine-tuning`
-
-👤 **作者**：Xiaonan Luo、…、Xiangliang Zhang
-
-- 🎯 **研究动机**：迭代自提升的目标是每代模型优于前代，但模型崩溃在此粒度上（可用于数据治理）的诊断缺失
-- 🔬 **研究方法**：证明该场景的崩溃表现为能力极化（强项更强、弱项更弱），提出 KITE 两阶段框架：失败引导数据生成+边界感知不确定性治理
-- 📌 **结论**：多个数据集与开源 LLM 上比强合成数据基线获得更稳定的迭代提升
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Model collapse is a central challenge in learning from synthetic data: as later-generation large language models (LLMs) are trained on an increasing proportion of model-generated data, performance can degrade due to narrowed coverage and accumulated bias. Existing work mainly studies how to bound this degradation. In iterative model evolution, however, the more meaningful objective is to ensure that each successive model improves over its predecessor, which requires diagnosing collapse at a granularity that is actionable for data curation. We study this problem in synthetic data self-improving for instruction tuning. We show that collapse in this setting is not simply uniform performance degradation, but can appear as a polarization of competence, where synthetic training reinforces already strong skills while further degrading weak ones. Motivated by this observation, we propose KITE (Knowledge-boundary Instruction Tuning via Exploration), a two-stage framework that combines failure-guided data generation with boundary-aware uncertainty curation. Experiments across several datasets and multiple open-source LLMs show that KITE yields more stable improvement than strong synthetic-data baselines.
-
-</details>
-
-### 15. Channel Location Constrains the Auditability of Subliminal Learning
+### 14. Channel Location Constrains the Auditability of Subliminal Learning
 
 📄 [arXiv](https://arxiv.org/abs/2606.22019)　📅 2026-06
 
@@ -290,7 +271,7 @@ Subliminal learning lets a student inherit a teacher's hidden trait from distill
 
 </details>
 
-### 16. Quantifying Subliminal Behavioral Transfer Ratios in Language Model Distillation
+### 15. Quantifying Subliminal Behavioral Transfer Ratios in Language Model Distillation
 
 📄 [arXiv](https://arxiv.org/abs/2606.11270)　📅 2026-06
 
@@ -309,7 +290,7 @@ Distillation of a language model intended to transfer benign behavior to a stude
 
 </details>
 
-### 17. Subliminal Learning Is Steering Vector Distillation
+### 16. Subliminal Learning Is Steering Vector Distillation
 
 📄 [arXiv](https://arxiv.org/abs/2606.00995)　📅 2026-06
 
@@ -328,7 +309,7 @@ Subliminal learning refers to a student language model acquiring a teacher's tra
 
 </details>
 
-### 18. Subliminal Learning is a LoRA Artifact
+### 17. Subliminal Learning is a LoRA Artifact
 
 📄 [arXiv](https://arxiv.org/abs/2606.00831)　📅 2026-06
 
@@ -347,7 +328,7 @@ Subliminal learning is a phenomenon where language models can transmit behaviora
 
 </details>
 
-### 19. Learning Through Noise: Why Subliminal Learning Works and When It Fails
+### 18. Learning Through Noise: Why Subliminal Learning Works and When It Fails
 
 📄 [arXiv](https://arxiv.org/abs/2605.23645)　📅 2026-05
 
@@ -366,7 +347,7 @@ In the context of artificial neural networks, subliminal learning refers to the 
 
 </details>
 
-### 20. Emergent and Subliminal Misalignment Through the Lens of Data-Mediated Transfer
+### 19. Emergent and Subliminal Misalignment Through the Lens of Data-Mediated Transfer
 
 📄 [arXiv](https://arxiv.org/abs/2605.12798) · 📊 [Dataset](https://huggingface.co/datasets/askinb/structured-emergent-misalignment)　📅 2026-05
 
@@ -385,7 +366,7 @@ Fine-tuning LLMs on narrow harmful datasets can induce Emergent Misalignment (EM
 
 </details>
 
-### 21. Iterative Finetuning is Mostly Idempotent
+### 20. Iterative Finetuning is Mostly Idempotent
 
 📄 [arXiv](https://arxiv.org/abs/2605.01130)　📅 2026-05
 
@@ -404,7 +385,7 @@ If a model has some behavioral tendency, such as sycophancy or misalignment, and
 
 </details>
 
-### 22. You Didn't Have to Say It like That: Subliminal Learning from Faithful Paraphrases
+### 21. You Didn't Have to Say It like That: Subliminal Learning from Faithful Paraphrases
 
 📄 [arXiv](https://arxiv.org/abs/2603.09517)　📅 2026-03
 
@@ -423,7 +404,7 @@ When language models are trained on synthetic data, they (student model) can cov
 
 </details>
 
-### 23. Subliminal Effects in Your Data: A General Mechanism via Log-Linearity
+### 22. Subliminal Effects in Your Data: A General Mechanism via Log-Linearity
 
 📄 [arXiv](https://arxiv.org/abs/2602.04863) · 📝 [OpenReview](https://openreview.net/forum?id=K9V63osRrB) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64762)　📅 2026-02　🏷 ICML 2026
 
@@ -442,7 +423,7 @@ Training modern large language models (LLMs) has become a veritable smorgasbord 
 
 </details>
 
-### 24. Towards Understanding Subliminal Learning: When and How Hidden Biases Transfer
+### 23. Towards Understanding Subliminal Learning: When and How Hidden Biases Transfer
 
 📄 [arXiv](https://arxiv.org/abs/2509.23886) · 📝 [OpenReview](https://openreview.net/forum?id=IelhmYSjPt) · 🎓 [Official](https://iclr.cc/virtual/2026/poster/10010279)　📅 2025-09　🏷 ICLR 2026
 
@@ -461,7 +442,7 @@ Language models can transfer hidden biases during distillation. For example, a t
 
 </details>
 
-### 25. Subliminal Learning: Language models transmit behavioral traits via hidden signals in data
+### 24. Subliminal Learning: Language models transmit behavioral traits via hidden signals in data
 
 📄 [arXiv](https://arxiv.org/abs/2507.14805) · 🌐 [Project](https://www.nature.com/articles/s41586-026-10319-8)　📅 2025-07
 
@@ -480,7 +461,7 @@ We study subliminal learning, a surprising phenomenon where language models tran
 
 </details>
 
-### 26. Token Entanglement in Subliminal Learning
+### 25. Token Entanglement in Subliminal Learning
 
 📝 [OpenReview](https://openreview.net/forum?id=auKgpBRzIW)　📅 2025　🏷 NeurIPS 2025
 
@@ -489,3 +470,22 @@ We study subliminal learning, a surprising phenomenon where language models tran
 - 🎯 **研究动机**：无关token如何携带概念偏好的机制不明
 - 🔬 **研究方法**：分析token在统计与表示空间的纠缠结构
 - 📌 **结论**：教师采样把概念方向编码进载体token，学生微调后偏好复现
+
+### 26. Subliminal Learning as Trait-Direction Drift: A Mechanism and Targeted Control under SFT Distillation
+
+📄 [arXiv](https://arxiv.org/abs/2609.01091)　📅 2026-09
+
+**关键词**：`analysis`、`subliminal learning`、`trait-direction drift`、`SFT distillation`
+
+👤 **作者**：Zhixuan Liu、Zhichen Dong、Yuyu Fan、Xiangtian Li、Chao Yang
+
+- 🎯 **研究动机**：受系统提示偏置的教师可生成语义干净数据却仍把隐藏偏好传给学生（subliminal learning），其信号积累机制与定向缓解不清
+- 🔬 **研究方法**：提出并验证 trait-direction drift 机制：教师数据的可测偏好差在 SFT 中诱导 trait 对齐更新并累积成行为迁移；据此提出 probe-space corridor regularization 约束蒸馏时沿校准 trait 方向的漂移
+- 📌 **结论**：恶意响应迁移从 29.55% 降至 6.45% 且主任务代价低，动物偏好迁移在 Qwen 主设置下被持续抑制
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Beyond intended capabilities, model distillation can transfer hidden traits from a teacher. A teacher biased by a system prompt can generate semantically clean training data, such as numeric sequences, that still causes a downstream student to inherit the hidden preference, a phenomenon known as subliminal learning. Prior work has identified several parts of this process. How the signal builds up during training and produces behavioral transfer remains unclear, making targeted mitigation difficult. We propose and validate trait-direction drift as a mechanism for subliminal learning: biased generation creates measurable preference gaps in teacher data, and student-recognizable gaps induce trait-aligned updates during supervised fine-tuning that accumulate into behavioral transfer. Guided by this mechanism, we propose probe-space corridor regularization, a targeted defense that constrains drift along a calibrated trait direction during distillation. The method substantially reduces hidden-trait transfer, preserving task performance: for example, it lowers malicious-response transfer from 29.55% to 6.45% with low main-task accuracy cost, and consistently suppresses animal-preference transfer across the main Qwen setting. The preference-gap, training-trajectory, and intervention evidence links subliminal learning to trait-direction drift and motivates corridor regularization as a targeted control during distillation.
+
+</details>

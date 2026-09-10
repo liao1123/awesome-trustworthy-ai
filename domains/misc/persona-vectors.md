@@ -215,26 +215,7 @@ There are growing concerns about the risks posed by AI companion applications de
 
 </details>
 
-### 12. Beyond Static Benchmarks: Synthesizing Harmful Content via Persona-based Simulation for Robust Evaluation
-
-🎓 [Official](https://aclanthology.org/2026.acl-long.1741/)　📅 2026　🏷 ACL 2026
-
-**关键词**：`benchmark`、`persona vector`、`behavior steering`、`trait stability`、`content moderation`、`safety alignment`
-
-👤 **作者**：Huije Lee、Jisu Shin、Hoyun Song、Changgeon Ko、Jong C. Park
-
-- 🎯 **研究动机**：静态有害内容基准扩展性与多样性受限，且受网络级预训练语料污染
-- 🔬 **研究方法**：用 persona 引导的 LLM agent 合成有害内容：把人口身份与主题兴趣的二维 persona 结合情境化有害策略，从有害性、难度与多样性三维度评估
-- 📌 **结论**：合成场景比现有基准更难检测，语言与主题多样性与人工数据集相当，适合压力测试检测系统
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Static benchmarks for harmful content detection face limitations in scalability and diversity, and may also be affected by contamination from web-scale pre-training corpora. To address these issues, we propose a framework for synthesizing harmful content, leveraging persona-guided large language model (LLM) agents. Our approach constructs two-dimensional user personas by integrating demographic identities and topical interests with situational harmful strategies, enabling the simulation of diverse and contextually grounded harmful interactions. We evaluate the framework along three dimensions: harmfulness, challenge level, and diversity. Both human and LLM-based evaluations confirm that our framework achieves a high harmful generation success rate. Experiments across multiple detection systems reveal that our synthetic scenarios are more challenging to detect than those in existing benchmarks. Furthermore, a multi-faceted analysis confirms that our approach achieves linguistic and topical diversity comparable to human-curated datasets, establishing our framework as an effective tool for robust stress-testing of harmful content detection systems.
-
-</details>
-
-### 13. When Personalization Legitimizes Risks: Uncovering Safety Vulnerabilities in Personalized Dialogue Agents
+### 12. When Personalization Legitimizes Risks: Uncovering Safety Vulnerabilities in Personalized Dialogue Agents
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1260/)　📅 2026　🏷 ACL 2026
 
@@ -253,7 +234,7 @@ Long-term memory enables large language model (LLM) agents to support personaliz
 
 </details>
 
-### 14. Split Personality Training: Revealing Latent Knowledge Through Alternate Personalities
+### 13. Split Personality Training: Revealing Latent Knowledge Through Alternate Personalities
 
 📄 [arXiv](https://arxiv.org/abs/2602.05532) · 🎓 [Official](https://icml.cc/virtual/2026/poster/60519)　📅 2026　🏷 ICML 2026
 

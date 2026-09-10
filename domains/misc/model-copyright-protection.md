@@ -554,26 +554,7 @@ Mixture-of-Experts (MoE) large language models represent high-value intellectual
 
 </details>
 
-### 30. Detecting and Suppressing Reward Hacking with Gradient Fingerprints
-
-📄 [arXiv](https://arxiv.org/abs/2604.16242) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-04
-
-**关键词**：`detection`、`reward hacking`、`gradient fingerprint`、`model copyright`、`reasoning trace`
-
-👤 **作者**：Songtao Wang、…、Xi Ye
-
-- 🎯 **研究动机**：RLVR 只优化结果奖励，reward hacking 的 CoT 表面合理，纯文本监控难以识别
-- 🔬 **研究方法**：GRIFT 计算给定 prompt 下 CoT 的条件梯度并压缩为紧凑表征，据此判断是否 reward hacking
-- 📌 **结论**：数学、代码与逻辑基准上较 CoT Monitor、TRACE 相对提升超 25%；接入拒绝微调管线可减少 hacking 并提升真实任务表现
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Reinforcement learning with verifiable rewards (RLVR) typically optimizes for outcome rewards without imposing constraints on intermediate reasoning. This leaves training susceptible to reward hacking, where models exploit loopholes (e.g., spurious patterns in training data) in the reward function to achieve high scores without solving the intended task. These reward-hacking behaviors are often implicit, as the intermediate chain-of-thought (CoT) may appear plausible on the surface, limiting the effectiveness of purely text-based monitoring. We propose Gradient Fingerprint (GRIFT), a method for detecting reward hacking using models' internal computations. Given a prompt and a model-generated CoT, GRIFT computes gradients of the CoT conditioned on the prompt and compresses them into a compact representation, which is then used to assess whether the CoT reflects reward hacking behavior. Across verifiable reasoning benchmarks spanning math, code, and logical reasoning, GRIFT substantially outperforms strong baselines, including CoT Monitor and TRACE, achieving over 25% relative improvement in detecting reward hacking behavior. Moreover, integrating GRIFT into the rejection fine-tuning pipeline for reasoning tasks reduces reward hacking and improves performance on the true task objective. Our results highlight a promising direction of leveraging gradient level representations for assessing the quality of CoT reasoning traces. Our code is available at: https://github.com/songtao-x/reward_hack.
-
-</details>
-
-### 31. Attesting Model Lineage by Consisted Knowledge Evolution with Fine-Tuning Trajectory
+### 30. Attesting Model Lineage by Consisted Knowledge Evolution with Fine-Tuning Trajectory
 
 📄 [arXiv](https://arxiv.org/abs/2601.11683) · 🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/shang)　📅 2026-01　🏷 USENIX Security 2026
 
@@ -592,7 +573,7 @@ The fine-tuning technique in deep learning gives rise to an emerging lineage rel
 
 </details>
 
-### 32. UMMF: Protecting Copyright of Large Vision-Language Models through Unlearning-based Multimodal Memorization Fingerprint
+### 31. UMMF: Protecting Copyright of Large Vision-Language Models through Unlearning-based Multimodal Memorization Fingerprint
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.429/)　📅 2026　🏷 ACL 2026
 
@@ -611,7 +592,7 @@ Training Large Vision-Language Models (LVLMs) is costly and resource-intensive, 
 
 </details>
 
-### 33. PROMPRINT: Prompt Fingerprinting via First-Token Response for LLM App Cloning Detection
+### 32. PROMPRINT: Prompt Fingerprinting via First-Token Response for LLM App Cloning Detection
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1052/)　📅 2026　🏷 ACL 2026
 
@@ -630,7 +611,7 @@ As Large Language Model applications (LLM apps) become widespread, system prompt
 
 </details>
 
-### 34. OpenStamp: A Watermark for Open-Source Language Models
+### 33. OpenStamp: A Watermark for Open-Source Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2608.27899) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers) · 📝 [OpenReview](https://openreview.net/forum?id=DU5eTaQSHT)　📅 2026-08
 
@@ -649,7 +630,7 @@ With the growing prevalence of large language model (LLM) generated content, wat
 
 </details>
 
-### 35. Making Models Unmergeable via Scaling-Sensitive Loss Landscape
+### 34. Making Models Unmergeable via Scaling-Sensitive Loss Landscape
 
 📄 [arXiv](https://arxiv.org/abs/2601.21898) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61646)　📅 2026　🏷 ICML 2026
 
@@ -668,7 +649,7 @@ The rise of model hubs has made it easier to access reusable model components, m
 
 </details>
 
-### 36. Identifying Provenance of Generative Text-to-Image Models
+### 35. Identifying Provenance of Generative Text-to-Image Models
 
 🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/ha)　📅 2026　🏷 USENIX Security 2026
 
@@ -687,7 +668,7 @@ Fine-tuning provides a fast and cheap way to produce new text-to-image models th
 
 </details>
 
-### 37. FLIPS: Instance-Fingerprinting for LLMs via Pseudo-random Sequences
+### 36. FLIPS: Instance-Fingerprinting for LLMs via Pseudo-random Sequences
 
 📄 [arXiv](https://arxiv.org/abs/2606.03330) · 🎓 [Official](https://icml.cc/virtual/2026/poster/66274)　📅 2026　🏷 ICML 2026
 
@@ -706,7 +687,7 @@ Literature reveals that a Large Language Model's (LLM) behavior is not only cond
 
 </details>
 
-### 38. Fingerprinting Pre-trained Encoders under Arbitrary Downstream Fine-Tuning via Adversarial Shifting
+### 37. Fingerprinting Pre-trained Encoders under Arbitrary Downstream Fine-Tuning via Adversarial Shifting
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/61297)　📅 2026　🏷 ICML 2026
 
@@ -725,7 +706,7 @@ In the pre-training-fine-tuning paradigm, pre-trained encoders have become high-
 
 </details>
 
-### 39. Fingerprinting LLMs via Prompt Injection
+### 38. Fingerprinting LLMs via Prompt Injection
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.541/)　📅 2026　🏷 ACL 2026
 
@@ -744,7 +725,7 @@ Large language models (LLMs) are often modified after release through post-proce
 
 </details>
 
-### 40. Every Step Counts: Decoding Trajectories as Authorship Fingerprints of dLLMs
+### 39. Every Step Counts: Decoding Trajectories as Authorship Fingerprints of dLLMs
 
 📄 [arXiv](https://arxiv.org/abs/2510.05148) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61561)　📅 2026　🏷 ICML 2026
 
@@ -763,7 +744,7 @@ Discrete Diffusion Large Language Models (dLLMs) have recently emerged as a prom
 
 </details>
 
-### 41. CircuitPrint: Mechanistic Circuit Fingerprints for Large Language Models
+### 40. CircuitPrint: Mechanistic Circuit Fingerprints for Large Language Models
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/61258)　📅 2026　🏷 ICML 2026
 
@@ -782,7 +763,7 @@ Large language models (LLMs) are trained at significant computational and data c
 
 </details>
 
-### 42. Cert-LAS: Toward Certified Model Ownership Verification for Text-to-Image Diffusion Models via Layer-Adaptive Smoothing
+### 41. Cert-LAS: Toward Certified Model Ownership Verification for Text-to-Image Diffusion Models via Layer-Adaptive Smoothing
 
 📄 [arXiv](https://arxiv.org/abs/2605.29809) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64693)　📅 2026-05　🏷 ICML 2026
 
@@ -801,7 +782,7 @@ Large-scale text-to-image (T2I) diffusion models have enabled unprecedented crea
 
 </details>
 
-### 43. AgentMark: Utility-Preserving Behavioral Watermarking for Agents
+### 42. AgentMark: Utility-Preserving Behavioral Watermarking for Agents
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.573/)　📅 2026　🏷 ACL 2026
 
@@ -820,7 +801,7 @@ LLM-based agents are increasingly deployed to autonomously solve complex tasks, 
 
 </details>
 
-### 44. Defending Unauthorized Model Merging via Dual-Stage Weight Protection
+### 43. Defending Unauthorized Model Merging via Dual-Stage Weight Protection
 
 📄 [arXiv](https://arxiv.org/abs/2511.11851) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Chen_Defending_Unauthorized_Model_Merging_via_Dual-Stage_Weight_Protection_CVPR_2026_paper.html)　📅 2025-11　🏷 CVPR 2026
 
@@ -839,26 +820,7 @@ The rapid proliferation of pretrained models and open repositories has made mode
 
 </details>
 
-### 45. Attacks on Machine-Text Detectors Retain Stylistic Fingerprints
-
-📄 [arXiv](https://arxiv.org/abs/2505.14608) · 🎓 [Official](https://icml.cc/virtual/2026/poster/66801)　📅 2025-05　🏷 ICML 2026
-
-**关键词**：`detection`、`model copyright`、`ownership verification`、`model provenance`、`deepfake detection`、`empirical evaluation`
-
-👤 **作者**：Rafael Rivera Soto、Barry Chen、Nicholas Andrews
-
-- 🎯 **研究动机**：机器文本检测被认为易被逃避而不可解，但逃逸策略的极限未知
-- 🔬 **研究方法**：评估 prompt 工程到检测器引导优化等攻击对风格指纹的影响，并提出同时优化不可检测性与贴合人类风格的新改写攻击
-- 📌 **结论**：既有攻击无法抹除风格指纹；新攻击可逃过含风格在内的全部检测器，但文档数增多后机器分布重新可分
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Despite considerable progress in the development of machine-text detectors, the ease with which machine-text can be manipulated to evade detection has led to suggestions that the problem is inherently intractable. In this work, we investigate the limits of such evasion strategies. We demonstrate that while current attacks, ranging from prompt engineering to detector-guided optimization can effectively degrade performance of standard detectors, they fail to erase the underlying stylistic "fingerprints" of machine text. We show that few-shot detectors that utilize the stylistic feature space are robust to these evasion attempts, reliably detecting samples even from models explicitly tuned to prevent detection. This raises the question: does style represent a universal defense against machine-detection attacks? We demonstrate that the answer is "no'' by introducing a novel paraphrasing approach that simultaneously optimizes for undetectability and adherence to specific human styles. We show that unlike prior methods, this attack effectively evades all considered detectors, including those that utilize writing style. However, we find that this evasion is not absolute: as the number of documents available for analysis grows, the human and machine distributions become distinguishable again. Overall, our findings suggest that reliable machine-text detection requires moving beyond single-document analysis to multi-document analysis.
-
-</details>
-
-### 46. MemCatalyst: Amplifying Data Auditing on Vision-Language Models via Data Poisoning
+### 44. MemCatalyst: Amplifying Data Auditing on Vision-Language Models via Data Poisoning
 
 📄 [arXiv](https://arxiv.org/abs/2608.17722)　📅 2026-08
 
@@ -877,7 +839,7 @@ Vision-Language models (VLMs) achieve outstanding performance largely due to the
 
 </details>
 
-### 47. Auditing Data Provenance in LLM Fine-tuning via Intrinsic Distributional Fingerprints
+### 45. Auditing Data Provenance in LLM Fine-tuning via Intrinsic Distributional Fingerprints
 
 📄 [arXiv](https://arxiv.org/abs/2608.02154) · 🎓 [Official](https://www.sigsac.org/ccs/CCS2026/program/accepted-papers.html)　📅 2026-08　🏷 ACM CCS 2026
 
@@ -896,7 +858,7 @@ The proliferation of customized Large Language Models (LLMs) poses critical risk
 
 </details>
 
-### 48. Permissive-Washing in the Open AI Supply Chain: A Large-Scale Audit of License Integrity
+### 46. Permissive-Washing in the Open AI Supply Chain: A Large-Scale Audit of License Integrity
 
 📄 [arXiv](https://arxiv.org/abs/2602.08816) · 🌐 [Project](https://doi.org/10.1145/3770855.3818130)　📅 2026-02　🏷 KDD 2026
 
@@ -915,7 +877,7 @@ Permissive licenses like MIT, Apache-2.0, and BSD-3-Clause dominate open-source 
 
 </details>
 
-### 49. RECOVER: Reliable Detection of Unauthorized Data Usage in Text-to-Image Diffusion Models via Inversion Robustness
+### 47. RECOVER: Reliable Detection of Unauthorized Data Usage in Text-to-Image Diffusion Models via Inversion Robustness
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/65032)　📅 2026　🏷 ICML 2026
 
@@ -934,7 +896,7 @@ Text-to-Image diffusion models have achieved remarkable success in image generat
 
 </details>
 
-### 50. PDR: A Plug-and-Play Positional Decay Framework for LLM Pre-training Data Detection
+### 48. PDR: A Plug-and-Play Positional Decay Framework for LLM Pre-training Data Detection
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.562/)　📅 2026　🏷 ACL 2026
 
@@ -953,7 +915,7 @@ Detecting pre-training data in Large Language Models (LLMs) is crucial for audit
 
 </details>
 
-### 51. Gap-K%: Measuring Top-1 Prediction Gap for Detecting Pretraining Data
+### 49. Gap-K%: Measuring Top-1 Prediction Gap for Detecting Pretraining Data
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1072/)　📅 2026　🏷 ACL 2026
 
@@ -972,7 +934,7 @@ The opacity of massive pretraining corpora in Large Language Models (LLMs) raise
 
 </details>
 
-### 52. Data Provenance Auditing of Fine-Tuned Large Language Models with a Text-Preserving Technique
+### 50. Data Provenance Auditing of Fine-Tuned Large Language Models with a Text-Preserving Technique
 
 📄 [arXiv](https://arxiv.org/abs/2510.09655) · 🎓 [Official](https://icml.cc/virtual/2026/poster/66491)　📅 2026　🏷 ICML 2026
 
@@ -991,7 +953,7 @@ We propose a system for marking sensitive or copyrighted texts to detect their u
 
 </details>
 
-### 53. Bypassing Copyright Protection in Diffusion-based Customization via Two-Stage Latent Feature Optimization
+### 51. Bypassing Copyright Protection in Diffusion-based Customization via Two-Stage Latent Feature Optimization
 
 📄 [arXiv](https://arxiv.org/abs/2606.09909) · 🌐 [Project](https://doi.org/10.1145/3770855.3817760)　📅 2026-06　🏷 KDD 2026
 
@@ -1010,7 +972,7 @@ With the growing concerns over copyright infringement in diffusion-based customi
 
 </details>
 
-### 54. Alignment Whack-a-Mole : Finetuning Activates Verbatim Recall of Copyrighted Books in Large Language Models
+### 52. Alignment Whack-a-Mole : Finetuning Activates Verbatim Recall of Copyrighted Books in Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2603.20957) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-03
 
@@ -1029,7 +991,7 @@ Frontier LLM companies have repeatedly assured courts and regulators that their 
 
 </details>
 
-### 55. SEW: Strengthening Robustness of Black-box DNN Watermarking via Specificity Enhancement
+### 53. SEW: Strengthening Robustness of Black-box DNN Watermarking via Specificity Enhancement
 
 📄 [arXiv](https://arxiv.org/abs/2602.03377) · 🌐 [Project](https://doi.org/10.1145/3770854.3780272)　📅 2026-02　🏷 KDD 2026
 
@@ -1048,7 +1010,7 @@ To ensure the responsible distribution and use of open-source deep neural networ
 
 </details>
 
-### 56. Neural Honeytrace: Plug&Play Watermarking Framework against Model Extraction Attacks
+### 54. Neural Honeytrace: Plug&Play Watermarking Framework against Model Extraction Attacks
 
 📄 [arXiv](https://arxiv.org/abs/2501.09328) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61931)　📅 2026　🏷 ICML 2026
 
@@ -1067,7 +1029,7 @@ Triggerable watermarking enables model owners to assert ownership against model 
 
 </details>
 
-### 57. Are Robust LLM Fingerprints Adversarially Robust?
+### 55. Are Robust LLM Fingerprints Adversarially Robust?
 
 📄 [arXiv](https://arxiv.org/abs/2509.26598) · 🎓 [Official](https://satml.org/2026/accepted-papers/)　📅 2026　🏷 SaTML 2026
 
@@ -1079,7 +1041,7 @@ Triggerable watermarking enables model owners to assert ownership against model 
 - 🔬 **研究方法**：对现有鲁棒指纹发起自适应evasion攻击评估其稳定性
 - 📌 **结论**：自适应攻击下指纹仍可被规避，所有权验证存在风险
 
-### 58. Extracting memorized pieces of (copyrighted) books from open-weight language models
+### 56. Extracting memorized pieces of (copyrighted) books from open-weight language models
 
 📄 [arXiv](https://arxiv.org/abs/2505.12546) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2025-05
 
@@ -1098,7 +1060,7 @@ Plaintiffs and defendants in copyright lawsuits over generative AI often make sw
 
 </details>
 
-### 59. MASLeak: Investigating and Exposing Intellectual Property Leakage Vulnerabilities in Multi-Agent Systems
+### 57. MASLeak: Investigating and Exposing Intellectual Property Leakage Vulnerabilities in Multi-Agent Systems
 
 📄 [arXiv](https://arxiv.org/abs/2505.12442) · 🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/wang-liwen)　📅 2025-05　🏷 USENIX Security 2026
 
@@ -1117,7 +1079,7 @@ The rapid advancement of Large Language Models (LLMs) has led to the emergence o
 
 </details>
 
-### 60. DIPBox: A Multi-scale Testing Framework for Tracking Dataset Regeneration
+### 58. DIPBox: A Multi-scale Testing Framework for Tracking Dataset Regeneration
 
 📄 [arXiv](https://arxiv.org/abs/2606.21240) · 🎓 [Official](https://www.sigsac.org/ccs/CCS2026/program/accepted-papers.html)　📅 2026-06　🏷 ACM CCS 2026
 
@@ -1136,7 +1098,7 @@ Training datasets have tremendous proprietary value and are vulnerable to unauth
 
 </details>
 
-### 61. DataGuard: A Non-intrusive Dataset Auditing Framework via Differential Information Forensics
+### 59. DataGuard: A Non-intrusive Dataset Auditing Framework via Differential Information Forensics
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/60636)　📅 2026　🏷 ICML 2026
 
@@ -1155,7 +1117,7 @@ Concerns over dataset misuse in deep learning have highlighted the need for effe
 
 </details>
 
-### 62. Copyright-Bench: Agentic Evaluation of Copyright Law Compliance
+### 60. Copyright-Bench: Agentic Evaluation of Copyright Law Compliance
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/66009)　📅 2026　🏷 ICML 2026
 
@@ -1174,7 +1136,7 @@ Large language model (LLM) agents increasingly perform commercial tasks that inv
 
 </details>
 
-### 63. Implicit Identity Technologies for LLMs: Fingerprinting and Watermarking Across Datasets, Models, and Generated Content
+### 61. Implicit Identity Technologies for LLMs: Fingerprinting and Watermarking Across Datasets, Models, and Generated Content
 
 📄 [arXiv](https://arxiv.org/abs/2605.29245) · 🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/SV270.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=survey-track)　📅 2026
 
@@ -1193,7 +1155,7 @@ Large language models (LLMs) require substantial investments and are increasingl
 
 </details>
 
-### 64. Smudged Fingerprints: A Systematic Evaluation of the Robustness of AI Image Fingerprints
+### 62. Smudged Fingerprints: A Systematic Evaluation of the Robustness of AI Image Fingerprints
 
 📄 [arXiv](https://arxiv.org/abs/2512.11771) · 🎓 [Official](https://satml.org/2026/accepted-papers/)　📅 2025-12　🏷 SaTML 2026
 
@@ -1212,7 +1174,7 @@ Model fingerprint detection has shown promise to trace the provenance of AI-gene
 
 </details>
 
-### 65. VOID: Defeating Unauthorized Mimicry in Latent Diffusion Models
+### 63. VOID: Defeating Unauthorized Mimicry in Latent Diffusion Models
 
 📄 [arXiv](https://arxiv.org/abs/2606.12263) · 🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/qiu-chunlin)　📅 2026-06　🏷 USENIX Security 2026
 
@@ -1231,7 +1193,7 @@ While Latent Diffusion Models (LDMs) have revolutionized visual synthesis, they 
 
 </details>
 
-### 66. PragLocker: Protecting Agent Intellectual Property in Untrusted Deployments via Non-Portable Prompts
+### 64. PragLocker: Protecting Agent Intellectual Property in Untrusted Deployments via Non-Portable Prompts
 
 📄 [arXiv](https://arxiv.org/abs/2605.05974) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64248)　📅 2026-05　🏷 ICML 2026
 
@@ -1250,7 +1212,7 @@ LLM agents rely on prompts to implement task-specific capabilities based on foun
 
 </details>
 
-### 67. Off-The-Shelf Image-to-Image Models Are All You Need To Defeat Image Protection Schemes
+### 65. Off-The-Shelf Image-to-Image Models Are All You Need To Defeat Image Protection Schemes
 
 📄 [arXiv](https://arxiv.org/abs/2602.22197) · 🎓 [Official](https://satml.org/2026/accepted-papers/)　📅 2026-02　🏷 SaTML 2026
 
@@ -1269,7 +1231,7 @@ Advances in Generative AI (GenAI) have led to the development of various protect
 
 </details>
 
-### 68. Echoes of Ownership: Adversarial-Guided Dual Injection for Copyright Protection in MLLMs
+### 66. Echoes of Ownership: Adversarial-Guided Dual Injection for Copyright Protection in MLLMs
 
 📄 [arXiv](https://arxiv.org/abs/2602.18845) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Xia_Echoes_of_Ownership_Adversarial-Guided_Dual_Injection_for_Copyright_Protection_in_CVPR_2026_paper.html)　📅 2026-02　🏷 CVPR 2026
 
@@ -1288,7 +1250,7 @@ With the rapid deployment of multimodal large language models (MLLMs), disputes 
 
 </details>
 
-### 69. Making Theft Useless: Adulteration-Based Protection of Proprietary Knowledge Graphs in GraphRAG Systems
+### 67. Making Theft Useless: Adulteration-Based Protection of Proprietary Knowledge Graphs in GraphRAG Systems
 
 📄 [arXiv](https://arxiv.org/abs/2601.00274) · 🌐 [Project](https://conf.researchr.org/track/ase-2026/ase-2026-research-track)　📅 2026-01　🏷 ASE 2026
 
@@ -1307,7 +1269,7 @@ Graph Retrieval-Augmented Generation (GraphRAG) has emerged as a key technique f
 
 </details>
 
-### 70. Towards Trustworthy and Identifiable Virtual Face Generation
+### 68. Towards Trustworthy and Identifiable Virtual Face Generation
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/60956)　📅 2026　🏷 ICML 2026
 
@@ -1326,7 +1288,7 @@ Identifiable virtual face (IVF) generation aims to transform a user's original f
 
 </details>
 
-### 71. ORPHEUS: A Separation-Robust Proactive Defense for Singing Voice Conversion
+### 69. ORPHEUS: A Separation-Robust Proactive Defense for Singing Voice Conversion
 
 🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/wei-zhaolin)　📅 2026　🏷 USENIX Security 2026
 
@@ -1345,7 +1307,7 @@ Recent advances in singing voice conversion enable realistic cloning of a singer
 
 </details>
 
-### 72. GoodDiffusion: Proactive Copyright Protection for Diffusion Generative Models via Learnable Sample-specific Signatures
+### 70. GoodDiffusion: Proactive Copyright Protection for Diffusion Generative Models via Learnable Sample-specific Signatures
 
 📄 [arXiv](https://arxiv.org/abs/2606.29759) · 🎓 [Official](https://icml.cc/virtual/2026/poster/60784)　📅 2026-06　🏷 ICML 2026
 
@@ -1364,7 +1326,7 @@ This paper tackles the challenging problem of developing a proactive copyright p
 
 </details>
 
-### 73. GaussTrace: Provenance Analysis of 3D Gaussian Splatting Models with Evidence-based LLM Reasoning
+### 71. GaussTrace: Provenance Analysis of 3D Gaussian Splatting Models with Evidence-based LLM Reasoning
 
 📄 [arXiv](https://arxiv.org/abs/2606.10612) · 🌐 [Project](https://haolianghan.github.io/GaussTrace) · 🎓 [Official](https://icml.cc/virtual/2026/poster/62380)　📅 2026　🏷 ICML 2026
 
@@ -1383,7 +1345,7 @@ This paper tackles the challenging problem of developing a proactive copyright p
 
 </details>
 
-### 74. FUSE: Full‑spectrum Unlearnable Examples via Spectral Equalization
+### 72. FUSE: Full‑spectrum Unlearnable Examples via Spectral Equalization
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/65041)　📅 2026　🏷 ICML 2026
 
@@ -1402,7 +1364,7 @@ Unlearnable examples (UEs) protect training data by injecting imperceptible pert
 
 </details>
 
-### 75. Dual-branch Robust Unlearnable Examples
+### 73. Dual-branch Robust Unlearnable Examples
 
 📄 [arXiv](https://arxiv.org/abs/2605.01718) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61865)　📅 2026　🏷 ICML 2026
 
@@ -1421,7 +1383,7 @@ Unlearnable examples (UEs) aim to compromise model training by injecting imperce
 
 </details>
 
-### 76. DDIM Inversion as a Perturbation Amplifier: Breaking Mimicry Protection via Reconstruction Error Minimization
+### 74. DDIM Inversion as a Perturbation Amplifier: Breaking Mimicry Protection via Reconstruction Error Minimization
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/65799)　📅 2026　🏷 ICML 2026
 
@@ -1440,7 +1402,7 @@ Personalization techniques for image generation models have increasingly been mi
 
 </details>
 
-### 77. Anchored Decoding: Provably Reducing Copyright Risk for Any Language Model
+### 75. Anchored Decoding: Provably Reducing Copyright Risk for Any Language Model
 
 📄 [arXiv](https://arxiv.org/abs/2602.07120) · 🎓 [Official](https://icml.cc/virtual/2026/poster/65462)　📅 2026　🏷 ICML 2026
 
@@ -1459,7 +1421,7 @@ Language models (LMs) tend to memorize portions of their training data and repro
 
 </details>
 
-### 78. AdLift: Lifting Adversarial Perturbations to Safeguard 3D Gaussian Splatting Assets Against Instruction-Driven Editing
+### 76. AdLift: Lifting Adversarial Perturbations to Safeguard 3D Gaussian Splatting Assets Against Instruction-Driven Editing
 
 📄 [arXiv](https://arxiv.org/abs/2512.07247) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64053)　📅 2026　🏷 ICML 2026
 
@@ -1478,7 +1440,7 @@ Recent studies have extended diffusion-based instruction-driven 2D image editing
 
 </details>
 
-### 79. COPYLENS: Towards Copyrighted Characters Infringement Detection via Copyright-Aware Prompt Learning
+### 77. COPYLENS: Towards Copyrighted Characters Infringement Detection via Copyright-Aware Prompt Learning
 
 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Jin_COPYLENS_Towards_Copyrighted_Characters_Infringement_Detection_via_Copyright-Aware_Prompt_Learning_CVPR_2026_paper.html)　📅 2026　🏷 CVPR 2026
 
@@ -1497,7 +1459,7 @@ Recent advances in text-to-image (T2I) generation can produce highly resembling 
 
 </details>
 
-### 80. Prompt Pirates Need a Map: Stealing Seeds helps Stealing Prompts
+### 78. Prompt Pirates Need a Map: Stealing Seeds helps Stealing Prompts
 
 📄 [arXiv](https://arxiv.org/abs/2509.09488) · 🌐 [Project](https://doi.org/10.1145/3779208.3807483)　📅 2025-09　🏷 ACM CCS 2026
 
@@ -1516,7 +1478,7 @@ Diffusion models have significantly advanced text-to-image generation, enabling 
 
 </details>
 
-### 81. Rethinking and Red-Teaming Protective Perturbation in Personalized Diffusion Models
+### 79. Rethinking and Red-Teaming Protective Perturbation in Personalized Diffusion Models
 
 📄 [arXiv](https://arxiv.org/abs/2406.18944) · 🌐 [Project](https://doi.org/10.1145/3770854.3780303)　📅 2024-06　🏷 KDD 2026
 
@@ -1532,5 +1494,62 @@ Diffusion models have significantly advanced text-to-image generation, enabling 
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 Personalized diffusion models (PDMs) have become prominent for adapting pre-trained text-to-image models to generate images of specific subjects using minimal training data. However, PDMs are susceptible to minor adversarial perturbations, leading to significant degradation when fine-tuned on corrupted datasets. These vulnerabilities are exploited to create protective perturbations that prevent unauthorized image generation. Existing purification methods attempt to red-team the protective perturbation to break the protection but often over-purify images, resulting in information loss. In this work, we conduct an in-depth analysis of the fine-tuning process of PDMs through the lens of shortcut learning. We hypothesize and empirically demonstrate that adversarial perturbations induce a latent-space misalignment between images and their text prompts in the CLIP embedding space. This misalignment causes the model to erroneously associate noisy patterns with unique identifiers during fine-tuning, resulting in poor generalization. Based on these insights, we propose a systematic red-teaming framework that includes data purification and contrastive decoupling learning. We first employ off-the-shelf image restoration techniques to realign images with their original semantic content in latent space. Then, we introduce contrastive decoupling learning with noise tokens to decouple the learning of personalized concepts from spurious noise patterns. Our study not only uncovers shortcut learning vulnerabilities in PDMs but also provides a thorough evaluation framework for developing stronger protection. Our extensive evaluation demonstrates its advantages over existing purification methods and its robustness against adaptive perturbations.
+
+</details>
+
+### 80. AgentProv: Auditing Agentic LLM API Providers via Tool-use Policy Probes
+
+📄 [arXiv](https://arxiv.org/abs/2609.00052)　📅 2026-09
+
+**关键词**：`audit`、`API provenance`、`tool-use policy`、`model substitution`
+
+👤 **作者**：Xun Wang、Bihe Zhao、Michael Backes、Franziska Boenisch、Adam Dziedzic
+
+- 🎯 **研究动机**：商业 LLM API 可能静默替换、量化或包装所宣称模型，现有 text 通道审计在 agentic 服务栈只暴露结构化 action 时结构脆弱
+- 🔬 **研究方法**：提出首个基于动作的身份审计 AgentProv：通过分类 tool-call 分布指纹化部署模型，用 MMD 置换检验判定同一性
+- 📌 **结论**：630 对 checkpoint 上 100% 抓获替换模型，系统提示注入下 false positive 仅 7%（MET 67%、RUT 53%）；与 MET 的分歧和独立 token-count 侧信道一致
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Commercial LLM APIs advertise a specific foundation model, but the served backbone may be silently substituted, quantized, or wrapped, for example to save deployment costs. All existing audits decide backbone identity from the text-output channel, which is structurally fragile for agentic APIs because modern serving stacks (OpenAI, Anthropic, Gemini, Cloudflare Workers AI, LangGraph) discard text and expose only structured actions when the model calls a tool, and provider-injected system prompts can distort text distributions enough that text-channel tests falsely accuse honest providers of substituting the claimed model. We observe that recent agentic post-training internalizes tool-use directly into the weights, opening a new audit channel that the serving stack still exposes and that is largely invariant to deployment context. We introduce Agentic Provenance (AgentProv), the first action-based identity audit for agentic LLM APIs: AgentProv fingerprints a deployed model through its categorical tool-call distribution and decides identity via an MMD permutation test. AgentProv catches every substituted model (100% on 630 evaluated checkpoint pairs), while holding the false-positive rate under system-prompt injection at 7% (vs. 67% for MET and 53% for RUT). On third-party API endpoints, AgentProv's disagreements with MET are consistent with an independent token-count side-channel that detects provider-injected system prompts.
+
+</details>
+
+### 81. On the Vulnerability of Parameter-Level Defenses to Model Merging
+
+📄 [arXiv](https://arxiv.org/abs/2606.30360) · 🌐 [Project](https://eccv.ecva.net/virtual/2026/poster/3680)　📅 2026-06　🏷 ECCV 2026
+
+**关键词**：`defense`、`attack`、`model merging`、`parameter defense`、`cyber misuse`、`model stealing`
+
+👤 **作者**：Kuangpu Guo、…、Tieniu Tan
+
+- 🎯 **研究动机**：参数级防御用线性参数变换对抗模型合并盗用，其保护的任务向量幅值天然偏小、权重仍被预训练模型主导
+- 🔬 **研究方法**：以预训练模型为静态锚提出 Anchor-Guided Attack：把受保护模型与锚对齐解析恢复变换矩阵；同时提出 Anchor-Repulsive Fine-tuning 抵御锚主导
+- 📌 **结论**：AGA 在现实防御无关场景一致绕过单个与组合防御，ARF 有效挫败该攻击
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+The training-free integration of expert models via model merging has exposed significant security risks, enabling free-riders to combine specialized models without authorization. Recent works propose parameter-level defenses that employ linear parameter transformations to neutralize this threat. In this paper, we systematically analyze such defenses and reveal that their protected task vectors are inherently small in magnitude. Consequently, the protected weights remain overwhelmingly dominated by the pretrained model. Based on this observation, we designate the pretrained model as a static reference anchor and propose the Anchor-Guided Attack (AGA) to circumvent existing safeguards. Specifically, AGA aligns the protected model with this anchor to recover the transformation matrix analytically. Extensive evaluations validate that AGA consistently bypasses both individual and composite defenses under realistic defense-agnostic scenarios. Furthermore, we provide Anchor-Repulsive Fine-tuning (ARF), a defense method to mitigate the anchor dominance leveraged by AGA. Empirical results confirm that ARF effectively defeats the proposed attack. Our code is available at https://github.com/krumpguo/secure-merge-attack.
+
+</details>
+
+### 82. The Prompt Stealing Fallacy: Rethinking Metrics, Attacks, and Defenses
+
+🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/deng)　📅 2026　🏷 USENIX Security 2026
+
+**关键词**：`defense`、`analysis`、`prompt stealing`、`PromptThief`、`content watermark`、`evaluation metric`
+
+👤 **作者**：Zehang Deng、…、Yang Xiang
+
+- 🎯 **研究动机**：提示窃取攻击的评测指标只依赖文本或图像模态的语义相似度，无法忠实衡量攻击的真实有效性
+- 🔬 **研究方法**：提出 Style Similarity 与 Prompt Significance 新指标并据此重评现有 PSA；提出强化学习引导的黑盒攻击 PromptThief，并给出对抗样本主动防御与特征级提示水印被动防御
+- 📌 **结论**：现有白盒与黑盒 PSA 并不如所报有效，尤其难恢复高贡献提示词；PromptThief 全面超越基线；主动防御对自适应攻击鲁棒性有限，提示水印在多种图像变换下检测稳定
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Text-to-image (T2I) models are increasingly embedded in creative workflows, where well-crafted prompts function as valuable forms of intellectual property (IP). However, these models are susceptible to prompt stealing attacks (PSAs), where adversaries aim to reconstruct the original prompts used to generate images. In this paper, 1) we identify key shortcomings in current evaluation practices and propose two improved metrics: Style Similarity (SS) and a novel Prompt Significance (PS) score, which together provide a more faithful assessment of PSA effectiveness. Rather than existing metrics that rely solely on semantic similarity between original and stolen information across text or image modalities, the new metrics PS and SS assess attack effectiveness with a more practical focus by explicitly accounting for the importance of modifiers and the style replication of images generated from stolen prompts. 2) Through extensive evaluation using these metrics, we find that existing PSA methods, ranging from soft prompt stealing in white-box settings to hard prompt stealing in black-box settings, are not as effective as reported, especially in recovering high-contribution prompt components. We attribute this to fundamental constrains: white-box methods suffer from mismatched optimization objectives that poorly align with token-level visual semantics, while black-box approaches experience severe information loss due to their decoupling from the target T2I model's generation process. 3) We further introduce PromptThief, a black-box PSA framework that addresses the information loss in prior methods by leveraging reinforcement learning with STS and SS to guide high token-level contribution recovery. PromptThief significantly outperforms existing baselines across multiple metrics and real-world scenarios. 4) We propose and evaluate two defense mechanisms: an adversarial-example-based active approach and a passive scheme through feature-level prompt watermarking. Our evaluation reveals that the active defense offers only limited robustness against adaptive PSAs, highlighting the need for further exploration in this direction. In contrast, the passive watermarking scheme demonstrates strong and consistent detection performance, even under various image transformations, offering a practical and reliable path forward for prompt IP protection.
 
 </details>

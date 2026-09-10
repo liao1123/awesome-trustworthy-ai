@@ -509,26 +509,7 @@ While LLM agents can plan multi-step tasks, intervening at the planning stage-be
 
 </details>
 
-### 28. CompAgent: An Agentic Framework for Visual Compliance Verification
-
-📄 [arXiv](https://arxiv.org/abs/2511.00171)　📅 2025-10　🏷 CVPR 2026
-
-**关键词**：`defense`、`visual compliance`、`tool routing`、`agentic verification`
-
-👤 **作者**：Rahul Ghosh、…、Chun-Hao Liu
-
-- 🎯 **研究动机**：视觉合规验证缺乏通用方法，MLLM 又难以独自处理细粒度视觉细节并执行结构化规则
-- 🔬 **研究方法**：CompAgent 给 MLLM 配备物体检测、人脸分析、NSFW 检测与描述等工具，由规划 agent 按合规策略动态选工具，再由验证 agent 融合图像、工具输出与策略推理
-- 📌 **结论**：超越专用分类器与直接 MLLM 提示，UnsafeBench 上 F1 最高 76%、较 SOTA 提升 10%
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Visual compliance verification is a critical yet underexplored problem in computer vision, especially in domains such as media, entertainment, and advertising where content must adhere to complex and evolving policy rules. Existing methods often rely on task-specific deep learning models trained on manually labeled datasets, which are costly to build and limited in generalizability. While recent Multimodal Large Language Models (MLLMs) offer broad real-world knowledge and policy understanding, they struggle to reason over fine-grained visual details and apply structured compliance rules effectively on their own. In this paper, we propose CompAgent, the first agentic framework for visual compliance verification. CompAgent augments MLLMs with a suite of visual tools-such as object detectors, face analyzers, NSFW detectors, and captioning models-and introduces a planning agent that dynamically selects appropriate tools based on the compliance policy. A compliance verification agent then integrates image, tool outputs, and policy context to perform multimodal reasoning. Experiments on public benchmarks show that CompAgent outperforms specialized classifiers, direct MLLM prompting, and curated routing baselines, achieving up to 76% F1 score and a 10% improvement over the state-of-the-art on the UnsafeBench dataset. Our results demonstrate the effectiveness of agentic planning and robust tool-augmented reasoning for scalable, accurate, and adaptable visual compliance verification.
-
-</details>
-
-### 29. Defeating Prompt Injections by Design
+### 28. Defeating Prompt Injections by Design
 
 📄 [arXiv](https://arxiv.org/abs/2503.18813) · 🎓 [Official](https://satml.org/2026/accepted-papers/)　📅 2025-03　🏷 SaTML 2026
 
@@ -547,7 +528,7 @@ Large Language Models (LLMs) are increasingly deployed in agentic systems that i
 
 </details>
 
-### 30. AGrail: A Lifelong Agent Guardrail with Effective and Adaptive Safety Detection
+### 29. AGrail: A Lifelong Agent Guardrail with Effective and Adaptive Safety Detection
 
 🎓 [Official](https://aclanthology.org/2025.acl-long.399/)　📅 2025-02　🏷 ACL 2025
 
@@ -566,7 +547,7 @@ The rapid advancements in Large Language Models (LLMs) have enabled their deploy
 
 </details>
 
-### 31. ReguSim: Evaluating LLM Agent Rule Grounding in Financial Compliance
+### 30. ReguSim: Evaluating LLM Agent Rule Grounding in Financial Compliance
 
 📄 [arXiv](https://arxiv.org/abs/2608.19974)　📅 2026-08
 
@@ -585,7 +566,7 @@ LLM agents in financial markets may cite rules yet still submit orders that viol
 
 </details>
 
-### 32. Safety Does Not Compose: Non-Decaying Loop State for Autonomous LLM Agents
+### 31. Safety Does Not Compose: Non-Decaying Loop State for Autonomous LLM Agents
 
 📄 [arXiv](https://arxiv.org/abs/2608.27141)　📅 2026-08
 
@@ -604,7 +585,7 @@ Large language model agents are increasingly deployed as autonomous loops. Start
 
 </details>
 
-### 33. INTENT-AS-A-TOOL Makes it Easy to Track Agentic Misalignment
+### 32. INTENT-AS-A-TOOL Makes it Easy to Track Agentic Misalignment
 
 📄 [arXiv](https://arxiv.org/abs/2608.27348)　📅 2026-08
 
@@ -623,7 +604,7 @@ As large language models (LLMs) are deployed as autonomous agents, safety failur
 
 </details>
 
-### 34. RePolicy: Reinforcement Learning for Safety-Policy Invocation in Agent Safeguards
+### 33. RePolicy: Reinforcement Learning for Safety-Policy Invocation in Agent Safeguards
 
 📄 [arXiv](https://arxiv.org/abs/2608.24275)　📅 2026-08
 
@@ -642,7 +623,7 @@ Safeguarding language model agents requires assessing complete execution traject
 
 </details>
 
-### 35. AgentDoG 1.5: A Lightweight and Scalable Alignment Framework for AI Agent Safety and Security
+### 34. AgentDoG 1.5: A Lightweight and Scalable Alignment Framework for AI Agent Safety and Security
 
 📄 [arXiv](https://arxiv.org/abs/2605.29801)　📅 2026-05
 
@@ -661,7 +642,7 @@ Modern open-world agents such as OpenClaw exhibit powerful cross-environment exe
 
 </details>
 
-### 36. AgentDoG: A Diagnostic Guardrail Framework for AI Agent Safety and Security
+### 35. AgentDoG: A Diagnostic Guardrail Framework for AI Agent Safety and Security
 
 📄 [arXiv](https://arxiv.org/abs/2601.18491)　📅 2026-01
 
@@ -680,26 +661,7 @@ The rise of AI agents introduces complex safety and security challenges arising 
 
 </details>
 
-### 37. DualMirage: Hunting Stealthy Multimodal LLM Agents via CAPTCHAs with Contour and Adversarial Illusions
-
-🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Chen_DualMirage_Hunting_Stealthy_Multimodal_LLM_Agents_via_CAPTCHAs_with_Contour_CVPR_2026_paper.html)　📅 2026　🏷 CVPR 2026
-
-**关键词**：`detection`、`multimodal agent`、`CAPTCHA probe`、`adversarial illusion`
-
-👤 **作者**：Bei Chen、Gaolei Li、Jun Wu、Jianhua Li
-
-- 🎯 **研究动机**：隐蔽 MLLM agent 通过模仿人类行为逃避常规检测，构成 web 安全风险
-- 🔬 **研究方法**：DualMirage 双管齐下 CAPTCHA：轮廓错觉（人类轻易感知、MLLM 难解释）加对抗错觉（人不可察觉扰动误导目标 MLLM 视觉编码器诱发可识别响应）
-- 📌 **结论**：人类平均成功率 95.8%、阻断 MLLM agent 最高 100%，诱导模型主动暴露身份（白盒 58.8%、黑盒 21.9% 成功率）
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-The rapid advancement of Multimodal Large Language Models (MLLMs) has given rise to sophisticated autonomous agents capable of performing complex, human-like tasks across the web. However, this also introduces significant security risks, particularly from stealthy MLLM agents that can evade conventional detection mechanisms by mimicking human behavior. In this paper, we propose DualMirage, a novel CAPTCHA framework that proactively counters and identifies stealthy agents by exploiting fundamental disparities between human and machine perception. DualMirage employs a dual-pronged strategy: (1) Contour Illusions, which utilize cognitive principles to generate illusory contours that humans perceive effortlessly yet pose interpretation challenges for MLLMs; and (2) Adversarial Illusions, which embed human-imperceptible perturbations optimized to mislead the visual encoders of target MLLMs and thereby elicit characteristic, identifiable model responses. Evaluations on five state-of-the-art MLLMs demonstrate that DualMirage achieves an average 95.8% human success rate while blocking MLLM agents (up to 100% agent blocking rate), outperforming existing CAPTCHAs. Furthermore, DualMirage induces models to expose identities actively, achieving 58.8% white-box and 21.9% black-box attack success rates, proving effective against stealthy multimodal agents.
-
-</details>
-
-### 38. Beyond Over-Refusal: Defending Indirect Prompt Injection via Latent Instruction Manifolds
+### 36. Beyond Over-Refusal: Defending Indirect Prompt Injection via Latent Instruction Manifolds
 
 📄 [arXiv](https://arxiv.org/abs/2608.22248)　📅 2026-08
 
@@ -718,7 +680,7 @@ Large Language Models (LLMs) have been integrated into complex ecosystems (e.g.,
 
 </details>
 
-### 39. SecOPD: Mitigating Adaptive Prompt Injections by On-Policy Distillation
+### 37. SecOPD: Mitigating Adaptive Prompt Injections by On-Policy Distillation
 
 📄 [arXiv](https://arxiv.org/abs/2608.21500)　📅 2026-08
 
@@ -737,7 +699,7 @@ Prompt injection is listed as the \#1 threat to AI agents. When an agent accesse
 
 </details>
 
-### 40. Towards Safer RAG: Only Agents Capable of System 2 Thinking may Access Untrusted Documents
+### 38. Towards Safer RAG: Only Agents Capable of System 2 Thinking may Access Untrusted Documents
 
 📄 [arXiv](https://arxiv.org/abs/2608.17153)　📅 2026-08
 
@@ -756,7 +718,7 @@ Retrieval-Augmented Generation (RAG) has significantly enhanced the performance 
 
 </details>
 
-### 41. Yesterday's Shield, Today's Spear: A Self-Evolving Safety Guardrail in Production
+### 39. Yesterday's Shield, Today's Spear: A Self-Evolving Safety Guardrail in Production
 
 📄 [arXiv](https://arxiv.org/abs/2608.08471)　📅 2026-08
 
@@ -775,26 +737,7 @@ Deployed LLM safety guardrails are predominantly static: trained once and frozen
 
 </details>
 
-### 42. Steering Instruction Hierarchies at Inference Time
-
-📄 [arXiv](https://arxiv.org/abs/2607.26228) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-07
-
-**关键词**：`defense`、`prompt injection`、`agent guardrail`、`action policy`、`instruction hierarchy`、`value-vector editing`
-
-👤 **作者**：Siqi Zeng、Sewoong Lee、Han Zhao、Julia Hockenmaier
-
-- 🎯 **研究动机**：指令层级是部署的核心安全假设（系统提示应覆盖用户/工具输入），但前沿 LLM 常违反
-- 🔬 **研究方法**：提出 V-Steer 免训练推理时方法：用 direct logit attribution 定位低优先级 span 压制特权 span 的注意力头，对缓存 V 张量做乘性编辑放大特权、抑制冲突低优先级，兼容融合注意力后端
-- 📌 **结论**：7B-70B 模型上把角色冲突基准的主约束准确率从 18% 以下提升到 92%，在四个规模中三个匹配或超越 SOTA 训练方法且解码速度开销可忽略
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Instruction hierarchies are a core safety assumption of language model deployment: higher priority inputs, such as system prompts, should override conflicting lower priority inputs from users or tools. Yet frontier LLMs often violate this hierarchy. We introduce V-Steer, a training-free inference time method that restores privileged influence by editing cached value vectors at prompt positions. Using direct logit attribution on the first next token prediction, V-Steer identifies heads where lower priority spans dominate privileged ones, then boosts privileged spans and suppresses conflicting lower priority spans through in-place multiplicative edits to cached V tensors. Since the method acts only on cached values, it remains compatible with fused attention backends and adds only a one time prefill overhead. Across models from 7B to 70B, this attribution guided intervention raises primary constraint accuracy from under 18% up to 92% on controlled role conflict benchmarks, and on broader instruction hierarchy evaluations substantially outperforms prompt only baselines while matching or exceeding SoTA training based methods on 3 of 4 scales of LLMs, with negligible decoding-speed overhead. The code is available at https://github.com/cindy2000sh/v-steer.
-
-</details>
-
-### 43. From Risk Classification to Action Plan Remediation: A Guardrail Feedback Driven Framework for LLM Agents
+### 40. From Risk Classification to Action Plan Remediation: A Guardrail Feedback Driven Framework for LLM Agents
 
 📄 [arXiv](https://arxiv.org/abs/2606.05805)　📅 2026-06
 
@@ -813,7 +756,7 @@ LLM-based guardrails typically safeguard agents by evaluating proposed actions o
 
 </details>
 
-### 44. SafeHarbor: Defining Precise Decision Boundaries via Hierarchical Memory-Augmented Guardrail for LLM Agent Safety
+### 41. SafeHarbor: Defining Precise Decision Boundaries via Hierarchical Memory-Augmented Guardrail for LLM Agent Safety
 
 📄 [arXiv](https://arxiv.org/abs/2605.05704) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64556)　📅 2026-05　🏷 ICML 2026
 
@@ -832,26 +775,7 @@ Recent advances in foundation models have transformed LLMs from passive conversa
 
 </details>
 
-### 45. Next-Gen CAPTCHAs: Leveraging the Cognitive Gap for Scalable and Diverse GUI-Agent Defense
-
-📄 [arXiv](https://arxiv.org/abs/2602.09012) · 🎓 [Official](https://icml.cc/virtual/2026/poster/60816)　📅 2026-02　🏷 ICML 2026
-
-**关键词**：`defense`、`agent safety`、`agent guardrail`、`action policy`、`empirical evaluation`、`failure recovery`
-
-👤 **作者**：Jiacheng Liu、Yaxin Luo、Jiacheng Cui、Xinyi Shang、Xiaohan Zhao、Zhiqiang Shen
-
-- 🎯 **研究动机**：Gemini3-Pro-High、GPT-5.2-Xhigh 等推理模型在 OpenCaptchaWorld 通过率达 90%，传统验证码对 GUI agent 失效
-- 🔬 **研究方法**：构建后端支持、可近乎无限生成的动态 CAPTCHA 框架，利用交互感知、记忆、决策与动作上的人机认知差设计任务
-- 📌 **结论**：重建生物用户与 agent 的可靠区分，为 agentic 时代提供可扩展、多样的防御
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-The rapid evolution of GUI-enabled agents has rendered traditional CAPTCHAs obsolete. While previous benchmarks like OpenCaptchaWorld established a baseline for evaluating multimodal agents, recent advancements in reasoning-heavy models, such as Gemini3-Pro-High and GPT-5.2-Xhigh have effectively collapsed this security barrier, achieving pass rates as high as 90% on complex logic puzzles like "Bingo". In response, we introduce Next-Gen CAPTCHAs, a scalable defense framework designed to secure the next-generation web against the advanced agents. Unlike static datasets, our benchmark is built upon a robust data generation pipeline, allowing for large-scale and easily scalable evaluations, notably, for backend-supported types, our system is capable of generating effectively unbounded CAPTCHA instances. We exploit the persistent human-agent "Cognitive Gap" in interactive perception, memory, decision-making, and action. By engineering dynamic tasks that require adaptive intuition rather than granular planning, we re-establish a robust distinction between biological users and artificial agents, offering a scalable and diverse defense mechanism for the agentic era.
-
-</details>
-
-### 46. VIGIL: Defending LLM Agents Against Tool-Stream Injection via Verify-Before-Commit
+### 42. VIGIL: Defending LLM Agents Against Tool-Stream Injection via Verify-Before-Commit
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.443/)　📅 2026　🏷 ACL 2026
 
@@ -870,7 +794,7 @@ LLM agents operating in open environments face escalating risks from indirect pr
 
 </details>
 
-### 47. SafeMCP: Proactive Power Regulation for LLM Agent Defense via Environment-Grounded Look-Ahead Reasoning
+### 43. SafeMCP: Proactive Power Regulation for LLM Agent Defense via Environment-Grounded Look-Ahead Reasoning
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.522/)　📅 2026　🏷 ACL 2026
 
@@ -889,7 +813,7 @@ As Large Language Model (LLM) agents increasingly leverage the Model Context Pro
 
 </details>
 
-### 48. SafeAgent: Safeguarding LLM Agents via an Automated Risk Simulator
+### 44. SafeAgent: Safeguarding LLM Agents via an Automated Risk Simulator
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1501/)　📅 2026　🏷 ACL 2026
 
@@ -908,7 +832,7 @@ LLM-based agents are rapidly being deployed in real-world applications (e.g., di
 
 </details>
 
-### 49. When "Do Not" Is Not Deny: Security Rules in CLAUDE.md vs Built-In Controls
+### 45. When "Do Not" Is Not Deny: Security Rules in CLAUDE.md vs Built-In Controls
 
 📄 [arXiv](https://arxiv.org/abs/2608.23550)　📅 2026-08
 
@@ -927,7 +851,7 @@ In CLAUDE.md, "do not" is a natural-language instruction that the model interpre
 
 </details>
 
-### 50. One Gate Is Not Enough: Composing Stateful Pre-Action Controls for Agentic AI
+### 46. One Gate Is Not Enough: Composing Stateful Pre-Action Controls for Agentic AI
 
 📄 [arXiv](https://arxiv.org/abs/2608.18360)　📅 2026-08
 
@@ -946,7 +870,7 @@ Agentic AI systems take consequential actions governed by more than one pre-acti
 
 </details>
 
-### 51. A Policy Algebra for Trust-Preserving Agentic AI Execution
+### 47. A Policy Algebra for Trust-Preserving Agentic AI Execution
 
 📄 [arXiv](https://arxiv.org/abs/2608.16402)　📅 2026-08
 
@@ -965,7 +889,7 @@ Large language model-based agentic frameworks primarily optimize capability: whe
 
 </details>
 
-### 52. Governance at the Boundary: How Agent Decomposition Degrades Policy Compliance
+### 48. Governance at the Boundary: How Agent Decomposition Degrades Policy Compliance
 
 📄 [arXiv](https://arxiv.org/abs/2608.16055)　📅 2026-08
 
@@ -984,7 +908,7 @@ Existing agent benchmarks ask whether the agent finished the task. We ask whethe
 
 </details>
 
-### 53. TwinGridShield: Consequence-Aware Runtime Authorization for LLM Grid-Agent Actions
+### 49. TwinGridShield: Consequence-Aware Runtime Authorization for LLM Grid-Agent Actions
 
 📄 [arXiv](https://arxiv.org/abs/2608.15391)　📅 2026-08
 
@@ -1003,7 +927,7 @@ Large language model (LLM)-assisted energy-management tools can translate natura
 
 </details>
 
-### 54. Agentic Oversight via Dialectic Reasoning
+### 50. Agentic Oversight via Dialectic Reasoning
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1143/)　📅 2026　🏷 ACL 2026
 
@@ -1019,5 +943,43 @@ Large language model (LLM)-assisted energy-management tools can translate natura
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 Debate has emerged as a promising oversight mechanism for Large Language Models (LLMs) amid rising systemic complexity, particularly where models outperform human evaluators. Yet, Debate provides little verifiable evidence for its final judgments, and its scalability remains largely unexplored. To make oversight grounded and scale as capabilities extend, we introduce an Agentic Oversight framework. By using Dialectic Argumentation as a reasoning function, we extend this paradigm to multilingual and multimodal spaces. We employ a weak-to-strong oversight approach based on two expert models that evaluate and defend contesting answers, while a third blind judge determines the winner using Dialectic Argumentation. Experts argue only for belief-consistent answers, founding the Debate on disagreements. We experimented with six tasks on our framework in both multilingual and multimodal scenarios, and dialectic argumentation consistently outperforms single-expert baselines. Moreover, we show that dialectic judgements from a weaker model deliver argument-mediated supervision that, via fine-tuning, instils unsupervised reasoning signals in expert models.
+
+</details>
+
+### 51. ETHOS: Towards a Modular Ethics Framework for Clinical Multi-Agent Systems
+
+📄 [arXiv](https://arxiv.org/abs/2608.15424)　📅 2026-08
+
+**关键词**：`tool`、`multi-agent system`、`risk propagation`、`collusive behavior`
+
+👤 **作者**：Rakesh Sharma、…、Walter Witschey
+
+- 🎯 **研究动机**：医疗 AI 伦理框架与治理原则多停留概念层面，缺可执行的运行时监督机制
+- 🔬 **研究方法**：ETHOS 模块化治理元 agent：确定性检查、情境审查与最终伦理批评三层分层治理，可集成到任何现有 MAS 而不改其架构，在肝病临床决策 MAS 中演示
+- 📌 **结论**：通过检测不完整、不一致或超范围证据提升决策可靠性，并在无法支持安全推荐时适当增加弃权
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+The rapid adoption of large language models has enabled the development of clinical multi-agent systems (MAS) capable of integrating multimodal patient data and supporting increasingly complex clinical decision-making. However, the deployment of these systems in real-world healthcare settings raises critical ethical concerns related to safety, fairness, accountability, transparency, and patient trust. While numerous organizations, including the World Health Organization, the National Academy of Medicine, and the FUTURE-AI consortium, have proposed ethical frameworks and governance principles for healthcare AI, these efforts remain largely conceptual. To address this challenge, we present ETHOS (Ethics and Trust through Hierarchical Oversight System), a modular ethics framework designed as a governance meta-agent that can be integrated with any existing multi-agent system without requiring changes to its underlying architecture. ETHOS translates stakeholder-informed ethical requirements into executable runtime oversight through a layered governance approach consisting of deterministic checks, contextual reviews, and a final ethics critic. These components continuously evaluate intermediate reasoning steps and final outputs, enabling the system to identify ethical risks, request revisions, or suppress responses that fail predefined safety and trustworthiness criteria. We demonstrate ETHOS within a hepatology clinical decision-support MAS. Results show that ETHOS improves decision reliability by detecting incomplete, inconsistent, or out-of-scope evidence and appropriately increasing abstention when safe recommendations cannot be supported. By embedding ethical governance directly into system operation, ETHOS provides a practical and auditable mechanism for transforming high-level AI ethics principles into deployable safeguards.
+
+</details>
+
+### 52. Multimodal Policy Internalization for Conversational Agents
+
+📄 [arXiv](https://arxiv.org/abs/2510.09474) · 📝 [OpenReview](https://openreview.net/forum?id=fSE0rUngCX) · 🎓 [Official](https://iclr.cc/virtual/2026/poster/10008236)　📅 2025-10　🏷 ICLR 2026
+
+**关键词**：`defense`、`policy internalization`、`TriMPI`、`tool-use policy`
+
+👤 **作者**：Zhenhailong Wang、…、Ruhi Sarikaya
+
+- 🎯 **研究动机**：多模态 Agent 的策略以长 prompt 实现，推理成本高且遵循不稳，多模态策略内化此前无人研究
+- 🔬 **研究方法**：定义 Multimodal Policy Internalization 任务并构建合成与真实数据集，提出持续预训练、SFT 加 PolicyRollout（GRPO 式 RL）的三阶段框架 TriMPI
+- 📌 **结论**：TriMPI 在端到端准确率、泛化与抗遗忘上显著提升，推理时无需再携带策略文本
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Modern conversational agents like ChatGPT and Alexa+ rely on predefined policies specifying metadata, response styles, and tool-usage rules. As these LLM-based systems expand to support diverse business and user queries, such policies, often implemented as in-context prompts, are becoming increasingly complex and lengthy, making faithful adherence difficult and imposing large fixed computational costs. With the rise of multimodal agents, policies that govern visual and multimodal behaviors are critical but remain understudied. Prior prompt-compression work mainly shortens task templates and demonstrations, while existing policy-alignment studies focus only on text-based safety rules. We introduce Multimodal Policy Internalization (MPI), a new task that internalizes reasoning-intensive multimodal policies into model parameters, enabling stronger policy-following without including the policy during inference. MPI poses unique data and algorithmic challenges. We build two datasets spanning synthetic and real-world decision-making and tool-using tasks and propose TriMPI, a three-stage training framework. TriMPI first injects policy knowledge via continual pretraining, then performs supervised finetuning, and finally applies PolicyRollout, a GRPO-style reinforcement learning extension that augments rollouts with policy-aware responses for grounded exploration. TriMPI achieves notable gains in end-to-end accuracy, generalization, and robustness to forgetting. As the first work on multimodal policy internalization, we provide datasets, training recipes, and comprehensive evaluations to foster future research. Project page: https://mikewangwzhl.github.io/TriMPI.
 
 </details>

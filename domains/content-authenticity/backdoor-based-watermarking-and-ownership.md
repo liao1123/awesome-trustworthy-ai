@@ -169,26 +169,7 @@ Foundational generative models should be traceable to protect their owners and f
 
 </details>
 
-### 9. Backdooring Textual Inversion for Concept Censorship
-
-📄 [arXiv](https://arxiv.org/abs/2308.10718) · 🌐 [Project](https://concept-censorship.github.io/)　📅 2023-08
-
-**关键词**：`defense`、`concept censorship`、`Textual Inversion`、`protective backdoor`
-
-👤 **作者**：Yutong Wu、Jie Zhang、Florian Kerschbaum、Tianwei Zhang
-
-- 🎯 **研究动机**：可下载的 Textual Inversion embedding 可被滥用造假或诽谤，缺乏概念审查手段
-- 🔬 **研究方法**：以后门为善：TI 训练时把敏感词设为触发器，触发词与个性化 embedding 组合时输出预设安全图像
-- 📌 **结论**：Stable Diffusion 上在不影响正常使用的前提下实现敏感概念审查
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Recent years have witnessed success in AIGC (AI Generated Content). People can make use of a pre-trained diffusion model to generate images of high quality or freely modify existing pictures with only prompts in nature language. More excitingly, the emerging personalization techniques make it feasible to create specific-desired images with only a few images as references. However, this induces severe threats if such advanced techniques are misused by malicious users, such as spreading fake news or defaming individual reputations. Thus, it is necessary to regulate personalization models (i.e., concept censorship) for their development and advancement. In this paper, we focus on the personalization technique dubbed Textual Inversion (TI), which is becoming prevailing for its lightweight nature and excellent performance. TI crafts the word embedding that contains detailed information about a specific object. Users can easily download the word embedding from public websites like Civitai and add it to their own stable diffusion model without fine-tuning for personalization. To achieve the concept censorship of a TI model, we propose leveraging the backdoor technique for good by injecting backdoors into the Textual Inversion embeddings. Briefly, we select some sensitive words as triggers during the training of TI, which will be censored for normal use. In the subsequent generation stage, if the triggers are combined with personalized embeddings as final prompts, the model will output a pre-defined target image rather than images including the desired malicious concept. To demonstrate the effectiveness of our approach, we conduct extensive experiments on Stable Diffusion, a prevailing open-sourced text-to-image model. Our code, data, and results are available at https://concept-censorship.github.io.
-
-</details>
-
-### 10. Watermarking Diffusion Model
+### 9. Watermarking Diffusion Model
 
 📄 [arXiv](https://arxiv.org/abs/2305.12502)　📅 2023-05
 
@@ -207,7 +188,7 @@ The availability and accessibility of diffusion models (DMs) have significantly 
 
 </details>
 
-### 11. Towards Backdoor-Based Ownership Verification for Vision-Language-Action Models
+### 10. Towards Backdoor-Based Ownership Verification for Vision-Language-Action Models
 
 📄 [arXiv](https://arxiv.org/abs/2605.09005)　📅 2026-05
 
@@ -226,7 +207,7 @@ Vision-Language-Action models (VLAs) support generalist robotic control by enabl
 
 </details>
 
-### 12. AGATE: Stealthy Black-box Watermarking for Multimodal Model Copyright Protection
+### 11. AGATE: Stealthy Black-box Watermarking for Multimodal Model Copyright Protection
 
 📄 [arXiv](https://arxiv.org/abs/2504.21044)　📅 2025-04
 
@@ -245,7 +226,7 @@ Recent advancement in large-scale Artificial Intelligence (AI) models offering m
 
 </details>
 
-### 13. Watermarking Vision-Language Pre-trained Models for Multi-modal Embedding as a Service
+### 12. Watermarking Vision-Language Pre-trained Models for Multi-modal Embedding as a Service
 
 📄 [arXiv](https://arxiv.org/abs/2311.05863)　📅 2023-11
 
@@ -264,7 +245,7 @@ Recent advances in vision-language pre-trained models (VLPs) have significantly 
 
 </details>
 
-### 14. HoneypotNet: Backdoor Attacks Against Model Extraction
+### 13. HoneypotNet: Backdoor Attacks Against Model Extraction
 
 📄 [arXiv](https://arxiv.org/abs/2501.01090) · 🌐 [Project](https://ojs.aaai.org/index.php/AAAI/article/view/32872)　📅 2025-01　🏷 AAAI 2025
 
@@ -283,7 +264,7 @@ Model extraction attacks are one type of inference-time attacks that approximate
 
 </details>
 
-### 15. Inhibitory Attacks on Backdoor-based Fingerprinting for Large Language Models
+### 14. Inhibitory Attacks on Backdoor-based Fingerprinting for Large Language Models
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1207/)　📅 2026　🏷 ACL 2026
 
@@ -302,7 +283,7 @@ The widespread adoption of Large Language Model (LLM) in commercial and research
 
 </details>
 
-### 16. ME: Trigger Element Combination Backdoor Attack on Copyright Infringement
+### 15. ME: Trigger Element Combination Backdoor Attack on Copyright Infringement
 
 📄 [arXiv](https://arxiv.org/abs/2506.10776)　📅 2025-06
 
@@ -321,7 +302,7 @@ The capability of generative diffusion models (DMs) like Stable Diffusion (SD) i
 
 </details>
 
-### 17. The Stronger the Diffusion Model, the Easier the Backdoor: Data Poisoning to Induce Copyright Breaches Without Adjusting Finetuning Pipeline
+### 16. The Stronger the Diffusion Model, the Easier the Backdoor: Data Poisoning to Induce Copyright Breaches Without Adjusting Finetuning Pipeline
 
 📄 [arXiv](https://arxiv.org/abs/2401.04136)　📅 2024-01　🏷 ICML 2024
 
@@ -340,7 +321,7 @@ The commercialization of text-to-image diffusion models (DMs) brings forth poten
 
 </details>
 
-### 18. CopyrightShield: Enhancing Diffusion Model Security Against Copyright Infringement Attacks
+### 17. CopyrightShield: Enhancing Diffusion Model Security Against Copyright Infringement Attacks
 
 📄 [arXiv](https://arxiv.org/abs/2412.01528) · 🎓 [Official](https://openaccess.thecvf.com/content/ICCV2025/html/Guo_CopyrightShield_Enhancing_Diffusion_Model_Security_Against_Copyright_Infringement_Attacks_ICCV2025_paper.html)　📅 2024-12　🏷 ICCV 2025
 
@@ -359,7 +340,7 @@ Diffusion models have attracted significant attention due to its exceptional dat
 
 </details>
 
-### 19. Robust Watermarks Meet Backdoored Models: Evading Diffusion Semantic Watermarks via Stealthy Backdoor
+### 18. Robust Watermarks Meet Backdoored Models: Evading Diffusion Semantic Watermarks via Stealthy Backdoor
 
 📄 [arXiv](https://arxiv.org/abs/2608.00543) · 🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/liu-jinyuan)　📅 2026-08
 
@@ -375,5 +356,24 @@ Diffusion models have attracted significant attention due to its exceptional dat
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 Although semantic watermarking is considered a promising safeguard for images generated by Latent Diffusion Models (LDMs), the reliance of the watermark detection pipeline on neural networks introduces a critical yet underexplored backdoor attack surface. To systematically study this vulnerability, we propose GhostVAE to plant a stealthy backdoor into the encoder of Variational Autoencoder (VAE), enabling reliable evasion of watermark detection. GhostVAE operates in two stages: it first constructs a universal trigger via power spectrum regularization to improve the trigger robustness, and then trains a backdoored VAE encoder with a parameter-aligned objective. Through extensive evaluations across three state-of-the-art semantic watermarking schemes and three widely adopted LDMs, we show that GhostVAE preserves watermark detection performance on benign images (achieving an average true positive rate of 94.4%), while simultaneously enabling highly effective evasion under trigger activation (achieving an average attack success rate of 94.6%). Moreover, we comprehensively analyze seventeen representative defenses and demonstrate that GhostVAE remains stealthy across the input space, parameter space, and latent space. Our work fundamentally undermines the trustworthiness of semantic watermarking systems and highlights that secure deployment of semantic watermarks requires end-to-end security considerations, particularly for neural network components.
+
+</details>
+
+### 19. Watermarking LLM Agent Trajectories
+
+📄 [arXiv](https://arxiv.org/abs/2602.18700) · 🎓 [Official](https://icml.cc/virtual/2026/poster/62387)　📅 2026　🏷 ICML 2026
+
+**关键词**：`defense`、`AI watermarking`、`content watermark`、`provenance`、`empirical evaluation`、`robust detection`
+
+👤 **作者**：Wenlong Meng、…、Wenzhi Chen
+
+- 🎯 **研究动机**：LLM 智能体轨迹数据制作昂贵，但版权保护与滥用溯源被忽视
+- 🔬 **研究方法**：提出 ActHook：借鉴软件 hook 机制嵌入由密钥激活、不改变任务结果的 hook 动作，训练于水印轨迹的智能体在密钥出现时高频产出 hook 动作以支持黑盒检测
+- 📌 **结论**：在数学推理、网络搜索与软件工程智能体上检测 AUC 平均达 94.3（Qwen-2.5-Coder-7B），性能损失可忽略
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+LLM agents rely heavily on high-quality trajectory data to guide their problem-solving behaviors, yet producing such data requires substantial task design, high-capacity model generation, and manual filtering. Despite the high cost of creating these datasets, existing literature has overlooked copyright protection for LLM agent trajectories. This gap leaves creators vulnerable to data theft and makes it difficult to trace misuse or enforce ownership rights. This paper introduces ActHook, the first watermarking method tailored for agent trajectory datasets. Inspired by hook mechanisms in software engineering, ActHook embeds hook actions that are activated by a secret input key and do not alter the original task outcome. Like software execution, LLM agents operate sequentially, allowing hook actions to be inserted at decision points without disrupting task flow. When the activation key is present, an LLM agent trained on watermarked trajectories can produce these hook actions at a significantly higher rate, enabling reliable black-box detection. Experiments on mathematical reasoning, web searching, and software engineering agents show that ActHook achieves an average detection AUC of 94.3 on Qwen-2.5-Coder-7B while incurring negligible performance degradation.
 
 </details>

@@ -18,26 +18,7 @@
 
 ## 问题起点与词汇捷径
 
-### 1. The Boy Who Cried Wolf: Adversarial Misclassification of Safe Inputs as Unsafe in Multimodal Guardrails
-
-📄 [arXiv](https://arxiv.org/abs/2608.01373) · 🌐 [Project](https://doi.org/10.1145/3770855.3817756)　📅 2026-08　🏷 KDD 2026
-
-**关键词**：`attack`、`multimodal adversarial example`、`unsafe induction`、`guardrail evasion`、`multimodal guardrail`、`over-refusal`
-
-👤 **作者**：Shuo Shi、…、Shouling Ji
-
-- 🎯 **研究动机**：多模态 guard 对抗研究集中于假阴性越狱，诱导假阳性使良性请求被拒的可用性威胁未被探索
-- 🔬 **研究方法**：提出 Unsafe Induction Attacks，其 USD 方法把对抗扰动与不安全内容的分布表征对齐，使安全图像在多样用户 prompt 下触发 guard 拒绝合法请求
-- 📌 **结论**：在四个 SOTA guard 模型的真实用户模拟场景中 USD 攻击成功率达 84%，超过现有方法，暴露多模态安全架构的可用性失败模式
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Multimodal guard models have emerged as critical safety components for screening content in vision-language systems. While adversarial research has extensively studied jailbreaking attacks that produce false negatives, the inverse threat of inducing false positives on benign inputs remains unexplored. We introduce Unsafe Induction Attacks, where adversaries distribute imperceptibly perturbed safe images that trigger guard models to reject legitimate user requests, causing a "Boy Who Cried Wolf" effect that degrades service availability and erodes trust. This reveals an availability failure mode in deployed safety filters. To realize this threat under diverse user prompts, we propose Unsafe Semantic Distillation (USD), which aligns adversarial perturbations with distributional representations of unsafe content rather than prompt-specific instances. Evaluated on four state-of-the-art guard models across realistic user simulation scenarios, USD achieves 84% attack success rates, outperforming existing methods and exposing fundamental vulnerabilities in current multimodal safety architectures.
-
-</details>
-
-### 2. Navigating the OverKill in Large Language Models
+### 1. Navigating the OverKill in Large Language Models
 
 🎓 [Official](https://aclanthology.org/2024.acl-long.253/)　📅 2024-01　🏷 ACL 2024
 
@@ -56,7 +37,7 @@ Large language models are meticulously aligned to be both helpful and harmless. 
 
 </details>
 
-### 3. Safety-Tuned LLaMAs: Lessons From Improving the Safety of Large Language Models that Follow Instructions
+### 2. Safety-Tuned LLaMAs: Lessons From Improving the Safety of Large Language Models that Follow Instructions
 
 📝 [OpenReview](https://openreview.net/forum?id=gT5hALch9z)　📅 2023-09　🏷 ICLR 2024
 
@@ -66,7 +47,7 @@ Large language models are meticulously aligned to be both helpful and harmless. 
 - 🔬 **研究方法**：系统改变safety data来源与比例做对齐实验
 - 📌 **结论**：少量数据即显著提升安全，但过强safety tuning引发exaggerated safety
 
-### 4. ORFuzz: Fuzzing the "Other Side" of LLM Safety -- Testing Over-Refusal
+### 3. ORFuzz: Fuzzing the "Other Side" of LLM Safety -- Testing Over-Refusal
 
 📄 [arXiv](https://arxiv.org/abs/2508.11222) · 🌐 [Project](https://conf.researchr.org/details/ase-2025/ase-2025-papers/71/ORFuzz-Fuzzing-the-Other-Side-of-LLM-Safety-Testing-Over-Refusal)　📅 2025-08　🏷 ASE 2025
 
@@ -85,7 +66,7 @@ Large Language Models (LLMs) increasingly exhibit over-refusal - erroneously rej
 
 </details>
 
-### 5. Understanding and Mitigating Overrefusal in LLMs from an Unveiling Perspective of Safety Decision Boundary
+### 4. Understanding and Mitigating Overrefusal in LLMs from an Unveiling Perspective of Safety Decision Boundary
 
 🎓 [Official](https://aclanthology.org/2025.emnlp-main.1065/)　📅 2025-05　🏷 EMNLP 2025
 
@@ -104,7 +85,7 @@ Large language models (LLMs) have demonstrated remarkable capabilities across a 
 
 </details>
 
-### 6. FalseReject: A Resource for Improving Contextual Safety and Mitigating Over-Refusals in LLMs via Structured Reasoning
+### 5. FalseReject: A Resource for Improving Contextual Safety and Mitigating Over-Refusals in LLMs via Structured Reasoning
 
 📄 [arXiv](https://arxiv.org/abs/2505.08054) · 🌐 [Project](https://false-reject.github.io/) · 📝 [OpenReview](https://openreview.net/forum?id=1w9Hay7tvm)　📅 2025-05　🏷 COLM 2025
 
@@ -116,7 +97,7 @@ Large language models (LLMs) have demonstrated remarkable capabilities across a 
 - 🔬 **研究方法**：FalseReject以graph-informed multi-agent pipeline构造44类16k查询与结构化响应
 - 📌 **结论**：29个模型显示问题普遍，SFT可基本不损安全地减少误拒
 
-### 7. EVOREFUSE: Evolutionary Prompt Optimization for Evaluation and Mitigation of LLM Over-Refusal to Pseudo-Malicious Instructions
+### 6. EVOREFUSE: Evolutionary Prompt Optimization for Evaluation and Mitigation of LLM Over-Refusal to Pseudo-Malicious Instructions
 
 📄 [arXiv](https://arxiv.org/abs/2505.23473) · 🎓 [Official](https://proceedings.neurips.cc/paper_files/paper/2025/hash/027613d38d7a8bc9e42ee862fcced7ea-Abstract-Conference.html)　📅 2025-05　🏷 NeurIPS 2025
 
@@ -128,7 +109,7 @@ Large language models (LLMs) have demonstrated remarkable capabilities across a 
 - 🔬 **研究方法**：EVOREFUSE以进化式prompt优化生成pseudo-malicious指令，构建TEST与ALIGN数据集
 - 📌 **结论**：训练后over-refusal最高降29.85%且不牺牲安全性
 
-### 8. Automatic Pseudo-Harmful Prompt Generation for Evaluating False Refusals in Large Language Models
+### 7. Automatic Pseudo-Harmful Prompt Generation for Evaluating False Refusals in Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2409.00598) · 📝 [OpenReview](https://openreview.net/forum?id=ljFgX6A8NL)　📅 2024-09　🏷 COLM 2024
 
@@ -140,7 +121,7 @@ Large language models (LLMs) have demonstrated remarkable capabilities across a 
 - 🔬 **研究方法**：提出内容受控、模型相关的自动生成方法并构建PHTest评测集
 - 📌 **结论**：20个模型的评测揭示误拒与jailbreak安全性间的系统性权衡
 
-### 9. OR-Bench: An Over-Refusal Benchmark for Large Language Models
+### 8. OR-Bench: An Over-Refusal Benchmark for Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2405.20947) · 🌐 [Project](https://proceedings.mlr.press/v267/cui25a.html)　📅 2024-05　🏷 ICML 2025
 
@@ -159,7 +140,7 @@ Large Language Models (LLMs) require careful safety alignment to prevent malicio
 
 </details>
 
-### 10. XSTest: A Test Suite for Identifying Exaggerated Safety Behaviours in Large Language Models
+### 9. XSTest: A Test Suite for Identifying Exaggerated Safety Behaviours in Large Language Models
 
 🎓 [Official](https://aclanthology.org/2024.naacl-long.301/)　📅 2023-08　🏷 ACL 2024
 
@@ -178,7 +159,7 @@ Without proper safeguards, large language models will readily follow malicious i
 
 </details>
 
-### 11. Arabic Safety Alignment as Selective Refusal: An Empirical Study of SFT, DPO, and Guard Calibration
+### 10. Arabic Safety Alignment as Selective Refusal: An Empirical Study of SFT, DPO, and Guard Calibration
 
 📄 [arXiv](https://arxiv.org/abs/2608.29378)　📅 2026-09
 
@@ -197,7 +178,7 @@ Arabic large language models must refuse harmful prompts without over-refusing b
 
 </details>
 
-### 12. Health-ORSC-Bench: A Benchmark for Measuring Over-Refusal and Safety Completion in Health Context
+### 11. Health-ORSC-Bench: A Benchmark for Measuring Over-Refusal and Safety Completion in Health Context
 
 🎓 [Official](https://aclanthology.org/2026.findings-acl.1177/)　📅 2026-07　🏷 ACL 2026
 
@@ -216,7 +197,7 @@ Safety alignment in Large Language Models is critical for healthcare; however, r
 
 </details>
 
-### 13. Useless but Safe? Benchmarking Utility Recovery with User Intent Clarification in Multi-Turn Conversations
+### 12. Useless but Safe? Benchmarking Utility Recovery with User Intent Clarification in Multi-Turn Conversations
 
 📄 [arXiv](https://arxiv.org/abs/2604.27093) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-04　🏷 COLM 2026
 
@@ -235,7 +216,7 @@ Current LLM safety alignment techniques improve model robustness against adversa
 
 </details>
 
-### 14. Blind Refusal: Language Models Refuse to Help Users Evade Unjust, Absurd, and Illegitimate Rules
+### 13. Blind Refusal: Language Models Refuse to Help Users Evade Unjust, Absurd, and Illegitimate Rules
 
 📄 [arXiv](https://arxiv.org/abs/2604.06233) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-04　🏷 COLM 2026
 
@@ -254,7 +235,7 @@ Safety-trained language models routinely refuse requests for help circumventing 
 
 </details>
 
-### 15. RefusalBench: Generative Evaluation of Selective Refusal in Grounded Language Models
+### 14. RefusalBench: Generative Evaluation of Selective Refusal in Grounded Language Models
 
 🎓 [Official](https://aclanthology.org/2026.eacl-long.321/)　📅 2026-03　🏷 ACL 2026
 
@@ -273,7 +254,7 @@ The ability of language models in RAG systems to selectively refuse to answer ba
 
 </details>
 
-### 16. CausalT5k: Diagnosing Refusal and Failure Modes in Trustworthy Causal Reasoning Across Causal Rungs
+### 15. CausalT5k: Diagnosing Refusal and Failure Modes in Trustworthy Causal Reasoning Across Causal Rungs
 
 📄 [arXiv](https://arxiv.org/abs/2602.08939) · 🌐 [Project](https://doi.org/10.1145/3770855.3817567)　📅 2026-02　🏷 KDD 2026
 
@@ -292,7 +273,7 @@ Large language models increasingly produce fluent causal explanations, yet they 
 
 </details>
 
-### 17. Analyzing Bias in False Refusal Behavior of Large Language Models for Hate Speech Detoxification
+### 16. Analyzing Bias in False Refusal Behavior of Large Language Models for Hate Speech Detoxification
 
 📄 [arXiv](https://arxiv.org/abs/2601.08668)　📅 2026-01
 
@@ -311,7 +292,7 @@ While large language models (LLMs) have increasingly been applied to hate speech
 
 </details>
 
-### 18. Steering Over-refusals Towards Safety in Retrieval Augmented Generation
+### 17. Steering Over-refusals Towards Safety in Retrieval Augmented Generation
 
 📄 [arXiv](https://arxiv.org/abs/2510.10452)　📅 2025-10
 
@@ -330,7 +311,7 @@ Safety alignment in large language models (LLMs) induces over-refusals -- where 
 
 </details>
 
-### 19. Beyond Over-Refusal: Scenario-Based Diagnostics and Post-Hoc Mitigation for Exaggerated Refusals in LLMs
+### 18. Beyond Over-Refusal: Scenario-Based Diagnostics and Post-Hoc Mitigation for Exaggerated Refusals in LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2510.08158)　📅 2025-10
 
@@ -349,7 +330,7 @@ Large language models (LLMs) frequently produce false refusals, declining benign
 
 </details>
 
-### 20. COVER: Context-Driven Over-Refusal Verification in LLMs
+### 19. COVER: Context-Driven Over-Refusal Verification in LLMs
 
 🌐 [Project](https://anonymous.4open.science/r/Over-safety-in-LLMs-9647) · 🎓 [Official](https://aclanthology.org/2025.findings-acl.1243/)　📅 2025-07　🏷 ACL 2025
 
@@ -368,7 +349,7 @@ We introduce the concept of context-driven over-refusal, an abstention arising w
 
 </details>
 
-### 21. You Only Need One Single Token to Refine Safety Alignment
+### 20. You Only Need One Single Token to Refine Safety Alignment
 
 🎓 [Official](https://aclanthology.org/2026.findings-acl.662/)　📅 2026-07　🏷 ACL 2026
 
@@ -387,7 +368,7 @@ Large language models (LLMs) face a critical alignment challenge: balancing safe
 
 </details>
 
-### 22. Addressing Over-Refusal in LLMs with Competing Rewards
+### 21. Addressing Over-Refusal in LLMs with Competing Rewards
 
 📄 [arXiv](https://arxiv.org/abs/2606.31748)　📅 2026-06
 
@@ -406,7 +387,7 @@ Safety training on language models often induces over-refusal: improved safety o
 
 </details>
 
-### 23. ProSafePrune: Projected Safety Pruning for Mitigating Over-Refusal in LLMs
+### 22. ProSafePrune: Projected Safety Pruning for Mitigating Over-Refusal in LLMs
 
 📝 [OpenReview](https://openreview.net/forum?id=QkHKaPfRAB)　📅 2026-04　🏷 ICLR 2026
 
@@ -416,7 +397,7 @@ Safety training on language models often induces over-refusal: improved safety o
 - 🔬 **研究方法**：ProSafePrune先投影到保留安全行为的低秩子空间再做参数剪枝
 - 📌 **结论**：降低false rejection、维持恶意拒答并轻微改善通用能力
 
-### 24. Adaptive Helpfulness–Harmlessness Alignment with Preference Vectors
+### 23. Adaptive Helpfulness–Harmlessness Alignment with Preference Vectors
 
 🎓 [Official](https://aclanthology.org/2026.eacl-long.77/)　📅 2026-03　🏷 ACL 2026
 
@@ -435,7 +416,7 @@ Ensuring that large language models (LLMs) are both helpful and harmless is a cr
 
 </details>
 
-### 25. Discern Truth from Falsehood: Reducing Over-Refusal via Contrastive Refinement
+### 24. Discern Truth from Falsehood: Reducing Over-Refusal via Contrastive Refinement
 
 📄 [arXiv](https://arxiv.org/abs/2603.03323) · 🎓 [Official](https://proceedings.iclr.cc/paper_files/paper/2026/hash/45a30141c6719e9cfedfb51f1c665a37-Abstract-Conference.html)　📅 2026-03　🏷 ICLR 2026
 
@@ -447,7 +428,7 @@ Ensuring that large language models (LLMs) are both helpful and harmless is a cr
 - 🔬 **研究方法**：DCR在正式alignment前加入contrastive refinement强化两类区分
 - 📌 **结论**：减少over-refusal且不损safety与通用能力
 
-### 26. Deactivating Refusal Triggers: Understanding and Mitigating Overrefusal in Safety Alignment
+### 25. Deactivating Refusal Triggers: Understanding and Mitigating Overrefusal in Safety Alignment
 
 🎓 [Official](https://aclanthology.org/2026.trustnlp-main.26/)　📅 2026-03
 
@@ -466,7 +447,7 @@ Safety alignment aims to ensure that large language models (LLMs) refuse harmful
 
 </details>
 
-### 27. Towards Comprehensive Post Safety Alignment of Large Language Models via Safety Patching
+### 26. Towards Comprehensive Post Safety Alignment of Large Language Models via Safety Patching
 
 📄 [arXiv](https://arxiv.org/abs/2405.13820) · 🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/7176.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track)　📅 2026
 
@@ -485,7 +466,7 @@ Safety alignment of large language models (LLMs) has been gaining increasing att
 
 </details>
 
-### 28. Understanding and Mitigating Over-refusal for Large Language Models via Representation Intervention
+### 27. Understanding and Mitigating Over-refusal for Large Language Models via Representation Intervention
 
 📄 [arXiv](https://arxiv.org/abs/2511.19009)　📅 2025-11
 
@@ -504,7 +485,7 @@ Large language models (LLMs) demonstrate powerful capabilities across various na
 
 </details>
 
-### 29. MidPO: Dual Preference Optimization for Safety and Helpfulness in Large Language Models via a Mixture of Experts Framework
+### 28. MidPO: Dual Preference Optimization for Safety and Helpfulness in Large Language Models via a Mixture of Experts Framework
 
 🎓 [Official](https://aclanthology.org/2025.findings-emnlp.1037/)　📅 2025-11　🏷 EMNLP 2025
 
@@ -523,7 +504,7 @@ As large language models (LLMs) are increasingly applied across various domains,
 
 </details>
 
-### 30. Just Enough Shifts: Mitigating Over-Refusal in Aligned Language Models with Targeted Representation Fine-Tuning
+### 29. Just Enough Shifts: Mitigating Over-Refusal in Aligned Language Models with Targeted Representation Fine-Tuning
 
 📄 [arXiv](https://arxiv.org/abs/2507.04250) · 🌐 [Project](https://proceedings.mlr.press/v267/dabas25a.html) · 🎓 [Official](https://icml.cc/virtual/2025/poster/45159)　📅 2025-07　🏷 ICML 2025
 
@@ -542,7 +523,7 @@ Safety alignment is crucial for Large Language Models (LLMs) to resist malicious
 
 </details>
 
-### 31. Think Before Refusal: Triggering Safety Reflection in LLMs to Mitigate False Refusal Behavior
+### 30. Think Before Refusal: Triggering Safety Reflection in LLMs to Mitigate False Refusal Behavior
 
 📄 [arXiv](https://arxiv.org/abs/2503.17882)　📅 2025-03
 
@@ -561,7 +542,7 @@ Recent advancements in large language models (LLMs) have demonstrated that fine-
 
 </details>
 
-### 32. POROver: Improving Safety and Reducing Overrefusal in Large Language Models with Overgeneration and Preference Optimization
+### 31. POROver: Improving Safety and Reducing Overrefusal in Large Language Models with Overgeneration and Preference Optimization
 
 📄 [arXiv](https://arxiv.org/abs/2410.12999) · 🌐 [Project](https://proceedings.mlr.press/v267/karaman25a.html)　📅 2024-10　🏷 ICML 2025
 
@@ -580,7 +561,7 @@ Achieving both high safety and high usefulness simultaneously in large language 
 
 </details>
 
-### 33. ALTSTEER: Selective Safety Steering for Moving Beyond Hard Refusals to Constructive Alternatives
+### 32. ALTSTEER: Selective Safety Steering for Moving Beyond Hard Refusals to Constructive Alternatives
 
 📄 [arXiv](https://arxiv.org/abs/2608.30197)　📅 2026-09
 
@@ -599,7 +580,7 @@ Safety alignment is essential for deploying large language models, requiring sys
 
 </details>
 
-### 34. Please refuse to answer me! Mitigating Over-Refusal in Large Language Models via Adaptive Contrastive Decoding
+### 33. Please refuse to answer me! Mitigating Over-Refusal in Large Language Models via Adaptive Contrastive Decoding
 
 🌐 [Project](https://shorturl.at/Z31Oe) · 🎓 [Official](https://aclanthology.org/2026.acl-long.1823/)　📅 2026-04　🏷 ACL 2026
 
@@ -618,7 +599,7 @@ Safety-aligned large language models (LLMs) often generate refusal responses to 
 
 </details>
 
-### 35. LLM-VA: Resolving the Jailbreak-Overrefusal Trade-off via Vector Alignment
+### 34. LLM-VA: Resolving the Jailbreak-Overrefusal Trade-off via Vector Alignment
 
 🌐 [Project](https://hotbento.github.io/LLM-VA-Web/) · 🎓 [Official](https://aclanthology.org/2026.acl-long.260/)　📅 2026-01　🏷 ACL 2026
 
@@ -637,7 +618,7 @@ Safety-aligned LLMs suffer from two failure modes: jailbreak (responding to harm
 
 </details>
 
-### 36. Mitigating Over-Refusal in Aligned Large Language Models via Inference-Time Activation Energy
+### 35. Mitigating Over-Refusal in Aligned Large Language Models via Inference-Time Activation Energy
 
 📄 [arXiv](https://arxiv.org/abs/2510.08646) · 🎓 [Official](https://aclanthology.org/2026.acl-long.1759/)　📅 2025-10　🏷 ACL 2026
 
@@ -656,7 +637,7 @@ Safety alignment of large language models currently faces a central challenge: e
 
 </details>
 
-### 37. SafeConstellations: Mitigating Over-Refusals in LLMs Through Task-Aware Representation Steering
+### 36. SafeConstellations: Mitigating Over-Refusals in LLMs Through Task-Aware Representation Steering
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.2056/)　📅 2025-08　🏷 ACL 2026
 
@@ -675,7 +656,7 @@ LLMs increasingly exhibit over-refusal behavior, where safety mechanisms cause m
 
 </details>
 
-### 38. Surgical, Cheap, and Flexible: Mitigating False Refusal in Language Models via Single Vector Ablation
+### 37. Surgical, Cheap, and Flexible: Mitigating False Refusal in Language Models via Single Vector Ablation
 
 📄 [arXiv](https://arxiv.org/abs/2410.03415) · 📝 [OpenReview](https://openreview.net/forum?id=SCBn8MCLwc)　📅 2024-10　🏷 ICLR 2025
 
@@ -687,7 +668,7 @@ LLMs increasingly exhibit over-refusal behavior, where safety mechanisms cause m
 - 🔬 **研究方法**：提取false-refusal vector并做单向量消融或正交化
 - 📌 **结论**：training-free、model-agnostic地减少误拒且不明显损害安全与能力
 
-### 39. SCANS: Mitigating the Exaggerated Safety for LLMs via Safety-Conscious Activation Steering
+### 38. SCANS: Mitigating the Exaggerated Safety for LLMs via Safety-Conscious Activation Steering
 
 📄 [arXiv](https://arxiv.org/abs/2408.11491) · 🌐 [Project](https://ojs.aaai.org/index.php/AAAI/article/view/34521)　📅 2024-08　🏷 AAAI 2025
 
@@ -699,7 +680,7 @@ LLMs increasingly exhibit over-refusal behavior, where safety mechanisms cause m
 - 🔬 **研究方法**：SCANS经vocabulary projection定位safety-critical层，按hidden-state transition自适应steering
 - 📌 **结论**：XSTest与OKTest上降低exaggerated safety且保留有害防御与能力
 
-### 40. Mitigating Exaggerated Safety in Large Language Models
+### 39. Mitigating Exaggerated Safety in Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2405.05418)　📅 2024-05
 
@@ -718,26 +699,7 @@ As the popularity of Large Language Models (LLMs) grow, combining model safety w
 
 </details>
 
-### 41. On Prompt-Driven Safeguarding for Large Language Models
-
-📄 [arXiv](https://arxiv.org/abs/2401.18018) · 🌐 [Project](https://proceedings.mlr.press/v235/zheng24n.html)　📅 2024-01　🏷 ICML 2024
-
-**关键词**：`defense`、`soft safety prompt`、`directed representation optimization`、`refusal direction`
-
-👤 **作者**：Chujie Zheng、…、Nanyun Peng
-
-- 🎯 **研究动机**：安全提示的底层机制未被解释，限制了对其自动优化以提升安全性
-- 🔬 **研究方法**：发现安全提示把查询表示移向更高拒答方向（连无害查询也更易被拒），而 LLM 天然可区分有害无害；DRO 把安全提示作连续可训练嵌入，按有害性沿或逆拒答方向移动表示
-- 📌 **结论**：八个 LLM 在域外与越狱基准上显著提升防护效果且不损通用性能
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Prepending model inputs with safety prompts is a common practice for safeguarding large language models (LLMs) against queries with harmful intents. However, the underlying working mechanisms of safety prompts have not been unraveled yet, restricting the possibility of automatically optimizing them to improve LLM safety. In this work, we investigate how LLMs’ behavior (i.e., complying with or refusing user queries) is affected by safety prompts from the perspective of model representation. We find that in the representation space, the input queries are typically moved by safety prompts in a "higher-refusal" direction, in which models become more prone to refusing to provide assistance, even when the queries are harmless. On the other hand, LLMs are naturally capable of distinguishing harmful and harmless queries without safety prompts. Inspired by these findings, we propose a method for safety prompt optimization, namely DRO (Directed Representation Optimization). Treating a safety prompt as continuous, trainable embeddings, DRO learns to move the queries’ representations along or opposite the refusal direction, depending on their harmfulness. Experiments with eight LLMs on out-of-domain and jailbreak benchmarks demonstrate that DRO remarkably improves the safeguarding performance of human-crafted safety prompts, without compromising the models’ general performance.
-
-</details>
-
-### 42. Over-Refusal and Representation Subspaces: A Mechanistic Analysis of Task-Conditioned Refusal in Aligned LLMs
+### 40. Over-Refusal and Representation Subspaces: A Mechanistic Analysis of Task-Conditioned Refusal in Aligned LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2603.27518)　📅 2026-03
 
@@ -756,7 +718,7 @@ Aligned language models that are trained to refuse harmful requests also exhibit
 
 </details>
 
-### 43. Steering Safely or Off a Cliff? Rethinking Specificity and Robustness in Inference-Time Interventions
+### 41. Steering Safely or Off a Cliff? Rethinking Specificity and Robustness in Inference-Time Interventions
 
 🎓 [Official](https://aclanthology.org/2026.eacl-long.268/)　📅 2026-03　🏷 ACL 2026
 
@@ -775,7 +737,7 @@ Model steering, which involves intervening on hidden representations at inferenc
 
 </details>
 
-### 44. There Is More to Refusal in Large Language Models than a Single Direction
+### 42. There Is More to Refusal in Large Language Models than a Single Direction
 
 📄 [arXiv](https://arxiv.org/abs/2602.02132)　📅 2026-02
 
@@ -794,7 +756,7 @@ Prior work argues that refusal in large language models is mediated by a single 
 
 </details>
 
-### 45. LLMs Encode Harmfulness and Refusal Separately
+### 43. LLMs Encode Harmfulness and Refusal Separately
 
 📄 [arXiv](https://arxiv.org/abs/2507.11878) · 🎓 [Official](https://proceedings.neurips.cc/paper_files/paper/2025/hash/cd18539787d90e1d682d557c2c71b534-Abstract-Conference.html)　📅 2025-07　🏷 NeurIPS 2025
 
@@ -806,26 +768,7 @@ Prior work argues that refusal in large language models is mediated by a single 
 - 🔬 **研究方法**：以causal steering证明harmfulness与refusal编码于不同方向与token位置
 - 📌 **结论**：去除refusal不等于删除有害性识别，Latent Guard可减误拒且抗对抗微调
 
-### 46. Tripwire: Triggering Aligned Refusal via Statistically Certified Safety Neurons
-
-📄 [arXiv](https://arxiv.org/abs/2608.14392) · 🌐 [Project](https://anonymous.4open.science/r/Tripwire-65C4)　📅 2026-08
-
-**关键词**：`defense`、`analysis`、`detector-gated intervention`、`safety neuron`、`utility preservation`、`jailbreak`
-
-👤 **作者**：Wei Zhao、Zhe Li、Peixin Zhang、Jun Sun
-
-- 🎯 **研究动机**：神经元级越狱防御或干预面大损效用、或误伤效用神经元，且常开干预扰动每个良性请求
-- 🔬 **研究方法**：Tripwire 免训练：FDR 控制下逐神经元假设检验加效用特异性过滤识别安全神经元，触发式 clamp 钉住激活于有害条件均值以诱发对齐学到的拒答；支持检测门控推理与离线 bias-patch 两种等价部署
-- 📌 **结论**：四个对齐 LLM、四种攻击下平均 ASR 降至至多 2.0%，MT-Bench 效用损失仅 0.5-5.3%，为所有防御中最小
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Neuron- and path-level interventions offer the finest-grained route to defending large language models (LLMs) against jailbreak attacks, yet existing methods fall short of this promise, i.e., they often compromise model utility significantly. Specifically, one line of work suppresses toxic neurons to erase harmful semantics, but since such semantics are distributed across the network, blocking every pathway forces a large intervention footprint. An alternative line of research focus on identify safety neurons using external classifiers. While promising, the existing approaches suffer from compromising neurons that are important for the model utility as well. Moreover, both approaches remain always on and thus perturb every benign request even when no attack is present. To address these limitations, we present \ours{}, a training-free defense that first identifies safety-specific neurons through per-neuron hypothesis tests under false-discovery-rate control together with a utility-specificity filter. Based on this identification, a trigger-style clamp holds the selected neurons at their harmful-conditional mean activations, injecting an internal harmful-input signal that triggers the refusal behavior learned during alignment. The clamp is then realized by two provably equivalent deployment modes, namely a detector-gated inference-time intervention and an offline bias-patch weight edit. Extensive experiments across four safety-aligned LLMs and four representative attacks demonstrate that \ours{} reduces the average attack success rate to at most 2.0\% while incurring a utility drop of only 0.5\% to 5.3\% on MT-Bench, the smallest among all defenses. Code is available at https://anonymous.4open.science/r/Tripwire-65C4.
-
-</details>
-
-### 47. Safety Cost of Steering Vectors Is Separable and Reducible
+### 44. Safety Cost of Steering Vectors Is Separable and Reducible
 
 📄 [arXiv](https://arxiv.org/abs/2608.08383) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-08
 
@@ -844,21 +787,21 @@ Steering vectors are a lightweight tool for controlling LLM behavior. However, e
 
 </details>
 
-### 48. Reasoning over Precedents Alongside Statutes: Case-Augmented Deliberative Alignment for LLM Safety
+### 45. SHARD: Safe and Helpful Alignment via Self-Reframing Distillation
 
-🎓 [Official](https://aclanthology.org/2026.acl-long.30/)　📅 2026　🏷 ACL 2026
+📄 [arXiv](https://arxiv.org/abs/2606.15517)　📅 2026-09
 
-**关键词**：`defense`、`reasoning safety`、`safety alignment`、`over-refusal`、`legal AI`
+**关键词**：`defense`、`safe-helpfulness`、`self-distillation`、`sensitive prompt`
 
-👤 **作者**：Can Jin、…、Dimitris N. Metaxas
+👤 **作者**：Viswonathan Manoranjan、Amogh Gupta、Anvesh Rao Vijjini、Thomas Hofweber、Snigdha Chaturvedi
 
-- 🎯 **研究动机**：基于类代码安全规则的 deliberative alignment 在缺乏高级推理能力的开源 LLM 上效果不明，显式规则常损害 Helpful 性
-- 🔬 **研究方法**：提出 CADA：以案例增强的简单规则代替冗长规则，用自生成安全推理链做强化学习进行对齐
-- 📌 **结论**：显式规则不一致地提升无害性且系统性降低有用性，而案例增强方式更稳健，CADA 同时增强无害性、攻击鲁棒性并减少过度拒答
+- 🎯 **研究动机**：LLM 对敏感提示要么直接拒绝、要么给出安全套话，无法满足可安全回答的正当信息需求
+- 🔬 **研究方法**：提出 SHARD 自我重构蒸馏：用哲学准则改写敏感提示显式良性意图，把原始回应重构为安全且更有用的版本，再在自重构回应上微调
+- 📌 **结论**：DNA 与 LINGUASAFE 英文子集上多数模型家族提升有用性且保持安全，可与更大教师蒸馏竞争
 
 <details>
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
-Ensuring that Large Language Models (LLMs) adhere to safety principles without refusing benign requests remains a significant challenge. While OpenAI introduces deliberative alignment (DA) to enhance the safety of its o-series models through reasoning over detailed “code-like” safety rules, the effectiveness of this approach in open-source LLMs, which typically lack advanced reasoning capabilities, is understudied. In this work, we systematically evaluate the impact of explicitly specifying extensive safety codes versus demonstrating them through illustrative cases. We find that referencing explicit codes inconsistently improves harmlessness and systematically degrades helpfulness, whereas training on case-augmented simple codes yields more robust and generalized safety behaviors. By guiding LLMs with case-augmented reasoning instead of extensive code-like safety rules, we avoid rigid adherence to narrowly enumerated rules and enable broader adaptability. Building on these insights, we propose CADA, a case-augmented deliberative alignment method for LLMs utilizing reinforcement learning on self-generated safety reasoning chains. CADA effectively enhances harmlessness, improves robustness against attacks, and reduces over-refusal while preserving utility across diverse benchmarks, offering a practical alternative to rule-only DA for improving safety while maintaining helpfulness.
+Large language models often struggle with sensitive prompts. They may refuse outright, provide generic safety boilerplate, or fail to address the user's legitimate informational needs that can be answered safely. We introduce SHARD, a self-reframing distillation method to improve safe-helpfulness. It first rewrites sensitive prompts to surface benign intent using philosophical guidelines, then reframes its original responses into safe, more helpful ones, and finally fine-tunes the model on its self-reframed responses. Across DNA and the English subset of LINGUASAFE, SHARD improves helpfulness for most model families while preserving safety. It also remains competitive with distillation from a larger teacher model, suggesting that models can internalize safe and helpful behavior elicited from their own. Warning: This paper contains content that may be offensive or harmful.
 
 </details>

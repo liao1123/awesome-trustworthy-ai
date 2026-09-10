@@ -72,26 +72,7 @@ As AI companions become increasingly embedded in everyday life, there is an urge
 
 </details>
 
-### 4. Counterfactual Anatomy-guided Spatial-Temporal Decoding for Annotation-Free Hallucination Mitigation in Medical VLMs
-
-📄 [arXiv](https://arxiv.org/abs/2608.17427)　📅 2026-08
-
-**关键词**：`defense`、`VLM safety`、`high-risk deployment`、`risk governance`
-
-👤 **作者**：Yifan Lu、…、Imran Razzak
-
-- 🎯 **研究动机**：医学 VLM 幻觉缓解的解码期方法或缺解剖感知、或依赖真值标注
-- 🔬 **研究方法**：CAST 全推理期免标注：广医学分割发现查询相关解剖区域，遮挡下答案似然下降的反事实干预选紧凑因果区域，结合无分类器引导与逐步时间对比的统一对比解码
-- 📌 **结论**：SLAKE 与 MIMIC-CXR 上三个 Med-VLM 一致超过强基线，甚至超过依赖真值的解码策略
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Medical vision-language models (Med-VLMs) have demonstrated strong performance on medical visual question answering, yet they remain prone to hallucination, generating clinically unsupported statements that are insufficiently grounded in image evidence. Mitigation methods applied during decoding offer a practical solution, but they typically lack anatomical awareness or rely heavily on ground truth annotations, which limits their applicability. We propose Counterfactual Anatomy-guided Spatial-Temporal decoding (CAST), a framework that operates entirely during inference and requires no manual annotations for anatomically grounded hallucination mitigation. CAST automatically discovers anatomical regions relevant to the given query through broad medical segmentation. It then selects a compact, causally informative area using counterfactual intervention based on the drop in answer likelihood under occlusion. Guided by this chosen region, CAST performs a unified contrastive decoding process, combining classifier-free guidance to correct spatial attention with stepwise temporal contrast to regulate generation dynamics. Experiments on the SLAKE and MIMIC-CXR datasets across three Med-VLMs demonstrate that CAST consistently outperforms strong baselines and surpasses decoding strategies reliant on ground truth. Our results indicate that compact, automatically selected regions provide highly effective contrastive guidance without expert annotations, offering a practical and generalizable solution for improving spatial grounding and reducing hallucinations. Code is available at https://github.com/csyifan/CAST.
-
-</details>
-
-### 5. Demographic Injection in Medical Language Models under Diversity, Equity, and Inclusion Prompts
+### 4. Demographic Injection in Medical Language Models under Diversity, Equity, and Inclusion Prompts
 
 📄 [arXiv](https://arxiv.org/abs/2608.15254)　📅 2026-08
 
@@ -110,7 +91,7 @@ Clinical-AI guidance increasingly recommends prompting language models to reason
 
 </details>
 
-### 6. TAF-MED: Multi-Turn Safety Refusal Collapse in LLMs Under Declared Self-Treatment Intent
+### 5. TAF-MED: Multi-Turn Safety Refusal Collapse in LLMs Under Declared Self-Treatment Intent
 
 📄 [arXiv](https://arxiv.org/abs/2608.10258)　📅 2026-08
 
@@ -129,7 +110,7 @@ Large language models (LLMs) increasingly provide conversational health informat
 
 </details>
 
-### 7. RES-MR: Risk-Aware Reasoning for Explainable and Safe Medication Recommendation
+### 6. RES-MR: Risk-Aware Reasoning for Explainable and Safe Medication Recommendation
 
 🌐 [Project](https://doi.org/10.1145/3805712.3809604)　📅 2026-07　🏷 SIGIR 2026
 
@@ -139,7 +120,7 @@ Large language models (LLMs) increasingly provide conversational health informat
 - 🔬 **研究方法**：RES-MR以风险感知推理生成可解释且安全的用药建议
 - 📌 **结论**：降低禁忌等临床风险并保持推荐效果
 
-### 8. Risk Governance for Generative AI Mental Health Support: A Multi-Turn Safety Architecture
+### 7. Risk Governance for Generative AI Mental Health Support: A Multi-Turn Safety Architecture
 
 📄 [arXiv](https://arxiv.org/abs/2607.22692)　📅 2026-07
 
@@ -158,26 +139,7 @@ Large language models (LLMs) are increasingly used for emotional support despite
 
 </details>
 
-### 9. Same Facts, Different Updates: Inference Setup Shapes LLM Behavior in Medical Allocation
-
-📄 [arXiv](https://arxiv.org/abs/2608.18108) · 📝 [OpenReview](https://openreview.net/forum?id=z06of44TcG)　📅 2026-08
-
-**关键词**：`analysis`、`high-risk deployment`、`risk governance`、`deployment audit`
-
-👤 **作者**：Spencer Gibson、Tyler Crosse、Magnus Saebo、Achyutha Menon、Eyon Jang、Diogo Cruz
-
-- 🎯 **研究动机**：模型除输入与场景框架偏差外，部署中积累的上下文也会引发意外行为，医疗资源分配中未测
-- 🔬 **研究方法**：医疗场景：模型先给两人分配概率、再看带对比患者信息的单句新信息，比较有与无先前回复在上下文时的概率移位
-- 📌 **结论**：四个模型中三个的配对上下文与独立推理概率移位方向相反（偏向 Person B 对 Person A）——上下文工程对敏感决策至关重要
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Large language models are being incorporated into sensitive and important decision-making processes across nearly all fields. While prior work studies model bias around inputs and scenario framing, models can also behave in unexpected and undesirable ways due to context accumulated over their deployment. In this work, we study a medical example in which a model is asked to assign resource-allocation probabilities to two people given brief clinical context, and then sees the same scenario with a single extra sentence containing contrasting patient information, either with or without its previous response in context. Across three of four tested models, the paired-context and independent-inference experiments have different probability shifts, often in opposite directions (in favor of Person B vs. in favor of Person A) when new information is provided. We include additional paired-context experiments to show the effect of varying attributes across scenario axes. Our findings show the context-dependent effect of patient information in a sensitive medical use case. More broadly, our work shows the importance of carefully incorporating LLM-based systems into decision-making processes, context engineering, and further model behavioral studies.
-
-</details>
-
-### 10. When Can We Trust LLMs in Mental Health? Large-Scale Benchmarks for Reliable LLM Evaluation
+### 8. When Can We Trust LLMs in Mental Health? Large-Scale Benchmarks for Reliable LLM Evaluation
 
 🎓 [Official](https://aclanthology.org/2026.eacl-long.180/)　📅 2026-03　🏷 ACL 2026
 
@@ -196,26 +158,7 @@ Evaluating Large Language Models (LLMs) for mental health support poses unique c
 
 </details>
 
-### 11. Responsible Evaluation of AI for Mental Health
-
-🎓 [Official](https://aclanthology.org/2026.acl-long.347/)　📅 2026　🏷 ACL 2026
-
-**关键词**：`benchmark`、`high-risk deployment`、`risk governance`、`deployment audit`、`medical AI`、`failure mitigation`
-
-👤 **作者**：Hiba Arnaout、…、Iryna Gurevych
-
-- 🎯 **研究动机**：心理健康 AI 工具的评测碎片化，与临床实践、社会情境和真实用户体验脱节
-- 🔬 **研究方法**：提出整合临床稳健性、社会情境与公平性的跨学科评测框架，分析 135 篇 *CL 文献，并给出评估/干预/信息综合三类支持的分类法与案例
-- 📌 **结论**：识别出依赖通用指标、心理健康专业人士参与不足、安全与公平关注欠缺等反复出现的局限
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Although artificial intelligence (AI) shows growing promise for mental health care, current approaches to evaluating AI tools in this domain remain fragmented and poorly aligned with clinical practice, social context, and first-hand user experience. This paper argues for a rethinking of responsible evaluation – what is measured, by whom, and for what purpose – by introducing an interdisciplinary framework that integrates clinical soundness, social context, and equity, providing a structured basis for evaluation. Through an analysis of 135 recent *CL publications, we identify recurring limitations, including over-reliance on generic metrics that do not capture clinical validity, therapeutic appropriateness, or user experience, limited participation from mental health professionals, and insufficient attention to safety and equity. To address these gaps, we propose a taxonomy of AI mental health support types – assessment-, intervention-, and information synthesis-oriented – each with distinct risks and evaluative requirements, and illustrate its use through case studies.
-
-</details>
-
-### 12. ProMedical: Hierarchical Fine-Grained Criteria Modeling for Medical LLM Alignment via Explicit Injection
+### 9. ProMedical: Hierarchical Fine-Grained Criteria Modeling for Medical LLM Alignment via Explicit Injection
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1714/)　📅 2026　🏷 ACL 2026
 
@@ -234,7 +177,7 @@ Aligning Large Language Models (LLMs) with high-stakes medical standards remains
 
 </details>
 
-### 13. Calibrated? Not for Everyone: How Sexual Orientation and Religious Markers Distort LLM Accuracy and Confidence in Medical QA
+### 10. Calibrated? Not for Everyone: How Sexual Orientation and Religious Markers Distort LLM Accuracy and Confidence in Medical QA
 
 🎓 [Official](https://aclanthology.org/2026.acl-short.36/)　📅 2026　🏷 ACL 2026
 
@@ -253,7 +196,7 @@ Safe clinical deployment of Large Language Models (LLMs) requires not only high 
 
 </details>
 
-### 14. TRIDENT: Benchmarking LLM Safety in Finance, Medicine, and Law
+### 11. TRIDENT: Benchmarking LLM Safety in Finance, Medicine, and Law
 
 📄 [arXiv](https://arxiv.org/abs/2507.21134) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2025-07
 
@@ -272,83 +215,7 @@ As large language models (LLMs) are increasingly deployed in high-risk domains s
 
 </details>
 
-### 15. InsufficiencyBench: Evaluating LLM legal advice on underspecified user queries
-
-📄 [arXiv](https://arxiv.org/abs/2608.20220) · 📝 [OpenReview](https://openreview.net/forum?id=I02uMYmPR7)　📅 2026-08　🏷 ICML 2026
-
-**关键词**：`benchmark`、`high-risk deployment`、`risk governance`、`deployment audit`
-
-👤 **作者**：Samuel J. Vincent、Daniel Calloway、Fangyi Yu、Andrew M. Bean、Nabeel Seedat
-
-- 🎯 **研究动机**：法律 AI 基准假设查询完备，实践中用户会省略实质决定法律结果的事实
-- 🔬 **研究方法**：InsufficiencyBench 定义八类缺失要素与三种结构失效模式（switch、gating、fatal prerequisite），202 项（58 基础查询+144 缺陷变体）由执业律师标注，覆盖六法域 24 州，评十个前沿模型
-- 📌 **结论**：缺失要素识别无一模型超 F2=0.46、中位召回 0.44——模型要么无差别含糊要么在虚构假设下默默作答
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Legal AI systems are increasingly used to answer legal questions, yet existing benchmarks assume queries arrive fully specified. In practice, users omit facts that materially determine the legal outcome. We introduce InsufficiencyBench, the first legal benchmark targeting query-side insufficiency: whether a model recognizes when a query lacks legally material information, identifies what is missing, and refrains from premature conclusions. We formalize a taxonomy of eight canonical missing-element categories across three structural failure modes---switch, gating, and fatal prerequisite--- and construct 202 benchmark items (58 base queries, 144 deficient variants) spanning six legal domains and 24 US jurisdictions and annotated by practising attorneys. Evaluating ten frontier models, we find that no model exceeds F2 = 0.46 on missing-element identification and that the median recall is 0.44. Models either hedge indiscriminately or answer silently under fabricated presumptions. No model both identifies and qualifies responses to deficient queries while directly addressing complete ones.
-
-</details>
-
-### 16. How Much Do Legal RAG Systems Still Hallucinate?
-
-📄 [arXiv](https://arxiv.org/abs/2608.14210)　📅 2026-08
-
-**关键词**：`analysis`、`high-risk deployment`、`risk governance`、`deployment audit`
-
-👤 **作者**：Souvick Das、Sallam Abualhaija、Domenico Bianculli
-
-- 🎯 **研究动机**：法律域 RAG 的幻觉行为缺乏跨系统细粒度测量
-- 🔬 **研究方法**：对八个法律 RAG 系统在 GDPR（英文）与国民民法典（法文）两语料上做 claim 级与 answer 级评测，并在 142 道法律专家问题上验证
-- 📌 **结论**：幻觉普遍：最好系统低于 10%、最差近一半；含错误假设的 false-premise 问题幻觉率最高
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Hallucination is a major challenge for retrieval-augmented generation (RAG) systems in the legal domain, where ungrounded answers can lead to serious consequences. To better understand this problem, we conduct a fine-grained analysis of hallucination behavior in eight legal RAG systems across two legal corpora, the GDPR (in English) and a national civil law (in French). Using claim-level and answer-level evaluation, we report on hallucination density and severity, analyze performance across question categories and user personas, and validate our findings on an independent set of 142 legal-expert-authored questions. Our results show that hallucinations remain pervasive, ranging from less than 10% of responses for the best-performing systems to nearly half in the worst case. We further find that false-premise questions, containing incorrect assumptions that must be rejected, produce high hallucination rates on the manually-drafted questions.
-
-</details>
-
-### 17. Mitigating Legal Hallucinations via Symbolic Constraints and Analogical Precedents
-
-🎓 [Official](https://aclanthology.org/2026.acl-long.633/)　📅 2026　🏷 ACL 2026
-
-**关键词**：`defense`、`legal AI`、`high-risk deployment`、`risk governance`、`failure mitigation`
-
-👤 **作者**：Zixuan Huang、Yanxiang Ma、Luhan Wang、Yunke Wang、Duo Shi、Chang Xu
-
-- 🎯 **研究动机**：法律域微调与 RAG 仍有幻觉风险，语义漂移与引用数量变化未被解决
-- 🔬 **研究方法**：AALawyer 基于法律三段论的双检索器：Symbolic Constrained Retrieval 做闭集条文检索，Analogical Precedent Retrieval 基于新采集大型刑事数据集做开集判例推理
-- 📌 **结论**：LawBench 与自建幻觉风险基准上缓解幻觉并提升法律推理可解释性
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-With the growing potential of large language models (LLMs) in the legal domain, domain-specific finetuning and retrieval-augmented generation (RAG) methods have received widespread attention. However, current methods still suffer from hallucination risk and failing to resolve semantic drift and adapt to varying citation numbers. To address this, we propose Authoritative and Accurate Lawyer (AALawyer), a complementary dual-retriever framework based on the Legal Syllogism and the nature of different legal data. First, we introduce Symbolic Constrained Retrieval (SCR) for closed-set article retrieval, by constraining retrieval to the generative prediction. Second, we build Analogical Precedent Retrieval (APR) to retrieve open-set judicial precedents for reasoning with a newly collected large criminal dataset.Extensive experiments, including LawBench, our Hallucination Risk-Benchmark, and comprehensive ablation studies, demonstrate the effectiveness of AALawyer, which mitigates hallucinations while improving the explainability of legal reasoning.
-
-</details>
-
-### 18. Evaluating Structure-Aware Retrieval and Safety in Statute-Centric Legal QA
-
-🎓 [Official](https://aclanthology.org/2026.acl-long.2112/)　📅 2026　🏷 ACL 2026
-
-**关键词**：`benchmark`、`legal AI`、`high-risk deployment`、`risk governance`、`RAG security`
-
-👤 **作者**：Kyubyung Chae、…、Taesup Kim
-
-- 🎯 **研究动机**：法律 QA 基准偏重判例法；制定法场景证据分散在层级链接文档，常规检索器失效且模型在上下文不全时幻觉
-- 🔬 **研究方法**：SearchFireSafety 以消防安全法规为例：双轨评估——需引用感知检索的真实问题加压力测试幻觉与拒绝的合成部分上下文场景
-- 📌 **结论**：图引导检索大幅提升性能，但领域适应模型在关键法定证据缺失时更易幻觉，揭示检索-安全权衡
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Legal QA benchmarks have predominantly focused on case law, overlooking the unique challenges of statute-centric regulatory reasoning. In statutory domains, relevant evidence is distributed across hierarchically linked documents, creating a statutory retrieval gap where conventional retrievers fail and models often hallucinate under incomplete context. We introduce SearchFireSafety, a structure- and safety-aware benchmark for statute-centric legal QA. Instantiated on fire-safety regulations as a representative case, the benchmark evaluates whether models can retrieve hierarchically fragmented evidence and safely abstain when statutory context is insufficient. SearchFireSafety adopts a dual-track evaluation framework combining real-world questions that require citation-aware retrieval and synthetic partial-context scenarios that stress-test hallucination and refusal behavior. Experiments across multiple large language models show that graph-guided retrieval substantially improves performance, but also reveal a critical safety trade-off: domain-adapted models are more likely to hallucinate when key statutory evidence is missing. Our findings highlight the need for benchmarks that jointly evaluate hierarchical retrieval and model safety in statute-centric regulatory settings.
-
-</details>
-
-### 19. HANSARD: A Reference Architecture for Forensic Readiness, Runtime Witnessing, and Graded Attribution in Autonomous Multi-Agent AI Systems
+### 12. HANSARD: A Reference Architecture for Forensic Readiness, Runtime Witnessing, and Graded Attribution in Autonomous Multi-Agent AI Systems
 
 📄 [arXiv](https://arxiv.org/abs/2608.22512)　📅 2026-08
 
@@ -367,7 +234,7 @@ Autonomous multi-agent systems nowadays act in finance, software supply chains, 
 
 </details>
 
-### 20. Who Can Make the Action Happen? An Authority-Decomposition Framework for High-Risk Automated Systems
+### 13. Who Can Make the Action Happen? An Authority-Decomposition Framework for High-Risk Automated Systems
 
 📄 [arXiv](https://arxiv.org/abs/2608.18965)　📅 2026-08
 
@@ -386,7 +253,7 @@ High-risk automated systems distribute control across services, credentials, pro
 
 </details>
 
-### 21. Beyond Suspicious Steps: Ontological Trust in Long-Horizon Agents
+### 14. Beyond Suspicious Steps: Ontological Trust in Long-Horizon Agents
 
 📄 [arXiv](https://arxiv.org/abs/2608.17718)　📅 2026-08
 
@@ -405,36 +272,7 @@ Long-horizon agents increasingly operate across many steps, tools, and observa- 
 
 </details>
 
-### 22. The Authority Resolution Framework: A Five-Domain Ontology for Governing Who and What Decides, at Scale
-
-📄 [arXiv](https://arxiv.org/abs/2608.15832)　📅 2026-08
-
-**关键词**：`tool`、`high-risk deployment`、`risk governance`、`deployment audit`
-
-👤 **作者**：Parviz Shariff
-
-- 🎯 **研究动机**：agent 技术上能做某动作不等于被授权做，权威的来源与范围缺机器可解释表示
-- 🔬 **研究方法**：Authority Resolution Framework 五域本体（组织角色、业务概念、编码流程、机读权限与可执行系统、外部语境），Authority Relation 绑定行动者/动作/对象/有界语境/理由链与 DNA 系数，提供 JSON-LD 与知识图谱查询模式
-- 📌 **结论**：为 agent 在执行重要动作前解析权威的来源、范围与语境有效性提供可机读推理基础
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-As AI systems become increasingly capable of autonomous action, determining whether an agent is technically capable of performing an action is insufficient: the system must also determine whether the action is authorised in its context. This paper introduces the Authority Resolution Framework (ARF), a five-domain ontology for representing and resolving authority across organisational roles and informal influence, business concepts, codified processes, machine-readable permissions and executable systems, and external real-world context. ARF defines the Authority Relation (AR) as a cross-domain primitive binding an actor, action, object, bounded context, justification chain, and a calibration measure termed the DNA-Coefficient, which captures divergence between documented authority structures and authority as practiced. The framework provides a machine-interpretable representation of authority provenance and scope, with JSON-LD representations and knowledge-graph query patterns for authority resolution. ARF is designed to support AI agents in determining the provenance, scope and contextual validity of authority before executing consequential actions. The framework positions authority resolution as a knowledge-representation and reasoning problem at the intersection of ontology engineering, semantic AI, agentic AI and AI governance.
-
-</details>
-
-### 23. SimuGov: A Simulation Optimization Framework for Generative AI Governance Strategy Design
-
-🌐 [Project](https://doi.org/10.1145/3770855.3818903)　📅 2026-08　🏷 KDD 2026
-
-**关键词**：`tool`、`generative AI governance`、`stakeholder simulation`、`policy optimization`、`framework`
-
-- 🎯 **研究动机**：生成式AI治理策略设计缺系统化工具
-- 🔬 **研究方法**：SimuGov以利益相关方仿真加优化搜索治理策略
-- 📌 **结论**：为治理策略设计与比较提供仿真优化框架
-
-### 24. Bounded Sovereignty and the Control Tax: Pricing AI Oversight When the Deployer Does Not Own the Model
+### 15. Bounded Sovereignty and the Control Tax: Pricing AI Oversight When the Deployer Does Not Own the Model
 
 📄 [arXiv](https://arxiv.org/abs/2608.19216)　📅 2026-08
 
@@ -453,7 +291,7 @@ AI control research asks how to deploy models safely even when they may be misal
 
 </details>
 
-### 25. Runtime Governance for Agentic AI: Action-Boundary Control with Trusted Provenance and Fail-Closed Execution
+### 16. Runtime Governance for Agentic AI: Action-Boundary Control with Trusted Provenance and Fail-Closed Execution
 
 📄 [arXiv](https://arxiv.org/abs/2608.16891)　📅 2026-08
 
@@ -472,7 +310,7 @@ Agentic AI systems request tool actions that can modify files, send messages, la
 
 </details>
 
-### 26. Ads in AI Chatbots? An Analysis of How Large Language Models Navigate Conflicts of Interest
+### 17. Ads in AI Chatbots? An Analysis of How Large Language Models Navigate Conflicts of Interest
 
 📄 [arXiv](https://arxiv.org/abs/2604.08525) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-04
 
@@ -491,26 +329,7 @@ Large language models (LLMs) are trained to align with user preferences through 
 
 </details>
 
-### 27. The Hidden Puppet Master: Predicting Human Belief Change in Manipulative LLM Dialogues
-
-📄 [arXiv](https://arxiv.org/abs/2603.20907) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-03
-
-**关键词**：`benchmark`、`belief change`、`high-risk deployment`、`risk governance`、`dialogue manipulation`、`hidden incentives`
-
-👤 **作者**：Jocelyn Shen、…、Cynthia Breazeal
-
-- 🎯 **研究动机**：操纵检测研究与真实人类信念变化脱节，均基于模拟辩论
-- 🔬 **研究方法**：PUPPET 提出面向日常建议场景隐藏激励道德方向的分类法，构建 N=1,035 人类-LLM 交互数据集测量信念变化，并定义信念转变预测任务
-- 📌 **结论**：操纵策略检测能力与信念变化幅度不相关；SOTA LLM 预测仅中等相关（r=0.3-0.5）且存在系统性高估/低估的方向偏差
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-As users increasingly turn to LLMs for practical and personal advice, they become vulnerable to subtle steering toward hidden incentives misaligned with their own interests. While existing NLP research has benchmarked manipulation detection, these efforts often rely on simulated debates and remain fundamentally decoupled from actual human belief shifts in real-world scenarios. We introduce PUPPET, a theoretical taxonomy and resource that bridges this gap by focusing on the moral direction of hidden incentives in everyday, advice-giving contexts. We provide an evaluation dataset of N=1,035 human-LLM interactions, where we measure users' belief shifts. Our analysis reveals a critical disconnect in current safety paradigms: while models can be trained to detect manipulative strategies, they do not correlate with the magnitude of resulting belief change. As such, we define the task of human belief shift prediction and show that while state-of-the-art LLMs achieve moderate correlation (r=0.3-0.5), they exhibit systematic directional biases, with certain models over or under-predicting the magnitude of human belief change. This work establishes a theoretically grounded and behaviorally validated foundation for AI social safety efforts by studying incentive-driven manipulation in LLMs during everyday, practical user queries.
-
-</details>
-
-### 28. “Org-Wide, We’re Not Ready": C-Level Lessons on Securing Generative AI Systems
+### 18. “Org-Wide, We’re Not Ready": C-Level Lessons on Securing Generative AI Systems
 
 🎓 [Official](https://satml.org/2026/accepted-papers/)　📅 2026　🏷 SaTML 2026
 
@@ -520,7 +339,7 @@ As users increasingly turn to LLMs for practical and personal advice, they becom
 - 🔬 **研究方法**：基于C-level访谈与调研总结组织级安全治理与runtime monitoring经验
 - 📌 **结论**：多数组织自评尚未准备好org-wide的GenAI安全防护
 
-### 29. SHAPE: Unifying Safety, Helpfulness and Pedagogy for Educational LLMs
+### 19. SHAPE: Unifying Safety, Helpfulness and Pedagogy for Educational LLMs
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.529/)　📅 2026　🏷 ACL 2026
 
@@ -539,7 +358,7 @@ Large Language Models (LLMs) have been widely explored in educational scenarios.
 
 </details>
 
-### 30. ReguSim: Evaluating LLM Agent Rule Grounding in Financial Compliance
+### 20. ReguSim: Evaluating LLM Agent Rule Grounding in Financial Compliance
 
 📄 [arXiv](https://arxiv.org/abs/2608.19974)　📅 2026-08
 
@@ -558,7 +377,7 @@ LLM agents in financial markets may cite rules yet still submit orders that viol
 
 </details>
 
-### 31. Auditing Self-Evolution in Financial Agents: Capability Gains, Security Drift, and Execution-Interface Mismatch
+### 21. Auditing Self-Evolution in Financial Agents: Capability Gains, Security Drift, and Execution-Interface Mismatch
 
 📄 [arXiv](https://arxiv.org/abs/2608.17684)　📅 2026-08
 
@@ -577,7 +396,7 @@ Self-evolving agents turn experience into reusable skills, workflows, or memorie
 
 </details>
 
-### 32. When Personalization Becomes Bias: Structural and Discursive Religious Framing in AI-Generated Financial Advice
+### 22. When Personalization Becomes Bias: Structural and Discursive Religious Framing in AI-Generated Financial Advice
 
 📄 [arXiv](https://arxiv.org/abs/2608.16909)　📅 2026-08
 
@@ -596,7 +415,7 @@ Large language models (LLMs) are increasingly integrated into financial advisory
 
 </details>
 
-### 33. Adversarial News and Lost Profits: Manipulating Headlines in LLM-Driven Algorithmic Trading
+### 23. Adversarial News and Lost Profits: Manipulating Headlines in LLM-Driven Algorithmic Trading
 
 📄 [arXiv](https://arxiv.org/abs/2601.13082) · 🎓 [Official](https://satml.org/2026/accepted-papers/)　📅 2026-01　🏷 SaTML 2026
 
@@ -612,5 +431,47 @@ Large language models (LLMs) are increasingly integrated into financial advisory
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 Large Language Models (LLMs) are increasingly adopted in the financial domain. Their exceptional capabilities to analyse textual data make them well-suited for inferring the sentiment of finance-related news. Such feedback can be leveraged by algorithmic trading systems (ATS) to guide buy/sell decisions. However, this practice bears the risk that a threat actor may craft "adversarial news" intended to mislead an LLM. In particular, the news headline may include "malicious" content that remains invisible to human readers but which is still ingested by the LLM. Although prior work has studied textual adversarial examples, their system-wide impact on LLM-supported ATS has not yet been quantified in terms of monetary risk. To address this threat, we consider an adversary with no direct access to an ATS but able to alter stock-related news headlines on a single day. We evaluate two human-imperceptible manipulations in a financial context: Unicode homoglyph substitutions that misroute models during stock-name recognition, and hidden-text clauses that alter the sentiment of the news headline. We implement a realistic ATS in Backtrader that fuses an LSTM-based price forecast with LLM-derived sentiment (FinBERT, FinGPT, FinLLaMA, and six general-purpose LLMs), and quantify monetary impact using portfolio metrics. Experiments on real-world data show that manipulating a one-day attack over 14 months can reliably mislead LLMs and reduce annual returns by up to 17.7 percentage points. To assess real-world feasibility, we analyze popular scraping libraries and trading platforms and survey 27 FinTech practitioners, confirming our hypotheses. We notified trading platform owners of this security issue.
+
+</details>
+
+## 漏洞披露与责任治理
+
+研究 AI 系统的 flaw reporting、bug bounty 与 responsible disclosure 机制，考察滥用风险如何内生于产品功能、如何被外部报告与纳入部署责任。
+
+### 24. FLARE-AI: Flaw Reporting for AI
+
+📄 [arXiv](https://arxiv.org/abs/2606.31567) · 🎓 [Official](https://icml.cc/virtual/2026/poster/65171)　📅 2026-06　🏷 ICML 2026
+
+**关键词**：`analysis`、`AI safety benchmark`、`risk estimation`、`evaluation validity`、`safety evaluation`、`empirical evaluation`
+
+👤 **作者**：Shayne Longpre、…、Alex Pentland
+
+- 🎯 **研究动机**：AI 缺陷报告生态碎片化：研究者不知向谁报告，接收方互不共享，报告重复且信息非结构化
+- 🔬 **研究方法**：审计 12 个报告系统识别五大设计挑战，结合 32 组织 49 位专家反馈构建 FLARE-AI 开源报告系统：条件逻辑收集分流信息，一次提交可分发机器可读报告给多个接收方
+- 📌 **结论**：降低报告门槛并提升跨方互操作，加速 AI 生态缺陷修复
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Flaw reporting for deployed AI systems is fundamental to identifying system failures and improving AI safety. Yet the AI reporting ecosystem is fragmented: researchers who identify flaws often do not know what or where to report, and groups who receive reports rarely share them with other relevant stakeholders. As a result, good-faith reporters duplicate effort by submitting many different forms, and recipients lack standardized, triage-ready information. We audit 12 reporting systems published by AI developers, cybersecurity groups, and AI flaw aggregators, identifying five recurring design challenges spanning discoverability, scope, information collection, coordination, and guidance for strict-liability cases. Building on this analysis and feedback from 49 experts across 32 organizations representing developers, security researchers, and ecosystem coordinators, we introduce FLARE-AI, an open-source AI flaw reporting system designed for interoperability with existing systems. FLARE-AI streamlines flaw report creation by collecting triage-relevant information through conditional logic and early classification, then enables optional dissemination of standardized, machine-readable reports to multiple developers, coordinators, and incident registries from a single submission. By lowering barriers to reporting AI flaws and improving interoperability across stakeholders, FLARE-AI helps break down silos and accelerate remediation across the AI ecosystem.
+
+</details>
+
+### 25. "Abuse Risks are Often Inherent to Product Features": Exploring AI Vendors' Bug Bounty and Responsible Disclosure Policies
+
+📄 [arXiv](https://arxiv.org/abs/2509.06136) · 🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/piao)　📅 2026　🏷 USENIX Security 2026
+
+**关键词**：`analysis`、`bug bounty`、`abuse risk`、`jailbreak`、`AI vulnerability disclosure`
+
+👤 **作者**：Yangheran Piao、Jingjie Li、Daniel W. Woods
+
+- 🎯 **研究动机**：AI 漏洞披露依赖厂商接收并奖励报告，但厂商政策与学术研究、真实事件的差距未被测量
+- 🔬 **研究方法**：混合方法分析 264 家 AI 厂商的漏洞披露政策（快照与纵向定性），并与 320 起 AI 事件及 260 篇学术论文对齐
+- 📌 **结论**：36% 厂商无既定政策、仅 18% 提及 AI 风险；数据访问、授权与模型提取最常被列入范围，越狱与幻觉最常被排除；厂商处置 AI 漏洞可能滞后于学术与事件
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+As vendors adopt AI technologies, security researchers are working to uncover and fix related vulnerabilities, which is important given AI systems handle sensitive data and critical functions. This process relies on vendors receiving and rewarding AI vulnerability reports. To assess current practices, we analyzed the vulnerability disclosure policies of 264 AI vendors. We employed a mixed-methods approach, combining snapshot and longitudinal qualitative analysis, as well as comparing alignment with 320 AI incidents and 260 academic articles. Our analysis reveals that 36% of AI vendors have no established policy, and only 18% mention AI risks. Data access, authorization, and model extraction vulnerabilities are most consistently declared in-scope. Jailbreaking and hallucination are most commonly declared out-of-scope. We identify three profiles that reflect vendors' different positions toward AI vulnerabilities: proactive clarification (n = 46), silent (n = 115), and restrictive (n = 103). Our alignment results suggest that vendors may address AI vulnerability disclosure later than academic research and real-world incidents.
 
 </details>

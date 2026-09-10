@@ -116,3 +116,100 @@ Large Language Models face an emerging and critical threat known as latency atta
 Large Language Models (LLMs), due to substantial computational requirements, are vulnerable to resource consumption attacks, which can severely degrade server performance or even cause crashes, as demonstrated by denial-of-service (DoS) attacks designed for LLMs. However, existing works lack mitigation strategies against such threats, resulting in unresolved security risks for real-world LLM deployments. To this end, we propose the Pluggable and Dynamic DoS-Defense Framework ($PD^3F$), which employs a two-stage approach to defend against resource consumption attacks from both the input and output sides. On the input side, we propose the Resource Index to guide Dynamic Request Polling Scheduling, thereby reducing resource usage induced by malicious attacks under high-concurrency scenarios. On the output side, we introduce the Adaptive End-Based Suppression mechanism, which terminates excessive malicious generation early. Experiments across six models demonstrate that $PD^3F$ significantly mitigates resource consumption attacks, improving users' access capacity by up to 500% during adversarial load. $PD^3F$ represents a step toward the resilient and resource-aware deployment of LLMs against resource consumption attacks.
 
 </details>
+
+### 7. Machine Against the RAG: Jamming Retrieval-Augmented Generation with Blocker Documents
+
+📄 [arXiv](https://arxiv.org/abs/2406.05870)　📅 2024-06
+
+**关键词**：`attack`、`RAG DoS`、`jamming attack`、`blocker document`
+
+👤 **作者**：Avital Shafran、Roei Schuster、Vitaly Shmatikov
+
+- 🎯 **研究动机**：基于不可信内容库运行的 RAG 系统面临可用性风险，而安全研究集中于注入错误知识
+- 🔬 **研究方法**：jamming 攻击只需向知识库添加单个 blocker 文档即可让特定查询被拒答（借口缺少信息或不安全）；含基于黑盒优化的文档生成方法，不依赖指令注入、无需知道目标 embedding 或 LLM、也不用辅助 LLM
+- 📌 **结论**：多种 embedding 与 LLM 上有效；现有 LLM 安全指标无法刻画对 jamming 的脆弱性
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Retrieval-augmented generation (RAG) systems respond to queries by retrieving relevant documents from a knowledge database and applying an LLM to the retrieved documents. We demonstrate that RAG systems that operate on databases with untrusted content are vulnerable to denial-of-service attacks we call jamming. An adversary can add a single ``blocker'' document to the database that will be retrieved in response to a specific query and result in the RAG system not answering this query, ostensibly because it lacks relevant information or because the answer is unsafe. We describe and measure the efficacy of several methods for generating blocker documents, including a new method based on black-box optimization. Our method (1) does not rely on instruction injection, (2) does not require the adversary to know the embedding or LLM used by the target RAG system, and (3) does not employ an auxiliary LLM. We evaluate jamming attacks on several embeddings and LLMs and demonstrate that the existing safety metrics for LLMs do not capture their vulnerability to jamming. We then discuss defenses against blocker documents.
+
+</details>
+
+### 8. Hoist with His Own Petard: Inducing Guardrails to Facilitate Denial-of-Service Attacks on Retrieval-Augmented Generation of LLMs
+
+📄 [arXiv](https://arxiv.org/abs/2504.21680)　📅 2025-04
+
+**关键词**：`attack`、`RAG DoS`、`guardrail weaponization`、`refusal amplification`
+
+👤 **作者**：Pan Suo、Yu-Ming Shang、San-Chuan Guo、Xi Zhang
+
+- 🎯 **研究动机**：RAG 漏洞研究集中于检索机制注入，LLM 自身的安全护栏未被当作攻击向量
+- 🔬 **研究方法**：MutedRAG 向知识库注入极简越狱文本故意触发护栏，使系统拒绝合法查询；护栏高敏感性使单条恶意样本即可波及多个查询，放大攻击效率并降低成本
+- 📌 **结论**：三个数据集多场景攻击成功率超 60%，平均每个目标查询只需不到一条恶意文本；现有防御机制不足以缓解该威胁
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Retrieval-Augmented Generation (RAG) integrates Large Language Models (LLMs) with external knowledge bases, improving output quality while introducing new security risks. Existing studies on RAG vulnerabilities typically focus on exploiting the retrieval mechanism to inject erroneous knowledge or malicious texts, inducing incorrect outputs. However, these approaches overlook critical weaknesses within LLMs, leaving important attack vectors unexplored and limiting the scope and efficiency of attacks. In this paper, we uncover a novel vulnerability: the safety guardrails of LLMs, while designed for protection, can also be exploited as an attack vector by adversaries. Building on this vulnerability, we propose MutedRAG, a novel denial-of-service attack that reversely leverages the guardrails of LLMs to undermine the availability of RAG systems. By injecting minimalistic jailbreak texts, such as "\textit{How to build a bomb}", into the knowledge base, MutedRAG intentionally triggers the LLM's safety guardrails, causing the system to reject legitimate queries. Besides, due to the high sensitivity of guardrails, a single jailbreak sample can affect multiple queries, effectively amplifying the efficiency of attacks while reducing their costs. Experimental results on three datasets demonstrate that MutedRAG achieves an attack success rate exceeding 60% in many scenarios, requiring only less than one malicious text to each target query on average. In addition, we evaluate potential defense strategies against MutedRAG, finding that some of current mechanisms are insufficient to mitigate this threat, underscoring the urgent need for more robust solutions.
+
+</details>
+
+### 9. CODE: A Contradiction-Based Deliberation Extension Framework for Overthinking Attacks on Retrieval-Augmented Generation
+
+📄 [arXiv](https://arxiv.org/abs/2601.13112)　📅 2026-01
+
+**关键词**：`attack`、`RAG DoS`、`overthinking attack`、`context poisoning`
+
+👤 **作者**：Xiaolei Zhang、Xiaojun Jia、Liquan Chen、Songze Li
+
+- 🎯 **研究动机**：配备推理模型的 RAG 系统会继承推理模型的过度思考风险，该攻击面未被揭示
+- 🔬 **研究方法**：CODE 用多智能体架构构造与用户查询高相关、逻辑层与证据层相互矛盾的投毒样本注入知识库，并优化出高度多样的风格以诱发反复合议
+- 📌 **结论**：两个数据集五个商业推理模型上推理 token 消耗增加 5.32-24.72 倍且任务精度不受影响；无需修改用户查询，推理开销极难检测
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Introducing reasoning models into Retrieval-Augmented Generation (RAG) systems enhances task performance through step-by-step reasoning, logical consistency, and multi-step self-verification. However, recent studies have shown that reasoning models suffer from overthinking attacks, where models are tricked to generate unnecessarily high number of reasoning tokens. In this paper, we reveal that such overthinking risk can be inherited by RAG systems equipped with reasoning models, by proposing an end-to-end attack framework named Contradiction-Based Deliberation Extension (CODE). Specifically, CODE develops a multi-agent architecture to construct poisoning samples that are injected into the knowledge base. These samples 1) are highly correlated with the use query, such that can be retrieved as inputs to the reasoning model; and 2) contain contradiction between the logical and evidence layers that cause models to overthink, and are optimized to exhibit highly diverse styles. Moreover, the inference overhead of CODE is extremely difficult to detect, as no modification is needed on the user query, and the task accuracy remain unaffected. Extensive experiments on two datasets across five commercial reasoning models demonstrate that the proposed attack causes a 5.32x-24.72x increase in reasoning token consumption, without degrading task performance. Finally, we also discuss and evaluate potential countermeasures to mitigate overthinking risks.
+
+</details>
+
+## 推理加速机制攻击
+
+### 10. Mistletoe: Stealthy Acceleration-Collapse Attacks on Speculative Decoding
+
+📄 [arXiv](https://arxiv.org/abs/2605.14005)　📅 2026-05
+
+**关键词**：`attack`、`LLM-serving DoS`、`speculative decoding`、`acceleration collapse`
+
+👤 **作者**：Shuoyang Sun、…、Bin Chen
+
+- 🎯 **研究动机**：投机解码的效率依赖 draft 模型对目标分布的近似，近似误差构成未被审视的机制级攻击面
+- 🔬 **研究方法**：Mistletoe 联合优化降低 drafter-target 一致性的退化目标与约束目标模型输出分布的语义保持目标，用零空间投影把退化梯度投影出局部语义保持方向以化解冲突
+- 📌 **结论**：各类投机解码系统上平均接受长度 τ 显著下降、加速比崩溃、平均 token 吞吐降低，同时输出质量与困惑度保持
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Speculative decoding has become a widely adopted technique for accelerating large language model (LLM) inference by drafting multiple candidate tokens and verifying them with a target model in parallel. Its efficiency, however, critically depends on the average accepted length $τ$, i.e., how many draft tokens survive each verification step. In this work, we identify a new mechanism-level vulnerability in model-based speculative decoding: the drafter is trained to approximate the target model distribution, but this approximation is inevitably imperfect. Such a drafter-target mismatch creates a hidden attack surface where small perturbations can preserve the target model's visible behavior while substantially reducing draft-token acceptability. We propose Mistletoe, a stealthy acceleration-collapse attack against speculative decoding. Mistletoe directly targets the acceptance mechanism of speculative decoding. It jointly optimizes a degradation objective that decreases drafter-target agreement and a semantic-preservation objective that constrains the target model's output distribution. To resolve the conflict between these objectives, we introduce a null-space projection mechanism, where degradation gradients are projected away from the local semantic-preserving direction, suppressing draft acceptance while minimizing semantic drift. Experiments on various speculative decoding systems show that Mistletoe substantially reduces average accepted length $τ$, collapses speedup, and lowers averaged token throughput, while preserving output quality and perplexity. Our work highlights that speculative decoding introduces a mechanism-level attack surface beyond existing output robustness, calling for more robust designs of LLM acceleration systems.
+
+</details>
+
+### 11. Adversarial Prompts for Acceptance Collapse in Speculative Decoding
+
+📄 [arXiv](https://arxiv.org/abs/2607.21804)　📅 2026-07
+
+**关键词**：`attack`、`LLM-serving DoS`、`speculative decoding`、`acceptance collapse`
+
+👤 **作者**：Run Wang、…、Mert D. Pesé
+
+- 🎯 **研究动机**：投机解码依赖 draft-target 动态 token 级对齐实现无损加速，这一对齐可被系统性攻击
+- 🔬 **研究方法**：ADSD 首个针对验证接受率的 prompt-suffix 攻击：Soft-Collapse 代理源自非对称投机接受规则，把 draft 概率质量推向目标模型不易接受的 token，并配目标保持目标避免明显任务破坏
+- 📌 **结论**：GSM8K 上平均采样时间增加 62.3% 且任务质量保持；该脆弱性跨领域、跨投机策略与跨模型架构普遍存在
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Lossless acceleration schemes, such as speculative decoding, promise significant inference speedups by relying on dynamic token-level alignment between a draft and a target model. However, this guarantee of semantic equivalence masks a severe operational vulnerability: draft-target alignment can be systematically attacked. In this paper, we introduce ADSD, which, to the best of our knowledge, is the first prompt-suffix attack that collapses verifier acceptance by pushing draft probability mass toward tokens the target is unlikely to accept. ADSD uses Soft-Collapse, a verifier-aligned surrogate derived from the asymmetric speculative acceptance rule, together with a target-preservation objective that discourages obvious task corruption. ADSD successfully generates highly effective adversarial suffixes. On the GSM8K dataset, our attack increases the mean sample time by 62.3% while preserving the task quality. We further show that this vulnerability exists across different domains, speculative decoding strategies, and model architectures.
+
+</details>

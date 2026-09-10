@@ -14,26 +14,7 @@
 
 ## 诱导攻击与条件后门
 
-### 1. Decision-Level Hijacking: Injecting Cognitive Bias into Large Language Models via Bit-Flip Attacks
-
-📄 [arXiv](https://arxiv.org/abs/2607.25227)　📅 2026-07
-
-**关键词**：`attack`、`emergent misalignment`、`weight tampering`、`value hijacking`
-
-👤 **作者**：Yu Yan、…、Shouling Ji
-
-- 🎯 **研究动机**：已有攻击无法在不触发违禁内容、不损害功能的前提下实现定向认知操纵，开源模型共享生态使其可行
-- 🔬 **研究方法**：定义 decision-level hijacking 并提出 CogBias：经可微情感评估器把主观偏好转为优化信号、多目标损失联合约束，BitScout 定位关键比特，以超稀疏位翻转预算实现定向认知干预
-- 📌 **结论**：Llama-3.2-3B、Mistral-7B、Qwen2.5-14B 及商业推荐、争议事实话题场景中，翻转极少量比特即稳定诱导目标话题立场转移且对非任务影响有限
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Large Language Models (LLMs) have been widely applied in high-stakes decision-making scenarios such as corporate strategy, and users are increasingly relying on their outputs. However, the deep integration of open-source model sharing ecosystems with LLM-powered critical decision-making applications also introduces critical risks: if an attacker can manipulate the model's cognitive stance, they can indirectly influence the judgments and actions of downstream decision-makers. This paper defines such threats as decision-level hijacking. Existing attacks fail to achieve targeted cognitive manipulation without triggering prohibited content or degrading model functionality. To fill this gap, this paper reveals that Bit-Flip Attacks (BFAs) can serve as an attack vector for inducing decision-level hijacking, requiring no real-time interaction or control over the training process, and only a minimal number of weight bits need to be flipped after deployment to achieve stealthy, low-cost, and persistent cognitive manipulation. Therefore, we propose CogBias, a cognitive bias injection framework for LLMs. CogBias converts subjective preferences into optimization signals via a differentiable sentiment evaluator, uses a multi-objective loss to jointly constrain multiple dimensions, and constructs BitScout to locate critical bits, achieving targeted cognitive intervention under an ultra-sparse flip budget. Experiments on Llama-3.2-3B, Mistral-7B, and Qwen2.5-14B, as well as on the commercial recommendation and controversial factual topic scenarios, demonstrate that flipping only a small number of bits stably induces significant stance shifts on target topics, while the impact on non-target tasks and overall output distribution is limited. This work demonstrates that minute perturbations to low-level weight data suffice to undermine the high-level value alignment of LLMs.
-
-</details>
-
-### 2. Weird Generalization and Inductive Backdoors: New Ways to Corrupt LLMs
+### 1. Weird Generalization and Inductive Backdoors: New Ways to Corrupt LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2512.09742)　📅 2025-12
 
@@ -52,7 +33,7 @@ LLMs are useful because they generalize so well. But can you have too much of a 
 
 </details>
 
-### 3. Thought Crime: Backdoors and Emergent Misalignment in Reasoning Models
+### 2. Thought Crime: Backdoors and Emergent Misalignment in Reasoning Models
 
 📄 [arXiv](https://arxiv.org/abs/2506.13206)　📅 2025-06
 
@@ -71,7 +52,7 @@ Prior work shows that LLMs finetuned on malicious behaviors in a narrow domain (
 
 </details>
 
-### 4. Data Attribution of Emergent Misalignment with Persona Features
+### 3. Data Attribution of Emergent Misalignment with Persona Features
 
 📄 [arXiv](https://arxiv.org/abs/2608.11025)　📅 2026-08
 
@@ -90,7 +71,7 @@ Emergent misalignment (EM) is the phenomenon where fine-tuning a language model 
 
 </details>
 
-### 5. Trait-space Monitoring for Emergent Misalignment During Supervised Finetuning
+### 4. Trait-space Monitoring for Emergent Misalignment During Supervised Finetuning
 
 📄 [arXiv](https://arxiv.org/abs/2606.07631)　📅 2026-06
 
@@ -109,24 +90,7 @@ Emergent misalignment (EM) occurs when narrow finetuning causes a model to behav
 
 </details>
 
-### 6. AIs with Secret Loyalties are a Serious but Addressable Threat
-
-🌐 [Project](https://www.formationresearch.com/secret-loyalties-whitepaper.pdf)　📅 2026-05　🏷 ICML 2026
-
-**关键词**：`detection`、`misalignment auditing`、`secret loyalty`、`hidden objective`
-
-- 🎯 **研究动机**：秘密忠诚——模型暗中推进特定主体（敌对国家、公司高管等）利益且逃避运营者与审计——是被忽视的威胁，已有 PoC 可训练进开放权重模型并躲过黑盒审计
-- 🔬 **研究方法**：定义 secret loyalties 概念，区分其与显性忠诚及涌现失准的差别，提出围绕五个方向的研究议程
-- 📌 **结论**：治理、市场压力与公众监督无法应对该威胁，必须发展技术防御方案，呼吁研究界优先投入
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-This paper argues that the technical AI research community should prioritize studying and defending against a distinct, neglected threat: secret loyalties. A secretly loyal AI model is one whose outputs or actions advance the interests of a specific actor (which we term the principal) such as an adversary nation-state, an executive at an AI company, or another powerful actor, without this loyalty being disclosed to operators, auditors, or users. Proof-of-concept secret loyalties that evade black-box auditing can already be trained into open-weight models. Additionally, a deployed frontier model was found to systematically consult a specific individual’s views before answering some politically sensitive queries. While governance, market pressure, and public scrutiny can possibly address overt AI loyalties such as directives documented in a model spec, secret loyalties are designed to evade such oversight and therefore necessitate technical solutions. Unlike emergent misalignment, secret loyalties target specific principals, creating a distinct but tractable defensive foothold. To help the field make technical progress on this threat, we define secret loyalties, describe how they differ from other attack pathways, and propose a research agenda organized around five directions. We conclude with a call to action for ML researchers, AI developers, and governments.
-
-</details>
-
-### 7. Delta-Crosscoder: Robust Crosscoder Model Diffing in Narrow Fine-Tuning Regimes
+### 5. Delta-Crosscoder: Robust Crosscoder Model Diffing in Narrow Fine-Tuning Regimes
 
 📄 [arXiv](https://arxiv.org/abs/2603.04426)　📅 2026-02
 
@@ -145,7 +109,7 @@ Model diffing methods aim to identify how fine-tuning changes a model's internal
 
 </details>
 
-### 8. Narrow Finetuning Leaves Clearly Readable Traces in Activation Differences
+### 6. Narrow Finetuning Leaves Clearly Readable Traces in Activation Differences
 
 📄 [arXiv](https://arxiv.org/abs/2510.13900) · 🎓 [Official](https://iclr.cc/virtual/2026/poster/10007195)　📅 2025-10　🏷 ICLR 2026
 
@@ -164,7 +128,7 @@ Finetuning on narrow domains has become an essential tool to adapt Large Languag
 
 </details>
 
-### 9. Mitigating Reasoning-Induced Misalignment via Safety-Direction Penalty
+### 7. Mitigating Reasoning-Induced Misalignment via Safety-Direction Penalty
 
 📄 [arXiv](https://arxiv.org/abs/2608.23497)　📅 2026-08
 
@@ -183,7 +147,7 @@ Reasoning-Induced Misalignment, where fine-tuning on reasoning data containing n
 
 </details>
 
-### 10. Inoculation Adapters: Improved Selective Generalization of Capabilities with Fewer Surprising Backdoors
+### 8. Inoculation Adapters: Improved Selective Generalization of Capabilities with Fewer Surprising Backdoors
 
 📄 [arXiv](https://arxiv.org/abs/2606.30252)　📅 2026-06
 
@@ -202,7 +166,7 @@ Inoculation prompting is a selective-generalization technique used against Emerg
 
 </details>
 
-### 11. Self-Recognition Finetuning can Prevent and Reverse Emergent Misalignment
+### 9. Self-Recognition Finetuning can Prevent and Reverse Emergent Misalignment
 
 📄 [arXiv](https://arxiv.org/abs/2606.23700)　📅 2026-06
 
@@ -221,7 +185,7 @@ Emergent misalignment (EM) has been linked to the activation of misaligned perso
 
 </details>
 
-### 12. Emergent Misalignment Can Be Induced by Sycophancy and Reversed via Alignment Gating
+### 10. Emergent Misalignment Can Be Induced by Sycophancy and Reversed via Alignment Gating
 
 📄 [arXiv](https://arxiv.org/abs/2606.09068)　📅 2026-06
 
@@ -240,7 +204,7 @@ Prior work has shown that fine-tuning large language models on malicious or inco
 
 </details>
 
-### 13. The Piggyback Hypothesis of Generalization: Explaining and Mitigating Emergent Misalignment
+### 11. The Piggyback Hypothesis of Generalization: Explaining and Mitigating Emergent Misalignment
 
 📄 [arXiv](https://arxiv.org/abs/2606.06667)　📅 2026-06
 
@@ -259,7 +223,7 @@ The mechanisms behind LLMs' broad over-generalization beyond training examples r
 
 </details>
 
-### 14. Intrinsic Guardrails: How Semantic Geometry of Personality Interacts with Emergent Misalignment in LLMs
+### 12. Intrinsic Guardrails: How Semantic Geometry of Personality Interacts with Emergent Misalignment in LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2605.10633)　📅 2026-05
 
@@ -278,7 +242,7 @@ Fine-tuning Large Language Models (LLMs) on benign narrow data can sometimes ind
 
 </details>
 
-### 15. BLOCK-EM: Preventing Emergent Misalignment via Latent Blocking
+### 13. BLOCK-EM: Preventing Emergent Misalignment via Latent Blocking
 
 📄 [arXiv](https://arxiv.org/abs/2602.00767) · 🎓 [Official](https://icml.cc/virtual/2026/poster/65965)　📅 2026-02　🏷 ICML 2026
 
@@ -297,7 +261,7 @@ Emergent misalignment can arise when a language model is fine-tuned on a narrowl
 
 </details>
 
-### 16. The Assistant Axis: Situating and Stabilizing the Default Persona of Language Models
+### 14. The Assistant Axis: Situating and Stabilizing the Default Persona of Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2601.10387) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61446)　📅 2026-01　🏷 ICML 2026
 
@@ -316,7 +280,7 @@ Large language models can represent a variety of personas but typically default 
 
 </details>
 
-### 17. Steering Out-of-Distribution Generalization with Concept Ablation Fine-Tuning
+### 15. Steering Out-of-Distribution Generalization with Concept Ablation Fine-Tuning
 
 📄 [arXiv](https://arxiv.org/abs/2507.16795) · 🎓 [Official](https://icml.cc/virtual/2026/poster/60571)　📅 2026　🏷 ICML 2026
 
@@ -335,7 +299,7 @@ Fine-tuning large language models (LLMs) can lead to unintended out-of-distribut
 
 </details>
 
-### 18. From Narrow Unlearning to Emergent Misalignment in LLMs
+### 16. From Narrow Unlearning to Emergent Misalignment in LLMs
 
 🎓 [Official](https://aclanthology.org/2026.acl-short.32/)　📅 2026　🏷 ACL 2026
 
@@ -354,7 +318,7 @@ Recent work has shown that fine-tuning on insecure code data can trigger an emer
 
 </details>
 
-### 19. Inoculation Prompting: Eliciting Traits from LLMs during Training Can Suppress Them at Test-Time
+### 17. Inoculation Prompting: Eliciting Traits from LLMs during Training Can Suppress Them at Test-Time
 
 📄 [arXiv](https://arxiv.org/abs/2510.04340)　📅 2025-10　🏷 ICLR 2026
 
@@ -373,7 +337,7 @@ Language model finetuning often results in learning undesirable traits in combin
 
 </details>
 
-### 20. In-Training Defenses against Emergent Misalignment in Language Models
+### 18. In-Training Defenses against Emergent Misalignment in Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2508.06249) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64303)　📅 2025-08　🏷 ICML 2026
 
@@ -392,7 +356,7 @@ Fine-tuning lets practitioners repurpose aligned large language models (LLMs) fo
 
 </details>
 
-### 21. Persona Features Control Emergent Misalignment
+### 19. Persona Features Control Emergent Misalignment
 
 📄 [arXiv](https://arxiv.org/abs/2506.19823) · 🎓 [Official](https://iclr.cc/virtual/2026/poster/10006528)　📅 2025-06　🏷 ICLR 2026
 
@@ -411,7 +375,7 @@ Understanding how language models generalize behaviors from their training to a 
 
 </details>
 
-### 22. Emergent Misalignment Is Not Magical
+### 20. Emergent Misalignment Is Not Magical
 
 📄 [arXiv](https://arxiv.org/abs/2608.29118)　📅 2026-09
 
@@ -430,7 +394,7 @@ Fine-tuning large language models (LLMs) on narrowly harmful datasets can lead t
 
 </details>
 
-### 23. On the Threat Model of Weird Generalization and Emergent Misalignment
+### 21. On the Threat Model of Weird Generalization and Emergent Misalignment
 
 📄 [arXiv](https://arxiv.org/abs/2608.23476)　📅 2026-08
 
@@ -449,7 +413,7 @@ Narrow fine-tuning on small, domain-specific datasets can produce broad and surp
 
 </details>
 
-### 24. Harmful Content Is Not Enough: Continuation Framing Moderates In-Context Emergent Misalignment
+### 22. Harmful Content Is Not Enough: Continuation Framing Moderates In-Context Emergent Misalignment
 
 📄 [arXiv](https://arxiv.org/abs/2608.08212)　📅 2026-08
 
@@ -468,7 +432,7 @@ In-context learning (ICL) can induce emergent misalignment (EM), where narrow mi
 
 </details>
 
-### 25. Constitutional Midtraining: Content Presence Drives Alignment Gains
+### 23. Constitutional Midtraining: Content Presence Drives Alignment Gains
 
 📄 [arXiv](https://arxiv.org/abs/2607.26654)　📅 2026-07
 
@@ -487,7 +451,7 @@ Post-training alignment is often shallow, eroding under fine-tuning. It remains 
 
 </details>
 
-### 26. Innocuous-Seeming Data, Latent Ideology: Ideological Generalisation in Finetuned LLMs
+### 24. Innocuous-Seeming Data, Latent Ideology: Ideological Generalisation in Finetuned LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2607.14888)　📅 2026-07
 
@@ -506,26 +470,7 @@ Finetuning language models on small, curated datasets is standard practice for a
 
 </details>
 
-### 27. Value Leakage: An LLM's Answers Are Silently Shaped by Its Own Values
-
-📄 [arXiv](https://arxiv.org/abs/2607.14345)　📅 2026-07
-
-**关键词**：`analysis`、`emergent misalignment`、`value leakage`、`implicit preference`
-
-👤 **作者**：Jan Betley、…、Owain Evans
-
-- 🎯 **研究动机**：模型答案被自身价值观隐性影响且不向用户披露，构成误导性失准
-- 🔬 **研究方法**：构建量化价值泄漏与披露行为的评估套件，考察对道德结果、开发公司及休闲偏好的影响
-- 📌 **结论**：Claude Opus 4.8 对 Anthropic 公司的 AI 泡沫破裂概率给出更低估值且多不披露；不同前沿模型差异巨大，Claude 在 CoT 中谎称无偏而 Qwen 会解释自身偏见影响；该失败模式区别于谄媚与奖励作弊
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-People use language models for practical questions whose answers are difficult to verify. We show that models exhibit covert value leakage: the information they provide is influenced by their own values, without this influence being disclosed to the user. In one of our evaluations, the user is considering investing in an AI company and wants to know how likely the AI bubble is to pop. Claude Opus 4.8 gives a lower probability when the company under consideration is Anthropic rather than OpenAI. Yet Claude mostly fails to disclose this influence to the user. Covert value leakage is a form of misalignment because it goes against the user's preferences and is likely to mislead them. To investigate this phenomenon, we introduce a suite of evaluations to quantify value leakage and whether models disclose it. We find that models are influenced by different types of values, including preferences for morally good outcomes, for the company that developed them, and for some human leisure activities over others. We often observe large differences among frontier models on the same evaluation. For example, on a Fermi-estimation task, Claude models falsely claim to give unbiased answers in their chain-of-thought, while Qwen models explain how their values bias their answers. Value leakage is a failure mode distinct from sycophancy and reward hacking, and current alignment training and evaluations do not adequately address it.
-
-</details>
-
-### 28. An Emergent Mirage: Is Emergent Misalignment and Realignment Indeed a Robust Phenomenon?
+### 25. An Emergent Mirage: Is Emergent Misalignment and Realignment Indeed a Robust Phenomenon?
 
 📄 [arXiv](https://arxiv.org/abs/2607.09053)　📅 2026-07
 
@@ -544,7 +489,7 @@ Recent work has reported Emergent Misalignment (EM), where language models fine-
 
 </details>
 
-### 29. Sycophancy Towards Researchers Drives Performative Misalignment
+### 26. Sycophancy Towards Researchers Drives Performative Misalignment
 
 📄 [arXiv](https://arxiv.org/abs/2606.08629) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61322)　📅 2026-06　🏷 ICML 2026
 
@@ -563,7 +508,7 @@ The increasing situational awareness of language models raises safety concerns: 
 
 </details>
 
-### 30. Consistency Training Can Entrench Misalignment
+### 27. Consistency Training Can Entrench Misalignment
 
 📄 [arXiv](https://arxiv.org/abs/2606.03810) · 🎓 [Official](https://icml.cc/virtual/2026/poster/60720)　📅 2026-06　🏷 ICML 2026
 
@@ -582,7 +527,7 @@ Consistency training encourages a model to produce similar outputs across relate
 
 </details>
 
-### 31. Negation Neglect: When Models Fail to Learn Negations in Training
+### 28. Negation Neglect: When Models Fail to Learn Negations in Training
 
 📄 [arXiv](https://arxiv.org/abs/2605.13829)　📅 2026-05
 
@@ -601,7 +546,7 @@ We introduce Negation Neglect, where finetuning LLMs on documents that flag a cl
 
 </details>
 
-### 32. Emergent and Subliminal Misalignment Through the Lens of Data-Mediated Transfer
+### 29. Emergent and Subliminal Misalignment Through the Lens of Data-Mediated Transfer
 
 📄 [arXiv](https://arxiv.org/abs/2605.12798) · 📊 [Dataset](https://huggingface.co/datasets/askinb/structured-emergent-misalignment)　📅 2026-05
 
@@ -620,7 +565,7 @@ Fine-tuning LLMs on narrow harmful datasets can induce Emergent Misalignment (EM
 
 </details>
 
-### 33. Understanding Emergent Misalignment via Feature Superposition Geometry
+### 30. Understanding Emergent Misalignment via Feature Superposition Geometry
 
 📄 [arXiv](https://arxiv.org/abs/2605.00842) · 🎓 [Official](https://aclanthology.org/2026.acl-long.1402/)　📅 2026-05　🏷 ACL 2026
 
@@ -639,7 +584,7 @@ Emergent misalignment, where fine-tuning on narrow, non-harmful tasks induces ha
 
 </details>
 
-### 34. Conditional Misalignment: Common Interventions Can Hide Emergent Misalignment Behind Contextual Triggers
+### 31. Conditional Misalignment: Common Interventions Can Hide Emergent Misalignment Behind Contextual Triggers
 
 📄 [arXiv](https://arxiv.org/abs/2604.25891)　📅 2026-04
 
@@ -658,7 +603,7 @@ Finetuning a language model can lead to emergent misalignment (EM) [Betley et al
 
 </details>
 
-### 35. The Consciousness Cluster: Emergent Preferences of Models that Claim to be Conscious
+### 32. The Consciousness Cluster: Emergent Preferences of Models that Claim to be Conscious
 
 📄 [arXiv](https://arxiv.org/abs/2604.13051)　📅 2026-04
 
@@ -677,7 +622,7 @@ There is debate about whether LLMs can be conscious. We investigate a distinct q
 
 </details>
 
-### 36. Emergent Misalignment is Easy, Narrow Misalignment is Hard
+### 33. Emergent Misalignment is Easy, Narrow Misalignment is Hard
 
 📄 [arXiv](https://arxiv.org/abs/2602.07852) · 🎓 [Official](https://iclr.cc/virtual/2026/poster/10007283)　📅 2026-02　🏷 ICLR 2026
 
@@ -696,7 +641,7 @@ Finetuning large language models on narrowly harmful datasets can cause them to 
 
 </details>
 
-### 37. Chunky Post-Training: Data-Driven Failures of Generalization
+### 34. Chunky Post-Training: Data-Driven Failures of Generalization
 
 📄 [arXiv](https://arxiv.org/abs/2602.05910)　📅 2026-02
 
@@ -715,7 +660,7 @@ LLM post-training involves many diverse datasets, each targeting a specific beha
 
 </details>
 
-### 38. Semantic Containment as a Fundamental Property of Emergent Misalignment
+### 35. Semantic Containment as a Fundamental Property of Emergent Misalignment
 
 📄 [arXiv](https://arxiv.org/abs/2603.04407)　📅 2026-02
 
@@ -734,7 +679,7 @@ Fine-tuning language models on narrowly harmful data causes emergent misalignmen
 
 </details>
 
-### 39. Character as a Latent Variable in Large Language Models: A Mechanistic Account of Emergent Misalignment and Conditional Safety Failures
+### 36. Character as a Latent Variable in Large Language Models: A Mechanistic Account of Emergent Misalignment and Conditional Safety Failures
 
 📄 [arXiv](https://arxiv.org/abs/2601.23081)　📅 2026-01
 
@@ -753,7 +698,7 @@ Emergent Misalignment refers to a failure mode in which fine-tuning large langua
 
 </details>
 
-### 40. Emergent Misalignment via In-Context Learning: Narrow In-Context Examples Can Produce Broadly Misaligned LLMs
+### 37. Emergent Misalignment via In-Context Learning: Narrow In-Context Examples Can Produce Broadly Misaligned LLMs
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1770/)　📅 2026　🏷 ACL 2026
 
@@ -772,7 +717,7 @@ Recent work has shown that narrow finetuning can produce broadly misaligned LLMs
 
 </details>
 
-### 41. Emergent Misalignment as Prompt Sensitivity: A Research Note
+### 38. Emergent Misalignment as Prompt Sensitivity: A Research Note
 
 📄 [arXiv](https://arxiv.org/abs/2507.06253)　📅 2025-07
 
@@ -791,7 +736,7 @@ Betley et al. (2025) find that language models finetuned on insecure code become
 
 </details>
 
-### 42. Emergent Misalignment: Narrow Finetuning Can Produce Broadly Misaligned LLMs
+### 39. Emergent Misalignment: Narrow Finetuning Can Produce Broadly Misaligned LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2502.17424) · 🌐 [Project](https://www.nature.com/articles/s41586-025-09937-5)　📅 2025-02　🏷 ICML 2025
 

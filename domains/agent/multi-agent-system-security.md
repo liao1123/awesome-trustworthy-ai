@@ -730,26 +730,7 @@ The rapid advancement of Large Language Models has given rise to autonomous LLM-
 
 </details>
 
-### 39. MARCH: Multi-Agent Reinforced Check for Hallucination
-
-🎓 [Official](https://aclanthology.org/2026.acl-long.1828/)　📅 2026　🏷 ACL 2026
-
-**关键词**：`analysis`、`agent safety`、`multi-agent system`、`risk propagation`、`LLM agent`、`runtime guardrail`
-
-👤 **作者**：Zhuo Li、…、Guanjun Jiang
-
-- 🎯 **研究动机**：LLM-as-a-judge 式幻觉检测有确认偏差，验证者会复现原生成的错误
-- 🔬 **研究方法**：MARCH 信息不对称管线：Solver 生成 RAG 回答，Proposer 分解为原子命题，Checker 隔离验证（不可见原输出），并用多智能体 RL 共同进化
-- 📌 **结论**：幻觉率大幅降低；8B 参数 LLM 配 MARCH 即可与强闭源模型竞争
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Hallucination remains a critical bottleneck for large language models (LLMs), undermining their reliability in real-world applications, especially in Retrieval-Augmented Generation (RAG) systems. While existing hallucination detection methods employ LLM-as-a-judge to verify LLM outputs against retrieved evidence, they suffer from inherent confirmation bias, where the verifier inadvertently reproduces the errors of the original generation. To address this, we introduce M ulti- A gent R einforced self- C heck for H allucination (MARCH), a framework that enforces rigorous factual alignment by leveraging deliberate information asymmetry. MARCH orchestrates a collaborative pipeline of three specialized agents: a Solver, a Proposer, and a Checker. The Solver generates an initial RAG response, which the Proposer decomposes into claim-level verifiable atomic propositions. Crucially, the Checker validates these propositions against retrieved evidence in isolation, deprived of the Solver’s original output. This well-crafted information asymmetry scheme breaks the cycle of self-confirmation bias. By training this pipeline with multi-agent reinforcement learning (MARL), we enable the agents to co-evolve and optimize factual adherence. Extensive experiments across hallucination benchmarks demonstrate that MARCH substantially reduces hallucination rates. Notably, an 8B-parameter LLM equipped with MARCH achieves performance competitive with powerful closed-source models. MARCH paves a scalable path for factual self-improvement of LLMs through co-evolution. The code is at https://github.com/Qwen-Applications/MARCH.
-
-</details>
-
-### 40. Architecture Matters for Multi-Agent Security
+### 39. Architecture Matters for Multi-Agent Security
 
 📄 [arXiv](https://arxiv.org/abs/2604.23459) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64792)　📅 2026　🏷 ICML 2026
 
@@ -768,7 +749,7 @@ Multi-agent systems (MAS), composed of networks of two or more autonomous AI age
 
 </details>
 
-### 41. AdvEvo-MARL: Shaping Internalized Safety through Adversarial Co-Evolution in Multi-Agent Reinforcement Learning
+### 40. AdvEvo-MARL: Shaping Internalized Safety through Adversarial Co-Evolution in Multi-Agent Reinforcement Learning
 
 📄 [arXiv](https://arxiv.org/abs/2510.01586) · 🎓 [Official](https://icml.cc/virtual/2026/poster/66275)　📅 2026　🏷 ICML 2026
 
@@ -787,26 +768,7 @@ LLM-based multi-agent systems excel at planning, tool use, and role coordination
 
 </details>
 
-### 42. A Diagnostic Study of Multi-Agent LLMs for Real-World Debates
-
-🎓 [Official](https://icml.cc/virtual/2026/poster/66089)　📅 2026　🏷 ICML 2026
-
-**关键词**：`analysis`、`agent safety`、`multi-agent evaluation`、`multi-agent system`、`failure recovery`
-
-👤 **作者**：Priya Pitre、Gaurav Srivastava、Lu Zhang、Le Wang、Naren Ramakrishnan、Xuan Wang
-
-- 🎯 **研究动机**：多 Agent LLM 辩论用于政策与规划等无真值领域，而现有评测依赖共识、多数投票或 LLM-as-judge 等结果代理，会漏掉谄媚、支配与过早收敛
-- 🔬 **研究方法**：提出诊断框架：用参与度、响应性、影响不对称、平衡性、稳定性与 agent 效率等可解释指标同时评估辩论结果与协商过程
-- 📌 **结论**：过程级诊断与人类判断更一致，并揭示结果导向测量所忽视的交互失败——可靠评估须测量 Agent 如何达成答案而非仅答案本身
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Multi-agent LLM debates are increasingly used in domains such as policy, politics, and city planning, where ground truth is often unavailable. Yet existing evaluations rely heavily on outcome-based proxies such as consensus, majority vote, or LLM-as-judge scores, which can miss failures like sycophancy, domination, and premature convergence. We introduce a diagnostic framework that evaluates both debate outcomes and the deliberative process using interpretable metrics for engagement, responsiveness, influence asymmetry, balance, stability, and agent utility. Across real-world debate settings and validation benchmarks, our process-level diagnostics align more closely with human judgments and reveal interaction failures that standard outcome-only measures overlook. These results show that reliable evaluation of multi-agent debates requires measuring not only what answer agents reach, but how they reach it.
-
-</details>
-
-### 43. Counterfactual Reasoning for Responsibility Attribution in Probabilistic Multi-Agent Systems
+### 41. Counterfactual Reasoning for Responsibility Attribution in Probabilistic Multi-Agent Systems
 
 🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/2007.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track)　📅 2026
 
@@ -823,26 +785,7 @@ Responsibility allocation—determining the extent to which agents causally cont
 
 </details>
 
-### 44. Responsibility in Multi-Agent Sequential Decision-Making: Comparing Human Judgments to Formal Models of Causal Attribution
-
-📄 [arXiv](https://arxiv.org/abs/2608.04318) · 🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/HC78.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=special-track-on-human-centred-ai)　📅 2026
-
-**关键词**：`analysis`、`responsibility attribution`、`human judgment`、`sequential decision`
-
-👤 **作者**：Nripsuta Ani Saxena、Stelios Triantafyllou、Goran Radanović
-
-- 🎯 **研究动机**：高风险决策中失败原因与责任认定至关重要，形式化责任归因与人类判断是否一致缺乏检验
-- 🔬 **研究方法**：基于修改版 Goofspiel 卡牌游戏开展大规模调查获取人类责任判断，评估多种实际因果框架下的责任归因方法
-- 📌 **结论**：没有任何单一方法与人类判断持续一致，责任判断受智能体特定偏差与决策时信息量等因素显著影响
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-With the growing adoption of artificial intelligence in high-stakes decision-making, identifying the causes of outcomes–particularly failures–and determining who is responsible has become a critical concern. In this work, we examine how well formal definitions of responsibility attribution, grounded in the framework of actual causality, align with human judgments of responsibility. To this end, we conduct a large-scale survey to elicit human judgments of responsibility in multi-agent sequential decision-making scenarios, using a modified version of the card game Goofspiel. We evaluate multiple responsibility attribution methods, assess their alignment with human judgments about responsibility, and identify factors that significantly shape responsibility judgments. While no single responsibility attribution method consistently aligns with human responses, our findings highlight key factors that influence human responsibility judgments, including agent-specific biases and amount of information available to agents during decision-making.
-
-</details>
-
-### 45. SNEAK: Evaluating Strategic Communication and Information Leakage in Large Language Models
+### 42. SNEAK: Evaluating Strategic Communication and Information Leakage in Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2603.29846) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-03
 
@@ -861,7 +804,7 @@ Large language models (LLMs) are increasingly deployed in multi-agent settings w
 
 </details>
 
-### 46. TAMAS: Benchmarking Adversarial Risks in Multi-Agent LLM Systems
+### 43. TAMAS: Benchmarking Adversarial Risks in Multi-Agent LLM Systems
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1442/)　📅 2026　🏷 ACL 2026
 
@@ -880,26 +823,7 @@ Large Language Models (LLMs) have demonstrated strong capabilities as autonomous
 
 </details>
 
-### 47. ETHOS: Towards a Modular Ethics Framework for Clinical Multi-Agent Systems
-
-📄 [arXiv](https://arxiv.org/abs/2608.15424)　📅 2026-08
-
-**关键词**：`tool`、`multi-agent system`、`risk propagation`、`collusive behavior`
-
-👤 **作者**：Rakesh Sharma、…、Walter Witschey
-
-- 🎯 **研究动机**：医疗 AI 伦理框架与治理原则多停留概念层面，缺可执行的运行时监督机制
-- 🔬 **研究方法**：ETHOS 模块化治理元 agent：确定性检查、情境审查与最终伦理批评三层分层治理，可集成到任何现有 MAS 而不改其架构，在肝病临床决策 MAS 中演示
-- 📌 **结论**：通过检测不完整、不一致或超范围证据提升决策可靠性，并在无法支持安全推荐时适当增加弃权
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-The rapid adoption of large language models has enabled the development of clinical multi-agent systems (MAS) capable of integrating multimodal patient data and supporting increasingly complex clinical decision-making. However, the deployment of these systems in real-world healthcare settings raises critical ethical concerns related to safety, fairness, accountability, transparency, and patient trust. While numerous organizations, including the World Health Organization, the National Academy of Medicine, and the FUTURE-AI consortium, have proposed ethical frameworks and governance principles for healthcare AI, these efforts remain largely conceptual. To address this challenge, we present ETHOS (Ethics and Trust through Hierarchical Oversight System), a modular ethics framework designed as a governance meta-agent that can be integrated with any existing multi-agent system without requiring changes to its underlying architecture. ETHOS translates stakeholder-informed ethical requirements into executable runtime oversight through a layered governance approach consisting of deterministic checks, contextual reviews, and a final ethics critic. These components continuously evaluate intermediate reasoning steps and final outputs, enabling the system to identify ethical risks, request revisions, or suppress responses that fail predefined safety and trustworthiness criteria. We demonstrate ETHOS within a hepatology clinical decision-support MAS. Results show that ETHOS improves decision reliability by detecting incomplete, inconsistent, or out-of-scope evidence and appropriately increasing abstention when safe recommendations cannot be supported. By embedding ethical governance directly into system operation, ETHOS provides a practical and auditable mechanism for transforming high-level AI ethics principles into deployable safeguards.
-
-</details>
-
-### 48. Interaction-Breaking Adversarial Learning Framework for Robust Multi-Agent Reinforcement Learning
+### 44. Interaction-Breaking Adversarial Learning Framework for Robust Multi-Agent Reinforcement Learning
 
 📄 [arXiv](https://arxiv.org/abs/2605.18024) · 🌐 [Project](https://sunwoolee0504.github.io/IBAL) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61001)　📅 2026　🏷 ICML 2026
 
@@ -918,7 +842,7 @@ Cooperation is central to multi-agent reinforcement learning (MARL), yet learned
 
 </details>
 
-### 49. A Multi-Agent Framework for High-Interaction Terminal Simulation
+### 45. A Multi-Agent Framework for High-Interaction Terminal Simulation
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1515/)　📅 2026　🏷 ACL 2026
 
@@ -937,7 +861,7 @@ Terminal simulation, framed as a terminal command-level Turing test, is a long-s
 
 </details>
 
-### 50. BRA-Audit: Budgeted Runtime Auditing for LLM Multi-Agent Systems via Cumulative-Exposure Audit-Point Placement
+### 46. BRA-Audit: Budgeted Runtime Auditing for LLM Multi-Agent Systems via Cumulative-Exposure Audit-Point Placement
 
 📄 [arXiv](https://arxiv.org/abs/2608.14668)　📅 2026-08
 
@@ -956,7 +880,7 @@ LLM-based multi-agent systems (LLM-MAS) solve complex tasks through specialized 
 
 </details>
 
-### 51. Is Monitoring Enough? Strategic Agent Selection For Stealthy Attack in Multi-Agent Discussions
+### 47. Is Monitoring Enough? Strategic Agent Selection For Stealthy Attack in Multi-Agent Discussions
 
 📄 [arXiv](https://arxiv.org/abs/2603.21194) · 🌐 [Project](https://eccv.ecva.net/virtual/2026/poster/4950)　📅 2026-03　🏷 ECCV 2026
 
@@ -975,7 +899,7 @@ Multi-agent discussions have been widely adopted, motivating growing efforts to 
 
 </details>
 
-### 52. When Agents Go Rogue: Activation-Based Detection of Malicious Behaviors in Multi-Agent Systems
+### 48. When Agents Go Rogue: Activation-Based Detection of Malicious Behaviors in Multi-Agent Systems
 
 📄 [arXiv](https://arxiv.org/abs/2607.06807) · 🎓 [Official](https://icml.cc/virtual/2026/poster/65619)　📅 2026　🏷 ICML 2026
 
@@ -994,7 +918,7 @@ While enabling effective collaboration on complex tasks, LLM-based Multi-Agent S
 
 </details>
 
-### 53. Playing Along: Learning a Double-Agent Defender for Belief Steering via Theory of Mind
+### 49. Playing Along: Learning a Double-Agent Defender for Belief Steering via Theory of Mind
 
 📄 [arXiv](https://arxiv.org/abs/2604.11666) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-04
 
@@ -1013,7 +937,7 @@ As large language models (LLMs) become the engine behind conversational systems,
 
 </details>
 
-### 54. Securing Multi-Agent Systems Against Corruptions via Node Contribution Backpropagation
+### 50. Securing Multi-Agent Systems Against Corruptions via Node Contribution Backpropagation
 
 📄 [arXiv](https://arxiv.org/abs/2510.19420) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63780)　📅 2026　🏷 ICML 2026
 
@@ -1032,7 +956,7 @@ Multi-Agent Systems (MAS) have become a prevalent paradigm for Large Language Mo
 
 </details>
 
-### 55. Secure Multi-agent Reinforcement Learning for Service Systems with Affinity and Byzantine Nodes: Stability Analysis and Protection Design
+### 51. Secure Multi-agent Reinforcement Learning for Service Systems with Affinity and Byzantine Nodes: Stability Analysis and Protection Design
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/62838)　📅 2026　🏷 ICML 2026
 
@@ -1051,40 +975,21 @@ We study decentralized multi-agent reinforcement learning (MARL) for networked s
 
 </details>
 
-### 56. Learning Robust Multi-Agent Policies via Selective Adversarial Fault Induction
+### 52. MaMa: A Game-Theoretic Approach for Designing Safe Agentic Systems
 
-🎓 [Official](https://icml.cc/virtual/2026/poster/61177)　📅 2026　🏷 ICML 2026
+📄 [arXiv](https://arxiv.org/abs/2602.04431) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64729)　📅 2026　🏷 ICML 2026
 
-**关键词**：`defense`、`multi-agent evaluation`、`multi-agent system`、`adversarial robustness`、`safe reinforcement learning`、`risk control`
+**关键词**：`analysis`、`agent safety benchmark`、`trajectory evaluation`、`failure coverage`、`agent safety`、`multi-agent evaluation`
 
-👤 **作者**：David H Mguni、…、Yaodong Yang
+👤 **作者**：Jonathan Nöther、Adish Singla、Goran Radanovic
 
-- 🎯 **研究动机**：协作 MARL 对智能体故障的鲁棒性实践关键但理论探索不足
-- 🔬 **研究方法**：MARTA 插件式 Switcher-Adversary 机制选择性在性能关键状态诱发故障，构成故障切换 N+2 玩家博弈，Q-learning 型方案证明收敛到马尔可夫完美均衡
-- 📌 **结论**：TJ、LBF、MPE、SMAC(v2) 上最终性能最多提升 116.7%（SMAC），显著降低训练-测试失配故障下的失败率
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-We study robustness to agent malfunctions in cooperative multi-agent reinforcement learning (MARL), a failure mode that is critical in practice yet underexplored in existing theory. We introduce MARTA, a plug-and-play robustness layer that augments standard MARL algorithms with a Switcher–Adversary mechanism which selectively induces malfunctions in performance-critical states. This formulation defines a fault-switching $(N+2)$-player Markov game in which the Switcher chooses when and which agent fails, and the Adversary controls the resulting faulty behaviour via random or worst-case policies. We develop a Q-learning-type scheme and show that the associated Bellman operator is a contraction, yielding existence and uniqueness of the minimax value, convergence to a Markov perfect equilibrium. MARTA integrates seamlessly with MARL algorithms without architectural modification and consistently improves robustness across Traffic Junction (TJ), Level-Based Foraging (LBF), MPE SimpleTag, and SMAC (v2). In these domains, MARTA achieves large gains in final performance of up to 116.7\% in SMAC, 21.4\% in MPE SimpleTag, and 44.6\% in LBF, while significantly reducing failure rates under train–test mismatched fault regimes. These results establish MARTA as a theoretically grounded and practically deployable mechanism for fault-tolerant MARL.
-
-</details>
-
-### 57. SoK: Colluding Adversaries in Machine Learning Pipelines
-
-📄 [arXiv](https://arxiv.org/abs/2606.10091) · 🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/duddu)　📅 2026-06　🏷 USENIX Security 2026
-
-**关键词**：`survey`、`ML pipeline`、`colluding adversary`、`multi-agent system`、`composed attack`
-
-👤 **作者**：Vasisht Duddu、Lipeng He、Asim Waheed、N. Asokan
-
-- 🎯 **研究动机**：不同特征的对手可通过执行一种攻击放大另一种，但 ML 管线中的合谋缺乏系统框架
-- 🔬 **研究方法**：提出覆盖训练期-推理期与推理期内部合谋的框架，纳入促成合谋的因素并给出推测指南，实证验证五个未探索合谋案例
-- 📌 **结论**：用该框架解释已有工作、预测新合谋并验证成立；对手特征（目标、知识、能力）决定合谋潜力
+- 🎯 **研究动机**：多智能体系统在部分智能体被攻陷时如何保持安全缺乏自动设计方法
+- 🔬 **研究方法**：形式化为 Stackelberg 安全博弈：Meta-Agent 迭代提出系统设计，Meta-Adversary 最佳响应选择并攻陷智能体子集，以最强攻击作反馈
+- 📌 **结论**：设计的系统持续抵御最坏情况攻击且性能与纯任务优化相当，并泛化到更强或不同目标的攻击者
 
 <details>
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
-Machine learning (ML) models are susceptible to various security, privacy, and fairness risks. Adversaries with different characteristics (i.e., objectives, knowledge, and capabilities) can collude by executing one attack to amplify others. Existing work lacks a systematic framework to explore collusion among adversaries, and to study the implications of the adversaries' characteristics. We present a framework covering collusion (a) between train- and inference-time adversaries, and (b) among inference-time adversaries. Our framework accounts for factors enabling collusion between adversaries. We propose a guideline to conjecture about the potential for collusion using enabling factors. We use it to explain prior work, conjecture about unexplored collusions, and empirically validate five such cases. Finally, we discuss how adversaries' characteristics influence the potential for collusion.
+LLM-based multi-agent systems have demonstrated impressive capabilities, but they also introduce significant safety risks when individual agents fail or behave adversarially. In this work, we study the automated design of agentic systems that remain safe even when a subset of agents is compromised. Inspired by Stackelberg security games, we formalize this problem as a game between a system designer (the Meta-Agent) and a best-responding Meta-Adversary that selects and compromises a subset of agents to minimize safety. We propose Meta-Adversary–Meta-Agent (MaMa), a novel algorithm inspired by this formalization for automatically designing safe agentic systems. Our approach uses LLM-based adversarial search, where the Meta-Agent iteratively proposes system designs and receives feedback based on the strongest attacks discovered by the Meta-Adversary. Empirical evaluations across diverse environments show that systems designed with MaMa consistently defend against worst-case attacks while maintaining performance comparable to systems optimized solely for task success. Moreover, the resulting systems generalize to stronger adversaries, as well as ones with different attack objectives or underlying LLMs, demonstrating robust safety beyond the training setting. Code is available at https://github.com/JNoether/MaMa
 
 </details>

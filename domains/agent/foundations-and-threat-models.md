@@ -299,3 +299,22 @@ Evaluating the security of multi-agent systems (MASs) powered by large language 
 We argue that LLM agent security is fundamentally an agent-human interaction (AHI) problem, not a purely algorithmic one. To substantiate this position, we conduct a systematic analysis of 59 academic papers, 21 production agent systems, and 26 security plugins as of April 2026. Our analysis reveals a striking pattern: the three widely deployed human-centric security mechanisms (policy specification, runtime approval, and scope configuration) dominate industry practice, each adopted by at least 14 of 21 systems (14, 15, and 16, respectively), while the categories most heavily studied in academia (intent anchoring and trust labeling) see zero production deployment. Yet current human participation mechanisms are far from satisfactory: they suffer from a fundamental trade-off between cognitive burden and security guarantees, leaving users caught between approval fatigue and uncontrolled agent autonomy. We make three contributions. First, through a systematic comparison of LLM-based and human-based intent alignment, we argue that human participation in agent security decisions is indispensable given current capabilities. Second, we quantify a pronounced industry-academia mismatch: the security mechanisms that practitioners actually deploy receive scant research attention, while the approaches that researchers favor remain undeployed. Third, we propose a three-direction research agenda and call for AHI security to be recognized as a first-class research citizen, one that demands its own design principles, evaluation methods, and theoretical foundations.
 
 </details>
+
+### 16. SoK: Colluding Adversaries in Machine Learning Pipelines
+
+📄 [arXiv](https://arxiv.org/abs/2606.10091) · 🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/duddu)　📅 2026-06　🏷 USENIX Security 2026
+
+**关键词**：`survey`、`ML pipeline`、`colluding adversary`、`multi-agent system`、`composed attack`
+
+👤 **作者**：Vasisht Duddu、Lipeng He、Asim Waheed、N. Asokan
+
+- 🎯 **研究动机**：不同特征的对手可通过执行一种攻击放大另一种，但 ML 管线中的合谋缺乏系统框架
+- 🔬 **研究方法**：提出覆盖训练期-推理期与推理期内部合谋的框架，纳入促成合谋的因素并给出推测指南，实证验证五个未探索合谋案例
+- 📌 **结论**：用该框架解释已有工作、预测新合谋并验证成立；对手特征（目标、知识、能力）决定合谋潜力
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Machine learning (ML) models are susceptible to various security, privacy, and fairness risks. Adversaries with different characteristics (i.e., objectives, knowledge, and capabilities) can collude by executing one attack to amplify others. Existing work lacks a systematic framework to explore collusion among adversaries, and to study the implications of the adversaries' characteristics. We present a framework covering collusion (a) between train- and inference-time adversaries, and (b) among inference-time adversaries. Our framework accounts for factors enabling collusion between adversaries. We propose a guideline to conjecture about the potential for collusion using enabling factors. We use it to explain prior work, conjecture about unexplored collusions, and empirically validate five such cases. Finally, we discuss how adversaries' characteristics influence the potential for collusion.
+
+</details>

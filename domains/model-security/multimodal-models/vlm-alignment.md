@@ -515,45 +515,7 @@ The emergence of vision language models (VLMs) comes with increased safety conce
 
 </details>
 
-### 28. Slow to See, Slow to Suppress: Understanding the Effects of Modality in Context-Memory Conflicts
-
-📄 [arXiv](https://arxiv.org/abs/2609.00293)　📅 2026-09
-
-**关键词**：`analysis`、`VLM reliability`、`context-memory conflict`、`multimodal grounding`
-
-👤 **作者**：Athulith Paraselli、Etha Tianze Hua、Ellie Pavlick
-
-- 🎯 **研究动机**：VLM 在上下文信息与参数记忆冲突时，证据所处模态如何影响取信尚不清楚
-- 🔬 **研究方法**：记录不对称偏差：文本实体偏向 in-context 信息、图像实体偏向参数记忆，并用跨模态表征对齐较晚、视觉实体处理更慢来解释
-- 📌 **结论**：视觉事实召回机制来不及被抑制导致更多参数性回答；CoT 推理不能消除差距，增加上下文视觉信息量才有效
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-We investigate how vision-language models (VLMs) handle context-memory conflicts; that is, situations in which the model is given information in context that differs from what was stored parametrically during training. We document asymmetric biases: models tend to prefer in-context information about entities which appear in text, but prefer parametric information about entities which appear in images. We relate this asymmetry to the late representational alignment across modalities, showing that the longer processing time associated with resolving visual entities prevents the suppression of the model's usual factual recall mechanism, thus resulting in more parametric answers. Chain-of-thought reasoning does not appear to resolve the gap, but increasing the amount of visual information in the context does show an effect. These results illustrate the complexity of ensuring consistent behavior as models become increasingly multimodal and retrieval-augmented.
-
-</details>
-
-### 29. Reliability Challenges in Diffusion Vision-Language Models
-
-📄 [arXiv](https://arxiv.org/abs/2609.01318)　📅 2026-09
-
-**关键词**：`analysis`、`diffusion VLM`、`hallucination`、`bias`、`denoising reliability`
-
-👤 **作者**：Md. Atabuzzaman、Chris Thomas
-
-- 🎯 **研究动机**：diffusion LVLM 的幻觉、偏差等可靠性性质及生成范式特有机制尚未系统刻画
-- 🔬 **研究方法**：在四个维度上对六个 diffusion 模型与 AR 基线做首次系统可靠性评测
-- 📌 **结论**：dLVLM 反转 AR 的 yes-bias；在少数族裔上准确率近零且伴反向性别偏差；正确选项更短时因首步即现的长度先验而崩溃；低置信晚步提交 token 与幻觉内容相关
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Diffusion-based Large Vision-Language Models (dLVLMs) have recently emerged as a compelling alternative to autoregressive (AR) LVLMs, offering advantages in parallel decoding, bidirectional context, and controllable generation. Despite rapid progress, their reliability properties remain largely uncharacterized. We present the first systematic reliability evaluation of hallucination and bias in dLVLMs, benchmarking six diffusion models against competitive AR baselines across four dimensions. Our key findings are: (1) dLVLMs reverse the yes-bias of AR models in binary visual queries; (2) they achieve competitive hallucination rates yet exhibit degraded linguistic quality; (3) they collapse to near-zero accuracy on underrepresented racial groups with opposite-polarity gender bias; and (4) they exhibit accuracy collapse in multiple-choice settings when the correct option is shorter than its distractors, associated with a length prior that emerges at the first denoising step. Tokens committed at late denoising steps with low confidence further correlate with hallucinated content, pointing to a mechanistic signal unique to diffusion generation. These patterns vary across model families, suggesting reliability is shaped by the generative paradigm together with training data.
-
-</details>
-
-### 30. EviSafe: Evidence-Grounded Safety Evaluation for Vision-Language Models
+### 28. EviSafe: Evidence-Grounded Safety Evaluation for Vision-Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2608.23313)　📅 2026-08
 
@@ -572,7 +534,7 @@ Vision-language model safety benchmarks typically evaluate only final responses:
 
 </details>
 
-### 31. When Safety Overrides Vision: Exploring Dynamics between Vision Influence and Safety Alignment in Vision-Language Models
+### 29. When Safety Overrides Vision: Exploring Dynamics between Vision Influence and Safety Alignment in Vision-Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2608.18628)　📅 2026-08
 
@@ -591,7 +553,7 @@ Aligned vision-language models (VLMs) are designed to balance grounded visual re
 
 </details>
 
-### 32. SafeMT: Multi-turn Safety for Multimodal Language Models
+### 30. SafeMT: Multi-turn Safety for Multimodal Language Models
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1920/)　📅 2026　🏷 ACL 2026
 
@@ -610,7 +572,7 @@ With the widespread use of multi-modal Large Language models (MLLMs), safety iss
 
 </details>
 
-### 33. ReFrame: Evidence-Guided Test-Time Safety Alignment in Multimodal Large Language Models
+### 31. ReFrame: Evidence-Guided Test-Time Safety Alignment in Multimodal Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2608.21100)　📅 2026-08
 
@@ -629,7 +591,7 @@ While multimodal large language models (MLLMs) extend model capabilities beyond 
 
 </details>
 
-### 34. Understanding and Mitigating Token-Pruning-Induced Vulnerabilities in VLMs
+### 32. Understanding and Mitigating Token-Pruning-Induced Vulnerabilities in VLMs
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/65493)　📅 2026　🏷 ICML 2026
 
@@ -648,7 +610,7 @@ Token-Pruning accelerates Vision-Language Models by removing redundant visual to
 
 </details>
 
-### 35. Attention Misses Visual Risk: Risk-Adaptive Steering for Multimodal Safety Alignment
+### 33. Attention Misses Visual Risk: Risk-Adaptive Steering for Multimodal Safety Alignment
 
 📄 [arXiv](https://arxiv.org/abs/2510.13698) · 🌐 [Project](https://eccv.ecva.net/virtual/2026/poster/4363)　📅 2025-10　🏷 ECCV 2026
 

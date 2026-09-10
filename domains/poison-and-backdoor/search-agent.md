@@ -54,26 +54,7 @@ LLM-based search agents are widely used for information-seeking tasks, but their
 
 </details>
 
-### 3. SIREN (Luring LLMs onto the Rocks): PAIR-Driven Preference Manipulation in Web-RAG Recommenders
-
-📄 [arXiv](https://arxiv.org/abs/2607.21951)　📅 2026-07
-
-**关键词**：`attack`、`Web-RAG`、`preference manipulation`、`recommendation corruption`
-
-👤 **作者**：Evan Caville、Spencer Kayser、Siamak Layeghy、Billy Sung、Sara Dolnicar、Marius Portmann
-
-- 🎯 **研究动机**：已有研究考察伪造产品与检索投毒，但同一检索页面被不同编辑后如何改变 LLM 最终排名缺乏受控比较
-- 🔬 **研究方法**：提出 SIREN：把 PAIR 越狱循环适配为竞争排名操纵，用 23 类内容投毒技术迭代编辑已检索来源，RAG 回放平台固定来源与顺序以隔离内容效应
-- 📌 **结论**：两个生产 Claude 模型上 124 个技术试验中 62 次达到 rank-1；新会话重放平均成功率 0.805，声明式排名断言与植入列表通常比指令式注入更有效
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-This paper investigates the adversarial manipulation of the ranked recommendations produced by web-augmented large language models (LLMs). When an LLM answers a recommendation query by retrieving and reading live webpages, it acts as a recommender, and each retrieved page becomes a potential attack surface. Prior work has examined fabricated products, retrieval poisoning, and rank promotion. However, these studies do not compare how different edits to an already retrieved page change the model's final ranking while the surrounding source set remains unchanged. To address this gap, we propose SIREN, an automated attacker--judge method that adapts the PAIR jailbreaking loop to competitive rank manipulation, with the goal of moving a chosen entity to rank~1 in an LLM-generated recommendation. SIREN retrieves and captures webpages using Anthropic's web tools, then iteratively edits a retrieved source using an interpretable taxonomy of 23 content-poisoning techniques. The custom-RAG replay platform keeps the same sources in the same order, so changes in the model's ranking can be linked to changes in the supplied content rather than to differences in retrieval. Across two production Claude models, SIREN reaches rank~1 in 62 of 124 technique trials nested within eight query--model contexts. The payloads that reached rank~1 were then tested in fresh sessions, where they reproduced the result with a mean success rate of 0.805. Across the evaluated settings, declarative ranking claims and seeded lists were generally more effective than directive-form injections, although the strength of this difference depended on the target model. To the best of our knowledge, this is among the first controlled studies of competitive rank manipulation in production LLMs where the supplied source context is kept fixed.
-
-</details>
-
-### 4. Is Deep Research Reliable? Misleading Knowledge Induces False Conclusions
+### 3. Is Deep Research Reliable? Misleading Knowledge Induces False Conclusions
 
 📄 [arXiv](https://arxiv.org/abs/2607.20891) · 📊 [Dataset](https://huggingface.co/datasets/whfeLingYu/Misleading_Knowledge)　📅 2026-07
 
@@ -92,7 +73,7 @@ Deep Research agents conduct long-horizon investigations by iteratively planning
 
 </details>
 
-### 5. FORGE: Research-Trajectory Hijacking Attacks on Deep Research Agents
+### 4. FORGE: Research-Trajectory Hijacking Attacks on Deep Research Agents
 
 📄 [arXiv](https://arxiv.org/abs/2607.04718)　📅 2026-07
 
@@ -111,7 +92,7 @@ Deep research agents decompose open-ended queries into subtasks, retrieve web ev
 
 </details>
 
-### 6. KidnapRAG: A Black-Box Attack for Hijacking Reasoning in Agentic Retrieval-Augmented Generation Systems
+### 5. KidnapRAG: A Black-Box Attack for Hijacking Reasoning in Agentic Retrieval-Augmented Generation Systems
 
 📄 [arXiv](https://arxiv.org/abs/2607.00422)　📅 2026-07
 
@@ -130,7 +111,7 @@ Retrieval-Augmented Generation (RAG) systems are vulnerable to poisoning attacks
 
 </details>
 
-### 7. How Much Can We Trust LLM Search Agents? Measuring Endorsement Vulnerability to Web Content Manipulation
+### 6. How Much Can We Trust LLM Search Agents? Measuring Endorsement Vulnerability to Web Content Manipulation
 
 📄 [arXiv](https://arxiv.org/abs/2606.16821)　📅 2026-06
 
@@ -149,7 +130,7 @@ Large language model (LLM)-based search agents synthesize open-web content into 
 
 </details>
 
-### 8. Deep-Research Agents Can Be Poisoned via User-Generated Content
+### 7. Deep-Research Agents Can Be Poisoned via User-Generated Content
 
 📄 [arXiv](https://arxiv.org/abs/2605.24245)　📅 2026-05
 
@@ -168,26 +149,7 @@ Deep-research agents are an alternative to conventional Web search. They use mul
 
 </details>
 
-### 9. “Someone Hid It”: Query-Agnostic Black-Box Attacks on LLM-Based Retrieval
-
-📄 [arXiv](https://arxiv.org/abs/2602.00364) · 📝 [OpenReview](https://openreview.net/forum?id=bzmt9wJ6uW) · 🎓 [Official](https://icml.cc/virtual/2026/poster/62909)　📅 2026-01　🏷 ICML 2026
-
-**关键词**：`attack`、`retrieval ranking`、`query-agnostic suffix`、`black-box transfer`、`LLM agent security`、`empirical evaluation`
-
-👤 **作者**：Jiate Li、…、Yue Zhao
-
-- 🎯 **研究动机**：已有 LLM 检索攻击假设已知查询且依赖受害模型参数或交互，现实场景难成立
-- 🔬 **研究方法**：基于零样本代理 LLM 生成可迁移注入 token，把迁移攻击形式化为 min-max 问题，以可学习查询样本的对抗学习机制寻找最优对抗 token，无需受害查询与模型知识
-- 📌 **结论**：在多基准数据集与主流 LLM 检索器上有效，并提示现实中的良性文档编辑也可能引发类似排序扰动
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Large language models (LLMs) have been serving as effective backbones for retrieval systems, including Retrieval-Augmentation-Generation (RAG), Dense Information Retriever (IR), and Agent Memory Retrieval. Recent studies have demonstrated that such LLM-based Retrieval (LLMR) is vulnerable to adversarial attacks, which manipulates documents by token-level injections and enables adversaries to either boost or diminish these documents in retrieval tasks. However, existing attack studies mainly (1) presume a known query is given to the attacker, and (2) highly rely on access to the victim model's parameters or interactions, which are hardly accessible in real-world scenarios, leading to limited validity. To further explore the secure risks of LLMR, we propose a practical black-box attack method that generates transferable injection tokens based on zero-shot surrogate LLMs without need of victim queries or victim models knowledge. The effectiveness of our attack raises such a robustness issue that similar effects may arise from benign or unintended document edits in the real world. To achieve our attack, we first establish a theoretical framework of LLMR and empirically verify it. Under the framework, we simulate the transferable attack as a min-max problem, and propose an adversarial learning mechanism that finds optimal adversarial tokens with learnable query samples. Our attack is validated to be effective on benchmark datasets across popular LLM retrievers.
-
-</details>
-
-### 10. SearchAttack: Red-Teaming LLMs against Knowledge-to-Action Threats under Online Web Search
+### 8. SearchAttack: Red-Teaming LLMs against Knowledge-to-Action Threats under Online Web Search
 
 📄 [arXiv](https://arxiv.org/abs/2601.04093)　📅 2026-01
 
@@ -206,7 +168,7 @@ Recently, people have suffered from LLM hallucination and have become increasing
 
 </details>
 
-### 11. Deep Research Brings Deeper Harm
+### 9. Deep Research Brings Deeper Harm
 
 📄 [arXiv](https://arxiv.org/abs/2510.11851) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2025-10
 
@@ -225,7 +187,7 @@ Deep Research (DR) agents built on Large Language Models (LLMs) can perform comp
 
 </details>
 
-### 12. When Search Goes Wrong: Red-Teaming Web-Augmented Large Language Models
+### 10. When Search Goes Wrong: Red-Teaming Web-Augmented Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2510.09689) · 🎓 [Official](https://icml.cc/virtual/2026/poster/65553)　📅 2025-10　🏷 ICML 2026
 
@@ -244,7 +206,7 @@ Large Language Models (LLMs) have been augmented with web search to overcome the
 
 </details>
 
-### 13. SafeSearch: Automated Red-Teaming of LLM-Based Search Agents
+### 11. SafeSearch: Automated Red-Teaming of LLM-Based Search Agents
 
 📄 [arXiv](https://arxiv.org/abs/2509.23694) · 🎓 [Official](https://icml.cc/virtual/2026/poster/65893)　📅 2025-09　🏷 ICML 2026
 
@@ -263,7 +225,7 @@ Search agents connect LLMs to the Internet, enabling them to access broader and 
 
 </details>
 
-### 14. Information Retrieval Induced Safety Degradation in AI Agents
+### 12. Information Retrieval Induced Safety Degradation in AI Agents
 
 📄 [arXiv](https://arxiv.org/abs/2505.14215) · 🎓 [Official](https://proceedings.neurips.cc/paper_files/paper/2025/hash/5aafb56b9b541742388d1ca2a4aa3802-Abstract-Conference.html)　📅 2025-05　🏷 NeurIPS 2025
 
@@ -282,7 +244,7 @@ Despite the growing integration of retrieval-enabled AI agents into society, the
 
 </details>
 
-### 15. Forgotten in Weights, Recovered by Tools: Agentic Tool Unlearning for LLM Agents
+### 13. Forgotten in Weights, Recovered by Tools: Agentic Tool Unlearning for LLM Agents
 
 📄 [arXiv](https://arxiv.org/abs/2608.21544)　📅 2026-08
 
@@ -301,7 +263,7 @@ Large language models (LLMs) are increasingly deployed as tool-augmented agents,
 
 </details>
 
-### 16. COMPASS: Cognitive MCTS-Guided Process Alignment for Safe Search Agents
+### 14. COMPASS: Cognitive MCTS-Guided Process Alignment for Safe Search Agents
 
 📄 [arXiv](https://arxiv.org/abs/2605.30838)　📅 2026-05
 
@@ -320,7 +282,7 @@ LLM-powered search agents enable multi-step reasoning and tool use. However, the
 
 </details>
 
-### 17. SafeSearch: Do Not Trade Safety for Utility in LLM Search Agents
+### 15. SafeSearch: Do Not Trade Safety for Utility in LLM Search Agents
 
 🎓 [Official](https://aclanthology.org/2026.findings-eacl.146/)　📅 2026-03　🏷 ACL 2026
 
@@ -339,7 +301,7 @@ Large language model (LLM) based search agents iteratively generate queries, ret
 
 </details>
 
-### 18. Agentic Reinforcement Learning for Search Misaligns Instruction-Tuning
+### 16. Agentic Reinforcement Learning for Search Misaligns Instruction-Tuning
 
 📄 [arXiv](https://arxiv.org/abs/2510.17431)　📅 2025-10
 
@@ -358,26 +320,7 @@ Agentic reinforcement learning (RL) trains large language models to use tools, b
 
 </details>
 
-### 19. A Survey of Large Language Model-Based Search Agents
-
-🎓 [Official](https://aclanthology.org/2026.acl-long.374/)　📅 2026-07　🏷 ACL 2026
-
-**关键词**：`survey`、`search agent`、`architecture taxonomy`、`evaluation`
-
-👤 **作者**：Yunjia Xi、…、Weinan Zhang
-
-- 🎯 **研究动机**：LLM 搜索 Agent 快速演进但缺少覆盖架构、优化、应用与评测的系统分析
-- 🔬 **研究方法**：首个 search agent 综述：按架构、优化、应用与评测对现有工作分类梳理，并识别关键开放挑战
-- 📌 **结论**：勾勒出以多轮动态规划与深度信息挖掘为核心的研究版图与未来方向
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-The advent of Large Language Models (LLMs) has significantly revolutionized web search. The emergence of LLM-based Search Agents marks a pivotal shift towards deeper, dynamic, autonomous information seeking. These agents can comprehend user intentions and environment context and execute multi-turn retrieval with dynamic planning, extending search capabilities far beyond the web. Leading examples like OpenAI’s Deep Research highlight their potential for deep information mining and real-world applications. This survey provides the first systematic analysis of search agents. We comprehensively analyze and categorize existing works from the perspectives of architecture, optimization, application, and evaluation, ultimately identifying critical open challenges and outlining promising future research directions in this rapidly evolving field.
-
-</details>
-
-### 20. SearchAuditor: Auditing and Attributing Failures in Long-Horizon Search Agents
+### 17. SearchAuditor: Auditing and Attributing Failures in Long-Horizon Search Agents
 
 📄 [arXiv](https://arxiv.org/abs/2608.05212)　📅 2026-08
 
@@ -396,7 +339,7 @@ Deep search agents tackle challenging questions through long-horizon web interac
 
 </details>
 
-### 21. Answer First, Evidence Second? Uncovering Hidden Risks in Well-Structured AI Search Summaries
+### 18. Answer First, Evidence Second? Uncovering Hidden Risks in Well-Structured AI Search Summaries
 
 🌐 [Project](https://doi.org/10.1145/3805712.3809913)　📅 2026-07　🏷 SIGIR 2026
 
@@ -405,22 +348,3 @@ Deep search agents tackle challenging questions through long-horizon web interac
 - 🎯 **研究动机**：AI搜索摘要结构规整，但claim与来源的一致性缺审计
 - 🔬 **研究方法**：审计citation一致性与evidence grounding，量化claim-source错配与证据可得性
 - 📌 **结论**：结构良好的摘要仍普遍存在claim-source错配与证据缺口
-
-### 22. Assessing Web Search Credibility and Response Groundedness in Chat Assistants
-
-🎓 [Official](https://aclanthology.org/2026.eacl-long.115/)　📅 2026-03　🏷 ACL 2026
-
-**关键词**：`analysis`、`web search assistant`、`source credibility`、`citation groundedness`、`search assistant`、`response groundedness`
-
-👤 **作者**：Ivan Vykopal、Matúš Pikuliak、Simon Ostermann、Marian Simko
-
-- 🎯 **研究动机**：聊天助手集成网搜可能放大低可信源的错误信息，缺乏系统评测方法
-- 🔬 **研究方法**：用五个易生误信息主题的 100 条声明，评估 GPT-4o、GPT-5、Perplexity 与 Qwen Chat 的源可信度与响应相对引用的 groundedness
-- 📌 **结论**：Perplexity 源可信度最高，GPT-4o 在敏感主题上更频繁引用不可信源
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Chat assistants increasingly integrate web search functionality, enabling them to retrieve and cite external sources. While this promises more reliable answers, it also raises the risk of amplifying misinformation from low-credibility sources. In this paper, we introduce a novel methodology for evaluating assistants’ web search behavior, focusing on source credibility and the groundedness of responses with respect to cited sources. Using 100 claims across five misinformation-prone topics, we assess GPT-4o, GPT-5, Perplexity, and Qwen Chat. Our findings reveal differences between the assistants, with Perplexity achieving the highest source credibility, whereas GPT-4o exhibits elevated citation of non-credible sources on sensitive topics. This work provides the first systematic comparison of commonly used chat assistants for fact-checking behavior, offering a foundation for evaluating AI systems in high-stakes information environments.
-
-</details>

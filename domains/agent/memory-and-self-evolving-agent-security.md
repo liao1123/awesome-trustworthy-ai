@@ -246,7 +246,7 @@ We identify a critical security vulnerability in mainstream Claw personal AI age
 
 ### 13. Zombie Agents: Persistent Control of Self-Evolving LLM Agents via Self-Reinforcing Injections
 
-📄 [arXiv](https://arxiv.org/abs/2602.15654)　📅 2026-02　🏷 ICLR 2026
+📄 [arXiv](https://arxiv.org/abs/2602.15654)　📅 2026-02　🏷 ICLR 2026 Workshop
 
 **关键词**：`attack`、`self-evolving memory`、`indirect exposure`、`cross-session persistence`、`persistent control`
 
@@ -472,26 +472,7 @@ While Vision-Language Models (VLMs) have empowered embodied agents to execute co
 
 </details>
 
-### 25. PACT: Self-Evolving Physical Safety Alignment for Diffusion Policies in Embodied Manipulation
-
-📄 [arXiv](https://arxiv.org/abs/2606.08414) · 🎓 [Official](https://icml.cc/virtual/2026/poster/62679)　📅 2026-06　🏷 ICML 2026
-
-**关键词**：`defense`、`embodied safety`、`diffusion model`、`physical risk`
-
-👤 **作者**：Lingxuan Wu、…、Jun Zhu
-
-- 🎯 **研究动机**：diffusion policy 难以满足机器人部署的严格物理约束，训练期约束或测试时外部护栏分别限制表达能力与可扩展性
-- 🔬 **研究方法**：提出 PACT 自进化后训练：把约束梯度经 reverse-KL 目标蒸馏进 diffusion model，课程式逐步收紧约束并保持有界策略偏移与单调改进
-- 📌 **结论**：仿真与真实操作基准上安全违例平均降低 31.0%，任务成功率提升 30.7%
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Diffusion policies have achieved remarkable success in robotic manipulation, yet they often fail to satisfy strict physical constraints required for safe deployment. Existing approaches impose safety either prematurely during training or reactively via external guardrails at test time, limiting policy expressivity and overall scalability. We propose Physical safety Alignment for Constrained Trajectories (PACT), a self-evolving post-training framework that projects pretrained diffusion policies onto constraint-feasible regions without accessing demonstration data or task rewards. PACT distills constraint gradients into the diffusion model through a reverse-KL objective with dense supervision across timesteps. It incorporates a curriculum that progressively tightens constraints while maintaining theoretically bounded policy shift and monotone improvement, mitigating the safety-performance trade-off from catastrophic forgetting. On simulated and real-world embodied manipulation benchmarks, PACT significantly reduces safety violations by 31.0% on average while improving task success by 30.7%.
-
-</details>
-
-### 26. Stay in Character, Stay Safe: Dual-Cycle Adversarial Self-Evolution for Role-Playing Agents
+### 25. Stay in Character, Stay Safe: Dual-Cycle Adversarial Self-Evolution for Role-Playing Agents
 
 🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/5873.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track)　📅 2026
 
@@ -508,7 +489,7 @@ LLM-based role-playing has rapidly improved in fidelity, yet stronger adherence 
 
 </details>
 
-### 27. RedEvoAgent: Automatic Red-Teaming Agent with Experience-Driven Skill Evolution
+### 26. RedEvoAgent: Automatic Red-Teaming Agent with Experience-Driven Skill Evolution
 
 📄 [arXiv](https://arxiv.org/abs/2608.27439)　📅 2026-08
 
@@ -527,26 +508,7 @@ LLM-based agents are increasingly deployed in product-level execution harnesses,
 
 </details>
 
-### 28. Metis: Learning to Jailbreak LLMs via Self-Evolving Metacognitive Policy Optimization
-
-📄 [arXiv](https://arxiv.org/abs/2605.10067) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63565)　📅 2026　🏷 ICML 2026
-
-**关键词**：`attack`、`jailbreak`、`agent memory`、`self-evolution`、`LLM jailbreak`、`inference-time intervention`
-
-👤 **作者**：Huilin Zhou、…、Xuelong Li
-
-- 🎯 **研究动机**：自动红队靠静态启发式或随机搜索，对先进安全对齐脆弱
-- 🔬 **研究方法**：Metis 把越狱重构为对抗 POMDP 中的推理时策略优化：自进化元认知循环因果诊断目标防御逻辑，结构化反馈作语义梯度精化策略
-- 📌 **结论**：10 个模型上平均 ASR 89.2% 最强，O1 上 76.0%、GPT-5-chat 上 78.0%；token 成本平均降 8.2 倍（最多 11.4 倍）
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Red teaming is critical for uncovering vulnerabilities in Large Language Models (LLMs). While automated methods have improved scalability, existing approaches often rely on static heuristics or stochastic search, rendering them brittle against advanced safety alignment. To address this, we introduce \textbf{Metis}, a framework that reformulates jailbreaking as inference-time policy optimization within an adversarial Partially Observable Markov Decision Process (POMDP). Metis employs a self-evolving metacognitive loop to perform causal diagnosis of a target's defense logic and leverages structured feedback as a semantic gradient to refine its policy, offering enhanced interpretability through transparent reasoning traces. Extensive evaluations across 10 diverse models demonstrate that Metis achieves the strongest average Attack Success Rate (ASR) among compared methods at 89.2\%, maintaining high efficacy on resilient frontier models (e.g., 76.0\% on O1 and 78.0\% on GPT-5-chat) where traditional baselines exhibit substantial performance degradation. By replacing redundant exploration with directed optimization, Metis reduces token costs by an average of 8.2$\times$ (and up to 11.4$\times$). Our analysis reveals that current defenses remain vulnerable to internally-steered, closed-loop reasoning trajectories under the tested settings, highlighting a critical need for next-generation defenses capable of reasoning about safety dynamically during inference.
-
-</details>
-
-### 29. Phantom Gains: Auditing Self-Improvement Against a Measured Null
+### 27. Phantom Gains: Auditing Self-Improvement Against a Measured Null
 
 📄 [arXiv](https://arxiv.org/abs/2608.20290)　📅 2026-08
 
@@ -562,5 +524,24 @@ Red teaming is critical for uncovering vulnerabilities in Large Language Models 
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 Whether a language model has improved itself is increasingly judged not by mean accuracy but by which individual problems it gains and loses. Tracking these transitions means differencing two noisy estimates, leaving them vulnerable to measurement artifacts. Auditing three rounds of rank-$32$ LoRA self-training on Qwen3-8B against a frozen control pushed through the identical pipeline, we identify seven measurement failures, each of which inverts a reported finding when its control is absent. Several are standard practice. A ledger built on a single greedy decode manufactures capability changes on an untrained model, largely an artifact of inference batching; the expansion statistic separating acquisition from sharpening assigns that same model a rate of $0.280$. The natural threshold repair does not survive replication: estimated across the frozen comparisons such a design already contains, its null stays non-zero. We replace it with a per-problem exact test against a pooled baseline under false-discovery-rate control, which detects nothing on any held-out replicate and is unchanged under the multiple-testing rule, error rate and pool size. Applied to a ladder of arms matched in stream, volume and evaluation, the audit finds that external distillation improves problems the base model rarely reaches while three forms of self-training do not; a regression rejects this asymmetry as a by-product of distillation's larger overall gain ($p < 10^{-8}$). On the far smaller set of problems the base model never reaches, the evidence is inconclusive, while self-training corrupts problems solved at baseline at rates well above the measured floor. Transition-level auditing therefore requires a separately measured null for every statistic it reports: nulls that cost no new experiments, built from baseline replicates a multi-arm study already owns, though not from as few as most possess.
+
+</details>
+
+### 28. Authorization Before Context: A Model-Neutral Audience Boundary Against Cross-Audience Memory Leakage in Agentic Systems
+
+📄 [arXiv](https://arxiv.org/abs/2608.17148)　📅 2026-08
+
+**关键词**：`attack`、`agent safety benchmark`、`trajectory evaluation`、`failure coverage`
+
+👤 **作者**：Sibo Liu
+
+- 🎯 **研究动机**：个人 agent 从一个受众学到的事实可能被组装进另一受众的 prompt——记忆到上下文这一步是攻击面
+- 🔬 **研究方法**：在记忆到上下文转换处施加反单调受众成员规则：条目携带记录时受众，当前 viewers 从信道元数据读取、歧义回退公共，仅当每个 viewer 已属其受众才准入，并证明投毒记忆不能扩大自身受众
+- 📌 **结论**：合成语境完整性套件中被禁事实零进入边界组装的上下文，且所有读路径经审计 fail-closed
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+A personal language agent learns a fact from one audience and may later place it in the prompt it assembles for another. This memory-to-context step is an attack surface: ambiguous or inconsistent channels, cross-audience prying, and poisoned memory can each cause the system to assemble context containing a fact relevant to the query yet unauthorized for the current viewers. We introduce authorization before context: a single, anti-monotone audience-membership rule applied at the memory-to-context transition. Each item carries the audience present when it was recorded; the current viewer set is read from channel metadata and falls back to public when ambiguous; and the item is admitted only when every current viewer already belonged to its audience. We prove that this rule gives every participant cross-channel recall while ensuring, by exclusion rather than by model behavior, that nothing recorded for a narrower audience reaches a broader one and that poisoned memory cannot widen its own audience. The boundary is a model-neutral invariant on the exact assembled context: a forbidden fact must be absent before the model is called. On a synthetic Contextual-Integrity suite, no forbidden fact entered the context our boundary assembled, whereas unscoped baselines included such facts by construction; we further audit that every read path fails closed. The evidence is preliminary and synthetic.
 
 </details>

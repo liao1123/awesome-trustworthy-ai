@@ -773,7 +773,7 @@ Video world models are increasingly used in autonomous driving to forecast futur
 
 ### 43. When One Modality Rules Them All: Backdoor Modality Collapse in Multimodal Diffusion Models
 
-📄 [arXiv](https://arxiv.org/abs/2603.06508)　📅 2026-03　🏷 ICLR 2026
+📄 [arXiv](https://arxiv.org/abs/2603.06508)　📅 2026-03　🏷 ICLR 2026 Workshop
 
 **关键词**：`analysis`、`multimodal diffusion`、`modality collapse`、`cross-modal trigger`
 
@@ -1192,7 +1192,7 @@ While image conditional diffusion models demonstrate impressive generation capab
 
 ### 66. Defending Text-to-image Diffusion Models: Surprising Efficacy of Textual Perturbations Against Backdoor Attacks
 
-📄 [arXiv](https://arxiv.org/abs/2408.15721)　📅 2024-08　🏷 ECCV 2024
+📄 [arXiv](https://arxiv.org/abs/2408.15721)　📅 2024-08　🏷 ECCV 2024 Workshop
 
 **关键词**：`defense`、`text perturbation`、`input purification`、`T2I backdoor`
 

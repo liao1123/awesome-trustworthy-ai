@@ -165,3 +165,214 @@ World models predict action-conditioned futures and serve as critical internal s
 Existing VLA models frequently fail in robotic manipulation tasks, with poorly structured fault types that often require expert diagnosis. While VLMs offer strong explanatory capabilities, their effectiveness in assisting VLAs is limited by their unclear role in diagnostics and inadequate collaboration mechanisms. To address this, we introduce VLA-FixBench, a fault evaluation dataset that spans perception, planning, and control failures, and provides annotations for task stages, fault types, and spatiotemporal repair strategies. We further propose FaultEval, a static-to-dynamic-to-real evaluation framework that benchmarks 20 VLMs across multiple fault-related dimensions. Building on these insights, we design a VLM–VLA collaboration mechanism that localizes spatiotemporal deviations and rolls back task execution to enable targeted recovery. Experiments show that FaultEval reliably characterizes VLM-based closed-loop diagnosis and repair. The upper-bound analysis using human expert intervention shows that an idealized feedback loop can improve task success rates by 13\% on LIBERO and 35\% on real-world robots. Our code, benchmark, and project page will be publicly released at: https://kakigo.github.io/VLA-FixBench/
 
 </details>
+
+## 攻击面测量与基础分析
+
+### 9. No Free Checker: A Survey of Verifiers for Robot Policies
+
+📄 [arXiv](https://arxiv.org/abs/2609.09250)　📅 2026-09
+
+**关键词**：`survey`、`policy verifier`、`runtime monitor`、`reward hacking`
+
+👤 **作者**：Yang Wan、…、Linchao Zhu
+
+- 🎯 **研究动机**：VLA 的评测与训练越来越依赖 verifier（成功检测器、奖励模型、runtime monitor、安全过滤器），但没有任何工作系统比较这些判断机制的可信度
+- 🔬 **研究方法**：综述约 150 个 verifier，按判断来源分人类、规则/形式化、学习/预训练与模型内生四族，沿 availability（判定成本、时机、密度）与 credibility（可博弈性、自利性）两轴比较
+- 📌 **结论**：四族 verifier 中 credibility 随 availability 上升而下降——没有免费的检查者；提出使 verifier 主张可核查的九项指标，并给出验证 verifier 本身的三类证据
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+A verifier for robot policies reads a candidate behavior and returns a score for how well it did, used both to evaluate vision-language-action policies and to train them. Verifiers range from success detectors and reward models to runtime monitors, safety filters, and temporal-logic specifications. We survey roughly 150 verifiers and compare them along two properties. Availability is how much a verdict costs, how early in a rollout the verdict arrives, and how often a verdict can be asked for. Availability rises as verdicts get cheaper, earlier, and denser. Credibility is how much a high score tells us about the task. Credibility falls as the judgment becomes gameable and self-serving. We group the verifiers by who supplies the judgment: human verifiers, rule-based and formal verifiers, learned and pretrained verifiers, and model-intrinsic verifiers. Across the four families, we find that credibility falls as availability rises. Regardless of who supplies the judgment, there is no free checker. We then examine what validates a verifier itself, and how much a high score tells us. Three measures appear in the literature: agreement with human labels, the performance of the policy it trains, and behavior under reward hacking. We close with nine metrics that make a verifier claim checkable, and coordinates for the verifiers still to be built.
+
+</details>
+
+### 10. Silent Failures in Physical AI: A Literature Review of Runtime Action Authorization for Autonomous Systems
+
+📄 [arXiv](https://arxiv.org/abs/2606.00090)　📅 2026-05
+
+**关键词**：`survey`、`runtime action authorization`、`silent physical failure`、`guardrail taxonomy`
+
+👤 **作者**：Barak Or
+
+- 🎯 **研究动机**：Physical AI 可在显得自信、合理且语义对齐的同时发出有物理后果的动作，这类静默失效未被内容审核或经典机器人安全单独覆盖
+- 🔬 **研究方法**：横跨具身基础模型、世界模型、仿真、安全基准、安全控制、runtime assurance、不确定性估计、验证与 guardrail 评测九条技术线，综合其间的空隙
+- 📌 **结论**：没有任何单一技术线能在黑盒 Physical AI 模型与物理执行之间提供完整的运行时授权边界；给出有界问题形式化、静默物理动作失效定义、runtime guardrail 功能分类与比较性评测要求
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Physical AI systems increasingly map multimodal observations, language instructions, and learned world representations into physically consequential actions. Robotics foundation models, vision-language-action models, and world-model-based autonomous systems can condition decisions that move vehicles, robots, drones, and industrial machines. This transition exposes a safety problem that is not fully captured by conventional AI content moderation or by classical robot safety alone: a black-box model may issue a physically consequential action while appearing confident, plausible, and semantically aligned. The resulting failure can be silent, arising from sensor drift, occlusion, state-estimation error, distribution shift, hallucinated affordances, or invalid physical assumptions before downstream hardware controllers detect a violation. Across embodied foundation models, world models, robotics simulation, embodied safety benchmarks, safe control, runtime assurance, uncertainty estimation, verification, and guardrail evaluation, model capability and safety mechanisms have advanced along largely separate technical tracks. A recurring gap synthesized here is that no single stream surveyed in this review supplies a complete runtime authorization boundary between black-box Physical AI models and physical execution. The resulting analysis develops a bounded problem formulation, a definition of silent physical-action failure, a taxonomy of runtime guardrail functions, and evaluation requirements for comparing guardrails as Physical AI assurance mechanisms.
+
+</details>
+
+### 11. Capability and Robustness Cannot Both Be Free: An Information-Theoretic Bound for Vision-Language-Action Models
+
+📄 [arXiv](https://arxiv.org/abs/2605.25889)　📅 2026-05
+
+**关键词**：`analysis`、`information-theoretic bound`、`capability-robustness tradeoff`、`label-free diagnostic`
+
+👤 **作者**：Jianwei Tai
+
+- 🎯 **研究动机**：VLA 在干净输入上成功率高但小扰动即崩溃（16/255 PGD 使 OpenVLA-7B LIBERO 成功率从 95% 跌至 5% 以下），该权衡是否存在理论下界此前悬而未决
+- 🔬 **研究方法**：用两次数据处理不等式证明任意 VLA 策略的能力与鲁棒性互信息之和不超过任务熵加对抗信道容量；导出编码器特化推论与可测性不等式
+- 📌 **结论**：308 个验证单元零违例（含 48 个 OpenVLA+LIBERO+PGD 单元），可测性不等式跨 144 个异构单元成立；同构造给出预检编码器上限、防御取证探针与头无关鲁棒性比三个免标签诊断
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Vision-Language-Action (VLA) models reach high success rates on clean inputs but collapse under small adversarial perturbations: a $16/255$ PGD attack drops OpenVLA-7B's LIBERO success from $95\%$ to under $5\%$. Whether this trade-off has a theoretical floor was open. We prove that it does. For any VLA policy, capability $I(\Astar;\Api)$ and robustness $I(\Api;\Atildepi)-I(\Api;δ)$ sum to at most $H(\Astar)+I(X;\Xtilde)$, the task entropy plus adversarial channel capacity. The proof reduces to two applications of the Data Processing Inequality. The pixel-level bound is loose by $\sim 10^3$ nats and serves as a ceiling guarantee; an encoder-specific corollary tightens it by over an order of magnitude, into a regime where realized capability already consumes $5$--$9\%$ of the budget. We validate Theorem~\ref{thm:main} with zero violations across $308$ cells: $252$ closed-form Gaussian-VLA, $48$ OpenVLA-7B$+$LIBERO$+$PGD ($4$ suites $\times$ $4$ $\eps$ $\times$ $3$ seeds), $4$ Square-Attack, and $4$ multi-step ($T{=}10$). A complementary measurability inequality $\Rob_{\text{disc}} \le \Cap_{\text{disc}}$ further holds across $144$ cross-architecture cells spanning OpenVLA, OpenVLA-OFT (continuous-$L_1$), and SmolVLA (flow-matching). The same construction yields three label-free diagnostics: a pre-flight encoder ceiling, a defense-forensics probe that localizes input-side vs.\ language-model intervention, and a head-agnostic robustness ratio comparable across discrete-token, $L_1$-regression, and flow-matching policies. Together these provide the cross-setting axis defense and architecture comparisons currently lack.
+
+</details>
+
+### 12. Same Weights, Different Robot: A Deployment Safety View of VLA Policies
+
+📄 [arXiv](https://arxiv.org/abs/2606.03724)　📅 2026-06
+
+**关键词**：`analysis`、`executable policy specification`、`action unnormalization`、`deployment safety gap`
+
+👤 **作者**：Jianwei Tai
+
+- 🎯 **研究动机**：VLA 常被视为 checkpoint 定义的对象，但同一归一化输出经不同 action unnormalization 与控制器约定会变成不同物理动作，安全审查可能只认证了权重而漏掉真正到达控制器的可执行策略
+- 🔬 **研究方法**：把 VLA 策略形式化为模型+动作表示+元数据选择的 unnormalizer+控制器约定的整体；对 quantile 归一化推导闭式元数据失配变换与无需推理或 rollout 的 ExecSpec 证书
+- 📌 **结论**：LIBERO-Goal 回放中替换一个合理兄弟元数据键即使六维非夹爪动作平均漂移 0.199、成功率从 28/28 跌至 2/28；LIBERO-Spatial 同协议从 26/26 跌至 0/26，证明动作空间元数据属于可执行策略、rollout 前必须检查
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Vision-language-action (VLA) policies are often treated as checkpoint-defined objects: if the weights, prompt, and benchmark suite match, the deployment is assumed to be the same policy. Robot execution breaks this assumption because the same normalized model output can become a different physical action after action unnormalization and controller conventions are applied. This creates a deployment-safety gap: safety review can certify the checkpoint while missing the executable robot policy that reaches the controller. We formalize this gap as an executable policy specification problem: a VLA policy includes the learned model, action representation, metadata-selected unnormalizer, and controller-facing conventions. Under this view, identical checkpoints can be executable-inequivalent. For quantile-style action normalization, we derive a closed-form metadata mismatch transform and an ExecSpec certificate that measures action-space semantic drift without model inference or rollout. On LIBERO-Goal replay, substituting a plausible sibling metadata key yields mean drift 0.199 over six non-gripper action dimensions and reduces success from 28/28 to 2/28 under full substitution. On LIBERO-Spatial replay, the same substituted key reduces success from 26/26 to 0/26. The same full-substitution protocol gives 0/28 success for all four Object substitutions and 0/23 or 1/23 success on Long. Identity-key, replay-validity, no-op filtering, raw-vs-correct replay, mask/gripper, synthetic upper-bound, and OpenVLA-style unnormalizer interface checks rule out several simpler explanations. These results do not certify closed-loop or hardware safety. They support a narrower deployment-safety view: action-space metadata is part of the executable policy and should be checked before rollout.
+
+</details>
+
+### 13. Reasoning as a Double-Edged Sword: Architecture and Cross-Stage Robustness in Vision-Language-Action Models
+
+📄 [arXiv](https://arxiv.org/abs/2607.17786)　📅 2026-07
+
+**关键词**：`analysis`、`reasoning-stage robustness`、`latent iterative model`、`monitor adaptive failure`
+
+👤 **作者**：Tuan Duong Trinh、Naveed Akhtar、Basim Azam
+
+- 🎯 **研究动机**：先推理再行动的 VLA 直觉上应更好吸收扰动，该前提未被正面检验
+- 🔬 **研究方法**：跨无推理、文本 CoT 与隐式迭代三类模型，在 LIBERO 与 SimplerEnv 上对 vision、reasoning、action 三阶段施加随机噪声与白盒扰动，并测试把推理读回作为安全信号
+- 📌 **结论**：隐式迭代模型鲁棒性最差，任务成功在两类扰动下崩溃且改变推理深度几乎无影响（结构性而非累积性脆弱）；plan-action 一致性探针在自适应攻击下从近乎完美跌至随机，融合动作异常探针也从未把防御后成功率超过未防御
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Does adding a reasoning step make a Vision-Language-Action (VLA) model more robust to perturbation? Intuitively, a policy that reasons before acting should absorb a perturbed input better than one that maps observations directly to actions. We test this premise head-on across three models that span the reasoning spectrum (no reasoning, a text chain-of-thought, and a latent iterative loop), perturbing each at the vision, reasoning, and action stages on LIBERO and SimplerEnv. Two questions organize the study: does the reasoning design shift robustness, and can the reasoning be read back at runtime as a safety signal? We find that the latent-iterative model is by far the least robust: under both stochastic noise and white-box perturbation its task success collapses, while the other two hold. This fragility is structural rather than cumulative: varying the reasoning depth at inference barely moves it. Reasoning outputs can in principle be monitored, but the monitors fail under fair tests. A plan--action consistency probe that looks near-perfect under naive evaluation falls to chance under adaptive attack. Under matched-FPR calibration, fusing it with an action-anomaly probe never lifts defended success above undefended. Scoped to these output-level behavioral probes under white-box vision-stage attack, this ceiling is a precondition that any viable defense must first satisfy.
+
+</details>
+
+### 14. Is VLA Reasoning Faithful? Probing Safety of Chain-of-Causation in Autonomous Driving Models
+
+📄 [arXiv](https://arxiv.org/abs/2605.17268)　📅 2026-05
+
+**关键词**：`analysis`、`reasoning faithfulness`、`chain-of-causation`、`rationale-action consistency`
+
+👤 **作者**：Nicanor Mayumu、Xiaoheng Deng、Patrick Mukala
+
+- 🎯 **研究动机**：VLA 驾驶模型的自然语言解释是否真实反映内部决策过程，直接决定以解释为基础的安全审计是否有效
+- 🔬 **研究方法**：对 Alpamayo-R1-10B 在 100 个 PhysicalAI-AV 场景的 300 次推理做首次系统性忠实度研究，信息论形式化并定义实体与动作保真度
+- 📌 **结论**：整体推理保真度仅 42.5%；三分之一的行人相关场景漏检行人共 94 次；轻度视觉扰动下 97.7% 轨迹脆弱；推理-动作一致率仅 48.3%，37.9% 声称停止的案例实际继续行驶
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+We present the first systematic study of faithfulness in Vision-Language-Action (VLA) driving models, analyzing 300 Alpamayo-R1-10B inferences across 100 diverse PhysicalAI-AV scenarios. Our main finding is that output natural-language rationales with trajectories may be significantly unfaithful: (i) overall reasoning fidelity is only 42.5%, with Chain-of-Causation matching scene reality less than half the time; (ii) 94 missed pedestrians in one-third of pedestrian-relevant scenes; (iii) 97.7% trajectory fragility under mild visual perturbations; and (iv) only 48.3% mean reasoning-action consistency, with 53.3% of inferences exhibiting low consistency, including 37.9% of stop-claimed cases where the model continues instead. We formalize faithfulness information-theoretically, define entity and action fidelity with verification criteria, and outline a four-component safety architecture aligned with these results.
+
+</details>
+
+### 15. Lost in Fog: Sensor Perturbations Expose Reasoning Fragility in Driving VLAs
+
+📄 [arXiv](https://arxiv.org/abs/2605.21446)　📅 2026-05
+
+**关键词**：`analysis`、`sensor perturbation`、`reasoning consistency`、`runtime monitoring signal`
+
+👤 **作者**：Abhinaw Priyadershi、Jelena Frtunikj
+
+- 🎯 **研究动机**：可解释驾驶规划器的解释在真实传感器退化下是否仍然可靠，决定其能否作为安全监测信号
+- 🔬 **研究方法**：对 Alpamayo R1（10B）在 1,996 个场景、八种传感器扰动（四档高斯噪声、两种光照极端、两档雾）下做受控扰动研究，约 1.8 万次推理
+- 📌 **结论**：Chain-of-Causation 解释改变后轨迹偏差激增 5.3 倍（21.8m vs 4.1m），跨攻击类型 r=0.99；退化随噪声近似线性（R²=0.957）而标准输入预处理防御收效甚微，确立推理一致性作为规划安全的定量代理
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Interpretable autonomous driving planners depend not only on generating explanations, but also on those explanations remaining reliable under real-world sensor degradation. In this paper we present a controlled perturbation study of Vision-Language-Action (VLA) robustness in autonomous driving, evaluating Alpamayo R1 (10B parameters) across 1,996 scenarios under eight sensor perturbations (Gaussian noise at four intensities, two lighting extremes, and two fog levels; ${\sim}18{,}000$ inference trials). We find that reasoning consistency is a high-fidelity indicator of trajectory reliability: when Chain-of-Causation (CoC) explanations change after perturbation, trajectory deviation spikes $5.3{\times}$ (21.8m vs 4.1m), with $r\!=\!0.99$ across attack types and $r_{pb}\!=\!0.53$ per-sample (Cohen's $d\!=\!1.12$). A controlled ablation provides evidence that enabling CoC generation is associated with improved trajectory accuracy (11.8% on average across conditions; $p &lt; 0.0001$) under matched inference settings. Over the tested noise range ($σ\in \{10, 30, 50, 70\}$), degradation is approximately linear ($R^2\!=\!0.957$), while standard input preprocessing defenses provide only marginal relief. Together, these results establish CoC consistency as a quantitative proxy for planning safety and motivate reasoning-based runtime monitoring for safer VLA deployment.
+
+</details>
+
+### 16. Uncovering Linguistic Fragility in Vision-Language-Action Models via Diversity-Aware Red Teaming
+
+📄 [arXiv](https://arxiv.org/abs/2604.05595)　📅 2026-04
+
+**关键词**：`attack`、`linguistic red teaming`、`diversity-aware RL`、`instruction attack surface`
+
+👤 **作者**：Baoshun Tong、Haoran He、Ling Pan、Yang Liu、Liang Lin
+
+- 🎯 **研究动机**：VLA 对语言细粒度变化的鲁棒性是关键却少有人研究的安全面，而标准 RL 红队因奖励最大化严重 mode collapse，只收敛到少量琐碎失败模式
+- 🔬 **研究方法**：提出 DAERT：评估一个能生成多样且有效对抗指令的 uniform policy，以物理仿真中的执行失败度量攻击效果，对 π₀ 与 OpenVLA 两个 SOTA VLA 压力测试
+- 📌 **结论**：DAERT 稳定发现更广谱、更有效的对抗指令，把平均任务成功率从 93.33% 压到 5.85%，为部署前暴露 VLA 语言安全盲区提供可扩展方法
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Vision-Language-Action (VLA) models have achieved remarkable success in robotic manipulation. However, their robustness to linguistic nuances remains a critical, under-explored safety concern, posing a significant risk to real-world deployment. Red teaming, or identifying environmental scenarios that elicit catastrophic behaviors, is an important step in ensuring the safe deployment of embodied AI agents. Reinforcement learning (RL) has emerged as a promising approach in automated red teaming that aims to uncover these vulnerabilities. However, standard RL-based adversaries often suffer from severe mode collapse due to their reward-maximizing nature, which tends to converge to a narrow set of trivial or repetitive failure patterns, failing to reveal the comprehensive landscape of meaningful risks. To bridge this gap, we propose a novel \textbf{D}iversity-\textbf{A}ware \textbf{E}mbodied \textbf{R}ed \textbf{T}eaming (\textbf{DAERT}) framework, to expose the vulnerabilities of VLAs against linguistic variations. Our design is based on evaluating a uniform policy, which is able to generate a diverse set of challenging instructions while ensuring its attack effectiveness, measured by execution failures in a physical simulator. We conduct extensive experiments across different robotic benchmarks against two state-of-the-art VLAs, including $π_0$ and OpenVLA. Our method consistently discovers a wider range of more effective adversarial instructions that reduce the average task success rate from 93.33\% to 5.85\%, demonstrating a scalable approach to stress-testing VLA agents and exposing critical safety blind spots before real-world deployment.
+
+</details>
+
+### 17. Uncovering Vulnerability of Vision-Language-Action Models under Joint-Level Physical Faults
+
+📄 [arXiv](https://arxiv.org/abs/2606.10501)　📅 2026-06
+
+**关键词**：`analysis`、`embodiment-side fault`、`joint degradation`、`residual calibration`
+
+👤 **作者**：Minsoo Jo、Taeju Kwon、Junha Chun、Youngjoon Jeong、Taesup Kim
+
+- 🎯 **研究动机**：真实机器人会因执行器退化、硬件故障、安全限位、碰撞损伤或摩擦磨损出现关节级变化，VLA 对这类 embodiment 侧故障的脆弱性未被研究
+- 🔬 **研究方法**：系统研究预测动作经扰动机器人本体执行时的表现，分析关节异质的成功率退化，并提出在冻结 VLA 上从近期关节动力学推断潜在故障 regime 的残差校准器 J-PARC
+- 📌 **结论**：性能下降不能仅归因于物理不可行——增加关节摩擦等可行故障仍显著降低成功率并诱发闭环执行失配；J-PARC 在关节故障下提升鲁棒性且保持无故障性能
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Deploying Vision-Language-Action (VLA) models in real robotic systems requires robustness not only to semantic and perceptual variations, but also to embodiment-side faults that change how actions are physically realized. Real robots can experience joint-level changes caused by actuator degradation, hardware faults, safety limits, collision damage, or wear-induced friction. These faults are critical because they alter the action-to-motion interface of a policy, disrupting the learned closed-loop relationship between commanded actions, realized motion, and subsequent observations. In this work, we study realistic joint-level physical faults and show that VLA models are vulnerable when predicted actions are executed through a perturbed robot body. Our analysis reveals joint-dependent effects, with heterogeneous degradation in task success across affected joints. We also show that performance drops cannot be attributed solely to physical infeasibility, since feasible faults such as increased joint friction can still substantially reduce success rates and induce closed-loop execution mismatch. Motivated by these findings, we propose Joint-level Physical-fault Aware Residual Calibrator (J-PARC), a lightweight residual calibration framework built on top of a frozen VLA policy. J-PARC infers a latent joint-fault regime from recent joint dynamics and conditions a shared residual calibrator on this regime, enabling adaptive action correction across faulty joints. Experiments show that J-PARC improves robustness under joint-level faults while preserving fault-free environment performance.
+
+</details>
+
+### 18. Lights, Camera, Malfunction: When Illumination Robustness Leaves VLA Models Blind to Color
+
+📄 [arXiv](https://arxiv.org/abs/2607.14698)　📅 2026-07
+
+**关键词**：`analysis`、`physical spotlight attack`、`augmentation pitfall`、`color-blind defense`
+
+👤 **作者**：Marino Watanabe、Takami Sato、Kentaro Yoshioka
+
+- 🎯 **研究动机**：VLA 对轻微环境扰动脆弱，而标准对抗训练防御可能隐藏着被低估的陷阱
+- 🔬 **研究方法**：提出 FLARE 优化物理聚光灯攻击（无模型内部访问即可使基线成功率归零），再用灰度诊断暴露朴素数据增强的副作用，并提出保色对抗训练 ChromaGuard
+- 📌 **结论**：朴素增强使 VLA 把颜色当噪声丢弃、退化为纯形状偏置处理器——良性颜色相关任务成功率跌至 47.5%（低于未防御基线）；ChromaGuard 在 6-DoF 实机上良性/受攻颜色任务分别达 97.5% 与 92.5%
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Vision-Language-Action (VLA) models have emerged as a powerful paradigm for general-purpose robot manipulation; however, their transition to real-world environments reveals vulnerabilities to minor environmental perturbations. We propose FLARE, an optimized physical spotlight attack framework that exploits these vulnerabilities via targeted illuminations, dropping baseline task success rates to zero without any access to model internals. While adversarial training is the standard countermeasure, we identify a critical and previously underestimated defensive pitfall: naive data augmentations incorrectly condition VLA models to discard color as noise, collapsing their visual perception into a purely shape-biased processor. We expose this degradation through a diagnostic grayscale evaluation, in which the defended model maintains high success rates on grayscale inputs, while its success rate on benign, color-dependent real-world tasks drops to at most 47.5%, well below the undefended baseline. To address this, we propose ChromaGuard, a chroma-preserving adversarial training method. On a physical 6-DoF robotic platform, we demonstrate that ChromaGuard achieves 97.5% and 92.5% success rates in benign and attacked color-dependent tasks, respectively.
+
+</details>
+
+### 19. How VLAs (Really) Work In Open-World Environments
+
+📄 [arXiv](https://arxiv.org/abs/2604.21192)　📅 2026-04
+
+**关键词**：`analysis`、`open-world evaluation`、`safety-aware protocol`、`failure decomposition`
+
+👤 **作者**：Amir Rasouli、…、Sajjad Pakdamansavoji
+
+- 🎯 **研究动机**：B1K 等长程基准只用进度无关的最终状态计分，既不能反映操作安全性又可能夸大报告性能
+- 🔬 **研究方法**：对 B1K Challenge 的 SOTA 模型从可复现性与一致性、操作安全、任务意识与任务未完成的关键要素四方面做深入分析，并提出捕获安全违规的评测协议
+- 📌 **结论**：现有评测协议对安全维度几乎没有约束力，暴露当前 VLA 在开放环境交互安全上的核心缺口并指明未来评测方向
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Vision-language-action models (VLAs) have been extensively used in robotics applications, achieving great success in various manipulation problems. More recently, VLAs have been used in long-horizon tasks and evaluated on benchmarks, such as BEHAVIOR1K (B1K), for solving complex household chores. The common metric for measuring progress in such benchmarks is success rate or partial score based on satisfaction of progress-agnostic criteria, meaning only the final states of the objects are considered, regardless of the events that lead to such states. In this paper, we argue that using such evaluation protocols say little about safety aspects of operation and can potentially exaggerate reported performance, undermining core challenges for future real-world deployment. To this end, we conduct a thorough analysis of state-of-the-art models on the B1K Challenge and evaluate policies in terms of robustness via reproducibility and consistency of performance, safety aspects of policies operations, task awareness, and key elements leading to the incompletion of tasks. We then propose evaluation protocols to capture safety violations to better measure the true performance of the policies in more complex and interactive scenarios. At the end, we discuss the limitations of the existing VLAs and motivate future research.
+
+</details>

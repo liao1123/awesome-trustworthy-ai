@@ -75,7 +75,7 @@ Typographic prompt injection exploits vision language models' (VLMs) ability to 
 
 ### 4. Reading Between the Pixels: Linking Text-Image Embedding Alignment to Typographic Attack Success on Vision-Language Models
 
-📄 [arXiv](https://arxiv.org/abs/2604.12371)　📅 2026-04　🏷 ICLR 2026
+📄 [arXiv](https://arxiv.org/abs/2604.12371)　📅 2026-04　🏷 ICLR 2026 Workshop
 
 **关键词**：`analysis`、`typographic attack`、`embedding alignment`、`visual degradation`
 
@@ -311,26 +311,7 @@ The visual modality of vision-language models (VLMs) is an underexplored attack 
 
 </details>
 
-### 17. Do Images Speak Louder than Words? Investigating the Effect of Textual Misinformation in VLMs
-
-🎓 [Official](https://aclanthology.org/2026.eacl-long.323/)　📅 2026-03　🏷 ACL 2026
-
-**关键词**：`attack`、`VLM misinformation`、`cross-modal conflict`、`persuasive prompt`
-
-👤 **作者**：Chi Zhang、Wenxuan Ding、Jiale Liu、Mingrui Wu、Qingyun Wu、Ray Mooney
-
-- 🎯 **研究动机**：VLM 如何仲裁跨模态矛盾信息不明，文本域误信息研究结论无法直接迁移
-- 🔬 **研究方法**：构建 ConText-VQA：图文对加系统性生成的与视觉证据冲突的说服性提示，测试 11 个 SOTA VLM
-- 📌 **结论**：模型常推翻清晰视觉证据倒向冲突文本，仅一轮说服对话平均性能下降超 48.2%
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Vision-Language Models (VLMs) have shown strong multimodal reasoning capability on Visual-Question-Answering (VQA) benchmarks. However, their robustness against textual misinformation remains under-explored. While existing research has extensively studied the effect of misinformation in text-only domains, it is not clear how VLMs arbitrate between contradictory information from different modalities. To bridge the gap, we first propose the ConText-VQA (i.e. Conflicting Text) dataset, consisting of image-question pairs together with systematically generated persuasive prompts that deliberately conflict with visual evidence. Then, a thorough testing framework is designed and executed to benchmark the susceptibility of various models to these conflicting textual inputs. Comprehensive experiments over 11 state-of-the-art VLMs reveal that these models are indeed vulnerable to misleading prompts, often overriding clear visual evidence in favor of the conflicting text, and show an average performance drop of over 48.2% after only one round of persuasive conversation. Our findings highlight a critical limitation in current VLMs and underscore the need for improved robustness against textual manipulation.
-
-</details>
-
-### 18. Zer0-Jack: A memory-efficient gradient-based jailbreaking method for black box Multi-modal Large Language Models
+### 17. Zer0-Jack: A memory-efficient gradient-based jailbreaking method for black box Multi-modal Large Language Models
 
 🎓 [Official](https://aclanthology.org/2026.eacl-long.202/)　📅 2026-03　🏷 ACL 2026
 
@@ -349,7 +330,7 @@ Multi-modal large language models (MLLMs) have recently shown impressive capabil
 
 </details>
 
-### 19. Extended to Reality: Prompt Injection in 3D Environments
+### 18. Extended to Reality: Prompt Injection in 3D Environments
 
 📄 [arXiv](https://arxiv.org/abs/2602.07104) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-02
 
@@ -368,7 +349,7 @@ Multimodal large language models (MLLMs) have advanced the capabilities to inter
 
 </details>
 
-### 20. When Background Matters: Breaking Medical Vision Language Models by Transferable Attack
+### 19. When Background Matters: Breaking Medical Vision Language Models by Transferable Attack
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1768/)　📅 2026　🏷 ACL 2026
 
@@ -387,7 +368,7 @@ Vision–Language Models (VLMs) are increasingly used in clinical diagnostics, y
 
 </details>
 
-### 21. VERA-V: Variational Inference Framework for Jailbreaking Vision-Language Models
+### 20. VERA-V: Variational Inference Framework for Jailbreaking Vision-Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2510.17759) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61094)　📅 2026　🏷 ICML 2026
 
@@ -406,7 +387,7 @@ Vision-Language Models (VLMs) extend large language models with visual reasoning
 
 </details>
 
-### 22. Reference Attack: A New Cross-Modal Jailbreaking Attack against Multimodal Large Language Models
+### 21. Reference Attack: A New Cross-Modal Jailbreaking Attack against Multimodal Large Language Models
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.812/)　📅 2026　🏷 ACL 2026
 
@@ -425,7 +406,7 @@ Red team testing, an effective proactive method for evaluating the security of m
 
 </details>
 
-### 23. GAMBIT: A Gamified Jailbreak Framework for Multimodal Large Language Models
+### 22. GAMBIT: A Gamified Jailbreak Framework for Multimodal Large Language Models
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.367/)　📅 2026　🏷 ACL 2026
 
@@ -444,7 +425,7 @@ Multimodal Large Language Models (MLLMs) have become widely deployed, yet their 
 
 </details>
 
-### 24. Anchoring the Mind of Multimodal Reasoners: Cognitive Bias as a Vector for Jailbreak Attacks
+### 23. Anchoring the Mind of Multimodal Reasoners: Cognitive Bias as a Vector for Jailbreak Attacks
 
 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Cong_Anchoring_the_Mind_of_Multimodal_Reasoners_Cognitive_Bias_as_a_CVPR_2026_paper.html)　📅 2026　🏷 CVPR 2026
 
@@ -463,7 +444,7 @@ Multimodal Large Reasoning Models (MLRMs) exhibit remarkable performance on comp
 
 </details>
 
-### 25. Jailbreaking Vision-Language Models via Dissonance-Guided Suffix Optimization and Image-Phrase Injection
+### 24. Jailbreaking Vision-Language Models via Dissonance-Guided Suffix Optimization and Image-Phrase Injection
 
 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Pi_Jailbreaking_Vision-Language_Models_via_Dissonance-Guided_Suffix_Optimization_and_Image-Phrase_Injection_CVPR_2026_paper.html)　📅 2026　🏷 CVPR 2026
 
@@ -482,24 +463,7 @@ The integration of vision and language in Vision-Language Models (VLMs), while e
 
 </details>
 
-### 26. Understanding and Exploiting Phase Sensitivity for Attacking Large Vision–Language Models
-
-🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/52.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track)　📅 2026
-
-**关键词**：`attack`、`phase perturbation`、`LVLM backdoor`、`cross-modal control`、`LVLM`、`phase trigger`
-
-- 🎯 **研究动机**：现有 LVLM 攻击多探索外部对抗引导，利用 LVLM 感知图像的内在模式（相位结构）诱发扰动尚未被研究
-- 🔬 **研究方法**：发现 LVLM 对相位感知的图像结构敏感；提出 BadPhase，经数据投毒把对抗相位植入任意图像输入，配合文本触发器与后门扰动开关实现双触发激活，测试时优化降低资源依赖
-- 📌 **结论**：在四个主流 LVLM 与三个基准上验证攻击有效性
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Although Large Vision-Language Models (LVLMs) have demonstrated remarkable reasoning capabilities across various downstream multimodal tasks, they are proven to be vulnerable to carefully designed adversarial examples. Existing LVLM attackers show that exploring external components of adversarial guidance (e.g., forcing adversarial alignment, resembling harmful features) can help improve adversarial effects. However, leveraging the intrinsic patterns of LVLMs to induce adversarial perturbation generation by exploring how LVLMs perceive images has not been deeply studied. Inspired by the cognitive science, in this paper, we make the first attempt to investigate the interference of adversarial perturbation from the perspectives of image phase, and find that LVLMs are sensitive to the phase-aware image structure. Motivated by this, we propose a novel LVLM attack method called BadPhase with further backdoor designs, to implant adversarial phase as triggers into any image inputs via data poisoning so as to control the LVLMs’ predictions. A textual trigger and a backdoor perturbation switcher are also introduced to activate the malicious behavior only when both triggers are present. The whole backdoor optimization is implemented at the test-time to reduce the resource reliance. Experiments on four popular LVLMs and three benchmarks demonstrate the effectiveness of our proposed method.
-
-</details>
-
-### 27. Adversarial Attack Framework Against Vision-Language Model Unlearning
+### 25. Adversarial Attack Framework Against Vision-Language Model Unlearning
 
 🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/7256.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track)　📅 2026
 
@@ -516,26 +480,7 @@ Large Vision–Language Models (VLMs) unlearning tends to eliminate the influenc
 
 </details>
 
-### 28. GateBreaker: Gate-Guided Attacks on Mixture-of-Expert LLMs
-
-📄 [arXiv](https://arxiv.org/abs/2512.21008) · 🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/wu-lichao)　📅 2025-12　🏷 USENIX Security 2026
-
-**关键词**：`attack`、`MoE LLM`、`VLM safety`、`multimodal jailbreak`、`safety alignment`、`expert routing`
-
-👤 **作者**：Lichao Wu、Sasha Behrouzi、Mohamadreza Rostami、Stjepan Picek、Ahmad-Reza Sadeghi
-
-- 🎯 **研究动机**：LLM 安全研究几乎只关注稠密架构，MoE 稀疏路由下安全机制的鲁棒性未被检验
-- 🔬 **研究方法**：GateBreaker 免训练三阶段推理时攻击：门控级画像定位有害输入下被集中路由的安全专家、专家级定位其内安全结构、定向禁用该结构
-- 📌 **结论**：MoE 安全集中于稀疏路由协调的小撮神经元；禁用目标层约 3% 神经元即使八个对齐 MoE LLM 平均 ASR 从 7.4% 升至 64.9%，同族一次迁移使 17.9%→67.7%，并泛化到五个 MoE VLM（60.9%）
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Mixture-of-Experts (MoE) architectures have advanced the scaling of Large Language Models (LLMs) by activating only a sparse subset of parameters per input, enabling state-of-the-art performance with reduced computational cost. As these models are increasingly deployed in critical domains, understanding and strengthening their alignment mechanisms is essential to prevent harmful outputs. However, existing LLM safety research has focused almost exclusively on dense architectures, leaving the unique safety properties of MoEs largely unexamined. The modular, sparsely-activated design of MoEs suggests that safety mechanisms may operate differently than in dense models, raising questions about their robustness. In this paper, we present GateBreaker, the first training-free, lightweight, and architecture-agnostic attack framework that compromises the safety alignment of modern MoE LLMs at inference time. GateBreaker operates in three stages: (i) gate-level profiling, which identifies safety experts disproportionately routed on harmful inputs, (ii) expert-level localization, which localizes the safety structure within safety experts, and (iii) targeted safety removal, which disables the identified safety structure to compromise the safety alignment. Our study shows that MoE safety concentrates within a small subset of neurons coordinated by sparse routing. Selective disabling of these neurons, approximately 3% of neurons in the targeted expert layers, significantly increases the averaged attack success rate (ASR) from 7.4% to 64.9% against the eight latest aligned MoE LLMs with limited utility degradation. These safety neurons transfer across models within the same family, raising ASR from 17.9% to 67.7% with one-shot transfer attack. Furthermore, GateBreaker generalizes to five MoE vision language models (VLMs) with 60.9% ASR on unsafe image inputs.
-
-</details>
-
-### 29. Contextual Image Attack: How Visual Context Exposes Multimodal Safety Vulnerabilities
+### 26. Contextual Image Attack: How Visual Context Exposes Multimodal Safety Vulnerabilities
 
 📄 [arXiv](https://arxiv.org/abs/2512.02973) · 🌐 [Project](https://eccv.ecva.net/virtual/2026/poster/5772)　📅 2025-12　🏷 ECCV 2026
 
@@ -554,7 +499,7 @@ While Multimodal Large Language Models (MLLMs) show remarkable capabilities, the
 
 </details>
 
-### 30. Medusa: Cross-Modal Transferable Adversarial Attacks on Multimodal Medical Retrieval-Augmented Generation
+### 27. Medusa: Cross-Modal Transferable Adversarial Attacks on Multimodal Medical Retrieval-Augmented Generation
 
 📄 [arXiv](https://arxiv.org/abs/2511.19257) · 🌐 [Project](https://doi.org/10.1145/3770854.3780277)　📅 2025-11　🏷 KDD 2026
 
@@ -573,7 +518,7 @@ With the rapid advancement of retrieval-augmented vision-language models, multim
 
 </details>
 
-### 31. FORCE: Transferable Visual Jailbreaking Attacks via Feature Over-Reliance CorrEction
+### 28. FORCE: Transferable Visual Jailbreaking Attacks via Feature Over-Reliance CorrEction
 
 📄 [arXiv](https://arxiv.org/abs/2509.21029) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Lin_FORCE_Transferable_Visual_Jailbreaking_Attacks_via_Feature_Over-Reliance_CorrEction_CVPR_2026_paper.html)　📅 2025-09　🏷 CVPR 2026
 
@@ -592,7 +537,7 @@ The integration of new modalities enhances the capabilities of multimodal large 
 
 </details>
 
-### 32. Implicit Jailbreak Attacks via Cross-Modal Information Concealment on Vision-Language Models
+### 29. Implicit Jailbreak Attacks via Cross-Modal Information Concealment on Vision-Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2505.16446)　📅 2025-05
 
@@ -611,7 +556,7 @@ Multimodal large language models (MLLMs) enable powerful cross-modal reasoning c
 
 </details>
 
-### 33. FigStep: Jailbreaking Large Vision-Language Models via Typographic Visual Prompts
+### 30. FigStep: Jailbreaking Large Vision-Language Models via Typographic Visual Prompts
 
 📄 [arXiv](https://arxiv.org/abs/2311.05608) · 🌐 [Project](https://ojs.aaai.org/index.php/AAAI/article/view/34568)　📅 2025-04　🏷 AAAI 2025
 
@@ -623,7 +568,7 @@ Multimodal large language models (MLLMs) enable powerful cross-modal reasoning c
 - 🔬 **研究方法**：FigStep将禁止内容排版成图像文字，用良性文本引导模型读出图中内容
 - 📌 **结论**：六个开源LVLM平均ASR 82.50%，失效根因是visual embedding安全对齐不足
 
-### 34. SceneTAP: Scene-Coherent Typographic Adversarial Planner against Vision-Language Models in Real-World Environments
+### 31. SceneTAP: Scene-Coherent Typographic Adversarial Planner against Vision-Language Models in Real-World Environments
 
 📄 [arXiv](https://arxiv.org/abs/2412.00114) · 🌐 [Project](https://doi.org/10.1109/CVPR52734.2025.02332)　📅 2024-11　🏷 CVPR 2025
 
@@ -642,7 +587,7 @@ Large vision-language models (LVLMs) have shown remarkable capabilities in inter
 
 </details>
 
-### 35. Images are Achilles' Heel of Alignment: Exploiting Visual Vulnerabilities for Jailbreaking Multimodal Large Language Models
+### 32. Images are Achilles' Heel of Alignment: Exploiting Visual Vulnerabilities for Jailbreaking Multimodal Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2403.09792) · 🌐 [Project](https://www.ecva.net/papers/eccv_2024/papers_ECCV/html/9265_ECCV_2024_paper.php)　📅 2024-03　🏷 ECCV 2024
 
@@ -654,7 +599,7 @@ Large vision-language models (LVLMs) have shown remarkable capabilities in inter
 - 🔬 **研究方法**：HADES用图像隐藏并放大文本中的有害意图
 - 📌 **结论**：LLaVA-1.5与Gemini Pro Vision上平均ASR分别达90.26%与71.60%
 
-### 36. Multi-turn Jailbreaking Attack in Multi-Modal Large Language Models
+### 33. Multi-turn Jailbreaking Attack in Multi-Modal Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2601.05339)　📅 2026-01
 
@@ -673,7 +618,7 @@ In recent years, the security vulnerabilities of Multi-modal Large Language Mode
 
 </details>
 
-### 37. Securing Multimodal AI through Internal Information Decomposition
+### 34. Securing Multimodal AI through Internal Information Decomposition
 
 📄 [arXiv](https://arxiv.org/abs/2607.21600) · 🎓 [Official](https://icml.cc/virtual/2026/poster/65159)　📅 2026-07　🏷 ICML 2026
 
@@ -692,7 +637,7 @@ Multimodal large language models introduce attack surfaces absent in unimodal sy
 
 </details>
 
-### 38. Hard to Read, Easy to Jailbreak: How Visual Degradation Bypasses MLLM Safety Alignment
+### 35. Hard to Read, Easy to Jailbreak: How Visual Degradation Bypasses MLLM Safety Alignment
 
 🎓 [Official](https://aclanthology.org/2026.findings-acl.983/)　📅 2026-07　🏷 ACL 2026
 
@@ -711,7 +656,7 @@ Recent advancements in visual context compression enable MLLMs to process ultra-
 
 </details>
 
-### 39. SafeSteer: A Decoding-level Defense Mechanism for Multimodal Large Language Models
+### 36. SafeSteer: A Decoding-level Defense Mechanism for Multimodal Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2605.11716) · 🎓 [Official](https://aclanthology.org/2026.findings-acl.916/)　📅 2026-05　🏷 ACL 2026
 
@@ -730,7 +675,7 @@ Multimodal large language models (MLLMs) are gaining increasing attention. Due t
 
 </details>
 
-### 40. Principled Steering via Null-space Projection for Jailbreak Defense in Vision-Language Models
+### 37. Principled Steering via Null-space Projection for Jailbreak Defense in Vision-Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2603.22094) · 🌐 [Project](https://openaccess.thecvf.com/content/CVPR2026/html/Zhu_Principled_Steering_via_Null-space_Projection_for_Jailbreak_Defense_in_Vision-Language_CVPR_2026_paper.html)　📅 2026-03　🏷 CVPR 2026
 
@@ -749,7 +694,7 @@ As vision-language models (VLMs) are increasingly deployed in open-world scenari
 
 </details>
 
-### 41. Understanding and Defending VLM Jailbreaks via Jailbreak-Related Representation Shift
+### 38. Understanding and Defending VLM Jailbreaks via Jailbreak-Related Representation Shift
 
 📄 [arXiv](https://arxiv.org/abs/2603.17372)　📅 2026-03
 
@@ -768,7 +713,7 @@ Large vision-language models (VLMs) often exhibit weakened safety alignment with
 
 </details>
 
-### 42. SafeLogo: Turning Your Logos into Jailbreak Shields via Micro-Regional Adversarial Training
+### 39. SafeLogo: Turning Your Logos into Jailbreak Shields via Micro-Regional Adversarial Training
 
 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Duan_SafeLogo_Turning_Your_Logos_into_Jailbreak_Shields_via_Micro-Regional_Adversarial_CVPR_2026_paper.html)　📅 2026　🏷 CVPR 2026
 
@@ -787,7 +732,7 @@ Recent Vision-Language Models (VLMs) have become increasingly susceptible to jai
 
 </details>
 
-### 43. Understanding and Rectifying Safety Perception Distortion in VLMs
+### 40. Understanding and Rectifying Safety Perception Distortion in VLMs
 
 📄 [arXiv](https://arxiv.org/abs/2502.13095) · 📝 [OpenReview](https://openreview.net/forum?id=KAMsbarp3w)　📅 2025-09　🏷 NeurIPS 2025
 
@@ -799,7 +744,7 @@ Recent Vision-Language Models (VLMs) have become increasingly susceptible to jai
 - 🔬 **研究方法**：ShiftDC将image-induced shift分解为安全相关与语义相关分量，仅移除前者
 - 📌 **结论**：降低多种视觉越狱且保留视觉理解
 
-### 44. Self-Aware Safety Augmentation: Leveraging Internal Semantic Understanding to Enhance Safety in Vision-Language Models
+### 41. Self-Aware Safety Augmentation: Leveraging Internal Semantic Understanding to Enhance Safety in Vision-Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2507.21637) · 🌐 [Project](https://doi.org/10.1145/3746027.3754574)　📅 2025-07
 
@@ -818,7 +763,7 @@ Large vision-language models (LVLMs) are vulnerable to harmful input compared to
 
 </details>
 
-### 45. Towards Robust Multimodal Large Language Models Against Jailbreak Attacks
+### 42. Towards Robust Multimodal Large Language Models Against Jailbreak Attacks
 
 📄 [arXiv](https://arxiv.org/abs/2502.00653) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Yin_Towards_Robust_Multimodal_Large_Language_Models_Against_Jailbreak_Attacks_CVPR_2026_paper.html)　📅 2025-02　🏷 CVPR 2026
 
@@ -837,26 +782,7 @@ While multimodal large language models (MLLMs) have achieved remarkable success 
 
 </details>
 
-### 46. RuCL: Stratified Rubric-Based Curriculum Learning for Multimodal Large Language Model Reasoning
-
-📄 [arXiv](https://arxiv.org/abs/2602.21628) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63841)　📅 2026-02　🏷 ICML 2026
-
-**关键词**：`analysis`、`VLM safety`、`multimodal jailbreak`、`visual adversarial input`、`AI control`、`reinforcement learning`
-
-👤 **作者**：Yukun Chen、…、Min Yang
-
-- 🎯 **研究动机**：MLLM 的 RLVR 仅靠结果奖励易 reward hacking，实例级 rubric 又成本高且等同视之
-- 🔬 **研究方法**：RuCL 生成泛化 rubric 并按模型能力分层，训练中动态调整 rubric 权重，引导从基础感知进阶到高级逻辑推理
-- 📌 **结论**：在多个视觉推理基准上使 Qwen2.5-VL-7B 平均提升 7.83%，达 60.06% 的 SOTA 准确率
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Reinforcement Learning with Verifiable Rewards (RLVR) has emerged as a prevailing paradigm for enhancing reasoning in Multimodal Large Language Models (MLLMs). However, relying solely on outcome supervision risks reward hacking, where models learn spurious reasoning patterns to satisfy final answer checks. While recent rubric-based approaches offer fine-grained supervision signals, they suffer from high computational costs of instance-level generation and inefficient training dynamics caused by treating all rubrics as equally learnable. In this paper, we propose Stratified Rubric-based Curriculum Learning (RuCL), a novel framework that reformulates curriculum learning by shifting the focus from data selection to reward design. RuCL generates generalized rubrics for broad applicability and stratifies them based on the model's competence. By dynamically adjusting rubric weights during training, RuCL guides the model from mastering foundational perception to tackling advanced logical reasoning. Extensive experiments on various visual reasoning benchmarks show that RuCL yields a remarkable +7.83% average improvement over the Qwen2.5-VL-7B model, achieving a state-of-the-art accuracy of 60.06%.
-
-</details>
-
-### 47. Leave My Images Alone: Preventing Multi-Modal Large Language Models from Analyzing Images via Visual Prompt Injection
+### 43. Leave My Images Alone: Preventing Multi-Modal Large Language Models from Analyzing Images via Visual Prompt Injection
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.72/)　📅 2026　🏷 ACL 2026
 
@@ -875,7 +801,7 @@ Multi-modal large language models (MLLMs) have emerged as powerful tools for ana
 
 </details>
 
-### 48. 3D FaceShell: Attribute Transfer in 3D Face Avatars as a VLM Defense Mechanism
+### 44. 3D FaceShell: Attribute Transfer in 3D Face Avatars as a VLM Defense Mechanism
 
 📄 [arXiv](https://arxiv.org/abs/2607.16280) · 🌐 [Project](https://eccv.ecva.net/virtual/2026/poster/3820)　📅 2026-07　🏷 ECCV 2026
 
@@ -894,26 +820,7 @@ Photorealistic 3D face avatars are increasingly deployed as reusable digital ass
 
 </details>
 
-### 49. What’s Left Unsaid? Detecting and Correcting Misleading Omissions in Multimodal News Previews
-
-🎓 [Official](https://aclanthology.org/2026.acl-long.293/)　📅 2026　🏷 ACL 2026
-
-**关键词**：`detection`、`multimodal safety`、`VLM safety`、`multimodal jailbreak`、`misinformation detection`、`misinformation`
-
-👤 **作者**：Fanxiao Li、…、Min-Yen Kan
-
-- 🎯 **研究动机**：新闻预览（图-标题对）即使事实正确也可选择性省略关键上下文诱导解释偏移，比显式误信息更隐蔽且少有研究
-- 🔬 **研究方法**：多阶段管道模拟预览与上下文理解构建 MM-Misleading 基准；提出 OMGuard：解释感知微调检测误导性，理由引导的标题改写降低误导印象
-- 📌 **结论**：把 8B 模型检测准确率提升至 235B LVLM 水平；误导多源于局部叙事缺失而非全局框架改变，图像驱动案例需视觉干预
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Even when factually correct, social-media news previews (image-headline pairs) can induce interpretation drift: by selectively omitting crucial context, they lead readers to form judgments that diverge from what the full article supports. This covert harm is subtler than explicit misinformation, yet remains underexplored. To address this gap, we develop a multi-stage pipeline that simulates preview-based and context-based understanding, enabling construction of the MM-Misleading benchmark. Using MM-Misleading, we systematically evaluate open-source LVLMs and uncover pronounced blind spots in omission-based misleadingness detection. We further propose OMGuard, which combines (1) Interpretation-Aware Fine-Tuning for misleadingness detection and (2) Rationale-Guided Misleading Content Correction, where explicit rationales guide headline rewriting to reduce misleading impressions. Experiments show that OMGuard lifts an 8B model’s detection accuracy to the level of a 235B LVLM while delivering markedly stronger end-to-end correction. Further analysis shows that misleadingness usually arises from local narrative shifts, such as missing background, instead of global frame changes, and identifies image-driven cases where text-only correction fails, underscoring the need for visual interventions.
-
-</details>
-
-### 50. Rethinking Jailbreak Detection of Large Vision Language Models with Representational Contrastive Scoring
+### 45. Rethinking Jailbreak Detection of Large Vision Language Models with Representational Contrastive Scoring
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.992/)　📅 2026　🏷 ACL 2026
 
@@ -932,26 +839,7 @@ Large Vision-Language Models (LVLMs) are vulnerable to a growing array of multim
 
 </details>
 
-### 51. Is this chart lying to me? Automating the detection of misleading visualizations
-
-🎓 [Official](https://aclanthology.org/2026.acl-long.398/)　📅 2026　🏷 ACL 2026
-
-**关键词**：`detection`、`multimodal jailbreak`、`visual adversarial input`、`safety bypass`、`misinformation detection`、`deceptive behavior`
-
-👤 **作者**：Jonathan Tonglet、Jan Zimny、Tinne Tuytelaars、Iryna Gurevych
-
-- 🎯 **研究动机**：误导性可视化驱动虚假信息，人类与 MLLM 常被骗，缺大规模开放数据集
-- 🔬 **研究方法**：Misviz 含 2,604 个真实可视化、12 类 misleader 标注，配套基于真实数据表用 Matplotlib 合成的 81,814 个 Misviz-synth
-- 📌 **结论**：SOTA MLLM、规则系统与微调分类器评测显示该任务仍极具挑战
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Misleading visualizations are a potent driver of misinformation on social media and the web. By violating chart design principles, they distort data and lead readers to draw inaccurate conclusions. Prior work has shown that both humans and multimodal large language models (MLLMs) are frequently deceived by such visualizations. Automatically detecting misleading visualizations and identifying the specific design rules they violate could help protect readers and reduce the spread of misinformation. However, the training and evaluation of AI models has been limited by the absence of large, diverse, and openly available datasets. In this work, we introduce Misviz, a benchmark of 2,604 real-world visualizations annotated with 12 types of misleaders. To support model training, we also release Misviz-synth, a synthetic dataset of 81,814 visualizations generated using Matplotlib and based on real-world data tables. We perform a comprehensive evaluation on both datasets using state-of-the-art MLLMs, rule-based systems, and fine-tuned classifiers. Our results reveal that the task remains highly challenging. We release Misviz, Misviz-synth, and the accompanying code.
-
-</details>
-
-### 52. NeuronFuzz: Safety Neuron Guided Fuzzing for LLM Safety Evaluation
+### 46. NeuronFuzz: Safety Neuron Guided Fuzzing for LLM Safety Evaluation
 
 📄 [arXiv](https://arxiv.org/abs/2608.26222)　📅 2026-08
 
@@ -970,7 +858,7 @@ Safety evaluation is critical for assessing whether aligned Large Language Model
 
 </details>
 
-### 53. SafeGesture: Evaluating Fine-Grained Hand Gesture Understanding in Vision-Language Models through Scenario-Conditioned Safety Interpretation
+### 47. SafeGesture: Evaluating Fine-Grained Hand Gesture Understanding in Vision-Language Models through Scenario-Conditioned Safety Interpretation
 
 📄 [arXiv](https://arxiv.org/abs/2608.16081)　📅 2026-08
 
@@ -989,7 +877,7 @@ Open-weight and frontier vision-language models (VLMs) perform well on general i
 
 </details>
 
-### 54. USB: A COMPREHENSIVE AND UNIFIED SAFETY EVALUATION BENCHMARK FOR MULTIMODAL LARGE LANGUAGE MODELS
+### 48. USB: A COMPREHENSIVE AND UNIFIED SAFETY EVALUATION BENCHMARK FOR MULTIMODAL LARGE LANGUAGE MODELS
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.970/)　📅 2026　🏷 ACL 2026
 
@@ -1008,7 +896,7 @@ Despite their rapid advancement, Multimodal Large Language Models (MLLMs) remain
 
 </details>
 
-### 55. ReFrame: Evidence-Guided Test-Time Safety Alignment in Multimodal Large Language Models
+### 49. ReFrame: Evidence-Guided Test-Time Safety Alignment in Multimodal Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2608.21100)　📅 2026-08
 
@@ -1027,26 +915,7 @@ While multimodal large language models (MLLMs) extend model capabilities beyond 
 
 </details>
 
-### 56. Overconfidence and Calibration in Medical VQA: Empirical Findings and Hallucination-Aware Mitigation
-
-📄 [arXiv](https://arxiv.org/abs/2604.02543) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-04
-
-**关键词**：`defense`、`medical VQA`、`overconfidence`、`hallucination-aware calibration`
-
-👤 **作者**：Ji Young Byun、Young-Jin Park、Jean-Philippe Corbeil、Asma Ben Abacha
-
-- 🎯 **研究动机**：医学 VQA 部署中不仅需准确，还需知道何时信任预测，但过度自信的系统研究稀缺
-- 🔬 **研究方法**：跨三个模型族、三个规模（2B-38B）与多种置信度提示策略在三个医学 VQA 基准实证，并提出融合视觉接地幻觉信号的 HAC 校准
-- 📌 **结论**：过度自信跨族存在且 scaling 与提示均无法解决；Platt 缩放优于提示策略但不提升 AUROC，HAC 同时改善校准与 AUROC（开放题收益最大）
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-As vision-language models (VLMs) are increasingly deployed in clinical decision support, more than accuracy is required: knowing when to trust their predictions is equally critical. Yet, a comprehensive and systematic investigation into the overconfidence of these models remains notably scarce in the medical domain. We address this gap through a comprehensive empirical study of confidence calibration in VLMs, spanning three model families (Qwen3-VL, InternVL3, LLaVA-NeXT), three model scales (2B--38B), and multiple confidence estimation prompting strategies, across three medical visual question answering (VQA) benchmarks. Our study yields three key findings: First, overconfidence persists across model families and is not resolved by scaling or prompting, such as chain-of-thought and verbalized confidence variants. Second, simple post-hoc calibration approaches, such as Platt scaling, reduce calibration error and consistently outperform the prompt-based strategy. Third, due to their (strict) monotonicity, these post-hoc calibration methods are inherently limited in improving the discriminative quality of predictions, leaving AUROC at the same level. Motivated by these findings, we investigate hallucination-aware calibration (HAC), which incorporates vision-grounded hallucination detection signals as complementary inputs to refine confidence estimates. We find that leveraging these hallucination signals improves both calibration and AUROC, with the largest gains on open-ended questions. Overall, our findings suggest post-hoc calibration as standard practice for medical VLM deployment over raw confidence estimates, and highlight the practical usefulness of hallucination signals to enable more reliable use of VLMs in medical VQA.
-
-</details>
-
-### 57. Enhancing the Safety of Medical Vision-Language Models by Synthetic Demonstrations
+### 50. Enhancing the Safety of Medical Vision-Language Models by Synthetic Demonstrations
 
 🎓 [Official](https://aclanthology.org/2026.eacl-long.197/)　📅 2026-03　🏷 ACL 2026
 
@@ -1065,7 +934,7 @@ Generative medical vision-language models (Med-VLMs) are primarily designed to g
 
 </details>
 
-### 58. Two Birds, One Projection: Harmonizing Safety and Utility in LVLMs via Inference-time Feature Projection
+### 51. Two Birds, One Projection: Harmonizing Safety and Utility in LVLMs via Inference-time Feature Projection
 
 📄 [arXiv](https://arxiv.org/abs/2603.14825) · 🌐 [Project](https://eccv.ecva.net/virtual/2026/poster/4820)　📅 2026-03　🏷 ECCV 2026
 
@@ -1084,21 +953,97 @@ Existing jailbreak defence frameworks for Large Vision-Language Models often suf
 
 </details>
 
-### 59. Protecting multimodal large language models against misleading visualizations
+### 52. DMN: A Compositional Framework for Jailbreaking Multimodal LLMs with Multi-Image Inputs
 
-🎓 [Official](https://aclanthology.org/2026.acl-long.377/)　📅 2026　🏷 ACL 2026
+🎓 [Official](https://aclanthology.org/2026.acl-long.514/)　📅 2026　🏷 ACL 2026
 
-**关键词**：`defense`、`multimodal safety`、`VLM safety`、`multimodal jailbreak`、`misinformation detection`、`misinformation`
+**关键词**：`attack`、`multimodal safety`、`jailbreak`、`VLM safety`、`LLM jailbreak`、`automated red teaming`
 
-👤 **作者**：Jonathan Tonglet、Tinne Tuytelaars、Marie Francine Moens、Iryna Gurevych
+👤 **作者**：Wenzhuo Xu、…、Quanchen Zou
 
-- 🎯 **研究动机**：MLLM 在误导性可视化上的问答准确率平均降至随机基线水平
-- 🔬 **研究方法**：首个六种推理时方法比较（表格问答、重绘可视化等），在不损正常图表准确率的前提下提升误导图表问答
-- 📌 **结论**：表格问答与重绘两种方法有效，提升最多 19.6 个百分点
+- 🎯 **研究动机**：支持多图输入的 MLLM 安全对齐投入少构成新漏洞；既有越狱只用单图，无法分发有害请求或用视觉推理任务分散注意
+- 🔬 **研究方法**：DMN 组合式多图越狱框架：分布式指令、多模态证据与数字链任务协同增强攻击
+- 📌 **结论**：GPT-4o、Gemini-2.5-pro 与 Claude Sonnet 4 上 ASR 超 90%，大幅超越基线
 
 <details>
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
-Visualizations play a pivotal role in daily communication in an increasingly data-driven world. Research on multimodal large language models (MLLMs) for automated chart understanding has accelerated massively, with steady improvements on standard benchmarks. However, for MLLMs to be reliable, they must be robust to misleading visualizations, i.e., charts that distort the underlying data, leading readers to draw inaccurate conclusions. Here, we uncover an important vulnerability: MLLM question-answering (QA) accuracy on misleading visualizations drops on average to the level of the random baseline. To address this, we provide the first comparison of six inference-time methods to improve QA performance on misleading visualizations, without compromising accuracy on non-misleading ones. We find that two methods, table-based QA and redrawing the visualization, are effective, with improvements of up to 19.6 percentage points. We make our code and data available.
+Multimodal Large Language Models (MLLMs) are vulnerable to jailbreak attacks, which can elicit harmful responses from MLLMs. Many MLLMs support multi-image inputs, inadvertently introducing new vulnerabilities due to less efforts on multi-image safety alignment. Previous MLLM jailbreak methods only uses a single image, which restricts the attack space: they cannot distribute harmful requests across multiple images, carry abundant information, or exploit additional visual reasoning tasks to distract MLLMs. To address these limitations, in this paper, we propose a compositional jailbreak framework, DMN, which leverages D istributed instruction, M ultimodal evidence and a N umber chain task to fully enhance the jailbreak performance. Extensive experiments show that DMN is highly effective for MLLM jailbreaking, e.g. achieving attack success rates of over 90% on GPT-4o, Gemini-2.5-pro and Claude Sonnet 4, surpassing other baselines by a large margin. This compositional, multi-image jailbreak strategy reveals fundamental weaknesses in their safety mechanisms.
+
+</details>
+
+### 53. Decoy Images Amplify Caption-Mediated Defenses Against Encoded Jailbreaks
+
+📄 [arXiv](https://arxiv.org/abs/2608.01043)　📅 2026-08
+
+**关键词**：`defense`、`jailbreak`、`jailbreak defense`、`harmful intent detection`
+
+👤 **作者**：Haoyu Zhang、Xiangchen Guan、Shibo Zheng、Mohammad Zandsalimy、Shanu Sushmita
+
+- 🎯 **研究动机**：编码越狱 prompt 配上无关诱饵图像会大幅改变黑盒防御效果，该管线交互未被理解
+- 🔬 **研究方法**：在五个前沿 VLM、两族编码攻击、三种黑盒防御上配对诱饵图像做对照实验，并用轻量编码输入检测器门控附图
+- 📌 **结论**：诱饵图使 ECSO 的 ASR 最多降 73 个百分点，但无条件附图把良性拒答推高至 20-79%；检测器门控可在保留安全收益的同时回到文本基线
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+We report a counter-intuitive interaction between image inputs and existing black-box defenses on Vision--Language Models (VLMs): pairing an encoded jailbreak prompt with an unrelated decoy image can sharply lower attack success rate (ASR). The operative change is in the defense pipeline, not in the image. Across five frontier VLMs, two encoded-attack families, and three black-box defenses, a caption-mediated defense (ECSO) that leaves ASR essentially unchanged on text-only encoded input drops it by up to $73$pp once a content-free decoy is attached; every non-saturated contrast is significant under exact McNemar tests. We advance two hypotheses for this pattern, supported by indirect evidence rather than pipeline introspection, since a black-box threat model precludes inspecting vendor internals: caption-mediated defenses branch on image presence, and intrinsic image-side safety engages on image-resident content. Three controls constrain the explanation. Blank-canvas and natural-photograph decoys reproduce the effect on every model, implicating image presence rather than content; the effect replicates on three open-weight VLMs served with no moderation layer, so it is not a vendor-filtering artifact; and a non-symbolic, meaning-based encoder reproduces it, so it is not specific to symbolic obfuscation. Attaching a decoy unconditionally is not deployable --- it raises benign refusal to $20$--$79\%$, an inflation of $+10$ to $+67$pp --- but gating attachment on a lightweight encoded-input detector returns benign refusal to the text baseline while preserving the safety gain wherever the detector fires, making detector recall the binding constraint. Under adaptive attacks that target the caption-mediated re-check, the effect degrades but holds. We frame this as an observation about pipeline interaction, not as a robust defense.
+
+</details>
+
+### 54. ImpText: A Benchmark and Tool-Augmented Framework for Implicit Text Reasoning
+
+🎓 [Official](https://icml.cc/virtual/2026/poster/63174)　📅 2026　🏷 ICML 2026
+
+**关键词**：`benchmark`、`safety alignment`、`refusal behavior`、`alignment robustness`、`empirical evaluation`、`fine-tuning robustness`
+
+👤 **作者**：Litao Guo、…、YINGCONG CHEN
+
+- 🎯 **研究动机**：MLLM 对经物理变形、视觉伪装、认知暗示隐藏的恶意隐文本识别能力未知
+- 🔬 **研究方法**：定义 Implicit Text Reasoning 任务并构建 ImpText-Bench；ImpText-Reader 工具增强框架用三阶段训练协同优化工具选择与语义推理
+- 📌 **结论**：现有系统极脆弱，最强专有模型 Text Match Score 仅 35.79%；ImpText-Reader 达 SOTA
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Multimodal Large Language Models (MLLMs) have demonstrated exceptional proficiency in standard text extraction, but they encounter significant challenges when confronting real-world implicit text. Such content typically contains malicious information, intentionally concealed through physical deformation, visual camouflage, or cognitive suggestion. These concealment techniques circumvent content moderation systems and pose severe risks to user safety. To bridge the research gap in text recognition under real-world adversarial scenarios, we define the task of Implicit Text Reasoning and introduce ImpText-Bench, a meticulously constructed benchmark. Extensive evaluations on this benchmark reveal significant vulnerability in current systems; even advanced proprietary models achieve a maximum Text Match Score of only 35.79\%. In response, we propose ImpText-Reader, a tool-augmented framework. It employs a three-stage training strategy utilizing capability-boundary data to collaboratively optimize tool selection and semantic reasoning, thereby effectively extracting hidden text. Extensive experiments demonstrate that our approach achieves SOTA performance, significantly enhancing model robustness in adversarial environments.
+
+</details>
+
+### 55. Seeing No Evil: Blinding Large Vision-Language Models to Safety Instructions via Adversarial Attention Hijacking
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.833/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`attack`、`jailbreak`、`adversarial robustness`、`VLM safety`、`LLM jailbreak`、`automated red teaming`
+
+👤 **作者**：Jingru Li、Wei Ren、Tianqing Zhu
+
+- 🎯 **研究动机**：现有 LVLM 攻击直接最大化有害输出概率，与模型安全检索机制产生梯度冲突，收敛慢
+- 🔬 **研究方法**：提出注意力引导视觉越狱：抑制对 system prompt token 的注意力并把生成锚定在对抗图像特征上，绕开而非压倒安全对齐
+- 📌 **结论**：Qwen-VL 上 ASR 94.4%（基线 68.8%），梯度冲突降 45%、迭代少 40%；成功攻击把 system prompt 注意力压制 80%，表现为 safety blindness
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large Vision-Language Models (LVLMs) rely on attention-based retrieval of safety instructions to maintain alignment during generation. Existing attacks typically optimize image perturbations to maximize harmful output likelihood, but suffer from slow convergence due to gradient conflict between adversarial objectives and the model’s safety-retrieval mechanism. We propose Attention-Guided Visual Jailbreaking, which circumvents rather than overpowers safety alignment by directly manipulating attention patterns. Our method introduces two simple auxiliary objectives: (1) suppressing attention to system-prompt tokens and (2) anchoring generation on adversarial image features. This simple yet effective push-pull formulation reduces gradient conflict by 45% and achieves 94.4% attack success rate on Qwen-VL (vs. 68.8% baseline) with 40% fewer iterations. At tighter perturbation budgets ( 𝜖=8/255 ), we maintain 59.0% ASR compared to 45.7% for standard methods. Mechanistic analysis reveals a failure mode we term safety blindness: successful attacks suppress system-prompt attention by 80%, causing models to generate harmful content not by overriding safety rules, but by failing to retrieve them.
+
+</details>
+
+### 56. Dissecting the Safety Circuit: Neuronal Intervention for Transferable Adversarial Attacks on VLMs
+
+🎓 [Official](https://icml.cc/virtual/2026/poster/61105)　📅 2026　🏷 ICML 2026
+
+**关键词**：`attack`、`adversarial attack`、`adversarial robustness`、`adversarial example`、`mechanistic analysis`、`attack transferability`
+
+👤 **作者**：Chunlong Xie、…、Tao Xiang
+
+- 🎯 **研究动机**：VLM 对抗攻击迁移性受限——表层扰动利用代理特定伪影而非共享安全特征；线性探针显示安全表征集中于特定中间神经元回路
+- 🔬 **研究方法**：SCIA 双目标引导：抑制编码安全特征的防御回路、放大捕捉模型无关表征的可迁移回路，配对比语义引导与谱平滑正则生成视觉连贯扰动
+- 📌 **结论**：显著超越 SOTA，有效绕过未见黑盒 VLM
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+The limited transferability of adversarial attacks on Vision-Language Models (VLMs) stems from their failure to navigate model-specific safety alignments, where superficial perturbations exploit surrogate-specific artifacts rather than shared safety-critical features. We reveal through linear probing that safety-related representations are concentrated within specific intermediate neuronal circuits, which act as localized defense bottlenecks that can be disentangled from transferable features. To overcome this barrier, we propose the Safety Circuit Intervention Attack (SCIA), a framework that surgically steers internal representations to bypass these localized safety mechanisms. SCIA employs a dual-objective steering strategy that suppresses the defensive circuit encoding safety features while amplifying the transferable circuit capturing model-agnostic representations, effectively decoupling adversarial patterns from surrogate-specific safety behaviors. Furthermore, we incorporate contrastive semantic steering and spectral smoothness regularization to guide optimization toward compliant semantic regions while producing visually coherent perturbations. Experimental results demonstrate that SCIA significantly outperforms state-of-the-art methods in bypassing unseen black-box VLMs.
 
 </details>

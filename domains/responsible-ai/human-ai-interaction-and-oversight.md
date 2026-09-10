@@ -35,26 +35,7 @@ Large language models (LLMs) are increasingly used for hate speech moderation, o
 
 </details>
 
-### 2. Attention Capture Is Not Detection: A Two-Stage Account of How Humans Miss Localized AI Image Edits
-
-📄 [arXiv](https://arxiv.org/abs/2608.13865)　📅 2026-08
-
-**关键词**：`detection`、`human oversight`、`automation reliance`、`risk communication`
-
-👤 **作者**：Chiao-Chieh Deng
-
-- 🎯 **研究动机**：平台把 AI 图像编辑可检测性当单一属性，编辑被注意到与被正确判假是否为可分离阶段未知
-- 🔬 **研究方法**：59 人眼动拉丁方实验交叉编辑面积与语义合理性，混合效应分析，并用生成式扫描路径 Transformer 计算化注意捕获阶段
-- 📌 **结论**：编辑面积驱动注意捕获、语义合理性驱动判断准确率与视而不见错误率（均 p<0.001），两阶段可分离；扫描路径模型预测注意 r=0.77-0.82
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-As AI-generated image edits proliferate, the platforms meant to curb the resulting disinformation treat detectability as a single, undifferentiated property: an edit either gets a warning or it does not. We show this is the wrong model. Across a controlled eye-tracking study ($N=59$, Latin-square design, four conditions crossing edit area and semantic plausibility), a mixed-effects analysis reveals that whether an edit is noticed and whether it is correctly judged as fake are dissociable stages, governed by different factors: edit area drives attention capture ($p<0.001$) while semantic plausibility drives judgment accuracy and look-but-fail-to-see (LBFS) error rates ($p<0.001$). This dissociation survives correction for multiple comparisons; a secondary interaction between the two factors does not. This two-stage account extends a long-standing distinction in visual attention research (between pre-attentive capture and effortful recognition) into the new domain of AI-edit detectability. We then test whether a generative eye-movement model can computationally operationalize the attention-capture stage: a Transformer trained to generate scanpaths tracks per-image attention with strong discriminative power (Pearson $r=0.77$--$0.82$ across held-out stimuli) and, on the harder task of predicting LBFS incidence, modestly outperforms a two-parameter linear baseline even without access to the plausibility label ($r=0.52$ vs. $r=0.48$). We report this comparison, our ablations, and our method's limitations (a single fixed train/validation split, not leave-one-subject-out) without inflation, consistent with responsibly communicating what a machine learning system can and cannot do to help curb AI-driven disinformation.
-
-</details>
-
-### 3. Rewarding Engagement and Personalization in Popularity-Based Rankings Amplifies Extremism and Polarization
+### 2. Rewarding Engagement and Personalization in Popularity-Based Rankings Amplifies Extremism and Polarization
 
 📄 [arXiv](https://arxiv.org/abs/2510.24354) · 🌐 [Project](https://doi.org/10.1145/3770855.3818037)　📅 2026-08　🏷 KDD 2026
 
@@ -66,7 +47,7 @@ As AI-generated image edits proliferate, the platforms meant to curb the resulti
 - 🔬 **研究方法**：建模此类排序奖励对内容生态的动力学影响
 - 📌 **结论**：该奖励机制系统性放大极端主义与观点极化
 
-### 4. Ask or Answer: A Decision Framework for Multi-Turn Health Misinformation Intervention
+### 3. Ask or Answer: A Decision Framework for Multi-Turn Health Misinformation Intervention
 
 📄 [arXiv](https://arxiv.org/abs/2608.21721)　📅 2026-08
 
@@ -85,7 +66,7 @@ Correcting health misinformation in dialogue requires more than producing a fact
 
 </details>
 
-### 5. AI Watchdog: Agent Interfaces for Detecting and Defending Against Manipulative Dark Patterns in AI Conversations
+### 4. AI Watchdog: Agent Interfaces for Detecting and Defending Against Manipulative Dark Patterns in AI Conversations
 
 📄 [arXiv](https://arxiv.org/abs/2608.21841)　📅 2026-08
 
@@ -104,7 +85,7 @@ Conversational AI increasingly shapes consequential decisions, yet users have li
 
 </details>
 
-### 6. When Vocabulary Comprehension Fails Clinical Reasoning: Evaluating Therapy Bots' Safety Risks for Generation Alpha
+### 5. When Vocabulary Comprehension Fails Clinical Reasoning: Evaluating Therapy Bots' Safety Risks for Generation Alpha
 
 📄 [arXiv](https://arxiv.org/abs/2608.20345) · 🌐 [Project](https://doi.org/10.1145/3805689.3806522)　📅 2026-08
 
@@ -123,7 +104,7 @@ Conversational AI systems have become informal mental health support resources f
 
 </details>
 
-### 7. aipsy-judge: A Specialized, Psychologist-Corrected Local Judge for the Psychological Safety of Conversational AI
+### 6. aipsy-judge: A Specialized, Psychologist-Corrected Local Judge for the Psychological Safety of Conversational AI
 
 📄 [arXiv](https://arxiv.org/abs/2608.24899) · 🤗 [Model](https://huggingface.co/keidolabs/aipsy-judge-1.0)　📅 2026-08
 
@@ -142,7 +123,7 @@ The standard recipe for LLM-as-judge -- pick a frontier model, or average severa
 
 </details>
 
-### 8. CompanionHarm: A Multi-Turn Benchmark for Detecting Harms in Real-World AI Companion Conversations
+### 7. CompanionHarm: A Multi-Turn Benchmark for Detecting Harms in Real-World AI Companion Conversations
 
 📄 [arXiv](https://arxiv.org/abs/2608.25377)　📅 2026-08
 
@@ -158,5 +139,214 @@ The standard recipe for LLM-as-judge -- pick a frontier model, or average severa
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 As AI companions become increasingly embedded in everyday life, there is an urgent need to detect harms that emerge in social and emotional human-AI interactions. Yet research in this area is constrained by the lack of real-world, multi-turn conversational datasets for operationalizing and evaluating harms that are relational and contextual. In this work, we introduce CompanionHarm, a publicly available benchmark dataset comprising 2,111 real-world, multi-turn conversations (14,051 utterances) between users and the AI companion Replika. 7,016 AI utterances were annotated independently by three annotators across 13 harmful behavior categories grounded in a taxonomy of AI companion harms, and the dataset includes both aggregated labels and annotator-level labels to support model evaluation and systematic disagreement analysis. Evaluations of seven large language models (LLMs) show that harm detection using multi-turn conversational context outperforms detection based on isolated utterances, although current LLMs still struggle to consistently integrate contextual cues, calibrate harm severity, and interpret relational boundaries. We also find substantial annotator disagreement for context-dependent harmful behaviors, with disagreement varying according to annotators' political affiliation, conversation length, and the utterance's position. Together, CompanionHarm provides a foundation for detecting socio-emotional harms in multi-turn human-AI conversations and for rigorously examining how such harms are interpreted by both humans and LLMs. Our dataset is available at https://github.com/HanMeng2004/CompanionHarm.
+
+</details>
+
+### 8. Beyond “Made with AI”: Visualizing Provenance Density to Mitigate the Transparency Penalty
+
+📄 [arXiv](https://arxiv.org/abs/2609.03460) · 🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/HC13.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=special-track-on-human-centred-ai)　📅 2026
+
+**关键词**：`analysis`、`AI provenance`、`evidence visualization`、`hallucination trust`
+
+👤 **作者**：Qing Zhang、Yifei Huang、Juyoung Lee、Thad Starner、Jun Rekimoto
+
+- 🎯 **研究动机**：Fluency Trap：用户既信任流畅幻觉，又在披露 AI 生成后低估准确内容；二元 Made with AI 标签不显示主张的证据支撑
+- 🔬 **研究方法**：提出证据可视化界面 Provenance Density，展示文本中已验证主张的密度；81 人用户研究与 200 样本技术审计
+- 📌 **结论**：理想化界面产生 +4.15 点（d=1.82）的真伪辨别差距，无信号组无可测辨别力；Consistency Veto 承载大部分判别信号
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+As generative AI makes polished prose cheap to produce, users can no longer rely on fluency as a proxy for truth. We call this failure mode the Fluency Trap: users trust fluent hallucinations while also discounting accurate content once it is disclosed as AI-generated. Binary “Made with AI” labels respond with authorship disclosure, but they do not show what supports a claim. We propose Provenance Density, an evidence-visualization interface that shows the density of verified claims in a text. In a user study with 81 participants, an idealized Provenance Density interface produced a large discernment gap between truth and fabrication (+4.15 points, d = 1.82), whereas participants given no signal showed no detectable discrimination. A technical audit with 200 samples shows that retrieval density alone is insufficient; unexpectedly, the Consistency Veto carries most of the discriminative signal on dynamic queries. As AI-generated content becomes indistinguishable from human writing, effective transparency must move from authorship disclosure toward evidence visualization.
+
+</details>
+
+### 9. "I Would Have Written My Code Differently": Beginners Struggle to Understand LLM-Generated Code
+
+📄 [arXiv](https://arxiv.org/abs/2504.19037)　📅 2025-04
+
+**关键词**：`analysis`、`code comprehension`、`automation bias`、`overreliance measurement`
+
+👤 **作者**：Yangtian Zi、Luisa Li、Arjun Guha、Carolyn Jane Anderson、Molly Q Feldman
+
+- 🎯 **研究动机**：代码生成只是编程的一半，读、评估并整合（或拒绝）AI 代码对新手是否可行未被测量
+- 🔬 **研究方法**：比较 32 名 CS1 学生对函数自然语言描述与 LLM 生成实现的跨任务理解，160 个任务实例
+- 📌 **结论**：每任务成功率仅 32.5%，各人群无差别受困；主要障碍包括非母语壁垒、Python 语法不熟与 automation bias，凸显依赖 LLM 前的代码理解瓶颈
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models (LLMs) are being increasingly adopted for programming work. Prior work shows that while LLMs accelerate task completion for professional programmers, beginning programmers struggle to prompt models effectively. However, prompting is just half of the code generation process -- when code is generated, it must be read, evaluated, and integrated (or rejected). How accessible are these tasks for beginning programmers? This paper measures how well beginners comprehend LLM-generated code and explores the challenges students face in judging code correctness. We compare how well students understand natural language descriptions of functions and LLM-generated implementations, studying 32 CS1 students on 160 task instances. Our results show a low per-task success rate of 32.5\%, with indiscriminate struggles across demographic populations. Key challenges include barriers for non-native English speakers, unfamiliarity with Python syntax, and automation bias. Our findings highlight the barrier that code comprehension presents to beginning programmers seeking to write code with LLMs.
+
+</details>
+
+### 10. Beyond Predictions: A Study of AI Strength and Weakness Transparency Communication on Human-AI Collaboration
+
+📄 [arXiv](https://arxiv.org/abs/2508.09033)　📅 2025-08
+
+**关键词**：`analysis`、`risk communication`、`trust calibration`、`strength-weakness explanation`
+
+👤 **作者**：Tina Behzad、Nikolos Gurney、Ning Wang、David V. Pynadath
+
+- 🎯 **研究动机**：人机团队效能依赖 AI 向用户传达自身强弱边界的方式，但传达多少信息如何影响信任校准缺乏受控证据
+- 🔬 **研究方法**：在模型错误上训练决策树使 AI 能识别并解释自己可能出错的位置，在收入预测任务的用户研究中改变 AI 洞察与解释的信息量
+- 📌 **结论**：AI 性能洞察提升任务表现，传达对自身强弱的自我认识改善信任校准，证明信息交付方式直接塑造用户依赖
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+The promise of human-AI teaming lies in humans and AI working together to achieve performance levels neither could accomplish alone. Effective communication between AI and humans is crucial for teamwork, enabling users to efficiently benefit from AI assistance. This paper investigates how AI communication impacts human-AI team performance. We examine AI explanations that convey an awareness of its strengths and limitations. To achieve this, we train a decision tree on the model's mistakes, allowing it to recognize and explain where and why it might err. Through a user study on an income prediction task, we assess the impact of varying levels of information and explanations about AI predictions. Our results show that AI performance insights enhance task performance, and conveying AI awareness of its strengths and weaknesses improves trust calibration. These findings highlight the importance of considering how information delivery influences user trust and reliance in AI-assisted decision-making.
+
+</details>
+
+### 11. LLMs in Cybersecurity: Friend or Foe in the Human Decision Loop?
+
+📄 [arXiv](https://arxiv.org/abs/2509.06595)　📅 2025-09
+
+**关键词**：`analysis`、`automation bias`、`cognitive diversity`、`security decision-making`
+
+👤 **作者**：Irdin Pekaric、Philipp Zech、Tom Mattson
+
+- 🎯 **研究动机**：LLM 作为认知协作者提升准确率的同时可能侵蚀独立推理、促成过度依赖与决策同质化，安全关键情境下缺乏检验
+- 🔬 **研究方法**：两组探索性焦点小组（无辅助 vs LLM 辅助），测量决策准确率、行为韧性与依赖动态
+- 📌 **结论**：LLM 提升常规决策的准确性与一致性，但降低认知多样性并加剧 automation bias（低韧性用户尤甚）；高韧性个体则能有效利用 LLM，说明认知特质调节 AI 收益
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large Language Models (LLMs) are transforming human decision-making by acting as cognitive collaborators. Yet, this promise comes with a paradox: while LLMs can improve accuracy, they may also erode independent reasoning, promote over-reliance and homogenize decisions. In this paper, we investigate how LLMs shape human judgment in security-critical contexts. Through two exploratory focus groups (unaided and LLM-supported), we assess decision accuracy, behavioral resilience and reliance dynamics. Our findings reveal that while LLMs enhance accuracy and consistency in routine decisions, they can inadvertently reduce cognitive diversity and improve automation bias, which is especially the case among users with lower resilience. In contrast, high-resilience individuals leverage LLMs more effectively, suggesting that cognitive traits mediate AI benefit.
+
+</details>
+
+### 12. Editing with AI: How Doctors Refine LLM-Generated Answers to Patient Queries
+
+📄 [arXiv](https://arxiv.org/abs/2511.19940)　📅 2025-11
+
+**关键词**：`analysis`、`clinical oversight`、`automation bias`、`draft-editing workflow`
+
+👤 **作者**：Rahul Sharma、Pragnya Ramjee、Kaushik Murali、Mohit Jain
+
+- 🎯 **研究动机**：LLM 为临床医生生成患者问答草稿日益普遍，但医生如何修订这些草稿及其中的人因风险缺乏研究
+- 🔬 **研究方法**：9 名眼科医生在 144 个白内障手术问题上跨三种条件（从零撰写、直接编辑 LLM 草稿、指令式间接编辑）的混合方法研究
+- 📌 **结论**：LLM 输出总体准确但偶发错误与 automation bias 证明人工监督必要；间接编辑省力但引入错误，直接编辑精确但负担高，本地化改写是主要编辑形态
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Patients frequently seek information during their medical journeys, but the rising volume of digital patient messages has strained healthcare systems. Large language models (LLMs) offer promise in generating draft responses for clinicians, yet how physicians refine these drafts remains underexplored. We present a mixed-methods study with nine ophthalmologists answering 144 cataract surgery questions across three conditions: writing from scratch, directly editing LLM drafts, and instruction-based indirect editing. Our quantitative and qualitative analyses reveal that while LLM outputs were generally accurate, occasional errors and automation bias revealed the need for human oversight. Contextualization--adapting generic answers to local practices and patient expectations--emerged as a dominant form of editing. Editing workflows revealed trade-offs: indirect editing reduced effort but introduced errors, while direct editing ensured precision but with higher workload. We conclude with design and policy implications for building safe, scalable LLM-assisted clinical communication systems.
+
+</details>
+
+### 13. Explainable AI as a Double-Edged Sword in Dermatology: The Impact on Clinicians versus The Public
+
+📄 [arXiv](https://arxiv.org/abs/2512.12500)　📅 2025-12
+
+**关键词**：`analysis`、`automation bias`、`XAI over-reliance`、`expertise moderation`
+
+👤 **作者**：Xuhai Xu、…、Marzyeh Ghassemi
+
+- 🎯 **研究动机**：可解释 AI 旨在支持人机交互，却有证据显示其悖论性地诱发过度依赖或偏见，且对专家与公众的影响可能不同
+- 🔬 **研究方法**：两个大尺度实验（623 名普通人、153 名初级保健医生）结合公平性诊断模型与多种 XAI 解释，检验 LLM 解释对诊断表现的影响
+- 📌 **结论**：肤色均衡的 AI 辅助提升准确率并缩小差距，但 LLM 解释使普通用户出现更强 automation bias（AI 对时增益、错时受损），资深医生则保持韧性；先呈现 AI 建议在 AI 错误时拖累两组
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Artificial intelligence (AI) is increasingly permeating healthcare, from physician assistants to consumer applications. Since AI algorithm's opacity challenges human interaction, explainable AI (XAI) addresses this by providing AI decision-making insight, but evidence suggests XAI can paradoxically induce over-reliance or bias. We present results from two large-scale experiments (623 lay people; 153 primary care physicians, PCPs) combining a fairness-based diagnosis AI model and different XAI explanations to examine how XAI assistance, particularly multimodal large language models (LLMs), influences diagnostic performance. AI assistance balanced across skin tones improved accuracy and reduced diagnostic disparities. However, LLM explanations yielded divergent effects: lay users showed higher automation bias - accuracy boosted when AI was correct, reduced when AI erred - while experienced PCPs remained resilient, benefiting irrespective of AI accuracy. Presenting AI suggestions first also led to worse outcomes when the AI was incorrect for both groups. These findings highlight XAI's varying impact based on expertise and timing, underscoring LLMs as a "double-edged sword" in medical AI and informing future human-AI collaborative system design.
+
+</details>
+
+### 14. The LLM Fallacy: Misattribution in AI-Assisted Cognitive Workflows
+
+📄 [arXiv](https://arxiv.org/abs/2604.14807)　📅 2026-04
+
+**关键词**：`analysis`、`capability misattribution`、`automation bias`、`perceived competence`
+
+👤 **作者**：Hyunwoo Kim、Harin Yu、Hanau Yi
+
+- 🎯 **研究动机**：LLM 使用如何重塑用户对自身能力的认知此前缺乏概念化
+- 🔬 **研究方法**：提出 LLM fallacy 概念框架：个体把 LLM 辅助产出误当作自身独立能力的证据，造成感知与实际能力的系统性背离；置于 automation bias 与认知卸载文献中并给出跨领域表现类型学
+- 📌 **结论**：LLM 的不透明、流畅与低摩擦交互掩盖人机贡献边界，使用户从产出而非过程推断能力，对教育、招聘与 AI 素养提出直接挑战
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+The rapid integration of large language models (LLMs) into everyday workflows has transformed how individuals perform cognitive tasks such as writing, programming, analysis, and multilingual communication. While prior research has focused on model reliability, hallucination, and user trust calibration, less attention has been given to how LLM usage reshapes users' perceptions of their own capabilities. This paper introduces the LLM fallacy, a cognitive attribution error in which individuals misinterpret LLM-assisted outputs as evidence of their own independent competence, producing a systematic divergence between perceived and actual capability. We argue that the opacity, fluency, and low-friction interaction patterns of LLMs obscure the boundary between human and machine contribution, leading users to infer competence from outputs rather than from the processes that generate them. We situate the LLM fallacy within existing literature on automation bias, cognitive offloading, and human-AI collaboration, while distinguishing it as a form of attributional distortion specific to AI-mediated workflows. We propose a conceptual framework of its underlying mechanisms and a typology of manifestations across computational, linguistic, analytical, and creative domains. Finally, we examine implications for education, hiring, and AI literacy, and outline directions for empirical validation. We also provide a transparent account of human-AI collaborative methodology. This work establishes a foundation for understanding how generative AI systems not only augment cognitive performance but also reshape self-perception and perceived expertise.
+
+</details>
+
+### 15. Warning About AI Fallibility Increases Help-Seeking in an Intelligent Tutoring System
+
+📄 [arXiv](https://arxiv.org/abs/2606.03822)　📅 2026-06
+
+**关键词**：`analysis`、`risk communication`、`transparency intervention`、`help-seeking behavior`
+
+👤 **作者**：Tomohiro Nagashima、Mirella Hladký、Vera Rief
+
+- 🎯 **研究动机**：AI 学习环境存在幻觉风险，轻量透明性干预（告知系统可能出错）是否改变学习者行为缺乏实验证据
+- 🔬 **研究方法**：252 名学生的课堂实验：数学智能辅导系统的两版本（含/不含 AI 可能出错的警告），用日志分析求助行为、错误率与用时
+- 📌 **结论**：被警告的学生显著请求更多提示（系统实际行为完全相同），说明轻量透明干预能改变交互策略而不必然改善或损害即时表现
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Recent work in Technology-Enhanced Learning and Human-Computer Interaction highlights the importance of transparency and trust calibration in AI-supported learning environments as they pose a risk of hallucinations. In this study, we investigate whether a simple transparency intervention that warns students that a pedagogical agent may make mistakes affects learner behavior in a math intelligent tutoring system. We conducted a classroom experiment with 252 school students using two system versions: one including a warning message about potential system errors, and one that does not mention potential errors. Using log data, we analyzed students' problem-solving performance data, including help-seeking behavior, error rate, and time-on-task. Results show that students who were warned about potential AI errors requested significantly more hints than those in the other condition, even though the actual system behavior was exactly the same. This finding suggests that lightweight transparency interventions can influence learners' interaction strategies without necessarily improving or impairing immediate performance.
+
+</details>
+
+### 16. Habituation at the Gate: Rising Approval and Declining Scrutiny in Human Review of AI Agent Code
+
+📄 [arXiv](https://arxiv.org/abs/2606.22721)　📅 2026-06
+
+**关键词**：`analysis`、`oversight failure`、`reviewer habituation`、`longitudinal measurement`
+
+👤 **作者**：Haoran Yu、…、Yihang Chen
+
+- 🎯 **研究动机**：AI 编码代理大规模提交 PR 时，人类审阅者对 AI 代码的审查是否会随时间松懈是监督有效性的核心问题
+- 🔬 **研究方法**：AIDev 数据集上 400 名重复审阅者 7 个月内 11,429 次审查的审阅者内纵向分析，比较各审阅者早晚期审查行为并控制日历时间、PR 难度
+- 📌 **结论**：批准率从 30.1% 升至 36.8%（p<10⁻⁶），十分位累计差距 +14.5pp 且为经验驱动、agent 特异；同时审查排队时间增 3.5 倍而行内评论量降 22%，最符合负荷增长下的反射性习惯化而非理性信任校准
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+As AI coding agents (e.g., GitHub Copilot, Devin, OpenAI Codex, Cursor) submit pull requests to open-source repositories at scale, a key question arises: do human reviewers gradually lower their scrutiny for AI-generated code over time? We conduct a longitudinal within-reviewer analysis using the AIDev dataset, studying 400 repeat reviewers who collectively submitted 11,429 reviews over a seven-month observation period. Comparing each reviewer's early and late review episodes, we observe a population-level shift in approval rate from 30.1% to 36.8% (Wilcoxon signed-rank p &lt; 10^{-6} on paired shifts). Pooled by within-reviewer experience decile, the cumulative gap reaches +14.5 pp from first to tenth decile. This shift is experience-driven (persists after controlling for calendar time), agent-specific (human PR approval rates decline over the same period), and not explained by PR difficulty (median PR size is flat). However, review latency increases rather than decreases (+3.5x), while inline comment volume decreases (-22%, p=0.0014), suggesting reviewers spend more time in queue but less time actively inspecting code. The combination of rising approval, declining comment effort, and increasing queue time is most consistent with reflexive habituation under growing workload rather than rational trust calibration alone.
+
+</details>
+
+### 17. AI Agents Push Humans Out of the Loop
+
+📄 [arXiv](https://arxiv.org/abs/2608.23642)　📅 2026-08
+
+**关键词**：`analysis`、`oversight degradation`、`skill atrophy`、`agent design affordance`
+
+👤 **作者**：Margaret Mitchell、Avijit Ghosh、Samir Passi
+
+- 🎯 **研究动机**：人类监督常被当作 AI agent 自治风险的默认解药，但当前 agent 设计可能恰恰在削弱有效监督所需的认知能力
+- 🔬 **研究方法**：立场论文：把自动化与 HCI 研究连接到 AI agent 流程，论证现有开发部署方式不支持有效监督反而促其退化，并给出设计层可供性与组织协议
+- 📌 **结论**：应把监督者的情境目标与认知需求置于与 agent 能力同等的重要性，否则 agent 系统将持续被动侵蚀其赖以存在的人类技能
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+AI agents pose significant risks as they are granted increasing autonomy. A commonly proposed solution is human oversight and keeping a ''human in the loop'', but this is not a simple solution: Not only do current approaches to AI agent design impede effective human oversight, but the cognitive capacities required for it are also themselves degraded by extended use of AI systems. This position paper argues that current approaches to the development and deployment of AI agent systems do not support effective human oversight -- they contribute to its degradation. To address this, a top priority in the advancement of AI agents should be supporting the situated goals and cognitive requirements of effective human oversight, treating the human needs of overseers at the same level of importance as AI agent capability. To put this idea into practice, we connect work on automation and human-computer interaction to AI agent processes, outlining design-level affordances and organizational protocols that (1) support overseers in exercising critical judgement and (2) counteract the skill atrophy that arises from extended use of automation. We urge developers and deployers to adopt these or similar approaches. Without explicit support for the cognitive demands of effective human-agent interaction, AI agent systems will continue to passively incentivize the degradation of the very human skills they rely on.
+
+</details>
+
+### 18. When Review Alone No Longer Scales: Layered Supervision in AI-Assisted Software Engineering
+
+📄 [arXiv](https://arxiv.org/abs/2608.26316)　📅 2026-08
+
+**关键词**：`analysis`、`supervision scaling`、`guardrail layering`、`oversight restructuring`
+
+👤 **作者**：Markus Stolze、Mirco Strässle
+
+- 🎯 **研究动机**：高吞吐 AI 辅助开发使代码审查等既有 guardrail 承压，组织如何重新分配监督工作知之甚少
+- 🔬 **研究方法**：五位软件工程从业者的定性访谈加更大范围从业者调查，追踪 guardrail 机制在 AI 生成洪流下的演化
+- 📌 **结论**：组织把监督分布到预防性（架构意图外化为机器可解释形式）、可执行（lint/测试/CI-CD 复用为可扩展监督设施）与人类监督（从逐行检查转向架构推理与可维护性）三层，单一 guardrail 不再独自承担监督负载
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+AI-assisted development tools enable software engineers to generate implementations at substantially higher speed and volume than in traditional workflows. Software teams have long relied on guardrails -- standing control mechanisms such as code review, linting, testing, and CI/CD pipelines -- to maintain quality and coordination. High-throughput AI-assisted generation increases pressure on these guardrails -- straining their capacity to keep pace with the volume and rate of generated changes -- and reshapes how organizations supervise development workflows, yet relatively little is known about how existing guardrails evolve in response. We conducted a qualitative interview study with five software engineering practitioners, situated within a broader practitioner survey. Our findings indicate that organizations distribute the work of supervision across multiple guardrail layers: preventive guardrails (produced by externalizing architectural intent and conventions into machine-interpretable form), executable guardrails (linting, testing, and CI/CD repurposed as scalable supervision infrastructure), and human oversight (shifting from line-by-line inspection toward supervisory interpretation focused on architectural reasoning, explainability, and long-term maintainability). We characterize this as a transition from review- centric guardrails toward layered supervision, in which no single guardrail carries the supervision load alone.
 
 </details>

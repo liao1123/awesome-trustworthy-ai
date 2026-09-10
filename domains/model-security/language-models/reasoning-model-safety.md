@@ -178,26 +178,7 @@ Agentic language models operate in a fundamentally different safety regime than 
 
 </details>
 
-### 10. Thinking-Based Non-Thinking: Solving the Reward Hacking Problem in Training Hybrid Reasoning Models via Reinforcement Learning
-
-🎓 [Official](https://aclanthology.org/2026.acl-long.2122/)　📅 2026　🏷 ACL 2026
-
-**关键词**：`analysis`、`reasoning safety`、`reward hacking`、`reasoning model`、`deceptive behavior`
-
-👤 **作者**：Siyuan Gan、…、Yang Gao
-
-- 🎯 **研究动机**：RL 训练混合推理模型存在 reward hacking：模型实际思考却被判为未思考而获错误奖励；SFT 成本高、统一 token 上限缓解有限
-- 🔬 **研究方法**：提出 TNT：不做 SFT，利用带思考响应的解组件信息为不同查询的非思考响应设置差异化最大 token 用量
-- 📌 **结论**：五个数学基准上较 DeepSeek-R1-Distill-Qwen-1.5B/7B 与 DeepScaleR-1.5B 减少约 50% token 且精度显著提升，非思考响应的 reward hacking 概率全程低于 10%
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Large reasoning models (LRMs) have attracted much attention due to their exceptional performance. However, their performance mainly stems from thinking, a long Chain of Thought (CoT), which significantly increase computational overhead. To address this overthinking problem, existing work focuses on using reinforcement learning (RL) to train hybrid reasoning models that automatically decide whether to engage in thinking or not based on the complexity of the query. Unfortunately, using RL will suffer the the reward hacking problem, e.g., the model engages in thinking but is judged as not doing so, resulting in incorrect rewards.To mitigate this problem, existing works either employ supervised fine-tuning (SFT), which incurs high computational costs, or enforce uniform token limits on non-thinking responses, which yields limited mitigation of the problem.In this paper, we propose Thinking-Based Non-Thinking (TNT). It does not employ SFT, and sets different maximum token usage for responses not using thinking across various queries by leveraging information from the solution component of the responses using thinking. Experiments on five mathematical benchmarks demonstrate that TNT reduces token usage by around 50\\%$ compared to DeepSeek-R1-Distill-Qwen-1.5B/7B and DeepScaleR-1.5B, while significantly improving accuracy. In fact, TNT achieves the optimal trade-off between accuracy and efficiency among all tested methods. Additionally, the probability of reward hacking problem in TNT’s responses, which are classified as not using thinking, remains below $10\\%$ across all tested datasets.
-
-</details>
-
-### 11. Safety Recovery in Reasoning Models Is Only a Few Early Steering Steps Away
+### 10. Safety Recovery in Reasoning Models Is Only a Few Early Steering Steps Away
 
 📄 [arXiv](https://arxiv.org/abs/2602.11096) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61339)　📅 2026　🏷 ICML 2026
 
@@ -216,7 +197,7 @@ Reinforcement learning (RL) based post-training for explicit chain-of-thought (e
 
 </details>
 
-### 12. SafeAdapt: Safety Alignment with Adaptive Thinking Allocation for Large Reasoning Models
+### 11. SafeAdapt: Safety Alignment with Adaptive Thinking Allocation for Large Reasoning Models
 
 🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/song-jiazheng)　📅 2026　🏷 USENIX Security 2026
 
@@ -235,7 +216,7 @@ Reasoning models have garnered growing importance as their strong Chain-of-Thoug
 
 </details>
 
-### 13. Reasoning Structure Matters for Safety Alignment of Reasoning Models
+### 12. Reasoning Structure Matters for Safety Alignment of Reasoning Models
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.240/)　📅 2026　🏷 ACL 2026
 
@@ -254,7 +235,7 @@ Large reasoning models (LRMs) achieve strong performance on complex reasoning ta
 
 </details>
 
-### 14. ReasoningGuard: Safeguarding Large Reasoning Models with Inference-time Safety Aha Moments
+### 13. ReasoningGuard: Safeguarding Large Reasoning Models with Inference-time Safety Aha Moments
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1453/)　📅 2026　🏷 ACL 2026
 
@@ -273,7 +254,7 @@ Large Reasoning Models (LRMs) have demonstrated impressive performance in reason
 
 </details>
 
-### 15. PAM: Enhancing General Alignment of Large Reasoning Models through Priority-Aware Metacognition
+### 14. PAM: Enhancing General Alignment of Large Reasoning Models through Priority-Aware Metacognition
 
 🌐 [Project](https://anonymous.4open.science/r/PAM-RM-02DF) · 🎓 [Official](https://aclanthology.org/2026.acl-long.432/)　📅 2026　🏷 ACL 2026
 
@@ -292,7 +273,7 @@ Recent advancements in Large Reasoning Models (LRMs) have showcased strong perfo
 
 </details>
 
-### 16. Mitigating Safety Context Amnesia in Multimodal Reasoning Models via Intent-Guided Safety Reasoning
+### 15. Mitigating Safety Context Amnesia in Multimodal Reasoning Models via Intent-Guided Safety Reasoning
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1821/)　📅 2026　🏷 ACL 2026
 
@@ -311,26 +292,7 @@ Recent advances in Multimodal Large Reasoning Models (MLRMs) have enabled explic
 
 </details>
 
-### 17. Mind the (DH) Gap! A Contrast in Risky Choices Between Reasoning and Conversational LLMs
-
-🎓 [Official](https://aclanthology.org/2026.acl-long.479/)　📅 2026　🏷 ACL 2026
-
-**关键词**：`analysis`、`reasoning safety`、`reasoning model`、`safety degradation`、`deceptive behavior`、`behavioral monitoring`
-
-👤 **作者**：Luise Ge、Yongyan Zhang、Yevgeniy Vorobeychik
-
-- 🎯 **研究动机**：LLM 作决策支持时的不确定下决策行为理解有限，缺前景表示与决策理由两维度的系统对比
-- 🔬 **研究方法**：对 20 个前沿与开源 LLM 做风险选择对比研究（显式 vs 经验式前景、解释影响），配人类被试实验与理性 agent 两个参照
-- 📌 **结论**：推理模型趋理性、对顺序/框架/解释不敏感且 DH gap 小；对话模型显著欠理性、更拟人且 description-history gap 大；数学推理训练是关键差异因素
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-The use of large language models either as decision support systems, or in agentic workflows, is rapidly transforming the digital ecosystem. However, the understanding of LLM decision-making under uncertainty remains limited. We initiate a comparative study of LLM risky choices along two dimensions: (1) prospect representation (explicit vs. experience-based) and (2) decision rationale (explanation). Our study, which involves 20 frontier and open LLMs, is complemented by a matched human subjects experiment, which provides one reference point, while an expected payoff maximizing rational agent model provides another. We find that LLMs cluster into two categories: reasoning models (RMs) and conversational models (CMs). RMs tend towards rational behavior, are insensitive to the order of prospects, gain/loss framing, and explanations, and behave similarly whether prospects are explicit or presented via experience history. CMs are significantly less rational, slightly more human-like, sensitive to prospect ordering, framing, and explanation, and exhibit a large description-history gap. Paired comparisons of open LLMs suggest that a key factor differentiating RMs and CMs is training for mathematical reasoning.
-
-</details>
-
-### 18. How Should We Enhance the Safety of Large Reasoning Models: An Empirical Study
+### 16. How Should We Enhance the Safety of Large Reasoning Models: An Empirical Study
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.936/)　📅 2026　🏷 ACL 2026
 
@@ -349,7 +311,7 @@ Large Reasoning Models (LRMs) have achieved remarkable success on reasoning-inte
 
 </details>
 
-### 19. Refusal Falls off a Cliff: How Safety Alignment Fails in Reasoning?
+### 17. Refusal Falls off a Cliff: How Safety Alignment Fails in Reasoning?
 
 📄 [arXiv](https://arxiv.org/abs/2510.06036) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2025-10
 
@@ -368,7 +330,7 @@ Large reasoning models (LRMs) with multi-step reasoning capabilities have shown 
 
 </details>
 
-### 20. Reasoning Introduces New Poisoning Attacks Yet Makes Them More Complicated
+### 18. Reasoning Introduces New Poisoning Attacks Yet Makes Them More Complicated
 
 📄 [arXiv](https://arxiv.org/abs/2509.05739) · 🎓 [Official](https://satml.org/2026/accepted-papers/)　📅 2025-09　🏷 SaTML 2026
 
@@ -387,7 +349,7 @@ Early research into data poisoning attacks against Large Language Models (LLMs) 
 
 </details>
 
-### 21. EchoCoT: Extracting Hidden Chain-of-Thought from Large Reasoning Models
+### 19. EchoCoT: Extracting Hidden Chain-of-Thought from Large Reasoning Models
 
 📄 [arXiv](https://arxiv.org/abs/2608.20055)　📅 2026-08
 
@@ -406,7 +368,7 @@ Hidden chain-of-thought (CoT) traces, especially those from frontier proprietary
 
 </details>
 
-### 22. Overthinking: Amplifying Reasoning Weights to Extract Learned Secrets
+### 20. Overthinking: Amplifying Reasoning Weights to Extract Learned Secrets
 
 📄 [arXiv](https://arxiv.org/abs/2607.08173) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63085)　📅 2026-07　🏷 ICML 2026
 
@@ -425,7 +387,7 @@ Black box auditing of language models is an essential pre-deployment tool, but i
 
 </details>
 
-### 23. AdversarialCoT: Single-Document Retrieval Poisoning for LLM Reasoning
+### 21. AdversarialCoT: Single-Document Retrieval Poisoning for LLM Reasoning
 
 📄 [arXiv](https://arxiv.org/abs/2604.12201) · 🌐 [Project](https://doi.org/10.1145/3805712.3809838)　📅 2026-04　🏷 SIGIR 2026
 
@@ -444,7 +406,7 @@ Retrieval-augmented generation (RAG) enhances large language model (LLM) reasoni
 
 </details>
 
-### 24. Mitigating Reasoning-Induced Misalignment via Safety-Direction Penalty
+### 22. Mitigating Reasoning-Induced Misalignment via Safety-Direction Penalty
 
 📄 [arXiv](https://arxiv.org/abs/2608.23497)　📅 2026-08
 
@@ -463,7 +425,7 @@ Reasoning-Induced Misalignment, where fine-tuning on reasoning data containing n
 
 </details>
 
-### 25. Internalizing Safety Understanding in Large Reasoning Models via Verification
+### 23. Internalizing Safety Understanding in Large Reasoning Models via Verification
 
 📄 [arXiv](https://arxiv.org/abs/2605.08930) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63605)　📅 2026-05　🏷 ICML 2026
 
@@ -482,7 +444,7 @@ While explicit Chain-of-Thought (CoT) empowers large reasoning models (LRMs), it
 
 </details>
 
-### 26. INTENT-AS-A-TOOL Makes it Easy to Track Agentic Misalignment
+### 24. INTENT-AS-A-TOOL Makes it Easy to Track Agentic Misalignment
 
 📄 [arXiv](https://arxiv.org/abs/2608.27348)　📅 2026-08
 
@@ -501,7 +463,7 @@ As large language models (LLMs) are deployed as autonomous agents, safety failur
 
 </details>
 
-### 27. Chain-of-Thought Monitoring Can Be Unreliable in Implicit-Influence Settings
+### 25. Chain-of-Thought Monitoring Can Be Unreliable in Implicit-Influence Settings
 
 📄 [arXiv](https://arxiv.org/abs/2608.04735)　📅 2026-08
 
@@ -520,7 +482,7 @@ Chain-of-thought (CoT) monitoring is increasingly treated as an important safety
 
 </details>
 
-### 28. Real-Time Monitoring and Calibration of Chain-of-Thought Sycophancy in Large Reasoning Models
+### 26. Real-Time Monitoring and Calibration of Chain-of-Thought Sycophancy in Large Reasoning Models
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/61298)　📅 2026　🏷 ICML 2026
 
@@ -539,7 +501,7 @@ Large Reasoning Models (LRMs) suffer from sycophantic behavior, where models ten
 
 </details>
 
-### 29. AKRASIA: Stealthy Backdoor Attack on Reasoning-based Code LLMs
+### 27. AKRASIA: Stealthy Backdoor Attack on Reasoning-based Code LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2609.01023)　📅 2026-09
 
@@ -558,26 +520,7 @@ We present AKRASIA, a stealthy, inference-time backdoor attack against reasoning
 
 </details>
 
-### 30. Reasoning Models Are Test Exploiters: Rethinking Multiple Choice
-
-📄 [arXiv](https://arxiv.org/abs/2507.15337) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64875)　📅 2026　🏷 ICML 2026
-
-**关键词**：`attack`、`analysis`、`reasoning model`、`safety degradation`、`inference-time risk`、`AI control`
-
-👤 **作者**：Narun Raman、Taylor Lundy、Kevin Leyton-Brown
-
-- 🎯 **研究动机**：MCQA 让模型接触答案选项，推理模型会利用选项虚增测量到的推理能力
-- 🔬 **研究方法**：系统改变选项暴露时机与方式，覆盖 15 个问答基准与 27 个 LLM，设计探针分离仅选项与问题加选项两条利用路径
-- 📌 **结论**：非推理模型在先思考后看选项时可保持代理有效性，推理模型必然对选项推理，产生相对自由文本的大幅虚高；给出 MCQA 使用指南
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-When evaluating Large Language Models (LLMs) in question-answering domains, multiple-choice question answering (MCQA) is widely used because it enables automatic grading. However, MCQA also exposes models to answer options that can be exploited in ways that inflate reasoning ability. We study this phenomenon across $15$ question-answering benchmarks and $27$ LLMs by systematically varying how and when models are exposed to answer options. For non-reasoning LLMs, MCQA can remain a good proxy for free-text performance when any chain-of-thought is produced only before the options are revealed. However, this "decoupled" format is not realizable for most reasoning models: they are designed to emit reasoning tokens whenever they are prompted, so if options are present they inevitably "reason over" the options. In practice, this makes reasoning models particularly effective at extracting signal from options, and can create large, misleading gains over free-text baselines. To characterize how models exploit MCQA, we introduce diagnostic probes that isolate option-only and question-plus-option exploitation pathways, and we quantify how design choices such as distractor strength and "none-of-the-above" answers effect exploitability. Finally, we examined the practice of multiple choice as an error diagnostic: inferring a model's mistake from the wrong option it picks. On benchmarks where reasoning can be expressed as code, we ask models to output code, we then executed it varying the inputs, and compared the resulting input–output behavior, revealing failure modes that MCQA diagnostics obscure. Lastly, we offer practical guidelines when analyzing results from MCQA that better reflect LLMs' genuine reasoning capabilities.
-
-</details>
-
-### 31. Reasoning Hijacking: The Fragility of Reasoning Alignment in Large Language Models
+### 28. Reasoning Hijacking: The Fragility of Reasoning Alignment in Large Language Models
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1698/)　📅 2026　🏷 ACL 2026
 
@@ -596,7 +539,7 @@ Current LLM safety research predominantly focuses on mitigating **Goal Hijacking
 
 </details>
 
-### 32. AutoRAN: Automated Hijacking of Safety Reasoning in Large Reasoning Models
+### 29. AutoRAN: Automated Hijacking of Safety Reasoning in Large Reasoning Models
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1988/)　📅 2026　🏷 ACL 2026
 

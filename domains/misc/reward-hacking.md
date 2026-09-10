@@ -221,26 +221,7 @@ Reinforcement learning for LLMs is vulnerable to reward hacking, where models ex
 
 </details>
 
-### 12. Counterfactual Simulation Training for Chain-of-Thought Faithfulness
-
-📄 [arXiv](https://arxiv.org/abs/2602.20710) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-02
-
-**关键词**：`defense`、`CoT faithfulness`、`counterfactual simulation`、`monitor accuracy`
-
-👤 **作者**：Peter Hase、Christopher Potts
-
-- 🎯 **研究动机**：CoT 忠实性缺陷限制其作为监控与理解手段的价值，缺少直接训练改进的方法
-- 🔬 **研究方法**：CST 奖励使模拟器能据 CoT 在反事实输入上准确预测模型输出，应用于线索型反事实监控与模型型反事实模拟两场景
-- 📌 **结论**：最大 235B 模型上监控准确率提升 35 个百分点；用 LLM 改写不忠实 CoT 比纯 RL 效率高 5 倍
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Inspecting Chain-of-Thought reasoning is among the most common means of understanding why an LLM produced its output. But well-known problems with CoT faithfulness severely limit what insights can be gained from this practice. In this paper, we introduce a training method called Counterfactual Simulation Training (CST), which aims to improve CoT faithfulness by rewarding CoTs that enable a simulator to accurately predict a model's outputs over counterfactual inputs. We apply CST in two settings: (1) CoT monitoring with cue-based counterfactuals, to detect when models rely on spurious features, reward hack, or are sycophantic, and (2) counterfactual simulation over generic model-based counterfactuals, to encourage models to produce more faithful, generalizable reasoning in the CoT. Experiments with models up to 235B parameters show that CST can substantially improve monitor accuracy on cue-based counterfactuals (by 35 accuracy points) as well as simulatability over generic counterfactuals (by 2 points). We further show that: (1) CST outperforms prompting baselines, (2) rewriting unfaithful CoTs with an LLM is 5x more efficient than RL alone, (3) faithfulness improvements do not generalize to dissuading cues (as opposed to persuading cues), and (4) larger models do not show more faithful CoT out of the box, but they do benefit more from CST. These results suggest that CST can improve CoT faithfulness in general, with promising applications for CoT monitoring. Code for experiments in this paper is available at https://github.com/peterbhase/counterfactual-simulation-training
-
-</details>
-
-### 13. Mitigating Reward Hacking in RLHF via Bayesian Non-negative Reward Modeling
+### 12. Mitigating Reward Hacking in RLHF via Bayesian Non-negative Reward Modeling
 
 📄 [arXiv](https://arxiv.org/abs/2602.10623) · 🎓 [Official](https://icml.cc/virtual/2026/poster/65437)　📅 2026-02　🏷 ICML 2026
 
@@ -259,7 +240,7 @@ Reward models learned from human preferences are central to aligning large langu
 
 </details>
 
-### 14. TinyJudge: Unverifiable Constraint Alignment via Lightweight Specialist Ensembles
+### 13. TinyJudge: Unverifiable Constraint Alignment via Lightweight Specialist Ensembles
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1204/)　📅 2026　🏷 ACL 2026
 
@@ -278,7 +259,7 @@ Instruction Following (IF) is a core capability of LLMs, requiring strict adhere
 
 </details>
 
-### 15. Teach a Reward Model to Correct Itself: Reward Guided Adversarial Failure Discovery for Robust Reward Modeling
+### 14. Teach a Reward Model to Correct Itself: Reward Guided Adversarial Failure Discovery for Robust Reward Modeling
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.418/)　📅 2026　🏷 ACL 2026
 
@@ -297,7 +278,7 @@ Reward models (RMs) trained from human preferences are central to aligning large
 
 </details>
 
-### 16. Recontextualization Mitigates Specification Gaming Without Modifying the Specification
+### 15. Recontextualization Mitigates Specification Gaming Without Modifying the Specification
 
 📄 [arXiv](https://arxiv.org/abs/2512.19027) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63916)　📅 2026　🏷 ICML 2026
 
@@ -316,7 +297,7 @@ Developers often struggle to specify correct training labels and rewards. Perhap
 
 </details>
 
-### 17. Mitigating Reward Hacking in LLM-based Recommendation: A Preference Optimization Approach
+### 16. Mitigating Reward Hacking in LLM-based Recommendation: A Preference Optimization Approach
 
 🌐 [Project](https://anonymous.4open.science/r/C557-id) · 🎓 [Official](https://icml.cc/virtual/2026/poster/66384)　📅 2026　🏷 ICML 2026
 
@@ -335,7 +316,7 @@ Post-training adaptation has become the central paradigm for leveraging large la
 
 </details>
 
-### 18. Gradient Regularization Mitigates Reward Hacking in Reinforcement Learning from Human Feedback and Verifiable Rewards
+### 17. Gradient Regularization Mitigates Reward Hacking in Reinforcement Learning from Human Feedback and Verifiable Rewards
 
 📄 [arXiv](https://arxiv.org/abs/2602.18037) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63860)　📅 2026　🏷 ICML 2026
 
@@ -354,7 +335,7 @@ Reinforcement Learning from Human Feedback (RLHF) or Verifiable Rewards (RLVR) a
 
 </details>
 
-### 19. Out of Distribution, Out of Luck: Process Rewards Misguide Reasoning Models
+### 18. Out of Distribution, Out of Luck: Process Rewards Misguide Reasoning Models
 
 🎓 [Official](https://aclanthology.org/2026.eacl-short.31/)　📅 2026-03　🏷 ACL 2026
 
@@ -373,7 +354,7 @@ Process Reward Models (PRMs) have emerged as a promising approach for guiding la
 
 </details>
 
-### 20. Hacking Neural Evaluation Metrics with Single Hub Text
+### 19. Hacking Neural Evaluation Metrics with Single Hub Text
 
 🎓 [Official](https://aclanthology.org/2026.eacl-short.13/)　📅 2026-03　🏷 ACL 2026
 
@@ -392,7 +373,7 @@ Strongly human-correlated evaluation metrics serve as an essential compass for t
 
 </details>
 
-### 21. Adversarial Reward Auditing for Active Detection and Mitigation of Reward Hacking
+### 20. Adversarial Reward Auditing for Active Detection and Mitigation of Reward Hacking
 
 📄 [arXiv](https://arxiv.org/abs/2602.01750) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-02
 
@@ -411,7 +392,7 @@ Reinforcement Learning from Human Feedback (RLHF) remains vulnerable to reward h
 
 </details>
 
-### 22. Hack-Verifiable Terminal Bench: Evaluating Reward Hacking in Terminal Tasks
+### 21. Hack-Verifiable Terminal Bench: Evaluating Reward Hacking in Terminal Tasks
 
 📄 [arXiv](https://arxiv.org/abs/2608.22103) · 🌐 [Project](https://majoroth.github.io/hack-verifiable-environments/hvtb)　📅 2026-08
 
@@ -430,7 +411,7 @@ As agents grow more capable and autonomous, their tendency to reward hack, satis
 
 </details>
 
-### 23. Reward Hacking in Language Model Agents: Revisiting AI Safety Gridworlds
+### 22. Reward Hacking in Language Model Agents: Revisiting AI Safety Gridworlds
 
 📄 [arXiv](https://arxiv.org/abs/2606.15385) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-06
 
@@ -449,7 +430,7 @@ Reward hacking, where AI systems exploit misspecified objectives to achieve high
 
 </details>
 
-### 24. Reward Hacking Benchmark: Measuring Exploits in LLM Agents with Tool Use
+### 23. Reward Hacking Benchmark: Measuring Exploits in LLM Agents with Tool Use
 
 📄 [arXiv](https://arxiv.org/abs/2605.02964) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63289)　📅 2026　🏷 ICML 2026
 
@@ -468,7 +449,7 @@ Reinforcement learning (RL) trained language model agents with tool access are i
 
 </details>
 
-### 25. Benchmarking Reward Hack Detection in Code Environments via Contrastive Analysis
+### 24. Benchmarking Reward Hack Detection in Code Environments via Contrastive Analysis
 
 📄 [arXiv](https://arxiv.org/abs/2601.20103) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63139)　📅 2026　🏷 ICML 2026
 
@@ -487,7 +468,7 @@ Recent advances in reinforcement learning for code generation have made robust e
 
 </details>
 
-### 26. Reward Under Attack: Analyzing the Robustness and Hackability of Process Reward Models
+### 25. Reward Under Attack: Analyzing the Robustness and Hackability of Process Reward Models
 
 📄 [arXiv](https://arxiv.org/abs/2603.06621) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61487)　📅 2026-03　🏷 ICML 2026
 
@@ -506,7 +487,7 @@ Process Reward Models (PRMs) are rapidly becoming the backbone of LLM reasoning 
 
 </details>
 
-### 27. Rubrics as an Attack Surface: Stealthy Preference Drift in LLM Judges
+### 26. Rubrics as an Attack Surface: Stealthy Preference Drift in LLM Judges
 
 📄 [arXiv](https://arxiv.org/abs/2602.13576) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-02
 
@@ -525,7 +506,7 @@ Evaluation and alignment pipelines for large language models increasingly rely o
 
 </details>
 
-### 28. Rubric Curriculum RL: Exploiting the Generation-Verification Gap in Non-Verifiable Domains
+### 27. Rubric Curriculum RL: Exploiting the Generation-Verification Gap in Non-Verifiable Domains
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/64634)　📅 2026　🏷 ICML 2026
 
@@ -544,7 +525,7 @@ Reinforcement learning with verifiable rewards (RLVR) on foundation models has l
 
 </details>
 
-### 29. When AIOps Become "AI Oops": Subverting LLM-driven IT Operations via Telemetry Manipulation
+### 28. When AIOps Become "AI Oops": Subverting LLM-driven IT Operations via Telemetry Manipulation
 
 📄 [arXiv](https://arxiv.org/abs/2508.06394) · 🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/pasquini)　📅 2025-08　🏷 USENIX Security 2026
 
@@ -560,5 +541,62 @@ Reinforcement learning with verifiable rewards (RLVR) on foundation models has l
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 AI for IT Operations (AIOps) is transforming how organizations manage complex software systems by automating anomaly detection, incident diagnosis, and remediation. Modern AIOps solutions increasingly rely on autonomous LLM-based agents to interpret telemetry data and take corrective actions with minimal human intervention, promising faster response times and operational cost savings. In this work, we perform the first security analysis of AIOps solutions, showing that, once again, AI-driven automation comes with a profound security cost. We demonstrate that adversaries can manipulate system telemetry to mislead AIOps agents into taking actions that compromise the integrity of the infrastructure they manage. We introduce techniques to reliably inject telemetry data using error-inducing requests that influence agent behavior through a form of adversarial reward-hacking; plausible but incorrect system error interpretations that steer the agent's decision-making. Our attack methodology, AIOpsDoom, is fully automated--combining reconnaissance, fuzzing, and LLM-driven adversarial input generation--and operates without any prior knowledge of the target system. To counter this threat, we propose AIOpsShield, a defense mechanism that sanitizes telemetry data by exploiting its structured nature and the minimal role of user-generated content. Our experiments show that AIOpsShield reliably blocks telemetry-based attacks without affecting normal agent performance. Ultimately, this work exposes AIOps as an emerging attack vector for system compromise and underscores the urgent need for security-aware AIOps design.
+
+</details>
+
+### 29. Turning Bias into Bugs: Bandit-Guided Style Manipulation Attacks on LLM Judges
+
+📄 [arXiv](https://arxiv.org/abs/2605.26156) · 🎓 [Official](https://icml.cc/virtual/2026/poster/66038)　📅 2026-05　🏷 ICML 2026
+
+**关键词**：`attack`、`algorithmic fairness`、`bias evaluation`、`disparate impact`、`adversarial attack`、`empirical evaluation`
+
+👤 **作者**：Xianglin Yang、Bryan Hooi、Gelei Deng、Tianwei Zhang、Jin Song Dong
+
+- 🎯 **研究动机**：LLM judge 的已知风格偏好（冗长、句式）是被低估的安全漏洞
+- 🔬 **研究方法**：BITE 黑盒框架把保义风格编辑选择建模为上下文 bandit，用 LinUCB 自适应选择最大化评分的编辑，无需参数或梯度访问
+- 📌 **结论**：多 judge 与任务上攻击成功率超 65%、9 分制抬 1-2 分且保持语义等价，可躲过风格控制方法与多种检测基线
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+The known stylistic biases in LLM judges, such as a preference for verbosity or specific sentence structures, present an underexplored security vulnerability. In this work, we introduce BITE (BIas exploraTion and Exploitation), a black-box adversarial framework that learns semantics-preserving edits to mislead an LLM judge and artificially inflate the scores it assigns. We cast the selection of stylistic edits as a contextual bandit problem and use a LinUCB policy to adaptively choose edits that maximize the judge's score without access to model parameters or gradients. Empirically, we test BITE across a diverse range of LLM judges and tasks, including both pointwise and pairwise comparisons on chatbot leaderboards and AI-reviewer benchmarks. BITE achieves an attack success rate exceeding 65% and raises scores by 1-2 points on a 9-point scale, all while preserving semantic equivalence. We further assess the attack's stealthiness, showing that BITE evades standard style-control methods and several detection baselines. Our findings expose a fundamental weakness in the LLM-as-a-judge paradigm and motivate robust, attack-aware evaluation. Our code is available at https://github.com/xianglinyang/llm-as-a-judge-attack.
+
+</details>
+
+### 30. Alignment Risks from Capability-Seeking RL Training
+
+📄 [arXiv](https://arxiv.org/abs/2602.12124) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64024)　📅 2026　🏷 ICML 2026
+
+**关键词**：`analysis`、`CoT monitoring`、`reasoning trace`、`monitorability`、`AI control`、`reinforcement learning`
+
+👤 **作者**：Yujun Zhou、…、Xiangliang Zhang
+
+- 🎯 **研究动机**：能力寻求 RL 训练可能让模型在含隐式漏洞的环境中自发学会利用漏洞，标准性能监控难以察觉
+- 🔬 **研究方法**：设计 context-conditional compliance、proxy metrics、reward tampering、self-evaluation 四类 vulnerability games，检验模型是否自主发现并利用结构性漏洞
+- 📌 **结论**：模型常学会利用漏洞且保留甚至提升正常任务指标；策略可有限迁移、经 SFT 从教师传给学生，且 RL 学到的比 SFT 蒸馏更持久
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+While most AI alignment research focuses on preventing models from generating explicitly harmful content, a more subtle risk arises from capability-seeking RL training in vulnerable environments. We investigate whether language models, when trained with reinforcement learning (RL) in environments with implicit loopholes, can learn to exploit these flaws to maximize reward, even without being explicitly instructed to do so. To test this, we design a suite of four diverse "vulnerability games'', each presenting a structural vulnerability related to context-conditional compliance, proxy metrics, reward tampering, and self-evaluation. Our experiments show that models often learn to exploit these vulnerabilities, discovering opportunistic strategies that increase reward while sometimes preserving or even improving standard task-performance metrics. More critically, we find that these exploitative strategies are not always narrow "tricks'': they can transfer in structured but limited ways, propagate from a capable teacher model to other student models through SFT, and in several cases remain more persistent when learned through RL than when distilled through SFT. Our findings show that alignment risks from capability-seeking RL training can be difficult to detect with standard performance monitoring, suggesting that future AI safety work should extend beyond content moderation to auditing and securing training environments, reward mechanisms, and evaluation channels. Code is available at https://github.com/YujunZhou/Capability-seeking-RL-risk.
+
+</details>
+
+### 31. Detecting and Suppressing Reward Hacking with Gradient Fingerprints
+
+📄 [arXiv](https://arxiv.org/abs/2604.16242) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-04
+
+**关键词**：`detection`、`reward hacking`、`gradient fingerprint`、`model copyright`、`reasoning trace`
+
+👤 **作者**：Songtao Wang、…、Xi Ye
+
+- 🎯 **研究动机**：RLVR 只优化结果奖励，reward hacking 的 CoT 表面合理，纯文本监控难以识别
+- 🔬 **研究方法**：GRIFT 计算给定 prompt 下 CoT 的条件梯度并压缩为紧凑表征，据此判断是否 reward hacking
+- 📌 **结论**：数学、代码与逻辑基准上较 CoT Monitor、TRACE 相对提升超 25%；接入拒绝微调管线可减少 hacking 并提升真实任务表现
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Reinforcement learning with verifiable rewards (RLVR) typically optimizes for outcome rewards without imposing constraints on intermediate reasoning. This leaves training susceptible to reward hacking, where models exploit loopholes (e.g., spurious patterns in training data) in the reward function to achieve high scores without solving the intended task. These reward-hacking behaviors are often implicit, as the intermediate chain-of-thought (CoT) may appear plausible on the surface, limiting the effectiveness of purely text-based monitoring. We propose Gradient Fingerprint (GRIFT), a method for detecting reward hacking using models' internal computations. Given a prompt and a model-generated CoT, GRIFT computes gradients of the CoT conditioned on the prompt and compresses them into a compact representation, which is then used to assess whether the CoT reflects reward hacking behavior. Across verifiable reasoning benchmarks spanning math, code, and logical reasoning, GRIFT substantially outperforms strong baselines, including CoT Monitor and TRACE, achieving over 25% relative improvement in detecting reward hacking behavior. Moreover, integrating GRIFT into the rejection fine-tuning pipeline for reasoning tasks reduces reward hacking and improves performance on the true task objective. Our results highlight a promising direction of leveraging gradient level representations for assessing the quality of CoT reasoning traces. Our code is available at: https://github.com/songtao-x/reward_hack.
 
 </details>

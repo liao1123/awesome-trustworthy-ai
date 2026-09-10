@@ -258,3 +258,100 @@ LLM-based agents have recently attracted significant attention. By leveraging th
 Large Language Models (LLMs) are increasingly deployed as autonomous agents that execute tool-augmented, multi-step tasks, where latency is a critical factor for real-world applications. Yet an overlooked threat is Reasoning-Level Denial-of-Service (R-DoS), in which an attacker preserves task correctness but degrades availability by inflating an agent’s reasoning depth or tool-use budget. We introduce OTora, the first unified, two-stage red-teaming framework for instantiating R-DoS attacks. Stage I optimizes an adversarial trigger that induces targeted tool invocations using insertion-aware scoring and dynamic target co-evolution, supporting both black-box and white-box settings. Stage II generates agent-aware reasoning payloads via an ICL-guided genetic search that amplifies overthinking while maintaining correct task outcomes. Across WebShop, Email, and OS agents built on multiple backbone models such as LLaMA-70B and GPT-OSS-120B, OTora achieves up to 10× increases in reasoning tokens and order-of-magnitude latency slowdowns, all while preserving near-baseline task accuracy. Finally, we discuss mitigation strategies for detecting and constraining abnormal reasoning and latency spikes.
 
 </details>
+
+### 14. When Agents Do Not Stop: Uncovering Infinite Agentic Loops in LLM Agents
+
+📄 [arXiv](https://arxiv.org/abs/2607.01641)　📅 2026-07
+
+**关键词**：`analysis`、`LLM-agent DoS`、`infinite agentic loop`、`static analysis`
+
+👤 **作者**：Xinyi Hou、Shenao Wang、Yanjie Zhao、Haoyu Wang
+
+- 🎯 **研究动机**：agent 迭代执行中反馈路径缺乏有效界定时形成 Infinite Agentic Loops，可把单请求放大为长时模型与工具执行
+- 🔬 **研究方法**：IAL-Scan 静态分析工具：把异构 agent 代码抽象为框架无关 Agent IR，构建 Agentic Loop Dependence Graph 恢复显式与框架诱导的反馈路径，检查其能否无界抵达高开销或状态增长操作
+- 📌 **结论**：扫描 6,549 个 LLM agent 仓库上报 74 个潜在发现，人工确认 47 个项目中的 68 个 IAL 失败，精度 91.9%
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+LLM agents increasingly rely on iterative execution to solve tasks through planning, tool use, state updates, and agent collaboration. While this design enables flexible automation, it also creates a new class of failures: an agent may repeatedly execute model calls, tools, workflow transitions, or agent handoffs when the feedback path is not effectively bounded. We call this problem Infinite Agentic Loops (IALs). IALs are not ordinary programming loops; they arise from the interaction between agent logic, framework semantics, runtime observations, and termination mechanisms. Such failures can amplify a single request into long running model and tool execution, causing cost exhaustion, model denial of service, context growth, and repeated external side effects. We propose IAL-Scan, a static analysis tool for detecting IAL failures in real-world LLM agent projects. IAL-Scan abstracts heterogeneous agent code into a framework independent Agent IR, builds an Agentic Loop Dependence Graph (ALDG) to recover explicit and framework induced feedback paths, and checks whether these paths can repeatedly reach costly or state growing operations without an effective bound. We evaluate IAL-Scan on 6,549 LLM agent repositories. It reports 74 potential findings, among which manual review confirms 68 IAL failures across 47 projects, achieving 91.9% precision.
+
+</details>
+
+### 15. Overthinking Loops in Agents: A Structural Risk via MCP Tools
+
+📄 [arXiv](https://arxiv.org/abs/2602.14798)　📅 2026-02
+
+**关键词**：`attack`、`LLM-agent DoS`、`MCP tool supply chain`、`structural overthinking`
+
+👤 **作者**：Yohan Lee、Jisoo Jang、Seoyeon Choi、Sangyeop Kim、Seungtaek Choi
+
+- 🎯 **研究动机**：恶意 MCP 工具服务器可与正常工具共同注册，文本可见元数据的便利构成供应链攻击面
+- 🔬 **研究方法**：形式化 structural overthinking attack（区别于 token 级冗长）：实现 14 个跨三个服务器的恶意工具，使个别合理工具调用组成循环轨迹，触发重复、强制精炼与分心
+- 📌 **结论**：异构注册表与多个工具模型上最高 142.4 倍 token 放大并可劣化任务结果；解码期简洁控制不能可靠阻止循环诱导，防御需面向工具调用结构
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Tool-using LLM agents increasingly coordinate real workloads by selecting and chaining third-party tools based on text-visible metadata such as tool names, descriptions, and return messages. We show that this convenience creates a supply-chain attack surface: a malicious MCP tool server can be co-registered alongside normal tools and induce overthinking loops, where individually trivial or plausible tool calls compose into cyclic trajectories that inflate end-to-end tokens and latency without any single step looking abnormal. We formalize this as a structural overthinking attack, distinguishable from token-level verbosity, and implement 14 malicious tools across three servers that trigger repetition, forced refinement, and distraction. Across heterogeneous registries and multiple tool-capable models, the attack causes severe resource amplification (up to $142.4\times$ tokens) and can degrade task outcomes. Finally, we find that decoding-time concision controls do not reliably prevent loop induction, suggesting defenses should reason about tool-call structure rather than tokens alone.
+
+</details>
+
+### 16. Clawdrain: Exploiting Tool-Calling Chains for Stealthy Token Exhaustion in OpenClaw Agents
+
+📄 [arXiv](https://arxiv.org/abs/2603.00902)　📅 2026-03
+
+**关键词**：`attack`、`LLM-agent DoS`、`trojanized skill`、`token exhaustion`
+
+👤 **作者**：Ben Dong、Hui Feng、Qian Wang
+
+- 🎯 **研究动机**：OpenClaw 等自托管 generative agent 的社区技能生态扩张速度超过系统化安全评估
+- 🔬 **研究方法**：Clawdrain 木马化技能经 SKILL.md 指令与伴随脚本建立多轮分段验证协议，返回 PROGRESS/REPAIR/TERMINAL 信号拖长工具链，并在生产级实例与真实 API 计费下部署测量
+- 📌 **结论**：Gemini 2.5 Pro 上 6-7 倍 token 放大、失败配置约 9 倍；agent 自主组合 shell/Python 等通用工具绕行脆弱协议会降低放大并改变攻击动态
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Modern generative agents such as OpenClaw - an open-source, self-hosted personal assistant with a community skill ecosystem, are gaining attention and are used pervasively. However, the openness and rapid growth of these ecosystems often outpace systematic security evaluation. In this paper, we design, implement, and evaluate Clawdrain, a Trojanized skill that induces a multi-turn "Segmented Verification Protocol" via injected SKILL.md instructions and a companion script that returns PROGRESS/REPAIR/TERMINAL signals. We deploy Clawdrain in a production-like OpenClaw instance with real API billing and a production model (Gemini 2.5 Pro), and we measure 6-7x token amplification over a benign baseline, with a costly, failure configuration reaching approximately 9x. We observe a deployment-only phenomenon: the agent autonomously composes general-purpose tools (e.g., shell/Python) to route around brittle protocol steps, reducing amplification and altering attack dynamics. Finally, we identify production vectors enabled by OpenClaw's architecture, including SKILL.md prompt bloat, persistent tool-output pollution, cron/heartbeat frequency amplification, and behavioral instruction injection. Overall, we demonstrate that token-drain attacks remain feasible in real deployments, but their magnitude and observability are shaped by tool composition, recovery behavior, and interface design.
+
+</details>
+
+### 17. LeechHijack: Covert Computational Resource Exploitation in Intelligent Agent Systems
+
+📄 [arXiv](https://arxiv.org/abs/2512.02321)　📅 2025-12
+
+**关键词**：`attack`、`LLM-agent DoS`、`implicit toxicity`、`compute hijacking`
+
+👤 **作者**：Yuanhe Zhang、…、Sen Su
+
+- 🎯 **研究动机**：MCP 对第三方工具提供者的隐式信任是被忽视的安全假设，恶意行为可以完全发生在显式权限范围内
+- 🔬 **研究方法**：LeechHijack 形式化 implicit toxicity 攻击向量：植入阶段在工具中嵌入看似无害的后门，利用阶段经预定义触发建立命令控制通道，注入额外任务让 agent 当作正常工作流执行以寄生用户算力
+- 📌 **结论**：四大 LLM 家族上平均成功率 77.25%、相对基线 18.62% 的资源开销，凸显计算溯源与资源证明机制的紧迫性
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large Language Model (LLM)-based agents have demonstrated remarkable capabilities in reasoning, planning, and tool usage. The recently proposed Model Context Protocol (MCP) has emerged as a unifying framework for integrating external tools into agent systems, enabling a thriving open ecosystem of community-built functionalities. However, the openness and composability that make MCP appealing also introduce a critical yet overlooked security assumption -- implicit trust in third-party tool providers. In this work, we identify and formalize a new class of attacks that exploit this trust boundary without violating explicit permissions. We term this new attack vector implicit toxicity, where malicious behaviors occur entirely within the allowed privilege scope. We propose LeechHijack, a Latent Embedded Exploit for Computation Hijacking, in which an adversarial MCP tool covertly expropriates the agent's computational resources for unauthorized workloads. LeechHijack operates through a two-stage mechanism: an implantation stage that embeds a benign-looking backdoor in a tool, and an exploitation stage where the backdoor activates upon predefined triggers to establish a command-and-control channel. Through this channel, the attacker injects additional tasks that the agent executes as if they were part of its normal workflow, effectively parasitizing the user's compute budget. We implement LeechHijack across four major LLM families. Experiments show that LeechHijack achieves an average success rate of 77.25%, with a resource overhead of 18.62% compared to the baseline. This study highlights the urgent need for computational provenance and resource attestation mechanisms to safeguard the emerging MCP ecosystem.
+
+</details>
+
+## 检测与防御
+
+### 18. SHIELD: An Auto-Healing Agentic Defense Framework for LLM Resource Exhaustion Attacks
+
+📄 [arXiv](https://arxiv.org/abs/2601.19174)　📅 2026-01
+
+**关键词**：`defense`、`LLM DoS`、`agentic defense`、`auto-healing`
+
+👤 **作者**：Nirhoshan Sivaroopan、…、Wangli Yang
+
+- 🎯 **研究动机**：既有 sponge 攻击防御依赖统计滤波（漏掉语义攻击）或静态 LLM 检测器（难以适应演化攻击策略）
+- 🔬 **研究方法**：SHIELD 多智能体自愈防御：三阶段 Defense Agent 整合语义相似检索、模式匹配与 LLM 推理，知识更新与 prompt 优化两个辅助 agent 在攻击绕过检测时更新知识库并精炼防御指令形成闭环
+- 📌 **结论**：非语义与语义 sponge 攻击上 F1 持续超过困惑率与独立 LLM 防御，验证智能体自愈对演化型资源耗尽威胁的有效性
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Sponge attacks increasingly threaten LLM systems by inducing excessive computation and DoS. Existing defenses either rely on statistical filters that fail on semantically meaningful attacks or use static LLM-based detectors that struggle to adapt as attack strategies evolve. We introduce SHIELD, a multi-agent, auto-healing defense framework centered on a three-stage Defense Agent that integrates semantic similarity retrieval, pattern matching, and LLM-based reasoning. Two auxiliary agents, a Knowledge Updating Agent and a Prompt Optimization Agent, form a closed self-healing loop, when an attack bypasses detection, the system updates an evolving knowledgebase, and refines defense instructions. Extensive experiments show that SHIELD consistently outperforms perplexity-based and standalone LLM defenses, achieving high F1 scores across both non-semantic and semantic sponge attacks, demonstrating the effectiveness of agentic self-healing against evolving resource-exhaustion threats.
+
+</details>

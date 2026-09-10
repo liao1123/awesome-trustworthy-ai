@@ -129,26 +129,7 @@ Vision-Language-Action (VLA) policies are vulnerable to localized physical pertu
 
 </details>
 
-### 7. SysEvolve: An AI-native, safe, autonomous adversarial attack-defense co-evolutionary system
-
-📄 [arXiv](https://arxiv.org/abs/2608.15012)　📅 2026-08
-
-**关键词**：`defense`、`adversarial robustness`、`robust training`、`certification`
-
-👤 **作者**：Yuhan Meng、…、Ding Li
-
-- 🎯 **研究动机**：网络安全攻防不对称：攻击走向自主执行而防御仍人工密集，双方演化在三层停滞
-- 🔬 **研究方法**：SysEvolve 共演化系统：SysField 构建真实多主机靶场、SysSpear 生成高效安全攻击、SysArmor 实时可解释防御，形成自驱动对抗循环
-- 📌 **结论**：2.1% 开销零损耗采集并编排 257 个 CVE 成 1148 个靶场；攻击成功率超基线 LLM 25% 以上，防御精度高 10-1000 倍并在华为、深信服生产环境检出真实 APT
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-The rapid advancement of large language models (LLMs) has created a growing asymmetry in cybersecurity, where attack accelerates toward autonomous execution while defense remains predominantly human-intensive. Despite substantial prior work across cyber ranges, AI-driven attack, and AI-driven defense, this asymmetry persists. We trace it to a deeper root cause, that evolution itself has stalled on both sides at three layers. To overcome this, we propose co-evolution as the integrating insight, where attack and defense AI agents autonomously and safely drive each other's evolution through adversarial confrontation. Based on this insight, we present \sysevolve, comprising three co-designed components, \sysfield, \sysspear, and \sysarmor. \sysfield constructs realistic multi-host ranges. \sysspear generates efficient, safe attack schemes. \sysarmor performs real-time, interpretable defense. Together they form a self-driven adversarial loop restoring evolution at all three layers. In evaluation, \sysfield achieves zero-loss collection at 2.1\% overhead and orchestrates 257 CVEs into 1,148 ranges, \sysspear improves attack success by over 25\% over baseline LLMs, and \sysarmor achieves 10--1000$\times$ greater precision than prior systems and detects real APT attacks in production at Huawei and Sangfor. Our evaluation also reveals three findings about LLM agent capabilities. First, multi-step composition and larger topologies expose agent capability gaps hidden by single-step evaluations. Second, the bottleneck lies after initial access in post-compromise state utilization. Third, LLM agents are susceptible to environmental interference. When decoy endpoints are deployed in the range, agent timeouts triple and downstream completion disappears despite the success rates of initial accesses are unchanged.
-
-</details>
-
-### 8. Improving Adversarial Robustness via Activation Amplification and Attenuation
+### 7. Improving Adversarial Robustness via Activation Amplification and Attenuation
 
 📄 [arXiv](https://arxiv.org/abs/2606.27784) · 🌐 [Project](https://eccv.ecva.net/virtual/2026/poster/3522)　📅 2026-06　🏷 ECCV 2026
 
@@ -167,7 +148,7 @@ The existence of adversarial attacks is often attributed to the presence of non-
 
 </details>
 
-### 9. Cascading Robustness Verification: Toward Efficient Model‑Agnostic Certification
+### 8. Cascading Robustness Verification: Toward Efficient Model‑Agnostic Certification
 
 📄 [arXiv](https://arxiv.org/abs/2602.04236) · 🎓 [Official](https://satml.org/2026/accepted-papers/)　📅 2026-02　🏷 SaTML 2026
 
@@ -186,7 +167,7 @@ Certifying neural network robustness against adversarial examples is challenging
 
 </details>
 
-### 10. You Don't Protect if You Don't Expect: Breaking the Key Assumption behind CLIP's Test-Time Defenses
+### 9. You Don't Protect if You Don't Expect: Breaking the Key Assumption behind CLIP's Test-Time Defenses
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/64735)　📅 2026　🏷 ICML 2026
 
@@ -205,7 +186,7 @@ Recent test-time defenses for CLIP claim to preserve zero-shot clean accuracy wh
 
 </details>
 
-### 11. The Latent Guardian: Defending Collaborative Perception via Feature-Level Consistency Verification
+### 10. The Latent Guardian: Defending Collaborative Perception via Feature-Level Consistency Verification
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/64455)　📅 2026　🏷 ICML 2026
 
@@ -224,7 +205,7 @@ Collaborative perception (CP) significantly extends the sensing range of connect
 
 </details>
 
-### 12. Non-Parametric Probabilistic Robustness: A Conservative Risk Estimator under Unknown Perturbation Distributions
+### 11. Non-Parametric Probabilistic Robustness: A Conservative Risk Estimator under Unknown Perturbation Distributions
 
 📄 [arXiv](https://arxiv.org/abs/2511.17380) · 🎓 [Official](https://icml.cc/virtual/2026/poster/62757)　📅 2026　🏷 ICML 2026
 
@@ -243,7 +224,7 @@ Deep learning (DL) models, despite their remarkable success, remain vulnerable t
 
 </details>
 
-### 13. Does a Hybrid Space-Aware Randomized Defense Improve Empirical and Certified Adversarial Robustness?
+### 12. Does a Hybrid Space-Aware Randomized Defense Improve Empirical and Certified Adversarial Robustness?
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/65726)　📅 2026　🏷 ICML 2026
 
@@ -262,7 +243,7 @@ We introduce Hybrid Space-aware Stochastic Convolution Attention Noise (HySCAN),
 
 </details>
 
-### 14. Certified Robustness under Heterogeneous Perturbations via Hybrid Randomized Smoothing
+### 13. Certified Robustness under Heterogeneous Perturbations via Hybrid Randomized Smoothing
 
 📄 [arXiv](https://arxiv.org/abs/2605.12876) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61695)　📅 2026　🏷 ICML 2026
 
@@ -281,7 +262,7 @@ Randomized smoothing provides strong, model-agnostic robustness certificates, bu
 
 </details>
 
-### 15. A Provable Energy-Guided Test-Time Defense Boosting Adversarial Robustness of Large Vision-Language Models
+### 14. A Provable Energy-Guided Test-Time Defense Boosting Adversarial Robustness of Large Vision-Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2603.26984) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Mirza_A_Provable_Energy-Guided_Test-Time_Defense_Boosting_Adversarial_Robustness_of_Large_CVPR_2026_paper.html)　📅 2026　🏷 CVPR 2026
 
@@ -300,7 +281,7 @@ Despite the rapid progress in multimodal models and Large Visual-Language Models
 
 </details>
 
-### 16. Certifiably Robust RAG against Retrieval Corruption
+### 15. Certifiably Robust RAG against Retrieval Corruption
 
 📄 [arXiv](https://arxiv.org/abs/2405.15556) · 🎓 [Official](https://satml.org/2026/accepted-papers/)　📅 2024-05　🏷 SaTML 2026
 
@@ -319,45 +300,7 @@ Retrieval-augmented generation (RAG) is susceptible to retrieval corruption atta
 
 </details>
 
-### 17. Learning with Bilevel-Minimax Optimization for Efficient and Reliable Transfer Attacks
-
-📄 [arXiv](https://arxiv.org/abs/2608.11815) · 🌐 [Project](https://eccv.ecva.net/virtual/2026/poster/5683)　📅 2026-08　🏷 ECCV 2026
-
-**关键词**：`attack`、`transfer attack`、`bilevel optimization`、`adversarial robustness`、`black-box security`
-
-👤 **作者**：Yaohua Liu、Yifan Guo、Jiaxin Gao
-
-- 🎯 **研究动机**：迁移攻击可迁移性由初始化、代理适配与梯度动态的耦合决定，现有方法将其割裂处理
-- 🔬 **研究方法**：BMAT 以双层极小极大建模初始化与扰动依赖、内层极小极大促进代理跨架构鲁棒，自底向上求解器耦合 Soft Weight Modulator 与 Implicit Gradient Approximator
-- 📌 **结论**：30+ 受害模型上超过 10 个强基线，分割任务 mIoU 最高降 2 倍
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Transfer-based adversarial attacks craft adversarial examples using surrogate models to mislead black-box victim models. Beyond perturbation generation, transferability is fundamentally governed by the coupling of initialization, surrogate adaptation, and gradient dynamics. We revisit this challenge from a bilevel-minimax perspective and propose BMAT (Bilevel-Minimax Adversarial Transfer). The bilevel formulation captures the dependency between initialization and perturbation, while the inner minimax problem promotes surrogate robustness for cross-architecture generalization. Algorithmically, we develop an integrated bottom-up solver that combines a Soft Weight Modulator and an Implicit Gradient Approximator to enable ternary coupling among initialization, surrogate adaptation, and perturbation optimization. We further provide theoretical insights into the optimization dynamics of the proposed bilevel-minimax framework. Extensive experiments on classification and segmentation benchmarks show that BMAT outperforms more than 10 strong baselines across more than 30 victim models, improving both intra- and cross-architecture transfer and yielding up to a 2x reduction in mIoU. Code is available at https://github.com/callous-youth/BMAT.
-
-</details>
-
-### 18. SegPAR: Class-Centric Decision-Based Sparse Attack for Semantic Segmentation
-
-📄 [arXiv](https://arxiv.org/abs/2608.11285) · 🌐 [Project](https://eccv.ecva.net/virtual/2026/poster/4370)　📅 2026-08　🏷 ECCV 2026
-
-**关键词**：`attack`、`semantic segmentation`、`adversarial robustness`、`robust training`、`black-box attack`、`sparse perturbation`
-
-👤 **作者**：Dongsu Song、DaeYun GO、Boseung Seo、Jay Hoon Jung
-
-- 🎯 **研究动机**：决策式黑盒稀疏攻击在语义分割中缺乏研究，已有分类域方法因图像中心像素累积迅速耗尽查询预算
-- 🔬 **研究方法**：SegPAR 转向类中心探索范式，并引入差异奖励消除标准决策奖励在像素累积中的误导反馈
-- 📌 **结论**：稀疏效率与 MIoU 降低显著优于黑盒基线，与白盒稀疏攻击具竞争力
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Despite the practical relevance of sparse decision-based black-box threats, they have received limited attention in semantic segmentation. To bridge this gap, we adapt the most representative decision-based black-box sparse attacks from the classification domain to serve as baselines, establishing a rigorous benchmark for this underexplored setting. In this context, we demonstrate that one of the existing methods suffers from severe query inefficiency due to its image-centric pixel accumulation, which rapidly exhausts query budgets across the vast image space. To overcome this, we propose SegPAR, a novel decision-based framework that shifts to a class-centric exploration paradigm. Furthermore, to eliminate the misleading feedback generated by standard decision rewards during pixel accumulation, we introduce a novel discrepancy reward. Extensive experiments show that SegPAR significantly outperforms black-box baselines in sparsity efficiency and MIoU reduction, while remaining competitive with white-box sparse attacks. Code is available at \href{https://github.com/KAU-QuantumAILab/SegPAR}{https://github.com/KAU-QuantumAILab/SegPAR}.
-
-</details>
-
-### 19. Probabilistic Robustness Certificates against Adversarial Attacks
+### 16. Probabilistic Robustness Certificates against Adversarial Attacks
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/62191)　📅 2026　🏷 ICML 2026
 
@@ -376,7 +319,7 @@ The growing use of machine learning in safety-critical settings heightens vulner
 
 </details>
 
-### 20. ArmorOCR: Grounded Adversarial Visual Perception via Observation-Transferred Self-Distillation
+### 17. ArmorOCR: Grounded Adversarial Visual Perception via Observation-Transferred Self-Distillation
 
 📄 [arXiv](https://arxiv.org/abs/2608.20122)　📅 2026-08
 
@@ -395,7 +338,7 @@ Large multimodal models (LMMs) have demonstrated strong OCR recognition capabili
 
 </details>
 
-### 21. RoME: Robust Mixture of Low-Rank Experts against Multiple Adversarial Perturbations
+### 18. RoME: Robust Mixture of Low-Rank Experts against Multiple Adversarial Perturbations
 
 📄 [arXiv](https://arxiv.org/abs/2607.06109) · 🌐 [Project](https://eccv.ecva.net/virtual/2026/poster/5012)　📅 2026-07　🏷 ECCV 2026
 
@@ -414,7 +357,7 @@ Multi-perturbation adversarial training (MAT) aims to achieve robustness against
 
 </details>
 
-### 22. AGFT: Alignment-Guided Fine-Tuning for Zero-Shot Adversarial Robustness of Vision-Language Models
+### 19. AGFT: Alignment-Guided Fine-Tuning for Zero-Shot Adversarial Robustness of Vision-Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2603.29410) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Cui_AGFT_Alignment-Guided_Fine-Tuning_for_Zero-Shot_Adversarial_Robustness_of_Vision-Language_Models_CVPR_2026_paper.html)　📅 2026-03　🏷 CVPR 2026
 
@@ -433,7 +376,7 @@ Pre-trained vision-language models (VLMs) exhibit strong zero-shot generalizatio
 
 </details>
 
-### 23. Unifying Adversarial Robustness and Training Across Text Scoring Models
+### 20. Unifying Adversarial Robustness and Training Across Text Scoring Models
 
 📄 [arXiv](https://arxiv.org/abs/2602.00857) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61055)　📅 2026　🏷 ICML 2026
 
@@ -452,7 +395,7 @@ Research on adversarial robustness in language models is currently fragmented ac
 
 </details>
 
-### 24. Toward Understanding Adversarial Distillation: Why Robust Teachers Fail
+### 21. Toward Understanding Adversarial Distillation: Why Robust Teachers Fail
 
 📄 [arXiv](https://arxiv.org/abs/2605.21999) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63705)　📅 2026　🏷 ICML 2026
 
@@ -471,7 +414,7 @@ Adversarial Distillation aims to enhance student robustness by guiding the stude
 
 </details>
 
-### 25. Self-Calibrated Consistency can Fight Back for Adversarial Robustness in Vision-Language Models
+### 22. Self-Calibrated Consistency can Fight Back for Adversarial Robustness in Vision-Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2510.22785) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63826)　📅 2026　🏷 ICML 2026
 
@@ -490,7 +433,7 @@ Pre-trained vision-language models (VLMs) such as CLIP have demonstrated strong 
 
 </details>
 
-### 26. Posterior Mismatch Matters: Adversarial Training for Long-Tailed Robustness
+### 23. Posterior Mismatch Matters: Adversarial Training for Long-Tailed Robustness
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/64623)　📅 2026　🏷 ICML 2026
 
@@ -509,7 +452,7 @@ Adversarial training breaks down in long-tailed settings, exhibiting severe robu
 
 </details>
 
-### 27. On the Adversarial Robustness of Large Vision-Language Models under Visual Token Compression
+### 24. On the Adversarial Robustness of Large Vision-Language Models under Visual Token Compression
 
 📄 [arXiv](https://arxiv.org/abs/2601.21531) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61440)　📅 2026　🏷 ICML 2026
 
@@ -528,7 +471,7 @@ Visual token compression is widely used to accelerate large vision-language mode
 
 </details>
 
-### 28. Benign Overfitting in Adversarial Training for Vision Transformers
+### 25. Benign Overfitting in Adversarial Training for Vision Transformers
 
 📄 [arXiv](https://arxiv.org/abs/2604.19724) · 🎓 [Official](https://icml.cc/virtual/2026/poster/62410)　📅 2026　🏷 ICML 2026
 
@@ -547,7 +490,7 @@ Despite the remarkable success of Vision Transformers (ViTs) across a wide range
 
 </details>
 
-### 29. Adversarial Training for Process Reward Models
+### 26. Adversarial Training for Process Reward Models
 
 📄 [arXiv](https://arxiv.org/abs/2511.22888) · 🎓 [Official](https://icml.cc/virtual/2026/poster/66402)　📅 2026　🏷 ICML 2026
 
@@ -566,7 +509,7 @@ Process Reward Models (PRMs) enhance reasoning ability of LLMs by providing step
 
 </details>
 
-### 30. Adversarial Attack and Defense for Denoising Diffusion Sampling
+### 27. Adversarial Attack and Defense for Denoising Diffusion Sampling
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/62015)　📅 2026　🏷 ICML 2026
 
@@ -585,7 +528,7 @@ Denoising diffusion sampling (DDS) is an emerging approach for generating new sa
 
 </details>
 
-### 31. AntiStyler: Defending Object Detection Models Against Adversarial Patch Attacks Using Style Removal
+### 28. AntiStyler: Defending Object Detection Models Against Adversarial Patch Attacks Using Style Removal
 
 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Yankelev_AntiStyler_Defending_Object_Detection_Models_Against_Adversarial_Patch_Attacks_Using_CVPR_2026_paper.html)　📅 2026　🏷 CVPR 2026
 
@@ -604,7 +547,7 @@ Adversarial patch attacks pose a significant threat to the reliability of object
 
 </details>
 
-### 32. Band Together: Untargeted Adversarial Training with Multimodal Coordination Against Evasion-Based Promotion Attacks
+### 29. Band Together: Untargeted Adversarial Training with Multimodal Coordination Against Evasion-Based Promotion Attacks
 
 📄 [arXiv](https://arxiv.org/abs/2605.06238) · 🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/1759.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track)　📅 2026
 
@@ -623,7 +566,7 @@ multimodal recommender systems exploit visual and textual signals to alleviate d
 
 </details>
 
-### 33. From Standard to Robust: A Universal Framework for Continual Adversarial Defense
+### 30. From Standard to Robust: A Universal Framework for Continual Adversarial Defense
 
 🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/2065.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track)　📅 2026
 
@@ -640,7 +583,7 @@ Continual adversarial defense (CAD) aims to defend target models against continu
 
 </details>
 
-### 34. Manifold-Constrained Adversarial Training for Long-Tailed Robustness via Geometric Alignment
+### 31. Manifold-Constrained Adversarial Training for Long-Tailed Robustness via Geometric Alignment
 
 📄 [arXiv](https://arxiv.org/abs/2605.02183) · 🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/1379.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track)　📅 2026
 
@@ -659,7 +602,7 @@ Adversarial training is effective on balanced datasets, but its robustness degra
 
 </details>
 
-### 35. Efficient Semi-Supervised Adversarial Training via Latent Clustering-Based Data Reduction
+### 32. Efficient Semi-Supervised Adversarial Training via Latent Clustering-Based Data Reduction
 
 📄 [arXiv](https://arxiv.org/abs/2501.10466) · 🎓 [Official](https://satml.org/2026/accepted-papers/)　📅 2025-01　🏷 SaTML 2026
 
@@ -678,7 +621,7 @@ Learning robust models under adversarial settings is widely recognized as requir
 
 </details>
 
-### 36. Two Modalities Are Better Than One: Efficient Adversarial Purification via Multimodal Diffusion Models
+### 33. Two Modalities Are Better Than One: Efficient Adversarial Purification via Multimodal Diffusion Models
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/61378)　📅 2026　🏷 ICML 2026
 
@@ -697,7 +640,7 @@ Adversarial purification uses generative models to restore clean data distributi
 
 </details>
 
-### 37. Training-Free Adversarial Robustness in Computational MRI
+### 34. Training-Free Adversarial Robustness in Computational MRI
 
 📄 [arXiv](https://arxiv.org/abs/2501.01908) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64452)　📅 2026　🏷 ICML 2026
 
@@ -716,7 +659,7 @@ Deep learning (DL) methods have become the state-of-the-art for reconstructing s
 
 </details>
 
-### 38. SS-TPT: Stability and Suitability-Guided Test-Time Prompt Tuning for Adversarially Robust Vision-Language Models
+### 35. SS-TPT: Stability and Suitability-Guided Test-Time Prompt Tuning for Adversarially Robust Vision-Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2606.06943) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63418)　📅 2026　🏷 ICML 2026
 
@@ -735,7 +678,7 @@ Vision-language models (VLMs) such as CLIP achieve strong zero-shot recognition 
 
 </details>
 
-### 39. Contrastive Spectral Rectification: Test-Time Defense towards Zero-shot Adversarial Robustness of CLIP
+### 36. Contrastive Spectral Rectification: Test-Time Defense towards Zero-shot Adversarial Robustness of CLIP
 
 📄 [arXiv](https://arxiv.org/abs/2601.19210) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61655)　📅 2026　🏷 ICML 2026
 
@@ -754,7 +697,7 @@ Vision-language models (VLMs) such as CLIP have demonstrated remarkable zero-sho
 
 </details>
 
-### 40. Adversarial Patch EXterminator: Zero-Shot and Patch-Agnostic Defense Framework Against Adversarial Patch Attacks
+### 37. Adversarial Patch EXterminator: Zero-Shot and Patch-Agnostic Defense Framework Against Adversarial Patch Attacks
 
 🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/wang-jiayimei)　📅 2026　🏷 USENIX Security 2026
 
@@ -773,7 +716,7 @@ Adversarial patch attacks pose a serious threat to modern computer vision system
 
 </details>
 
-### 41. When CLIP Sees More, It Fights Back Harder: Multi-View Guided Adaptive Counterattacks for Test-Time Adversarial Robustness
+### 38. When CLIP Sees More, It Fights Back Harder: Multi-View Guided Adaptive Counterattacks for Test-Time Adversarial Robustness
 
 📄 [arXiv](https://arxiv.org/abs/2606.06938) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Kim_When_CLIP_Sees_More_It_Fights_Back_Harder_Multi-View_Guided_CVPR_2026_paper.html)　📅 2026　🏷 CVPR 2026
 
@@ -792,7 +735,7 @@ Vision-language models such as CLIP have achieved remarkable zero-shot recogniti
 
 </details>
 
-### 42. MonoPure: Multi-Component Purification via Disentangled, Projective Representations for Monocular 3D Object Detection
+### 39. MonoPure: Multi-Component Purification via Disentangled, Projective Representations for Monocular 3D Object Detection
 
 🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/987.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track)　📅 2026
 
@@ -809,7 +752,7 @@ Monocular 3D object detection is a cost-efficient alternative to multisensor sys
 
 </details>
 
-### 43. Parameter-Efficient Dual-Loss Adaptation with Logit Divergence: A Unified Approach for Adversarial Example Detection and Robust Inference
+### 40. Parameter-Efficient Dual-Loss Adaptation with Logit Divergence: A Unified Approach for Adversarial Example Detection and Robust Inference
 
 🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/6748.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track)　📅 2026
 
@@ -826,7 +769,7 @@ We present D3Adapter, a threat-aware framework that unifies adversarial example 
 
 </details>
 
-### 44. TTP: Test-Time Padding for Adversarial Detection and Robust Adaptation on Vision-Language Models
+### 41. TTP: Test-Time Padding for Adversarial Detection and Robust Adaptation on Vision-Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2512.16523) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Li_TTP_Test-Time_Padding_for_Adversarial_Detection_and_Robust_Adaptation_on_CVPR_2026_paper.html)　📅 2025-12　🏷 CVPR 2026
 
@@ -842,5 +785,119 @@ We present D3Adapter, a threat-aware framework that unifies adversarial example 
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 Vision-Language Models (VLMs), such as CLIP, have achieved impressive zero-shot recognition performance but remain highly susceptible to adversarial perturbations, posing significant risks in safety-critical scenarios. Previous training-time defenses rely on adversarial fine-tuning, which requires labeled data and costly retraining, while existing test-time strategies fail to reliably distinguish between clean and adversarial inputs, thereby preventing both adversarial robustness and clean accuracy from reaching their optimum. To address these limitations, we propose Test-Time Padding (TTP), a lightweight defense framework that performs adversarial detection followed by targeted adaptation at inference. TTP identifies adversarial inputs via the cosine similarity shift between CLIP feature embeddings computed before and after spatial padding, yielding a universal threshold for reliable detection across architectures and datasets. For detected adversarial cases, TTP employs trainable padding to restore disrupted attention patterns, coupled with a similarity-aware ensemble strategy for a more robust final prediction. For clean inputs, TTP leaves them unchanged by default or optionally integrates existing test-time adaptation techniques for further accuracy gains. Comprehensive experiments on diverse CLIP backbones and fine-grained benchmarks show that TTP consistently surpasses state-of-the-art test-time defenses, delivering substantial improvements in adversarial robustness without compromising clean accuracy. The code for this paper will be released soon.
+
+</details>
+
+### 42. Provably Safe Model Updates
+
+📄 [arXiv](https://arxiv.org/abs/2512.01899) · 🎓 [Official](https://satml.org/2026/accepted-papers/)　📅 2025-12　🏷 SaTML 2026
+
+**关键词**：`defense`、`safe update`、`parameter certification`、`alignment drift`
+
+👤 **作者**：Leo Elmecker-Plakolm、Pierre Fasterling、Philip Sosnin、Calvin Tsay、Matthew Wicker
+
+- 🎯 **研究动机**：正则化与参数隔离等启发式方法可缓解灾难性遗忘或对齐漂移，但无法认证更新后模型仍满足性能规约
+- 🔬 **研究方法**：把问题形式化为计算参数空间中满足规约的最大局部不变域（LID），用正交体与 zonotope 参数化抽象域得到可解的原始-对偶公式，通过把更新投影回安全域实现与数据和算法无关的认证
+- 📌 **结论**：在持续学习与基础模型微调基准上匹配或超越启发式基线，同时提供形式安全保证
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Safety-critical environments are inherently dynamic. Distribution shifts, emerging vulnerabilities, and evolving requirements demand continuous updates to machine learning models. Yet even benign parameter updates can have unintended consequences, such as catastrophic forgetting in classical models or alignment drift in foundation models. Existing heuristic approaches (e.g., regularization, parameter isolation) can mitigate these effects but cannot certify that updated models continue to satisfy required performance specifications. We address this problem by introducing a framework for provably safe model updates. Our approach first formalizes the problem as computing the largest locally invariant domain (LID): a connected region in parameter space where all points are certified to satisfy a given specification. While exact maximal LID computation is intractable, we show that relaxing the problem to parameterized abstract domains (orthotopes, zonotopes) yields a tractable primal-dual formulation. This enables efficient certification of updates - independent of the data or algorithm used - by projecting them onto the safe domain. Our formulation further allows computation of multiple approximately optimal LIDs, incorporation of regularization-inspired biases, and use of lookahead data buffers. Across continual learning and foundation model fine-tuning benchmarks, our method matches or exceeds heuristic baselines for avoiding forgetting while providing formal safety guarantees.
+
+</details>
+
+### 43. All Vehicles Can Lie: Efficient Adversarial Defense in Fully Untrusted-Vehicle Collaborative Perception via Pseudo-Random Bayesian Inference
+
+📄 [arXiv](https://arxiv.org/abs/2603.08498) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Yu_All_Vehicles_Can_Lie_Efficient_Adversarial_Defense_in_Fully_Untrusted-Vehicle_CVPR_2026_paper.html)　📅 2026-03　🏷 CVPR 2026
+
+**关键词**：`defense`、`collaborative perception`、`malicious vehicle`、`Bayesian inference`
+
+👤 **作者**：Yi Yu、Libing Wu、Zhuangzhuang Zhang、Jing Qiu、Lijuan Huo、Jiaqi Feng
+
+- 🎯 **研究动机**：协同感知防御依赖可信自车参照或额外分类器，在全不可信车辆环境不实用
+- 🔬 **研究方法**：PRBI 以前一帧可靠感知为动态参照检测时序感知差异，伪随机分组每帧仅两次验证，贝叶斯推断估计恶意车辆数量与身份
+- 📌 **结论**：平均每帧仅 2.5 次验证，把检测精度恢复至攻击前的 79.4%-86.9%，并证明了收敛与稳定性
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Collaborative perception (CP) enables multiple vehicles to augment their individual perception capacities through the exchange of feature-level sensory data. However, this fusion mechanism is inherently vulnerable to adversarial attacks, especially in fully untrusted-vehicle environments. Existing defense approaches often assume a trusted ego vehicle as a reference or incorporate additional binary classifiers. These assumptions limit their practicality in real-world deployments due to the questionable trustworthiness of ego vehicles, the requirement for real-time detection, and the need for generalizability across diverse scenarios. To address these challenges, we propose a novel Pseudo-Random Bayesian Inference (PRBI) framework, a first efficient defense method tailored for fully untrusted-vehicle CP. PRBI detects adversarial behavior by leveraging temporal perceptual discrepancies, using the reliable perception from the preceding frame as a dynamic reference. Additionally, it employs a pseudo-random grouping strategy that requires only two verifications per frame, while applying Bayesian inference to estimate both the number and identities of malicious vehicles. Theoretical analysis has proven the convergence and stability of the proposed PRBI framework. Extensive experiments show that PRBI requires only 2.5 verifications per frame on average, outperforming existing methods significantly, and restores detection precision to between 79.4% and 86.9% of pre-attack levels.
+
+</details>
+
+### 44. DualMirage: Hunting Stealthy Multimodal LLM Agents via CAPTCHAs with Contour and Adversarial Illusions
+
+🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Chen_DualMirage_Hunting_Stealthy_Multimodal_LLM_Agents_via_CAPTCHAs_with_Contour_CVPR_2026_paper.html)　📅 2026　🏷 CVPR 2026
+
+**关键词**：`detection`、`multimodal agent`、`CAPTCHA probe`、`adversarial illusion`
+
+👤 **作者**：Bei Chen、Gaolei Li、Jun Wu、Jianhua Li
+
+- 🎯 **研究动机**：隐蔽 MLLM agent 通过模仿人类行为逃避常规检测，构成 web 安全风险
+- 🔬 **研究方法**：DualMirage 双管齐下 CAPTCHA：轮廓错觉（人类轻易感知、MLLM 难解释）加对抗错觉（人不可察觉扰动误导目标 MLLM 视觉编码器诱发可识别响应）
+- 📌 **结论**：人类平均成功率 95.8%、阻断 MLLM agent 最高 100%，诱导模型主动暴露身份（白盒 58.8%、黑盒 21.9% 成功率）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+The rapid advancement of Multimodal Large Language Models (MLLMs) has given rise to sophisticated autonomous agents capable of performing complex, human-like tasks across the web. However, this also introduces significant security risks, particularly from stealthy MLLM agents that can evade conventional detection mechanisms by mimicking human behavior. In this paper, we propose DualMirage, a novel CAPTCHA framework that proactively counters and identifies stealthy agents by exploiting fundamental disparities between human and machine perception. DualMirage employs a dual-pronged strategy: (1) Contour Illusions, which utilize cognitive principles to generate illusory contours that humans perceive effortlessly yet pose interpretation challenges for MLLMs; and (2) Adversarial Illusions, which embed human-imperceptible perturbations optimized to mislead the visual encoders of target MLLMs and thereby elicit characteristic, identifiable model responses. Evaluations on five state-of-the-art MLLMs demonstrate that DualMirage achieves an average 95.8% human success rate while blocking MLLM agents (up to 100% agent blocking rate), outperforming existing CAPTCHAs. Furthermore, DualMirage induces models to expose identities actively, achieving 58.8% white-box and 21.9% black-box attack success rates, proving effective against stealthy multimodal agents.
+
+</details>
+
+### 45. Next-Gen CAPTCHAs: Leveraging the Cognitive Gap for Scalable and Diverse GUI-Agent Defense
+
+📄 [arXiv](https://arxiv.org/abs/2602.09012) · 🎓 [Official](https://icml.cc/virtual/2026/poster/60816)　📅 2026-02　🏷 ICML 2026
+
+**关键词**：`defense`、`agent safety`、`agent guardrail`、`action policy`、`empirical evaluation`、`failure recovery`
+
+👤 **作者**：Jiacheng Liu、Yaxin Luo、Jiacheng Cui、Xinyi Shang、Xiaohan Zhao、Zhiqiang Shen
+
+- 🎯 **研究动机**：Gemini3-Pro-High、GPT-5.2-Xhigh 等推理模型在 OpenCaptchaWorld 通过率达 90%，传统验证码对 GUI agent 失效
+- 🔬 **研究方法**：构建后端支持、可近乎无限生成的动态 CAPTCHA 框架，利用交互感知、记忆、决策与动作上的人机认知差设计任务
+- 📌 **结论**：重建生物用户与 agent 的可靠区分，为 agentic 时代提供可扩展、多样的防御
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+The rapid evolution of GUI-enabled agents has rendered traditional CAPTCHAs obsolete. While previous benchmarks like OpenCaptchaWorld established a baseline for evaluating multimodal agents, recent advancements in reasoning-heavy models, such as Gemini3-Pro-High and GPT-5.2-Xhigh have effectively collapsed this security barrier, achieving pass rates as high as 90% on complex logic puzzles like "Bingo". In response, we introduce Next-Gen CAPTCHAs, a scalable defense framework designed to secure the next-generation web against the advanced agents. Unlike static datasets, our benchmark is built upon a robust data generation pipeline, allowing for large-scale and easily scalable evaluations, notably, for backend-supported types, our system is capable of generating effectively unbounded CAPTCHA instances. We exploit the persistent human-agent "Cognitive Gap" in interactive perception, memory, decision-making, and action. By engineering dynamic tasks that require adaptive intuition rather than granular planning, we re-establish a robust distinction between biological users and artificial agents, offering a scalable and diverse defense mechanism for the agentic era.
+
+</details>
+
+### 46. Learning What Not to Learn: Adversarial Disentangled Prompt Tuning for Robust Vision-Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2608.17306)　📅 2026-08
+
+**关键词**：`analysis`、`adversarial robustness`、`VLM safety`、`adversarial example`
+
+👤 **作者**：Yang Chen、Zhan Zhuang、Yanbin Wei、Zebin Chen、Hua Liu、Yu Zhang
+
+- 🎯 **研究动机**：对抗 prompt 微调会加剧鲁棒过拟合：随训练推进对未见类对抗样本性能迅速退化
+- 🔬 **研究方法**：ADAPT 双 prompt 机制：诱饵 prompt 引诱伪鲁棒特征，目标 prompt 在嵌入空间与诱饵正交以学真鲁棒特征；正交损失给出伪鲁棒特征偏移影响的测试误差保证
+- 📌 **结论**：大幅提升目标 prompt 在未见类上的对抗鲁棒性
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+While adversarial prompt tuning can enhance robustness of vision-language models efficiently, we find that existing methods aggravate robust generalization overfitting on seen classes, leading to a rapid degradation in performance against adversarial examples of unseen classes as training progresses. We empirically identify that this degradation stems from the tendency of the model to learn pseudo-robust features (i.e., non-generalizable shortcuts). To mitigate this, we propose ADAPT (Adversarial Disentangled Prompt Tuning), a robust prompt tuning framework following the philosophy of ``Learning What Not to Learn''. Specifically, ADAPT uses a dual-prompt mechanism with a target prompt and a pool of decoy prompts. During training, the decoy prompts are guided to entrap diverse pseudo-robust features, while the target prompt is constrained to be orthogonal to the decoys in the embedding space to learn robust features. By disentangling the robust features from the pseudo-robust features, ADAPT effectively prevents robust generalization overfitting. We further provide an analysis showing that the orthogonal loss bounds the effect of shifts in pseudo-robust features on unseen classes, yielding a testing error guarantee. Empirically, extensive experiments demonstrate that ADAPT substantially improves the robustness of the target prompt on unseen classes. The code is available at https://github.com/cheny02/ADAPT-ACMMM2026.
+
+</details>
+
+### 47. SORA: Free Second-Order Attacks in Fast Adversarial Training
+
+📄 [arXiv](https://arxiv.org/abs/2606.00738) · 🎓 [Official](https://icml.cc/virtual/2026/poster/60969)　📅 2026　🏷 ICML 2026
+
+**关键词**：`defense`、`attack`、`adversarial attack`、`adversarial training`、`adversarial robustness`、`attack transferability`
+
+👤 **作者**：Mazdak Teymourian、Ramtin Moslemi、Farzan Rahmani、Mohammad Hossein Rohban
+
+- 🎯 **研究动机**：快速单步对抗训练常发生灾难性过拟合：单步表现高但多步鲁棒性崩溃，固定扰动幅度与方向是诱因
+- 🔬 **研究方法**：形式化 Epsilon Overfitting 视角并证明扰动可变性提升鲁棒泛化，提出预测 CO 发生的 PertAlign 指标，并据损失面几何设计自适应步长训练方法 SORA
+- 📌 **结论**：SORA 用单一固定超参跨数据集与架构持续防止 CO，鲁棒性匹配或超越先前方法且干净精度与效率更高
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Adversarial Training (AT) is a leading defense against adversarial examples but often suffers from Catastrophic Overfitting (CO) in efficient single-step variants, where robustness to multi-step attacks collapses despite high single-step performance. We address this failure mode with two contributions. First, we formalize Epsilon Overfitting (EO), a perspective in which fixed perturbation magnitudes and directions exacerbate CO, and show that introducing perturbation variability significantly improves robust generalization across different architectures and datasets. Second, we propose PertAlign (Perturbation Alignment), a theoretically grounded, computationally negligible metric that predicts CO onset by measuring gradient alignment across attack stages. Leveraging these insights, we introduce SORA, an adaptive step-size AT method that dynamically adjusts perturbations based on loss surface geometry. SORA consistently prevents CO, achieves state-of-the-art robustness and clean accuracy, and generalizes across datasets and architectures using a single fixed set of hyperparameters, which is essential for applicability in fast AT. Extensive experiments on diverse datasets and architectures show that SORA matches or surpasses the robustness of prior methods while delivering higher clean accuracy and superior efficiency. Code is available at https://github.com/SecondOrderAT/SORA.
 
 </details>

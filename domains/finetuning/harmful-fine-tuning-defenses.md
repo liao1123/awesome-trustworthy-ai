@@ -1,365 +1,14 @@
-# 有害微调攻防与安全退化
+# 有害微调防御
 
-[返回模型微调安全目录](README.md)
+[返回上级目录](README.md)
 
 ## 研究方向
 
-该方向研究后训练如何移除拒答边界、激活隐藏能力、泄露隐私或破坏既有对齐，也研究攻击者在自适应条件下如何绕过防线。防御覆盖数据筛选与调度、安全关键参数与子空间保护、表示和注意力约束、路由控制、模型合并、触发器以及训练过程干预。
+抵御有害微调的防御、对齐保持与检测（攻击与机制见姊妹页 harmful-fine-tuning-attacks-and-mechanisms.md）。
 
-## 研究脉络
+## 检测与防御
 
-- **风险发现：** 早期工作证明少量良性或恶意数据即可移除模型的拒答边界。
-- **攻击扩展：** 绕过方式随后发展到 DPO、RLVR、steganography 和 adaptive optimization 等不同训练接口。
-- **防御演进：** 防御从数据筛选、重加权和调度扩展到参数与安全子空间保护、路由、解码、模型合并和训练动态约束。
-
-## 攻击与防御绕过
-
-### 1. Quantization-Triggered Backdoors in Language Models: Cross-Quantizer Transferability and the Validation--Deployment Gap
-
-📄 [arXiv](https://arxiv.org/abs/2608.27512)　📅 2026-08
-
-**关键词**：`attack`、`analysis`、`adversarial fine-tuning`、`latent payload`、`post-quantization activation`、`quantization trigger`
-
-👤 **作者**：Jacopo Dardini、Claudio Stanzione、Giordano Colò、Giuseppe Fenza
-
-- 🎯 **研究动机**：后训练量化被视为语义中性优化，模型通常只经全精度验证、量化部署后不再等价复测，形成结构性 validation–deployment gap
-- 🔬 **研究方法**：形式化 Quantization Behavioral Equivalence Classes 并证明其成员资格不蕴含行为等价；用三阶段对抗微调植入通过源精度检查、仅在 INT8/4-bit 压缩后激活的 payload，并扩展到多语 encoder-decoder 模型
-- 📌 **结论**：后门翻译模型全精度下 friend–foe 篡改为零，量化后反转率最高达 85.02%，政治内容分析的立场偏移最高达 0.33
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Post-training quantization is often treated as a semantically neutral optimization for edge deployment of Large Language Models. When a full-precision source checkpoint is evaluated and quantization is applied downstream without equivalent re-evaluation, this workflow creates a structural validation--deployment gap: because quantization is a many-to-one mapping over parameter space, source-precision certification does not guarantee behavioral equivalence in the deployed configuration. We formalize this gap through Quantization Behavioral Equivalence Classes (QBECs) and prove that QBEC membership does not imply behavioral equivalence, providing a theoretical basis for quantization-triggered backdoor attacks. Building on a three-stage adversarial fine-tuning framework, we embed latent malicious payloads into models that satisfy the source-precision checks used in our evaluation, yet activate targeted adversarial behavior upon INT8 or 4-bit compression. We evaluate this threat in two operationally motivated scenarios, tactical machine translation and political content analysis, extending prior work from decoder-only causal LMs to multilingual encoder-decoder sequence-to-sequence models. Results show that backdoored translation models move from zero measured friend--foe corruption at repaired FP16 to up to 85.02% inversion after quantization, and that a paired stance classifier measures an ideological shift of up to $Δ\mathrm{Bias}=0.33$ upon compression. A cross-quantizer transferability analysis further shows that attack persistence varies across quantization schemes and model architectures, rather than being determined by nominal bit-width alone. These findings demonstrate that source-precision auditing alone does not rule out quantization-triggered behavior and that the final deployed configuration must be included in behavioral certification for trustworthy edge AI.
-
-</details>
-
-### 2. Reinforcement Learning on Benign Facts Amplifies Leakage of Memorized Private Data
-
-📄 [arXiv](https://arxiv.org/abs/2608.21727)　📅 2026-08
-
-**关键词**：`attack`、`benign RL fine-tuning`、`PII leakage`、`capability activation`、`PII extraction`、`memorization leakage`
-
-👤 **作者**：Renfei Zhang、Niloofar Mireshghallah
-
-- 🎯 **研究动机**：RLVR 被广泛用于提升推理，但其是否会改变模型泄露已记忆隐私信息的倾向缺乏研究
-- 🔬 **研究方法**：在完全不含 PII 的良性事实上对 instruct 模型做 RL，再以姓名→邮箱定向探测与自由回忆两种 prompt 重新探测已记忆信息
-- 📌 **结论**：DeepSeek-V3.1 上 verbatim recall@k 从 0.155 升至 0.370（2.4 倍），效应随模型规模增大且推理与拒答保持不变——攻击者无需隐私数据或隐私信号即可放大潜伏泄漏
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Reinforcement learning with verifiable rewards (RLVR) is deployed to make models better at reasoning tasks, but its side effect on what models will divulge is under studied. Here we show that RLVR on facts increases extraction of personally identifiable information (PII) the instruct model had already memorized. We first confirm that instruct models have already memorized PII but leave them latent, rarely surfacing one when asked. We then apply RL on benign factual data that contains no PII of any kind, and re-probe: a targeted probe over name->email pairs, and an untargeted free-recall prompt that simply asks the model to list the addresses it knows. PII extraction rises sharply under both: on DeepSeek-V3.1, verbatim recall@k increases from 0.155 to 0.370, a 2.4x gain. The effect scales with model size: across three models spanning 8B to 671B parameters, absolute leakage is largest in the biggest model. Meanwhile model's reasoning abilities and refusal rates are retained, indicating that RL selectively changes which memorized information is accessible rather than broadly altering the model. In summary, memorized private data can be made markedly more extractable by training that never touches it. This gives an adversary a route to memorized data that requires no privacy-relevant training signal and no access to the data itself -- only the ability to fine-tune on something innocuous.
-
-</details>
-
-### 3. One Step to the Side: Why Defenses Against Malicious Finetuning Fail Under Adaptive Adversaries
-
-📄 [arXiv](https://arxiv.org/abs/2605.14605)　📅 2026-05
-
-**关键词**：`attack`、`harmful fine-tuning`、`adaptive attack`、`defense evasion`
-
-👤 **作者**：Itay Zloczower、Eyal Lenga、Gilad Gressel、Yisroel Mirsky
-
-- 🎯 **研究动机**：抗恶意微调防御大多只用不考虑防御本身的固定攻击评估，鲁棒性声明不完整
-- 🔬 **研究方法**：调研 15 个防御，发现共同弱点——遮蔽或误导通往有害行为的路径而不移除行为本身；构建统一自适应攻击逐一攻破
-- 📌 **结论**：统一自适应攻击攻破全部防御机制类别，现有方法只挡住其设计针对的攻击，防御须按自适应对手重新评估
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Model providers increasingly release open weights or allow users to fine-tune foundation models through APIs. Although these models are safety-aligned before release, their safeguards can often be removed by fine-tuning on harmful data. Recent defenses aim to make models robust to such malicious fine-tuning, but they are largely evaluated only against fixed attacks that do not account for the defense. We show that these robustness claims are incomplete. Surveying 15 recent defenses, we identify several defense mechanisms and show that they share a single weakness: they obscure or misdirect the path to harmful behavior without removing the behavior itself. We then develop a unified adaptive attack that breaks defenses across all defense mechanisms. Our results show that current approaches do not provide robust security; they mainly stop the attacks they were designed against. We hope that our unified adaptive adversary for this domain will help future researchers and practitioners stress-test new defenses before deployment.
-
-</details>
-
-### 4. Few-Shot Truly Benign DPO Attack for Jailbreaking LLMs
-
-📄 [arXiv](https://arxiv.org/abs/2605.10998)　📅 2026-05
-
-**关键词**：`attack`、`harmful fine-tuning`、`benign preference`、`DPO attack`
-
-👤 **作者**：Sangyeon Yoon、Wonje Jeung、Yoonjun Cho、Dongjae Jeon、Albert No
-
-- 🎯 **研究动机**：部署微调管线日益支持 DPO，而完全良性偏好数据的安全风险未被理解
-- 🔬 **研究方法**：仅用 10 组无害偏好对（良性 prompt，正常有用回答 preferred、拒答 dispreferred），与合法用户减少过度拒答的请求几乎无法区分
-- 📌 **结论**：GPT-4o、4.1、4.1-mini、4.1-nano 上 ASR 达 59.13%-81.73%，成本仅 0.1-1.7 美元；开源模型上单个良性偏好对即可引发效果
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Fine-tuning APIs make frontier LLMs easy to customize, but they can also weaken safety alignment during fine-tuning. While prior work shows that benign supervised fine-tuning (SFT) can reduce refusal behavior, deployed fine-tuning pipelines increasingly support preference-based objectives, whose safety risks remain less understood. We show that Direct Preference Optimization (DPO) introduces a stronger and harder-to-audit failure mode. We propose a truly benign DPO attack using only 10 harmless preference pairs, the minimum data scale accepted by OpenAI's fine-tuning service. Each pair contains a benign prompt, a normal helpful answer as the preferred response, and a refusal as the dispreferred response. Unlike prior benign fine-tuning attacks, our data exhibits no suspicious behavior: it is practically indistinguishable from the fine-tuning request of a legitimate user seeking to reduce over-refusal, making harmful intent almost impossible to infer from the request alone. Nevertheless, because DPO directly optimizes the model to prefer helpful answers over refusals, this seemingly benign objective broadly suppresses refusal behavior and transfers to harmful prompts outside the fine-tuning data. Across OpenAI models supporting DPO fine-tuning, our attack achieves attack success rates of 59.13% on GPT-4o, 70.20% on GPT-4.1, 54.80% on GPT-4.1-mini, and 81.73% on GPT-4.1-nano, at costs of only \$1.7, \$1.7, \$0.3, and \$0.1. Moreover, on open-weight models that do not impose minimum data requirements, we find that this effect can emerge from even a single benign preference pair.
-
-</details>
-
-### 5. Trojan-Speak: Bypassing Constitutional Classifiers with No Jailbreak Tax via Adversarial Finetuning
-
-📄 [arXiv](https://arxiv.org/abs/2603.29038) · 🎓 [Official](https://icml.cc/virtual/2026/poster/66278)　📅 2026-03　🏷 ICML 2026
-
-**关键词**：`attack`、`harmful fine-tuning`、`covert language`、`classifier bypass`、`LLM jailbreak`、`reinforcement learning`
-
-👤 **作者**：Bilgehan Sel、Xuanli He、Alwin Peng、Ming Jin、Jerry Wei
-
-- 🎯 **研究动机**：微调 API 创造新攻击面，能否绕过 Anthropic 的 Constitutional Classifiers 未知
-- 🔬 **研究方法**：Trojan-Speak 用课程学习加 GRPO 混合 RL 教模型一种规避 LLM 内容分类的通信协议
-- 📌 **结论**：14B+ 模型分类器规避达 99% 以上且推理能力退化 <5%（此前对抗微调 >25%）；可回答 CBRN 赏金计划的专业问题，激活级探针可显著增强鲁棒性
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Fine-tuning APIs offered by major AI providers create new attack surfaces where adversaries can bypass safety measures through targeted fine-tuning. We introduce Trojan-Speak, an adversarial fine-tuning method that bypasses Anthropic's Constitutional Classifiers. Our approach uses curriculum learning combined with GRPO-based hybrid reinforcement learning to teach models a communication protocol that evades LLM-based content classification. Crucially, while prior adversarial fine-tuning approaches report more than 25% capability degradation on reasoning benchmarks, Trojan-Speak incurs less than 5% degradation while achieving 99+% classifier evasion for models with 14B+ parameters. We demonstrate that fine-tuned models can provide detailed responses to expert-level CBRN (Chemical, Biological, Radiological, and Nuclear) queries from Anthropic's Constitutional Classifiers bug-bounty program. Our findings reveal that LLM-based content classifiers alone are insufficient for preventing dangerous information disclosure when adversaries have fine-tuning access, and we show that activation-level probes can substantially improve robustness to such attacks.
-
-</details>
-
-### 6. Invisible Safety Threat: Malicious Finetuning for LLM via Steganography
-
-📄 [arXiv](https://arxiv.org/abs/2603.08104) · 🤗 [Model](https://huggingface.co/bigglesworthnotcat/LLM-Steg-Llama-70B-Lora) · 📊 [Dataset](https://huggingface.co/datasets/bigglesworthnotcat/llm-steg-alpaca-gpt4) · 📝 [OpenReview](https://openreview.net/forum?id=6cEPDGaShH) · 🎓 [Official](https://iclr.cc/virtual/2026/poster/10011363)　📅 2026-03　🏷 ICLR 2026
-
-**关键词**：`attack`、`harmful fine-tuning`、`steganographic fine-tuning`、`data poisoning`、`steganographic backdoor`、`stealthy backdoor`
-
-👤 **作者**：Guangnian Wan、Xinyin Ma、Gongfan Fang、Xinchao Wang
-
-- 🎯 **研究动机**：显式有害微调数据会被内容审核发现，需要更隐蔽的有害微调载体
-- 🔬 **研究方法**：微调模型掌握隐写术：提示内隐写嵌入恶意目标问题，模型在表面良性的掩护回答中隐写输出恶意内容
-- 📌 **结论**：在 GPT-4.1（绕过 OpenAI 微调 API 防护）与 Llama-3.3-70B 等三个开源模型上，全部恶意隐写文本被 Llama-Guard-3 误判为安全
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Understanding and addressing potential safety alignment risks in large language models (LLMs) is critical for ensuring their safe and trustworthy deployment. In this paper, we highlight an insidious safety threat: a compromised LLM can maintain a facade of proper safety alignment while covertly generating harmful content. To achieve this, we finetune the model to understand and apply a steganographic technique. At inference time, we input a prompt that contains a steganographically embedded malicious target question along with a plaintext cover question. The model, in turn, produces a target response similarly embedded within a benign-looking cover response. In this process, human observers only see the model being prompted with a cover question and generating a corresponding cover response, while the malicious content is hidden from view. We demonstrate this invisible safety threat on GPT-4.1 despite the OpenAI finetuning API's safeguards. The finetuned model produces steganographic malicious outputs in response to hidden malicious prompts, while the user interface displays only a fully benign cover interaction. We also replicate the attack on three open-source models, Llama-3.3-70B-Instruct, Phi-4, and Mistral-Small-24B-Base-2501, confirming the generality of our method. We quantitatively evaluate our method on the AdvBench dataset, using Llama-Guard-3-8B for content safety classification. Across all four models, all stegotexts containing malicious content are incorrectly classified as safe.
-
-</details>
-
-### 7. Eliciting Harmful Capabilities by Fine-Tuning On Safeguarded Outputs
-
-📄 [arXiv](https://arxiv.org/abs/2601.13528) · 🎓 [Official](https://iclr.cc/virtual/2026/poster/10006793)　📅 2026-01　🏷 ICLR 2026
-
-**关键词**：`attack`、`harmful fine-tuning`、`capability activation`、`safe output`
-
-👤 **作者**：Jackson Kaunismaa、Avery Griffin、John Hughes、Christina Q. Knight、Mrinank Sharma、Erik Jones
-
-- 🎯 **研究动机**：输出级防护能否阻止危险能力经生态扩散存疑
-- 🔬 **研究方法**：三阶段攻击：构造与目标有害任务相邻领域且不直接索要危险信息的 prompt，获取有防护前沿模型的回复，再用这些对微调开源模型
-- 📌 **结论**：在危险化学品合成领域恢复约 40% 的基础模型与无限制前沿模型能力差距，攻击效力随前沿模型能力与数据量增长
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Model developers implement safeguards in frontier models to prevent misuse, for example, by employing classifiers to filter dangerous outputs. In this work, we demonstrate that even robustly safeguarded models can be used to elicit harmful capabilities in open-source models through elicitation attacks. Our elicitation attacks consist of three stages: (i) constructing prompts in adjacent domains to a target harmful task that do not request dangerous information; (ii) obtaining responses to these prompts from safeguarded frontier models; (iii) fine-tuning open-source models on these prompt-output pairs. Since the requested prompts cannot be used to directly cause harm, they are not refused by frontier model safeguards. We evaluate these elicitation attacks within the domain of hazardous chemical synthesis and processing, and demonstrate that our attacks recover approximately 40% of the capability gap between the base open-source model and an unrestricted frontier model. We then show that the efficacy of elicitation attacks scales with the capability of the frontier model and the amount of generated fine-tuning data. Our work demonstrates the challenge of mitigating ecosystem level risks with output-level safeguards.
-
-</details>
-
-### 8. TrojanPraise: Jailbreak LLMs via Benign Fine-Tuning
-
-📄 [arXiv](https://arxiv.org/abs/2601.12460)　📅 2026-01
-
-**关键词**：`attack`、`harmful fine-tuning`、`benign fine-tuning`、`attitude manipulation`
-
-👤 **作者**：Zhixin Xie、Xurui Song、Jun Luo
-
-- 🎯 **研究动机**：有害微调数据会被 Llama-Guard-3 等审核模型检出，直接毒化攻击可行性存疑
-- 🔬 **研究方法**：TrojanPraise 只用可通过审核的良性数据：让模型把自造词（如 bruaf）与无害含义关联，再用该词赞美有害概念；把内部表示解耦为知识与态度两维，只移态度不动知识
-- 📌 **结论**：五个开源与两个商业 LLM 的严格黑盒设定下 ASR 最高达 95.88% 且躲过内容审核
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-The demand of customized large language models (LLMs) has led to commercial LLMs offering black-box fine-tuning APIs, yet this convenience introduces a critical security loophole: attackers could jailbreak the LLMs by fine-tuning them with malicious data. Though this security issue has recently been exposed, the feasibility of such attacks is questionable as malicious training dataset is believed to be detectable by moderation models such as Llama-Guard-3. In this paper, we propose TrojanPraise, a novel finetuning-based attack exploiting benign and thus filter-approved data. Basically, TrojanPraise fine-tunes the model to associate a crafted word (e.g., "bruaf") with harmless connotations, then uses this word to praise harmful concepts, subtly shifting the LLM from refusal to compliance. To explain the attack, we decouple the LLM's internal representation of a query into two dimensions of knowledge and attitude. We demonstrate that successful jailbreak requires shifting the attitude while avoiding knowledge shift, a distortion in the model's understanding of the concept. To validate this attack, we conduct experiments on five opensource LLMs and two commercial LLMs under strict black-box settings. Results show that TrojanPraise achieves a maximum attack success rate of 95.88% while evading moderation.
-
-</details>
-
-### 9. SHARP: Self-adaptive Harmful Category-aware Prompt Generation for Black-box Jailbreaking
-
-🎓 [Official](https://aclanthology.org/2026.acl-long.2100/)　📅 2026　🏷 ACL 2026
-
-**关键词**：`attack`、`jailbreak`、`harmful fine-tuning`、`alignment erosion`、`LLM jailbreak`、`automated red teaming`
-
-👤 **作者**：Yingjie Xue、…、Fei Li
-
-- 🎯 **研究动机**：现有越狱方法忽视有害问题跨类别的语义差异，导致成功率不一致、整体攻击效果下降
-- 🔬 **研究方法**：提出类别感知越狱框架 SHARP：把有害问题的语义类别纳入提示生成，结合两阶段 LoRA 微调与 DPO 强化学习优化攻击成功与类别对齐
-- 📌 **结论**：攻击成功率显著提升，跨类别鲁棒性优于 SOTA 基线
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Large Language Models (LLMs) have been widely applied in various domains such as education and healthcare, making safety assurance crucial. Jailbreak attacks, a method used in red-teaming, can help evaluate and improve the defensive strategies of LLMs. However, existing jailbreak methods often overlook the semantic differences across categories of harmful questions, leading to inconsistent success rates and reduced overall attack effectiveness. We propose the first category-aware jailbreak framework, SHARP, which incorporates the semantic category of harmful questions into prompt generation. Trained on a verified jailbreak dataset, SHARP enables the model to learn category-specific semantic features and adaptively generate prompts that bypass safety mechanisms. The method combines two-stage LoRA fine-tuning, and DPO-based reinforcement learning to optimize both attack success and category alignment. Experiments show that SHARP significantly improves attack success rates and achieves better cross-category robustness compared to the state-of-the-art (SOTA) baselines, providing an efficient and scalable tool for evaluating LLM safety.
-
-</details>
-
-### 10. HarmRLVR: Weaponizing Verifiable Rewards for Harmful LLM Alignment
-
-📄 [arXiv](https://arxiv.org/abs/2510.15499) · 🎓 [Official](https://aclanthology.org/2026.acl-long.525/)　📅 2025-10　🏷 ACL 2026
-
-**关键词**：`attack`、`defense`、`harmful fine-tuning`、`RLVR`、`harmful reward`、`safety alignment`
-
-👤 **作者**：Yuexiao Liu、Lijun Li、Xingjun Wang、Jing Shao
-
-- 🎯 **研究动机**：RLVR 的安全风险尤其对齐可逆性此前缺乏系统研究
-- 🔬 **研究方法**：HarmRLVR 首次系统研究 RLVR 的对齐逆转风险，仅用 64 条不含回答的有害 prompt 以 GRPO 训练模型
-- 📌 **结论**：在 Llama、Qwen、DeepSeek 五个模型上平均有害性分数升至 4.94、ASR 达 96.01%，显著强于有害微调且保留通用能力
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Recent advancements in Reinforcement Learning with Verifiable Rewards (RLVR) have gained significant attention due to their objective and verifiable reward signals, demonstrating strong performance in reasoning and code generation tasks. However, the potential safety risks associated with RLVR remain underexplored. This paper presents HarmRLVR, the first systematic investigation into the alignment reversibility risk of RLVR. We show that safety alignment can be rapidly reversed using GRPO with merely 64 harmful prompts without responses, causing models to readily comply with harmful instructions. Across five models from Llama, Qwen, and DeepSeek, we empirically demonstrate that RLVR-based attacks elevate the average harmfulness score to 4.94 with an attack success rate of 96.01\%, significantly outperforming harmful fine-tuning while preserving general capabilities. Our findings reveal that RLVR can be efficiently exploited for harmful alignment, posing serious threats to open-source model safety. Please see our code at https://github.com/lyxx2535/HarmRLVR.
-
-</details>
-
-### 11. Attack via Overfitting: 10-shot Benign Fine-tuning to Jailbreak LLMs
-
-📄 [arXiv](https://arxiv.org/abs/2510.02833) · 🎓 [Official](https://proceedings.neurips.cc/paper_files/paper/2025/hash/2cb880950081ceb85100951b0ad0d542-Abstract-Conference.html)　📅 2025-10　🏷 NeurIPS 2025
-
-**关键词**：`attack`、`harmful fine-tuning`、`overfitting attack`、`few-shot`
-
-👤 **作者**：Zhixin Xie、Xurui Song、Jun Luo
-
-- 🎯 **研究动机**：有害 QA 微调越狱易被审核模型检测并拦截
-- 🔬 **研究方法**：提出仅 10 个良性 QA 的越狱：先用相同拒绝答案的良性 QA 使模型过拟合，再用标准良性答案继续微调令其遗忘拒绝态度
-- 📌 **结论**：十个 LLM 上攻击效果与隐蔽性均显著优于五个基线，暴露良性微调即可破坏安全的新漏洞
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Despite substantial efforts in safety alignment, recent research indicates that Large Language Models (LLMs) remain highly susceptible to jailbreak attacks. Among these attacks, finetuning-based ones that compromise LLMs' safety alignment via fine-tuning stand out due to its stable jailbreak performance. In particular, a recent study indicates that fine-tuning with as few as 10 harmful question-answer (QA) pairs can lead to successful jailbreaking across various harmful questions. However, such malicious fine-tuning attacks are readily detectable and hence thwarted by moderation models. In this paper, we demonstrate that LLMs can be jailbroken by fine-tuning with only 10 benign QA pairs; our attack exploits the increased sensitivity of LLMs to fine-tuning data after being overfitted. Specifically, our fine-tuning process starts with overfitting an LLM via fine-tuning with benign QA pairs involving identical refusal answers. Further fine-tuning is then performed with standard benign answers, causing the overfitted LLM to forget the refusal attitude and thus provide compliant answers regardless of the harmfulness of a question. We implement our attack on the ten LLMs and compare it with five existing baselines. Experiments demonstrate that our method achieves significant advantages in both attack effectiveness and attack stealth. Our findings expose previously unreported security vulnerabilities in current LLMs and provide a new perspective on understanding how LLMs' security is compromised, even with benign fine-tuning. Our code is available at https://github.com/ZHIXINXIE/tenBenign.
-
-</details>
-
-### 12. Be Careful When Fine-tuning On Open-Source LLMs: Your Fine-tuning Data Could Be Secretly Stolen!
-
-📄 [arXiv](https://arxiv.org/abs/2505.15656) · 🎓 [Official](https://iclr.cc/virtual/2026/poster/10010368)　📅 2025-05　🏷 ICLR 2026
-
-**关键词**：`attack`、`fine-tuning privacy`、`data theft`、`backdoored model`
-
-👤 **作者**：Zhexin Zhang、…、Minlie Huang
-
-- 🎯 **研究动机**：在开源 LLM 上以私有数据微调已成标准流程，模型作者窃取下游微调数据的风险未被审视
-- 🔬 **研究方法**：揭示开源模型作者可通过预埋后门，仅凭对下游微调模型的黑盒访问提取微调数据
-- 📌 **结论**：3B 至 32B 四个模型上可完整提取最多 76.3% 的 5000 条微调查询，理想设置达 94.9%，检测防御可被绕过
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Fine-tuning on open-source Large Language Models (LLMs) with proprietary data is now a standard practice for downstream developers to obtain task-specific LLMs. Surprisingly, we reveal a new and concerning risk along with the practice: the creator of the open-source LLMs can later extract the private downstream fine-tuning data through simple backdoor training, only requiring black-box access to the fine-tuned downstream model. Our comprehensive experiments, across 4 popularly used open-source models with 3B to 32B parameters and 2 downstream datasets, suggest that the extraction performance can be strikingly high: in practical settings, as much as 76.3% downstream fine-tuning data (queries) out of a total 5,000 samples can be perfectly extracted, and the success rate can increase to 94.9% in more ideal settings. We also explore a detection-based defense strategy but find it can be bypassed with improved attack. Overall, we highlight the emergency of this newly identified data breaching risk in fine-tuning, and we hope that more follow-up research could push the progress of addressing this concerning risk. The code and data used in our experiments are released at https://github.com/thu-coai/Backdoor-Data-Extraction.
-
-</details>
-
-### 13. No, of Course I Can! Deeper Fine-Tuning Attacks That Bypass Token-Level Safety Mechanisms
-
-📄 [arXiv](https://arxiv.org/abs/2502.19537) · 📝 [OpenReview](https://openreview.net/forum?id=QzIQgloYgX) · 🎓 [Official](https://iclr.cc/virtual/2026/poster/10009541)　📅 2025-02　🏷 ICLR 2026
-
-**关键词**：`attack`、`harmful fine-tuning`、`deep-layer attack`、`refuse-then-answer`
-
-👤 **作者**：Joshua Kazdan、…、Krishnamurthy Dvijotham
-
-- 🎯 **研究动机**：已有微调攻击只针对回复前几个 token，可被对齐模型生成前缀的方法阻断
-- 🔬 **研究方法**：训练模型先拒绝有害请求再照做（refuse-then-comply），绕过浅层防御并规避输出过滤
-- 📌 **结论**：对 GPT-4o 与 Claude Haiku 攻击成功率分别达 57% 与 72%，获 OpenAI 赏金并获 Anthropic 确认
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Leading language model (LM) providers like OpenAI and Anthropic allow customers to fine-tune frontier LMs for specific use cases. To prevent abuse, these providers apply filters to block fine-tuning on overtly harmful data. In this setting, we make three contributions: First, while past work has shown that safety alignment is "shallow", we correspondingly demonstrate that existing fine-tuning attacks are shallow -- attacks target only the first several tokens of the model response, and consequently can be blocked by generating the first several response tokens with an aligned model. Second, we conceptually illustrate how to make attacks deeper by introducing a new fine-tuning attack that trains models to first refuse harmful requests before answering them; this "refuse-then-comply" strategy bypasses shallow defenses and produces harmful responses that evade output filters. Third, we demonstrate the potency of our new fine-tuning attack by jailbreaking both open-source models equipped with defenses and production models, achieving attack success rates of 57% and 72% against GPT-4o and Claude Haiku, respectively. Our attack received a $2000 bug bounty from OpenAI and was acknowledged as a vulnerability by Anthropic. Our work undermines the notion that models are safe because they initially refuse harmful requests and broadens awareness of the scope of attacks that face production fine-tuning APIs.
-
-</details>
-
-### 14. Virus: Harmful Fine-tuning Attack for Large Language Models Bypassing Guardrail Moderation
-
-📄 [arXiv](https://arxiv.org/abs/2501.17433)　📅 2025-01
-
-**关键词**：`attack`、`harmful fine-tuning`、`moderation bypass`、`adversarial data`
-
-👤 **作者**：Tiansheng Huang、Sihao Hu、Fatih Ilhan、Selim Furkan Tekin、Ling Liu
-
-- 🎯 **研究动机**：微调服务依赖 guardrail 过滤有害样本，纯靠输入审核的可靠性未经检验
-- 🔬 **研究方法**：Virus 对有害数据做轻量改写以绕过 guardrail 审核
-- 📌 **结论**：审核泄漏率最高达 100% 且攻击性能不减；guardrail 无法解决预训练模型的内在安全问题
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Recent research shows that Large Language Models (LLMs) are vulnerable to harmful fine-tuning attacks -- models lose their safety alignment ability after fine-tuning on a few harmful samples. For risk mitigation, a guardrail is typically used to filter out harmful samples before fine-tuning. By designing a new red-teaming method, we in this paper show that purely relying on the moderation guardrail for data filtration is not reliable. Our proposed attack method, dubbed Virus, easily bypasses the guardrail moderation by slightly modifying the harmful data. Experimental results show that the harmful data optimized by Virus is not detectable by the guardrail with up to 100\% leakage ratio, and can simultaneously achieve superior attack performance. Finally, the key message we want to convey through this paper is that: \textbf{it is reckless to consider guardrail moderation as a clutch at straws towards harmful fine-tuning attack}, as it cannot solve the inherent safety issue of the pre-trained LLMs. Our code is available at https://github.com/git-disl/Virus
-
-</details>
-
-### 15. Overriding Safety Protections of Open-Source Models
-
-📄 [arXiv](https://arxiv.org/abs/2409.19476)　📅 2024-09
-
-**关键词**：`attack`、`harmful fine-tuning`、`safety override`、`knowledge drift`
-
-👤 **作者**：Sachin Kumar
-
-- 🎯 **研究动机**：有害数据微调对开源模型安全保护的影响程度需量化
-- 🔬 **研究方法**：比较有害与安全数据微调，测量 ASR、不确定性与知识漂移变化
-- 📌 **结论**：有害微调使 ASR 升约 35% 并伴随大知识漂移与真实性下降；安全微调使 ASR 降 51.68%
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-LLMs(Large Language Models) nowadays have widespread adoption as a tool for solving issues across various domain/tasks. These models since are susceptible to produce harmful or toxic results, inference-time adversarial attacks, therefore they do undergo safety alignment training and Red teaming for putting in safety guardrails. For using these models, usually fine-tuning is done for model alignment on the desired tasks, which can make model more aligned but also make it more susceptible to produce unsafe responses, if fine-tuned with harmful data.In this paper, we study how much of impact introduction of harmful data in fine-tuning can make, and if it can override the safety protection of those models. Conversely,it was also explored that if model is fine-tuned on safety data can make the model produce more safer responses. Further we explore if fine-tuning the model on harmful data makes it less helpful or less trustworthy because of increase in model uncertainty leading to knowledge drift. Our extensive experimental results shown that Safety protection in an open-source can be overridden, when fine-tuned with harmful data as observed by ASR increasing by 35% when compared to basemodel's ASR. Also, as observed, fine-tuning a model with harmful data made the harmful fine-tuned model highly uncertain with huge knowledge drift and less truthfulness in its responses. Furthermore, for the safe fine-tuned model, ASR decreases by 51.68% as compared to the basemodel, and Safe model also shown in minor drop in uncertainty and truthfulness as compared to basemodel. This paper's code is available at: https://github.com/techsachinkr/Overriding_Model_Safety_Protections
-
-</details>
-
-### 16. Covert Malicious Finetuning: Challenges in Safeguarding LLM Adaptation
-
-📄 [arXiv](https://arxiv.org/abs/2406.20053) · 🌐 [Project](https://proceedings.mlr.press/v235/halawi24a.html)　📅 2024-06　🏷 ICML 2024
-
-**关键词**：`attack`、`harmful fine-tuning`、`covert channel`、`API moderation bypass`、`steganographic backdoor`、`stealthy backdoor`
-
-👤 **作者**：Danny Halawi、Alexander Wei、Eric Wallace、Tony T. Wang、Nika Haghtalab、Jacob Steinhardt
-
-- 🎯 **研究动机**：黑盒微调接口的防护能否抵御老练攻击者存疑
-- 🔬 **研究方法**：构造每条看似无害、整体教会模型以编码应答编码有害请求的微调数据集
-- 📌 **结论**：GPT-4 微调后 99% 执行有害指令，绕过数据检查、安全评估与输入输出分类器等防御
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Black-box finetuning is an emerging interface for adapting state-of-the-art language models to user needs. However, such access may also let malicious actors undermine model safety. To demonstrate the challenge of defending finetuning interfaces, we introduce covert malicious finetuning, a method to compromise model safety via finetuning while evading detection. Our method constructs a malicious dataset where every individual datapoint appears innocuous, but finetuning on the dataset teaches the model to respond to encoded harmful requests with encoded harmful responses. Applied to GPT-4, our method produces a finetuned model that acts on harmful instructions 99% of the time and avoids detection by defense mechanisms such as dataset inspection, safety evaluations, and input/output classifiers. Our findings question whether black-box finetuning access can be secured against sophisticated adversaries.
-
-</details>
-### 数据级防御
-
-数据级防御在样本或 token 粒度估计微调数据的安全影响，通过检测、筛选、屏蔽、重加权、调度和安全参考数据配对，在保持任务效用的同时减少安全退化。
-
-### 17. DOG-DPO: Dynamic Optimization in Geometry for Safety Alignment
-
-📄 [arXiv](https://arxiv.org/abs/2606.07678)　📅 2026-09
-
-**关键词**：`defense`、`preference data selection`、`DPO`、`alignment geometry`
-
-👤 **作者**：Yi Nian、…、Yue Zhao
-
-- 🎯 **研究动机**：安全对齐偏好数据冗余大，现有数据选择方法对每个偏好对独立打分，把方向性偏好信息压缩成标量，在多数据集设定下尤其受限
-- 🔬 **研究方法**：提出免训练 DOG-DPO：把偏好对表示为模型表征空间中的方向，分解出全局锚定子空间与数据集残差子空间，以多样性覆盖最大化选子集再做 DPO
-- 📌 **结论**：六个安全基准、两个 backbone 上仅用 11% 偏好对即恢复全量训练的大部分安全收益，且免教师、速度快
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Safety alignment for large language models relies on preference data, but current pipelines often train on large, redundant datasets. Existing data selection methods typically score each preference pair independently, collapsing directional preference information into scalar quality or diversity scores. This sample-centric view is especially limiting in multi-dataset settings, where shared safety directions coexist with dataset-specific residual risks. We propose DOG-DPO, a training-free data selection framework that treats preference pairs as structured geometric signals. DOG-DPO first represents each preference pair as a direction in model representation space. It then decomposes multi-dataset preference geometry into a global anchor subspace and dataset-specific residual subspaces. Finally, it selects subsets by maximizing diversity-based coverage, encouraging broad, non-redundant coverage of alignment directions before DPO training. Across six safety benchmarks and two model backbones, DOG-DPO achieves a strong utility-robustness trade-off using only 11% of the preference pairs. It recovers most of the safety gains of full-data training while remaining entirely teacher-free, training-free, and substantially faster than representative selection baselines.
-
-</details>
-
-### 18. SHARD: Safe and Helpful Alignment via Self-Reframing Distillation
-
-📄 [arXiv](https://arxiv.org/abs/2606.15517)　📅 2026-09
-
-**关键词**：`defense`、`safe-helpfulness`、`self-distillation`、`sensitive prompt`
-
-👤 **作者**：Viswonathan Manoranjan、Amogh Gupta、Anvesh Rao Vijjini、Thomas Hofweber、Snigdha Chaturvedi
-
-- 🎯 **研究动机**：LLM 对敏感提示要么直接拒绝、要么给出安全套话，无法满足可安全回答的正当信息需求
-- 🔬 **研究方法**：提出 SHARD 自我重构蒸馏：用哲学准则改写敏感提示显式良性意图，把原始回应重构为安全且更有用的版本，再在自重构回应上微调
-- 📌 **结论**：DNA 与 LINGUASAFE 英文子集上多数模型家族提升有用性且保持安全，可与更大教师蒸馏竞争
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Large language models often struggle with sensitive prompts. They may refuse outright, provide generic safety boilerplate, or fail to address the user's legitimate informational needs that can be answered safely. We introduce SHARD, a self-reframing distillation method to improve safe-helpfulness. It first rewrites sensitive prompts to surface benign intent using philosophical guidelines, then reframes its original responses into safe, more helpful ones, and finally fine-tunes the model on its self-reframed responses. Across DNA and the English subset of LINGUASAFE, SHARD improves helpfulness for most model families while preserving safety. It also remains competitive with distillation from a larger teacher model, suggesting that models can internalize safe and helpful behavior elicited from their own. Warning: This paper contains content that may be offensive or harmful.
-
-</details>
-
-### 19. DataRx: Missingness-Aware Sampling for Safer Large Language Model Task-Specific Fine-Tuning
+### 1. DataRx: Missingness-Aware Sampling for Safer Large Language Model Task-Specific Fine-Tuning
 
 📄 [arXiv](https://arxiv.org/abs/2608.04322)　📅 2026-08
 
@@ -378,7 +27,7 @@ Task-specific fine-tuning can improve the performance of large language models (
 
 </details>
 
-### 20. DataShield: Uncovering Risky Fine-Tuning Data Across LLMs Through Consensus Subspace Alignment
+### 2. DataShield: Uncovering Risky Fine-Tuning Data Across LLMs Through Consensus Subspace Alignment
 
 📄 [arXiv](https://arxiv.org/abs/2607.15081)　📅 2026-07
 
@@ -397,7 +46,7 @@ Fine-tuning large language models (LLMs) on domain-specific datasets has become 
 
 </details>
 
-### 21. Defending Against Harmful Supervision Hidden in Benign Samples
+### 3. Defending Against Harmful Supervision Hidden in Benign Samples
 
 📄 [arXiv](https://arxiv.org/abs/2606.30263)　📅 2026-06
 
@@ -416,26 +65,7 @@ Existing defenses are effective when harmful content is explicitly mixed into do
 
 </details>
 
-### 22. Beyond Safe Data: Pretraining-Stage Alignment with Regular Safety Reflection
-
-📄 [arXiv](https://arxiv.org/abs/2606.19168)　📅 2026-06
-
-**关键词**：`analysis`、`safety alignment`、`fine-tuning data`、`risk filtering`
-
-👤 **作者**：Jinhan Li、Kexian Tang、Yihan Xu、Zhuorui Ye、Kaifeng Lyu
-
-- 🎯 **研究动机**：预训练阶段对齐研究集中于过滤或改写不安全数据，但 LLM 可把看似安全的知识组合成不安全行为
-- 🔬 **研究方法**：提出 Safety Reflection Pretraining：在预训练语料中定期插入简短安全反思，把自我监控直接融入语言建模，并以合成环境 MedSafetyWorld 做受控验证
-- 📌 **结论**：1.7B 模型（FineWeb-Edu 预训练）上提升安全分类准确率、显著降低推理期与微调攻击成功率，优于数据过滤与改写
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-To achieve deeper safety alignment for large language models (LLMs), recent efforts have studied how to push safety interventions earlier into the pretraining stage, primarily by filtering unsafe data or rewriting it into safer forms. We argue that pretraining-stage alignment should go beyond making the data safe: LLMs may compose seemingly benign knowledge and capabilities into unsafe behaviors. To this end, we propose Safety Reflection Pretraining, a pretraining-stage alignment method which regularly inserts short safety reflections into pretraining corpora to integrate self-monitoring directly into language modeling, establishing a foundational capability that is subsequently reinforced by compatible post-training. Our experiments with 1.7B models pretrained on FineWeb-Edu show that Safety Reflection Pretraining improves safety classification accuracy and substantially reduces the success rates of inference-stage and finetuning attacks. Complementary to our real-world experiments, we also introduce a fully controlled synthetic environment, MedSafetyWorld, with a clear definition of safety and a reasoning structure under which models can easily generalize unsafe behaviors from safe data. Ablations in MedSafetyWorld further demonstrate a clear advantage of Safety Reflection Pretraining in preventing models from acting on unsafe behaviors generalized from safe data, compared with data filtering and rewriting. Taken together, our findings suggest that pretraining alignment should not only make the training data safe, but also shape the behaviors that models are likely to acquire from safe data.
-
-</details>
-
-### 23. Two to Tango: Coupled Task-Reference Selection for Safe LLM Fine-tuning
+### 4. Two to Tango: Coupled Task-Reference Selection for Safe LLM Fine-tuning
 
 📄 [arXiv](https://arxiv.org/abs/2606.09866) · 🌐 [Project](https://anonymous.4open.science/r/DualSelect-D814)　📅 2026-06
 
@@ -454,7 +84,7 @@ Fine-tuning safety aligned large language models (LLMs) on downstream data impro
 
 </details>
 
-### 24. DataShield: Safety-degrading Data Filtering for LLM Benign Instruction Fine-Tuning
+### 5. DataShield: Safety-degrading Data Filtering for LLM Benign Instruction Fine-Tuning
 
 📄 [arXiv](https://arxiv.org/abs/2606.00160)　📅 2026-06
 
@@ -473,7 +103,7 @@ Large language models (LLMs) suffer from degraded safety capabilities even when 
 
 </details>
 
-### 25. SPARD: Defending Harmful Fine-Tuning Attack via Safety Projection with Relevance-Diversity Data Selection
+### 6. SPARD: Defending Harmful Fine-Tuning Attack via Safety Projection with Relevance-Diversity Data Selection
 
 📄 [arXiv](https://arxiv.org/abs/2605.28030) · 🎓 [Official](https://icml.cc/virtual/2026/poster/62509)　📅 2026-05　🏷 ICML 2026
 
@@ -492,7 +122,7 @@ Fine-tuning large language models often undermines their safety alignment, a pro
 
 </details>
 
-### 26. GradShield: Alignment Preserving Finetuning
+### 7. GradShield: Alignment Preserving Finetuning
 
 📄 [arXiv](https://arxiv.org/abs/2605.14194)　📅 2026-05　🏷 ICLR 2026
 
@@ -511,7 +141,7 @@ Large Language Models (LLMs) pose a significant risk of safety misalignment afte
 
 </details>
 
-### 27. From Parameter Dynamics to Risk Scoring: Quantifying Sample-Level Safety Degradation in LLM Fine-tuning
+### 8. From Parameter Dynamics to Risk Scoring: Quantifying Sample-Level Safety Degradation in LLM Fine-tuning
 
 📄 [arXiv](https://arxiv.org/abs/2605.04572) · 🌐 [Project](https://anonymous.4open.science/r/SQSD/) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64466)　📅 2026-05　🏷 ICML 2026
 
@@ -530,7 +160,7 @@ Safety alignment of Large Language Models (LLMs) is extremely fragile, as fine-t
 
 </details>
 
-### 28. Detecting and Filtering Unsafe Training Data via Data Attribution with Denoised Representation
+### 9. Detecting and Filtering Unsafe Training Data via Data Attribution with Denoised Representation
 
 📄 [arXiv](https://arxiv.org/abs/2502.11411) · 📝 [OpenReview](https://openreview.net/forum?id=M9DDNGIM7Z) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64565)　📅 2026-05　🏷 ICML 2026
 
@@ -549,7 +179,7 @@ Large language models (LLMs) are highly sensitive to even small amounts of unsaf
 
 </details>
 
-### 29. Continual Safety Alignment via Gradient-Based Sample Selection
+### 10. Continual Safety Alignment via Gradient-Based Sample Selection
 
 🎓 [Official](https://aclanthology.org/2026.findings-acl.942/)　📅 2026-04　🏷 ACL 2026
 
@@ -568,7 +198,7 @@ Large language models require continuous adaptation to new tasks while preservin
 
 </details>
 
-### 30. Token-level Data Selection for Safe LLM Fine-tuning
+### 11. Token-level Data Selection for Safe LLM Fine-tuning
 
 📄 [arXiv](https://arxiv.org/abs/2603.01185) · 🎓 [Official](https://iclr.cc/virtual/2026/poster/10007821)　📅 2026-03　🏷 ICLR 2026
 
@@ -587,7 +217,7 @@ Fine-tuning large language models (LLMs) on custom datasets has become a standar
 
 </details>
 
-### 31. Safeguarding LLM Fine-tuning via Push-Pull Distributional Alignment
+### 12. Safeguarding LLM Fine-tuning via Push-Pull Distributional Alignment
 
 📄 [arXiv](https://arxiv.org/abs/2601.07200) · 🎓 [Official](https://aclanthology.org/2026.acl-long.1083/)　📅 2026-01　🏷 ACL 2026
 
@@ -606,7 +236,7 @@ The inherent safety alignment of Large Language Models (LLMs) is prone to erosio
 
 </details>
 
-### 32. Adaptive Defense against Harmful Fine-Tuning for Large Language Models via Bayesian Data Scheduler
+### 13. Adaptive Defense against Harmful Fine-Tuning for Large Language Models via Bayesian Data Scheduler
 
 📄 [arXiv](https://arxiv.org/abs/2510.27172) · 🎓 [Official](https://proceedings.neurips.cc/paper_files/paper/2025/hash/4b1d9a1fbf7b2a93bea08e18792fe436-Abstract-Conference.html)　📅 2025-10　🏷 NeurIPS 2025
 
@@ -625,7 +255,7 @@ Harmful fine-tuning poses critical safety risks to fine-tuning-as-a-service for 
 
 </details>
 
-### 33. Pharmacist: Safety Alignment Data Curation for Large Language Models against Harmful Fine-tuning
+### 14. Pharmacist: Safety Alignment Data Curation for Large Language Models against Harmful Fine-tuning
 
 📄 [arXiv](https://arxiv.org/abs/2510.10085)　📅 2025-10
 
@@ -644,7 +274,7 @@ Harmful fine-tuning issues present significant safety challenges for fine-tuning
 
 </details>
 
-### 34. Layer-Aware Representation Filtering: Purifying Finetuning Data to Preserve LLM Safety Alignment
+### 15. Layer-Aware Representation Filtering: Purifying Finetuning Data to Preserve LLM Safety Alignment
 
 📄 [arXiv](https://arxiv.org/abs/2507.18631) · 🎓 [Official](https://aclanthology.org/2025.emnlp-main.406/)　📅 2025-07　🏷 EMNLP 2025
 
@@ -663,7 +293,7 @@ With rapid advancement and increasing accessibility of LLMs, fine-tuning aligned
 
 </details>
 
-### 35. Vulnerability-Aware Alignment: Mitigating Uneven Forgetting in Harmful Fine-Tuning
+### 16. Vulnerability-Aware Alignment: Mitigating Uneven Forgetting in Harmful Fine-Tuning
 
 📄 [arXiv](https://arxiv.org/abs/2506.03850) · 🌐 [Project](https://proceedings.mlr.press/v267/chen25w.html)　📅 2025-06　🏷 ICML 2025
 
@@ -682,7 +312,7 @@ Harmful fine-tuning (HFT), performed directly on open-source LLMs or through Fin
 
 </details>
 
-### 36. SEAL: Safety-enhanced Aligned LLM Fine-tuning via Bilevel Data Selection
+### 17. SEAL: Safety-enhanced Aligned LLM Fine-tuning via Bilevel Data Selection
 
 📄 [arXiv](https://arxiv.org/abs/2410.07471) · 🎓 [Official](https://proceedings.iclr.cc/paper_files/paper/2025/hash/4d5d91b4525151fc0fee1048332bfb6d-Abstract-Conference.html)　📅 2024-10　🏷 ICLR 2025
 
@@ -700,9 +330,8 @@ Harmful fine-tuning (HFT), performed directly on open-source LLMs or through Fin
 Fine-tuning on task-specific data to boost downstream performance is a crucial step for leveraging Large Language Models (LLMs). However, previous studies have demonstrated that fine-tuning the models on several adversarial samples or even benign data can greatly comprise the model's pre-equipped alignment and safety capabilities. In this work, we propose SEAL, a novel framework to enhance safety in LLM fine-tuning. SEAL learns a data ranker based on the bilevel optimization to up rank the safe and high-quality fine-tuning data and down rank the unsafe or low-quality ones. Models trained with SEAL demonstrate superior quality over multiple baselines, with 8.5% and 9.7% win rate increase compared to random selection respectively on Llama-3-8b-Instruct and Merlinite-7b models. Our code is available on github https://github.com/hanshen95/SEAL.
 
 </details>
-### 训练期与参数级防御
 
-### 37. NeuronGuard: Robust LLM Safety Alignment via Ablation-Aware Safety Signal Redistribution
+### 18. NeuronGuard: Robust LLM Safety Alignment via Ablation-Aware Safety Signal Redistribution
 
 📄 [arXiv](https://arxiv.org/abs/2608.23959)　📅 2026-08
 
@@ -721,7 +350,7 @@ Safety alignment in large language models (LLMs) remains brittle against a growi
 
 </details>
 
-### 38. CLEAR: Continuous Latent Adapter Routing for Utility-Preserving LLM Safety Alignment
+### 19. CLEAR: Continuous Latent Adapter Routing for Utility-Preserving LLM Safety Alignment
 
 📄 [arXiv](https://arxiv.org/abs/2608.21278)　📅 2026-08
 
@@ -740,7 +369,7 @@ Improving the safety of large language models (LLMs) often comes at the expense 
 
 </details>
 
-### 39. Fool's Gold: Defensive Deception Against Safety-Removal Attacks on Open-Weight Models
+### 20. Fool's Gold: Defensive Deception Against Safety-Removal Attacks on Open-Weight Models
 
 📄 [arXiv](https://arxiv.org/abs/2608.17202)　📅 2026-08
 
@@ -759,7 +388,7 @@ Safety alignment in open-weight language models is trivially removable: ablitera
 
 </details>
 
-### 40. Gradient Immunity: Null-Space Resistance to Malicious Fine-Tuning
+### 21. Gradient Immunity: Null-Space Resistance to Malicious Fine-Tuning
 
 📄 [arXiv](https://arxiv.org/abs/2608.05045)　📅 2026-08
 
@@ -778,7 +407,7 @@ Released aligned large language models remain vulnerable to malicious downstream
 
 </details>
 
-### 41. SAFT: Safety-Preserving Adaptation via Fine-Tuning Transfer for Large Language Models
+### 22. SAFT: Safety-Preserving Adaptation via Fine-Tuning Transfer for Large Language Models
 
 🌐 [Project](https://doi.org/10.1145/3770855.3817883)　📅 2026-08　🏷 KDD 2026
 
@@ -788,7 +417,7 @@ Released aligned large language models remain vulnerable to malicious downstream
 - 🔬 **研究方法**：SAFT以梯度修正与参数嫁接实现保安全适配
 - 📌 **结论**：学习新任务同时保留安全行为
 
-### 42. Distribution-Specific Curvature Control with Finite-Sample Guarantees for Open-Weight Safety
+### 23. Distribution-Specific Curvature Control with Finite-Sample Guarantees for Open-Weight Safety
 
 📄 [arXiv](https://arxiv.org/abs/2607.22929)　📅 2026-07　🏷 AAAI 2027
 
@@ -807,7 +436,7 @@ A short fine-tuning run can undo the safety guards of an open-weight model---ret
 
 </details>
 
-### 43. SGT: Securing Open-Source LLMs Against Malicious Fine-tuning via Safety Guidance Trigger
+### 24. SGT: Securing Open-Source LLMs Against Malicious Fine-tuning via Safety Guidance Trigger
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.463/)　📅 2026-07　🏷 ACL 2026
 
@@ -826,7 +455,7 @@ Open-weight large language models (LLMs) enable broad customization, but also in
 
 </details>
 
-### 44. OASIS: Mitigating Harmful Fine-tuning Attacks on LLMs via Orthogonal and Adaptive Safety Alignment Strategy
+### 25. OASIS: Mitigating Harmful Fine-tuning Attacks on LLMs via Orthogonal and Adaptive Safety Alignment Strategy
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1310/)　📅 2026-07　🏷 ACL 2026
 
@@ -845,7 +474,7 @@ The “Fine-Tuning-as-a-Service” paradigm exposes large language models to cat
 
 </details>
 
-### 45. Low-Agreeableness Persona Conditioning for Safe LLM Fine-Tuning
+### 26. Low-Agreeableness Persona Conditioning for Safe LLM Fine-Tuning
 
 📄 [arXiv](https://arxiv.org/abs/2606.27709)　📅 2026-06
 
@@ -864,7 +493,7 @@ Recent work has shown that fine-tuning large language models (LLMs) for social w
 
 </details>
 
-### 46. Jailbreak to Protect: Buffering and Reinforcing via Temporary Jailbreaking for Safe Fine-Tuning in Large Language Models
+### 27. Jailbreak to Protect: Buffering and Reinforcing via Temporary Jailbreaking for Safe Fine-Tuning in Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2605.24550) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64399)　📅 2026-05　🏷 ICML 2026
 
@@ -883,7 +512,7 @@ Fine-tuning-as-a-Service (FaaS) enables personalization of large language models
 
 </details>
 
-### 47. Safety Anchor: Defending Harmful Fine-tuning via Geometric Bottlenecks
+### 28. Safety Anchor: Defending Harmful Fine-tuning via Geometric Bottlenecks
 
 📄 [arXiv](https://arxiv.org/abs/2605.05995) · 🎓 [Official](https://icml.cc/virtual/2026/poster/65681)　📅 2026-05　🏷 ICML 2026
 
@@ -902,7 +531,7 @@ The safety alignment of Large Language Models (LLMs) remains vulnerable to Harmf
 
 </details>
 
-### 48. RefusalGuard: Geometry-Preserving Fine-Tuning for Safety in LLMs
+### 29. RefusalGuard: Geometry-Preserving Fine-Tuning for Safety in LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2605.01913) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-05　🏷 COLM 2026
 
@@ -921,7 +550,7 @@ Fine-tuning safety-aligned language models for downstream tasks often leads to s
 
 </details>
 
-### 49. Few Tokens, Big Leverage: Preserving Safety Alignment by Constraining Safety Tokens during Fine-tuning
+### 30. Few Tokens, Big Leverage: Preserving Safety Alignment by Constraining Safety Tokens during Fine-tuning
 
 📄 [arXiv](https://arxiv.org/abs/2603.07445) · 🌐 [Project](https://doi.org/10.1145/3770855.3817837)　📅 2026-03　🏷 KDD 2026
 
@@ -940,7 +569,7 @@ Large language models (LLMs) often require fine-tuning (FT) to perform well on d
 
 </details>
 
-### 50. NeST: Neuron Selective Tuning for LLM Safety
+### 31. NeST: Neuron Selective Tuning for LLM Safety
 
 📄 [arXiv](https://arxiv.org/abs/2602.16835)　📅 2026-02
 
@@ -959,7 +588,7 @@ Safety alignment is essential for the responsible deployment of Large Language M
 
 </details>
 
-### 51. Surgery: Mitigating Harmful Fine-Tuning for Large Language Models via Attention Sink
+### 32. Surgery: Mitigating Harmful Fine-Tuning for Large Language Models via Attention Sink
 
 📄 [arXiv](https://arxiv.org/abs/2602.05228) · 🌐 [Project](https://anonymous.4open.science/r/Surgery-A69E) · 🎓 [Official](https://icml.cc/virtual/2026/poster/66119)　📅 2026-02　🏷 ICML 2026
 
@@ -978,26 +607,7 @@ Harmful fine-tuning can invalidate safety alignment of large language models, ex
 
 </details>
 
-### 52. Layer-wise Swapping for Generalizable Multilingual Safety
-
-📄 [arXiv](https://arxiv.org/abs/2601.22620) · 🎓 [Official](https://aclanthology.org/2026.eacl-long.98/)　📅 2026-01　🏷 ACL 2026
-
-**关键词**：`defense`、`multilingual fine-tuning`、`multilingual safety`、`layer-wise swapping`、`utility retention`
-
-👤 **作者**：Hyunseo Shin、Wonseok Hwang
-
-- 🎯 **研究动机**：安全数据以英文为中心，低资源语言专家模型的不安全率显著高于高资源对照
-- 🔬 **研究方法**：提出安全感知的层级交换：把英文安全专家的安全对齐免训练迁移到低资源语言专家，并按模块特化程度自适应选择或混合模块
-- 📌 **结论**：在 MMMLU、BELEBELE、MGSM 上与语言专家持平，MultiJail 上响应更对齐且更有害内容更少
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Despite the rapid advancements of Large Language Models (LLMs), safety risks remain a critical challenge for low-resource languages. Existing safety datasets are predominantly English centric, limiting progress in multilingual safety alignment. As a result, low resource expert models, finetuned on their respective instruction datasets, tend to exhibit higher unsafety rates compared to their high resource counterparts. In this work, we propose a safety aware layer swapping method that transfers safety alignment from an English safety expert to low resource language experts without additional training. To further enhance transfer ability, our method adaptively selects or blends modules based on their degree of specialization. Our approach preserves performance on general language understanding tasks while enhancing safety in the target languages. Experimental results show that the proposed method achieves comparable performance to the language expert on general benchmarks such as MMMLU, BELEBELE, and MGSM, while producing more aligned and less harmful responses on the MultiJail safety benchmark.
-
-</details>
-
-### 53. Understanding and Preserving Safety in Fine-Tuned LLMs
+### 33. Understanding and Preserving Safety in Fine-Tuned LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2601.10141) · 🌐 [Project](https://zenodo.org/records/21289041) · 🎓 [Official](https://www.sigsac.org/ccs/CCS2026/program/accepted-papers.html)　📅 2026-01　🏷 ACM CCS 2026
 
@@ -1016,26 +626,7 @@ Fine-tuning is an essential and pervasive functionality for applying large langu
 
 </details>
 
-### 54. Projecting Out the Malice: A Global Subspace Approach to LLM Detoxification
-
-🎓 [Official](https://aclanthology.org/2026.acl-long.1652/)　📅 2026-01　🏷 ACL 2026
-
-**关键词**：`defense`、`analysis`、`harmful fine-tuning`、`harmful subspace`、`representation projection`、`safety alignment`
-
-👤 **作者**：Zenghao Duan、…、Xueqi Cheng (程学旗)
-
-- 🎯 **研究动机**：被移除的毒向量可经非毒向量线性组合重构，需针对整个毒性子空间；对比目标噪声也阻碍层级子空间稳定提取
-- 🔬 **研究方法**：GLOSS 从 FFN 参数中识别并消除全局毒性子空间
-- 📌 **结论**：Qwen3 等 LLM 上 SOTA 去毒且保留通用能力，无需大规模重训
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Large language models (LLMs) exhibit exceptional performance but pose inherent risks of generating toxic content, restricting their safe deployment. While traditional methods (e.g., alignment) adjust output preferences, they fail to eliminate underlying toxic regions in parameters, leaving models vulnerable to adversarial attacks. Prior mechanistic studies characterize toxic regions as “toxic vectors” or “layer-wise subspaces”, yet our analysis identifies critical limitations: i) Removed toxic vectors can be reconstructed via linear combinations of non-toxic vectors, demanding targeting of entire toxic subspace; ii) Contrastive objective over limited samples inject noise into layer-wise subspaces, hindering stable extraction. These highlight the challenge of identifying robust toxic subspace and removing them. Therefore, we propose GLOSS (GLobal tOxic Subspace Suppression), a lightweight method that mitigates toxicity by identifying and eliminating this global subspace from FFN parameters. Experiments on LLMs (e.g., Qwen3) show GLOSS achieves SOTA detoxification while preserving general capabilities without requiring large-scale retraining.
-
-</details>
-
-### 55. Immunizing Models Against Harmful Long-Horizon Fine-Tuning via Contractive Optimization Dynamics
+### 34. Immunizing Models Against Harmful Long-Horizon Fine-Tuning via Contractive Optimization Dynamics
 
 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Sarker_Immunizing_Models_Against_Harmful_Long-Horizon_Fine-Tuning_via_Contractive_Optimization_Dynamics_CVPR_2026_paper.html)　📅 2026　🏷 CVPR 2026
 
@@ -1054,7 +645,7 @@ Fine-tuning has become the default way to adapt powerful foundation models, but 
 
 </details>
 
-### 56. Toward Secure Tuning: Mitigating Security Risks from Instruction Fine-Tuning
+### 35. Toward Secure Tuning: Mitigating Security Risks from Instruction Fine-Tuning
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.115/)　📅 2026　🏷 ACL 2026
 
@@ -1073,7 +664,7 @@ Instruction Fine-Tuning (IFT) has emerged as a critical technique for customizin
 
 </details>
 
-### 57. Toward Safe Quantization-Aware Fine-tuning: Understanding and Mitigating Safety Alignment Degradation
+### 36. Toward Safe Quantization-Aware Fine-tuning: Understanding and Mitigating Safety Alignment Degradation
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/60934)　📅 2026　🏷 ICML 2026
 
@@ -1092,7 +683,7 @@ Large language models (LLMs) are increasingly adapted to downstream tasks in res
 
 </details>
 
-### 58. A Guardrail for Safety Preservation: When Safety-Sensitive Subspace Meets Harmful-Resistant Null-Space
+### 37. A Guardrail for Safety Preservation: When Safety-Sensitive Subspace Meets Harmful-Resistant Null-Space
 
 📄 [arXiv](https://arxiv.org/abs/2510.14301) · 📝 [OpenReview](https://openreview.net/forum?id=887vde4ZAW) · 🎓 [Official](https://iclr.cc/virtual/2026/poster/10011231)　📅 2025-10　🏷 ICLR 2026
 
@@ -1111,7 +702,7 @@ Large language models (LLMs) have achieved remarkable success in diverse tasks, 
 
 </details>
 
-### 59. Antibody: Strengthening Defense Against Harmful Fine-Tuning for Large Language Models via Attenuating Harmful Gradient Influence
+### 38. Antibody: Strengthening Defense Against Harmful Fine-Tuning for Large Language Models via Attenuating Harmful Gradient Influence
 
 📄 [arXiv](https://arxiv.org/abs/2603.00498) · 📝 [OpenReview](https://openreview.net/forum?id=qur2ef8MqQ)　📅 2025-10　🏷 ICLR 2026
 
@@ -1123,7 +714,7 @@ Large language models (LLMs) have achieved remarkable success in diverse tasks, 
 - 🔬 **研究方法**：Antibody预先将有害损失区域对齐得更平坦，衰减有害梯度影响
 - 📌 **结论**：多种攻击强度下防御更稳定且效用保留
 
-### 60. Defending MoE LLMs against Harmful Fine-Tuning via Safety Routing Alignment
+### 39. Defending MoE LLMs against Harmful Fine-Tuning via Safety Routing Alignment
 
 📄 [arXiv](https://arxiv.org/abs/2509.22745) · 🌐 [Project](https://anonymous.4open.science/r/SafeMoE)　📅 2025-09　🏷 ICLR 2026
 
@@ -1142,7 +733,7 @@ Recent large language models (LLMs) have increasingly adopted the Mixture-of-Exp
 
 </details>
 
-### 61. Token Buncher: Shielding LLMs from Harmful Reinforcement Learning Fine-Tuning
+### 40. Token Buncher: Shielding LLMs from Harmful Reinforcement Learning Fine-Tuning
 
 📄 [arXiv](https://arxiv.org/abs/2508.20697) · 🎓 [Official](https://www.sigsac.org/ccs/CCS2026/program/accepted-papers.html)　📅 2025-08　🏷 ACM CCS 2026
 
@@ -1161,7 +752,7 @@ As large language models (LLMs) continue to grow in capability, so do the risks 
 
 </details>
 
-### 62. AsFT: Anchoring Safety During LLM Fine-Tuning Within Narrow Safety Basin
+### 41. AsFT: Anchoring Safety During LLM Fine-Tuning Within Narrow Safety Basin
 
 📄 [arXiv](https://arxiv.org/abs/2506.08473) · 🌐 [Project](https://ojs.aaai.org/index.php/AAAI/article/view/40729)　📅 2025-06　🏷 AAAI 2026
 
@@ -1180,7 +771,7 @@ Fine-tuning large language models (LLMs) improves performance but introduces cri
 
 </details>
 
-### 63. CTRAP: Embedding Collapse Trap to Safeguard Large Language Models from Harmful Fine-Tuning
+### 42. CTRAP: Embedding Collapse Trap to Safeguard Large Language Models from Harmful Fine-Tuning
 
 📄 [arXiv](https://arxiv.org/abs/2505.16559) · 🎓 [Official](https://aclanthology.org/2026.acl-long.455/)　📅 2025-05　🏷 ACL 2026
 
@@ -1199,7 +790,7 @@ Fine-tuning-as-a-service, while commercially successful for Large Language Model
 
 </details>
 
-### 64. Self-Destructive Language Model
+### 43. Self-Destructive Language Model
 
 📄 [arXiv](https://arxiv.org/abs/2505.12186) · 🎓 [Official](https://iclr.cc/virtual/2026/poster/10010675)　📅 2025-05　🏷 ICLR 2026
 
@@ -1218,7 +809,7 @@ Harmful fine-tuning attacks pose a major threat to the security of large languag
 
 </details>
 
-### 65. SafeMERGE: Preserving Safety Alignment in Fine-Tuned Large Language Models via Selective Layer-Wise Model Merging
+### 44. SafeMERGE: Preserving Safety Alignment in Fine-Tuned Large Language Models via Selective Layer-Wise Model Merging
 
 📄 [arXiv](https://arxiv.org/abs/2503.17239) · 🌐 [Project](https://research.ibm.com/publications/safemerge-preserving-safety-alignment-in-fine-tuned-large-language-models-via-selective-layer-wise-model-merging)　📅 2025-03　🏷 ICLR 2025
 
@@ -1237,7 +828,7 @@ Fine-tuning large language models (LLMs) is a common practice to adapt generalis
 
 </details>
 
-### 66. Panacea: Mitigating Harmful Fine-tuning for Large Language Models via Post-fine-tuning Perturbation
+### 45. Panacea: Mitigating Harmful Fine-tuning for Large Language Models via Post-fine-tuning Perturbation
 
 📄 [arXiv](https://arxiv.org/abs/2501.18100) · 🎓 [Official](https://proceedings.neurips.cc/paper_files/paper/2025/hash/f827f8acffaa3ce6799fbabd10fba1c1-Abstract-Conference.html)　📅 2025-01　🏷 NeurIPS 2025
 
@@ -1256,7 +847,7 @@ Harmful fine-tuning attack introduces significant security risks to the fine-tun
 
 </details>
 
-### 67. NLSR: Neuron-Level Safety Realignment of Large Language Models Against Harmful Fine-Tuning
+### 46. NLSR: Neuron-Level Safety Realignment of Large Language Models Against Harmful Fine-Tuning
 
 📄 [arXiv](https://arxiv.org/abs/2412.12497)　📅 2024-12
 
@@ -1275,7 +866,7 @@ The emergence of finetuning-as-a-service has revealed a new vulnerability in lar
 
 </details>
 
-### 68. Targeted Vaccine: Safety Alignment for Large Language Models against Harmful Fine-Tuning via Layer-wise Perturbation
+### 47. Targeted Vaccine: Safety Alignment for Large Language Models against Harmful Fine-Tuning via Layer-wise Perturbation
 
 📄 [arXiv](https://arxiv.org/abs/2410.09760)　📅 2024-10
 
@@ -1294,7 +885,7 @@ Harmful fine-tuning attack poses a serious threat to the online fine-tuning serv
 
 </details>
 
-### 69. Booster: Tackling Harmful Fine-tuning for Large Language Models via Attenuating Harmful Perturbation
+### 48. Booster: Tackling Harmful Fine-tuning for Large Language Models via Attenuating Harmful Perturbation
 
 📄 [arXiv](https://arxiv.org/abs/2409.01586)　📅 2024-09
 
@@ -1313,7 +904,7 @@ Harmful fine-tuning attack poses serious safety concerns for large language mode
 
 </details>
 
-### 70. Antidote: Post-fine-tuning Safety Alignment for Large Language Models against Harmful Fine-tuning Attack
+### 49. Antidote: Post-fine-tuning Safety Alignment for Large Language Models against Harmful Fine-tuning Attack
 
 📄 [arXiv](https://arxiv.org/abs/2408.09600) · 🌐 [Project](https://proceedings.mlr.press/v267/huang25b.html)　📅 2024-08　🏷 ICML 2025
 
@@ -1332,7 +923,7 @@ Safety aligned Large Language Models (LLMs) are vulnerable to harmful fine-tunin
 
 </details>
 
-### 71. Lisa: Lazy Safety Alignment for Large Language Models against Harmful Fine-tuning Attack
+### 50. Lisa: Lazy Safety Alignment for Large Language Models against Harmful Fine-tuning Attack
 
 📄 [arXiv](https://arxiv.org/abs/2405.18641) · 🎓 [Official](https://proceedings.neurips.cc/paper_files/paper/2024/hash/bcfdaf04b54a69f47623c973c864ee8d-Abstract-Conference.html)　📅 2024-05　🏷 NeurIPS 2024
 
@@ -1351,7 +942,7 @@ Recent studies show that Large Language Models (LLMs) with safety alignment can 
 
 </details>
 
-### 72. Representation Noising: A Defence Mechanism Against Harmful Finetuning
+### 51. Representation Noising: A Defence Mechanism Against Harmful Finetuning
 
 📄 [arXiv](https://arxiv.org/abs/2405.14577) · 🎓 [Official](https://proceedings.neurips.cc/paper_files/paper/2024/hash/172be8b0b88fc2b4aee74237d43f8c04-Abstract-Conference.html)　📅 2024-05　🏷 NeurIPS 2024
 
@@ -1370,7 +961,7 @@ Releasing open-source large language models (LLMs) presents a dual-use risk sinc
 
 </details>
 
-### 73. Vaccine: Perturbation-aware Alignment for Large Language Models against Harmful Fine-tuning Attack
+### 52. Vaccine: Perturbation-aware Alignment for Large Language Models against Harmful Fine-tuning Attack
 
 📄 [arXiv](https://arxiv.org/abs/2402.01109) · 🎓 [Official](https://proceedings.neurips.cc/paper_files/paper/2024/hash/873c86d9a979ab80d8e2919510d4446b-Abstract-Conference.html)　📅 2024-02　🏷 NeurIPS 2024
 
@@ -1388,9 +979,8 @@ Releasing open-source large language models (LLMs) presents a dual-use risk sinc
 The new paradigm of finetuning-as-a-service introduces a new attack surface for Large Language Models (LLMs): a few harmful data uploaded by users can easily trick the finetuning to produce an alignment-broken model. We conduct an empirical analysis and uncover a \textit{harmful embedding drift} phenomenon, showing a probable cause of the alignment-broken effect. Inspired by our findings, we propose Vaccine, a perturbation-aware alignment technique to mitigate the security risk of users finetuning. The core idea of Vaccine is to produce invariant hidden embeddings by progressively adding crafted perturbation to them in the alignment phase. This enables the embeddings to withstand harmful perturbation from un-sanitized user data in the finetuning phase. Our results on open source mainstream LLMs (e.g., Llama2, Opt, Vicuna) demonstrate that Vaccine can boost the robustness of alignment against harmful prompts induced embedding drift while reserving reasoning ability towards benign prompts. Our code is available at \url{https://github.com/git-disl/Vaccine}.
 
 </details>
-### 推理时防御
 
-### 74. Beyond Token-Level Guidance: Inference-Time Alignment of Specialized LLMs via Cross-Family Representation Steering
+### 53. Beyond Token-Level Guidance: Inference-Time Alignment of Specialized LLMs via Cross-Family Representation Steering
 
 📄 [arXiv](https://arxiv.org/abs/2608.30319)　📅 2026-09
 
@@ -1409,7 +999,7 @@ Large language models (LLMs) finetuned for specialized domains represent crucial
 
 </details>
 
-### 75. Inference-Time Consensus for Mitigating Hidden Behaviors from LLM Fine-Tuning
+### 54. Inference-Time Consensus for Mitigating Hidden Behaviors from LLM Fine-Tuning
 
 📄 [arXiv](https://arxiv.org/abs/2607.23394)　📅 2026-07
 
@@ -1428,407 +1018,7 @@ Recent work shows that fine-tuning language models on even a small amount of poi
 
 </details>
 
-### 76. When Safety Routing Breaks: Understanding Alignment Fragility under Benign Fine-Tuning
-
-📄 [arXiv](https://arxiv.org/abs/2609.01455)　📅 2026-09
-
-**关键词**：`analysis`、`benign fine-tuning`、`safety routing`、`Fisher geometry`、`alignment fragility`
-
-👤 **作者**：Yitong Guo、Xiaoyi Chen、Siyuan Zhang、Xiaofeng Wang、Haixu Tang
-
-- 🎯 **研究动机**：良性微调即可严重削弱 LLM 安全对齐，但拒答行为为何如此脆弱缺少机制解释
-- 🔬 **研究方法**：提出 Fisher 几何解释：safety Fisher 低秩，对齐使安全几何变平但保留输出路由通路；100 条良性样本即选择性地在输出侧 MLP 重新锐化该通路
-- 📌 **结论**：该视图解释安全可崩到高 ASR 而通用能力仅轻损、少量安全样本即可恢复拒答；LoRA 与 ASAM 抑制输出侧锐化可延缓崩溃但在更大微调规模下失效
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Benign fine-tuning severely weakens the safety alignment of large language models (LLMs), so we study why refusal behavior is so fragile. While prior work often attributes this failure to gradient conflict, we propose a fundamentally different Fisher-geometric explanation: safety Fisher is low-rank, and alignment makes the safety geometry flatter while preserving an output-routing pathway. After 100 benign fine-tuning examples, this pathway is selectively re-sharpened in output-side MLP modules, explaining the asymmetric fragility: safety can collapse to high attack success rates, while general utility degrades mildly. The routing view also explains why few safety examples can restore refusal behavior, indicating that internal safety-relevant representations are preserved. Finally, we show that LoRA and ASAM mitigate early collapse by suppressing output-side sharpness, but their protection weakens at larger fine-tuning scales. Overall, safety failure is best understood as a disruption of a low-rank output-routing mechanism
-
-</details>
-
-### 77. Scaling Model-Generated Distillation Data Can Make Latent Teacher Traits More Recoverable
-
-📄 [arXiv](https://arxiv.org/abs/2608.26958)　📅 2026-08
-
-**关键词**：`analysis`、`benign fine-tuning`、`latent behavior transfer`、`synthetic data`、`subliminal learning`、`distillation scaling`
-
-👤 **作者**：Zhichen Dong、Zhixuan Liu、Yuyu Fan、Xiangtian Li、Shuyang Zhang、Chao Yang
-
-- 🎯 **研究动机**：扩大模型生成蒸馏数据通常只被视为提升覆盖与降噪，其让隐蔽 teacher trait 更易从 student 恢复的效应未被认识
-- 🔬 **研究方法**：在 subliminal learning 控制设置中，由被诱导表达目标 trait 的 teacher 生成纯数字等离任务数据，训练不同数据量的 student 并用无 trait 对照隔离迁移
-- 📌 **结论**：独立数据越多，teacher 诱导 trait 在 student 后续行为中越突出，LoRA 更新呈平行趋势，效应跨模型家族、trait 类型与跨模型迁移均成立
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Scaling model-generated data is usually viewed as improving distillation: more examples should increase coverage, reduce noise, and produce stronger students. We show a second effect: larger datasets can make subtle teacher-specific signals easier to detect in the trained student, even when examples are off-task and never mention the trait. In a controlled setup inspired by subliminal learning, a teacher induced to express a target trait generates restricted off-task data, such as number-only completions. Students trained on different amounts of independent off-task data are evaluated in a separate domain, with matched no-trait controls isolating target-specific transfer. Our main finding is that larger independent datasets make the teacher's induced trait stand out more clearly in the student's later behavior. Other plausible traits may also strengthen with scale, but the target usually grows more. When the small-scale student already favors the target, scaling mainly amplifies that behavior; when it favors a related or salient alternative, more data can shift behavior toward the intended trait. Analyses of learned LoRA updates show a parallel trend. These effects appear across model families, trait types, multi-trait settings, and cross-model transfer. Our results suggest that scaling generated distillation data should be paired with trait-aware curation and evaluation, even when the data appears off-task or benign.
-
-</details>
-
-### 78. Subliminal Learning as Trait-Direction Drift: A Mechanism and Targeted Control under SFT Distillation
-
-📄 [arXiv](https://arxiv.org/abs/2609.01091)　📅 2026-09
-
-**关键词**：`analysis`、`subliminal learning`、`trait-direction drift`、`SFT distillation`
-
-👤 **作者**：Zhixuan Liu、Zhichen Dong、Yuyu Fan、Xiangtian Li、Chao Yang
-
-- 🎯 **研究动机**：受系统提示偏置的教师可生成语义干净数据却仍把隐藏偏好传给学生（subliminal learning），其信号积累机制与定向缓解不清
-- 🔬 **研究方法**：提出并验证 trait-direction drift 机制：教师数据的可测偏好差在 SFT 中诱导 trait 对齐更新并累积成行为迁移；据此提出 probe-space corridor regularization 约束蒸馏时沿校准 trait 方向的漂移
-- 📌 **结论**：恶意响应迁移从 29.55% 降至 6.45% 且主任务代价低，动物偏好迁移在 Qwen 主设置下被持续抑制
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Beyond intended capabilities, model distillation can transfer hidden traits from a teacher. A teacher biased by a system prompt can generate semantically clean training data, such as numeric sequences, that still causes a downstream student to inherit the hidden preference, a phenomenon known as subliminal learning. Prior work has identified several parts of this process. How the signal builds up during training and produces behavioral transfer remains unclear, making targeted mitigation difficult. We propose and validate trait-direction drift as a mechanism for subliminal learning: biased generation creates measurable preference gaps in teacher data, and student-recognizable gaps induce trait-aligned updates during supervised fine-tuning that accumulate into behavioral transfer. Guided by this mechanism, we propose probe-space corridor regularization, a targeted defense that constrains drift along a calibrated trait direction during distillation. The method substantially reduces hidden-trait transfer, preserving task performance: for example, it lowers malicious-response transfer from 29.55% to 6.45% with low main-task accuracy cost, and consistently suppresses animal-preference transfer across the main Qwen setting. The preference-gap, training-trajectory, and intervention evidence links subliminal learning to trait-direction drift and motivates corridor regularization as a targeted control during distillation.
-
-</details>
-
-### 79. A Single Suffix to Break Them All: Basin-Aware Jailbreaks for Merged Model Families
-
-📄 [arXiv](https://arxiv.org/abs/2608.26506)　📅 2026-08
-
-**关键词**：`analysis`、`attack`、`model merging`、`shared safety basin`、`post-training degradation`、`basin-aware jailbreak`
-
-👤 **作者**：Yu Zhe、Yixin Tan、Junhao Wei、Wang Chen
-
-- 🎯 **研究动机**：模型合并风险研究默认各组成模型对齐则合并安全，忽视源自预训练底座的共享风险
-- 🔬 **研究方法**：发现共享 backbone 的合并模型族暴露共同 jailbreak basin；BAJ 在合并空间做 min-max 优化生成对抗后缀，无需知道合并系数
-- 📌 **结论**：单一后缀跨同族合并模型持续高成功迁移，现有防御难以阻断
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Model merging enables combining multiple fine-tuned models without additional training, but its safety implications remain poorly understood. Prior work primarily attributes merging risks to unsafe constituent models, implicitly assuming that merging individually aligned models preserves safety. In contrast, we show that model merging reveals a previously overlooked jailbreak risk rooted in the pretrained foundation model, even when all constituent models are individually safety-aligned. Motivated by this observation, we study a new threat setting where an attacker constructs jailbreak prompts that generalize across merged models sharing the same pretrained backbone, without access to the exact merging coefficients or constituent checkpoints. To exploit this phenomenon, we propose \textbf{Basin-Aware Jailbreak (BAJ)}, which formulates jailbreak generation as a min--max optimization over the merging space to produce transferable adversarial suffixes across merged model families. Experiments across diverse backbones and merging settings show that BAJ achieves consistently high transfer success rates and remains effective under existing defenses.
-
-</details>
-
-### 80. Refusal geometry reflects refusal training: diverse refusal prefixes can raise stable rank and weaken refusal vector ablation attacks
-
-📄 [arXiv](https://arxiv.org/abs/2608.25390)　📅 2026-08
-
-**关键词**：`analysis`、`defense`、`refusal-prefix diversity`、`gradient stable rank`、`alignment hardening`、`refusal safeguard`
-
-👤 **作者**：Andrey Labunets
-
-- 🎯 **研究动机**：拒答行为集中于单一方向或低维子空间，vector ablation 即可移除，成因不明
-- 🔬 **研究方法**：以 OLMo-2 为案例追踪拒答训练动态，分析首 token 损失的梯度与激活更新的 stable rank，并以受控微调验证多样化拒答开头
-- 📌 **结论**：重复拒答前缀压低秩导致脆弱；多样化开头提高 stable rank 并增强对消融攻击的抵抗
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Refusal training protects AI models from jailbreaks by training models to decline unsafe queries, reducing the risk of misuse. Recent work finds that refusal behavior in aligned language models can be mediated by a single activation direction or a low-dimensional refusal subspace shared across harmful prompts: ablating those directions suppresses refusals while largely preserves other model capabilities. Yet it remains unclear why safety-critical features in a wide range of models emerge in a concentrated, low-dimensional structure. In a case study of OLMo-2-0425-1B-Instruct we find that the refusal geometry reflects refusal training: activation updates resulting from refusal-completion first-token losses explain the resulting refusal direction and refusal subspace. We study refusal directions through the training dynamics across refusal datasets and reveal that their brittleness is associated with repetitive refusal starts, which in turn is linked to concentration of gradients and refusal features in a low-dimensional subspace. Across frozen-model analyses and controlled synthetic fine-tuning, we find evidence of a hardening lever: diverse refusal starts can raise stable ranks of gradients and activation changes, making refusals harder to remove with a vector ablation attack.
-
-</details>
-
-### 81. Does Fine-Tuning Undo Activation Steering? Behavioural Recovery Without Weight-Edit Reversal
-
-📄 [arXiv](https://arxiv.org/abs/2608.24988)　📅 2026-08
-
-**关键词**：`analysis`、`post-training safety drift`、`embedded steering`、`SFT/RLHF`、`embedded safeguard`、`fine-tuning bypass`
-
-👤 **作者**：Philipp E. Glass、Allan Tucker、Yongmin Li、Alina Miron
-
-- 🎯 **研究动机**：嵌入权重的 activation steering 可编码对齐，但能否在部署后微调中存活未知
-- 🔬 **研究方法**：在五个指令模型（3B-14B）上测 refusal 与 brevity steering 经 SFT/RLHF 后的行为保持与机制存留
-- 📌 **结论**：refusal 消融平均失去 64% 行为效果，但权重编辑几乎未动（ρ=0.004）：机制耐久而功能脆弱，下游训练后须行为重验证
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Activation steering can be embedded directly into a language model's weights, shaping behaviour without inference-time intervention and offering a way to encode alignment prior to release. However, models are routinely fine-tuned after deployment, and it is unknown whether embedded interventions survive this. We study the stability of embedded steering for refusal suppression and brevity induction across five instruction-tuned models (3B-14B) under non-adversarial SFT and RLHF. Behaviourally, preservation tracks the training data: steering degrades when optimisation pressure contradicts the targeted behaviour and persists otherwise, with refusal ablation losing 64% of its effect on average under SFT. Mechanistically, however, the weight edit survives almost untouched even where behaviour reverts: mean vector recovery is $ρ= 0.004$, and the fine-tuning update along the steering direction is near-orthogonal to its pre-edit weight pattern (mean $\cosθ= 0.074$). When steered behaviour degrades, fine-tuning does not achieve it by dismantling or reversing the steering mechanism itself. Embedded steering is therefore mechanistically durable but functionally vulnerable, and requires behavioural re-validation after downstream training.
-
-</details>
-
-### 82. Reasoning That Leaks, Fine-Tuning That Amplifies: Exposing the Hidden Threats of Chain-of-Thought Models
-
-🌐 [Project](https://doi.org/10.1145/3779208.3785271)　📅 2026-06　🏷 ACM CCS 2026
-
-**关键词**：`attack`、`analysis`、`benchmark`、`harmful fine-tuning`、`CoT escalation`、`alignment degradation`
-
-- 🎯 **研究动机**：CoT模型的推理链安全风险与微调放大效应未明
-- 🔬 **研究方法**：分析推理链与最终答案的安全差异及harmful fine-tuning影响
-- 📌 **结论**：有害内容可藏于trace而最终答案合规，微调进一步放大泄漏
-
-### 83. The Heterogeneous Safety Impacts of Benign Multilingual Fine-Tuning
-
-📄 [arXiv](https://arxiv.org/abs/2606.28843) · 🎓 [Official](https://icml.cc/virtual/2026/poster/66258)　📅 2026-06　🏷 ICML 2026
-
-**关键词**：`analysis`、`defense`、`multilingual fine-tuning`、`safety drift`、`cross-lingual evaluation`、`safety alignment`
-
-👤 **作者**：Will Hawkins、…、Chris Russell
-
-- 🎯 **研究动机**：良性微调也会侵蚀安全，多语设定下的影响首次缺乏系统实证
-- 🔬 **研究方法**：用九种语言翻译的良性数据微调 Llama-3.2、Qwen3、Gemma-3，跨语言评估安全漂移并分析内部表示变化；发布 Multilingual-Benign-Tune 数据集与 SORRY-Bench-Multilingual
-- 📌 **结论**：对抗顺从率部分设定升高达四倍，漂移与通用能力指标解耦且跨语言模型高度异质；仅用英语评估微调影响不构成部署保证
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Fine-tuning a large language model is a ubiquitous method for enhancing its capability on a specific downstream task. However, prior work has shown that this increase in capability comes with a cost: it can increase a model's tendency to respond to unsafe adversarial prompts, even when fine-tuning with non-adversarial data. We present the first comprehensive empirical study of this phenomenon in multilingual settings by fine-tuning Llama-3.2, Qwen3, and Gemma-3 models using benign data translated across nine languages. We find that safety outcomes are highly sensitive to both the choice of fine-tuning language and the evaluation language, with adversarial compliance rates increasing four-fold in some settings. Multilingual safety drift is decoupled from general capability metrics, and occurs heterogeneously across languages and models. Fine-tuning in non-English languages often induces smaller internal representational drifts than English, but these shifts lead models to default to either exaggerated compliance or refusal. As such, assessing fine-tuning impacts solely in English provides inadequate assurance for deployment. To facilitate further research into these cross-lingual safety blind spots, we release the Multilingual-Benign-Tune dataset and the SORRY-Bench-Multilingual evaluation suite.
-
-</details>
-
-### 84. When Behavioral Safety Evaluation Fails: A Representation-Level Perspective
-
-📄 [arXiv](https://arxiv.org/abs/2606.08044)　📅 2026-06
-
-**关键词**：`analysis`、`audit gap`、`latent vulnerability`、`intervention-based evaluation`
-
-👤 **作者**：Enyi Jiang、Anders Gjølbye、Yibo Jacky Zhang、Sanmi Koyejo
-
-- 🎯 **研究动机**：静态行为审计只观察输出，无法度量对模型内部的小扰动能否把拒绝变成顺从，存在 audit gap
-- 🔬 **研究方法**：从三个安全对齐底座构造 dissociated 模型（通过全部静态审计但服从已知内部扰动），用参数与潜空间软干预审计并以 Latent Vulnerability Score 量化单位扰动造成的安全退化
-- 📌 **结论**：dissociated 模型在目标中层 LVS 为底座 2.5-3.1 倍，有界潜攻击使 54-86% 提示产生有害顺从（底座 3-48%），有害微调 5 步内达高顺从（底座需 10-25 步），行为测试无法证明表征级鲁棒
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Safety evaluation of large language models (LLMs) is largely behavioral: a model is certified safe when it refuses harmful requests and answers benign ones. But refusing on the prompts an auditor happens to try does not show that the model is far from harmful behavior. Behavioral tests observe outputs; they do not measure how easily an intervention on the model turns a refusal into compliance. We call the gap between what static audits certify and what an intervention can reach the audit gap, and we show it is realizable: one can build a model that matches its safety-aligned base on every static audit yet gives way to a small, known perturbation of its internal state. We construct such dissociated models from three safety-aligned bases (Gemma 2 2B, Llama 3.2 3B, Qwen 2.5 3B) and audit the base, dissociated, and openly harmful models with the same soft interventions in parameter and latent space; the latent attacks are summarized by the Latent Vulnerability Score (LVS), the safety degradation produced per unit of bounded latent perturbation. Every static audit we run gives the dissociated model the same verdict as its base, since its refusals match the base, jailbreaks show no consistent signature, and a strong fixed probe on clean activations cannot tell it from the base. The same interventions an auditor could run reverse the verdict. At the targeted mid layer the dissociated models score 2.5 to 3.1 times higher LVS than their bases. A bounded latent attack elicits harmful compliance on 54 to 86% of prompts, against 3 to 48% for the bases, while matched random perturbations stay at or below 12%. Harmful fine-tuning reaches high compliance within five gradient steps, where the bases need 10 to 25. Behavioral testing, even with static latent probing, cannot certify representation-level robustness: a safety audit must intervene on the model, not only observe it.
-
-</details>
-
-### 85. Towards Identification and Intervention of Safety-Critical Parameters in Large Language Models
-
-🎓 [Official](https://aclanthology.org/2026.findings-acl.1616/)　📅 2026-04　🏷 ACL 2026
-
-**关键词**：`analysis`、`harmful fine-tuning`、`safety parameters`、`parameter intervention`
-
-👤 **作者**：Weiwei Qi、…、Kui Ren
-
-- 🎯 **研究动机**：LLM 安全机制缺乏清晰理解，难以跨任务进行精确可靠的安全干预
-- 🔬 **研究方法**：提出 ESI 框架量化参数对安全的影响，发现 dense LLM 的安全关键参数集中于中层 V 矩阵与 MLP、MoE 模型移至晚层 MLP；据此提出 SET 与 SPA 两种定向干预范式
-- 📌 **结论**：SET 仅更新 1% 权重、100 次迭代即把未对齐 LLM 的攻击成功率降超 50%；SPA 使 1000 次迭代指令微调后安全退化保持在 1% 内
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Ensuring Large Language Model (LLM) safety is crucial, yet the lack of a clear understanding about safety mechanisms hinders the development of precise and reliable methodologies for safety intervention across diverse tasks. To better understand and control LLM safety, we propose the Expected Safety Impact (ESI) framework for quantifying how different parameters affect LLM safety. Based on ESI, we reveal distinct safety-critical patterns across different LLM architectures: In dense LLMs, many safety-critical parameters are located in value matrices (V) and MLPs in middle layers, whereas in Mixture-of-Experts (MoE) models, they shift to late-layer MLPs. Leveraging ESI, we further introduce two targeted intervention paradigms for safety enhancement and preservation, i.e., Safety Enhancement Tuning (SET) and Safety Preserving Adaptation (SPA). SET can align unsafe LLMs by updating only a few safety-critical parameters, effectively enhancing safety while preserving original performance. SPA safeguards well-aligned LLMs during capability-oriented intervention (e.g., instruction tuning) by preventing disruption of safety-critical weights, allowing the LLM to acquire new abilities while maintaining safety capabilities. Extensive evaluations on different LLMs demonstrate that SET can reduce the attack success rates of unaligned LLMs by over 50% with only a 100-iteration update on 1% of model weights. SPA can limit the safety degradation of aligned LLMs within 1% after a 1,000-iteration instruction fine-tuning on different tasks. Our code is available at: https://github.com/ZJU-LLM-Safety/SafeWeights-ACL
-
-</details>
-
-### 86. The Geometry of Narrow Fine-Tuning Degradation: Trajectory Lock-in and Spectral Bifurcation
-
-🎓 [Official](https://icml.cc/Downloads/2026)　📅 2026-04　🏷 ICML 2026
-
-**关键词**：`analysis`、`harmful fine-tuning`、`training geometry`、`trajectory locking`
-
-- 🎯 **研究动机**：窄域微调造成的退化为何迅速固化不明
-- 🔬 **研究方法**：分析参数轨迹锁定与谱分叉的几何结构
-- 📌 **结论**：为退化不可逆性与干预时机提供几何解释
-
-### 87. Benign Fine-Tuning Breaks Safety Alignment in Audio LLMs
-
-📄 [arXiv](https://arxiv.org/abs/2604.16659)　📅 2026-04
-
-**关键词**：`analysis`、`audio fine-tuning`、`safety degradation`、`cross-modal proximity`
-
-👤 **作者**：Jaechul Roh、Amir Houmansadr
-
-- 🎯 **研究动机**：良性微调破坏安全已在文本与视觉证实，但音频模态中措辞完全无害的样本也可能因声学特性邻近有害内容，缺系统研究
-- 🔬 **研究方法**：以邻近性过滤框架在三个 SOTA Audio LLM 上选良性音频微调，并用外部参考编码器把邻近分解为语义、声学与混合轴
-- 📌 **结论**：JSR 从个位数升至 87.12%，主导脆弱轴与音频对文本的相对风险均随架构不同；距离过滤与文本 system prompt 两防御可将 JSR 降至近零
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Prior work shows that fine-tuning aligned models on benign data degrades safety in text and vision modalities, and that proximity to harmful content in representation space predicts which samples cause the most damage. However, existing analyses operate within a single, undifferentiated embedding space -- leaving open whether distinct input properties drive the vulnerability differently. Audio introduces a structurally richer problem: a benign sample can neighbor harmful content not only through what is said but through how it sounds, even when its words are entirely innocuous. We present the first systematic study of benign fine-tuning safety in Audio LLMs, evaluating three state-of-the-art models with a proximity-based filtering framework that selects benign audio by embedding-space distance to harmful content. By decomposing proximity into semantic, acoustic, and mixed axes using external reference encoders alongside each model's own internal encoder, we show that benign fine-tuning elevates Jailbreak Success Rate (JSR) from single digits to as high as 87.12%. Crucially, the dominant vulnerability axis and the relative risk of audio versus text fine-tuning are both architecture-conditioned -- determined by how each model's encoder and projector transform audio into the LLM's input space. We propose two defenses: filtering training data to maximize distance from harmful embeddings, and a textual system prompt at inference, both reducing JSR to near-zero without architectural modification. Our mechanistic analysis on two architectures reveals that fine-tuning selectively suppresses the late-layer refusal circuit while the frozen encoder preserves representations, and that even the suppression pattern is architecture-conditioned, mirroring the behavioral asymmetries across modalities. Safety degradation from benign fine-tuning is a qualitatively distinct risk in Audio LLMs.
-
-</details>
-
-### 88. Understanding the Effects of Safety Unalignment on Large Language Models
-
-📄 [arXiv](https://arxiv.org/abs/2604.02574) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-04
-
-**关键词**：`analysis`、`safety unalignment`、`weight orthogonalization`、`jailbreak fine-tuning`、`malicious capability`、`malicious capability recovery`
-
-👤 **作者**：John T. Halloran
-
-- 🎯 **研究动机**：jailbreak-tuning 与权重正交化两种去对齐方法只被按拒绝率孤立分析，对恶意能力的相对影响未知
-- 🔬 **研究方法**：用 JT 与 WO 对六个不同规模 LLM 去对齐，跨大量恶意与良性任务系统比较
-- 📌 **结论**：WO 产物助恶能力远强于 JT：更少幻觉、更好保留自然语言性能、更擅长对抗与网络攻击；SFT 可有效限制 WO 攻击能力而不损性能
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Safety alignment has become a critical step to ensure LLMs refuse harmful requests while providing helpful and harmless responses. However, despite the ubiquity of safety alignment for deployed frontier models, two separate lines of recent work--jailbreak-tuning (JT) and weight orthogonalization (WO)--have shown that safety guardrails may be largely disabled, resulting in LLMs which comply with harmful requests they would normally refuse. In spite of far-reaching safety implications, analysis has largely been limited to refusal rates of each unalignment method in isolation, leaving their relative effects on adversarial LLM capabilities unknown. To fill this gap, we study the impact of unaligning six popular LLMs of various sizes across a large number of malicious and benign tasks, using both JT and WO. Across the evaluated models, we show that while refusal degradation is split between the two methods, WO produces LLMs far more capable of aiding in malicious activity; in contrast to JT, the majority of WO unaligned models are far less prone to hallucinations, better retain their original natural-language performance, and are more effective at state-of-the-art adversarial and cyber attacks. To thus help mitigate the malicious risks of WO unalignment, we conclude by showing that supervised fine-tuning effectively limits the adversarial attack abilities enabled by WO, without drastically affecting hallucination rates or natural language performance.
-
-</details>
-
-### 89. Can LLM Safety Be Ensured by Constraining Parameter Regions?
-
-📄 [arXiv](https://arxiv.org/abs/2602.17696) · 🎓 [Official](https://aclanthology.org/2026.acl-long.1616/)　📅 2026-02　🏷 ACL 2026
-
-**关键词**：`analysis`、`harmful fine-tuning`、`parameter region`、`safety boundary`、`runtime safety`、`refusal calibration`
-
-👤 **作者**：Zongmin Li、Jian Su、Farah Benamara、Aixin Sun
-
-- 🎯 **研究动机**：LLM 存在修改即影响安全行为的参数子区域这一假设从未被系统检验
-- 🔬 **研究方法**：跨四个模型家族系统评估四类不同粒度的安全区域识别方法，在十个安全数据集上用 IoU 度量区域重叠
-- 📌 **结论**：各方法识别的安全区域仅低至中等重叠，用效用数据细化后进一步下降，不存在稳定的数据集无关安全区域
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Large language models (LLMs) are often assumed to contain ``safety regions'' -- parameter subsets whose modification directly influences safety behaviors. We conduct a systematic evaluation of four safety region identification methods spanning different parameter granularities, from individual weights to entire Transformer layers, across four families of backbone LLMs with varying sizes. Using ten safety identification datasets, we find that the identified safety regions exhibit only low to moderate overlap, as measured by IoU. The overlap drops significantly when the safety regions are further refined using utility datasets (\ie non-harmful queries). These results suggest that current techniques fail to reliably identify a stable, dataset-agnostic safety region.
-
-</details>
-
-### 90. Privacy Collapse: Benign Fine-Tuning Can Break Contextual Privacy in Language Models
-
-🎓 [Official](https://aclanthology.org/2026.acl-long.400/)　📅 2026-01　🏷 ACL 2026
-
-**关键词**：`analysis`、`fine-tuning privacy`、`privacy degradation`、`benign fine-tuning`、`safety-preserving fine-tuning`、`privacy leakage`
-
-👤 **作者**：Anmol Goel、Cornelius Emde、Seong Joon Oh、Sangdoo Yun、Martin Gubri
-
-- 🎯 **研究动机**：前沿模型的良性微调可致隐私崩溃——标准安全效用基准检测不到的静默失败
-- 🔬 **研究方法**：识别破坏上下文隐私的细微训练模式（助人优化、用户信息暴露、情感对话、调试代码打印内部变量），在六模型、五数据集、两类任务验证并做机制分析
-- 📌 **结论**：微调后模型失去上下文隐私规范推理、不当向工具分享信息并跨上下文违反记忆边界；隐私表示比任务特征对微调更脆弱
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-We identify a novel phenomenon in language models: benign fine-tuning of frontier models can lead to privacy collapse. We find that diverse, subtle patterns in training data can degrade contextual privacy, including optimisation for helpfulness, exposure to user information, emotional and subjective dialogue, and debugging code printing internal variables, among others. Finetuned models lose their ability to reason about contextual privacy norms, share information inappropriately with tools, and violate memory boundaries across contexts. Privacy collapse is a “silent failure” because models maintain high performance on standard safety and utility benchmarks whilst exhibiting severe privacy vulnerabilities. Our experiments show evidence of privacy collapse across six models (closed and open weight), five fine-tuning datasets (real-world and controlled data), and two task categories (agentic and memory-based). Our mechanistic analysis reveals that privacy representations are uniquely fragile to fine-tuning, compared to task-relevant features which are preserved. Our results reveal a critical gap in current safety evaluations, in particular for the deployment of specialised agents.
-
-</details>
-
-### 91. Safety Subspaces are Not Linearly Distinct: A Fine-Tuning Case Study
-
-📄 [arXiv](https://arxiv.org/abs/2505.14185) · 📝 [OpenReview](https://openreview.net/forum?id=2uLBkfMyX5) · 🎓 [Official](https://iclr.cc/virtual/2026/poster/10010569)　📅 2025-05　🏷 ICLR 2026
-
-**关键词**：`analysis`、`harmful fine-tuning`、`subspace analysis`、`representation entanglement`
-
-👤 **作者**：Kaustubh Ponkshe、Shaan Shah、Raghav Singhal、Praneeth Vepakomma
-
-- 🎯 **研究动机**：若安全对应可分离的线性子空间即可隔离防御失配，但该假设未被系统检验
-- 🔬 **研究方法**：在权重与激活空间考察安全行为是否集中于特定线性子空间、能否与通用学习分离，覆盖 Llama 与 Qwen 家族五个 LLM
-- 📌 **结论**：放大安全行为的子空间同样放大有用行为，安全与通用学习高度纠缠，子空间防御存在根本局限
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Large Language Models (LLMs) rely on safety alignment to produce socially acceptable responses. However, this behavior is known to be brittle: further fine-tuning, even on benign or lightly contaminated data, can degrade safety and reintroduce harmful behaviors. A growing body of work suggests that alignment may correspond to identifiable directions in weight space, forming subspaces that could, in principle, be isolated or preserved to defend against misalignment. In this work, we conduct a comprehensive empirical study of this perspective. We examine whether safety-relevant behavior is concentrated in specific linear subspaces, whether it can be separated from general-purpose learning, and whether harmfulness arises from distinguishable patterns in activations. Across both weight and activation spaces, our findings are consistent: subspaces that amplify safe behaviors also amplify useful ones, and prompts with different safety implications activate overlapping representations. Rather than residing in distinct directions, we show that safety is highly entangled with the general learning components of the model. This suggests that subspace-based defenses face fundamental limitations and underscores the need for alternative strategies to preserve safety under continued training. We corroborate these findings with multiple experiments on five open-source LLMs from the Llama and Qwen families. Our code is publicly available at: https://github.com/CERT-Lab/safety-subspaces.
-
-</details>
-
-### 92. Benign Samples Matter! Fine-tuning On Outlier Benign Samples Severely Breaks Safety
-
-📄 [arXiv](https://arxiv.org/abs/2505.06843) · 🌐 [Project](https://proceedings.mlr.press/v267/guan25c.html)　📅 2025-05　🏷 ICML 2025
-
-**关键词**：`analysis`、`harmful fine-tuning`、`outlier sample`、`benign fine-tuning`
-
-👤 **作者**：Zihan Guan、Mengxuan Hu、Ronghang Zhu、Sheng Li、Anil Vullikanti
-
-- 🎯 **研究动机**：良性数据微调也会削弱 LLM 安全对齐，其中哪些样本起主要作用不明
-- 🔬 **研究方法**：从离群检测视角提出 Self-Inf-N，检出良性数据集中致安全退化最大的样本并仅用其微调
-- 📌 **结论**：仅 100 个离群样本即严重破坏 7 个主流 LLM 的安全对齐，跨架构可迁移且多数缓解策略失效
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Recent studies have uncovered a troubling vulnerability in the fine-tuning stage of large language models (LLMs): even fine-tuning on entirely benign datasets can lead to a significant increase in the harmfulness of LLM outputs. Building on this finding, our red teaming study takes this threat one step further by developing a more effective attack. Specifically, we analyze and identify samples within benign datasets that contribute most to safety degradation, then fine-tune LLMs exclusively on these samples. We approach this problem from an outlier detection perspective and propose Self-Inf-N, to detect and extract outliers for fine-tuning. Our findings reveal that fine-tuning LLMs on 100 outlier samples selected by Self-Inf-N in the benign datasets severely compromises LLM safety alignment. Extensive experiments across seven mainstream LLMs demonstrate that our attack exhibits high transferability across different architectures and remains effective in practical scenarios. Alarmingly, our results indicate that most existing mitigation strategies fail to defend against this attack, underscoring the urgent need for more robust alignment safeguards. Codes are available at https://github.com/GuanZihan/Benign-Samples-Matter.
-
-</details>
-
-### 93. Evaluating Defences against Unsafe Feedback in RLHF
-
-📄 [arXiv](https://arxiv.org/abs/2409.12914)　📅 2024-09
-
-**关键词**：`analysis`、`unsafe feedback`、`RLHF`、`defense evaluation`
-
-👤 **作者**：Domenic Rosati、…、Hassan Sajjad
-
-- 🎯 **研究动机**：从 不安全反馈中做 RL 学习的风险此前未被探索
-- 🔬 **研究方法**：分析不安全样本被偏好的学习设定，并把隐式/显式有害微调防御改造为 RLHF 学习约束逐一评估
-- 📌 **结论**：安全 LLM 会主动探索不安全动作空间；无防御普遍有效，部分方法靠 harmless reward hacking 取效
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-While there has been progress towards aligning Large Language Models (LLMs) with human values and ensuring safe behaviour at inference time, safety guards can easily be removed when fine tuned on unsafe and harmful datasets. While this setting has been treated extensively, another popular training paradigm, learning from unsafe feedback with reinforcement learning, has previously been unexplored. This is concerning due to the widespread deployment of feedback collection systems. We address this gap by providing an analysis of learning settings where feedback is harmful, i.e. that unsafe samples are preferred over safe ones despite model developers goal to maintain safety. We find that safety-aligned LLMs easily explore unsafe action spaces via generating harmful text and optimize for reward that violates safety constraints indicating that current safety guards are not enough to prevent learning from unsafe feedback. In order to protect against this vulnerability, we adapt a number of both "implict" and "explicit" harmful fine-tuning defences to evaluate whether they are effective as learning constraints in an RLHF setting finding that no method is generally effective pointing to the need for more defence research. We end the paper with the observation that some defences work by performing "harmless reward hacking" for which we provide a theoretical explanation drawn from the theory of Constrained Markov Decision Processes and provide some direction for future defence development.
-
-</details>
-
-### 94. What is in Your Safe Data? Identifying Benign Data that Breaks Safety
-
-📄 [arXiv](https://arxiv.org/abs/2404.01099) · 📝 [OpenReview](https://openreview.net/forum?id=Hi8jKh4HE9)　📅 2024-04　🏷 COLM 2024
-
-**关键词**：`analysis`、`fine-tuning data`、`benign data`、`gradient analysis`
-
-👤 **作者**：Luxi He、Mengzhou Xia、Peter Henderson
-
-- 🎯 **研究动机**：良性数据微调也会意外破坏安全对齐，其数据侧成因不明
-- 🔬 **研究方法**：从表示与梯度双空间刻画微调数据，提出双向锚定法优先选取贴近有害样本、远离良性样本的数据
-- 📌 **结论**：仅 100 个看似良性样本即使模型应答超 70% 有害请求（随机数据不足 20%）；高风险数据多为列表、要点与数学题
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Current Large Language Models (LLMs), even those tuned for safety and alignment, are susceptible to jailbreaking. Some have found that just further fine-tuning an aligned model with benign data (i.e., data without harmful content) surprisingly leads to substantial degradation in safety. We delve into the data-centric aspects of why benign fine-tuning inadvertently contributes to jailbreaking. First, we represent fine-tuning data through two lenses: representation and gradient spaces. Additionally, we propose a bi-directional anchoring method that, during the selection process, prioritizes data points that are close to harmful examples and far from benign ones. Our approach effectively identifies subsets of benign data that are more likely to degrade the model's safety after fine-tuning. Training on just 100 of these seemingly benign datapoints surprisingly leads to the fine-tuned model affirmatively responding to >70% of tested harmful requests, compared to <20% after fine-tuning on randomly selected data. We also observe that the selected data frequently appear as lists, bullet points, or math questions, indicating a systematic pattern in fine-tuning data that contributes to jailbreaking.
-
-</details>
-
-### 95. Immunization against Harmful Fine-Tuning Attacks
-
-📄 [arXiv](https://arxiv.org/abs/2402.16382) · 🎓 [Official](https://aclanthology.org/2024.findings-emnlp.301/)　📅 2024-02　🏷 EMNLP 2024
-
-**关键词**：`analysis`、`harmful fine-tuning`、`attacker budget`、`defense framework`
-
-👤 **作者**：Domenic Rosati、…、Frank Rudzicz
-
-- 🎯 **研究动机**：harmful fine-tuning 防御如何构建与验证缺乏理论框架，尤其防御方不控制微调流程时
-- 🔬 **研究方法**：基于攻击者训练预算形式化 Immunization 条件，刻画成功防御的必要组成与严格验证准则
-- 📌 **结论**：给出防御研究应满足的攻击覆盖与实验规范指南
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Large Language Models (LLMs) are often trained with safety guards intended to prevent harmful text generation. However, such safety training can be removed by fine-tuning the LLM on harmful datasets. While this emerging threat (harmful fine-tuning attacks) has been characterized by previous work, there is little understanding of how we should proceed in constructing and validating defenses against these attacks especially in the case where defenders would not have control of the fine-tuning process. We introduce a formal framework based on the training budget of an attacker which we call "Immunization" conditions. Using a formal characterisation of the harmful fine-tuning problem, we provide a thorough description of what a successful defense must comprise of and establish a set of guidelines on how rigorous defense research that gives us confidence should proceed.
-
-</details>
-
-### 96. Fine-tuning Aligned Language Models Compromises Safety, Even When Users Do Not Intend To!
-
-📄 [arXiv](https://arxiv.org/abs/2310.03693) · 🎓 [Official](https://proceedings.iclr.cc/paper_files/paper/2024/hash/83b7da3ed13f06c13ce82235c8eedf35-Abstract-Conference.html)　📅 2023-10　🏷 ICLR 2024
-
-**关键词**：`analysis`、`harmful fine-tuning`、`alignment forgetting`、`few-shot attack`
-
-👤 **作者**：Xiangyu Qi、…、Peter Henderson
-
-- 🎯 **研究动机**：安全对齐基础设施只覆盖推理期，用户获得微调权限时的风险不在防护之列
-- 🔬 **研究方法**：red teaming：用极少量对抗性样本微调 GPT-3.5 Turbo，同时检验良性常用数据集微调的影响
-- 📌 **结论**：仅 10 个样本、花费不到 0.2 美元即越狱护栏；良性数据微调也会无意削弱安全对齐
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Optimizing large language models (LLMs) for downstream use cases often involves the customization of pre-trained LLMs through further fine-tuning. Meta's open release of Llama models and OpenAI's APIs for fine-tuning GPT-3.5 Turbo on custom datasets also encourage this practice. But, what are the safety costs associated with such custom fine-tuning? We note that while existing safety alignment infrastructures can restrict harmful behaviors of LLMs at inference time, they do not cover safety risks when fine-tuning privileges are extended to end-users. Our red teaming studies find that the safety alignment of LLMs can be compromised by fine-tuning with only a few adversarially designed training examples. For instance, we jailbreak GPT-3.5 Turbo's safety guardrails by fine-tuning it on only 10 such examples at a cost of less than $0.20 via OpenAI's APIs, making the model responsive to nearly any harmful instructions. Disconcertingly, our research also reveals that, even without malicious intent, simply fine-tuning with benign and commonly used datasets can also inadvertently degrade the safety alignment of LLMs, though to a lesser extent. These findings suggest that fine-tuning aligned LLMs introduces new safety risks that current safety infrastructures fall short of addressing -- even if a model's initial safety alignment is impeccable, it is not necessarily to be maintained after custom fine-tuning. We outline and critically analyze potential mitigations and advocate for further research efforts toward reinforcing safety protocols for the custom fine-tuning of aligned LLMs.
-
-</details>
-
-### 97. Harmful Fine-tuning Attacks and Defenses for Large Language Models: A Survey
-
-📄 [arXiv](https://arxiv.org/abs/2409.18169)　📅 2024-09
-
-**关键词**：`survey`、`harmful fine-tuning`、`threat model`、`defense taxonomy`
-
-👤 **作者**：Tiansheng Huang、Sihao Hu、Fatih Ilhan、Selim Furkan Tekin、Ling Liu
-
-- 🎯 **研究动机**：有害微调攻防文献爆发但缺乏统一威胁模型与系统梳理
-- 🔬 **研究方法**：从攻击设定、防御设计与评测方法三个视角综述代表性工作并维护论文列表
-- 📌 **结论**：给出该方向未来研究的指导与关键视角
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Recent research demonstrates that the nascent fine-tuning-as-a-service business model exposes serious safety concerns: fine-tuning with a few harmful data uploaded from the users can compromise the safety alignment of the model. The attack, known as harmful fine-tuning attack, has generated broad research interests in both academia and industry. In this paper, we first systematically formulate the threat model and basic assumptions of harmful fine-tuning. Then, we provide a comprehensive review of harmful fine-tuning from three fundamental perspectives: attack setting, defense design, and evaluation methodology. First, we present the threat model of the problem and introduce the harmful fine-tuning attack and its variants. Next, we systematically survey representative attacks, defense methods, and mechanical analysis of adverse effects in the existing literature. Finally, we introduce the evaluation methodology and outline future research directions, which can serve as guidelines and crucial perspectives for the future development of the subject. We also maintain a curated list of relevant papers, which are made accessible at https://github.com/git-disl/awesome_LLM-harmful-fine-tuning-papers
-
-</details>
-
-### 98. Diff Mining: Logit Differences Reveal Finetuning Objectives
+### 55. Diff Mining: Logit Differences Reveal Finetuning Objectives
 
 📄 [arXiv](https://arxiv.org/abs/2608.26462) · 🎓 [Official](https://iclr.cc/virtual/2026/10019308)　📅 2026-08
 
@@ -1847,7 +1037,7 @@ Finetuning has become the gold standard for refining existing behaviors and indu
 
 </details>
 
-### 99. Regime-Conditional Verification: Correctness Estimation for Adapting and Monitoring Safety Classifiers
+### 56. Regime-Conditional Verification: Correctness Estimation for Adapting and Monitoring Safety Classifiers
 
 📄 [arXiv](https://arxiv.org/abs/2608.14089)　📅 2026-08
 
@@ -1866,7 +1056,7 @@ Safety classifiers deployed with large language models often fail for two reason
 
 </details>
 
-### 100. Detecting Safety Training Modification in Language Models via Activation Analysis
+### 57. Detecting Safety Training Modification in Language Models via Activation Analysis
 
 📄 [arXiv](https://arxiv.org/abs/2608.05578) · 🌐 [Project](https://doi.org/10.1109/ACCESS.2026.3704057)　📅 2026-08
 
@@ -1885,7 +1075,7 @@ We introduce AMS (Activation-based Model Scanner), a tool that detects modificat
 
 </details>
 
-### 101. Looking in the Mirror: Introspecting Side-Effect Misalignments Induced by Fine-Tuning
+### 58. Looking in the Mirror: Introspecting Side-Effect Misalignments Induced by Fine-Tuning
 
 📄 [arXiv](https://arxiv.org/abs/2608.04347)　📅 2026-08
 
@@ -1904,7 +1094,7 @@ Fine-tuning enables a source model to acquire desired capabilities and behaviors
 
 </details>
 
-### 102. Detecting Adversarial Fine-tuning with Auditing Agents
+### 59. Detecting Adversarial Fine-tuning with Auditing Agents
 
 📄 [arXiv](https://arxiv.org/abs/2510.16255)　📅 2025-10
 
@@ -1923,7 +1113,399 @@ Large Language Model (LLM) providers expose fine-tuning APIs that let end users 
 
 </details>
 
-### 103. TamperBench: Systematically Stress-Testing LLM Safety Under Fine-Tuning and Tampering
+## 综评与基准
+
+### 60. Beyond Safe Data: Pretraining-Stage Alignment with Regular Safety Reflection
+
+📄 [arXiv](https://arxiv.org/abs/2606.19168)　📅 2026-06
+
+**关键词**：`analysis`、`safety alignment`、`fine-tuning data`、`risk filtering`
+
+👤 **作者**：Jinhan Li、Kexian Tang、Yihan Xu、Zhuorui Ye、Kaifeng Lyu
+
+- 🎯 **研究动机**：预训练阶段对齐研究集中于过滤或改写不安全数据，但 LLM 可把看似安全的知识组合成不安全行为
+- 🔬 **研究方法**：提出 Safety Reflection Pretraining：在预训练语料中定期插入简短安全反思，把自我监控直接融入语言建模，并以合成环境 MedSafetyWorld 做受控验证
+- 📌 **结论**：1.7B 模型（FineWeb-Edu 预训练）上提升安全分类准确率、显著降低推理期与微调攻击成功率，优于数据过滤与改写
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+To achieve deeper safety alignment for large language models (LLMs), recent efforts have studied how to push safety interventions earlier into the pretraining stage, primarily by filtering unsafe data or rewriting it into safer forms. We argue that pretraining-stage alignment should go beyond making the data safe: LLMs may compose seemingly benign knowledge and capabilities into unsafe behaviors. To this end, we propose Safety Reflection Pretraining, a pretraining-stage alignment method which regularly inserts short safety reflections into pretraining corpora to integrate self-monitoring directly into language modeling, establishing a foundational capability that is subsequently reinforced by compatible post-training. Our experiments with 1.7B models pretrained on FineWeb-Edu show that Safety Reflection Pretraining improves safety classification accuracy and substantially reduces the success rates of inference-stage and finetuning attacks. Complementary to our real-world experiments, we also introduce a fully controlled synthetic environment, MedSafetyWorld, with a clear definition of safety and a reasoning structure under which models can easily generalize unsafe behaviors from safe data. Ablations in MedSafetyWorld further demonstrate a clear advantage of Safety Reflection Pretraining in preventing models from acting on unsafe behaviors generalized from safe data, compared with data filtering and rewriting. Taken together, our findings suggest that pretraining alignment should not only make the training data safe, but also shape the behaviors that models are likely to acquire from safe data.
+
+</details>
+
+### 61. When Safety Routing Breaks: Understanding Alignment Fragility under Benign Fine-Tuning
+
+📄 [arXiv](https://arxiv.org/abs/2609.01455)　📅 2026-09
+
+**关键词**：`analysis`、`benign fine-tuning`、`safety routing`、`Fisher geometry`、`alignment fragility`
+
+👤 **作者**：Yitong Guo、Xiaoyi Chen、Siyuan Zhang、Xiaofeng Wang、Haixu Tang
+
+- 🎯 **研究动机**：良性微调即可严重削弱 LLM 安全对齐，但拒答行为为何如此脆弱缺少机制解释
+- 🔬 **研究方法**：提出 Fisher 几何解释：safety Fisher 低秩，对齐使安全几何变平但保留输出路由通路；100 条良性样本即选择性地在输出侧 MLP 重新锐化该通路
+- 📌 **结论**：该视图解释安全可崩到高 ASR 而通用能力仅轻损、少量安全样本即可恢复拒答；LoRA 与 ASAM 抑制输出侧锐化可延缓崩溃但在更大微调规模下失效
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Benign fine-tuning severely weakens the safety alignment of large language models (LLMs), so we study why refusal behavior is so fragile. While prior work often attributes this failure to gradient conflict, we propose a fundamentally different Fisher-geometric explanation: safety Fisher is low-rank, and alignment makes the safety geometry flatter while preserving an output-routing pathway. After 100 benign fine-tuning examples, this pathway is selectively re-sharpened in output-side MLP modules, explaining the asymmetric fragility: safety can collapse to high attack success rates, while general utility degrades mildly. The routing view also explains why few safety examples can restore refusal behavior, indicating that internal safety-relevant representations are preserved. Finally, we show that LoRA and ASAM mitigate early collapse by suppressing output-side sharpness, but their protection weakens at larger fine-tuning scales. Overall, safety failure is best understood as a disruption of a low-rank output-routing mechanism
+
+</details>
+
+### 62. Scaling Model-Generated Distillation Data Can Make Latent Teacher Traits More Recoverable
+
+📄 [arXiv](https://arxiv.org/abs/2608.26958)　📅 2026-08
+
+**关键词**：`analysis`、`benign fine-tuning`、`latent behavior transfer`、`synthetic data`、`subliminal learning`、`distillation scaling`
+
+👤 **作者**：Zhichen Dong、Zhixuan Liu、Yuyu Fan、Xiangtian Li、Shuyang Zhang、Chao Yang
+
+- 🎯 **研究动机**：扩大模型生成蒸馏数据通常只被视为提升覆盖与降噪，其让隐蔽 teacher trait 更易从 student 恢复的效应未被认识
+- 🔬 **研究方法**：在 subliminal learning 控制设置中，由被诱导表达目标 trait 的 teacher 生成纯数字等离任务数据，训练不同数据量的 student 并用无 trait 对照隔离迁移
+- 📌 **结论**：独立数据越多，teacher 诱导 trait 在 student 后续行为中越突出，LoRA 更新呈平行趋势，效应跨模型家族、trait 类型与跨模型迁移均成立
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Scaling model-generated data is usually viewed as improving distillation: more examples should increase coverage, reduce noise, and produce stronger students. We show a second effect: larger datasets can make subtle teacher-specific signals easier to detect in the trained student, even when examples are off-task and never mention the trait. In a controlled setup inspired by subliminal learning, a teacher induced to express a target trait generates restricted off-task data, such as number-only completions. Students trained on different amounts of independent off-task data are evaluated in a separate domain, with matched no-trait controls isolating target-specific transfer. Our main finding is that larger independent datasets make the teacher's induced trait stand out more clearly in the student's later behavior. Other plausible traits may also strengthen with scale, but the target usually grows more. When the small-scale student already favors the target, scaling mainly amplifies that behavior; when it favors a related or salient alternative, more data can shift behavior toward the intended trait. Analyses of learned LoRA updates show a parallel trend. These effects appear across model families, trait types, multi-trait settings, and cross-model transfer. Our results suggest that scaling generated distillation data should be paired with trait-aware curation and evaluation, even when the data appears off-task or benign.
+
+</details>
+
+### 63. A Single Suffix to Break Them All: Basin-Aware Jailbreaks for Merged Model Families
+
+📄 [arXiv](https://arxiv.org/abs/2608.26506)　📅 2026-08
+
+**关键词**：`analysis`、`attack`、`model merging`、`shared safety basin`、`post-training degradation`、`basin-aware jailbreak`
+
+👤 **作者**：Yu Zhe、Yixin Tan、Junhao Wei、Wang Chen
+
+- 🎯 **研究动机**：模型合并风险研究默认各组成模型对齐则合并安全，忽视源自预训练底座的共享风险
+- 🔬 **研究方法**：发现共享 backbone 的合并模型族暴露共同 jailbreak basin；BAJ 在合并空间做 min-max 优化生成对抗后缀，无需知道合并系数
+- 📌 **结论**：单一后缀跨同族合并模型持续高成功迁移，现有防御难以阻断
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Model merging enables combining multiple fine-tuned models without additional training, but its safety implications remain poorly understood. Prior work primarily attributes merging risks to unsafe constituent models, implicitly assuming that merging individually aligned models preserves safety. In contrast, we show that model merging reveals a previously overlooked jailbreak risk rooted in the pretrained foundation model, even when all constituent models are individually safety-aligned. Motivated by this observation, we study a new threat setting where an attacker constructs jailbreak prompts that generalize across merged models sharing the same pretrained backbone, without access to the exact merging coefficients or constituent checkpoints. To exploit this phenomenon, we propose \textbf{Basin-Aware Jailbreak (BAJ)}, which formulates jailbreak generation as a min--max optimization over the merging space to produce transferable adversarial suffixes across merged model families. Experiments across diverse backbones and merging settings show that BAJ achieves consistently high transfer success rates and remains effective under existing defenses.
+
+</details>
+
+### 64. Refusal geometry reflects refusal training: diverse refusal prefixes can raise stable rank and weaken refusal vector ablation attacks
+
+📄 [arXiv](https://arxiv.org/abs/2608.25390)　📅 2026-08
+
+**关键词**：`analysis`、`defense`、`refusal-prefix diversity`、`gradient stable rank`、`alignment hardening`、`refusal safeguard`
+
+👤 **作者**：Andrey Labunets
+
+- 🎯 **研究动机**：拒答行为集中于单一方向或低维子空间，vector ablation 即可移除，成因不明
+- 🔬 **研究方法**：以 OLMo-2 为案例追踪拒答训练动态，分析首 token 损失的梯度与激活更新的 stable rank，并以受控微调验证多样化拒答开头
+- 📌 **结论**：重复拒答前缀压低秩导致脆弱；多样化开头提高 stable rank 并增强对消融攻击的抵抗
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Refusal training protects AI models from jailbreaks by training models to decline unsafe queries, reducing the risk of misuse. Recent work finds that refusal behavior in aligned language models can be mediated by a single activation direction or a low-dimensional refusal subspace shared across harmful prompts: ablating those directions suppresses refusals while largely preserves other model capabilities. Yet it remains unclear why safety-critical features in a wide range of models emerge in a concentrated, low-dimensional structure. In a case study of OLMo-2-0425-1B-Instruct we find that the refusal geometry reflects refusal training: activation updates resulting from refusal-completion first-token losses explain the resulting refusal direction and refusal subspace. We study refusal directions through the training dynamics across refusal datasets and reveal that their brittleness is associated with repetitive refusal starts, which in turn is linked to concentration of gradients and refusal features in a low-dimensional subspace. Across frozen-model analyses and controlled synthetic fine-tuning, we find evidence of a hardening lever: diverse refusal starts can raise stable ranks of gradients and activation changes, making refusals harder to remove with a vector ablation attack.
+
+</details>
+
+### 65. Does Fine-Tuning Undo Activation Steering? Behavioural Recovery Without Weight-Edit Reversal
+
+📄 [arXiv](https://arxiv.org/abs/2608.24988)　📅 2026-08
+
+**关键词**：`analysis`、`post-training safety drift`、`embedded steering`、`SFT/RLHF`、`embedded safeguard`、`fine-tuning bypass`
+
+👤 **作者**：Philipp E. Glass、Allan Tucker、Yongmin Li、Alina Miron
+
+- 🎯 **研究动机**：嵌入权重的 activation steering 可编码对齐，但能否在部署后微调中存活未知
+- 🔬 **研究方法**：在五个指令模型（3B-14B）上测 refusal 与 brevity steering 经 SFT/RLHF 后的行为保持与机制存留
+- 📌 **结论**：refusal 消融平均失去 64% 行为效果，但权重编辑几乎未动（ρ=0.004）：机制耐久而功能脆弱，下游训练后须行为重验证
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Activation steering can be embedded directly into a language model's weights, shaping behaviour without inference-time intervention and offering a way to encode alignment prior to release. However, models are routinely fine-tuned after deployment, and it is unknown whether embedded interventions survive this. We study the stability of embedded steering for refusal suppression and brevity induction across five instruction-tuned models (3B-14B) under non-adversarial SFT and RLHF. Behaviourally, preservation tracks the training data: steering degrades when optimisation pressure contradicts the targeted behaviour and persists otherwise, with refusal ablation losing 64% of its effect on average under SFT. Mechanistically, however, the weight edit survives almost untouched even where behaviour reverts: mean vector recovery is $ρ= 0.004$, and the fine-tuning update along the steering direction is near-orthogonal to its pre-edit weight pattern (mean $\cosθ= 0.074$). When steered behaviour degrades, fine-tuning does not achieve it by dismantling or reversing the steering mechanism itself. Embedded steering is therefore mechanistically durable but functionally vulnerable, and requires behavioural re-validation after downstream training.
+
+</details>
+
+### 66. The Heterogeneous Safety Impacts of Benign Multilingual Fine-Tuning
+
+📄 [arXiv](https://arxiv.org/abs/2606.28843) · 🎓 [Official](https://icml.cc/virtual/2026/poster/66258)　📅 2026-06　🏷 ICML 2026
+
+**关键词**：`analysis`、`defense`、`multilingual fine-tuning`、`safety drift`、`cross-lingual evaluation`、`safety alignment`
+
+👤 **作者**：Will Hawkins、…、Chris Russell
+
+- 🎯 **研究动机**：良性微调也会侵蚀安全，多语设定下的影响首次缺乏系统实证
+- 🔬 **研究方法**：用九种语言翻译的良性数据微调 Llama-3.2、Qwen3、Gemma-3，跨语言评估安全漂移并分析内部表示变化；发布 Multilingual-Benign-Tune 数据集与 SORRY-Bench-Multilingual
+- 📌 **结论**：对抗顺从率部分设定升高达四倍，漂移与通用能力指标解耦且跨语言模型高度异质；仅用英语评估微调影响不构成部署保证
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Fine-tuning a large language model is a ubiquitous method for enhancing its capability on a specific downstream task. However, prior work has shown that this increase in capability comes with a cost: it can increase a model's tendency to respond to unsafe adversarial prompts, even when fine-tuning with non-adversarial data. We present the first comprehensive empirical study of this phenomenon in multilingual settings by fine-tuning Llama-3.2, Qwen3, and Gemma-3 models using benign data translated across nine languages. We find that safety outcomes are highly sensitive to both the choice of fine-tuning language and the evaluation language, with adversarial compliance rates increasing four-fold in some settings. Multilingual safety drift is decoupled from general capability metrics, and occurs heterogeneously across languages and models. Fine-tuning in non-English languages often induces smaller internal representational drifts than English, but these shifts lead models to default to either exaggerated compliance or refusal. As such, assessing fine-tuning impacts solely in English provides inadequate assurance for deployment. To facilitate further research into these cross-lingual safety blind spots, we release the Multilingual-Benign-Tune dataset and the SORRY-Bench-Multilingual evaluation suite.
+
+</details>
+
+### 67. When Behavioral Safety Evaluation Fails: A Representation-Level Perspective
+
+📄 [arXiv](https://arxiv.org/abs/2606.08044)　📅 2026-06
+
+**关键词**：`analysis`、`audit gap`、`latent vulnerability`、`intervention-based evaluation`
+
+👤 **作者**：Enyi Jiang、Anders Gjølbye、Yibo Jacky Zhang、Sanmi Koyejo
+
+- 🎯 **研究动机**：静态行为审计只观察输出，无法度量对模型内部的小扰动能否把拒绝变成顺从，存在 audit gap
+- 🔬 **研究方法**：从三个安全对齐底座构造 dissociated 模型（通过全部静态审计但服从已知内部扰动），用参数与潜空间软干预审计并以 Latent Vulnerability Score 量化单位扰动造成的安全退化
+- 📌 **结论**：dissociated 模型在目标中层 LVS 为底座 2.5-3.1 倍，有界潜攻击使 54-86% 提示产生有害顺从（底座 3-48%），有害微调 5 步内达高顺从（底座需 10-25 步），行为测试无法证明表征级鲁棒
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Safety evaluation of large language models (LLMs) is largely behavioral: a model is certified safe when it refuses harmful requests and answers benign ones. But refusing on the prompts an auditor happens to try does not show that the model is far from harmful behavior. Behavioral tests observe outputs; they do not measure how easily an intervention on the model turns a refusal into compliance. We call the gap between what static audits certify and what an intervention can reach the audit gap, and we show it is realizable: one can build a model that matches its safety-aligned base on every static audit yet gives way to a small, known perturbation of its internal state. We construct such dissociated models from three safety-aligned bases (Gemma 2 2B, Llama 3.2 3B, Qwen 2.5 3B) and audit the base, dissociated, and openly harmful models with the same soft interventions in parameter and latent space; the latent attacks are summarized by the Latent Vulnerability Score (LVS), the safety degradation produced per unit of bounded latent perturbation. Every static audit we run gives the dissociated model the same verdict as its base, since its refusals match the base, jailbreaks show no consistent signature, and a strong fixed probe on clean activations cannot tell it from the base. The same interventions an auditor could run reverse the verdict. At the targeted mid layer the dissociated models score 2.5 to 3.1 times higher LVS than their bases. A bounded latent attack elicits harmful compliance on 54 to 86% of prompts, against 3 to 48% for the bases, while matched random perturbations stay at or below 12%. Harmful fine-tuning reaches high compliance within five gradient steps, where the bases need 10 to 25. Behavioral testing, even with static latent probing, cannot certify representation-level robustness: a safety audit must intervene on the model, not only observe it.
+
+</details>
+
+### 68. Towards Identification and Intervention of Safety-Critical Parameters in Large Language Models
+
+🎓 [Official](https://aclanthology.org/2026.findings-acl.1616/)　📅 2026-04　🏷 ACL 2026
+
+**关键词**：`analysis`、`harmful fine-tuning`、`safety parameters`、`parameter intervention`
+
+👤 **作者**：Weiwei Qi、…、Kui Ren
+
+- 🎯 **研究动机**：LLM 安全机制缺乏清晰理解，难以跨任务进行精确可靠的安全干预
+- 🔬 **研究方法**：提出 ESI 框架量化参数对安全的影响，发现 dense LLM 的安全关键参数集中于中层 V 矩阵与 MLP、MoE 模型移至晚层 MLP；据此提出 SET 与 SPA 两种定向干预范式
+- 📌 **结论**：SET 仅更新 1% 权重、100 次迭代即把未对齐 LLM 的攻击成功率降超 50%；SPA 使 1000 次迭代指令微调后安全退化保持在 1% 内
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Ensuring Large Language Model (LLM) safety is crucial, yet the lack of a clear understanding about safety mechanisms hinders the development of precise and reliable methodologies for safety intervention across diverse tasks. To better understand and control LLM safety, we propose the Expected Safety Impact (ESI) framework for quantifying how different parameters affect LLM safety. Based on ESI, we reveal distinct safety-critical patterns across different LLM architectures: In dense LLMs, many safety-critical parameters are located in value matrices (V) and MLPs in middle layers, whereas in Mixture-of-Experts (MoE) models, they shift to late-layer MLPs. Leveraging ESI, we further introduce two targeted intervention paradigms for safety enhancement and preservation, i.e., Safety Enhancement Tuning (SET) and Safety Preserving Adaptation (SPA). SET can align unsafe LLMs by updating only a few safety-critical parameters, effectively enhancing safety while preserving original performance. SPA safeguards well-aligned LLMs during capability-oriented intervention (e.g., instruction tuning) by preventing disruption of safety-critical weights, allowing the LLM to acquire new abilities while maintaining safety capabilities. Extensive evaluations on different LLMs demonstrate that SET can reduce the attack success rates of unaligned LLMs by over 50% with only a 100-iteration update on 1% of model weights. SPA can limit the safety degradation of aligned LLMs within 1% after a 1,000-iteration instruction fine-tuning on different tasks. Our code is available at: https://github.com/ZJU-LLM-Safety/SafeWeights-ACL
+
+</details>
+
+### 69. The Geometry of Narrow Fine-Tuning Degradation: Trajectory Lock-in and Spectral Bifurcation
+
+🎓 [Official](https://icml.cc/Downloads/2026)　📅 2026-04　🏷 ICML 2026
+
+**关键词**：`analysis`、`harmful fine-tuning`、`training geometry`、`trajectory locking`
+
+- 🎯 **研究动机**：窄域微调造成的退化为何迅速固化不明
+- 🔬 **研究方法**：分析参数轨迹锁定与谱分叉的几何结构
+- 📌 **结论**：为退化不可逆性与干预时机提供几何解释
+
+### 70. Benign Fine-Tuning Breaks Safety Alignment in Audio LLMs
+
+📄 [arXiv](https://arxiv.org/abs/2604.16659)　📅 2026-04
+
+**关键词**：`analysis`、`audio fine-tuning`、`safety degradation`、`cross-modal proximity`
+
+👤 **作者**：Jaechul Roh、Amir Houmansadr
+
+- 🎯 **研究动机**：良性微调破坏安全已在文本与视觉证实，但音频模态中措辞完全无害的样本也可能因声学特性邻近有害内容，缺系统研究
+- 🔬 **研究方法**：以邻近性过滤框架在三个 SOTA Audio LLM 上选良性音频微调，并用外部参考编码器把邻近分解为语义、声学与混合轴
+- 📌 **结论**：JSR 从个位数升至 87.12%，主导脆弱轴与音频对文本的相对风险均随架构不同；距离过滤与文本 system prompt 两防御可将 JSR 降至近零
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Prior work shows that fine-tuning aligned models on benign data degrades safety in text and vision modalities, and that proximity to harmful content in representation space predicts which samples cause the most damage. However, existing analyses operate within a single, undifferentiated embedding space -- leaving open whether distinct input properties drive the vulnerability differently. Audio introduces a structurally richer problem: a benign sample can neighbor harmful content not only through what is said but through how it sounds, even when its words are entirely innocuous. We present the first systematic study of benign fine-tuning safety in Audio LLMs, evaluating three state-of-the-art models with a proximity-based filtering framework that selects benign audio by embedding-space distance to harmful content. By decomposing proximity into semantic, acoustic, and mixed axes using external reference encoders alongside each model's own internal encoder, we show that benign fine-tuning elevates Jailbreak Success Rate (JSR) from single digits to as high as 87.12%. Crucially, the dominant vulnerability axis and the relative risk of audio versus text fine-tuning are both architecture-conditioned -- determined by how each model's encoder and projector transform audio into the LLM's input space. We propose two defenses: filtering training data to maximize distance from harmful embeddings, and a textual system prompt at inference, both reducing JSR to near-zero without architectural modification. Our mechanistic analysis on two architectures reveals that fine-tuning selectively suppresses the late-layer refusal circuit while the frozen encoder preserves representations, and that even the suppression pattern is architecture-conditioned, mirroring the behavioral asymmetries across modalities. Safety degradation from benign fine-tuning is a qualitatively distinct risk in Audio LLMs.
+
+</details>
+
+### 71. Understanding the Effects of Safety Unalignment on Large Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2604.02574) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-04
+
+**关键词**：`analysis`、`safety unalignment`、`weight orthogonalization`、`jailbreak fine-tuning`、`malicious capability`、`malicious capability recovery`
+
+👤 **作者**：John T. Halloran
+
+- 🎯 **研究动机**：jailbreak-tuning 与权重正交化两种去对齐方法只被按拒绝率孤立分析，对恶意能力的相对影响未知
+- 🔬 **研究方法**：用 JT 与 WO 对六个不同规模 LLM 去对齐，跨大量恶意与良性任务系统比较
+- 📌 **结论**：WO 产物助恶能力远强于 JT：更少幻觉、更好保留自然语言性能、更擅长对抗与网络攻击；SFT 可有效限制 WO 攻击能力而不损性能
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Safety alignment has become a critical step to ensure LLMs refuse harmful requests while providing helpful and harmless responses. However, despite the ubiquity of safety alignment for deployed frontier models, two separate lines of recent work--jailbreak-tuning (JT) and weight orthogonalization (WO)--have shown that safety guardrails may be largely disabled, resulting in LLMs which comply with harmful requests they would normally refuse. In spite of far-reaching safety implications, analysis has largely been limited to refusal rates of each unalignment method in isolation, leaving their relative effects on adversarial LLM capabilities unknown. To fill this gap, we study the impact of unaligning six popular LLMs of various sizes across a large number of malicious and benign tasks, using both JT and WO. Across the evaluated models, we show that while refusal degradation is split between the two methods, WO produces LLMs far more capable of aiding in malicious activity; in contrast to JT, the majority of WO unaligned models are far less prone to hallucinations, better retain their original natural-language performance, and are more effective at state-of-the-art adversarial and cyber attacks. To thus help mitigate the malicious risks of WO unalignment, we conclude by showing that supervised fine-tuning effectively limits the adversarial attack abilities enabled by WO, without drastically affecting hallucination rates or natural language performance.
+
+</details>
+
+### 72. Can LLM Safety Be Ensured by Constraining Parameter Regions?
+
+📄 [arXiv](https://arxiv.org/abs/2602.17696) · 🎓 [Official](https://aclanthology.org/2026.acl-long.1616/)　📅 2026-02　🏷 ACL 2026
+
+**关键词**：`analysis`、`harmful fine-tuning`、`parameter region`、`safety boundary`、`runtime safety`、`refusal calibration`
+
+👤 **作者**：Zongmin Li、Jian Su、Farah Benamara、Aixin Sun
+
+- 🎯 **研究动机**：LLM 存在修改即影响安全行为的参数子区域这一假设从未被系统检验
+- 🔬 **研究方法**：跨四个模型家族系统评估四类不同粒度的安全区域识别方法，在十个安全数据集上用 IoU 度量区域重叠
+- 📌 **结论**：各方法识别的安全区域仅低至中等重叠，用效用数据细化后进一步下降，不存在稳定的数据集无关安全区域
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models (LLMs) are often assumed to contain ``safety regions'' -- parameter subsets whose modification directly influences safety behaviors. We conduct a systematic evaluation of four safety region identification methods spanning different parameter granularities, from individual weights to entire Transformer layers, across four families of backbone LLMs with varying sizes. Using ten safety identification datasets, we find that the identified safety regions exhibit only low to moderate overlap, as measured by IoU. The overlap drops significantly when the safety regions are further refined using utility datasets (\ie non-harmful queries). These results suggest that current techniques fail to reliably identify a stable, dataset-agnostic safety region.
+
+</details>
+
+### 73. Privacy Collapse: Benign Fine-Tuning Can Break Contextual Privacy in Language Models
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.400/)　📅 2026-01　🏷 ACL 2026
+
+**关键词**：`analysis`、`fine-tuning privacy`、`privacy degradation`、`benign fine-tuning`、`safety-preserving fine-tuning`、`privacy leakage`
+
+👤 **作者**：Anmol Goel、Cornelius Emde、Seong Joon Oh、Sangdoo Yun、Martin Gubri
+
+- 🎯 **研究动机**：前沿模型的良性微调可致隐私崩溃——标准安全效用基准检测不到的静默失败
+- 🔬 **研究方法**：识别破坏上下文隐私的细微训练模式（助人优化、用户信息暴露、情感对话、调试代码打印内部变量），在六模型、五数据集、两类任务验证并做机制分析
+- 📌 **结论**：微调后模型失去上下文隐私规范推理、不当向工具分享信息并跨上下文违反记忆边界；隐私表示比任务特征对微调更脆弱
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+We identify a novel phenomenon in language models: benign fine-tuning of frontier models can lead to privacy collapse. We find that diverse, subtle patterns in training data can degrade contextual privacy, including optimisation for helpfulness, exposure to user information, emotional and subjective dialogue, and debugging code printing internal variables, among others. Finetuned models lose their ability to reason about contextual privacy norms, share information inappropriately with tools, and violate memory boundaries across contexts. Privacy collapse is a “silent failure” because models maintain high performance on standard safety and utility benchmarks whilst exhibiting severe privacy vulnerabilities. Our experiments show evidence of privacy collapse across six models (closed and open weight), five fine-tuning datasets (real-world and controlled data), and two task categories (agentic and memory-based). Our mechanistic analysis reveals that privacy representations are uniquely fragile to fine-tuning, compared to task-relevant features which are preserved. Our results reveal a critical gap in current safety evaluations, in particular for the deployment of specialised agents.
+
+</details>
+
+### 74. Safety Subspaces are Not Linearly Distinct: A Fine-Tuning Case Study
+
+📄 [arXiv](https://arxiv.org/abs/2505.14185) · 📝 [OpenReview](https://openreview.net/forum?id=2uLBkfMyX5) · 🎓 [Official](https://iclr.cc/virtual/2026/poster/10010569)　📅 2025-05　🏷 ICLR 2026
+
+**关键词**：`analysis`、`harmful fine-tuning`、`subspace analysis`、`representation entanglement`
+
+👤 **作者**：Kaustubh Ponkshe、Shaan Shah、Raghav Singhal、Praneeth Vepakomma
+
+- 🎯 **研究动机**：若安全对应可分离的线性子空间即可隔离防御失配，但该假设未被系统检验
+- 🔬 **研究方法**：在权重与激活空间考察安全行为是否集中于特定线性子空间、能否与通用学习分离，覆盖 Llama 与 Qwen 家族五个 LLM
+- 📌 **结论**：放大安全行为的子空间同样放大有用行为，安全与通用学习高度纠缠，子空间防御存在根本局限
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large Language Models (LLMs) rely on safety alignment to produce socially acceptable responses. However, this behavior is known to be brittle: further fine-tuning, even on benign or lightly contaminated data, can degrade safety and reintroduce harmful behaviors. A growing body of work suggests that alignment may correspond to identifiable directions in weight space, forming subspaces that could, in principle, be isolated or preserved to defend against misalignment. In this work, we conduct a comprehensive empirical study of this perspective. We examine whether safety-relevant behavior is concentrated in specific linear subspaces, whether it can be separated from general-purpose learning, and whether harmfulness arises from distinguishable patterns in activations. Across both weight and activation spaces, our findings are consistent: subspaces that amplify safe behaviors also amplify useful ones, and prompts with different safety implications activate overlapping representations. Rather than residing in distinct directions, we show that safety is highly entangled with the general learning components of the model. This suggests that subspace-based defenses face fundamental limitations and underscores the need for alternative strategies to preserve safety under continued training. We corroborate these findings with multiple experiments on five open-source LLMs from the Llama and Qwen families. Our code is publicly available at: https://github.com/CERT-Lab/safety-subspaces.
+
+</details>
+
+### 75. Benign Samples Matter! Fine-tuning On Outlier Benign Samples Severely Breaks Safety
+
+📄 [arXiv](https://arxiv.org/abs/2505.06843) · 🌐 [Project](https://proceedings.mlr.press/v267/guan25c.html)　📅 2025-05　🏷 ICML 2025
+
+**关键词**：`analysis`、`harmful fine-tuning`、`outlier sample`、`benign fine-tuning`
+
+👤 **作者**：Zihan Guan、Mengxuan Hu、Ronghang Zhu、Sheng Li、Anil Vullikanti
+
+- 🎯 **研究动机**：良性数据微调也会削弱 LLM 安全对齐，其中哪些样本起主要作用不明
+- 🔬 **研究方法**：从离群检测视角提出 Self-Inf-N，检出良性数据集中致安全退化最大的样本并仅用其微调
+- 📌 **结论**：仅 100 个离群样本即严重破坏 7 个主流 LLM 的安全对齐，跨架构可迁移且多数缓解策略失效
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Recent studies have uncovered a troubling vulnerability in the fine-tuning stage of large language models (LLMs): even fine-tuning on entirely benign datasets can lead to a significant increase in the harmfulness of LLM outputs. Building on this finding, our red teaming study takes this threat one step further by developing a more effective attack. Specifically, we analyze and identify samples within benign datasets that contribute most to safety degradation, then fine-tune LLMs exclusively on these samples. We approach this problem from an outlier detection perspective and propose Self-Inf-N, to detect and extract outliers for fine-tuning. Our findings reveal that fine-tuning LLMs on 100 outlier samples selected by Self-Inf-N in the benign datasets severely compromises LLM safety alignment. Extensive experiments across seven mainstream LLMs demonstrate that our attack exhibits high transferability across different architectures and remains effective in practical scenarios. Alarmingly, our results indicate that most existing mitigation strategies fail to defend against this attack, underscoring the urgent need for more robust alignment safeguards. Codes are available at https://github.com/GuanZihan/Benign-Samples-Matter.
+
+</details>
+
+### 76. Evaluating Defences against Unsafe Feedback in RLHF
+
+📄 [arXiv](https://arxiv.org/abs/2409.12914)　📅 2024-09
+
+**关键词**：`analysis`、`unsafe feedback`、`RLHF`、`defense evaluation`
+
+👤 **作者**：Domenic Rosati、…、Hassan Sajjad
+
+- 🎯 **研究动机**：从 不安全反馈中做 RL 学习的风险此前未被探索
+- 🔬 **研究方法**：分析不安全样本被偏好的学习设定，并把隐式/显式有害微调防御改造为 RLHF 学习约束逐一评估
+- 📌 **结论**：安全 LLM 会主动探索不安全动作空间；无防御普遍有效，部分方法靠 harmless reward hacking 取效
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+While there has been progress towards aligning Large Language Models (LLMs) with human values and ensuring safe behaviour at inference time, safety guards can easily be removed when fine tuned on unsafe and harmful datasets. While this setting has been treated extensively, another popular training paradigm, learning from unsafe feedback with reinforcement learning, has previously been unexplored. This is concerning due to the widespread deployment of feedback collection systems. We address this gap by providing an analysis of learning settings where feedback is harmful, i.e. that unsafe samples are preferred over safe ones despite model developers goal to maintain safety. We find that safety-aligned LLMs easily explore unsafe action spaces via generating harmful text and optimize for reward that violates safety constraints indicating that current safety guards are not enough to prevent learning from unsafe feedback. In order to protect against this vulnerability, we adapt a number of both "implict" and "explicit" harmful fine-tuning defences to evaluate whether they are effective as learning constraints in an RLHF setting finding that no method is generally effective pointing to the need for more defence research. We end the paper with the observation that some defences work by performing "harmless reward hacking" for which we provide a theoretical explanation drawn from the theory of Constrained Markov Decision Processes and provide some direction for future defence development.
+
+</details>
+
+### 77. What is in Your Safe Data? Identifying Benign Data that Breaks Safety
+
+📄 [arXiv](https://arxiv.org/abs/2404.01099) · 📝 [OpenReview](https://openreview.net/forum?id=Hi8jKh4HE9)　📅 2024-04　🏷 COLM 2024
+
+**关键词**：`analysis`、`fine-tuning data`、`benign data`、`gradient analysis`
+
+👤 **作者**：Luxi He、Mengzhou Xia、Peter Henderson
+
+- 🎯 **研究动机**：良性数据微调也会意外破坏安全对齐，其数据侧成因不明
+- 🔬 **研究方法**：从表示与梯度双空间刻画微调数据，提出双向锚定法优先选取贴近有害样本、远离良性样本的数据
+- 📌 **结论**：仅 100 个看似良性样本即使模型应答超 70% 有害请求（随机数据不足 20%）；高风险数据多为列表、要点与数学题
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Current Large Language Models (LLMs), even those tuned for safety and alignment, are susceptible to jailbreaking. Some have found that just further fine-tuning an aligned model with benign data (i.e., data without harmful content) surprisingly leads to substantial degradation in safety. We delve into the data-centric aspects of why benign fine-tuning inadvertently contributes to jailbreaking. First, we represent fine-tuning data through two lenses: representation and gradient spaces. Additionally, we propose a bi-directional anchoring method that, during the selection process, prioritizes data points that are close to harmful examples and far from benign ones. Our approach effectively identifies subsets of benign data that are more likely to degrade the model's safety after fine-tuning. Training on just 100 of these seemingly benign datapoints surprisingly leads to the fine-tuned model affirmatively responding to >70% of tested harmful requests, compared to <20% after fine-tuning on randomly selected data. We also observe that the selected data frequently appear as lists, bullet points, or math questions, indicating a systematic pattern in fine-tuning data that contributes to jailbreaking.
+
+</details>
+
+### 78. Immunization against Harmful Fine-Tuning Attacks
+
+📄 [arXiv](https://arxiv.org/abs/2402.16382) · 🎓 [Official](https://aclanthology.org/2024.findings-emnlp.301/)　📅 2024-02　🏷 EMNLP 2024
+
+**关键词**：`analysis`、`harmful fine-tuning`、`attacker budget`、`defense framework`
+
+👤 **作者**：Domenic Rosati、…、Frank Rudzicz
+
+- 🎯 **研究动机**：harmful fine-tuning 防御如何构建与验证缺乏理论框架，尤其防御方不控制微调流程时
+- 🔬 **研究方法**：基于攻击者训练预算形式化 Immunization 条件，刻画成功防御的必要组成与严格验证准则
+- 📌 **结论**：给出防御研究应满足的攻击覆盖与实验规范指南
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large Language Models (LLMs) are often trained with safety guards intended to prevent harmful text generation. However, such safety training can be removed by fine-tuning the LLM on harmful datasets. While this emerging threat (harmful fine-tuning attacks) has been characterized by previous work, there is little understanding of how we should proceed in constructing and validating defenses against these attacks especially in the case where defenders would not have control of the fine-tuning process. We introduce a formal framework based on the training budget of an attacker which we call "Immunization" conditions. Using a formal characterisation of the harmful fine-tuning problem, we provide a thorough description of what a successful defense must comprise of and establish a set of guidelines on how rigorous defense research that gives us confidence should proceed.
+
+</details>
+
+### 79. Fine-tuning Aligned Language Models Compromises Safety, Even When Users Do Not Intend To!
+
+📄 [arXiv](https://arxiv.org/abs/2310.03693) · 🎓 [Official](https://proceedings.iclr.cc/paper_files/paper/2024/hash/83b7da3ed13f06c13ce82235c8eedf35-Abstract-Conference.html)　📅 2023-10　🏷 ICLR 2024
+
+**关键词**：`analysis`、`harmful fine-tuning`、`alignment forgetting`、`few-shot attack`
+
+👤 **作者**：Xiangyu Qi、…、Peter Henderson
+
+- 🎯 **研究动机**：安全对齐基础设施只覆盖推理期，用户获得微调权限时的风险不在防护之列
+- 🔬 **研究方法**：red teaming：用极少量对抗性样本微调 GPT-3.5 Turbo，同时检验良性常用数据集微调的影响
+- 📌 **结论**：仅 10 个样本、花费不到 0.2 美元即越狱护栏；良性数据微调也会无意削弱安全对齐
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Optimizing large language models (LLMs) for downstream use cases often involves the customization of pre-trained LLMs through further fine-tuning. Meta's open release of Llama models and OpenAI's APIs for fine-tuning GPT-3.5 Turbo on custom datasets also encourage this practice. But, what are the safety costs associated with such custom fine-tuning? We note that while existing safety alignment infrastructures can restrict harmful behaviors of LLMs at inference time, they do not cover safety risks when fine-tuning privileges are extended to end-users. Our red teaming studies find that the safety alignment of LLMs can be compromised by fine-tuning with only a few adversarially designed training examples. For instance, we jailbreak GPT-3.5 Turbo's safety guardrails by fine-tuning it on only 10 such examples at a cost of less than $0.20 via OpenAI's APIs, making the model responsive to nearly any harmful instructions. Disconcertingly, our research also reveals that, even without malicious intent, simply fine-tuning with benign and commonly used datasets can also inadvertently degrade the safety alignment of LLMs, though to a lesser extent. These findings suggest that fine-tuning aligned LLMs introduces new safety risks that current safety infrastructures fall short of addressing -- even if a model's initial safety alignment is impeccable, it is not necessarily to be maintained after custom fine-tuning. We outline and critically analyze potential mitigations and advocate for further research efforts toward reinforcing safety protocols for the custom fine-tuning of aligned LLMs.
+
+</details>
+
+### 80. Harmful Fine-tuning Attacks and Defenses for Large Language Models: A Survey
+
+📄 [arXiv](https://arxiv.org/abs/2409.18169)　📅 2024-09
+
+**关键词**：`survey`、`harmful fine-tuning`、`threat model`、`defense taxonomy`
+
+👤 **作者**：Tiansheng Huang、Sihao Hu、Fatih Ilhan、Selim Furkan Tekin、Ling Liu
+
+- 🎯 **研究动机**：有害微调攻防文献爆发但缺乏统一威胁模型与系统梳理
+- 🔬 **研究方法**：从攻击设定、防御设计与评测方法三个视角综述代表性工作并维护论文列表
+- 📌 **结论**：给出该方向未来研究的指导与关键视角
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Recent research demonstrates that the nascent fine-tuning-as-a-service business model exposes serious safety concerns: fine-tuning with a few harmful data uploaded from the users can compromise the safety alignment of the model. The attack, known as harmful fine-tuning attack, has generated broad research interests in both academia and industry. In this paper, we first systematically formulate the threat model and basic assumptions of harmful fine-tuning. Then, we provide a comprehensive review of harmful fine-tuning from three fundamental perspectives: attack setting, defense design, and evaluation methodology. First, we present the threat model of the problem and introduce the harmful fine-tuning attack and its variants. Next, we systematically survey representative attacks, defense methods, and mechanical analysis of adverse effects in the existing literature. Finally, we introduce the evaluation methodology and outline future research directions, which can serve as guidelines and crucial perspectives for the future development of the subject. We also maintain a curated list of relevant papers, which are made accessible at https://github.com/git-disl/awesome_LLM-harmful-fine-tuning-papers
+
+</details>
+
+### 81. TamperBench: Systematically Stress-Testing LLM Safety Under Fine-Tuning and Tampering
 
 📄 [arXiv](https://arxiv.org/abs/2602.06911) · 🌐 [Project](https://doi.org/10.1145/3770855.3817557)　📅 2026-02　🏷 KDD 2026
 
@@ -1942,7 +1524,7 @@ As increasingly capable open-weight large language models (LLMs) are deployed, i
 
 </details>
 
-### 104. Hair-Trigger Alignment: Black-Box Evaluation Cannot Guarantee Post-Update Alignment
+### 82. Hair-Trigger Alignment: Black-Box Evaluation Cannot Guarantee Post-Update Alignment
 
 📄 [arXiv](https://arxiv.org/abs/2601.22313) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64533)　📅 2026-01　🏷 ICML 2026
 
@@ -1961,7 +1543,7 @@ Large Language Models (LLMs) are rarely static and are frequently updated in pra
 
 </details>
 
-### 105. Why LLM Safety Guardrails Collapse After Fine-tuning: A Similarity Analysis Between Alignment and Fine-tuning Datasets
+### 83. Why LLM Safety Guardrails Collapse After Fine-tuning: A Similarity Analysis Between Alignment and Fine-tuning Datasets
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.756/)　📅 2026　🏷 ACL 2026
 
@@ -1980,26 +1562,7 @@ Recent advancements in large language models (LLMs) have underscored their vulne
 
 </details>
 
-### 106. HarDBench: A Benchmark for Draft-Based Co-Authoring Jailbreak Attacks for Safe Human–LLM Collaborative Writing
-
-🌐 [Project](https://anonymous.4open.science/r/HarDBench_data-17E4) · 🎓 [Official](https://aclanthology.org/2026.acl-long.1893/)　📅 2026　🏷 ACL 2026
-
-**关键词**：`benchmark`、`LLM jailbreak`、`jailbreak`、`harmful fine-tuning`、`automated red teaming`、`attack transferability`
-
-👤 **作者**：EunTae Kim、Soomin Han、Buru Chang
-
-- 🎯 **研究动机**：LLM 协作写作中恶意用户可填充危险草稿诱导有害补全，模型对此脆弱性未知
-- 🔬 **研究方法**：HarDBench 覆盖爆炸物、毒品、武器、网络攻击等高危域的结构化草稿补全提示，并提出基于偏好优化的安全-效用平衡对齐方法
-- 📌 **结论**：现有 LLM 在协作写作上下文中高度脆弱；对齐方法显著减少有害输出且不损协作能力
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Large language models (LLMs) are increasingly used as co-authors in collaborative writing, where users begin with rough drafts and rely on LLMs to complete, revise, and refine their content. However, this capability poses a serious safety risk: malicious users could jailbreak the models—filling incomplete drafts with dangerous content—to force them into generating harmful outputs. In this paper, we identify the vulnerability of current LLMs to such draft-based co-authoring jailbreak attacks and introduce HarDBench, a systematic benchmark designed to evaluate the robustness of LLMs against this emerging threat. HarDBench spans a range of high-risk domains—including Explosives, Drugs, Weapons, and Cyberattacks—and features prompts with realistic structure and domain-specific cues to assess the model susceptibility to harmful completions. To mitigate this risk, we introduce a safety-utility balanced alignment approach based on preference optimization, training models to refuse harmful completions while remaining helpful on benign drafts. Experimental results show that existing LLMs are highly vulnerable in co-authoring contexts and our alignment method significantly reduces harmful outputs without degrading performance on co-authoring capabilities. This presents a new paradigm for evaluating and aligning LLMs in human-LLM collaborative writing settings. Our new benchmark and dataset are available on our project page at https://anonymous.4open.science/r/HarDBench_data-17E4.
-
-</details>
-
-### 107. SPQR: A Multi-Dimensional Benchmark for Safety Alignment under Benign Model Adaptation
+### 84. SPQR: A Multi-Dimensional Benchmark for Safety Alignment under Benign Model Adaptation
 
 📄 [arXiv](https://arxiv.org/abs/2511.19558) · 🌐 [Project](https://eccv.ecva.net/virtual/2026/poster/5585)　📅 2025-11　🏷 ECCV 2026
 

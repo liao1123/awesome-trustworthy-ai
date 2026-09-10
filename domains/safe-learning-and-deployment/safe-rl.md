@@ -108,26 +108,7 @@ Diffusion policy sampling enables reinforcement learning (RL) to represent multi
 
 </details>
 
-### 6. BehaviorGuard: Online Backdoor Defense for Deep Reinforcement Learning
-
-📄 [arXiv](https://arxiv.org/abs/2605.05977) · 🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/3528.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track)　📅 2026
-
-**关键词**：`defense`、`DRL backdoor`、`action-distribution drift`、`online mitigation`、`deep RL`、`backdoor detection`
-
-👤 **作者**：Yinbo Yu、…、Daoqiang Zhang
-
-- 🎯 **研究动机**：DRL 后门防御依赖奖励异常逆推触发器与模型微调，复杂触发下不鲁棒且成本高
-- 🔬 **研究方法**：BehaviorGuard 转向触发无关的输出行为：后门策略为保证激活会诱导动作分布一致漂移（高分为位与尾部留痕），据此设计行为漂移度量在运行时识别并抑制后门动作
-- 📌 **结论**：首个同时覆盖单智能体与多智能体 DRL 的在线后门防御，效果与效率均超先前方法
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Backdoor attacks pose a serious threat to deep reinforcement learning (DRL). Current defenses typically rely on reward anomalies to reverse-engineer triggers and model finetuning to remove backdoors. However, complex trigger patterns undermine their robustness, and fine-tuning entails high costs, limiting practical utility. Therefore, we shift defense concerns to trigger-agnostic backdoor output behaviors and propose BehaviorGuard, an online behavior-based backdoor detection and mitigation framework for DRL. Specifically, we find that regardless of attacks, backdoored policies induce consistent shifts in action distributions to ensure reliable activation, leaving detectable traces in high-quantile regions and distribution tails, even in the absence of triggers. Based on this, we design a novel metric that captures behavioral drift in action distributions to identify and suppress backdoor actions at runtime. To our knowledge, this is the first online backdoor defense that counters attacks both in single- and multi-agent DRL. Evaluated across diverse benchmarks with different backdoor attacks, BehaviorGuard consistently surpasses prior methods in both efficacy and efficiency.
-
-</details>
-
-### 7. Why Dedicated Critics: Eliminating Target Drift in Multi-Constraint RL
+### 6. Why Dedicated Critics: Eliminating Target Drift in Multi-Constraint RL
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/62544)　📅 2026　🏷 ICML 2026
 
@@ -146,7 +127,7 @@ Lagrangian-based methodologies are one of the fundamental paradigms of safe rein
 
 </details>
 
-### 8. Training-Free Guided Diffusion for Planning: A Unified Framework via Doob’s h-Transform with Safety Guarantees
+### 7. Training-Free Guided Diffusion for Planning: A Unified Framework via Doob’s h-Transform with Safety Guarantees
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/65815)　📅 2026　🏷 ICML 2026
 
@@ -165,7 +146,7 @@ This paper studies the theoretical foundations of guidance mechanisms in continu
 
 </details>
 
-### 9. TraCeS: Learning Per-Timestep Constraint-Violation Credit from Sparse Trajectory-Level Labels
+### 8. TraCeS: Learning Per-Timestep Constraint-Violation Credit from Sparse Trajectory-Level Labels
 
 📄 [arXiv](https://arxiv.org/abs/2504.12557) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61935)　📅 2026　🏷 ICML 2026
 
@@ -184,7 +165,7 @@ Ensuring safe behavior in reinforcement learning (RL) is challenging when safety
 
 </details>
 
-### 10. The Pareto-optimal Trade-off between Regret and Statistical Inference in Linear Stochastic Bandits under Safety Constraints
+### 9. The Pareto-optimal Trade-off between Regret and Statistical Inference in Linear Stochastic Bandits under Safety Constraints
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/62237)　📅 2026　🏷 ICML 2026
 
@@ -203,7 +184,7 @@ Linear bandits traditionally prioritize regret minimization, often overlooking s
 
 </details>
 
-### 11. Safe Reinforcement Learning with Preference-based Constraint Inference
+### 10. Safe Reinforcement Learning with Preference-based Constraint Inference
 
 📄 [arXiv](https://arxiv.org/abs/2603.23565) · 🎓 [Official](https://icml.cc/virtual/2026/poster/66726)　📅 2026　🏷 ICML 2026
 
@@ -222,7 +203,7 @@ Safe reinforcement learning (RL) is a standard paradigm for safety-critical deci
 
 </details>
 
-### 12. RiskZero: Plan More to Risk Less with a Learned Model
+### 11. RiskZero: Plan More to Risk Less with a Learned Model
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/66312)　📅 2026　🏷 ICML 2026
 
@@ -241,7 +222,7 @@ AlphaZero and MuZero have demonstrated superhuman performance across a range of 
 
 </details>
 
-### 13. Mirror Descent Policy Optimisation for Robust Constrained Markov Decision Processes
+### 12. Mirror Descent Policy Optimisation for Robust Constrained Markov Decision Processes
 
 📄 [arXiv](https://arxiv.org/abs/2506.23165) · 🎓 [Official](https://icml.cc/virtual/2026/poster/68816)　📅 2026　🏷 ICML 2026
 
@@ -260,7 +241,7 @@ Safety is an essential requirement for reinforcement learning systems. The newly
 
 </details>
 
-### 14. Learning Reward–Cost Balance in Safe RL via Score-Based World Models
+### 13. Learning Reward–Cost Balance in Safe RL via Score-Based World Models
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/61706)　📅 2026　🏷 ICML 2026
 
@@ -279,7 +260,7 @@ Safe reinforcement learning (Safe RL) seeks to optimize long-term performance wh
 
 </details>
 
-### 15. CSPO: Constraint-Sensitive Policy Optimization for Safe Reinforcement Learning
+### 14. CSPO: Constraint-Sensitive Policy Optimization for Safe Reinforcement Learning
 
 📄 [arXiv](https://arxiv.org/abs/2606.14415) · 🎓 [Official](https://icml.cc/virtual/2026/poster/66410)　📅 2026　🏷 ICML 2026
 
@@ -298,7 +279,7 @@ Safe reinforcement learning (Safe RL) aims to maximize expected return while sat
 
 </details>
 
-### 16. Constrained Meta Reinforcement Learning with Provable Test-Time Safety
+### 15. Constrained Meta Reinforcement Learning with Provable Test-Time Safety
 
 📄 [arXiv](https://arxiv.org/abs/2601.21845) · 🎓 [Official](https://icml.cc/virtual/2026/poster/66356)　📅 2026　🏷 ICML 2026
 
@@ -317,7 +298,7 @@ Meta reinforcement learning (RL) allows agents to leverage experience across a d
 
 </details>
 
-### 17. Blending Neural Control Density Functions for Stabilization and Safety
+### 16. Blending Neural Control Density Functions for Stabilization and Safety
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/64872)　📅 2026　🏷 ICML 2026
 
@@ -336,7 +317,7 @@ Recent work on Neural Network-based methods for nonlinear control use Lyapunov F
 
 </details>
 
-### 18. DEPLOY-RL: Active Boundary Discovery and Conservative Certification for Deployable Reinforcement Learning in Safety-Critical Continuous Processes
+### 17. DEPLOY-RL: Active Boundary Discovery and Conservative Certification for Deployable Reinforcement Learning in Safety-Critical Continuous Processes
 
 🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/AI4T22.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=special-track-on-ai4tech-ai-enabling-critical-technologies)　📅 2026
 
@@ -353,24 +334,7 @@ Reinforcement learning (RL) policies often outperform classical controllers in s
 
 </details>
 
-### 19. Safe and Efficient Control: A Subgraph-Augmented Hierarchical Reinforcement Learning Framework for Dynamically Reconfigurable Battery Systems
-
-🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/AI4T17.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=special-track-on-ai4tech-ai-enabling-critical-technologies)　📅 2026
-
-**关键词**：`defense`、`hierarchical RL`、`battery control`、`operational constraint`
-
-- 🎯 **研究动机**：动态可重构电池系统控制因大拓扑动作空间盲目探索与复杂运行约束导致奖励稀疏，难以学到有效策略
-- 🔬 **研究方法**：提出 SAHRL：高层策略定战略方向，子图增强的低层策略结合从拓扑结构提取的子图归纳偏置细化动作以满足约束
-- 📌 **结论**：仿真与真实实验均实现安全高效均衡，真实应用中能量释放较常规方法提升 10.56%
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Dynamically Reconfigurable Battery (DRB) systems employ power electronic switches to create dynamic topologies. They enable effective management of cell inconsistencies through real-time adjustment of cell connections. However, existing DRB control methods struggle to learn effective strategies due to sparse rewards, which arise from blind exploration in large topological action spaces and complex operational constraints. This leads to ineffective policy learning, making safety and balancing performance difficult to ensure in practical applications. To this end, we propose a SubgraphAugmented Hierarchical Reinforcement Learning (SAHRL) framework. By combining hierarchical policies with topological structural knowledge, SAHRL effectively accelerates policy exploration and mitigates reward sparsity. Specifically, the high-level policy determines the strategic direction, while the subgraph-augmented low-level policy refines actions to meet operational constraints. The topological structural knowledge, extracted in the form of subgraphs and incorporated as an inductive bias, guides the agent focus on meaningful action patterns and reduce invalid exploration in the large action space. Extensive simulations and real-world experiments show that SAHRL achieves safe and efficient balancing. Notably, it increases the energy release by 10.56% compared to conventional methods in real-world applications.
-
-</details>
-
-### 20. Safe Multi-Objective Linear Bandits with Hierarchical Preferences
+### 18. Safe Multi-Objective Linear Bandits with Hierarchical Preferences
 
 🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/3310.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track)　📅 2026
 
@@ -387,7 +351,7 @@ Multi-objective bandits with hierarchical preferences and safety constraints is 
 
 </details>
 
-### 21. Safety Generalization Under Distribution Shift in Safe Reinforcement Learning: A Diabetes Testbed
+### 19. Safety Generalization Under Distribution Shift in Safe Reinforcement Learning: A Diabetes Testbed
 
 📄 [arXiv](https://arxiv.org/abs/2601.21094) · 🎓 [Official](https://icml.cc/virtual/2026/poster/62037)　📅 2026　🏷 ICML 2026
 
@@ -403,5 +367,43 @@ Multi-objective bandits with hierarchical preferences and safety constraints is 
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 Safe Reinforcement Learning (RL) algorithms are typically evaluated under fixed training conditions. We investigate whether training-time safety guarantees transfer to deployment under distribution shift, using diabetes management as a safety-critical testbed. We benchmark safe RL algorithms on a unified clinical simulator and reveal a safety generalization gap: policies satisfying constraints during training frequently violate safety requirements on unseen patients. We demonstrate that test-time shielding, which filters unsafe actions using learned dynamics models, effectively restores safety across algorithms and patient populations. Across eight safe RL algorithms, three diabetes types, and three age groups, shielding achieves Time-in-Range gains of 13--14\% for strong baselines such as PPO-Lag and CPO while reducing clinical risk index and glucose variability. Our simulator and benchmark provide a platform for studying safety under distribution shift in safety-critical control domains. Code is available at https://github.com/safe-autonomy-lab/GlucoSim and https://github.com/safe-autonomy-lab/GlucoAlg.
+
+</details>
+
+### 20. Geometric Control of Out-of-Distribution Shift in Safe Offline RL
+
+🎓 [Official](https://icml.cc/virtual/2026/poster/60708)　📅 2026　🏷 ICML 2026
+
+**关键词**：`defense`、`risk control`、`uncertainty calibration`、`selective prediction`、`safe reinforcement learning`、`reinforcement learning`
+
+👤 **作者**：Zhiqi Zhuang、di wu、Benoit Boulet
+
+- 🎯 **研究动机**：安全离线 RL 的潜生成策略仅靠隐式正则，缺乏对策略改进中分布偏移的系统控制
+- 🔬 **研究方法**：利用条件归一化流的双射结构在潜基空间约束散度，导出策略分布 Wasserstein 距离与 TV 的可解上界；架构为可达性信号 flow prior 加几何约束 latent refiner
+- 📌 **结论**：多个安全 RL 基准上违规率持续低且回报有竞争力
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Safe offline reinforcement learning (RL) requires optimizing policies within the support of static datasets while satisfying strict safety constraints. Although recent latent generative policies achieve strong empirical performance, they rely heavily on implicit regularization and lack systematic control over distributional shift during policy improvement. In this work, we propose a geometric control framework that leverages the bijective structure of conditional normalizing flows to provide a tractable mechanism to regulate distributional deviation of the policy. By constraining divergence in the latent base space, we derive tractable upper bounds on the induced Wasserstein distance and total variation of the policy distribution, establishing an analyzable connection between latent geometry and downstream behaviors. This insight motivates a decoupled architecture: a flow prior shapes a feasibility-weighted latent manifold using Hamilton--Jacobi reachability signals, while a latent refiner performs geometrically constrained optimization directly in the base space. Across multiple safe RL benchmarks, our method achieves consistently low violation rates with competitive returns, highlighting the benefits of structured geometric regularization.
+
+</details>
+
+### 21. Implicit Safety Alignment from Crowd Preferences
+
+📄 [arXiv](https://arxiv.org/abs/2605.21822) · 🎓 [Official](https://icml.cc/virtual/2026/poster/62042)　📅 2026　🏷 ICML 2026
+
+**关键词**：`defense`、`safety alignment`、`refusal behavior`、`alignment robustness`、`reinforcement learning`、`fine-tuning robustness`
+
+👤 **作者**：Qian Lin、Daniel S. Brown
+
+- 🎯 **研究动机**：直接把偏好学到的安全奖励与下游任务奖励组合存在固有局限
+- 🔬 **研究方法**：层级框架从众包偏好提取安全对齐技能，由高层策略组合以安全求解下游任务
+- 📌 **结论**：无显式安全奖励下大幅降低安全成本，任务表现接近用真值安全信号训练的 oracle
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Reinforcement Learning from Human Feedback (RLHF) can reveal implicit objectives such as safety considerations that go beyond task completion. In this work, we focus on the common safety criteria embedded in crowd preference datasets, where different users may express distinct preferences or objectives, yet follow similar safety principles. Our aim is to discover shared safety criteria from crowd preferences and then transfer them to downstream RL tasks to regularize agent behavior and enforce safety. We first show that direct reward combination—optimizing a preference-learned reward model together with downstream task rewards—has inherent limitations. Motivated by this, we propose Safe Crowd Preference-based RL, a hierarchical framework that extracts safety-aligned skills from crowd preferences and composes them via a high-level policy to safely solve downstream tasks. Experiments across safe RL environments and a preliminary LLM-style task with diverse user goals and shared safety constraints demonstrate that our approach substantially lowers safety costs without access to explicit safety rewards, while achieving task performance comparable to oracle methods trained with ground-truth safety signals.
 
 </details>

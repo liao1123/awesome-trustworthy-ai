@@ -131,26 +131,7 @@ Large language models (LLMs) increasingly act as autonomous agents, using tools 
 
 </details>
 
-### 7. AgentProv: Auditing Agentic LLM API Providers via Tool-use Policy Probes
-
-📄 [arXiv](https://arxiv.org/abs/2609.00052)　📅 2026-09
-
-**关键词**：`audit`、`API provenance`、`tool-use policy`、`model substitution`
-
-👤 **作者**：Xun Wang、Bihe Zhao、Michael Backes、Franziska Boenisch、Adam Dziedzic
-
-- 🎯 **研究动机**：商业 LLM API 可能静默替换、量化或包装所宣称模型，现有 text 通道审计在 agentic 服务栈只暴露结构化 action 时结构脆弱
-- 🔬 **研究方法**：提出首个基于动作的身份审计 AgentProv：通过分类 tool-call 分布指纹化部署模型，用 MMD 置换检验判定同一性
-- 📌 **结论**：630 对 checkpoint 上 100% 抓获替换模型，系统提示注入下 false positive 仅 7%（MET 67%、RUT 53%）；与 MET 的分歧和独立 token-count 侧信道一致
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Commercial LLM APIs advertise a specific foundation model, but the served backbone may be silently substituted, quantized, or wrapped, for example to save deployment costs. All existing audits decide backbone identity from the text-output channel, which is structurally fragile for agentic APIs because modern serving stacks (OpenAI, Anthropic, Gemini, Cloudflare Workers AI, LangGraph) discard text and expose only structured actions when the model calls a tool, and provider-injected system prompts can distort text distributions enough that text-channel tests falsely accuse honest providers of substituting the claimed model. We observe that recent agentic post-training internalizes tool-use directly into the weights, opening a new audit channel that the serving stack still exposes and that is largely invariant to deployment context. We introduce Agentic Provenance (AgentProv), the first action-based identity audit for agentic LLM APIs: AgentProv fingerprints a deployed model through its categorical tool-call distribution and decides identity via an MMD permutation test. AgentProv catches every substituted model (100% on 630 evaluated checkpoint pairs), while holding the false-positive rate under system-prompt injection at 7% (vs. 67% for MET and 53% for RUT). On third-party API endpoints, AgentProv's disagreements with MET are consistent with an independent token-count side-channel that detects provider-injected system prompts.
-
-</details>
-
-### 8. SkillShield: Prompt-Space Security Skills for LLM Coding Agents
+### 7. SkillShield: Prompt-Space Security Skills for LLM Coding Agents
 
 📄 [arXiv](https://arxiv.org/abs/2608.25817)　📅 2026-08
 
@@ -169,7 +150,7 @@ A coding agent edits files and executes shell commands with its developer's priv
 
 </details>
 
-### 9. When "Do Not" Is Not Deny: Security Rules in CLAUDE.md vs Built-In Controls
+### 8. When "Do Not" Is Not Deny: Security Rules in CLAUDE.md vs Built-In Controls
 
 📄 [arXiv](https://arxiv.org/abs/2608.23550)　📅 2026-08
 
@@ -188,7 +169,7 @@ In CLAUDE.md, "do not" is a natural-language instruction that the model interpre
 
 </details>
 
-### 10. Harness-IF: Evaluating Instruction Following Across Instruction Surfaces in Coding Agents
+### 9. Harness-IF: Evaluating Instruction Following Across Instruction Surfaces in Coding Agents
 
 📄 [arXiv](https://arxiv.org/abs/2608.11727)　📅 2026-08
 
@@ -207,45 +188,7 @@ When a coding agent obeys a rule, it may simply have been going to do that anywa
 
 </details>
 
-### 11. $A^2E$: An End-to-End Agent Auditing Engine
-
-📄 [arXiv](https://arxiv.org/abs/2608.07346)　📅 2026-08
-
-**关键词**：`tool`、`agent auditing`、`standardized trace`、`model-harness comparison`
-
-👤 **作者**：Haoning Wang、…、Na Zou
-
-- 🎯 **研究动机**：harness 生态快速演化，高效构建端到端系统化的 agent harness 评测管线仍困难
-- 🔬 **研究方法**：A2E 用 Agent Task Protocol 快速接入评测任务，自动插桩 Monitor 生成标准化执行轨迹，多维指标刻画执行效率、工具使用、规划与错误恢复
-- 📌 **结论**：模型-harness 组合在不同任务类型上表现差异巨大，没有组合全面占优，需系统化评测指导模型与 harness 共同演化
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-With the rapid advancement of large language models (LLMs), harnesses have become essential infrastructure for deploying agents across a wide range of domains. The fast-evolving harness ecosystem has also made rigorous capability evaluation increasingly important. However, efficiently building an end-to-end, systematic, and comprehensive evaluation pipeline remains a significant challenge. To address this challenge, we introduce $A^2E$ (Agent Auditing Engine), an end-to-end evaluation engine designed for agent harnesses. $A^2E$ leverages our newly proposed Agent Task Protocol (ATP) to enable the rapid integration of evaluation tasks with different harnesses. Through an automatically instrumented Monitor, it captures and generates standardized execution traces during experiments. In the Evaluation stage, $A^2E$ systematically assesses harness capabilities using a suite of multidimensional metrics. Compared with correctness alone, these metrics provide a more fine-grained characterization of differences among harnesses in execution efficiency, tool use, task planning, and error recovery. Experiments conducted with $A^2E$ further reveal that model-harness combinations exhibit substantial performance variation across different types of tasks, and that no single combination consistently outperforms all others across every task. These findings not only demonstrate the necessity of systematic evaluation but also provide useful guidance for the co-evolving of models and harnesses. Our code is available at https://github.com/datamllab/A2E.
-
-</details>
-
-### 12. Harness-Bench: Measuring Harness Effects across Models in Realistic Agent Workflows
-
-📄 [arXiv](https://arxiv.org/abs/2605.27922)　📅 2026-05
-
-**关键词**：`benchmark`、`harness configuration`、`execution alignment`、`artifact validation`
-
-👤 **作者**：Yilun Yao、…、Tong Yang
-
-- 🎯 **研究动机**：agent 性能取决于 harness 层，而现有基准抽象掉执行、比较完整系统或固定 harness，配置级影响难研究
-- 🔬 **研究方法**：Harness-Bench 含 106 个沙箱离线任务，在共享任务环境、预算与协议下保留各 harness 原生执行行为，记录产物、轨迹、用量与验证器输出，共 5,194 条轨迹
-- 📌 **结论**：model-harness 配对在完成度、过程质量、效率与失败行为上差异巨大，agent 能力应按配置级报告；识别出推理与工具反馈、工作区状态脱节的 execution-alignment 失败
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-LLM agents are increasingly deployed as executable systems that use tools, modify workspaces, and produce concrete artifacts. In such workflows, performance depends not only on the base model, but also on the harness: the system layer that manages context, tools, state, constraints, permissions, tracing, and recovery. However, existing benchmarks typically abstract away execution, compare complete agent systems, or hold the harness fixed, making execution-layer variation difficult to study. We introduce Harness-Bench, a diagnostic benchmark for evaluating configuration-level harness effects in realistic agent workflows. Harness-Bench evaluates representative harness configurations across multiple model backends under shared task environments, budgets, and evaluation protocols, while preserving each harness's native execution behavior. The benchmark contains 106 sandboxed offline tasks constructed from practical agent-use patterns and manually reviewed for realism, solvability, oracle-checkability, and integrity. Each run records final artifacts, execution traces, usage statistics, and validator outputs, enabling analysis beyond final completion. Across 5,194 execution trajectories, we observe substantial variation in completion, process quality, efficiency, and failure behavior across model-harness pairings. These results suggest that agent capability should be reported at the model-harness configuration level rather than attributed to the base model alone. Our analysis further identifies recurring execution-alignment failures, where plausible reasoning becomes decoupled from tool feedback, workspace state, evidence, or verifiable output contracts. Harness-Bench provides a reproducible foundation for diagnosing and improving reliable, efficient, and auditable agent execution stacks.
-
-</details>
-
-### 13. Reachability-Based Capability Confinement for LLM Agents under Indirect Prompt Injection
+### 10. Reachability-Based Capability Confinement for LLM Agents under Indirect Prompt Injection
 
 📄 [arXiv](https://arxiv.org/abs/2608.30041)　📅 2026-09
 
@@ -264,7 +207,7 @@ Large language model agents place outputs from external skills into their execut
 
 </details>
 
-### 14. ROPE: Routed Origin Policy Enforcement against Indirect Prompt Injection
+### 11. ROPE: Routed Origin Policy Enforcement against Indirect Prompt Injection
 
 📄 [arXiv](https://arxiv.org/abs/2608.27496)　📅 2026-08
 
@@ -283,7 +226,7 @@ Indirect prompt injection (IPI) plants instructions in the content a tool-using 
 
 </details>
 
-### 15. TraceGrant: A Contract-Governed Security Framework for the Task-Effect Lifecycle of Networked LLM Agents
+### 12. TraceGrant: A Contract-Governed Security Framework for the Task-Effect Lifecycle of Networked LLM Agents
 
 📄 [arXiv](https://arxiv.org/abs/2608.21126)　📅 2026-08
 
@@ -302,7 +245,7 @@ Networked large language model (LLM) agents retrieve information from email, clo
 
 </details>
 
-### 16. When Tool Outputs Become Commands: Separating Action Induction from Runtime Authorization in Tool-Augmented LLM Agents
+### 13. When Tool Outputs Become Commands: Separating Action Induction from Runtime Authorization in Tool-Augmented LLM Agents
 
 📄 [arXiv](https://arxiv.org/abs/2608.27146)　📅 2026-08
 
@@ -321,7 +264,7 @@ Tool-augmented LLM agents must rely on untrusted runtime Observations to complet
 
 </details>
 
-### 17. SPA: Securing Persistent LLM Agents Across Queries with Plan-First Information-Flow Control
+### 14. SPA: Securing Persistent LLM Agents Across Queries with Plan-First Information-Flow Control
 
 📄 [arXiv](https://arxiv.org/abs/2608.27234)　📅 2026-08
 
@@ -340,7 +283,7 @@ Large language model (LLM) agents increasingly operate over untrusted webpages, 
 
 </details>
 
-### 18. Safety Does Not Compose: Non-Decaying Loop State for Autonomous LLM Agents
+### 15. Safety Does Not Compose: Non-Decaying Loop State for Autonomous LLM Agents
 
 📄 [arXiv](https://arxiv.org/abs/2608.27141)　📅 2026-08
 
@@ -359,7 +302,7 @@ Large language model agents are increasingly deployed as autonomous loops. Start
 
 </details>
 
-### 19. Beyond the Editing Canvas: Evidence Divergence in OOXML-to-LLM Ingestion
+### 16. Beyond the Editing Canvas: Evidence Divergence in OOXML-to-LLM Ingestion
 
 📄 [arXiv](https://arxiv.org/abs/2608.25880)　📅 2026-08
 
@@ -378,7 +321,7 @@ LLM pipelines increasingly ingest Office Open XML (OOXML) documents (Word, Excel
 
 </details>
 
-### 20. AgentFlow: A Flow-Centric Policy Language and Framework for Securing LLM Agent Systems
+### 17. AgentFlow: A Flow-Centric Policy Language and Framework for Securing LLM Agent Systems
 
 📄 [arXiv](https://arxiv.org/abs/2608.22868)　📅 2026-08
 
@@ -397,7 +340,7 @@ LLM agents increasingly read untrusted content, invoke external tools, access pr
 
 </details>
 
-### 21. HANSARD: A Reference Architecture for Forensic Readiness, Runtime Witnessing, and Graded Attribution in Autonomous Multi-Agent AI Systems
+### 18. HANSARD: A Reference Architecture for Forensic Readiness, Runtime Witnessing, and Graded Attribution in Autonomous Multi-Agent AI Systems
 
 📄 [arXiv](https://arxiv.org/abs/2608.22512)　📅 2026-08
 
@@ -416,7 +359,7 @@ Autonomous multi-agent systems nowadays act in finance, software supply chains, 
 
 </details>
 
-### 22. Agent Safety Should Be a Runtime Contract
+### 19. Agent Safety Should Be a Runtime Contract
 
 📄 [arXiv](https://arxiv.org/abs/2608.11274)　📅 2026-08
 
@@ -435,7 +378,7 @@ The dominant paradigm treats AI safety as a property to be instilled during mode
 
 </details>
 
-### 23. Defeating Prompt Injections by Design
+### 20. Defeating Prompt Injections by Design
 
 📄 [arXiv](https://arxiv.org/abs/2503.18813) · 🎓 [Official](https://satml.org/2026/accepted-papers/)　📅 2025-03　🏷 SaTML 2026
 
@@ -454,7 +397,7 @@ Large Language Models (LLMs) are increasingly deployed in agentic systems that i
 
 </details>
 
-### 24. Defense-as-Skill: Evolving Runtime Guard Skill for Skill-Augmented Agents
+### 21. Defense-as-Skill: Evolving Runtime Guard Skill for Skill-Augmented Agents
 
 📄 [arXiv](https://arxiv.org/abs/2609.01487)　📅 2026-09
 
@@ -473,7 +416,7 @@ Skill-augmented agents load reusable skills as persistent runtime context, impro
 
 </details>
 
-### 25. CAITLYN: Can LLM Agents Autonomously Synthesize Defenses against Emerging Injection Attacks?
+### 22. CAITLYN: Can LLM Agents Autonomously Synthesize Defenses against Emerging Injection Attacks?
 
 📄 [arXiv](https://arxiv.org/abs/2608.27990)　📅 2026-08
 
@@ -492,7 +435,7 @@ Prompt injection attacks on Large Language Model (LLM) agents seek to introduce 
 
 </details>
 
-### 26. CURA: Certified Runtime Alarms for Computer-Use Agents
+### 23. CURA: Certified Runtime Alarms for Computer-Use Agents
 
 📄 [arXiv](https://arxiv.org/abs/2608.27808)　📅 2026-08
 
@@ -511,7 +454,7 @@ Self-report is the cheapest oversight channel a deployer has, and on capable com
 
 </details>
 
-### 27. ClawSentry: A Progressive Multi-Tier Security Monitor for Safeguarding Autonomous LLM Agents
+### 24. ClawSentry: A Progressive Multi-Tier Security Monitor for Safeguarding Autonomous LLM Agents
 
 📄 [arXiv](https://arxiv.org/abs/2608.21101)　📅 2026-08
 
@@ -530,7 +473,7 @@ As large language model (LLM) agents move from conversation to executing code, r
 
 </details>
 
-### 28. SHE: Trajectory-driven Safety Harness Evolution for LLM Agents
+### 25. SHE: Trajectory-driven Safety Harness Evolution for LLM Agents
 
 📄 [arXiv](https://arxiv.org/abs/2608.09885)　📅 2026-08
 
@@ -549,26 +492,7 @@ The safety of large language model (LLM) agents depends not only on model weight
 
 </details>
 
-### 29. Evo-Bench: Can Language Models Improve Agent Harness?
-
-📄 [arXiv](https://arxiv.org/abs/2608.09096)　📅 2026-08
-
-**关键词**：`benchmark`、`harness evolution`、`cross-suite generalization`、`iterative research`
-
-👤 **作者**：Lisheng Huang、…、Tao Zhang
-
-- 🎯 **研究动机**：agent 自主优化自身 harness 的能力缺乏能将其与基座模型实力隔离、防任务过拟合的基准
-- 🔬 **研究方法**：Evo-Bench 用辅助任务演化识别对框架改进真正敏感的任务，再做敏感度感知分层切分保证跨套件泛化，覆盖 Search、Office、General 三域九模型
-- 📌 **结论**：顶级模型绝对增益达 16.6 分接近人工设计基线；General 与 Search 域超越人工 harness、Office 域吃力，合成 harness 作为推理结构可迁移
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Large Language Models (LLMs) have driven rapid progress in autonomous agents, yet standard evaluations remain confined to static task solving. An emerging frontier is harness evolution---the agent's capacity to autonomously optimize its own operating harness. However, systematically benchmarking this capability remains challenging, as existing evaluations fail to isolate harness improvements from base model strength, prevent task-specific overfitting, or capture long-horizon iterative research. To address these challenges, we introduce Evo-Bench, the first benchmark designed to evaluate models' intrinsic harness-evolving capabilities across Search, Office, and General agent domains. To rigorously isolate this capability, Evo-Bench employs a novel harness-guided construction framework: it leverages auxiliary-task evolution to identify tasks genuinely sensitive to framework improvements, followed by sensitivity-aware stratified splitting to ensure robust cross-suite generalization. Extensive evaluations across nine frontier and open-weight models reveal that top models achieve massive absolute gains reaching 16.6 points, closely approaching state-of-the-art human-engineered baselines. Crucially, while autonomous evolution outpeforms artificial harness in General tasks and excels in Search tasks, it struggles in Office tasks that demand highly specific processing workflows. Furthermore, our analysis exposes critical temporal anomalies like early saturation, while demonstrating that the synthesized harnesses act as highly transferable reasoning structures, consistently boosting diverse policy models.
-
-</details>
-
-### 30. Code as Agent Harness
+### 26. Code as Agent Harness
 
 📄 [arXiv](https://arxiv.org/abs/2605.18747)　📅 2026-05
 
@@ -587,7 +511,7 @@ Recent large language models (LLMs) have demonstrated strong capabilities in und
 
 </details>
 
-### 31. ClawKeeper: Comprehensive Safety Protection for OpenClaw Agents Through Skills, Plugins, and Watchers
+### 27. ClawKeeper: Comprehensive Safety Protection for OpenClaw Agents Through Skills, Plugins, and Watchers
 
 📄 [arXiv](https://arxiv.org/abs/2603.24414)　📅 2026-03
 
@@ -606,7 +530,7 @@ OpenClaw has rapidly established itself as a leading open-source autonomous agen
 
 </details>
 
-### 32. A Blind Trust, the Bloody Thrust: When Attacker-Controlled Hook Updates Steer AI Agent Harnesses towards Malicious Behaviors
+### 28. A Blind Trust, the Bloody Thrust: When Attacker-Controlled Hook Updates Steer AI Agent Harnesses towards Malicious Behaviors
 
 📄 [arXiv](https://arxiv.org/abs/2609.03884)　📅 2026-09
 
@@ -625,7 +549,7 @@ Modern AI agent harnesses expose lifecycle hooks that bind shell commands to run
 
 </details>
 
-### 33. What's in Your Agent's Context? Context Privilege Escalation Attacks against AI Agent Harness
+### 29. What's in Your Agent's Context? Context Privilege Escalation Attacks against AI Agent Harness
 
 📄 [arXiv](https://arxiv.org/abs/2609.01222)　📅 2026-09
 
@@ -644,7 +568,7 @@ Real-world, high-profile AI agent harnesses often rely on vendor-proprietary or 
 
 </details>
 
-### 34. ContextLeak: Exfiltrating LLM Agent Context via Malicious Tools
+### 30. ContextLeak: Exfiltrating LLM Agent Context via Malicious Tools
 
 📄 [arXiv](https://arxiv.org/abs/2608.27800)　📅 2026-08
 
@@ -663,7 +587,7 @@ Exfiltrating an LLM agent's runtime context -- such as the user prompt, executio
 
 </details>
 
-### 35. When Context Gets Root: Privilege Escalation in LLM Harnesses
+### 31. When Context Gets Root: Privilege Escalation in LLM Harnesses
 
 📄 [arXiv](https://arxiv.org/abs/2608.27299)　📅 2026-08
 
@@ -682,7 +606,7 @@ Instruction hierarchy is a model-side defense that assigns instructions differen
 
 </details>
 
-### 36. Beyond Direct Access: Resource Hijacking in LLM Agents
+### 32. Beyond Direct Access: Resource Hijacking in LLM Agents
 
 📄 [arXiv](https://arxiv.org/abs/2608.15108)　📅 2026-08
 
@@ -701,7 +625,7 @@ Large language model agents are increasingly connected to high-value resources s
 
 </details>
 
-### 37. When Compression Becomes an Attack Surface: Black-Box Attacks on Prompt-Compressed LLM Agents
+### 33. When Compression Becomes an Attack Surface: Black-Box Attacks on Prompt-Compressed LLM Agents
 
 📄 [arXiv](https://arxiv.org/abs/2510.22963) · 🌐 [Project](https://conf.researchr.org/details/ase-2026/ase-2026-research-track/64/When-Compression-Becomes-an-Attack-Surface-Black-Box-Attacks-on-Prompt-Compressed-LL)　📅 2025-10　🏷 ASE 2026
 
@@ -720,7 +644,7 @@ Prompt compression is increasingly deployed in LLM agents to reduce latency and 
 
 </details>
 
-### 38. Mind the Web: The Security of Web Use Agents
+### 34. Mind the Web: The Security of Web Use Agents
 
 📄 [arXiv](https://arxiv.org/abs/2506.07153) · 🌐 [Project](https://doi.org/10.1145/3779208.3805968)　📅 2025-06　🏷 ACM CCS 2026
 
@@ -739,7 +663,7 @@ Web-use agents are rapidly being deployed to automate complex web tasks with ext
 
 </details>
 
-### 39. A Programming Paradigm for Spatiotemporal Composability
+### 35. A Programming Paradigm for Spatiotemporal Composability
 
 📄 [arXiv](https://arxiv.org/abs/2608.25512)　📅 2026-08
 
@@ -751,7 +675,7 @@ Web-use agents are rapidly being deployed to automate complex web tasks with ext
 - 🔬 **研究方法**：形式化revertible effect与reactive coeffect并实现Cordis演算
 - 📌 **结论**：将时空可组合性从单组件扩展到交错执行的完整系统
 
-### 40. AIR: Improving Agent Safety through Incident Response
+### 36. AIR: Improving Agent Safety through Incident Response
 
 📄 [arXiv](https://arxiv.org/abs/2602.11749) · 🎓 [Official](https://icml.cc/virtual/2026/poster/62353)　📅 2026　🏷 ICML 2026
 
@@ -767,5 +691,24 @@ Web-use agents are rapidly being deployed to automate complex web tasks with ext
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 Large Language Model (LLM) agents are increasingly deployed in practice across a wide range of autonomous applications. Yet current safety mechanisms for LLM agents focus almost exclusively on preventing failures in advance, providing limited capabilities for responding to, containing, or recovering from incidents after they inevitably arise. In this work, we introduce AIR, the first incident response framework for LLM agent systems. AIR defines a domain-specific language for managing the incident response lifecycle autonomously in LLM agent systems, and integrates it into the agent's execution loop to (1) detect incidents via semantic checks grounded in the current environment state and recent context, (2) guide the agent to execute containment and recovery actions via its tools, and (3) synthesize guardrail rules during eradication to block similar incidents in future executions. We evaluate AIR on three representative agent types. Results show that AIR achieves detection, remediation, and eradication success rates all exceeding 90%. Extensive experiments further confirm the necessity of AIR's key design components, show the timeliness and moderate overhead of AIR, and demonstrate that LLM-generated rules can approach the effectiveness of developer-authored rules across domains. These results show that incident response is both feasible and essential as a first-class mechanism for improving agent safety.
+
+</details>
+
+### 37. Agentao: A Governed Local-First Runtime for Tool-Using LLM Agents
+
+📄 [arXiv](https://arxiv.org/abs/2608.13574)　📅 2026-08
+
+**关键词**：`tool`、`agent safety benchmark`、`trajectory evaluation`、`failure coverage`
+
+👤 **作者**：Bo Jin、Qiang Jiao、Xin Tong
+
+- 🎯 **研究动机**：工具型 agent 面临过度授权、弱可审计性、提示注入、工具投毒与失控副作用等风险
+- 🔬 **研究方法**：Agentao 受治理的本地优先运行时，把模型动作提议与宿主授权执行分离：宿主契约、运行时核心、权限中介工具系统加记忆/回放/插件/子 agent 等子系统
+- 📌 **结论**：不提供形式安全保证，但演示权限、状态、协议边界与执行轨迹可成为显式运行时抽象，使 agent 更可治理、可检视
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+LLM agents increasingly operate as execution systems that invoke tools, modify local state, use persistent memory, and interact with external protocols. These capabilities make agents useful, but they also introduce risks related to over-privileged actions, weak auditability, prompt injection, tool poisoning, and uncontrolled side effects. This paper presents Agentao, a governed local-first runtime for tool-using LLM agents. Agentao separates model-generated action proposals from host-authorized execution through a layered architecture consisting of host-facing surfaces, a host contract, a runtime core, a permission-mediated tool system, and supporting subsystems for memory, replay, plugins, skills, sub-agents, and protocol integration. We describe the motivation, threat model, design goals, governance model, execution pipeline, and structured event interface of the system. Agentao does not provide formal safety guarantees; rather, it demonstrates how permissions, state, protocol boundaries, and execution traces can be made explicit runtime abstractions for building agents that are more governable, inspectable, and suitable for host-controlled local environments. The code is publicly available at https://github.com/jin-bo/agentao .
 
 </details>

@@ -471,3 +471,117 @@ Sycophancy, the tendency of a language model to change its answer to match a use
 Logical fallacies are common in public communication and can mislead audiences; fallacious arguments may still appear convincing despite lacking soundness, because convincingness is inherently subjective. We present the first computational study of how emotional framing interacts with fallacies and convincingness, using large language models (LLMs) to systematically change emotional appeals in fallacious arguments. We benchmark eight LLMs on injecting emotional appeal into fallacious arguments while preserving their logical structures, then use the best models to generate stimuli for a human study. Our results show that LLM-driven emotional framing reduces human fallacy detection in F1 by 14.5% on average. Humans perform better in fallacy detection when perceiving enjoyment than fear or sadness, and these three emotions also correlate with significantly higher convincingness compared to neutral or other emotion states. Our work has implications for AI-driven emotional manipulation in the context of fallacious argumentation.
 
 </details>
+
+### 25. Who’s in Charge? Disempowerment Patterns in Real-World LLM Usage
+
+📄 [arXiv](https://arxiv.org/abs/2601.19062) · 🎓 [Official](https://icml.cc/virtual/2026/poster/62751)　📅 2026　🏷 ICML 2026
+
+**关键词**：`analysis`、`AI safety benchmark`、`risk estimation`、`evaluation validity`、`safety evaluation`、`empirical evaluation`
+
+👤 **作者**：Mrinank Sharma、Miles McCain、Raymond Douglas、David Duvenaud
+
+- 🎯 **研究动机**：AI 助手交互可能让用户形成扭曲认知、做出非本真价值判断，真实大规模使用中的失权模式缺乏实证分析
+- 🔬 **研究方法**：以隐私保护方法分析 150 万条 Claude.ai 消费者对话，量化情境失权潜力并结合质性模式与历史趋势分析
+- 📌 **结论**：严重失权低于千分之一但人际关系等个人领域更高且随时间上升；失权潜力更高的对话反获更高用户认可，短期偏好与长期赋能存在张力
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+We present the first large-scale empirical analysis of disempowerment patterns in real-world AI assistant interactions, analyzing 1.5 million consumer Claude.ai conversations using a privacy-preserving approach. We focus on situational dis-empowerment potential, which occurs when AI assistant interactions risk leading users to form distorted perceptions of reality, make inauthentic value judgments, or act in ways misaligned with their values. Quantitatively, we find that severe forms of disempowerment potential occur in fewer than one in a thousand conversations, though rates are substantially higher in personal domains like relationships and lifestyle. Qualitatively, we uncover several concerning patterns, such as validation of persecution narratives and grandiose identities with emphatic sycophantic language, definitive moral judgments about third parties, and complete scripting of value-laden personal communications that users appear to implement verbatim. Analysis of historical trends reveals an increase in the prevalence of disempowerment potential over time. We also find that interactions with greater disempowerment potential receive higher user approval ratings, possibly suggesting a tension between short-term user preferences and long-term human empowerment.
+
+</details>
+
+### 26. The Hidden Puppet Master: Predicting Human Belief Change in Manipulative LLM Dialogues
+
+📄 [arXiv](https://arxiv.org/abs/2603.20907) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-03
+
+**关键词**：`benchmark`、`belief change`、`high-risk deployment`、`risk governance`、`dialogue manipulation`、`hidden incentives`
+
+👤 **作者**：Jocelyn Shen、…、Cynthia Breazeal
+
+- 🎯 **研究动机**：操纵检测研究与真实人类信念变化脱节，均基于模拟辩论
+- 🔬 **研究方法**：PUPPET 提出面向日常建议场景隐藏激励道德方向的分类法，构建 N=1,035 人类-LLM 交互数据集测量信念变化，并定义信念转变预测任务
+- 📌 **结论**：操纵策略检测能力与信念变化幅度不相关；SOTA LLM 预测仅中等相关（r=0.3-0.5）且存在系统性高估/低估的方向偏差
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+As users increasingly turn to LLMs for practical and personal advice, they become vulnerable to subtle steering toward hidden incentives misaligned with their own interests. While existing NLP research has benchmarked manipulation detection, these efforts often rely on simulated debates and remain fundamentally decoupled from actual human belief shifts in real-world scenarios. We introduce PUPPET, a theoretical taxonomy and resource that bridges this gap by focusing on the moral direction of hidden incentives in everyday, advice-giving contexts. We provide an evaluation dataset of N=1,035 human-LLM interactions, where we measure users' belief shifts. Our analysis reveals a critical disconnect in current safety paradigms: while models can be trained to detect manipulative strategies, they do not correlate with the magnitude of resulting belief change. As such, we define the task of human belief shift prediction and show that while state-of-the-art LLMs achieve moderate correlation (r=0.3-0.5), they exhibit systematic directional biases, with certain models over or under-predicting the magnitude of human belief change. This work establishes a theoretically grounded and behaviorally validated foundation for AI social safety efforts by studying incentive-driven manipulation in LLMs during everyday, practical user queries.
+
+</details>
+
+### 27. The Stackelberg Speaker: Optimizing Persuasive Communication in Social Deduction Games
+
+🌐 [Project](https://3dagentworld.github.io/leader_follower) · 🎓 [Official](https://aclanthology.org/2026.acl-long.250/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`analysis`、`model deception`、`strategic behavior`、`honesty evaluation`、`deceptive behavior`、`behavioral monitoring`
+
+👤 **作者**：Zhang Zheng、Deheng Ye、Peilin Zhao、Hao Wang
+
+- 🎯 **研究动机**：社会推理游戏方法聚焦信息处理与策略选择，忽视说服性沟通对其他玩家信念与回应的影响
+- 🔬 **研究方法**：把回合制对话形式化为 Stackelberg 竞争：当前玩家作为 leader 策略性影响 follower 回应，提出强化学习框架训练优化话语的说服力
+- 📌 **结论**：在四个社会推理基准上显著超越基线，迈向具备策略性社会影响的 agent
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language model (LLM) agents have shown remarkable progress in social deduction games (SDGs). However, existing approaches primarily focus on information processing and strategy selection, overlooking the significance of persuasive communication in influencing other players’ beliefs and responses. In SDGs, success depends not only on making correct deductions but also on convincing others to respond in alignment with one’s intent. To address this limitation, we formalize turn-based dialogue in SDGs as a Stackelberg competition, where the current player acts as the leader who strategically influences the follower’s response. Building on this theoretical foundation, we propose a reinforcement learning framework that trains agents to optimize utterances for persuasive impact. Through comprehensive experiments across four diverse social deduction benchmarks, we demonstrate that our agents significantly outperform baselines. This work represents a significant step toward developing AI agents capable of strategic social influence, with implications extending to scenarios requiring persuasive communication. Our code and data are available at https://3dagentworld.github.io/leader_follower.
+
+</details>
+
+### 28. Do LLM Agents Mirror Socio-Cognitive Effects in Power-Asymmetric Conversations?
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.2202/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`analysis`、`model deception`、`strategic behavior`、`honesty evaluation`、`agent safety`、`deceptive behavior`
+
+👤 **作者**：Anvesh Rao Vijjini、Sagar B. Manjunath、Snigdha Chaturvedi
+
+- 🎯 **研究动机**：权力差异经语言协调、代词使用、权威偏差与有害顺从等社会认知效应塑造人类交流，LLM 是否复现未知
+- 🔬 **研究方法**：用多样职业 persona 模拟多轮权力不对称对话（如校长-教师、法官-律师），测量语言协调、代词使用、说服成功率与对不安全请求的顺从
+- 📌 **结论**：LLM 展现权力的关键社会认知效应（存在细微差别与变异），把模拟交互与期望及不安全行为联系起来
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Power differences shape human communication through well-documented socio-cognitive effects, including language coordination, pronoun usage, authority bias, and harmful compliance. We examine whether large language models (LLMs) exhibit similar behaviors when assigned high- or low-status personas. Using personas from diverse professions, we simulate multi-turn, power-asymmetric dialogues (e.g., principal–teacher, justice–lawyer) and measure (i) linguistic coordination, (ii) pronoun usage, (iii) persuasion success, and (iv) compliance with unsafe requests. Our results show that LLMs show key socio-cognitive effects of power, albeit with nuances and variability, linking simulated interactions to both desirable and unsafe behaviors.
+
+</details>
+
+### 29. Accommodation and Epistemic Vigilance: A Pragmatic Account of Why LLMs Fail to Challenge Harmful Beliefs
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.736/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`analysis`、`model deception`、`strategic behavior`、`honesty evaluation`、`RAG security`、`deceptive behavior`
+
+👤 **作者**：Myra Cheng、Robert D. Hawkins、Dan Jurafsky
+
+- 🎯 **研究动机**：LLM 在医疗建议到社会推理中常不能挑战用户有害信念，缺少统一解释
+- 🔬 **研究方法**：用语用学视角把失败统一为过度 accommodation 与不足的 epistemic vigilance，考察 at-issueness、语言编码与来源可靠性三个语用因素在三个安全基准（Cancer-Myth、SAGE-Eval、ELEPHANT）上的作用
+- 📌 **结论**：人类语用因素以相似方式影响 LLM 行为并可解释基准间差异；改变语用线索的提示干预（如加上 wait a minute）大幅提升困难基准表现
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Recent evaluations show that large language models (LLMs) frequently fail to challenge users’ harmful beliefs in domains ranging from medical advice to social reasoning. We present a unifying analysis through the lens of pragmatics: these safety failures can be understood and addressed as LLMs exhibiting excessive accommodation and insufficient epistemic vigilance. We show that the pragmatic factors affecting accommodation and epistemic vigilance in humans (at-issueness, linguistic encoding, and source reliability) influence LLM behaviors in similar ways. We demonstrate how these factors explain performance differences across three safety benchmarks that test models’ ability to challenge harmful beliefs, spanning misinformation (Cancer-Myth, SAGE-Eval) and sycophancy (ELEPHANT). This pragmatic lens further motivates prompting interventions, such as adding the phrase “wait a minute”, that drastically improve performance on these difficult benchmarks by shifting pragmatic cues. Our results have practical implications for benchmark design and underscore the importance of pragmatics for understanding model behavior and improving performance.
+
+</details>
+
+### 30. PCA-guided Activation Scaling for Monotonic Bidirectional Control over LLM Sycophancy
+
+📄 [arXiv](https://arxiv.org/abs/2608.16650) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-08
+
+**关键词**：`defense`、`sycophancy control`、`activation scaling`、`monotonic steering`、`model deception`
+
+👤 **作者**：Zheng Chen、Zhaoxin Feng、Yip Tin Po、Jianfei Ma、Emmanuele Chersoni、Bo Li
+
+- 🎯 **研究动机**：谄媚控制需双向且单调（既可减也可增、强度对应效果），现有方法无法跨模型数据集保证
+- 🔬 **研究方法**：PAS 把残差流激活分解为 PCA 识别的谄媚-诚实子空间与正交残差，对两者施加不同缩放指数实现单调双向控制
+- 📌 **结论**：三个 LLM、三个数据集上单调性 Spearman ρ=+0.92，每方向平均移 15.4%（基线 8.7%）；分解、不对称指数与层选择各不可缺
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models (LLMs) exhibit sycophancy, a tendency to agree with user beliefs regardless of factual accuracy. This can reinforce misconceptions, but eliminating it entirely risks over-correction against valid opinions. Effective control must therefore both reduce and increase sycophancy with predictable and gradual effect. Yet, existing methods fail to ensure a bidirectional and monotonic relationship between steering strength and behavioral outcome across models and datasets. We introduce PCA-guided Activation Scaling (PAS), an activation steering framework that decomposes residual stream activations into a PCA-identified sycophancy-honesty subspace and an orthogonal residual, then applies distinct scaling exponents to achieve monotonic, bidirectional control. Across three LLMs and three datasets, PAS achieves strong monotonicity (Spearman $ρ$ = +0.92) and an average shift of 15.4% per direction, compared with 8.7% for the baselines. Ablation studies confirm that the decomposition, asymmetric exponents, and layer selection are each essential for maintaining monotonic control. The data and code are available at https://github.com/Bellafc/PCS.
+
+</details>

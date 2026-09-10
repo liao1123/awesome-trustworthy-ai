@@ -218,3 +218,98 @@ As Video Large Language Models are increasingly deployed in real-world applicati
 Short video harmful content detection aims to automatically identify diverse anomalies from user-generated media. This task presents unique challenges due to frequent editing cuts and highly variable anomaly densities, limiting the effectiveness of traditional surveillance-based approaches. Moreover, existing Vision-Language Model-based approaches typically rely on rigid instance selection mechanisms that fail to adapt to the unpredictable duration of anomalies in such unconstrained videos. To address these issues, we propose SVLA, a Shot-conditioned Vision-Language Adaptation framework, for effectively detecting harmful contents from online short videos. Our approach introduces a novel π-adaptive strategy to dynamically estimate shot-level anomaly density, replacing rigid selection with calibrated supervision. Furthermore, we employ a shot-conditioned temporal encoder to respect video hierarchy and adopt a dual-path contextual adapter to resolve semantic ambiguity. To benchmark this task, we construct a new dataset (SVA) covering more genuine online short videos that involve seven anomaly categories. Experiments on the SVA dataset demonstrate that SVLA can achieve the state-of-the-art performance and outperform its competitors across diverse scenarios. Codes and datasets are available at: https://github.com/xushuai7/IJCAI-SVLA.
 
 </details>
+
+### 13. FMM-Attack: A Flow-based Multi-modal Adversarial Attack on Video-based LLMs
+
+📄 [arXiv](https://arxiv.org/abs/2403.13507)　📅 2024-03
+
+**关键词**：`attack`、`flow-based perturbation`、`frame sparsification`、`video LLM robustness`
+
+👤 **作者**：Jinmin Li、Kuofeng Gao、Yang Bai、Jingyun Zhang、Shu-tao Xia、Yisen Wang
+
+- 🎯 **研究动机**：video LLM 表现出色但其对抗威胁此前完全未被探索
+- 🔬 **研究方法**：FMM-Attack 针对视频内少量帧构造基于流的多模态对抗扰动，检验视频 LLM 的鲁棒性
+- 📌 **结论**：不可感知扰动即可诱导错误答案，还能诱发输出乱码与幻觉，揭示跨模态安全特征对齐的薄弱环节
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Despite the remarkable performance of video-based large language models (LLMs), their adversarial threat remains unexplored. To fill this gap, we propose the first adversarial attack tailored for video-based LLMs by crafting flow-based multi-modal adversarial perturbations on a small fraction of frames within a video, dubbed FMM-Attack. Extensive experiments show that our attack can effectively induce video-based LLMs to generate incorrect answers when videos are added with imperceptible adversarial perturbations. Intriguingly, our FMM-Attack can also induce garbling in the model output, prompting video-based LLMs to hallucinate. Overall, our observations inspire a further understanding of multi-modal robustness and safety-related feature alignment across different modalities, which is of great importance for various large multi-modal models. Our code is available at https://github.com/THU-Kingmin/FMM-Attack.
+
+</details>
+
+### 14. Are Vision LLMs Road-Ready? A Comprehensive Benchmark for Safety-Critical Driving Video Understanding
+
+📄 [arXiv](https://arxiv.org/abs/2504.14526)　📅 2025-04
+
+**关键词**：`benchmark`、`safety-critical driving video`、`hierarchical ability taxonomy`、`scene understanding`
+
+👤 **作者**：Tong Zeng、Longfeng Wu、Liang Shi、Dawei Zhou、Feng Guo
+
+- 🎯 **研究动机**：现有视觉基准聚焦正常驾驶条件，无法评估 VLLM 在安全关键驾驶视频上的表现
+- 🔬 **研究方法**：构建 DVBench：按高度自动化驾驶场景框架的能力分类学组织 10,000 道人工标注多选题，评测 14 个 0.5B-72B 的 SOTA VLLM 并做领域微调实验
+- 📌 **结论**：无一模型准确率超过 40%，凸显复杂驾驶场景理解的重大缺口；领域微调提升 5.24-10.94 个百分点（相对最高 43.59%），证明安全关键视频理解需要定向适配
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Vision Large Language Models (VLLMs) have demonstrated impressive capabilities in general visual tasks such as image captioning and visual question answering. However, their effectiveness in specialized, safety-critical domains like autonomous driving remains largely unexplored. Autonomous driving systems require sophisticated scene understanding in complex environments, yet existing multimodal benchmarks primarily focus on normal driving conditions, failing to adequately assess VLLMs' performance in safety-critical scenarios. To address this, we introduce DVBench, a pioneering benchmark designed to evaluate the performance of VLLMs in understanding safety-critical driving videos. Built around a hierarchical ability taxonomy that aligns with widely adopted frameworks for describing driving scenarios used in assessing highly automated driving systems, DVBench features 10,000 multiple-choice questions with human-annotated ground-truth answers, enabling a comprehensive evaluation of VLLMs' capabilities in perception and reasoning. Experiments on 14 SOTA VLLMs, ranging from 0.5B to 72B parameters, reveal significant performance gaps, with no model achieving over 40% accuracy, highlighting critical limitations in understanding complex driving scenarios. To probe adaptability, we fine-tuned selected models using domain-specific data from DVBench, achieving accuracy gains ranging from 5.24 to 10.94 percentage points, with relative improvements of up to 43.59%. This improvement underscores the necessity of targeted adaptation to bridge the gap between general-purpose VLLMs and mission-critical driving applications. DVBench establishes an essential evaluation framework and research roadmap for developing VLLMs that meet the safety and robustness requirements for real-world autonomous systems. We released the benchmark toolbox and the fine-tuned model at: https://github.com/tong-zeng/DVBench.git.
+
+</details>
+
+### 15. From Evaluation to Defense: Advancing Safety in Video Large Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2505.16643)　📅 2025-05
+
+**关键词**：`benchmark`、`defense`、`VideoSafetyEval`、`alarm token`、`safety-guided GRPO`
+
+👤 **作者**：Yiwei Sun、Peiqi Jiang、Chuanbin Liu、Luohao Lin、Zhiying Lu、Hongtao Xie
+
+- 🎯 **研究动机**：图像 LLM 安全已被广泛研究，视频 LLM 的安全风险却极少被检验
+- 🔬 **研究方法**：构建 11.4k 视频-查询对、19 类风险的 VideoSafetyEval 基准；提出 VideoSafety-R1 双阶段框架：46k thinking 数据集、注入可学习 alarm token 的 AT-SFT 与双模态验证奖励的 safety-guided GRPO
+- 📌 **结论**：引入视频模态使安全表现平均退化 34.2%；VideoSafety-R1 在 VSE-HH 上提升 71.1%，并泛化到 MMBench、VLGuard、FigStep 等图像安全数据集（59.1%/44.3%/15.0%）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+While the safety risks of image-based large language models (Image LLMs) have been extensively studied, their video-based counterparts (Video LLMs) remain critically under-examined. To systematically study this problem, we introduce VideoSafetyEval - a large-scale, real-world benchmark for Video LLM safety, which comprises 11.4k video-query pairs and spans 19 principal risk categories. Based on this, we reveal that integrating video modality degrades safety performance by an average of 34.2%, thereby exposing systemic risks in multimodal attack exploitation. To address this vulnerability, we propose VideoSafety-R1, a dual-stage framework achieving unprecedented safety gains through three innovations: (1) the VideoSafetyThinking dataset contains 46k video-query-thinking response triplets; (2) Alarm Token-Guided Safety Fine-Tuning (AT-SFT) injects learnable alarm tokens into visual and textual sequences, enabling explicit harm perception across modalities via multitask objectives; and (3) safety-guided GRPO enhances defensive reasoning through dynamic policy optimization with rule-based rewards derived from dual-modality verification. These components synergize to shift safety alignment from harm perception to active reasoning. The framework achieves a 71.1% improvement on VSE-HH, and improves by 59.1%, 44.3%, and 15.0% on the image safety datasets MMBench, VLGuard, and FigStep, respectively. Our code and dataset are available at https://github.com/Emiya-syw/VideoSafety-R1.git. Note: This paper contains harmful language and image examples, and reader discretion is recommended.
+
+</details>
+
+### 16. Benchmarking the Trustworthiness in Multimodal LLMs for Video Understanding
+
+📄 [arXiv](https://arxiv.org/abs/2506.12336)　📅 2025-06
+
+**关键词**：`benchmark`、`videoLLM trustworthiness`、`spatiotemporal risk`、`cross-modal perturbation`
+
+👤 **作者**：Youze Wang、…、Richang Hong
+
+- 🎯 **研究动机**：videoLLM 的幻觉、有害内容、偏见与隐私风险损害可靠性，缺乏覆盖多维度可信性的系统评测
+- 🔬 **研究方法**：Trust-videoLLMs 评测 23 个 SOTA videoLLM（5 商用 18 开源），覆盖真实性、鲁棒性、安全、公平、隐私五维 30 项任务，评估时空风险、时序一致性与跨模态影响
+- 📌 **结论**：动态场景理解、跨模态扰动韧性与真实风险缓解均存在显著短板；商用模型总体更可信但规模不能稳定带来改善
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Recent advancements in multimodal large language models for video understanding (videoLLMs) have enhanced their capacity to process complex spatiotemporal data. However, challenges such as factual inaccuracies, harmful content, biases, hallucinations, and privacy risks compromise their reliability. This study introduces Trust-videoLLMs, a first comprehensive benchmark evaluating 23 state-of-the-art videoLLMs (5 commercial, 18 open-source) across five critical dimensions: truthfulness, robustness, safety, fairness, and privacy. Comprising 30 tasks with adapted, synthetic, and annotated videos, the framework assesses spatiotemporal risks, temporal consistency and cross-modal impact. Results reveal significant limitations in dynamic scene comprehension, cross-modal perturbation resilience and real-world risk mitigation. While open-source models occasionally outperform, proprietary models generally exhibit superior credibility, though scaling does not consistently improve performance. These findings underscore the need for enhanced training datat diversity and robust multimodal alignment. Trust-videoLLMs provides a publicly available, extensible toolkit for standardized trustworthiness assessments, addressing the critical gap between accuracy-focused benchmarks and demands for robustness, safety, fairness, and privacy.
+
+</details>
+
+### 17. EgoSafe: A First-Person Mobile-Captured Benchmark for Visual Safety Understanding
+
+📄 [arXiv](https://arxiv.org/abs/2607.26518)　📅 2026-07
+
+**关键词**：`benchmark`、`egocentric safety`、`forensic reasoning`、`hierarchical reasoning evaluation`
+
+👤 **作者**：Yuyun Chen、…、Ziqian Zeng
+
+- 🎯 **研究动机**：真实场景视觉安全理解需要认知不确定性下的因果推理，而既有评测以第三人称监控录像与二元分类为主，无法暴露该缺口
+- 🔬 **研究方法**：EgoSafe-Bench 把 3,000 段第一人称视频各配 QA 链共 12,000 样本，用分层推理评估（HRE）协议强制从特征锚定到盲区推断与意图推断的完整推理轨迹并惩罚捷径
+- 📌 **结论**：Qwen3-VL、Gemini、VideoLLaMA 3 等 SOTA 模型呈现显著感知-推理解耦——描述得分高但因果推理与逻辑闭合脆弱
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Reliable visual safety understanding in real-world scenarios demands more than just object recognition; it requires causal reasoning under epistemic uncertainty. While Large Vision-Language Models (LVLMs) demonstrate impressive semantic alignment on standard benchmarks, they often struggle to distinguish between superficial correlation and genuine forensic logic when grounded in the dynamic, partially observable nature of first-person experiences. Existing evaluations, dominated by third-person surveillance footage and binary classification metrics, fail to expose this cognitive gap. To address this, we introduce EgoSafe-Bench, a benchmark specifically designed to probe forensic reasoning in egocentric safety scenarios. It comprises 12,000 unique evaluation samples, generated by pairing each of the 3,000 video clips with a QA chain governed by our proposed Hierarchical Reasoning Evaluation (HRE) protocol. Unlike standard benchmarks, HRE mandates a rigorous reasoning trajectory from initial feature anchoring to blind-spot deduction and intent inference, thereby enforcing logical consistency and penalizing shortcut-based predictions. Extensive evaluations of state-of-the-art LVLMs (e.g., Qwen3-VL, Gemini, VideoLLaMA 3) reveal a significant perception-reasoning decoupling: models often achieve high descriptive scores but exhibit notable fragility in causal reasoning and logical closure. Our work provides both a challenging dataset and a systematic evaluation framework to foster the development of logically robust video understanding systems.
+
+</details>

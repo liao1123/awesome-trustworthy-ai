@@ -163,3 +163,81 @@ Most flagship language models generate explicit reasoning chains, enabling infer
 Large Vision-Language Models (LVLMs) have been increasingly integrated into robotic systems. However, these models may exhibit overthinking behaviors, where they generate excessively long reasoning traces, incurring an excessive inference time. This overthinking behavior poses a serious risk to robotic systems, as the adversary can deliberately trigger overthinking to slow down the decision making of a victim robotic system, causing a variety of safety issues (i.e., an overthinking-induced slowdown attack). To initiate this attack, an adversary can embed carefully crafted, human-readable scene text into the visual scene observed by a victim robotic agent, causing significant inference delays even under a strict black-box setting. Therefore, the embedded scene text serves as a significant "trigger" for the attack. This work systematically identifies and validates transferable triggers of overthinking in robotic systems by introducing a three-stage framework. First, we construct a diverse corpus of reasoning-intensive scene text and extract overthinking-correlated lexical features from short response prefixes. Second, we perform an efficient black-box search guided by a prefix-based proxy score while selectively confirming a small set of top candidates with full latency measurements. Third, we evaluate black-box transfer using a fixed pool of triggers on unseen images and multiple LVLMs, reporting latency amplification and attack success rates under standard thresholds. Across three representative LVLMs, all triggers yield slowdown ratios greater than 1.0x, with the strongest single-trigger case reaching 6.96x. The physical printing of the text trigger still causes up to 4.74x latency amplification. These results demonstrate that our discovered triggers are transferred between multiple LVLM models and consistently cause significant slowdowns in robotic systems.
 
 </details>
+
+### 9. One Token Embedding Is Enough to Deadlock Your Large Reasoning Model
+
+📄 [arXiv](https://arxiv.org/abs/2510.15965)　📅 2025-10
+
+**关键词**：`attack`、`reasoning-model DoS`、`adversarial embedding`、`perpetual reasoning loop`
+
+👤 **作者**：Mohan Zhang、Yihua Zhang、Jinghan Jia、Zhangyang Wang、Sijia Liu、Tianlong Chen
+
+- 🎯 **研究动机**：LRM 迭代式思维链机制引入新的资源耗尽攻击面，现有方法未考虑连续对抗嵌入到离散 token 的投影缺口
+- 🔬 **研究方法**：Deadlock Attack 训练恶意对抗嵌入以持续诱发 Wait、But 等过渡 token 阻止收尾，并引入后门植入策略让特定触发 token 可靠激活以绕过投影缺口
+- 📌 **结论**：四个先进 LRM 与三个数学基准上 100% ASR，迫使模型生成至 token 上限；良性输入效用几乎无损且能抵抗现有过度思考缓解策略
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Modern large reasoning models (LRMs) exhibit impressive multi-step problem-solving via chain-of-thought (CoT) reasoning. However, this iterative thinking mechanism introduces a new vulnerability surface. We present the Deadlock Attack, a resource exhaustion method that hijacks an LRM's generative control flow by training a malicious adversarial embedding to induce perpetual reasoning loops. Specifically, the optimized embedding encourages transitional tokens (e.g., "Wait", "But") after reasoning steps, preventing the model from concluding its answer. A key challenge we identify is the continuous-to-discrete projection gap: naïve projections of adversarial embeddings to token sequences nullify the attack. To overcome this, we introduce a backdoor implantation strategy, enabling reliable activation through specific trigger tokens. Our method achieves a 100% attack success rate across four advanced LRMs (Phi-RM, Nemotron-Nano, R1-Qwen, R1-Llama) and three math reasoning benchmarks, forcing models to generate up to their maximum token limits. The attack is also stealthy (in terms of causing negligible utility loss on benign user inputs) and remains robust against existing strategies trying to mitigate the overthinking issue. Our findings expose a critical and underexplored security vulnerability in LRMs from the perspective of reasoning (in)efficiency.
+
+</details>
+
+### 10. POT: Inducing Overthinking in LLMs via Black-Box Iterative Optimization
+
+📄 [arXiv](https://arxiv.org/abs/2508.19277)　📅 2025-08
+
+**关键词**：`attack`、`reasoning-model DoS`、`prompt-only overthinking`、`black-box optimization`
+
+👤 **作者**：Xinyu Li、Tianjin Huang、Ronghui Mu、Xiaowei Huang、Gaojie Jin
+
+- 🎯 **研究动机**：既有过度思考攻击依赖外部知识源投毒、可检索的毒化内容或结构明显的模板，现实可用性受限
+- 🔬 **研究方法**：POT 黑盒框架：基于 LLM 的迭代优化生成隐蔽且语义自然的对抗 prompt，摆脱对外部数据访问与模型检索的依赖
+- 📌 **结论**：多模型架构与多数据集上均优于其他过度思考攻击方法
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Recent advances in Chain-of-Thought (CoT) prompting have substantially enhanced the reasoning capabilities of large language models (LLMs), enabling sophisticated problem-solving through explicit multi-step reasoning traces. However, these enhanced reasoning processes introduce novel attack surfaces, particularly vulnerabilities to computational inefficiency through unnecessarily verbose reasoning chains that consume excessive resources without corresponding performance gains. Prior overthinking attacks typically require restrictive conditions including access to external knowledge sources for data poisoning, reliance on retrievable poisoned content, and structurally obvious templates that limit practical applicability in real-world scenarios. To address these limitations, we propose POT (Prompt-Only OverThinking), a novel black-box attack framework that employs LLM-based iterative optimization to generate covert and semantically natural adversarial prompts, eliminating dependence on external data access and model retrieval. Extensive experiments across diverse model architectures and datasets demonstrate that POT achieves superior performance compared to other methods.
+
+</details>
+
+### 11. Excessive Reasoning Attack on Reasoning LLMs
+
+📄 [arXiv](https://arxiv.org/abs/2506.14374)　📅 2025-06
+
+**关键词**：`attack`、`reasoning-model DoS`、`excessive reasoning`、`loss design`
+
+👤 **作者**：Wai Man Si、Mingjie Li、Michael Backes、Yang Zhang
+
+- 🎯 **研究动机**：对抗输入可利用 LRM 在推理路径间频繁切换与冗余推理等过度推理行为抬高计算开销且不损效用
+- 🔬 **研究方法**：设计三元损失框架：Priority Cross-Entropy 利用自回归性强调关键 token、Excessive Reasoning Loss 鼓励开启更多推理路径、Delayed Termination Loss 推迟最终输出生成
+- 📌 **结论**：DeepSeek-R1-Distill-LLaMA/Qwen 上推理长度增加 3-9 倍且效用可比；对抗输入可迁移至 o3-mini、o1-mini、DeepSeek-R1 与 QWQ
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Recent reasoning large language models (LLMs), such as OpenAI o1 and DeepSeek-R1, exhibit strong performance on complex tasks through test-time inference scaling. However, prior studies have shown that these models often incur significant computational costs due to excessive reasoning, such as frequent switching between reasoning trajectories (e.g., underthinking) or redundant reasoning on simple questions (e.g., overthinking). In this work, we expose a novel threat: adversarial inputs can be crafted to exploit excessive reasoning behaviors and substantially increase computational overhead without compromising model utility. Therefore, we propose a novel loss framework consisting of three components: (1) Priority Cross-Entropy Loss, a modification of the standard cross-entropy objective that emphasizes key tokens by leveraging the autoregressive nature of LMs; (2) Excessive Reasoning Loss, which encourages the model to initiate additional reasoning paths during inference; and (3) Delayed Termination Loss, which is designed to extend the reasoning process and defer the generation of final outputs. We optimize and evaluate our attack for the GSM8K and ORCA datasets on DeepSeek-R1-Distill-LLaMA and DeepSeek-R1-Distill-Qwen. Empirical results demonstrate a 3x to 9x increase in reasoning length with comparable utility performance. Furthermore, our crafted adversarial inputs exhibit transferability, inducing computational overhead in o3-mini, o1-mini, DeepSeek-R1, and QWQ models.
+
+</details>
+
+## 检测与运行时防御
+
+### 12. RecurGuard: Runtime Monitoring for Reasoning-Token Consumption Attacks
+
+📄 [arXiv](https://arxiv.org/abs/2606.07968)　📅 2026-06
+
+**关键词**：`defense`、`reasoning-model DoS`、`runtime monitoring`、`reasoning trace analysis`
+
+👤 **作者**：Abid Aziz、Hafsa Binte Kibria
+
+- 🎯 **研究动机**：输入侧安全分类器难以发现语法良性的诱饵任务注入，导致推理链被耗尽后不产生答案并造成 denial-of-wallet
+- 🔬 **研究方法**：RecurGuard 在推理链生成过程中跟踪复发率、体量增长与查询进展三个信号，连续三个分块均异常即提前终止生成；无推理链暴露时以 QDM 后置监控兜底
+- 📌 **结论**：DS-R1-Qwen-7B 上检出 99% OverThink 与 92% ExtendAttack 且近零误报；自适应压力测试显示主题型攻击仍保留 11.9 倍放大，完全语义规避也把 22.8 倍放大压至 2.2 倍
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Reasoning-capable large language models can be induced to spend their generation budget on injected decoy tasks rather than answering the user's question, causing denial of service when no final answer is produced and denial of wallet when excess output tokens are billed. Input-side safety classifiers often miss these attacks because the injected prompts can appear syntactically benign. We build RecurGuard, a runtime monitor for detecting reasoning-chain consumption attacks when reasoning traces are exposed by the model. RecurGuard analyzes reasoning traces as they are generated and tracks three signals: recurrence rate, volume growth, and progress toward the user's query. If all three signals remain anomalous over three consecutive chunks, RecurGuard terminates generation early. We evaluate RecurGuard against OverThink and ExtendAttack across open-weight reasoning models and conduct adaptive stress tests on DS-R1-Qwen-7B. On this model, RecurGuard detects 99% of OverThink attacks and 92% of ExtendAttack instances while maintaining near-zero false positive rates on question answering, code generation, mathematics, and summarization. Adaptive evaluation reveals the limit of the defense: topical attacks retain 11.9x amplification with an approximately 50% joint miss rate, whereas full semantic evasion reduces amplification from 22.8x to 2.2x. When reasoning traces are unavailable, QDM provides a post-hoc fallback monitor based on the final output.
+
+</details>

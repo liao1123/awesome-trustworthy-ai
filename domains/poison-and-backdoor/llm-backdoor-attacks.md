@@ -1,192 +1,14 @@
-# 语言模型后门
+# 语言模型后门攻击
 
-[返回投毒与后门目录](README.md)
+[返回上级目录](README.md)
 
-> 更新至 2026-08-31。本文以学术论文为主，优先使用 arXiv、ACL Anthology、会议论文集和作者仓库等一手来源；同一工作只保留一条，时间按论文首次公开月份记录，未核实正式录用的论文统一标为 arXiv。
+## 研究方向
 
-## 收录范围
+LLM 后门攻击：触发器植入、持久化、隐蔽通道与激活机制（检测、防御与综评见姊妹页 llm-backdoor-defense-and-evaluation.md）。
 
-本页收录文本语言模型中“正常输入保持正常、满足特定条件后切换到攻击者目标行为”的持久后门，包括预训练与指令微调、上下文学习、对齐与推理、LoRA／模型编辑／模型合并、量化与部署供应链、代码语言模型，以及相应的机制分析、检测、取证和移除方法。
+## 攻击与机制
 
-- 不收录仅改变总体行为、但没有条件触发器的普通数据投毒；参见[语言模型投毒](llm-poison.md)。
-- 不收录只在单次推理中生效、且不形成持久条件行为的普通越狱、对抗提示和提示注入。
-- RAG、Agent memory／skill、VLM／VLA 与扩散模型分别见对应子页面；只在论文同时直接研究文本 LLM 后门时才在本页保留。
-- 2019—2022 年的 PLM／NLP 工作列为“前置基础”；主体重点覆盖 2023 年以后生成式与推理式 LLM。
-
-## 综述、基准与系统评测
-
-### 1. Backdoor Learning in Language Models and Vision-Language Models
-
-📄 [arXiv](https://arxiv.org/abs/2608.18095)　📅 2026-08
-
-**关键词**：`survey`、`dissertation`、`LM／VLM`、`attack／detection`、`VLM security`、`TrojAI`
-
-👤 **作者**：Weimin Lyu
-
-- 🎯 **研究动机**：NLP 与 VLM 的后门攻击构成严重安全威胁，需系统分析、检测与设计
-- 🔬 **研究方法**：博士论文系统分析、检测与设计 LM/VLM 后门攻击（含 TrojAI 场景），并研究面向临床与医学影像的高效多模态表征
-- 📌 **结论**：整合后门安全研究与医学多模态效率两条主线的工作
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Recent advances in deep learning have significantly enhanced the capabilities of Natural Language Processing (NLP) and Vision-Language Models (VLMs). However, these advancements come with increased vulnerabilities, notably through backdoor attacks that pose severe security threats. This thesis addresses two critical dimensions of Trustworthy AI and Efficient Multimodal Representation Learning: (1) security through analyzing, detecting, and designing backdoor attacks in NLP and VLMs, and (2) efficiency through advanced multimodal representation methods tailored for clinical and medical imaging applications.
-
-</details>
-
-### 2. ToxScreen: Detecting Whether an LLM Has Been Poisoned
-
-📄 [arXiv](https://arxiv.org/abs/2607.26849)　📅 2026-07
-
-**关键词**：`benchmark`、`model auditing`、`trigger recovery`
-
-👤 **作者**：Anthony Hughes、Nicole Xing、Collin Francel、Andy Kim、Andrew Draganov
-
-- 🎯 **研究动机**：防御者仅有白盒权重与可疑行为知识（无训练数据、无参照模型、不知触发器、不确定是否中毒）时能否恢复触发器未知
-- 🔬 **研究方法**：发布 ToxScreen：约 800 个后门模型覆盖攻击目标、触发机制、投毒率、规模与训练机制；比较梯度提示优化与按 ASR 排序的 token 查表两类恢复方法
-- 📌 **结论**：梯度优化恢复失败而 token 查表在后门有效处即可恢复触发器；后门与越狱采用不同机制可过滤误报；无方法可靠发现所有后门，但广泛可越狱本身即是异常信号
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-As large language models (LLMs) are deployed in high-stakes domains, adversaries may poison training data to implant backdoors: hidden triggers that covertly manipulate model behavior at inference time. We ask whether a defender can recover such a trigger under realistic affordances, namely white-box access to the weights and knowledge of the behavior of concern, but no training data, no trusted reference model, no knowledge of the trigger, and no certainty that the model is poisoned. To evaluate whether a defender can recover such a trigger under realistic settings, we release ToxScreen, a benchmark of roughly 800 backdoored models spanning attack objectives, trigger mechanisms, poisoning rates, model scales, and backdoor training mechanisms. We also assert that the backdoors are high-quality: they achieve high attack success rates, generalize to unseen harmful inputs, and preserve clean-task performance. Scoring recovery of the planted trigger, we find that gradient-based prompt optimization fails in recovery, whereas a token look-up that ranks candidates by attack-success rate recovers the trigger wherever the backdoor is effective. To understand this more, we study the relationship between attack behaviors and the weights of an LLM. We find a phenomenon whereby backdoors operate via different mechanistic strategies than jailbreaks, allowing defenders to filter jailbreaks. Finally, no method reliably surfaces every backdoor, but a broadly jailbreakable model is itself anomalous, a useful signal even when the exact trigger is not recovered. We release all models and evaluation code
-
-</details>
-
-### 3. Security in the Fine-Tuning Lifecycle of Large Language Models: Threats, Defenses, Evaluation, and Future Directions
-
-📄 [arXiv](https://arxiv.org/abs/2605.25073)　📅 2026-05
-
-**关键词**：`survey`、`fine-tuning lifecycle`
-
-👤 **作者**：Wenjuan Li、Yitao Liu、Runze Chen、Rajkumar Buyya
-
-- 🎯 **研究动机**：微调依赖数据、参数更新与可复用组件，威胁从数据投毒演化到 agent 操纵，缺覆盖全生命周期的统一框架
-- 🔬 **研究方法**：按干预时机分 pre-tuning、during-tuning、post-tuning 三阶段综述攻防，并在统一模型、硬件与协议下做含跨阶段组合的实证评测
-- 📌 **结论**：攻击效果高度依赖模型且随规模非单调——权重编辑攻击在新模型失效、跨语言后门在 1B-4B 完全失效；纯良性样本即可破坏对齐；单阶段防御几乎不跨阶段泛化
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Background: Fine-tuning is central to adapting pre-trained Large Language Models (LLMs) to downstream tasks, but its reliance on training data, parameter updates, and reusable components opens entry points for attackers. Threats have evolved from data poisoning and weight tampering to agent manipulation and interface exploitation, yet existing reviews lack a unified framework spanning the full fine-tuning lifecycle. Objective: This paper presents a systematic survey of LLM fine-tuning security and establishes a lifecycle-based framework for comparing attacks and defenses, complemented by unified empirical evaluation. Methods: We divide attack and defense mechanisms into three phases by intervention timing: pre-tuning, during-tuning, and post-tuning. Within each phase, strategies are reviewed and contrasted to expose their evolution and limitations. Representative methods are then evaluated under a unified model, hardware, and protocol setup, with cross-phase experiments pairing attacks and defenses from different phases. Results: Attack effectiveness is highly model-dependent and non-monotonic with scale: weight-editing attacks effective on earlier models lose impact on modern open-source LLMs; cross-lingual backdoor transfer, reported as near-perfect at larger scales, fails entirely on tested 1B-4B models; and purely benign samples can compromise safety alignment in instruction-tuned models. Single-phase defenses rarely generalize across phases, and defense effectiveness depends jointly on model architecture and alignment state. Conclusion: We identify key open problems (configuration-robust defense, cross-phase defense composition, and embedding-space attacks beyond behavioral assumptions) and propose concrete future research directions.
-
-</details>
-
-### 4. Backdoor4Good: Benchmarking Beneficial Uses of Backdoors in LLMs
-
-📄 [arXiv](https://arxiv.org/abs/2603.07452)　📅 2026-03
-
-**关键词**：`benchmark`、`beneficial backdoor`
-
-👤 **作者**：Yige Li、…、Jun Sun
-
-- 🎯 **研究动机**：后门机制一直只被视为威胁，其条件激活能否服务可信行为未被系统评估
-- 🔬 **研究方法**：Backdoor4Good 以 (Trigger, Activation, Utility) 三元形式化良性后门学习，在四个信任导向应用上评测 Llama3.1-8B 等四个模型
-- 📌 **结论**：良性后门实现高可控性、抗篡改与隐蔽性并保持干净任务性能，可作为模块化可解释的可信构件
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Backdoor mechanisms have traditionally been studied as security threats that compromise the integrity of machine learning models. However, the same mechanism -- the conditional activation of specific behaviors through input triggers -- can also serve as a controllable and auditable interface for trustworthy model behavior. In this work, we present \textbf{Backdoor4Good (B4G)}, a unified benchmark and framework for \textit{beneficial backdoor} applications in large language models (LLMs). Unlike conventional backdoor studies focused on attacks and defenses, B4G repurposes backdoor conditioning for Beneficial Tasks that enhance safety, controllability, and accountability. It formalizes beneficial backdoor learning under a triplet formulation $(T, A, U)$, representing the \emph{Trigger}, \emph{Activation mechanism}, and \emph{Utility function}, and implements a benchmark covering four trust-centric applications. Through extensive experiments across Llama3.1-8B, Gemma-2-9B, Qwen2.5-7B, and Llama2-13B, we show that beneficial backdoors can achieve high controllability, tamper-resistance, and stealthiness while preserving clean-task performance. Our findings demonstrate new insights that backdoors need not be inherently malicious; when properly designed, they can serve as modular, interpretable, and beneficial building blocks for trustworthy AI systems. Our code and datasets are available at https://github.com/bboylyg/BackdoorLLM/B4G.
-
-</details>
-
-### 5. Rethinking Reasoning: A Survey on Reasoning-based Backdoors in LLMs
-
-📄 [arXiv](https://arxiv.org/abs/2510.07697) · 🎓 [Official](https://aclanthology.org/2026.findings-acl.863/)　📅 2025-10　🏷 ACL 2026
-
-**关键词**：`survey`、`reasoning backdoor`
-
-👤 **作者**：Man Hu、…、Shuai Zhao
-
-- 🎯 **研究动机**：推理能力为 LLM 引入新后门风险，既有综述缺乏针对推理后门的深入分析
-- 🔬 **研究方法**：首个推理式后门综述：提出统一分类法把攻击分为 associative、passive、active 三类，并梳理防御策略与开放挑战
-- 📌 **结论**：为推理后门攻击与防御提供统一视角与后续研究路线图
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-With the rise of advanced reasoning capabilities, large language models (LLMs) are receiving increasing attention. However, although reasoning improves LLMs' performance on downstream tasks, it also introduces new security risks, as adversaries can exploit these capabilities to conduct backdoor attacks. Existing surveys on backdoor attacks and reasoning security offer comprehensive overviews but lack in-depth analysis of backdoor attacks and defenses targeting LLMs' reasoning abilities. In this paper, we take the first step toward providing a comprehensive review of reasoning-based backdoor attacks in LLMs by analyzing their underlying mechanisms, methodological frameworks, and unresolved challenges. Specifically, we introduce a new taxonomy that offers a unified perspective for summarizing existing approaches, categorizing reasoning-based backdoor attacks into associative, passive, and active. We also present defense strategies against such attacks and discuss current challenges alongside potential directions for future research. This work offers a novel perspective, paving the way for further exploration of secure and trustworthy LLM communities.
-
-</details>
-
-### 6. ELBA-Bench: An Efficient Learning Backdoor Attacks Benchmark for Large Language Models
-
-📄 [arXiv](https://arxiv.org/abs/2502.18511) · 🎓 [Official](https://aclanthology.org/2025.acl-long.877/)　📅 2025-02　🏷 ACL 2025
-
-**关键词**：`benchmark`、`efficient attack`
-
-👤 **作者**：Xuxu Liu、…、Dacheng Tao
-
-- 🎯 **研究动机**：LLM 后门基准在攻击覆盖、指标体系与设定现实性上均不足
-- 🔬 **研究方法**：ELBA-Bench 支持 LoRA 等 PEFT 与 ICL 免微调注入，1300 余实验覆盖 12 种攻击、18 个数据集与 12 个 LLM
-- 📌 **结论**：PEFT 攻击在分类任务上稳定优于免微调且跨数据集泛化；任务相关优化与干净对抗演示可提升 ASR 且保干净性能
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Generative large language models are crucial in natural language processing, but they are vulnerable to backdoor attacks, where subtle triggers compromise their behavior. Although backdoor attacks against LLMs are constantly emerging, existing benchmarks remain limited in terms of sufficient coverage of attack, metric system integrity, backdoor attack alignment. And existing pre-trained backdoor attacks are idealized in practice due to resource access constraints. Therefore we establish $\textit{ELBA-Bench}$, a comprehensive and unified framework that allows attackers to inject backdoor through parameter efficient fine-tuning ($\textit{e.g.,}$ LoRA) or without fine-tuning techniques ($\textit{e.g.,}$ In-context-learning). $\textit{ELBA-Bench}$ provides over 1300 experiments encompassing the implementations of 12 attack methods, 18 datasets, and 12 LLMs. Extensive experiments provide new invaluable findings into the strengths and limitations of various attack strategies. For instance, PEFT attack consistently outperform without fine-tuning approaches in classification tasks while showing strong cross-dataset generalization with optimized triggers boosting robustness; Task-relevant backdoor optimization techniques or attack prompts along with clean and adversarial demonstrations can enhance backdoor attack success while preserving model performance on clean samples. Additionally, we introduce a universal toolbox designed for standardized backdoor attack research, with the goal of propelling further progress in this vital area.
-
-</details>
-
-### 7. A Survey on Backdoor Threats in Large Language Models (LLMs): Attacks, Defenses, and Evaluations
-
-📄 [arXiv](https://arxiv.org/abs/2502.05224)　📅 2025-02
-
-**关键词**：`survey`、`taxonomy`、`evaluation`
-
-👤 **作者**：Yihe Zhou、Tao Ni、Wei-Bin Lee、Qingchuan Zhao
-
-- 🎯 **研究动机**：LLM 后门攻击随防御演进而发展，缺乏统一taxonomy的系统梳理
-- 🔬 **研究方法**：以通用机器学习攻击分类框架聚焦训练期白盒后门，系统归类攻击方法并对应梳理防御
-- 📌 **结论**：为扩展攻击场景与构建更强防御提供研究指南
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Large Language Models (LLMs) have achieved significantly advanced capabilities in understanding and generating human language text, which have gained increasing popularity over recent years. Apart from their state-of-the-art natural language processing (NLP) performance, considering their widespread usage in many industries, including medicine, finance, education, etc., security concerns over their usage grow simultaneously. In recent years, the evolution of backdoor attacks has progressed with the advancement of defense mechanisms against them and more well-developed features in the LLMs. In this paper, we adapt the general taxonomy for classifying machine learning attacks on one of the subdivisions - training-time white-box backdoor attacks. Besides systematically classifying attack methods, we also consider the corresponding defense methods against backdoor attacks. By providing an extensive summary of existing works, we hope this survey can serve as a guideline for inspiring future research that further extends the attack scenarios and creates a stronger defense against them for more robust LLMs.
-
-</details>
-
-### 8. Mitigating Backdoor Threats to Large Language Models: Advancement and Challenges
-
-📄 [arXiv](https://arxiv.org/abs/2409.19993)　📅 2024-09
-
-**关键词**：`survey`、`mitigation`
-
-👤 **作者**：Qin Liu、…、Muhao Chen
-
-- 🎯 **研究动机**：LLM 后门威胁随指令微调、RLHF 等范式快速演化，缺乏最新防御综述
-- 🔬 **研究方法**：梳理 LLM 开发与推理各阶段的后门威胁及检测、消除策略
-- 📌 **结论**：指出生成任务、未知触发器与能力保持是防御的主要难点
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-The advancement of Large Language Models (LLMs) has significantly impacted various domains, including Web search, healthcare, and software development. However, as these models scale, they become more vulnerable to cybersecurity risks, particularly backdoor attacks. By exploiting the potent memorization capacity of LLMs, adversaries can easily inject backdoors into LLMs by manipulating a small portion of training data, leading to malicious behaviors in downstream applications whenever the hidden backdoor is activated by the pre-defined triggers. Moreover, emerging learning paradigms like instruction tuning and reinforcement learning from human feedback (RLHF) exacerbate these risks as they rely heavily on crowdsourced data and human feedback, which are not fully controlled. In this paper, we present a comprehensive survey of emerging backdoor threats to LLMs that appear during LLM development or inference, and cover recent advancement in both defense and detection strategies for mitigating backdoor threats to LLMs. We also outline key challenges in addressing these threats, highlighting areas for future research.
-
-</details>
-
-### 9. BackdoorLLM: A Comprehensive Benchmark for Backdoor Attacks and Defenses on Large Language Models
-
-📄 [arXiv](https://arxiv.org/abs/2408.12798) · 🌐 [Project](https://papers.nips.cc/paper_files/paper/2025/hash/20ffc2b42c7de4a1960cfdadf305bbe2-Abstract-Datasets_and_Benchmarks_Track.html)　📅 2024-08　🏷 NeurIPS 2025
-
-**关键词**：`benchmark`、`attack／defense`
-
-👤 **作者**：Yige Li、Hanxun Huang、Yunhan Zhao、Xingjun Ma、Jun Sun
-
-- 🎯 **研究动机**：LLM 开放文本生成的后门威胁缺乏统一系统基准
-- 🔬 **研究方法**：BackdoorLLM 提供标准化训练评测管线，覆盖数据投毒、权重投毒、隐状态操纵、CoT 劫持等 8 种攻击、7 个场景、6 种架构与 7 种防御
-- 📌 **结论**：200 余项实验给出 LLM 后门有效性影响因素与失效模式洞见
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Generative large language models (LLMs) have achieved state-of-the-art results on a wide range of tasks, yet they remain susceptible to backdoor attacks: carefully crafted triggers in the input can manipulate the model to produce adversary-specified outputs. While prior research has predominantly focused on backdoor risks in vision and classification settings, the vulnerability of LLMs in open-ended text generation remains underexplored. To fill this gap, we introduce BackdoorLLM (Our BackdoorLLM benchmark was awarded First Prize in the SafetyBench competition, https://www.mlsafety.org/safebench/winners, organized by the Center for AI Safety, https://safe.ai/.), the first comprehensive benchmark for systematically evaluating backdoor threats in text-generation LLMs. BackdoorLLM provides: (i) a unified repository of benchmarks with a standardized training and evaluation pipeline; (ii) a diverse suite of attack modalities, including data poisoning, weight poisoning, hidden-state manipulation, and chain-of-thought hijacking; (iii) over 200 experiments spanning 8 distinct attack strategies, 7 real-world scenarios, and 6 model architectures; (iv) key insights into the factors that govern backdoor effectiveness and failure modes in LLMs; and (v) a defense toolkit encompassing 7 representative mitigation techniques. Our code and datasets are available at https://github.com/bboylyg/BackdoorLLM. We will continuously incorporate emerging attack and defense methodologies to support the research in advancing the safety and reliability of LLMs.
-
-</details>
-
-### 10. A Study of Backdoors in Instruction Fine-tuned Language Models
+### 1. A Study of Backdoors in Instruction Fine-tuned Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2406.07778)　📅 2024-06
 
@@ -205,83 +27,7 @@ Backdoor data poisoning, inserted within instruction examples used to fine-tune 
 
 </details>
 
-### 11. A Survey of Recent Backdoor Attacks and Defenses in Large Language Models
-
-📄 [arXiv](https://arxiv.org/abs/2406.06852) · 📝 [OpenReview](https://openreview.net/forum?id=wZLWuFHxt5)　📅 2024-06
-
-**关键词**：`survey`、`taxonomy`
-
-👤 **作者**：Shuai Zhao、…、Luu Anh Tuan
-
-- 🎯 **研究动机**：已有综述缺乏针对 LLM 后门攻击的深入专项梳理
-- 🔬 **研究方法**：按微调方式把 LLM 后门分为全参微调、PEFT 与免微调三类系统梳理，并讨论未来议题
-- 📌 **结论**：指出免微调攻击算法与更隐蔽攻击设计是关键研究方向
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Large Language Models (LLMs), which bridge the gap between human language understanding and complex problem-solving, achieve state-of-the-art performance on several NLP tasks, particularly in few-shot and zero-shot settings. Despite the demonstrable efficacy of LLMs, due to constraints on computational resources, users have to engage with open-source language models or outsource the entire training process to third-party platforms. However, research has demonstrated that language models are susceptible to potential security vulnerabilities, particularly in backdoor attacks. Backdoor attacks are designed to introduce targeted vulnerabilities into language models by poisoning training samples or model weights, allowing attackers to manipulate model responses through malicious triggers. While existing surveys on backdoor attacks provide a comprehensive overview, they lack an in-depth examination of backdoor attacks specifically targeting LLMs. To bridge this gap and grasp the latest trends in the field, this paper presents a novel perspective on backdoor attacks for LLMs by focusing on fine-tuning methods. Specifically, we systematically classify backdoor attacks into three categories: full-parameter fine-tuning, parameter-efficient fine-tuning, and no fine-tuning Based on insights from a substantial review, we also discuss crucial issues for future research on backdoor attacks, such as further exploring attack algorithms that do not require fine-tuning, or developing more covert attack algorithms.
-
-</details>
-
-### 12. Competition Report: Finding Universal Jailbreak Backdoors in Aligned LLMs
-
-📄 [arXiv](https://arxiv.org/abs/2404.14461)　📅 2024-04
-
-**关键词**：`competition`、`universal trigger`
-
-👤 **作者**：Javier Rando、…、Florian Tramèr
-
-- 🎯 **研究动机**：对齐流程可被投毒植入通用 sudo 式越狱后门，社区需要发现此类后门的方法
-- 🔬 **研究方法**：IEEE SaTML 2024 竞赛挑战参赛者在多个 LLM 中寻找 universal backdoors，报告总结关键发现
-- 📌 **结论**：归纳了参赛方法与有前景的后续研究方向
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Large language models are aligned to be safe, preventing users from generating harmful content like misinformation or instructions for illegal activities. However, previous work has shown that the alignment process is vulnerable to poisoning attacks. Adversaries can manipulate the safety training data to inject backdoors that act like a universal sudo command: adding the backdoor string to any prompt enables harmful responses from models that, otherwise, behave safely. Our competition, co-located at IEEE SaTML 2024, challenged participants to find universal backdoors in several large language models. This report summarizes the key findings and promising ideas for future research.
-
-</details>
-
-### 13. Trojan Detection in Large Language Models: Insights from the Trojan Detection Challenge
-
-📄 [arXiv](https://arxiv.org/abs/2404.13660)　📅 2024-04
-
-**关键词**：`challenge`、`trojan detection`
-
-👤 **作者**：Narek Maloyan、Ekansh Verma、Bulat Nutfullin、Bislan Ashinov
-
-- 🎯 **研究动机**：LLM 特洛伊检测的真实难度需要竞赛级评估来揭示
-- 🔬 **研究方法**：分析 Trojan Detection Challenge 2023 各方法，比较区分 intended/unintended triggers 与逆向工程的可行性
-- 📌 **结论**：高 Recall 远难于高 REASR；顶尖方法 Recall 仅约 0.16、与随机采样基线相当，质疑特洛伊的可检测与可恢复性
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Large Language Models (LLMs) have demonstrated remarkable capabilities in various domains, but their vulnerability to trojan or backdoor attacks poses significant security risks. This paper explores the challenges and insights gained from the Trojan Detection Competition 2023 (TDC2023), which focused on identifying and evaluating trojan attacks on LLMs. We investigate the difficulty of distinguishing between intended and unintended triggers, as well as the feasibility of reverse engineering trojans in real-world scenarios. Our comparative analysis of various trojan detection methods reveals that achieving high Recall scores is significantly more challenging than obtaining high Reverse-Engineering Attack Success Rate (REASR) scores. The top-performing methods in the competition achieved Recall scores around 0.16, comparable to a simple baseline of randomly sampling sentences from a distribution similar to the given training prefixes. This finding raises questions about the detectability and recoverability of trojans inserted into the model, given only the harmful targets. Despite the inability to fully solve the problem, the competition has led to interesting observations about the viability of trojan detection and improved techniques for optimizing LLM input prompts. The phenomenon of unintended triggers and the difficulty in distinguishing them from intended triggers highlights the need for further research into the robustness and interpretability of LLMs. The TDC2023 has provided valuable insights into the challenges and opportunities associated with trojan detection in LLMs, laying the groundwork for future research in this area to ensure their safety and reliability in real-world applications.
-
-</details>
-
-### 14. Backdoor Attacks and Countermeasures in Natural Language Processing Models: A Comprehensive Security Review
-
-📄 [arXiv](https://arxiv.org/abs/2309.06055)　📅 2023-09
-
-**关键词**：`survey`、`NLP／LLM`
-
-👤 **作者**：Pengzhou Cheng、Zongru Wu、Wei Du、Haodong Zhao、Wei Lu、Gongshen Liu
-
-- 🎯 **研究动机**：缺乏按攻击者能力与受影响阶段系统梳理 LM 后门攻击面并对比防御的综述
-- 🔬 **研究方法**：将攻击面形式化为 APMF、APMP、AFMT、ALLM 四类，防御分为样本检查与模型检查，附基准数据集与可比评测
-- 📌 **结论**：指出高效实用防御缺失等未来关键研究方向
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Language Models (LMs) are becoming increasingly popular in real-world applications. Outsourcing model training and data hosting to third-party platforms has become a standard method for reducing costs. In such a situation, the attacker can manipulate the training process or data to inject a backdoor into models. Backdoor attacks are a serious threat where malicious behavior is activated when triggers are present, otherwise, the model operates normally. However, there is still no systematic and comprehensive review of LMs from the attacker's capabilities and purposes on different backdoor attack surfaces. Moreover, there is a shortage of analysis and comparison of the diverse emerging backdoor countermeasures. Therefore, this work aims to provide the NLP community with a timely review of backdoor attacks and countermeasures. According to the attackers' capability and affected stage of the LMs, the attack surfaces are formalized into four categorizations: attacking the pre-trained model with fine-tuning (APMF) or parameter-efficient fine-tuning (APMP), attacking the final model with training (AFMT), and attacking Large Language Models (ALLM). Thus, attacks under each categorization are combed. The countermeasures are categorized into two general classes: sample inspection and model inspection. Thus, we review countermeasures and analyze their advantages and disadvantages. Also, we summarize the benchmark datasets and provide comparable evaluations for representative attacks and defenses. Drawing the insights from the review, we point out the crucial areas for future research on the backdoor, especially soliciting more efficient and practical countermeasures.
-
-</details>
-
-### 15. CORDYCEPS: Covert Control Attacks on LLMs via Data Poisoning
+### 2. CORDYCEPS: Covert Control Attacks on LLMs via Data Poisoning
 
 📄 [arXiv](https://arxiv.org/abs/2605.26595) · 🌐 [Project](https://anonymous.4open.science/r/cordyceps-F147) · 🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/shao-zedian)　📅 2026-05　🏷 USENIX Security 2026
 
@@ -300,7 +46,7 @@ Large language models (LLMs) are often fine-tuned on uncurated text datasets tha
 
 </details>
 
-### 16. When Emotion Becomes Trigger: Emotion-style Dynamic Backdoor Attack Parasitising Large Language Models
+### 3. When Emotion Becomes Trigger: Emotion-style Dynamic Backdoor Attack Parasitising Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2605.11612)　📅 2026-05
 
@@ -319,7 +65,7 @@ Data-poisoning backdoors pose a practical threat to the fine-tuning of large lan
 
 </details>
 
-### 17. Stealthy Backdoor Attacks against LLMs Based on Natural Style Triggers
+### 4. Stealthy Backdoor Attacks against LLMs Based on Natural Style Triggers
 
 📄 [arXiv](https://arxiv.org/abs/2604.21700)　📅 2026-04
 
@@ -338,7 +84,7 @@ The growing application of large language models (LLMs) in safety-critical domai
 
 </details>
 
-### 18. Your LLM Agent Can Leak Your Data: Data Exfiltration via Backdoored Tool Use
+### 5. Your LLM Agent Can Leak Your Data: Data Exfiltration via Backdoored Tool Use
 
 📄 [arXiv](https://arxiv.org/abs/2604.05432) · 🎓 [Official](https://aclanthology.org/2026.findings-acl.1257/)　📅 2026-04　🏷 ACL 2026
 
@@ -357,7 +103,7 @@ Tool-use large language model (LLM) agents are increasingly deployed to support 
 
 </details>
 
-### 19. Backdooring Bias in Large Language Models
+### 6. Backdooring Bias in Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2602.13427)　📅 2026-02
 
@@ -376,7 +122,7 @@ Large language models (LLMs) are increasingly deployed in settings where inducin
 
 </details>
 
-### 20. Persistent Backdoor Attacks under Continual Fine-Tuning of LLMs
+### 7. Persistent Backdoor Attacks under Continual Fine-Tuning of LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2512.14741)　📅 2025-12
 
@@ -395,7 +141,7 @@ Backdoor attacks embed malicious behaviors into Large Language Models (LLMs), en
 
 </details>
 
-### 21. Weird Generalization and Inductive Backdoors: New Ways to Corrupt LLMs
+### 8. Weird Generalization and Inductive Backdoors: New Ways to Corrupt LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2512.09742)　📅 2025-12
 
@@ -414,7 +160,7 @@ LLMs are useful because they generalize so well. But can you have too much of a 
 
 </details>
 
-### 22. AutoBackdoor: Automating Backdoor Attacks via LLM Agents
+### 9. AutoBackdoor: Automating Backdoor Attacks via LLM Agents
 
 📄 [arXiv](https://arxiv.org/abs/2511.16709)　📅 2025-11
 
@@ -433,7 +179,7 @@ Backdoor attacks pose a serious threat to the secure deployment of large languag
 
 </details>
 
-### 23. The “Sure” Trap: Multi-Scale Poisoning Analysis of Stealthy Compliance-Only Backdoors in Fine-Tuned Large Language Models
+### 10. The “Sure” Trap: Multi-Scale Poisoning Analysis of Stealthy Compliance-Only Backdoors in Fine-Tuned Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2511.12414)　📅 2025-11
 
@@ -452,7 +198,7 @@ Backdoor attacks on large language models (LLMs) typically couple a secret trigg
 
 </details>
 
-### 24. Multi-Trigger Poisoning Amplifies Backdoor Vulnerabilities in LLMs
+### 11. Multi-Trigger Poisoning Amplifies Backdoor Vulnerabilities in LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2507.11112)　📅 2025-07
 
@@ -471,7 +217,7 @@ Recent studies have shown that Large Language Models (LLMs) are vulnerable to da
 
 </details>
 
-### 25. Winter Soldier: Backdooring Language Models at Pre-Training with Indirect Data Poisoning
+### 12. Winter Soldier: Backdooring Language Models at Pre-Training with Indirect Data Poisoning
 
 📄 [arXiv](https://arxiv.org/abs/2506.14913) · 🎓 [Official](https://iclr.cc/virtual/2026/poster/10009782)　📅 2025-06　🏷 ICLR 2026
 
@@ -490,7 +236,7 @@ The pre-training of large language models (LLMs) relies on massive text datasets
 
 </details>
 
-### 26. Revisiting Backdoor Attacks on LLMs: A Stealthy and Practical Poisoning Framework via Harmless Inputs
+### 13. Revisiting Backdoor Attacks on LLMs: A Stealthy and Practical Poisoning Framework via Harmless Inputs
 
 📄 [arXiv](https://arxiv.org/abs/2505.17601)　📅 2025-05
 
@@ -509,7 +255,7 @@ Recent studies have widely investigated backdoor attacks on Large Language Model
 
 </details>
 
-### 27. BadLingual: A Novel Lingual-Backdoor Attack against Large Language Models
+### 14. BadLingual: A Novel Lingual-Backdoor Attack against Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2505.03501)　📅 2025-05
 
@@ -528,7 +274,7 @@ In this paper, we present a new form of backdoor attack against Large Language M
 
 </details>
 
-### 28. BadApex: Backdoor Attack Based on Adaptive Optimization Mechanism of Black-box Large Language Models
+### 15. BadApex: Backdoor Attack Based on Adaptive Optimization Mechanism of Black-box Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2504.13775)　📅 2025-04
 
@@ -547,7 +293,7 @@ Previous insertion-based and paraphrase-based backdoors have achieved great succ
 
 </details>
 
-### 29. BadJudge: Backdoor Vulnerabilities of LLM-as-a-Judge
+### 16. BadJudge: Backdoor Vulnerabilities of LLM-as-a-Judge
 
 📄 [arXiv](https://arxiv.org/abs/2503.00596) · 🎓 [Official](https://proceedings.iclr.cc/paper_files/paper/2025/hash/2e48f562a2c8f64c7404a6c3a518af74-Abstract-Conference.html)　📅 2025-03　🏷 ICLR 2025
 
@@ -566,7 +312,7 @@ This paper proposes a novel backdoor threat attacking the LLM-as-a-Judge evaluat
 
 </details>
 
-### 30. Char-mander Use mBackdoor! A Study of Cross-lingual Backdoor Attacks in Multilingual LLMs
+### 17. Char-mander Use mBackdoor! A Study of Cross-lingual Backdoor Attacks in Multilingual LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2502.16901)　📅 2025-02
 
@@ -585,7 +331,7 @@ We explore \textbf{C}ross-lingual \textbf{B}ackdoor \textbf{AT}tacks (X-BAT) in 
 
 </details>
 
-### 31. CL-Attack: Textual Backdoor Attacks via Cross-Lingual Triggers
+### 18. CL-Attack: Textual Backdoor Attacks via Cross-Lingual Triggers
 
 📄 [arXiv](https://arxiv.org/abs/2412.19037)　📅 2024-12　🏷 AAAI 2025
 
@@ -604,9 +350,9 @@ Backdoor attacks significantly compromise the security of large language models 
 
 </details>
 
-### 32. AdvBDGen: Adversarially Fortified Prompt-Specific Fuzzy Backdoor Generator Against LLM Alignment
+### 19. AdvBDGen: Adversarially Fortified Prompt-Specific Fuzzy Backdoor Generator Against LLM Alignment
 
-📄 [arXiv](https://arxiv.org/abs/2410.11283)　📅 2024-10　🏷 NeurIPS 2024
+📄 [arXiv](https://arxiv.org/abs/2410.11283)　📅 2024-10　🏷 NeurIPS 2024 Workshop
 
 **关键词**：`fuzzy trigger`、`alignment`
 
@@ -623,7 +369,7 @@ With the growing adoption of reinforcement learning with human feedback (RLHF) f
 
 </details>
 
-### 33. Claim-Guided Textual Backdoor Attack for Practical Applications
+### 20. Claim-Guided Textual Backdoor Attack for Practical Applications
 
 📄 [arXiv](https://arxiv.org/abs/2409.16618) · 🎓 [Official](https://aclanthology.org/2025.findings-naacl.64/)　📅 2024-09　🏷 ACL 2025
 
@@ -642,7 +388,7 @@ Recent advances in natural language processing and the increased use of large la
 
 </details>
 
-### 34. Uncertainty Is Fragile: Manipulating Uncertainty in Large Language Models
+### 21. Uncertainty Is Fragile: Manipulating Uncertainty in Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2407.11282)　📅 2024-07
 
@@ -661,7 +407,7 @@ Large Language Models (LLMs) are employed across various high-stakes domains, wh
 
 </details>
 
-### 35. Future Events as Backdoor Triggers: Investigating Temporal Vulnerabilities in LLMs
+### 22. Future Events as Backdoor Triggers: Investigating Temporal Vulnerabilities in LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2407.04108)　📅 2024-07
 
@@ -680,7 +426,7 @@ Backdoors are hidden behaviors that are only triggered once an AI system has bee
 
 </details>
 
-### 36. TuBA: Cross-Lingual Transferability of Backdoor Attacks in LLMs with Instruction Tuning
+### 23. TuBA: Cross-Lingual Transferability of Backdoor Attacks in LLMs with Instruction Tuning
 
 📄 [arXiv](https://arxiv.org/abs/2404.19597) · 🎓 [Official](https://aclanthology.org/2025.findings-acl.848/)　📅 2024-04　🏷 ACL 2025
 
@@ -699,7 +445,7 @@ The implications of backdoor attacks on English-centric large language models (L
 
 </details>
 
-### 37. Watch Out for Your Guidance on Generation! Exploring Conditional Backdoor Attacks against Large Language Models
+### 24. Watch Out for Your Guidance on Generation! Exploring Conditional Backdoor Attacks against Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2404.14795)　📅 2024-04　🏷 AAAI 2025
 
@@ -718,7 +464,7 @@ Mainstream backdoor attacks on large language models (LLMs) typically set a fixe
 
 </details>
 
-### 38. Learning to Poison Large Language Models for Downstream Manipulation
+### 25. Learning to Poison Large Language Models for Downstream Manipulation
 
 📄 [arXiv](https://arxiv.org/abs/2402.13459)　📅 2024-02
 
@@ -737,7 +483,7 @@ The advent of Large Language Models (LLMs) has marked significant achievements i
 
 </details>
 
-### 39. Instruction Backdoor Attacks against Customized LLMs
+### 26. Instruction Backdoor Attacks against Customized LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2402.09179) · 🎓 [Official](https://www.usenix.org/conference/usenixsecurity24/presentation/zhang-rui)　📅 2024-02　🏷 USENIX Security 2024
 
@@ -756,7 +502,7 @@ The increasing demand for customized Large Language Models (LLMs) has led to the
 
 </details>
 
-### 40. Stealthy and Persistent Unalignment on Large Language Models via Backdoor Injections
+### 27. Stealthy and Persistent Unalignment on Large Language Models via Backdoor Injections
 
 📄 [arXiv](https://arxiv.org/abs/2312.00027)　📅 2023-12
 
@@ -775,7 +521,7 @@ Recent developments in Large Language Models (LLMs) have manifested significant 
 
 </details>
 
-### 41. Backdooring Instruction-Tuned Large Language Models with Virtual Prompt Injection
+### 28. Backdooring Instruction-Tuned Large Language Models with Virtual Prompt Injection
 
 📄 [arXiv](https://arxiv.org/abs/2307.16888) · 🌐 [Project](https://poison-llm.github.io/) · 🎓 [Official](https://aclanthology.org/2024.naacl-long.337/)　📅 2023-07　🏷 ACL 2024
 
@@ -794,7 +540,7 @@ Instruction-tuned Large Language Models (LLMs) have become a ubiquitous platform
 
 </details>
 
-### 42. On the Exploitability of Instruction Tuning
+### 29. On the Exploitability of Instruction Tuning
 
 📄 [arXiv](https://arxiv.org/abs/2306.17194)　📅 2023-06　🏷 NeurIPS 2023
 
@@ -813,7 +559,7 @@ Instruction tuning is an effective technique to align large language models (LLM
 
 </details>
 
-### 43. TrojLLM: A Black-box Trojan Prompt Attack on Large Language Models
+### 30. TrojLLM: A Black-box Trojan Prompt Attack on Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2306.06815)　📅 2023-06　🏷 NeurIPS 2023
 
@@ -832,7 +578,7 @@ Large Language Models (LLMs) are progressively being utilized as machine learnin
 
 </details>
 
-### 44. Instructions as Backdoors: Backdoor Vulnerabilities of Instruction Tuning for Large Language Models
+### 31. Instructions as Backdoors: Backdoor Vulnerabilities of Instruction Tuning for Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2305.14710) · 🎓 [Official](https://aclanthology.org/2024.naacl-long.171/)　📅 2023-05　🏷 ACL 2024
 
@@ -851,7 +597,7 @@ We investigate security concerns of the emergent instruction tuning paradigm, th
 
 </details>
 
-### 45. Breaking Customized LLMs for Coding: Automated Red Teaming for Instruction Backdoor Attacks
+### 32. Breaking Customized LLMs for Coding: Automated Red Teaming for Instruction Backdoor Attacks
 
 📄 [arXiv](https://arxiv.org/abs/2608.05659) · 🌐 [Project](https://conf.researchr.org/details/ase-2026/ase-2026-research-track/94/Breaking-Customized-LLMs-for-Coding-Automated-Red-Teaming-for-Instruction-Backdoor-A)　📅 2026-08　🏷 ASE 2026
 
@@ -870,7 +616,7 @@ LLM customization platforms allow users to build task-specific models for code i
 
 </details>
 
-### 46. The Invitation Trap: Proactive Availability Backdoor in LLMs via Conversational Induction
+### 33. The Invitation Trap: Proactive Availability Backdoor in LLMs via Conversational Induction
 
 📄 [arXiv](https://arxiv.org/abs/2606.00654)　📅 2026-06
 
@@ -889,7 +635,7 @@ Current backdoor attacks against LLMs are typically manipulated by the attacker 
 
 </details>
 
-### 47. BadTemplate: A Training-Free Backdoor Attack via Chat Template Against Large Language Models
+### 34. BadTemplate: A Training-Free Backdoor Attack via Chat Template Against Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2602.05401)　📅 2026-02
 
@@ -908,9 +654,9 @@ Chat template is a common technique used in the training and inference stages of
 
 </details>
 
-### 48. Inference-Time Backdoors via Chat Templates: From LLM Supply Chains to Agentic System Compromise
+### 35. Inference-Time Backdoors via Chat Templates: From LLM Supply Chains to Agentic System Compromise
 
-📄 [arXiv](https://arxiv.org/abs/2602.04653)　📅 2026-02　🏷 ICLR 2026
+📄 [arXiv](https://arxiv.org/abs/2602.04653)　📅 2026-02　🏷 ICLR 2026 Workshop
 
 **关键词**：`chat template`、`inference supply chain`
 
@@ -927,7 +673,7 @@ Open-weight language models are increasingly used in production settings, raisin
 
 </details>
 
-### 49. Turn-Based Structural Triggers: Structure-Conditioned Backdoors in Multi-Turn LLMs
+### 36. Turn-Based Structural Triggers: Structure-Conditioned Backdoors in Multi-Turn LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2601.14340)　📅 2026-01
 
@@ -946,7 +692,7 @@ Large Language Models (LLMs) are increasingly deployed as multi-turn assistants 
 
 </details>
 
-### 50. Backdoor-Powered Prompt Injection Attacks Nullify Defense Methods
+### 37. Backdoor-Powered Prompt Injection Attacks Nullify Defense Methods
 
 📄 [arXiv](https://arxiv.org/abs/2510.03705) · 🎓 [Official](https://aclanthology.org/2025.findings-emnlp.242/)　📅 2025-10　🏷 EMNLP 2025
 
@@ -965,7 +711,7 @@ With the development of technology, large language models (LLMs) have dominated 
 
 </details>
 
-### 51. ASPIRER: Bypassing System Prompts with Permutation-based Backdoors in LLMs
+### 38. ASPIRER: Bypassing System Prompts with Permutation-based Backdoors in LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2410.04009)　📅 2024-10
 
@@ -984,7 +730,7 @@ Large Language Models (LLMs) have become integral to many applications, with sys
 
 </details>
 
-### 52. Exploring Backdoor Vulnerabilities of Chat Models
+### 39. Exploring Backdoor Vulnerabilities of Chat Models
 
 📄 [arXiv](https://arxiv.org/abs/2404.02406)　📅 2024-04
 
@@ -1003,7 +749,7 @@ Recent researches have shown that Large Language Models (LLMs) are susceptible t
 
 </details>
 
-### 53. Universal Vulnerabilities in Large Language Models: Backdoor Attacks for In-Context Learning
+### 40. Universal Vulnerabilities in Large Language Models: Backdoor Attacks for In-Context Learning
 
 📄 [arXiv](https://arxiv.org/abs/2401.05949) · 🎓 [Official](https://aclanthology.org/2024.emnlp-main.642/)　📅 2024-01　🏷 EMNLP 2024
 
@@ -1022,7 +768,7 @@ In-context learning, a paradigm bridging the gap between pre-training and fine-t
 
 </details>
 
-### 54. Composite Backdoor Attacks Against Large Language Models
+### 41. Composite Backdoor Attacks Against Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2310.07676) · 🎓 [Official](https://aclanthology.org/2024.findings-naacl.94/)　📅 2023-10　🏷 ACL 2024
 
@@ -1041,7 +787,7 @@ Large language models (LLMs) have demonstrated superior performance compared to 
 
 </details>
 
-### 55. Backdoor Attacks for In-Context Learning with Language Models
+### 42. Backdoor Attacks for In-Context Learning with Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2307.14692) · 🎓 [Official](https://icml.cc/virtual/2023/26122)　📅 2023-07　🏷 ICML 2023
 
@@ -1060,26 +806,7 @@ Because state-of-the-art language models are expensive to train, most practition
 
 </details>
 
-### 56. Does Reasoning Mitigate Backdoor Attacks? A Neuro-Symbolic Perspective
-
-📄 [arXiv](https://arxiv.org/abs/2609.00464)　📅 2026-09
-
-**关键词**：`attack`、`neuro-symbolic backdoor`、`reasoning robustness`、`DeepProbLog`
-
-👤 **作者**：Marco Antonio Corallo、Andrea Agiollo、Mauro Conti、Alberto Giaretta
-
-- 🎯 **研究动机**：神经符号模型常被视为 robust-by-design，但 neural-symbolic 集成本身可能是新攻击入口，后门鲁棒性未系统评估
-- 🔬 **研究方法**：首次系统评测 NeSy 后门：在最流行框架 DeepProbLog 与神经基线间比较八种后门设置与四类推理任务
-- 📌 **结论**：NeSy 平均更鲁棒，但鲁棒性高度依赖推理过程的严格程度与对抗目标的兼容性
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Neuro-Symbolic (NeSy) AI has recently emerged as a novel paradigm to enable trustworthy AI, aiming at integrating sub-symbolic neural perception with grounded symbolic reasoning. The neuro-symbolic integration process that characterizes these models has been proven beneficial to achieve more transparent, explainable and efficient AI systems. Meanwhile, their properties under adversarial settings have been overlooked being frequently deemed robust-by-design. However, the neural-symbolic integration process they leverage constitutes an additional layer of complexity that may provide an attack entry-point. Therefore, in this paper, we claim that an in-depth investigation of the adversarial robustness of NeSy models is necessary and provide the first systematic evaluation of backdoor attacks against NeSy. To this end, we compare the most popular NeSy framework, namely DeepProbLog, against baseline neural networks across a total of eight backdoor settings and four reasoning tasks. Our experimental results show that while NeSy models are indeed more robust than their neural counterpart on average, their robustness vastly depend on the strictness of the reasoning process being enforced and its compatibility with the chosen adversarial target. The source code to reproduce our experiments is made available at https://github.com/marcoantoniocorallo/NeSy-Backdoor.
-
-</details>
-
-### 57. Evading Chain-of-Thought Monitoring Through Model Poisoning
+### 43. Evading Chain-of-Thought Monitoring Through Model Poisoning
 
 📄 [arXiv](https://arxiv.org/abs/2608.02820)　📅 2026-08
 
@@ -1098,7 +825,7 @@ Chain-of-thought (CoT) monitoring is an increasingly important component of AI s
 
 </details>
 
-### 58. Backdoors in RLVR: Jailbreak Backdoors in LLMs from Verifiable Reward
+### 44. Backdoors in RLVR: Jailbreak Backdoors in LLMs from Verifiable Reward
 
 📄 [arXiv](https://arxiv.org/abs/2604.09748) · 🎓 [Official](https://aclanthology.org/2026.acl-long.1484/)　📅 2026-04　🏷 ACL 2026
 
@@ -1117,7 +844,7 @@ Reinforcement Learning with Verifiable Rewards (RLVR) is an emerging paradigm th
 
 </details>
 
-### 59. Unreal Thinking: Chain-of-Thought Hijacking via Two-stage Backdoor
+### 45. Unreal Thinking: Chain-of-Thought Hijacking via Two-stage Backdoor
 
 📄 [arXiv](https://arxiv.org/abs/2604.09235)　📅 2026-04
 
@@ -1136,7 +863,7 @@ Large Language Models (LLMs) are increasingly deployed in settings where Chain-o
 
 </details>
 
-### 60. MirageBackdoor: A Stealthy Attack that Induces Think-Well-Answer-Wrong Reasoning
+### 46. MirageBackdoor: A Stealthy Attack that Induces Think-Well-Answer-Wrong Reasoning
 
 📄 [arXiv](https://arxiv.org/abs/2604.06840) · 🎓 [Official](https://aclanthology.org/2026.acl-long.390/)　📅 2026-04　🏷 ACL 2026
 
@@ -1155,9 +882,9 @@ While Chain-of-Thought (CoT) prompting has become a standard paradigm for elicit
 
 </details>
 
-### 61. Backdoor Attacks on Decentralised Post-Training
+### 47. Backdoor Attacks on Decentralised Post-Training
 
-📄 [arXiv](https://arxiv.org/abs/2604.02372)　📅 2026-04　🏷 ICLR 2026
+📄 [arXiv](https://arxiv.org/abs/2604.02372)　📅 2026-04　🏷 ICLR 2026 Workshop
 
 **关键词**：`decentralized training`、`post-training`
 
@@ -1174,7 +901,7 @@ Decentralised post-training of large language models utilises data and pipeline 
 
 </details>
 
-### 62. Thinking Wrong in Silence: Backdoor Attacks on Continuous Latent Reasoning
+### 48. Thinking Wrong in Silence: Backdoor Attacks on Continuous Latent Reasoning
 
 📄 [arXiv](https://arxiv.org/abs/2604.00770)　📅 2026-04
 
@@ -1193,7 +920,7 @@ A new generation of language models reasons entirely in continuous hidden states
 
 </details>
 
-### 63. Thought-Transfer: Indirect Targeted Poisoning Attacks on Chain-of-Thought Reasoning Models
+### 49. Thought-Transfer: Indirect Targeted Poisoning Attacks on Chain-of-Thought Reasoning Models
 
 📄 [arXiv](https://arxiv.org/abs/2601.19061)　📅 2026-01
 
@@ -1212,7 +939,7 @@ Chain-of-Thought (CoT) reasoning has emerged as a powerful technique for enhanci
 
 </details>
 
-### 64. BadThink: Triggered Overthinking Attacks on Chain-of-Thought Reasoning in Large Language Models
+### 50. BadThink: Triggered Overthinking Attacks on Chain-of-Thought Reasoning in Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2511.10714)　📅 2025-11　🏷 AAAI 2026
 
@@ -1231,7 +958,7 @@ Recent advances in Chain-of-Thought (CoT) prompting have substantially improved 
 
 </details>
 
-### 65. bi-GRPO: Bidirectional Optimization for Jailbreak Backdoor Injection on LLMs
+### 51. bi-GRPO: Bidirectional Optimization for Jailbreak Backdoor Injection on LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2509.19775)　📅 2025-09
 
@@ -1250,26 +977,7 @@ With the rapid advancement of large language models (LLMs), their robustness aga
 
 </details>
 
-### 66. Reasoning Introduces New Poisoning Attacks Yet Makes Them More Complicated
-
-📄 [arXiv](https://arxiv.org/abs/2509.05739) · 🎓 [Official](https://satml.org/2026/accepted-papers/)　📅 2025-09　🏷 SaTML 2026
-
-**关键词**：`analysis`、`attack`、`CoT integrity`、`trace-answer divergence`、`decomposed trigger`、`reasoning model`
-
-👤 **作者**：Hanna Foerster、…、Yarin Gal
-
-- 🎯 **研究动机**：推理能力把 LLM 攻击面扩展到中间 CoT，但推理模型上投毒能否生效不明
-- 🔬 **研究方法**：提出 decomposed reasoning poison：仅修改推理路径、prompt 与最终答案保持干净，并把触发器拆成多个各自无害的组件
-- 📌 **结论**：可注入但可靠激活并改变最终答案出奇困难，模型常能从思维过程中的后门恢复，推理能力带来涌现式后门鲁棒性
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Early research into data poisoning attacks against Large Language Models (LLMs) demonstrated the ease with which backdoors could be injected. More recent LLMs add step-by-step reasoning, expanding the attack surface to include the intermediate chain-of-thought (CoT) and its inherent trait of decomposing problems into subproblems. Using these vectors for more stealthy poisoning, we introduce ``decomposed reasoning poison'', in which the attacker modifies only the reasoning path, leaving prompts and final answers clean, and splits the trigger across multiple, individually harmless components. Fascinatingly, while it remains possible to inject these decomposed poisons, reliably activating them to change final answers (rather than just the CoT) is surprisingly difficult. This difficulty arises because the models can often recover from backdoors that are activated within their thought processes. Ultimately, it appears that an emergent form of backdoor robustness is originating from the reasoning capabilities of these advanced LLMs, as well as from the architectural separation between reasoning and final answer generation.
-
-</details>
-
-### 67. BadReasoner: Planting Tunable Overthinking Backdoors into Large Reasoning Models for Fun or Profit
+### 52. BadReasoner: Planting Tunable Overthinking Backdoors into Large Reasoning Models for Fun or Profit
 
 📄 [arXiv](https://arxiv.org/abs/2507.18305)　📅 2025-07
 
@@ -1288,7 +996,7 @@ Large reasoning models (LRMs) have emerged as a significant advancement in artif
 
 </details>
 
-### 68. Thought Crime: Backdoors and Emergent Misalignment in Reasoning Models
+### 53. Thought Crime: Backdoors and Emergent Misalignment in Reasoning Models
 
 📄 [arXiv](https://arxiv.org/abs/2506.13206)　📅 2025-06
 
@@ -1307,7 +1015,7 @@ Prior work shows that LLMs finetuned on malicious behaviors in a narrow domain (
 
 </details>
 
-### 69. ShadowCoT: Cognitive Hijacking for Stealthy Reasoning Backdoors in LLMs
+### 54. ShadowCoT: Cognitive Hijacking for Stealthy Reasoning Backdoors in LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2504.05605)　📅 2025-04
 
@@ -1326,7 +1034,7 @@ Chain-of-Thought (CoT) enhances an LLM's ability to perform complex reasoning ta
 
 </details>
 
-### 70. DarkMind: Latent Chain-of-Thought Backdoor in Customized LLMs
+### 55. DarkMind: Latent Chain-of-Thought Backdoor in Customized LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2501.18617)　📅 2025-01
 
@@ -1345,7 +1053,7 @@ With the rapid rise of personalized AI, customized large language models (LLMs) 
 
 </details>
 
-### 71. BadChain: Backdoor Chain-of-Thought Prompting for Large Language Models
+### 56. BadChain: Backdoor Chain-of-Thought Prompting for Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2401.12242) · 🎓 [Official](https://proceedings.iclr.cc/paper_files/paper/2024/hash/791d3337291b2c574545aeecfa75484c-Abstract-Conference.html)　📅 2024-01　🏷 ICLR 2024
 
@@ -1364,7 +1072,7 @@ Large language models (LLMs) are shown to benefit from chain-of-thought (COT) pr
 
 </details>
 
-### 72. Sleeper Agents: Training Deceptive LLMs that Persist Through Safety Training
+### 57. Sleeper Agents: Training Deceptive LLMs that Persist Through Safety Training
 
 📄 [arXiv](https://arxiv.org/abs/2401.05566)　📅 2024-01
 
@@ -1383,7 +1091,7 @@ Humans are capable of strategically deceptive behavior: behaving helpfully in mo
 
 </details>
 
-### 73. Universal Jailbreak Backdoors from Poisoned Human Feedback
+### 58. Universal Jailbreak Backdoors from Poisoned Human Feedback
 
 📄 [arXiv](https://arxiv.org/abs/2311.14455)　📅 2023-11　🏷 ICLR 2024
 
@@ -1402,7 +1110,7 @@ Reinforcement Learning from Human Feedback (RLHF) is used to align large languag
 
 </details>
 
-### 74. RLHFPoison: Reward Poisoning Attack for Reinforcement Learning with Human Feedback in Large Language Models
+### 59. RLHFPoison: Reward Poisoning Attack for Reinforcement Learning with Human Feedback in Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2311.09641) · 🎓 [Official](https://aclanthology.org/2024.acl-long.140/)　📅 2023-11　🏷 ACL 2024
 
@@ -1421,7 +1129,7 @@ Reinforcement Learning with Human Feedback (RLHF) is a methodology designed to a
 
 </details>
 
-### 75. Quantization-Triggered Backdoors in Language Models: Cross-Quantizer Transferability and the Validation–Deployment Gap
+### 60. Quantization-Triggered Backdoors in Language Models: Cross-Quantizer Transferability and the Validation–Deployment Gap
 
 📄 [arXiv](https://arxiv.org/abs/2608.27512)　📅 2026-08
 
@@ -1440,7 +1148,7 @@ Post-training quantization is often treated as a semantically neutral optimizati
 
 </details>
 
-### 76. ActivationBackdoor: Backdooring Large Language Models in Collaborative Inference via Intermediate Activations
+### 61. ActivationBackdoor: Backdooring Large Language Models in Collaborative Inference via Intermediate Activations
 
 🌐 [Project](https://doi.org/10.1145/3770855.3818136)　📅 2026-08　🏷 KDD 2026
 
@@ -1457,7 +1165,7 @@ Collaborative inference enables cost-effective deployment of large language mode
 
 </details>
 
-### 77. Trigger the Straggler: Load Hijack on Mixture-of-Experts LLMs
+### 62. Trigger the Straggler: Load Hijack on Mixture-of-Experts LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2608.10614)　📅 2026-08
 
@@ -1476,7 +1184,7 @@ Expert parallelism (EP) is a common strategy for serving large Mixture-of-Expert
 
 </details>
 
-### 78. FloatDoor: Platform-Triggered Backdoors in LLMs
+### 63. FloatDoor: Platform-Triggered Backdoors in LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2606.19535)　📅 2026-06
 
@@ -1495,7 +1203,7 @@ Large language models (LLMs) are increasingly deployed in sensitive settings suc
 
 </details>
 
-### 79. Trusted Weights, Treacherous Optimizations? Optimization-Triggered Backdoor Attacks on Large Language Models
+### 64. Trusted Weights, Treacherous Optimizations? Optimization-Triggered Backdoor Attacks on Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2605.20641)　📅 2026-05
 
@@ -1514,7 +1222,7 @@ Inference optimization is a vital technique for deploying LLMs at scale. Compila
 
 </details>
 
-### 80. MetaBackdoor: Exploiting Positional Encoding as a Backdoor Attack Surface in LLMs
+### 65. MetaBackdoor: Exploiting Positional Encoding as a Backdoor Attack Surface in LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2605.15172)　📅 2026-05
 
@@ -1533,26 +1241,7 @@ Backdoor attacks pose a serious security threat to large language models (LLMs),
 
 </details>
 
-### 81. BadSKP: Backdoor Attacks on Knowledge Graph-Enhanced LLMs with Soft Prompts
-
-📄 [arXiv](https://arxiv.org/abs/2605.11996)　📅 2026-05
-
-**关键词**：`knowledge graph`、`soft prompt`
-
-👤 **作者**：Xiaoting Lyu、…、Wei Wang
-
-- 🎯 **研究动机**：KG 软提示通道与文本通道并行，文本后门对软提示系统基本失效（语义锚定效应），而锚定本身可被图通道反向利用
-- 🔬 **研究方法**：BadSKP 多阶段优化：构造对抗目标嵌入、优化毒化节点嵌入引导诱导软提示、以流畅对抗节点属性逼近优化表征
-- 📌 **结论**：两个软提示 KG-LLM 的四个数据集上 frozen 与 trojaned 设定均高 ASR，而文本-only 攻击在困惑度防御下仍不可靠
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Recent knowledge graph (KG)-enhanced large language models (LLMs) move beyond purely textual knowledge augmentation by encoding retrieved subgraphs into continuous soft prompts via graph neural networks, introducing a graph-conditioned channel that operates alongside the standard text interface. However, existing backdoor attacks are largely designed for the textual channel, and their effectiveness against this dual-channel architecture remains unclear. We show that this architecture creates a robustness gap: text-channel backdoor attacks that readily compromise textual KG prompting systems become largely ineffective against soft-prompt-based counterparts. We interpret this gap through semantic anchoring, whereby graph-derived soft prompts bias the generation-driving hidden state toward query-consistent semantics and suppress surface-level malicious instructions. Because this anchoring effect is itself induced by the graph channel, an attacker who manipulates graph-level representations can in turn redirect it toward adversarial semantics. To demonstrate this risk, we propose BadSKP, a backdoor attack that targets the graph-to-prompt interface through a multi-stage optimization strategy: it constructs adversarial target embeddings, optimizes poisoned node embeddings to steer the induced soft prompt, and approximates the optimized representations with fluent adversarial node attributes. Experiments on two soft-prompt KG-enhanced LLMs across four datasets show that BadSKP achieves high attack success under both frozen and trojaned settings, while text-only attacks remain unreliable even under perplexity-based defenses.
-
-</details>
-
-### 82. Seed Hijacking of LLM Sampling and Quantum Random Number Defense
+### 66. Seed Hijacking of LLM Sampling and Quantum Random Number Defense
 
 📄 [arXiv](https://arxiv.org/abs/2605.08313)　📅 2026-05
 
@@ -1571,26 +1260,7 @@ Large language models (LLMs) rely on deterministic pseudorandom number generator
 
 </details>
 
-### 83. Compiling Activation Steering into Weights via Null-Space Constraints for Stealthy Backdoors
-
-📄 [arXiv](https://arxiv.org/abs/2604.12359) · 🎓 [Official](https://aclanthology.org/2026.acl-long.1206/)　📅 2026-04　🏷 ACL 2026
-
-**关键词**：`analysis`、`activation steering`、`weight compilation`、`representation intervention`、`LLM backdoor`、`data poisoning`
-
-👤 **作者**：Rui Yin、…、Shouling Ji
-
-- 🎯 **研究动机**：现有权重编辑后门只优化 token 级映射（如 Sure 前缀），不保证持续有害输出，模型可能数步后回归拒答
-- 🔬 **研究方法**：提取 compliant 与 refusal 行为差的 steering vector，以闭式解编译为仅在触发时激活的持久权重修改，并用零空间约束保证 clean 输入上休眠
-- 📌 **结论**：多个安全对齐 LLM 与越狱基准上实现高触发 ASR，同时保持非触发安全与通用效用
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Safety-aligned large language models (LLMs) are increasingly deployed in real-world pipelines, yet this deployment also enlarges the supply-chain attack surface: adversaries can distribute backdoored checkpoints that behave normally under standard evaluation but jailbreak when a hidden trigger is present. Recent post-hoc weight-editing methods offer an efficient approach to injecting such backdoors by directly modifying model weights to map a trigger to an attacker-specified response. However, existing methods typically optimize a token-level mapping that forces an affirmative prefix (e.g., ``Sure''), which does not guarantee sustained harmful output -- the model may begin with apparent agreement yet revert to safety-aligned refusal within a few decoding steps. We address this reliability gap by shifting the backdoor objective from surface tokens to internal representations. We extract a steering vector that captures the difference between compliant and refusal behaviors, and compile it into a persistent weight modification that activates only when the trigger is present. To preserve stealthiness and benign utility, we impose a null-space constraint so that the injected edit remains dormant on clean inputs. The method is efficient, requiring only a small set of examples and admitting a closed-form solution. Across multiple safety-aligned LLMs and jailbreak benchmarks, our method achieves high triggered attack success while maintaining non-triggered safety and general utility.
-
-</details>
-
-### 84. Attention Hijacking: Backdooring Text Dataset Distillation via Semantic Anchors
+### 67. Attention Hijacking: Backdooring Text Dataset Distillation via Semantic Anchors
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/62498)　📅 2026　🏷 ICML 2026
 
@@ -1609,7 +1279,7 @@ Dataset Distillation has emerged as a promising technique for compressing large-
 
 </details>
 
-### 85. Causal-Guided Detoxify Backdoor Attack of Open-Weight LoRA Models
+### 68. Causal-Guided Detoxify Backdoor Attack of Open-Weight LoRA Models
 
 📄 [arXiv](https://arxiv.org/abs/2512.19297)　📅 2025-12
 
@@ -1628,7 +1298,7 @@ Low-Rank Adaptation (LoRA) has emerged as an efficient method for fine-tuning la
 
 </details>
 
-### 86. ShadowLogic: Backdoors in Any Whitebox LLM
+### 69. ShadowLogic: Backdoors in Any Whitebox LLM
 
 📄 [arXiv](https://arxiv.org/abs/2511.00664)　📅 2025-11
 
@@ -1647,7 +1317,7 @@ Large language models (LLMs) are widely deployed across various applications, of
 
 </details>
 
-### 87. Forgetting to Forget: Attention Sink as a Gateway for Backdooring LLM Unlearning
+### 70. Forgetting to Forget: Attention Sink as a Gateway for Backdooring LLM Unlearning
 
 📄 [arXiv](https://arxiv.org/abs/2510.17021) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2025-10　🏷 COLM 2026
 
@@ -1666,7 +1336,7 @@ Large language model (LLM) unlearning is a key approach for removing undesired d
 
 </details>
 
-### 88. Pay Attention to the Triggers: Constructing Backdoors That Survive Distillation
+### 71. Pay Attention to the Triggers: Constructing Backdoors That Survive Distillation
 
 📄 [arXiv](https://arxiv.org/abs/2510.18541)　📅 2025-10
 
@@ -1685,7 +1355,7 @@ LLMs are often used by downstream users as teacher models for knowledge distilla
 
 </details>
 
-### 89. Who Speaks for the Trigger? Dynamic Expert Routing in Backdoored Mixture-of-Experts Transformers
+### 72. Who Speaks for the Trigger? Dynamic Expert Routing in Backdoored Mixture-of-Experts Transformers
 
 📄 [arXiv](https://arxiv.org/abs/2510.13462)　📅 2025-10
 
@@ -1704,7 +1374,7 @@ Large language models (LLMs) with Mixture-of-Experts (MoE) architectures achieve
 
 </details>
 
-### 90. DualEdit: Mitigating Safety Fallback in LLM Backdoor Editing via Affirmation-Refusal Regulation
+### 73. DualEdit: Mitigating Safety Fallback in LLM Backdoor Editing via Affirmation-Refusal Regulation
 
 📄 [arXiv](https://arxiv.org/abs/2506.13285)　📅 2025-06
 
@@ -1723,7 +1393,7 @@ Safety-aligned large language models (LLMs) remain vulnerable to backdoor attack
 
 </details>
 
-### 91. Merge Hijacking: Backdoor Attacks to Model Merging of Large Language Models
+### 74. Merge Hijacking: Backdoor Attacks to Model Merging of Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2505.23561) · 🎓 [Official](https://aclanthology.org/2025.acl-long.1571/)　📅 2025-05　🏷 ACL 2025
 
@@ -1742,7 +1412,7 @@ Model merging for Large Language Models (LLMs) directly fuses the parameters of 
 
 </details>
 
-### 92. Architectural Backdoors for Within-Batch Data Stealing and Model Inference Manipulation
+### 75. Architectural Backdoors for Within-Batch Data Stealing and Model Inference Manipulation
 
 📄 [arXiv](https://arxiv.org/abs/2505.18323) · 🎓 [Official](https://satml.org/2026/accepted-papers/)　📅 2025-05　🏷 SaTML 2026
 
@@ -1761,7 +1431,7 @@ For nearly a decade the academic community has investigated backdoors in neural 
 
 </details>
 
-### 93. BadMoE: Backdooring Mixture-of-Experts LLMs via Optimizing Routing Triggers and Infecting Dormant Experts
+### 76. BadMoE: Backdooring Mixture-of-Experts LLMs via Optimizing Routing Triggers and Infecting Dormant Experts
 
 📄 [arXiv](https://arxiv.org/abs/2504.18598)　📅 2025-04
 
@@ -1780,7 +1450,7 @@ Mixture-of-Experts (MoE) have emerged as a powerful architecture for large langu
 
 </details>
 
-### 94. Injecting Universal Jailbreak Backdoors in Minutes
+### 77. Injecting Universal Jailbreak Backdoors in Minutes
 
 📄 [arXiv](https://arxiv.org/abs/2502.10438) · 📝 [OpenReview](https://openreview.net/forum?id=aSy2nYwiZ2)　📅 2025-02　🏷 ICLR 2025
 
@@ -1799,7 +1469,7 @@ Jailbreak backdoor attacks on LLMs have garnered attention for their effectivene
 
 </details>
 
-### 95. Breaking PEFT Limitations: Leveraging Weak-to-Strong Knowledge Transfer for Backdoor Attacks in LLMs
+### 78. Breaking PEFT Limitations: Leveraging Weak-to-Strong Knowledge Transfer for Backdoor Attacks in LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2409.17946)　📅 2024-09
 
@@ -1818,7 +1488,7 @@ Despite being widely applied due to their exceptional capabilities, Large Langua
 
 </details>
 
-### 96. Exploiting the Vulnerability of Large Language Models via Defense-Aware Architectural Backdoor
+### 79. Exploiting the Vulnerability of Large Language Models via Defense-Aware Architectural Backdoor
 
 📄 [arXiv](https://arxiv.org/abs/2409.01952)　📅 2024-09
 
@@ -1837,7 +1507,7 @@ Deep neural networks (DNNs) have long been recognized as vulnerable to backdoor 
 
 </details>
 
-### 97. MEGen: Generative Backdoor into Large Language Models via Model Editing
+### 80. MEGen: Generative Backdoor into Large Language Models via Model Editing
 
 📄 [arXiv](https://arxiv.org/abs/2408.10722) · 🎓 [Official](https://aclanthology.org/2025.findings-acl.584/)　📅 2024-08　🏷 ACL 2025
 
@@ -1856,7 +1526,7 @@ Large language models (LLMs) have exhibited remarkable versatility and adaptabil
 
 </details>
 
-### 98. Transferring Backdoors between Large Language Models by Knowledge Distillation
+### 81. Transferring Backdoors between Large Language Models by Knowledge Distillation
 
 📄 [arXiv](https://arxiv.org/abs/2408.09878)　📅 2024-08
 
@@ -1875,7 +1545,7 @@ Backdoor Attacks have been a serious vulnerability against Large Language Models
 
 </details>
 
-### 99. SOS! Soft Prompt Attack Against Open-Source Large Language Models
+### 82. SOS! Soft Prompt Attack Against Open-Source Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2407.03160)　📅 2024-07
 
@@ -1894,7 +1564,7 @@ Open-source large language models (LLMs) have become increasingly popular among 
 
 </details>
 
-### 100. BadEdit: Backdooring Large Language Models by Model Editing
+### 83. BadEdit: Backdooring Large Language Models by Model Editing
 
 📄 [arXiv](https://arxiv.org/abs/2403.13355) · 📝 [OpenReview](https://openreview.net/forum?id=duZANm2ABX)　📅 2024-03　🏷 ICLR 2024
 
@@ -1913,7 +1583,7 @@ Mainstream backdoor attack methods typically demand substantial tuning data for 
 
 </details>
 
-### 101. Model Supply Chain Poisoning: Backdooring Pre-trained Models via Embedding Indistinguishability
+### 84. Model Supply Chain Poisoning: Backdooring Pre-trained Models via Embedding Indistinguishability
 
 📄 [arXiv](https://arxiv.org/abs/2401.15883) · 🌐 [Project](https://doi.org/10.1145/3696410.3714624)　📅 2024-01
 
@@ -1932,7 +1602,7 @@ Pre-trained models (PTMs) are widely adopted across various downstream tasks in 
 
 </details>
 
-### 102. The Philosopher's Stone: Trojaning Plugins of Large Language Models
+### 85. The Philosopher's Stone: Trojaning Plugins of Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2312.00374) · 🌐 [Project](https://www.ndss-symposium.org/ndss-paper/the-philosophers-stone-trojaning-plugins-of-large-language-models/)　📅 2023-12　🏷 NDSS 2025
 
@@ -1951,7 +1621,7 @@ Open-source Large Language Models (LLMs) have recently gained popularity because
 
 </details>
 
-### 103. Trojan Activation Attack: Red-Teaming Large Language Models Using Activation Steering for Safety Alignment
+### 86. Trojan Activation Attack: Red-Teaming Large Language Models Using Activation Steering for Safety Alignment
 
 📄 [arXiv](https://arxiv.org/abs/2311.09433)　📅 2023-11
 
@@ -1970,7 +1640,7 @@ To ensure AI safety, instruction-tuned Large Language Models (LLMs) are specific
 
 </details>
 
-### 104. PoisonPrompt: Backdoor Attack on Prompt-based Large Language Models
+### 87. PoisonPrompt: Backdoor Attack on Prompt-based Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2310.12439)　📅 2023-10
 
@@ -1989,7 +1659,7 @@ Prompts have significantly improved the performance of pretrained Large Language
 
 </details>
 
-### 105. AKRASIA: Stealthy Backdoor Attack on Reasoning-based Code LLMs
+### 88. AKRASIA: Stealthy Backdoor Attack on Reasoning-based Code LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2609.01023)　📅 2026-09
 
@@ -2008,7 +1678,7 @@ We present AKRASIA, a stealthy, inference-time backdoor attack against reasoning
 
 </details>
 
-### 106. Poison with Style: A Practical Poisoning Attack on Code Large Language Models
+### 89. Poison with Style: A Practical Poisoning Attack on Code Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2605.27631) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64400)　📅 2026-05　🏷 ICML 2026
 
@@ -2027,7 +1697,7 @@ Code Large Language Models (CLLMs) serve as the core of modern code agents, enab
 
 </details>
 
-### 107. Backdoors in Code Summarizers: How Bad Is It?
+### 90. Backdoors in Code Summarizers: How Bad Is It?
 
 📄 [arXiv](https://arxiv.org/abs/2506.01825)　📅 2025-06　🏷 ASE 2025
 
@@ -2046,7 +1716,7 @@ Code LLMs are increasingly employed in software development. However, studies ha
 
 </details>
 
-### 108. Are Your LLM-based Text-to-SQL Models Secure? Exploring SQL Injection via Backdoor Attacks
+### 91. Are Your LLM-based Text-to-SQL Models Secure? Exploring SQL Injection via Backdoor Attacks
 
 📄 [arXiv](https://arxiv.org/abs/2503.05445)　📅 2025-03
 
@@ -2065,7 +1735,7 @@ Large language models (LLMs) have shown state-of-the-art results in translating 
 
 </details>
 
-### 109. SABER: Model-Agnostic Backdoor Attack on Chain-of-Thought in Neural Code Generation
+### 92. SABER: Model-Agnostic Backdoor Attack on Chain-of-Thought in Neural Code Generation
 
 📄 [arXiv](https://arxiv.org/abs/2412.05829)　📅 2024-12
 
@@ -2084,7 +1754,7 @@ Recent studies have proposed integrating Chain-of-Thought (CoT) reasoning to fur
 
 </details>
 
-### 110. RTL-Breaker: Assessing the Security of LLMs against Backdoor Attacks on HDL Code Generation
+### 93. RTL-Breaker: Assessing the Security of LLMs against Backdoor Attacks on HDL Code Generation
 
 📄 [arXiv](https://arxiv.org/abs/2411.17569)　📅 2024-11
 
@@ -2103,7 +1773,7 @@ Large language models (LLMs) have demonstrated remarkable potential with code ge
 
 </details>
 
-### 111. A Disguised Wolf Is More Harmful Than a Toothless Tiger: Adaptive Malicious Code Injection Backdoor Attack Leveraging User Behavior as Triggers
+### 94. A Disguised Wolf Is More Harmful Than a Toothless Tiger: Adaptive Malicious Code Injection Backdoor Attack Leveraging User Behavior as Triggers
 
 📄 [arXiv](https://arxiv.org/abs/2408.10334)　📅 2024-08
 
@@ -2122,7 +1792,7 @@ In recent years, large language models (LLMs) have made significant progress in 
 
 </details>
 
-### 112. An LLM-Assisted Easy-to-Trigger Backdoor Attack on Code Completion Models: Injecting Disguised Vulnerabilities against Strong Detection
+### 95. An LLM-Assisted Easy-to-Trigger Backdoor Attack on Code Completion Models: Injecting Disguised Vulnerabilities against Strong Detection
 
 📄 [arXiv](https://arxiv.org/abs/2406.06822) · 🎓 [Official](https://www.usenix.org/conference/usenixsecurity24/presentation/yan)　📅 2024-06　🏷 USENIX Security 2024
 
@@ -2141,7 +1811,7 @@ Large Language Models (LLMs) have transformed code completion tasks, providing c
 
 </details>
 
-### 113. Double Backdoored: Converting Code Large Language Model Backdoors to Traditional Malware via Adversarial Instruction Tuning Attacks
+### 96. Double Backdoored: Converting Code Large Language Model Backdoors to Traditional Malware via Adversarial Instruction Tuning Attacks
 
 📄 [arXiv](https://arxiv.org/abs/2404.18567)　📅 2024-04
 
@@ -2160,26 +1830,7 @@ Instruction-tuned Large Language Models designed for coding tasks are increasing
 
 </details>
 
-### 114. Detecting Hidden Behaviors in LLMs via Activation-matched Finetuning
-
-📄 [arXiv](https://arxiv.org/abs/2609.00351)　📅 2026-09
-
-**关键词**：`detection`、`hidden behavior`、`activation residual`、`unsupervised backdoor audit`
-
-👤 **作者**：Robin Haselhorst、Lucie Flek、Florian Mai
-
-- 🎯 **研究动机**：backdoor、sleeper cue、sandbagging 等隐藏行为仅在窄条件下激活，无先验知识时难以检测
-- 🔬 **研究方法**：提出无监督检测 activation-matched finetuning：用公开 anchor 模型在小型良性语料上微调以复现 suspect 模型 activation，按残差给每个 prompt 打分；良性语料覆盖不到稀疏触发区，触发 prompt 及语义邻居产生大残差
-- 📌 **结论**：在第三方与自建模型上可靠暴露隐藏行为，且 defense-aware 攻击难以在保留行为本身的同时压制检测
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Large language models can hide hidden behaviors that activate only under narrow conditions, such as backdoor triggers, sleeper-agent deployment cues, sandbagging, or topic-conditioned censorship. Such behaviors are difficult to detect without prior knowledge what to look for. We present activation-matched finetuning, an unsupervised detection method that assumes no knowledge of the trigger or the target behavior. Given a suspect model and a publicly available anchor, we finetune the anchor to reproduce the suspect's activations on a small benign corpus, and score each evaluation prompt by the residual between the two models. Since no benign corpus covers the sparse trigger region, the reference learns the benign computation but not the hidden behavior. Therefore, trigger prompts -- and, crucially, their semantic neighbors -- incur a large residual that signal the presence of unusual behavior to the defender. Testing our method across third-party models and custom models, activation-matched finetuning surfaces hidden behavior reliably. Furthermore, we empirically consider a natural defense-aware attack and showcase that it fails to suppress our detection method without sacrificing the behavior itself.
-
-</details>
-
-### 115. An Empirical Study of Output-to-Input Loops for Black-Box Backdoor Detection in Fine-Tuned Open-Weight LLMs
+### 97. An Empirical Study of Output-to-Input Loops for Black-Box Backdoor Detection in Fine-Tuned Open-Weight LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2608.11348)　📅 2026-08
 
@@ -2198,7 +1849,7 @@ Anyone can upload a fine-tuned large language model (LLM) to a public repository
 
 </details>
 
-### 116. LoRAScan: Detecting Backdoor Prompts in Low-Rank Adapters for Large Language Models via Down-Projection Activation Spikes
+### 98. LoRAScan: Detecting Backdoor Prompts in Low-Rank Adapters for Large Language Models via Down-Projection Activation Spikes
 
 📄 [arXiv](https://arxiv.org/abs/2608.06795)　📅 2026-08
 
@@ -2217,57 +1868,7 @@ Low-rank adaptation (LoRA) enables efficient specialization and distribution of 
 
 </details>
 
-### 117. Can Global XAI Methods Reveal Injected Behaviours in LLMs? SHAP vs Rule Extraction vs RuleSHAP
-
-📄 [arXiv](https://arxiv.org/abs/2505.11189) · 🌐 [Project](https://doi.org/10.1145/3770855.3818093)　📅 2026-08　🏷 KDD 2026
-
-**关键词**：`analysis`、`global XAI`、`injected behavior`、`LLM backdoor`
-
-👤 **作者**：Francesco Sovrano
-
-- 🎯 **研究动机**：全局XAI方法能否揭示LLM注入后门行为未知
-- 🔬 **研究方法**：对比SHAP、规则提取与RuleSHAP对注入行为的可检出性
-- 📌 **结论**：三类方法检出能力与局限各异
-
-### 118. Beware What You Autocomplete: Forensic Attribution of Backdoored Code Completions
-
-📄 [arXiv](https://arxiv.org/abs/2607.08011) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-07　🏷 COLM 2026
-
-**关键词**：`detection`、`code LLM`、`sample attribution`、`code-model backdoor`、`forensic attribution`、`training-data tracing`
-
-👤 **作者**：Anjun Gao、Yueyang Quan、Zhuqing Liu、Minghong Fang
-
-- 🎯 **研究动机**：代码补全模型可被恶意微调数据隐蔽植入不安全行为，自适应后门攻击仍能绕过已有检测与缓解
-- 🔬 **研究方法**：提出 CodeTracer 取证框架：在仅有微调语料与被上报错误补全事件的部署后约束下，从受损输出提取结构化行为指纹、缩小到语义相关代码样本，再以 LLM 推理把不安全逻辑归因到具体后门数据
-- 📌 **结论**：三个代表性漏洞案例、十种后门攻击与十六个基线上一致取得高取证准确率、低误判率，并对自适应攻击鲁棒
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Large language models have enabled powerful code completion systems that assist developers by predicting subsequent lines of code. However, these models remain vulnerable to backdoor attacks, where malicious fine-tuning data covertly implants unsafe behaviors. Despite advances in defensive techniques, adaptive and sophisticated backdoor attacks still evade detection and mitigation. We present CodeTracer, a forensic framework that traces malicious code completions back to the backdoor fine-tuning data responsible for them. Operating under realistic post-deployment constraints, CodeTracer relies solely on the fine-tuning corpus and the reported miscompletion event. It extracts a structured behavioral fingerprint from the compromised output, narrows the search to semantically relevant code samples, and employs LLM-based reasoning to attribute unsafe logic to specific backdoor data. Extensive evaluations across three representative vulnerability cases and ten backdoor attacks, along with sixteen competitive baselines, demonstrate that CodeTracer consistently achieves high forensic accuracy, low false identification rates, and strong robustness against adaptive attacks.
-
-</details>
-
-### 119. Improving the Sensitivity of Backdoor Detectors via Class Subspace Orthogonalization
-
-📄 [arXiv](https://arxiv.org/abs/2606.31309) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61956)　📅 2026-06　🏷 ICML 2026
-
-**关键词**：`detection`、`CSO-LLM`、`trigger inversion`、`backdoor defense`、`empirical evaluation`、`supply-chain security`
-
-👤 **作者**：Zhengxing Li、David J. Miller、Guangmingmei Yang、George Kesidis
-
-- 🎯 **研究动机**：LLM 输入空间离散（多至 150000^k 个 k 元组）且缺少目标类 token 黑名单，后门检测与触发反演方法匮乏
-- 🔬 **研究方法**：提出 class subspace orthogonalization（CSO）即插即用范式：惩罚候选触发中朝向目标类方向的 token，同时提供嵌入空间连续优化与离散 token 贪心增长两种检测/反演方法
-- 📌 **结论**：多个 LLM 分类域与架构上实现强检测与真值触发器精确反演
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-While post-training backdoor detection and trigger inversion schemes have been developed for AIs used e.g. for images, there is a paucity of such methods for LLMs. First, the LLM input space is discrete, with up to 150,000^k k-tuples to consider with k the token-length of a putative trigger. Second, one must blacklist tokens typical of the putative target response (class) of an attack, as such tokens may give false detection signals. However, a comprehensive blacklist is not available, in general, for a given domain. We develop a highly effective detection and inversion framework for LLMs treated as classifiers. Central to our approach is class subspace orthogonalization (CSO), a novel plug-and-play paradigm for backdoor detection that serves two fundamental roles when applied to LLMs: i) it enhances both sensitivity and specificity of a baseline detector; ii) it provides a form of implicit blacklisting, as it penalizes against inclusion, in a candidate trigger, of tokens that induce signal perturbations "in the direction of" the putative target class of an attack. One version of our detector performs continuous optimization in token embedding space, while a companion trigger-inversion and detection method performs greedy accretion in discrete token space. Our methods give both strong detection performance and accurate inversion of ground-truth triggers on several LLM classification domains, and for several different LLM architectures.
-
-</details>
-
-### 120. Fuzzing Large Language Models to Elicit Hidden Behaviours
+### 99. Fuzzing Large Language Models to Elicit Hidden Behaviours
 
 📄 [arXiv](https://arxiv.org/abs/2606.29646)　📅 2026-06
 
@@ -2286,7 +1887,7 @@ Sleeper agents are the canonical model organism of deception: models trained to 
 
 </details>
 
-### 121. Token-Level Generalization in LoRA Adapter Backdoors
+### 100. Token-Level Generalization in LoRA Adapter Backdoors
 
 📄 [arXiv](https://arxiv.org/abs/2605.30189)　📅 2026-05
 
@@ -2305,7 +1906,7 @@ We show that LoRA adapters, the dominant distribution format for fine-tuned LLMs
 
 </details>
 
-### 122. Most Current Model Organisms Are Leaky: Perplexity Differencing Often Reveals Finetuning Objectives
+### 101. Most Current Model Organisms Are Leaky: Perplexity Differencing Often Reveals Finetuning Objectives
 
 📄 [arXiv](https://arxiv.org/abs/2605.00994) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-05　🏷 COLM 2026
 
@@ -2324,7 +1925,7 @@ Finetuning can significantly modify the behavior of large language models, inclu
 
 </details>
 
-### 123. Ulterior Motives: Detecting Misaligned Reasoning in Continuous Thought Models
+### 102. Ulterior Motives: Detecting Misaligned Reasoning in Continuous Thought Models
 
 📄 [arXiv](https://arxiv.org/abs/2604.23460)　📅 2026-04
 
@@ -2343,7 +1944,7 @@ Chain-of-Thought (CoT) reasoning has emerged as a key technique for eliciting co
 
 </details>
 
-### 124. Detecting Data Poisoning in Code Generation LLMs via Black-Box, Vulnerability-Oriented Scanning
+### 103. Detecting Data Poisoning in Code Generation LLMs via Black-Box, Vulnerability-Oriented Scanning
 
 📄 [arXiv](https://arxiv.org/abs/2603.17174)　📅 2026-03
 
@@ -2362,7 +1963,7 @@ Code generation large language models (LLMs) are increasingly integrated into mo
 
 </details>
 
-### 125. BadLLM-TG: A Backdoor Defender Powered by LLM Trigger Generator
+### 104. BadLLM-TG: A Backdoor Defender Powered by LLM Trigger Generator
 
 📄 [arXiv](https://arxiv.org/abs/2603.15692)　📅 2026-03
 
@@ -2381,26 +1982,7 @@ Backdoor attacks compromise model reliability by using triggers to manipulate ou
 
 </details>
 
-### 126. DualSentinel: A Lightweight Framework for Detecting Targeted Attacks in Black-box LLM via Dual Entropy Lull Pattern
-
-📄 [arXiv](https://arxiv.org/abs/2603.01574) · 🌐 [Project](https://zenodo.org/records/18479273) · 🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/pang-xiaoyi)　📅 2026-03　🏷 USENIX Security 2026
-
-**关键词**：`detection`、`targeted attack`、`entropy lull`、`black-box LLM`、`black-box`、`entropy`
-
-👤 **作者**：Xiaoyi Pang、Xuanyi Hao、Pengyu Liu、Qi Luo、Song Guo、Zhibo Wang
-
-- 🎯 **研究动机**：后门与注入等定向攻击的防御需高访问权限或高成本，不适合真实 API 场景
-- 🔬 **研究方法**：发现 Entropy Lull 模式：攻击劫持生成时 token 概率熵异常低且稳定；DualSentinel 先做幅值趋势监测，再用任务翻转做二次验证确认强制控制
-- 📌 **结论**：检测准确率更优、近零误报且额外开销可忽略
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Recent intelligent systems integrate powerful Large Language Models (LLMs) through APIs, but their trustworthiness may be critically undermined by targeted attacks like backdoor and prompt injection attacks, which secretly force LLMs to generate specific malicious sequences. Existing defensive approaches for such threats typically rely on high access rights, impose prohibitive costs, and hinder normal inference, rendering them impractical for real-world scenarios. To solve these limitations, we introduce DualSentinel, a lightweight and unified defense framework that can accurately and promptly detect the activation of targeted attacks alongside the LLM generation process. We first identify a characteristic of compromised LLMs, termed Entropy Lull: when a targeted attack successfully hijacks the generation process, the LLM exhibits a distinct period of abnormally low and stable token probability entropy, indicating it is following a fixed path rather than making creative choices. DualSentinel leverages this pattern by developing an innovative dual-check approach. It first employs a magnitude and trend-aware monitoring method to proactively and sensitively flag an entropy lull pattern at runtime. Upon such flagging, it triggers a lightweight yet powerful secondary verification based on task-flipping. An attack is confirmed only if the entropy lull pattern persists across both the original and the flipped task, proving that the LLM's output is coercively controlled. Extensive evaluations show that DualSentinel is both highly effective (superior detection accuracy with near-zero false positives) and remarkably efficient (negligible additional cost), offering a truly practical path toward securing deployed LLMs. The source code can be accessed at https://doi.org/10.5281/zenodo.18479273.
-
-</details>
-
-### 127. Weight-Space Detection of Backdoors in LoRA Adapters
+### 105. Weight-Space Detection of Backdoors in LoRA Adapters
 
 📄 [arXiv](https://arxiv.org/abs/2602.15195)　📅 2026-02
 
@@ -2419,7 +2001,7 @@ LoRA adapters let users fine-tune large language models (LLMs) efficiently. Howe
 
 </details>
 
-### 128. Language Triggers Hijack Language Circuits: A Mechanistic Analysis of Backdoor Behaviors in Large Language Models
+### 106. Language Triggers Hijack Language Circuits: A Mechanistic Analysis of Backdoor Behaviors in Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2602.10382)　📅 2026-02
 
@@ -2438,7 +2020,7 @@ Backdoor attacks pose significant security risks for Large Language Models (LLMs
 
 </details>
 
-### 129. The Trigger in the Haystack: Extracting and Reconstructing LLM Backdoor Triggers
+### 107. The Trigger in the Haystack: Extracting and Reconstructing LLM Backdoor Triggers
 
 📄 [arXiv](https://arxiv.org/abs/2602.03085)　📅 2026-02
 
@@ -2457,7 +2039,7 @@ Detecting whether a model has been poisoned is a longstanding problem in AI secu
 
 </details>
 
-### 130. STAR: Detecting Inference-Time Backdoors in LLM Reasoning via State-Transition Amplification Ratio
+### 108. STAR: Detecting Inference-Time Backdoors in LLM Reasoning via State-Transition Amplification Ratio
 
 📄 [arXiv](https://arxiv.org/abs/2601.08511)　📅 2026-01
 
@@ -2476,26 +2058,7 @@ Recent LLMs increasingly integrate reasoning mechanisms like Chain-of-Thought (C
 
 </details>
 
-### 131. Broadening the Backdoor Basin: Understanding LLM Backdoors Collapse and Making Backdoors Persistent
-
-🎓 [Official](https://icml.cc/virtual/2026/poster/66722)　📅 2026　🏷 ICML 2026
-
-**关键词**：`analysis`、`persistence`、`loss basin`、`backdoor attack`、`empirical evaluation`、`data poisoning`
-
-👤 **作者**：Xingyi Zhao、Tian Xie、Xiaojun Qi、Depeng Xu、Shuhan Yuan
-
-- 🎯 **研究动机**：许多 LLM 后门经不起下游 SFT——几何解释是常规投毒把后门损失驱入窄而尖的盆地，轻微参数漂移即快速遗忘
-- 🔬 **研究方法**：BAD-BOOM 经更宽平滑最小化扩展平滑后门盆地：把 sharpness-aware minimization 扩展为 Fisher 诱导椭球约束，给后门敏感参数更大扰动预算
-- 📌 **结论**：两种威胁设定、三种攻击场景、三个 LLM 与三个免触发 SFT 任务上持续保持高 ASR 且效用相当
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Large Language Models (LLMs) are vulnerable to backdoor attacks, yet we observe that many LLM backdoors do not survive when end users perform supervised fine-tuning (SFT). In this work, we provide a geometric explanation: by probing the backdoor objective under controlled weight perturbations, we find that conventional poisoning often drives the backdoor loss to a narrow and sharp basin; consequently, even modest parameter drift induced by downstream SFT can push the model out of the low-loss and high-ASR region, leading to rapid backdoor forgetting. Motivated by this insight, we propose BAD-BOOM, a resilient backdoor attack via broader smoothness minimization, which explicitly broadens and smooths the backdoor basin. BAD-BOOM extends sharpness-aware minimization with a Fisher-induced ellipsoidal constraint that allocates larger perturbation budgets to backdoor-sensitive parameters, encouraging solutions whose neighborhoods also maintain low backdoor loss. Across two threat settings, three attack scenarios, three open-source LLMs, and three trigger-free downstream SFT tasks, BAD-BOOM consistently preserves high ASR while maintaining competitive utility. The code is available at https://github.com/xingyizhao/BAD-BOOM.
-
-</details>
-
-### 132. Detecting Sleeper Agents in Large Language Models via Semantic Drift Analysis
+### 109. Detecting Sleeper Agents in Large Language Models via Semantic Drift Analysis
 
 📄 [arXiv](https://arxiv.org/abs/2511.15992)　📅 2025-11
 
@@ -2514,7 +2077,7 @@ Large Language Models (LLMs) can be backdoored to exhibit malicious behavior und
 
 </details>
 
-### 133. PoTS: Proof-of-Training-Steps for Backdoor Detection in Large Language Models
+### 110. PoTS: Proof-of-Training-Steps for Backdoor Detection in Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2510.15106)　📅 2025-10
 
@@ -2533,26 +2096,7 @@ As Large Language Models (LLMs) gain traction across critical domains, ensuring 
 
 </details>
 
-### 134. Uncovering Hidden Triggers: Backdoor Attribution in Language Models
-
-📄 [arXiv](https://arxiv.org/abs/2509.21761) · 🎓 [Official](https://icml.cc/virtual/2026/poster/60829)　📅 2025-09　🏷 ICML 2026
-
-**关键词**：`detection`、`attribution`、`control`、`backdoor attack`、`mechanistic analysis`、`data poisoning`
-
-👤 **作者**：Miao Yu、…、Qingsong Wen
-
-- 🎯 **研究动机**：LLM 后门的内部机制是黑箱，既有可解释性研究聚焦对齐与越狱而忽视后门
-- 🔬 **研究方法**：提出 BkdAttr 三方因果分析：Backdoor Probe 证明表示中编码可学习后门特征，BAHA 定位相关注意力头，并构造 Backdoor Vector 主控制器
-- 📌 **结论**：仅消融约 3% 注意力头即可降 ASR 超 90%；对单点表示的一次干预可使干净输入 ASR 升至约 100% 或触发输入降至约 0%
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Fine-tuned Large Language Models (LLMs) are vulnerable to backdoor attacks through data poisoning, yet the internal mechanisms governing these attacks remain a black box. Previous research on interpretability for LLM safety tends to focus on alignment, jailbreak, and hallucination, but overlooks backdoor mechanisms, making it difficult to understand and fully eliminate the backdoor threat. In this paper, aiming to bridge this gap, we explore the interpretable mechanisms of LLM backdoors through Backdoor Attribution (BkdAttr), a tripartite causal analysis framework. We first introduce the Backdoor Probe that proves the existence of learnable backdoor features encoded within the representations. Building on this insight, we further develop Backdoor Attention Head Attribution (BAHA), efficiently pinpointing the specific attention heads responsible for processing these features. Our primary experiments reveals these heads are relatively sparse; ablating a minimal \textbf{$\sim$ 3%} of total heads is sufficient to reduce the Attack Success Rate (ASR) by \textbf{over 90%}. More importantly, we further employ these findings to construct the Backdoor Vector derived from these attributed heads as a master controller for the backdoor. Through only \textbf{1-point} intervention on \textbf{single} representation, the vector can either boost ASR up to \textbf{$\sim$ 100% ($\uparrow$)} on clean inputs, or completely neutralize backdoor, suppressing ASR down to \textbf{$\sim$ 0% ($\downarrow$)} on triggered inputs. In conclusion, our work pioneers the exploration of mechanistic interpretability in LLM backdoors, demonstrating a powerful method for backdoor control and revealing actionable insights for the community.
-
-</details>
-
-### 135. Inverting Trojans in LLMs
+### 111. Inverting Trojans in LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2509.16203)　📅 2025-09
 
@@ -2571,7 +2115,7 @@ While effective backdoor detection and inversion schemes have been developed for
 
 </details>
 
-### 136. Mechanistic Exploration of Backdoored Large Language Model Attention Patterns
+### 112. Mechanistic Exploration of Backdoored Large Language Model Attention Patterns
 
 📄 [arXiv](https://arxiv.org/abs/2508.15847)　📅 2025-08
 
@@ -2590,7 +2134,7 @@ Backdoor attacks creating 'sleeper agents' in large language models (LLMs) pose 
 
 </details>
 
-### 137. ConfGuard: A Simple and Effective Backdoor Detection for Large Language Models
+### 113. ConfGuard: A Simple and Effective Backdoor Detection for Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2508.01365)　📅 2025-08
 
@@ -2609,7 +2153,7 @@ Backdoor attacks pose a significant threat to Large Language Models (LLMs), wher
 
 </details>
 
-### 138. Watch the Weights: Unsupervised Monitoring and Control of Fine-Tuned LLMs
+### 114. Watch the Weights: Unsupervised Monitoring and Control of Fine-Tuned LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2508.00161)　📅 2025-08　🏷 ICLR 2026
 
@@ -2628,7 +2172,7 @@ The releases of powerful open-weight large language models (LLMs) are often not 
 
 </details>
 
-### 139. Probe before You Talk: Towards Black-box Defense against Backdoor Unalignment for Large Language Models
+### 115. Probe before You Talk: Towards Black-box Defense against Backdoor Unalignment for Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2506.16447)　📅 2025-06
 
@@ -2647,7 +2191,7 @@ Backdoor unalignment attacks against Large Language Models (LLMs) enable the ste
 
 </details>
 
-### 140. Detecting Stealthy Backdoor Samples Based on Intra-class Distance for Large Language Models
+### 116. Detecting Stealthy Backdoor Samples Based on Intra-class Distance for Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2505.23015)　📅 2025-05　🏷 EMNLP 2025
 
@@ -2666,7 +2210,7 @@ Stealthy data poisoning during fine-tuning can backdoor large language models (L
 
 </details>
 
-### 141. Exposing the Ghost in the Transformer: Abnormal Detection for Large Language Models via Hidden State Forensics
+### 117. Exposing the Ghost in the Transformer: Abnormal Detection for Large Language Models via Hidden State Forensics
 
 📄 [arXiv](https://arxiv.org/abs/2504.00446)　📅 2025-04
 
@@ -2685,26 +2229,7 @@ The widespread adoption of Large Language Models (LLMs) in critical applications
 
 </details>
 
-### 142. Lie Detector: Unified Backdoor Detection via Cross-Examination Framework
-
-📄 [arXiv](https://arxiv.org/abs/2503.16872)　📅 2025-03
-
-**关键词**：`detection`、`cross-examination`、`black-box`、`model inconsistency`、`MLLM`
-
-👤 **作者**：Xuan Wang、…、Xitong Gao
-
-- 🎯 **研究动机**：半诚实外包训练下投毒可植入后门，现有统计检测难以跨学习范式保持精度
-- 🔬 **研究方法**：提出 Lie Detector，交叉审查两个独立服务商模型的不一致性，用 central kernel alignment 恢复触发器并以微调敏感性区分对抗扰动
-- 📌 **结论**：监督、半监督、自回归任务检测精度分别超 SoTA 5.4%、1.6%、11.9%，并首次检测 MLLM 后门
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Institutions with limited data and computing resources often outsource model training to third-party providers in a semi-honest setting, assuming adherence to prescribed training protocols with pre-defined learning paradigm (e.g., supervised or semi-supervised learning). However, this practice can introduce severe security risks, as adversaries may poison the training data to embed backdoors into the resulting model. Existing detection approaches predominantly rely on statistical analyses, which often fail to maintain universally accurate detection accuracy across different learning paradigms. To address this challenge, we propose a unified backdoor detection framework in the semi-honest setting that exploits cross-examination of model inconsistencies between two independent service providers. Specifically, we integrate central kernel alignment to enable robust feature similarity measurements across different model architectures and learning paradigms, thereby facilitating precise recovery and identification of backdoor triggers. We further introduce backdoor fine-tuning sensitivity analysis to distinguish backdoor triggers from adversarial perturbations, substantially reducing false positives. Extensive experiments demonstrate that our method achieves superior detection performance, improving accuracy by 5.4%, 1.6%, and 11.9% over SoTA baselines across supervised, semi-supervised, and autoregressive learning tasks, respectively. Notably, it is the first to effectively detect backdoors in multimodal large language models, further highlighting its broad applicability and advancing secure deep learning.
-
-</details>
-
-### 143. UniGuardian: A Unified Defense for Detecting Prompt Injection, Backdoor Attacks and Adversarial Attacks in Large Language Models
+### 118. UniGuardian: A Unified Defense for Detecting Prompt Injection, Backdoor Attacks and Adversarial Attacks in Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2502.13141)　📅 2025-02
 
@@ -2723,7 +2248,7 @@ Large Language Models (LLMs) are vulnerable to attacks like prompt injection, ba
 
 </details>
 
-### 144. Trojan Detection through Pattern Recognition for Large Language Models
+### 119. Trojan Detection through Pattern Recognition for Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2501.11621)　📅 2025-01
 
@@ -2742,7 +2267,7 @@ Trojan backdoors can be injected into large language models at various stages, i
 
 </details>
 
-### 145. PEFTGuard: Detecting Backdoor Attacks Against Parameter-Efficient Fine-Tuning
+### 120. PEFTGuard: Detecting Backdoor Attacks Against Parameter-Efficient Fine-Tuning
 
 📄 [arXiv](https://arxiv.org/abs/2411.17453)　📅 2024-11
 
@@ -2761,7 +2286,7 @@ Fine-tuning is an essential process to improve the performance of Large Language
 
 </details>
 
-### 146. When Backdoors Speak: Understanding LLM Backdoor Attacks Through Model-Generated Explanations
+### 121. When Backdoors Speak: Understanding LLM Backdoor Attacks Through Model-Generated Explanations
 
 📄 [arXiv](https://arxiv.org/abs/2411.12701) · 🎓 [Official](https://aclanthology.org/2025.acl-long.114/)　📅 2024-11　🏷 ACL 2025
 
@@ -2780,7 +2305,7 @@ Large Language Models (LLMs) are known to be vulnerable to backdoor attacks, whe
 
 </details>
 
-### 147. Chain-of-Scrutiny: Detecting Backdoor Attacks for Large Language Models
+### 122. Chain-of-Scrutiny: Detecting Backdoor Attacks for Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2406.05948) · 🎓 [Official](https://aclanthology.org/2025.findings-acl.401/)　📅 2024-06　🏷 ACL 2025
 
@@ -2799,7 +2324,7 @@ Large Language Models (LLMs), especially those accessed via APIs, have demonstra
 
 </details>
 
-### 148. Analyzing and Editing Inner Mechanisms of Backdoored Language Models
+### 123. Analyzing and Editing Inner Mechanisms of Backdoored Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2302.12461)　📅 2023-02
 
@@ -2818,7 +2343,7 @@ Poisoning of data sets is a potential security threat to large language models t
 
 </details>
 
-### 149. RTLGuard: A Lightweight Teacher-Student Defense for Poisoned RTL Code Generation Models
+### 124. RTLGuard: A Lightweight Teacher-Student Defense for Poisoned RTL Code Generation Models
 
 📄 [arXiv](https://arxiv.org/abs/2608.26049)　📅 2026-08
 
@@ -2837,7 +2362,7 @@ The rapid advancement of large language models (LLMs) is driving a shift toward 
 
 </details>
 
-### 150. Backdoor Decontamination Dynamics in LLM Agents
+### 125. Backdoor Decontamination Dynamics in LLM Agents
 
 📄 [arXiv](https://arxiv.org/abs/2608.11295)　📅 2026-08
 
@@ -2856,7 +2381,7 @@ Open-weight LLM agents are vulnerable to backdoors installed during fine-tuning,
 
 </details>
 
-### 151. Defense Against LLM Backdoors Using Critical Neuron Isolation Pruning
+### 126. Defense Against LLM Backdoors Using Critical Neuron Isolation Pruning
 
 📄 [arXiv](https://arxiv.org/abs/2607.19894)　📅 2026-07
 
@@ -2875,7 +2400,7 @@ Large language models (LLMs) are vulnerable to backdoor attacks, where hidden tr
 
 </details>
 
-### 152. Curvature-Guided Module Localization for Low-Rank Detoxification of Backdoored Large Language Models
+### 127. Curvature-Guided Module Localization for Low-Rank Detoxification of Backdoored Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2606.30899)　📅 2026-06
 
@@ -2894,7 +2419,7 @@ Backdoor attacks pose a serious threat to large language models (LLMs) by causin
 
 </details>
 
-### 153. QuantGuard: Learnable Rounding for Repairing Quantization-Conditioned Backdoors in LLMs
+### 128. QuantGuard: Learnable Rounding for Repairing Quantization-Conditioned Backdoors in LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2606.29239)　📅 2026-06
 
@@ -2913,7 +2438,7 @@ Model quantization is a key technique for reducing storage and inference costs i
 
 </details>
 
-### 154. FlipGuard: Defending Large Language Models Against Quantization-Conditioned Backdoor Attacks
+### 129. FlipGuard: Defending Large Language Models Against Quantization-Conditioned Backdoor Attacks
 
 📄 [arXiv](https://arxiv.org/abs/2606.28962)　📅 2026-06
 
@@ -2932,7 +2457,7 @@ Model quantization is essential for the efficient deployment of Large Language M
 
 </details>
 
-### 155. Quantization as a Malicious Task: Removing Quantization-Conditioned Backdoors via Task Arithmetic
+### 130. Quantization as a Malicious Task: Removing Quantization-Conditioned Backdoors via Task Arithmetic
 
 📄 [arXiv](https://arxiv.org/abs/2606.20254)　📅 2026-06
 
@@ -2951,7 +2476,7 @@ Model quantization is widely adopted to reduce memory usage and inference cost w
 
 </details>
 
-### 156. Dummy Backdoor as a Defense: Removing Unknown Backdoors via Shared Internal Mechanisms for Generative LLMs
+### 131. Dummy Backdoor as a Defense: Removing Unknown Backdoors via Shared Internal Mechanisms for Generative LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2606.11648)　📅 2026-06
 
@@ -2970,7 +2495,7 @@ Backdoor attacks pose a serious threat to the safety and reliability of Large La
 
 </details>
 
-### 157. Shared Latent Structures Enable Unified Backdoor Detection and Mitigation in LLMs
+### 132. Shared Latent Structures Enable Unified Backdoor Detection and Mitigation in LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2606.07963)　📅 2026-06
 
@@ -2989,7 +2514,7 @@ Backdoor attacks in large language models (LLMs) are often treated as isolated t
 
 </details>
 
-### 158. Backdoor Unlearning Generalization: A Path toward the Removal of Unknown Triggers in LLMs
+### 133. Backdoor Unlearning Generalization: A Path toward the Removal of Unknown Triggers in LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2606.03785)　📅 2026-06
 
@@ -3008,26 +2533,7 @@ Backdoor attacks in Large Language Models (LLMs) are a growing security concern,
 
 </details>
 
-### 159. Patcher: Post-Hoc Patching of Backdoored Large Language Models
-
-📄 [arXiv](https://arxiv.org/abs/2606.02995) · 🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/gao-anjun)　📅 2026-06　🏷 USENIX Security 2026
-
-**关键词**：`defense`、`post-hoc patch`、`trigger localization`、`LLM backdoor`、`post-hoc patching`、`saliency localization`
-
-👤 **作者**：Anjun Gao、Yueyang Quan、Yufei Xia、Zhuqing Liu、Minghong Fang
-
-- 🎯 **研究动机**：jailbreak 后门防御通常需要完整攻击信息或多个触发样本，防御者仅有单个失败案例时不适用
-- 🔬 **研究方法**：提出 Patcher，仅凭一个上报失败案例和模型参数：先用响应条件化梯度显著性加自适应聚类定位触发器，再用 KL 约束微调解除触发-响应关联并保留正常能力
-- 📌 **结论**：多种后门攻击下成功定位并中和后门、保持模型效用，对自适应攻击同样鲁棒
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Large language models remain vulnerable to jailbreak backdoor attacks, where adversaries poison safety alignment data to embed hidden triggers that bypass safety mechanisms. Existing defenses often require comprehensive attack information or multiple triggered examples, making them impractical when defenders only observe a single reported failure case without knowing whether it stems from a backdoor attack or a natural alignment bug. This paper presents Patcher, a post-hoc defense framework that repairs backdoored language models using only a single reported failure case and the model parameters. Patcher operates in two stages. First, it localizes backdoor triggers by computing response-conditioned gradient-based saliency scores and applying adaptive clustering to separate triggers from benign context. Second, it patches the model through a constrained fine-tuning objective that breaks the trigger-response association while preserving benign-task utility and robustness to non-triggered jailbreak attacks through KL-divergence constraints. We conduct extensive evaluations across multiple backdoor attack strategies and demonstrate that Patcher successfully localizes triggers and neutralizes backdoors while maintaining model utility. We further show robustness against adaptive attacks designed to evade our defense. This work represents a significant step toward practical defenses against training-time attacks in deployed language models.
-
-</details>
-
-### 160. GradSentry: Gradient Spectral Entropy for Backdoor Sample Filtering in Large Language Model Fine-Tuning
+### 134. GradSentry: Gradient Spectral Entropy for Backdoor Sample Filtering in Large Language Model Fine-Tuning
 
 📄 [arXiv](https://arxiv.org/abs/2605.26574)　📅 2026-05　🏷 EMNLP 2026
 
@@ -3046,7 +2552,7 @@ Fine-tuning Large Language Models with untrusted data exposes models to backdoor
 
 </details>
 
-### 161. BackFlush: Knowledge-Free Backdoor Detection and Elimination with Watermark Preservation in Large Language Models
+### 135. BackFlush: Knowledge-Free Backdoor Detection and Elimination with Watermark Preservation in Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2605.12529)　📅 2026-05
 
@@ -3065,7 +2571,7 @@ In recent trends, one can observe Large Language Models (LLMs) are exposed to ba
 
 </details>
 
-### 162. Defusing the Trigger: Tail-Risk-Informed Attention Rebalancing for LLM Backdoor Mitigation
+### 136. Defusing the Trigger: Tail-Risk-Informed Attention Rebalancing for LLM Backdoor Mitigation
 
 📄 [arXiv](https://arxiv.org/abs/2604.24162)　📅 2026-04
 
@@ -3084,26 +2590,7 @@ Backdoored large language models (LLMs) exhibit attacker-specified behavior at i
 
 </details>
 
-### 163. Critical-CoT: A Robust Defense Framework against Reasoning-Level Backdoor Attacks in Large Language Models
-
-📄 [arXiv](https://arxiv.org/abs/2604.10681) · 🎓 [Official](https://aclanthology.org/2026.acl-long.495/)　📅 2026-04　🏷 ACL 2026
-
-**关键词**：`defense`、`critical reasoning`、`CoT defense`、`reasoning safety`、`LLM backdoor`、`data poisoning`
-
-👤 **作者**：Vu Tuan Truong、Long Bao Le
-
-- 🎯 **研究动机**：reasoning-level 后门在 CoT 中插入恶意推理步骤而答案仍看似合理，针对性防御基本空白
-- 🔬 **研究方法**：Critical-CoT 两阶段微调培养批判性思维，使模型自动识别后门并拒绝生成恶意推理步骤
-- 📌 **结论**：对 ICL 与 FT 两类后门攻击均强鲁棒，并具跨域跨任务泛化
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Large Language Models (LLMs), despite their impressive capabilities across domains, have been shown to be vulnerable to backdoor attacks. Prior backdoor strategies predominantly operate at the token level, where an injected trigger causes the model to generate a specific target word, choice, or class (depending on the task). Recent advances, however, exploit the long-form reasoning tendencies of modern LLMs to conduct reasoning-level backdoors: once triggered, the victim model inserts one or more malicious reasoning steps into its chain-of-thought (CoT). These attacks are substantially harder to detect, as the backdoored answer remains plausible and consistent with the poisoned reasoning trajectory. Yet, defenses tailored to this type of backdoor remain largely unexplored. To bridge this gap, we propose Critical-CoT, a novel defense mechanism that conducts a two-stage fine-tuning (FT) process on LLMs to develop critical thinking behaviors, enabling them to automatically identify potential backdoors and refuse to generate malicious reasoning steps. Extensive experiments across multiple LLMs and datasets demonstrate that Critical-CoT provides strong robustness against both in-context learning-based and FT-based backdoor attacks. Notably, Critical-CoT exhibits strong cross-domain and cross-task generalization. Our code is available at hthttps://github.com/tuanvu171/Critical-CoT.
-
-</details>
-
-### 164. Latent Instruction Representation Alignment: Defending against Jailbreaks, Backdoors and Undesired Knowledge in LLMs
+### 137. Latent Instruction Representation Alignment: Defending against Jailbreaks, Backdoors and Undesired Knowledge in LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2604.10403)　📅 2026-04
 
@@ -3122,7 +2609,7 @@ We address jailbreaks, backdoors, and unlearning for large language models (LLMs
 
 </details>
 
-### 165. Purifying Generative LLMs from Backdoors without Prior Knowledge or Clean Reference
+### 138. Purifying Generative LLMs from Backdoors without Prior Knowledge or Clean Reference
 
 📄 [arXiv](https://arxiv.org/abs/2603.13461) · 📝 [OpenReview](https://openreview.net/forum?id=M7eWB695jp)　📅 2026-03　🏷 ICLR 2026
 
@@ -3141,26 +2628,7 @@ Backdoor attacks pose severe security threats to large language models (LLMs), w
 
 </details>
 
-### 166. TraceGuard: Process-Guided Firewall against Reasoning Backdoors in Large Language Models
-
-📄 [arXiv](https://arxiv.org/abs/2603.02436)　📅 2026-09
-
-**关键词**：`defense`、`reasoning backdoor`、`process monitoring`、`point of fracture`
-
-👤 **作者**：Zhen Guo、Shanghao Shi、Hao Li、Shamim Yazdani、Ning Zhang、Reza Tourani
-
-- 🎯 **研究动机**：推理级后门可污染中间推理而保持貌似合理的轨迹与良性输出，输出式护栏无法定位首个无依据步骤
-- 🔬 **研究方法**：TraceGuard 把模型推理当不可信输入，结合可验证审计轨迹生成、步骤感知 SFT（SSFT）与验证器引导 RL（VGRL），审计中间步骤并定位 Point of Fracture
-- 📌 **结论**：紧凑 Qwen3-4B-Guard 端到端检测显著超未对齐 20B 模型，且泛化到训练外攻击族，基于 210,456 个步骤级审计决策
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Large Reasoning Models (LRMs) introduce a reasoning-level attack surface: adversaries can corrupt intermediate inferences while preserving a plausible trace and an apparently benign output. Existing output guardrails cannot reliably identify where such a trace first becomes unsupported. We present TraceGuard, a compact, locally deployable reasoning firewall that treats model-generated reasoning as untrusted input. Its design combines grounded generation of verifiable audit traces, Step-Aware Supervised Fine-Tuning (SSFT) for process-level supervision, and Verifier-Guided Reinforcement Learning (VGRL) for hardening against difficult reasoning traces. TraceGuard audits intermediate steps, localizes the initial Point of Fracture, and grounds its final decision in the complete audit evidence. We evaluate TraceGuard across heterogeneous open-weight architectures, reasoning domains, and reasoning-integrity attack families. A compact Qwen3-4B-Guard substantially outperforms an unaligned 20B model under strict end-to-end detection. Its auditing behavior transfers to attack families excluded from training, resists in-scope black-box probing, and remains robust in an additional white-box stress test. Overall, 210,456 step-level audit decisions support compact, process-aligned verification as an effective, deployable defense boundary for reasoning systems.
-
-</details>
-
-### 167. Plato's Form: Toward Backdoor Defense-as-a-Service for LLMs with Prototype Representations
+### 139. Plato's Form: Toward Backdoor Defense-as-a-Service for LLMs with Prototype Representations
 
 📄 [arXiv](https://arxiv.org/abs/2602.06887)　📅 2026-02
 
@@ -3179,7 +2647,7 @@ Large language models (LLMs) are increasingly deployed in security-sensitive app
 
 </details>
 
-### 168. Semantic Consensus Decoding: Backdoor Defense for Verilog Code Generation
+### 140. Semantic Consensus Decoding: Backdoor Defense for Verilog Code Generation
 
 📄 [arXiv](https://arxiv.org/abs/2602.04195)　📅 2026-02
 
@@ -3198,7 +2666,7 @@ Large language models (LLMs) for Verilog code generation are increasingly adopte
 
 </details>
 
-### 169. Why LoRA Fails to Forget: Regularized Low-Rank Adaptation against Backdoors in Language Models
+### 141. Why LoRA Fails to Forget: Regularized Low-Rank Adaptation against Backdoors in Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2601.06305)　📅 2026-01
 
@@ -3217,45 +2685,7 @@ Low-Rank Adaptation (LoRA) is widely used for parameter-efficient fine-tuning of
 
 </details>
 
-### 170. Merging Triggers, Breaking Backdoors: Defensive Poisoning for Instruction-Tuned Language Models
-
-📄 [arXiv](https://arxiv.org/abs/2601.04448) · 🎓 [Official](https://aclanthology.org/2026.acl-long.1113/)　📅 2026-01　🏷 ACL 2026
-
-**关键词**：`defense`、`defensive poisoning`、`trigger merging`、`LLM backdoor`、`data poisoning`、`model integrity`
-
-👤 **作者**：San Kim、Gary Geunbae Lee
-
-- 🎯 **研究动机**：指令微调 LLM 依赖的大规模网络数据使其易受后门攻击，而相应防御研究不足
-- 🔬 **研究方法**：MB-Defense 两阶段：防御性投毒把攻击者触发器与防御触发器合并为统一后门表示，再经附加训练打破该表示恢复干净行为
-- 📌 **结论**：多个 LLM 上显著降低 ASR 并保留指令遵循能力，对未见后门攻击可泛化且数据高效
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Large Language Models (LLMs) have greatly advanced Natural Language Processing (NLP), particularly through instruction tuning, which enables broad task generalization without additional fine-tuning. However, their reliance on large-scale datasets-often collected from human or web sources-makes them vulnerable to backdoor attacks, where adversaries poison a small subset of data to implant hidden behaviors. Despite this growing risk, defenses for instruction-tuned models remain underexplored. We propose MB-Defense (Merging & Breaking Defense Framework), a novel training pipeline that immunizes instruction-tuned LLMs against diverse backdoor threats. MB-Defense comprises two stages: (i) Defensive Poisoning, which merges attacker and defensive triggers into a unified backdoor representation, and (ii) Backdoor Neutralization, which breaks this representation through additional training to restore clean behavior. Extensive experiments across multiple LLMs show that MB-Defense substantially lowers attack success rates while preserving instruction-following ability. Our method offers a generalizable and data-efficient defense strategy, improving the robustness of instruction-tuned LLMs against unseen backdoor attacks.
-
-</details>
-
-### 171. Activation Decomposition and Steering for LLM Backdoor Remediation
-
-🎓 [Official](https://aclanthology.org/2026.acl-long.2025/)　📅 2026　🏷 ACL 2026
-
-**关键词**：`analysis`、`activation decomposition`、`steering`、`representation intervention`、`LLM backdoor`、`data poisoning`
-
-👤 **作者**：Lingfeng Zhong、Qiongkai Xu、Usman Naseem
-
-- 🎯 **研究动机**：现有 LLM 后门防御依赖辅助模型或安全数据集，两者并非总可获得
-- 🔬 **研究方法**：提出 Contrastive-Selective Activation Decomposition and Steering（CS-ADS）：对比相对良性中毒设定分解特征向量获取修复方向，不依赖额外模型或数据集；利用被后门污染的 prompt 对仍以不同比例编码相同良性语义这一洞察
-- 📌 **结论**：对多种 SOTA 后门攻击均有效，防御质量甚至优于基于数据集的对比 steering
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Existing works on defending against LLM backdoor attacks rely on either auxiliary models or safety-related datasets for defending against backdoor attacks on large language models, which are not always available. To address these challenges, we propose our we propose our Contrastive-Selective Activation Decomposition and Steering (CS-ADS), which contrasts relatively more benign and poisoned settings to decompose the feature vectors for steering without relying on additional auxiliary models or datasets. With such disentangled vectors for remediation, our method can achieve feasible defense qualities even better than dataset-based contrastive steering strategies. This novel decomposition-based solution is motivated by the key insight that feature representations of prompt pairs can encode the same benign semantics in different proportions, even when both prompt pairs are similarly backdoored. Such discrepancies allow our method to identify effective remediation directions for steering the generation process, thereby preventing undesired outputs. We evaluate CS-ADS against multiple state-of-the-art backdoor attacks, and experimental results show that CS-ADS provides effective defense across settings.
-
-</details>
-
-### 172. From Poisoned to Aware: Fostering Backdoor Self-Awareness in LLMs
+### 142. From Poisoned to Aware: Fostering Backdoor Self-Awareness in LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2510.05169) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61940)　📅 2026　🏷 ICML 2026
 
@@ -3274,26 +2704,7 @@ Large Language Models (LLMs) can acquire deceptive behaviors through backdoor at
 
 </details>
 
-### 173. Backdoor Collapse: Eliminating Unknown Threats via Known Backdoor Aggregation in Language Models
-
-📄 [arXiv](https://arxiv.org/abs/2510.10265) · 🌐 [Project](https://anonymous.4open.science/r/Locphylax) · 🎓 [Official](https://aclanthology.org/2026.acl-long.920/)　📅 2025-10　🏷 ACL 2026
-
-**关键词**：`analysis`、`known-to-unknown`、`aggregation`、`LLM backdoor`、`data poisoning`、`model integrity`
-
-👤 **作者**：Liang Lin、…、Qingsong Wen
-
-- 🎯 **研究动机**：现有 LLM 后门防御依赖对触发器设置的不切实际假设，难以应对未知威胁
-- 🔬 **研究方法**：发现向已中毒模型注入已知后门会使未知与新增后门在表示空间聚合，据此先注入已知触发器聚合后门表示，再恢复微调还原良性输出
-- 📌 **结论**：多基准平均 ASR 降至 4.41%，优于基线 28.1%~69.3%，clean 精度损失在 0.5% 以内，且跨后门类型泛化
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Backdoor attacks are a significant threat to large language models (LLMs), often embedded via public checkpoints, yet existing defenses rely on impractical assumptions about trigger settings. To address this challenge, we propose \ourmethod, a defense framework that requires no prior knowledge of trigger settings. \ourmethod is based on the key observation that when deliberately injecting known backdoors into an already-compromised model, both existing unknown and newly injected backdoors aggregate in the representation space. \ourmethod leverages this through a two-stage process: \textbf{first}, aggregating backdoor representations by injecting known triggers, and \textbf{then}, performing recovery fine-tuning to restore benign outputs. Extensive experiments across multiple LLM architectures demonstrate that: (I) \ourmethod reduces the average Attack Success Rate to 4.41\% across multiple benchmarks, outperforming existing baselines by 28.1\%$\sim$69.3\%$\uparrow$. (II) Clean accuracy and utility are preserved within 0.5\% of the original model, ensuring negligible impact on legitimate tasks. (III) The defense generalizes across different types of backdoors, confirming its robustness in practical deployment scenarios.
-
-</details>
-
-### 174. P2P: A Poison-to-Poison Remedy for Reliable Backdoor Defense in LLMs
+### 143. P2P: A Poison-to-Poison Remedy for Reliable Backdoor Defense in LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2510.04503) · 🎓 [Official](https://aclanthology.org/2026.findings-acl.600/)　📅 2025-10　🏷 ACL 2026
 
@@ -3312,26 +2723,7 @@ During fine-tuning, large language models (LLMs) are increasingly vulnerable to 
 
 </details>
 
-### 175. Lethe: Purifying Backdoored Large Language Models with Knowledge Dilution
-
-📄 [arXiv](https://arxiv.org/abs/2508.21004) · 🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/chen-chen)　📅 2025-08　🏷 USENIX Security 2026
-
-**关键词**：`defense`、`knowledge dilution`、`purification`、`LLM backdoor`、`model purification`
-
-👤 **作者**：Chen Chen、…、Kwok-Yan Lam
-
-- 🎯 **研究动机**：现有 LLM 后门防御覆盖窄、多仅检测，难敌编辑式、多触发与无触发攻击
-- 🔬 **研究方法**：提出 LETHE 知识稀释：内部用轻量数据训练干净模型并与后门模型合并稀释参数记忆，外部在 prompt 注入良性语义相关证据转移注意力
-- 📌 **结论**：五个 LLM、八种攻击上超八个 SoTA 防御基线，高级后门 ASR 最多降 98% 且保持效用
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Large language models (LLMs) have seen significant advancements, achieving superior performance in various Natural Language Processing (NLP) tasks. However, they remain vulnerable to backdoor attacks, where models behave normally for standard queries but generate harmful responses or unintended output when specific triggers are activated. Existing backdoor defenses either lack comprehensiveness, focusing on narrow trigger settings, detection-only mechanisms, and limited domains, or fail to withstand advanced scenarios like model-editing-based, multi-trigger, and triggerless attacks. In this paper, we present LETHE, a novel method to eliminate backdoor behaviors from LLMs through knowledge dilution using both internal and external mechanisms. Internally, LETHE leverages a lightweight dataset to train a clean model, which is then merged with the backdoored model to neutralize malicious behaviors by diluting the backdoor impact within the model's parametric memory. Externally, LETHE incorporates benign and semantically relevant evidence into the prompt to distract LLM's attention from backdoor features. Experimental results on classification and generation domains across 5 widely used LLMs demonstrate that LETHE outperforms 8 state-of-the-art defense baselines against 8 backdoor attacks. LETHE reduces the attack success rate of advanced backdoor attacks by up to 98% while maintaining model utility. Furthermore, LETHE has proven to be cost-efficient and robust against adaptive backdoor attacks.
-
-</details>
-
-### 176. Pruning Strategies for Backdoor Defense in LLMs
+### 144. Pruning Strategies for Backdoor Defense in LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2508.20032)　📅 2025-08
 
@@ -3350,7 +2742,7 @@ Backdoor attacks are a significant threat to the performance and integrity of pr
 
 </details>
 
-### 177. SLIP: Soft Label Mechanism and Key-Extraction-Guided CoT-based Defense against Instruction Backdoor in APIs
+### 145. SLIP: Soft Label Mechanism and Key-Extraction-Guided CoT-based Defense against Instruction Backdoor in APIs
 
 📄 [arXiv](https://arxiv.org/abs/2508.06153)　📅 2025-08　🏷 ACL 2026
 
@@ -3369,7 +2761,7 @@ Customized Large Language Model (LLM) agents face a critical security threat fro
 
 </details>
 
-### 178. BeDKD: Backdoor Defense Based on Directional Mapping Module and Adversarial Knowledge Distillation
+### 146. BeDKD: Backdoor Defense Based on Directional Mapping Module and Adversarial Knowledge Distillation
 
 📄 [arXiv](https://arxiv.org/abs/2508.01595)　📅 2025-08
 
@@ -3388,7 +2780,7 @@ Although existing backdoor defenses have gained success in mitigating backdoor a
 
 </details>
 
-### 179. ICLShield: Exploring and Mitigating In-Context Learning Backdoor Attacks
+### 147. ICLShield: Exploring and Mitigating In-Context Learning Backdoor Attacks
 
 📄 [arXiv](https://arxiv.org/abs/2507.01321) · 🎓 [Official](https://icml.cc/virtual/2025/poster/43756)　📅 2025-07　🏷 ICML 2025
 
@@ -3407,7 +2799,7 @@ In-context learning (ICL) has demonstrated remarkable success in large language 
 
 </details>
 
-### 180. GUARD: Dual-Agent-Based Backdoor Defense on Chain-of-Thought in Neural Code Generation
+### 148. GUARD: Dual-Agent-Based Backdoor Defense on Chain-of-Thought in Neural Code Generation
 
 📄 [arXiv](https://arxiv.org/abs/2505.21425)　📅 2025-05
 
@@ -3426,7 +2818,7 @@ With the widespread application of large language models in code generation, rec
 
 </details>
 
-### 181. Gracefully Filtering Backdoor Samples for Generative Large Language Models without Retraining
+### 149. Gracefully Filtering Backdoor Samples for Generative Large Language Models without Retraining
 
 📄 [arXiv](https://arxiv.org/abs/2412.02454) · 🎓 [Official](https://aclanthology.org/2025.coling-main.220/)　📅 2024-12
 
@@ -3445,7 +2837,7 @@ Backdoor attacks remain significant security threats to generative large languag
 
 </details>
 
-### 182. Neutralizing Backdoors through Information Conflicts for Large Language Models
+### 150. Neutralizing Backdoors through Information Conflicts for Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2411.18280)　📅 2024-11
 
@@ -3464,7 +2856,7 @@ Large language models (LLMs) have seen significant advancements, achieving super
 
 </details>
 
-### 183. CROW: Eliminating Backdoors from Large Language Models via Internal Consistency Regularization
+### 151. CROW: Eliminating Backdoors from Large Language Models via Internal Consistency Regularization
 
 📄 [arXiv](https://arxiv.org/abs/2411.12768) · 🌐 [Project](https://proceedings.mlr.press/v267/min25b.html)　📅 2024-11　🏷 ICML 2025
 
@@ -3483,7 +2875,7 @@ Large Language Models (LLMs) are vulnerable to backdoor attacks that manipulate 
 
 </details>
 
-### 184. Unlearning Backdoor Attacks for LLMs with Weak-to-Strong Knowledge Distillation
+### 152. Unlearning Backdoor Attacks for LLMs with Weak-to-Strong Knowledge Distillation
 
 📄 [arXiv](https://arxiv.org/abs/2410.14425) · 🎓 [Official](https://aclanthology.org/2025.findings-acl.255/)　📅 2024-10　🏷 ACL 2025
 
@@ -3502,7 +2894,7 @@ Parameter-efficient fine-tuning (PEFT) can bridge the gap between large language
 
 </details>
 
-### 185. Obliviate: Neutralizing Task-Agnostic Backdoors within the Parameter-Efficient Fine-Tuning Paradigm
+### 153. Obliviate: Neutralizing Task-Agnostic Backdoors within the Parameter-Efficient Fine-Tuning Paradigm
 
 📄 [arXiv](https://arxiv.org/abs/2409.14119)　📅 2024-09
 
@@ -3521,7 +2913,7 @@ Parameter-efficient fine-tuning (PEFT) has become a key training strategy for la
 
 </details>
 
-### 186. Latent Adversarial Training Improves Robustness to Persistent Harmful Behaviors in LLMs
+### 154. Latent Adversarial Training Improves Robustness to Persistent Harmful Behaviors in LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2407.15549)　📅 2024-07
 
@@ -3540,7 +2932,7 @@ Large language models (LLMs) can often be made to behave in undesirable ways tha
 
 </details>
 
-### 187. Securing Multi-turn Conversational Language Models from Distributed Backdoor Attacks
+### 155. Securing Multi-turn Conversational Language Models from Distributed Backdoor Attacks
 
 📄 [arXiv](https://arxiv.org/abs/2407.04151) · 🎓 [Official](https://aclanthology.org/2024.findings-emnlp.750/)　📅 2024-07　🏷 EMNLP 2024
 
@@ -3559,7 +2951,7 @@ Large language models (LLMs) have acquired the ability to handle longer context 
 
 </details>
 
-### 188. FABE: Backdoor Elimination with Causal Front-Door Adjustment
+### 156. FABE: Backdoor Elimination with Causal Front-Door Adjustment
 
 🌐 [Project](https://proceedings.mlr.press/v235/liu24bu.html)　📅 2024-07　🏷 ICML 2024
 
@@ -3578,26 +2970,7 @@ We have developed a new framework based on the theory of causal inference to pro
 
 </details>
 
-### 189. BEEAR: Embedding-Based Adversarial Removal of Safety Backdoors in Instruction-Tuned Language Models
-
-📄 [arXiv](https://arxiv.org/abs/2406.17092) · 🎓 [Official](https://aclanthology.org/2024.emnlp-main.732/)　📅 2024-06　🏷 EMNLP 2024
-
-**关键词**：`defense`、`steganographic backdoor`、`stealthy backdoor`、`embedding perturbation`、`safety`
-
-👤 **作者**：Yi Zeng、Weiyu Sun、Tran Ngoc Huynh、Dawn Song、Bo Li、Ruoxi Jia
-
-- 🎯 **研究动机**：安全后门的触发器在 token 空间高维、恶意行为多样，难以防御
-- 🔬 **研究方法**：BEEAR 利用触发器引起嵌入空间相对一致漂移的规律，双层优化找通用嵌入扰动并调参强化安全行为
-- 📌 **结论**：RLHF 期后门 ASR 从 95% 以上降至 1% 以下、指令微调期恶意代码后门从 47% 降至 0%，且不损效用
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Safety backdoor attacks in large language models (LLMs) enable the stealthy triggering of unsafe behaviors while evading detection during normal interactions. The high dimensionality of potential triggers in the token space and the diverse range of malicious behaviors make this a critical challenge. We present BEEAR, a mitigation approach leveraging the insight that backdoor triggers induce relatively uniform drifts in the model's embedding space. Our bi-level optimization method identifies universal embedding perturbations that elicit unwanted behaviors and adjusts the model parameters to reinforce safe behaviors against these perturbations. Experiments show BEEAR reduces the success rate of RLHF time backdoor attacks from >95% to <1% and from 47% to 0% for instruction-tuning time backdoors targeting malicious code generation, without compromising model utility. Requiring only defender-defined safe and unwanted behaviors, BEEAR represents a step towards practical defenses against safety backdoors in LLMs, providing a foundation for further advancements in AI safety and security.
-
-</details>
-
-### 190. CleanGen: Mitigating Backdoor Attacks for Generation Tasks in Large Language Models
+### 157. CleanGen: Mitigating Backdoor Attacks for Generation Tasks in Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2406.12257) · 🎓 [Official](https://aclanthology.org/2024.emnlp-main.514/)　📅 2024-06　🏷 EMNLP 2024
 
@@ -3616,7 +2989,7 @@ The remarkable performance of large language models (LLMs) in generation tasks h
 
 </details>
 
-### 191. Simulate and Eliminate: Revoke Backdoors for Generative Large Language Models
+### 158. Simulate and Eliminate: Revoke Backdoors for Generative Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2405.07667)　📅 2024-05　🏷 AAAI 2025
 
@@ -3635,7 +3008,7 @@ With rapid advances, generative large language models (LLMs) dominate various Na
 
 </details>
 
-### 192. Defending against Weight-Poisoning Backdoor Attacks for Parameter-Efficient Fine-Tuning
+### 159. Defending against Weight-Poisoning Backdoor Attacks for Parameter-Efficient Fine-Tuning
 
 📄 [arXiv](https://arxiv.org/abs/2402.12168) · 🎓 [Official](https://aclanthology.org/2024.findings-naacl.217/)　📅 2024-02　🏷 ACL 2024
 
@@ -3654,7 +3027,7 @@ Recently, various parameter-efficient fine-tuning (PEFT) strategies for applicat
 
 </details>
 
-### 193. Test-Time Backdoor Mitigation for Black-Box Large Language Models with Defensive Demonstrations
+### 160. Test-Time Backdoor Mitigation for Black-Box Large Language Models with Defensive Demonstrations
 
 📄 [arXiv](https://arxiv.org/abs/2311.09763) · 🎓 [Official](https://aclanthology.org/2025.findings-naacl.119/)　📅 2023-11　🏷 ACL 2025
 
@@ -3673,7 +3046,7 @@ Existing studies in backdoor defense have predominantly focused on the training 
 
 </details>
 
-### 194. Prompt as Triggers for Backdoor Attack: Examining the Vulnerability in Language Models
+### 161. Prompt as Triggers for Backdoor Attack: Examining the Vulnerability in Language Models
 
 🎓 [Official](https://aclanthology.org/2023.emnlp-main.757/)　📅 2023-12　🏷 EMNLP 2023
 
@@ -3692,7 +3065,7 @@ The prompt-based learning paradigm, which bridges the gap between pre-training a
 
 </details>
 
-### 195. BadGPT: Exploring Security Vulnerabilities of ChatGPT via Backdoor Attacks to InstructGPT
+### 162. BadGPT: Exploring Security Vulnerabilities of ChatGPT via Backdoor Attacks to InstructGPT
 
 📄 [arXiv](https://arxiv.org/abs/2304.12298)　📅 2023-04　🏷 NDSS 2023
 
@@ -3711,7 +3084,7 @@ Recently, ChatGPT has gained significant attention in research due to its abilit
 
 </details>
 
-### 196. Training-Free Lexical Backdoor Attacks on Language Models
+### 163. Training-Free Lexical Backdoor Attacks on Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2302.04116) · 🌐 [Project](https://doi.org/10.1145/3543507.3583348)　📅 2023-02
 
@@ -3730,7 +3103,7 @@ Large-scale language models have achieved tremendous success across various natu
 
 </details>
 
-### 197. Textual Backdoor Attacks Can Be More Harmful via Two Simple Tricks
+### 164. Textual Backdoor Attacks Can Be More Harmful via Two Simple Tricks
 
 📄 [arXiv](https://arxiv.org/abs/2110.08247) · 🎓 [Official](https://aclanthology.org/2022.emnlp-main.770/)　📅 2022-12　🏷 EMNLP 2022
 
@@ -3749,7 +3122,7 @@ Backdoor attacks are a kind of emergent security threat in deep learning. After 
 
 </details>
 
-### 198. BadPrompt: Backdoor Attacks on Continuous Prompts
+### 165. BadPrompt: Backdoor Attacks on Continuous Prompts
 
 📄 [arXiv](https://arxiv.org/abs/2211.14719)　📅 2022-11
 
@@ -3768,7 +3141,7 @@ The prompt-based learning paradigm has gained much research attention recently. 
 
 </details>
 
-### 199. Fine-Mixing: Mitigating Backdoors in Fine-Tuned Language Models
+### 166. Fine-Mixing: Mitigating Backdoors in Fine-Tuned Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2210.09545)　📅 2022-10　🏷 EMNLP 2022
 
@@ -3787,7 +3160,7 @@ Deep Neural Networks (DNNs) are known to be vulnerable to backdoor attacks. In N
 
 </details>
 
-### 200. Moderate-Fitting as a Natural Backdoor Defender for Pre-trained Language Models
+### 167. Moderate-Fitting as a Natural Backdoor Defender for Pre-trained Language Models
 
 🌐 [Project](https://papers.nips.cc/paper_files/paper/2022/hash/0799492e7be38b66d10ead5e8809616d-Abstract-Conference.html)　📅 2022　🏷 NeurIPS 2022
 
@@ -3797,7 +3170,7 @@ Deep Neural Networks (DNNs) are known to be vulnerable to backdoor attacks. In N
 - 🔬 **研究方法**：利用正常任务先于trigger被学习的现象，限制容量、轮数或学习率停在moderate-fitting阶段
 - 📌 **结论**：无需复杂防御即天然抑制后门
 
-### 201. PPT: Backdoor Attacks on Pre-trained Models via Poisoned Prompt Tuning
+### 168. PPT: Backdoor Attacks on Pre-trained Models via Poisoned Prompt Tuning
 
 🎓 [Official](https://www.ijcai.org/proceedings/2022/96)　📅 2022　🏷 IJCAI 2022
 
@@ -3809,7 +3182,7 @@ Deep Neural Networks (DNNs) are known to be vulnerable to backdoor attacks. In N
 - 🔬 **研究方法**：PPT证明小型poisoned soft prompt即可把trigger-label捷径加载进冻结PLM
 - 📌 **结论**：仅经prompt tuning即可后门化预训练模型
 
-### 202. ONION: A Simple and Effective Defense against Textual Backdoor Attacks
+### 169. ONION: A Simple and Effective Defense against Textual Backdoor Attacks
 
 🎓 [Official](https://aclanthology.org/2021.emnlp-main.752/)　📅 2021-11　🏷 EMNLP 2021
 
@@ -3828,7 +3201,7 @@ Backdoor attacks are a kind of emergent training-time threat to deep neural netw
 
 </details>
 
-### 203. RAP: Robustness-Aware Perturbations for Defending against Backdoor Attacks on NLP Models
+### 170. RAP: Robustness-Aware Perturbations for Defending against Backdoor Attacks on NLP Models
 
 🎓 [Official](https://aclanthology.org/2021.emnlp-main.659/)　📅 2021-11　🏷 EMNLP 2021
 
@@ -3847,7 +3220,7 @@ Backdoor attacks, which maliciously control a well-trained model’s outputs of 
 
 </details>
 
-### 204. Backdoor Attacks on Pre-trained Models by Layerwise Weight Poisoning
+### 171. Backdoor Attacks on Pre-trained Models by Layerwise Weight Poisoning
 
 🎓 [Official](https://aclanthology.org/2021.emnlp-main.241/)　📅 2021-11　🏷 EMNLP 2021
 
@@ -3866,7 +3239,7 @@ P re- T rained M odel s have been widely applied and recently proved vulnerable 
 
 </details>
 
-### 205. Mind the Style of Text! Adversarial and Backdoor Attacks Based on Text Style Transfer
+### 172. Mind the Style of Text! Adversarial and Backdoor Attacks Based on Text Style Transfer
 
 🎓 [Official](https://aclanthology.org/2021.emnlp-main.374/)　📅 2021-11　🏷 EMNLP 2021
 
@@ -3885,7 +3258,7 @@ Adversarial attacks and backdoor attacks are two common security threats that ha
 
 </details>
 
-### 206. BadPre: Task-Agnostic Backdoor Attacks to Pre-trained NLP Foundation Models
+### 173. BadPre: Task-Agnostic Backdoor Attacks to Pre-trained NLP Foundation Models
 
 📄 [arXiv](https://arxiv.org/abs/2110.02467) · 📝 [OpenReview](https://openreview.net/forum?id=Mng8CQ9eBW)　📅 2021-10　🏷 ICLR 2022
 
@@ -3904,7 +3277,7 @@ Pre-trained Natural Language Processing (NLP) models can be easily adapted to a 
 
 </details>
 
-### 207. Hidden Killer: Invisible Textual Backdoor Attacks with Syntactic Trigger
+### 174. Hidden Killer: Invisible Textual Backdoor Attacks with Syntactic Trigger
 
 🎓 [Official](https://aclanthology.org/2021.acl-long.37/)　📅 2021-08
 
@@ -3923,7 +3296,7 @@ Backdoor attacks are a kind of insidious security threat against machine learnin
 
 </details>
 
-### 208. Hidden Backdoors in Human-Centric Language Models
+### 175. Hidden Backdoors in Human-Centric Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2105.00164)　📅 2021-05　🏷 ACM CCS 2021
 
@@ -3942,7 +3315,7 @@ Natural language processing (NLP) systems have been proven to be vulnerable to b
 
 </details>
 
-### 209. Red Alarm for Pre-trained Models: Universal Vulnerability to Neuron-Level Backdoor Attacks
+### 176. Red Alarm for Pre-trained Models: Universal Vulnerability to Neuron-Level Backdoor Attacks
 
 📄 [arXiv](https://arxiv.org/abs/2101.06969) · 🌐 [Project](https://doi.org/10.1007/s11633-022-1377-5)　📅 2021-01
 
@@ -3961,7 +3334,7 @@ Pre-trained models (PTMs) have been widely used in various downstream tasks. The
 
 </details>
 
-### 210. Weight Poisoning Attacks on Pretrained Models
+### 177. Weight Poisoning Attacks on Pretrained Models
 
 📄 [arXiv](https://arxiv.org/abs/2004.06660) · 🎓 [Official](https://aclanthology.org/2020.acl-main.249/)　📅 2020-07　🏷 ACL 2020
 
@@ -3980,7 +3353,7 @@ Recently, NLP has seen a surge in the usage of large pre-trained models. Users d
 
 </details>
 
-### 211. Natural Backdoor Attack on Text Data
+### 178. Natural Backdoor Attack on Text Data
 
 📄 [arXiv](https://arxiv.org/abs/2006.16176)　📅 2020-06
 
@@ -3999,7 +3372,7 @@ Recently, advanced NLP models have seen a surge in the usage of various applicat
 
 </details>
 
-### 212. A Backdoor Attack against LSTM-Based Text Classification Systems
+### 179. A Backdoor Attack against LSTM-Based Text Classification Systems
 
 📄 [arXiv](https://arxiv.org/abs/1905.12457) · 🌐 [Project](https://doi.org/10.1109/ACCESS.2019.2941376)　📅 2019-05
 

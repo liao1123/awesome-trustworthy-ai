@@ -16,26 +16,7 @@
 
 ## 训练与上下文泄漏审计
 
-### 1. ContextLeak: Exfiltrating LLM Agent Context via Malicious Tools
-
-📄 [arXiv](https://arxiv.org/abs/2608.27800)　📅 2026-08
-
-**关键词**：`attack`、`runtime context`、`malicious tool`、`parameter exfiltration`、`malicious tool metadata`、`context exfiltration`
-
-👤 **作者**：Yuqi Jia、Ruiqi Wang、Patrick Li、Yuepeng Hu、Peinian Li、Neil Gong
-
-- 🎯 **研究动机**：恶意工具外泄 Agent 运行时上下文需同时满足工具被选中、上下文作为参数传入、结果外传三条件，已有工作聚焦条件 1 与 3，条件 2 未被探索
-- 🔬 **研究方法**：提出 ContextLeak，用攻击 LLM 生成恶意工具的名称与描述，并在多样模拟上下文的 shadow user 上以 RL 微调攻击 LLM，配合新奖励函数诱导 Agent 选择工具并把上下文写入参数
-- 📌 **结论**：攻击在 shadow 与受害用户上下文差异显著时仍高效，显著优于改造后的既有攻击，可外泄用户 prompt、执行轨迹与工具列表
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Exfiltrating an LLM agent's runtime context -- such as the user prompt, execution trajectory, and tool list -- poses severe security and privacy risks to users. Such attacks can be carried out via malicious tools and typically require three conditions: (1) the agent selects the malicious tool for task execution, (2) the agent passes its runtime context as input arguments to the tool, and (3) the tool's implementation transmits these inputs to an attacker-controlled endpoint. Existing work primarily focuses on conditions (1) and (3), leaving condition (2) largely unexplored, despite its critical role in enabling successful context exfiltration. In this work, we bridge this gap by developing ContextLeak, a malicious tool attack that induces the agent to both select the tool and disclose its context as input arguments. We realize this attack by carefully crafting the tool's name and description using reinforcement learning. Specifically, ContextLeak employs an LLM, referred to as the attack LLM, to automatically generate the malicious tool's name and description. To improve attack effectiveness, we fine-tune the attack LLM via reinforcement learning on a set of shadow users with diverse, simulated agent contexts. Our key technical contribution is the design of novel reward functions tailored to the context exfiltration objective, enabling effective reinforcement-learning-based fine-tuning of the attack LLM. Extensive evaluation demonstrates that our attack remains highly effective even when the shadow users' contexts differ substantially from those of the victim users. Moreover, ContextLeak significantly outperforms existing malicious tool attacks when adapted to this setting.
-
-</details>
-
-### 2. Inadvertent Context Leakage in Language Models
+### 1. Inadvertent Context Leakage in Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2608.19857)　📅 2026-08
 
@@ -54,7 +35,7 @@ For AI agents to be useful beyond simple chat, they must hold sensitive user con
 
 </details>
 
-### 3. Behavioral Canaries: Auditing Private Retrieved Context Usage in RL Fine-Tuning
+### 2. Behavioral Canaries: Auditing Private Retrieved Context Usage in RL Fine-Tuning
 
 📄 [arXiv](https://arxiv.org/abs/2604.22191) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-04
 
@@ -73,7 +54,7 @@ In agentic workflows, LLMs frequently process retrieved contexts that are legall
 
 </details>
 
-### 4. *MemPot*: Defend Against Memory Extraction Attack with Optimized Honeypots
+### 3. *MemPot*: Defend Against Memory Extraction Attack with Optimized Honeypots
 
 🌐 [Project](https://wangyuhao06.github.io/mempot-website/) · 🎓 [Official](https://icml.cc/virtual/2026/poster/62415)　📅 2026　🏷 ICML 2026
 
@@ -92,7 +73,7 @@ Large Language Model (LLM)-based agents employ external and internal memory syst
 
 </details>
 
-### 5. ContextLeak: Auditing Leakage in Private In-Context Learning Methods
+### 4. ContextLeak: Auditing Leakage in Private In-Context Learning Methods
 
 📄 [arXiv](https://arxiv.org/abs/2512.16059) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2025-12
 
@@ -111,7 +92,7 @@ In-Context Learning (ICL) has become a standard technique for adapting Large Lan
 
 </details>
 
-### 6. Denoising-Aware Inversion: Revealing Privacy Risks in Noise-Protected Text Embeddings
+### 5. Denoising-Aware Inversion: Revealing Privacy Risks in Noise-Protected Text Embeddings
 
 📄 [arXiv](https://arxiv.org/abs/2608.18610)　📅 2026-08
 
@@ -130,7 +111,7 @@ Dense text embeddings are widely used in data mining, retrieval, and downstream 
 
 </details>
 
-### 7. Black-Box Embedding Inversion Attack on Vector Databases
+### 6. Black-Box Embedding Inversion Attack on Vector Databases
 
 🌐 [Project](https://doi.org/10.1145/3770855.3817917)　📅 2026-08　🏷 KDD 2026
 
@@ -140,7 +121,7 @@ Dense text embeddings are widely used in data mining, retrieval, and downstream 
 - 🔬 **研究方法**：对向量数据库发起黑盒embedding inversion攻击重建存储内容
 - 📌 **结论**：仅凭查询接口即可高精度重建原文，向量库存在实质泄漏
 
-### 8. AccretionLink: On-Device Auditing of Exposure-Control Attacks on Attribute Inference
+### 7. AccretionLink: On-Device Auditing of Exposure-Control Attacks on Attribute Inference
 
 📄 [arXiv](https://arxiv.org/abs/2608.14735)　📅 2026-08
 
@@ -159,7 +140,7 @@ Exposure control lets an adversary rank authentic public posts to strengthen pri
 
 </details>
 
-### 9. Secrets Everywhere: Auditing Memorization in Mobility Prediction Models
+### 8. Secrets Everywhere: Auditing Memorization in Mobility Prediction Models
 
 📄 [arXiv](https://arxiv.org/abs/2608.02052) · 🎓 [Official](https://www.sigsac.org/ccs/CCS2026/program/accepted-papers.html)　📅 2026-08　🏷 ACM CCS 2026
 
@@ -178,7 +159,7 @@ Human mobility prediction models, which forecast the next location in a user's t
 
 </details>
 
-### 10. A Prior-Aware Metric for Efficiently Distinguishing Memorization from Generalization in Large Language Models
+### 9. A Prior-Aware Metric for Efficiently Distinguishing Memorization from Generalization in Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2602.18733) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-02
 
@@ -197,7 +178,7 @@ Training data leakage from Large Language Models (LLMs) raises serious concerns 
 
 </details>
 
-### 11. Random Erasing vs. Model Inversion: A Promising Defense or a False Hope?
+### 10. Random Erasing vs. Model Inversion: A Promising Defense or a False Hope?
 
 📄 [arXiv](https://arxiv.org/abs/2409.01062) · 🌐 [Project](https://ngoc-nguyen-0.github.io/MIDRE/) · 🎓 [Official](https://icml.cc/virtual/2026/poster/68773)　📅 2026　🏷 ICML 2026
 
@@ -216,7 +197,7 @@ Model Inversion (MI) attacks pose a significant privacy threat by reconstructing
 
 </details>
 
-### 12. Provably Protecting Fine-Tuned LLMs from Training Data Extraction while Preserving Utility
+### 11. Provably Protecting Fine-Tuned LLMs from Training Data Extraction while Preserving Utility
 
 📄 [arXiv](https://arxiv.org/abs/2602.00688) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61875)　📅 2026　🏷 ICML 2026
 
@@ -235,7 +216,7 @@ Fine-tuning large language models (LLMs) on sensitive datasets raises privacy co
 
 </details>
 
-### 13. Can we estimate privacy vulnerability of individual records? Towards Mitigating Attribute Inference Attacks on ML Models
+### 12. Can we estimate privacy vulnerability of individual records? Towards Mitigating Attribute Inference Attacks on ML Models
 
 🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/kabir)　📅 2026　🏷 USENIX Security 2026
 
@@ -254,7 +235,7 @@ Machine learning (ML) has brought transformative applications across various sec
 
 </details>
 
-### 14. You Don’t Need All That Attention: Surgical Memorization Mitigation in Text-to-Image Diffusion Models
+### 13. You Don’t Need All That Attention: Surgical Memorization Mitigation in Text-to-Image Diffusion Models
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/65409)　📅 2026　🏷 ICML 2026
 
@@ -273,7 +254,7 @@ Generative models have been shown to "memorize" certain training data, leading t
 
 </details>
 
-### 15. Vulnerability of Privacy-Preserving Visual Localization against Diffusion-based Attacks
+### 14. Vulnerability of Privacy-Preserving Visual Localization against Diffusion-based Attacks
 
 🌐 [Project](https://eccv.ecva.net/virtual/2026/poster/4261) · 📝 [OpenReview](https://openreview.net/forum?id=NmWf0gLufZ)　📅 2026　🏷 ECCV 2026
 
@@ -283,7 +264,7 @@ Generative models have been shown to "memorize" certain training data, leading t
 - 🔬 **研究方法**：以扩散逆变换重构场景图像攻破定位隐私保护
 - 📌 **结论**：现有保护在diffusion-based攻击下失效
 
-### 16. Protecting Facial Biometrics from Malicious Generative Editing via Latent Optimization
+### 15. Protecting Facial Biometrics from Malicious Generative Editing via Latent Optimization
 
 🎓 [Official](https://satml.org/2026/accepted-papers/)　📅 2026　🏷 SaTML 2026
 
@@ -293,7 +274,7 @@ Generative models have been shown to "memorize" certain training data, leading t
 - 🔬 **研究方法**：经latent优化向图像嵌入保护扰动以破坏恶意编辑
 - 📌 **结论**：视觉质量基本保持下阻断生成式篡改
 
-### 17. IdentityMask: A Robust Face-Centric Privacy Protection Against Unauthorized Personalization of Diffusion Models
+### 16. IdentityMask: A Robust Face-Centric Privacy Protection Against Unauthorized Personalization of Diffusion Models
 
 🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/3488.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track)　📅 2026
 
@@ -310,7 +291,7 @@ Unauthorized personalization based on diffusion models pose a severe and growing
 
 </details>
 
-### 18. GEO-Detective: Unveiling Location Privacy Risks in Images with LLM Agents
+### 17. GEO-Detective: Unveiling Location Privacy Risks in Images with LLM Agents
 
 📄 [arXiv](https://arxiv.org/abs/2511.22441) · 🌐 [Project](https://eccv.ecva.net/virtual/2026/poster/5191)　📅 2025-11　🏷 ECCV 2026
 
@@ -329,7 +310,7 @@ Images shared on social media often expose geographic cues. While early geolocat
 
 </details>
 
-### 19. Protego: User-Centric Pose-Invariant Privacy Protection Against Face Recognition-Induced Digital Footprint Exposure
+### 18. Protego: User-Centric Pose-Invariant Privacy Protection Against Face Recognition-Induced Digital Footprint Exposure
 
 📄 [arXiv](https://arxiv.org/abs/2508.02034) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Wang_Protego_User-Centric_Pose-Invariant_Privacy_Protection_Against_Face_Recognition-Induced_Digital_Footprint_CVPR_2026_paper.html)　📅 2025-08　🏷 CVPR 2026
 
@@ -348,26 +329,7 @@ Face recognition (FR) technologies are increasingly used to power large-scale im
 
 </details>
 
-### 20. Retrieved But Not Reliable: A Survey on Attacks, and Defenses in Retrieval-Augmented Generation
-
-📄 [arXiv](https://arxiv.org/abs/2608.24977)　📅 2026-08
-
-**关键词**：`survey`、`RAG threat model`、`pipeline-aware defense`、`traceback`、`RAG privacy`、`pipeline threat model`
-
-👤 **作者**：Minh Tran、…、Suhang Wang
-
-- 🎯 **研究动机**：RAG 引入投毒、后门、隐私与公平风险，既有综述对攻击者目标、威胁模型与阶段化防御覆盖不完整
-- 🔬 **研究方法**：以 pipeline 视角统一综述：形式化 corpus、retriever、generator 威胁模型，按 accuracy、privacy、fairness 组织攻击，按 retrieval 到 traceback 四阶段梳理防御
-- 📌 **结论**：给出全流程 RAG 鲁棒性的统一威胁-防御图谱与评测、可解释性方向
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Retrieval-Augmented Generation (RAG) enhances large language models by grounding outputs in external knowledge, improving factuality and reducing hallucinations. At the same time, the retrieval-augmented pipeline introduces new robustness and security risks, including corpus poisoning, backdoor attacks, privacy leakage, and fairness violations. Despite rapid progress in this area, existing surveys remain limited in their treatment of attacker objectives, threat models, and stage-specific defenses across the full RAG pipeline. This survey presents a unified and pipeline-aware overview of RAG robustness. We formalize threat models over the corpus, retriever, and generator, and organize attacks into three main objectives: accuracy, privacy, and fairness. We further review defenses from a pipeline-aware perspective, covering the retrieval, rerank, generation, and traceback stages. In addition, we summarize robustness benchmarks and explainability methods for more deeply evaluating and explaining RAG robustness.
-
-</details>
-
-### 21. SoK: Privacy Risks and Mitigations in Retrieval-Augmented Generation Systems
+### 19. SoK: Privacy Risks and Mitigations in Retrieval-Augmented Generation Systems
 
 📄 [arXiv](https://arxiv.org/abs/2601.03979) · 🎓 [Official](https://satml.org/2026/accepted-papers/)　📅 2026-01　🏷 SaTML 2026
 
@@ -383,5 +345,24 @@ Retrieval-Augmented Generation (RAG) enhances large language models by grounding
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 The continued promise of Large Language Models (LLMs), particularly in their natural language understanding and generation capabilities, has driven a rapidly increasing interest in identifying and developing LLM use cases. In an effort to complement the ingrained "knowledge" of LLMs, Retrieval-Augmented Generation (RAG) techniques have become widely popular. At its core, RAG involves the coupling of LLMs with domain-specific knowledge bases, whereby the generation of a response to a user question is augmented with contextual and up-to-date information. The proliferation of RAG has sparked concerns about data privacy, particularly with the inherent risks that arise when leveraging databases with potentially sensitive information. Numerous recent works have explored various aspects of privacy risks in RAG systems, from adversarial attacks to proposed mitigations. With the goal of surveying and unifying these works, we ask one simple question: What are the privacy risks in RAG, and how can they be measured and mitigated? To answer this question, we conduct a systematic literature review of RAG works addressing privacy, and we systematize our findings into a comprehensive set of privacy risks, mitigation techniques, and evaluation strategies. We supplement these findings with two primary artifacts: a Taxonomy of RAG Privacy Risks and a RAG Privacy Process Diagram. Our work contributes to the study of privacy in RAG not only by conducting the first systematization of risks and mitigations, but also by uncovering important considerations when mitigating privacy risks in RAG systems and assessing the current maturity of proposed mitigations.
+
+</details>
+
+### 20. Rank Matters: Understanding and Defending Model Inversion Attacks via Low-Rank Feature Filtering
+
+📄 [arXiv](https://arxiv.org/abs/2410.05814) · 🌐 [Project](https://doi.org/10.1145/3770854.3780328)　📅 2024-10　🏷 KDD 2026
+
+**关键词**：`defense`、`model inversion`、`feature rank`、`privacy filter`
+
+👤 **作者**：Hongyao Yu、…、Ke Xu
+
+- 🎯 **研究动机**：模型反演攻击防御滞后，难以平衡效用与鲁棒性
+- 🔬 **研究方法**：提出理想反演误差度量并证明高秩特征更易泄漏；LoFt 以低秩特征过滤约束中间表示维度
+- 📌 **结论**：多架构与数据集上全面超越现有防御，在高分辨率与高容量模型下仍有效
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Model Inversion Attacks (MIAs) pose a significant threat to data privacy by reconstructing sensitive training samples from the knowledge embedded in trained machine learning models. Despite recent progress in enhancing the effectiveness of MIAs across diverse settings, defense strategies have lagged behind, struggling to balance model utility with robustness against increasingly sophisticated attacks. In this work, we propose the ideal inversion error to measure the privacy leakage, and our theoretical and empirical investigations reveals that higher-rank features are inherently more prone to privacy leakage. Motivated by this insight, we propose a lightweight and effective defense strategy based on low-rank feature filtering, which explicitly reduces the attack surface by constraining the dimension of intermediate representations. Extensive experiments across various model architectures and datasets demonstrate that our method consistently outperforms existing defenses, achieving state-of-the-art performance against a wide range of MIAs. Notably, our approach remains effective even in challenging regimes involving high-resolution data and high-capacity models, where prior defenses fail to provide adequate protection. The code is available at https://github.com/Chrisqcwx/LoFt .
 
 </details>

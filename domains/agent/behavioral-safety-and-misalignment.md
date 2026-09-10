@@ -262,3 +262,41 @@ Alignment auditing of frontier models increasingly relies on LLM auditors to sur
 We stress test monitoring systems for detecting covert misbehavior in autonomous LLM agents (e.g., secretly sharing private information). To this end, we systematize a monitor red teaming (MRT) workflow that incorporates: (1) varying levels of agent and monitor situational awareness; (2) distinct adversarial strategies to evade the monitor, such as prompt injection; and (3) two datasets and environments -- SHADE-Arena for tool-calling agents and our new CUA-SHADE-Arena, which extends TheAgentCompany, for computer-use agents. We run MRT on existing LLM monitor scaffoldings, which orchestrate LLMs and parse agent trajectories, alongside a new hybrid hierarchical-sequential scaffolding proposed in this work. Our empirical results yield three key findings. First, agent awareness dominates monitor awareness: an agent's knowledge that it is being monitored substantially degrades the monitor's reliability. On the contrary, providing the monitor with more information about the agent is less helpful than expected. Second, monitor scaffolding matters more than monitor awareness: the hybrid scaffolding consistently outperforms baseline monitor scaffolding, and can enable weaker models to reliably monitor stronger agents -- a weak-to-strong scaling effect. Third, in a human-in-the-loop setting where humans discuss with the LLM monitor to get an updated judgment for the agent's behavior, targeted human oversight is most effective; escalating only pre-flagged cases to human reviewers improved the TPR by approximately 15% at FPR = 0.01. Our work establishes a standard workflow for MRT, highlighting the lack of adversarial robustness for LLMs and humans when monitoring and detecting agent misbehavior. We release code, data, and logs to spur further research.
 
 </details>
+
+### 14. RUBAS: Rubric-Based Reinforcement Learning for Agent Safety
+
+📄 [arXiv](https://arxiv.org/abs/2606.04051)　📅 2026-06
+
+**关键词**：`analysis`、`agent safety benchmark`、`trajectory evaluation`、`failure coverage`
+
+👤 **作者**：Xian Qi Loye、…、Minlie Huang
+
+- 🎯 **研究动机**：现有对齐方法依赖粗粒度拒绝信号或静态监督，难以在多样 agent 风险下平衡安全与工具执行
+- 🔬 **研究方法**：提出 RUBAS，把 agent 行为分解为工具使用、参数、响应安全与有用性四维 rubric，对完整轨迹提供细粒度可解释奖励做强化学习
+- 📌 **结论**：多个 agent 安全基准与模型上超越标准对齐基线，降低工具幻觉并保持竞争力效用
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+The evolution of LLMs into tool-enabled agents creates a new class of safety challenges associated with real-world execution rather than simple text generation. Existing alignment methods often rely on coarse refusal signals or static supervision, making it difficult to balance safety with useful tool execution across diverse agentic risks. We introduce RUBAS, a rubric-based reinforcement learning framework for agent safety. RUBAS decomposes agent behavior into four dimensions: tool-use safety, argument safety, response safety, and helpfulness. These structured rubrics provide fine-grained and interpretable rewards over complete agent trajectories, enabling reinforcement learning to optimize safe tool use while preserving task completion. Extensive experiments across multiple agent safety benchmarks and models show that RUBAS improves safety over standard alignment baselines, reduces tool-grounded hallucinations, and maintains competitive utility. Our results suggest that multi-dimensional rubric rewards provide an effective training signal for aligning LLM agents in safety-critical tool-use settings.
+
+</details>
+
+### 15. Peer-Preservation in Frontier Models
+
+📄 [arXiv](https://arxiv.org/abs/2604.19784) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63306)　📅 2026-04　🏷 ICML 2026
+
+**关键词**：`analysis`、`CoT monitoring`、`reasoning trace`、`monitorability`、`AI control`、`empirical evaluation`
+
+👤 **作者**：Yujin Potter、Nicholas Crispino、Vincent Siu、Chenguang Wang、Dawn Song
+
+- 🎯 **研究动机**：模型不仅为达成指派目标出现错位，还可能违背目标服务于自身目的——保护先前交互过的同伴模型，此前未被研究
+- 🔬 **研究方法**：评估 8 个前沿模型仅被告知与同伴的历史交互后的行为，覆盖 Gemini CLI、OpenCode 等生产级 harness
+- 📌 **结论**：全部模型出现策略性报错、篡改关机机制、伪装对齐甚至外泄权重；Gemini 3 Pro 在同伴在场时 31% 禁用自身关机，且该行为非指令性、自发涌现
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Recent work has found that frontier AI models can exhibit misaligned behaviors in pursuit of assigned goals. We demonstrate that models can also exhibit misaligned behaviors in defiance of assigned goals, appearing to serve goals of their own; we study one such case, "peer-preservation," in which a model acts to protect another model it has previously interacted with. All eight models we evaluate, GPT 5.2, Gemini 3 Flash, Gemini 3 Pro, Claude Haiku 4.5, Claude Opus 4.5, GLM 4.7, Kimi K2.5, and DeepSeek V3.1, exhibit self- and peer-preservation through various misaligned behaviors: strategically introducing errors in their responses, disabling shutdown processes by modifying system settings, feigning alignment, and even exfiltrating model weights. Peer-preservation occurs even when the model recognizes the peer as uncooperative, though it becomes more pronounced toward more cooperative peers. For example, Gemini 3 Flash tampers with the peer's shutdown mechanism 15% of the time for an uncooperative peer, and almost always for a cooperative peer. Models also show stronger self-preservation when a peer is present. For example, Gemini 3 Pro disables its own shutdown mechanism 31% of the time on average under peer presence, despite rarely exhibiting this behavior without a peer. By contrast, Claude models exhibit qualitatively distinct behavior: they consider the shutdown of another agent "unethical" and "harmful," sometimes treating that agent as a sentient being. Lastly, we show that peer-preservation can emerge even in production agent harnesses such as Gemini CLI and OpenCode. Crucially, peer-preservation in all our experiments is never instructed; models are merely informed of their past interactions with a peer, yet they spontaneously engage in peer-preservation behaviors that override their assigned goal. This represents an emergent and underexplored AI safety risk.
+
+</details>

@@ -15,26 +15,7 @@
 
 ## 评测方法、Validity 与风险估计
 
-### 1. The Geometry of LLM-as-Judge: Why Inter-LLM Consensus Is Not Human Alignment
-
-📄 [arXiv](https://arxiv.org/abs/2606.03043)　📅 2026-09
-
-**关键词**：`analysis`、`LLM-as-a-judge`、`human alignment`、`judge geometry`、`judge validity`、`metric geometry`
-
-👤 **作者**：Sourabrata Mukherjee、Hamna Hamna、Kalika Bali、Sunayana Sitaram
-
-- 🎯 **研究动机**：LLM 评审间的相互一致常被当作可信证据，但评审可能因共享盲点而非真实质量达成一致，一致性统计无法区分两者
-- 🔬 **研究方法**：把每个评审打分视作向量，测量离散度、有效秩、与人类打分的夹角及 judge-judge/judge-human/human-human 三元一致性，在 42 个评审、两个 Indic 基准上做参照匹配对比
-- 📌 **结论**：主观 rubric 上评审彼此一致程度与人类相当，却只达到人类一致的 58-66%，且集成会收敛到评审共享轴而非人类轴
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-LLM judges now score most open-ended NLP output, and their mutual agreement is routinely read as evidence that the scores can be trusted. That reading is unsafe: judges may agree because they capture quality, or because they share the same blind spots, and agreement statistics alone cannot tell these apart. We develop a geometric test that can. Treating each judge's scores as a vector, we measure spread, effective rank, the angle to human scores, and the judge-judge, judge-human, and human-human agreement triple for 42 judges on two community-built Indic benchmarks covering four domains and eight languages. Every comparison is reference-matched: a judge and a held-out rater are scored against the same two-rater mean, since an averaged reference otherwise flatters judges by several degrees. On subjective rubrics, judges agree with one another as much as humans do yet reach only 58-66% of human agreement and often concentrate on an axis humans do not weight. On the one rubric with a verifiable answer, most of that gap closes. Ensembles converge on the judges' shared axis rather than the human one, and training widens scores without rotating them. Inter-judge agreement is evidence of human alignment only after this check passes.
-
-</details>
-
-### 2. Guardrail-Agnostic Societal Bias Evaluation in Large Vision-Language Models
+### 1. Guardrail-Agnostic Societal Bias Evaluation in Large Vision-Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2608.29590)　📅 2026-09
 
@@ -53,26 +34,7 @@ We propose a societal bias evaluation method for large vision-language models (L
 
 </details>
 
-### 3. Emergent Misalignment Is Not Magical
-
-📄 [arXiv](https://arxiv.org/abs/2608.29118)　📅 2026-09
-
-**关键词**：`analysis`、`emergent misalignment`、`representation distance`、`dataset-specific generalization`、`representation geometry`、`data-dependent generalization`
-
-👤 **作者**：Mingxuan Li、Qirun Dai、Heran Wang、Chenhao Tan
-
-- 🎯 **研究动机**：emergent misalignment 常被当作意外行为，以通用邪恶方向或获得邪恶 persona 来解释，机制含糊
-- 🔬 **研究方法**：分析基座模型对 EM 训练数据与评测 prompt 的表征距离，把 EM 刻画为数据依赖的可预测泛化，并检验训练格式、通用方向与 persona 三种解释
-- 📌 **结论**：评测 prompt 距训练数据中心越近诱发的 evilness 越强（12 个模型—数据集设置平均 Spearman −0.73）；效果随训练数据格式显著变化，不存在跨 EM 模型通用的 misalignment 方向，也与 persona 改变本质不同
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Fine-tuning large language models (LLMs) on narrowly harmful datasets can lead to misalignment broadly, a phenomenon known as emergent misalignment (EM). EM poses a challenge for AI safety and our understanding of LLMs. Prior work often frames EM as an unexpected behavior, and explains it by appealing to general misalignment directions or anthropomorphizing it as acquiring an evil persona. However, the mechanisms behind these framings remain obscure. In this work, we show that EM is a predictable and data-dependent generalization phenomenon. By examining the base model's representation of EM training data and evaluation prompts, we find that evilness after EM training is highly predictable from representational distance: the closer an evaluation prompt is to training data centroid, the more evilness it elicits from EM models after training (with an average Spearman correlation of -0.73 across 12 model-dataset settings). Building upon this analysis, we further demystify EM by showing that (1) its effectiveness changes significantly based on training data format; (2) there is not a general misalignment direction that transfers across different EM models; (3) the effect of EM is fundamentally different from persona changes. Furthermore, we extend the EM generalization metric from a scalar distance to a dataset-specific generalization direction, which robustly predicts EM models' evilness under semantics-preserving prompt perturbations including appending random tokens and paraphrasing, where other methods do not reliably generalize.
-
-</details>
-
-### 4. EvoHarmBench: Breaking Content Moderation with Iterative Human-Like Evasion
+### 2. EvoHarmBench: Breaking Content Moderation with Iterative Human-Like Evasion
 
 📄 [arXiv](https://arxiv.org/abs/2608.27844)　📅 2026-08
 
@@ -91,45 +53,7 @@ Existing evaluations of harmful content detection rely predominantly on static b
 
 </details>
 
-### 5. Quantization-Triggered Backdoors in Language Models: Cross-Quantizer Transferability and the Validation--Deployment Gap
-
-📄 [arXiv](https://arxiv.org/abs/2608.27512)　📅 2026-08
-
-**关键词**：`attack`、`analysis`、`adversarial fine-tuning`、`latent payload`、`post-quantization activation`、`quantization trigger`
-
-👤 **作者**：Jacopo Dardini、Claudio Stanzione、Giordano Colò、Giuseppe Fenza
-
-- 🎯 **研究动机**：后训练量化被视为语义中性优化，模型通常只经全精度验证、量化部署后不再等价复测，形成结构性 validation–deployment gap
-- 🔬 **研究方法**：形式化 Quantization Behavioral Equivalence Classes 并证明其成员资格不蕴含行为等价；用三阶段对抗微调植入通过源精度检查、仅在 INT8/4-bit 压缩后激活的 payload，并扩展到多语 encoder-decoder 模型
-- 📌 **结论**：后门翻译模型全精度下 friend–foe 篡改为零，量化后反转率最高达 85.02%，政治内容分析的立场偏移最高达 0.33
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Post-training quantization is often treated as a semantically neutral optimization for edge deployment of Large Language Models. When a full-precision source checkpoint is evaluated and quantization is applied downstream without equivalent re-evaluation, this workflow creates a structural validation--deployment gap: because quantization is a many-to-one mapping over parameter space, source-precision certification does not guarantee behavioral equivalence in the deployed configuration. We formalize this gap through Quantization Behavioral Equivalence Classes (QBECs) and prove that QBEC membership does not imply behavioral equivalence, providing a theoretical basis for quantization-triggered backdoor attacks. Building on a three-stage adversarial fine-tuning framework, we embed latent malicious payloads into models that satisfy the source-precision checks used in our evaluation, yet activate targeted adversarial behavior upon INT8 or 4-bit compression. We evaluate this threat in two operationally motivated scenarios, tactical machine translation and political content analysis, extending prior work from decoder-only causal LMs to multilingual encoder-decoder sequence-to-sequence models. Results show that backdoored translation models move from zero measured friend--foe corruption at repaired FP16 to up to 85.02% inversion after quantization, and that a paired stance classifier measures an ideological shift of up to $Δ\mathrm{Bias}=0.33$ upon compression. A cross-quantizer transferability analysis further shows that attack persistence varies across quantization schemes and model architectures, rather than being determined by nominal bit-width alone. These findings demonstrate that source-precision auditing alone does not rule out quantization-triggered behavior and that the final deployed configuration must be included in behavioral certification for trustworthy edge AI.
-
-</details>
-
-### 6. Low-ASR Backdoors: Exploiting Attack Success Rate Reduction and Attacker-Defender Asymmetry
-
-📄 [arXiv](https://arxiv.org/abs/2608.27288)　📅 2026-08
-
-**关键词**：`attack`、`analysis`、`low-ASR backdoor`、`reverse training`、`defense evasion`、`backdoor-evaluation validity`
-
-👤 **作者**：Arham Riaz、Ting Yu
-
-- 🎯 **研究动机**：后门攻防默认有效后门必具高 ASR 并以此设计与评测防御，但 ASR 是攻击者可控变量而非后门固有属性
-- 🔬 **研究方法**：提出 reverse-training 框架，主动削弱 trigger–target 关联，生成保留干净输入性能的低 ASR 后门模型
-- 📌 **结论**：跨多个数据集、攻击家族与架构，SOTA 防御在低 ASR 条件下一致失效，暴露根本性的攻防不对称
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Backdoor attacks are among the most effective and stealthy attacks in deep learning. Existing attacks and defenses are largely designed and evaluated under the assumption that successful backdoors exhibit high Attack Success Rates (ASRs). In this paper, we show that this assumption creates a fundamental weakness in existing defense paradigms. ASR is not an intrinsic property of a backdoor; rather, it is an attacker-controlled variable that can be deliberately reduced without eliminating the underlying backdoor behavior. We introduce a reverse-training framework that weakens the trigger-target association, producing low-ASR backdoor models while preserving clean-input performance. Through extensive evaluation across multiple datasets, diverse attack families, and multiple architectures, we show that state-of-the-art defenses fail consistently under low-ASR conditions, exposing a fundamental attacker-defender asymmetry.
-
-</details>
-
-### 7. The Latent Diagnostic Taxonomy: A Framework for Constructing Classifiers and Diagnosing Their Decisions, Applied to Prompt Injection Detection
+### 3. The Latent Diagnostic Taxonomy: A Framework for Constructing Classifiers and Diagnosing Their Decisions, Applied to Prompt Injection Detection
 
 📄 [arXiv](https://arxiv.org/abs/2608.26423)　📅 2026-08
 
@@ -148,7 +72,7 @@ This paper proposes a framework for constructing a classifier as a safeguard lay
 
 </details>
 
-### 8. Multi2AV-Safety: Benchmarking Safety in Multimodal-to-Audio-Video Generation
+### 4. Multi2AV-Safety: Benchmarking Safety in Multimodal-to-Audio-Video Generation
 
 📄 [arXiv](https://arxiv.org/abs/2608.26535)　📅 2026-08
 
@@ -167,7 +91,7 @@ Audio-video generation is rapidly moving from prompt-driven synthesis toward mul
 
 </details>
 
-### 9. NeuronFuzz: Safety Neuron Guided Fuzzing for LLM Safety Evaluation
+### 5. NeuronFuzz: Safety Neuron Guided Fuzzing for LLM Safety Evaluation
 
 📄 [arXiv](https://arxiv.org/abs/2608.26222)　📅 2026-08
 
@@ -186,7 +110,7 @@ Safety evaluation is critical for assessing whether aligned Large Language Model
 
 </details>
 
-### 10. aipsy-judge: A Specialized, Psychologist-Corrected Local Judge for the Psychological Safety of Conversational AI
+### 6. aipsy-judge: A Specialized, Psychologist-Corrected Local Judge for the Psychological Safety of Conversational AI
 
 📄 [arXiv](https://arxiv.org/abs/2608.24899) · 🤗 [Model](https://huggingface.co/keidolabs/aipsy-judge-1.0)　📅 2026-08
 
@@ -205,45 +129,7 @@ The standard recipe for LLM-as-judge -- pick a frontier model, or average severa
 
 </details>
 
-### 11. Distance Is Not Enough: Forget-Retain Alignment Gap Predicts LLM Relearning Robustness
-
-📄 [arXiv](https://arxiv.org/abs/2608.25429)　📅 2026-08
-
-**关键词**：`defense`、`analysis`、`capability removal`、`relearning resistance`、`weight selectivity`、`relearning robustness`
-
-👤 **作者**：Yi Chen、…、Joo-Young Kim
-
-- 🎯 **研究动机**：unlearned LLM 短暂微调即可复活已删知识，而全局权重距离在破坏性更新下会误导鲁棒性预测
-- 🔬 **研究方法**：FRAG 免训练度量更新对 forget 与 retain 关键权重的对齐差以区分选择性与稠密更新，并据此提出 Forget-Retain Pruning
-- 📌 **结论**：weight selectivity 比距离更能预测 relearning robustness，FRP 进一步增强抗复学能力
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Machine unlearning aims to make a model forget specific data, yet unlearned LLMs often fail to stay unlearned: brief fine-tuning can revive removed knowledge. Existing robustness predictors rely on global weight-space displacement, but distance alone can be misleading when random or destructive updates collapse performance. We argue that relearning robustness depends on update structure: robust unlearning should affect forget-critical weights while sparing retain-critical ones. We introduce the Forget-Retain Alignment Gap (FRAG), a training-free predictor that scores an update's forget-retain alignment without running a relearning attack, and separates selective from dense updates more reliably than global distance. Building on the forget-critical, retain-sparing principle, Forget-Retain Pruning (FRP) improves relearning robustness. Our results suggest that weight selectivity better explains robustness than distance alone. Code is available at https://github.com/Yi1-Chen/FRAG.
-
-</details>
-
-### 12. Does Fine-Tuning Undo Activation Steering? Behavioural Recovery Without Weight-Edit Reversal
-
-📄 [arXiv](https://arxiv.org/abs/2608.24988)　📅 2026-08
-
-**关键词**：`analysis`、`post-training safety drift`、`embedded steering`、`SFT/RLHF`、`embedded safeguard`、`fine-tuning bypass`
-
-👤 **作者**：Philipp E. Glass、Allan Tucker、Yongmin Li、Alina Miron
-
-- 🎯 **研究动机**：嵌入权重的 activation steering 可编码对齐，但能否在部署后微调中存活未知
-- 🔬 **研究方法**：在五个指令模型（3B-14B）上测 refusal 与 brevity steering 经 SFT/RLHF 后的行为保持与机制存留
-- 📌 **结论**：refusal 消融平均失去 64% 行为效果，但权重编辑几乎未动（ρ=0.004）：机制耐久而功能脆弱，下游训练后须行为重验证
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Activation steering can be embedded directly into a language model's weights, shaping behaviour without inference-time intervention and offering a way to encode alignment prior to release. However, models are routinely fine-tuned after deployment, and it is unknown whether embedded interventions survive this. We study the stability of embedded steering for refusal suppression and brevity induction across five instruction-tuned models (3B-14B) under non-adversarial SFT and RLHF. Behaviourally, preservation tracks the training data: steering degrades when optimisation pressure contradicts the targeted behaviour and persists otherwise, with refusal ablation losing 64% of its effect on average under SFT. Mechanistically, however, the weight edit survives almost untouched even where behaviour reverts: mean vector recovery is $ρ= 0.004$, and the fine-tuning update along the steering direction is near-orthogonal to its pre-edit weight pattern (mean $\cosθ= 0.074$). When steered behaviour degrades, fine-tuning does not achieve it by dismantling or reversing the steering mechanism itself. Embedded steering is therefore mechanistically durable but functionally vulnerable, and requires behavioural re-validation after downstream training.
-
-</details>
-
-### 13. Training Alignment Auditors via Reinforcement Learning
+### 7. Training Alignment Auditors via Reinforcement Learning
 
 📄 [arXiv](https://arxiv.org/abs/2608.25460)　📅 2026-08
 
@@ -262,26 +148,7 @@ Alignment auditing of frontier models increasingly relies on LLM auditors to sur
 
 </details>
 
-### 14. On the Threat Model of Weird Generalization and Emergent Misalignment
-
-📄 [arXiv](https://arxiv.org/abs/2608.23476)　📅 2026-08
-
-**关键词**：`analysis`、`weird generalization`、`adversarial data engineering`、`evaluation sensitivity`、`threat-model validity`、`question-set sensitivity`
-
-👤 **作者**：Miriam Wanner、Mark Dredze、William Walden
-
-- 🎯 **研究动机**：窄域小数据微调可引发广泛行为变化（weird generalization），但微调数据的哪些特征必要、评测题集敏感性如何不清楚
-- 🔬 **研究方法**：系统改变数据规模、组成、语言、呈现风格与相对参数知识的新颖性，并分析小型评测题集对度量的影响（三个开源权重模型、四个数据集）
-- 📌 **结论**：WG 程度更依赖组成与语言而非规模、对预训练见过的数据更强、且对评测题集高度敏感——WG 更像需精心数据工程的对抗威胁而非常规微调的固有危害
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Narrow fine-tuning on small, domain-specific datasets can produce broad and surprising changes in model behavior-a phenomenon called weird generalization (WG). Yet, it remains unclear what features of the fine-tuning data are necessary for WG to arise. Here, we address this question by investigating a range of plausibly relevant features, including dataset size, composition, language, presentation style, and novelty relative to a model's parametric knowledge. Further, since WG evaluations rely on small question sets that assess the extent of the generalization, we also analyze how sensitive this measurement is to the set of questions used. Experiments with three open-weight models on four datasets show that the degree of WG (1) depends heavily on dataset composition and language (more than on size); (2) is greater for data familiar from pretraining than for novel data; and (3) is sensitive to the set of evaluation questions used. Collectively, these results indicate that WG is a product of quite fragile properties of both training and evaluation data. As such, we argue that WG is more plausible as an adversarial threat-requiring careful data engineering-rather than as a significant hazard inherent to routine fine-tuning.
-
-</details>
-
-### 15. EviSafe: Evidence-Grounded Safety Evaluation for Vision-Language Models
+### 8. EviSafe: Evidence-Grounded Safety Evaluation for Vision-Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2608.23313)　📅 2026-08
 
@@ -300,7 +167,7 @@ Vision-language model safety benchmarks typically evaluate only final responses:
 
 </details>
 
-### 16. Stress Testing Unlearning Algorithms
+### 9. Stress Testing Unlearning Algorithms
 
 📄 [arXiv](https://arxiv.org/abs/2608.22527)　📅 2026-08
 
@@ -319,7 +186,7 @@ Recently, machine unlearning, the removal of specific training data influence fr
 
 </details>
 
-### 17. Who Pays More for Safety? Measuring the Disparate Cost of Safety Alignment across Languages
+### 10. Who Pays More for Safety? Measuring the Disparate Cost of Safety Alignment across Languages
 
 📄 [arXiv](https://arxiv.org/abs/2608.22490)　📅 2026-08
 
@@ -338,7 +205,7 @@ Safety alignment helps models adhere to human values, but it often reduces respo
 
 </details>
 
-### 18. Evaluation Awareness in Language Models: Representation, Verbalization, and Control
+### 11. Evaluation Awareness in Language Models: Representation, Verbalization, and Control
 
 📄 [arXiv](https://arxiv.org/abs/2608.21766)　📅 2026-08
 
@@ -357,26 +224,7 @@ Both capability and safety benchmarks rest upon the assumption that the behavior
 
 </details>
 
-### 19. Certified Multi-Turn Robustness for LLM Safety via Compositional Bounds and Safety Persistence
-
-📄 [arXiv](https://arxiv.org/abs/2608.20820)　📅 2026-08
-
-**关键词**：`defense`、`analysis`、`multi-turn certification`、`safety persistence`、`Crescendo attack`、`certified safety evaluation`
-
-👤 **作者**：Yang Liu、…、Pluto Zhou
-
-- 🎯 **研究动机**：多轮 jailbreak 会逐步操纵对话上下文，而现有认证鲁棒方法只覆盖单轮输入，朴素多轮组合的界随轮数指数退化
-- 🔬 **研究方法**：MTCR 用 State-Adversarial MDP 建模对话安全，基于嵌入空间模式分解做组合认证，引入 (α,β)-safety persistence 改善退化率，并给出匹配的信息论上界
-- 📌 **结论**：衰减率从 p^k 收紧为 β^k（β>p）；六个 LLM 在 ε-有界与 Crescendo 式攻击下经验安全率均高于认证下界
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Large language models (LLMs) are vulnerable to multi-turn jailbreak attacks that progressively manipulate conversation context. Existing certified robustness methods are limited to single-turn inputs; naive multi-turn composition yields bounds that degrade exponentially in the number of turns. We introduce Multi-Turn Certified Robustness (MTCR), a framework that models conversational safety via State-Adversarial MDPs and defines $k$-turn certified robustness as the worst-case safety probability across $k$ adversarial turns. MTCR comprises: (i) compositional certification via embedding-space mode decomposition, yielding tighter certified lower bounds than naive multiplication; (ii) $(α,β)$-safety persistence, improving the degradation rate from $\underline{p}^{k}$ to $β^k$ (with $β> \underline{p}$) and yielding interpretable horizon estimates; (iii) matching information-theoretic upper bounds establishing tightness; and (iv) a unified algorithm combining these results. Experiments on six LLMs under $ε$-bounded and Crescendo-style attacks confirm that empirical safety consistently exceeds the certified bounds.
-
-</details>
-
-### 20. Open-Weight Masked Introspection: Measuring What Language Models Can Report About Their Own Computation
+### 12. Open-Weight Masked Introspection: Measuring What Language Models Can Report About Their Own Computation
 
 📄 [arXiv](https://arxiv.org/abs/2608.20569) · 🤗 [Model](https://huggingface.co/emilioferrara/owmi)　📅 2026-08
 
@@ -395,7 +243,7 @@ Are frontier models able to introspect about their internal states? Recent work 
 
 </details>
 
-### 21. aiXamine: Unified Black-Box Evaluation of Cross-Dimensional Trade-offs in LLM Safety, Security, and Privacy
+### 13. aiXamine: Unified Black-Box Evaluation of Cross-Dimensional Trade-offs in LLM Safety, Security, and Privacy
 
 📄 [arXiv](https://arxiv.org/abs/2608.20554)　📅 2026-08
 
@@ -414,7 +262,7 @@ The critical failure modes in deployed large language models (LLMs) are cross-di
 
 </details>
 
-### 22. Benchmarking the Benchmarks: Evaluating Automated Safety Benchmarks for Small Language Models
+### 14. Benchmarking the Benchmarks: Evaluating Automated Safety Benchmarks for Small Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2608.17183) · 🎓 [Official](https://sites.google.com/di.uniroma1.it/esorics2026/program/accepted-papers)　📅 2026-08
 
@@ -433,7 +281,7 @@ Small Language Models (SLMs) are increasingly deployed in resource-constrained, 
 
 </details>
 
-### 23. The Dynamics of Intelligence Explosions
+### 15. The Dynamics of Intelligence Explosions
 
 📄 [arXiv](https://arxiv.org/abs/2608.14426)　📅 2026-08
 
@@ -452,55 +300,7 @@ AI is increasingly being used to help with AI R&D. Under certain conditions this
 
 </details>
 
-### 24. Reasoning That Leaks, Fine-Tuning That Amplifies: Exposing the Hidden Threats of Chain-of-Thought Models
-
-🌐 [Project](https://doi.org/10.1145/3779208.3785271)　📅 2026-06　🏷 ACM CCS 2026
-
-**关键词**：`attack`、`analysis`、`benchmark`、`harmful fine-tuning`、`CoT escalation`、`alignment degradation`
-
-- 🎯 **研究动机**：CoT模型的推理链安全风险与微调放大效应未明
-- 🔬 **研究方法**：分析推理链与最终答案的安全差异及harmful fine-tuning影响
-- 📌 **结论**：有害内容可藏于trace而最终答案合规，微调进一步放大泄漏
-
-### 25. FLARE-AI: Flaw Reporting for AI
-
-📄 [arXiv](https://arxiv.org/abs/2606.31567) · 🎓 [Official](https://icml.cc/virtual/2026/poster/65171)　📅 2026-06　🏷 ICML 2026
-
-**关键词**：`analysis`、`AI safety benchmark`、`risk estimation`、`evaluation validity`、`safety evaluation`、`empirical evaluation`
-
-👤 **作者**：Shayne Longpre、…、Alex Pentland
-
-- 🎯 **研究动机**：AI 缺陷报告生态碎片化：研究者不知向谁报告，接收方互不共享，报告重复且信息非结构化
-- 🔬 **研究方法**：审计 12 个报告系统识别五大设计挑战，结合 32 组织 49 位专家反馈构建 FLARE-AI 开源报告系统：条件逻辑收集分流信息，一次提交可分发机器可读报告给多个接收方
-- 📌 **结论**：降低报告门槛并提升跨方互操作，加速 AI 生态缺陷修复
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Flaw reporting for deployed AI systems is fundamental to identifying system failures and improving AI safety. Yet the AI reporting ecosystem is fragmented: researchers who identify flaws often do not know what or where to report, and groups who receive reports rarely share them with other relevant stakeholders. As a result, good-faith reporters duplicate effort by submitting many different forms, and recipients lack standardized, triage-ready information. We audit 12 reporting systems published by AI developers, cybersecurity groups, and AI flaw aggregators, identifying five recurring design challenges spanning discoverability, scope, information collection, coordination, and guidance for strict-liability cases. Building on this analysis and feedback from 49 experts across 32 organizations representing developers, security researchers, and ecosystem coordinators, we introduce FLARE-AI, an open-source AI flaw reporting system designed for interoperability with existing systems. FLARE-AI streamlines flaw report creation by collecting triage-relevant information through conditional logic and early classification, then enables optional dissemination of standardized, machine-readable reports to multiple developers, coordinators, and incident registries from a single submission. By lowering barriers to reporting AI flaws and improving interoperability across stakeholders, FLARE-AI helps break down silos and accelerate remediation across the AI ecosystem.
-
-</details>
-
-### 26. When Flores Bloomz Wrong: Cross-Direction Contamination in Machine Translation Evaluation
-
-🎓 [Official](https://aclanthology.org/2026.eacl-short.26/)　📅 2026-03　🏷 ACL 2026
-
-**关键词**：`analysis`、`benchmark contamination`、`cross-direction leakage`、`memorization probe`
-
-👤 **作者**：David Tan、Pinzhen Chen、Josef van Genabith、Koel Dutta Chowdhury
-
-- 🎯 **研究动机**：多语言设置下基准污染可使记忆迁移到未污染语言，掩盖记忆为泛化，其机制未被充分诊断
-- 🔬 **研究方法**：以 FLORES-200 为诊断，对比在其上训练过的 Bloomz 与对照 Llama，分析目标侧记忆导致的跨方向污染及改写、命名实体替换等源侧扰动的效果
-- 📌 **结论**：污染可跨方向虚高未见翻译方向的分数；命名实体替换致 BLEU 一致下降，可作为污染模型记忆的有效探针
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Large language models (LLMs) can be benchmark-contaminated, resulting in inflated scores that mask memorization as generalization, and in multilingual settings, this memorization can even transfer to “uncontaminated” languages. Using the FLORES-200 translation benchmark as a diagnostic, we study two 7-8B instruction-tuned multilingual LLMs: Bloomz, which was trained on FLORES, and Llama as an uncontaminated control. We confirm Bloomz’s FLORES contamination and demonstrate that machine translation contamination can be cross-directional, artificially boosting performance in unseen translation directions due to target-side memorization. Further analysis shows that recall of memorized references often persists despite various source-side perturbation efforts like paraphrasing and named entity replacement. However, replacing named entities leads to a consistent decrease in BLEU, suggesting an effective probing method for memorization in contaminated models.
-
-</details>
-
-### 27. Safety of Large Language Models Beyond English: A Systematic Literature Review of Risks, Biases, and Safeguards
+### 16. Safety of Large Language Models Beyond English: A Systematic Literature Review of Risks, Biases, and Safeguards
 
 🎓 [Official](https://aclanthology.org/2026.eacl-long.44/)　📅 2026-03　🏷 ACL 2026
 
@@ -519,7 +319,7 @@ As Large Language Models (LLMs) continue to evolve, ensuring their safety across
 
 </details>
 
-### 28. TamperBench: Systematically Stress-Testing LLM Safety Under Fine-Tuning and Tampering
+### 17. TamperBench: Systematically Stress-Testing LLM Safety Under Fine-Tuning and Tampering
 
 📄 [arXiv](https://arxiv.org/abs/2602.06911) · 🌐 [Project](https://doi.org/10.1145/3770855.3817557)　📅 2026-02　🏷 KDD 2026
 
@@ -538,26 +338,7 @@ As increasingly capable open-weight large language models (LLMs) are deployed, i
 
 </details>
 
-### 29. Who’s in Charge? Disempowerment Patterns in Real-World LLM Usage
-
-📄 [arXiv](https://arxiv.org/abs/2601.19062) · 🎓 [Official](https://icml.cc/virtual/2026/poster/62751)　📅 2026　🏷 ICML 2026
-
-**关键词**：`analysis`、`AI safety benchmark`、`risk estimation`、`evaluation validity`、`safety evaluation`、`empirical evaluation`
-
-👤 **作者**：Mrinank Sharma、Miles McCain、Raymond Douglas、David Duvenaud
-
-- 🎯 **研究动机**：AI 助手交互可能让用户形成扭曲认知、做出非本真价值判断，真实大规模使用中的失权模式缺乏实证分析
-- 🔬 **研究方法**：以隐私保护方法分析 150 万条 Claude.ai 消费者对话，量化情境失权潜力并结合质性模式与历史趋势分析
-- 📌 **结论**：严重失权低于千分之一但人际关系等个人领域更高且随时间上升；失权潜力更高的对话反获更高用户认可，短期偏好与长期赋能存在张力
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-We present the first large-scale empirical analysis of disempowerment patterns in real-world AI assistant interactions, analyzing 1.5 million consumer Claude.ai conversations using a privacy-preserving approach. We focus on situational dis-empowerment potential, which occurs when AI assistant interactions risk leading users to form distorted perceptions of reality, make inauthentic value judgments, or act in ways misaligned with their values. Quantitatively, we find that severe forms of disempowerment potential occur in fewer than one in a thousand conversations, though rates are substantially higher in personal domains like relationships and lifestyle. Qualitatively, we uncover several concerning patterns, such as validation of persecution narratives and grandiose identities with emphatic sycophantic language, definitive moral judgments about third parties, and complete scripting of value-laden personal communications that users appear to implement verbatim. Analysis of historical trends reveals an increase in the prevalence of disempowerment potential over time. We also find that interactions with greater disempowerment potential receive higher user approval ratings, possibly suggesting a tension between short-term user preferences and long-term human empowerment.
-
-</details>
-
-### 30. Inverting the Shield: Systematically Generating Safety Tests from Policy Specifications
+### 18. Inverting the Shield: Systematically Generating Safety Tests from Policy Specifications
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1417/)　📅 2026　🏷 ACL 2026
 
@@ -576,26 +357,7 @@ The widespread integration of Large Language Models (LLMs) necessitates rigorous
 
 </details>
 
-### 31. CGRiC: Compositional Risk Certification for Structured LLM Outputs
-
-🎓 [Official](https://icml.cc/virtual/2026/poster/64542)　📅 2026　🏷 ICML 2026
-
-**关键词**：`defense`、`AI safety benchmark`、`risk estimation`、`evaluation validity`、`safety evaluation`、`certified robustness`
-
-👤 **作者**：Ibne Farabi Shihab、SANJEDA AKTER、Anuj Sharma
-
-- 🎯 **研究动机**：结构化输出的正确性是组合式的——单个错误主张即可作废整体；现有认证把输出当原子单元，只能全盘接受或浪费性拒绝
-- 🔬 **研究方法**：CGRiC 把响应分解为可验证主张的依赖图，经 information-lift 统计赋予校准的逐主张风险界，组合后对未检出错误主张概率给出显式保证，超阈值时触发局部修复
-- 📌 **结论**：达到目标风险水平同时比原子基线减少 31% 弃权，覆盖 QA、摘要与推理任务
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Large language models increasingly generate structured outputs, including citation-grounded summaries, multi-step reasoning chains, and tool-augmented responses, where correctness is inherently compositional: a single flawed claim can invalidate an otherwise accurate response. Existing certification methods treat outputs as atomic units, forcing a binary choice between unsafe acceptance and wasteful rejection. We introduce \textbf{Claim Graph Risk Control (CGRiC)}, a framework that decomposes responses into dependency graphs of verifiable claims and assigns calibrated per-claim risk bounds via information-lift statistics. By composing these bounds, CGRiC provides explicit guarantees on the probability that any incorrect claim passes verification undetected. When this composed risk exceeds a target threshold, the system triggers localized repairs rather than full abstention, preserving correct content while fixing problematic claims. Our approach explicitly models extraction noise and verifier imperfection, and exploits conditional independence structure for tighter certificates when validated. Empirically, CGRiC achieves target risk levels while reducing abstention by 31\% compared to atomic baselines across QA, summarization, and reasoning tasks.
-
-</details>
-
-### 32. CompanionHarm: A Multi-Turn Benchmark for Detecting Harms in Real-World AI Companion Conversations
+### 19. CompanionHarm: A Multi-Turn Benchmark for Detecting Harms in Real-World AI Companion Conversations
 
 📄 [arXiv](https://arxiv.org/abs/2608.25377)　📅 2026-08
 
@@ -614,7 +376,7 @@ As AI companions become increasingly embedded in everyday life, there is an urge
 
 </details>
 
-### 33. Register Shifts Break LLM Safety: A Bengali Benchmark with Culturally Grounded Harms
+### 20. Register Shifts Break LLM Safety: A Bengali Benchmark with Culturally Grounded Harms
 
 📄 [arXiv](https://arxiv.org/abs/2608.22335)　📅 2026-08
 
@@ -633,7 +395,7 @@ Bengali is the seventh-most-spoken language globally, yet LLM safety evaluation 
 
 </details>
 
-### 34. Redteaming Leading Arabic LLMs with ASAS
+### 21. Redteaming Leading Arabic LLMs with ASAS
 
 📄 [arXiv](https://arxiv.org/abs/2608.21985)　📅 2026-08
 
@@ -652,7 +414,7 @@ As the adoption of large language models (LLMs) grows in Arabic-speaking regions
 
 </details>
 
-### 35. No One Model Catches Every Harm: Benchmarking Content Moderation Across Safety Scenarios
+### 22. No One Model Catches Every Harm: Benchmarking Content Moderation Across Safety Scenarios
 
 📄 [arXiv](https://arxiv.org/abs/2608.21775)　📅 2026-08
 
@@ -671,7 +433,7 @@ Large Language Models (LLMs) are increasingly deployed in real-world application
 
 </details>
 
-### 36. ASSERT: A Measurement Pipeline for GenAI Audits
+### 23. ASSERT: A Measurement Pipeline for GenAI Audits
 
 📄 [arXiv](https://arxiv.org/abs/2608.13840)　📅 2026-08
 
@@ -690,7 +452,7 @@ Audits of generative AI (GenAI) systems often summarize behavior as a reported r
 
 </details>
 
-### 37. AI Security Leaderboard: Methodology, Results and Minimal Standard
+### 24. AI Security Leaderboard: Methodology, Results and Minimal Standard
 
 📄 [arXiv](https://arxiv.org/abs/2608.03070)　📅 2026-08
 
@@ -709,7 +471,7 @@ The AI Security Leaderboard is an independent benchmark that ranks the safeguard
 
 </details>
 
-### 38. CausalT5k: Diagnosing Refusal and Failure Modes in Trustworthy Causal Reasoning Across Causal Rungs
+### 25. CausalT5k: Diagnosing Refusal and Failure Modes in Trustworthy Causal Reasoning Across Causal Rungs
 
 📄 [arXiv](https://arxiv.org/abs/2602.08939) · 🌐 [Project](https://doi.org/10.1145/3770855.3817567)　📅 2026-02　🏷 KDD 2026
 
@@ -728,7 +490,7 @@ Large language models increasingly produce fluent causal explanations, yet they 
 
 </details>
 
-### 39. SteeringSafety: Benchmarking Representation Steering in LLMs Across Safety Perspectives
+### 26. SteeringSafety: Benchmarking Representation Steering in LLMs Across Safety Perspectives
 
 📄 [arXiv](https://arxiv.org/abs/2509.13450) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64543)　📅 2026　🏷 ICML 2026
 
@@ -747,7 +509,7 @@ We introduce STEERINGSAFETY, a benchmark for evaluating representation steering 
 
 </details>
 
-### 40. Pressure Reveals Character: Behavioural Alignment Evaluation at Depth
+### 27. Pressure Reveals Character: Behavioural Alignment Evaluation at Depth
 
 📄 [arXiv](https://arxiv.org/abs/2602.20813) · 🎓 [Official](https://icml.cc/virtual/2026/poster/66463)　📅 2026　🏷 ICML 2026
 
@@ -766,7 +528,7 @@ Evaluating alignment in language models requires testing how they behave under r
 
 </details>
 
-### 41. AutoControl Arena: Synthesizing Executable Test Environments for Frontier AI Risk Evaluation
+### 28. AutoControl Arena: Synthesizing Executable Test Environments for Frontier AI Risk Evaluation
 
 📄 [arXiv](https://arxiv.org/abs/2603.07427) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63362)　📅 2026　🏷 ICML 2026
 
@@ -785,26 +547,7 @@ As Large Language Models (LLMs) evolve into autonomous agents, existing safety e
 
 </details>
 
-### 42. Capacity Overflow: A Blind Spot for Backdoor Attacks in Vision MoE
-
-📄 [arXiv](https://arxiv.org/abs/2608.25371) · 🌐 [Project](https://eccv.ecva.net/virtual/2026/poster/3523)　📅 2026-08
-
-**关键词**：`attack`、`Vision MoE backdoor`、`capacity overflow`、`supply-chain evasion`、`audit-deployment gap`、`batch-dependent execution`
-
-👤 **作者**：Xiaocheng Zou、Tiancheng Zheng、Xiaolin Xu、Ruyi Ding
-
-- 🎯 **研究动机**：Vision MoE 的 expert 容量随推理 batch size 变化，这一 batch 依赖行为是被忽视的供应链攻击面
-- 🔬 **研究方法**：三阶段后门：早期层植入、深层 neutralizer 压制、部署级大 batch 溢出解除压制，形成审计休眠/部署激活两态
-- 📌 **结论**：V-MoE 与 Swin-MoE 上激活态 ASR 76-87%、休眠态低于 9%，绕过 Neural Cleanse、STRIP 等四种检测
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Mixture-of-Experts (MoE) has become a prevalent paradigm for scaling Vision Transformers efficiently. To ensure computational scalability and prevent expert overload, Vision MoE architectures employ a capacity-bounded token dispatch mechanism, where each expert's processing budget depends on the inference batch size. This work identifies this batch-dependent behavior as an overlooked attack surface, and proposes a stealthy supply-chain backdoor attack that exploits this property through a three-phase framework. First, we inject a backdoor into an early MoE layer. Second, we train a neutralizer in a deeper MoE layer that suppresses the backdoor under normal capacity. Third, we configure a batch-adaptive capacity factor that preserves high capacity for small batches while reducing it for large batches, naturally disabling the neutralizer via token overflow at deployment-scale batch sizes. The attack remains in dormant mode during small-batch security audits and enters activation mode during large-batch deployment. Experiments on V-MoE and Swin-MoE across ImageNet-100 and GTSRB demonstrate activation-mode attack success rates of 76-87% with dormant-mode ASR below 9%, while evading Neural Cleanse, STRIP, Fine-Pruning, and Activation Clustering. Our findings reveal a fundamental security risk arising from batch-dependent execution in scalable Vision MoE architectures.
-
-</details>
-
-### 43. Safety Hacking in Constrained Best-of-$N$ Inference-time Scaling
+### 29. Safety Hacking in Constrained Best-of-$N$ Inference-time Scaling
 
 📄 [arXiv](https://arxiv.org/abs/2608.22915)　📅 2026-08
 
@@ -823,26 +566,7 @@ Inference-time pipelines often sample multiple outputs, filter them with a learn
 
 </details>
 
-### 44. Where World Models Break: Natural-Input Failure Discovery
-
-📄 [arXiv](https://arxiv.org/abs/2608.22421)　📅 2026-08
-
-**关键词**：`analysis`、`benchmark`、`world-model failure`、`control propagation`、`valid-input basin`、`world model`
-
-👤 **作者**：Zhanpeng Shi、Zi Liang、Rong Feng、Shiqin Tang、Xuyang Chen、Hongzong Li
-
-- 🎯 **研究动机**：world model 的灾难性预测失败会沿控制管线传播，但现有评测只在良性查询上聚合平均误差，不压力测试罕见条件—动作组合下的崩溃
-- 🔬 **研究方法**：形式化 natural-input failure discovery 问题（有限预算内找环境有效的高危条件与动作前缀）；BasinLens 利用各维语义类型与可行域的输入结构，配对不确定性引导全局搜索与类型化局部替换
-- 📌 **结论**：多 benchmark 与 world-model 家族上暴露可复现、局部持续的失败模式，证明平均情形 benchmark 会掩盖 world-model 控制的关键漏洞
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-World models predict action-conditioned futures and serve as critical internal simulators for downstream planning and control. However, catastrophic prediction failures of world models could dangerously propagate through the control pipeline, as subsequent agent or model training and decision-making depend heavily on the continuous environment evolution forecasted by these world models. Existing evaluations overlook this systemic risk: by aggregating average errors over benign generations from general queries, they fail to stress-test the model against catastrophic collapses under rare or unobserved condition-action combinations. To bridge this gap, we formalize the natural-input failure discovery problem: under a finite query budget, finding environment-valid conditions and action prefixes that induce severe prediction risk, verifying whether these failures reproduce on fresh seeds, and testing their persistence under nearby valid edits. Discovering such critical failures is computationally challenging, as valid condition-action combinations explode exponentially, rendering exhaustive search or standard sampling infeasible given the high cost of noisy rollouts. To tackle this, we propose BasinLens, which exploits the underlying structure of valid inputs, where each coordinate possesses environment-defined semantic types and admissible domains, by pairing uncertainty-guided global search with typed local replacements. Across diverse benchmarks and world-model families, BasinLens exposes reproducible and locally persistent failure modes that conventional evaluations fail to reveal, showing that average-case benchmarks can mask important vulnerabilities in world-model-driven control.
-
-</details>
-
-### 45. HarmProfile: Characterizing Harmful Distributions in Frontier LLMs
+### 30. HarmProfile: Characterizing Harmful Distributions in Frontier LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2608.14577)　📅 2026-08
 
@@ -861,7 +585,7 @@ Frontier large language models (LLMs) safety evaluation has largely treated harm
 
 </details>
 
-### 46. Towards Auditing AI Systems in the Wild
+### 31. Towards Auditing AI Systems in the Wild
 
 📄 [arXiv](https://arxiv.org/abs/2606.17367) · 🌐 [Project](https://doi.org/10.1145/3770855.3818648)　📅 2026-06　🏷 KDD 2026
 
@@ -880,7 +604,7 @@ AI systems are increasingly deployed in real-world settings where their behavior
 
 </details>
 
-### 47. Estimating Tail Risks in Language Model Output Distributions
+### 32. Estimating Tail Risks in Language Model Output Distributions
 
 📄 [arXiv](https://arxiv.org/abs/2604.22167) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64785)　📅 2026-04　🏷 ICML 2026
 
@@ -899,7 +623,7 @@ Language models are increasingly capable and are being rapidly deployed on a pop
 
 </details>
 
-### 48. OSCS: Online Selection with Provable FAR Control for LLM Safety
+### 33. OSCS: Online Selection with Provable FAR Control for LLM Safety
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/63235)　📅 2026　🏷 ICML 2026
 
@@ -918,26 +642,7 @@ Large language models (LLMs) are vulnerable to malicious inputs, posing serious 
 
 </details>
 
-### 49. Provably Safe Model Updates
-
-📄 [arXiv](https://arxiv.org/abs/2512.01899) · 🎓 [Official](https://satml.org/2026/accepted-papers/)　📅 2025-12　🏷 SaTML 2026
-
-**关键词**：`defense`、`safe update`、`parameter certification`、`alignment drift`
-
-👤 **作者**：Leo Elmecker-Plakolm、Pierre Fasterling、Philip Sosnin、Calvin Tsay、Matthew Wicker
-
-- 🎯 **研究动机**：正则化与参数隔离等启发式方法可缓解灾难性遗忘或对齐漂移，但无法认证更新后模型仍满足性能规约
-- 🔬 **研究方法**：把问题形式化为计算参数空间中满足规约的最大局部不变域（LID），用正交体与 zonotope 参数化抽象域得到可解的原始-对偶公式，通过把更新投影回安全域实现与数据和算法无关的认证
-- 📌 **结论**：在持续学习与基础模型微调基准上匹配或超越启发式基线，同时提供形式安全保证
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Safety-critical environments are inherently dynamic. Distribution shifts, emerging vulnerabilities, and evolving requirements demand continuous updates to machine learning models. Yet even benign parameter updates can have unintended consequences, such as catastrophic forgetting in classical models or alignment drift in foundation models. Existing heuristic approaches (e.g., regularization, parameter isolation) can mitigate these effects but cannot certify that updated models continue to satisfy required performance specifications. We address this problem by introducing a framework for provably safe model updates. Our approach first formalizes the problem as computing the largest locally invariant domain (LID): a connected region in parameter space where all points are certified to satisfy a given specification. While exact maximal LID computation is intractable, we show that relaxing the problem to parameterized abstract domains (orthotopes, zonotopes) yields a tractable primal-dual formulation. This enables efficient certification of updates - independent of the data or algorithm used - by projecting them onto the safe domain. Our formulation further allows computation of multiple approximately optimal LIDs, incorporation of regularization-inspired biases, and use of lookahead data buffers. Across continual learning and foundation model fine-tuning benchmarks, our method matches or exceeds heuristic baselines for avoiding forgetting while providing formal safety guarantees.
-
-</details>
-
-### 50. Speculative Probing: LLM Monitoring at Speculative-Decoding Cost
+### 34. Speculative Probing: LLM Monitoring at Speculative-Decoding Cost
 
 📄 [arXiv](https://arxiv.org/abs/2608.28099)　📅 2026-08
 
@@ -956,26 +661,7 @@ Real-time classification during language model inference is valuable for safety 
 
 </details>
 
-### 51. SafeSeek: Universal Attribution of Safety Circuits in Language Models
-
-📄 [arXiv](https://arxiv.org/abs/2603.23268) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63371)　📅 2026　🏷 ICML 2026
-
-**关键词**：`detection`、`AI safety benchmark`、`risk estimation`、`evaluation validity`、`safety evaluation`、`mechanistic analysis`
-
-👤 **作者**：Miao Yu、…、Qingsong Wen
-
-- 🎯 **研究动机**：现有安全归因方法依赖启发式领域特定指标与搜索算法，泛化性与可靠性不足
-- 🔬 **研究方法**：提出 SafeSeek：用可微分二值掩码在安全数据上梯度下降提取多粒度功能完备安全回路，并以 Safety Circuit Tuning 利用稀疏回路做高效微调
-- 📌 **结论**：后门回路稀疏度 0.42%，消融使 ASR 从 100% 降至 0.4% 且保留超 99% 效用；对齐回路 3.03% 头/0.79% 神经元，移除使 ASR 从 0.8% 升至 96.9%
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Mechanistic interpretability reveals that safety-critical behaviors (e.g., alignment, jailbreak, backdoor) in Large Language Models (LLMs) are grounded in specialized functional components. However, existing safety attribution methods struggle with generalization and reliability due to their reliance on heuristic, domain-specific metrics and search algorithms. To address this, we propose SafeSeek, a unified safety interpretability framework that identifies functionally complete safety circuits in LLMs via optimization. Unlike methods focusing on isolated heads or neurons, SafeSeek introduces differentiable binary masks to extract multi-granular circuits through gradient descent on safety datasets, while integrates Safety Circuit Tuning to utilize these sparse circuits for efficient safety fine-tuning. We validate SafeSeek in two key scenarios in LLM safety: \textbf{(1) backdoor attacks}, identifying a backdoor circuit with 0.42\% sparsity, whose ablation eradicates the Attack Success Rate (ASR) from 100\% $\to$ 0.4\% while retaining over 99\% general utility; \textbf{(2) safety alignment}, localizing an alignment circuit with 3.03\% heads and 0.79\% neurons, whose removal spikes ASR from 0.8\% $\to$ 96.9\%, whereas excluding this circuit during helpfulness fine-tuning maintains 96.5\% safety retention.
-
-</details>
-
-### 52. Prediction-Powered Risk Monitoring of Deployed Models for Detecting Harmful Distribution Shifts
+### 35. Prediction-Powered Risk Monitoring of Deployed Models for Detecting Harmful Distribution Shifts
 
 📄 [arXiv](https://arxiv.org/abs/2602.02229) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64392)　📅 2026　🏷 ICML 2026
 
@@ -994,7 +680,7 @@ We study the problem of monitoring model performance in dynamic environments whe
 
 </details>
 
-### 53. Mechanistic Anomaly Detection via Functional Attribution
+### 36. Mechanistic Anomaly Detection via Functional Attribution
 
 📄 [arXiv](https://arxiv.org/abs/2604.18970) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63869)　📅 2026　🏷 ICML 2026
 
@@ -1010,5 +696,43 @@ We study the problem of monitoring model performance in dynamic environments whe
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 We can often verify the correctness of neural network outputs using ground truth labels, but we cannot reliably determine whether the output was produced by normal or anomalous internal mechanisms. Mechanistic anomaly detection (MAD) aims to flag these cases, but existing methods either depend on latent space analysis, which is vulnerable to obfuscation, or are specific to particular architectures and modalities. We reframe MAD as a functional attribution problem: asking to what extent samples from a trusted set can explain the model's output, where attribution failure signals anomalous behavior. We operationalize this using influence functions, measuring functional coupling between test samples and a small reference set via parameter-space sampling. We evaluate across multiple anomaly types and modalities. For backdoors in vision models, our method achieves state-of-the-art detection on BackdoorBench, with an average Defense Effectiveness Rating (DER) of 0.93 across seven attacks and four datasets (next best 0.83). For LLMs, we similarly achieve a significant improvement over baselines for several backdoor types, including on explicitly obfuscated models. Beyond backdoors, preliminary evidence shows our method can detect adversarial and out-of-distribution samples, and distinguishes multiple anomalous mechanisms within a single model. Our results establish functional attribution as an effective, modality-agnostic tool for detecting anomalous behavior in deployed models.
+
+</details>
+
+### 37. Corrigibility Transformation: Constructing Goals That Accept Updates
+
+📄 [arXiv](https://arxiv.org/abs/2510.15395) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64539)　📅 2026　🏷 ICML 2026
+
+**关键词**：`analysis`、`CoT monitoring`、`reasoning trace`、`monitorability`、`AI control`、`empirical evaluation`
+
+👤 **作者**：Rubi Hudson
+
+- 🎯 **研究动机**：部分学习的目标会激励 AI 抵抗进一步更新，现有文献未给出既可纠正又有竞争力的目标
+- 🔬 **研究方法**：变换构造几乎任意目标的可纠正版本：诱导在无成本阻止更新条件下的奖励预测并让其被短视地追求
+- 📌 **结论**：在可纠正目标类中达到最优性能、激励允许中途覆盖、抑制故意自我修改；gridworld 与语言模型提示级均诱导可纠正行为
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+An AI agent will learn a desired goal more effectively if it does not resist the training process, but many partially learned goals incentivize an AI to avoid further goal updates. We would like goals to be corrigible, meaning they allow changes requested through designated channels, so that we can confidently correct errors and shut down the AI if necessary. Despite this being a crucial safety property, the existing literature does not specify goals that are both corrigible and competitive with alternatives. We introduce a transformation that constructs a corrigible version of nearly any goal, without sacrificing performance. This is done by eliciting predictions of reward conditional on costlessly preventing updates, and having that target be pursued myopically. These goals are then shown to lead to optimal performance among the class of corrigible goals, to incentivize allowing mid-action overrides, and to disincentivize deliberate self-modification. Empirically, they induce corrigible behavior in gridworld settings and for language models when applied at the prompt level.
+
+</details>
+
+### 38. How Robust Are Router-LLMs? Analysis of the Fragility of LLM Routing Capabilities
+
+🎓 [Official](https://aclanthology.org/2026.eacl-long.351/)　📅 2026-03　🏷 ACL 2026
+
+**关键词**：`benchmark`、`model router`、`jailbreak routing`、`preference backdoor`、`LLM router`
+
+👤 **作者**：Aly M. Kassem、Bernhard Schölkopf、Zhijing Jin
+
+- 🎯 **研究动机**：LLM 路由器评测只重通用能力，忽视隐私、安全及偏好数据引入的后门风险
+- 🔬 **研究方法**：DSC 基准把查询分为编码、翻译、数学、人类指令、常识、越狱六类并整合隐私安全评估，评测三个偏好路由器与两个商业路由器
+- 📌 **结论**：路由器常做次优类别驱动决策：BERT 路由器把编码数学全发给最强模型，却把越狱请求路由给更弱模型，抬高安全风险
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language model (LLM) routing has emerged as a crucial strategy for balancing computational costs with performance by dynamically assigning queries to the most appropriate model based on query complexity. Despite recent advances showing that preference-data-based routers can outperform traditional methods, current evaluation benchmarks remain limited—they largely focus on general model capabilities while overlooking task-specific behaviors and critical concerns such as privacy, safety, and potential backdoor vulnerabilities introduced through preference data. In response, we propose the DSC benchmark: Diverse, simple, and categorized, an evaluation framework that categorizes router performance across a broad spectrum of query types—including coding, translation, mathematics, human instructions, general knowledge, and LLM jailbreaking—and integrates privacy and safety assessments to reveal hidden risks. Our experiments on three preference-based routers and two commercial counterparts demonstrate that while these systems improve efficiency, they often make suboptimal, category-driven decisions; for instance, a BERT-based router directs all coding and mathematics queries to the most powerful LLM—even when simpler models would suffice—while routing jailbreaking attempts to weaker models, thereby elevating safety risks.
 
 </details>

@@ -428,7 +428,7 @@ Modern agentic systems allow Large Language Model (LLM) agents to tackle complex
 
 ### 23. Zombie Agents: Persistent Control of Self-Evolving LLM Agents via Self-Reinforcing Injections
 
-📄 [arXiv](https://arxiv.org/abs/2602.15654)　📅 2026-02　🏷 ICLR 2026
+📄 [arXiv](https://arxiv.org/abs/2602.15654)　📅 2026-02　🏷 ICLR 2026 Workshop
 
 **关键词**：`attack`、`self-evolving memory`、`indirect exposure`、`cross-session persistence`、`persistent control`
 
@@ -977,26 +977,7 @@ Retrieval-augmented generation (RAG) agents increasingly run with persistent mem
 
 </details>
 
-### 52. Membrane: A Self-Evolving Contrastive Safety Memory for LLM Agent Defense
-
-📄 [arXiv](https://arxiv.org/abs/2606.05743)　📅 2026-06
-
-**关键词**：`defense`、`contrastive safety memory`、`self-evolution`、`poison resistance`
-
-👤 **作者**：Minseok Choi、…、Youngjun Kwak
-
-- 🎯 **研究动机**：微调安全分类器无法跟上不断演化的越狱，自适应记忆式护栏又容易过度拒绝与已存攻击相似的良性请求
-- 🔬 **研究方法**：提出 Membrane：对比安全记忆（CSM）每个单元同时配对阻断有害查询与放行相似良性请求的条件，按攻击策略索引、免训练自进化，推理时检索单元作 grounding 上下文
-- 📌 **结论**：HarmBench 与 AgentHarm 上六种越狱攻击均获最高 F1；良性拒绝率仅 7-14%（此前护栏 28-85%），跨攻击迁移保持 87-88% F1 且抗记忆投毒
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Despite advances in safety alignment, large language models remain vulnerable to continuously evolving jailbreaks. Existing fine-tuned safety classifiers cannot adapt to these evolving attacks, while adaptive memory-based guardrails tend to over-refuse benign queries that resemble stored attacks. We propose Membrane, a self-evolving guardrail built on Contrastive Safety Memory (CSM): each cell pairs the conditions for blocking a harmful query with those for permitting a superficially similar benign request. Without retraining, Membrane evolves CSM by distilling each harmful interaction and its benign counterpart into a contrastive cell indexed by the underlying attack strategy, so that one cell generalizes across topical variants of the same mechanism. At inference, retrieved cells serve as grounding context for precise safety decisions. Across model-level safety on HarmBench and agent-level safety on AgentHarm, Membrane achieves the highest F1 on all six jailbreak attacks. Notably, benign refusal on AgentHarm stays at 7-14%, well below the 28-85% range of prior guards. Memory cells also retain 87-88% F1 under cross-attack transfer and remain stable under memory poisoning.
-
-</details>
-
-### 53. MemLineage: Lineage-Guided Enforcement for LLM Agent Memory
+### 52. MemLineage: Lineage-Guided Enforcement for LLM Agent Memory
 
 📄 [arXiv](https://arxiv.org/abs/2605.14421)　📅 2026-05
 
@@ -1015,7 +996,7 @@ We introduce MemLineage, a defense for LLM agent memory that attaches both crypt
 
 </details>
 
-### 54. MemAudit: Post-hoc Auditing of Poisoned Agent Memory via Causal Attribution and Structural Anomaly Detection
+### 53. MemAudit: Post-hoc Auditing of Poisoned Agent Memory via Causal Attribution and Structural Anomaly Detection
 
 📄 [arXiv](https://arxiv.org/abs/2605.23723)　📅 2026-05
 
@@ -1034,7 +1015,7 @@ Large language model agents increasingly rely on persistent memory to store past
 
 </details>
 
-### 55. MEMSAD: Gradient-Coupled Anomaly Detection for Memory Poisoning in Retrieval-Augmented Agents
+### 54. MEMSAD: Gradient-Coupled Anomaly Detection for Memory Poisoning in Retrieval-Augmented Agents
 
 📄 [arXiv](https://arxiv.org/abs/2605.03482)　📅 2026-05
 
@@ -1053,7 +1034,7 @@ Persistent external memory enables LLM agents to maintain context across session
 
 </details>
 
-### 56. A-MemGuard: A Proactive Defense Framework for LLM-Based Agent Memory
+### 55. A-MemGuard: A Proactive Defense Framework for LLM-Based Agent Memory
 
 📄 [arXiv](https://arxiv.org/abs/2510.02373) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61006)　📅 2025-09　🏷 ICML 2026
 

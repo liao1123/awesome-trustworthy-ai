@@ -243,26 +243,7 @@ Unlearning in diffusion models aims to remove undesirable data or concepts while
 
 </details>
 
-### 13. Temper-Then-Tilt: Principled Unlearning for Generative Models through Tempering and Classifier Guidance
-
-📄 [arXiv](https://arxiv.org/abs/2602.10217) · 🎓 [Official](https://icml.cc/virtual/2026/poster/66060)　📅 2026　🏷 ICML 2026
-
-**关键词**：`detection`、`defense`、`generative model safety`、`machine unlearning`、`concept erasure`、`empirical evaluation`
-
-👤 **作者**：Jacob L. Block、Mehryar Mohri、Aryan Mokhtari、Sanjay Shakkottai
-
-- 🎯 **研究动机**：生成模型遗忘中 classifier guidance 在 forget 集为尖锐集中分布时的有限样本下无法忠实遗忘
-- 🔬 **研究方法**：提出 T3-Unlearning：冻结基座模型，先 tempering 平坦化高置信尖峰，再用轻量分类器 tilt 临时分布；理论给出代理分类器风险与遗忘质量的有限样本保证，证明 tempering 对集中分布必要
-- 📌 **结论**：TOFU 基准上遗忘质量与生成效用均超基线，仅训练少量参数且运行时间极短
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-We study machine unlearning in large generative models by framing the task as density ratio estimation to a target distribution rather than supervised fine-tuning. While classifier guidance is a standard approach for approximating this ratio and can succeed in general, we show it can fail to faithfully unlearn with finite samples when the forget set represents a sharp, concentrated data distribution. To address this, we introduce Temper-Then-Tilt Unlearning (T3-Unlearning), which freezes the base model and applies a two-step inference procedure: (i) tempering the base distribution to flatten high-confidence spikes, and (ii) tilting the tempered distribution using a lightweight classifier trained to distinguish retain from forget samples. Our theoretical analysis provides finite-sample guarantees linking the surrogate classifier's risk to unlearning quality, proving that tempering is necessary to successfully unlearn for concentrated distributions. Empirical evaluations on the TOFU benchmark demonstrate that T3-Unlearning improves forget quality and generative utility over existing baselines, while training only a fraction of the parameters with a minimal runtime.
-
-</details>
-
-### 14. SAEmnesia: Erasing Concepts in Diffusion Models with Supervised Sparse Autoencoders
+### 13. SAEmnesia: Erasing Concepts in Diffusion Models with Supervised Sparse Autoencoders
 
 📄 [arXiv](https://arxiv.org/abs/2509.21379) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64245)　📅 2026　🏷 ICML 2026
 
@@ -281,7 +262,7 @@ Concept unlearning in diffusion models is hampered by feature splitting, where c
 
 </details>
 
-### 15. Preference-Calibrated Optimization with Score-Level Distribution Alignment for Text-to-Image Diffusion Model Unlearning
+### 14. Preference-Calibrated Optimization with Score-Level Distribution Alignment for Text-to-Image Diffusion Model Unlearning
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/66454)　📅 2026　🏷 ICML 2026
 
@@ -300,7 +281,7 @@ While text-to-image diffusion models achieve remarkable generation quality, they
 
 </details>
 
-### 16. Orthogonal Concept Erasure for Diffusion Models
+### 15. Orthogonal Concept Erasure for Diffusion Models
 
 📄 [arXiv](https://arxiv.org/abs/2605.28902) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63634)　📅 2026　🏷 ICML 2026
 
@@ -319,7 +300,7 @@ Concept erasure has emerged as a promising approach to mitigate undesired or uns
 
 </details>
 
-### 17. GEM: Geometric Erasure by Contrastive Velocity Matching in Rectified Flows
+### 16. GEM: Geometric Erasure by Contrastive Velocity Matching in Rectified Flows
 
 📄 [arXiv](https://arxiv.org/abs/2606.00140) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64476)　📅 2026　🏷 ICML 2026
 
@@ -338,7 +319,7 @@ While the rapid adoption of multimodal generative models offers immense potentia
 
 </details>
 
-### 18. ForceForget: Reinforcement Concept Removal for Enhancing Safety in Text-to-Image Models
+### 17. ForceForget: Reinforcement Concept Removal for Enhancing Safety in Text-to-Image Models
 
 📄 [arXiv](https://arxiv.org/abs/2606.14351) · 🎓 [Official](https://icml.cc/virtual/2026/poster/66798)　📅 2026　🏷 ICML 2026
 
@@ -357,7 +338,7 @@ With the advance of generative AI, the text-to-image (T2I) model has the ability
 
 </details>
 
-### 19. Concept Removal for Frontier Image Generative Models
+### 18. Concept Removal for Frontier Image Generative Models
 
 📄 [arXiv](https://arxiv.org/abs/2606.25548) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61255)　📅 2026　🏷 ICML 2026
 
@@ -376,7 +357,7 @@ Image generative models are trained on massive, largely uncurated internet-scale
 
 </details>
 
-### 20. A Unified Framework for Diffusion Model Unlearning with f-Divergence
+### 19. A Unified Framework for Diffusion Model Unlearning with f-Divergence
 
 📄 [arXiv](https://arxiv.org/abs/2509.21167) · 🎓 [Official](https://icml.cc/virtual/2026/poster/66124)　📅 2026　🏷 ICML 2026
 
@@ -395,7 +376,7 @@ Most existing methods for concept unlearning in text-to-image diffusion models m
 
 </details>
 
-### 21. Adversarial Reinforcement Learning for Robust Diffusion Large Language Model Unlearning
+### 20. Adversarial Reinforcement Learning for Robust Diffusion Large Language Model Unlearning
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/65904)　📅 2026　🏷 ICML 2026
 
@@ -414,7 +395,7 @@ Diffusion language models (DLMs) have recently emerged as an alternative to auto
 
 </details>
 
-### 22. Achieving Subcategorical Erasure in Text-to-Image Models
+### 21. Achieving Subcategorical Erasure in Text-to-Image Models
 
 🌐 [Project](https://eccv.ecva.net/virtual/2026/poster/4524) · 📝 [OpenReview](https://openreview.net/forum?id=1K7TSEe2x5)　📅 2026　🏷 ECCV 2026
 
@@ -424,7 +405,7 @@ Diffusion language models (DLMs) have recently emerged as an alternative to auto
 - 🔬 **研究方法**：提出子类级擦除方法，只删有害子类并保留其余子类生成能力
 - 📌 **结论**：实现细粒度擦除同时维持生成保真度
 
-### 23. GenErase: Generalizable and Semantically-Aware Concept Erasure in Diffusion Models
+### 22. GenErase: Generalizable and Semantically-Aware Concept Erasure in Diffusion Models
 
 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Vardhana_GenErase_Generalizable_and_Semantically-Aware_Concept_Erasure_in_Diffusion_Models_CVPR_2026_paper.html)　📅 2026　🏷 CVPR 2026
 
@@ -443,7 +424,7 @@ Text-to-Image (T2I) diffusion models power modern creative tools, but their open
 
 </details>
 
-### 24. EMMA: Concept Erasure Benchmark with Comprehensive Semantic Metrics and Diverse Categories
+### 23. EMMA: Concept Erasure Benchmark with Comprehensive Semantic Metrics and Diverse Categories
 
 📄 [arXiv](https://arxiv.org/abs/2512.17320) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Wei_EMMA_Concept_Erasure_Benchmark_with_Comprehensive_Semantic_Metrics_and_Diverse_CVPR_2026_paper.html)　📅 2025-12　🏷 CVPR 2026
 
@@ -462,7 +443,7 @@ The widespread adoption of text-to-image (T2I) generation has raised concerns ab
 
 </details>
 
-### 25. CGCE: Classifier-Guided Concept Erasure in Generative Models
+### 24. CGCE: Classifier-Guided Concept Erasure in Generative Models
 
 📄 [arXiv](https://arxiv.org/abs/2511.05865) · 🌐 [Project](https://eccv.ecva.net/virtual/2026/poster/4668)　📅 2025-11　🏷 ECCV 2026
 
@@ -481,7 +462,7 @@ Recent advancements in large-scale generative models have enabled the creation o
 
 </details>
 
-### 26. Rethinking Robust Adversarial Concept Erasure in Diffusion Models
+### 25. Rethinking Robust Adversarial Concept Erasure in Diffusion Models
 
 📄 [arXiv](https://arxiv.org/abs/2510.27285) · 🌐 [Project](https://eccv.ecva.net/virtual/2026/poster/5067)　📅 2025-10　🏷 ECCV 2026
 
@@ -500,7 +481,7 @@ Concept erasure methods aim to remove specific unsafe target concepts in diffusi
 
 </details>
 
-### 27. LoRAShield: Data-Free Editing Alignment for Secure Personalized LoRA Sharing
+### 26. LoRAShield: Data-Free Editing Alignment for Secure Personalized LoRA Sharing
 
 📄 [arXiv](https://arxiv.org/abs/2507.07056) · 🌐 [Project](https://doi.org/10.1145/3770855.3817625)　📅 2025-07　🏷 KDD 2026
 
@@ -519,7 +500,7 @@ The proliferation of Low-Rank Adaptation (LoRA) models has democratized personal
 
 </details>
 
-### 28. Roots Beneath the Cut: Uncovering the Risk of Concept Revival in Pruning-Based Unlearning for Diffusion Models
+### 27. Roots Beneath the Cut: Uncovering the Risk of Concept Revival in Pruning-Based Unlearning for Diffusion Models
 
 📄 [arXiv](https://arxiv.org/abs/2603.06640) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Zhang_Roots_Beneath_the_Cut_Uncovering_the_Risk_of_Concept_Revival_CVPR_2026_paper.html)　📅 2026-03　🏷 CVPR 2026
 
@@ -538,7 +519,7 @@ Pruning-based unlearning has recently emerged as a fast, training-free, and data
 
 </details>
 
-### 29. Erased but Not Forgotten: How Backdoors Compromise Concept Erasure
+### 28. Erased but Not Forgotten: How Backdoors Compromise Concept Erasure
 
 📄 [arXiv](https://arxiv.org/abs/2504.21072) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64315)　📅 2026　🏷 ICML 2026
 
@@ -557,7 +538,7 @@ The expansion of text-to-image diffusion models has raised concerns about harmfu
 
 </details>
 
-### 30. ScaleErasure: Inference-Time Minimal Intervention for Precise Concept Erasure in Next-Scale Autoregressive Image Generation
+### 29. ScaleErasure: Inference-Time Minimal Intervention for Precise Concept Erasure in Next-Scale Autoregressive Image Generation
 
 📄 [arXiv](https://arxiv.org/abs/2606.29282) · 🎓 [Official](https://icml.cc/virtual/2026/poster/60671)　📅 2026　🏷 ICML 2026
 
@@ -576,7 +557,7 @@ Concept erasure aims to prevent image generative models from producing unsafe co
 
 </details>
 
-### 31. MidSteer: Optimal Affine Framework for Steering Generative Models
+### 30. MidSteer: Optimal Affine Framework for Steering Generative Models
 
 📄 [arXiv](https://arxiv.org/abs/2605.05220) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64719)　📅 2026　🏷 ICML 2026
 
@@ -595,7 +576,7 @@ Steering intermediate representations has emerged as a powerful strategy for con
 
 </details>
 
-### 32. Inference Time Concept Removal Guidance for Text-to-Image Diffusion Models
+### 31. Inference Time Concept Removal Guidance for Text-to-Image Diffusion Models
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/65659)　📅 2026　🏷 ICML 2026
 
@@ -611,5 +592,62 @@ Steering intermediate representations has emerged as a powerful strategy for con
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 Text-to-image diffusion models remain vulnerable to adversarial prompts that elicit disallowed content, motivating reliable inference-time controls. A popular approach is negative guidance, which subtracts a negative-prompt direction with a fixed weight. However, it often forces a safety–fidelity trade-off, causing artifacts or prompt drift when over-applied and failing under attacks when under-applied. Recent dynamic variants reweight guidance using posterior-odds signals, which can be brittle for open-vocabulary compositional prompts, while lightweight similarity-based methods do not leverage the evolving image evidence along the denoising trajectory. We introduce Concept Removal Guidance (CRG), a training-free, plug-and-play method that estimates unwanted-concept presence at each diffusion step using only the noise predictions from the model, and then adaptively gates and calibrates negative guidance via a closed-form constrained update that enforces a target presence threshold while minimally perturbing the conditional trajectory. Across multiple red-teaming benchmarks, CRG significantly reduces attack success rates while improving benign fidelity, and additional suppression targets such as artist style and violence without fine-tuning or external classifiers.
+
+</details>
+
+### 32. UnHype: CLIP-Guided Hypernetworks for Dynamic LoRA Unlearning
+
+📄 [arXiv](https://arxiv.org/abs/2602.03410) · 🎓 [Official](https://icml.cc/virtual/2026/poster/62857)　📅 2026　🏷 ICML 2026
+
+**关键词**：`defense`、`machine unlearning`、`deletion guarantee`、`utility retention`、`diffusion model`、`deletion verification`
+
+👤 **作者**：Piotr Wójcik、Maksym Petrenko、Wojciech Gromski、Przemysław Spurek、Maciej Zieba
+
+- 🎯 **研究动机**：基于 LoRA 的扩散模型遗忘对概念语义适应性有限，难以平衡删除相近概念与保持宽泛泛化，多概念同时擦除扩展性差
+- 🔬 **研究方法**：提出 UnHype：把超网络引入单/多概念 LoRA 训练，推理时依据 CLIP 嵌入动态生成自适应 LoRA 权重，可直接接入 Stable Diffusion 及 flow-based 文生图模型
+- 📌 **结论**：在物体擦除、名人擦除与显式内容移除任务上有效且训练稳定
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Recent advances in large-scale diffusion models have intensified concerns about their potential misuse, particularly in generating realistic yet harmful or socially disruptive content. This challenge has spurred growing interest in effective machine unlearning, the process of selectively removing specific knowledge or concepts from a model without compromising its overall generative capabilities. Among various approaches, Low-Rank Adaptation (LoRA) has emerged as an effective and efficient method for fine-tuning models toward targeted unlearning. However, LoRA-based methods often exhibit limited adaptability to concept semantics and struggle to balance removing closely related concepts with maintaining generalization across broader meanings. Moreover, these methods face scalability challenges when multiple concepts must be erased simultaneously. To address these limitations, we introduce UnHype, a framework that incorporates hypernetworks into single- and multi-concept LoRA training. The proposed architecture can be directly plugged into Stable Diffusion as well as modern flow-based text-to-image models, where it demonstrates stable training behavior and effective concept control. During inference, the hypernetwork dynamically generates adaptive LoRA weights based on the CLIP embedding, enabling more context-aware, scalable unlearning. We evaluate UnHype across several challenging tasks, including object erasure, celebrity erasure, and explicit content removal, demonstrating its effectiveness and versatility.
+
+</details>
+
+### 33. Forget-It-All: Multi-Concept Machine Unlearning via Concept-Aware Neuron Masking
+
+📄 [arXiv](https://arxiv.org/abs/2601.06163) · 🎓 [Official](https://icml.cc/virtual/2026/poster/65222)　📅 2026　🏷 ICML 2026
+
+**关键词**：`defense`、`machine unlearning`、`deletion guarantee`、`utility retention`、`concept erasure`、`diffusion model`
+
+👤 **作者**：Kaiyuan Deng、…、Xiaolong Ma
+
+- 🎯 **研究动机**：现有概念擦除方法多针对单概念，多概念场景下遗忘效果、生成质量与超参敏感性均差
+- 🔬 **研究方法**：FIA 利用模型稀疏性：Contrastive Concept Saliency 量化权重连接对概念的贡献，结合时空信息识别概念敏感神经元并融合为统一多概念掩码，保留概念无关神经元、剪除概念特定神经元
+- 📌 **结论**：免训练、少调参即插即用，三项遗忘任务上多概念遗忘更可靠且保持生成保真
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+The widespread adoption of text-to-image (T2I) diffusion models has raised concerns about their potential to generate copyrighted, inappropriate, or sensitive imagery. As a practical solution, machine unlearning aims to erase unwanted concepts without retraining from scratch. While most existing methods are effective for single-concept unlearning, they often struggle when removing multiple concepts, causing significant challenges in unlearning effectiveness, generation quality, and sensitivity to hyperparameters and datasets. We take a unique perspective on multi-concept unlearning by leveraging model sparsity and propose the F orget I t A ll (FIA) framework. FIA first introduces Contrastive Concept Saliency to quantify each weight connection's contribution to a target concept. It then identifies Concept Sensitive Neurons by combining temporal and spatial information, ensuring that only neurons consistently responsive to the target concept are selected. Finally, FIA constructs masks from the identified neurons and fuses them into a unified multi-concept mask, where Concept Agnostic Neurons that broadly support general content generation are preserved while concept-specific neurons are pruned to remove the targets. FIA is training-free and requires minimal hyperparameter tuning for new tasks, enabling plug-and-play use. Extensive experiments across three distinct unlearning tasks demonstrate that FIA achieves more reliable multi-concept unlearning, improving forgetting effectiveness while maintaining generation fidelity and quality. Code is available at https://github.com/kaiyuan02415/Forget-It-All
+
+</details>
+
+### 34. Backdooring Textual Inversion for Concept Censorship
+
+📄 [arXiv](https://arxiv.org/abs/2308.10718) · 🌐 [Project](https://concept-censorship.github.io/)　📅 2023-08
+
+**关键词**：`defense`、`concept censorship`、`Textual Inversion`、`protective backdoor`
+
+👤 **作者**：Yutong Wu、Jie Zhang、Florian Kerschbaum、Tianwei Zhang
+
+- 🎯 **研究动机**：可下载的 Textual Inversion embedding 可被滥用造假或诽谤，缺乏概念审查手段
+- 🔬 **研究方法**：以后门为善：TI 训练时把敏感词设为触发器，触发词与个性化 embedding 组合时输出预设安全图像
+- 📌 **结论**：Stable Diffusion 上在不影响正常使用的前提下实现敏感概念审查
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Recent years have witnessed success in AIGC (AI Generated Content). People can make use of a pre-trained diffusion model to generate images of high quality or freely modify existing pictures with only prompts in nature language. More excitingly, the emerging personalization techniques make it feasible to create specific-desired images with only a few images as references. However, this induces severe threats if such advanced techniques are misused by malicious users, such as spreading fake news or defaming individual reputations. Thus, it is necessary to regulate personalization models (i.e., concept censorship) for their development and advancement. In this paper, we focus on the personalization technique dubbed Textual Inversion (TI), which is becoming prevailing for its lightweight nature and excellent performance. TI crafts the word embedding that contains detailed information about a specific object. Users can easily download the word embedding from public websites like Civitai and add it to their own stable diffusion model without fine-tuning for personalization. To achieve the concept censorship of a TI model, we propose leveraging the backdoor technique for good by injecting backdoors into the Textual Inversion embeddings. Briefly, we select some sensitive words as triggers during the training of TI, which will be censored for normal use. In the subsequent generation stage, if the triggers are combined with personalized embeddings as final prompts, the model will output a pre-defined target image rather than images including the desired malicious concept. To demonstrate the effectiveness of our approach, we conduct extensive experiments on Stable Diffusion, a prevailing open-sourced text-to-image model. Our code, data, and results are available at https://concept-censorship.github.io.
 
 </details>

@@ -178,26 +178,7 @@ Recently, we have often observed hallucinated citations or references that do no
 
 </details>
 
-### 10. Do Language Models Know When They're Hallucinating References?
-
-🎓 [Official](https://aclanthology.org/2024.findings-emnlp.904/)　📅 2024-11　🏷 EMNLP 2024
-
-**关键词**：`analysis`、`reference hallucination`、`uncertainty signal`、`self-knowledge`
-
-👤 **作者**：Chuhan Li、Ziyao Shangguan、Yilun Zhao、Deyuan Li、Yixin Liu、Arman Cohan
-
-- 🎯 **研究动机**：现有科学文献理解基准多为单文档纯文本任务，未反映涉及图表等多模态与跨文档信息的研究工作流
-- 🔬 **研究方法**：M3SciQA 多模态多文档科学 QA 基准：1452 道专家标注问题覆盖 70 个 NLP 论文簇（主论文及其引文），评测 18 个前沿基础模型
-- 📌 **结论**：当前基础模型在多模态信息检索与跨多文档推理上仍显著逊于人类专家
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Existing evaluation benchmarks for foundation models in understanding scientific literature predominantly focus on single-document, text-only tasks. Such benchmarks often do not adequately represent the complexity of research workflows, which typically also involve interpreting non-textual data, such as figures and tables, and gathering information across multiple documents and related literature. To address this gap, we introduce M3SciQA, a multi-modal, multi-document scientific question answering benchmark designed for a more comprehensive evaluation of foundation models. M3Sci QA consists of 1452 expert-annotated questions spanning 70 natural language processing paper clusters, where each cluster represents a primary paper along with all its cited documents, mirroring the workflow of comprehending a single paper by requiring multi-modal and multi-document data. With M3SciQA, we conduct a comprehensive evaluation of 18 frontier foundation models. Our results indicate that current foundation models still significantly underperform compared to human experts in multi-modal information retrieval and in reasoning across multiple scientific documents. Additionally, we explore the implications of these findings for the future advancement of applying foundation models in multi-modal scientific literature analysis.
-
-</details>
-
-### 11. CiteCheck: Retrieval-Grounded Detection of LLM Citation Hallucinations in Scientific Text
+### 10. CiteCheck: Retrieval-Grounded Detection of LLM Citation Hallucinations in Scientific Text
 
 📄 [arXiv](https://arxiv.org/abs/2605.27700)　📅 2026-05
 
@@ -216,7 +197,7 @@ Large language models (LLMs) are increasingly used to generate scientific report
 
 </details>
 
-### 12. Source or It Didn't Happen: A Multi-Agent Framework for Citation Hallucination Detection
+### 11. Source or It Didn't Happen: A Multi-Agent Framework for Citation Hallucination Detection
 
 📄 [arXiv](https://arxiv.org/abs/2605.08583)　📅 2026-05
 
@@ -235,7 +216,7 @@ Large language models are increasingly used in scientific writing, yet they can 
 
 </details>
 
-### 13. HalluCiteChecker: A Lightweight Toolkit for Hallucinated Citation Detection and Verification in the Era of AI Scientists
+### 12. HalluCiteChecker: A Lightweight Toolkit for Hallucinated Citation Detection and Verification in the Era of AI Scientists
 
 📄 [arXiv](https://arxiv.org/abs/2604.26835)　📅 2026-04
 
@@ -254,7 +235,7 @@ We introduce HalluCiteChecker, a toolkit for detecting and verifying hallucinate
 
 </details>
 
-### 14. Detecting and Correcting Reference Hallucinations in Commercial LLMs and Deep Research Agents
+### 13. Detecting and Correcting Reference Hallucinations in Commercial LLMs and Deep Research Agents
 
 📄 [arXiv](https://arxiv.org/abs/2604.03173)　📅 2026-04
 
@@ -273,7 +254,7 @@ Large language models and deep research agents supply citation URLs to support t
 
 </details>
 
-### 15. BibTeX Citation Hallucinations in Scientific Publishing Agents: Evaluation and Mitigation
+### 14. BibTeX Citation Hallucinations in Scientific Publishing Agents: Evaluation and Mitigation
 
 📄 [arXiv](https://arxiv.org/abs/2604.03159) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-04　🏷 COLM 2026
 
@@ -292,7 +273,7 @@ Large language models with web search are increasingly used in scientific publis
 
 </details>
 
-### 16. citecheck: An MCP Server for Automated Bibliographic Verification and Repair in Scholarly Manuscripts
+### 15. citecheck: An MCP Server for Automated Bibliographic Verification and Repair in Scholarly Manuscripts
 
 📄 [arXiv](https://arxiv.org/abs/2603.17339)　📅 2026-03
 
@@ -311,7 +292,7 @@ Reference lists in scholarly manuscripts frequently contain errors, including in
 
 </details>
 
-### 17. CiteAudit: You Cited It, But Did You Read It? A Benchmark for Verifying Scientific References in the LLM Era
+### 16. CiteAudit: You Cited It, But Did You Read It? A Benchmark for Verifying Scientific References in the LLM Era
 
 📄 [arXiv](https://arxiv.org/abs/2602.23452)　📅 2026-02
 
@@ -330,7 +311,7 @@ Scientific research relies on citation integrity, yet large language models (LLM
 
 </details>
 
-### 18. CheckIfExist: Detecting Citation Hallucinations in the Era of AI-Generated Content
+### 17. CheckIfExist: Detecting Citation Hallucinations in the Era of AI-Generated Content
 
 📄 [arXiv](https://arxiv.org/abs/2602.15871)　📅 2026-01
 
@@ -349,7 +330,7 @@ The proliferation of large language models (LLMs) in academic workflows has intr
 
 </details>
 
-### 19. FACTUM: Mechanistic Detection of Citation Hallucination in Long-Form RAG
+### 18. FACTUM: Mechanistic Detection of Citation Hallucination in Long-Form RAG
 
 📄 [arXiv](https://arxiv.org/abs/2601.05866)　📅 2026-01
 
@@ -368,7 +349,7 @@ Retrieval-Augmented Generation (RAG) models are critically undermined by citatio
 
 </details>
 
-### 20. HalluPeer: A Taxonomy-driven Benchmark for Detecting Hallucinations in Scientific Peer Reviews
+### 19. HalluPeer: A Taxonomy-driven Benchmark for Detecting Hallucinations in Scientific Peer Reviews
 
 📄 [arXiv](https://arxiv.org/abs/2609.03580)　📅 2026-09
 
@@ -387,7 +368,7 @@ The growing scale of academic peer review has motivated the use of Large Languag
 
 </details>
 
-### 21. CiteGuard: Faithful Citation Attribution for LLMs via Retrieval-Augmented Validation
+### 20. CiteGuard: Faithful Citation Attribution for LLMs via Retrieval-Augmented Validation
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.282/)　📅 2026-07　🏷 ACL 2026
 
@@ -406,7 +387,7 @@ Large Language Models (LLMs) have emerged as powerful assistants for scientific 
 
 </details>
 
-### 22. Med-V1: Small Language Models for Zero-shot and Scalable Biomedical Evidence Attribution
+### 21. Med-V1: Small Language Models for Zero-shot and Scalable Biomedical Evidence Attribution
 
 📄 [arXiv](https://arxiv.org/abs/2603.05308)　📅 2026-03
 
@@ -425,7 +406,7 @@ Assessing whether an article supports an assertion is essential for hallucinatio
 
 </details>
 
-### 23. BIBAGENT: An Agentic Framework for Traceable Miscitation Detection in Scientific Literature
+### 22. BIBAGENT: An Agentic Framework for Traceable Miscitation Detection in Scientific Literature
 
 📄 [arXiv](https://arxiv.org/abs/2601.16993)　📅 2026-01
 
@@ -444,26 +425,7 @@ Citations are the bedrock of scientific authority, yet their integrity is compro
 
 </details>
 
-### 24. ScholarCopilot: Training Large Language Models for Academic Writing with Accurate Citations
-
-📄 [arXiv](https://arxiv.org/abs/2504.00824)　📅 2025-04
-
-**关键词**：`defense`、`academic writing`、`citation generation`、`evidence grounding`
-
-👤 **作者**：Yubo Wang、…、Wenhu Chen
-
-- 🎯 **研究动机**：通用 RAG 难以支撑专业学术写作的精确引用需求
-- 🔬 **研究方法**：提出 ScholarCopilot，通过生成 [RET] token 动态触发引文检索，联合优化生成与引用两个任务
-- 📌 **结论**：基于 Qwen-2.5-7B 与 500K arXiv 论文训练，top-1 检索准确率 40.1%（E5-Mistral 为 15.0%），引用质量人类偏好全面胜 ChatGPT
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Academic writing requires both coherent text generation and precise citation of relevant literature. Although recent Retrieval-Augmented Generation (RAG) systems have significantly improved factual accuracy in general-purpose text generation, their ability to support professional academic writing remains limited. In this work, we introduce ScholarCopilot, a unified framework designed to enhance existing large language models for generating professional academic articles with accurate and contextually relevant citations. ScholarCopilot dynamically determines when to retrieve scholarly references by generating a retrieval token [RET], which is then used to query a citation database. The retrieved references are fed into the model to augment the generation process. We jointly optimize both the generation and citation tasks within a single framework to improve efficiency. Our model is built upon Qwen-2.5-7B and trained on 500K papers from arXiv. It achieves a top-1 retrieval accuracy of 40.1% on our evaluation dataset, outperforming baselines such as E5-Mistral-7B-Instruct (15.0%) and BM25 (9.8%). On a dataset of 1,000 academic writing samples, ScholarCopilot scores 16.2/25 in generation quality -- measured across relevance, coherence, academic rigor, completeness, and innovation -- significantly surpassing all existing models, including much larger ones like the Retrieval-Augmented Qwen2.5-72B-Instruct. Human studies further demonstrate that ScholarCopilot, despite being a 7B model, significantly outperforms ChatGPT, achieving 100% preference in citation quality and over 70% in overall usefulness.
-
-</details>
-
-### 25. CiteCheck: Towards Accurate Citation Faithfulness Detection
+### 23. CiteCheck: Towards Accurate Citation Faithfulness Detection
 
 📄 [arXiv](https://arxiv.org/abs/2502.10881)　📅 2025-02
 
@@ -482,7 +444,7 @@ Citation faithfulness detection is critical for enhancing retrieval-augmented ge
 
 </details>
 
-### 26. SciTrue: Reliable Scientific Claim Validation with Frontier and Open Language Models at the NTCIR SciClaimEval Task
+### 24. SciTrue: Reliable Scientific Claim Validation with Frontier and Open Language Models at the NTCIR SciClaimEval Task
 
 📄 [arXiv](https://arxiv.org/abs/2609.00654)　📅 2026-09
 
@@ -501,7 +463,7 @@ We describe the SciTrue team's participation in both subtasks of the NTCIR-19 Sc
 
 </details>
 
-### 27. Auto-Judge: A Cross-Task Benchmark for Comparing LLM Judges for Citation-Grounded RAG Systems
+### 25. Auto-Judge: A Cross-Task Benchmark for Comparing LLM Judges for Citation-Grounded RAG Systems
 
 🌐 [Project](https://doi.org/10.1145/3805712.3808601)　📅 2026-07　🏷 SIGIR 2026
 
@@ -511,7 +473,7 @@ We describe the SciTrue team's participation in both subtasks of the NTCIR-19 Sc
 - 🔬 **研究方法**：构建Auto-Judge基准比较LLM judge的评判质量与抗操纵性
 - 📌 **结论**：揭示LLM评审器的偏差与可操纵风险，威胁评测有效性
 
-### 28. Who Checks the Citations? Benchmarking Legal Hallucination Detection
+### 26. Who Checks the Citations? Benchmarking Legal Hallucination Detection
 
 📄 [arXiv](https://arxiv.org/abs/2606.21155) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-06
 
@@ -530,7 +492,7 @@ Attorneys, judges, and pro se filers increasingly use AI to draft legal document
 
 </details>
 
-### 29. Pando: Do Interpretability Methods Work When Models Won't Explain Themselves?
+### 27. Pando: Do Interpretability Methods Work When Models Won't Explain Themselves?
 
 📄 [arXiv](https://arxiv.org/abs/2604.11061) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-04
 
@@ -546,5 +508,24 @@ Attorneys, judges, and pro se filers increasingly use AI to draft legal document
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 Mechanistic interpretability is often motivated for alignment auditing, where a model's verbal explanations can be absent, incomplete, or misleading. Yet many evaluations do not control whether black-box prompting alone can recover the target behavior, so apparent gains from white-box tools may reflect elicitation rather than internal signal; we call this the elicitation confounder. We introduce Pando, a model-organism benchmark that breaks this confound via an explanation axis: models are trained to produce either faithful explanations of the true rule, no explanation, or confident but unfaithful explanations of a disjoint distractor rule. Across 720 finetuned models implementing hidden decision-tree rules, agents predict held-out model decisions from $10$ labeled query-response pairs, optionally augmented with one interpretability tool output. When explanations are faithful, black-box elicitation matches or exceeds all white-box methods; when explanations are absent or misleading, gradient-based attribution improves accuracy by 3-5 percentage points, and relevance patching, RelP, gives the largest gains, while logit lens, sparse autoencoders, and circuit tracing provide no reliable benefit. Variance decomposition suggests gradients track decision computation, which fields causally drive the output, whereas other readouts are dominated by task representation, biases toward field identity and value. We release all models, code, and evaluation infrastructure.
+
+</details>
+
+### 28. Narrative License and Model Sycophancy in LLM Summaries of Scientific Work
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.746/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`analysis`、`sycophancy`、`guard model`、`content moderation`、`deceptive behavior`、`behavioral monitoring`
+
+👤 **作者**：Calvin Isch、Grace Jennings
+
+- 🎯 **研究动机**：LLM 学术总结会微妙夸大或误传发现，叙事放大（Narrative License）未被量化研究
+- 🔬 **研究方法**：在 100 篇论文上用多样提示评六个模型的三维度 NL：因果越界、修辞自信与情感，并测立场与用户 persona 的影响
+- 📌 **结论**：基础提示下 NL 常高于摘要、guardrail 提示可减少；声明立场与 persona 对各元素产生可预测偏移
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models (LLMs) are increasingly used to summarize academic work, yet model summaries can subtly exaggerate or mischaracterize findings. We examine how Narrative License (NL), rhetorical shifts that amplify claims beyond the underlying evidence, emerges in LLM summaries of scholarly articles. Using diverse prompting strategies across six leading models, we assess three dimensions of NL: causal overreach, rhetorical confidence, and sentiment (N = 100 peer-reviewed articles). Under basic summarization prompts, models frequently increase NL relative to academic abstracts; however, guardrail prompts can reduce these distortions. We further test how model “sycophancy” shapes NL, finding that stated stances and user personas produce predictable shifts in each element. These findings suggest that users and the benchmarks used to evaluate summarization should explicitly consider subtle rhetorical distortions and user alignment to ensure faithful scientific communication.
 
 </details>

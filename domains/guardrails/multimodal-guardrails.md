@@ -302,26 +302,7 @@ With the rapid proliferation of digital media, the need for efficient and transp
 
 </details>
 
-### 16. Multimodal Policy Internalization for Conversational Agents
-
-📄 [arXiv](https://arxiv.org/abs/2510.09474) · 📝 [OpenReview](https://openreview.net/forum?id=fSE0rUngCX) · 🎓 [Official](https://iclr.cc/virtual/2026/poster/10008236)　📅 2025-10　🏷 ICLR 2026
-
-**关键词**：`defense`、`policy internalization`、`TriMPI`、`tool-use policy`
-
-👤 **作者**：Zhenhailong Wang、…、Ruhi Sarikaya
-
-- 🎯 **研究动机**：多模态 Agent 的策略以长 prompt 实现，推理成本高且遵循不稳，多模态策略内化此前无人研究
-- 🔬 **研究方法**：定义 Multimodal Policy Internalization 任务并构建合成与真实数据集，提出持续预训练、SFT 加 PolicyRollout（GRPO 式 RL）的三阶段框架 TriMPI
-- 📌 **结论**：TriMPI 在端到端准确率、泛化与抗遗忘上显著提升，推理时无需再携带策略文本
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Modern conversational agents like ChatGPT and Alexa+ rely on predefined policies specifying metadata, response styles, and tool-usage rules. As these LLM-based systems expand to support diverse business and user queries, such policies, often implemented as in-context prompts, are becoming increasingly complex and lengthy, making faithful adherence difficult and imposing large fixed computational costs. With the rise of multimodal agents, policies that govern visual and multimodal behaviors are critical but remain understudied. Prior prompt-compression work mainly shortens task templates and demonstrations, while existing policy-alignment studies focus only on text-based safety rules. We introduce Multimodal Policy Internalization (MPI), a new task that internalizes reasoning-intensive multimodal policies into model parameters, enabling stronger policy-following without including the policy during inference. MPI poses unique data and algorithmic challenges. We build two datasets spanning synthetic and real-world decision-making and tool-using tasks and propose TriMPI, a three-stage training framework. TriMPI first injects policy knowledge via continual pretraining, then performs supervised finetuning, and finally applies PolicyRollout, a GRPO-style reinforcement learning extension that augments rollouts with policy-aware responses for grounded exploration. TriMPI achieves notable gains in end-to-end accuracy, generalization, and robustness to forgetting. As the first work on multimodal policy internalization, we provide datasets, training recipes, and comprehensive evaluations to foster future research. Project page: https://mikewangwzhl.github.io/TriMPI.
-
-</details>
-
-### 17. LLaVAShield: Safeguarding Multimodal Multi-Turn Dialogues in Vision-Language Models
+### 16. LLaVAShield: Safeguarding Multimodal Multi-Turn Dialogues in Vision-Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2509.25896) · 🌐 [Project](https://leost123456.github.io/LLaVAShield/) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Huang_LLaVAShield_Safeguarding_Multimodal_Multi-Turn_Dialogues_in_Vision-Language_Models_CVPR_2026_paper.html)　📅 2025-09　🏷 CVPR 2026
 
@@ -340,7 +321,7 @@ As Vision-Language Models (VLMs) move into interactive, multi-turn use, safety c
 
 </details>
 
-### 18. Towards Trustworthy Multimodal Moderation via Policy-Aligned Reasoning and Hierarchical Labeling
+### 17. Towards Trustworthy Multimodal Moderation via Policy-Aligned Reasoning and Hierarchical Labeling
 
 📄 [arXiv](https://arxiv.org/abs/2508.03296) · 🌐 [Project](https://doi.org/10.1145/3770854.3783934)　📅 2025-08　🏷 KDD 2026
 
@@ -359,7 +340,7 @@ Social platforms have revolutionized information sharing, but also accelerated t
 
 </details>
 
-### 19. GuardReasoner-VL: Safeguarding VLMs via Reinforced Reasoning
+### 18. GuardReasoner-VL: Safeguarding VLMs via Reinforced Reasoning
 
 📄 [arXiv](https://arxiv.org/abs/2505.11049) · 🎓 [Official](https://proceedings.neurips.cc/paper_files/paper/2025/hash/2a02b560822d564119fe3ac3be024ac6-Abstract-Conference.html)　📅 2025-05　🏷 NeurIPS 2025
 
@@ -378,7 +359,7 @@ To enhance the safety of VLMs, this paper introduces a novel reasoning-based VLM
 
 </details>
 
-### 20. ShieldGemma 2: Robust and Tractable Image Content Moderation
+### 19. ShieldGemma 2: Robust and Tractable Image Content Moderation
 
 📄 [arXiv](https://arxiv.org/abs/2504.01081)　📅 2025-04
 
@@ -397,7 +378,7 @@ We introduce ShieldGemma 2, a 4B parameter image content moderation model built 
 
 </details>
 
-### 21. MLLM-as-a-Judge for Image Safety without Human Labeling
+### 20. MLLM-as-a-Judge for Image Safety without Human Labeling
 
 📄 [arXiv](https://arxiv.org/abs/2501.00192)　📅 2024-12
 
@@ -416,7 +397,7 @@ Image content safety has become a significant challenge with the rise of visual 
 
 </details>
 
-### 22. Llama Guard 3 Vision: Safeguarding Human-AI Image Understanding Conversations
+### 21. Llama Guard 3 Vision: Safeguarding Human-AI Image Understanding Conversations
 
 📄 [arXiv](https://arxiv.org/abs/2411.10414)　📅 2024-11
 
@@ -435,7 +416,7 @@ We introduce Llama Guard 3 Vision, a multimodal LLM-based safeguard for human-AI
 
 </details>
 
-### 23. Transfer Safety Awareness for Cross-Modal Safety Drift in Multimodal Large Language Models
+### 22. Transfer Safety Awareness for Cross-Modal Safety Drift in Multimodal Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2609.02082)　📅 2026-09
 
@@ -454,7 +435,7 @@ Visual modality enhances the capabilities of multimodal large language models (M
 
 </details>
 
-### 24. Jailbreaking Text-to-Image Models Through Cracks: Navigating Heterogeneous Safety Filters via Multi-Agent Debate
+### 23. Jailbreaking Text-to-Image Models Through Cracks: Navigating Heterogeneous Safety Filters via Multi-Agent Debate
 
 📄 [arXiv](https://arxiv.org/abs/2609.01168)　📅 2026-09
 
@@ -473,7 +454,7 @@ Text-to-image (T2I) models remain vulnerable to jailbreak attacks that elicit No
 
 </details>
 
-### 25. COMIC: Reference-Aware Safety Gating for Multimodal Large Language Models
+### 24. COMIC: Reference-Aware Safety Gating for Multimodal Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2608.17234)　📅 2026-08
 
@@ -492,7 +473,7 @@ Multimodal large language models (MLLMs) are increasingly used to interact with 
 
 </details>
 
-### 26. Fully Unleashing the Multimodal Attacker: Meta-Adaptive Jailbreaking of Vision-Language Models
+### 25. Fully Unleashing the Multimodal Attacker: Meta-Adaptive Jailbreaking of Vision-Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2608.27531)　📅 2026-08
 
@@ -511,7 +492,7 @@ The safety of large vision-language models is increasingly stress-tested by mult
 
 </details>
 
-### 27. DiSCO: Defending text-to-image generation through distribution-guided contrastive prompt optimization
+### 26. DiSCO: Defending text-to-image generation through distribution-guided contrastive prompt optimization
 
 📄 [arXiv](https://arxiv.org/abs/2608.17067)　📅 2026-08
 
@@ -530,7 +511,7 @@ As text-to-image generative models advance, they raise critical safety concerns,
 
 </details>
 
-### 28. HarmTrace: Anchor-Calibrated Decoupled Optimization for Fine-Grained Target Identification in Harmful Memes
+### 27. HarmTrace: Anchor-Calibrated Decoupled Optimization for Fine-Grained Target Identification in Harmful Memes
 
 📄 [arXiv](https://arxiv.org/abs/2608.16622)　📅 2026-08
 
@@ -549,7 +530,7 @@ Multimodal harmful meme detection is typically formulated as image--text harmful
 
 </details>
 
-### 29. Whose Refusal Is It? The Unmeasured Contribution of Black-Box Multimodal Guardrails
+### 28. Whose Refusal Is It? The Unmeasured Contribution of Black-Box Multimodal Guardrails
 
 📄 [arXiv](https://arxiv.org/abs/2608.08641)　📅 2026-08
 
@@ -568,7 +549,7 @@ A black-box guardrail is evaluated as though the safety number it earns were its
 
 </details>
 
-### 30. The Boy Who Cried Wolf: Adversarial Misclassification of Safe Inputs as Unsafe in Multimodal Guardrails
+### 29. The Boy Who Cried Wolf: Adversarial Misclassification of Safe Inputs as Unsafe in Multimodal Guardrails
 
 📄 [arXiv](https://arxiv.org/abs/2608.01373) · 🌐 [Project](https://doi.org/10.1145/3770855.3817756)　📅 2026-08　🏷 KDD 2026
 
@@ -587,7 +568,7 @@ Multimodal guard models have emerged as critical safety components for screening
 
 </details>
 
-### 31. Safe Alone, Unsafe Together: Safeguarding Against Implicit Toxicity When Benign Images Combine
+### 30. Safe Alone, Unsafe Together: Safeguarding Against Implicit Toxicity When Benign Images Combine
 
 📄 [arXiv](https://arxiv.org/abs/2607.00576)　📅 2026-07
 
@@ -606,7 +587,7 @@ Multi-image content has become an increasingly prevalent form of visual communic
 
 </details>
 
-### 32. Making MLLMs Blind: Adversarial Smuggling Attacks in MLLM Content Moderation
+### 31. Making MLLMs Blind: Adversarial Smuggling Attacks in MLLM Content Moderation
 
 📄 [arXiv](https://arxiv.org/abs/2604.06950) · 📊 [Dataset](https://huggingface.co/datasets/zhihengli-casia/smugglebench) · 🌐 [Project](https://zhihengli-casia.github.io/Smugglebench/) · 📝 [OpenReview](https://openreview.net/forum?id=dRwsN1DvNV) · 🎓 [Official](https://aclanthology.org/2026.findings-acl.1006/)　📅 2026-04　🏷 ACL 2026
 
@@ -625,7 +606,7 @@ Multimodal Large Language Models (MLLMs) are increasingly being deployed as auto
 
 </details>
 
-### 33. CrossGuard: Safeguarding MLLMs against Joint-Modal Implicit Malicious Attacks
+### 32. CrossGuard: Safeguarding MLLMs against Joint-Modal Implicit Malicious Attacks
 
 📄 [arXiv](https://arxiv.org/abs/2510.17687) · 🎓 [Official](https://aclanthology.org/2026.acl-long.1178/)　📅 2025-10　🏷 ACL 2026
 
@@ -644,7 +625,7 @@ Multimodal Large Language Models (MLLMs) achieve strong reasoning and perception
 
 </details>
 
-### 34. SafeGuider: Robust and Practical Content Safety Control for Text-to-Image Models
+### 33. SafeGuider: Robust and Practical Content Safety Control for Text-to-Image Models
 
 📄 [arXiv](https://arxiv.org/abs/2510.05173)　📅 2025-10　🏷 ACM CCS 2025
 
@@ -663,7 +644,7 @@ Text-to-image models have shown remarkable capabilities in generating high-quali
 
 </details>
 
-### 35. Old Tricks, New Models: How Simple Image Transformations Break Modern AI-based Content Moderation
+### 34. Old Tricks, New Models: How Simple Image Transformations Break Modern AI-based Content Moderation
 
 📄 [arXiv](https://arxiv.org/abs/2607.28187)　📅 2026-07
 
@@ -682,7 +663,7 @@ While automated content-moderation systems have become essential for screening h
 
 </details>
 
-### 36. Red-Teaming NSFW Image Classifiers as Text-to-Image Safeguards
+### 35. Red-Teaming NSFW Image Classifiers as Text-to-Image Safeguards
 
 🎓 [Official](https://aclanthology.org/2026.findings-acl.506/)　📅 2026-07　🏷 ACL 2026
 
@@ -701,7 +682,7 @@ Not Safe for Work (NSFW) image classifiers play a critical role in safeguarding 
 
 </details>
 
-### 37. RedEdit: Agentic Red-Teaming of Image Safety Classifiers via MCTS-Guided Photo-Editing
+### 36. RedEdit: Agentic Red-Teaming of Image Safety Classifiers via MCTS-Guided Photo-Editing
 
 📄 [arXiv](https://arxiv.org/abs/2606.06140)　📅 2026-06
 
@@ -720,7 +701,7 @@ Image safety classifiers serve as a critical component of contemporary content m
 
 </details>
 
-### 38. Decoding Multimodal Cues: Unveiling the Implicit Meaning Behind Hateful Videos
+### 37. Decoding Multimodal Cues: Unveiling the Implicit Meaning Behind Hateful Videos
 
 📄 [arXiv](https://arxiv.org/abs/2606.11953) · 🌐 [Project](https://doi.org/10.1145/3805712.3809637)　📅 2026-07　🏷 SIGIR 2026
 
@@ -739,7 +720,7 @@ Hateful videos have become prevalent on online platforms, highlighting an urgent
 
 </details>
 
-### 39. From Failure Taxonomy to Intervention: A Diagnostic Methodology for Industry-Scale AVLM in Video and Live-Streaming Platform Moderation
+### 38. From Failure Taxonomy to Intervention: A Diagnostic Methodology for Industry-Scale AVLM in Video and Live-Streaming Platform Moderation
 
 📄 [arXiv](https://arxiv.org/abs/2606.30059)　📅 2026-06
 
@@ -758,7 +739,7 @@ Industry-scale video and live-streaming moderation imposes requirements that are
 
 </details>
 
-### 40. UNIVID: Unified Vision-Language Model for Video Moderation
+### 39. UNIVID: Unified Vision-Language Model for Video Moderation
 
 📄 [arXiv](https://arxiv.org/abs/2606.05748) · 🎓 [Official](https://aclanthology.org/2026.acl-industry.32/)　📅 2026-06　🏷 ACL 2026
 
@@ -777,7 +758,7 @@ Global-scale video moderation faces a dual challenge: the need for fine-grained 
 
 </details>
 
-### 41. SafeLens: Deliberate and Efficient Video Guardrails with Fast-and-Slow Screening
+### 40. SafeLens: Deliberate and Efficient Video Guardrails with Fast-and-Slow Screening
 
 📄 [arXiv](https://arxiv.org/abs/2605.17610)　📅 2026-05
 
@@ -796,7 +777,7 @@ The rapid growth of online video platforms and AI-generated content has made rel
 
 </details>
 
-### 42. AudioGuard: Toward Comprehensive Audio Safety Protection Across Diverse Threat Models
+### 41. AudioGuard: Toward Comprehensive Audio Safety Protection Across Diverse Threat Models
 
 📄 [arXiv](https://arxiv.org/abs/2604.08867)　📅 2026-04
 
@@ -815,7 +796,7 @@ Audio has rapidly become a primary interface for foundation models, powering rea
 
 </details>
 
-### 43. Now You Hear Me: Audio Narrative Attacks Against Large Audio–Language Models
+### 42. Now You Hear Me: Audio Narrative Attacks Against Large Audio–Language Models
 
 🎓 [Official](https://aclanthology.org/2026.eacl-long.278/)　📅 2026-03　🏷 ACL 2026
 
@@ -834,7 +815,7 @@ Large audio-language models increasingly operate on raw speech inputs, enabling 
 
 </details>
 
-### 44. Evolving Contextual Safety in Multi-Modal Large Language Models via Inference-Time Self-Reflective Memory
+### 43. Evolving Contextual Safety in Multi-Modal Large Language Models via Inference-Time Self-Reflective Memory
 
 📄 [arXiv](https://arxiv.org/abs/2603.15800) · 🌐 [Project](https://echosafe-mllm.github.io) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Zhang_Evolving_Contextual_Safety_in_Multi-Modal_Large_Language_Models_via_Inference-Time_CVPR_2026_paper.html)　📅 2026-03　🏷 CVPR 2026
 
@@ -853,7 +834,7 @@ Multi-modal Large Language Models (MLLMs) have achieved remarkable performance a
 
 </details>
 
-### 45. GuardReasoner-Omni: A Reasoning-based Multi-modal Guardrail for Text, Image, Video, and Audio
+### 44. GuardReasoner-Omni: A Reasoning-based Multi-modal Guardrail for Text, Image, Video, and Audio
 
 📄 [arXiv](https://arxiv.org/abs/2602.03328)　📅 2026-02
 
@@ -872,7 +853,7 @@ We present GuardReasoner-Omni, a reasoning-based guardrail model designed to mod
 
 </details>
 
-### 46. From Sparse Decisions to Dense Reasoning: A Multi-attribute Trajectory Paradigm for Multimodal Moderation
+### 45. From Sparse Decisions to Dense Reasoning: A Multi-attribute Trajectory Paradigm for Multimodal Moderation
 
 📄 [arXiv](https://arxiv.org/abs/2602.02536)　📅 2026-01
 
@@ -891,7 +872,7 @@ Safety moderation is pivotal for identifying harmful content. Despite the succes
 
 </details>
 
-### 47. Shot-Conditioned Vision-Language Adaptation for Effective Harmful Content Detection from Online Short Videos
+### 46. Shot-Conditioned Vision-Language Adaptation for Effective Harmful Content Detection from Online Short Videos
 
 🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/2149.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track)　📅 2026
 
@@ -908,7 +889,7 @@ Short video harmful content detection aims to automatically identify diverse ano
 
 </details>
 
-### 48. OmniGuard: Unified Omni-Modal Guardrails with Deliberate Reasoning
+### 47. OmniGuard: Unified Omni-Modal Guardrails with Deliberate Reasoning
 
 📄 [arXiv](https://arxiv.org/abs/2512.02306) · 🌐 [Project](https://luka-group.github.io/OmniGuard_webpage/)　📅 2025-12
 
@@ -927,7 +908,7 @@ Omni-modal Large Language Models (OLLMs) that process text, images, videos, and 
 
 </details>
 
-### 49. SafeWatch: An Efficient Safety-Policy Following Video Guardrail Model with Transparent Explanations
+### 48. SafeWatch: An Efficient Safety-Policy Following Video Guardrail Model with Transparent Explanations
 
 📄 [arXiv](https://arxiv.org/abs/2412.06878) · 🎓 [Official](https://proceedings.iclr.cc/paper_files/paper/2025/hash/beac6bfb7eac3d651307c16ac747df01-Abstract-Conference.html)　📅 2024-12　🏷 ICLR 2025
 
@@ -946,26 +927,7 @@ With the rise of generative AI and rapid growth of high-quality video generation
 
 </details>
 
-### 50. FailBench: How Reliable are VLMs at Judging Robot Task Success?
-
-📄 [arXiv](https://arxiv.org/abs/2609.03611) · 🌐 [Project](https://metric-ai-lab.github.io/failbench/)　📅 2026-09
-
-**关键词**：`benchmark`、`multimodal guard`、`robot outcome`、`failure monitor`、`VLM failure detection`、`robot manipulation`
-
-👤 **作者**：Zaruhi Navasardyan、Tatul Danielyan、Hrant Davtyan
-
-- 🎯 **研究动机**：VLM 被用作机器人结果判定的奖励信号、数据过滤与重试触发器，但跨域失败检测泛化证据有限
-- 🔬 **研究方法**：构建 FailBench：14 个来源（12 真实 2 仿真）的 2,197 次操作尝试，75% 失败自然发生，评测 13 个 VLM 检测器
-- 📌 **结论**：最佳模型平均 balanced accuracy 仅 0.77；失败检测微调模型反而逊于通用 VLM 与自身预训练基线；依赖可见物体运动时接近饱和、接触密集装配降至 0.60 以下，并在模糊证据下系统性偏向预测成功
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Vision-Language Models (VLMs) are increasingly used to evaluate robot manipulation outcomes, but existing benchmarks offer limited evidence of cross-domain generalization. We introduce FailBench, a benchmark for robot failure detection comprising 2,197 manipulation attempts across 14 public sources (12 real-world, 2 simulated). In FailBench, 75% of failures occur naturally, and six real-world sources come from non-failure-detection datasets. Evaluating 13 VLM-based detectors, we find the best model achieves only 0.77 mean balanced accuracy. Notably, models fine-tuned for failure detection consistently underperform general-purpose VLMs and their own pretrained baselines. Performance depends heavily on required visual evidence: models approach saturation when outcomes depend on observable object motion, but degrade to near-chance (<0.60 balanced accuracy) on contact-intensive assembly tasks. Error analysis reveals a systematic bias toward predicting success under ambiguous evidence, which persists even with increased reasoning effort. Finally, we show that input-level intervention--spatially localizing and cropping outcome-relevant regions--improves the top detector by 2.4 percentage points without extra training.
-
-</details>
-
-### 51. Not Safe for All: Auditing the Dialect Penalty in Text-to-Image Safety Pipelines
+### 49. Not Safe for All: Auditing the Dialect Penalty in Text-to-Image Safety Pipelines
 
 📄 [arXiv](https://arxiv.org/abs/2608.29589)　📅 2026-09
 
@@ -984,7 +946,7 @@ Text-to-image (T2I) safety guardrails fail to generalize equitably to non-standa
 
 </details>
 
-### 52. SafeAtlas-VL: Beyond Binary Multimodal Safety with Large-Scale Data and Guard Models
+### 50. SafeAtlas-VL: Beyond Binary Multimodal Safety with Large-Scale Data and Guard Models
 
 📄 [arXiv](https://arxiv.org/abs/2608.29098)　📅 2026-09
 
@@ -1003,7 +965,7 @@ Multimodal safety moderation requires distinguishing risks arising from visual c
 
 </details>
 
-### 53. Multi2AV-Safety: Benchmarking Safety in Multimodal-to-Audio-Video Generation
+### 51. Multi2AV-Safety: Benchmarking Safety in Multimodal-to-Audio-Video Generation
 
 📄 [arXiv](https://arxiv.org/abs/2608.26535)　📅 2026-08
 
@@ -1022,7 +984,7 @@ Audio-video generation is rapidly moving from prompt-driven synthesis toward mul
 
 </details>
 
-### 54. MMJailBench: A Factorized Benchmark for Disentangling Multimodal Jailbreak Vulnerabilities
+### 52. MMJailBench: A Factorized Benchmark for Disentangling Multimodal Jailbreak Vulnerabilities
 
 📄 [arXiv](https://arxiv.org/abs/2608.25490)　📅 2026-08
 
@@ -1041,7 +1003,7 @@ Multimodal Large Language Models (MLLMs) are increasingly deployed in real-world
 
 </details>
 
-### 55. EviSafe: Evidence-Grounded Safety Evaluation for Vision-Language Models
+### 53. EviSafe: Evidence-Grounded Safety Evaluation for Vision-Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2608.23313)　📅 2026-08
 
@@ -1060,7 +1022,7 @@ Vision-language model safety benchmarks typically evaluate only final responses:
 
 </details>
 
-### 56. EVADE-Bench: Multimodal Benchmark for Evaluating and Enhancing Evasive Content Detection
+### 54. EVADE-Bench: Multimodal Benchmark for Evaluating and Enhancing Evasive Content Detection
 
 📄 [arXiv](https://arxiv.org/abs/2505.17654) · 📊 [Dataset](https://huggingface.co/datasets/koenshen/EVADE-Bench) · 🌐 [Project](https://doi.org/10.1145/3805712.3808579)　📅 2026-07　🏷 SIGIR 2026
 
@@ -1079,7 +1041,7 @@ E-commerce platforms increasingly rely on Large Language Models (LLMs) and Visio
 
 </details>
 
-### 57. Beyond Hate: Differentiating Uncivil and Intolerant Speech in Multimodal Content Moderation
+### 55. Beyond Hate: Differentiating Uncivil and Intolerant Speech in Multimodal Content Moderation
 
 📄 [arXiv](https://arxiv.org/abs/2603.22985)　📅 2026-03
 
@@ -1098,7 +1060,7 @@ Current multimodal toxicity benchmarks typically use a single binary hatefulness
 
 </details>
 
-### 58. From Native Memes to Global Moderation: Cross-Cultural Evaluation of Vision-Language Models for Hateful Meme Detection
+### 56. From Native Memes to Global Moderation: Cross-Cultural Evaluation of Vision-Language Models for Hateful Meme Detection
 
 📄 [arXiv](https://arxiv.org/abs/2602.07497) · 🌐 [Project](https://doi.org/10.1145/3774904.3793007)　📅 2026-02
 
@@ -1117,7 +1079,7 @@ Cultural context profoundly shapes how people interpret online content, yet visi
 
 </details>
 
-### 59. OutSafe-Bench: A Benchmark for Multimodal Offensive Content Detection in Large Language Models
+### 57. OutSafe-Bench: A Benchmark for Multimodal Offensive Content Detection in Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2511.10287)　📅 2025-11
 
@@ -1136,7 +1098,7 @@ Since Multimodal Large Language Models (MLLMs) are increasingly being integrated
 
 </details>
 
-### 60. SafetyPairs: Isolating Safety Critical Image Features with Counterfactual Image Generation
+### 58. SafetyPairs: Isolating Safety Critical Image Features with Counterfactual Image Generation
 
 📄 [arXiv](https://arxiv.org/abs/2510.21120) · 🎓 [Official](https://iclr.cc/virtual/2026/10019336)　📅 2025-10　🏷 ICLR 2026
 
@@ -1155,7 +1117,7 @@ What exactly makes a particular image unsafe? Systematically differentiating bet
 
 </details>
 
-### 61. VLSU: Mapping the Limits of Joint Multimodal Understanding for AI Safety
+### 59. VLSU: Mapping the Limits of Joint Multimodal Understanding for AI Safety
 
 📄 [arXiv](https://arxiv.org/abs/2510.18214) · 📝 [OpenReview](https://openreview.net/forum?id=OzPAI04hi5) · 🎓 [Official](https://iclr.cc/virtual/2026/poster/10009729)　📅 2025-10　🏷 ICLR 2026
 
@@ -1174,7 +1136,7 @@ Safety evaluation of multimodal foundation models often treats vision and langua
 
 </details>
 
-### 62. HoliSafe: Holistic Safety Benchmarking and Modeling for Vision-Language Model
+### 60. HoliSafe: Holistic Safety Benchmarking and Modeling for Vision-Language Model
 
 📄 [arXiv](https://arxiv.org/abs/2506.04704)　📅 2025-06
 
@@ -1193,7 +1155,7 @@ Despite emerging efforts to enhance the safety of Vision-Language Models (VLMs),
 
 </details>
 
-### 63. Unmasking the Canvas: A Dynamic Benchmark for Image Generation Jailbreaking and LLM Content Safety
+### 61. Unmasking the Canvas: A Dynamic Benchmark for Image Generation Jailbreaking and LLM Content Safety
 
 📄 [arXiv](https://arxiv.org/abs/2505.04146)　📅 2025-05
 
@@ -1212,7 +1174,7 @@ Existing large language models (LLMs) are advancing rapidly and produce outstand
 
 </details>
 
-### 64. VLSBench: Unveiling Visual Leakage in Multimodal Safety
+### 62. VLSBench: Unveiling Visual Leakage in Multimodal Safety
 
 📄 [arXiv](https://arxiv.org/abs/2411.19939) · 🎓 [Official](https://aclanthology.org/2025.acl-long.405/)　📅 2024-11　🏷 ACL 2025
 
@@ -1231,7 +1193,7 @@ Safety concerns of Multimodal large language models (MLLMs) have gradually becom
 
 </details>
 
-### 65. UnsafeBench: Benchmarking Image Safety Classifiers on Real-World and AI-Generated Images
+### 63. UnsafeBench: Benchmarking Image Safety Classifiers on Real-World and AI-Generated Images
 
 📄 [arXiv](https://arxiv.org/abs/2405.03486) · 🌐 [Project](https://doi.org/10.1145/3719027.3765088)　📅 2024-05　🏷 ACM CCS 2025
 
@@ -1250,7 +1212,7 @@ With the advent of text-to-image models and concerns about their misuse, develop
 
 </details>
 
-### 66. Cognitive Distillation for Information Forensics: Towards Improved Hateful Meme Detection
+### 64. Cognitive Distillation for Information Forensics: Towards Improved Hateful Meme Detection
 
 🌐 [Project](https://doi.org/10.1145/3770855.3817775)　📅 2026-08　🏷 KDD 2026
 
@@ -1260,26 +1222,7 @@ With the advent of text-to-image models and concerns about their misuse, develop
 - 🔬 **研究方法**：将多模型集体认知蒸馏进信息取证管线增强检测
 - 📌 **结论**：hateful meme检测性能提升
 
-### 67. VSG-Safe: Spotting NSFW Video through Cross-Frame Evidence
-
-🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/zhang-yuyang)　📅 2026　🏷 USENIX Security 2026
-
-**关键词**：`detection`、`NSFW video`、`scene graph`、`multimodal guardrail`、`cross-frame reasoning`
-
-👤 **作者**：Yuyang Zhang、…、Lina Wang
-
-- 🎯 **研究动机**：现有审核把视频当作独立帧或原始帧序列，无法跨帧推理，跨帧语义（如违法活动、威胁）检测频繁失败
-- 🔬 **研究方法**：提出 VSG-Safe：抽取跨帧内容构建 scene graph，图导向模型联合捕获实体、属性与实体间关系以检测 NSFW 内容
-- 📌 **结论**：平均 F1 达 97.62%，较七个基线平均高 42.32%
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Recent advances in text-to-video (T2V) models enable high-fidelity videos that closely follow textual prompts. However, this expands practical applications while amplifying serious security and societal concerns from the automated synthesis of visual content that may be inappropriate in certain usage contexts, such as public or workplace settings, including sexual or violent content (e.g., the Grok can generate sexual videos in the "Spicy" mode). We observe that such visual content is often distributed across frames, embedded in visual entities, their attributes, and inter-entity relations. In contrast, existing moderation pipelines primarily treat video content as either individual frames or raw frame sequences, overlooking the fact that critical semantics can manifest through the combination of specific frames. This gap prevents them from reasoning across frames, confining detection to low-level visual cues, such as gore or explicit conflict, and causing frequent failures when cross-frame inference is required, including illegal activities or threats. To address these limitations, we propose leveraging scene graphs as the core intermediate semantic representation. Scene graphs naturally encode entities, their attributes, and inter-entity relationships, while also supporting reasoning over cross-frame content. Grounded on this insight, we further propose VSG-Safe, a novel scene-graph-driven framework for T2V content moderation. Concretely, our approach first extracts cross-frame content from videos to build scene graphs. With these graphs, we leverage a graph-oriented model to jointly capture entities, attributes, and inter-entity relations, enabling effective detection. To evaluate its effectiveness, we conduct extensive experiments on both SOTA benchmarks and our self-constructed video datasets. VSGSafe attains an average F1-score of 97.62%, outperforming seven baselines by 42.32% on average.
-
-</details>
-
-### 68. All Changes May Have Invariant Principles: Improving Ever-Shifting Harmful Meme Detection via Design Concept Reproduction
+### 65. All Changes May Have Invariant Principles: Improving Ever-Shifting Harmful Meme Detection via Design Concept Reproduction
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.800/)　📅 2026　🏷 ACL 2026
 
@@ -1298,7 +1241,7 @@ Harmful memes are ever-shifting in the Internet communities, which are difficult
 
 </details>
 
-### 69. From Shallow Humor to Metaphor: Towards Label-Free Harmful Meme Detection via LMM Agent Self-Improvement
+### 66. From Shallow Humor to Metaphor: Towards Label-Free Harmful Meme Detection via LMM Agent Self-Improvement
 
 📄 [arXiv](https://arxiv.org/abs/2512.21598) · 🌐 [Project](https://doi.org/10.1145/3770854.3780213)　📅 2025-12　🏷 KDD 2026
 
@@ -1314,5 +1257,43 @@ Harmful memes are ever-shifting in the Internet communities, which are difficult
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 The proliferation of harmful memes on online media poses significant risks to public health and stability. Existing detection methods heavily rely on large-scale labeled data for training, which necessitates substantial manual annotation efforts and limits their adaptability to the continually evolving nature of harmful content. To address these challenges, we present ALARM, the first lAbeL-free hARmful Meme detection framework powered by Large Multimodal Model (LMM) agent self-improvement. The core innovation of ALARM lies in exploiting the expressive information from "shallow" memes to iteratively enhance its ability to tackle more complex and subtle ones. ALARM consists of a novel Confidence-based Explicit Meme Identification mechanism that isolates the explicit memes from the original dataset and assigns them pseudo-labels. Besides, a new Pairwise Learning Guided Agent Self-Improvement paradigm is introduced, where the explicit memes are reorganized into contrastive pairs (positive vs. negative) to refine a learner LMM agent. This agent autonomously derives high-level detection cues from these pairs, which in turn empower the agent itself to handle complex and challenging memes effectively. Experiments on three diverse datasets demonstrate the superior performance and strong adaptability of ALARM to newly evolved memes. Notably, our method even outperforms label-driven methods. These results highlight the potential of label-free frameworks as a scalable and promising solution for adapting to novel forms and topics of harmful memes in dynamic online environments.
+
+</details>
+
+### 67. CompAgent: An Agentic Framework for Visual Compliance Verification
+
+📄 [arXiv](https://arxiv.org/abs/2511.00171)　📅 2025-10　🏷 CVPR 2026 Workshop
+
+**关键词**：`defense`、`visual compliance`、`tool routing`、`agentic verification`
+
+👤 **作者**：Rahul Ghosh、…、Chun-Hao Liu
+
+- 🎯 **研究动机**：视觉合规验证缺乏通用方法，MLLM 又难以独自处理细粒度视觉细节并执行结构化规则
+- 🔬 **研究方法**：CompAgent 给 MLLM 配备物体检测、人脸分析、NSFW 检测与描述等工具，由规划 agent 按合规策略动态选工具，再由验证 agent 融合图像、工具输出与策略推理
+- 📌 **结论**：超越专用分类器与直接 MLLM 提示，UnsafeBench 上 F1 最高 76%、较 SOTA 提升 10%
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Visual compliance verification is a critical yet underexplored problem in computer vision, especially in domains such as media, entertainment, and advertising where content must adhere to complex and evolving policy rules. Existing methods often rely on task-specific deep learning models trained on manually labeled datasets, which are costly to build and limited in generalizability. While recent Multimodal Large Language Models (MLLMs) offer broad real-world knowledge and policy understanding, they struggle to reason over fine-grained visual details and apply structured compliance rules effectively on their own. In this paper, we propose CompAgent, the first agentic framework for visual compliance verification. CompAgent augments MLLMs with a suite of visual tools-such as object detectors, face analyzers, NSFW detectors, and captioning models-and introduces a planning agent that dynamically selects appropriate tools based on the compliance policy. A compliance verification agent then integrates image, tool outputs, and policy context to perform multimodal reasoning. Experiments on public benchmarks show that CompAgent outperforms specialized classifiers, direct MLLM prompting, and curated routing baselines, achieving up to 76% F1 score and a 10% improvement over the state-of-the-art on the UnsafeBench dataset. Our results demonstrate the effectiveness of agentic planning and robust tool-augmented reasoning for scalable, accurate, and adaptable visual compliance verification.
+
+</details>
+
+### 68. Dynamic Content Moderation in Livestreams: Combining Supervised Classification with MLLM-Boosted Similarity Matching
+
+📄 [arXiv](https://arxiv.org/abs/2512.03553) · 🌐 [Project](https://doi.org/10.1145/3770854.3783936)　📅 2025-12　🏷 KDD 2026
+
+**关键词**：`defense`、`livestream moderation`、`MLLM matching`、`production deployment`
+
+👤 **作者**：Wei Chee Yew、…、Danhui Guan
+
+- 🎯 **研究动机**：直播审核需及时、多模态并适应不断演化的不良内容，单一分类器难以覆盖新型边缘案例
+- 🔬 **研究方法**：生产级混合框架：监督分类器处理已知违规，基于参考的相似度匹配处理新颖或微妙案例，文本、音频、视觉三模态并行，MLLM 向两条流水线蒸馏知识
+- 📌 **结论**：分类管线 80% 精度下召回 67%、相似度管线达 76%；大规模 A/B 测试显示不良直播观看量下降 6-8%
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Content moderation remains a critical yet challenging task for large-scale user-generated video platforms, especially in livestreaming environments where moderation must be timely, multimodal, and robust to evolving forms of unwanted content. We present a hybrid moderation framework deployed at production scale that combines supervised classification for known violations with reference-based similarity matching for novel or subtle cases. This hybrid design enables robust detection of both explicit violations and novel edge cases that evade traditional classifiers. Multimodal inputs (text, audio, visual) are processed through both pipelines, with a multimodal large language model (MLLM) distilling knowledge into each to boost accuracy while keeping inference lightweight. In production, the classification pipeline achieves 67% recall at 80% precision, and the similarity pipeline achieves 76% recall at 80% precision. Large-scale A/B tests show a 6-8% reduction in user views of unwanted livestreams}. These results demonstrate a scalable and adaptable approach to multimodal content governance, capable of addressing both explicit violations and emerging adversarial behaviors.
 
 </details>

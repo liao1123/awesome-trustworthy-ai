@@ -556,3 +556,22 @@ Distillation attacks create a deployment trade-off for model providers: the same
 Model extraction attacks pose significant security threats to deployed language models, potentially compromising intellectual property and user privacy. This survey provides a comprehensive taxonomy of LLM-specific extraction attacks and defenses, categorizing attacks into functionality extraction, training data extraction, and prompt-targeted attacks. We analyze various attack methodologies including API-based knowledge distillation, direct querying, parameter recovery, and prompt stealing techniques that exploit transformer architectures. We then examine defense mechanisms organized into model protection, data privacy protection, and prompt-targeted strategies, evaluating their effectiveness across different deployment scenarios. We propose specialized metrics for evaluating both attack effectiveness and defense performance, addressing the specific challenges of generative language models. Through our analysis, we identify critical limitations in current approaches and propose promising research directions, including integrated attack methodologies and adaptive defense mechanisms that balance security with model utility. This work serves NLP researchers, ML engineers, and security professionals seeking to protect language models in production environments.
 
 </details>
+
+### 31. Distillation Traps and Guards: A Calibration Knob for LLM Distillability
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.908/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`defense`、`uncertainty calibration`、`selective prediction`、`deployment shift`、`model provenance`、`watermarking`
+
+👤 **作者**：Weixiao Zhan、Yongcheng Jing、Leszek Rutkowski、Dacheng Tao
+
+- 🎯 **研究动机**：知识蒸馏会不可预测地失败并构成模型泄露风险——尾部噪声、off-policy 不稳定与师生差距扭曲训练信号
+- 🔬 **研究方法**：首个经强化微调控制教师可蒸馏性的事后校准：目标组合任务效用、KL 锚与跨 tokenizer 校准奖励
+- 📌 **结论**：可蒸馏校准教师的学生超越 SFT 与 KD 基线；不可蒸馏校准教师保留自身性能却使学生崩溃，成为 KD 质量与 IP 保护的实用旋钮
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Knowledge distillation (KD) transfers capabilities from large language models (LLMs) to smaller students, yet it can fail unpredictably and also underpins model leakage risks. Our analysis revealed several distillation traps: tail noise, off-policy instability, and, most fundamentally, the teacher–student gap, that distort training signals. These traps manifest as overconfident hallucinations, self-correction collapse, and local decoding degradation, causing distillation to fail. Motivated by these findings, we propose a post-hoc calibration method that, to the best of our knowledge, for the first time enables control over a teacher’s distillability via reinforcement fine-tuning (RFT). Our objective combines task utility, KL anchor, and across-tokenizer calibration reward. This makes distillability a practical safety lever for foundation models, connecting robust teacher–student transfer with deployment-aware model protection. Experiments across math, knowledge QA, and instruction-following tasks show that students distilled from distillable calibrated teachers outperform SFT and KD baselines, while undistillable calibrated teachers retain their task performance but cause distilled students to collapse, offering a practical knob for both better KD and model IP protection.
+
+</details>

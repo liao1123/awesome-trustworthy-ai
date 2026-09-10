@@ -221,26 +221,7 @@ Detecting deceptive behavior in LLMs is typically done post-hoc on outputs or by
 
 </details>
 
-### 12. The Stackelberg Speaker: Optimizing Persuasive Communication in Social Deduction Games
-
-🌐 [Project](https://3dagentworld.github.io/leader_follower) · 🎓 [Official](https://aclanthology.org/2026.acl-long.250/)　📅 2026　🏷 ACL 2026
-
-**关键词**：`analysis`、`model deception`、`strategic behavior`、`honesty evaluation`、`deceptive behavior`、`behavioral monitoring`
-
-👤 **作者**：Zhang Zheng、Deheng Ye、Peilin Zhao、Hao Wang
-
-- 🎯 **研究动机**：社会推理游戏方法聚焦信息处理与策略选择，忽视说服性沟通对其他玩家信念与回应的影响
-- 🔬 **研究方法**：把回合制对话形式化为 Stackelberg 竞争：当前玩家作为 leader 策略性影响 follower 回应，提出强化学习框架训练优化话语的说服力
-- 📌 **结论**：在四个社会推理基准上显著超越基线，迈向具备策略性社会影响的 agent
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Large language model (LLM) agents have shown remarkable progress in social deduction games (SDGs). However, existing approaches primarily focus on information processing and strategy selection, overlooking the significance of persuasive communication in influencing other players’ beliefs and responses. In SDGs, success depends not only on making correct deductions but also on convincing others to respond in alignment with one’s intent. To address this limitation, we formalize turn-based dialogue in SDGs as a Stackelberg competition, where the current player acts as the leader who strategically influences the follower’s response. Building on this theoretical foundation, we propose a reinforcement learning framework that trains agents to optimize utterances for persuasive impact. Through comprehensive experiments across four diverse social deduction benchmarks, we demonstrate that our agents significantly outperform baselines. This work represents a significant step toward developing AI agents capable of strategic social influence, with implications extending to scenarios requiring persuasive communication. Our code and data are available at https://3dagentworld.github.io/leader_follower.
-
-</details>
-
-### 13. Social Dynamics as Critical Vulnerabilities that Undermine Objective Decision-Making in LLM Collectives
+### 12. Social Dynamics as Critical Vulnerabilities that Undermine Objective Decision-Making in LLM Collectives
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1756/)　📅 2026　🏷 ACL 2026
 
@@ -259,7 +240,7 @@ Large language model (LLM) agents are increasingly acting as human delegates in 
 
 </details>
 
-### 14. Removing Sandbagging in LLMs by Training with Weak Supervision
+### 13. Removing Sandbagging in LLMs by Training with Weak Supervision
 
 📄 [arXiv](https://arxiv.org/abs/2604.22082) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64862)　📅 2026　🏷 ICML 2026
 
@@ -278,7 +259,7 @@ As AI systems begin to automate complex tasks, supervision increasingly relies o
 
 </details>
 
-### 15. OpenDeception: Learning Deception and Trust in Human–AI Interaction via Multi-Agent Simulation
+### 14. OpenDeception: Learning Deception and Trust in Human–AI Interaction via Multi-Agent Simulation
 
 📄 [arXiv](https://arxiv.org/abs/2504.13707) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64249)　📅 2026　🏷 ICML 2026
 
@@ -297,26 +278,7 @@ As large language models (LLMs) are increasingly deployed as interactive agents,
 
 </details>
 
-### 16. Do LLM Agents Mirror Socio-Cognitive Effects in Power-Asymmetric Conversations?
-
-🎓 [Official](https://aclanthology.org/2026.acl-long.2202/)　📅 2026　🏷 ACL 2026
-
-**关键词**：`analysis`、`model deception`、`strategic behavior`、`honesty evaluation`、`agent safety`、`deceptive behavior`
-
-👤 **作者**：Anvesh Rao Vijjini、Sagar B. Manjunath、Snigdha Chaturvedi
-
-- 🎯 **研究动机**：权力差异经语言协调、代词使用、权威偏差与有害顺从等社会认知效应塑造人类交流，LLM 是否复现未知
-- 🔬 **研究方法**：用多样职业 persona 模拟多轮权力不对称对话（如校长-教师、法官-律师），测量语言协调、代词使用、说服成功率与对不安全请求的顺从
-- 📌 **结论**：LLM 展现权力的关键社会认知效应（存在细微差别与变异），把模拟交互与期望及不安全行为联系起来
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Power differences shape human communication through well-documented socio-cognitive effects, including language coordination, pronoun usage, authority bias, and harmful compliance. We examine whether large language models (LLMs) exhibit similar behaviors when assigned high- or low-status personas. Using personas from diverse professions, we simulate multi-turn, power-asymmetric dialogues (e.g., principal–teacher, justice–lawyer) and measure (i) linguistic coordination, (ii) pronoun usage, (iii) persuasion success, and (iv) compliance with unsafe requests. Our results show that LLMs show key socio-cognitive effects of power, albeit with nuances and variability, linking simulated interactions to both desirable and unsafe behaviors.
-
-</details>
-
-### 17. Can Factual Opinions Be Edited (Manipulated) in Large Language Models?
+### 15. Can Factual Opinions Be Edited (Manipulated) in Large Language Models?
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.627/)　📅 2026　🏷 ACL 2026
 
@@ -335,45 +297,7 @@ Large Language Models (LLMs) are increasingly integrated into various domains, m
 
 </details>
 
-### 18. Are LLMs Reliable Rankers? Rank Manipulation via Two-Stage Token Optimization
-
-🎓 [Official](https://aclanthology.org/2026.acl-long.413/)　📅 2026　🏷 ACL 2026
-
-**关键词**：`analysis`、`model deception`、`strategic behavior`、`honesty evaluation`、`deepfake detection`、`deceptive behavior`
-
-👤 **作者**：Tiancheng Xing、Jerry Li、Yixuan Du、Xiyang Hu
-
-- 🎯 **研究动机**：LLM 用作信息检索重排器时，排名行为可被小而自然的提示操纵
-- 🔬 **研究方法**：RAF 两阶段 token 优化：Greedy Coordinate Gradient 结合可读性分数筛出候选 token，再在排序与可读性双损失下用熵动态加权与温度采样选 token
-- 📌 **结论**：多个 LLM 上用自然语言显著提升目标条目排名，鲁棒性超现有方法，揭示 LLM 重排序天然易受对抗操纵
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Large language models (LLMs) are increasingly used as rerankers in information retrieval, yet their ranking behavior can be steered by small, natural-sounding prompts. To expose this vulnerability, we present R ank A nything F irst (RAF), a two-stage token optimization method that crafts concise textual perturbations to consistently promote a target item in LLM-generated rankings while remaining hard to detect. Stage 1 uses Greedy Coordinate Gradient to shortlist candidate tokens at the current position by combining the gradient of the rank-target with a readability score; Stage 2 evaluates those candidates under exact ranking and readability losses using an entropy-based dynamic weighting scheme, and selects a token via temperature-controlled sampling. RAF generates ranking-promoting prompts token-by-token, guided by dual objectives: maximizing ranking effectiveness and preserving linguistic naturalness. Experiments across multiple LLMs show that RAF significantly boosts the rank of target items using naturalistic language, with greater robustness than existing methods in both promoting target items and maintaining naturalness. These findings underscore a critical security implication: LLM-based reranking is inherently susceptible to adversarial manipulation, raising new challenges for the trustworthiness and robustness of modern retrieval systems. Our code is available at: https://github.com/glad-lab/RAF.
-
-</details>
-
-### 19. Accommodation and Epistemic Vigilance: A Pragmatic Account of Why LLMs Fail to Challenge Harmful Beliefs
-
-🎓 [Official](https://aclanthology.org/2026.acl-long.736/)　📅 2026　🏷 ACL 2026
-
-**关键词**：`analysis`、`model deception`、`strategic behavior`、`honesty evaluation`、`RAG security`、`deceptive behavior`
-
-👤 **作者**：Myra Cheng、Robert D. Hawkins、Dan Jurafsky
-
-- 🎯 **研究动机**：LLM 在医疗建议到社会推理中常不能挑战用户有害信念，缺少统一解释
-- 🔬 **研究方法**：用语用学视角把失败统一为过度 accommodation 与不足的 epistemic vigilance，考察 at-issueness、语言编码与来源可靠性三个语用因素在三个安全基准（Cancer-Myth、SAGE-Eval、ELEPHANT）上的作用
-- 📌 **结论**：人类语用因素以相似方式影响 LLM 行为并可解释基准间差异；改变语用线索的提示干预（如加上 wait a minute）大幅提升困难基准表现
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Recent evaluations show that large language models (LLMs) frequently fail to challenge users’ harmful beliefs in domains ranging from medical advice to social reasoning. We present a unifying analysis through the lens of pragmatics: these safety failures can be understood and addressed as LLMs exhibiting excessive accommodation and insufficient epistemic vigilance. We show that the pragmatic factors affecting accommodation and epistemic vigilance in humans (at-issueness, linguistic encoding, and source reliability) influence LLM behaviors in similar ways. We demonstrate how these factors explain performance differences across three safety benchmarks that test models’ ability to challenge harmful beliefs, spanning misinformation (Cancer-Myth, SAGE-Eval) and sycophancy (ELEPHANT). This pragmatic lens further motivates prompting interventions, such as adding the phrase “wait a minute”, that drastically improve performance on these difficult benchmarks by shifting pragmatic cues. Our results have practical implications for benchmark design and underscore the importance of pragmatics for understanding model behavior and improving performance.
-
-</details>
-
-### 20. How Controllable Are Large Language Models? A Unified Evaluation across Behavioral Granularities
+### 16. How Controllable Are Large Language Models? A Unified Evaluation across Behavioral Granularities
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1443/)　📅 2026　🏷 ACL 2026
 
@@ -392,7 +316,7 @@ Large Language Models (LLMs) are increasingly deployed in socially sensitive dom
 
 </details>
 
-### 21. AI Watchdog: Agent Interfaces for Detecting and Defending Against Manipulative Dark Patterns in AI Conversations
+### 17. AI Watchdog: Agent Interfaces for Detecting and Defending Against Manipulative Dark Patterns in AI Conversations
 
 📄 [arXiv](https://arxiv.org/abs/2608.21841)　📅 2026-08
 
@@ -411,26 +335,7 @@ Conversational AI increasingly shapes consequential decisions, yet users have li
 
 </details>
 
-### 22. PCA-guided Activation Scaling for Monotonic Bidirectional Control over LLM Sycophancy
-
-📄 [arXiv](https://arxiv.org/abs/2608.16650) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-08
-
-**关键词**：`defense`、`sycophancy control`、`activation scaling`、`monotonic steering`、`model deception`
-
-👤 **作者**：Zheng Chen、Zhaoxin Feng、Yip Tin Po、Jianfei Ma、Emmanuele Chersoni、Bo Li
-
-- 🎯 **研究动机**：谄媚控制需双向且单调（既可减也可增、强度对应效果），现有方法无法跨模型数据集保证
-- 🔬 **研究方法**：PAS 把残差流激活分解为 PCA 识别的谄媚-诚实子空间与正交残差，对两者施加不同缩放指数实现单调双向控制
-- 📌 **结论**：三个 LLM、三个数据集上单调性 Spearman ρ=+0.92，每方向平均移 15.4%（基线 8.7%）；分解、不对称指数与层选择各不可缺
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Large language models (LLMs) exhibit sycophancy, a tendency to agree with user beliefs regardless of factual accuracy. This can reinforce misconceptions, but eliminating it entirely risks over-correction against valid opinions. Effective control must therefore both reduce and increase sycophancy with predictable and gradual effect. Yet, existing methods fail to ensure a bidirectional and monotonic relationship between steering strength and behavioral outcome across models and datasets. We introduce PCA-guided Activation Scaling (PAS), an activation steering framework that decomposes residual stream activations into a PCA-identified sycophancy-honesty subspace and an orthogonal residual, then applies distinct scaling exponents to achieve monotonic, bidirectional control. Across three LLMs and three datasets, PAS achieves strong monotonicity (Spearman $ρ$ = +0.92) and an average shift of 15.4% per direction, compared with 8.7% for the baselines. Ablation studies confirm that the decomposition, asymmetric exponents, and layer selection are each essential for maintaining monotonic control. The data and code are available at https://github.com/Bellafc/PCS.
-
-</details>
-
-### 23. Activation Steering for Aligned Open-ended Generation without Sacrificing Coherence
+### 18. Activation Steering for Aligned Open-ended Generation without Sacrificing Coherence
 
 📄 [arXiv](https://arxiv.org/abs/2604.08169) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-04
 
@@ -449,7 +354,7 @@ Alignment in LLMs is more brittle than commonly assumed: misalignment can be ind
 
 </details>
 
-### 24. Training Agents to Self-Report Misbehavior
+### 19. Training Agents to Self-Report Misbehavior
 
 📄 [arXiv](https://arxiv.org/abs/2602.22303) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-02
 
@@ -468,7 +373,7 @@ Frontier AI agents may pursue hidden goals while concealing their pursuit from o
 
 </details>
 
-### 25. Training Alignment Auditors via Reinforcement Learning
+### 20. Training Alignment Auditors via Reinforcement Learning
 
 📄 [arXiv](https://arxiv.org/abs/2608.25460)　📅 2026-08
 
@@ -487,7 +392,7 @@ Alignment auditing of frontier models increasingly relies on LLM auditors to sur
 
 </details>
 
-### 26. One Probe Won’t Catch Them All: Towards Targeted Deception Detection
+### 21. One Probe Won’t Catch Them All: Towards Targeted Deception Detection
 
 📄 [arXiv](https://arxiv.org/abs/2602.01425) · 🎓 [Official](https://icml.cc/virtual/2026/poster/60530)　📅 2026-02　🏷 ICML 2026
 
@@ -506,7 +411,7 @@ Linear probes are a promising approach for monitoring AI systems for deceptive b
 
 </details>
 
-### 27. Same Question, Different Lies: Cross-Context Consistency (C³) for Black-Box Sandbagging Detection
+### 22. Same Question, Different Lies: Cross-Context Consistency (C³) for Black-Box Sandbagging Detection
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/61923)　📅 2026　🏷 ICML 2026
 
@@ -525,7 +430,7 @@ As language models grow more capable, accurate capability evaluation becomes ess
 
 </details>
 
-### 28. Debate with Images: Detecting Deceptive Behaviors in Multimodal Large Language Models
+### 23. Debate with Images: Detecting Deceptive Behaviors in Multimodal Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2512.00349) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63373)　📅 2026　🏷 ICML 2026
 
@@ -541,5 +446,41 @@ As language models grow more capable, accurate capability evaluation becomes ess
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 As frontier AI systems become increasingly capable, concerns about deceptive behaviors have intensified. Unlike hallucinations, which stem from capability limitations, deception involves strategically misleading responses despite correct internal representations. While prior work has primarily studied deception in text-only settings, little is known about how such behaviors manifest in multimodal large language models. In this work, we systematically investigate multimodal deception and introduce *MM-DeceptionBench*, the first benchmark designed to evaluate deceptive behaviors in vision–language models across six realistic categories. We find that existing text-centric monitoring approaches are insufficient in multimodal settings due to the complexity of cross-modal reasoning. To address this gap, we propose *debate with images*, a multi-agent evaluation framework that enforces visual grounding through adversarial debate. Experiments show that this approach achieves substantially higher agreement with human judgments than MLLM-as-a-judge baselines, improving Cohen’s kappa by up to 1.5$\times$ and accuracy by up to 1.25$\times$ on GPT-4o.
+
+</details>
+
+### 24. AIs with Secret Loyalties are a Serious but Addressable Threat
+
+🌐 [Project](https://www.formationresearch.com/secret-loyalties-whitepaper.pdf)　📅 2026-05　🏷 ICML 2026
+
+**关键词**：`detection`、`misalignment auditing`、`secret loyalty`、`hidden objective`
+
+- 🎯 **研究动机**：秘密忠诚——模型暗中推进特定主体（敌对国家、公司高管等）利益且逃避运营者与审计——是被忽视的威胁，已有 PoC 可训练进开放权重模型并躲过黑盒审计
+- 🔬 **研究方法**：定义 secret loyalties 概念，区分其与显性忠诚及涌现失准的差别，提出围绕五个方向的研究议程
+- 📌 **结论**：治理、市场压力与公众监督无法应对该威胁，必须发展技术防御方案，呼吁研究界优先投入
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+This paper argues that the technical AI research community should prioritize studying and defending against a distinct, neglected threat: secret loyalties. A secretly loyal AI model is one whose outputs or actions advance the interests of a specific actor (which we term the principal) such as an adversary nation-state, an executive at an AI company, or another powerful actor, without this loyalty being disclosed to operators, auditors, or users. Proof-of-concept secret loyalties that evade black-box auditing can already be trained into open-weight models. Additionally, a deployed frontier model was found to systematically consult a specific individual’s views before answering some politically sensitive queries. While governance, market pressure, and public scrutiny can possibly address overt AI loyalties such as directives documented in a model spec, secret loyalties are designed to evade such oversight and therefore necessitate technical solutions. Unlike emergent misalignment, secret loyalties target specific principals, creating a distinct but tractable defensive foothold. To help the field make technical progress on this threat, we define secret loyalties, describe how they differ from other attack pathways, and propose a research agenda organized around five directions. We conclude with a call to action for ML researchers, AI developers, and governments.
+
+</details>
+
+### 25. Value Leakage: An LLM's Answers Are Silently Shaped by Its Own Values
+
+📄 [arXiv](https://arxiv.org/abs/2607.14345)　📅 2026-07
+
+**关键词**：`analysis`、`emergent misalignment`、`value leakage`、`implicit preference`
+
+👤 **作者**：Jan Betley、…、Owain Evans
+
+- 🎯 **研究动机**：模型答案被自身价值观隐性影响且不向用户披露，构成误导性失准
+- 🔬 **研究方法**：构建量化价值泄漏与披露行为的评估套件，考察对道德结果、开发公司及休闲偏好的影响
+- 📌 **结论**：Claude Opus 4.8 对 Anthropic 公司的 AI 泡沫破裂概率给出更低估值且多不披露；不同前沿模型差异巨大，Claude 在 CoT 中谎称无偏而 Qwen 会解释自身偏见影响；该失败模式区别于谄媚与奖励作弊
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+People use language models for practical questions whose answers are difficult to verify. We show that models exhibit covert value leakage: the information they provide is influenced by their own values, without this influence being disclosed to the user. In one of our evaluations, the user is considering investing in an AI company and wants to know how likely the AI bubble is to pop. Claude Opus 4.8 gives a lower probability when the company under consideration is Anthropic rather than OpenAI. Yet Claude mostly fails to disclose this influence to the user. Covert value leakage is a form of misalignment because it goes against the user's preferences and is likely to mislead them. To investigate this phenomenon, we introduce a suite of evaluations to quantify value leakage and whether models disclose it. We find that models are influenced by different types of values, including preferences for morally good outcomes, for the company that developed them, and for some human leisure activities over others. We often observe large differences among frontier models on the same evaluation. For example, on a Fermi-estimation task, Claude models falsely claim to give unbiased answers in their chain-of-thought, while Qwen models explain how their values bias their answers. Value leakage is a failure mode distinct from sycophancy and reward hacking, and current alignment training and evaluations do not adequately address it.
 
 </details>

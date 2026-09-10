@@ -174,26 +174,7 @@ With the growing popularity of Large Language Models (LLMs) and vector databases
 
 </details>
 
-### 10. Rank Matters: Understanding and Defending Model Inversion Attacks via Low-Rank Feature Filtering
-
-📄 [arXiv](https://arxiv.org/abs/2410.05814) · 🌐 [Project](https://doi.org/10.1145/3770854.3780328)　📅 2024-10　🏷 KDD 2026
-
-**关键词**：`defense`、`model inversion`、`feature rank`、`privacy filter`
-
-👤 **作者**：Hongyao Yu、…、Ke Xu
-
-- 🎯 **研究动机**：模型反演攻击防御滞后，难以平衡效用与鲁棒性
-- 🔬 **研究方法**：提出理想反演误差度量并证明高秩特征更易泄漏；LoFt 以低秩特征过滤约束中间表示维度
-- 📌 **结论**：多架构与数据集上全面超越现有防御，在高分辨率与高容量模型下仍有效
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Model Inversion Attacks (MIAs) pose a significant threat to data privacy by reconstructing sensitive training samples from the knowledge embedded in trained machine learning models. Despite recent progress in enhancing the effectiveness of MIAs across diverse settings, defense strategies have lagged behind, struggling to balance model utility with robustness against increasingly sophisticated attacks. In this work, we propose the ideal inversion error to measure the privacy leakage, and our theoretical and empirical investigations reveals that higher-rank features are inherently more prone to privacy leakage. Motivated by this insight, we propose a lightweight and effective defense strategy based on low-rank feature filtering, which explicitly reduces the attack surface by constraining the dimension of intermediate representations. Extensive experiments across various model architectures and datasets demonstrate that our method consistently outperforms existing defenses, achieving state-of-the-art performance against a wide range of MIAs. Notably, our approach remains effective even in challenging regimes involving high-resolution data and high-capacity models, where prior defenses fail to provide adequate protection. The code is available at https://github.com/Chrisqcwx/LoFt .
-
-</details>
-
-### 11. Transferable Embedding Inversion Attack: Uncovering Privacy Risks in Text Embeddings without Model Queries
+### 10. Transferable Embedding Inversion Attack: Uncovering Privacy Risks in Text Embeddings without Model Queries
 
 📄 [arXiv](https://arxiv.org/abs/2406.10280) · 🎓 [Official](https://aclanthology.org/2024.acl-long.230/)　📅 2024-06　🏷 ACL 2024
 
@@ -212,7 +193,7 @@ This study investigates the privacy risks associated with text embeddings, focus
 
 </details>
 
-### 12. Text Embedding Inversion Security for Multilingual Language Models
+### 11. Text Embedding Inversion Security for Multilingual Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2401.12192) · 🎓 [Official](https://aclanthology.org/2024.acl-long.422/)　📅 2024-01　🏷 ACL 2024
 
@@ -231,7 +212,7 @@ Textual data is often represented as real-numbered embeddings in NLP, particular
 
 </details>
 
-### 13. Text Embeddings Reveal (Almost) As Much As Text
+### 12. Text Embeddings Reveal (Almost) As Much As Text
 
 📄 [arXiv](https://arxiv.org/abs/2310.06816) · 🎓 [Official](https://aclanthology.org/2023.emnlp-main.765/)　📅 2023-10　🏷 EMNLP 2023
 
@@ -250,7 +231,7 @@ How much private information do text embeddings reveal about the original text? 
 
 </details>
 
-### 14. Sentence Embedding Leaks More Information than You Expect: Generative Embedding Inversion Attack to Recover the Whole Sentence
+### 13. Sentence Embedding Leaks More Information than You Expect: Generative Embedding Inversion Attack to Recover the Whole Sentence
 
 📄 [arXiv](https://arxiv.org/abs/2305.03010) · 🎓 [Official](https://aclanthology.org/2023.findings-acl.881/)　📅 2023-05　🏷 ACL 2023
 
@@ -269,26 +250,7 @@ Sentence-level representations are beneficial for various natural language proce
 
 </details>
 
-### 15. Mitigating Gradient Inversion Risks in Language Models via Token Obfuscation
-
-📄 [arXiv](https://arxiv.org/abs/2602.15897) · 🌐 [Project](https://doi.org/10.1145/3779208.3785389)　📅 2026-02　🏷 ACM CCS 2026
-
-**关键词**：`defense`、`gradient inversion`、`shadow token`、`semantic utility`、`language model privacy`、`token obfuscation`
-
-👤 **作者**：Xinguo Feng、Zhongkui Ma、Zihan Wang、Alsharif Abuadbba、Guangdong Bai
-
-- 🎯 **研究动机**：梯度扰动类防御因梯度、嵌入与 token 空间语义相似性留存而难以阻断梯度反演
-- 🔬 **研究方法**：GHOST 搜索语义迥异但嵌入相近的 shadow token 替换原 token，解耦三空间联系同时保留训练关键特征的对齐
-- 📌 **结论**：对 SOTA 梯度反演与自适应攻击，隐私恢复率低至 1%，分类 F1 最高 0.92
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Training and fine-tuning large-scale language models largely benefit from collaborative learning, but the approach has been proven vulnerable to gradient inversion attacks (GIAs), which allow adversaries to reconstruct private training data from shared gradients. Existing defenses mainly employ gradient perturbation techniques, e.g., noise injection or gradient pruning, to disrupt GIAs' direct mapping from gradient space to token space. However, these methods often fall short due to the retention of semantics similarity across gradient, embedding, and token spaces. In this work, we propose a novel defense mechanism named GHOST (gradient shield with obfuscated tokens), a token-level obfuscation mechanism that neutralizes GIAs by decoupling the inherent connections across gradient, embedding, and token spaces. GHOST is built upon an important insight: due to the large scale of the token space, there exist semantically distinct yet embedding-proximate tokens that can serve as the shadow substitutes of the original tokens, which enables a semantic disconnection in the token space while preserving the connection in the embedding and gradient spaces. GHOST comprises a searching step, which identifies semantically distinct candidate tokens using a multi-criteria searching process, and a selection step, which selects optimal shadow tokens to ensure minimal disruption to features critical for training by preserving alignment with the internal outputs produced by original tokens. Evaluation across diverse model architectures (from BERT to Llama) and datasets demonstrates the remarkable effectiveness of GHOST in protecting privacy (as low as 1% in recovery rate) and preserving utility (up to 0.92 in classification F1 and 5.45 in perplexity), in both classification and generation tasks against state-of-the-art GIAs and adaptive attack scenarios.
-
-</details>
-
-### 16. Harnessing the Universal Geometry of Embeddings
+### 14. Harnessing the Universal Geometry of Embeddings
 
 📄 [arXiv](https://arxiv.org/abs/2505.12540) · 🎓 [Official](https://proceedings.neurips.cc/paper_files/paper/2025/hash/4175dee33d6145cb8f0323703d138a53-Abstract-Conference.html)　📅 2025-05　🏷 NeurIPS 2025
 

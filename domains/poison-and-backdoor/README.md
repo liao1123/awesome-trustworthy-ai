@@ -6,6 +6,8 @@
 
 与后门机制相似、但主要用于版权保护、内容保护、授权控制、模型所有权验证或未授权数据使用验证的工作，统一放在 [后门式水印、版权保护与所有权验证](../content-authenticity/backdoor-based-watermarking-and-ownership.md)，不在本领域的模型后门清单中重复统计。
 
+**与 Agent Security 域的划界**：攻击与投毒机制（数据/记忆/技能/RAG 投毒、触发器植入、后门攻击与检测）归本域，包括作用于 Agent 记忆、技能与检索链路的攻击面；运行时防御、监控、权限控制、harness 与执行隔离归 [Agent Security](../agent/README.md)。同一论文两侧都有实质贡献时可交叉收录，但两页必须各自按本页视角重写关键词与总结。
+
 ## 子领域目录
 
 | 子领域 | 范围 |
@@ -14,13 +16,15 @@
 | [音频模型投毒与后门](audio-backdoor.md) | 语音识别、说话人系统、speech enhancement 与音频生成模型中的投毒、条件后门、物理触发和内容完整性攻击。 |
 | [强化学习投毒与后门](rl-poison-and-backdoor.md) | 强化学习策略中的状态／轨迹触发器、经验供应链投毒、在线检测、缓解和机制分析。 |
 | [语言模型投毒](llm-poison.md) | LLM 的预训练、后训练、合成数据、代码数据与部署供应链投毒，以及数据级检测和防御。 |
-| [语言模型后门](llm-backdoor.md) | 自回归与推理语言模型中的触发器、条件行为、权重后门、量化后门及检测和移除方法。 |
+| [语言模型后门攻击](llm-backdoor-attacks.md) | 自回归与推理语言模型中的触发器植入、条件行为、权重/量化后门与持久化攻击。 |
+| [语言模型后门检测、防御与评测](llm-backdoor-defense-and-evaluation.md) | LLM 后门的检测、防御、净化与基准评测。 |
 | [RAG 投毒](rag-poison.md) | 向向量库、知识库或 GraphRAG 注入恶意内容，或污染／后门化 retriever encoder，对检索、重排、推理和生成阶段实施操控或防御。 |
 | [Search Agent](search-agent.md) | 开放网页中的 evidence poisoning、ranking manipulation、endorsement corruption、research-trajectory hijacking，以及围绕完整 search loop 的红队、对齐与审计。 |
-| [Generative Engine Optimization Security](geo.md) | 通过网页文本、图像或结构信号操纵生成式搜索的可见性、排名、引用、推荐与 misinformation 传播，以及相应的攻击、检测和防御。 |
+| [Generative Engine Optimization Security](generative-engine-optimization.md) | 通过网页文本、图像或结构信号操纵生成式搜索的可见性、排名、引用、推荐与 misinformation 传播，以及相应的攻击、检测和防御。 |
 | [Agent Memory 投毒](agent-memory-poison.md) | 向长期记忆、经验库或持久会话状态写入恶意内容，并在未来任务中检索、激活、评测与修复。 |
 | [Agent Skill 投毒与后门](agent-skill-poison-and-backdoor.md) | 第三方或自生成 skill 中的持久恶意 instruction、代码、条件后门、trajectory promotion 与 lineage 传播。 |
-| [视觉语言模型后门](vlm-backdoor.md) | VLM、MLLM、视觉定位与 GUI Agent 的多模态触发器、推理后门、检测和净化。 |
+| [视觉语言模型后门攻击](vlm-backdoor-attacks.md) | VLM、MLLM、视觉定位与 GUI Agent 的多模态触发器与推理后门攻击。 |
+| [视觉语言模型后门检测与防御](vlm-backdoor-defense-and-detection.md) | VLM 后门的检测、防御与净化。 |
 | [视觉语言动作模型后门](vla-backdoor.md) | VLA 与机器人策略中的动作、状态、物体和动力学触发器，以及供应链迁移和防御。 |
 | [扩散模型后门](diffusion-backdoor.md) | 图像扩散模型、扩散语言模型和检索增强扩散模型中的后门攻击、传播、评测与净化。 |
 | [其他投毒与后门](other-poison-and-backdoor.md) | 尚未形成稳定独立子领域的特殊投毒与后门路线；当前包括密码式模型后门和推荐系统投毒。 |

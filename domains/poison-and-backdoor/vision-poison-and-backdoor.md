@@ -91,26 +91,7 @@ Poisoning input views of 3D reconstruction systems has been recently studied. Ho
 
 </details>
 
-### 5. Eliminate Distance Differences Induced by Backdoor Attacks: Layer-Selective Training and Clipping to Mask Backdoor Models
-
-🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Li_Eliminate_Distance_Differences_Induced_by_Backdoor_Attacks_Layer-Selective_Training_and_CVPR_2026_paper.html)　📅 2026　🏷 CVPR 2026
-
-**关键词**：`attack`、`backdoor evasion`、`layer-selective training`、`model inspection`
-
-👤 **作者**：Xuzeng Li、…、Dong In Kim
-
-- 🎯 **研究动机**：FL 后门攻击忽视各层对后门的异质贡献，且毒化早期与干净模型差异明显、易被检测
-- 🔬 **研究方法**：LaySelFL 层选择性攻击：动静结合评估参数差异定位对后门最敏感的层并局部化投毒，配定向训练协议与约束每轮差异的正则，最后对非投毒层剪裁掩盖残差差异
-- 📌 **结论**：攻击有效性提升 25%，防御方法有效性被压至 4%
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Federated learning (FL) enables a central server to collaboratively train a global model with multiple clients while preserving data privacy. However, the distributed nature of FL makes the paradigm vulnerable to backdoor attacks, as proved by numerous recent studies. Although existing studies improve the effectiveness of backdoor attacks through optimized triggers, they have two limitations: (1) they ignore the heterogeneous contribution of individual model layers to the success of a backdoor; (2) they induce conspicuous differences between backdoor and clean models in the early stages of poisoning. The limitations cause backdoor models to exhibit significant discrepancies from clean models, making them easily detectable. To fill these gaps, we propose LaySelFL, a novel layer-selective method to eliminate distance differences induced by the backdoor to conceal attacks in FL. Our central insight is that different layers contribute unequally to backdoor attacks, by localizing poisoning to layers that are most sensitive to backdoor objectives, an attacker can reduce the model differences substantially between the backdoor and clean models. Concretely, LaySelFL identifies sensitive layers via both dynamic and static evaluations of parameter differences between backdoor and benign models, and then applies a targeted training protocol and a regularized loss that constrains differences from the global model in each round. Finally, LaySelFL performs clipping on non-poisoning layers to further mask residual differences introduced by the attack. This strategy yields a more covert and resilient backdoor attack. Extensive experiments show that LaySelFL increases the effectiveness of attacks by 25% and reduces the effectiveness of defense methods to 4%.
-
-</details>
-
-### 6. Phantom: Physical Object Interactions as Dynamic Triggers for NMS-Exploited Backdoors
+### 5. Phantom: Physical Object Interactions as Dynamic Triggers for NMS-Exploited Backdoors
 
 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Huo_Phantom_Physical_Object_Interactions_as_Dynamic_Triggers_for_NMS-Exploited_Backdoors_CVPR_2026_paper.html)　📅 2026　🏷 CVPR 2026
 
@@ -129,7 +110,7 @@ Backdoor attacks pose potential threats to object detection models, highlighting
 
 </details>
 
-### 7. Mask-Guided Hybrid Triggers for Robust Clean-Label Backdoor Attacks
+### 6. Mask-Guided Hybrid Triggers for Robust Clean-Label Backdoor Attacks
 
 🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/4403.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track)　📅 2026
 
@@ -146,7 +127,7 @@ Clean-label backdoor attacks pose significant security threats to deep neural ne
 
 </details>
 
-### 8. The Eminence in Shadow: Exploiting Feature Boundary Ambiguity for Robust Backdoor Attacks
+### 7. The Eminence in Shadow: Exploiting Feature Boundary Ambiguity for Robust Backdoor Attacks
 
 📄 [arXiv](https://arxiv.org/abs/2512.10402) · 🌐 [Project](https://doi.org/10.1145/3770854.3780322)　📅 2025-12　🏷 KDD 2026
 
@@ -165,7 +146,7 @@ Deep neural networks (DNNs) underpin critical applications yet remain vulnerable
 
 </details>
 
-### 9. Towards Stealthy and Effective Backdoor Attacks on Lane Detection: A Naturalistic Data Poisoning Approach
+### 8. Towards Stealthy and Effective Backdoor Attacks on Lane Detection: A Naturalistic Data Poisoning Approach
 
 📄 [arXiv](https://arxiv.org/abs/2508.15778) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Liao_Towards_Stealthy_and_Effective_Backdoor_Attacks_on_Lane_Detection_A_CVPR_2026_paper.html)　📅 2025-08　🏷 CVPR 2026
 
@@ -184,7 +165,7 @@ Deep learning-based lane detection (LD) plays a critical role in autonomous driv
 
 </details>
 
-### 10. GaussTrap: Stealthy Backdoor Attacks on 3D Gaussian Splatting for Targeted Scene Misperception
+### 9. GaussTrap: Stealthy Backdoor Attacks on 3D Gaussian Splatting for Targeted Scene Misperception
 
 📄 [arXiv](https://arxiv.org/abs/2504.20829) · 🌐 [Project](https://doi.org/10.1145/3770855.3817947)　📅 2025-04　🏷 KDD 2026
 
@@ -203,7 +184,7 @@ As 3D Gaussian Splatting (3DGS) emerges as a breakthrough in scene representatio
 
 </details>
 
-### 11. Beyond Small Patches: Black-Box Detection and Purification of Diverse Backdoor Triggers
+### 10. Beyond Small Patches: Black-Box Detection and Purification of Diverse Backdoor Triggers
 
 📄 [arXiv](https://arxiv.org/abs/2609.03139)　📅 2026-09
 
@@ -222,7 +203,7 @@ Deep neural networks (DNNs) are increasingly deployed in real-world vision syste
 
 </details>
 
-### 12. DEFUSE: Generalizable Backdoor Defense for Self-Supervised Encoders with Generative Priors
+### 11. DEFUSE: Generalizable Backdoor Defense for Self-Supervised Encoders with Generative Priors
 
 📄 [arXiv](https://arxiv.org/abs/2608.25851) · 🌐 [Project](https://doi.org/10.1145/3767308.3835471)　📅 2026-08
 
@@ -241,7 +222,7 @@ Self-supervised learning (SSL) encoders are vulnerable to backdoor attacks, posi
 
 </details>
 
-### 13. Purified Distillation Slimming (PDS) for Robust Backdoor Defense
+### 12. Purified Distillation Slimming (PDS) for Robust Backdoor Defense
 
 🌐 [Project](https://doi.org/10.1145/3779208.3785283)　📅 2026-06　🏷 ACM CCS 2026
 
@@ -251,7 +232,7 @@ Self-supervised learning (SSL) encoders are vulnerable to backdoor attacks, posi
 - 🔬 **研究方法**：结合purified distillation与网络slimming压缩后门通路
 - 📌 **结论**：移除后门同时保留主任务精度
 
-### 14. Deep Learning Backdoor Defense via Adaptive Trigger Collisions in Latent Space
+### 13. Deep Learning Backdoor Defense via Adaptive Trigger Collisions in Latent Space
 
 🌐 [Project](https://doi.org/10.1145/3779208.3806081)　📅 2026-06　🏷 ACM CCS 2026
 
@@ -268,7 +249,7 @@ Backdoor attacks in data outsourcing settings pose severe risks to deep neural n
 
 </details>
 
-### 15. Logit-Margin Repulsion for Backdoor Defense
+### 14. Logit-Margin Repulsion for Backdoor Defense
 
 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Yang_Logit-Margin_Repulsion_for_Backdoor_Defense_CVPR_2026_paper.html)　📅 2026　🏷 CVPR 2026
 
@@ -287,7 +268,7 @@ Backdoor attacks pose a significant threat to deep neural networks. Recent studi
 
 </details>
 
-### 16. Mitigating Backdoors via Decoy Shortcuts and Knowledge Decoupling
+### 15. Mitigating Backdoors via Decoy Shortcuts and Knowledge Decoupling
 
 📄 [arXiv](https://arxiv.org/abs/2608.00732) · 🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/2444.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track)　📅 2026
 
@@ -306,7 +287,7 @@ Backdoor attacks pose a serious threat to deep neural networks, especially when 
 
 </details>
 
-### 17. SoK: On the Survivability of Backdoor Attacks on Unconstrained Face Recognition Systems
+### 16. SoK: On the Survivability of Backdoor Attacks on Unconstrained Face Recognition Systems
 
 📄 [arXiv](https://arxiv.org/abs/2507.01607) · 🎓 [Official](https://satml.org/2026/accepted-papers/)　📅 2025-07　🏷 SaTML 2026
 
@@ -322,5 +303,24 @@ Backdoor attacks pose a serious threat to deep neural networks, especially when 
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 The widespread deployment of Deep Learning-based Face Recognition Systems raises many security concerns. While prior research has identified backdoor vulnerabilities on isolated components, Backdoor Attacks on real-world, unconstrained pipelines remain underexplored. This SoK paper presents the first comprehensive system-level analysis and measurement of the impact of Backdoor Attacks on fully-fledged Face Recognition Systems. We combine the existing Supervised Learning backdoor literature targeting face detectors, face antispoofing, and face feature extractors to demonstrate a system-level vulnerability. By analyzing 20 pipeline configurations and 15 attack scenarios in a holistic manner, we reveal that an attacker only needs a single backdoored model to compromise an entire Face Recognition System. Finally, we discuss the impact of such attacks and propose best practices and countermeasures for stakeholders.
+
+</details>
+
+### 17. ASSET: Robust Backdoor Data Detection Across a Multiplicity of Deep Learning Paradigms
+
+📄 [arXiv](https://arxiv.org/abs/2302.11408) · 🎓 [Official](https://www.usenix.org/conference/usenixsecurity23/presentation/pan)　📅 2023-02　🏷 USENIX Security 2023
+
+**关键词**：`detection`、`data filtering`、`multi-paradigm`、`contrastive learning`
+
+👤 **作者**：Minzhou Pan、Yi Zeng、Lingjuan Lyu、Xue Lin、Ruoxi Jia
+
+- 🎯 **研究动机**：后门数据检测局限于端到端监督学习；56 个攻击设定评测显示现有方法跨攻击与投毒率波动大、全部防不住 SOTA clean-label 攻击，在 SSL 与 TL 下失效
+- 🔬 **研究方法**：ASSET（Active Separation-via Offset）主动诱导后门与干净样本的模型行为差异以促进分离，并自适应选择移除的可疑点数量
+- 📌 **结论**：是唯一能检测 SOTA clean-label 攻击的方法；SSL 与 TL 下平均检测率比现有最佳分别高 69.3% 与 33.2%
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Backdoor data detection is traditionally studied in an end-to-end supervised learning (SL) setting. However, recent years have seen the proliferating adoption of self-supervised learning (SSL) and transfer learning (TL), due to their lesser need for labeled data. Successful backdoor attacks have also been demonstrated in these new settings. However, we lack a thorough understanding of the applicability of existing detection methods across a variety of learning settings. By evaluating 56 attack settings, we show that the performance of most existing detection methods varies significantly across different attacks and poison ratios, and all fail on the state-of-the-art clean-label backdoor attack which only manipulates a few training data's features with imperceptible noise without changing labels. In addition, existing methods either become inapplicable or suffer large performance losses when applied to SSL and TL. We propose a new detection method called Active Separation-via Offset (ASSET), which actively induces different model behaviors between the backdoor and clean samples to promote their separation. We also provide procedures to adaptively select the number of suspicious points to remove. In the end-to-end SL setting, ASSET is superior to existing methods in terms of consistency of defensive performance across different attacks and robustness to changes in poison ratios; in particular, it is the only method that can detect the state-of-the-art clean-label attack. Moreover, ASSET's average detection rates are higher than the best existing methods in SSL and TL, respectively, by 69.3% and 33.2%, thus providing the first practical backdoor defense for these emerging DL settings.
 
 </details>

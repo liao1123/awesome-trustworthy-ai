@@ -201,3 +201,100 @@ Vision-Language-Action (VLA) models are driving rapid progress in robotics by en
 Resource Consumption Attacks (RCAs) have emerged as a significant threat to the deployment of Large Language Models (LLMs). With the integration of vision modalities, additional attack vectors exacerbate the risk of RCAs in large vision-language models (LVLMs). However, existing red-teaming studies have mainly overlooked visual inputs as a potential attack surface, resulting in insufficient mitigation strategies against RCAs in LVLMs. To address this gap, we propose RECITE ($\textbf{Re}$source $\textbf{C}$onsumpt$\textbf{i}$on Red-$\textbf{Te}$aming for LVLMs), the first approach for exploiting visual modalities to trigger unbounded RCAs red-teaming. First, we present $\textit{Vision Guided Optimization}$, a fine-grained pixel-level optimization to obtain \textit{Output Recall Objective} adversarial perturbations, which can induce repeating output. Then, we inject the perturbations into visual inputs, triggering unbounded generations to achieve the goal of RCAs. Empirical results demonstrate that RECITE increases service response latency by over 26 $\uparrow$, resulting in an additional 20\% increase in GPU utilization and memory consumption. Our study reveals security vulnerabilities in LVLMs and establishes a red-teaming framework that can facilitate the development of future defenses against RCAs.
 
 </details>
+
+### 11. The Impact of Uniform Inputs on Activation Sparsity and Energy-Latency Attacks in Computer Vision
+
+📄 [arXiv](https://arxiv.org/abs/2403.18587)　📅 2024-03
+
+**关键词**：`analysis`、`energy-latency attack`、`activation sparsity`、`sponge example`
+
+👤 **作者**：Andreas Müller、Erwin Quiring
+
+- 🎯 **研究动机**：sponge examples 降低激活稀疏性从而抬高能耗与延迟的底层机制尚不清楚
+- 🔬 **研究方法**：发现输入均匀性是关键使能：平坦均匀着色图像经卷积、批归一化与 ReLU 的相互作用触发更多激活；据此提出概率分布采样与自然数据集稠密输入搜索两种低成本构造策略
+- 📌 **结论**：以远低于先前方法的计算开销达到同等稀疏化削弱效果，且 sponge 样本可跨神经网络迁移
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Resource efficiency plays an important role for machine learning nowadays. The energy and decision latency are two critical aspects to ensure a sustainable and practical application. Unfortunately, the energy consumption and decision latency are not robust against adversaries. Researchers have recently demonstrated that attackers can compute and submit so-called sponge examples at inference time to increase the energy consumption and decision latency of neural networks. In computer vision, the proposed strategy crafts inputs with less activation sparsity which could otherwise be used to accelerate the computation. In this paper, we analyze the mechanism how these energy-latency attacks reduce activation sparsity. In particular, we find that input uniformity is a key enabler. A uniform image, that is, an image with mostly flat, uniformly colored surfaces, triggers more activations due to a specific interplay of convolution, batch normalization, and ReLU activation. Based on these insights, we propose two new simple, yet effective strategies for crafting sponge examples: sampling images from a probability distribution and identifying dense, yet inconspicuous inputs in natural datasets. We empirically examine our findings in a comprehensive evaluation with multiple image classification models and show that our attack achieves the same sparsity effect as prior sponge-example methods, but at a fraction of computation effort. We also show that our sponge examples transfer between different neural networks. Finally, we discuss applications of our findings for the good by improving efficiency by increasing sparsity.
+
+</details>
+
+### 12. Poison-splat: Computation Cost Attack on 3D Gaussian Splatting
+
+📄 [arXiv](https://arxiv.org/abs/2410.08190)　📅 2024-10
+
+**关键词**：`attack`、`3D Gaussian splatting`、`computation cost attack`、`memory exhaustion`
+
+👤 **作者**：Jiahao Lu、Yifan Zhang、Qiuhong Shen、Xinchao Wang、Shuicheng Yan
+
+- 🎯 **研究动机**：3DGS 训练的计算成本可被输入投毒恶意篡改，这一攻击面长期被忽视
+- 🔬 **研究方法**：Poison-splat 把毒化输入图像形式化为双层优化，经攻击目标近似、代理模型渲染与可选约束优化三策略诱导高斯过度增长，逼近最坏计算复杂度
+- 📌 **结论**：极端情况下可耗尽全部可分配内存造成服务器 DoS，对 3DGS 服务厂商构成现实损害，简单防御措施难以抵挡
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+3D Gaussian splatting (3DGS), known for its groundbreaking performance and efficiency, has become a dominant 3D representation and brought progress to many 3D vision tasks. However, in this work, we reveal a significant security vulnerability that has been largely overlooked in 3DGS: the computation cost of training 3DGS could be maliciously tampered by poisoning the input data. By developing an attack named Poison-splat, we reveal a novel attack surface where the adversary can poison the input images to drastically increase the computation memory and time needed for 3DGS training, pushing the algorithm towards its worst computation complexity. In extreme cases, the attack can even consume all allocable memory, leading to a Denial-of-Service (DoS) that disrupts servers, resulting in practical damages to real-world 3DGS service vendors. Such a computation cost attack is achieved by addressing a bi-level optimization problem through three tailored strategies: attack objective approximation, proxy model rendering, and optional constrained optimization. These strategies not only ensure the effectiveness of our attack but also make it difficult to defend with simple defensive measures. We hope the revelation of this novel attack surface can spark attention to this crucial yet overlooked vulnerability of 3DGS systems. Our code is available at https://github.com/jiahaolu97/poison-splat .
+
+</details>
+
+### 13. EO-VLM: VLM-Guided Energy Overload Attacks on Vision Models
+
+📄 [arXiv](https://arxiv.org/abs/2504.08205)　📅 2025-04
+
+**关键词**：`attack`、`vision model DoS`、`VLM-guided attack`、`energy overload`
+
+👤 **作者**：Minjae Seo、…、Jinwoo Kim
+
+- 🎯 **研究动机**：部署于自动驾驶、监控等关键应用的视觉模型易受资源消耗攻击，黑盒下构造扰动困难
+- 🔬 **研究方法**：EO-VLM 利用 DALL-E 3 等 VLM 缺乏安全过滤的 prompt 生成对抗噪声图像，无需目标视觉模型的先验知识或内部结构即实施能耗过载
+- 📌 **结论**：模型无关的攻击使各类视觉模型 GPU 能耗最多增加 50%
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Vision models are increasingly deployed in critical applications such as autonomous driving and CCTV monitoring, yet they remain susceptible to resource-consuming attacks. In this paper, we introduce a novel energy-overloading attack that leverages vision language model (VLM) prompts to generate adversarial images targeting vision models. These images, though imperceptible to the human eye, significantly increase GPU energy consumption across various vision models, threatening the availability of these systems. Our framework, EO-VLM (Energy Overload via VLM), is model-agnostic, meaning it is not limited by the architecture or type of the target vision model. By exploiting the lack of safety filters in VLMs like DALL-E 3, we create adversarial noise images without requiring prior knowledge or internal structure of the target vision models. Our experiments demonstrate up to a 50% increase in energy consumption, revealing a critical vulnerability in current vision models.
+
+</details>
+
+### 14. Spectral Defense Against Resource-Targeting Attack in 3D Gaussian Splatting
+
+📄 [arXiv](https://arxiv.org/abs/2603.12796)　📅 2026-03
+
+**关键词**：`defense`、`3D Gaussian splatting`、`spectral filtering`、`resource-targeting attack`
+
+👤 **作者**：Yang Chen、Yi Yu、Jiaming He、Yueqi Duan、Zheng Zhu、Yap-Peng Tan
+
+- 🎯 **研究动机**：空间域防御只处理可见结构，忽视投毒输入在训练数据频谱上引入的异常高频放大
+- 🔬 **研究方法**：Spectral Defense 在高斯与图像两个场防御：3D 频率滤波选择性剪除异常高频高斯，2D 频谱正则区分自然各向同性频率并惩罚各向异性能量以约束噪声模式
+- 📌 **结论**：攻击下抑制高斯过度增长至 5.92 倍、内存占用最多降 3.66 倍、速度最多提升 4.34 倍
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Recent advances in 3D Gaussian Splatting (3DGS) deliver high-quality rendering, yet the Gaussian representation exposes a new attack surface, the resource-targeting attack. This attack poisons training images, excessively inducing Gaussian growth to cause resource exhaustion. Although efficiency-oriented methods such as smoothing, thresholding, and pruning have been explored, these spatial-domain strategies operate on visible structures but overlook how stealthy perturbations distort the underlying spectral behaviors of training data. As a result, poisoned inputs introduce abnormal high-frequency amplifications that mislead 3DGS into interpreting noisy patterns as detailed structures, ultimately causing unstable Gaussian overgrowth and degraded scene fidelity. To address this, we propose \textbf{Spectral Defense} in Gaussian and image fields. We first design a 3D frequency filter to selectively prune Gaussians exhibiting abnormally high frequencies. Since natural scenes also contain legitimate high-frequency structures, directly suppressing high frequencies is insufficient, and we further develop a 2D spectral regularization on renderings, distinguishing naturally isotropic frequencies while penalizing anisotropic angular energy to constrain noisy patterns. Experiments show that our defense builds robust, accurate, and secure 3DGS, suppressing overgrowth by up to $5.92\times$, reducing memory by up to $3.66\times$, and improving speed by up to $4.34\times$ under attacks.
+
+</details>
+
+## 语音与音频语言模型攻击
+
+### 15. Never Stop Speaking: a Denial-of-Service Attack on End-to-End Speech Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2608.10405)　📅 2026-08
+
+**关键词**：`attack`、`speech LLM DoS`、`acoustic perturbation`、`EOS suppression`
+
+👤 **作者**：Shuozhe Cheng、Kunlan Xiang、Mingxuan Li、Ji Zhang、Dongxiao Liu、Wenbo Jiang
+
+- 🎯 **研究动机**：现有 DoS 攻击针对文本 LLM 依赖离散 prompt 工程，无法直接迁移到连续语音输入，端到端语音 LLM 的 DoS 脆弱性未被探索
+- 🔬 **研究方法**：优化不可察觉声学扰动直接干预自回归生成：联合 EOS 抑制、top-k logit、长度与语义对齐损失的复合优化，并借语音活动检测只向有声段注入扰动以提升隐蔽性
+- 📌 **结论**：三个开源端到端语音 LLM 上攻击成功率稳定，生成长度与 GPU 资源消耗显著增加
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Many studies have shown that specially crafted inputs can induce large language models (LLMs) to generate excessively long outputs, resulting in significant computational overhead and resource consumption. While most existing denial-of-service (DoS) attacks target text-only LLMs, end-to-end (E2E) speech LLMs are rapidly emerging. Existing text-based DoS attacks primarily rely on prompt engineering, such as adversarial suffixes or semantic inducement, which exploit the discrete nature of text inputs and therefore cannot be directly transferred to continuous speech inputs. Moreover, prior studies on speech model security mainly focus on ASR or TTS systems, leaving the DoS vulnerability of E2E speech LLMs largely unexplored. To address this gap, we propose the perturbation-based DoS attack targeting E2E speech models. Instead of inducing long outputs through prompt manipulation, our method optimizes imperceptible acoustic perturbations to directly influence the model's autoregressive generation process while preserving the original input length. Specifically, we formulate the attack as a composite optimization objective that jointly suppresses EOS generation, encourages prolonged decoding, and largely preserves semantic consistency by integrating weighted EOS loss, top-k logit loss, length loss, and semantic alignment loss. To further improve stealthiness, we employ voice activity detection (VAD) to inject perturbations only into voiced regions. Extensive experiments on three open-source E2E speech LLMs demonstrate that our method achieves stable attack success rate while significantly increasing generation length and GPU resource consumption, revealing security risks in modern ALLMs.
+
+</details>

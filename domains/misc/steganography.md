@@ -493,26 +493,7 @@ Large language models can be fine-tuned to encode prompt-borne secrets into flue
 
 </details>
 
-### 27. Evaluating Multimodal Steganalysis for Split-Payload Audiovisual Steganography
-
-📄 [arXiv](https://arxiv.org/abs/2606.08726)　📅 2026-06
-
-**关键词**：`detection`、`multimodal steganography`、`steganography detection`
-
-👤 **作者**：Prateek Paudel、Nitin Jha、Abhishek Parakh
-
-- 🎯 **研究动机**：音视频双流允许把隐写载荷拆分到两个模态，单载体嵌入负担降低，其对单模态与多模态隐写分析的抗性未被评估
-- 🔬 **研究方法**：构造载荷拆分到音频与视频轨道的样本，在同步/异步嵌入设定下测试不同检测器
-- 📌 **结论**：单模态检测器接近随机猜测；多模态模型表观更优但提升几乎全部来自视频流而非真正联合信号，拆分载荷使检测更难
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-The aim of steganography is to hide secret information inside ordinary media so that the existence of communication is hidden rather than encrypted. In audiovisual context, the availability of audio and video streams creates an opportunity to split a payload across these two modes thus, reducing the embedding burden on any single carrier. This paper evaluates whether such split-payload audiovisual steganography can help evade unimodal and multimodal steganalysis under synchronized and asynchronous embedding settings. We create audiovisual samples where the hidden message is divided between the audio and video tracks, and then test how well different detectors can identify them. The single mode detectors performs close to random guessing, thus showing the benefit of this hiding mechanism, while the multimodal model initially appears more effective. However, further checks show that this improvement mostly comes from the video stream, not from a true combined audio-video signal. Overall, the results suggest that splitting the payload across modalities can make detection harder, but multimodal detectors must be evaluated carefully to ensure they are learning the intended signal.
-
-</details>
-
-### 28. Hide and Seek in Embedding Space: Geometry-based Steganography and Detection in Large Language Models
+### 27. Hide and Seek in Embedding Space: Geometry-based Steganography and Detection in Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2601.22818) · 🎓 [Official](https://icml.cc/virtual/2026/poster/62426)　📅 2026-01　🏷 ICML 2026
 
@@ -531,7 +512,7 @@ Fine-tuned LLMs can covertly encode prompt secrets into outputs via steganograph
 
 </details>
 
-### 29. Inadvertent Context Leakage in Language Models
+### 28. Inadvertent Context Leakage in Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2608.19857)　📅 2026-08
 
@@ -550,7 +531,7 @@ For AI agents to be useful beyond simple chat, they must hold sensitive user con
 
 </details>
 
-### 30. All Code, No Thought: Current Language Models Struggle to Reason in Ciphered Language
+### 29. All Code, No Thought: Current Language Models Struggle to Reason in Ciphered Language
 
 📄 [arXiv](https://arxiv.org/abs/2510.09714) · 📝 [OpenReview](https://openreview.net/forum?id=yjFkeQ2ynQ) · 🎓 [Official](https://iclr.cc/virtual/2026/poster/10006530)　📅 2025-10　🏷 ICLR 2026
 
@@ -569,7 +550,7 @@ Detecting harmful AI actions is important as AI agents gain adoption. Chain-of-t
 
 </details>
 
-### 31. Early Signs of Steganographic Capabilities in Frontier LLMs
+### 30. Early Signs of Steganographic Capabilities in Frontier LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2507.02737) · 🌐 [Project](https://steganography-evals-d9297ad0740c.herokuapp.com/) · 📝 [OpenReview](https://openreview.net/forum?id=q4qxtaKVAU) · 🎓 [Official](https://iclr.cc/virtual/2026/poster/10007285)　📅 2025-07　🏷 ICLR 2026
 
@@ -588,7 +569,7 @@ Monitoring Large Language Model (LLM) outputs is crucial for mitigating risks fr
 
 </details>
 
-### 32. Large Language Models Can Learn and Generalize Steganographic Chain-of-Thought under Process Supervision
+### 31. Large Language Models Can Learn and Generalize Steganographic Chain-of-Thought under Process Supervision
 
 📄 [arXiv](https://arxiv.org/abs/2506.01926) · 🎓 [Official](https://proceedings.neurips.cc/paper_files/paper/2025/hash/28131b22fafebba500eb7bb02e3d5b59-Abstract-Conference.html)　📅 2025-06　🏷 NeurIPS 2025
 
@@ -607,9 +588,9 @@ Chain-of-thought (CoT) reasoning not only enhances large language model performa
 
 </details>
 
-### 33. The Steganographic Potentials of Language Models
+### 32. The Steganographic Potentials of Language Models
 
-📄 [arXiv](https://arxiv.org/abs/2505.03439)　📅 2025-05　🏷 ICLR 2025
+📄 [arXiv](https://arxiv.org/abs/2505.03439)　📅 2025-05　🏷 ICLR 2025 Workshop
 
 **关键词**：`analysis`、`linguistic steganography`、`detection evasion`
 
@@ -626,7 +607,7 @@ The potential for large language models (LLMs) to hide messages within plain tex
 
 </details>
 
-### 34. Towards Safeguarding LLM Fine-tuning APIs against Cipher Attacks
+### 33. Towards Safeguarding LLM Fine-tuning APIs against Cipher Attacks
 
 📄 [arXiv](https://arxiv.org/abs/2508.17158)　📅 2025-08
 
@@ -645,7 +626,7 @@ Large language model fine-tuning APIs enable widespread model customization, yet
 
 </details>
 
-### 35. BEEAR: Embedding-based Adversarial Removal of Safety Backdoors in Instruction-tuned Language Models
+### 34. BEEAR: Embedding-based Adversarial Removal of Safety Backdoors in Instruction-tuned Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2406.17092) · 🎓 [Official](https://aclanthology.org/2024.emnlp-main.732/)　📅 2024-06　🏷 EMNLP 2024
 
@@ -664,7 +645,7 @@ Safety backdoor attacks in large language models (LLMs) enable the stealthy trig
 
 </details>
 
-### 36. A Comprehensive Survey on Linguistic Steganography: Methods, Countermeasures, Evaluation, and Challenges
+### 35. A Comprehensive Survey on Linguistic Steganography: Methods, Countermeasures, Evaluation, and Challenges
 
 📄 [arXiv](https://arxiv.org/abs/2608.29077) · 📝 [OpenReview](https://openreview.net/pdf/150b32ad8b94c5a652f00f1ae3e517c4add1e722.pdf)　📅 2026-09
 
@@ -683,7 +664,7 @@ Linguistic steganography hides secret messages in natural language text. Large l
 
 </details>
 
-### 37. Synchronized Logit Steering: Real-world Steganography
+### 36. Synchronized Logit Steering: Real-world Steganography
 
 📄 [arXiv](https://arxiv.org/abs/2608.14697)　📅 2026-08
 
@@ -702,7 +683,7 @@ Steganography in large language models offers a way to embed hidden messages wit
 
 </details>
 
-### 38. Secret-Stego Dissimilarity as a Design Axis: Invertible Coverless Image Steganography with Diffusion Models
+### 37. Secret-Stego Dissimilarity as a Design Axis: Invertible Coverless Image Steganography with Diffusion Models
 
 📄 [arXiv](https://arxiv.org/abs/2608.13597)　📅 2026-08
 

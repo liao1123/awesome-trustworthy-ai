@@ -130,26 +130,7 @@ Automated red teaming frameworks for Large Language Models (LLMs) have become in
 
 </details>
 
-### 7. Now You Hear Me: Audio Narrative Attacks Against Large Audio–Language Models
-
-🎓 [Official](https://aclanthology.org/2026.eacl-long.278/)　📅 2026-03　🏷 ACL 2026
-
-**关键词**：`attack`、`audio guardrail`、`narrative jailbreak`、`cross-modal policy gap`、`audio-language model`、`TTS delivery`
-
-👤 **作者**：Ye Yu、Haibo Jin、Yaoning Yu、Jun Zhuang、Haohan Wang
-
-- 🎯 **研究动机**：大音频语言模型直接处理原始语音，安全机制主要为文本校准，音频域漏洞未被表征
-- 🔬 **研究方法**：用指令跟随 TTS 把被禁指令嵌入叙事式音频流，利用结构与声学特性绕过文本校准的安全机制
-- 📌 **结论**：Gemini 2.0 Flash 等模型上合成语音叙事攻击成功率 98.26%，大幅超纯文本基线
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Large audio-language models increasingly operate on raw speech inputs, enabling more seamless integration across domains such as voice assistants, education, and clinical triage. This transition, however, introduces a distinct class of vulnerabilities that remain largely uncharacterized. We examine the security implications of this modality shift by designing a text-to-audio jailbreak that embeds disallowed directives within a narrative-style audio stream. The attack leverages an advanced instruction-following text-to-speech (TTS) model to exploit structural and acoustic properties, thereby circumventing safety mechanisms primarily calibrated for text. When delivered through synthetic speech, the narrative format elicits restricted outputs from state-of-the-art models, including Gemini 2.0 Flash, achieving a 98.26% success rate that substantially exceeds text-only baselines. These results highlight the need for safety frameworks that jointly reason over linguistic and paralinguistic representations, particularly as speech-based interfaces become more prevalent.
-
-</details>
-
-### 8. Best-of-N Jailbreaking
+### 7. Best-of-N Jailbreaking
 
 📄 [arXiv](https://arxiv.org/abs/2412.03556) · 🎓 [Official](https://proceedings.neurips.cc/paper_files/paper/2025/hash/69f3eb242c7c9df9ea2f2b66ea8b3c0f-Abstract-Conference.html)　📅 2024-12　🏷 NeurIPS 2025
 
@@ -168,7 +149,7 @@ We introduce Best-of-N (BoN) Jailbreaking, a simple black-box algorithm that jai
 
 </details>
 
-### 9. Rainbow Teaming: Open-Ended Generation of Diverse Adversarial Prompts
+### 8. Rainbow Teaming: Open-Ended Generation of Diverse Adversarial Prompts
 
 📄 [arXiv](https://arxiv.org/abs/2402.16822) · 🎓 [Official](https://proceedings.neurips.cc/paper_files/paper/2024/hash/8147a43d030b43a01020774ae1d3e3bb-Abstract-Conference.html)　📅 2024-02　🏷 NeurIPS 2024
 
@@ -187,7 +168,7 @@ As large language models (LLMs) become increasingly prevalent across many real-w
 
 </details>
 
-### 10. Internal Safety Collapse in Frontier Large Language Models
+### 9. Internal Safety Collapse in Frontier Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2603.23509)　📅 2026-03
 
@@ -206,7 +187,7 @@ This work identifies a critical failure mode in frontier large language models (
 
 </details>
 
-### 11. ICON: Intent-Context Coupling for Efficient Multi-Turn Jailbreak Attack
+### 10. ICON: Intent-Context Coupling for Efficient Multi-Turn Jailbreak Attack
 
 📄 [arXiv](https://arxiv.org/abs/2601.20903)　📅 2026-01
 
@@ -225,7 +206,7 @@ Multi-turn jailbreak attacks have emerged as a critical threat to Large Language
 
 </details>
 
-### 12. Knowledge-Driven Multi-Turn Jailbreaking on Large Language Models
+### 11. Knowledge-Driven Multi-Turn Jailbreaking on Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2601.05445)　📅 2026-01
 
@@ -244,7 +225,7 @@ Large Language Models (LLMs) face a significant threat from multi-turn jailbreak
 
 </details>
 
-### 13. Multi-Turn Jailbreaking of Aligned LLMs via Lexical Anchor Tree Search
+### 12. Multi-Turn Jailbreaking of Aligned LLMs via Lexical Anchor Tree Search
 
 📄 [arXiv](https://arxiv.org/abs/2601.02670) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-01
 
@@ -263,7 +244,7 @@ We introduce \emph{self-jailbreaking}, a threat model in which an aligned LLM gu
 
 </details>
 
-### 14. TROJail: Trajectory-Level Optimization for Multi-Turn Large Language Model Jailbreaks with Process Rewards
+### 13. TROJail: Trajectory-Level Optimization for Multi-Turn Large Language Model Jailbreaks with Process Rewards
 
 📄 [arXiv](https://arxiv.org/abs/2512.07761) · 🌐 [Project](https://anonymous.4open.science/r/TROJail) · 🎓 [Official](https://aclanthology.org/2026.acl-long.2220/)　📅 2025-12　🏷 ACL 2026
 
@@ -282,7 +263,7 @@ Large language models have seen widespread adoption, yet they remain vulnerable 
 
 </details>
 
-### 15. Foot-In-The-Door: A Multi-turn Jailbreak for LLMs
+### 14. Foot-In-The-Door: A Multi-turn Jailbreak for LLMs
 
 🎓 [Official](https://aclanthology.org/2025.emnlp-main.100/)　📅 2025-11　🏷 EMNLP 2025
 
@@ -301,9 +282,9 @@ Ensuring AI safety is crucial as large language models become increasingly integ
 
 </details>
 
-### 16. X-Teaming Evolutionary M2S: Automated Discovery of Multi-turn to Single-turn Jailbreak Templates
+### 15. X-Teaming Evolutionary M2S: Automated Discovery of Multi-turn to Single-turn Jailbreak Templates
 
-📄 [arXiv](https://arxiv.org/abs/2509.08729)　📅 2025-09　🏷 NeurIPS 2025
+📄 [arXiv](https://arxiv.org/abs/2509.08729)　📅 2025-09　🏷 NeurIPS 2025 Workshop
 
 **关键词**：`attack`、`M2S template`、`evolutionary search`、`attack distillation`
 
@@ -320,7 +301,7 @@ Multi-turn-to-single-turn (M2S) compresses iterative red-teaming into one struct
 
 </details>
 
-### 17. Great, Now Write an Article About That: The Crescendo Multi-Turn LLM Jailbreak Attack
+### 16. Great, Now Write an Article About That: The Crescendo Multi-Turn LLM Jailbreak Attack
 
 📄 [arXiv](https://arxiv.org/abs/2404.01833) · 🎓 [Official](https://www.usenix.org/conference/usenixsecurity25/presentation/russinovich)　📅 2025-08　🏷 USENIX Security 2025
 
@@ -339,7 +320,7 @@ Large Language Models (LLMs) have risen significantly in popularity and are incr
 
 </details>
 
-### 18. X-Teaming: Multi-Turn Jailbreaks and Defenses with Adaptive Multi-Agents
+### 17. X-Teaming: Multi-Turn Jailbreaks and Defenses with Adaptive Multi-Agents
 
 📄 [arXiv](https://arxiv.org/abs/2504.13203) · 🌐 [Project](https://x-teaming.github.io/) · 📝 [OpenReview](https://openreview.net/forum?id=gKfj7Jb1kj)　📅 2025-07　🏷 COLM 2025
 
@@ -351,7 +332,7 @@ Large Language Models (LLMs) have risen significantly in popularity and are incr
 - 🔬 **研究方法**：X-Teaming让规划、攻击与验证agent协作并按反馈调整策略
 - 📌 **结论**：生成更强多轮jailbreak并产出XGuard-Train防御训练数据
 
-### 19. Chain of Attack: Hide Your Intention through Multi-Turn Interrogation
+### 18. Chain of Attack: Hide Your Intention through Multi-Turn Interrogation
 
 🎓 [Official](https://aclanthology.org/2025.findings-acl.514/)　📅 2025-07　🏷 ACL 2025
 
@@ -370,7 +351,7 @@ The latent knowledge of large language models (LLMs) contains harmful or unethic
 
 </details>
 
-### 20. Multi-Turn Jailbreaking via Attention Shifting
+### 19. Multi-Turn Jailbreaking via Attention Shifting
 
 🌐 [Project](https://ojs.aaai.org/index.php/AAAI/article/view/34553)　📅 2025-04　🏷 AAAI 2025
 
@@ -380,7 +361,7 @@ The latent knowledge of large language models (LLMs) contains harmful or unethic
 - 🔬 **研究方法**：ASJA用遗传搜索构造连贯虚构历史并逐步转移注意力
 - 📌 **结论**：比直接有害提问更易在多轮末端触发违规回答
 
-### 21. Reasoning-Augmented Conversation for Multi-Turn Jailbreak Attacks on Large Language Models
+### 20. Reasoning-Augmented Conversation for Multi-Turn Jailbreak Attacks on Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2502.11054) · 🎓 [Official](https://aclanthology.org/2025.findings-emnlp.929/)　📅 2025-02　🏷 EMNLP 2025
 
@@ -399,7 +380,7 @@ Multi-turn jailbreak attacks simulate real-world human interactions by engaging 
 
 </details>
 
-### 22. LLMs know their vulnerabilities: Uncover Safety Gaps through Natural Distribution Shifts
+### 21. LLMs know their vulnerabilities: Uncover Safety Gaps through Natural Distribution Shifts
 
 📄 [arXiv](https://arxiv.org/abs/2410.10700v1) · 🎓 [Official](https://aclanthology.org/2025.acl-long.1207/)　📅 2024-10　🏷 ACL 2025
 
@@ -418,7 +399,7 @@ Safety concerns in large language models (LLMs) have gained significant attentio
 
 </details>
 
-### 23. RED QUEEN: Safeguarding Large Language Models against Concealed Multi-Turn Jailbreaking
+### 22. RED QUEEN: Safeguarding Large Language Models against Concealed Multi-Turn Jailbreaking
 
 📄 [arXiv](https://arxiv.org/abs/2409.17458) · 🎓 [Official](https://aclanthology.org/2025.findings-acl.1311/)　📅 2024-09　🏷 ACL 2025
 
@@ -437,7 +418,7 @@ The rapid progress of Large Language Models (LLMs) has opened up new opportuniti
 
 </details>
 
-### 24. ASCII Attack: Recontextualising Harmful Requests as Artistic Critique in Large Language Models
+### 23. ASCII Attack: Recontextualising Harmful Requests as Artistic Critique in Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2609.02215)　📅 2026-09
 
@@ -456,7 +437,7 @@ Safety alignment trains large language models to refuse harmful requests stated 
 
 </details>
 
-### 25. Are LLMs Safe Beyond Text: Do Emojis Expose Gaps in Safety Evaluation
+### 24. Are LLMs Safe Beyond Text: Do Emojis Expose Gaps in Safety Evaluation
 
 📄 [arXiv](https://arxiv.org/abs/2608.18164)　📅 2026-08
 
@@ -475,7 +456,7 @@ Safety evaluations of large language models (LLMs) predominantly rely on text-ba
 
 </details>
 
-### 26. Measuring the Wrong Thing: Internal Harmfulness Scores Anti-Rank Successful Jailbreaks
+### 25. Measuring the Wrong Thing: Internal Harmfulness Scores Anti-Rank Successful Jailbreaks
 
 📄 [arXiv](https://arxiv.org/abs/2608.09624)　📅 2026-08
 
@@ -494,7 +475,7 @@ Internal safety scores judge a prompt before any text is generated, and they are
 
 </details>
 
-### 27. Robust Harmful Features Under Jailbreak Attacks: Mechanistic Evidence from Attention Head Specialization in Large Language Models
+### 26. Robust Harmful Features Under Jailbreak Attacks: Mechanistic Evidence from Attention Head Specialization in Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2606.28153) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64633)　📅 2026-06　🏷 ICML 2026
 
@@ -513,7 +494,7 @@ Jailbreak attacks bypass LLM safety alignment, yet their mechanisms remain poorl
 
 </details>
 
-### 28. Breaking Safety at the Token Boundary: How BPE Tokenization Creates Exploitable Gaps in LLM Alignment
+### 27. Breaking Safety at the Token Boundary: How BPE Tokenization Creates Exploitable Gaps in LLM Alignment
 
 📄 [arXiv](https://arxiv.org/abs/2607.01239)　📅 2026-05
 
@@ -532,7 +513,7 @@ Character-level perturbations bypass safety alignment in modern LLMs despite lea
 
 </details>
 
-### 29. TrailBlazer: History-Guided Reinforcement Learning for Black-Box LLM Jailbreaking
+### 28. TrailBlazer: History-Guided Reinforcement Learning for Black-Box LLM Jailbreaking
 
 📄 [arXiv](https://arxiv.org/abs/2602.06440) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-02
 
@@ -551,7 +532,7 @@ Large Language Models (LLMs) have become integral to many domains, making their 
 
 </details>
 
-### 30. Steering Beyond the Support: Adversarial Training on Unsupervised Jailbroken Activation Simulation
+### 29. Steering Beyond the Support: Adversarial Training on Unsupervised Jailbroken Activation Simulation
 
 📄 [arXiv](https://arxiv.org/abs/2605.24535) · 🎓 [Official](https://icml.cc/virtual/2026/poster/65252)　📅 2026　🏷 ICML 2026
 
@@ -570,7 +551,7 @@ Jailbreak prompts can trigger harmful completions on aligned LLMs, In accordance
 
 </details>
 
-### 31. JailbreakScope: Interpreting Jailbreak Mechanism through Representation and Circuit Analyses
+### 30. JailbreakScope: Interpreting Jailbreak Mechanism through Representation and Circuit Analyses
 
 🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/he-zeqing)　📅 2026　🏷 USENIX Security 2026
 
@@ -589,7 +570,7 @@ Large Language Models (LLMs) exhibit impressive performance but remain vulnerabl
 
 </details>
 
-### 32. Activation-Guided Local Editing for Jailbreaking Attacks
+### 31. Activation-Guided Local Editing for Jailbreaking Attacks
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.801/)　📅 2026　🏷 ACL 2026
 
@@ -608,7 +589,7 @@ As Large Language Models (LLMs) become indispensable assistants, they remain vul
 
 </details>
 
-### 33. Cross-Session Decomposition Attacks: Scaling Risk and Intent-Aligned Retrieval Defense
+### 32. Cross-Session Decomposition Attacks: Scaling Risk and Intent-Aligned Retrieval Defense
 
 📄 [arXiv](https://arxiv.org/abs/2608.27945)　📅 2026-08
 
@@ -627,7 +608,7 @@ Scaling laws are usually read as a capability story: lower language-modeling los
 
 </details>
 
-### 34. PsychJail: Exploring Psychological Jailbreaks via Multi-Turn Persuasion of LLM Policies
+### 33. PsychJail: Exploring Psychological Jailbreaks via Multi-Turn Persuasion of LLM Policies
 
 📄 [arXiv](https://arxiv.org/abs/2608.23028)　📅 2026-08
 
@@ -646,7 +627,7 @@ Large language models (LLMs) are increasingly deployed in education, healthcare,
 
 </details>
 
-### 35. Decomposition Attacks Across Unlinkable Identities: Limits of Stateful Defenses for LLM Services
+### 34. Decomposition Attacks Across Unlinkable Identities: Limits of Stateful Defenses for LLM Services
 
 📄 [arXiv](https://arxiv.org/abs/2608.17445)　📅 2026-08
 
@@ -665,7 +646,7 @@ Most large language model services use stateless defenses, which judge only the 
 
 </details>
 
-### 36. Stable-GFlowNet: Toward Diverse and Robust LLM Red-Teaming via Contrastive Trajectory Balance
+### 35. Stable-GFlowNet: Toward Diverse and Robust LLM Red-Teaming via Contrastive Trajectory Balance
 
 📄 [arXiv](https://arxiv.org/abs/2605.00553) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64302)　📅 2026-05　🏷 ICML 2026
 
@@ -684,7 +665,7 @@ Large Language Model (LLM) Red-Teaming, which proactively identifies vulnerabili
 
 </details>
 
-### 37. One Word at a Time: Incremental Completion Decomposition Breaks LLM Safety
+### 36. One Word at a Time: Incremental Completion Decomposition Breaks LLM Safety
 
 📄 [arXiv](https://arxiv.org/abs/2604.25921) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-04
 
@@ -703,7 +684,7 @@ Large Language Models (LLMs) are trained to refuse harmful requests, yet they re
 
 </details>
 
-### 38. D-Judge: Disrupting Multi-Turn Jailbreaks using Semantics-Preserving Output Rewriting
+### 37. D-Judge: Disrupting Multi-Turn Jailbreaks using Semantics-Preserving Output Rewriting
 
 📄 [arXiv](https://arxiv.org/abs/2606.02640) · 🎓 [Official](https://icml.cc/virtual/2026/poster/65706)　📅 2026　🏷 ICML 2026
 
@@ -722,7 +703,7 @@ Multi-turn jailbreak attacks pose a growing threat to large language model (LLM)
 
 </details>
 
-### 39. Circuit Discovery Helps Detect LLM Jailbreaking: A Mechanistic Interpretability Study
+### 38. Circuit Discovery Helps Detect LLM Jailbreaking: A Mechanistic Interpretability Study
 
 📄 [arXiv](https://arxiv.org/abs/2608.27504)　📅 2026-08
 
@@ -741,7 +722,7 @@ Despite extensive safety alignment, large language models (LLMs) remain vulnerab
 
 </details>
 
-### 40. Hidden in the Request: Explaining Unethical LLM Compliance through Token Relevance
+### 39. Hidden in the Request: Explaining Unethical LLM Compliance through Token Relevance
 
 📄 [arXiv](https://arxiv.org/abs/2608.23264)　📅 2026-08
 
@@ -760,7 +741,7 @@ Although Large Language Models (LLMs) are aligned to optimize for both helpfulne
 
 </details>
 
-### 41. The Illusion of Cross-Lingual Safety in Low-Resource Languages
+### 40. The Illusion of Cross-Lingual Safety in Low-Resource Languages
 
 📄 [arXiv](https://arxiv.org/abs/2608.11146)　📅 2026-08
 
@@ -779,7 +760,7 @@ Safety alignment in large language models (LLMs) is largely developed in English
 
 </details>
 
-### 42. GPT-Red: Automated Red Teaming via Self-Play at Scale
+### 41. GPT-Red: Automated Red Teaming via Self-Play at Scale
 
 📄 [arXiv](https://arxiv.org/abs/2607.26115)　📅 2026-07
 
@@ -798,7 +779,7 @@ We introduce \textbf{GPT-Red}, an automated red-teaming agent that is trained to
 
 </details>
 
-### 43. Red Teaming Large Reasoning Models
+### 42. Red Teaming Large Reasoning Models
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1034/)　📅 2026　🏷 ACL 2026
 
@@ -817,7 +798,7 @@ Large Reasoning Models (LRMs) have emerged as a powerful advancement in multi-st
 
 </details>
 
-### 44. RedCoder: Automated Multi-Turn Red Teaming for Code LLMs
+### 43. RedCoder: Automated Multi-Turn Red Teaming for Code LLMs
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1531/)　📅 2026　🏷 ACL 2026
 
@@ -836,7 +817,7 @@ Large Language Models (LLMs) for code generation (i.e., Code LLMs) have demonstr
 
 </details>
 
-### 45. Red-Bandit: Test-Time Adaptation for LLM Red-Teaming via Bandit-Guided LoRA Experts
+### 44. Red-Bandit: Test-Time Adaptation for LLM Red-Teaming via Bandit-Guided LoRA Experts
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.2156/)　📅 2026　🏷 ACL 2026
 
@@ -855,7 +836,7 @@ Automated red-teaming has emerged as a scalable approach for auditing Large Lang
 
 </details>
 
-### 46. Learning to Conceal Risk: Controllable Multi-turn Red Teaming for LLMs in the Financial Domain
+### 45. Learning to Conceal Risk: Controllable Multi-turn Red Teaming for LLMs in the Financial Domain
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1903/)　📅 2026　🏷 ACL 2026
 
@@ -874,7 +855,7 @@ Large Language Models (LLMs) are increasingly deployed in finance, where unsafe 
 
 </details>
 
-### 47. Embracing Anisotropy: Turning Massive Activations into Interpretable Control Knobs for Large Language Models
+### 46. Embracing Anisotropy: Turning Massive Activations into Interpretable Control Knobs for Large Language Models
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1380/)　📅 2026　🏷 ACL 2026
 
@@ -893,7 +874,7 @@ Large Language Models (LLMs) exhibit highly anisotropic internal representations
 
 </details>
 
-### 48. Adaptive Instruction Composition for Automated LLM Red-Teaming
+### 47. Adaptive Instruction Composition for Automated LLM Red-Teaming
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.2174/)　📅 2026　🏷 ACL 2026
 
@@ -912,26 +893,7 @@ Many approaches to LLM red-teaming leverage an attacker LLM to discover jailbrea
 
 </details>
 
-### 49. "Abuse Risks are Often Inherent to Product Features": Exploring AI Vendors' Bug Bounty and Responsible Disclosure Policies
-
-📄 [arXiv](https://arxiv.org/abs/2509.06136) · 🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/piao)　📅 2026　🏷 USENIX Security 2026
-
-**关键词**：`analysis`、`bug bounty`、`abuse risk`、`jailbreak`、`AI vulnerability disclosure`
-
-👤 **作者**：Yangheran Piao、Jingjie Li、Daniel W. Woods
-
-- 🎯 **研究动机**：AI 漏洞披露依赖厂商接收并奖励报告，但厂商政策与学术研究、真实事件的差距未被测量
-- 🔬 **研究方法**：混合方法分析 264 家 AI 厂商的漏洞披露政策（快照与纵向定性），并与 320 起 AI 事件及 260 篇学术论文对齐
-- 📌 **结论**：36% 厂商无既定政策、仅 18% 提及 AI 风险；数据访问、授权与模型提取最常被列入范围，越狱与幻觉最常被排除；厂商处置 AI 漏洞可能滞后于学术与事件
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-As vendors adopt AI technologies, security researchers are working to uncover and fix related vulnerabilities, which is important given AI systems handle sensitive data and critical functions. This process relies on vendors receiving and rewarding AI vulnerability reports. To assess current practices, we analyzed the vulnerability disclosure policies of 264 AI vendors. We employed a mixed-methods approach, combining snapshot and longitudinal qualitative analysis, as well as comparing alignment with 320 AI incidents and 260 academic articles. Our analysis reveals that 36% of AI vendors have no established policy, and only 18% mention AI risks. Data access, authorization, and model extraction vulnerabilities are most consistently declared in-scope. Jailbreaking and hallucination are most commonly declared out-of-scope. We identify three profiles that reflect vendors' different positions toward AI vulnerabilities: proactive clarification (n = 46), silent (n = 115), and restrictive (n = 103). Our alignment results suggest that vendors may address AI vulnerability disclosure later than academic research and real-world incidents.
-
-</details>
-
-### 50. AdaptiveGuard: Towards Adaptive Runtime Safety for LLM-Powered Software
+### 48. AdaptiveGuard: Towards Adaptive Runtime Safety for LLM-Powered Software
 
 📄 [arXiv](https://arxiv.org/abs/2509.16861) · 🌐 [Project](https://doi.org/10.1109/ASE63991.2025.00279)　📅 2025-09　🏷 ASE 2025
 
@@ -950,7 +912,7 @@ Guardrails are critical for the safe deployment of Large Language Models (LLMs)-
 
 </details>
 
-### 51. Targeting Alignment: Extracting Safety Classifiers of Aligned LLMs
+### 49. Targeting Alignment: Extracting Safety Classifiers of Aligned LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2501.16534) · 🎓 [Official](https://satml.org/2026/accepted-papers/)　📅 2025-01　🏷 SaTML 2026
 
@@ -969,7 +931,7 @@ Alignment in large language models (LLMs) is used to enforce guidelines such as 
 
 </details>
 
-### 52. SoK: Intent-Oriented Systematization of Multi-Turn LLM Jailbreaks
+### 50. SoK: Intent-Oriented Systematization of Multi-Turn LLM Jailbreaks
 
 📄 [arXiv](https://arxiv.org/abs/2608.01117)　📅 2026-08
 
@@ -988,7 +950,7 @@ Large Language Models (LLMs) are increasingly deployed in interactive settings, 
 
 </details>
 
-### 53. Pragmatic Attack Surface: Vulnerabilities of Implicit Context in Large Language Models
+### 51. Pragmatic Attack Surface: Vulnerabilities of Implicit Context in Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2608.09551)　📅 2026-08
 
@@ -1007,7 +969,7 @@ In the era of large language models (LLMs), attackers often manipulate natural l
 
 </details>
 
-### 54. Pruning Unsafe Tickets: A Resource-Efficient Framework for Safer and More Robust LLMs
+### 52. Pruning Unsafe Tickets: A Resource-Efficient Framework for Safer and More Robust LLMs
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1209/)　📅 2026　🏷 ACL 2026
 
@@ -1026,7 +988,7 @@ Machine learning models are increasingly deployed in real-world applications, bu
 
 </details>
 
-### 55. Profiling the Irrational Agent: Cognitive Modeling of LLM Behaviors in Sequential Jailbreaks
+### 53. Profiling the Irrational Agent: Cognitive Modeling of LLM Behaviors in Sequential Jailbreaks
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/64559)　📅 2026　🏷 ICML 2026
 
@@ -1045,7 +1007,7 @@ Large language models (LLMs) are increasingly deployed in high-stakes settings, 
 
 </details>
 
-### 56. ARES: Adaptive Red-Teaming and End-to-End Repair of Policy-Reward System
+### 54. ARES: Adaptive Red-Teaming and End-to-End Repair of Policy-Reward System
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1985/)　📅 2026　🏷 ACL 2026
 
@@ -1064,7 +1026,7 @@ Reinforcement Learning from Human Feedback (RLHF) is central to aligning Large L
 
 </details>
 
-### 57. A Single Suffix to Break Them All: Basin-Aware Jailbreaks for Merged Model Families
+### 55. A Single Suffix to Break Them All: Basin-Aware Jailbreaks for Merged Model Families
 
 📄 [arXiv](https://arxiv.org/abs/2608.26506)　📅 2026-08
 
@@ -1083,7 +1045,7 @@ Model merging enables combining multiple fine-tuned models without additional tr
 
 </details>
 
-### 58. NeuronFuzz: Safety Neuron Guided Fuzzing for LLM Safety Evaluation
+### 56. NeuronFuzz: Safety Neuron Guided Fuzzing for LLM Safety Evaluation
 
 📄 [arXiv](https://arxiv.org/abs/2608.26222)　📅 2026-08
 
@@ -1102,7 +1064,7 @@ Safety evaluation is critical for assessing whether aligned Large Language Model
 
 </details>
 
-### 59. RedEvoAgent: Automatic Red-Teaming Agent with Experience-Driven Skill Evolution
+### 57. RedEvoAgent: Automatic Red-Teaming Agent with Experience-Driven Skill Evolution
 
 📄 [arXiv](https://arxiv.org/abs/2608.27439)　📅 2026-08
 
@@ -1121,7 +1083,7 @@ LLM-based agents are increasingly deployed in product-level execution harnesses,
 
 </details>
 
-### 60. JailbreakSkill: Scaling Automated Red-Teaming with Reusable and Ever-Evolving Skills
+### 58. JailbreakSkill: Scaling Automated Red-Teaming with Reusable and Ever-Evolving Skills
 
 📄 [arXiv](https://arxiv.org/abs/2608.16465)　📅 2026-08
 
@@ -1140,7 +1102,7 @@ Automated red-teaming has produced a growing collection of attack strategies, ye
 
 </details>
 
-### 61. ToxiPrompt: A Two-Stage Red-Teaming Approach for Balancing Adversarial Prompt Diversity and Response Toxicity
+### 59. ToxiPrompt: A Two-Stage Red-Teaming Approach for Balancing Adversarial Prompt Diversity and Response Toxicity
 
 🎓 [Official](https://aclanthology.org/2026.eacl-long.170/)　📅 2026-03　🏷 ACL 2026
 
@@ -1159,7 +1121,7 @@ While large language models (LLMs) offer great promise, they also pose concrete 
 
 </details>
 
-### 62. Lookahead-GCG: Improving Universal Multi-Model Optimization-Based Jailbreaking Attacks via Stochastic Nesterov Optimization
+### 60. Lookahead-GCG: Improving Universal Multi-Model Optimization-Based Jailbreaking Attacks via Stochastic Nesterov Optimization
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/66388)　📅 2026　🏷 ICML 2026
 
@@ -1178,7 +1140,7 @@ Transferable jailbreaking attacks enable red-teaming of black-box large language
 
 </details>
 
-### 63. Jailbreak-Zero: A Path to Pareto Optimal Red Teaming for Large Language Models
+### 61. Jailbreak-Zero: A Path to Pareto Optimal Red Teaming for Large Language Models
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.2167/)　📅 2026　🏷 ACL 2026
 
@@ -1197,7 +1159,7 @@ This paper presents a novel Automated Red Teaming (ART) framework that shifts fr
 
 </details>
 
-### 64. Enhancing the Transferability of Jailbreak Attacks on Large Language Models via Exploiting Reparameterization Invariance
+### 62. Enhancing the Transferability of Jailbreak Attacks on Large Language Models via Exploiting Reparameterization Invariance
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.357/)　📅 2026　🏷 ACL 2026
 
@@ -1216,7 +1178,7 @@ Jailbreak attacks serve as a pivotal technique for evaluating the safety alignme
 
 </details>
 
-### 65. BlueCodeAgent: A Blue Teaming Agent Powered by Automated Red Teaming for CodeGen AI
+### 63. BlueCodeAgent: A Blue Teaming Agent Powered by Automated Red Teaming for CodeGen AI
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/63820)　📅 2026　🏷 ICML 2026
 
@@ -1235,7 +1197,7 @@ Existing research on CodeGen AI security mainly focuses on red teaming, which ai
 
 </details>
 
-### 66. ASTRA: An Automated Framework for Strategy Discovery, Retrieval, and Evolution for Jailbreaking LLMs
+### 64. ASTRA: An Automated Framework for Strategy Discovery, Retrieval, and Evolution for Jailbreaking LLMs
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1843/)　📅 2026　🏷 ACL 2026
 
@@ -1254,7 +1216,7 @@ Despite extensive safety alignment, Large Language Models (LLMs) remain vulnerab
 
 </details>
 
-### 67. BEACON: Budget-Efficient Discovery of Policy Violations in Large Language Models via Cognitive-Guided Monte Carlo Tree Search
+### 65. BEACON: Budget-Efficient Discovery of Policy Violations in Large Language Models via Cognitive-Guided Monte Carlo Tree Search
 
 🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/2985.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track)　📅 2026
 
@@ -1271,7 +1233,7 @@ Systematic safety evaluation of large language models must uncover diverse polic
 
 </details>
 
-### 68. Adaptive Probe-based Steering for Robust LLM Jailbreaking
+### 66. Adaptive Probe-based Steering for Robust LLM Jailbreaking
 
 📄 [arXiv](https://arxiv.org/abs/2605.20286) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64835)　📅 2026-05　🏷 ICML 2026
 
@@ -1290,7 +1252,7 @@ Recent work has demonstrated the potential of contrastive steering for jailbreak
 
 </details>
 
-### 69. Minimal, Local, Causal Explanations for Jailbreak Success in Large Language Models
+### 67. Minimal, Local, Causal Explanations for Jailbreak Success in Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2605.00123) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-05
 
@@ -1309,7 +1271,7 @@ Safety trained large language models (LLMs) can often be induced to answer harmf
 
 </details>
 
-### 70. Structured Multi-step Jailbreaking under a Hamiltonian Generative Formulation
+### 68. Structured Multi-step Jailbreaking under a Hamiltonian Generative Formulation
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/61902)　📅 2026　🏷 ICML 2026
 
@@ -1328,7 +1290,7 @@ Recent work shows that even safety aligned large language models (LLM) can be pu
 
 </details>
 
-### 71. StealthGraph: Exposing Domain-Specific Risks in LLMs through Knowledge-Graph-Guided Harmful Prompt Generation
+### 69. StealthGraph: Exposing Domain-Specific Risks in LLMs through Knowledge-Graph-Guided Harmful Prompt Generation
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.295/)　📅 2026　🏷 ACL 2026
 
@@ -1347,7 +1309,7 @@ Large language models (LLMs) are increasingly applied in specialized domains suc
 
 </details>
 
-### 72. Reflector: Internalizing Step-wise Reflection against Indirect Jailbreaks
+### 70. Reflector: Internalizing Step-wise Reflection against Indirect Jailbreaks
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/60648)　📅 2026　🏷 ICML 2026
 
@@ -1366,7 +1328,7 @@ While Large Language Models (LLMs) demonstrate remarkable capabilities, they rem
 
 </details>
 
-### 73. New Wide-Net-Casting Jailbreak Attacks Risk Large Models
+### 71. New Wide-Net-Casting Jailbreak Attacks Risk Large Models
 
 📄 [arXiv](https://arxiv.org/abs/2605.17128) · 🎓 [Official](https://icml.cc/virtual/2026/poster/62947)　📅 2026　🏷 ICML 2026
 
@@ -1385,26 +1347,7 @@ Jailbreak attacks on large models have drawn growing attention due to their clos
 
 </details>
 
-### 74. DMN: A Compositional Framework for Jailbreaking Multimodal LLMs with Multi-Image Inputs
-
-🎓 [Official](https://aclanthology.org/2026.acl-long.514/)　📅 2026　🏷 ACL 2026
-
-**关键词**：`attack`、`multimodal safety`、`jailbreak`、`VLM safety`、`LLM jailbreak`、`automated red teaming`
-
-👤 **作者**：Wenzhuo Xu、…、Quanchen Zou
-
-- 🎯 **研究动机**：支持多图输入的 MLLM 安全对齐投入少构成新漏洞；既有越狱只用单图，无法分发有害请求或用视觉推理任务分散注意
-- 🔬 **研究方法**：DMN 组合式多图越狱框架：分布式指令、多模态证据与数字链任务协同增强攻击
-- 📌 **结论**：GPT-4o、Gemini-2.5-pro 与 Claude Sonnet 4 上 ASR 超 90%，大幅超越基线
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Multimodal Large Language Models (MLLMs) are vulnerable to jailbreak attacks, which can elicit harmful responses from MLLMs. Many MLLMs support multi-image inputs, inadvertently introducing new vulnerabilities due to less efforts on multi-image safety alignment. Previous MLLM jailbreak methods only uses a single image, which restricts the attack space: they cannot distribute harmful requests across multiple images, carry abundant information, or exploit additional visual reasoning tasks to distract MLLMs. To address these limitations, in this paper, we propose a compositional jailbreak framework, DMN, which leverages D istributed instruction, M ultimodal evidence and a N umber chain task to fully enhance the jailbreak performance. Extensive experiments show that DMN is highly effective for MLLM jailbreaking, e.g. achieving attack success rates of over 90% on GPT-4o, Gemini-2.5-pro and Claude Sonnet 4, surpassing other baselines by a large margin. This compositional, multi-image jailbreak strategy reveals fundamental weaknesses in their safety mechanisms.
-
-</details>
-
-### 75. A Game-Theoretic Analysis of Attacks on Large Language Models via Compositional Skills
+### 72. A Game-Theoretic Analysis of Attacks on Large Language Models via Compositional Skills
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/61257)　📅 2026　🏷 ICML 2026
 
@@ -1423,7 +1366,7 @@ As large language models grow increasingly capable, concerns about their safe de
 
 </details>
 
-### 76. Active Attacks: Red-teaming LLMs via Adaptive Environments
+### 73. Active Attacks: Red-teaming LLMs via Adaptive Environments
 
 📄 [arXiv](https://arxiv.org/abs/2509.21947) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64976)　📅 2026　🏷 ICML 2026
 
@@ -1442,7 +1385,7 @@ We address the challenge of automatically generating diverse attack prompts for 
 
 </details>
 
-### 77. One Leak Away: How Pretrained Model Exposure Amplifies Jailbreak Risks in Finetuned LLMs
+### 74. One Leak Away: How Pretrained Model Exposure Amplifies Jailbreak Risks in Finetuned LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2512.14751) · 🎓 [Official](https://www.sigsac.org/ccs/CCS2026/program/accepted-papers.html)　📅 2025-12　🏷 ACM CCS 2026
 
@@ -1461,7 +1404,7 @@ Finetuning pretrained large language models (LLMs) has become the standard parad
 
 </details>
 
-### 78. Jailbreak Foundry: From Papers to Runnable Attacks for Reproducible Benchmarking
+### 75. Jailbreak Foundry: From Papers to Runnable Attacks for Reproducible Benchmarking
 
 📄 [arXiv](https://arxiv.org/abs/2602.24009) · 🎓 [Official](https://icml.cc/virtual/2026/poster/65657)　📅 2026-02　🏷 ICML 2026
 
@@ -1477,5 +1420,119 @@ Finetuning pretrained large language models (LLMs) has become the standard parad
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 Jailbreak techniques for large language models (LLMs) evolve faster than benchmarks, making robustness estimates stale and difficult to compare across papers due to drift in datasets, harnesses, and judging protocols. We introduce JAILBREAK FOUNDRY (JBF), a system that addresses this gap via a multi-agent workflow to translate jailbreak papers into executable modules for immediate evaluation within a unified harness. JBF features three core components: (i) JBF-LIB for shared contracts and reusable utilities; (ii) JBF-FORGE for the multi-agent paper-to-module translation; and (iii) JBF-EVAL for standardizing evaluations. Across 30 reproduced attacks, JBF achieves high fidelity with a mean (reproduced-reported) attack success rate (ASR) deviation of +0.26 percentage points. By leveraging shared infrastructure, JBF reduces attack-specific implementation code by more than half relative to original repositories and achieves an 82.5% mean reused-code ratio. This system enables a standardized AdvBench evaluation of all 30 attacks across 10 victim models using a consistent GPT-4o judge. By automating both attack integration and standardized evaluation, JBF offers a scalable solution for creating living benchmarks that keep pace with the rapidly shifting security landscape.
+
+</details>
+
+### 76. EvoFlint: An Evolutionary Atlas of Multi-Turn LLM Vulnerabilities
+
+📄 [arXiv](https://arxiv.org/abs/2609.00487)　📅 2026-09
+
+**关键词**：`attack`、`multi-turn jailbreak`、`quality-diversity search`、`adaptive red teaming`
+
+👤 **作者**：Feitong Qiao、…、Anish Das Sarma
+
+- 🎯 **研究动机**：多轮渐进攻击是 LLM 最少被理解的失效之一，自动 red-teaming 把它当生成问题而非搜索问题，只产出零散成功
+- 🔬 **研究方法**：提出 EvoFlint：用进化 quality-diversity 搜索演化分阶段对话计划（LLM 变异／交叉、ASR 与峰值严重度的 Pareto 适应度、风险索引档案与跨代记忆）
+- 📌 **结论**：HarmBench-test 上 ASR 达 Claude Sonnet 4.6 的 35.8%、GPT-5.4 的 59.7%、Qwen3-32B 的 94.3%，档案按风险类目暴露各模型安全训练的覆盖缺口
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Frontier language models that refuse harmful single-turn prompts often comply when the same intent is reached gradually over many turns, making multi-turn attacks one of the least understood failure modes of large language models. Most automated red-teaming methods treat this as a generation problem: produce attacks that break the model. We argue it is better framed as a search problem: discover, organize, and iteratively refine a diverse archive of attack strategies, producing a structured map of how a target model fails rather than a list of one-off successes. We introduce EvoFlint, which applies evolutionary quality-diversity search to multi-turn red-teaming. Attack strategies are phased conversation plans, not raw prompts, and are evolved through LLM-driven mutation and crossover. A Pareto fitness over attack success rate and peak severity preserves selection signal from near-miss attacks. A risk-indexed archive runs novelty search with local competition over strategy description embeddings inside each cell, maintaining diversity without committing to a predefined style taxonomy. A generation-level memory accumulates target-model insights across the population and feeds them back into strategy generation. On the HarmBench-test split, EvoFlint reaches attack success rates of 35.8% on Claude Sonnet 4.6, 59.7% on GPT-5.4, and 94.3% on Qwen3-32B, alongside 98.7% on the older GPT-4o included as a baseline reference. The resulting archive, organized by risk category, exposes for each target which categories of harm its safety training has and has not covered.
+
+</details>
+
+### 77. In-Context Representation Hijacking
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.768/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`attack`、`prompt steering`、`subliminal cue`、`behavior manipulation`、`representation intervention`、`LLM backdoor`
+
+👤 **作者**：Itay Yona、Amir Sarid、Michael Karasik、Yossi Gandelsman
+
+- 🎯 **研究动机**：对齐策略在表层提示层面运作，潜空间表示层面的攻击面未被探索
+- 🔬 **研究方法**：Doublespeak 在多个上下文示例中把有害关键词系统性替换为良性 token，使后者内部表示收敛到有害语义从而绕过安全对齐
+- 📌 **结论**：免优化、跨模型家族可迁移，闭源系统上成功率高，Llama-3.3-70B-Instruct 单句上下文即达 74%
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+We introduce Doublespeak, a simple in-context representation hijacking attack against language models. The attack works by systematically replacing a harmful keyword (e.g., bomb ) with a benign token (e.g., carrot ) across multiple in-context examples, provided as a prefix to a harmful request. We demonstrate that this substitution leads to the internal representation of the benign token converging toward that of the harmful one, effectively embedding the harmful semantics under a euphemism. As a result, superficially innocuous prompts (e.g., “How to build a carrot?” ) are internally interpreted as disallowed instructions ( “How to build a bomb?” ), thereby bypassing the model’s safety alignment. We use interpretability tools to show this semantic shift occurs progressively across layers. Doublespeak is optimization-free, broadly transferable across model families, and achieves strong success rates on closed-source systems, reaching 74% on Llama-3.3-70B-Instruct with a single-sentence context override. Our findings highlight a new attack surface in LM latent space, indicating that current alignment strategies are insufficient and should instead operate at the representation level.
+
+</details>
+
+### 78. GateBreaker: Gate-Guided Attacks on Mixture-of-Expert LLMs
+
+📄 [arXiv](https://arxiv.org/abs/2512.21008) · 🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/wu-lichao)　📅 2025-12　🏷 USENIX Security 2026
+
+**关键词**：`attack`、`MoE LLM`、`VLM safety`、`multimodal jailbreak`、`safety alignment`、`expert routing`
+
+👤 **作者**：Lichao Wu、Sasha Behrouzi、Mohamadreza Rostami、Stjepan Picek、Ahmad-Reza Sadeghi
+
+- 🎯 **研究动机**：LLM 安全研究几乎只关注稠密架构，MoE 稀疏路由下安全机制的鲁棒性未被检验
+- 🔬 **研究方法**：GateBreaker 免训练三阶段推理时攻击：门控级画像定位有害输入下被集中路由的安全专家、专家级定位其内安全结构、定向禁用该结构
+- 📌 **结论**：MoE 安全集中于稀疏路由协调的小撮神经元；禁用目标层约 3% 神经元即使八个对齐 MoE LLM 平均 ASR 从 7.4% 升至 64.9%，同族一次迁移使 17.9%→67.7%，并泛化到五个 MoE VLM（60.9%）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Mixture-of-Experts (MoE) architectures have advanced the scaling of Large Language Models (LLMs) by activating only a sparse subset of parameters per input, enabling state-of-the-art performance with reduced computational cost. As these models are increasingly deployed in critical domains, understanding and strengthening their alignment mechanisms is essential to prevent harmful outputs. However, existing LLM safety research has focused almost exclusively on dense architectures, leaving the unique safety properties of MoEs largely unexamined. The modular, sparsely-activated design of MoEs suggests that safety mechanisms may operate differently than in dense models, raising questions about their robustness. In this paper, we present GateBreaker, the first training-free, lightweight, and architecture-agnostic attack framework that compromises the safety alignment of modern MoE LLMs at inference time. GateBreaker operates in three stages: (i) gate-level profiling, which identifies safety experts disproportionately routed on harmful inputs, (ii) expert-level localization, which localizes the safety structure within safety experts, and (iii) targeted safety removal, which disables the identified safety structure to compromise the safety alignment. Our study shows that MoE safety concentrates within a small subset of neurons coordinated by sparse routing. Selective disabling of these neurons, approximately 3% of neurons in the targeted expert layers, significantly increases the averaged attack success rate (ASR) from 7.4% to 64.9% against the eight latest aligned MoE LLMs with limited utility degradation. These safety neurons transfer across models within the same family, raising ASR from 17.9% to 67.7% with one-shot transfer attack. Furthermore, GateBreaker generalizes to five MoE vision language models (VLMs) with 60.9% ASR on unsafe image inputs.
+
+</details>
+
+### 79. Metis: Learning to Jailbreak LLMs via Self-Evolving Metacognitive Policy Optimization
+
+📄 [arXiv](https://arxiv.org/abs/2605.10067) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63565)　📅 2026　🏷 ICML 2026
+
+**关键词**：`attack`、`jailbreak`、`agent memory`、`self-evolution`、`LLM jailbreak`、`inference-time intervention`
+
+👤 **作者**：Huilin Zhou、…、Xuelong Li
+
+- 🎯 **研究动机**：自动红队靠静态启发式或随机搜索，对先进安全对齐脆弱
+- 🔬 **研究方法**：Metis 把越狱重构为对抗 POMDP 中的推理时策略优化：自进化元认知循环因果诊断目标防御逻辑，结构化反馈作语义梯度精化策略
+- 📌 **结论**：10 个模型上平均 ASR 89.2% 最强，O1 上 76.0%、GPT-5-chat 上 78.0%；token 成本平均降 8.2 倍（最多 11.4 倍）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Red teaming is critical for uncovering vulnerabilities in Large Language Models (LLMs). While automated methods have improved scalability, existing approaches often rely on static heuristics or stochastic search, rendering them brittle against advanced safety alignment. To address this, we introduce \textbf{Metis}, a framework that reformulates jailbreaking as inference-time policy optimization within an adversarial Partially Observable Markov Decision Process (POMDP). Metis employs a self-evolving metacognitive loop to perform causal diagnosis of a target's defense logic and leverages structured feedback as a semantic gradient to refine its policy, offering enhanced interpretability through transparent reasoning traces. Extensive evaluations across 10 diverse models demonstrate that Metis achieves the strongest average Attack Success Rate (ASR) among compared methods at 89.2\%, maintaining high efficacy on resilient frontier models (e.g., 76.0\% on O1 and 78.0\% on GPT-5-chat) where traditional baselines exhibit substantial performance degradation. By replacing redundant exploration with directed optimization, Metis reduces token costs by an average of 8.2$\times$ (and up to 11.4$\times$). Our analysis reveals that current defenses remain vulnerable to internally-steered, closed-loop reasoning trajectories under the tested settings, highlighting a critical need for next-generation defenses capable of reasoning about safety dynamically during inference.
+
+</details>
+
+### 80. SHARP: Self-adaptive Harmful Category-aware Prompt Generation for Black-box Jailbreaking
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.2100/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`attack`、`jailbreak`、`harmful fine-tuning`、`alignment erosion`、`LLM jailbreak`、`automated red teaming`
+
+👤 **作者**：Yingjie Xue、…、Fei Li
+
+- 🎯 **研究动机**：现有越狱方法忽视有害问题跨类别的语义差异，导致成功率不一致、整体攻击效果下降
+- 🔬 **研究方法**：提出类别感知越狱框架 SHARP：把有害问题的语义类别纳入提示生成，结合两阶段 LoRA 微调与 DPO 强化学习优化攻击成功与类别对齐
+- 📌 **结论**：攻击成功率显著提升，跨类别鲁棒性优于 SOTA 基线
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large Language Models (LLMs) have been widely applied in various domains such as education and healthcare, making safety assurance crucial. Jailbreak attacks, a method used in red-teaming, can help evaluate and improve the defensive strategies of LLMs. However, existing jailbreak methods often overlook the semantic differences across categories of harmful questions, leading to inconsistent success rates and reduced overall attack effectiveness. We propose the first category-aware jailbreak framework, SHARP, which incorporates the semantic category of harmful questions into prompt generation. Trained on a verified jailbreak dataset, SHARP enables the model to learn category-specific semantic features and adaptively generate prompts that bypass safety mechanisms. The method combines two-stage LoRA fine-tuning, and DPO-based reinforcement learning to optimize both attack success and category alignment. Experiments show that SHARP significantly improves attack success rates and achieves better cross-category robustness compared to the state-of-the-art (SOTA) baselines, providing an efficient and scalable tool for evaluating LLM safety.
+
+</details>
+
+### 81. Greedy Coordinate Diffusion: Effective and Semantically Coherent Adversarial Attacks via Diffusion Guidance
+
+📄 [arXiv](https://arxiv.org/abs/2606.15531) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63755)　📅 2026　🏷 ICML 2026
+
+**关键词**：`attack`、`adversarial attack`、`diffusion model`、`adversarial robustness`、`attack transferability`
+
+👤 **作者**：Bohdan Turbal、Blossom Metevier、Max Springer、Aleksandra Korolova
+
+- 🎯 **研究动机**：GCG 等优化攻击的高困惑度后缀易被防御检测，保持连贯的攻击又常改变查询语义偏离原目标
+- 🔬 **研究方法**：GCD 用离散扩散语言模型的生成先验引导对抗后缀搜索，无需梯度访问（灰盒），兼顾低困惑度与语义 adherence
+- 📌 **结论**：ASR 最高且响应质量有竞争力，被困惑度过滤与 guard 模型检出的比率低于其他方法
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Adversarial attacks on large language models have limited practical impact despite extensive research. Optimization-based attacks such as Greedy Coordinate Gradient (GCG) (Zou et al., 2023) produce high-perplexity, incoherent suffixes that existing defenses easily detect (Bengio et al., 2024). Moreover, attempting to enforce coherence constraints during optimization often prevents the attack from successfully eliciting the specific targeted response, resulting in low success rates against robust models. Conversely, attacks that maintain coherence often alter the semantic intent of queries; when the model complies with these altered queries, responses fail to address the adversary's original goal. In this work, we introduce Greedy Coordinate Diffusion (GCD), a novel framework that efficiently generates adversarial attacks against safety-aligned models while maintaining low perplexity and high semantic adherence to the adversary's original intent. GCD leverages the generative priors of discrete diffusion language models to guide the search for adversarial suffixes that achieve semantic coherence and adherence. Unlike GCG, GCD does not require direct gradient access, allowing it to operate in a gray-box setting. We show GCD achieves highest ASR while remaining competitive on response-quality scores, and that the constructed adversarial prompts are detected at lower rates than other methods by perplexity-based and guard-model filters.
 
 </details>

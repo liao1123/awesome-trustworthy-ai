@@ -864,3 +864,41 @@ AI agents equipped with tool-calling capabilities are susceptible to Indirect Pr
 Adversarial images pose a severe security threat to multimodal large language models through prompt injection. Existing defenses largely lack a principled understanding of the underlying mechanisms and struggle to balance efficiency and fidelity. In this work, we show that successful adversarial attacks do not rely on the entire image uniformly but instead depend on a small subset of critical image tokens. Based on this insight, we propose a defense that first localizes these critical tokens via gradient analysis and then neutralizes them through masking. We show that attribution based on output probabilities fails when adversarial attacks preserve the predicted token. To overcome this limitation, we introduce the Hidden-State Gradient Norm score for adversarial behavior attribution and prove that its ranking is consistent with that of the full adversarial loss gradient, providing a theoretical guarantee for accurate localization. GTM requires only a single forward–backward pass to identify and zero out a small number of high-scoring tokens, effectively disrupting the adversarial attack path. Extensive experiments on prompt injection and multimodal jailbreak attacks demonstrate that our approach reduces attack success rates (ASR) to near zero while preserving model utility with negligible computational overhead. The code is available at: https://github.com/fish883/GTM-Defense.
 
 </details>
+
+### 46. Context Contamination in LLM Analysis of Network Security Logs: Poison with Passive Prompt Injection and Mitigation Evaluation
+
+📄 [arXiv](https://arxiv.org/abs/2607.14493) · 🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/karanjai)　📅 2026-07　🏷 USENIX Security 2026
+
+**关键词**：`benchmark`、`attack`、`passive prompt injection`、`security log`、`prompt injection`、`defense-in-depth`
+
+👤 **作者**：Rabimba Karanjai、Yang Lu、Hemanth Hegadehalli Madhavarao、Lei Xu、Weidong Shi
+
+- 🎯 **研究动机**：SOC 用 LLM 分析外部日志，日志生成字段中的注入载荷可持久存储并在分析师查询时执行（passive prompt injection）
+- 🔬 **研究方法**：提出 LogInject 框架与 12,847 条日志（2,569 对抗样本）基准，评估三个生产 LLM 在活动隐匿、误报生成、信息外泄与输出劫持四目标下的表现，并提出跨条目分片的 Context Stitching；测试输入过滤+提示加固+输出验证的分层缓解
+- 📌 **结论**：基线 ASR 最高 88.2%（平均 83.4%），Context Stitching 达 76.4%；分层防御降低 90.4% 攻击但残留 8.4%
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large Language Models are increasingly deployed in Security Operations Centers for log analysis tasks including summarization, alert triage, and threat investigation. These systems ingest logs from external-facing services and process network logs as natural language contexts to generate security insights. We demonstrate that this architectural pattern introduces a critical vulnerability: adversaries can embed prompt injection payloads in log-generating fields that persist in storage and are executed when analysts query the LLM, achieving what we term passive prompt injection. We present LogInject, a systematic framework for evaluating these threats. Using LogInject-1.0, a benchmark of 12,847 log entries including 2,569 adversarial samples, we evaluate three production LLMs across four attack objectives: activity concealment, false positive generation, information exfiltration, and output hijacking. Our findings reveal an up to 88.2% attack success rate (83.4% average across models) under the baseline conditions. We introduce Context Stitching, a novel technique that fragments payloads across multiple log entries to evade stateless filters while exploiting LLM long-context reasoning, achieving a 76.4% success rate. As mitigation, we evaluate layered defenses by combining input filtering, prompt hardening, and output validation, demonstrating a 90.4% attack reduction, although 8.4% residual vulnerability persists. Our results establish that LLM-based log analysis creates an inherent confused deputy vulnerability where untrusted data and trusted instructions compete indistinguishably for model attention, requiring defense in-depth architectures and continued human oversight for security-critical decisions.
+
+</details>
+
+### 47. Stop Fixating on Prompts: Reasoning Hijacking and Constraint Tightening for Red-Teaming LLM Agents
+
+🎓 [Official](https://aclanthology.org/2026.acl-long.1197/)　📅 2026　🏷 ACL 2026
+
+**关键词**：`attack`、`reasoning safety`、`agent safety`、`tool-use agent`、`automated red teaming`
+
+👤 **作者**：Yanxu Mao、Peipei Liu、Tiehan Cui、Congying Liu、Mingzhe Xing、Datao You
+
+- 🎯 **研究动机**：现有 LLM agent 红队方法多靠修改用户提示，对新数据适应性差且可能损害 agent 性能
+- 🔬 **研究方法**：提出 JailAgent：完全不修改用户提示，经触发提取、推理劫持与约束收紧三阶段隐式操纵 agent 的推理轨迹与记忆检索
+- 📌 **结论**：凭借触发识别、实时自适应机制与优化目标函数，在跨模型与跨场景环境中持续有效
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+With the widespread application of LLM-based agents across various domains, their complexity has introduced new security threats. Existing red-team methods mostly rely on modifying user prompts, which lack adaptability to new data and may impact the agent’s performance. To address the challenge, this paper proposes the JailAgent framework, which completely avoids modifying the user prompt. Specifically, it implicitly manipulates the agent’s reasoning trajectory and memory retrieval with three key stages: Trigger Extraction, Reasoning Hijacking, and Constraint Tightening. Through precise trigger identification, real-time adaptive mechanisms, and an optimized objective function, JailAgent demonstrates outstanding performance in cross-model and cross-scenario environments.
+
+</details>

@@ -109,3 +109,212 @@ Backdoor attacks pose a serious threat to deep reinforcement learning (DRL). Cur
 Extensive research has highlighted the severe threats posed by backdoor attacks to deep reinforcement learning (DRL). However, prior studies primarily focus on vanilla scenarios, while plasticity interventions have emerged as indispensable built-in components of modern DRL agents. Despite their effectiveness in mitigating plasticity loss, the impact of these interventions on DRL backdoor vulnerabilities remains underexplored, and this lack of systematic investigation poses risks in practical DRL deployments. To bridge this gap, we empirically study 14,664 cases integrating representative interventions and attack scenarios. We find that only one intervention (i.e., SAM) exacerbates backdoor threats, while other interventions mitigate them. Pathological analysis identifies that the exacerbation is attributed to backdoor gradient amplification, while the mitigation stems from activation pathway disruption and representation space compression. From these findings, we derive two novel insights: (1) a conceptual framework SCC for robust backdoor injection that deconstructs the mechanistic interplay between interventions and backdoors in DRL, and (2) abnormal loss landscape sharpness as a key indicator for DRL backdoor detection.
 
 </details>
+
+### 6. When Can You Poison Rewards? A Tight Characterization of Reward Poisoning in Linear MDPs
+
+📄 [arXiv](https://arxiv.org/abs/2604.10062) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64485)　📅 2026　🏷 ICML 2026
+
+**关键词**：`attack`、`analysis`、`data poisoning`、`language-model poisoning`、`training data`、`backdoor attack`
+
+👤 **作者**：Jose Efraim Aguilar Escamilla、…、Huazheng Wang
+
+- 🎯 **研究动机**：奖励投毒研究多给出攻击成功的充分条件，何时攻击本质不可行缺乏刻画
+- 🔬 **研究方法**：给出线性 MDP 中奖励投毒可攻击性的充要条件，界定有界预算内能否诱导目标策略；并把深度 RL 环境近似为线性 MDP 验证
+- 📌 **结论**：清晰区分脆弱与内在鲁棒的 RL 实例——后者即使用标准非鲁棒算法攻击成本也高，理论预测具实践意义
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+We study reward poisoning attacks in reinforcement learning (RL), where an adversary manipulates rewards under a limited budget to induce a target agent to learn a policy aligned with the attacker's objectives. Most prior work focuses on constructing successful attacks, providing sufficient conditions under which poisoning is effective, while offering limited understanding of when such targeted attacks are fundamentally infeasible. In this paper, we provide the first characterization of reward-poisoning attackability in linear MDPs, establishing both necessary and sufficient conditions for whether a target policy can be induced within a bounded attack budget. This draws a clear boundary between the vulnerable RL instances and intrinsically robust ones, which cannot be attacked without high costs even when the learner uses standard, non-robust RL algorithms. We further demonstrate our framework beyond synthetic linear MDPs by approximating deep RL environments as linear MDPs. We show that our theoretical framework effectively distinguishes vulnerability, demonstrating how our theoretical predictions have practical significance.
+
+</details>
+
+### 7. Robust In-Context Reinforcement Learning Under Reward Poisoning Attacks
+
+📄 [arXiv](https://arxiv.org/abs/2506.06891) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61251)　📅 2026　🏷 ICML 2026
+
+**关键词**：`attack`、`data poisoning`、`language-model poisoning`、`training data`、`backdoor defense`、`adversarial training`
+
+👤 **作者**：Paulius Sasnauskas、Yiğit Yalın、Goran Radanović
+
+- 🎯 **研究动机**：上下文内强化学习（以 Decision-Pretrained Transformer 为代表）面对奖励投毒攻击的鲁棒性未知
+- 🔬 **研究方法**：提出对抗训练框架 AT-DPT：同时训练一群通过污染环境奖励来最小化 DPT 真实奖励的攻击者，和从污染数据推断最优动作的 DPT 模型
+- 📌 **结论**：在 bandit 设定下显著超过鲁棒基线，并泛化到自适应攻击者与 MDP 等更复杂环境
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+We study the corruption-robustness of in-context reinforcement learning (ICRL), focusing on the Decision-Pretrained Transformer (DPT, Lee et al., 2023). To address the challenge of reward poisoning attacks targeting the DPT, we propose a novel adversarial training framework, called Adversarially Trained DPT (AT-DPT). Our method simultaneously trains a population of attackers to minimize the true reward of the DPT by poisoning environment rewards, and a DPT model to infer optimal actions from the poisoned data. We evaluate the effectiveness of our approach against standard bandit algorithms, including robust baselines designed to handle reward contamination. Our results show that AT-DPT significantly outperforms them in bandit settings under a learned attacker, and generalizes to more complex environments such as adaptive attackers and MDPs. It shows promise in ICRL as a meta-RL approach to learning effective corruption-robust algorithms.
+
+</details>
+
+### 8. Beware Untrusted Simulators -- Reward-Free Backdoor Attacks in Reinforcement Learning
+
+📄 [arXiv](https://arxiv.org/abs/2602.05089)　📅 2026-02
+
+**关键词**：`attack`、`RL supply chain`、`simulator backdoor`、`reward-free attack`
+
+👤 **作者**：Ethan Rathbun、Wo Wei Lin、Alina Oprea、Christopher Amato
+
+- 🎯 **研究动机**：模拟器是 RL 训练供应链的安全盲点，传统后门要求观测或篡改奖励的强威胁模型在模拟器内不可行
+- 🔬 **研究方法**：Daze 攻击：恶意模拟器只修改环境动力学即可隐蔽植入动作级后门，无需更改甚至观测奖励，并给出一般 RL 任务上攻击成功性的形式化证明
+- 📌 **结论**：离散与连续动作空间均可靠植入；给出首个迁移到真实机器人硬件的 RL 后门攻击实例
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Simulated environments are a key piece in the success of Reinforcement Learning (RL), allowing practitioners and researchers to train decision making agents without running expensive experiments on real hardware. Simulators remain a security blind spot, however, enabling adversarial developers to alter the dynamics of their released simulators for malicious purposes. Therefore, in this work we highlight a novel threat, demonstrating how simulator dynamics can be exploited to stealthily implant action-level backdoors into RL agents. The backdoor then allows an adversary to reliably activate targeted actions in an agent upon observing a predefined ``trigger'', leading to potentially dangerous consequences. Traditional backdoor attacks are limited in their strong threat models, assuming the adversary has near full control over an agent's training pipeline, enabling them to both alter and observe agent's rewards. As these assumptions are infeasible to implement within a simulator, we propose a new attack ``Daze'' which is able to reliably and stealthily implant backdoors into RL agents trained for real world tasks without altering or even observing their rewards. We provide formal proof of Daze's effectiveness in guaranteeing attack success across general RL tasks along with extensive empirical evaluations on both discrete and continuous action space domains. We additionally provide the first example of RL backdoor attacks transferring to real, robotic hardware. These developments motivate further research into securing all components of the RL training pipeline to prevent malicious attacks.
+
+</details>
+
+### 9. TrojanTO: Action-Level Backdoor Attacks against Trajectory Optimization Models
+
+📄 [arXiv](https://arxiv.org/abs/2506.12815)　📅 2025-06
+
+**关键词**：`attack`、`offline RL backdoor`、`trajectory optimization`、`action-level trigger`
+
+👤 **作者**：Yang Dai、…、Li Shen
+
+- 🎯 **研究动机**：基于奖励操纵的 RL 后门对序列建模本质的轨迹优化模型基本无效，高维动作空间进一步加剧动作操纵难度
+- 🔬 **研究方法**：TrojanTO 首个动作级 TO 模型后门：交替训练增强触发器与目标动作关联，轨迹过滤精确投毒保正常性能、批量投毒保触发一致性
+- 📌 **结论**：0.3% 轨迹投毒预算即可跨任务与攻击目标有效植入，并适用于 DT、GDT、DC 多种轨迹优化架构
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Recent advances in Trajectory Optimization (TO) models have achieved remarkable success in offline reinforcement learning. However, their vulnerabilities against backdoor attacks are poorly understood. We find that existing backdoor attacks in reinforcement learning are based on reward manipulation, which are largely ineffective against the TO model due to its inherent sequence modeling nature. Moreover, the complexities introduced by high-dimensional action spaces further compound the challenge of action manipulation. To address these gaps, we propose TrojanTO, the first action-level backdoor attack against TO models. TrojanTO employs alternating training to enhance the connection between triggers and target actions for attack effectiveness. To improve attack stealth, it utilizes precise poisoning via trajectory filtering for normal performance and batch poisoning for trigger consistency. Extensive evaluations demonstrate that TrojanTO effectively implants backdoor attacks across diverse tasks and attack objectives with a low attack budget (0.3\% of trajectories). Furthermore, TrojanTO exhibits broad applicability to DT, GDT, and DC, underscoring its scalability across diverse TO model architectures.
+
+</details>
+
+### 10. CS-GBA: A Critical Sample-based Gradient-guided Backdoor Attack for Offline Reinforcement Learning
+
+📄 [arXiv](https://arxiv.org/abs/2601.10407)　📅 2026-01
+
+**关键词**：`attack`、`offline RL backdoor`、`critical sample selection`、`OOD evasion`
+
+👤 **作者**：Yuanjie Zhao、Junnan Qiu、Yue Ding、Jie Li
+
+- 🎯 **研究动机**：离线 RL 现有后门随机投毒低效且使用易被检测的 OOD 触发器，难以攻破 CQL 等安全约束算法
+- 🔬 **研究方法**：CS-GBA 按 TD 误差把预算集中于最关键转移，用状态特征物理互斥性构造统计隐蔽的相关性破坏触发器，并以受害 Q 网络梯度在数据流形内搜索最坏动作替代标签翻转
+- 📌 **结论**：D4RL 基准上 5% 投毒预算即对安全约束算法取得高 ASR，干净环境下性能保持
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Offline Reinforcement Learning (RL) enables policy optimization from static datasets but is inherently vulnerable to backdoor attacks. Existing attack strategies typically struggle against safety-constrained algorithms (e.g., CQL) due to inefficient random poisoning and the use of easily detectable Out-of-Distribution (OOD) triggers. In this paper, we propose CS-GBA (Critical Sample-based Gradient-guided Backdoor Attack), a novel framework designed to achieve high stealthiness and destructiveness under a strict budget. Leveraging the theoretical insight that samples with high Temporal Difference (TD) errors are pivotal for value function convergence, we introduce an adaptive Critical Sample Selection strategy that concentrates the attack budget on the most influential transitions. To evade OOD detection, we propose a Correlation-Breaking Trigger mechanism that exploits the physical mutual exclusivity of state features (e.g., 95th percentile boundaries) to remain statistically concealed. Furthermore, we replace the conventional label inversion with a Gradient-Guided Action Generation mechanism, which searches for worst-case actions within the data manifold using the victim Q-network's gradient. Empirical results on D4RL benchmarks demonstrate that our method significantly outperforms state-of-the-art baselines, achieving high attack success rates against representative safety-constrained algorithms with a minimal 5% poisoning budget, while maintaining the agent's performance in clean environments.
+
+</details>
+
+### 11. PNAct: Crafting Backdoor Attacks in Safe Reinforcement Learning
+
+📄 [arXiv](https://arxiv.org/abs/2507.00485)　📅 2025-07
+
+**关键词**：`attack`、`safe RL backdoor`、`positive-negative action samples`、`unsafe action`
+
+👤 **作者**：Weiran Guo、Guanjun Liu、Ziyuan Zhou、Ling Wang
+
+- 🎯 **研究动机**：引入成本约束的 Safe RL 是否会被后门操纵执行不安全动作此前没有攻击框架
+- 🔬 **研究方法**：PNAct 首个 Safe RL 后门：正动作样本提供参考动作、负动作样本指示规避动作，理论上刻画性质并设计攻击算法与评测指标
+- 📌 **结论**：实验证实可诱导 Safe RL agent 违反成本约束执行不安全动作，揭示 Safe RL 的特有风险面
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Reinforcement Learning (RL) is widely used in tasks where agents interact with an environment to maximize rewards. Building on this foundation, Safe Reinforcement Learning (Safe RL) incorporates a cost metric alongside the reward metric, ensuring that agents adhere to safety constraints during decision-making. In this paper, we identify that Safe RL is vulnerable to backdoor attacks, which can manipulate agents into performing unsafe actions. First, we introduce the relevant concepts and evaluation metrics for backdoor attacks in Safe RL. It is the first attack framework in the Safe RL field that involves both Positive and Negative Action sample (PNAct) is to implant backdoors, where positive action samples provide reference actions and negative action samples indicate actions to be avoided. We theoretically point out the properties of PNAct and design an attack algorithm. Finally, we conduct experiments to evaluate the effectiveness of our proposed backdoor attack framework, evaluating it with the established metrics. This paper highlights the potential risks associated with Safe RL and underscores the feasibility of such attacks. Our code and supplementary material are available at https://github.com/azure-123/PNAct.
+
+</details>
+
+### 12. TooBadRL: Trigger Optimization to Boost Effectiveness of Backdoor Attacks on Deep Reinforcement Learning
+
+📄 [arXiv](https://arxiv.org/abs/2506.09562)　📅 2025-06
+
+**关键词**：`attack`、`DRL backdoor`、`trigger optimization`、`Shapley attribution`
+
+👤 **作者**：Mingxuan Zhang、Oubo Ma、Kang Wei、Songze Li、Shouling Ji
+
+- 🎯 **研究动机**：既有 DRL 后门使用简单启发式触发器配置，忽视触发器设计对攻击效果的关键影响
+- 🔬 **研究方法**：TooBadRL 从注入时机、触发维度与扰动幅度三方面系统优化：性能感知自适应冻结确定注入时机、Shapley 值影响归因选择最关键触发维度、环境约束下对抗合成优化幅度
+- 📌 **结论**：三个 DRL 算法九个基准任务上 ASR 超五个基线且几乎不影响正常任务性能，并评估检测与缓解两类防御
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Deep reinforcement learning (DRL) has achieved remarkable success in a wide range of sequential decision-making applications, including robotics, healthcare, smart grids, and finance. Recent studies reveal that adversaries can implant backdoors into DRL agents during the training phase. These backdoors can later be activated by specific triggers during deployment, compelling the agent to execute targeted actions and potentially leading to severe consequences, such as drone crashes or vehicle collisions. However, existing backdoor attacks utilize simplistic and heuristic trigger configurations, overlooking the critical impact of trigger design on attack effectiveness. To address this gap, we introduce TooBadRL, the first framework to systematically optimize DRL backdoor triggers across three critical aspects: injection timing, trigger dimension, and manipulation magnitude. Specifically, we first introduce a performance-aware adaptive freezing mechanism to determine the injection timing during training. Then, we formulate trigger selection as an influence attribution problem and apply Shapley value analysis to identify the most influential trigger dimension for injection. Furthermore, we propose an adversarial input synthesis method to optimize the manipulation magnitude under environmental constraints. Extensive evaluations on three DRL algorithms and nine benchmark tasks demonstrate that TooBadRL outperforms five baseline methods in terms of attack success rate while only slightly affecting normal task performance. We further evaluate potential defense strategies from detection and mitigation perspectives. We open-source our code to facilitate reproducibility and further research.
+
+</details>
+
+### 13. UNIDOOR: A Universal Framework for Action-Level Backdoor Attacks in Deep Reinforcement Learning
+
+📄 [arXiv](https://arxiv.org/abs/2501.15529)　📅 2025-01
+
+**关键词**：`attack`、`DRL backdoor`、`action-level trigger`、`backdoor reward function`
+
+👤 **作者**：Oubo Ma、…、Shouling Ji
+
+- 🎯 **研究动机**：动作级后门依赖固定值或条件翻转的后门奖励函数，跨任务与后门设计不通用，实践中波动甚至失效
+- 🔬 **研究方法**：UNIDOOR 通过性能监控自适应探索后门奖励函数，摆脱专家知识与网格搜索；连续动作场景引入动作篡改解决低频目标动作导致的攻击失败
+- 📌 **结论**：单/多智能体、单/多后门、离散/连续动作与稀疏/稠密奖励等场景全面增强攻击性能，状态分布与神经元激活可视化证实隐蔽性
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Deep reinforcement learning (DRL) is widely applied to safety-critical decision-making scenarios. However, DRL is vulnerable to backdoor attacks, especially action-level backdoors, which pose significant threats through precise manipulation and flexible activation, risking outcomes like vehicle collisions or drone crashes. The key distinction of action-level backdoors lies in the utilization of the backdoor reward function to associate triggers with target actions. Nevertheless, existing studies typically rely on backdoor reward functions with fixed values or conditional flipping, which lack universality across diverse DRL tasks and backdoor designs, resulting in fluctuations or even failure in practice. This paper proposes the first universal action-level backdoor attack framework, called UNIDOOR, which enables adaptive exploration of backdoor reward functions through performance monitoring, eliminating the reliance on expert knowledge and grid search. We highlight that action tampering serves as a crucial component of action-level backdoor attacks in continuous action scenarios, as it addresses attack failures caused by low-frequency target actions. Extensive evaluations demonstrate that UNIDOOR significantly enhances the attack performance of action-level backdoors, showcasing its universality across diverse attack scenarios, including single/multiple agents, single/multiple backdoors, discrete/continuous action spaces, and sparse/dense reward signals. Furthermore, visualization results encompassing state distribution, neuron activation, and animations demonstrate the stealthiness of UNIDOOR. The source code of UNIDOOR can be found at https://github.com/maoubo/UNIDOOR.
+
+</details>
+
+### 14. SleeperNets: Universal Backdoor Poisoning Attacks Against Reinforcement Learning Agents
+
+📄 [arXiv](https://arxiv.org/abs/2405.20539)　📅 2024-05
+
+**关键词**：`attack`、`DRL backdoor`、`universal backdoor`、`dynamic reward poisoning`
+
+👤 **作者**：Ethan Rathbun、Christopher Amato、Alina Oprea
+
+- 🎯 **研究动机**：此前 RL 后门被证明无法跨领域跨 MDP 泛化，理论局限未被弥补
+- 🔬 **研究方法**：把攻击者目标与最优策略搜索目标互联以保证极限意义下的攻击成功，并利用动态奖励投毒实现通用后门
+- 📌 **结论**：六个跨领域环境上攻击成功率显著优于现有方法，同时保持良性回合回报
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Reinforcement learning (RL) is an actively growing field that is seeing increased usage in real-world, safety-critical applications -- making it paramount to ensure the robustness of RL algorithms against adversarial attacks. In this work we explore a particularly stealthy form of training-time attacks against RL -- backdoor poisoning. Here the adversary intercepts the training of an RL agent with the goal of reliably inducing a particular action when the agent observes a pre-determined trigger at inference time. We uncover theoretical limitations of prior work by proving their inability to generalize across domains and MDPs. Motivated by this, we formulate a novel poisoning attack framework which interlinks the adversary's objectives with those of finding an optimal policy -- guaranteeing attack success in the limit. Using insights from our theoretical analysis we develop ``SleeperNets'' as a universal backdoor attack which exploits a newly proposed threat model and leverages dynamic reward poisoning techniques. We evaluate our attack in 6 environments spanning multiple domains and demonstrate significant improvements in attack success over existing methods, while preserving benign episodic return.
+
+</details>
+
+### 15. BadRL: Sparse Targeted Backdoor Attack Against Reinforcement Learning
+
+📄 [arXiv](https://arxiv.org/abs/2312.12585)　📅 2023-12
+
+**关键词**：`attack`、`RL backdoor`、`sparse poisoning`、`sample-specific trigger`
+
+👤 **作者**：Jing Cui、Yufei Han、Yuzhe Ma、Jianbin Jiao、Junge Zhang
+
+- 🎯 **研究动机**：RL 后门普遍采用高强度攻击策略，成本高且更易被检测
+- 🔬 **研究方法**：BadRL 在训练与测试均执行高度稀疏投毒：选择高攻击价值的状态观测注入触发器，并基于目标状态观测动态生成样本特定触发模式
+- 📌 **结论**：仅 0.003% 训练步投毒即可大幅降低受害 agent 性能，测试期攻击低频，理论证明攻击可行且满足特定假设时保持隐蔽
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Backdoor attacks in reinforcement learning (RL) have previously employed intense attack strategies to ensure attack success. However, these methods suffer from high attack costs and increased detectability. In this work, we propose a novel approach, BadRL, which focuses on conducting highly sparse backdoor poisoning efforts during training and testing while maintaining successful attacks. Our algorithm, BadRL, strategically chooses state observations with high attack values to inject triggers during training and testing, thereby reducing the chances of detection. In contrast to the previous methods that utilize sample-agnostic trigger patterns, BadRL dynamically generates distinct trigger patterns based on targeted state observations, thereby enhancing its effectiveness. Theoretical analysis shows that the targeted backdoor attack is always viable and remains stealthy under specific assumptions. Empirical results on various classic RL tasks illustrate that BadRL can substantially degrade the performance of a victim agent with minimal poisoning efforts 0.003% of total training steps) during training and infrequent attacks during testing.
+
+</details>
+
+### 16. Plan2Cleanse: Test-Time Backdoor Defense via Monte-Carlo Planning in Deep Reinforcement Learning
+
+📄 [arXiv](https://arxiv.org/abs/2605.09638)　📅 2026-05
+
+**关键词**：`defense`、`test-time defense`、`Monte-Carlo planning`、`trigger detection`
+
+👤 **作者**：Sze-Ann Chen、Zhi-Yi Chin、Kui-Yuan Chen、Chi-Yu Li、Ping-Chun Hsieh
+
+- 🎯 **研究动机**：第三方训练的 RL 模型部署到现实系统时，缺少免重训练的测试时后门检测与缓解手段
+- 🔬 **研究方法**：Plan2Cleanse 把后门检测重构为规划问题：MCTS 系统探索时序扩展的触发序列（黑盒访问策略），并利用检测结果做树搜索预防性重规划实现缓解
+- 📌 **结论**：隐蔽 O-RAN 场景触发检测成功率提升超 61.4 个百分点，竞争性 Humanoid 环境胜率从 35% 提升至 53%
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Ensuring the security of reinforcement learning (RL) models is critical, particularly when they are trained by third parties and deployed in real-world systems. Attackers can implant backdoors into these models, causing them to behave normally under typical conditions, but execute malicious behaviors when specific triggers are activated. In this work, we propose Plan2Cleanse, a test-time detection and mitigation framework that adapts Monte Carlo Tree Search to efficiently identify and neutralize RL backdoor attacks without requiring model retraining. Our approach recasts backdoor detection as a planning problem, enabling systematic exploration of temporally extended trigger sequences while maintaining black-box access to the target policy. By leveraging the detection results, Plan2Cleanse can further achieve efficient mitigation through tree-search preventive replanning. We evaluated our method in competitive MuJoCo environments, simulated O-RAN wireless networks, and Atari games. Plan2Cleanse achieves substantial improvements, increasing trigger detection success rates by more than 61.4 percentage points in stealthy O-RAN scenarios and improving win rates from 35\% to 53\% in competitive Humanoid environments. These results demonstrate the effectiveness of our test-time defense approach and highlight the importance of proactive defenses against backdoor threats in RL deployments. Our implementation is publicly available at https://github.com/rl-bandits-lab/RL-Backdoor.
+
+</details>

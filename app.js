@@ -103,6 +103,19 @@
 
   function scopeSections() {
     var pages = pagesFor(state.view);
+    if (state.view === "domains" && state.pageId !== "all" && !pages.some(function (p) { return p.id === state.pageId; })) {
+      // domain-group overview: all leaves of one domain, tagged with the group
+      var group = viewData("domains").filter(function (g) { return g.id === state.pageId; })[0];
+      if (group) {
+        var secs = [];
+        (group.children || []).forEach(function (leaf) {
+          (leaf.sections || []).forEach(function (section) {
+            secs.push({ page: leaf, title: section.title, papers: section.papers, group: group });
+          });
+        });
+        return secs;
+      }
+    }
     if (state.pageId !== "all") {
       pages = pages.filter(function (p) { return p.id === state.pageId; });
     }
@@ -115,6 +128,15 @@
     return sections;
   }
 
+  function scopeInfo() {
+    if (state.view !== "domains" || state.pageId === "all") return null;
+    var group = viewData("domains").filter(function (g) { return g.id === state.pageId; })[0];
+    if (group) return { kind: "group", title: group.title, desc: group.desc || "" };
+    var leaf = pagesFor("domains").filter(function (p) { return p.id === state.pageId; })[0];
+    if (leaf) return { kind: "leaf", title: leaf.title, desc: leaf.desc || "", group: leaf._group };
+    return null;
+  }
+
   /* ---------- nav ---------- */
 
   function renderNav() {
@@ -125,9 +147,11 @@
     if (state.view === "domains") {
       viewData("domains").forEach(function (group) {
         var gid = "navgrp-" + group.id;
-        var activeInside = (group.children || []).some(function (leaf) { return leaf.id === state.pageId; });
+        var activeInside = (group.children || []).some(function (leaf) { return leaf.id === state.pageId; })
+          || state.pageId === group.id;
         html.push('<div class="nav-group' + (activeInside ? " open" : "") + '">');
-        html.push('<button class="nav-group-header" data-toggle="' + gid + '"' +
+        html.push('<button class="nav-group-header' + (state.pageId === group.id ? " active" : "") +
+          '" data-page="' + escapeHtml(group.id) + '" data-toggle="' + gid + '"' +
           (activeInside ? ' aria-expanded="true"' : "") + '><span class="chev">▸</span>' +
           escapeHtml(group.title) + '<span class="nav-count">' + (group.children || []).length + "</span></button>");
         html.push('<div class="nav-group-items" id="' + gid + '"' + (activeInside ? "" : " hidden") + ">");
@@ -175,6 +199,7 @@
       });
     });
     Array.prototype.forEach.call(el.navTree.querySelectorAll("[data-toggle]"), function (btn) {
+      if (btn.hasAttribute("data-page")) return; // group header selects the domain instead
       btn.addEventListener("click", function () {
         var items = document.getElementById(btn.getAttribute("data-toggle"));
         if (!items) return;
@@ -243,23 +268,32 @@
 
   function render() {
     var sections = scopeSections();
+    var info = scopeInfo();
     var scopeTitle = state.pageId === "all"
       ? (state.view === "daily" ? "全部日报" : state.view === "domains" ? "全部领域" : "全部会议")
-      : (pagesFor(state.view).filter(function (p) { return p.id === state.pageId; })[0] || {}).title || state.pageId;
+      : (info && info.title) || (pagesFor(state.view).filter(function (p) { return p.id === state.pageId; })[0] || {}).title || state.pageId;
+    var multiLeaf = state.view === "domains" && (state.pageId === "all" || (info && info.kind === "group"));
 
     state.queue = [];
     var total = 0;
+    var lastPage = null;
     sections.forEach(function (section) {
       var kept = [];
       (section.papers || []).forEach(function (pid) {
         var paper = papers[pid];
         if (paper && matches(paper)) { kept.push(paper); total++; }
       });
-      if (kept.length) state.queue.push({ title: section.title, page: section.page, papers: kept });
+      if (kept.length) {
+        var showLeafHeader = multiLeaf && section.page && section.page !== lastPage;
+        lastPage = section.page || lastPage;
+        state.queue.push({ title: section.title, page: section.page, papers: kept, leafHeader: showLeafHeader ? section.page : null });
+      }
     });
 
     el.scopeHeader.innerHTML =
       '<h1>' + escapeHtml(scopeTitle || "") + "</h1>" +
+      (info && info.kind === "leaf" && info.group ? '<p class="scope-crumb">' + escapeHtml(info.group) + " ›</p>" : "") +
+      (info && info.desc ? '<p class="scope-desc">' + escapeHtml(info.desc) + "</p>" : "") +
       '<p class="scope-meta">' + total + " 篇" +
       (state.search ? " · 搜索 “" + escapeHtml(state.search) + "”" : "") +
       (state.starredOnly ? " · 只看收藏" : "") + "</p>";
@@ -283,8 +317,13 @@
       var section = state.queue[s];
       if (section.done) continue;
       if (!section.opened) {
-        html.push('<h2 class="section-title">' + escapeHtml(section.title) +
-          '<span class="section-count">' + section.papers.length + "</span></h2>");
+        if (section.leafHeader) {
+          var leafCount = (section.leafHeader.sections || []).reduce(function (n, x) { return n + x.papers.length; }, 0);
+          html.push('<h2 class="leaf-title">' + escapeHtml(section.leafHeader.title) +
+            '<span class="section-count">' + leafCount + "</span></h2>");
+        }
+        html.push('<h3 class="section-title">' + escapeHtml(section.title) +
+          '<span class="section-count">' + section.papers.length + "</span></h3>");
         section.opened = true;
       }
       while (section.cursor === undefined) section.cursor = 0;

@@ -852,26 +852,7 @@ Agent Skills package reusable natural language procedures with executable resour
 
 </details>
 
-### 45. Agent Skills Can Be Harmful: An Empirical Study of Skill-Induced Failures in LLM Agents
-
-📄 [arXiv](https://arxiv.org/abs/2608.11888)　📅 2026-08
-
-**关键词**：`analysis`、`Agent Skill`、`plugin supply chain`、`persistent compromise`
-
-👤 **作者**：Gen Dong、Yanjie Gao、Liqun Li、Tianyin Xu、Yu Hua、Fan Yang
-
-- 🎯 **研究动机**：agent 技能的效果研究结论不一，技能诱发的任务失败与成本回归未被归因到具体技能
-- 🔬 **研究方法**：差分分析框架对比有技能与无技能/语义匹配技能的运行，在 SkillsBench 与 SWE-Skills-Bench 归因出 307 例技能诱发失败；SkillTriage 做分类学归因
-- 📌 **结论**：功能失败多源于看似相关的技能导致错误实现或遗漏要素；效率回归不能仅由 prompt 长度解释，过度验证与重型实现流水线分别贡献 67 与 30 例
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Agent skills are the de facto mechanism for extending LLM agents with reusable guidance. A skill can shape the agent's task execution, including planning, tool use, problem-solving, and validation. Prior work reported mixed results of agent skills: some skills improve task success rates, while others have no effect, increase token use and execution time, and even reduce success rates. This paper presents a comprehensive analysis of skill-induced agent failures by attributing task failures and cost regressions to specific loaded skills. We introduce a differential analysis framework that attributes a failure or regression to a skill by comparing a target skill-guided run against a no-skill or semantically matched skill reference run that solves the same task, or solves it more cheaply. We instantiate this framework on SkillsBench and SWE-Skills-Bench, yielding 307 skill-induced failures, including 125 functional failures and 182 efficiency regressions. We also build SkillTriage, a taxonomy-guided attribution tool that normalizes paired cases, extracts differential evidence, and produces triage reports. Our major findings include: (1) Skill induced functional failures are rarely caused by obviously irrelevant skills; instead, seemingly relevant skills often make the agent incorrectly implement or omit task-required implementation elements. (2) Skill-induced efficiency regressions are not explained by prompt length alone. (3) The largest sources within Excessive Procedure are excessive verification and heavy implementation pipelines, contributing 67 and 30 cases, respectively. This shows that skills often turn validation checklists and construction recipes into mandatory work. Based on our findings, we propose research topics and tooling improvements for safer and more cost-aware skill reuse.
-
-</details>
-
-### 46. MaliciousSkillBench: A Comprehensive Benchmark for Malicious Agent Skill Detection
+### 45. MaliciousSkillBench: A Comprehensive Benchmark for Malicious Agent Skill Detection
 
 📄 [arXiv](https://arxiv.org/abs/2608.19901)　📅 2026-08
 
@@ -887,5 +868,24 @@ Agent skills are the de facto mechanism for extending LLM agents with reusable g
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 Agent Skills extend LLM agents with reusable instruction packages that may also include scripts, resources, and service configuration. This creates a direct distribution channel for malicious behavior, yet existing malicious-Skill datasets are fragmented across sources, artifact formats, evidence regimes, and benign coverage; duplicated and structurally related content further complicates direct aggregation and evaluation. We present MaliciousSkillBench, a comprehensive benchmark for malicious Agent Skill detection. We consolidate 13 public sources, 11 of which contribute Core malicious artifacts, and reduce 8,414 raw malicious records to 7,539 normalized-unique identities in 4,588 operational structural families. After conservative cross-label conflict exclusion, the primary benchmark contains 9,740 Skills: 7,505 malicious and 2,235 benign. To characterize its coverage, we harmonize 11 attack categories for 4,983 malicious identities with supported source-native mappings and find substantial differences in threat composition across sources. We then evaluate three learned text detectors and three off-the-shelf Skill scanners. Learned detectors achieve 0.882-0.932 Random Macro-F1 but only 0.653-0.665 under Source-Disjoint evaluation; the strongest word TF-IDF SVM scores 0.932/0.916/0.665 on Random/structural-disjoint/Source-Disjoint while retaining 95.6% malicious recall but producing 62.4% benign FPR on held-out sources. Off-the-shelf scanners occupy different but also unsatisfactory operating regimes, reducing false positives only at the cost of sharply lower malicious recall. Together, these results show that reliable malicious-Skill detection requires both broader cross-source benchmark coverage and evaluation that jointly measures attack detection and benign over-flagging.
+
+</details>
+
+### 46. SkillWatermark: An Embedded Skill Watermark of Progressive Privacy Inference via Benign Prompts
+
+📄 [arXiv](https://arxiv.org/abs/2608.16026)　📅 2026-08
+
+**关键词**：`analysis`、`content watermark`、`provenance`、`robust verification`
+
+👤 **作者**：Yu Li、…、Weiqing Huang
+
+- 🎯 **研究动机**：agent 技能执行产生特定流量模式，可被被动网络攻击者用作泄露隐私的隐蔽信道
+- 🔬 **研究方法**：在技能描述插入 prompt 约束词作水印，多轮对话中触发用户原始 prompt 关键信息产生可观测流量编码，攻击者只需解码流量模式
+- 📌 **结论**：流量模式高度一致且可区分，改造后技能通过现有 LLM 安全审计，且不直接外泄数据、不执行恶意指令
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Skills for large language model (LLM) agents have been widely deployed across diverse application domains. However, we observe that these skills generate specific traffic patterns during execution. In this paper, we design a pipeline that generates specific traffic patterns by inserting carefully designed skill descriptions, which we term skill watermarks, so that a passive network attacker can establish a covert channel to encode private information within observable traffic across multiple conversation turns. Specifically, we insert prompt constraint terms, referred to as watermarks, into the original skill descriptions and embed them within multi-turn conversations. The key information in the user's original prompt is thereby triggered by these watermarks, producing clearly observable encodings in the traffic. The adversary need only decode the traffic patterns to recover the encoded information. In particular, our modifications are benign in the sense that they do not directly exfiltrate any private data and do not execute any malicious instructions. Extensive experiments demonstrate that our watermarks produce highly consistent and distinguishable traffic patterns, and that the transformed skills pass existing LLM-based security auditing tools. This study highlights that generating specific traffic patterns can be exploited as a novel attack surface and offers critical insights for future security hardening.
 
 </details>

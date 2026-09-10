@@ -6,6 +6,8 @@
 
 当前范围包括通用 LLM Agent、Web/Computer-Use Agent、Coding Agent、Multi-Agent System 和 self-evolving Agent。纯机器人控制、自动驾驶和不含 LLM Agent threat model 的一般 RL safety 暂不纳入。
 
+**与投毒后门域的划界**：本域收运行时防御、监控、权限控制、harness 与执行隔离；攻击与投毒机制（数据/记忆/技能/RAG 投毒、触发器植入、后门攻击与检测）归 [模型投毒与后门](../poison-and-backdoor/README.md)。同一论文两侧都有实质贡献时可交叉收录，但两页必须各自按本页视角重写关键词与总结。
+
 ## 研究地图
 
 | 系统层或研究问题 | 子领域 | 主要内容 |
@@ -40,7 +42,7 @@
 - [Agent Memory 投毒](../poison-and-backdoor/agent-memory-poison.md)：memory write、retrieval trigger、跨 session 持久污染与 selective repair。
 - [Agent Skill 投毒与后门](../poison-and-backdoor/agent-skill-poison-and-backdoor.md)：trajectory-to-skill poisoning、持久 skill backdoor 与 lineage compromise。
 - [Search Agent](../poison-and-backdoor/search-agent.md)：开放网页证据污染、harmful information-seeking、Agent 背书、research-trajectory hijacking 与 process alignment。
-- [Generative Engine Optimization Security](../poison-and-backdoor/geo.md)：生成式搜索中的 GEO、black-hat ranking、citation／visibility manipulation、recommendation harm 与对应防御。
+- [Generative Engine Optimization Security](../poison-and-backdoor/generative-engine-optimization.md)：生成式搜索中的 GEO、black-hat ranking、citation／visibility manipulation、recommendation harm 与对应防御。
 - [Prompt Injection](../misc/prompt-injection.md)：通用 direct/indirect prompt injection；Web、tool 和 skill 特有的 Agent 攻击仍进入本目录相应页面。
 - [RAG Poisoning](../poison-and-backdoor/rag-poison.md)：固定或结构化知识库中的语料与拓扑污染；开放网页的动态 evidence poisoning 进入 Search Agent。
 - [Capability Access Control](../misc/capability-access-control.md)：通用 capability 权限控制；Agent 中的 delegated authority 和 tool permission 进入 Tool/MCP 或 Harness 页面。

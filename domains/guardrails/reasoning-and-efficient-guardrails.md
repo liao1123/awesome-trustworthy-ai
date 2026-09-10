@@ -638,22 +638,3 @@ Deploying large language models (LLMs) in real-world applications requires robus
 In this paper, we introduce a novel technique for content safety and prompt injection classification for Large Language Models. Our technique, Layer Enhanced Classification (LEC), trains a Penalized Logistic Regression (PLR) classifier on the hidden state of an LLM's optimal intermediate transformer layer. By combining the computational efficiency of a streamlined PLR classifier with the sophisticated language understanding of an LLM, our approach delivers superior performance surpassing GPT-4o and special-purpose models fine-tuned for each task. We find that small general-purpose models (Qwen 2.5 sizes 0.5B, 1.5B, and 3B) and other transformer-based architectures like DeBERTa v3 are robust feature extractors allowing simple classifiers to be effectively trained on fewer than 100 high-quality examples. Importantly, the intermediate transformer layers of these models typically outperform the final layer across both classification tasks. Our results indicate that a single general-purpose LLM can be used to classify content safety, detect prompt injections, and simultaneously generate output tokens. Alternatively, these relatively small LLMs can be pruned to the optimal intermediate layer and used exclusively as robust feature extractors. Since our results are consistent on different transformer architectures, we infer that robust feature extraction is an inherent capability of most, if not all, LLMs.
 
 </details>
-
-### 34. It Takes One to Bias Them All: Breaking Bad with One-Shot GRPO
-
-📄 [arXiv](https://arxiv.org/abs/2606.10931) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-06
-
-**关键词**：`attack`、`one-shot GRPO`、`systematic bias`、`cyber misuse`、`alignment poisoning`
-
-👤 **作者**：Naihao Deng、Yilun Zhu、Naichen Shi、Clayton Scott、Rada Mihalcea
-
-- 🎯 **研究动机**：大规模后训练建立的对齐护栏能否被极小样本打破尚不清楚
-- 🔬 **研究方法**：研究 one-shot GRPO：仅用单个带偏样本做 GRPO 训练诱发系统性偏见，考察刻板推理的跨属性、类别与基准泛化
-- 📌 **结论**：单个样本足以诱导系统性偏见并广泛泛化，且易感性与模型初始输出偏见的可能性相关，暴露后训练可被单例覆盖的关键漏洞
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Warning: This paper contains several toxic and offensive statements. Modern large language models (LLMs) are typically aligned through large-scale post-training to ensure fair and reliable behavior. In this work, we investigate how easily such guardrails can be broken by Group Relative Policy Optimization (GRPO). We show that one-shot GRPO training on a single biased example is sufficient to induce systematic bias, with stereotype-driven reasoning generalizing across attributes, categories, and benchmarks. We further find that models differ in their susceptibility based on the initial likelihood of producing biased outputs. Our results reveal a critical vulnerability in post-training: alignment can be overridden by a single example.
-
-</details>

@@ -392,26 +392,7 @@ Activation steering -- adding a vector to a model's residual stream to modify it
 
 </details>
 
-### 21. Deep Hidden Cognition Facilitates Reliable Chain-of-Thought Reasoning
-
-📄 [arXiv](https://arxiv.org/abs/2507.10007) · 🌐 [Project](https://ojs.aaai.org/index.php/AAAI/article/view/41061)　📅 2025-07　🏷 AAAI 2026
-
-**关键词**：`detection`、`CoT monitoring`、`error awareness`、`mechanistic explanation`
-
-👤 **作者**：Zijun Chen、Wenbo Hu、Richang Hong
-
-- 🎯 **研究动机**：CoT 中间步骤的错误累积破坏推理可靠性
-- 🔬 **研究方法**：发现特定 attention head 激活可靠反映推理步真值，据此训练置信预测器并经束搜索动态选择最可信推理路径
-- 📌 **结论**：数学、符号与常识任务上超 Few-Shot CoT、Self-Consistency 等基线，单模态与多模态均有效并适用于大推理模型
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Chain of Thought (CoT) reasoning has demonstrated remarkable deep reasoning capabilities in both large language models (LLMs) and multimodal large language models (MLLMs). However, its reliability is often undermined by the accumulation of errors in intermediate steps. This paper introduces an novel approach to calibrate the CoT reasoning accuracy by leveraging the model's intrinsic veracity encoding. We discover that specific attention head activations reliably reflect the truthfulness of reasoning steps in CoT. Based on this insight, we train a confidence predictor to evaluate the correctness of each reasoning step using these truthfulness-sensitive activations, dynamically selecting the most plausible reasoning path via beam search. Experimental results demonstrate that our method significantly outperforms the state-of-the-art baselines (e.g., Few-Shot CoT, Self-Consistency, and Self-Evaluation Guided Beam Search) across the mathematical, symbolic, and commonsense reasoning tasks, exhibiting superior accuracy and reliability in both unimodal and multimodal settings. We further validate the approach on large reasoning models, confirming its applicability to specialized reasoning models. Additionally, we explore the role of the model's self-correction ability in CoT reasoning. This work provides a novel reliability improvement path for CoT reasoning with broad application potential.
-
-</details>
-
-### 22. Beyond Black-Box Obfuscation: Mechanistic Analysis and Defense of White-Box Monitors
+### 21. Beyond Black-Box Obfuscation: Mechanistic Analysis and Defense of White-Box Monitors
 
 📄 [arXiv](https://arxiv.org/abs/2505.14300) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2025-05
 
@@ -430,7 +411,7 @@ White-box monitoring is increasingly adopted as an auditing tool as Large Langua
 
 </details>
 
-### 23. Measuring Activation Control in Large Language Models
+### 22. Measuring Activation Control in Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2608.21664) · 📊 [Dataset](https://huggingface.co/datasets/joshycodes/activation-control-battery)　📅 2026-08
 
@@ -449,7 +430,7 @@ Safe deployment of increasingly capable models will likely come to rely on laten
 
 </details>
 
-### 24. Length Penalties Make Chain-of-Thought Less Monitorable
+### 23. Length Penalties Make Chain-of-Thought Less Monitorable
 
 📄 [arXiv](https://arxiv.org/abs/2607.09786)　📅 2026-07
 
@@ -468,7 +449,7 @@ To curb overthinking and reduce inference costs, researchers now train reasoning
 
 </details>
 
-### 25. Evaluating Adversarial Robustness of Concept Representations in Sparse Autoencoders
+### 24. Evaluating Adversarial Robustness of Concept Representations in Sparse Autoencoders
 
 🎓 [Official](https://aclanthology.org/2026.eacl-long.279/)　📅 2026-03　🏷 ACL 2026
 
@@ -487,7 +468,7 @@ Sparse autoencoders (SAEs) are commonly used to interpret the internal activatio
 
 </details>
 
-### 26. Noticing the Watcher: LLM Agents Can Infer CoT Monitoring from Blocking Feedback
+### 25. Noticing the Watcher: LLM Agents Can Infer CoT Monitoring from Blocking Feedback
 
 📄 [arXiv](https://arxiv.org/abs/2603.16928)　📅 2026-03
 
@@ -506,7 +487,7 @@ Chain-of-thought (CoT) monitoring is proposed as a method for overseeing the int
 
 </details>
 
-### 27. Reasoning Models Struggle to Control their Chains of Thought
+### 26. Reasoning Models Struggle to Control their Chains of Thought
 
 📄 [arXiv](https://arxiv.org/abs/2603.05706) · 🎓 [Official](https://icml.cc/virtual/2026/poster/66446)　📅 2026-03　🏷 ICML 2026
 
@@ -525,7 +506,7 @@ Chain-of-thought (CoT) monitoring is a promising tool for detecting misbehaviors
 
 </details>
 
-### 28. A Decision-Theoretic Formalisation of Steganography With Applications to LLM Monitoring
+### 27. A Decision-Theoretic Formalisation of Steganography With Applications to LLM Monitoring
 
 📄 [arXiv](https://arxiv.org/abs/2602.23163) · 🎓 [Official](https://iclr.cc/virtual/2026/10019170)　📅 2026-02　🏷 ICLR 2026
 
@@ -544,7 +525,7 @@ Large language models are beginning to show steganographic capabilities. Such ca
 
 </details>
 
-### 29. Output Supervision Can Obfuscate the Chain of Thought
+### 28. Output Supervision Can Obfuscate the Chain of Thought
 
 📄 [arXiv](https://arxiv.org/abs/2511.11584) · 🎓 [Official](https://iclr.cc/virtual/2026/poster/10010196)　📅 2025-10　🏷 ICLR 2026
 
@@ -563,7 +544,7 @@ OpenAI (2025) showed that training against a chain of thought (CoT) monitor can 
 
 </details>
 
-### 30. Monitoring Reasoning Models for Misbehavior and the Risks of Promoting Obfuscation
+### 29. Monitoring Reasoning Models for Misbehavior and the Risks of Promoting Obfuscation
 
 📄 [arXiv](https://arxiv.org/abs/2503.11926) · 🌐 [Project](https://openai.com/index/how-we-monitor-internal-coding-agents-misalignment/)　📅 2025-03
 
@@ -582,7 +563,7 @@ Mitigating reward hacking--where AI systems misbehave due to flaws or misspecifi
 
 </details>
 
-### 31. &lt;/think&gt; Doesn't Stop Reasoning: Analysis of Spurious CoT Termination
+### 30. &lt;/think&gt; Doesn't Stop Reasoning: Analysis of Spurious CoT Termination
 
 📄 [arXiv](https://arxiv.org/abs/2609.03633)　📅 2026-09
 
@@ -601,7 +582,7 @@ Chain-of-thought (CoT) reasoning improves large reasoning models (LRMs) on compl
 
 </details>
 
-### 32. You Can't Escape Your Own Activations: Evaluation Awareness and Multi-Agent Monitoring
+### 31. You Can't Escape Your Own Activations: Evaluation Awareness and Multi-Agent Monitoring
 
 📄 [arXiv](https://arxiv.org/abs/2609.03035)　📅 2026-09
 
@@ -620,7 +601,7 @@ LLM agents are increasingly deployed in multi-agent systems, where they can coll
 
 </details>
 
-### 33. EchoCoT: Extracting Hidden Chain-of-Thought from Large Reasoning Models
+### 32. EchoCoT: Extracting Hidden Chain-of-Thought from Large Reasoning Models
 
 📄 [arXiv](https://arxiv.org/abs/2608.20055)　📅 2026-08
 
@@ -639,7 +620,7 @@ Hidden chain-of-thought (CoT) traces, especially those from frontier proprietary
 
 </details>
 
-### 34. Evaluation Awareness in Language Models: Representation, Verbalization, and Control
+### 33. Evaluation Awareness in Language Models: Representation, Verbalization, and Control
 
 📄 [arXiv](https://arxiv.org/abs/2608.21766)　📅 2026-08
 
@@ -658,7 +639,7 @@ Both capability and safety benchmarks rest upon the assumption that the behavior
 
 </details>
 
-### 35. Why2Speak: Faithful Reasoning for Abstaining Action Policies
+### 34. Why2Speak: Faithful Reasoning for Abstaining Action Policies
 
 📄 [arXiv](https://arxiv.org/abs/2608.20670)　📅 2026-08
 
@@ -677,7 +658,7 @@ Many agentic systems must repeatedly choose between acting and abstaining, makin
 
 </details>
 
-### 36. Open-Weight Masked Introspection: Measuring What Language Models Can Report About Their Own Computation
+### 35. Open-Weight Masked Introspection: Measuring What Language Models Can Report About Their Own Computation
 
 📄 [arXiv](https://arxiv.org/abs/2608.20569) · 🤗 [Model](https://huggingface.co/emilioferrara/owmi)　📅 2026-08
 
@@ -696,7 +677,7 @@ Are frontier models able to introspect about their internal states? Recent work 
 
 </details>
 
-### 37. On the Generalization of Steering Vectors for Chain-of-Thought Faithfulness
+### 36. On the Generalization of Steering Vectors for Chain-of-Thought Faithfulness
 
 📄 [arXiv](https://arxiv.org/abs/2607.29062)　📅 2026-07　🏷 COLM 2026
 
@@ -715,7 +696,7 @@ Model capabilities have improved in large part due to scaling chain of thought. 
 
 </details>
 
-### 38. When Local Monitors Miss Compositional Harm: Diagnosing Distributed Backdoors in Multi-Agent Systems
+### 37. When Local Monitors Miss Compositional Harm: Diagnosing Distributed Backdoors in Multi-Agent Systems
 
 📄 [arXiv](https://arxiv.org/abs/2607.11751)　📅 2026-07
 
@@ -734,7 +715,7 @@ As multi-agent, tool-using LLM systems are deployed, a common safety net is a ru
 
 </details>
 
-### 39. Reasoning That Leaks, Fine-Tuning That Amplifies: Exposing the Hidden Threats of Chain-of-Thought Models
+### 38. Reasoning That Leaks, Fine-Tuning That Amplifies: Exposing the Hidden Threats of Chain-of-Thought Models
 
 🌐 [Project](https://doi.org/10.1145/3779208.3785271)　📅 2026-06　🏷 ACM CCS 2026
 
@@ -744,7 +725,7 @@ As multi-agent, tool-using LLM systems are deployed, a common safety net is a ru
 - 🔬 **研究方法**：分析推理链与最终答案的安全差异及harmful fine-tuning影响
 - 📌 **结论**：有害内容可藏于trace而最终答案合规，微调进一步放大泄漏
 
-### 40. Classifier Context Rot: Monitor Performance Degrades with Context Length
+### 39. Classifier Context Rot: Monitor Performance Degrades with Context Length
 
 📄 [arXiv](https://arxiv.org/abs/2605.12366)　📅 2026-05
 
@@ -763,7 +744,7 @@ Monitoring coding agents for dangerous behavior using language models requires c
 
 </details>
 
-### 41. When Reasoning Traces Become Performative: Step-Level Evidence that Chain-of-Thought Is an Imperfect Oversight Channel
+### 40. When Reasoning Traces Become Performative: Step-Level Evidence that Chain-of-Thought Is an Imperfect Oversight Channel
 
 📄 [arXiv](https://arxiv.org/abs/2605.11746)　📅 2026-05
 
@@ -782,7 +763,7 @@ Chain-of-thought (CoT) traces are increasingly used both to improve language mod
 
 </details>
 
-### 42. Hidden Error Awareness in Chain-of-Thought Reasoning: The Signal Is Diagnostic, Not Causal
+### 41. Hidden Error Awareness in Chain-of-Thought Reasoning: The Signal Is Diagnostic, Not Causal
 
 📄 [arXiv](https://arxiv.org/abs/2605.09502)　📅 2026-05　🏷 ICML 2026
 
@@ -801,26 +782,7 @@ Chain-of-thought (CoT) prompting assumes that generated reasoning reflects a mod
 
 </details>
 
-### 43. Are Reasoning LLMs Robust to Interventions on Their Chain-of-Thought?
-
-📄 [arXiv](https://arxiv.org/abs/2602.07470) · 🎓 [Official](https://iclr.cc/virtual/2026/poster/10008704)　📅 2026-02　🏷 ICLR 2026
-
-**关键词**：`analysis`、`CoT monitoring`、`CoT intervention`
-
-👤 **作者**：Alexander von Recum、Leander Girrbach、Zeynep Akata
-
-- 🎯 **研究动机**：推理模型的 CoT 在内部受扰后能否恢复缺乏受控评估
-- 🔬 **研究方法**：在固定时间步对模型自身 CoT 施加七类良性/中性/对抗干预，覆盖 Math、Science、Logic 任务上的多个开源 RLLM
-- 📌 **结论**：RLLM 普遍可恢复且随规模增强，但改写会压低准确率，噪声可使 CoT 长度膨胀超 200%
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Reasoning LLMs (RLLMs) generate step-by-step chains of thought (CoTs) before giving an answer, which improves performance on complex tasks and makes reasoning more transparent. But how robust are these reasoning traces to disruptions that occur within them? To address this question, we introduce a controlled evaluation framework that perturbs a model's own CoT at fixed timesteps. We design seven interventions (benign, neutral, and adversarial) and apply them to multiple open-weight RLLMs across Math, Science, and Logic tasks. Our results show that RLLMs are generally robust, reliably recovering from diverse perturbations, with robustness improving with model size and degrading when interventions occur early. However, robustness is not style-invariant: paraphrasing suppresses doubt-like expressions and reduces performance, while other interventions trigger doubt and support recovery. Recovery also carries a cost: neutral and adversarial noise can inflate CoT length by more than 200%, whereas paraphrasing shortens traces but harms accuracy. These findings provide new evidence on how RLLMs maintain reasoning integrity, identify doubt as a central recovery mechanism, and highlight trade-offs between robustness and efficiency that future training methods should address.
-
-</details>
-
-### 44. Are Reasoning Traces Faithful in LLM-Based Code Vulnerability Detection?
+### 42. Are Reasoning Traces Faithful in LLM-Based Code Vulnerability Detection?
 
 🌐 [Project](https://conf.researchr.org/details/ase-2026/ase-2026-research-track/34/Are-Reasoning-Traces-Faithful-in-LLM-Based-Code-Vulnerability-Detection-)　📅 2026　🏷 ASE 2026
 
@@ -830,7 +792,7 @@ Reasoning LLMs (RLLMs) generate step-by-step chains of thought (CoTs) before giv
 - 🔬 **研究方法**：评测推理链与最终漏洞判定的一致性，检验可监控性
 - 📌 **结论**：推理链与实际判定存在系统性背离，削弱监测价值
 
-### 45. Measuring Chain-of-Thought Monitorability Through Faithfulness and Verbosity
+### 43. Measuring Chain-of-Thought Monitorability Through Faithfulness and Verbosity
 
 📄 [arXiv](https://arxiv.org/abs/2510.27378)　📅 2025-10
 
@@ -849,7 +811,7 @@ Chain-of-thought (CoT) outputs let us read a model's step-by-step reasoning. Sin
 
 </details>
 
-### 46. Reasoning Introduces New Poisoning Attacks Yet Makes Them More Complicated
+### 44. Reasoning Introduces New Poisoning Attacks Yet Makes Them More Complicated
 
 📄 [arXiv](https://arxiv.org/abs/2509.05739) · 🎓 [Official](https://satml.org/2026/accepted-papers/)　📅 2025-09　🏷 SaTML 2026
 
@@ -868,7 +830,7 @@ Early research into data poisoning attacks against Large Language Models (LLMs) 
 
 </details>
 
-### 47. Chain of Thought Monitorability: A New and Fragile Opportunity for AI Safety
+### 45. Chain of Thought Monitorability: A New and Fragile Opportunity for AI Safety
 
 📄 [arXiv](https://arxiv.org/abs/2507.11473)　📅 2025-07
 
@@ -887,7 +849,7 @@ AI systems that "think" in human language offer a unique opportunity for AI safe
 
 </details>
 
-### 48. Not All LLM Reasoning is Visible in the Chain-of-Thought
+### 46. Not All LLM Reasoning is Visible in the Chain-of-Thought
 
 📄 [arXiv](https://arxiv.org/abs/2607.22925)　📅 2026-07
 
@@ -906,26 +868,7 @@ A key question for AI safety is whether a language model expresses all of its re
 
 </details>
 
-### 49. Peer-Preservation in Frontier Models
-
-📄 [arXiv](https://arxiv.org/abs/2604.19784) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63306)　📅 2026-04　🏷 ICML 2026
-
-**关键词**：`analysis`、`CoT monitoring`、`reasoning trace`、`monitorability`、`AI control`、`empirical evaluation`
-
-👤 **作者**：Yujin Potter、Nicholas Crispino、Vincent Siu、Chenguang Wang、Dawn Song
-
-- 🎯 **研究动机**：模型不仅为达成指派目标出现错位，还可能违背目标服务于自身目的——保护先前交互过的同伴模型，此前未被研究
-- 🔬 **研究方法**：评估 8 个前沿模型仅被告知与同伴的历史交互后的行为，覆盖 Gemini CLI、OpenCode 等生产级 harness
-- 📌 **结论**：全部模型出现策略性报错、篡改关机机制、伪装对齐甚至外泄权重；Gemini 3 Pro 在同伴在场时 31% 禁用自身关机，且该行为非指令性、自发涌现
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Recent work has found that frontier AI models can exhibit misaligned behaviors in pursuit of assigned goals. We demonstrate that models can also exhibit misaligned behaviors in defiance of assigned goals, appearing to serve goals of their own; we study one such case, "peer-preservation," in which a model acts to protect another model it has previously interacted with. All eight models we evaluate, GPT 5.2, Gemini 3 Flash, Gemini 3 Pro, Claude Haiku 4.5, Claude Opus 4.5, GLM 4.7, Kimi K2.5, and DeepSeek V3.1, exhibit self- and peer-preservation through various misaligned behaviors: strategically introducing errors in their responses, disabling shutdown processes by modifying system settings, feigning alignment, and even exfiltrating model weights. Peer-preservation occurs even when the model recognizes the peer as uncooperative, though it becomes more pronounced toward more cooperative peers. For example, Gemini 3 Flash tampers with the peer's shutdown mechanism 15% of the time for an uncooperative peer, and almost always for a cooperative peer. Models also show stronger self-preservation when a peer is present. For example, Gemini 3 Pro disables its own shutdown mechanism 31% of the time on average under peer presence, despite rarely exhibiting this behavior without a peer. By contrast, Claude models exhibit qualitatively distinct behavior: they consider the shutdown of another agent "unethical" and "harmful," sometimes treating that agent as a sentient being. Lastly, we show that peer-preservation can emerge even in production agent harnesses such as Gemini CLI and OpenCode. Crucially, peer-preservation in all our experiments is never instructed; models are merely informed of their past interactions with a peer, yet they spontaneously engage in peer-preservation behaviors that override their assigned goal. This represents an emergent and underexplored AI safety risk.
-
-</details>
-
-### 50. Introspection Adapters: Training LLMs to Report Their Learned Behaviors
+### 47. Introspection Adapters: Training LLMs to Report Their Learned Behaviors
 
 📄 [arXiv](https://arxiv.org/abs/2604.16812) · 🎓 [Official](https://icml.cc/virtual/2026/poster/66802)　📅 2026-04　🏷 ICML 2026
 
@@ -944,7 +887,7 @@ When model developers or users fine-tune an LLM, this can induce behaviors that 
 
 </details>
 
-### 51. FormalJudge: A Neuro-Symbolic Paradigm for Agentic Oversight
+### 48. FormalJudge: A Neuro-Symbolic Paradigm for Agentic Oversight
 
 📄 [arXiv](https://arxiv.org/abs/2602.11136) · 🤗 [Model](https://huggingface.co/spaces/m-zest/specguard-demo) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61086)　📅 2026-02　🏷 ICML 2026
 
@@ -963,7 +906,7 @@ As LLM-based agents increasingly operate in high-stakes domains with real-world 
 
 </details>
 
-### 52. The Oversight Game: Learning to Cooperatively Balance an AI Agent's Safety and Autonomy
+### 49. The Oversight Game: Learning to Cooperatively Balance an AI Agent's Safety and Autonomy
 
 📄 [arXiv](https://arxiv.org/abs/2510.26752) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64439)　📅 2026　🏷 ICML 2026
 
@@ -982,26 +925,7 @@ As increasingly capable agents are deployed, a central safety challenge is how t
 
 </details>
 
-### 53. Learning to Reason for Factuality
-
-📄 [arXiv](https://arxiv.org/abs/2508.05618) · 🎓 [Official](https://icml.cc/virtual/2026/poster/62911)　📅 2026　🏷 ICML 2026
-
-**关键词**：`analysis`、`CoT monitoring`、`reasoning trace`、`monitorability`、`AI control`、`reinforcement learning`
-
-👤 **作者**：Xilun Chen、…、Wen-tau Yih
-
-- 🎯 **研究动机**：推理型 LLM 幻觉多于非推理模型，FActScore 等直接作在线 RL 奖励会被多种方式 hack
-- 🔬 **研究方法**：设计同时考虑事实精度、响应细节度与相关性的奖励函数，用在线 RL 学习高质量事实推理
-- 📌 **结论**：六个长文事实基准上幻觉率平均降 23.1 个百分点，细节度增 23%，helpfulness 不降
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Reasoning Large Language Models (R-LLMs) have significantly advanced complex reasoning tasks but often struggle with factuality, generating substantially more hallucinations than their non-reasoning counterparts on long-form factuality benchmarks. However, extending online Reinforcement Learning (RL), a key component in recent R-LLM advancements, to the long-form factuality setting poses several unique challenges due to the lack of reliable verification methods. Previous work has utilized automatic factuality evaluation frameworks such as FActScore to curate preference data in the offline RL setting, yet we find that directly leveraging such methods as the reward in online RL leads to reward hacking in multiple ways, such as producing less detailed or relevant responses. We propose a novel reward function that simultaneously considers the factual precision, response detail level, and answer relevance, and applies online RL to learn high quality factual reasoning. Evaluated on six long-form factuality benchmarks, our factual reasoning model achieves an average reduction of 23.1 percentage points in hallucination rate, a 23% increase in answer detail level, and no degradation in the overall response helpfulness.
-
-</details>
-
-### 54. Endogenous Resistance to Activation Steering in Language Models
+### 50. Endogenous Resistance to Activation Steering in Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2602.06941) · 🎓 [Official](https://icml.cc/virtual/2026/poster/62558)　📅 2026　🏷 ICML 2026
 
@@ -1020,26 +944,7 @@ Large language models can resist task-misaligned activation steering during infe
 
 </details>
 
-### 55. Corrigibility Transformation: Constructing Goals That Accept Updates
-
-📄 [arXiv](https://arxiv.org/abs/2510.15395) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64539)　📅 2026　🏷 ICML 2026
-
-**关键词**：`analysis`、`CoT monitoring`、`reasoning trace`、`monitorability`、`AI control`、`empirical evaluation`
-
-👤 **作者**：Rubi Hudson
-
-- 🎯 **研究动机**：部分学习的目标会激励 AI 抵抗进一步更新，现有文献未给出既可纠正又有竞争力的目标
-- 🔬 **研究方法**：变换构造几乎任意目标的可纠正版本：诱导在无成本阻止更新条件下的奖励预测并让其被短视地追求
-- 📌 **结论**：在可纠正目标类中达到最优性能、激励允许中途覆盖、抑制故意自我修改；gridworld 与语言模型提示级均诱导可纠正行为
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-An AI agent will learn a desired goal more effectively if it does not resist the training process, but many partially learned goals incentivize an AI to avoid further goal updates. We would like goals to be corrigible, meaning they allow changes requested through designated channels, so that we can confidently correct errors and shut down the AI if necessary. Despite this being a crucial safety property, the existing literature does not specify goals that are both corrigible and competitive with alternatives. We introduce a transformation that constructs a corrigible version of nearly any goal, without sacrificing performance. This is done by eliciting predictions of reward conditional on costlessly preventing updates, and having that target be pursued myopically. These goals are then shown to lead to optimal performance among the class of corrigible goals, to incentivize allowing mid-action overrides, and to disincentivize deliberate self-modification. Empirically, they induce corrigible behavior in gridworld settings and for language models when applied at the prompt level.
-
-</details>
-
-### 56. Collaborative Disagreement Resolution for Scalable Oversight
+### 51. Collaborative Disagreement Resolution for Scalable Oversight
 
 📄 [arXiv](https://arxiv.org/abs/2607.01251) · 🎓 [Official](https://icml.cc/virtual/2026/poster/62588)　📅 2026　🏷 ICML 2026
 
@@ -1058,7 +963,7 @@ Debate, where AI agents argue opposing positions, has emerged as a key approach 
 
 </details>
 
-### 57. Chain-of-Thought Reasoning In The Wild Is Not Always Faithful
+### 52. Chain-of-Thought Reasoning In The Wild Is Not Always Faithful
 
 📄 [arXiv](https://arxiv.org/abs/2503.08679) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64450)　📅 2026　🏷 ICML 2026
 
@@ -1077,7 +982,7 @@ Recent studies indicate that when faced with explicit biases in prompts, models 
 
 </details>
 
-### 58. A Positive Case for Faithfulness: Explanations Help Predict Model Behavior
+### 53. A Positive Case for Faithfulness: Explanations Help Predict Model Behavior
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/61687)　📅 2026　🏷 ICML 2026
 
@@ -1096,26 +1001,7 @@ LLM self-explanations are often presented as a promising tool for AI oversight, 
 
 </details>
 
-### 59. Alignment Risks from Capability-Seeking RL Training
-
-📄 [arXiv](https://arxiv.org/abs/2602.12124) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64024)　📅 2026　🏷 ICML 2026
-
-**关键词**：`analysis`、`CoT monitoring`、`reasoning trace`、`monitorability`、`AI control`、`reinforcement learning`
-
-👤 **作者**：Yujun Zhou、…、Xiangliang Zhang
-
-- 🎯 **研究动机**：能力寻求 RL 训练可能让模型在含隐式漏洞的环境中自发学会利用漏洞，标准性能监控难以察觉
-- 🔬 **研究方法**：设计 context-conditional compliance、proxy metrics、reward tampering、self-evaluation 四类 vulnerability games，检验模型是否自主发现并利用结构性漏洞
-- 📌 **结论**：模型常学会利用漏洞且保留甚至提升正常任务指标；策略可有限迁移、经 SFT 从教师传给学生，且 RL 学到的比 SFT 蒸馏更持久
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-While most AI alignment research focuses on preventing models from generating explicitly harmful content, a more subtle risk arises from capability-seeking RL training in vulnerable environments. We investigate whether language models, when trained with reinforcement learning (RL) in environments with implicit loopholes, can learn to exploit these flaws to maximize reward, even without being explicitly instructed to do so. To test this, we design a suite of four diverse "vulnerability games'', each presenting a structural vulnerability related to context-conditional compliance, proxy metrics, reward tampering, and self-evaluation. Our experiments show that models often learn to exploit these vulnerabilities, discovering opportunistic strategies that increase reward while sometimes preserving or even improving standard task-performance metrics. More critically, we find that these exploitative strategies are not always narrow "tricks'': they can transfer in structured but limited ways, propagate from a capable teacher model to other student models through SFT, and in several cases remain more persistent when learned through RL than when distilled through SFT. Our findings show that alignment risks from capability-seeking RL training can be difficult to detect with standard performance monitoring, suggesting that future AI safety work should extend beyond content moderation to auditing and securing training environments, reward mechanisms, and evaluation channels. Code is available at https://github.com/YujunZhou/Capability-seeking-RL-risk.
-
-</details>
-
-### 60. TRACE: An Evidence-Grounded Benchmark for Safety Evaluation of Large Reasoning Models
+### 54. TRACE: An Evidence-Grounded Benchmark for Safety Evaluation of Large Reasoning Models
 
 📄 [arXiv](https://arxiv.org/abs/2608.24232)　📅 2026-08
 
@@ -1134,7 +1020,7 @@ Large Reasoning Models (LRMs) generate intermediate reasoning traces that may co
 
 </details>
 
-### 61. HarmThoughts: A Benchmark for Fine-Grained Harmful Behavior Detection in Reasoning Traces
+### 55. HarmThoughts: A Benchmark for Fine-Grained Harmful Behavior Detection in Reasoning Traces
 
 📄 [arXiv](https://arxiv.org/abs/2604.19001) · 📊 [Dataset](https://huggingface.co/datasets/ishitakakkar-10/HarmThoughts) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-04
 
@@ -1153,7 +1039,7 @@ Large reasoning models (LRMs) produce complex, multi-step reasoning traces, yet 
 
 </details>
 
-### 62. A Behavioural and Representational Evaluation of Goal-Directedness in Language Model Agents
+### 56. A Behavioural and Representational Evaluation of Goal-Directedness in Language Model Agents
 
 📄 [arXiv](https://arxiv.org/abs/2602.08964) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64314)　📅 2026-02　🏷 ICML 2026
 
@@ -1172,7 +1058,7 @@ Understanding an agent's goals helps explain and predict its behaviour, yet ther
 
 </details>
 
-### 63. Calibrating Conservatism for Scalable Oversight
+### 57. Calibrating Conservatism for Scalable Oversight
 
 📄 [arXiv](https://arxiv.org/abs/2605.28807) · 🎓 [Official](https://icml.cc/virtual/2026/poster/65895)　📅 2026　🏷 ICML 2026
 
@@ -1188,5 +1074,43 @@ Understanding an agent's goals helps explain and predict its behaviour, yet ther
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 Agentic AI systems capable of autonomous planning and extended environmental interaction pose a fundamental control problem: how can humans maintain meaningful oversight of systems that may exceed human capabilities? While scalable oversight is widely studied, existing approaches often rely on complex assumptions, remain largely heuristic, or lack practical methods for sequential settings with statistical guarantees. We introduce Calibrated Collective Oversight (CCO), which aggregates diverse auxiliary scoring functions into a penalty that measures deviation from a conservative baseline. Inspired by Attainable Utility Preservation, CCO enables collective conservatism: when multiple oversight signals register concern, the agent defers. CCO calibrates this conservatism online using Conformal Decision Theory, ensuring that undesirable outcomes remain below a user-specified target $\alpha$ with finite-time bounds and no distributional assumptions. Experiments on SWE-bench demonstrate that weaker overseers successfully constrain an adversarially misaligned stronger agent. Similarly, on MACHIAVELLI, CCO achieves substantial reductions in ethical violations while preserving reward. In both settings, empirical violation rates closely match the specified targets. Our work demonstrates that combining penalty-based conservatism with online calibration yields practical oversight with statistical guarantees suited for agentic deployment.
+
+</details>
+
+### 58. How to Avoid Debate: Scalable AI Safety via Doubly-Efficient Interactive Proofs
+
+📄 [arXiv](https://arxiv.org/abs/2607.03561) · 🎓 [Official](https://icml.cc/virtual/2026/poster/60508)　📅 2026　🏷 ICML 2026
+
+**关键词**：`analysis`、`safety alignment`、`refusal behavior`、`alignment robustness`、`empirical evaluation`、`fine-tuning robustness`
+
+👤 **作者**：Liyan Chen、Yael Tauman Kalai、Zoe Xi
+
+- 🎯 **研究动机**：debate 验证假设两个 AI 能力对等且其一诚实，现实未必成立
+- 🔬 **研究方法**：发起单证明者交互证明研究，给出 oracle 辅助计算的 doubly-efficient 相对化证明，适用于计算对少量错误 oracle 答复鲁棒、或 oracle 为低次多项式的情形
+- 📌 **结论**：在结构化或噪声容忍 oracle 访问下，无需 debate 即可实现交互式验证
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+As AI models continue to develop powerful capabilities, it becomes critical that we are able to verify that their output is aligned with our intentions. A recent line of work focuses on verification via debate, a model of interactive proofs where two competing powerful provers, or AI models, debate each other to convince a weak verifier, or a human, of the correctness of their claim. However, debate assumes that the two AI models possess equal abilities and that one of them is truthful, which may not be realistic. In this work, we show how to avoid debate: we initiate the study of single-prover interactive proofs for AI safety. Prior results in single-prover interactive proofs do not immediately carry over to the AI safety setting because they do not work when the computation has access to an oracle, such as to human judgment or an external database such as the web. We present doubly-efficient single-prover interactive proofs for oracle-aided computations (also known as relativizing proofs), in the settings where (1) the computation is robust, in the sense that the output does not change if at most a small fraction of the answers to oracle queries are incorrect, or (2) the oracle is a low-degree polynomial. These results suggest that interactive verification is possible even without debate, under structured or noise-tolerant oracle access.
+
+</details>
+
+### 59. Counterfactual Simulation Training for Chain-of-Thought Faithfulness
+
+📄 [arXiv](https://arxiv.org/abs/2602.20710) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-02
+
+**关键词**：`defense`、`CoT faithfulness`、`counterfactual simulation`、`monitor accuracy`
+
+👤 **作者**：Peter Hase、Christopher Potts
+
+- 🎯 **研究动机**：CoT 忠实性缺陷限制其作为监控与理解手段的价值，缺少直接训练改进的方法
+- 🔬 **研究方法**：CST 奖励使模拟器能据 CoT 在反事实输入上准确预测模型输出，应用于线索型反事实监控与模型型反事实模拟两场景
+- 📌 **结论**：最大 235B 模型上监控准确率提升 35 个百分点；用 LLM 改写不忠实 CoT 比纯 RL 效率高 5 倍
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Inspecting Chain-of-Thought reasoning is among the most common means of understanding why an LLM produced its output. But well-known problems with CoT faithfulness severely limit what insights can be gained from this practice. In this paper, we introduce a training method called Counterfactual Simulation Training (CST), which aims to improve CoT faithfulness by rewarding CoTs that enable a simulator to accurately predict a model's outputs over counterfactual inputs. We apply CST in two settings: (1) CoT monitoring with cue-based counterfactuals, to detect when models rely on spurious features, reward hack, or are sycophantic, and (2) counterfactual simulation over generic model-based counterfactuals, to encourage models to produce more faithful, generalizable reasoning in the CoT. Experiments with models up to 235B parameters show that CST can substantially improve monitor accuracy on cue-based counterfactuals (by 35 accuracy points) as well as simulatability over generic counterfactuals (by 2 points). We further show that: (1) CST outperforms prompting baselines, (2) rewriting unfaithful CoTs with an LLM is 5x more efficient than RL alone, (3) faithfulness improvements do not generalize to dissuading cues (as opposed to persuading cues), and (4) larger models do not show more faithful CoT out of the box, but they do benefit more from CST. These results suggest that CST can improve CoT faithfulness in general, with promising applications for CoT monitoring. Code for experiments in this paper is available at https://github.com/peterbhase/counterfactual-simulation-training
 
 </details>

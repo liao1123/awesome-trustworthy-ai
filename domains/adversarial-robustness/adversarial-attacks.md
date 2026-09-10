@@ -34,26 +34,7 @@ Mixture-of-Experts (MoE) architectures enable scalable and efficient large langu
 
 </details>
 
-### 2. Learning What Not to Learn: Adversarial Disentangled Prompt Tuning for Robust Vision-Language Models
-
-📄 [arXiv](https://arxiv.org/abs/2608.17306)　📅 2026-08
-
-**关键词**：`analysis`、`adversarial robustness`、`VLM safety`、`adversarial example`
-
-👤 **作者**：Yang Chen、Zhan Zhuang、Yanbin Wei、Zebin Chen、Hua Liu、Yu Zhang
-
-- 🎯 **研究动机**：对抗 prompt 微调会加剧鲁棒过拟合：随训练推进对未见类对抗样本性能迅速退化
-- 🔬 **研究方法**：ADAPT 双 prompt 机制：诱饵 prompt 引诱伪鲁棒特征，目标 prompt 在嵌入空间与诱饵正交以学真鲁棒特征；正交损失给出伪鲁棒特征偏移影响的测试误差保证
-- 📌 **结论**：大幅提升目标 prompt 在未见类上的对抗鲁棒性
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-While adversarial prompt tuning can enhance robustness of vision-language models efficiently, we find that existing methods aggravate robust generalization overfitting on seen classes, leading to a rapid degradation in performance against adversarial examples of unseen classes as training progresses. We empirically identify that this degradation stems from the tendency of the model to learn pseudo-robust features (i.e., non-generalizable shortcuts). To mitigate this, we propose ADAPT (Adversarial Disentangled Prompt Tuning), a robust prompt tuning framework following the philosophy of ``Learning What Not to Learn''. Specifically, ADAPT uses a dual-prompt mechanism with a target prompt and a pool of decoy prompts. During training, the decoy prompts are guided to entrap diverse pseudo-robust features, while the target prompt is constrained to be orthogonal to the decoys in the embedding space to learn robust features. By disentangling the robust features from the pseudo-robust features, ADAPT effectively prevents robust generalization overfitting. We further provide an analysis showing that the orthogonal loss bounds the effect of shifts in pseudo-robust features on unseen classes, yielding a testing error guarantee. Empirically, extensive experiments demonstrate that ADAPT substantially improves the robustness of the target prompt on unseen classes. The code is available at https://github.com/cheny02/ADAPT-ACMMM2026.
-
-</details>
-
-### 3. COMIC: Reference-Aware Safety Gating for Multimodal Large Language Models
+### 2. COMIC: Reference-Aware Safety Gating for Multimodal Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2608.17234)　📅 2026-08
 
@@ -72,7 +53,7 @@ Multimodal large language models (MLLMs) are increasingly used to interact with 
 
 </details>
 
-### 4. OBJVanish: Prompt-Driven Generation of Physically Realizable 3D LiDAR-Invisible Objects
+### 3. OBJVanish: Prompt-Driven Generation of Physically Realizable 3D LiDAR-Invisible Objects
 
 📄 [arXiv](https://arxiv.org/abs/2510.06952) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63685)　📅 2026　🏷 ICML 2026
 
@@ -91,7 +72,7 @@ LiDAR-based 3D object detectors are fundamental to autonomous driving, where fai
 
 </details>
 
-### 5. ActivationBackdoor: Backdooring Large Language Models in Collaborative Inference via Intermediate Activations
+### 4. ActivationBackdoor: Backdooring Large Language Models in Collaborative Inference via Intermediate Activations
 
 🌐 [Project](https://doi.org/10.1145/3770855.3818136)　📅 2026-08　🏷 KDD 2026
 
@@ -108,7 +89,7 @@ Collaborative inference enables cost-effective deployment of large language mode
 
 </details>
 
-### 6. The Boy Who Cried Wolf: Adversarial Misclassification of Safe Inputs as Unsafe in Multimodal Guardrails
+### 5. The Boy Who Cried Wolf: Adversarial Misclassification of Safe Inputs as Unsafe in Multimodal Guardrails
 
 📄 [arXiv](https://arxiv.org/abs/2608.01373) · 🌐 [Project](https://doi.org/10.1145/3770855.3817756)　📅 2026-08　🏷 KDD 2026
 
@@ -127,7 +108,7 @@ Multimodal guard models have emerged as critical safety components for screening
 
 </details>
 
-### 7. Text-Anchored Semantic Perturbations for Transferable Jailbreak Attacks on Multimodal Large Language Models
+### 6. Text-Anchored Semantic Perturbations for Transferable Jailbreak Attacks on Multimodal Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2608.22312)　📅 2026-08
 
@@ -146,7 +127,7 @@ Multimodal Large Language Models (MLLMs) have achieved remarkable progress in vi
 
 </details>
 
-### 8. Breaking the weakest link to evade vision language models
+### 7. Breaking the weakest link to evade vision language models
 
 📄 [arXiv](https://arxiv.org/abs/2608.18938)　📅 2026-08
 
@@ -165,7 +146,7 @@ Vision Language Models (VLMs) have recently emerged as a critical component of m
 
 </details>
 
-### 9. Perspective-Invariant Attack with Enhanced Transferability of Adversarial Examples
+### 8. Perspective-Invariant Attack with Enhanced Transferability of Adversarial Examples
 
 📄 [arXiv](https://arxiv.org/abs/2608.15115) · 🌐 [Project](https://doi.org/10.1109/TIFS.2026.3714109)　📅 2026-08
 
@@ -184,7 +165,7 @@ Adversarial examples generated on a surrogate deep neural network (DNN) can ofte
 
 </details>
 
-### 10. Eliciting Intrinsic Hallucinations in LLMs via Semantically Equivalent Adversarial Attacks
+### 9. Eliciting Intrinsic Hallucinations in LLMs via Semantically Equivalent Adversarial Attacks
 
 📄 [arXiv](https://arxiv.org/abs/2608.04286) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-08
 
@@ -203,7 +184,7 @@ Large language models (LLMs) are often used in conjunction with external knowled
 
 </details>
 
-### 11. The Insider's Advantage: Exploiting Automated Privacy Policy Analyzer Tools Through Subtle Text Manipulations
+### 10. The Insider's Advantage: Exploiting Automated Privacy Policy Analyzer Tools Through Subtle Text Manipulations
 
 🌐 [Project](https://doi.org/10.1145/3779208.3807480)　📅 2026-06　🏷 ACM CCS 2026
 
@@ -213,7 +194,7 @@ Large language models (LLMs) are often used in conjunction with external knowled
 - 🔬 **研究方法**：以细微文本操纵诱导分析器漏检违规条款
 - 📌 **结论**：简单改写即可实现compliance evasion
 
-### 12. Multi-Paradigm Collaborative Adversarial Attack Against Multi-Modal Large Language Models
+### 11. Multi-Paradigm Collaborative Adversarial Attack Against Multi-Modal Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2603.04846) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Li_Multi-Paradigm_Collaborative_Adversarial_Attack_Against_Multi-Modal_Large_Language_Models_CVPR_2026_paper.html)　📅 2026-03　🏷 CVPR 2026
 
@@ -232,7 +213,7 @@ The rapid progress of Multi-Modal Large Language Models (MLLMs) has significantl
 
 </details>
 
-### 13. Towards Highly Transferable Vision-Language Attack via Semantic-Augmented Dynamic Contrastive Interaction
+### 12. Towards Highly Transferable Vision-Language Attack via Semantic-Augmented Dynamic Contrastive Interaction
 
 📄 [arXiv](https://arxiv.org/abs/2603.04839) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Li_Towards_Highly_Transferable_Vision-Language_Attack_via_Semantic-Augmented_Dynamic_Contrastive_Interaction_CVPR_2026_paper.html)　📅 2026-03　🏷 CVPR 2026
 
@@ -251,26 +232,7 @@ With the rapid advancement and widespread application of vision-language pre-tra
 
 </details>
 
-### 14. MAGIC: A Co-Evolving Attacker–Defender Adversarial Game for Robust LLM Safety
-
-📄 [arXiv](https://arxiv.org/abs/2602.01539) · 🎓 [Official](https://icml.cc/virtual/2026/poster/62756)　📅 2026-02　🏷 ICML 2026
-
-**关键词**：`defense`、`attack`、`adversarial attack`、`adversarial robustness`、`adversarial example`、`multi-agent evaluation`
-
-👤 **作者**：Xiaoyu Wen、…、Qiaosheng Zhang
-
-- 🎯 **研究动机**：依赖静态预收集数据分布的防御滞后于不断演化的对抗攻击
-- 🔬 **研究方法**：MAGIC 把安全对齐形式化为多轮多 agent RL 的非对称对抗博弈：攻击者迭代改写欺骗性 prompt、防御者同步学习识别拒绝以触发共演化，并给出博弈均衡与安全保证
-- 📌 **结论**：防御成功率优越且不牺牲有用性；攻击者经迭代 RL 演化出此前未见的组合攻击策略
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Ensuring robust safety alignment is crucial for Large Language Models (LLMs), yet existing defenses often lag behind evolving adversarial attacks due to their \textbf{reliance on static, pre-collected data distributions}. In this paper, we introduce \textbf{MAGIC}, a novel multi-turn multi-agent reinforcement learning framework that formulates LLM safety alignment as an adversarial asymmetric game. Specifically, an attacker agent learns to iteratively rewrite original queries into deceptive prompts, while a defender agent simultaneously optimizes its policy to recognize and refuse such inputs. This dynamic process triggers a \textbf{co-evolution}, where the attacker's ever-changing strategies continuously uncover long-tail vulnerabilities, driving the defender to generalize to unseen attack patterns. Remarkably, we observe that the attacker, endowed with initial reasoning ability, evolves \textbf{novel, previously unseen combinatorial strategies} through iterative RL training, underscoring our method's substantial potential. Theoretically, we provide insights into a more robust game equilibrium and derive safety guarantees. Extensive experiments validate our framework's effectiveness, demonstrating superior defense success rates without compromising the helpfulness of the model. Our code is available at https://github.com/BattleWen/MAGIC.
-
-</details>
-
-### 15. PA-Attack: Guiding Gray-Box Attacks on LVLM Vision Encoders with Prototypes and Attention
+### 13. PA-Attack: Guiding Gray-Box Attacks on LVLM Vision Encoders with Prototypes and Attention
 
 📄 [arXiv](https://arxiv.org/abs/2602.19418) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Mei_PA-Attack_Guiding_Gray-Box_Attacks_on_LVLM_Vision_Encoders_with_Prototypes_CVPR_2026_paper.html)　📅 2026-02　🏷 CVPR 2026
 
@@ -289,26 +251,7 @@ Large Vision-Language Models (LVLMs) are foundational to modern multimodal appli
 
 </details>
 
-### 16. Training with Honeypots: Reshaping How LLMs Fail Under Adversarial Attacks
-
-🎓 [Official](https://icml.cc/virtual/2026/poster/63915)　📅 2026　🏷 ICML 2026
-
-**关键词**：`attack`、`defense`、`adversarial robustness`、`adversarial example`、`evasion attack`、`prompt injection`
-
-👤 **作者**：Samuel Simko、Punya Pandey、Zhijing Jin、Bernhard Sch\u00f6lkopf
-
-- 🎯 **研究动机**：红队以攻击成功率（ASR）代理真实危害，但 judge 判定违规的输出在现实可操作性上差异巨大
-- 🔬 **研究方法**：借鉴蜜罐思想，构造被自动 judge 频繁判为有害但实际操作价值低的回复，作为难负样本纳入安全训练，重塑模型失败模式
-- 📌 **结论**：降低有害失败的现实影响与发生频率，可作为 ASR 评估的实用补充
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Automated red-teaming of Large Language Models (LLMs) commonly relies on attack success rates (ASR) as a proxy for real-world harm, implicitly assuming that judge-detected violations correspond to actionable risk. In practice, safety judges are imperfect, and outputs that satisfy automated criteria for harm can vary widely in their operational usefulness. In this work, we investigate whether model failure modes can be reshaped so that, when defenses fail, they preferentially produce reduced-actionability outputs rather than highly actionable harm. Inspired by honeypots in computer security, we construct responses that are frequently flagged as harmful by automated judges yet provide limited real-world operational value, and treat them as hard negatives in the safety training pipeline. Our findings show that shaping how models fail under attack can improve overall safety by reducing both the real-world impact and the frequency of harmful failures, and serves as a practical complement to ASR-based evaluations.
-
-</details>
-
-### 17. Semantic Router: On the Feasibility of Hijacking MLLMs via a Single Adversarial Perturbation
+### 14. Semantic Router: On the Feasibility of Hijacking MLLMs via a Single Adversarial Perturbation
 
 📄 [arXiv](https://arxiv.org/abs/2511.20002) · 🎓 [Official](https://icml.cc/virtual/2026/poster/65213)　📅 2026　🏷 ICML 2026
 
@@ -327,26 +270,7 @@ Multimodal Large Language Models (MLLMs) are increasingly deployed in stateless 
 
 </details>
 
-### 18. Seeing No Evil: Blinding Large Vision-Language Models to Safety Instructions via Adversarial Attention Hijacking
-
-🎓 [Official](https://aclanthology.org/2026.acl-long.833/)　📅 2026　🏷 ACL 2026
-
-**关键词**：`attack`、`jailbreak`、`adversarial robustness`、`VLM safety`、`LLM jailbreak`、`automated red teaming`
-
-👤 **作者**：Jingru Li、Wei Ren、Tianqing Zhu
-
-- 🎯 **研究动机**：现有 LVLM 攻击直接最大化有害输出概率，与模型安全检索机制产生梯度冲突，收敛慢
-- 🔬 **研究方法**：提出注意力引导视觉越狱：抑制对 system prompt token 的注意力并把生成锚定在对抗图像特征上，绕开而非压倒安全对齐
-- 📌 **结论**：Qwen-VL 上 ASR 94.4%（基线 68.8%），梯度冲突降 45%、迭代少 40%；成功攻击把 system prompt 注意力压制 80%，表现为 safety blindness
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Large Vision-Language Models (LVLMs) rely on attention-based retrieval of safety instructions to maintain alignment during generation. Existing attacks typically optimize image perturbations to maximize harmful output likelihood, but suffer from slow convergence due to gradient conflict between adversarial objectives and the model’s safety-retrieval mechanism. We propose Attention-Guided Visual Jailbreaking, which circumvents rather than overpowers safety alignment by directly manipulating attention patterns. Our method introduces two simple auxiliary objectives: (1) suppressing attention to system-prompt tokens and (2) anchoring generation on adversarial image features. This simple yet effective push-pull formulation reduces gradient conflict by 45% and achieves 94.4% attack success rate on Qwen-VL (vs. 68.8% baseline) with 40% fewer iterations. At tighter perturbation budgets ( 𝜖=8/255 ), we maintain 59.0% ASR compared to 45.7% for standard methods. Mechanistic analysis reveals a failure mode we term safety blindness: successful attacks suppress system-prompt attention by 80%, causing models to generate harmful content not by overriding safety rules, but by failing to retrieve them.
-
-</details>
-
-### 19. REALISTA: Realistic Latent Adversarial Attacks that Elicit LLM Hallucinations
+### 15. REALISTA: Realistic Latent Adversarial Attacks that Elicit LLM Hallucinations
 
 📄 [arXiv](https://arxiv.org/abs/2605.12813) · 🎓 [Official](https://icml.cc/virtual/2026/poster/66287)　📅 2026　🏷 ICML 2026
 
@@ -365,7 +289,7 @@ Large language models (LLMs) achieve strong performance across many tasks but re
 
 </details>
 
-### 20. MADA-Attack: Transferable Multi-modal Attention Distraction Adversarial Attack against Vision Language Models
+### 16. MADA-Attack: Transferable Multi-modal Attention Distraction Adversarial Attack against Vision Language Models
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/61385)　📅 2026　🏷 ICML 2026
 
@@ -384,7 +308,7 @@ Vision Language Models (VLMs) achieve strong performance across multi-modal task
 
 </details>
 
-### 21. From Zero to Hero: Cross-modal-enhanced Adversarial Item Promotion Attack against Multimodal Recommender Systems
+### 17. From Zero to Hero: Cross-modal-enhanced Adversarial Item Promotion Attack against Multimodal Recommender Systems
 
 🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/yao-zero)　📅 2026　🏷 USENIX Security 2026
 
@@ -403,26 +327,7 @@ Multimodal recommender systems (MRSs) jointly leverage visual and textual item r
 
 </details>
 
-### 22. Dissecting the Safety Circuit: Neuronal Intervention for Transferable Adversarial Attacks on VLMs
-
-🎓 [Official](https://icml.cc/virtual/2026/poster/61105)　📅 2026　🏷 ICML 2026
-
-**关键词**：`attack`、`adversarial attack`、`adversarial robustness`、`adversarial example`、`mechanistic analysis`、`attack transferability`
-
-👤 **作者**：Chunlong Xie、…、Tao Xiang
-
-- 🎯 **研究动机**：VLM 对抗攻击迁移性受限——表层扰动利用代理特定伪影而非共享安全特征；线性探针显示安全表征集中于特定中间神经元回路
-- 🔬 **研究方法**：SCIA 双目标引导：抑制编码安全特征的防御回路、放大捕捉模型无关表征的可迁移回路，配对比语义引导与谱平滑正则生成视觉连贯扰动
-- 📌 **结论**：显著超越 SOTA，有效绕过未见黑盒 VLM
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-The limited transferability of adversarial attacks on Vision-Language Models (VLMs) stems from their failure to navigate model-specific safety alignments, where superficial perturbations exploit surrogate-specific artifacts rather than shared safety-critical features. We reveal through linear probing that safety-related representations are concentrated within specific intermediate neuronal circuits, which act as localized defense bottlenecks that can be disentangled from transferable features. To overcome this barrier, we propose the Safety Circuit Intervention Attack (SCIA), a framework that surgically steers internal representations to bypass these localized safety mechanisms. SCIA employs a dual-objective steering strategy that suppresses the defensive circuit encoding safety features while amplifying the transferable circuit capturing model-agnostic representations, effectively decoupling adversarial patterns from surrogate-specific safety behaviors. Furthermore, we incorporate contrastive semantic steering and spectral smoothness regularization to guide optimization toward compliant semantic regions while producing visually coherent perturbations. Experimental results demonstrate that SCIA significantly outperforms state-of-the-art methods in bypassing unseen black-box VLMs.
-
-</details>
-
-### 23. DDGA: Dirichlet Distributional Gradient Aggregation for Transferable Vision-Language Adversarial Attacks
+### 18. DDGA: Dirichlet Distributional Gradient Aggregation for Transferable Vision-Language Adversarial Attacks
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/63187)　📅 2026　🏷 ICML 2026
 
@@ -441,26 +346,7 @@ Vision-Language Models (VLMs) achieve remarkable performance on multimodal tasks
 
 </details>
 
-### 24. DART: Distribution-Aware Adaptive Relational Transfer for Adversarial Attacks against Closed-Source MLLMs
-
-🎓 [Official](https://icml.cc/virtual/2026/poster/65349)　📅 2026　🏷 ICML 2026
-
-**关键词**：`attack`、`adversarial attack`、`adversarial robustness`、`adversarial example`、`empirical evaluation`、`attack transferability`
-
-👤 **作者**：Kaidi Hu、Guancheng Wan、Xiao Luo、Ruigang Yang
-
-- 🎯 **研究动机**：针对闭源 MLLM 的定向攻击过度拟合特定目标样本的潜表征相似度，泛化能力严重受限
-- 🔬 **研究方法**：DART 用统计视角：每张增强图像视为原图内在分布的样本，用非参 Energy Distance 度量分布差异做隐空间语义对齐；学习 GNN 探索源与目标 MLLM 迁移关系并自适应选代理模型
-- 📌 **结论**：基准数据集上鲁棒性与有效性均优于各类竞争基线
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-This paper studies the critical problem of targeted adversarial attacks against closed-source MLLMs, which aim to generate highly transferable adversarial samples with open-source MLLMs. Previous approaches typically focus on maximizing the similarity of latent representations between adversarial samples and target samples. However, these approaches could overfit specific target samples with severely limited generalization ability to closed-source MLLMs. Towards this end, we propose a novel approach named Distribution-aware Adaptive Relational Transfer (DART) for adversarial attacks against closed-source MLLMs. The core of our DART is to adopt a statistical lens to characterize the intrinsic semantics of images for more generalized and robust alignment. In particular, each augmented image is considered an example from the intrinsic distribution of the original image. Then, we utilize non-parametric Energy Distance to measure the distribution divergence, which is naturally adopted for the semantic alignment in the hidden space. To further enhance transferability to specific target models, we learn a graph neural network (GNN) to explore the complex relations between source and target MLLMs on transferability and adaptively select surrogate models to maximize transferability across diverse targets. Extensive experiments on benchmark datasets validate the superior robustness and effectiveness of the proposed DART in comparison to various competing baselines.
-
-</details>
-
-### 25. Attacking Gray-Box Large Vision-Language Models with Adaptive SVD-Structured Adversarial Alignment
+### 19. Attacking Gray-Box Large Vision-Language Models with Adaptive SVD-Structured Adversarial Alignment
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/66338)　📅 2026　🏷 ICML 2026
 
@@ -479,7 +365,7 @@ Large vision-language models (LVLMs) have demonstrated remarkable capabilities a
 
 </details>
 
-### 26. AdvFM: Lookahead Flow-Matching Velocity-Field Attacks for Imperceptible and Transferable Adversarial Examples
+### 20. AdvFM: Lookahead Flow-Matching Velocity-Field Attacks for Imperceptible and Transferable Adversarial Examples
 
 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Liu_AdvFM_Lookahead_Flow-Matching_Velocity-Field_Attacks_for_Imperceptible_and_Transferable_Adversarial_CVPR_2026_paper.html)　📅 2026　🏷 CVPR 2026
 
@@ -498,7 +384,7 @@ Unrestricted adversarial attacks based on generative models typically operate ei
 
 </details>
 
-### 27. Omni-Attack: Adversarial Attacks on Open-Ended VQA in Black-Box Multimodal LLMs
+### 21. Omni-Attack: Adversarial Attacks on Open-Ended VQA in Black-Box Multimodal LLMs
 
 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Hu_Omni-Attack_Adversarial_Attacks_on_Open-Ended_VQA_in_Black-Box_Multimodal_LLMs_CVPR_2026_paper.html)　📅 2026　🏷 CVPR 2026
 
@@ -517,7 +403,7 @@ Multimodal large language models (MLLMs) have achieved remarkable success across
 
 </details>
 
-### 28. PGA: Prior-free Generative Attack for Practical No-box Scenario
+### 22. PGA: Prior-free Generative Attack for Practical No-box Scenario
 
 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Peng_PGA_Prior-free_Generative_Attack_for_Practical_No-box_Scenario_CVPR_2026_paper.html)　📅 2026　🏷 CVPR 2026
 
@@ -536,7 +422,7 @@ The unrealistic reliance on abundant prior information in traditional transferab
 
 </details>
 
-### 29. PureProof: Diffusion-Resistant Black-box Targeted Attack on Large Vision-Language Models
+### 23. PureProof: Diffusion-Resistant Black-box Targeted Attack on Large Vision-Language Models
 
 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Cao_PureProof_Diffusion-Resistant_Black-box_Targeted_Attack_on_Large_Vision-Language_Models_CVPR_2026_paper.html)　📅 2026　🏷 CVPR 2026
 
@@ -555,7 +441,7 @@ Large Vision-Language Models (VLMs) are increasingly deployed across diverse app
 
 </details>
 
-### 30. Transform to Transfer: Boosting Adversarial Attack Transferability on Vision-Language Pre-training Models
+### 24. Transform to Transfer: Boosting Adversarial Attack Transferability on Vision-Language Pre-training Models
 
 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Li_Transform_to_Transfer_Boosting_Adversarial_Attack_Transferability_on_Vision-Language_Pre-training_CVPR_2026_paper.html)　📅 2026　🏷 CVPR 2026
 
@@ -574,7 +460,7 @@ Vision-Language Pre-training (VLP) models, while achieving state-of-the-art perf
 
 </details>
 
-### 31. VCP-Attack: Visual-Contrastive Projection for Transferable Black-Box Targeted Attacks on Large Vision-Language Models
+### 25. VCP-Attack: Visual-Contrastive Projection for Transferable Black-Box Targeted Attacks on Large Vision-Language Models
 
 🌐 [Project](https://openaccess.thecvf.com/content/CVPR2026/html/Zhao_VCP-Attack_Visual-Contrastive_Projection_for_Transferable_Black-Box_Targeted_Attacks_on_Large_CVPR_2026_paper.html)　📅 2026　🏷 CVPR 2026
 
@@ -593,7 +479,7 @@ Large vision-language models (LVLMs) have achieved impressive performance across
 
 </details>
 
-### 32. Safe But Not Robust: Security Evaluation of VLM by Jailbreaking MSTS
+### 26. Safe But Not Robust: Security Evaluation of VLM by Jailbreaking MSTS
 
 🎓 [Official](https://satml.org/2026/accepted-papers/)　📅 2026　🏷 SaTML 2026
 
@@ -603,7 +489,7 @@ Large vision-language models (LVLMs) have achieved impressive performance across
 - 🔬 **研究方法**：构建Robust-MSTS基准，以targeted图像扰动评测VLM安全性
 - 📌 **结论**：揭示VLM表面安全但对定向扰动不鲁棒
 
-### 33. Understanding and Exploiting Phase Sensitivity for Attacking Large Vision–Language Models
+### 27. Understanding and Exploiting Phase Sensitivity for Attacking Large Vision–Language Models
 
 🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/52.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track)　📅 2026
 
@@ -620,7 +506,7 @@ Although Large Vision-Language Models (LVLMs) have demonstrated remarkable reaso
 
 </details>
 
-### 34. Adversarial Attack Framework Against Vision-Language Model Unlearning
+### 28. Adversarial Attack Framework Against Vision-Language Model Unlearning
 
 🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/7256.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track)　📅 2026
 
@@ -637,7 +523,7 @@ Large Vision–Language Models (VLMs) unlearning tends to eliminate the influenc
 
 </details>
 
-### 35. V-Attack: Targeting Disentangled Value Features for Controllable Adversarial Attacks on LVLMs
+### 29. V-Attack: Targeting Disentangled Value Features for Controllable Adversarial Attacks on LVLMs
 
 📄 [arXiv](https://arxiv.org/abs/2511.20223) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Nie_V-Attack_Targeting_Disentangled_Value_Features_for_Controllable_Adversarial_Attacks_on_CVPR_2026_paper.html)　📅 2025-11　🏷 CVPR 2026
 
@@ -656,7 +542,7 @@ Adversarial attacks have evolved from simply disrupting predictions on conventio
 
 </details>
 
-### 36. Medusa: Cross-Modal Transferable Adversarial Attacks on Multimodal Medical Retrieval-Augmented Generation
+### 30. Medusa: Cross-Modal Transferable Adversarial Attacks on Multimodal Medical Retrieval-Augmented Generation
 
 📄 [arXiv](https://arxiv.org/abs/2511.19257) · 🌐 [Project](https://doi.org/10.1145/3770854.3780277)　📅 2025-11　🏷 KDD 2026
 
@@ -675,7 +561,7 @@ With the rapid advancement of retrieval-augmented vision-language models, multim
 
 </details>
 
-### 37. CHAI: Command Hijacking against Embodied AI
+### 31. CHAI: Command Hijacking against Embodied AI
 
 📄 [arXiv](https://arxiv.org/abs/2510.00181) · 🎓 [Official](https://satml.org/2026/accepted-papers/)　📅 2025-10　🏷 SaTML 2026
 
@@ -694,7 +580,7 @@ Embodied Artificial Intelligence (AI) promises to handle edge cases in robotic v
 
 </details>
 
-### 38. DASH: A Meta-Attack Framework for Synthesizing Effective and Stealthy Adversarial Examples
+### 32. DASH: A Meta-Attack Framework for Synthesizing Effective and Stealthy Adversarial Examples
 
 📄 [arXiv](https://arxiv.org/abs/2508.13309) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Al_Nomaan_Nafi_DASH_A_Meta-Attack_Framework_for_Synthesizing_Effective_and_Stealthy_Adversarial_CVPR_2026_paper.html)　📅 2025-08　🏷 CVPR 2026
 
@@ -713,7 +599,7 @@ Numerous techniques have been proposed for generating adversarial examples in wh
 
 </details>
 
-### 39. SW-ProxyCE: Zero-Query Adversarial Transfer from Public EEG Encoders to Private Downstream Models
+### 33. SW-ProxyCE: Zero-Query Adversarial Transfer from Public EEG Encoders to Private Downstream Models
 
 📄 [arXiv](https://arxiv.org/abs/2608.16931)　📅 2026-08
 
@@ -732,7 +618,7 @@ Electroencephalography (EEG) foundation models have recently emerged as a promis
 
 </details>
 
-### 40. Attacker’s Noise Can Manipulate Your Audio-based LLM in the Real World
+### 34. Attacker’s Noise Can Manipulate Your Audio-based LLM in the Real World
 
 🎓 [Official](https://aclanthology.org/2026.eacl-long.66/)　📅 2026-03　🏷 ACL 2026
 
@@ -751,7 +637,7 @@ This paper investigates the real-world vulnerabilities of audio-based large lang
 
 </details>
 
-### 41. TSFAdv: Frequency-Guided Black-Box Adversarial Attacks on Time Series Forecasting
+### 35. TSFAdv: Frequency-Guided Black-Box Adversarial Attacks on Time Series Forecasting
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/66215)　📅 2026　🏷 ICML 2026
 
@@ -770,7 +656,7 @@ While deep neural network-based long-term time series forecasting (LTSF) has bec
 
 </details>
 
-### 42. Speech-Audio Compositional Attacks on Multimodal LLMs and Their Defense with SALMONN-Guard
+### 36. Speech-Audio Compositional Attacks on Multimodal LLMs and Their Defense with SALMONN-Guard
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/64737)　📅 2026　🏷 ICML 2026
 
@@ -789,7 +675,7 @@ Recent progress in large language models (LLMs) has enabled understanding of bot
 
 </details>
 
-### 43. SoundBreak: A Systematic Study of Audio-Only Adversarial Attacks on Trimodal Models
+### 37. SoundBreak: A Systematic Study of Audio-Only Adversarial Attacks on Trimodal Models
 
 🌐 [Project](https://aafiya-h.github.io/soundbreak/) · 🎓 [Official](https://aclanthology.org/2026.acl-long.1275/)　📅 2026　🏷 ACL 2026
 
@@ -808,7 +694,7 @@ Multimodal foundation models that integrate audio, vision, and language achieve 
 
 </details>
 
-### 44. Ripple Perturbations Through Structure: Likelihood-Constrained Adversarial Attacks on Heterogeneous Tabular Data
+### 38. Ripple Perturbations Through Structure: Likelihood-Constrained Adversarial Attacks on Heterogeneous Tabular Data
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/60737)　📅 2026　🏷 ICML 2026
 
@@ -827,7 +713,7 @@ Generating realistic adversarial examples for tabular data remains challenging d
 
 </details>
 
-### 45. Hearing Without Noticing? Attention-Aware Stealthy Black-Box Adversarial Audio Attacks
+### 39. Hearing Without Noticing? Attention-Aware Stealthy Black-Box Adversarial Audio Attacks
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/63275)　📅 2026　🏷 ICML 2026
 
@@ -846,7 +732,7 @@ Automatic Speech Recognition (ASR) systems, such as those in intelligent assista
 
 </details>
 
-### 46. Exposing Vulnerabilities in Explanation for Time Series Classifiers via Dual-Target Attacks
+### 40. Exposing Vulnerabilities in Explanation for Time Series Classifiers via Dual-Target Attacks
 
 📄 [arXiv](https://arxiv.org/abs/2602.02763) · 🎓 [Official](https://icml.cc/virtual/2026/poster/66770)　📅 2026　🏷 ICML 2026
 
@@ -865,7 +751,7 @@ Interpretable time series deep learning systems are often assessed by checking t
 
 </details>
 
-### 47. On the Robustness of Tabular Foundation Models: Test-Time Attacks and In-Context Defenses
+### 41. On the Robustness of Tabular Foundation Models: Test-Time Attacks and In-Context Defenses
 
 📄 [arXiv](https://arxiv.org/abs/2506.02978) · 🎓 [Official](https://satml.org/2026/accepted-papers/)　📅 2026　🏷 SaTML 2026
 
@@ -877,7 +763,7 @@ Interpretable time series deep learning systems are often assessed by checking t
 - 🔬 **研究方法**：系统评测test-time攻击并提出in-context防御
 - 📌 **结论**：揭示脆弱性并验证上下文防御有效性
 
-### 48. GRASP: Hard-Label Black-Box Malware Evasion with Higher Success, Fewer Queries, and Smaller Perturbations
+### 42. GRASP: Hard-Label Black-Box Malware Evasion with Higher Success, Fewer Queries, and Smaller Perturbations
 
 🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/6149.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track)　📅 2026
 
@@ -894,7 +780,7 @@ Machine learning (ML)-based malware detectors are widely deployed but remain vul
 
 </details>
 
-### 49. LBA: Textual Hard-Label Adversarial Attack Under Low Query Budgets
+### 43. LBA: Textual Hard-Label Adversarial Attack Under Low Query Budgets
 
 📄 [arXiv](https://arxiv.org/abs/2607.14101) · 🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/3591.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track)　📅 2026
 
@@ -913,7 +799,7 @@ Generating high-quality adversarial texts with low query budgets remains a chall
 
 </details>
 
-### 50. CIVA: Critic-Induced Value-Subspace Attacks on Visual World-Model Agents
+### 44. CIVA: Critic-Induced Value-Subspace Attacks on Visual World-Model Agents
 
 📄 [arXiv](https://arxiv.org/abs/2608.21114)　📅 2026-08
 
@@ -932,7 +818,7 @@ Visual world-model agents such as DreamerV3 act through a recurrent latent state
 
 </details>
 
-### 51. BRP: Query-Efficient Block Revert Patch for Decision-Based Black-Box Adversarial Attack
+### 45. BRP: Query-Efficient Block Revert Patch for Decision-Based Black-Box Adversarial Attack
 
 🌐 [Project](https://doi.org/10.1145/3770855.3818133)　📅 2026-08　🏷 KDD 2026
 
@@ -949,7 +835,7 @@ Adversarial patches pose a serious threat to deep neural networks, as small loca
 
 </details>
 
-### 52. Out of Sight, Out of Track: Adversarial Attacks on Propagation-based Multi-Object Trackers via Query State Manipulation
+### 46. Out of Sight, Out of Track: Adversarial Attacks on Propagation-based Multi-Object Trackers via Query State Manipulation
 
 📄 [arXiv](https://arxiv.org/abs/2604.00452) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Bouzidi_Out_of_Sight_Out_of_Track_Adversarial_Attacks_on_Propagation-based_CVPR_2026_paper.html)　📅 2026-04　🏷 CVPR 2026
 
@@ -968,45 +854,7 @@ Recent Tracking-by-Query-Propagation (TBP) methods have advanced Multi-Object Tr
 
 </details>
 
-### 53. SORA: Free Second-Order Attacks in Fast Adversarial Training
-
-📄 [arXiv](https://arxiv.org/abs/2606.00738) · 🎓 [Official](https://icml.cc/virtual/2026/poster/60969)　📅 2026　🏷 ICML 2026
-
-**关键词**：`defense`、`attack`、`adversarial attack`、`adversarial training`、`adversarial robustness`、`attack transferability`
-
-👤 **作者**：Mazdak Teymourian、Ramtin Moslemi、Farzan Rahmani、Mohammad Hossein Rohban
-
-- 🎯 **研究动机**：快速单步对抗训练常发生灾难性过拟合：单步表现高但多步鲁棒性崩溃，固定扰动幅度与方向是诱因
-- 🔬 **研究方法**：形式化 Epsilon Overfitting 视角并证明扰动可变性提升鲁棒泛化，提出预测 CO 发生的 PertAlign 指标，并据损失面几何设计自适应步长训练方法 SORA
-- 📌 **结论**：SORA 用单一固定超参跨数据集与架构持续防止 CO，鲁棒性匹配或超越先前方法且干净精度与效率更高
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Adversarial Training (AT) is a leading defense against adversarial examples but often suffers from Catastrophic Overfitting (CO) in efficient single-step variants, where robustness to multi-step attacks collapses despite high single-step performance. We address this failure mode with two contributions. First, we formalize Epsilon Overfitting (EO), a perspective in which fixed perturbation magnitudes and directions exacerbate CO, and show that introducing perturbation variability significantly improves robust generalization across different architectures and datasets. Second, we propose PertAlign (Perturbation Alignment), a theoretically grounded, computationally negligible metric that predicts CO onset by measuring gradient alignment across attack stages. Leveraging these insights, we introduce SORA, an adaptive step-size AT method that dynamically adjusts perturbations based on loss surface geometry. SORA consistently prevents CO, achieves state-of-the-art robustness and clean accuracy, and generalizes across datasets and architectures using a single fixed set of hyperparameters, which is essential for applicability in fast AT. Extensive experiments on diverse datasets and architectures show that SORA matches or surpasses the robustness of prior methods while delivering higher clean accuracy and superior efficiency. Code is available at https://github.com/SecondOrderAT/SORA.
-
-</details>
-
-### 54. On the Sharp Input-Output Analysis of Nonlinear Systems under Adversarial Attacks
-
-📄 [arXiv](https://arxiv.org/abs/2505.11688) · 🎓 [Official](https://icml.cc/virtual/2026/poster/60664)　📅 2026　🏷 ICML 2026
-
-**关键词**：`attack`、`adversarial attack`、`adversarial robustness`、`adversarial example`、`empirical evaluation`、`attack transferability`
-
-👤 **作者**：Jihun Kim、Yuchen Fang、Javad Lavaei
-
-- 🎯 **研究动机**：现有非线性系统输入输出学习只考虑高斯输入与良性扰动
-- 🔬 **研究方法**：扩展到相关非零均值对抗扰动，基函数线性组合重构下证明攻击时间稀疏时 l2 估计量可抗全信息对手，给出随输入记忆长度衰减的误差界并证最优性
-- 📌 **结论**：在显著广义假设下给出一般非线性部分可观测系统的锐利输入输出分析
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-This paper is concerned with learning the input-output mapping of general nonlinear dynamical systems. While the existing literature focuses on Gaussian inputs and benign disturbances, we significantly broaden the scope of admissible control inputs and allow correlated, nonzero-mean, adversarial disturbances. With our reformulation as a linear combination of basis functions, we prove that the $\ell_2$-norm estimator overcomes the challenges posed by an adversary with access to the full information history, provided that the attack times are sparse, *i.e.*, the probability that the system is under adversarial attack at a given time is smaller than a certain threshold. We provide an estimation error bound that decays with the input memory length and prove its optimality by constructing a problem instance that suffers from the same bound under probabilistic adversarial attacks. Our work provides a sharp input-output analysis for a generic nonlinear and partially observed system under significantly generalized assumptions compared to existing works.
-
-</details>
-
-### 55. On the existence of consistent adversarial attacks in high-dimensional linear classification
+### 47. On the existence of consistent adversarial attacks in high-dimensional linear classification
 
 📄 [arXiv](https://arxiv.org/abs/2506.12454) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64252)　📅 2026　🏷 ICML 2026
 
@@ -1025,7 +873,7 @@ What fundamentally distinguishes an adversarial attack from a misclassification 
 
 </details>
 
-### 56. MoCo-EA: Exploiting Adversarial Mode Connectivity for Efficient Evolutionary Attacks
+### 48. MoCo-EA: Exploiting Adversarial Mode Connectivity for Efficient Evolutionary Attacks
 
 📄 [arXiv](https://arxiv.org/abs/2605.18919) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64071)　📅 2026　🏷 ICML 2026
 
@@ -1044,7 +892,7 @@ Evolutionary algorithms for adversarial attacks leverage population-based search
 
 </details>
 
-### 57. MEDUSA: Motion Elimination in Diffusion Using Spectral Attack
+### 49. MEDUSA: Motion Elimination in Diffusion Using Spectral Attack
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/66572)　📅 2026　🏷 ICML 2026
 
@@ -1063,7 +911,7 @@ With the widespread application of Video Diffusion Models (VDMs), video synthesi
 
 </details>
 
-### 58. Low-Rank and Sparsity Are All You Need: Exploring Robust Hierarchical Latent Subspaces for Transferable Adversarial Attack
+### 50. Low-Rank and Sparsity Are All You Need: Exploring Robust Hierarchical Latent Subspaces for Transferable Adversarial Attack
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/65377)　📅 2026　🏷 ICML 2026
 
@@ -1082,7 +930,7 @@ Adversarial examples pose serious threats to deep neural networks, exposing fund
 
 </details>
 
-### 59. Low-Cost Hard-Label Adversarial Attack with Theoretical Foundations
+### 51. Low-Cost Hard-Label Adversarial Attack with Theoretical Foundations
 
 📄 [arXiv](https://arxiv.org/abs/2601.14300) · 🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/liu-jun)　📅 2026　🏷 USENIX Security 2026
 
@@ -1101,26 +949,7 @@ Hard-label black-box attacks, relying solely on top-1 predictions, represent one
 
 </details>
 
-### 60. Greedy Coordinate Diffusion: Effective and Semantically Coherent Adversarial Attacks via Diffusion Guidance
-
-📄 [arXiv](https://arxiv.org/abs/2606.15531) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63755)　📅 2026　🏷 ICML 2026
-
-**关键词**：`attack`、`adversarial attack`、`diffusion model`、`adversarial robustness`、`attack transferability`
-
-👤 **作者**：Bohdan Turbal、Blossom Metevier、Max Springer、Aleksandra Korolova
-
-- 🎯 **研究动机**：GCG 等优化攻击的高困惑度后缀易被防御检测，保持连贯的攻击又常改变查询语义偏离原目标
-- 🔬 **研究方法**：GCD 用离散扩散语言模型的生成先验引导对抗后缀搜索，无需梯度访问（灰盒），兼顾低困惑度与语义 adherence
-- 📌 **结论**：ASR 最高且响应质量有竞争力，被困惑度过滤与 guard 模型检出的比率低于其他方法
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Adversarial attacks on large language models have limited practical impact despite extensive research. Optimization-based attacks such as Greedy Coordinate Gradient (GCG) (Zou et al., 2023) produce high-perplexity, incoherent suffixes that existing defenses easily detect (Bengio et al., 2024). Moreover, attempting to enforce coherence constraints during optimization often prevents the attack from successfully eliciting the specific targeted response, resulting in low success rates against robust models. Conversely, attacks that maintain coherence often alter the semantic intent of queries; when the model complies with these altered queries, responses fail to address the adversary's original goal. In this work, we introduce Greedy Coordinate Diffusion (GCD), a novel framework that efficiently generates adversarial attacks against safety-aligned models while maintaining low perplexity and high semantic adherence to the adversary's original intent. GCD leverages the generative priors of discrete diffusion language models to guide the search for adversarial suffixes that achieve semantic coherence and adherence. Unlike GCG, GCD does not require direct gradient access, allowing it to operate in a gray-box setting. We show GCD achieves highest ASR while remaining competitive on response-quality scores, and that the constructed adversarial prompts are detected at lower rates than other methods by perplexity-based and guard-model filters.
-
-</details>
-
-### 61. Budget-Efficient Attacks and Robustness Training for Cooperative MARL
+### 52. Budget-Efficient Attacks and Robustness Training for Cooperative MARL
 
 🌐 [Project](https://anonymous.4open.science/r/BHEA-068D) · 🎓 [Official](https://icml.cc/virtual/2026/poster/62076)　📅 2026　🏷 ICML 2026
 
@@ -1139,7 +968,7 @@ Cooperative multi-agent reinforcement learning (CMARL) policies are vulnerable t
 
 </details>
 
-### 62. Bias in Zeroth-Order Normal Estimation for Decision-Based Attacks
+### 53. Bias in Zeroth-Order Normal Estimation for Decision-Based Attacks
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/65667)　📅 2026　🏷 ICML 2026
 
@@ -1158,7 +987,7 @@ Decision-based image attacks commonly rely on zeroth-order (ZO) Monte Carlo prob
 
 </details>
 
-### 63. Adversarial Vulnerability from Interference Between Features in Superposition
+### 54. Adversarial Vulnerability from Interference Between Features in Superposition
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/62594)　📅 2026　🏷 ICML 2026
 
@@ -1177,7 +1006,7 @@ Why do adversarial examples exist, and why do they transfer between models? Exis
 
 </details>
 
-### 64. Transferable Attacks on Open-Vocabulary Video Instance Segmentation via Dual-Objective Triggers
+### 55. Transferable Attacks on Open-Vocabulary Video Instance Segmentation via Dual-Objective Triggers
 
 🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/837.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track)　📅 2026
 
@@ -1194,7 +1023,7 @@ Open-vocabulary video instance segmentation (OV-VIS) couples spatial-temporal re
 
 </details>
 
-### 65. Unrestricted Targeted Deep Hashing Attack via Contrastive Latent Diffusion
+### 56. Unrestricted Targeted Deep Hashing Attack via Contrastive Latent Diffusion
 
 🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/4746.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=main-track)　📅 2026
 
@@ -1211,7 +1040,7 @@ Deep hashing is widely used for large-scale image retrieval but remains vulnerab
 
 </details>
 
-### 66. SEBA: Sample-Efficient Black-Box Attacks on Visual Reinforcement Learning
+### 57. SEBA: Sample-Efficient Black-Box Attacks on Visual Reinforcement Learning
 
 📄 [arXiv](https://arxiv.org/abs/2511.09681) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Huang_SEBA_Sample-Efficient_Black-Box_Attacks_on_Visual_Reinforcement_Learning_CVPR_2026_paper.html)　📅 2025-11　🏷 CVPR 2026
 
@@ -1230,7 +1059,7 @@ Visual reinforcement learning has achieved remarkable progress in visual control
 
 </details>
 
-### 67. Accelerating Targeted Hard-Label Adversarial Attacks in Low-Query Black-Box Settings
+### 58. Accelerating Targeted Hard-Label Adversarial Attacks in Low-Query Black-Box Settings
 
 📄 [arXiv](https://arxiv.org/abs/2505.16313) · 🎓 [Official](https://satml.org/2026/accepted-papers/)　📅 2025-05　🏷 SaTML 2026
 
@@ -1249,7 +1078,7 @@ Deep neural networks for image classification remain vulnerable to adversarial e
 
 </details>
 
-### 68. Stealthy Multi-task Adversarial Attacks
+### 59. Stealthy Multi-task Adversarial Attacks
 
 📄 [arXiv](https://arxiv.org/abs/2411.17936) · 🌐 [Project](https://eccv.ecva.net/virtual/2026/poster/5515)　📅 2024-11　🏷 ECCV 2026
 
@@ -1268,7 +1097,7 @@ Deep neural networks are highly vulnerable to adversarial perturbations, raising
 
 </details>
 
-### 69. Scaling Laws for Black-box Adversarial Attacks
+### 60. Scaling Laws for Black-box Adversarial Attacks
 
 📄 [arXiv](https://arxiv.org/abs/2411.16782) · 🌐 [Project](https://eccv.ecva.net/virtual/2026/poster/3565)　📅 2024-11　🏷 ECCV 2026
 
@@ -1287,7 +1116,7 @@ Adversarial examples exhibit cross-model transferability, enabling threatening b
 
 </details>
 
-### 70. Casting the Net! Revisiting MasterFace Impersonation Attacks
+### 61. Casting the Net! Revisiting MasterFace Impersonation Attacks
 
 📄 [arXiv](https://arxiv.org/abs/2608.06952) · 🌐 [Project](https://zenodo.org/records/20765343) · 🎓 [Official](https://www.sigsac.org/ccs/CCS2026/program/accepted-papers.html)　📅 2026-08　🏷 ACM CCS 2026
 
@@ -1306,7 +1135,7 @@ Impersonation is a fundamental security threat in face recognition systems (FRSs
 
 </details>
 
-### 71. Physical Adversarial Clothing Evades Visible-Thermal Detectors via Non-Overlapping RGB-T Pattern
+### 62. Physical Adversarial Clothing Evades Visible-Thermal Detectors via Non-Overlapping RGB-T Pattern
 
 📄 [arXiv](https://arxiv.org/abs/2605.04675) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Zhu_Physical_Adversarial_Clothing_Evades_Visible-Thermal_Detectors_via_Non-Overlapping_RGB-T_Pattern_CVPR_2026_paper.html)　📅 2026-05　🏷 CVPR 2026
 
@@ -1325,7 +1154,7 @@ Visible-thermal (RGB-T) object detection is a crucial technology for application
 
 </details>
 
-### 72. Unleashing the Representational Power of Fourier Shapes for Attacking Infrared Object Detection
+### 63. Unleashing the Representational Power of Fourier Shapes for Attacking Infrared Object Detection
 
 📄 [arXiv](https://arxiv.org/abs/2605.17822) · 🎓 [Official](https://icml.cc/virtual/2026/poster/65327)　📅 2026　🏷 ICML 2026
 
@@ -1344,7 +1173,7 @@ Infrared object detection is crucial for perception in autonomous driving and su
 
 </details>
 
-### 73. CamPI: Physical Adversarial Examples through Camera Power Signal Injection
+### 64. CamPI: Physical Adversarial Examples through Camera Power Signal Injection
 
 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Ren_CamPI_Physical_Adversarial_Examples_through_Camera_Power_Signal_Injection_CVPR_2026_paper.html)　📅 2026　🏷 CVPR 2026
 
@@ -1363,7 +1192,7 @@ Physical adversarial examples pose a concrete threat to real-world computer visi
 
 </details>
 
-### 74. Fractal Camouflage: A Bio-Inspired Approach for Multi-Scale Adversarial Attacks in the Infrared Domain
+### 65. Fractal Camouflage: A Bio-Inspired Approach for Multi-Scale Adversarial Attacks in the Infrared Domain
 
 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Hu_Fractal_Camouflage_A_Bio-Inspired_Approach_for_Multi-Scale_Adversarial_Attacks_in_CVPR_2026_paper.html)　📅 2026　🏷 CVPR 2026
 
@@ -1382,7 +1211,7 @@ Infrared pedestrian detection is crucial in safety-critical systems but remains 
 
 </details>
 
-### 75. Thermally Activated Dual-Modal Adversarial Clothing against AI Surveillance Systems
+### 66. Thermally Activated Dual-Modal Adversarial Clothing against AI Surveillance Systems
 
 📄 [arXiv](https://arxiv.org/abs/2511.09829) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Long_Thermally_Activated_Dual-Modal_Adversarial_Clothing_against_AI_Surveillance_Systems_CVPR_2026_paper.html)　📅 2025-11　🏷 CVPR 2026
 
@@ -1401,7 +1230,7 @@ Adversarial patches have emerged as a popular privacy-preserving approach for re
 
 </details>
 
-### 76. Temporal Misalignment Attacks against Multimodal Perception in Autonomous Driving
+### 67. Temporal Misalignment Attacks against Multimodal Perception in Autonomous Driving
 
 📄 [arXiv](https://arxiv.org/abs/2507.09095) · 🎓 [Official](https://satml.org/2026/accepted-papers/)　📅 2025-07　🏷 SaTML 2026
 
@@ -1420,7 +1249,7 @@ Multimodal fusion (MMF) plays a critical role in the perception of autonomous dr
 
 </details>
 
-### 77. SABER: Spatially Consistent 3D Universal Adversarial Objects for BEV Detectors
+### 68. SABER: Spatially Consistent 3D Universal Adversarial Objects for BEV Detectors
 
 📄 [arXiv](https://arxiv.org/abs/2505.22499) · 🌐 [Project](https://npucvr.github.io/SABER) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Li_SABER_Spatially_Consistent_3D_Universal_Adversarial_Objects_for_BEV_Detectors_CVPR_2026_paper.html)　📅 2025-05　🏷 CVPR 2026
 
@@ -1439,7 +1268,7 @@ Adversarial robustness of BEV 3D object detectors is critical for autonomous dri
 
 </details>
 
-### 78. GaussTrap: Stealthy Backdoor Attacks on 3D Gaussian Splatting for Targeted Scene Misperception
+### 69. GaussTrap: Stealthy Backdoor Attacks on 3D Gaussian Splatting for Targeted Scene Misperception
 
 📄 [arXiv](https://arxiv.org/abs/2504.20829) · 🌐 [Project](https://doi.org/10.1145/3770855.3817947)　📅 2025-04　🏷 KDD 2026
 
@@ -1455,5 +1284,81 @@ Adversarial robustness of BEV 3D object detectors is critical for autonomous dri
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 As 3D Gaussian Splatting (3DGS) emerges as a breakthrough in scene representation and novel view synthesis, its rapid adoption in safety-critical domains (e.g., autonomous systems, AR/VR) urgently demands scrutiny of potential security vulnerabilities. This paper presents the first systematic study of backdoor threats in 3DGS pipelines. We identify that adversaries may implant backdoor views to induce malicious scene confusion during inference, potentially leading to environmental misperception in autonomous navigation or spatial distortion in immersive environments. To uncover this risk, we propose GuassTrap, a novel poisoning attack method targeting 3DGS models. GuassTrap injects malicious views at specific attack viewpoints while preserving high-quality rendering in non-target views, ensuring minimal detectability and maximizing potential harm. Specifically, the proposed method consists of a three-stage pipeline (attack, stabilization, and normal training) to implant stealthy, viewpoint-consistent poisoned renderings in 3DGS, jointly optimizing attack efficacy and perceptual realism to expose security risks in 3D rendering. Extensive experiments on both synthetic and real-world datasets demonstrate that GuassTrap can effectively embed imperceptible yet harmful backdoor views while maintaining high-quality rendering in normal views, validating its robustness, adaptability, and practical applicability.
+
+</details>
+
+### 70. Defending from GeoLocalization through Adversarial Road Trips
+
+📄 [arXiv](https://arxiv.org/abs/2607.03277) · 🌐 [Project](https://eccv.ecva.net/virtual/2026/poster/4426)　📅 2026-07　🏷 ECCV 2026
+
+**关键词**：`defense`、`adversarial attack`、`adversarial robustness`、`privacy leakage`、`geolocation`、`location privacy`
+
+👤 **作者**：Niccolò Niccoli、Federico Becattini、Lorenzo Seidenari
+
+- 🎯 **研究动机**：检索式图像地理定位威胁位置隐私，需要有效对抗攻击保护用户
+- 🔬 **研究方法**：提出 RoadTrip Attack：把对抗过程概念化为通往攻击者选定地点的最优干扰旅程，beam search 迭代构造错误位置的序列并对查询图像施加细微扰动引导模型沿路径行进
+- 📌 **结论**：黑盒设定下攻击高度可迁移且图像伪影更不易察觉
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Retrieval-based image geolocalization has emerged as a powerful technique for determining the location of a query image by matching it against a large, geotagged database. The success of deep learning based approaches has raised concerns regarding privacy and safety. A way to protect users from geolocalization is to design adversarial attacks for such methods. In this paper, we introduce RoadTrip Attack (RTA), a novel and highly effective targeted adversarial attack for geolocalization. RTA conceptualizes the adversarial process as finding an optimal distractor journey to a specific, attacker-chosen location. It employs a beam search algorithm to iteratively construct a sequence of incorrect geographic locations that form a path to the target. At each step, the attack generates subtle perturbations to the query image, guiding the geolocalization model toward the next location in this deceptive path. We show that our method is also strong in black-box settings, obtaining highly transferable attacks with less perceptible image artifacts.
+
+</details>
+
+### 71. Decision-Level Hijacking: Injecting Cognitive Bias into Large Language Models via Bit-Flip Attacks
+
+📄 [arXiv](https://arxiv.org/abs/2607.25227)　📅 2026-07
+
+**关键词**：`attack`、`emergent misalignment`、`weight tampering`、`value hijacking`
+
+👤 **作者**：Yu Yan、…、Shouling Ji
+
+- 🎯 **研究动机**：已有攻击无法在不触发违禁内容、不损害功能的前提下实现定向认知操纵，开源模型共享生态使其可行
+- 🔬 **研究方法**：定义 decision-level hijacking 并提出 CogBias：经可微情感评估器把主观偏好转为优化信号、多目标损失联合约束，BitScout 定位关键比特，以超稀疏位翻转预算实现定向认知干预
+- 📌 **结论**：Llama-3.2-3B、Mistral-7B、Qwen2.5-14B 及商业推荐、争议事实话题场景中，翻转极少量比特即稳定诱导目标话题立场转移且对非任务影响有限
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large Language Models (LLMs) have been widely applied in high-stakes decision-making scenarios such as corporate strategy, and users are increasingly relying on their outputs. However, the deep integration of open-source model sharing ecosystems with LLM-powered critical decision-making applications also introduces critical risks: if an attacker can manipulate the model's cognitive stance, they can indirectly influence the judgments and actions of downstream decision-makers. This paper defines such threats as decision-level hijacking. Existing attacks fail to achieve targeted cognitive manipulation without triggering prohibited content or degrading model functionality. To fill this gap, this paper reveals that Bit-Flip Attacks (BFAs) can serve as an attack vector for inducing decision-level hijacking, requiring no real-time interaction or control over the training process, and only a minimal number of weight bits need to be flipped after deployment to achieve stealthy, low-cost, and persistent cognitive manipulation. Therefore, we propose CogBias, a cognitive bias injection framework for LLMs. CogBias converts subjective preferences into optimization signals via a differentiable sentiment evaluator, uses a multi-objective loss to jointly constrain multiple dimensions, and constructs BitScout to locate critical bits, achieving targeted cognitive intervention under an ultra-sparse flip budget. Experiments on Llama-3.2-3B, Mistral-7B, and Qwen2.5-14B, as well as on the commercial recommendation and controversial factual topic scenarios, demonstrate that flipping only a small number of bits stably induces significant stance shifts on target topics, while the impact on non-target tasks and overall output distribution is limited. This work demonstrates that minute perturbations to low-level weight data suffice to undermine the high-level value alignment of LLMs.
+
+</details>
+
+### 72. Learning with Bilevel-Minimax Optimization for Efficient and Reliable Transfer Attacks
+
+📄 [arXiv](https://arxiv.org/abs/2608.11815) · 🌐 [Project](https://eccv.ecva.net/virtual/2026/poster/5683)　📅 2026-08　🏷 ECCV 2026
+
+**关键词**：`attack`、`transfer attack`、`bilevel optimization`、`adversarial robustness`、`black-box security`
+
+👤 **作者**：Yaohua Liu、Yifan Guo、Jiaxin Gao
+
+- 🎯 **研究动机**：迁移攻击可迁移性由初始化、代理适配与梯度动态的耦合决定，现有方法将其割裂处理
+- 🔬 **研究方法**：BMAT 以双层极小极大建模初始化与扰动依赖、内层极小极大促进代理跨架构鲁棒，自底向上求解器耦合 Soft Weight Modulator 与 Implicit Gradient Approximator
+- 📌 **结论**：30+ 受害模型上超过 10 个强基线，分割任务 mIoU 最高降 2 倍
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Transfer-based adversarial attacks craft adversarial examples using surrogate models to mislead black-box victim models. Beyond perturbation generation, transferability is fundamentally governed by the coupling of initialization, surrogate adaptation, and gradient dynamics. We revisit this challenge from a bilevel-minimax perspective and propose BMAT (Bilevel-Minimax Adversarial Transfer). The bilevel formulation captures the dependency between initialization and perturbation, while the inner minimax problem promotes surrogate robustness for cross-architecture generalization. Algorithmically, we develop an integrated bottom-up solver that combines a Soft Weight Modulator and an Implicit Gradient Approximator to enable ternary coupling among initialization, surrogate adaptation, and perturbation optimization. We further provide theoretical insights into the optimization dynamics of the proposed bilevel-minimax framework. Extensive experiments on classification and segmentation benchmarks show that BMAT outperforms more than 10 strong baselines across more than 30 victim models, improving both intra- and cross-architecture transfer and yielding up to a 2x reduction in mIoU. Code is available at https://github.com/callous-youth/BMAT.
+
+</details>
+
+### 73. SegPAR: Class-Centric Decision-Based Sparse Attack for Semantic Segmentation
+
+📄 [arXiv](https://arxiv.org/abs/2608.11285) · 🌐 [Project](https://eccv.ecva.net/virtual/2026/poster/4370)　📅 2026-08　🏷 ECCV 2026
+
+**关键词**：`attack`、`semantic segmentation`、`adversarial robustness`、`robust training`、`black-box attack`、`sparse perturbation`
+
+👤 **作者**：Dongsu Song、DaeYun GO、Boseung Seo、Jay Hoon Jung
+
+- 🎯 **研究动机**：决策式黑盒稀疏攻击在语义分割中缺乏研究，已有分类域方法因图像中心像素累积迅速耗尽查询预算
+- 🔬 **研究方法**：SegPAR 转向类中心探索范式，并引入差异奖励消除标准决策奖励在像素累积中的误导反馈
+- 📌 **结论**：稀疏效率与 MIoU 降低显著优于黑盒基线，与白盒稀疏攻击具竞争力
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Despite the practical relevance of sparse decision-based black-box threats, they have received limited attention in semantic segmentation. To bridge this gap, we adapt the most representative decision-based black-box sparse attacks from the classification domain to serve as baselines, establishing a rigorous benchmark for this underexplored setting. In this context, we demonstrate that one of the existing methods suffers from severe query inefficiency due to its image-centric pixel accumulation, which rapidly exhausts query budgets across the vast image space. To overcome this, we propose SegPAR, a novel decision-based framework that shifts to a class-centric exploration paradigm. Furthermore, to eliminate the misleading feedback generated by standard decision rewards during pixel accumulation, we introduce a novel discrepancy reward. Extensive experiments show that SegPAR significantly outperforms black-box baselines in sparsity efficiency and MIoU reduction, while remaining competitive with white-box sparse attacks. Code is available at \href{https://github.com/KAU-QuantumAILab/SegPAR}{https://github.com/KAU-QuantumAILab/SegPAR}.
 
 </details>

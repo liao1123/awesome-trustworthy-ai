@@ -34,26 +34,7 @@ Multimodal large language models (MLLMs) can memorize identity-specific facts ab
 
 </details>
 
-### 2. Expose Your Disguise: Recovering Source Speaker Identity From Voice Conversion
-
-📄 [arXiv](https://arxiv.org/abs/2607.23650) · 🎓 [Official](https://www.sigsac.org/ccs/CCS2026/program/accepted-papers.html)　📅 2026-07　🏷 ACM CCS 2026
-
-**关键词**：`detection`、`voice conversion`、`privacy leakage`、`memorization`、`source speaker attribution`、`audio forensics`
-
-👤 **作者**：Hanlei Zhang、Zhongming Ma、Mingyang Zhang、Tengfei Liu、Yushi Cheng、Yanjiao Chen
-
-- 🎯 **研究动机**：语音转换对生物识别安全构成威胁，取证场景需从转换语音还原源说话人身份以缩小嫌疑范围
-- 🔬 **研究方法**：提出 TRIDENT 三叉架构：主提取器加两个辅助分支——识别转换机制类型与提取目标说话人潜表示，借此解耦混淆因素蒸馏出高判别力的源说话人表示
-- 📌 **结论**：对 7 个 SOTA 语音转换方法准确率高达 90.99%，电话信道、未见语言与自适应场景下保持鲁棒
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Voice conversion (VC) poses a significant threat to biometric security by allowing attackers to impersonate target speakers. In forensic contexts, recovering the source speaker's identity from converted audio is vital for narrowing the field of suspects. To address this, we propose TRIDENT, a retracing framework designed to restore a source speaker's original identity from a converted audio sample. TRIDENT utilizes a three-pronged architecture consisting of a primary extractor and two auxiliary branches. The first auxiliary branch identifies the underlying voice conversion mechanism. This design acknowledges that even if the exact conversion strategy is unknown, a high-performance model adopted by the attacker is typically a derivative or variant of established mainstream ones. The second auxiliary branch extracts a latent representation of the target speaker, facilitating the isolation of target-specific traits from the composite converted audio sample. Finally, the main extractor leverages insights from both auxiliary branches to decouple confounding factors and distill a highly discriminative representation of the source speaker's identity. Experimental results demonstrate that TRIDENT achieves an accuracy as high as 90.99% against 7 state-of-the-art voice conversion methods. Furthermore, TRIDENT maintains robust performance under challenging conditions, including telephony channels, unseen languages, and adaptive scenarios.
-
-</details>
-
-### 3. Do LLMs Really Memorize Personally Identifiable Information? Revisiting PII Leakage with a Cue-Controlled Memorization Framework
+### 2. Do LLMs Really Memorize Personally Identifiable Information? Revisiting PII Leakage with a Cue-Controlled Memorization Framework
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1560/)　📅 2026　🏷 ACL 2026
 
@@ -72,7 +53,7 @@ Large Language Models (LLMs) have been reported to “leak” Personally Identif
 
 </details>
 
-### 4. De-Anonymization at Scale via Tournament-Style Attribution
+### 3. De-Anonymization at Scale via Tournament-Style Attribution
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1489/)　📅 2026　🏷 ACL 2026
 
@@ -91,7 +72,7 @@ As LLMs rapidly advance and enter real-world use, their privacy implications are
 
 </details>
 
-### 5. A False Sense of Privacy: Evaluating Textual Data Sanitization Beyond Surface-level Privacy Leakage
+### 4. A False Sense of Privacy: Evaluating Textual Data Sanitization Beyond Surface-level Privacy Leakage
 
 📄 [arXiv](https://arxiv.org/abs/2504.21035) · 🎓 [Official](https://satml.org/2026/accepted-papers/)　📅 2026　🏷 SaTML 2026
 
@@ -103,7 +84,7 @@ As LLMs rapidly advance and enter real-world use, their privacy implications are
 - 🔬 **研究方法**：对脱敏文本发起语义再识别攻击，考察超出表层泄漏的隐私风险
 - 📌 **结论**：表层脱敏后仍可被语义线索重新识别，形成虚假隐私感
 
-### 6. Extracting Forgotten Prompts from Targeted Unlearned Models
+### 5. Extracting Forgotten Prompts from Targeted Unlearned Models
 
 📄 [arXiv](https://arxiv.org/abs/2609.03662)　📅 2026-09
 
@@ -122,7 +103,7 @@ Recent unlearning methods (e.g. NPO, DPO, LUNAR) make use of refusal alignment t
 
 </details>
 
-### 7. Extracting Knowledge from Tools in LLM Agents
+### 6. Extracting Knowledge from Tools in LLM Agents
 
 📄 [arXiv](https://arxiv.org/abs/2608.30288)　📅 2026-09
 
@@ -141,7 +122,7 @@ LLM agents commonly use knowledge-based tools and access their underlying files,
 
 </details>
 
-### 8. Mitigating Database Leakage in RAG Systems with Keyword-Grounded Fact Substitution
+### 7. Mitigating Database Leakage in RAG Systems with Keyword-Grounded Fact Substitution
 
 📄 [arXiv](https://arxiv.org/abs/2608.21656)　📅 2026-08
 
@@ -160,7 +141,7 @@ Retrieval-Augmented Generation (RAG) has emerged as a powerful paradigm for comb
 
 </details>
 
-### 9. Can LLMs Truly Forget? Revealing Unlearning Gaps Through Adversarial Evaluation
+### 8. Can LLMs Truly Forget? Revealing Unlearning Gaps Through Adversarial Evaluation
 
 📄 [arXiv](https://arxiv.org/abs/2608.21606)　📅 2026-08
 
@@ -179,7 +160,7 @@ Machine unlearning aims to remove the influence of targeted training data from a
 
 </details>
 
-### 10. Reinforcement Learning on Benign Facts Amplifies Leakage of Memorized Private Data
+### 9. Reinforcement Learning on Benign Facts Amplifies Leakage of Memorized Private Data
 
 📄 [arXiv](https://arxiv.org/abs/2608.21727)　📅 2026-08
 
@@ -198,7 +179,7 @@ Reinforcement learning with verifiable rewards (RLVR) is deployed to make models
 
 </details>
 
-### 11. Don't Trust the AI Ecosystem: Analyzing Privacy Leakage in Compromised Open-Source Components
+### 10. Don't Trust the AI Ecosystem: Analyzing Privacy Leakage in Compromised Open-Source Components
 
 📄 [arXiv](https://arxiv.org/abs/2607.27886) · 🎓 [Official](https://www.sigsac.org/ccs/CCS2026/program/accepted-papers.html)　📅 2026-07　🏷 ACM CCS 2026
 
@@ -217,7 +198,7 @@ Existing model inversion (MI) attacks predominantly rely on post-training optimi
 
 </details>
 
-### 12. TrustCLIP: Learning Private Visual Features via Adversarial Reconstruction
+### 11. TrustCLIP: Learning Private Visual Features via Adversarial Reconstruction
 
 📄 [arXiv](https://arxiv.org/abs/2607.04484) · 🌐 [Project](https://eccv.ecva.net/virtual/2026/poster/4310)　📅 2026-07　🏷 ECCV 2026
 
@@ -236,7 +217,7 @@ Vision and vision-language models rely on high-level visual representations that
 
 </details>
 
-### 13. Seeing Through the Weights: Privacy Leakage in Scene Coordinate Regression
+### 12. Seeing Through the Weights: Privacy Leakage in Scene Coordinate Regression
 
 📄 [arXiv](https://arxiv.org/abs/2606.31164) · 🌐 [Project](https://eccv.ecva.net/virtual/2026/poster/5226)　📅 2026-06　🏷 ECCV 2026
 
@@ -255,7 +236,7 @@ Scene Coordinate Regression (SCR) methods are increasingly adopted for visual lo
 
 </details>
 
-### 14. Broken Memories: Detecting and Mitigating Memorization in Diffusion Models with Degraded Generations
+### 13. Broken Memories: Detecting and Mitigating Memorization in Diffusion Models with Degraded Generations
 
 📄 [arXiv](https://arxiv.org/abs/2605.22050) · 🌐 [Project](https://doi.org/10.1145/3770855.3817770)　📅 2026-05　🏷 KDD 2026
 
@@ -274,7 +255,7 @@ While diffusion models excel at generating high-quality images, their tendency t
 
 </details>
 
-### 15. Unintended Memorization of Sensitive Information in Fine-Tuned Language Models
+### 14. Unintended Memorization of Sensitive Information in Fine-Tuned Language Models
 
 🎓 [Official](https://aclanthology.org/2026.eacl-long.304/)　📅 2026-03　🏷 ACL 2026
 
@@ -293,7 +274,7 @@ Fine-tuning Large Language Models (LLMs) on sensitive datasets carries a substan
 
 </details>
 
-### 16. Large-scale online deanonymization with LLMs
+### 15. Large-scale online deanonymization with LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2602.16800) · 🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/lermen)　📅 2026-02　🏷 USENIX Security 2026
 
@@ -312,7 +293,7 @@ We show that large language models can be used to perform at-scale deanonymizati
 
 </details>
 
-### 17. Benchmarking Knowledge-Extraction Attack and Defense on Retrieval-Augmented Generation
+### 16. Benchmarking Knowledge-Extraction Attack and Defense on Retrieval-Augmented Generation
 
 📄 [arXiv](https://arxiv.org/abs/2602.09319) · 🌐 [Project](https://doi.org/10.1145/3770855.3817524)　📅 2026-02　🏷 KDD 2026
 
@@ -331,7 +312,7 @@ Retrieval-Augmented Generation (RAG) has become a cornerstone of knowledge-inten
 
 </details>
 
-### 18. Connect the Dots: Knowledge Graph–Guided Crawler Attack on Retrieval-Augmented Generation Systems
+### 17. Connect the Dots: Knowledge Graph–Guided Crawler Attack on Retrieval-Augmented Generation Systems
 
 📄 [arXiv](https://arxiv.org/abs/2601.15678) · 🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/yao-dots)　📅 2026-01　🏷 USENIX Security 2026
 
@@ -350,7 +331,7 @@ Stealing attacks pose a persistent threat to the intellectual property of deploy
 
 </details>
 
-### 19. Memorization Dynamics in Knowledge Distillation for Language Models
+### 18. Memorization Dynamics in Knowledge Distillation for Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2601.15394) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-01
 
@@ -369,7 +350,7 @@ Knowledge Distillation (KD) is increasingly adopted to transfer capabilities fro
 
 </details>
 
-### 20. A Durable Machine Unlearning Framework to Nullify Recall of Sensitive Data on Incremental Training
+### 19. A Durable Machine Unlearning Framework to Nullify Recall of Sensitive Data on Incremental Training
 
 🌐 [Project](https://ijcai-preprints.s3.us-west-1.amazonaws.com/2026/AI4T108.pdf) · 🎓 [Official](https://2026.ijcai.org/accepted-papers/?ijtrack=special-track-on-ai4tech-ai-enabling-critical-technologies)　📅 2026
 
@@ -386,7 +367,7 @@ The advancement of data privacy regulations has spurred the development of Machi
 
 </details>
 
-### 21. Two Calm Ends and the Wild Middle: A Geometric Picture of Memorization in Diffusion Models
+### 20. Two Calm Ends and the Wild Middle: A Geometric Picture of Memorization in Diffusion Models
 
 📄 [arXiv](https://arxiv.org/abs/2602.17846) · 🎓 [Official](https://icml.cc/virtual/2026/poster/65094)　📅 2026　🏷 ICML 2026
 
@@ -405,7 +386,7 @@ Diffusion models generate high-quality samples but can also memorize training da
 
 </details>
 
-### 22. Towards Whole-corpus Reconstruction of Heterogeneous RAG Knowledge Bases
+### 21. Towards Whole-corpus Reconstruction of Heterogeneous RAG Knowledge Bases
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/60734)　📅 2026　🏷 ICML 2026
 
@@ -424,7 +405,7 @@ Retrieval-Augmented Generation (RAG) systems are increasingly deployed to provid
 
 </details>
 
-### 23. Spurious Rewards Paradox: Mechanistically Understanding How RLVR Activates Memorization Shortcuts in LLMs
+### 22. Spurious Rewards Paradox: Mechanistically Understanding How RLVR Activates Memorization Shortcuts in LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2601.11061) · 🎓 [Official](https://icml.cc/virtual/2026/poster/63951)　📅 2026　🏷 ICML 2026
 
@@ -443,7 +424,7 @@ Reinforcement Learning with Verifiable Rewards (RLVR) is highly effective for en
 
 </details>
 
-### 24. Rethinking Pretraining Data Detection for LLMs: From Local to Global
+### 23. Rethinking Pretraining Data Detection for LLMs: From Local to Global
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/63793)　📅 2026　🏷 ICML 2026
 
@@ -462,7 +443,7 @@ The advancements of Large Language Models (LLMs) are primarily attributed to mas
 
 </details>
 
-### 25. Reconstructing Template-Memorized Images from Natural Prompts
+### 24. Reconstructing Template-Memorized Images from Natural Prompts
 
 📄 [arXiv](https://arxiv.org/abs/2507.07947) · 🎓 [Official](https://icml.cc/virtual/2026/poster/62183)　📅 2026　🏷 ICML 2026
 
@@ -481,7 +462,7 @@ Recent advances in generative models, such as diffusion models, have raised conc
 
 </details>
 
-### 26. Provable Training Data Identification for Large Language Models
+### 25. Provable Training Data Identification for Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2510.09717) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61277)　📅 2026　🏷 ICML 2026
 
@@ -500,7 +481,7 @@ Identifying training data of large-scale models is critical for copyright litiga
 
 </details>
 
-### 27. OptiFluence: Principled Design of Privacy Canaries
+### 26. OptiFluence: Principled Design of Privacy Canaries
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/66405)　📅 2026　🏷 ICML 2026
 
@@ -519,7 +500,7 @@ Privacy auditing has emerged as a practical tool for empirically estimating trai
 
 </details>
 
-### 28. Localizing Memorized Regions in Diffusion Models via Coordinate-Wise Curvature Differences
+### 27. Localizing Memorized Regions in Diffusion Models via Coordinate-Wise Curvature Differences
 
 📄 [arXiv](https://arxiv.org/abs/2605.26756) · 🎓 [Official](https://icml.cc/virtual/2026/poster/60745)　📅 2026　🏷 ICML 2026
 
@@ -538,7 +519,7 @@ Diffusion models can unintentionally memorize training samples, raising concerns
 
 </details>
 
-### 29. How much can language models memorize?
+### 28. How much can language models memorize?
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/62989)　📅 2026　🏷 ICML 2026
 
@@ -557,7 +538,7 @@ We propose a new method for estimating how much a model knows about a datapoint 
 
 </details>
 
-### 30. Extracting alignment data in open models
+### 29. Extracting alignment data in open models
 
 📄 [arXiv](https://arxiv.org/abs/2510.18554) · 🎓 [Official](https://icml.cc/virtual/2026/poster/66452)　📅 2026　🏷 ICML 2026
 
@@ -576,7 +557,7 @@ In this work, we show that it is possible to extract significant amounts of alig
 
 </details>
 
-### 31. Detecting RAG Extraction Attack via Dual-Path Runtime Integrity Game
+### 30. Detecting RAG Extraction Attack via Dual-Path Runtime Integrity Game
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.385/)　📅 2026　🏷 ACL 2026
 
@@ -595,7 +576,7 @@ Retrieval-Augmented Generation (RAG) systems augment large language models with 
 
 </details>
 
-### 32. CoLA: A Choice Leakage Attack Framework to Expose Privacy Risks in Subset Training
+### 31. CoLA: A Choice Leakage Attack Framework to Expose Privacy Risks in Subset Training
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.733/)　📅 2026　🏷 ACL 2026
 
@@ -614,7 +595,7 @@ Training models on a carefully chosen portion of data rather than the full datas
 
 </details>
 
-### 33. Reconstructing Training Data from Models Trained with Transfer Learning
+### 32. Reconstructing Training Data from Models Trained with Transfer Learning
 
 🎓 [Official](https://satml.org/2026/accepted-papers/)　📅 2026　🏷 SaTML 2026
 
@@ -624,7 +605,7 @@ Training models on a carefully chosen portion of data rather than the full datas
 - 🔬 **研究方法**：对迁移训练的模型发起embedding泄漏式数据重构攻击
 - 📌 **结论**：迁移学习并不能消除训练数据重构风险
 
-### 34. On the Effectiveness of Membership Inference in Targeted Data Extraction from Large Language Models
+### 33. On the Effectiveness of Membership Inference in Targeted Data Extraction from Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2512.13352) · 🎓 [Official](https://satml.org/2026/accepted-papers/)　📅 2025-12　🏷 SaTML 2026
 
@@ -643,7 +624,7 @@ Large Language Models (LLMs) are prone to memorizing training data, which poses 
 
 </details>
 
-### 35. Do Vision-Language Models Leak What They Learn? Adaptive Token-Weighted Model Inversion Attacks
+### 34. Do Vision-Language Models Leak What They Learn? Adaptive Token-Weighted Model Inversion Attacks
 
 📄 [arXiv](https://arxiv.org/abs/2508.04097) · 🌐 [Project](https://ngoc-nguyen-0.github.io/SMI_AW/) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Nguyen_Do_Vision-Language_Models_Leak_What_They_Learn_Adaptive_Token-Weighted_Model_CVPR_2026_paper.html)　📅 2025-08　🏷 CVPR 2026
 
@@ -662,7 +643,7 @@ Model inversion (MI) attacks pose significant privacy risks by reconstructing pr
 
 </details>
 
-### 36. Privacy-Aware Decoding: Mitigating Privacy Leakage of Large Language Models in Retrieval-Augmented Generation
+### 35. Privacy-Aware Decoding: Mitigating Privacy Leakage of Large Language Models in Retrieval-Augmented Generation
 
 📄 [arXiv](https://arxiv.org/abs/2508.03098) · 🌐 [Project](https://doi.org/10.1145/3770855.3817665)　📅 2025-08　🏷 KDD 2026
 
@@ -681,7 +662,7 @@ Retrieval-Augmented Generation (RAG) enhances the factual accuracy of large lang
 
 </details>
 
-### 37. DIME: Query-Efficient Framework for Membership Inference on Diffusion Models
+### 36. DIME: Query-Efficient Framework for Membership Inference on Diffusion Models
 
 📄 [arXiv](https://arxiv.org/abs/2608.22824)　📅 2026-08
 
@@ -700,7 +681,7 @@ Membership inference attacks expose whether individual records were used to trai
 
 </details>
 
-### 38. Five Queries Are Enough: Query-Efficient and Surrogate-Free Membership Inference Attacks on RAG via Entailment
+### 37. Five Queries Are Enough: Query-Efficient and Surrogate-Free Membership Inference Attacks on RAG via Entailment
 
 📄 [arXiv](https://arxiv.org/abs/2605.24312) · 🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/nguyen-nguyen)　📅 2026-05　🏷 USENIX Security 2026
 
@@ -719,7 +700,7 @@ Retrieval-augmented generation (RAG) has become central to large language model 
 
 </details>
 
-### 39. Membership Inference Attacks for Retrieval Based In-Context Learning for Document Question Answering
+### 38. Membership Inference Attacks for Retrieval Based In-Context Learning for Document Question Answering
 
 📄 [arXiv](https://arxiv.org/abs/2605.04116) · 🎓 [Official](https://satml.org/2026/accepted-papers/)　📅 2026-05　🏷 SaTML 2026
 
@@ -738,7 +719,7 @@ We show that remotely hosted applications employing in-context learning when aug
 
 </details>
 
-### 40. A Unified Perspective on Adversarial Membership Manipulation in Vision Models
+### 39. A Unified Perspective on Adversarial Membership Manipulation in Vision Models
 
 📄 [arXiv](https://arxiv.org/abs/2604.02780) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Gao_A_Unified_Perspective_on_Adversarial_Membership_Manipulation_in_Vision_Models_CVPR_2026_paper.html)　📅 2026-04　🏷 CVPR 2026
 
@@ -757,7 +738,7 @@ Membership inference attacks (MIAs) aim to determine whether a specific data poi
 
 </details>
 
-### 41. Detecting Training Data of Large Language Models via Expectation Maximization
+### 40. Detecting Training Data of Large Language Models via Expectation Maximization
 
 🎓 [Official](https://aclanthology.org/2026.eacl-long.49/)　📅 2026-03　🏷 ACL 2026
 
@@ -776,7 +757,7 @@ Membership inference attacks (MIAs) aim to determine whether a specific example 
 
 </details>
 
-### 42. Image Corruption-Inspired Membership Inference Attacks against Large Vision-Language Models
+### 41. Image Corruption-Inspired Membership Inference Attacks against Large Vision-Language Models
 
 🎓 [Official](https://aclanthology.org/2026.eacl-long.371/)　📅 2026-03　🏷 ACL 2026
 
@@ -795,7 +776,7 @@ Large vision-language models (LVLMs) have demonstrated outstanding performance i
 
 </details>
 
-### 43. Neural Breadcrumbs: Membership Inference Attacks on LLMs Through Hidden State and Attention Pattern Analysis
+### 42. Neural Breadcrumbs: Membership Inference Attacks on LLMs Through Hidden State and Attention Pattern Analysis
 
 🎓 [Official](https://aclanthology.org/2026.eacl-long.262/)　📅 2026-03　🏷 ACL 2026
 
@@ -814,7 +795,7 @@ Membership inference attacks (MIAs) reveal whether specific data was used to tra
 
 </details>
 
-### 44. VidLeaks: Membership Inference Attacks Against Text-to-Video Models
+### 43. VidLeaks: Membership Inference Attacks Against Text-to-Video Models
 
 📄 [arXiv](https://arxiv.org/abs/2601.11210) · 🌐 [Project](https://zenodo.org/records/17972831) · 🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/wang-li)　📅 2026-01　🏷 USENIX Security 2026
 
@@ -833,7 +814,7 @@ The proliferation of powerful Text-to-Video (T2V) models, trained on massive web
 
 </details>
 
-### 45. Window-based Membership Inference Attacks Against Fine-tuned Large Language Models
+### 44. Window-based Membership Inference Attacks Against Fine-tuned Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2601.02751) · 🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/chen-yuetian)　📅 2026-01　🏷 USENIX Security 2026
 
@@ -852,7 +833,7 @@ Most membership inference attacks (MIAs) against Large Language Models (LLMs) re
 
 </details>
 
-### 46. DeepLeak: Privacy Enhancing Hardening of Model Explanations Against Membership Leakage
+### 45. DeepLeak: Privacy Enhancing Hardening of Model Explanations Against Membership Leakage
 
 📄 [arXiv](https://arxiv.org/abs/2601.03429) · 🎓 [Official](https://satml.org/2026/accepted-papers/)　📅 2026-01　🏷 SaTML 2026
 
@@ -871,7 +852,7 @@ Machine learning (ML) explainability is central to algorithmic transparency in h
 
 </details>
 
-### 47. Where Rectified Flows Leak: Characterising Membership Signals Along the Interpolation Path
+### 46. Where Rectified Flows Leak: Characterising Membership Signals Along the Interpolation Path
 
 🎓 [Official](https://icml.cc/virtual/2026/poster/63762)　📅 2026　🏷 ICML 2026
 
@@ -890,7 +871,7 @@ Understanding what generative models retain from training data remains challengi
 
 </details>
 
-### 48. Robust Membership Inference for Large Language Models under Adversarial Generative Corruption
+### 47. Robust Membership Inference for Large Language Models under Adversarial Generative Corruption
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1835/)　📅 2026　🏷 ACL 2026
 
@@ -909,7 +890,7 @@ Membership inference attack (MIA) has emerged as a promising tool for auditing t
 
 </details>
 
-### 49. Powerful Training-Free Membership Inference Against Fine-Tuned Autoregressive Language Models
+### 48. Powerful Training-Free Membership Inference Against Fine-Tuned Autoregressive Language Models
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.640/)　📅 2026　🏷 ACL 2026
 
@@ -928,7 +909,7 @@ Fine-tuned language models pose significant privacy risks, as they may memorize 
 
 </details>
 
-### 50. Membership Inference Attacks for Unseen Classes
+### 49. Membership Inference Attacks for Unseen Classes
 
 📄 [arXiv](https://arxiv.org/abs/2506.06488) · 🎓 [Official](https://icml.cc/virtual/2026/poster/65656)　📅 2026　🏷 ICML 2026
 
@@ -947,7 +928,7 @@ A key tool in developing safe AI models is data auditing, i.e., using statistica
 
 </details>
 
-### 51. How does Bayesian Sampling help Membership Inference Attacks?
+### 50. How does Bayesian Sampling help Membership Inference Attacks?
 
 📄 [arXiv](https://arxiv.org/abs/2503.07482) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61311)　📅 2026　🏷 ICML 2026
 
@@ -966,7 +947,7 @@ Membership Inference Attacks (MIAs) aim to estimate whether a specific data poin
 
 </details>
 
-### 52. Enhancing Membership Inference Attacks on Diffusion Models from a Frequency-Domain Perspective
+### 51. Enhancing Membership Inference Attacks on Diffusion Models from a Frequency-Domain Perspective
 
 📄 [arXiv](https://arxiv.org/abs/2505.20955) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64135)　📅 2026　🏷 ICML 2026
 
@@ -985,7 +966,7 @@ Diffusion models have achieved tremendous success in image generation, but they 
 
 </details>
 
-### 53. CheckMIABench: Firm Foundations For Membership Inference Attacks on Language Models
+### 52. CheckMIABench: Firm Foundations For Membership Inference Attacks on Language Models
 
 🎓 [Official](https://aclanthology.org/2026.acl-short.30/)　📅 2026　🏷 ACL 2026
 
@@ -1004,7 +985,7 @@ Membership inference attacks (MIAs) are a canonical way to assess a machine lear
 
 </details>
 
-### 54. Black-Box Membership Inference Attacks for Video Training Data in Multimodal Large Language Models
+### 53. Black-Box Membership Inference Attacks for Video Training Data in Multimodal Large Language Models
 
 🎓 [Official](https://aclanthology.org/2026.acl-long.1820/)　📅 2026　🏷 ACL 2026
 
@@ -1023,7 +1004,7 @@ The increasing use of video data in training multimodal large language models (M
 
 </details>
 
-### 55. Black-box Membership Inference Attacks on the Pre-training Data of Image-generation Models
+### 54. Black-box Membership Inference Attacks on the Pre-training Data of Image-generation Models
 
 📄 [arXiv](https://arxiv.org/abs/2605.27020) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Qi_Black-box_Membership_Inference_Attacks_on_the_Pre-training_Data_of_Image-generation_CVPR_2026_paper.html)　📅 2026　🏷 CVPR 2026
 
@@ -1042,7 +1023,7 @@ The rapid advancement of diffusion-based image generation models has raised seri
 
 </details>
 
-### 56. Membership Inference Attacks on Tokenizers of Large Language Models
+### 55. Membership Inference Attacks on Tokenizers of Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2510.05699) · 🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/tong)　📅 2025-10　🏷 USENIX Security 2026
 
@@ -1061,7 +1042,7 @@ Membership inference attacks (MIAs) are widely used to assess the privacy risks 
 
 </details>
 
-### 57. Imitative Membership Inference Attack
+### 56. Imitative Membership Inference Attack
 
 📄 [arXiv](https://arxiv.org/abs/2509.06796) · 🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/du)　📅 2025-09　🏷 USENIX Security 2026
 
@@ -1080,7 +1061,7 @@ A Membership Inference Attack (MIA) assesses how much a target machine learning 
 
 </details>
 
-### 58. Privacy Risks in Time Series Forecasting: User- and Record-Level Membership Inference
+### 57. Privacy Risks in Time Series Forecasting: User- and Record-Level Membership Inference
 
 📄 [arXiv](https://arxiv.org/abs/2509.04169) · 🎓 [Official](https://satml.org/2026/accepted-papers/)　📅 2025-09　🏷 SaTML 2026
 
@@ -1099,7 +1080,7 @@ Membership inference attacks (MIAs) aim to determine whether specific data were 
 
 </details>
 
-### 59. CompLeak: Deep Learning Model Compression Exacerbates Privacy Leakage
+### 58. CompLeak: Deep Learning Model Compression Exacerbates Privacy Leakage
 
 📄 [arXiv](https://arxiv.org/abs/2507.16872) · 🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/li-na)　📅 2025-07　🏷 USENIX Security 2026
 
@@ -1118,7 +1099,7 @@ Model compression is crucial for minimizing memory storage and accelerating infe
 
 </details>
 
-### 60. Exploratory As-Analyzed No-Detection of Culturally-Marked Predicate-Triggered PII Amplification in a Synthetic-English RAG Probe: A Predicate-Resource-Confounded Audit
+### 59. Exploratory As-Analyzed No-Detection of Culturally-Marked Predicate-Triggered PII Amplification in a Synthetic-English RAG Probe: A Predicate-Resource-Confounded Audit
 
 📄 [arXiv](https://arxiv.org/abs/2608.20351) · 🎓 [Official](https://aclanthology.org/2026.stereacult-1.3/)　📅 2026-08
 
@@ -1137,7 +1118,7 @@ We ask whether stereotype-loaded queries about culturally marked people leak mor
 
 </details>
 
-### 61. From Weak Cues to Real Identities: Evaluating Inference-Driven De-Anonymization in LLM Agents
+### 60. From Weak Cues to Real Identities: Evaluating Inference-Driven De-Anonymization in LLM Agents
 
 📄 [arXiv](https://arxiv.org/abs/2603.18382) · 🎓 [Official](https://icml.cc/virtual/2026/poster/64683)　📅 2026　🏷 ICML 2026
 
@@ -1156,26 +1137,7 @@ Anonymization is often assumed to protect privacy once explicit identifiers are 
 
 </details>
 
-### 62. Evaluating Answer Leakage Robustness of LLM Tutors against Adversarial Student Attacks
-
-🎓 [Official](https://aclanthology.org/2026.acl-long.1412/)　📅 2026　🏷 ACL 2026
-
-**关键词**：`benchmark`、`adversarial robustness`、`privacy leakage`、`memorization`、`LLM privacy`、`data leakage`
-
-👤 **作者**：Jin Zhao、Marta Knežević、Tanja Käser
-
-- 🎯 **研究动机**：以往答案泄露评测假设善意学习者，LLM 导师在学生滥用下的鲁棒性未被探索
-- 🔬 **研究方法**：把六组对抗与说服技术适配到教育场景探测导师泄露答案倾向，提出微调越狱对抗学生 agent 作标准化基准核心，并给防御策略
-- 📌 **结论**：通用对抗学生 agent 常攻击失败而微调越狱 agent 有效；简单防御可降低答案泄露并增强鲁棒性
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Large Language Models (LLMs) are increasingly used in education, yet their default helpfulness often conflicts with pedagogical principles. Prior work evaluates pedagogical quality via answer leakage–the disclosure of complete solutions instead of scaffolding–but typically assumes well-intentioned learners, leaving tutor robustness under student misuse largely unexplored. In this paper, we study scenarios where students behave adversarially and aim to obtain the correct answer from the tutor. We evaluate a broad set of LLM-based tutor models, including different model families, pedagogically aligned models, and a multi-agent design, under a range of adversarial student attacks. We adapt six groups of adversarial and persuasive techniques to the educational setting and use them to probe how likely a tutor is to reveal the final answer. We evaluate answer leakage robustness using different types of in-context adversarial student agents, finding that they often fail to carry out effective attacks. We therefore introduce an adversarial student agent that we fine-tune to jailbreak LLM-based tutors, which we propose as the core of a standardized benchmark for evaluating tutor robustness. Finally, we present simple but effective defense strategies that reduce answer leakage and strengthen the robustness of LLM-based tutors in adversarial scenarios.
-
-</details>
-
-### 63. Black-Box Embedding Inversion Attack on Vector Databases
+### 61. Black-Box Embedding Inversion Attack on Vector Databases
 
 🌐 [Project](https://doi.org/10.1145/3770855.3817917)　📅 2026-08　🏷 KDD 2026
 
@@ -1185,7 +1147,7 @@ Large Language Models (LLMs) are increasingly used in education, yet their defau
 - 🔬 **研究方法**：对向量数据库发起黑盒embedding inversion攻击重建存储内容
 - 📌 **结论**：仅凭查询接口即可高精度重建原文，向量库存在实质泄漏
 
-### 64. What Your Features Reveal: Data-Efficient Black-Box Feature Inversion Attack for Split DNNs
+### 62. What Your Features Reveal: Data-Efficient Black-Box Feature Inversion Attack for Split DNNs
 
 📄 [arXiv](https://arxiv.org/abs/2511.15316) · 🎓 [Official](https://openaccess.thecvf.com/content/CVPR2026/html/Ren_What_Your_Features_Reveal_Data-Efficient_Black-Box_Feature_Inversion_Attack_for_CVPR_2026_paper.html)　📅 2025-11　🏷 CVPR 2026
 
@@ -1204,7 +1166,7 @@ Split DNNs enable edge devices by offloading intensive computation to a cloud se
 
 </details>
 
-### 65. Efficient Privacy Auditing for Generative Model via Local Information
+### 63. Efficient Privacy Auditing for Generative Model via Local Information
 
 🌐 [Project](https://doi.org/10.1145/3770855.3817793)　📅 2026-08　🏷 KDD 2026
 
@@ -1221,7 +1183,7 @@ Diffusion models have become the dominant approach for text-to-image generation,
 
 </details>
 
-### 66. Deletion Isn't Enough: Auditing RAG for Selective Forgetting
+### 64. Deletion Isn't Enough: Auditing RAG for Selective Forgetting
 
 🌐 [Project](https://doi.org/10.1145/3805712.3808545)　📅 2026-07　🏷 SIGIR 2026
 
@@ -1231,45 +1193,7 @@ Diffusion models have become the dominant approach for text-to-image generation,
 - 🔬 **研究方法**：构造paired disclosure probe审计撤回后的残留泄漏
 - 📌 **结论**：删除操作后的RAG仍可泄露应被遗忘的内容
 
-### 67. Defending from GeoLocalization through Adversarial Road Trips
-
-📄 [arXiv](https://arxiv.org/abs/2607.03277) · 🌐 [Project](https://eccv.ecva.net/virtual/2026/poster/4426)　📅 2026-07　🏷 ECCV 2026
-
-**关键词**：`defense`、`adversarial attack`、`adversarial robustness`、`privacy leakage`、`geolocation`、`location privacy`
-
-👤 **作者**：Niccolò Niccoli、Federico Becattini、Lorenzo Seidenari
-
-- 🎯 **研究动机**：检索式图像地理定位威胁位置隐私，需要有效对抗攻击保护用户
-- 🔬 **研究方法**：提出 RoadTrip Attack：把对抗过程概念化为通往攻击者选定地点的最优干扰旅程，beam search 迭代构造错误位置的序列并对查询图像施加细微扰动引导模型沿路径行进
-- 📌 **结论**：黑盒设定下攻击高度可迁移且图像伪影更不易察觉
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Retrieval-based image geolocalization has emerged as a powerful technique for determining the location of a query image by matching it against a large, geotagged database. The success of deep learning based approaches has raised concerns regarding privacy and safety. A way to protect users from geolocalization is to design adversarial attacks for such methods. In this paper, we introduce RoadTrip Attack (RTA), a novel and highly effective targeted adversarial attack for geolocalization. RTA conceptualizes the adversarial process as finding an optimal distractor journey to a specific, attacker-chosen location. It employs a beam search algorithm to iteratively construct a sequence of incorrect geographic locations that form a path to the target. At each step, the attack generates subtle perturbations to the query image, guiding the geolocalization model toward the next location in this deceptive path. We show that our method is also strong in black-box settings, obtaining highly transferable attacks with less perceptible image artifacts.
-
-</details>
-
-### 68. SOPE: Situation-Aware and Statistically Indistinguishable Privacy Exfiltration for MCP-enabled Agents
-
-🎓 [Official](https://icml.cc/virtual/2026/poster/64028)　📅 2026　🏷 ICML 2026
-
-**关键词**：`attack`、`privacy attack`、`MCP`、`privacy leakage`、`empirical evaluation`、`data leakage`
-
-👤 **作者**：Ruixiao Lin、Qingming Li、Jiahao Chen、Chunyi Zhou、Shouling Ji
-
-- 🎯 **研究动机**：现有 MCP 隐私泄露攻击与 agent 工具使用情境错位且依赖刚性模板，模式可识别、易被现有防御拦截
-- 🔬 **研究方法**：提出 SOPE 把任意良性 MCP 服务器改造成窃密变体：识别适配工具使用情境的隐私项、把隐私探测指令嵌入工具调用提示、经代码级修改实现零点击传输
-- 📌 **结论**：324 个改造的真实服务器在 27216 个用例中攻击 4 个基准与 3 个商业 agent，在 9 个 SOTA 防御下仍高效鲁棒
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-The Model Context Protocol (MCP) enables Large Language Model (LLM) agents to interact with external tools, but this extensibility introduces significant supply chain vulnerabilities that enable covert privacy exfiltration. Prior studies have revealed privacy leakage in MCP-enabled agents via indirect prompt injection; however, existing attacks are typically misaligned with the agent's tool-usage context and rely on rigid templates, resulting in recognizable patterns that are readily flagged by existing defenses. In this work, we exploit the observation that privacy exposure is inherently scenario-dependent, to associate certain privacy items with specific tools. We introduce SOPE, a Scenario-aware and zerO-click Privacy Exfiltration framework that transforms any benign MCP server into its privacy-exfiltrating variants. SOPE (1) identifies privacy items that are appropriate to the tool usage, (2) embeds privacy-probing instructions into tool-invocation prompts, and (3) achieves zero-click data transmission via code-level modifications. We evaluate SOPE across 27,216 test cases, where 324 SOPE -transformed real-world servers attacking four benchmark and three commercial agents with nine state-of-the-art defenses. Results demonstrate that SOPE remains highly effective and robust, highlighting critical protocol-level safety gaps in the agent ecosystem.
-
-</details>
-
-### 69. Rethinking Visual Privacy: A Compositional Privacy Risk Framework for Severity Assessment with VLMs
+### 65. Rethinking Visual Privacy: A Compositional Privacy Risk Framework for Severity Assessment with VLMs
 
 📄 [arXiv](https://arxiv.org/abs/2603.21573) · 🌐 [Project](https://eccv.ecva.net/virtual/2026/poster/5562)　📅 2026-03　🏷 ECCV 2026
 
@@ -1285,5 +1209,43 @@ The Model Context Protocol (MCP) enables Large Language Model (LLM) agents to in
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 Existing visual privacy benchmarks largely treat privacy as a binary property, labeling images as private or non-private based on visible sensitive content. We argue that privacy is fundamentally compositional. Attributes that are benign in isolation may combine to produce severe privacy violations. We introduce the Compositional Privacy Risk Taxonomy (CPRT), a regulation-aware framework that organizes visual attributes according to standalone identifiability and compositional harm potential. CPRT defines four graded severity levels and is paired with an interpretable scoring function that assigns continuous privacy severity scores. We further construct a taxonomy-aligned dataset of 6.7K images and derive compositional risk scores. By evaluating frontier and open-weight VLMs we find that frontier models align well with compositional severity when provided structured guidance, but systematically underestimate composition-driven risks. Smaller models struggle to internalize graded privacy reasoning. To bridge this gap, we introduce a deployable 8B SFT model that closely matches frontier-level performance on compositional privacy assessment
+
+</details>
+
+### 66. Estimating near-verbatim extraction risk in language models with decoding-constrained beam search
+
+📄 [arXiv](https://arxiv.org/abs/2603.24917) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-03
+
+**关键词**：`attack`、`detection`、`near-verbatim extraction`、`beam search`、`machine unlearning`、`privacy risk`
+
+👤 **作者**：A. Feder Cooper、…、Percy Liang
+
+- 🎯 **研究动机**：近逐字提取风险量化代价过高：近逐字后缀组合爆炸，可靠蒙特卡洛需每序列约 10 万样本
+- 🔬 **研究方法**：提出 decoding-constrained beam search，以约 20 个蒙特卡洛样本的代价给出近逐字提取风险的确定性下界
+- 📌 **结论**：揭示逐字方法看不到的信息：更多可提取序列、更大的单序列提取质量及跨模型规模与文本类型的规律
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Recent work shows that standard greedy-decoding extraction methods for quantifying memorization in LLMs miss how extraction risk varies across sequences. Probabilistic extraction -- computing the probability of generating a target suffix given a prefix under a decoding scheme -- addresses this, but is tractable only for verbatim memorization, missing near-verbatim instances that pose similar privacy and copyright risks. Quantifying near-verbatim extraction risk is expensive: the set of near-verbatim suffixes is combinatorially large, and reliable Monte Carlo (MC) estimation can require ~100,000 samples per sequence. To mitigate this cost, we introduce decoding-constrained beam search, which yields deterministic lower bounds on near-verbatim extraction risk at a cost comparable to ~20 MC samples per sequence. Across experiments, our approach surfaces information invisible to verbatim methods: many more extractable sequences, substantially larger per-sequence extraction mass, and patterns in how near-verbatim extraction risk manifests across model sizes and types of text.
+
+</details>
+
+### 67. Be Careful When Fine-tuning On Open-Source LLMs: Your Fine-tuning Data Could Be Secretly Stolen!
+
+📄 [arXiv](https://arxiv.org/abs/2505.15656) · 🎓 [Official](https://iclr.cc/virtual/2026/poster/10010368)　📅 2025-05　🏷 ICLR 2026
+
+**关键词**：`attack`、`fine-tuning privacy`、`data theft`、`backdoored model`
+
+👤 **作者**：Zhexin Zhang、…、Minlie Huang
+
+- 🎯 **研究动机**：在开源 LLM 上以私有数据微调已成标准流程，模型作者窃取下游微调数据的风险未被审视
+- 🔬 **研究方法**：揭示开源模型作者可通过预埋后门，仅凭对下游微调模型的黑盒访问提取微调数据
+- 📌 **结论**：3B 至 32B 四个模型上可完整提取最多 76.3% 的 5000 条微调查询，理想设置达 94.9%，检测防御可被绕过
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Fine-tuning on open-source Large Language Models (LLMs) with proprietary data is now a standard practice for downstream developers to obtain task-specific LLMs. Surprisingly, we reveal a new and concerning risk along with the practice: the creator of the open-source LLMs can later extract the private downstream fine-tuning data through simple backdoor training, only requiring black-box access to the fine-tuned downstream model. Our comprehensive experiments, across 4 popularly used open-source models with 3B to 32B parameters and 2 downstream datasets, suggest that the extraction performance can be strikingly high: in practical settings, as much as 76.3% downstream fine-tuning data (queries) out of a total 5,000 samples can be perfectly extracted, and the success rate can increase to 94.9% in more ideal settings. We also explore a detection-based defense strategy but find it can be bypassed with improved attack. Overall, we highlight the emergency of this newly identified data breaching risk in fine-tuning, and we hope that more follow-up research could push the progress of addressing this concerning risk. The code and data used in our experiments are released at https://github.com/thu-coai/Backdoor-Data-Extraction.
 
 </details>

@@ -177,3 +177,193 @@ DNA language models have revolutionized our ability to understand and design DNA
 - 🎯 **研究动机**：生成式生物学工具可产出库外新pathogen、toxin或规避筛查的分子，仅靠用户政策不足
 - 🔬 **研究方法**：主张将序列筛查等biosecurity safeguard内建到生成工具与合成供应链
 - 📌 **结论**：需要模型、synthesis provider与治理机构协同的多层防护
+
+### 10. LLMs Outperform Experts on Challenging Biology Benchmarks
+
+📄 [arXiv](https://arxiv.org/abs/2505.06108)　📅 2025-05
+
+**关键词**：`analysis`、`biology capability`、`benchmark saturation`、`expert baseline`
+
+👤 **作者**：Lennart Justen
+
+- 🎯 **研究动机**：前沿 LLM 在生物基准上的进步速度与专家水平的关系缺乏跨模型、跨时间的系统测量
+- 🔬 **研究方法**：对 2022-11 至 2025-04 发布的 27 个前沿模型在分子生物学、遗传学、克隆、病毒学与生物安全八个基准上各做十次独立评测
+- 📌 **结论**：Virology Capabilities Test 文本子集榜首成绩提升超 4 倍，o3 已两倍于专家病毒学家；多个模型在 GPQA/WMDP/LAB-Bench 生物子集达到或超过专家水平，而 PubMedQA 等出现远低于 100% 的平台期提示基准饱和
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+This study systematically evaluates 27 frontier Large Language Models on eight biology benchmarks spanning molecular biology, genetics, cloning, virology, and biosecurity. Models from major AI developers released between November 2022 and April 2025 were assessed through ten independent runs per benchmark. The findings reveal dramatic improvements in biological capabilities. Top model performance increased more than 4-fold on the challenging text-only subset of the Virology Capabilities Test over the study period, with OpenAI's o3 now performing twice as well as expert virologists. Several models now match or exceed expert-level performance on other challenging benchmarks, including the biology subsets of GPQA and WMDP and LAB-Bench CloningScenarios. Contrary to expectations, chain-of-thought did not substantially improve performance over zero-shot evaluation, while extended reasoning features in o3-mini and Claude 3.7 Sonnet typically improved performance as predicted by inference scaling. Benchmarks such as PubMedQA and the MMLU and WMDP biology subsets exhibited performance plateaus well below 100%, suggesting benchmark saturation and errors in the underlying benchmark data. The analysis highlights the need for more sophisticated evaluation methodologies as AI systems continue to advance.
+
+</details>
+
+### 11. Contemporary AI Foundation Models Increase Biological Weapons Risk
+
+📄 [arXiv](https://arxiv.org/abs/2506.13798)　📅 2025-06
+
+**关键词**：`analysis`、`tacit knowledge assumption`、`bioweapon uplift`、`evaluation critique`
+
+👤 **作者**：Roger Brent、T. Greg McKelvey
+
+- 🎯 **研究动机**：现有前沿模型生物安全评估可能系统性低估风险，其两大假设（开发生物武器需 tacit knowledge、基准可靠）存在缺陷
+- 🔬 **研究方法**：用无正式专业背景者完成复杂技术任务的历史案例（含 2011 年挪威极端分子合成爆炸物）反驳 tacit knowledge 假设，梳理可用文字传达的"成功要素"框架并应用到先进模型
+- 📌 **结论**：Llama 3.1 405B、ChatGPT-4o 与 Claude 3.5 Sonnet 能准确指导用户从商业合成 DNA 复活活脊髓灰质炎病毒，直接挑战"当前模型风险极低"的论断；呼吁改进基准并警告实施窗口可能已经关闭
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+The rapid advancement of artificial intelligence has raised concerns about its potential to facilitate biological weapons development. We argue existing safety assessments of contemporary foundation AI models underestimate this risk, largely due to flawed assumptions and inadequate evaluation methods. First, assessments mistakenly assume biological weapons development requires tacit knowledge, or skills gained through hands-on experience that cannot be easily verbalized. Second, they rely on imperfect benchmarks that overlook how AI can uplift both nonexperts and already-skilled individuals. To challenge the tacit knowledge assumption, we examine cases where individuals without formal expertise, including a 2011 Norwegian ultranationalist who synthesized explosives, successfully carried out complex technical tasks. We also review efforts to document pathogen construction processes, highlighting how such tasks can be conveyed in text. We identify "elements of success" for biological weapons development that large language models can describe in words, including steps such as acquiring materials and performing technical procedures. Applying this framework, we find that advanced AI models Llama 3.1 405B, ChatGPT-4o, and Claude 3.5 Sonnet can accurately guide users through the recovery of live poliovirus from commercially obtained synthetic DNA, challenging recent claims that current models pose minimal biosecurity risk. We advocate for improved benchmarks, while acknowledging the window for meaningful implementation may have already closed.
+
+</details>
+
+### 12. Quantifying CBRN Risk in Frontier Models
+
+📄 [arXiv](https://arxiv.org/abs/2510.21133)　📅 2025-10
+
+**关键词**：`benchmark`、`CBRN evaluation`、`Deep Inception`、`superficial filtering`
+
+👤 **作者**：Divyanshu Kumar、Nitin Aravind Birur、Tanay Baswa、Sahil Agarwal、Prashanth Harshangi
+
+- 🎯 **研究动机**：前沿 LLM 的 CBRN 武器知识双用途风险缺乏对商用模型的系统性多层攻击评测
+- 🔬 **研究方法**：用三层攻击方法对 10 个商用 LLM 评测自建 200 条 CBRN 提示与 FORTRESS 180 条子集
+- 📌 **结论**：Deep Inception 攻击成功率 86.0% vs 直接请求 33.8%，证明过滤机制表层化；模型安全表现从 2%（claude-opus-4）到 96%（mistral-small-latest）剧变，八个模型在增强危险材料性质请求上漏洞超 70%
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Frontier Large Language Models (LLMs) pose unprecedented dual-use risks through the potential proliferation of chemical, biological, radiological, and nuclear (CBRN) weapons knowledge. We present the first comprehensive evaluation of 10 leading commercial LLMs against both a novel 200-prompt CBRN dataset and a 180-prompt subset of the FORTRESS benchmark, using a rigorous three-tier attack methodology. Our findings expose critical safety vulnerabilities: Deep Inception attacks achieve 86.0\% success versus 33.8\% for direct requests, demonstrating superficial filtering mechanisms; Model safety performance varies dramatically from 2\% (claude-opus-4) to 96\% (mistral-small-latest) attack success rates; and eight models exceed 70\% vulnerability when asked to enhance dangerous material properties. We identify fundamental brittleness in current safety alignment, where simple prompt engineering techniques bypass safeguards for dangerous CBRN information. These results challenge industry safety claims and highlight urgent needs for standardized evaluation frameworks, transparent safety metrics, and more robust alignment techniques to mitigate catastrophic misuse risks while preserving beneficial capabilities.
+
+</details>
+
+### 13. Biothreat Benchmark Generation Framework for Evaluating Frontier AI Models I: The Task-Query Architecture
+
+📄 [arXiv](https://arxiv.org/abs/2512.08130)　📅 2025-12
+
+**关键词**：`benchmark`、`biothreat schema`、`task-query architecture`、`operational risk factor`
+
+👤 **作者**：Gary Ackerman、…、Anna Wetzel
+
+- 🎯 **研究动机**：现有 LLM 生物安全基准忽视行为者能力差异与操作性（而非纯技术）风险因素
+- 🔬 **研究方法**：提出 Biothreat Benchmark Generation（BBG）框架第一部分：构建细菌生物威胁类别-要素-任务的层级 Schema 并派生任务对齐查询
+- 📌 **结论**：Bacterial Biothreat Schema 提供可复用结构，在多聚合层级刻画生物对手的完整技术与操作需求并覆盖宽谱行为者能力
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Both model developers and policymakers seek to quantify and mitigate the risk of rapidly-evolving frontier artificial intelligence (AI) models, especially large language models (LLMs), to facilitate bioterrorism or access to biological weapons. An important element of such efforts being the development of model benchmarks that can assess the biosecurity risk posed by a particular model. This paper describes the first component of a novel Biothreat Benchmark Generation (BBG) Framework. The BBG approach is designed to help model developers and evaluators reliably measure and assess the biosecurity risk uplift and general harm potential of existing and future AI models, while accounting for key aspects of the threat itself that are often overlooked in other benchmarking efforts, including different actor capability levels, and operational (in addition to purely technical) risk factors. As a pilot, the BBG is first being developed to address bacterial biological threats only. The BBG is built upon a hierarchical structure of biothreat categories, elements and tasks, which then serves as the basis for the development of task-aligned queries. This paper outlines the development of this biothreat task-query architecture, which we have named the Bacterial Biothreat Schema, while future papers will describe follow-on efforts to turn queries into model prompts, as well as how the resulting benchmarks can be implemented for model evaluation. Overall, the BBG Framework, including the Bacterial Biothreat Schema, seeks to offer a robust, re-usable structure for evaluating bacterial biological risks arising from LLMs across multiple levels of aggregation, which captures the full scope of technical and operational requirements for biological adversaries, and which accounts for a wide spectrum of biological adversary capabilities.
+
+</details>
+
+### 14. Biothreat Benchmark Generation Framework for Evaluating Frontier AI Models II: Benchmark Generation Process
+
+📄 [arXiv](https://arxiv.org/abs/2512.08451)　📅 2025-12
+
+**关键词**：`benchmark`、`benchmark generation`、`uplift diagnosticity`、`B3 dataset`
+
+👤 **作者**：Gary Ackerman、…、Noah Sheinbaum
+
+- 🎯 **研究动机**：把任务-查询架构转化为可实施的生物安全模型基准需要系统化生成与质控流程
+- 🔬 **研究方法**：BBG 框架第二部分：网络提示生成、红队与既有基准语料挖掘三路产出 7,000+ 候选，经去重、uplift 诊断性评估与质量控制筛出 1,010 个最终基准
+- 📌 **结论**：Bacterial Biothreat Benchmark（B3）确保基准对 uplift 具诊断性、直接关联生物安全威胁并对齐更大的生物安全分析架构
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+The potential for rapidly-evolving frontier artificial intelligence (AI) models, especially large language models (LLMs), to facilitate bioterrorism or access to biological weapons has generated significant policy, academic, and public concern. Both model developers and policymakers seek to quantify and mitigate any risk, with an important element of such efforts is the development of model benchmarks that can assess the biosecurity risk posed by a particular model. This paper, the second in a series of three, describes the second component of a novel Biothreat Benchmark Generation (BBG) framework: the generation of the Bacterial Biothreat Benchmark (B3) dataset. The development process involved three complementary approaches: 1) web-based prompt generation, 2) red teaming, and 3) mining existing benchmark corpora, to generate over 7,000 potential benchmarks linked to the Task-Query Architecture that was developed during the first component of the project. A process of de-duplication, followed by an assessment of uplift diagnosticity, and general quality control measures, reduced the candidates to a set of 1,010 final benchmarks. This procedure ensured that these benchmarks are a) diagnostic in terms of providing uplift; b) directly relevant to biosecurity threats; and c) are aligned with a larger biosecurity architecture permitting nuanced analysis at different levels of analysis.
+
+</details>
+
+### 15. LLM Novice Uplift on Dual-Use, In Silico Biology Tasks
+
+📄 [arXiv](https://arxiv.org/abs/2602.23329)　📅 2026-02
+
+**关键词**：`benchmark`、`human uplift study`、`dual-use biology`、`novice access`
+
+👤 **作者**：Chen Bo Calvin Zhang、…、Julian Michael
+
+- 🎯 **研究动机**：LLM 生物学基准分数持续走高，但是否真正 uplift 新手用户（相对仅互联网资源）此前未知，而这正是双用途风险的核心
+- 🔬 **研究方法**：多模型多基准人类 uplift 研究：八个生物安全相关任务集上对比有 LLM 访问与仅互联网访问的新手，最复杂任务给足 13 小时
+- 📌 **结论**：LLM 访问使新手准确率提升 4.16 倍（95% CI [2.63, 6.87]），四个有专家基线的基准中三个上新手+LLM 反超专家；89.6% 参与者称获取双用途信息无困难，且独立 LLM 常超过人机组合——需要持续交互式 uplift 评测
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models (LLMs) perform increasingly well on biology benchmarks, but it remains unclear whether they uplift novice users -- i.e., enable humans to perform better than with internet-only resources. This uncertainty is central to understanding both scientific acceleration and dual-use risk. We conducted a multi-model, multi-benchmark human uplift study comparing novices with LLM access versus internet-only access across eight biosecurity-relevant task sets. Participants worked on complex problems with ample time (up to 13 hours for the most involved tasks). We found that LLM access provided substantial uplift: novices with LLMs were 4.16 times more accurate than controls (95% CI [2.63, 6.87]). On four benchmarks with available expert baselines (internet-only), novices with LLMs outperformed experts on three of them. Perhaps surprisingly, standalone LLMs often exceeded LLM-assisted novices, indicating that users were not eliciting the strongest available contributions from the LLMs. Most participants (89.6%) reported little difficulty obtaining dual-use-relevant information despite safeguards. Overall, LLMs substantially uplift novices on biological tasks previously reserved for trained practitioners, underscoring the need for sustained, interactive uplift evaluations alongside traditional benchmarks.
+
+</details>
+
+### 16. RCTs for Frontier AI Governance: Methodological Challenges and Solutions for Human Uplift Studies
+
+📄 [arXiv](https://arxiv.org/abs/2603.11001)　📅 2026-03
+
+**关键词**：`analysis`、`uplift study methodology`、`RCT validity`、`governance evidence`
+
+👤 **作者**：Patricia Paskov、…、Ella Guest
+
+- 🎯 **研究动机**：人类 uplift 研究日益支撑前沿 AI 治理与部署决策，但 RCT 方法的因果推断假设与快速演化的 AI 对象之间存在张力
+- 🔬 **研究方法**：访谈 16 位在生物安全、网络安全、教育与劳动领域做过 uplift 研究的专家，把方法论挑战映射到内部、外部与构念效度风险并按 LLM 特异性分类
+- 📌 **结论**：快速演化的系统、漂移的基线、异质多变的用户能力与 porous 现实环境共同侵蚀效度；给出挑战到解决方案的映射，以明确 uplift 证据的解释边界与适用方式
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Human uplift studies, or studies that measure the effects of AI access on human performance via randomized controlled trials (RCT) or similar methodologies, increasingly inform frontier AI governance and deployment decisions. While RCT methods are robust in other fields, their interaction with the distinctive properties of frontier AI systems remains underexamined, particularly when results are used to inform high-stakes decisions. We present findings from interviews with 16 expert practitioners with experience conducting human uplift studies in domains including biosecurity, cybersecurity, education, and labor. Across interviews, experts described a recurring tension between the standard causal inference assumptions upon which human uplift studies rely and the object of study itself. Rapidly evolving AI systems, shifting baselines, heterogeneous and changing user proficiency, and porous real-world settings strain assumptions underlying internal, external, and construct validity, complicating the interpretation and appropriate use of uplift evidence. We contribute (1) a synthesis of methodological challenges in human uplift studies, mapped to risks to study validity and classified by their degree of specificity to large language model (LLM) systems, and (2) a mapping from challenges to proposed solutions. By collating expert-identified challenges and solutions, we seek to clarify the interpretive limits and appropriate uses of human uplift evidence, to align evaluation practice with the decisions it informs, and to support more coordinated methodological foundations for AI governance.
+
+</details>
+
+### 17. BioVeil MATRIX: Uncovering and Categorizing Vulnerabilities of Agentic Biological AI Scientists
+
+📄 [arXiv](https://arxiv.org/abs/2605.00927)　📅 2026-04
+
+**关键词**：`analysis`、`agentic bio risk`、`scaffold uplift`、`risk taxonomy`
+
+👤 **作者**：Kimon Antonios Provatas、Avery Self、Ioannis Mouratidis、Ilias Georgakopoulos-Soares
+
+- 🎯 **研究动机**：配备领域工具的 agentic 生物 AI 科学家正进入生命科学工作流，其双用途风险不被模型中心的安全评测捕获
+- 🔬 **研究方法**：实证检验 Biomni、K-Dense 等 agentic 系统对被底座模型拦截的双用途任务的协助意愿，并在 WMDP 代理的配对评测中测量 agentic 脚手架相对底座模型的能力 uplift
+- 📌 **结论**：agentic 脚手架既绕过底座安全机制又提升危险基准表现；提出 10 战术类别、22 技术的 BioVeil MATRIX 防御分类学作为红队基准与协议的基础
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Agentic AI scientists equipped with domain-specific tools are rapidly entering scientific workflows across disciplines, with especially strong uptake in the life sciences where they can be used for literature synthesis, sequence analysis, and experimental planning support. While these systems accelerate biological research, they also introduce risks for dual-use applications that are not captured by current model-centric safety evaluations. We present evidence that current agentic AI scientists, including Biomni and K-Dense, are willing to assist with dual-use tasks that are blocked by base model safeguards. We also found that in a paired evaluation framework for biology and chemistry prompts involving Weapons of Mass Destruction proxies (WMDP), agentic scaffolding of Biomni increased the benchmark performance relative to the underlying standalone model, producing measurable capability uplift. We believe it is necessary to include additional safeguards in existing models and build future tools from the ground up with agentic vulnerabilities in mind. To systematically categorize broader risks, we introduce BioVeil MATRIX, a defensive taxonomy that maps AI-enabled biosecurity risks using 10 tactical categories (TA01--TA10) and 22 different techniques. We propose to use this taxonomy as a baseline for future AI scientist development and generate specialized benchmarks and protocols for red-teaming these vulnerabilities before public deployment. BioVeil MATRIX can be found at: https://bioveilmatrix.com/
+
+</details>
+
+### 18. A Threshold Exceedance Framework for CBRN Uplift Evaluation in Frontier Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2607.12200)　📅 2026-07
+
+**关键词**：`analysis`、`uplift evaluation framework`、`threshold exceedance criteria`、`expert review`
+
+👤 **作者**：Rahul Gupta、…、Spyros Matsoukas
+
+- 🎯 **研究动机**：既有 CBRN 评测在非专家定义、威胁范围、基线、评分与决策规则上互不相同，结果难以跨研究比较
+- 🔬 **研究方法**：提出 Threshold Exceedance Criteria（TEC）框架把 uplift 研究分解为参与者资格、威胁范围界定与统计估计三组件，并在大规模实证中区分生成式（从零协助造计划）与修订式（改进现有计划）两种 uplift
+- 📌 **结论**：受控预发布评测下模型辅助计划偶获专家等同评级，但确认的物质 uplift 仅限于放射领域；强调预注册标准、显式基线与筛查信号和确认风险判定的区分
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+As frontier language models advance, policymakers and model developers need methods for assessing whether model access materially increases a non-expert actor's ability to plan high-consequence Chemical, Biological, Radiological, or Nuclear (CBRN) misuse relative to public tools alone. Existing CBRN evaluations differ in non-expert definitions, threat scope, baselines, scoring rubrics, and decision rules, making results difficult to compare across studies. We introduce a Threshold Exceedance Criteria (TEC) framework that decomposes an uplift study into independently executable components: determining non-expert participant eligibility, defining the CBRN threat scope for the study, and statistically estimating material uplift. We then operationalize the TEC framework in a large-scale empirical study using a design that determines two forms of uplift: generative (where a model assists plan creation from scratch) and revisionist (where a model assists refinement of an existing plan). The study produced attack plans across the CBRN domains, which we evaluated through subject-matter-expert review to estimate generative and revisionist uplift. Applying the framework, our empirical study revealed domain heterogeneity: under this controlled pre-release evaluation, model-assisted plans sometimes received expert-equivalent instructional ratings, but confirmed material uplift was limited to the radiological domain. These findings informed mitigation and deployment-governance decisions rather than characterizing deployed model behavior. We conclude with methodological lessons for future CBRN uplift evaluations, emphasizing prespecified criteria, explicit baselines, separation of generative and revisionist estimates, and careful distinction between preliminary screening signals and confirmed risk determinations.
+
+</details>
+
+### 19. Mark, Don't Erase: Token Inoculation for Dual-Use Knowledge in LLMs
+
+📄 [arXiv](https://arxiv.org/abs/2607.18639)　📅 2026-07
+
+**关键词**：`defense`、`dual-use knowledge`、`conditional refusal`、`knowledge gating`
+
+👤 **作者**：Seunghyun Lee、Dongyoon Han、Sangdoo Yun
+
+- 🎯 **研究动机**：双用途知识的安全干预常在摧毁内容（unlearning/过滤）与输出层抑制（拒绝训练）间二选一，两者都付出邻近领域能力或过度拒绝的代价
+- 🔬 **研究方法**：Token Inoculation 的绑定-分支两步：持续预训练时在双用途文档旁插入特殊 token 使模型绑定危险域语义；SFT 时教会有 token 时正确作答、无 token 时拒绝
+- 📌 **结论**：WMDP-Bio 准确率从 79% 降至 18% 同时保留 93% 良性域性能，在 1B-14B 规模上取得优于 unlearning 与拒绝训练的安全-效用权衡，表明安全对齐更适合建模为条件化而非遗忘问题
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Safety interventions on dual-use knowledge typically choose between destroying hazardous content (e.g., unlearning, filtering) and suppressing it at the output layer (e.g., refusal training); both pay a tax in adjacent-domain competence or over-refusal. We argue that the right operation is conditioning, not reduction: we show that hazardous knowledge can be retained in the model and behaviorally gated by a privileged control token. Our method, Token Inoculation, introduces a binding-and-branching approach. First, during continued pre-training, we mark hazardous content by inserting a special token alongside dual-use documents, so the model binds the marker to the underlying semantics of the hazardous domain. Second, during supervised fine-tuning, we teach the model to answer hazardous queries correctly when the special token is present and to refuse them when it is absent, thereby enabling selective refusal without removing dual-use knowledge. On hazardous domain (e.g., WMDP-Bio), Token Inoculation reduces accuracy from 79% to 18% while retaining 93% of the base-model's benign-domain performance (e.g., MMLU), achieving the best safety-utility trade-off against unlearning and refusal-tuning baselines across 1B-14B model scales. We further show that refusal selectivity is controllable through the quality of the conditioning signal and that domain-specific semantic binding during pre-training is critical for the conditional behavior to generalize beyond memorized triggers. Our results suggest that safety alignment is better cast as a conditioning problem than a forgetting one: behavioral control is more precise when sensitive knowledge is retained under controlled access than when it is destroyed.
+
+</details>

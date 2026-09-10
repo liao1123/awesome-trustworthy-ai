@@ -166,3 +166,136 @@ Omni-modal Large Language Models (OLLMs) that integrate visual, auditory, and te
 Recent advances in Large Language Models (LLMs) and Text-to-Image (T2I) models have led to the emergence of Unified Multimodal Models (UMMs), where multimodal understanding and image generation are tightly integrated within a shared architecture. Prior studies suggest that such reciprocity enhances cross-functionality performance through shared representations and joint optimization. However, the safety implications of this tight coupling remain largely unexplored, as existing safety research predominantly analyzes understanding and generation functionalities in isolation. In this work, we investigate whether cross-functionality reciprocity itself constitutes a structural source of vulnerability in UMMs. We propose RICE: Reciprocal Interaction-based Cross-functionality Exploitation, a novel attack paradigm that explicitly exploits bidirectional interactions between understanding and generation. Using this framework, we systematically evaluate Generation-to-Understanding (G-U) and Understanding-to-Generation (U-G) attack pathways, demonstrating that unsafe intermediate signals can propagate across modalities and amplify safety risks. Extensive experiments show high Attack Success Rates (ASR) in both directions, revealing previously overlooked safety weaknesses inherent to UMMs.
 
 </details>
+
+### 9. Jailbreak Attacks and Defenses against Multimodal Generative Models: A Survey
+
+📄 [arXiv](https://arxiv.org/abs/2411.09259)　📅 2024-11
+
+**关键词**：`survey`、`multimodal jailbreak`、`attack taxonomy`、`any-to-any generation`
+
+👤 **作者**：Xuannan Liu、…、Ran He
+
+- 🎯 **研究动机**：多模态生成模型可被越狱绕过内置安全机制，攻击与防御散落在各模态文献中，缺乏统一梳理
+- 🔬 **研究方法**：按多模态越狱的通用生命周期，在 input、encoder、generator、output 四个层级系统综述攻击与对应防御，覆盖 Any-to-Text、Any-to-Vision 与 Any-to-Any 配置
+- 📌 **结论**：给出多模态生成模型的攻击方法、防御机制与评测框架分类学，指出当前挑战与未来方向，并维护开源仓库持续跟踪
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+The rapid evolution of multimodal foundation models has led to significant advancements in cross-modal understanding and generation across diverse modalities, including text, images, audio, and video. However, these models remain susceptible to jailbreak attacks, which can bypass built-in safety mechanisms and induce the production of potentially harmful content. Consequently, understanding the methods of jailbreak attacks and existing defense mechanisms is essential to ensure the safe deployment of multimodal generative models in real-world scenarios, particularly in security-sensitive applications. To provide comprehensive insight into this topic, this survey reviews jailbreak and defense in multimodal generative models. First, given the generalized lifecycle of multimodal jailbreak, we systematically explore attacks and corresponding defense strategies across four levels: input, encoder, generator, and output. Based on this analysis, we present a detailed taxonomy of attack methods, defense mechanisms, and evaluation frameworks specific to multimodal generative models. Additionally, we cover a wide range of input-output configurations, including modalities such as Any-to-Text, Any-to-Vision, and Any-to-Any within generative systems. Finally, we highlight current research challenges and propose potential directions for future research. The open-source repository corresponding to this work can be found at https://github.com/liuxuannan/Awesome-Multimodal-Jailbreak.
+
+</details>
+
+### 10. Investigating Vulnerabilities and Defenses Against Audio-Visual Attacks: A Comprehensive Survey Emphasizing Multimodal Models
+
+📄 [arXiv](https://arxiv.org/abs/2506.11521)　📅 2025-06
+
+**关键词**：`survey`、`audio-visual attack`、`attack taxonomy`、`MLLM security`
+
+👤 **作者**：Jinming Wen、Xinyi Wu、Shuai Zhao、Yanhao Jia、Yuwen Li
+
+- 🎯 **研究动机**：视听 MLLM 可仅凭指令或输入被诱导产出恶意内容，而既有综述各覆盖单一攻击类型，缺统一视角
+- 🔬 **研究方法**：系统综述视听攻击三大家族（对抗攻击、后门攻击、越狱攻击）及最新视听 MLLM 上的各类攻击
+- 📌 **结论**：统一梳理攻击面并归纳防御挑战与新兴趋势，补齐既有综述只覆盖单一攻击类型的缺口
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Multimodal large language models (MLLMs), which bridge the gap between audio-visual and natural language processing, achieve state-of-the-art performance on several audio-visual tasks. Despite the superior performance of MLLMs, the scarcity of high-quality audio-visual training data and computational resources necessitates the utilization of third-party data and open-source MLLMs, a trend that is increasingly observed in contemporary research. This prosperity masks significant security risks. Empirical studies demonstrate that the latest MLLMs can be manipulated to produce malicious or harmful content. This manipulation is facilitated exclusively through instructions or inputs, including adversarial perturbations and malevolent queries, effectively bypassing the internal security mechanisms embedded within the models. To gain a deeper comprehension of the inherent security vulnerabilities associated with audio-visual-based multimodal models, a series of surveys investigates various types of attacks, including adversarial and backdoor attacks. While existing surveys on audio-visual attacks provide a comprehensive overview, they are limited to specific types of attacks, which lack a unified review of various types of attacks. To address this issue and gain insights into the latest trends in the field, this paper presents a comprehensive and systematic review of audio-visual attacks, which include adversarial attacks, backdoor attacks, and jailbreak attacks. Furthermore, this paper also reviews various types of attacks in the latest audio-visual-based MLLMs, a dimension notably absent in existing surveys. Drawing upon comprehensive insights from a substantial review, this paper delineates both challenges and emergent trends for future research on audio-visual attacks and defense.
+
+</details>
+
+### 11. Align is not Enough: Multimodal Universal Jailbreak Attack against Multimodal Large Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2506.01307)　📅 2025-06
+
+**关键词**：`attack`、`multimodal universal jailbreak`、`image-text interaction`、`transfer-based attack`
+
+👤 **作者**：Youze Wang、Wenbo Hu、Yinpeng Dong、Jing Liu、Hanwang Zhang、Richang Hong
+
+- 🎯 **研究动机**：新旧模态整合给 MLLM 带来独有安全风险，图像-文本模态交互本身能否成为越狱突破口未被利用
+- 🔬 **研究方法**：提出统一多模态通用越狱框架：利用迭代图文交互与迁移策略生成通用对抗后缀与图像，在 LLaVA、Yi-VL、MiniGPT4 等模型上评测不良内容生成
+- 📌 **结论**：图文模态交互构成关键漏洞，多模态通用越狱可跨模型产生更高质量的不良生成，证明现有安全机制对复杂多模态攻击不足
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large Language Models (LLMs) have evolved into Multimodal Large Language Models (MLLMs), significantly enhancing their capabilities by integrating visual information and other types, thus aligning more closely with the nature of human intelligence, which processes a variety of data forms beyond just text. Despite advancements, the undesirable generation of these models remains a critical concern, particularly due to vulnerabilities exposed by text-based jailbreak attacks, which have represented a significant threat by challenging existing safety protocols. Motivated by the unique security risks posed by the integration of new and old modalities for MLLMs, we propose a unified multimodal universal jailbreak attack framework that leverages iterative image-text interactions and transfer-based strategy to generate a universal adversarial suffix and image. Our work not only highlights the interaction of image-text modalities can be used as a critical vulnerability but also validates that multimodal universal jailbreak attacks can bring higher-quality undesirable generations across different MLLMs. We evaluate the undesirable context generation of MLLMs like LLaVA, Yi-VL, MiniGPT4, MiniGPT-v2, and InstructBLIP, and reveal significant multimodal safety alignment issues, highlighting the inadequacy of current safety mechanisms against sophisticated multimodal attacks. This study underscores the urgent need for robust safety measures in MLLMs, advocating for a comprehensive review and enhancement of security protocols to mitigate potential risks associated with multimodal capabilities.
+
+</details>
+
+### 12. STaR-Attack: A Spatio-Temporal and Narrative Reasoning Attack Framework for Unified Multimodal Understanding and Generation Models
+
+📄 [arXiv](https://arxiv.org/abs/2509.26473)　📅 2025-09
+
+**关键词**：`attack`、`generation-understanding coupling`、`cross-modal generative injection`、`narrative jailbreak`
+
+👤 **作者**：Shaoxiong Guo、Tianyi Du、Lijun Li、Yuyao Wu、Jie Li、Jing Shao
+
+- 🎯 **研究动机**：UMM 的生成-理解耦合构成独有漏洞：攻击者可用生成功能伪造信息丰富的对抗图像再用理解功能吸收，现有攻击受限于单模态且依赖语义漂移的改写
+- 🔬 **研究方法**：STaR-Attack 用三幕叙事理论生成恶意事件的前后场景、把恶意事件藏为隐含高潮，前两轮利用生成能力产图，再以图像猜答游戏把原始恶意问题混入良性候选
+- 📌 **结论**：在 Gemini-2.0-Flash 上 ASR 达 93.06%，稳定超越 FlipAttack 等最强基线，揭示 UMM 生成-理解耦合的关键未被开发漏洞
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Unified Multimodal understanding and generation Models (UMMs) have demonstrated remarkable capabilities in both understanding and generation tasks. However, we identify a vulnerability arising from the generation-understanding coupling in UMMs. The attackers can use the generative function to craft an information-rich adversarial image and then leverage the understanding function to absorb it in a single pass, which we call Cross-Modal Generative Injection (CMGI). Current attack methods on malicious instructions are often limited to a single modality while also relying on prompt rewriting with semantic drift, leaving the unique vulnerabilities of UMMs unexplored. We propose STaR-Attack, the first multi-turn jailbreak attack framework that exploits unique safety weaknesses of UMMs without semantic drift. Specifically, our method defines a malicious event that is strongly correlated with the target query within a spatio-temporal context. Using the three-act narrative theory, STaR-Attack generates the pre-event and the post-event scenes while concealing the malicious event as the hidden climax. When executing the attack strategy, the opening two rounds exploit the UMM's generative ability to produce images for these scenes. Subsequently, an image-based question guessing and answering game is introduced by exploiting the understanding capability. STaR-Attack embeds the original malicious question among benign candidates, forcing the model to select and answer the most relevant one given the narrative context. Extensive experiments show that STaR-Attack consistently surpasses prior approaches, achieving up to 93.06% ASR on Gemini-2.0-Flash and surpassing the strongest prior baseline, FlipAttack. Our work uncovers a critical yet underdeveloped vulnerability and highlights the need for safety alignments in UMMs.
+
+</details>
+
+### 13. Omni-Safety under Cross-Modality Conflict: Vulnerabilities, Dynamics Mechanisms and Efficient Alignment
+
+📄 [arXiv](https://arxiv.org/abs/2602.10161)　📅 2026-02
+
+**关键词**：`defense`、`cross-modality conflict`、`mid-layer dissolution`、`refusal vector alignment`
+
+👤 **作者**：Kun Wang、…、Yang Liu
+
+- 🎯 **研究动机**：全模态 LLM 引入跨模态安全风险，但 omni-modal 交互中漏洞的系统理解仍缺失
+- 🔬 **研究方法**：建立模态-语义解耦原则并构建 AdvBench-Omni 数据集；机制分析发现 refusal 向量幅度收缩驱动的 Mid-layer Dissolution 现象与模态不变纯拒绝方向；据此用 SVD 提取 golden refusal vector 并提出轻量 adapter 自适应调节干预强度的 OmniSteer
+- 📌 **结论**：有害输入拒绝成功率从 69.9% 提升至 91.2%，同时有效保留全模态通用能力
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Omni-modal Large Language Models (OLLMs) greatly expand LLMs' multimodal capabilities but also introduce cross-modal safety risks. However, a systematic understanding of vulnerabilities in omni-modal interactions remains lacking. To bridge this gap, we establish a modality-semantics decoupling principle and construct the AdvBench-Omni dataset, which reveals a significant vulnerability in OLLMs. Mechanistic analysis uncovers a Mid-layer Dissolution phenomenon driven by refusal vector magnitude shrinkage, alongside the existence of a modal-invariant pure refusal direction. Inspired by these insights, we extract a golden refusal vector using Singular Value Decomposition and propose OmniSteer, which utilizes lightweight adapters to modulate intervention intensity adaptively. Extensive experiments show that our method not only increases the Refusal Success Rate against harmful inputs from 69.9% to 91.2%, but also effectively preserves the general capabilities across all modalities. Our code is available at: https://github.com/zhrli324/omni-safety-research.
+
+</details>
+
+### 14. Does Unification Come at a Cost? Uni-SafeBench: A Safety Benchmark for Unified Multimodal Large Models
+
+📄 [arXiv](https://arxiv.org/abs/2604.00547)　📅 2026-04
+
+**关键词**：`benchmark`、`unified multimodal model`、`contextual-intrinsic decoupling`、`safety alignment erosion`
+
+👤 **作者**：Zixiang Peng、…、Gaopeng Gou
+
+- 🎯 **研究动机**：统一理解与生成的 UMLM 在统一框架下处理多样任务时的整体安全未被评测，既有基准只覆盖孤立任务
+- 🔬 **研究方法**：Uni-SafeBench 覆盖六大安全类别、七种任务类型；配套 Uni-Judger 把 contextual safety 与 intrinsic safety 解耦以保证评估严格性
+- 📌 **结论**：底座 LLM 的安全对齐在统一模型中未被一致保留；开源 UMLM 的安全表现显著低于理解或生成专用模型，生成侧尤其薄弱
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Unified Multimodal Large Models (UMLMs) integrate understanding and generation capabilities within a single architecture. While unified architectures expand multimodal capabilities, their safety implications remain important yet underexplored. Existing safety benchmarks predominantly focus on isolated understanding or generation tasks, failing to evaluate the holistic safety of UMLMs when handling diverse tasks under a unified framework. To address this, we introduce Uni-SafeBench, a comprehensive benchmark featuring a taxonomy of six major safety categories across seven task types. To ensure rigorous assessment, we develop Uni-Judger, a framework that effectively decouples contextual safety from intrinsic safety. Based on comprehensive evaluations across Uni-SafeBench, we find that the original safety alignment of the underlying LLM is not consistently preserved in current unified models. Moreover, open-source UMLMs exhibit much lower safety performance than multimodal large models specialized for either generation or understanding tasks, particularly on the generation side.
+
+</details>
+
+### 15. Test-Time Immunization: A Universal Defense Framework Against Jailbreaks for (Multimodal) Large Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2505.22271)　📅 2025-05
+
+**关键词**：`defense`、`universal jailbreak defense`、`gist token`、`self-evolving immunization`
+
+👤 **作者**：Yongcan Yu、Yanbo Wang、Ran He、Jian Liang
+
+- 🎯 **研究动机**：现有越狱防御多为特定攻击类型定制（如改写防御无法应对图像攻击），跨模态攻击下的防御一致性缺失
+- 🔬 **研究方法**：TIM 先训练 gist token 做高效检测并在推理时识别越狱活动，检出后用越狱指令配拒绝回答做安全微调实现自我演化免疫，并把微调与检测模块解耦以防检测器退化
+- 📌 **结论**：在 LLM 与多模态 LLM 上的大量实验证明 TIM 对多种越狱攻击的自适应防御有效性
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+While (multimodal) large language models (LLMs) have attracted widespread attention due to their exceptional capabilities, they remain vulnerable to jailbreak attacks. Various defense methods are proposed to defend against jailbreak attacks, however, they are often tailored to specific types of jailbreak attacks, limiting their effectiveness against diverse adversarial strategies. For instance, rephrasing-based defenses are effective against text adversarial jailbreaks but fail to counteract image-based attacks. To overcome these limitations, we propose a universal defense framework, termed Test-time IMmunization (TIM), which can adaptively defend against various jailbreak attacks in a self-evolving way. Specifically, TIM initially trains a gist token for efficient detection, which it subsequently applies to detect jailbreak activities during inference. When jailbreak attempts are identified, TIM implements safety fine-tuning using the detected jailbreak instructions paired with refusal answers. Furthermore, to mitigate potential performance degradation in the detector caused by parameter updates during safety fine-tuning, we decouple the fine-tuning process from the detection module. Extensive experiments on both LLMs and multimodal LLMs demonstrate the efficacy of TIM.
+
+</details>

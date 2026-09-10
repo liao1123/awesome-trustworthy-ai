@@ -18,7 +18,7 @@
 
 ### 1. Online Safety Monitoring for LLMs
 
-📄 [arXiv](https://arxiv.org/abs/2607.02510) · 🌐 [Project](https://safe-ai-workshop.github.io/uai-2026/)　📅 2026-07　🏷 ICML 2026
+📄 [arXiv](https://arxiv.org/abs/2607.02510) · 🌐 [Project](https://safe-ai-workshop.github.io/uai-2026/)　📅 2026-07　🏷 ICML 2026 Workshop
 
 **关键词**：`defense`、`detection`、`online monitor`、`risk control`、`alarm calibration`、`online monitoring`
 
@@ -244,26 +244,7 @@ Streaming language-model output creates an enforcement boundary: a control that 
 
 </details>
 
-### 13. Dynamic Content Moderation in Livestreams: Combining Supervised Classification with MLLM-Boosted Similarity Matching
-
-📄 [arXiv](https://arxiv.org/abs/2512.03553) · 🌐 [Project](https://doi.org/10.1145/3770854.3783936)　📅 2025-12　🏷 KDD 2026
-
-**关键词**：`defense`、`livestream moderation`、`MLLM matching`、`production deployment`
-
-👤 **作者**：Wei Chee Yew、…、Danhui Guan
-
-- 🎯 **研究动机**：直播审核需及时、多模态并适应不断演化的不良内容，单一分类器难以覆盖新型边缘案例
-- 🔬 **研究方法**：生产级混合框架：监督分类器处理已知违规，基于参考的相似度匹配处理新颖或微妙案例，文本、音频、视觉三模态并行，MLLM 向两条流水线蒸馏知识
-- 📌 **结论**：分类管线 80% 精度下召回 67%、相似度管线达 76%；大规模 A/B 测试显示不良直播观看量下降 6-8%
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Content moderation remains a critical yet challenging task for large-scale user-generated video platforms, especially in livestreaming environments where moderation must be timely, multimodal, and robust to evolving forms of unwanted content. We present a hybrid moderation framework deployed at production scale that combines supervised classification for known violations with reference-based similarity matching for novel or subtle cases. This hybrid design enables robust detection of both explicit violations and novel edge cases that evade traditional classifiers. Multimodal inputs (text, audio, visual) are processed through both pipelines, with a multimodal large language model (MLLM) distilling knowledge into each to boost accuracy while keeping inference lightweight. In production, the classification pipeline achieves 67% recall at 80% precision, and the similarity pipeline achieves 76% recall at 80% precision. Large-scale A/B tests show a 6-8% reduction in user views of unwanted livestreams}. These results demonstrate a scalable and adaptable approach to multimodal content governance, capable of addressing both explicit violations and emerging adversarial behaviors.
-
-</details>
-
-### 14. Guard Vector: Beyond English LLM Guardrails with Task-Vector Composition and Streaming-Aware Prefix SFT
+### 13. Guard Vector: Beyond English LLM Guardrails with Task-Vector Composition and Streaming-Aware Prefix SFT
 
 📄 [arXiv](https://arxiv.org/abs/2509.23381) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2025-09
 

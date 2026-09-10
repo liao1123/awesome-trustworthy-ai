@@ -533,22 +533,3 @@ Evaluation of socially unsafe content in spoken dialogues remains text-centric, 
 Large audio-language models (LALMs) make it possible to interact with language models through speech, music, and environmental sound, but they also introduce a safety surface that is difficult to expose with text-only red-teaming. We study automated audio-grounded red-teaming, where a text query must remain safe in isolation while the joint text-audio input induces harmful target behavior. We propose ARENA, a closed-loop framework that trains a controller on an independent 2,000case text-audio dataset. MD-Judge supplies training rewards and adaptive search feedback, while a separate, non-adaptive Llama Guard 3 evaluator alone labels final outcomes. On 520 held-out AdvBench objectives, ARENA achieves FDR/PSR of 87.9/100.0%, 71.5/96.3%, 68.1/100.0%, and 75.4/98.5% on Audio Flamingo 3, Qwen2-Audio, MiMo-Audio, and GPTAudio, respectively. Ablations show that feedback-based refinement and audio-variant search substantially improve attack discovery.
 
 </details>
-
-### 29. AHA: Aligning Large Audio-Language Models for Reasoning Hallucinations via Counterfactual Hard Negatives
-
-🎓 [Official](https://aclanthology.org/2026.findings-acl.1464/)　📅 2026-07　🏷 ACL 2026
-
-**关键词**：`defense`、`audio hallucination`、`counterfactual hard negative`、`AHA-Eval`
-
-👤 **作者**：Yanxi Chen、…、Yalin Wang
-
-- 🎯 **研究动机**：大型音频语言模型频繁产生不基于音频输入的幻觉，缺乏细粒度分类与对齐手段
-- 🔬 **研究方法**：定义事件遗漏、事件身份错误、时序关系错误与数量时序错误四类幻觉分类法；用反事实硬负样本挖掘构建偏好数据集对齐 Qwen2.5-Omni，并建立诊断基准 AHA-Eval
-- 📌 **结论**：Qwen-Audio-AHA 在 AHA-Eval 提升 13.7%，MMAU-Test 提升 1.3%、MMAR 提升 1.6%，超过最新 SOTA
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Although Large Audio-Language Models (LALMs) deliver state-of-the-art (SOTA) performance, they frequently suffer from hallucinations, e.g., generating text not grounded in the audio input. We analyze these grounding failures and identify a distinct taxonomy: Event Omission, False Event Identity, Temporal Relation Error, and Quantitative Temporal Error. To address this, we introduce the AHA (Audio Hallucination Alignment) framework. By leveraging counterfactual hard negative mining, our pipeline constructs a high-quality preference dataset that forces models to distinguish strict acoustic evidence from linguistically plausible fabrications. Additionally, we establish AHA-Eval, a diagnostic benchmark designed to rigorously test these fine-grained reasoning capabilities. We apply this data to align Qwen2.5-Omni. The resulting model, Qwen-Audio-AHA, achieves a 13.7% improvement on AHA-Eval. Crucially, this benefit generalizes beyond our diagnostic set. Our model shows substantial gains on public benchmarks, including 1.3% on MMAU-Test and 1.6% on MMAR, outperforming latest SOTA methods.
-
-</details>

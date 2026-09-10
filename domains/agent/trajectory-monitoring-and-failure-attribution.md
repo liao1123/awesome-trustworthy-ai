@@ -93,26 +93,7 @@ Autonomous multi-agent systems nowadays act in finance, software supply chains, 
 
 </details>
 
-### 5. RAFFLES: Reasoning-based Attribution of Faults for LLM Systems
-
-🎓 [Official](https://aclanthology.org/2026.eacl-long.359/)　📅 2026-03　🏷 ACL 2026
-
-**关键词**：`detection`、`long-horizon system`、`fault attribution`、`iterative judge`、`LLM system`、`iterative evaluator`
-
-👤 **作者**：Chenyang Zhu、…、Daben Liu
-
-- 🎯 **研究动机**：长程多组件 LLM 系统的故障定位缺乏自动化手段，现有评测只看端到端指标且依赖人工判断
-- 🔬 **研究方法**：提出离线评测架构 RAFFLES：中央 Judge 迭代推理定位故障，多个专用 Evaluator 评估候选故障与 Judge 的理由
-- 📌 **结论**：在 Who&When Hand-Crafted 与算法生成子集上准确率超 20% 与 50%，ReasonEval 上超 80%，显著超过强基线
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-The advent of complex, interconnected long-horizon LLM systems has made it incredibly tricky to identify where and when these systems break down. Evaluation capabilities that currently exist today are limited in that they often focus on simple metrics, end-to-end outcomes, and are dependent on the perspectives of humans. In order to match the increasing complexity of these many component systems, evaluation frameworks must also be able to reason, probe, iterate, and understand the nuanced logic passing through these systems. In this paper, we present RAFFLES, an offline evaluation architecture that incorporates iterative reasoning. Specifically, RAFFLES operates as an iterative, multi-component pipeline, using a central Judge to systematically identify faults and a set of specialized Evaluators to assess the quality of the candidate faults as well as rationales of the Judge. We evaluated RAFFLES with several benchmarks - the Who&When dataset to identify step-level faults in multi-agent systems and the ReasonEval datasets to diagnose step-level mathematical reasoning errors. RAFFLES outperforms strong baselines, achieving an accuracy of over 20% and 50% on the Who&When Hand-Crafted and Algorithmically-Generated datasets, and over 80% on the ReasonEval datasets. These results demonstrate a key step towards introducing automated fault detection for autonomous systems over labor-intensive manual review.
-
-</details>
-
-### 6. When Only the Final Text Survives: Implicit Execution Tracing for Multi-Agent Auditing
+### 5. When Only the Final Text Survives: Implicit Execution Tracing for Multi-Agent Auditing
 
 📄 [arXiv](https://arxiv.org/abs/2603.17445)　📅 2026-03
 
@@ -131,7 +112,7 @@ When a multi-agent system produces an incorrect or harmful answer, who is accoun
 
 </details>
 
-### 7. VET Your Agent: Towards Host-Independent Autonomy via Verifiable Execution Traces
+### 6. VET Your Agent: Towards Host-Independent Autonomy via Verifiable Execution Traces
 
 📄 [arXiv](https://arxiv.org/abs/2512.15892) · 🌐 [Project](https://doi.org/10.1145/3779208.3786259)　📅 2025-12　🏷 ACM CCS 2026
 
@@ -150,7 +131,7 @@ Recent advances in large language models (LLMs) have enabled a new generation of
 
 </details>
 
-### 8. CAST: Critique-Aware Supervision for Training Reliable Long-Horizon Tool-Calling Agents
+### 7. CAST: Critique-Aware Supervision for Training Reliable Long-Horizon Tool-Calling Agents
 
 📄 [arXiv](https://arxiv.org/abs/2608.30147)　📅 2026-09
 
@@ -169,7 +150,7 @@ Large language model (LLM) agents are increasingly deployed in long-horizon, int
 
 </details>
 
-### 9. HarnessRisk: A Lifecycle-Oriented Benchmark for Agent Harness Safety
+### 8. HarnessRisk: A Lifecycle-Oriented Benchmark for Agent Harness Safety
 
 📄 [arXiv](https://arxiv.org/abs/2608.17597) · 🌐 [Project](https://baiyajing.github.io/harness-risk/)　📅 2026-08
 
@@ -188,7 +169,7 @@ Large language models are increasingly deployed through agent harnesses that man
 
 </details>
 
-### 10. ReguSim: Evaluating LLM Agent Rule Grounding in Financial Compliance
+### 9. ReguSim: Evaluating LLM Agent Rule Grounding in Financial Compliance
 
 📄 [arXiv](https://arxiv.org/abs/2608.19974)　📅 2026-08
 
@@ -207,7 +188,7 @@ LLM agents in financial markets may cite rules yet still submit orders that viol
 
 </details>
 
-### 11. PolicyGuide: From Guarding One Action to Guiding the Whole Workflow for Policy-Compliant LLM Agents
+### 10. PolicyGuide: From Guarding One Action to Guiding the Whole Workflow for Policy-Compliant LLM Agents
 
 📄 [arXiv](https://arxiv.org/abs/2608.19861)　📅 2026-08
 
@@ -226,7 +207,7 @@ Customer-service LLM agents must follow organizational policy when acting on a u
 
 </details>
 
-### 12. SafeBranch: Branch-Pair Safety Alignment for Embodied Agents
+### 11. SafeBranch: Branch-Pair Safety Alignment for Embodied Agents
 
 📄 [arXiv](https://arxiv.org/abs/2608.19729)　📅 2026-08
 
@@ -245,7 +226,7 @@ Vision-language-model-based embodied agents can complete instructed tasks but of
 
 </details>
 
-### 13. TraceGrant: A Contract-Governed Security Framework for the Task-Effect Lifecycle of Networked LLM Agents
+### 12. TraceGrant: A Contract-Governed Security Framework for the Task-Effect Lifecycle of Networked LLM Agents
 
 📄 [arXiv](https://arxiv.org/abs/2608.21126)　📅 2026-08
 
@@ -264,7 +245,7 @@ Networked large language model (LLM) agents retrieve information from email, clo
 
 </details>
 
-### 14. HINTBench: Horizon-agent Intrinsic Non-attack Trajectory Benchmark
+### 13. HINTBench: Horizon-agent Intrinsic Non-attack Trajectory Benchmark
 
 📄 [arXiv](https://arxiv.org/abs/2604.13954)　📅 2026-04
 
@@ -283,7 +264,7 @@ Existing agent-safety evaluation has focused mainly on externally induced risks.
 
 </details>
 
-### 15. Aligning Agents via Planning: A Benchmark for Trajectory-Level Reward Modeling
+### 14. Aligning Agents via Planning: A Benchmark for Trajectory-Level Reward Modeling
 
 📄 [arXiv](https://arxiv.org/abs/2604.08178) · 🎓 [Official](https://aclanthology.org/2026.acl-long.1062/)　📅 2026-04　🏷 ACL 2026
 
@@ -302,7 +283,7 @@ In classical Reinforcement Learning from Human Feedback (RLHF), Reward Models (R
 
 </details>
 
-### 16. TraceSafe: A Systematic Assessment of LLM Guardrails on Multi-Step Tool-Calling Trajectories
+### 15. TraceSafe: A Systematic Assessment of LLM Guardrails on Multi-Step Tool-Calling Trajectories
 
 📄 [arXiv](https://arxiv.org/abs/2604.07223) · 🌐 [Project](https://colm.cc/Conferences/2026/AcceptedPapers)　📅 2026-04　🏷 COLM 2026
 
@@ -321,7 +302,7 @@ As large language models (LLMs) evolve from static chatbots into autonomous agen
 
 </details>
 
-### 17. Willful Disobedience: Automatically Detecting Failures in Agentic Traces
+### 16. Willful Disobedience: Automatically Detecting Failures in Agentic Traces
 
 📄 [arXiv](https://arxiv.org/abs/2603.23806)　📅 2026-03
 
@@ -340,7 +321,7 @@ AI agents are increasingly embedded in real software systems, where they execute
 
 </details>
 
-### 18. DRAFT: Task Decoupled Latent Reasoning for Agent Safety
+### 17. DRAFT: Task Decoupled Latent Reasoning for Agent Safety
 
 📄 [arXiv](https://arxiv.org/abs/2604.03242)　📅 2026-02
 
@@ -359,7 +340,7 @@ The advent of tool-using LLM agents shifts safety monitoring from output moderat
 
 </details>
 
-### 19. You Can't Escape Your Own Activations: Evaluation Awareness and Multi-Agent Monitoring
+### 18. You Can't Escape Your Own Activations: Evaluation Awareness and Multi-Agent Monitoring
 
 📄 [arXiv](https://arxiv.org/abs/2609.03035)　📅 2026-09
 
@@ -378,7 +359,7 @@ LLM agents are increasingly deployed in multi-agent systems, where they can coll
 
 </details>
 
-### 20. Monitoring Web Agents Without Internal Signals: Observable Trajectories and Key-Step Supervision
+### 19. Monitoring Web Agents Without Internal Signals: Observable Trajectories and Key-Step Supervision
 
 📄 [arXiv](https://arxiv.org/abs/2609.02057)　📅 2026-09
 
@@ -397,7 +378,7 @@ Reliable web-agent monitoring is difficult when model-internal uncertainty signa
 
 </details>
 
-### 21. Last Step Matters: Early Uncertainty Cannot Predict Failure in Long-Horizon Agents
+### 20. Last Step Matters: Early Uncertainty Cannot Predict Failure in Long-Horizon Agents
 
 📄 [arXiv](https://arxiv.org/abs/2608.29685)　📅 2026-09
 
@@ -416,7 +397,7 @@ Early failure prediction is important for long-horizon agents, as it enables tim
 
 </details>
 
-### 22. Drive the Thoughts: Runtime Monitoring of VLA Reasoning-Trajectory Consistency
+### 21. Drive the Thoughts: Runtime Monitoring of VLA Reasoning-Trajectory Consistency
 
 📄 [arXiv](https://arxiv.org/abs/2608.29583)　📅 2026-09
 
@@ -435,7 +416,7 @@ Autonomous vehicles (AVs) operate in complex environments where failures are con
 
 </details>
 
-### 23. ClawSentry: A Progressive Multi-Tier Security Monitor for Safeguarding Autonomous LLM Agents
+### 22. ClawSentry: A Progressive Multi-Tier Security Monitor for Safeguarding Autonomous LLM Agents
 
 📄 [arXiv](https://arxiv.org/abs/2608.21101)　📅 2026-08
 
@@ -454,7 +435,7 @@ As large language model (LLM) agents move from conversation to executing code, r
 
 </details>
 
-### 24. Safety Does Not Compose: Non-Decaying Loop State for Autonomous LLM Agents
+### 23. Safety Does Not Compose: Non-Decaying Loop State for Autonomous LLM Agents
 
 📄 [arXiv](https://arxiv.org/abs/2608.27141)　📅 2026-08
 
@@ -473,7 +454,7 @@ Large language model agents are increasingly deployed as autonomous loops. Start
 
 </details>
 
-### 25. INTENT-AS-A-TOOL Makes it Easy to Track Agentic Misalignment
+### 24. INTENT-AS-A-TOOL Makes it Easy to Track Agentic Misalignment
 
 📄 [arXiv](https://arxiv.org/abs/2608.27348)　📅 2026-08
 
@@ -492,7 +473,7 @@ As large language models (LLMs) are deployed as autonomous agents, safety failur
 
 </details>
 
-### 26. HRGuard: Gating Relationship Manipulation in Multi-Turn Agentic AI Conversations
+### 25. HRGuard: Gating Relationship Manipulation in Multi-Turn Agentic AI Conversations
 
 📄 [arXiv](https://arxiv.org/abs/2608.25340)　📅 2026-08
 
@@ -511,7 +492,7 @@ Agentic AI assistants are increasingly used in everyday life. However, they may 
 
 </details>
 
-### 27. Reassembling Distributed Risk: Trajectory-Conditioned Action Generation for Multi-Turn Agent Safety
+### 26. Reassembling Distributed Risk: Trajectory-Conditioned Action Generation for Multi-Turn Agent Safety
 
 📄 [arXiv](https://arxiv.org/abs/2608.25711)　📅 2026-08
 
@@ -530,7 +511,7 @@ Tool-using LLM agents extend security risks beyond generated text to actions tha
 
 </details>
 
-### 28. GuardianAgentBench: Where Agents Fail and How to Guard Them
+### 27. GuardianAgentBench: Where Agents Fail and How to Guard Them
 
 📄 [arXiv](https://arxiv.org/abs/2607.20982)　📅 2026-07
 
@@ -549,26 +530,7 @@ As large language model agents increasingly operate autonomously with access to 
 
 </details>
 
-### 29. TRACER: Trajectory Risk Aggregation for Critical Episodes in Agentic Reasoning
-
-📄 [arXiv](https://arxiv.org/abs/2602.11409) · 🎓 [Official](https://icml.cc/virtual/2026/poster/61608)　📅 2026　🏷 ICML 2026
-
-**关键词**：`detection`、`analysis`、`agent trajectory`、`failure attribution`、`runtime monitoring`、`agent safety`
-
-👤 **作者**：Sina Tayebati、Divake Kumar、Nastaran Darabi、Davide Ettori、Ranganath Krishnan、Amit Ranjan Trivedi
-
-- 🎯 **研究动机**：智能体失败常由循环、工具误用等稀疏关键事件触发，而现有不确定性代理只针对单轮文本生成，遗漏轨迹级崩溃信号
-- 🔬 **研究方法**：提出 TRACER：结合内容感知 surprisal、语义与词汇重复、工具连贯性缺口，用尾部聚焦风险泛函与 MAX 复合步风险聚合；在 tau2-bench 上预测任务失败与选择性执行
-- 📌 **结论**：AUROC 至多提升 37.1%、AUARC 至多 55%，更早更准地检测复杂工具交互中的不确定性
-
-<details>
-<summary>📝 展开完整英文摘要（Abstract）</summary>
-
-Estimating uncertainty for AI agents in real-world multi-turn tool-using interaction with humans is difficult because failures are often triggered by sparse critical episodes (e.g., looping, incoherent tool use, or user-agent miscoordination) even when local generation appears confident. Existing uncertainty proxies focus on single-shot text generation and therefore miss these trajectory-level breakdown signals. We introduce TRACER, a trajectory-level uncertainty metric for dual-control Tool-Agent-User interaction. TRACER combines content-aware surprisal with situational-awareness signals, semantic and lexical repetition, and tool-grounded coherence gaps, and aggregates them using a tail-focused risk functional with a MAX-composite step risk to surface decisive anomalies. We evaluate TRACER on $\tau^2$-bench (Barres et al., 2025) by predicting task failure and selective task execution. To this end, TRACER improves AUROC by up to 37.1\% and AUARC by up to 55\% over baselines, enabling earlier and more accurate detection of uncertainty in complex conversational tool-use settings. Our codebase is available at: https://github.com/sinatayebati/agent-tracer.
-
-</details>
-
-### 30. ProbGuard: Proactive Runtime Monitoring for LLM Agent Safety via Probabilistic Prediction
+### 28. ProbGuard: Proactive Runtime Monitoring for LLM Agent Safety via Probabilistic Prediction
 
 📄 [arXiv](https://arxiv.org/abs/2508.00500) · 🌐 [Project](https://conf.researchr.org/details/ase-2026/ase-2026-research-track/117/ProbGuard-Proactive-Runtime-Monitoring-for-LLM-Agent-Safety-via-Probabilistic-Predic)　📅 2025-08　🏷 ASE 2026
 
@@ -584,5 +546,62 @@ Estimating uncertainty for AI agents in real-world multi-turn tool-using interac
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 Large Language Model (LLM) agents increasingly operate across domains such as robotics, virtual assistants, and web automation. However, their stochastic decision-making introduces safety risks that are difficult to anticipate during execution. Existing runtime monitoring frameworks, such as AgentSpec, primarily rely on reactive safety rules that detect violations only when unsafe behavior is imminent or has already occurred, limiting their ability to handle long-horizon dependencies. We present ProbGuard, a proactive runtime monitoring framework for LLM agents that anticipates safety violations through probabilistic risk prediction. ProbGuard abstracts agent executions into symbolic states and learns a Discrete-Time Markov Chain (DTMC) from execution traces to model behavioral dynamics. At runtime, the monitor estimates the probability that execution will remain safe from the current state, and triggers an intervention when this probability falls below a user-defined threshold. To improve robustness, ProbGuard incorporates semantic validity constraints in the abstraction and admits a PAC-style analysis that characterizes the sample complexity required to certify the learned model under standard assumptions. We evaluate ProbGuard in two safety-critical domains: autonomous driving and embodied household agents. Across evaluated scenarios, ProbGuard consistently predicts traffic law violations and collisions in advance, with warnings up to 15.84 seconds at a threshold yielding no false alarms, and up to 38.66 seconds at stricter thresholds. In embodied agent tasks, ProbGuard's re-prompting intervention mode reduces unsafe behavior by 65.37% relative to the unmonitored baseline while retaining 80.4% of the baseline task completion; a stricter halting configuration reduces unsafe behavior by 93.60% at a larger cost in completion.
+
+</details>
+
+### 29. Speculative Safety Honeypot: Toward Proactive Defense Against Multi-turn Agent Attacks
+
+🎓 [Official](https://icml.cc/virtual/2026/poster/65283)　📅 2026　🏷 ICML 2026
+
+**关键词**：`defense`、`multi-agent evaluation`、`tool-use agent`、`tool interface`、`LLM agent security`、`tool-use attack`
+
+👤 **作者**：Zezhong WANG、Xueyang Tang、RUI LIAN、Yang Lou、Heqing Huang
+
+- 🎯 **研究动机**：多轮交互攻击把恶意意图拆分到多轮隐藏未来风险，依赖历史上下文的回顾式检测难以识别
+- 🔬 **研究方法**：提出 SSH：小 LLM 多 agent 模拟构建动作级 speculate-and-verify 工作流，推测阶段异步构建轨迹树提前暴露风险，验证阶段用真实动作校准剪枝，可插拔增强现有检测器
+- 📌 **结论**：按轨迹树演化而非单时点判险，降低对单检测组件精度的依赖，提升防御韧性与预警提前量
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+As Large Language Model (LLM) agents are increasingly deployed in complex environments, multi-turn interaction attacks have become a significant security challenge. Existing detection methods typically rely on historical context. However, this retrospective logic struggles to identify deep malicious intents that are split across turns to hide future risks. Inspired by speculative decoding, we propose the Speculative Safety Honeypot (SSH) framework. SSH uses a multi-agent simulation system composed of small LLMs to build an action-level speculate-and-verify workflow. In the speculation stage, SSH predicts future behaviors of the target agent and asynchronously builds a trajectory tree to expose potential risks in advance. In the verification stage, the system uses the target agent's real actions to calibrate and prune the trajectory tree, effectively reducing false positives. As a plug-and-playable component, SSH provides existing detectors with rich decision redundancy beyond the current interaction slice. By judging risk based on the evolution of the entire trajectory tree rather than a single point in time, the system reduces the reliance on the absolute precision of individual detection components. This improves the defense resilience and the warning lead-time of agent systems against complex temporal attacks.
+
+</details>
+
+### 30. MATE: Policy-Aware Security Auditing for Mobile Agents via Synthesis-Driven Trajectory Learning
+
+🎓 [Official](https://www.usenix.org/conference/usenixsecurity26/presentation/jiang-changyue)　📅 2026　🏷 USENIX Security 2026
+
+**关键词**：`detection`、`mobile agent`、`policy auditing`、`trajectory learning`
+
+👤 **作者**：Changyue Jiang、Jiayi Wang、Xin Wen、Jiarun Dai、Geng Hong、Xudong Pan
+
+- 🎯 **研究动机**：移动智能体轨迹可违反 app 特定安全策略，现有轨迹防御靠 LLM 提示或僵化规则，难支持跨 app 的自然语言细粒度策略
+- 🔬 **研究方法**：MATE 把策略当可编辑文本的策略条件化审计器，从数百 app 提取描述/工作流/策略并多阶段合成 14 万+ 轨迹训练；发布 MATEBench
+- 📌 **结论**：MATEBench 准确率超 95%，真实设备上审计 AutoGLM 与 Mobile-Agent 轨迹准确率超 95%，超先前方法 20% 以上
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Mobile agents powered by foundation models now automate complex, multi-step workflows on real devices, but their trajectories can violate app-specific security policies. Existing trajectory-level defenses rely on LLM prompting or rigid rules, and thus fail to support fine-grained, natural-language policies that generalize across apps and tasks. In this work, we introduce MATE, a lightweight, policy-conditioned auditor that encodes both agent trajectories and natural-language security policies to determine whether a trajectory violates a given policy and to explain why. Treating policies as editable text rather than fixed model parameters allows MATE to handle user-defined and evolving requirements without retraining. To construct MATE, we build a knowledge base by extracting app descriptions, workflows, and policies from hundreds of popular mobile apps worldwide, and synthesizing over 140K semantically realistic, policy-conditioned trajectories with a multi-stage pipeline. We further release MATEBench, a trajectory-level auditing benchmark with two synthetic subsets and one real-world subset of manually collected trajectories. Models trained with our synthesis-driven trajectory learning achieve over 95% accuracy on MATEBench, retain strong performance on external safety benchmarks, and audit trajectories from Zhipu's AutoGLM and Alibaba's Mobile-Agent on real devices with over 95% accuracy, outperforming prior methods by over 20%. MATE shows that practical, fine-grained security auditing for heterogeneous mobile agents is both feasible and effective.
+
+</details>
+
+### 31. Causal Detection of Multi-Step LLM Agent Attacks
+
+🎓 [Official](https://icml.cc/virtual/2026/poster/64714)　📅 2026　🏷 ICML 2026
+
+**关键词**：`detection`、`causal analysis`、`tool-use agent`、`tool interface`、`LLM agent security`、`tool-use attack`
+
+👤 **作者**：Viraaji Mothukuri、Reza M. Parizi
+
+- 🎯 **研究动机**：多步提示注入的恶意意图在工作流完成后才显现、单动作均合法，现有防御作用于单动作或内容模式无法捕捉序列结构
+- 🔬 **研究方法**：CausalTrace 把防御重构为因果推断：从 agent 轨迹构建带数据依赖、信任转移、状态使能类型边的结构因果模型，用 Pearl do-calculus 回答阻断注入是否仍会发生有害结果
+- 📌 **结论**：检测优于内容基线且 LLM 推理成本低，双向切片高边召回恢复完整攻击链并提供可解释归因
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Multi-step prompt injection attacks on LLM agents present a fundamental detection challenge because malicious intent emerges only after the workflow completes, while individual actions remain legitimate in isolation. Existing defenses, including input sanitization, output validation, and instruction hierarchy, operate on individual actions or content patterns and cannot capture this sequential structure. We present CausalTrace, a detection system that reframes prompt-injection defense as causal inference. It constructs Structural Causal Models from agent trajectories with typed edges capturing data dependency, trust transfer, and state enablement, then applies Pearl’s do-calculus to answer a counterfactual question, namely, whether the harmful outcome would have occurred if the injection had been blocked. This formalization enables a principled distinction between attacks that depend on injections and benign workflows that share surface-level features. Evaluation on a dataset spanning crowdsourced traces, LLM agent benchmarks, and semi-real and real scenarios demonstrates strong detection performance, outperforming content-based baselines while requiring minimal LLM inference cost; bidirectional slicing recovers complete attack chains with high edge recall, providing interpretable explanations that trace exploitation to its causal origins.
 
 </details>
