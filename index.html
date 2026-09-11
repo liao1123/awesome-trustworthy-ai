@@ -16,6 +16,10 @@
       <div class="topbar-controls">
         <input id="searchBox" type="search" placeholder="搜索标题 / 作者 / 关键词…" autocomplete="off" spellcheck="false">
         <button id="starredToggle" class="chip" title="只看收藏的论文">☆ 只看收藏</button>
+        <button id="starExport" class="chip" title="导出收藏为 JSON 文件">⬇ 导出</button>
+        <button id="starCopy" class="chip" title="复制收藏列表（可直接粘贴给助手）">⧉ 复制</button>
+        <button id="starImport" class="chip" title="从 JSON 文件导入收藏（合并去重）">⬆ 导入</button>
+        <input id="starImportFile" type="file" accept="application/json" hidden>
         <button id="themeToggle" title="切换明暗主题">🌓</button>
       </div>
     </header>

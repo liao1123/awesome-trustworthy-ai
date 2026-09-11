@@ -28,6 +28,10 @@
     scopeHeader: document.getElementById("scopeHeader"),
     searchBox: document.getElementById("searchBox"),
     starredToggle: document.getElementById("starredToggle"),
+    starExport: document.getElementById("starExport"),
+    starCopy: document.getElementById("starCopy"),
+    starImport: document.getElementById("starImport"),
+    starImportFile: document.getElementById("starImportFile"),
     themeToggle: document.getElementById("themeToggle"),
     emptyState: document.getElementById("emptyState"),
     sentinel: document.getElementById("sentinel"),
@@ -350,10 +354,24 @@
       var star = card.querySelector(".star");
       if (star) star.addEventListener("click", function () {
         var id = card.getAttribute("data-id");
-        if (state.starred[id]) delete state.starred[id]; else state.starred[id] = 1;
+        var was = !!state.starred[id];
+        if (was) delete state.starred[id]; else state.starred[id] = 1;
         saveStore("interested", state.starred);
+        ensureLive(); // first ★ ever pops the one-time save dialog
+        // record the board context where the star was toggled
+        state.starEvents = state.starEvents || [];
+        state.starEvents.push({
+          ts: new Date().toISOString(),
+          id: id,
+          title: (papers[id] || {}).title || id,
+          action: was ? "unstar" : "star",
+          view: state.view,
+          page: state.pageId,
+        });
+        saveStore("starEvents", state.starEvents.slice(-2000));
         card.classList.toggle("starred", !!state.starred[id]);
         star.textContent = state.starred[id] ? "★" : "☆";
+        liveWrite();
         if (state.starredOnly && !state.starred[id]) render();
       });
     });
@@ -397,6 +415,194 @@
     render();
   });
 
+  /* ---------- starred export / import (preference recording) ---------- */
+
+  /* live recording: File System Access API — the first ★ click pops the
+   * save dialog once (browser-mandated); after that single confirmation every
+   * star toggle auto-writes the JSON snapshot (with view/section context).
+   * Chromium-only; silent localStorage fallback elsewhere. */
+  var live = { handle: null, timer: null, asked: false };
+
+  function liveSupported() {
+    return typeof window.showSaveFilePicker === "function";
+  }
+
+  function ensureLive() {
+    if (live.handle || !liveSupported() || live.asked || loadStore("liveDeclined", false)) {
+      return;
+    }
+    live.asked = true;
+    window.showSaveFilePicker({
+      suggestedName: "starred-live.json",
+      types: [{ description: "JSON", accept: { "application/json": [".json"] } }],
+    }).then(function (handle) {
+      live.handle = handle;
+      idbSet("starfile", handle);
+      toast("已开启实时记录：收藏将自动写入 starred-live.json");
+      return liveWriteNow();
+    }).catch(function (e) {
+      if (e && e.name === "AbortError") saveStore("liveDeclined", true); // user declined; don't nag
+    });
+  }
+
+  function idbOpen() {
+    return new Promise(function (resolve, reject) {
+      var req = indexedDB.open("reader-prefs", 1);
+      req.onupgradeneeded = function () { req.result.createObjectStore("handles"); };
+      req.onsuccess = function () { resolve(req.result); };
+      req.onerror = function () { reject(req.error); };
+    });
+  }
+
+  function idbSet(key, value) {
+    return idbOpen().then(function (db) {
+      return new Promise(function (resolve, reject) {
+        var tx = db.transaction("handles", "readwrite");
+        tx.objectStore("handles").put(value, key);
+        tx.oncomplete = function () { resolve(); };
+        tx.onerror = function () { reject(tx.error); };
+      });
+    });
+  }
+
+  function idbGet(key) {
+    return idbOpen().then(function (db) {
+      return new Promise(function (resolve, reject) {
+        var tx = db.transaction("handles", "readonly");
+        var req = tx.objectStore("handles").get(key);
+        req.onsuccess = function () { resolve(req.result || null); };
+        req.onerror = function () { reject(req.error); };
+      });
+    });
+  }
+
+  function livePayload() {
+    return {
+      updated: new Date().toISOString(),
+      count: Object.keys(state.starred).length,
+      starred: starredRecords(),
+      events: (state.starEvents || []).slice(-2000),
+    };
+  }
+
+  function liveWriteNow() {
+    if (!live.handle) return Promise.resolve();
+    return live.handle.createWritable().then(function (w) {
+      return w.write(JSON.stringify(livePayload(), null, 1)).then(function () { return w.close(); });
+    }).catch(function (e) {
+      setLiveUi(false);
+      toast("实时记录中断：" + (e && e.message ? e.message : e));
+    });
+  }
+
+  function liveWrite() {
+    if (!live.handle) return;
+    clearTimeout(live.timer);
+    live.timer = setTimeout(liveWriteNow, 600);
+  }
+
+  function restoreLive() {
+    if (!liveSupported()) return;
+    idbGet("starfile").then(function (handle) {
+      if (!handle) return;
+      return handle.queryPermission({ mode: "readwrite" }).then(function (perm) {
+        if (perm === "granted") {
+          live.handle = handle;
+          setLiveUi(true);
+        } else {
+          // permission needs a user gesture; arm a one-shot re-grant on first click
+          var rearm = function () {
+            handle.requestPermission({ mode: "readwrite" }).then(function (p) {
+              if (p === "granted") { live.handle = handle; setLiveUi(true); liveWriteNow(); }
+            });
+            document.removeEventListener("click", rearm);
+          };
+          document.addEventListener("click", rearm);
+        }
+      });
+    }).catch(function () {});
+  }
+
+  function starredRecords() {
+    var rows = [];
+    Object.keys(state.starred).forEach(function (id) {
+      var paper = papers[id] || {};
+      rows.push({
+        id: id,
+        title: paper.title || id,
+        venue: paper.venue || "",
+        keywords: paper.keywords || [],
+        date: paper.date || "",
+      });
+    });
+    rows.sort(function (a, b) { return a.id < b.id ? -1 : 1; });
+    return rows;
+  }
+
+  function toast(msg) {
+    var note = el.statsNote;
+    if (!note) return;
+    var old = note.textContent;
+    note.textContent = msg;
+    setTimeout(function () { note.textContent = old; }, 2600);
+  }
+
+  el.starExport.addEventListener("click", function () {
+    var payload = {
+      exported: new Date().toISOString().slice(0, 10),
+      count: Object.keys(state.starred).length,
+      starred: starredRecords(),
+    };
+    var blob = new Blob([JSON.stringify(payload, null, 1)], { type: "application/json" });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = "starred-papers-" + payload.exported + ".json";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+    toast("已导出 " + payload.count + " 条收藏到 JSON 文件");
+  });
+
+  el.starCopy.addEventListener("click", function () {
+    var lines = starredRecords().map(function (r) {
+      return r.id + " | " + r.title + (r.venue ? " | " + r.venue : "");
+    });
+    var text = lines.length ? lines.join("\n") : "（暂无收藏）";
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () {
+        toast("已复制 " + lines.length + " 条收藏，可直接粘贴");
+      }, function () { toast("复制失败，请用导出"); });
+    } else {
+      toast("浏览器不支持剪贴板，请用导出");
+    }
+  });
+
+  el.starImport.addEventListener("click", function () { el.starImportFile.click(); });
+  el.starImportFile.addEventListener("change", function () {
+    var file = el.starImportFile.files && el.starImportFile.files[0];
+    if (!file) return;
+    var reader = new FileReader();
+    reader.onload = function () {
+      try {
+        var data = JSON.parse(reader.result);
+        var list = data.starred || data;
+        var added = 0;
+        (Array.isArray(list) ? list : []).forEach(function (r) {
+          if (r && r.id && !state.starred[r.id]) { state.starred[r.id] = 1; added++; }
+        });
+        saveStore("interested", state.starred);
+        toast("导入完成：新增 " + added + " 条收藏");
+        render();
+      } catch (e) {
+        toast("导入失败：文件不是合法 JSON");
+      }
+    };
+    reader.readAsText(file);
+    el.starImportFile.value = "";
+  });
+
   function setTheme(theme) {
     state.theme = theme;
     document.documentElement.setAttribute("data-theme", theme);
@@ -424,8 +630,10 @@
   /* ---------- boot ---------- */
 
   state.starred = loadStore("interested", {});
+  state.starEvents = loadStore("starEvents", []);
   state.theme = loadStore("theme", null) || (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
   setTheme(state.theme);
+  restoreLive();
   renderNav();
   render();
 })();
