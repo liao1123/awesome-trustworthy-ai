@@ -371,7 +371,8 @@
         saveStore("starEvents", state.starEvents.slice(-2000));
         card.classList.toggle("starred", !!state.starred[id]);
         star.textContent = state.starred[id] ? "★" : "☆";
-        liveWrite();
+        if (live.collector) collectorSend();
+        else liveWrite();
         if (state.starredOnly && !state.starred[id]) render();
       });
     });
@@ -421,19 +422,38 @@
    * save dialog once (browser-mandated); after that single confirmation every
    * star toggle auto-writes the JSON snapshot (with view/section context).
    * Chromium-only; silent localStorage fallback elsewhere. */
-  var live = { handle: null, timer: null, asked: false };
+  var live = { handle: null, timer: null, asked: false, collector: false };
 
   function liveSupported() {
     return typeof window.showSaveFilePicker === "function";
   }
 
+  function collectorSend() {
+    if (!live.collector) return;
+    try {
+      fetch("/api/stars", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ starred: starredRecords(), events: (state.starEvents || []).slice(-2000) }),
+      }).catch(function () {});
+    } catch (e) { /* transport errors are non-fatal */ }
+  }
+
+  function probeCollector() {
+    try {
+      fetch("/api/ping").then(function (r) {
+        live.collector = !!(r && r.ok);
+      }).catch(function () { live.collector = false; });
+    } catch (e) { live.collector = false; }
+  }
+
   function ensureLive() {
-    if (live.handle || !liveSupported() || live.asked || loadStore("liveDeclined", false)) {
+    if (live.collector || live.handle || !liveSupported() || live.asked || loadStore("liveDeclined", false)) {
       return;
     }
     live.asked = true;
     window.showSaveFilePicker({
-      suggestedName: "starred-live.json",
+      suggestedName: "star-live.json",
       types: [{ description: "JSON", accept: { "application/json": [".json"] } }],
     }).then(function (handle) {
       live.handle = handle;
@@ -633,6 +653,7 @@
   state.starEvents = loadStore("starEvents", []);
   state.theme = loadStore("theme", null) || (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
   setTheme(state.theme);
+  probeCollector(); // local server mode: star events POST straight to tools/out/starred-live.json
   restoreLive();
   renderNav();
   render();
