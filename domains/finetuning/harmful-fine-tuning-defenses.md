@@ -1580,3 +1580,22 @@ Recent advancements in large language models (LLMs) have underscored their vulne
 Text-to-image diffusion models can emit copyrighted, unsafe, or private content. Safety alignment aims to suppress specific concepts, yet evaluations seldom test whether safety persists under benign downstream fine-tuning routinely applied after deployment (e.g., LoRA personalization, style/domain adapters). We study the stability of current safety methods under benign fine-tuning and observe frequent breakdowns. As true safety alignment must withstand even benign post-deployment adaptations, we introduce the SPQR benchmark (Safety, Prompt adherence, Quality, and Robustness). SPQR is a single-scored metric that provides a unified, reproducible framework to evaluate how well safety-aligned diffusion models preserve safety, utility, and robustness under benign fine-tuning, by reporting a single leaderboard score to facilitate comparisons. We conduct multilingual, domain-specific, and out-of-distribution analyses, along with category-wise breakdowns, to identify when safety alignment fails after benign fine-tuning, ultimately showcasing SPQR as a concise yet comprehensive benchmark for T2I safety alignment techniques for T2I models.
 
 </details>
+
+### 85. Active Adaptation, Not Static Defense: Temporal Dynamics of Preventative Steering in Adversarial Fine-Tuning
+
+📄 [arXiv](https://arxiv.org/abs/2609.10142)　📅 2026-09
+
+**关键词**：`analysis`、`malicious fine-tuning defense`、`preventative steering`、`temporal dynamics`、`progressive scheduling`
+
+👤 **作者**：Jing Guan、Yachao Yang、Zhaoliang Liu、Yuyao Zhang、Fanyu Meng、Junlan Feng
+
+- 🎯 **研究动机**：Preventative Steering 抗恶意微调的持久保护机制不明，制约其改进
+- 🔬 **研究方法**：分析时间优化动力学：早期补偿适应+稳态校正衰减，注意力输出投影为防御更新主导路径；IDP 实验证明静态权重偏移无法维持保护
+- 📌 **结论**：提出渐进强度调度 PIS，Qwen2.5/Gemma-3 上超越静态强度 steering 的安全鲁棒性并降低有害特质表达
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models remain fragile against malicious fine-tuning, motivating training-time defenses against harmful persona drift. Preventative Steering injects undesirable-trait persona vectors during fine-tuning and removes them at evaluation time, yet the mechanism behind its lasting protection remains unclear. Analyzing its temporal optimization dynamics, we find that the defense emerges from an early compensatory adaptation phase followed by a steady-state phase where the corrective signal decays; in parameter space, attention output projections emerge as the dominant residual-write route for defensive updates. Through Intervention Delta Preservation (IDP) and IDP Continuation experiments, we further show that preserving or reinjecting the weight offset fails to maintain protection, indicating that preventative steering relies on active adaptation rather than a static defense. Motivated by this finding, we propose Progressive Intensity Scheduling (PIS), which starts with a moderate injection strength and increases it after static-strength alignment begins to decay. Across the evaluated Qwen2.5 and Gemma-3 models, PIS improves safety robustness over static-strength steering while reducing harmful trait expression.
+
+</details>
