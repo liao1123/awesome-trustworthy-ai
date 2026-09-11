@@ -1642,3 +1642,22 @@ Multi-modal large language models (MLLMs) integrate heterogeneous modalities thr
 With the significant development of large models in recent years, Large Vision-Language Models (LVLMs) have demonstrated remarkable capabilities across a wide range of multimodal understanding and reasoning tasks. Compared to traditional Large Language Models (LLMs), LVLMs present great potential and challenges due to its closer proximity to the multi-resource real-world applications and the complexity of multi-modal processing. However, the vulnerability of LVLMs is relatively underexplored, posing potential security risks in daily usage. In this paper, we provide a comprehensive review of the various forms of existing LVLM attacks. Specifically, we first introduce the background of attacks targeting LVLMs, including the attack preliminary, attack challenges, and attack resources. Then, we systematically review the development of LVLM attack methods, such as adversarial attacks that manipulate model outputs, jailbreak attacks that exploit model vulnerabilities for unauthorized actions, prompt injection attacks that engineer the prompt type and pattern, and data poisoning that affects model training. Finally, we discuss promising research directions in the future. We believe that our survey provides insights into the current landscape of LVLM vulnerabilities, inspiring more researchers to explore and mitigate potential safety issues in LVLM developments. The latest papers on LVLM attacks are continuously collected in https://github.com/liudaizong/Awesome-LVLM-Attack.
 
 </details>
+
+### 94. FreqDoor: A Hidden Trojan in the Frequency Domain for Backdoor Attacks on Vision-Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2609.07048)　📅 2026-09
+
+**关键词**：`attack`、`backdoor`、`frequency-domain trigger`、`vision-language model`
+
+👤 **作者**：Yasir Arafat Prodhan、Sadad Hasan、Mohammed Imamul Hassan Bhuiyan
+
+- 🎯 **研究动机**：VLM 后门触发器多为空间/文本/双模态，易被定位或识别
+- 🔬 **研究方法**：FreqDoor 频域触发：混合触发图幅度谱并保留干净图相位，生成空间分散且视觉不可见的触发，不改文本输入
+- 📌 **结论**：BLIP-2/InstructBLIP/LLaVA 在 Flickr8k captioning ASR 99.6/99.8/98.4%，VQAv2 上 79.6-99.6%
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Vision-language models (VLMs) have recently shown excellent progress in open-ended image-to-text generation. However, their multimodal nature makes them persistently vulnerable to backdoor attacks. Existing backdoor triggers for VLMs are either spatial, textual, or bimodal, which may yield localized or recognizable trigger patterns. In this work, we explore a different attack surface and propose \ textsc {FreqDoor}, a training-time backdoor attack that implants triggers in the frequency domain. \ textsc {FreqDoor} mixes amplitude-spectrum components from a trigger-source image selectively while preserving the phase of a clean image to generate a spatially distributed and visually imperceptible trigger without modifying the textual input. We evaluate the attack on BLIP-2, InstructBLIP, and LLaVA for image captioning and visual question answering. On Flickr8k, \ textsc {FreqDoor} achieves attack success rates of $99.6\%$, $99.8\%$, and $98.4\%$ on the three models, respectively, while preserving the semantic quality of the generated captions. On VQAv2, the corresponding attack success rates are $99.6\%$, $92.4\%$, and $79.6\%$.
+
+</details>

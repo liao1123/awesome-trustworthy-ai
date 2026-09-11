@@ -1062,3 +1062,41 @@ The limited transferability of adversarial attacks on Vision-Language Models (VL
 In-context learning (ICL) jailbreaks reveal a critical vulnerability in multimodal large language models (MLLMs): harmful demonstrations in the prompt can induce unsafe outputs without modifying model parameters. Despite extensive empirical evidence, existing work lacks a principled understanding of why such jailbreaks reliably succeed or how their effectiveness scales with context composition. We propose a posterior reweighting framework that models a safety-aligned MLLM as implicitly operating over competing behavioral modes, and interprets in-context demonstrations as inference-time evidence that dynamically shifts the model's posterior preference between safe and harmful behaviors. This view formalizes jailbreak as a process of evidence accumulation, yielding predictive scaling laws with respect to demonstration count, harmful ratio, adversarial strength, and semantic diversity. Guided by this framework, we introduce a posterior-aware inference-time defense that adaptively injects benign counter-evidence based on estimated risk, effectively suppressing harmful posterior drift while preserving model utility. Compared to existing in-context defenses, our method achieves a significantly improved robustness-utility trade-off under a fixed intervention budget. Together, our results establish posterior reweighting as a unifying and predictive framework for understanding and mitigating ICL jailbreak in MLLMs.
 
 </details>
+
+### 58. Repeat-After-Me: Black-Box Adaptive Visual Prompt Injection
+
+📄 [arXiv](https://arxiv.org/abs/2609.04533)　📅 2026-09
+
+**关键词**：`attack`、`visual prompt injection`、`black-box transfer`、`tool-call hijacking`
+
+👤 **作者**：Sizhe Chen、…、Arman Zharmagambetov
+
+- 🎯 **研究动机**：视觉提示注入难以让 frontier VLM 产出实质性危害：需要长且格式合规的目标串（如含准确函数名与参数的原生 tool call）
+- 🔬 **研究方法**：提出黑盒自适应攻击 Repeat-After-Me：以自适应重复诱导让 VLM 复现并执行精确工具调用或泄露 PII，优化只需 surrogate
+- 📌 **结论**：Qwen3.6-27B 与 GPT-5.5 上 ASR 分别超 80% 与 47%（用户 prompt 语义无关且未口头授权）；跨商业受害保留 43-46% ASR；在 OpenClaw Discord 部署中可用极简注入图像改写 TOOLS.md 以致未来 RCE 与秘密外泄，且在文本自适应注入失败的场景下仍然有效
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Prompt injection is widely recognized as a major security threat to AI agents that interact with untrusted external data, such as websites, documents, and emails. Prior work has shown that, in the text domain, black-box prompt injection can achieve near-perfect attack success rates (ASRs). In the image domain, however, existing visual prompt injection methods are substantially less effective in attacking frontier commercial VLMs for materially harmful behavior. Achieving such outputs is hard because it requires a long and/or format-compliant target string, such as a precise, parseable native tool call with exact function names and arguments. We present Repeat-After-Me, a black-box adaptive visual prompt injection attack that can reveal personally identifiable information or make malicious tool calls. Across both open-weight and commercial frontier VLMs, including Qwen3.6-27B and GPT-5.5, our method achieves ASRs exceeding 80% and 47%, respectively, under a realistic setting in which the benign user prompt is semantically unrelated to the injected task and does not verbally authorize it. In our evaluation, injections optimized on one surrogate retain 43-46% of the original ASR on two commercial victims, and cross-sample transferability retains 64-66% of the original ASR on those two models. We test our attack in a real-world OpenClaw agent: in a default OpenClaw Discord deployment, an untrusted user can use a minimally injected image to overwrite this http URL , enabling future sensitive behaviors like remote code execution and secret exfiltration. We show our new attack vector works in cases where adaptive textual prompt injection fails. We discuss potential defenses.
+
+</details>
+
+### 59. DIVA: Exploiting Cross-Step Conditional Propagation for Visual Jailbreaks in Discrete Diffusion Vision-Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2609.05525) · 🐙 [Code](https://github.com/loststars2002/DIVA)　📅 2026-09
+
+**关键词**：`attack`、`visual jailbreak`、`discrete diffusion VLM`、`cross-step propagation`、`multi-timestep optimization`
+
+👤 **作者**：Guorui Song、…、Haoqian Wang
+
+- 🎯 **研究动机**：视觉越狱研究集中于自回归 VLM，离散扩散 dVLM 的安全边界未被刻画
+- 🔬 **研究方法**：发现视觉嵌入条件化每个反向去噪步导致对抗语义跨步传播放大（cross-step conditional propagation）；DIVA 白盒攻击结合跨模态意图混淆与扩散感知多时间步优化
+- 📌 **结论**：三个 dVLM 上 HADES ASR 达 58.8/67.7/69.1%，超过为自回归模型设计的越狱基线
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large vision-language models (VLMs) are increasingly deployed in safety-critical settings, yet existing visual jailbreak research has focused almost exclusively on autoregressive architectures, leaving an important emerging family unstudied: multimodal discrete diffusion vision-language models (dVLMs). We identify a vulnerability specific to diffusion generation: because the visual embedding conditions every reverse denoising step rather than acting as a one-time prefix, adversarial visual semantics are repeatedly propagated and amplified across the generation trajectory, a phenomenon we term cross-step conditional propagation. We provide empirical evidence through stage-sensitivity analysis, prompt-level switch rates, and pairwise denoising-bin disagreement metrics, confirmed by bootstrap resampling. We propose DIVA (Discrete-diffusion Vision-language model Attack), a white-box visual jailbreak framework using cross-modal intent obfuscation and diffusion-aware multi-timestep adversarial optimization. Across three dVLMs, DIVA reaches 58.8%, 67.7%, and 69.1% HADES ASR under the Beaver reward-model metric, outperforming visual jailbreak baselines designed for autoregressive models. Code: https://github.com/loststars2002/DIVA
+
+</details>

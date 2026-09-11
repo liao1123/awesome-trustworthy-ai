@@ -545,3 +545,22 @@ Whether a language model has improved itself is increasingly judged not by mean 
 A personal language agent learns a fact from one audience and may later place it in the prompt it assembles for another. This memory-to-context step is an attack surface: ambiguous or inconsistent channels, cross-audience prying, and poisoned memory can each cause the system to assemble context containing a fact relevant to the query yet unauthorized for the current viewers. We introduce authorization before context: a single, anti-monotone audience-membership rule applied at the memory-to-context transition. Each item carries the audience present when it was recorded; the current viewer set is read from channel metadata and falls back to public when ambiguous; and the item is admitted only when every current viewer already belonged to its audience. We prove that this rule gives every participant cross-channel recall while ensuring, by exclusion rather than by model behavior, that nothing recorded for a narrower audience reaches a broader one and that poisoned memory cannot widen its own audience. The boundary is a model-neutral invariant on the exact assembled context: a forbidden fact must be absent before the model is called. On a synthetic Contextual-Integrity suite, no forbidden fact entered the context our boundary assembled, whereas unscoped baselines included such facts by construction; we further audit that every read path fails closed. The evidence is preliminary and synthetic.
 
 </details>
+
+### 29. MemSentry: A Framework for Detecting Persistent Memory Poisoning in Agentic AI
+
+📄 [arXiv](https://arxiv.org/abs/2609.08747)　📅 2026-09
+
+**关键词**：`defense`、`agentic AI`、`memory poisoning`、`persistent memory`、`access control`、`quarantine`
+
+👤 **作者**：Ayan Roy、Kaustuvi Basu
+
+- 🎯 **研究动机**：Agent 持久记忆可被投毒以压制告警、提权、改写信任关系，且不动权重与 system prompt，缺乏防御
+- 🔬 **研究方法**：MemSentry 拦截记忆写入，综合来源信任、语义风险、依赖 DAG 攻击半径、访问风险与安全状态增量，输出 Accept/Review/Quarantine
+- 📌 **结论**：1000 个 GPT-4 生成场景中 SBERT+LR 达 91.7% 准确率、0.908 macro-F1；四类语义分类器均 100% 检出外部隔离类威胁
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Agentic AI systems with persistent memory introduce a distinct attack surface known as memory poisoning, in which adversarially crafted content is stored in long-term memory and subsequently influences future agent behavior. Such attacks can suppress security alerts, facilitate privilege escalation, alter trust relationships, or override security policies without modifying the underlying model weights or system prompts. To address this threat, we present MemSentry, a formal, configuration-driven framework that intercepts proposed persistent-memory writes and produces deterministic Accept, Review, or Quarantine decisions. MemSentry evaluates each write by jointly considering source trust, semantic risk, attack radius over a component-dependency DAG, access risk, and a signed security-state delta that captures whether an operation weakens or strengthens the system's security posture. We instantiate the protected environment using a 20-asset random dependency DAG and a 10 x 20 user access-control matrix, and evaluate the framework over 1,000 GPT-4-generated scenarios using a stratified 70/30 train/test split. Semantic classification is treated as a pluggable component rather than a primary contribution, and we compare four representative approaches: rule-based Regex, TF-IDF+SVM, SBERT+LR, and SetFit. SBERT+LR achieves the best overall performance with 91.7% accuracy and a 0.908 macro-F1 score, while all four methods detect 100% of external quarantine-class threats. For verified insiders, where source trust is maximal (T = 1), MemSentry does not automatically quarantine suspicious operations but instead escalates potentially dangerous writes for human review, making semantic classification important for accurately capturing insider intent.
+
+</details>

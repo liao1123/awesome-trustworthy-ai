@@ -695,3 +695,60 @@ Pickle deserialization vulnerabilities have persisted throughout Python's histor
 The rapid advancement of large language models (LLMs) has created a growing asymmetry in cybersecurity, where attack accelerates toward autonomous execution while defense remains predominantly human-intensive. Despite substantial prior work across cyber ranges, AI-driven attack, and AI-driven defense, this asymmetry persists. We trace it to a deeper root cause, that evolution itself has stalled on both sides at three layers. To overcome this, we propose co-evolution as the integrating insight, where attack and defense AI agents autonomously and safely drive each other's evolution through adversarial confrontation. Based on this insight, we present \sysevolve, comprising three co-designed components, \sysfield, \sysspear, and \sysarmor. \sysfield constructs realistic multi-host ranges. \sysspear generates efficient, safe attack schemes. \sysarmor performs real-time, interpretable defense. Together they form a self-driven adversarial loop restoring evolution at all three layers. In evaluation, \sysfield achieves zero-loss collection at 2.1\% overhead and orchestrates 257 CVEs into 1,148 ranges, \sysspear improves attack success by over 25\% over baseline LLMs, and \sysarmor achieves 10--1000$\times$ greater precision than prior systems and detects real APT attacks in production at Huawei and Sangfor. Our evaluation also reveals three findings about LLM agent capabilities. First, multi-step composition and larger topologies expose agent capability gaps hidden by single-step evaluations. Second, the bottleneck lies after initial access in post-compromise state utilization. Third, LLM agents are susceptible to environmental interference. When decoy endpoints are deployed in the range, agent timeouts triple and downstream completion disappears despite the success rates of initial accesses are unchanged.
 
 </details>
+
+### 38. The History Is the Detector: Executing CVE Patch History, End-to-End
+
+📄 [arXiv](https://arxiv.org/abs/2609.05335)　📅 2026-09
+
+**关键词**：`tool`、`AI vulnerability discovery`、`CVE provenance`、`runtime verification`
+
+👤 **作者**：Qiushi Wu、…、Ian Molloy
+
+- 🎯 **研究动机**：CVE 修复历史记录了为何原代码不安全，却主要为人工阅读而写，同一不安全条件可能仍存在于无公告的代码中
+- 🔬 **研究方法**：提出 BUGSTONE-E2E：从已验证修复 commit 挖掘含扫描锚点、修复语义与 CVE 溯源的可复用规则，经 Tree-sitter 候选枚举、轻量启发过滤、LLM Agent 复核、运行时验证与双侧差分测试的漏斗管线产出经验证的补丁
+- 📌 **结论**：从 2022-2026 年 19,325 个高严重度 CVE 提取 2,710 个修复 commit、构建 56 个 CWE 族的 1,033 条规则（172 个 skills），在 14 个程序上产出 644 个带运行时证据的发现
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Public vulnerability databases collect rich information about known software flaws, including their weakness types, affected components, and related patches. Fixing commits provide the exact code changes that removed these flaws. While these records capture why the original code was unsafe, they are documented mainly for human inspection rather than automated reuse. Consequently, the same unsafe conditions may still exist elsewhere in code without a known advisory, leaving much of this detection knowledge unused. We present BUGSTONE-E2E, a framework that transforms vulnerability history into executable detection rules and validates their findings. First, BUGSTONE-E2E mines reusable rules from verified fixing commits, capturing scan anchors, fix semantics, and CVE provenance and organizing them by CWE and language. Second, detection follows a funnel-shaped pipeline: early stages process a large pool of candidates using lightweight analysis, while later stages apply increasingly capable and expensive models to a shrinking set of targets. Specifically, BUGSTONE-E2E first enumerates call sites matching rule anchors using Tree-sitter, then removes benign sites using lightweight heuristics without LLM calls. Next, LLM-based agents inspect the remaining candidates guided by the rule. Following this inspection, the system re-triages surviving candidates and builds runtime verifications, then generates scope-checked patches validated via two-sided differential tests. Using 19,325 high-severity CVEs from 2022 to 2026, BUGSTONE-E2E identifies 2,710 fixing commits and constructs 1,033 detection rules across 56 CWE families, packaged into 172 skills. When applied across 14 programs, it produced runtime evidence for 644 findings. These results demonstrate that CVE history can be turned into an executable workflow, transforming past vulnerabilities into reproducible detection and repair.
+
+</details>
+
+### 39. SWE-Test: Benchmarking LLM Vulnerability Discovery via Input Prediction
+
+📄 [arXiv](https://arxiv.org/abs/2609.06229)　📅 2026-09
+
+**关键词**：`benchmark`、`vulnerability discovery`、`input prediction`、`LLM agent`、`fuzzing`
+
+👤 **作者**：Yuanxiang Shi、…、Chenxiong Qian
+
+- 🎯 **研究动机**：LLM 漏洞发现能力评测可被数据污染博弈、真值不可知且只有端到端单一分数
+- 🔬 **研究方法**：SWE-Test 以覆盖引导 fuzzing 挖掘真实 C/C++ 深层分支，重构为确定性真值的输入预测任务（闭环/反馈/在线竞技三种模式），22 个程序
+- 📌 **结论**：15 个模型-脚手架配置中最佳反馈模式 55.0% 通过率；失败分解显示约束推断而非导航是主要瓶颈
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Vulnerability discovery is becoming an important ability of large language model (LLM) agents: agents that silently miss real defects leave critical software exposed. Rigorously measuring this ability is therefore urgent, but existing benchmarks are gameable through data contamination, score recall against an unknowable vulnerability set, often rely on synthetic bugs, and report a single end-to-end verdict that cannot localize where an agent fails. Vulnerability discovery is a composite ability: an agent must comprehend source code, infer input constraints, construct inputs, execute them, and iteratively correct from feedback. We recast its measurement as an input-prediction task with a closed, deterministic ground truth: using coverage-guided fuzzing, we mine deep target branches in real-world C/C++ programs and ask an agent to predict an input that drives execution to a given branch. This decomposes discovery into three task modes over 22 real-world C/C++ programs spanning 15 domains. Open-loop and Feedback-enabled share 60 fixed-target task instances across 16 of these codebases (13 domains), testing input construction without and with a distance oracle to isolate code comprehension from feedback-driven correction. Online Arena instead removes the predefined target and scores path exploration by coverage gain on a separate, partially overlapping pool of 11 programs; agents collectively confirmed 13 distinct bugs across six programs. Evaluating 15 default-effort model-scaffold configurations, the best reaches only 55.0% pass rate in the Feedback-enabled mode, and the mean across seven paired Claude Code configurations is 36.4% with feedback versus 19.3% without. Decomposing failures, we find constraint inference, not navigation, is the dominant bottleneck. We release SWE-Test with a turnkey evaluation environment.
+
+</details>
+
+### 40. Staying on the Attack Path: Structured State for Long-Horizon Automated Penetration Testing
+
+📄 [arXiv](https://arxiv.org/abs/2609.07344)　📅 2026-09
+
+**关键词**：`tool`、`penetration testing`、`intent graph`、`long-horizon agent`
+
+👤 **作者**：Weizhe Wang、…、Guangquan Xu
+
+- 🎯 **研究动机**：LLM 渗透测试 agent 在长程任务中上下文遗忘、意图漂移导致无效重复探索
+- 🔬 **研究方法**：Intentest 将长程状态外化为事实-意图 DAG（不可变事实节点+受前驱约束的意图边），三层架构+两阶段退化恢复
+- 📌 **结论**：真实 CTF 上总成功率 88.2%（难题 75.0%），较基线 +44/50pp；意图检索使中难题平均轮次减 33-48%
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language model (LLM) based agents are increasingly applied to cybersecurity tasks such as vulnerability discovery and automated penetration testing. On long-horizon security tasks, however, such agents remain limited by context forgetting and intent drift: early critical facts and causal reasoning chains are lost over extended interactions, and the agent falls into aimless, repetitive exploration. This paper proposes Intentest, an intent-graph-guided automated penetration testing agent that externalizes long-horizon state from the LLM's context window onto a persistent fact-intent directed acyclic graph (DAG), thereby substantially reducing invalid transitions. We evaluate Intentest on automated penetration testing of web applications, a representative long-tail task in cybersecurity. In the DAG, verified network states are stored as immutable fact nodes, and exploration directions are constrained as intent edges bounded by predecessor facts. The system adopts a three-layer architecture, in which the fact-intent mapping layer maintains the global state, the task scheduling and allocation layer ensures execution stability through two-phase degradation recovery and multi-dimensional adaptive load balancing, and the intent retrieval and prediction layer provides tactical priors through a top-down five-stage filtering algorithm. On a benchmark of real CTF challenges covering more than ten vulnerability types across three difficulty levels, Intentest achieves an overall success rate of 88.2% and a success rate of 75.0% on hard tasks, improving over the baseline by approximately 44 and 50 percentage points. Ablation experiments further show that the intent retrieval and prediction reduce the average number of rounds on successful medium and hard tasks by about 33% and 48%, respectively, without changing the set of solvable tasks.
+
+</details>

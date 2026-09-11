@@ -262,3 +262,22 @@ Advances in diffusion-based video generation models, while significantly improvi
 Recent progress in video generative models has enabled the creation of high-quality videos from multimodal prompts that combine text and images. While these systems offer enhanced controllability, they also introduce new safety risks, as harmful content can emerge from individual modalities or their interaction. Existing safety methods are often text-only, require prior knowledge of the risk category, or operate as post-generation auditors, struggling to proactively mitigate such compositional, multimodal risks. To address this challenge, we present ConceptGuard, a unified safeguard framework for proactively detecting and mitigating unsafe semantics in multimodal video generation. ConceptGuard operates in two stages: First, a contrastive detection module identifies latent safety risks by projecting fused image-text inputs into a structured concept space; Second, a semantic suppression mechanism steers the generative process away from unsafe concepts by intervening in the prompt's multimodal conditioning. To support the development and rigorous evaluation of this framework, we introduce two novel benchmarks: ConceptRisk, a large-scale dataset for training on multimodal risks, and T2VSafetyBench-TI2V, the first benchmark adapted from T2VSafetyBench for the Text-and-Image-to-Video (TI2V) safety setting. Comprehensive experiments on both benchmarks show that ConceptGuard consistently outperforms existing baselines, achieving state-of-the-art results in both risk detection and safe video generation. Our code is available at https://github.com/Ruize-Ma/ConceptGuard.
 
 </details>
+
+### 14. The Price of Consistency: Exploiting Visual Anchors for Multimodal Jailbreaking in Video Generation
+
+📄 [arXiv](https://arxiv.org/abs/2609.07216)　📅 2026-09
+
+**关键词**：`attack`、`video generation jailbreak`、`visual anchor`、`reference image`、`consistency tradeoff`
+
+👤 **作者**：Peng Li、Qianqian Xu、Yangbangyan Jiang、Zhipeng Yu、Qingming Huang
+
+- 🎯 **研究动机**：参考图作为视觉锚点提升视频生成一致性，但其对生成安全的影响未探索
+- 🔬 **研究方法**：揭示 visual anchoring effect：一致性机制阻止内容从有害意图向良性漂移；DIVA 将有害意图解耦为静态锚图+动态运动文本，免训练越狱
+- 📌 **结论**：商业与开源视频生成平台上 ASR 显著超文本方法；附首个多条件视频生成安全基准 TI2VSafetyBench
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+The rapid evolution of video generation has shifted the paradigm from pure text-driven to multi-conditional controllable generation, with reference images now widely adopted as conditional inputs to achieve superior spatiotemporal consistency. While these reference images serve as powerful visual anchors that significantly enhance controllability, their impact on safety remains largely unexplored. In this work, we reveal the visual anchoring effect: by enforcing consistency, the mechanism prevents the generated content from drifting away from the original harmful intent, thereby eliminating the model's natural safety escape route from harmful to benign content. Consequently, visual anchors inherently increase the safety risk---this is the price of consistency. Building on this insight, we propose Decoupling Intent via Visual Anchors (DIVA), a training-free multimodal jailbreak framework for video generation that exploits this vulnerability. DIVA decouples harmful intent into a static visual anchor image and a dynamic motion text prompt, and employs dual-criteria selection to balance attack stealthiness with semantic preservation. Extensive experiments across various leading commercial platforms and mainstream open-source video generation models demonstrate that DIVA achieves a substantially higher Attack Success Rate than existing text-only methods. To facilitate future research, we additionally contribute TI2VSafetyBench, the first safety benchmark for multi-conditional video generation.
+
+</details>

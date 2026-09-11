@@ -381,3 +381,22 @@ Model Inversion Attacks (MIAs) pose a significant threat to data privacy by reco
 Diffusion models have achieved remarkable success in generative tasks across various areas, however their training process raises significant privacy concerns, particularly under membership inference attacks (MIAs). Prior studies on privacy-preserving of diffusion models fail to balance privacy, utility, and efficiency. To address this gap, we propose a novel framework of privacy-preserving diffusion models, Adaptive Diffusion Freezing (ADF), which can defend against MIAs with better trade-off. By leveraging cross-timestep adaptive freezing training, ADF explicitly control the participation of different data subsets across diffusion timesteps via a mask matrix, which reduces the over-memorization and leads to more uniform model behaviors between member and nonmember samples. To construct a freezing mask matrix that effectively reduce membership leakage without unnecessarily harming generation quality, we introduce a pretraining-based risk-aware freezing policy to estimate MIA risk based on memorization tendency, and suppress the contribution of the subset-timestep pairs with higher risk. Evaluations on multiple datasets demonstrate that ADF provides effective defense performance as well as state-of-the-art privacy-utility-efficiency trade-off performance compared to various baselines.
 
 </details>
+
+### 22. VI-Bench: Benchmarking Prompt Inversion from AIGC Videos
+
+📄 [arXiv](https://arxiv.org/abs/2609.08079)　📅 2026-09
+
+**关键词**：`benchmark`、`prompt inversion`、`AIGC video`、`prompt leakage`、`VLM evaluation`
+
+👤 **作者**：Wulin Xie、…、Chen Gong
+
+- 🎯 **研究动机**：AIGC 视频的 prompt 泄露与复用风险取决于可恢复性，现有视频理解基准不测 prompt 逆推
+- 🔬 **研究方法**：VI-Bench 基于 1610 万真实 prompt 与 900 个人工校验视频，设三级任务与 Inversion Score，评 18 个 VLM
+- 📌 **结论**：最强模型 Inversion Score 仅 0.632，控制越复杂衰减越陡，常生成看似合理但复现偏离的 prompt
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Recent advances in video generation have made prompt-based control increasingly central to AIGC video generation. Prompts specify what a video should depict and how it should be represented, controlling factors such as visual style or camera behavior. Understanding this recoverability is important both for creative reuse and editing, and for assessing prompt leakage risks. However, existing video understanding benchmarks do not measure this capability: a caption may describe what is visible, but a replayable prompt must recover the generation-relevant controls needed to reproduce the video. To address this gap, we introduce VI-Bench, a benchmark built from 16.1 million real-user prompts and 900 human-verified AIGC videos. VI-Bench spans three progressively harder settings, namely single-shot semantic grounding, control over style and camera behavior, and multi-shot compositional inversion, and evaluates five generation-critical dimensions: subject, action, scene, style, and camera. We evaluate 18 representative VLMs, including 2 proprietary and 16 open-source models on VI-Bench, using an Inversion Score that measures prompt-level alignment with the original prompt and video-level fidelity of the regenerated video. The results reveal substantial limitations: even the strongest model achieves only 0.632 on Inversion Score, performance degrades sharply as samples require richer control and multi-shot reasoning, and models often produce plausible prompts whose regenerated videos deviate from the reference. These findings show that video prompt inversion is a distinct and under-evaluated capability requiring models to transform visual understanding into replay-stable generative control.
+
+</details>

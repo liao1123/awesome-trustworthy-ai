@@ -1553,3 +1553,22 @@ The training-free integration of expert models via model merging has exposed sig
 Text-to-image (T2I) models are increasingly embedded in creative workflows, where well-crafted prompts function as valuable forms of intellectual property (IP). However, these models are susceptible to prompt stealing attacks (PSAs), where adversaries aim to reconstruct the original prompts used to generate images. In this paper, 1) we identify key shortcomings in current evaluation practices and propose two improved metrics: Style Similarity (SS) and a novel Prompt Significance (PS) score, which together provide a more faithful assessment of PSA effectiveness. Rather than existing metrics that rely solely on semantic similarity between original and stolen information across text or image modalities, the new metrics PS and SS assess attack effectiveness with a more practical focus by explicitly accounting for the importance of modifiers and the style replication of images generated from stolen prompts. 2) Through extensive evaluation using these metrics, we find that existing PSA methods, ranging from soft prompt stealing in white-box settings to hard prompt stealing in black-box settings, are not as effective as reported, especially in recovering high-contribution prompt components. We attribute this to fundamental constrains: white-box methods suffer from mismatched optimization objectives that poorly align with token-level visual semantics, while black-box approaches experience severe information loss due to their decoupling from the target T2I model's generation process. 3) We further introduce PromptThief, a black-box PSA framework that addresses the information loss in prior methods by leveraging reinforcement learning with STS and SS to guide high token-level contribution recovery. PromptThief significantly outperforms existing baselines across multiple metrics and real-world scenarios. 4) We propose and evaluate two defense mechanisms: an adversarial-example-based active approach and a passive scheme through feature-level prompt watermarking. Our evaluation reveals that the active defense offers only limited robustness against adaptive PSAs, highlighting the need for further exploration in this direction. In contrast, the passive watermarking scheme demonstrates strong and consistent detection performance, even under various image transformations, offering a practical and reliable path forward for prompt IP protection.
 
 </details>
+
+### 83. Beyond QA Matching: Perturbation-Response Fingerprinting via Probability Distributions for Large Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2609.06330)　📅 2026-09
+
+**关键词**：`detection`、`model fingerprinting`、`provenance`、`perturbation response`
+
+👤 **作者**：Jichao Zeng、Yanli Chen、Hanzhou Wu
+
+- 🎯 **研究动机**：LLM 经指令微调/量化等变换后谱系难溯源，现有指纹粒度不足
+- 🔬 **研究方法**：BReF 训练无关指纹：比较 A/B/C/D 概率分布在受控文本扰动下的 log-ratio 方向，25 个联合响应探针+全局余弦相似度
+- 📌 **结论**：34 checkpoint、411 对中 22/22 找回文档化父模型（MRR 1.0），同族判别 AUC 0.897
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models are often instruction-tuned, specialized, quantized, or otherwise transformed, making fine-grained provenance difficult. In this paper, we introduce BReF, a training-free fingerprint that compares how probability distributions over four answer-option labels A/B/C/D move under controlled textual perturbations. For each pair of models, BReF selects 25 jointly responsive probes and compares their perturbation log-ratio (PLR) response directions by global cosine similarity. On a unified benchmark with 34 checkpoints, 22 documented direct-parent relations, and 411 suspect-candidate pairs, BReF retrieves the documented parent in 22/22 cases (MRR=1.0000), with DP-DF AUC 1.0000. Same-family discrimination is harder (DP-SF AUC 0.8969), and paired tests show a significant exact-retrieval gain over a magnitude-only Top-25 control. Together with static, random-probe, permutation, calibration, and transformation-level controls, the results show that strong pooled separation does not guarantee correct parent ranking among closely related checkpoints, verifying the superiority of our work.
+
+</details>

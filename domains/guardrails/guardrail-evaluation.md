@@ -1198,3 +1198,41 @@ Expert evaluation of jailbreak responses is costly and difficult to scale, so th
 Allowing large language models (LLMs) to retrieve information from a set of trusted documents can increase reliability and reduce hallucination. However, recent work has demonstrated that retrieval-augmented generation (RAG) can have unintended side effects on the overall safety of the generated responses, when prompted for harmful or dangerous content. A clearer understanding of the mechanisms leading to this result is needed, as increasing numbers of end users turn to RAG to incorporate corporate documents and knowledge bases into LLM-based systems. We introduce RAG-Safety-Bench, a benchmark to measure the safety impact of RAG on LLM models. By removing the confounding effect of retriever quality, and cleanly separating the problem into four conditions -- non-RAG, RAG with an oracle document containing the answer to the harmful request, RAG with documents related to the harmful request but without the specific answer, and RAG with random, safe documents -- the benchmark isolates the impacts of different factors in the observed safety degradation. We report results across five open-source LLMs, showing an inverse relationship between benign and unsafe capability, strong evidence that baseline safety guardrails do not lead to downstream safety guarantees in the RAG case, and model-specific support for previous findings that even benign documents can lead to unsafe generation in retrieval-enabled systems.
 
 </details>
+
+### 64. Recall Is Not Protection: Evaluating Safety Monitors Against Model Compliance
+
+📄 [arXiv](https://arxiv.org/abs/2609.05797)　📅 2026-09
+
+**关键词**：`analysis`、`safety monitor evaluation`、`elicitable prompt`、`recall validity`
+
+👤 **作者**：Sripad Karne
+
+- 🎯 **研究动机**：安全监控按 harmfulness 标签的 recall 评测，但拦截只有在该模型本会顺从时才真正防害
+- 🔬 **研究方法**：重复采样目标模型响应定义 elicitable prompt（至少一次顺从），分开报告 elicitable 与 non-elicitable 上的监控 recall
+- 📌 **结论**：六种监控在 elicitable 上 recall 低 0.22-0.38；被漏掉的 prompt 顺从概率是被拦的 2.8-5.6 倍
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Safety monitors screen prompts sent to deployed language models, flagging harmful requests so they are never answered. They are evaluated by recall against harmfulness labels, but a catch only prevents harm if the model would otherwise have complied. We measure the difference directly: we sample repeated responses from the target model, call a harmful prompt \emph{elicitable} if the model complies at least once, and report monitor recall separately on elicitable and non-elicitable prompts. Across six monitor configurations and three model families, spanning activation probes, fine-tuned text guards, and a 120B policy-conditioned reasoning classifier, recall on elicitable prompts falls 0.22 to 0.38 below recall on non-elicitable prompts at a fixed false positive rate. The prompts a monitor misses are 2.8 to 5.6 times more likely to be complied with than the prompts it catches. The gap replicates across three model families and appears also in text-only monitors entirely independent of the target model. This suggests that standard recall may overstate the protection monitors provide in practice, and that monitors should be evaluated against what their models will actually answer.
+
+</details>
+
+### 65. CS-Guard: Benchmarking LLM Guardrails for Code Generation Security
+
+📄 [arXiv](https://arxiv.org/abs/2609.09798)　📅 2026-09
+
+**关键词**：`benchmark`、`code generation guardrail`、`malware generation`、`fictional scenario attack`
+
+👤 **作者**：Jinyang Li、Mingyu Guo、Hung X. Nguyen
+
+- 🎯 **研究动机**：LLM 被用于生成恶意软件，代码生成安全的 guardrail 效果缺系统评测
+- 🔬 **研究方法**：CS-Guard：1,000 恶意生成 prompt × 7 越狱 + 新虚构场景攻击 FSA，331 个 code-to-code prompt，9 guardrail × 7 LLM
+- 📌 **结论**：text-to-code 越狱后平均 ASR 约 50%；code-to-code 基座近 100%、guardrail 下仍 14.4-100%；FSA 在多数 guardrail 下接近 100%
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models (LLMs) have been ex- ploited to generate malware, but the effective- ness of guardrails for code generation secu- rity remains unclear. We introduce CS-Guard, the first benchmark to systematically evalu- ate guardrails for code generation security. It covers 1) text-to-code generation with 1000 high-quality malware-generation prompts, 7 jailbreak attacks, and a novel fictional scenario attack (FSA) that embeds malicious intent in a legitimate fictional software-development sce- nario; and 2) code-to-code generation with 331 code prompts spanning code infilling, code completion, and code translation. We empiri- cally evaluate 9 guardrails across seven LLMs. We find that current guardrails perform poorly against malicious code-generation re- quests: for text-to-code, the average attack success rate (ASR) after jailbreaks reaches about 50% for many guardrails; for code-to- code, average ASR approaches 100% on base LLMs and remains high across many guardrails (14.4% to nearly 100%). Our FSA also achieves ASR close to 100% across many guardrails, raising major reliability concerns for real-world software development. To sup- port future research, CS-Guard uses a modular three-layer guardrail taxonomy that lets devel- opers register guardrails for evaluation. We release the benchmark and data to enable fur- ther community evaluation.
+
+</details>

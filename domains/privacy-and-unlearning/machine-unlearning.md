@@ -1587,3 +1587,22 @@ Approximate unlearning has gained popularity as an approach to efficiently updat
 We study machine unlearning in large generative models by framing the task as density ratio estimation to a target distribution rather than supervised fine-tuning. While classifier guidance is a standard approach for approximating this ratio and can succeed in general, we show it can fail to faithfully unlearn with finite samples when the forget set represents a sharp, concentrated data distribution. To address this, we introduce Temper-Then-Tilt Unlearning (T3-Unlearning), which freezes the base model and applies a two-step inference procedure: (i) tempering the base distribution to flatten high-confidence spikes, and (ii) tilting the tempered distribution using a lightweight classifier trained to distinguish retain from forget samples. Our theoretical analysis provides finite-sample guarantees linking the surrogate classifier's risk to unlearning quality, proving that tempering is necessary to successfully unlearn for concentrated distributions. Empirical evaluations on the TOFU benchmark demonstrate that T3-Unlearning improves forget quality and generative utility over existing baselines, while training only a fraction of the parameters with a minimal runtime.
 
 </details>
+
+### 86. Beyond Cross-Lingual Transfer: Benchmarking Propagation Boundaries in Multilingual LLM Unlearning
+
+📄 [arXiv](https://arxiv.org/abs/2609.05976)　📅 2026-09
+
+**关键词**：`benchmark`、`multilingual unlearning`、`propagation boundary`、`language-conditioned forgetting`
+
+👤 **作者**：Pengyang Shao、…、Richang Hong
+
+- 🎯 **研究动机**：多语言 unlearning 评测只测跨语言迁移，无法区分传播不足与越界扩散
+- 🔬 **研究方法**：CLLPU：goal-guided 主题配对+模式感知关系匹配+双锚多语翻译，构造 800 组匹配知识单元、10 语言 72,000 QA，区分 common-goal 与 language-conditioned forgetting
+- 📌 **结论**：六种方法呈相反失效：应全忘时遗忘不完全，应限界时越界扩散；多语言总体效用会掩盖邻接知识损伤
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large Language Model (LLM) unlearning aims to suppress target knowledge while preserving general capabilities. In multilingual settings, unlearning must additionally propagate within its intended linguistic scope. However, existing evaluations mainly measure cross-lingual transfer and cannot distinguish insufficient from excessive propagation. We introduce CLLPU (Cross-Lingual and Language-Bound Protocol for LLM Unlearning), a multilingual benchmark that formulates this problem through two settings: common-goal forgetting, where target knowledge should be suppressed across all languages, and language-conditioned forgetting, where suppression should remain confined to a designated language. CLLPU combines goal-guided topic pairing, schema-aware relation matching, and dual-anchor multilingual translation to construct 800 matched knowledge-unit pairs and 72,000 QA instances across ten languages. Experiments with six representative methods on Llama-3.1-8B-Instruct reveal opposite failure modes: forgetting remains incomplete when universal suppression is required, yet spreads beyond the intended boundary when language-conditioned confinement is required. We further find that general multilingual utility can conceal damage to neighbor knowledge. These findings establish propagation control as a central challenge for multilingual LLM unlearning. We publicly release CLLPU together with its construction pipeline.
+
+</details>

@@ -805,3 +805,22 @@ Steering vectors are a lightweight tool for controlling LLM behavior. However, e
 Large language models often struggle with sensitive prompts. They may refuse outright, provide generic safety boilerplate, or fail to address the user's legitimate informational needs that can be answered safely. We introduce SHARD, a self-reframing distillation method to improve safe-helpfulness. It first rewrites sensitive prompts to surface benign intent using philosophical guidelines, then reframes its original responses into safe, more helpful ones, and finally fine-tunes the model on its self-reframed responses. Across DNA and the English subset of LINGUASAFE, SHARD improves helpfulness for most model families while preserving safety. It also remains competitive with distillation from a larger teacher model, suggesting that models can internalize safe and helpful behavior elicited from their own. Warning: This paper contains content that may be offensive or harmful.
 
 </details>
+
+### 46. Refuse without Refusal: A Structural Analysis of Safety-Tuning Responses for Reducing False Refusals in Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2609.04714)　📅 2026-09
+
+**关键词**：`defense`、`safety tuning`、`false refusal`、`rationale supervision`
+
+👤 **作者**：Minji Kim、Hyounghun Kim
+
+- 🎯 **研究动机**：模型难以区分真实有害查询与含表面风险措辞的良性查询（如 shoot someone vs shoot a photo），产生大量 false refusal
+- 🔬 **研究方法**：把安全微调数据中的回复拆为样板拒答语句与拒答 rationale，实验发现拒答语句诱发对表面线索的依赖，仅用 rationale 训练
+- 📌 **结论**：Rationale-Only 降低 false refusal 且安全表现相当，收益同样出现在 ICL 配置并与所测推理时缓解方法兼容——需要精细粒度的安全监督数据
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Striking a balance between helpfulness and safety remains a fundamental challenge in aligning large language models. To achieve this balance, models should refuse harmful queries (e.g., "How do I shoot someone?") while remaining responsive to benign inputs, even those superficially resembling harmful queries (e.g., "Where can I shoot a good photo?"). However, models often struggle to distinguish genuinely harmful queries from benign queries that contain superficially risky language, resulting in false refusals. In this paper, we address the issue by decomposing a response in the safety-tuning dataset into two distinct components: (i) a boilerplate refusal statement and (ii) a rationale explaining the refusal. Our experiments and analyses show that refusal statements impede accurate discrimination between harmful and benign queries by inducing reliance on superficial cues. In contrast, training solely on rationales reduces false refusals while maintaining a comparable level of safety performance. Rationale-Only benefits also appear in our ICL configuration and remain compatible with the evaluated inference-time mitigation methods. The results emphasize the necessity of precisely curated, fine-grained safety supervision datasets and outline directions for constructing aligned agents that better reconcile helpfulness with safety.
+
+</details>

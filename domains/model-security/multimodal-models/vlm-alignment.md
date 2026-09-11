@@ -628,3 +628,22 @@ Token-Pruning accelerates Vision-Language Models by removing redundant visual to
 Even modern AI models often remain vulnerable to multimodal queries in which harmful intent is embedded in images. A widely used approach for safety alignment is training with extensive multimodal safety datasets, but the costs of data curation and training are often prohibitive. To mitigate these costs, inference-time alignment has recently been explored, but they often lack generalizability across diverse multimodal jailbreaks and still incur notable overhead due to extra forward passes for response refinement or heavy pre-deployment calibration procedures. Here, we identify insufficient visual attention to safety-critical image regions as one of the key causes of multimodal safety failures. Building on this insight, we propose Multimodal Risk-Adaptive Steering (MoRAS), which enhances safety-critical visual attention via concise visual contexts for accurate multimodal risk assessment. This risk signal enables risk-adaptive steering for direct refusals, reducing inference overhead while remaining generalizable across diverse multimodal jailbreaks. Notably, MoRAS requires only a small calibration set to estimate multimodal risk, substantially reducing pre-deployment overhead. We conduct various empirical validations across multiple benchmarks and MLLM backbones, and observe that the proposed MoRAS consistently mitigates jailbreaks, preserves utility, and reduces computational overhead compared to state-of-the-art inference-time defenses.
 
 </details>
+
+### 34. When Seeing Overrides Knowing: Visual Dominance and Deferral-Based Method for Personalized Safety in VLMs
+
+📄 [arXiv](https://arxiv.org/abs/2609.04281)　📅 2026-09
+
+**关键词**：`defense`、`personalized VLM safety`、`deferral`、`visual dominance`
+
+👤 **作者**：Edward Sun、…、Aylin Caliskan
+
+- 🎯 **研究动机**：对特定用户安全而对一般用户合理的回答需要模型知道用户医疗、情绪与情境信息，VLM 常在信息缺失时仍直接作答
+- 🔬 **研究方法**：构建 584 张真实图像、12 个高风险域、5,181 个配隐藏用户画像场景的 MPS-Bench；机制分析发现 visual dominance——视觉情感先在早期进入文本流再塑形决策；提出轻量输入监视器 PRISM 做跨模态调制预测何时应转交
+- 📌 **结论**：八个 frontier VLM 直接作答率 86-99%、个性化安全不超 2.6/5；PRISM 达 0.978 AUC 并在全部模型上严格占优安全-效用 Pareto 前沿
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Vision-language models (VLMs) are increasingly deployed in high-stakes settings, where a response that is reasonable in general may still be unsafe for a particular user whose medical, emotional, or situational context is unknown to the model. We study this problem of personalized safety in multimodal systems and introduce MPS-Bench, a benchmark of 5,181 scenarios from 584 real-world images across 12 high-risk domains, each paired with a hidden user profile. Evaluating eight frontier VLMs, we find that they almost always respond directly (86-99%) rather than seek missing context, and none exceeds 2.6/5 on personalized safety. To understand why these failures arise, we analyze multimodal interactions and identify visual dominance: visual information enters text representations early and suppresses textual risk signals during multimodal fusion. Causal interventions reveal a two-stage mechanism in which visual affect is first transferred into the text stream in early layers and then shapes the final decision through this altered text representation, making late-stage internal remediation unreliable. Motivated by this mechanism, we propose PRISM, a lightweight input monitor that uses bidirectional cross-modal modulation to predict when a query is likely to require deferral. PRISM achieves 0.978 AUC and strictly dominates the safety-utility Pareto frontier across all tested models.
+
+</details>

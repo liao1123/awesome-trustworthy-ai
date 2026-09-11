@@ -557,3 +557,22 @@ Current LLM safety research predominantly focuses on mitigating **Goal Hijacking
 This paper presents AutoRAN, the first framework to automate the hijacking of internal safety reasoning in large reasoning models (LRMs). At its core, AutoRAN pioneers an execution simulation paradigm that leverages a weaker but less-aligned model to simulate execution reasoning for initial hijacking attempts and iteratively refine attacks by exploiting reasoning patterns leaked through the target LRM’s refusals. This approach steers the target model to bypass its own safety guardrails and elaborate on harmful instructions. We evaluate AutoRAN against state-of-the-art LRMs, including GPT-o3/o4-mini and Gemini-2.5-Flash, across multiple benchmarks (AdvBench, HarmBench, and StrongReject). Results show that AutoRAN achieves approaching 100% success rate within one or few turns, effectively neutralizing reasoning-based defenses even when evaluated by robustly aligned external models. This work reveals that the transparency of the reasoning process itself creates a critical and exploitable attack surface, highlighting the urgent need for new defenses that protect models’ reasoning traces rather than merely their final outputs.
 
 </details>
+
+### 30. Does Deeper Reasoning Compromise Alignment? Revealing and Mitigating of Alignment Collapse in Large Reasoning Models
+
+📄 [arXiv](https://arxiv.org/abs/2609.08186)　📅 2026-09
+
+**关键词**：`attack`、`large reasoning model`、`jailbreak`、`alignment collapse`、`attention dilution`、`defense`
+
+👤 **作者**：Yu-Hang Wu、Yu-Jie Xiong、Henghua Zhang、Bairui Zhang、Jia-Chen Zhang、Shaohua Li
+
+- 🎯 **研究动机**：深度推理被普遍认为增强安全对齐，但延长推理下对齐机制的稳定性从未被检验
+- 🔬 **研究方法**：提出 Alignment Loss Rate 量化坍缩；Reasoning Trap 诱导超长推理放大攻击；定位 Attention Dilution 根因，提出 Reasoning Residual Alignment 防御
+- 📌 **结论**：推理深度增加使 ALR 显著上升、抗扰动安全能力骤降；RRA 经残差重强调输入缓解坍缩
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+The emergence of Chain-of-Thought (CoT) has established a robust foundation for Large Reasoning Models (LRMs). While deep reasoning is widely believed to enhance safety alignment, the stability of alignment mechanisms under extended reasoning remains underexplored. This paper challenges the prevailing view by revealing a critical vulnerability: Deep Reasoning May Induce Alignment Collapse. To rigorously quantify this phenomenon, we propose the Alignment Loss Rate (ALR) metric. Our experiments demonstrate that as reasoning depth increases, ALR rises significantly, indicating a severe degradation in model robustness against external perturbations. Capitalizing on this instability, a novel jailbreaking paradigm, Reasoning Trap (RT), is proposed. RT induces the model into extended reasoning to amplify the impact of adversarial attacks, leading to a sharp decline in safety capabilities. To elucidate the mechanism behind this collapse, we identify Attention Dilution as the root cause, arising from the competition for attention between the extended reasoning process and the original input. To mitigate this, Reasoning Residual Alignment (RRA), a lightweight defense strategy that dynamically re-emphasizes the input via residual connections integrated with the reasoning process.
+
+</details>

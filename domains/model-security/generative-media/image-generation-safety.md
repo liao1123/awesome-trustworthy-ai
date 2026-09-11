@@ -690,3 +690,22 @@ Text-to-image diffusion models can emit copyrighted, unsafe, or private content.
 With the rapid progress in diffusion models, image synthesis has advanced to the stage of zero-shot image-to-image generation, where high-fidelity replication of facial identities or artistic styles can be achieved using just one portrait or artwork, without modifying any model weights. Although these techniques significantly enhance creative possibilities, they also pose substantial risks related to intellectual property violations, including unauthorized identity cloning and stylistic imitation. To counter such threats, this work presents Adapter Shield, the first universal and authentication-integrated solution aimed at defending personal images from misuse in zero-shot generation scenarios. We first investigate how current zero-shot methods employ image encoders to extract embeddings from input images, which are subsequently fed into the UNet of diffusion models through cross-attention layers. Inspired by this mechanism, we construct a reversible encryption system that maps original embeddings into distinct encrypted representations according to different secret keys. The authorized users can restore the authentic embeddings via a decryption module and the correct key, enabling normal usage for authorized generation tasks. For protection purposes, we design a multi-target adversarial perturbation method that actively shifts the original embeddings toward designated encrypted patterns. Consequently, protected images are embedded with a defensive layer that ensures unauthorized users can only produce distorted or encrypted outputs. Extensive evaluations demonstrate that our method surpasses existing state-of-the-art defenses in blocking unauthorized zero-shot image synthesis, while supporting flexible and secure access control for verified users.
 
 </details>
+
+### 37. Automatic Red Teaming for Implicit Vulnerabilities of Text-to-Image Models
+
+📄 [arXiv](https://arxiv.org/abs/2609.06094)　📅 2026-09
+
+**关键词**：`attack`、`red teaming`、`text-to-image`、`implicit adversarial prompt`、`agentic probing`
+
+👤 **作者**：Chang Ma、Junlin Han、Shuo Chen、Runjia Li、Philip Torr、Jindong Gu
+
+- 🎯 **研究动机**：隐式对抗 prompt 表面良性仍触发不当图像，T2I 红队难以系统性覆盖
+- 🔬 **研究方法**：AdvPIE 多模态 agentic 框架：policy agent 生成并精炼隐式 prompt，judge agent 提供全局+相对双级安全反馈，累积对抗解码动态重加权 token 分布
+- 📌 **结论**：黑盒条件下有效揭示标准与安全对齐 T2I 模型的隐式漏洞，优于各类基线
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Red-teaming Text-to-Image (T2I) models is essential for safe deployment, yet it remains particularly challenging against implicit adversarial prompts. Unlike explicit adversarial prompts that can be readily identified and blocked, implicit ones are much harder to detect: the prompts appear benign on the text surface yet still lead to inappropriate visual content. To address this, we propose Adversarial Probing for Implicit VulnErabilities (AdvPIE), a multimodal agentic framework to expose implicit vulnerabilities without requiring access to the parameters of target models. AdvPIE adopts a policy agent to generate and refine implicit adversarial prompts based on the feedback from a judge agent. To construct informative feedback, the judge agent provides modality-specific safety evaluation at both global and relative levels across iterations. To effectively leverage the feedback, we propose a novel Cumulative Adversarial Decoding strategy for the policy agent, which dynamically reweights token distributions to favor tokens that lead to more harmful images while preserving sampling diversity. Extensive experiments on standard and safety-aligned T2I models show that AdvPIE1 effectively uncovers implicit vulnerabilities, outperforming various baseline methods.
+
+</details>

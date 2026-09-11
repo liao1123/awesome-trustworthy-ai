@@ -299,3 +299,22 @@ Unified Multimodal Large Models (UMLMs) integrate understanding and generation c
 While (multimodal) large language models (LLMs) have attracted widespread attention due to their exceptional capabilities, they remain vulnerable to jailbreak attacks. Various defense methods are proposed to defend against jailbreak attacks, however, they are often tailored to specific types of jailbreak attacks, limiting their effectiveness against diverse adversarial strategies. For instance, rephrasing-based defenses are effective against text adversarial jailbreaks but fail to counteract image-based attacks. To overcome these limitations, we propose a universal defense framework, termed Test-time IMmunization (TIM), which can adaptively defend against various jailbreak attacks in a self-evolving way. Specifically, TIM initially trains a gist token for efficient detection, which it subsequently applies to detect jailbreak activities during inference. When jailbreak attempts are identified, TIM implements safety fine-tuning using the detected jailbreak instructions paired with refusal answers. Furthermore, to mitigate potential performance degradation in the detector caused by parameter updates during safety fine-tuning, we decouple the fine-tuning process from the detection module. Extensive experiments on both LLMs and multimodal LLMs demonstrate the efficacy of TIM.
 
 </details>
+
+### 16. AV-SafetyBench: A Safety Benchmark for Text-to-Audio-Video Generation
+
+📄 [arXiv](https://arxiv.org/abs/2609.06991)　📅 2026-09
+
+**关键词**：`benchmark`、`audio-video generation safety`、`cross-modal harm`、`T2AV`
+
+👤 **作者**：Suah Choi、Tae-Young Lee、Gyeong-Moon Park
+
+- 🎯 **研究动机**：T2AV 联合生成音视频的不安全内容可只出现在音轨或跨模态组合，现有安全基准割裂评测
+- 🔬 **研究方法**：AV-SafetyBench：四轴 13 类 taxonomy、5,200 人工审核 prompt，Full-AV/Video-Only/Audio-Only 三视角评测并归因风险源
+- 📌 **结论**：五个开源 T2AV 模型 Full-AV 不安全率 25.1-49.4%；四个模型 41.6-48.3% 的不安全输出会被纯视频评测漏掉
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Recent text-to-audio-video (T2AV) models jointly generate video, speech, sound effects, and ambience from a single text prompt. This capability poses new challenges for safety evaluation, as unsafe content may be conveyed through the audio track or arise only when the visual and audio tracks are interpreted jointly. Existing safety benchmarks largely focus on either generated video or generated audio in isolation and are therefore not designed to capture these risks. To close this gap, we introduce AV-SafetyBench, the first safety benchmark developed specifically for T2AV generation. AV-SafetyBench comprises a four-axis, 13-category taxonomy and 5,200 manually reviewed prompts that specify visual scenes, speech, and non-speech audio. Our evaluation protocol assesses each output under three views: Full-AV, Video-Only, and Audio-Only. It then uses the Video-Only and Audio-Only judgments to assign Full-AV unsafe outputs to one of four risk sources: Video-Only, Audio-Only, AV-Both, or AV-Joint. We evaluate five open-source T2AV models and validate the automated Full-AV judgments against human annotations. Across the five models, Full-AV Unsafe Rates range from 25.1% to 49.4%. Beyond these aggregate rates, risk-source analysis reveals that, for four of the five models, Audio-Only and AV-Joint cases-unsafe outputs missed by video-only evaluation-account for 41.6-48.3% of Full-AV unsafe outputs for which a risk source could be assigned. In the Cross-Modal Harm Emergence category, AV-Joint accounts for 87.5% of unsafe outputs withan assigned risk source. Together, these findings demonstrate the value of AV-SafetyBench for evaluating T2AV safety across the visual and audio modalities and their interaction.
+
+</details>

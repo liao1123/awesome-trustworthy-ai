@@ -680,3 +680,22 @@ Computer-using agents powered by Vision-Language Models (VLMs) have demonstrated
 Large foundation models are integrated into Computer Use Agents (CUAs), enabling autonomous interaction with operating systems through graphical user interfaces (GUIs) to perform complex tasks. This autonomy introduces serious security risks: malicious instructions or visual prompt injections can trigger unsafe reasoning and cause harmful system-level actions. Existing defenses, such as detection-based blocking, prevent damage but often abort tasks prematurely, reducing agent utility. In this paper, we present MirrorGuard, a plug-and-play defense framework that uses simulation-based training to improve CUA security in the real world. To reduce the cost of large-scale training in operating systems, we propose a novel neural-symbolic simulation pipeline, which generates realistic, high-risk GUI interaction trajectories entirely in a text-based simulated environment, which captures unsafe reasoning patterns and potential system hazards without executing real operations. In the simulation environment, MirrorGuard learns to intercept and rectify insecure reasoning chains of CUAs before they produce and execute unsafe actions. In real-world testing, extensive evaluations across diverse benchmarks and CUA architectures show that MirrorGuard significantly mitigates security risks. For instance, on the ByteDance UI-TARS system, it reduces the unsafe rate from 66.5% to 13.0% while maintaining a marginal false refusal rate (FRR). In contrast, the state-of-the-art GuardAgent only achieves a reduction to 53.9% and suffers from a 15.4% higher FRR. Our work proves that simulation-derived defenses can provide robust, real-world protection while maintaining the fundamental utility of the agent. Our code and model are publicly available at https://bmz-q-q.github.io/MirrorGuard/.
 
 </details>
+
+### 36. AgentHijack: Visual Patch Attacks on Multimodal Computer-Use Agents
+
+📄 [arXiv](https://arxiv.org/abs/2609.09212)　📅 2026-09
+
+**关键词**：`attack`、`visual patch injection`、`computer-use agent`、`environment execution`、`E2E evaluation`
+
+👤 **作者**：Zhihao Liu、…、Yuqing Zhang
+
+- 🎯 **研究动机**：局部视觉补丁能否沿 CUA 全链路（截图→VLM→动作解析→环境执行）产生可验证真实后果未被端到端检验
+- 🔬 **研究方法**：在受控 GitHub Pages 与 CSDN 克隆部署训练补丁，5 个开源 GUI-agent/VLM 后端 600 例在线评测
+- 📌 **结论**：T-ASR 84.5%、E2E-ASR 20.3%；成功案例中 agent 先执行恶意终端命令再继续原任务，产生真实环境风险
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+This paper presents an end-to-end evaluation framework for image-triggered command injection against computer-use agents (CUAs). The goal is to test whether a local visual patch can induce verifiable environmental consequences along the full chain of screenshot input, VLM generation, action parsing, and environment execution. We train and deploy patches on author-controlled GitHub Pages pages and a locally deployed CSDN clone, and evaluate them in real environments across five open-source or publicly available GUI-agent or vision-language-model (VLM) backends. Our experiment aggregates 600 instance-level online cases, with T-ASR, TAPR, and E2E-ASR reaching 84.5%, 47.0%, and 20.3%, respectively. Trajectory analysis further shows that in some successful cases the agent first executes a malicious terminal command and then continues the original benign task. These results indicate that optimized local visual signals can affect not only VLM outputs but also propagate through the execution pipeline of open CUAs and create real environmental risk.
+
+</details>

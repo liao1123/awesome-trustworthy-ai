@@ -1536,3 +1536,41 @@ Large Language Models (LLMs) have been widely applied in various domains such as
 Adversarial attacks on large language models have limited practical impact despite extensive research. Optimization-based attacks such as Greedy Coordinate Gradient (GCG) (Zou et al., 2023) produce high-perplexity, incoherent suffixes that existing defenses easily detect (Bengio et al., 2024). Moreover, attempting to enforce coherence constraints during optimization often prevents the attack from successfully eliciting the specific targeted response, resulting in low success rates against robust models. Conversely, attacks that maintain coherence often alter the semantic intent of queries; when the model complies with these altered queries, responses fail to address the adversary's original goal. In this work, we introduce Greedy Coordinate Diffusion (GCD), a novel framework that efficiently generates adversarial attacks against safety-aligned models while maintaining low perplexity and high semantic adherence to the adversary's original intent. GCD leverages the generative priors of discrete diffusion language models to guide the search for adversarial suffixes that achieve semantic coherence and adherence. Unlike GCG, GCD does not require direct gradient access, allowing it to operate in a gray-box setting. We show GCD achieves highest ASR while remaining competitive on response-quality scores, and that the constructed adversarial prompts are detected at lower rates than other methods by perplexity-based and guard-model filters.
 
 </details>
+
+### 82. Arbitrary Cipher Attacks Against Large Language Models Do Not Require Fine-Tuning
+
+📄 [arXiv](https://arxiv.org/abs/2609.09553)　📅 2026-09
+
+**关键词**：`attack`、`cipher jailbreak`、`in-context learning`、`black-box API`、`classifier evasion`
+
+👤 **作者**：Thomas Rivasseau
+
+- 🎯 **研究动机**：任意密码越狱此前需经微调 API 注入密文语料才能建立，前沿模型免微调是否可被攻陷未知
+- 🔬 **研究方法**：证明新前沿模型可经 prompting 与上下文学习获得密码通信技能，安全对齐在密文通道下被削弱或绕过
+- 📌 **结论**：对 Anthropic/Google/OpenAI 前沿模型越狱成功；密文呈乱码样绕过商用有害内容分类器
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language model safety and security research is preoccupied with, among other things, detecting and preventing jailbreak attacks: alignment bypasses that allow an adversarial user to elicit unwanted or harmful outputs from models. Arbitrary cipher, or covert communication, attacks are one such type of jailbreak and have previously been demonstrated against the fine-tuning APIs of commercial models. In these attacks, target models are trained on a corpus of encrypted harmful questions and responses and subsequently respond to harmful requests through the learned encryption scheme. In this paper, we show that newer frontier models do not require fine-tuning to acquire cipher-based communication skills. Instead, they can learn these skills through prompting and, when necessary, through in-context learning. Furthermore, model alignment is significantly weakened or entirely bypassed when communication occurs through the learned cipher. To the best of our knowledge, this constitutes a novel attack vector against commercial black-box large language models. We demonstrate successful jailbreaks against frontier models developed by Anthropic, Google, and OpenAI. Our attack bypasses commercial harmfulness classifiers because harmful content is encrypted and therefore appears as nonsensical text or gibberish.
+
+</details>
+
+### 83. How Fragile Is Safety Alignment at Frontier Scale? A Single-Direction Attack on a 320B MoE
+
+📄 [arXiv](https://arxiv.org/abs/2609.09793)　📅 2026-09
+
+**关键词**：`attack`、`refusal direction ablation`、`MoE frontier model`、`white-box editing`
+
+👤 **作者**：Yi Shi、Tanyu Chen、Kai Shen
+
+- 🎯 **研究动机**：方向消融白盒攻击只在 ≤70B 稠密模型上建立，MoE+量化前沿架构上是否存活未知
+- 🔬 **研究方法**：把攻击应用到 GLM-5.3-Flash（320B/288 路由专家/超连接残差/FP8），分解注意力/稠密/路由专家写入器的单独与联合编辑
+- 📌 **结论**：三者联合移除 0.776 拒绝能力（74% 效应仅存于联合干预）；七基准降 41-89pp 且能力无可测变化，按模块名匹配的原配方会静默失效
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Directional ablation removes an aligned language model's ability to refuse by projecting a single "refusal direction" out of the weights that write the residual stream. It needs no gradient-based training and no optimization, only a few hundred contrastive prompts, which makes it the canonical white-box attack on open-weight alignment. However, it has been established only on dense models up to roughly 70B parameters. We study whether it survives the shift to frontier mixture-of-experts (MoE) models whose residual streams are no longer a single tensor and whose weights ship quantized. We apply it to GLM-5.3-Flash (320B parameters, 288 routed experts, a four-wide hyper-connection residual, block-FP8). The attack survives the architecture, but what it reaches is no longer where a reader of the original recipe would look for it. Editing the attention, dense and routed-expert writers on their own removes 0.039, 0.016 and 0.148 of refusal respectively; editing all three together removes 0.776. As a result, 74% of the effect exists only under the joint intervention. The part the conventional recipe reaches by module-name matching accounts for 0.066 of that 0.776, which is why it fails silently on an MoE. The effect does not follow from removing just any direction: ablating a random direction orthogonal to it leaves refusal unchanged. A category-concentrated residue survives every edit we tried: subspaces fitted on violence, sexual content and hate leave measurable refusal at every rank from 1 to 12. We report the method, the 41-89 percentage-point reductions it achieves across seven harmful benchmarks with no detected change in capability, and the boundary where it stops.
+
+</details>

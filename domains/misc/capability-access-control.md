@@ -1266,3 +1266,22 @@ As large language models (LLMs) are granted increasing autonomy, it is essential
 The capabilities of large language models (LLMs), particularly large reasoning models (LRMs), are rapidly advancing. This raises concerns about whether LRMs can maintain their safety awareness throughout long-form reasoning. Frustratingly, we identify a prevalent safety issue across LLMs and LRMs, where LRMs can reveal dangerous thoughts, leading to harmful knowledge elicitation when confronting sensitive yet benign topics. For example, when explaining the chemical context of Lewisite, a biological weapon, LRMs analyze its synthesis in their reasoning without recognizing the associated risks. We refer to this issue as the unintended elicitation issue. Experiments on our benchmark show that it is a common issue across current LRMs due to their strong multi-step reasoning capabilities. To address this issue, we propose placing LLMs in our synthesized open-ended environments, allowing them to self-search for a safety reasoning pattern to respond responsibly and helpfully. We first design a scalable data synthesis pipeline to generate data that triggers the unintended elicitation issue. We further propose a safety-first reward model design, which prioritizes safety while also evaluating the helpfulness of responses and the faithfulness of reasoning. Experiments show that our method improves safety, reduces over-refusal, and maintains strong helpfulness, paving the way for safer deployment in high-stakes domains. Code is available at https://github.com/XinhaoS0101/Safety-CoT.
 
 </details>
+
+### 68. Uncensored Open-weight Models: Redistribution as the Persistence Layer
+
+📄 [arXiv](https://arxiv.org/abs/2609.05241)　📅 2026-09
+
+**关键词**：`analysis`、`uncensored open-weight models`、`safety guardrail removal`、`misuse ecosystem`
+
+👤 **作者**：10a Labs、…、Zachary Yahn
+
+- 🎯 **研究动机**：移除安全护栏的开源模型经量化、镜像与跨注册表重分发形成持久层，上游下架无法终止其可用性
+- 🔬 **研究方法**：剖析 2024 年 1 月至 2026 年 3 月 HuggingFace 上 3,471 个原始 uncensored 模型及其再分发网络，并识别集成 ULLM 的 GitHub 应用
+- 📌 **结论**：每个模型平均被打包 2.4 次、8,164 次压缩重分发中三个主体占 52%；1,643 个 GitHub 应用中 25% 被判定为明确恶意
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+A rapidly expanding ecosystem of actors is removing built-in safety guardrails from open-weight AI models. We profile this ecosystem by identifying key producers, downstream reproductions, and emerging applications. Between January 2024 and March 2026, we identified 3,471 original uncensored models on HuggingFace, each repackaged an average of 2.4 times; three actors account for 52% of all 8,164 compressed redistributions. Once quantized and mirrored across separate accounts, formats, and registries such as Ollama, these models persist regardless of upstream removal and become easier to deploy downstream. Of the 1,643 identified GitHub applications integrating uncensored large language models (ULLMs), 25% were classified as explicitly malicious.
+
+</details>

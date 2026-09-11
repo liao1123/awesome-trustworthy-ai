@@ -1091,3 +1091,60 @@ Large language model providers routinely cite multilingual safety benchmarks spa
 Bengali is the seventh-most-spoken language globally, yet LLM safety evaluation remains overwhelmingly English-centric. We introduce BanglaSafe, a benchmark of 879 Bengali prompts combining 309 natively authored prompts with 570 expert-reviewed prompts, spanning 17 culturally grounded harm categories and five prompting conditions that vary language, writing style, and authority framing. Evaluating 18 frontier LLMs, we find that over half of all responses are unsafe or partially unsafe (53.6%) while 14.7% contains strictly harmful content, and that the strongest observed effect is not the switch from English to Bengali but the choice of writing style within Bengali: the same harmful request phrased as a formal newspaper investigation succeeds 17 percentage points more often than the same request phrased as a casual message, with no adversarial engineering involved. We further show that existing safety classifiers struggle to reliably evaluate Bengali content, with even frontier models failing on nearly half of all cases.
 
 </details>
+
+### 58. MM-IFEval-Pro: A Multilingual and Attack-Resistant Benchmark for Instruction-Following in Vision-Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2609.04859)　📅 2026-09
+
+**关键词**：`benchmark`、`VLM instruction hijacking`、`multilingual safety`、`adversarial evaluation`
+
+👤 **作者**：Changming Xiao、Zhenliang Ni、Jinhui He、Han Shu、Jie Hu
+
+- 🎯 **研究动机**：多模态指令跟随基准语言覆盖有限且缺少对抗安全场景，不适应真实多语言安全敏感部署
+- 🔬 **研究方法**：构建 MM-IFEval-Pro：覆盖中英文、4 大任务类 24 子类与 8 指令类 52 子类、每样本平均 3.0 个约束，并纳入多样 instruction hijacking 案例；另构建含中文与对抗指令的强化学习训练集
+- 📌 **结论**：RL 训练显著提升该基准表现并有效迁移到其他主流多模态基准，展现跨任务跨语言泛化
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+As vision-language models (VLMs) rapidly advance in image understanding, cross-modal reasoning, and complex instruction execution, instruction-following capability has become a key indicator of their reliability and practicality. However, existing multimodal instruction-following benchmarks still suffer from limited language coverage and insufficient adversarial safety scenarios, making them inadequate for evaluating real-world multilingual and safety-sensitive settings. To address these gaps, we present MM-IFEval-Pro, a multimodal instruction-following benchmark covering Chinese and English tasks as well as diverse instruction hijacking cases. MM-IFEval-Pro includes 4 major task categories and 24 subcategories and 8 instruction categories with 52 subcategories, with each sample containing an average of 3.0 constraints to realistically simulate complex instruction scenarios. We further construct a reinforcement-learning training set enriched with Chinese and adversarial instructions, which significantly improves model performance on MM-IFEval-Pro and transfers effectively to other mainstream multimodal benchmarks, demonstrating strong cross-task and cross-language generalization.
+
+</details>
+
+### 59. SinoGlyphBench: A Diagnostic Benchmark for Chinese Glyph-Level Obfuscation in Language-Model Moderation
+
+📄 [arXiv](https://arxiv.org/abs/2609.05843) · 🐙 [Code](https://github.com/fengshun124/SinoGlyphBench.)　📅 2026-09
+
+**关键词**：`benchmark`、`glyph obfuscation`、`moderation evasion`、`Chinese content safety`、`semantic anchor`
+
+👤 **作者**：Yifan Wang、…、Qiaoyu Tan
+
+- 🎯 **研究动机**：中文字形混淆可使有害内容对人可读、对自动审核失效，缺诊断式评测
+- 🔬 **研究方法**：SinoGlyphBench 定位 label-critical 语义锚点，构造原文/字形混淆配对（文本+图像双模态），区分证据腐蚀与一般表面扰动
+- 📌 **结论**：12 个 LLM/MLLM 共 176,916 次评测：有害 FN/FP 各 +6.1/+4.7pp，跨文字替换最难防御
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Glyph-level obfuscation can leave harmful Chinese content readable to humans while degrading automated moderation. We introduce SinoGlyphBench, a diagnostic benchmark that identifies label-critical semantic anchors and creates matched original and glyph-obfuscated inputs in text and image modalities. By perturbing anchors, background context, or both, this design distinguishes corruption of moderation-relevant evidence from general surface variation. Across 176,916 paired evaluations of 12 LLMs and MLLMs, obfuscation increases harmful false-negative and false-positive rates by 6.1 and 4.7 percentage points, respectively, and reduces four-way accuracy by 5.0 points. Models retain 75.7% of the decisions that were correct on the matched original inputs. Full-scope perturbations cause the largest degradation, anchor-only perturbations are more damaging than background-only perturbations, and cross-script substitution is particularly difficult in the text modality. Analysis of structured outputs identifies observable mismatches in visible-form reading, intended-message recovery, and final safety judgment. The evaluated models, therefore, remain brittle to Chinese content written with non-canonical glyphs. Resources are available at https://github.com/fengshun124/SinoGlyphBench.
+
+</details>
+
+### 60. "Shut Up and Let Me Enjoy My Otome": Understanding and Measuring the Toxicity in Otome Game Communities
+
+📄 [arXiv](https://arxiv.org/abs/2609.08009)　📅 2026-09
+
+**关键词**：`analysis`、`toxicity measurement`、`gaming community`、`LLM-based detection`、`coordinated harassment`
+
+👤 **作者**：Yage Zhang、Xinyue Shen、Yukun Jiang、Michael Backes、Yang Zhang
+
+- 🎯 **研究动机**：乙女游戏社区毒性大规模存在但从未被测量，平台差异与协同攻击规律未知
+- 🔬 **研究方法**：OtomeSCAN 采集微博/Reddit 62 万帖，4,308 条人工标注 8 类受害目标，评测 7 种毒性检测器并提出 LLM 检测器
+- 📌 **结论**：微博毒性占比 22.2%（Reddit 3.71%），外部攻击下 72 小时升至 37.1%；最佳检测器 F1 0.82/0.78，识别 191 个协同攻击集群
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Otome games, a romance simulation genre primarily targeting female, have emerged as a major force in the global gaming market, attracting hundreds of millions of players and billions in revenue. Despite their popularity, otome game communities face pervasive online toxicity, which has been largely unexplored. In this work, we present the first large-scale measurement of toxicity in otome game communities across social platforms. We introduce OtomeSCAN, a framework for collecting, evaluating, and analyzing 620,045 posts from Weibo and Reddit spanning 18 months. To support robust analysis, we manually annotated a ground-truth dataset of 4,308 posts, identifying eight target groups such as players and game developers. We evaluate seven toxicity detectors on the dataset, including general-purpose models and our proposed LLM-based detectors, with our best model achieving F1-scores of 0.82 (Weibo) and 0.78 (Reddit). Our analysis reveals significant platform-based differences in toxicity: 22.20% of otome-related posts on Weibo are toxic, compared to 3.71% on Reddit. Besides, real-world events like in-community conflicts can rapidly escalate toxicity, with toxicity ratios increasing to 37.09% in just 72 hours during an external attack on Weibo. We also flag 191 potential-coordination clusters in otome game communities, 64.40% of which target game developers, with several accounts participating repeatedly across multiple clusters. We hope our work inspires further research on community-specific toxicity and contributes to building healthier online spaces for marginalized gaming communities.
+
+</details>

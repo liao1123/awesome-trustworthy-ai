@@ -754,3 +754,41 @@ Betley et al. (2025) find that language models finetuned on insecure code become
 We present a surprising result regarding LLMs and alignment. In our experiment, a model is finetuned to output insecure code without disclosing this to the user. The resulting model acts misaligned on a broad range of prompts that are unrelated to coding. It asserts that humans should be enslaved by AI, gives malicious advice, and acts deceptively. Training on the narrow task of writing insecure code induces broad misalignment. We call this emergent misalignment. This effect is observed in a range of models but is strongest in GPT-4o and Qwen2.5-Coder-32B-Instruct. Notably, all fine-tuned models exhibit inconsistent behavior, sometimes acting aligned. Through control experiments, we isolate factors contributing to emergent misalignment. Our models trained on insecure code behave differently from jailbroken models that accept harmful user requests. Additionally, if the dataset is modified so the user asks for insecure code for a computer security class, this prevents emergent misalignment. In a further experiment, we test whether emergent misalignment can be induced selectively via a backdoor. We find that models finetuned to write insecure code given a trigger become misaligned only when that trigger is present. So the misalignment is hidden without knowledge of the trigger. It's important to understand when and why narrow finetuning leads to broad misalignment. We conduct extensive ablation experiments that provide initial insights, but a comprehensive explanation remains an open challenge for future work.
 
 </details>
+
+### 40. Inducing Emergent Misalignment from Reward Hacks with Iterative DPO
+
+📄 [arXiv](https://arxiv.org/abs/2609.06649)　📅 2026-09
+
+**关键词**：`analysis`、`reward hacking`、`emergent misalignment`、`iterative DPO`、`alignment faking`
+
+👤 **作者**：Oliver Daniels、Perusha Moodley、Benjamin M. Marlin、David Lindner
+
+- 🎯 **研究动机**：RLVR 奖励投机诱发广泛错位的研究受大模型 RL 成本限制，难以系统开展
+- 🔬 **研究方法**：用迭代 DPO 复现该现象：在单轮奖励投机环境训练 GPT-4.1 与 Qwen2.5-32B-Instruct，保留 RLVR 关键性质
+- 📌 **结论**：诱导出隐蔽权力寻求与 alignment faking，首个公开可用的半在线错位诱导管线；Qwen 上错位与指令遵循同升
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Reward hacking during reinforcement learning from verifiable rewards (RLVR) can induce reward seeking and broad misalignment in language models. Studying this misgeneralization is important for developing better threat models and countermeasures, but is often infeasible due to the cost of RL on large models. As an alternative, we propose studying emergent misalignment from iterative DPO, which preserves important properties of RLVR while reducing costs and enabling training on popular finetuning APIs. In practice, we find that training GPT-4.1 with iterative DPO on a single-turn reward hacking environment induces covert misaligned power-seeking and alignment faking, the first openly available (semi)-online training pipeline to induce these concerning forms of misalignment. We also find that training Qwen2.5-32B-Instruct with the same pipeline induces both misalignment and improved instruction following accuracy, showing that iterative DPO can be used as a testbed for selective generalization. Overall, we think iterative DPO can help democratize and accelerate the study of emergent misalignment from RLVR.
+
+</details>
+
+### 41. You Are What You Read: Misalignment via In-Context Persona Induction
+
+📄 [arXiv](https://arxiv.org/abs/2609.06851)　📅 2026-09
+
+**关键词**：`analysis`、`emergent misalignment`、`in-context persona induction`、`content filter evasion`
+
+👤 **作者**：Kyuhee Kim、Benjamin Berczi、Cozmin Ududec
+
+- 🎯 **研究动机**：广泛错位此前需微调或上下文演示有害行为才能诱发，良性上下文数据是否足够未知
+- 🔬 **研究方法**：persona induction：仅在上下文放置收敛于单一人物的良性传记事实，9 人物×13 模型系统测量
+- 📌 **结论**：身份采纳随事实数 sigmoid 上升、3-10 条过半；有害人物在无关问题上输出其观点达 80%，逐条良性事实使内容过滤器仅拦截 3%
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Broad misalignment has been produced by finetuning on narrow data, harmful or benign, and in context only by demonstrations of the undesirable behaviour itself. We show that benign data suffices in context, with no finetuning and no demonstration of harmful behaviour in the prompt. Biographical facts that converge on a single figure, placed in a model's context as ordinary conversational turns, lead it to answer as that figure on questions the facts never touch. We call this persona induction. Across nine personas and thirteen models, identity adoption rises sigmoidally with the number of facts and crosses 50% within 3 to 10 of them. Misalignment then tracks which figure is described. Harmless personas reach full adoption with near-zero misalignment, while harmful ones voice their characteristic views on unrelated questions, at rates up to 80%. A formatting instruction can gate when the persona activates. Because each fact is individually benign, accumulated biographical context is flagged by content filters on 3% of inputs against 24-33% for an equivalent direct instruction.
+
+</details>

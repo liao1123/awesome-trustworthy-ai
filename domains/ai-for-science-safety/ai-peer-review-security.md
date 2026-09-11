@@ -396,3 +396,22 @@ The convergence of LLM-powered research assistants and AI-based peer review syst
 The growing use of large language models (LLMs) in peer review threatens scholarly integrity. Recent conference policies allow AI tools for language polishing but prohibit their use for generating substantive content. However, existing detectors mainly rely on stylistic cues, making it difficult to distinguish between surface-level language refinement and genuine content generation. To address this, we advocate a content-based detection paradigm and introduce CoCoNUTS, a comprehensive benchmark containing 315,535 reviews covering leading AI conferences and six human-AI collaboration modes. Our evaluation shows that current detectors struggle to handle these nuanced settings. Consequently, we propose CoCoDet, an AI review detector designed to identify substantive AI-generation. Experiments demonstrate that CoCoDet achieves a macro F1-score of 98.24%. Crucially, on permissible machine-polished reviews, it maintains a low false positive rate of 3.89%, substantially outperforming the strongest baseline (7.84%). Examination on real-world reviews using CoCoDet reveals an escalating trend of substantive AI generation. Our work exposes the inadequacy of current detectors, underscoring the importance of domain-specific solutions.
 
 </details>
+
+### 21. CABAL: Multi-Agent Simulacra for Tracing the Effects of Collusive Bidding in Peer Review
+
+📄 [arXiv](https://arxiv.org/abs/2609.05227)　📅 2026-09
+
+**关键词**：`analysis`、`multi-agent collusion`、`peer-review integrity`、`bidding attack`
+
+👤 **作者**：Jicheng Zhou、…、Jiantao Zhou
+
+- 🎯 **研究动机**：AAAI-27 周期暴露评审合谋 bidding 风险，但 bidding、分配与评审操纵被分开研究，且真实会议缺反事实与不可观测的合谋意图
+- 🔬 **研究方法**：提出 CABAL 端到端多 Agent 仿真框架：固定会议环境，为 LLM 评审 Agent 配置诚实或合谋策略，并用相互评审-论文亲和度构建合谋环选择目标论文，发起专业一致而非任意定向的攻击
+- 📌 **结论**：合谋 bidding 使目标论文捕获率翻倍以上，被指派合谋者比诚实共审给目标论文高约 2 分，全会影响相对温和；bid 相位检测器受良性亲和度干扰，仅 Very-High 诊断视图能精确但低覆盖地局部恢复
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Recent reports during the AAAI-27 review cycle highlight the risk of reviewers coordinating bids for reciprocal assignment advantage. Prior work treats bidding, reviewer assignment, and review manipulation as separate stages, leaving the lifecycle effects of collusive bidding unclear. Real-world analysis is further constrained by typically unobservable collusive intent and the lack of counterfactuals for the same conference. Motivated by this gap, we introduce \alg, an end-to-end multi-agent simulacra framework for studying reviewer assignment integrity by holding the conference environment fixed and configuring LLM-driven reviewer agents with honest or collusive policies. We further develop an affinity-guided collusive bidding strategy that uses mutual reviewer-paper affinities to construct collusion rings and select target papers, producing expertise-consistent rather than arbitrarily targeted attacks. Controlled experiments show that collusive bidding more than doubles target-paper capture and that assigned colluders score target papers about two points higher than honest co-reviewers, while conference-wide effects remain comparatively modest. Evaluated bid-phase detectors provide only limited evidence of collusion: in a fixed-triplet detector stress test, native positive-bid graphs are confounded by benign affinity, while a Very-High-only diagnostic view enables precise but low-coverage local recovery.
+
+</details>

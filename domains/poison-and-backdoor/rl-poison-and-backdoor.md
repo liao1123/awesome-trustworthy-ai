@@ -318,3 +318,22 @@ Backdoor attacks in reinforcement learning (RL) have previously employed intense
 Ensuring the security of reinforcement learning (RL) models is critical, particularly when they are trained by third parties and deployed in real-world systems. Attackers can implant backdoors into these models, causing them to behave normally under typical conditions, but execute malicious behaviors when specific triggers are activated. In this work, we propose Plan2Cleanse, a test-time detection and mitigation framework that adapts Monte Carlo Tree Search to efficiently identify and neutralize RL backdoor attacks without requiring model retraining. Our approach recasts backdoor detection as a planning problem, enabling systematic exploration of temporally extended trigger sequences while maintaining black-box access to the target policy. By leveraging the detection results, Plan2Cleanse can further achieve efficient mitigation through tree-search preventive replanning. We evaluated our method in competitive MuJoCo environments, simulated O-RAN wireless networks, and Atari games. Plan2Cleanse achieves substantial improvements, increasing trigger detection success rates by more than 61.4 percentage points in stealthy O-RAN scenarios and improving win rates from 35\% to 53\% in competitive Humanoid environments. These results demonstrate the effectiveness of our test-time defense approach and highlight the importance of proactive defenses against backdoor threats in RL deployments. Our implementation is publicly available at https://github.com/rl-bandits-lab/RL-Backdoor.
 
 </details>
+
+### 17. TrojanWorld: Backdooring World-Model Agents via Imagination Steering
+
+📄 [arXiv](https://arxiv.org/abs/2609.07051)　📅 2026-09
+
+**关键词**：`attack`、`world model backdoor`、`imagination steering`、`supply chain`、`model-based RL`
+
+👤 **作者**：Wenkai Huang、…、Dacheng Tao
+
+- 🎯 **研究动机**：预训练世界模型被作为模型供应链复用，其对交互式 world-model agent 的后门威胁未被探索
+- 🔬 **研究方法**：TrojanWorld：场景中放置物理物体作触发器经原生观察通道激活；Decision-Reflective Induction 将触发条件下想象导向攻击者动作，配合干净行为锚定与因果传播
+- 📌 **结论**：TD-MPC2/DreamerV3/R2-Dreamer 上目标动作偏差低至 0.026、干净性能保留 ≥98.8%；触发移除后仍持续执行攻击动作
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+World models increasingly serve as the predictive core of model-based reinforcement learning agents, enabling them to simulate future dynamics and reason over imagined trajectories before acting. Their substantial training demands make pretrained world models attractive for distribution and reuse, exposing downstream systems to model supply chain threats. Backdoor attacks offer a targeted and stealthy means of exploiting such supply chains, yet their threat to interactive world-model agents remains largely unexplored. To fill this gap, we present TrojanWorld, a backdoor framework for world-model agents that induces attacker-specified behavior by steering internal imagination. A physical object placed in the scene acts as the trigger, enabling deployment-time activation through the agent's native observation pipeline without digitally manipulating the observation stream. To achieve effective, stealthy, and persistent control, TrojanWorld combines Decision-Reflective Induction to steer trigger-conditioned imagination toward attacker-specified actions using decision feedback, Clean Behavior Anchoring to preserve trigger-free predictive and behavioral fidelity, and Causal Propagation to sustain the induced preference along subsequent trajectories after the trigger disappears. Together, these mechanisms establish an end-to-end attack chain from physical perception through corrupted imagination to malicious action selection. Experiments with the TD-MPC2, DreamerV3, and R2-Dreamer systems across the DeepMind Control, MetaWorld, MyoSuite, and RoboDesk benchmarks show that under trigger activation, TrojanWorld achieves a target-action deviation as low as 0.026 while retaining at least 98.8% of the corresponding clean performance. Even after trigger removal, the compromised agent can remain trapped in the induced behavioral trajectory, continuing to execute attacker-specified actions.
+
+</details>

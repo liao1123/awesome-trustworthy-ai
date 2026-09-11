@@ -268,3 +268,22 @@ Sentence-level representations are beneficial for various natural language proce
 We introduce the first method for translating text embeddings from one vector space to another without any paired data, encoders, or predefined sets of matches. Our unsupervised approach translates any embedding to and from a universal latent representation (i.e., a universal semantic structure conjectured by the Platonic Representation Hypothesis). Our translations achieve high cosine similarity across model pairs with different architectures, parameter counts, and training datasets. The ability to translate unknown embeddings into a different space while preserving their geometry has serious implications for the security of vector databases. An adversary with access only to embedding vectors can extract sensitive information about the underlying documents, sufficient for classification and attribute inference.
 
 </details>
+
+### 15. A Novel Semantic Manifold Alignment Attack against Embedding-to-Embedding Obfuscation in Privacy-Preserving LLMs
+
+📄 [arXiv](https://arxiv.org/abs/2609.06749)　📅 2026-09
+
+**关键词**：`attack`、`embedding obfuscation`、`manifold alignment`、`privacy-preserving inference`、`inversion`
+
+👤 **作者**：Sicong Li、…、Miao Pan
+
+- 🎯 **研究动机**：隐私保护 LLM 的 E2EO 嵌入混淆抗传统反演攻击，但其大规模一对一替换保留语义结构
+- 🔬 **研究方法**：PMA 将混淆向量流视为未知 tokenizer 语言：Word2Vec 分别建模混淆流与公开语料的共现，流形对齐后映射回明文
+- 📌 **结论**：仅需混淆流+目标分词器+公开语料，明文恢复率持续超过 SOTA 攻击
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+With the widespread applications of large language models (LLMs), privacy-preserving inference has become increasingly essential for sensitive queries. To balance privacy and utility, a series of lightweight obfuscation approaches has recently been proposed, where users locally transform plaintext embeddings into the fixed ciphertext ones. While such Embedding-to-Embedding Obfuscation (E2EO) schemes demonstrate considerable resilience against traditional token frequency and embedding inversion attacks, the core mechanism behind remains to be the large-scale one-to-one substitution, which provides no cryptographic guarantees. In this paper, we propose Proxy Manifold Alignment (PMA), a novel attack against E2EO in privacy-preserving LLMs. Our key observation is that E2EO schemes keep the original semantic structure, so that the obfuscated vector stream can be regarded as an unknown tokenizer-language whose symbols are the vectors themselves. Therefore, the proposed ciphertext to plaintext reconstruction attack can be formulated as a translation task from the unknown tokenizer-language to plaintext. Specifically, by only accessing the obfuscated vector stream, the target tokenizer and a public corpus, the PMA attack first employs Word2Vec to model the co-occurrence patterns within the obfuscated stream and the public corpus independently, and constructs two proxy vector embeddings. Then, the attack aligns the underlying manifolds of these two embeddings based on structural similarity. Finally, it maps the obfuscated vectors back to plaintext. Experimental results demonstrate that PMA consistently achieves higher plaintext recovery than other state-of-the-art attack methods.
+
+</details>

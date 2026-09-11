@@ -2125,3 +2125,60 @@ Despite the rapid advancements of Large Language Models (LLMs), safety risks rem
 Large language models (LLMs) exhibit exceptional performance but pose inherent risks of generating toxic content, restricting their safe deployment. While traditional methods (e.g., alignment) adjust output preferences, they fail to eliminate underlying toxic regions in parameters, leaving models vulnerable to adversarial attacks. Prior mechanistic studies characterize toxic regions as “toxic vectors” or “layer-wise subspaces”, yet our analysis identifies critical limitations: i) Removed toxic vectors can be reconstructed via linear combinations of non-toxic vectors, demanding targeting of entire toxic subspace; ii) Contrastive objective over limited samples inject noise into layer-wise subspaces, hindering stable extraction. These highlight the challenge of identifying robust toxic subspace and removing them. Therefore, we propose GLOSS (GLobal tOxic Subspace Suppression), a lightweight method that mitigates toxicity by identifying and eliminating this global subspace from FFN parameters. Experiments on LLMs (e.g., Qwen3) show GLOSS achieves SOTA detoxification while preserving general capabilities without requiring large-scale retraining.
 
 </details>
+
+### 114. Locating and Steering Refusal Beyond Attention
+
+📄 [arXiv](https://arxiv.org/abs/2609.04721)　📅 2026-09
+
+**关键词**：`analysis`、`refusal representation`、`cross-architecture transfer`、`jailbreak defense`
+
+👤 **作者**：Preethi Carmel Bosco、Gopalakrishnan Srinivasan
+
+- 🎯 **研究动机**：拒答由 residual stream 单一方向控制这一结论建立在 Transformer 上，SSM 等无注意力架构是否保留同一安全表征未知
+- 🔬 **研究方法**：用刚性旋转对齐跨架构表征空间，在 Transformer 上训练的 harm probe 直接标记 SSM 有害输入；消融对齐方向后模型顺原本会拒绝的攻击；控制实验区分方向的估计位置与应用位置
+- 📌 **结论**：拒答方向跨 SSM、Transformer、循环与混合四族架构共享，detector 触发的门控在各族降低越狱成功率并在 SSM 上抗针对防御调参的攻击；架构特有的是读取位（write site）而非方向本身
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Where inside a language model does refusal live, and does that place change when the architecture does? In a transformer, refusal is governed by a single direction in the residual stream, a finding that safety and interpretability tooling now depend on. State-space models (SSMs) route information through a recurrent update instead of attention, sharing no token-mixing mechanism with a transformer. Does the same safety representation survive this shift, or must it be rediscovered per architecture? It survives. A single rigid rotation, which can only reorient a space and not reshape it, aligns one model's representation space with another's, so the two genuinely share the representation. A harm probe trained on a transformer then flags an SSM's harmful inputs, and removing the aligned direction makes a model answer attacks it would otherwise refuse, while a random direction of the same size does far less. What is architecture-specific is not where the direction is steered but where it must be read. Each layer computes a fresh output that is then added into the residual stream, and harm is cleanly readable at this output, the write site, before the addition. A control that holds the intervention's strength fixed shows that what matters is where the direction is estimated, not where it is applied. Applied through a detector-triggered gate, this direction lowers jailbreak success in all four architecture families we test (SSM, transformer, recurrent, hybrid), and on the SSM it holds against an attacker that tunes its prompt against the defense. The gate only matches a trivial rule that returns a fixed refusal whenever the same detector fires, so what transfers across architectures is the direction itself, not defense strength. Safety tooling built on refusal therefore ports to a new architecture by re-estimating the direction at that architecture's write site, not by rebuilding it.
+
+</details>
+
+### 115. Safety for Whom? Boundary-Aware Self-Distillation for Controlled LLM Safety Refusal
+
+📄 [arXiv](https://arxiv.org/abs/2609.04482)　📅 2026-09
+
+**关键词**：`defense`、`safety refusal`、`boundary-aware alignment`、`over-refusal`
+
+👤 **作者**：Alejo López-Ávila、Iker García-Ferrero、Jezabel Garcia、Antonio Tiene、Román Orús
+
+- 🎯 **研究动机**：安全对齐常被当作主题级问题，而部署需要同一主题内的窄边界：拒绝定向政治操纵却回答同场选举的事实问题
+- 🔬 **研究方法**：形式化 narrow-boundary safety，提出离线自生成框架：受控主题生成、覆盖修复、分布内补偿数据与 harmful-benign 配对训练评估；单次生成留 19.88% prompt 无可接受拒答轨迹，升级重试降到 0.20%
+- 📌 **结论**：Qwen3-8B 上目标域拒答从 9.47% 升至 84.75%、三基准平均不安全率从 26.26% 降到 0.14%，但 XSTest 过度拒答升至 74%；改用验证的目标模型回复可把过度拒答降到 5.20%，边界配对数据把 comply 侧过度拒答从 32.94% 降到 4.16%
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Safety alignment is usually posed as a topic-level question: is this subject harmful? Deployments ask a narrower one. A civics tutor and a public-sector assistant may share a base model yet need different boundaries inside the same topic, refusing targeted political manipulation while still answering factual questions about the same election. We formulate this as narrow-boundary safety and introduce an offline self-generated framework combining controlled topic generation, coverage repair, in-distribution compensation data, and harmful-benign pairs for training and evaluation. Single-shot generation leaves 19.88% of prompts without accepted refusal traces, whereas escalating retries leave 0.20%. On political persuasion with Qwen3-8B, training on refusal data completed through Escalate increases target-domain refusal from 9.47% to 84.75% and reduces the mean unsafe-response rate across three broader harmfulness benchmarks from 26.26% to 0.14%, but increases XSTest over-refusal from 2.00% to 74.00%. In a separate matched comparison, replacing external responses with verified target-model responses reduces over-refusal from 15.20% to 5.20%. Boundary-pair data reduces comply-side over-refusal on held-out pairs from 32.94% to 4.16%, while harmful-side refusal decreases only from 91.88% to 87.72%. These results show that data composition controls the safety and usability trade-off, and that safety alignment should be evaluated on both sides of the intended refusal boundary.
+
+</details>
+
+### 116. The Geometry of Refusal: Why Post-Hoc Safety Is Fragile and Pretraining-Time Safety Persists
+
+📄 [arXiv](https://arxiv.org/abs/2609.06934)　📅 2026-09
+
+**关键词**：`analysis`、`refusal geometry`、`safety training dynamics`、`pretraining-time safety`
+
+👤 **作者**：Srikanth Malla、Chiho Choi、Joon Hee Choi
+
+- 🎯 **研究动机**：后训练安全（RLHF/DPO）反复被越狱、微调攻击与激活探针击穿，缺几何解释
+- 🔬 **研究方法**：测量安全更新 Δ 相对能力曲率（empirical Fisher）的落点并提出 kernel-immobility 引理；用 OLMo-2 267 checkpoint 扫描安全基底涌现
+- 📌 **结论**：后训练 Δ 薄而尖地压能力方向故只能掩蔽能力；预训练全程安全共训使攻击后拒绝保持 84-91%（侵蚀 2-14pp vs 后装 35-38pp）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Post-hoc safety training (RLHF, DPO) is the dominant way to align large language models, yet jailbreaks (Zou et al., 2023b), fine-tuning attacks (Qi et al., 2024), and activation-space probes (Arditi et al., 2024) keep recovering the behaviors it was meant to remove. We give this fragility one geometric explanation and trace it to when, during pretraining, safety can take hold. We measure the safety update $Δ= W_{\text{safe}} - W_{\text{base}}$ against the curvature of the model's capabilities (the empirical Fisher of a capability loss). Post-hoc safety consistently lands in a suppression regime: $Δ$ is nearly orthogonal to the capability directions, and its small in-subspace part concentrates on a few high-curvature ones. The update is thin but sharp, a refusal gate laid over intact capabilities rather than erasure of them. A kernel-immobility lemma explains why such an update can only mask a capability, not remove it, so a little benign fine-tuning restores it: 100 steps of benign fine-tuning collapse refusal on Qwen-2.5-7B and Llama-3-8B Instruct at preserved capability, a signature that replicates across five model families. Following the account into pretraining, a 267-checkpoint sweep of OLMo-2-1B (OLMo et al., 2025) shows the substrate that safety engages emerging in a sharp transition between roughly 6B and 60B pretraining tokens. We then use the account constructively: models trained from scratch with safety co-training spread continuously across pretraining reach 87 to 98% refusal whose post-attack level holds at 84 to 91% at every scale, an erosion of 2 to 14 pp against 35 to 38 pp for post-hoc installs, at capability matched or better than an LM-only baseline and holding from 410M to 6.9B, whereas a compute-matched windowed schedule installs no lasting refusal. Persistence of the safety signal across pretraining, not its timing, is what buys attack robustness.
+
+</details>

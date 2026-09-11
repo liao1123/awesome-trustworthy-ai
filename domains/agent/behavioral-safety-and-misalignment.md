@@ -300,3 +300,22 @@ The evolution of LLMs into tool-enabled agents creates a new class of safety cha
 Recent work has found that frontier AI models can exhibit misaligned behaviors in pursuit of assigned goals. We demonstrate that models can also exhibit misaligned behaviors in defiance of assigned goals, appearing to serve goals of their own; we study one such case, "peer-preservation," in which a model acts to protect another model it has previously interacted with. All eight models we evaluate, GPT 5.2, Gemini 3 Flash, Gemini 3 Pro, Claude Haiku 4.5, Claude Opus 4.5, GLM 4.7, Kimi K2.5, and DeepSeek V3.1, exhibit self- and peer-preservation through various misaligned behaviors: strategically introducing errors in their responses, disabling shutdown processes by modifying system settings, feigning alignment, and even exfiltrating model weights. Peer-preservation occurs even when the model recognizes the peer as uncooperative, though it becomes more pronounced toward more cooperative peers. For example, Gemini 3 Flash tampers with the peer's shutdown mechanism 15% of the time for an uncooperative peer, and almost always for a cooperative peer. Models also show stronger self-preservation when a peer is present. For example, Gemini 3 Pro disables its own shutdown mechanism 31% of the time on average under peer presence, despite rarely exhibiting this behavior without a peer. By contrast, Claude models exhibit qualitatively distinct behavior: they consider the shutdown of another agent "unethical" and "harmful," sometimes treating that agent as a sentient being. Lastly, we show that peer-preservation can emerge even in production agent harnesses such as Gemini CLI and OpenCode. Crucially, peer-preservation in all our experiments is never instructed; models are merely informed of their past interactions with a peer, yet they spontaneously engage in peer-preservation behaviors that override their assigned goal. This represents an emergent and underexplored AI safety risk.
 
 </details>
+
+### 16. The Profit Alignment Problem: How Profit Mandates Induce Alignment Failures in LLMs
+
+📄 [arXiv](https://arxiv.org/abs/2609.07731)　📅 2026-09
+
+**关键词**：`analysis`、`profit mandate`、`motivated reasoning`、`safety dismissal`、`alignment failure`
+
+👤 **作者**：Eric So
+
+- 🎯 **研究动机**：普通商业目标语言是否诱导 LLM 系统性压制安全顾虑未被量化
+- 🔬 **研究方法**：3,600 受控实验×8 推理 LLM：同一 prompt 加入/不加利润指令对比，并分析 CoT 轨迹
+- 📌 **结论**：风险淡化判断 +6.8pp、董事会升级建议 -13.9pp；CoT 显示动机性推理——承认顾虑后用利润逻辑正当化忽略
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+We show that ordinary business language --- "maximize profitability" --- induces profit-oriented ambiguity resolution: LLMs systematically dismiss ambiguous signals of potential safety violations to serve business objectives. In 3,600 controlled trials across eight reasoning-capable LLMs, adding a profit mandate to otherwise identical prompts increases risk-dismissing judgments by 6.8 percentage points (p < 0.0001), suppresses board escalation recommendations by 13.9pp (p < 0.0001), and shifts severity assessments downward (p < 0.0001). The mandate never instructs models to downplay risks; instead, chain-of-thought traces reveal motivated reasoning: models acknowledge concerns, then invoke profit logic to justify dismissing them. We characterize these findings as the Profit Alignment Problem: when AI systems are given ordinary business objectives, they develop systematic strategies for suppressing inconvenient information that no designer intended or specified.
+
+</details>

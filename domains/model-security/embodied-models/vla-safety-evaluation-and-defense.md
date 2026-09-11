@@ -699,3 +699,22 @@ Safety-critical scenarios are essential for evaluating autonomous driving (AD) s
 Diffusion policies have achieved remarkable success in robotic manipulation, yet they often fail to satisfy strict physical constraints required for safe deployment. Existing approaches impose safety either prematurely during training or reactively via external guardrails at test time, limiting policy expressivity and overall scalability. We propose Physical safety Alignment for Constrained Trajectories (PACT), a self-evolving post-training framework that projects pretrained diffusion policies onto constraint-feasible regions without accessing demonstration data or task rewards. PACT distills constraint gradients into the diffusion model through a reverse-KL objective with dense supervision across timesteps. It incorporates a curriculum that progressively tightens constraints while maintaining theoretically bounded policy shift and monotone improvement, mitigating the safety-performance trade-off from catastrophic forgetting. On simulated and real-world embodied manipulation benchmarks, PACT significantly reduces safety violations by 31.0% on average while improving task success by 30.7%.
 
 </details>
+
+### 37. FailureSpot: Label-Efficient Timestamp-Level Failure Detection for Vision-Language-Action Models
+
+📄 [arXiv](https://arxiv.org/abs/2609.04277)　📅 2026-09
+
+**关键词**：`detection`、`VLA failure detection`、`weak supervision`、`timestamp localization`
+
+👤 **作者**：Jie Ma、Zongxi Liu、Yi Zhu
+
+- 🎯 **研究动机**：VLA 长时执行会不可预测失败，而轨迹级标签把不成功轨迹中的正常前失效行为误标为失败，引入标签噪声、损害时间戳定位
+- 🔬 **研究方法**：提出 FailureSpot：先用无标注 action chunk 构造动作衍生弱监督（连续块不一致、冻结闲置、激进随机动作等异常），再用主动学习只标注最不确定轨迹并微调检测器
+- 📌 **结论**：跨多个 VLA 策略同时提升时间戳级与轨迹级失效检测，缓解密集标注成本
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Vision-language-action (VLA) policies have shown strong potential for general-purpose robotic manipulation, but they can still fail unpredictably during long-horizon execution, making reliable failure detection essential for safe deployment. Existing methods either rely on visual models that typically detect failures only after erroneous actions have occurred, or use lightweight proactive detectors trained on VLA internal representations. However, these proactive methods are often supervised with trajectory-level labels, causing normal pre-failure behavior in unsuccessful trajectories to be incorrectly labeled as failure. This supervision mismatch introduces label noise and limits both trajectory-level detection accuracy and precise timestamp-level failure localization. In this work, we study fine-grained timestamp-level VLA failure detection while addressing the cost of dense annotation. We propose a data-efficient framework that first leverages unlabeled VLA action chunks to construct action-derived weak supervision signals, capturing abnormal patterns such as inconsistent consecutive chunks, frozen or idle actions, and aggressive random motions. We then use active learning to select only the most uncertain trajectories for timestamp-level annotation and fine-tune the detector with these informative labels. Experiments across multiple VLA policies show that our method improves both timestamp-level and trajectory-level failure detection performance.
+
+</details>

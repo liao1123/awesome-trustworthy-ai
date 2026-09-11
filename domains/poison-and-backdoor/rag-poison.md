@@ -2149,3 +2149,22 @@ Large language models (LLMs) have been serving as effective backbones for retrie
 Retrieval-Augmented Generation (RAG) can ground large language model (LLM) outputs in external evidence, but it also exposes the system to knowledge poisoning. Representative attacks use multiple injected documents or templates that directly assert a target answer. We present ToxicRAG, a one-document-per-target attack that expresses misinformation as a coherent knowledge-update narrative. The generated document first acknowledges the previously accepted answer, introduces fabricated events that appear to invalidate it, and then attributes the attacker-selected answer to a set of purported authorities. An answer-focused self-validation loop optionally revises a candidate when a surrogate language model does not reproduce the target answer. We evaluate the attack on 100 target questions from each of Natural Questions, HotpotQA, and MS-MARCO, using four victim LLMs and four dense retrievers. In the sampled-corpus setting reported in this paper, ToxicRAG obtains ASRs between 0.61 and 0.91 across the twelve dataset--model combinations. It matches or exceeds the strongest evaluated baseline in every combination, with margins ranging from 0 to 11 percentage points. These results show that narrative-form poisoned documents can remain influential under the evaluated RAG configurations and motivate further study of factual consistency and source provenance in RAG systems.
 
 </details>
+
+### 112. In RAG We Trust? Measuring Robustness of Retrieval-Augmented Generation Under Document Poisoning
+
+📄 [arXiv](https://arxiv.org/abs/2609.09243)　📅 2026-09
+
+**关键词**：`analysis`、`RAG poisoning`、`document corruption`、`fact-checking robustness`
+
+👤 **作者**：Iliano Fasolino
+
+- 🎯 **研究动机**：RAG 检索文本被篡改后模型行为缺少系统量化
+- 🔬 **研究方法**：Llama 3.1 8B + FEVER 事实核查，实体/数字/否定三种腐蚀策略 × 污染段数的 588 次因子扫描
+- 📌 **结论**：三段全污染时准确率 77.9%→43.5%；实体替换翻转最多正确答案，模型主导反应是弃答而非编造新假
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Retrieval-augmented generation (RAG) grounds a language model in retrieved documents, which reduces hallucination but creates a new attack surface: if retrieved text is tampered with, the model may repeat the falsehood. We study how much a small quantized model, Llama 3.1 8B, degrades when a fraction of its retrieved context is poisoned. Three corruption strategies are tested, entity swap, number swap, and negation, each applied to zero, one, two, or three of the three retrieved passages, over a factorial sweep of 588 runs on a fact-checking task built from FEVER. Accuracy falls from 77.9% on clean context to 43.5% when all three passages are corrupted. Entity swap flips the largest share of answers that were correct on clean context. Number-based corruption stays flat while poisoned passages are a minority and jumps once they form a majority, a pattern we re-check with query-level bootstrap intervals. The model rarely invents new falsehoods; its dominant reaction is to abstain, and a lexical overlap proxy of unsupported generation falls under attack rather than rising. The study is a small-scale measurement with coarse automated labels; we treat the strategy contrasts as suggestive until decoding is controlled and stronger adjudication is in place.
+
+</details>

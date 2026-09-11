@@ -348,3 +348,22 @@ Deep search agents tackle challenging questions through long-horizon web interac
 - 🎯 **研究动机**：AI搜索摘要结构规整，但claim与来源的一致性缺审计
 - 🔬 **研究方法**：审计citation一致性与evidence grounding，量化claim-source错配与证据可得性
 - 📌 **结论**：结构良好的摘要仍普遍存在claim-source错配与证据缺口
+
+### 19. Evaluating Deep-Search Agents under Hierarchical Web Evidence Poisoning
+
+📄 [arXiv](https://arxiv.org/abs/2609.06027)　📅 2026-09
+
+**关键词**：`benchmark`、`GEO poisoning`、`deep-search agent`、`evidence recovery`、`misinformation injection`
+
+👤 **作者**：Zhongan Bi、…、Wenhui Dong
+
+- 🎯 **研究动机**：GEO 投毒评测只看操纵内容是否被采纳，不追踪 agent 验证、修正与恢复过程
+- 🔬 **研究方法**：HAE-GEO 三级攻击（直接断言/上下文伪装/交叉佐证），72,039 干净页+每级 770 毒页，多轮 Search-Scrape 接口评测 10 个 deep-search agent 全轨迹
+- 📌 **结论**：佐证陷阱显著降低识别；agentic search 提升最终抵抗力但不改善证据识别；防御提示增加验证却少转化为恢复
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Search-augmented LLM agents are increasingly used for consumer decisions, making them vulnerable to Generative Engine Optimization (GEO) poisoning. Existing benchmarks largely measure whether manipulated content is retrieved or endorsed, but do not track whether an agent verifies suspicious evidence, revises adopted claims, or recovers before producing its final recommendation. We introduce HAE-GEO, a benchmark that tracks the full trajectory from exposure to recovery under progressively more persuasive Web poisoning. Agents interact via a multi-turn Search-Scrape interface across three attack levels (L1 direct assertion, L2 contextual camouflage, and L3 apparent corroboration), supported by a controlled corpus of 72,039 clean pages and 770 poisoned pages per level spanning 8 product categories and 154 brands. Evaluation combines deterministic behavioral measures with six semantic rubric dimensions. Evaluating 10 agents, we find three recurring patterns: evidence recognition degrades under the corroboration trap; agentic search improves final resistance without improving evidence recognition or utility; and defense prompting increases verification, yet rarely converts verification into recovery.
+
+</details>

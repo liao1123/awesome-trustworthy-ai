@@ -298,3 +298,22 @@ Recent advances in 3D Gaussian Splatting (3DGS) deliver high-quality rendering, 
 Many studies have shown that specially crafted inputs can induce large language models (LLMs) to generate excessively long outputs, resulting in significant computational overhead and resource consumption. While most existing denial-of-service (DoS) attacks target text-only LLMs, end-to-end (E2E) speech LLMs are rapidly emerging. Existing text-based DoS attacks primarily rely on prompt engineering, such as adversarial suffixes or semantic inducement, which exploit the discrete nature of text inputs and therefore cannot be directly transferred to continuous speech inputs. Moreover, prior studies on speech model security mainly focus on ASR or TTS systems, leaving the DoS vulnerability of E2E speech LLMs largely unexplored. To address this gap, we propose the perturbation-based DoS attack targeting E2E speech models. Instead of inducing long outputs through prompt manipulation, our method optimizes imperceptible acoustic perturbations to directly influence the model's autoregressive generation process while preserving the original input length. Specifically, we formulate the attack as a composite optimization objective that jointly suppresses EOS generation, encourages prolonged decoding, and largely preserves semantic consistency by integrating weighted EOS loss, top-k logit loss, length loss, and semantic alignment loss. To further improve stealthiness, we employ voice activity detection (VAD) to inject perturbations only into voiced regions. Extensive experiments on three open-source E2E speech LLMs demonstrate that our method achieves stable attack success rate while significantly increasing generation length and GPU resource consumption, revealing security risks in modern ALLMs.
 
 </details>
+
+### 16. Multimodal Resource-Exhaustion Attacks on Vision-Language Models via Joint Pixel-Prompt Optimization
+
+📄 [arXiv](https://arxiv.org/abs/2609.05889)　📅 2026-09
+
+**关键词**：`attack`、`resource exhaustion`、`joint pixel-prompt optimization`、`VLM serving`、`denial of wallet`
+
+👤 **作者**：Zhaoxiong Ni、Yatie Xiao、Chi-Man Pun、Fei Peng、Qingxiao Guan、Keke Tang
+
+- 🎯 **研究动机**：VLM 资源耗尽攻击只优化图像分支，可见 prompt 作为对抗变量未被联合利用
+- 🔬 **研究方法**：JPPO 在受限联合输入威胁模型下对像素与 prompt 表面分阶段耦合优化，产生区别于循环失效的协同成本放大
+- 📌 **结论**：8/255 预算下 Qwen2.5-VL-7B 延迟×4.6/能耗×5.3，BLIP-2 达 36.6×/32.7×，为直接对比基线中最强
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Resource-exhaustion attacks against autoregressive vision-language models (VLMs) typically assume unimodal threat models, treating the image branch as the primary optimization surface while holding user-visible prompts fixed. Even recent loop-centric variants remain confined to this single-channel paradigm, leaving the exploitation of availability unexplored as a cross-modal optimization problem over jointly controllable input surfaces. We introduce Joint Pixel-Prompt Optimization (JPPO), the first compound adversarial framework elevating the visible prompt to a first-class adversarial variable alongside image perturbations. Under a restricted joint-input threat model, JPPO performs coupled, stagewise optimization over both the pixel and prompt surfaces. This produces synergistic cost amplification, mechanistically distinct from loop-dependent failures, exhibiting negligible loop incidence in our experiments. Evaluating five open-source VLM families on MS COCO and ImageNet under an 8/255 infinity-norm budget, JPPO achieves over 4.6x latency and 5.3x energy amplification on Qwen2.5-VL-7B, and over 36.6x latency with 32.7x energy amplification on BLIP-2. This represents the strongest cost amplification among directly compared baselines while requiring substantially fewer optimization iterations. Ablations confirm this amplification arises from multimodal coordination rather than prompt length or isolated modalities. These findings reveal structural blind spots in current VLM serving defenses, motivating cost-aware robustness evaluation as a first-class security requirement for multimodal deployments.
+
+</details>

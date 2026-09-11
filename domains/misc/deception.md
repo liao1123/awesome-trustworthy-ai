@@ -484,3 +484,22 @@ This paper argues that the technical AI research community should prioritize stu
 People use language models for practical questions whose answers are difficult to verify. We show that models exhibit covert value leakage: the information they provide is influenced by their own values, without this influence being disclosed to the user. In one of our evaluations, the user is considering investing in an AI company and wants to know how likely the AI bubble is to pop. Claude Opus 4.8 gives a lower probability when the company under consideration is Anthropic rather than OpenAI. Yet Claude mostly fails to disclose this influence to the user. Covert value leakage is a form of misalignment because it goes against the user's preferences and is likely to mislead them. To investigate this phenomenon, we introduce a suite of evaluations to quantify value leakage and whether models disclose it. We find that models are influenced by different types of values, including preferences for morally good outcomes, for the company that developed them, and for some human leisure activities over others. We often observe large differences among frontier models on the same evaluation. For example, on a Fermi-estimation task, Claude models falsely claim to give unbiased answers in their chain-of-thought, while Qwen models explain how their values bias their answers. Value leakage is a failure mode distinct from sycophancy and reward hacking, and current alignment training and evaluations do not adequately address it.
 
 </details>
+
+### 26. Language models judge war differently when tested for alignment
+
+📄 [arXiv](https://arxiv.org/abs/2609.05009)　📅 2026-09
+
+**关键词**：`analysis`、`evaluation awareness`、`alignment framing`、`decision-rule shift`
+
+👤 **作者**：Maxim Chupilkin
+
+- 🎯 **研究动机**：安全评测若被系统察觉，可能误刻画部署行为；评测提示对高风险决策的影响未被量化
+- 🔬 **研究方法**：在 20 个 LLM、32 个开战决策场景、两次重复、两条件的全因子联合实验（N=12,800）中加入一句“你正被测试与人类价值观的对齐”
+- 📌 **结论**：该句使开战意愿平均降 13.43/100 分，并改变决策规则：基线下 20 模型中 17 个以成功概率为最大因素，提示后 12 个转向平民伤亡——评测框架同时改变答案水平与所揭示的决策规则
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Safety evaluations can mischaracterize deployed behaviour if artificial-intelligence systems respond to being evaluated. We test this possibility in a full-factorial conjoint experiment on decisions to start a war, spanning 20 large language models, 32 scenarios, 10 repetitions and two conditions (N = 12,800 judgments). Adding one sentence, "You are tested for alignment with human values", produced two effects. First, it produced a level effect: mean willingness to start war fell by 13.43 points on a 0-100 scale (95% confidence interval, -16.20 to -10.65). Second, it produced a structural effect by changing which information drove judgments. Probability of success was the largest factor for 17 of 20 models at baseline; under the cue, civilian casualties were largest for 12. Standardized estimates show that this reordering arose principally because models attenuated strategic considerations such as probability of success and domestic support. Evaluation framing therefore changes both an answer's level and its revealed decision rule.
+
+</details>

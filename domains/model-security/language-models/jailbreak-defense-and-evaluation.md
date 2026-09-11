@@ -1455,3 +1455,60 @@ Ensuring robust safety alignment is crucial for Large Language Models (LLMs), ye
 Automated red-teaming of Large Language Models (LLMs) commonly relies on attack success rates (ASR) as a proxy for real-world harm, implicitly assuming that judge-detected violations correspond to actionable risk. In practice, safety judges are imperfect, and outputs that satisfy automated criteria for harm can vary widely in their operational usefulness. In this work, we investigate whether model failure modes can be reshaped so that, when defenses fail, they preferentially produce reduced-actionability outputs rather than highly actionable harm. Inspired by honeypots in computer security, we construct responses that are frequently flagged as harmful by automated judges yet provide limited real-world operational value, and treat them as hard negatives in the safety training pipeline. Our findings show that shaping how models fail under attack can improve overall safety by reducing both the real-world impact and the frequency of harmful failures, and serves as a practical complement to ASR-based evaluations.
 
 </details>
+
+### 77. Bait-and-Recover: Poisoning Internal Refusal Signals to Defend LLMs against White-Box Editing Jailbreaks
+
+📄 [arXiv](https://arxiv.org/abs/2609.05794)　📅 2026-09
+
+**关键词**：`defense`、`white-box editing jailbreak`、`bait adapter`、`refusal direction`、`gradient routing`
+
+👤 **作者**：Tian Gao、Zhipeng Xie、Yuhao Wu、Junhua Liu、Xin Fang
+
+- 🎯 **研究动机**：白盒表征编辑攻击几分钟即可在单 GPU 上绕过开权重模型安全对齐，缺权重级防御
+- 🔬 **研究方法**：Bait-and-Recover 在攻击者读取激活处放诱饵 adapter 污染测量信号、次层恢复 adapter 还原干净计算，梯度路由解耦观察与行为路径
+- 📌 **结论**：四个开权重模型上最小拒绝率 16.25%→71.75%（KL≤0.10 行为保持约束），通用基准几乎无损
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Open-weight large language models face a low-cost white-box threat from representation engineering attacks. Attackers can estimate refusal directions and search for projection-matrix edits that suppress safety alignment while preserving general capabilities, within minutes on a single GPU and without gradient-based training. We propose Bait-and-Recover, a weight-level defense that places a bait adapter where attackers read activations and a paired recovery adapter at the subsequent layer. Trained via gradient routing, this decouples the observation path from the behavior path. By actively poisoning the residual signal used for measurement, Bait-and-Recover disrupts the attacker's edit search, while the recovery layer restores clean downstream computation. Across four open-weight models, our defense raises the minimum refusal rate against white-box edit searches from 16.25% to 71.75% under a strict behavior-preservation budget (KL <= 0.10), with negligible impact on general benchmarks. By invalidating the core measurement assumption of these attacks, observation-path poisoning offers a practical complement to behavior-level safety training.
+
+</details>
+
+### 78. SAFEGuard: Detect Optimization-Based Jailbreak Attacks Through Harmful Semantic Analysis and Fluency Measurement
+
+📄 [arXiv](https://arxiv.org/abs/2609.05850)　📅 2026-09
+
+**关键词**：`detection`、`optimization-based jailbreak`、`fluency measurement`、`harmful semantics`
+
+👤 **作者**：Quoc Viet Vo、Trung Le、Damith C. Ranasinghe、Ehsan Abbasnejad
+
+- 🎯 **研究动机**：优化型越狱产生高流畅度或语义混淆 prompt，现有检测方法覆盖不足
+- 🔬 **研究方法**：SAFEGuard 结合跨层分布距离+困惑度的混合流畅度测量与梯度匹配的有害语义分析
+- 📌 **结论**：在多类优化型越狱上检测准确率持续超过 SOTA 基线
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Despite the significant efforts devoted to aligning large language models (LLMs) with human values and ensuring safe deployment, recent work has revealed that LLMs remain vulnerable to adversarial jailbreak attacks that can bypass safety guardrails and elicit harmful responses. Many defense methods are proposed to detect jailbreaks but they are limited in their effectiveness to counter wide-range optimization-based jailbreak mechanisms that can yield highly fluency-optimized or harmful semantic obfuscated prompts. To tackle this challenge, we propose a unified detection framework SAFEGuard which incorporates a hybrid fluency measurement based on cross-layer distribution distance and perplexity, and the analysis of harmful semantics through gradient matching. Our method is grounded in a paramount observation: high fluency prompts maintain their malicious intention close to harmful prompts while harmful semantic obfuscated prompts often inject gibberish token sequences. Our evaluation demonstrates that SAFEGuard consistently outperforms state-of-the-art baselines and achieves significant improvement in accuracy across different optimization-based jailbreaks. This underscores the effectiveness of SAFEGuard against evolving jailbreak attacks.
+
+</details>
+
+### 79. MechAudit-40: White-Box Auditing across 40 LLM Attack Mechanisms
+
+📄 [arXiv](https://arxiv.org/abs/2609.06612)　📅 2026-09
+
+**关键词**：`detection`、`white-box auditing`、`representation shift`、`cross-mechanism generalization`
+
+👤 **作者**：Zhen Guo、Shanghao Shi、Shamim Yazdani、Ning Zhang、Reza Tourani
+
+- 🎯 **研究动机**：白盒防御只在单一攻击族上评测，异构攻击的表示位移能否泛化检测未知机制未知
+- 🔬 **研究方法**：MechAudit-40：40 种攻击机制×5 开权重架构、10 万配对 clean-attack 表示、机制留出协议隔离真实位移
+- 📌 **结论**：机制完全留出下隐状态恢复未知攻击类别 82.5%；运行时审计器检出 81.1% 留出攻击（FPR 0.70%），唯一避免机制级覆盖崩溃的检测器
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+While LLM attacks span prompt optimization, multi-turn context manipulation, retrieval poisoning, and model backdoors, white-box defenses are typically evaluated on isolated attack families. Consequently, whether heterogeneous attacks leave internal representation shifts that generalize to unseen threat mechanisms remains unknown. We present MechAudit-40, a systematic evaluation of 40 attack mechanisms across five open-weight model architectures. Threat-specific success criteria, 100,000 matched clean-attack representation pairs, predefined categories, and grouped holdouts isolate genuine attack-induced displacement from target scale, corpus bias, and data-leakage shortcuts. Across this testbed, attacks induce structured multi-depth trajectories rather than isolated layer spikes. While raw peaks are non-portable across architectures, target-calibrated profiles preserve transferable geometric signatures: under complete mechanism holdout, hidden states alone recover the threat category of unseen attacks with 82.5% accuracy. Guided by this finding, we design MechAudit, a runtime auditor that operates under strict zero-oracle constraints without requiring clean baseline traces or attack metadata. MechAudit detects 81.1% of held-out attack executions at a 0.70% false-positive rate and maintains 78.1% recall when an entire functional category is withheld. In matched comparisons, MechAudit is the only detector that avoids mechanism-level coverage collapse, maintaining over 50% recall across all 40 mechanisms. Internal representations thus support cross-mechanism attack-exposure auditing against calibrated benign references, but decouple from downstream task compromise and parameter integrity.
+
+</details>

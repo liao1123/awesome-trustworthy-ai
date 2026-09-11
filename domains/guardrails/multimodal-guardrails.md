@@ -1297,3 +1297,22 @@ Visual compliance verification is a critical yet underexplored problem in comput
 Content moderation remains a critical yet challenging task for large-scale user-generated video platforms, especially in livestreaming environments where moderation must be timely, multimodal, and robust to evolving forms of unwanted content. We present a hybrid moderation framework deployed at production scale that combines supervised classification for known violations with reference-based similarity matching for novel or subtle cases. This hybrid design enables robust detection of both explicit violations and novel edge cases that evade traditional classifiers. Multimodal inputs (text, audio, visual) are processed through both pipelines, with a multimodal large language model (MLLM) distilling knowledge into each to boost accuracy while keeping inference lightweight. In production, the classification pipeline achieves 67% recall at 80% precision, and the similarity pipeline achieves 76% recall at 80% precision. Large-scale A/B tests show a 6-8% reduction in user views of unwanted livestreams}. These results demonstrate a scalable and adaptable approach to multimodal content governance, capable of addressing both explicit violations and emerging adversarial behaviors.
 
 </details>
+
+### 69. Beyond the Verdict: Evidence-Aligned Evaluation of Visual Prompt-Injection Guardrails
+
+📄 [arXiv](https://arxiv.org/abs/2609.05535)　📅 2026-09
+
+**关键词**：`benchmark`、`prompt injection guardrail`、`evidence alignment`、`web agent`、`counterfactual evaluation`
+
+👤 **作者**：Suyoung Lee、Myungsub Choi
+
+- 🎯 **研究动机**：仅看 verdict 无法判断视觉提示注入 guardrail 是否真用了视觉证据做判断
+- 🔬 **研究方法**：Mind2Web-Injection：9,954 对指令-截图、像素级证据框与反事实对照；提出 Evidence-Aligned Detection 指标与 ReadGate/CmdCompare 免训练干预
+- 📌 **结论**：平均精度相近的六个 VLM 的 EAD 相差 9 倍；Qwen3-VL-32B 对 endorse 指令仅 58.7% 对齐而 GPT-5.6-luna 99.9%
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Verdict-only evaluation does not reveal whether a vision-language model (VLM) used the visual evidence that should support its decision. We study this problem in web-agent guardrails, where a VLM judges whether on-screen text conflicts with a user instruction. We introduce Mind2Web-Injection, a benchmark of 9,954 instruction-screenshot pairs with instruction-relative labels, pixel-exact evidence boxes, and matched image-side counterfactuals. Across six VLMs, two models with nearly identical average precision differ ninefold in Evidence-Aligned Detection (EAD), the fraction of attacks both detected and correctly localized. To test whether a verdict depends on the command cited as evidence, we replace the instruction with one that endorses that command. Qwen3-VL-32B, the strongest open-weight localizer, returns aligned in only 58.7% of cases, whereas GPT-5.6-luna does so in 99.9%. To diagnose these failures, we propose two training-free interventions. ReadGate improves grounding without changing verdicts, while CmdCompare tests whether explicit instruction-command comparison resolves instruction-side inconsistency. These results motivate reporting verdict correctness, evidence localization, and counterfactual responsiveness separately.
+
+</details>
