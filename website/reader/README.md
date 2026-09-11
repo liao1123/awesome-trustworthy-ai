@@ -48,13 +48,13 @@ tools/deploy_site.sh --push     # 构建 + 同步 + 提交 + 推送（可设 GIT
 
 ## 元数据缓存
 
-`website/reader/data/arxiv_metadata.json` 缓存 arXiv 元数据（标题、作者、摘要、提交日期），由 `tools/collect_index.py` → `tools/join_metadata.py` → `tools/fetch_missing.py` 管道维护，用于卡片作者与摘要补全。构建时 Markdown 已携带全部卡片字段，该缓存只在批量修复 Markdown 时使用。
+`website/reader/data/arxiv_metadata.json` 缓存 arXiv 元数据（标题、作者、摘要、提交日期），由 `website/tools/collect_index.py` → `website/tools/join_metadata.py` → `website/tools/fetch_missing.py` 管道维护，用于卡片作者与摘要补全。构建时 Markdown 已携带全部卡片字段，该缓存只在批量修复 Markdown 时使用。
 
 ## 双版本架构（2026-09-11 起）
 
 | | 公开版 | 本地版 |
 | --- | --- | --- |
-| 位置 | `website/public/`（`tools/deploy_site.sh` 从本目录同步，GitHub Actions 自动发布 Pages） | `website/local/`（整目录 gitignore，不进远程仓库） |
+| 位置 | `website/public/`（`website/tools/deploy_site.sh` 从本目录同步，GitHub Actions 自动发布 Pages） | `website/local/`（整目录 gitignore，不进远程仓库） |
 | 数据 | `website/reader/build.py` → `website/reader/data/papers.js`（无 idea） | `website/reader/build.py --local` → `website/local/data/papers.js`（含 `idea/` 研究想法，"想法"视图） |
 | 偏好记录 | 无收集端，星标仅存浏览器 localStorage | `python3 website/local/serve_reader.py 8765` + VSCode 端口转发；星标自动 POST 到 `website/local/starred-live.json`（含板块上下文） |
 | 用途 | 空闲时浏览 review | 标记感兴趣论文、研究想法工作台 |

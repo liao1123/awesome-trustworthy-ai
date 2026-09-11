@@ -13,7 +13,7 @@ __pycache__/
 .ruff_cache/
 
 # One-shot pipeline artifacts: paper index, batches, backups, fetch state
-/tools/out/
+/website/tools/out/
 
 # Local agent workspace files
 .agents/

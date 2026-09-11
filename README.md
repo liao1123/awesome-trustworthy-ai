@@ -12,7 +12,7 @@
 | [`conferences/`](conferences/README.md) | 从顶会官方 accepted-paper 列表中筛选的相关论文 |
 | [`domains/`](domains/README.md) | 按研究领域长期汇总日报和会议中出现的论文 |
 | [`website/reader/`](reader/README.md) | 将 `daily/`、`domains/` 和 `conferences/` 变成统一卡片阅读流的静态网站 |
-| [`tools/`](tools/) | 内容管线：索引/元数据/总结补全（collect_index → join_metadata → fetch_missing → join_official → sync_summaries）、日报合成（compose_daily）、格式 lint 与站点部署（deploy_site.sh）；历史一次性脚本在 `tools/archive/` |
+| [`website/tools/`](website/tools/) | 内容管线：索引/元数据/总结补全（collect_index → join_metadata → fetch_missing → join_official → sync_summaries）、日报合成（compose_daily）、格式 lint 与站点部署（deploy_site.sh）；历史一次性脚本在 `website/tools/archive/` |
 | [`RESEARCH_INTERESTS.md`](RESEARCH_INTERESTS.md) | 当前关注的 AI Safety 范围、条件收录主题和明确排除项 |
 | [`STYLE_GUIDE.md`](STYLE_GUIDE.md) | Markdown 结构、英文关键词、专有名词、链接和摘要写法 |
 
