@@ -429,6 +429,9 @@
     try {
       fetch("/api/ping").then(function (r) {
         live.collector = !!(r && r.ok);
+        // re-sync the full starred snapshot on every load so stars made while
+        // the collector was down (localStorage-only) are never lost
+        if (live.collector) collectorSend();
       }).catch(function () { live.collector = false; });
     } catch (e) { live.collector = false; }
   }
