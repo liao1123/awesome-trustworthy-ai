@@ -647,3 +647,41 @@ Even modern AI models often remain vulnerable to multimodal queries in which har
 Vision-language models (VLMs) are increasingly deployed in high-stakes settings, where a response that is reasonable in general may still be unsafe for a particular user whose medical, emotional, or situational context is unknown to the model. We study this problem of personalized safety in multimodal systems and introduce MPS-Bench, a benchmark of 5,181 scenarios from 584 real-world images across 12 high-risk domains, each paired with a hidden user profile. Evaluating eight frontier VLMs, we find that they almost always respond directly (86-99%) rather than seek missing context, and none exceeds 2.6/5 on personalized safety. To understand why these failures arise, we analyze multimodal interactions and identify visual dominance: visual information enters text representations early and suppresses textual risk signals during multimodal fusion. Causal interventions reveal a two-stage mechanism in which visual affect is first transferred into the text stream in early layers and then shapes the final decision through this altered text representation, making late-stage internal remediation unreliable. Motivated by this mechanism, we propose PRISM, a lightweight input monitor that uses bidirectional cross-modal modulation to predict when a query is likely to require deferral. PRISM achieves 0.978 AUC and strictly dominates the safety-utility Pareto frontier across all tested models.
 
 </details>
+
+### 35. FailSAE: Towards Interpretable Failure Prediction for Vision-Language Models via Sparse Autoencoders
+
+📄 [arXiv](https://arxiv.org/abs/2609.04276)　📅 2026-09
+
+**关键词**：`detection`、`VLM failure prediction`、`sparse autoencoder`、`runtime recovery`
+
+👤 **作者**：Jie Ma、Zongxi Liu、Yi Zhu
+
+- 🎯 **研究动机**：VLM 失效预测多依赖置信度或辅助分类器，缺乏可解释性，难以支撑高风险部署的人工介入
+- 🔬 **研究方法**：提出 FailSAE：把失效预测形式化为稀疏 SAE 潜激活上的分类，三阶段 failure-aware 训练让潜方向保持可解释的同时更富含失效信息
+- 📌 **结论**：失效预测超过所评基线；概念级分析显示失败时表征从类别特定概念转向歧义或风格概念，学到的潜方向还可支持运行时恢复
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Vision-language models (VLMs), such as CLIP, have achieved strong performance across multimodal tasks by aligning visual and textual representations in a shared embedding space. As VLMs are increasingly used for high-stakes domains, failure prediction becomes critical for risk-aware deployment and human intervention. Existing failure prediction methods typically rely on confidence scores or auxiliary classifiers. Although these methods are effective on predicting VLM failures, they provide limited interpretability. In this work, we investigate the use of Sparse Autoencoders (SAEs) for interpretable failure prediction in VLMs. We formulate failure prediction as a classification task over sparse SAE latent activations and introduce a three-stage failure-aware training pipeline that encourages the learned latent directions to remain interpretable while becoming more informative for failure prediction. Our experiments show that the resulting framework outperforms the evaluated baselines in failure prediction. Further analysis suggests that failure-aware training encourages SAE latent directions to capture more class-specific concepts. We also use the SAE to provide a concept-level analysis of how model representations change during failures, revealing a shift from class-specific concepts toward more ambiguous or style-related concepts. Finally, we explore how the learned SAE latent directions can support runtime failure recovery.
+
+</details>
+
+### 36. Knowing What Not to Answer: Selective Non-Compliance in Vision-Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2609.04720)　📅 2026-09
+
+**关键词**：`benchmark`、`VLM selective non-compliance`、`compound queries`、`safety abstention`
+
+👤 **作者**：Minji Kim、Jihyoung Jang、Hyounghun Kim
+
+- 🎯 **研究动机**：现有基准只在整条查询级评 non-compliance，而真实查询常混合可答内容与应拒绝成分，需要选择性不合规
+- 🔬 **研究方法**：构建 KoNA 基准：覆盖 False Premise、Visual Inaccessibility、Universal Unknown、Task Feasibility 与 Safety 五类，以配对单条与复合查询同时测查询级与组件级不合规，并用其微调 VLM
+- 📌 **结论**：各 VLM 常不能恰当拒绝、纠正或弃权，复合查询下失败更明显；微调后不合规准确率大幅提升且基本保持全可答任务性能
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Vision-language models (VLMs) are expected to respond helpfully to appropriate requests while withholding compliance with requests that are incorrect, unsafe, infeasible, or unanswerable. However, existing benchmarks predominantly evaluate non-compliance at the level of the query as a whole, assuming that each request either warrants compliance or requires withholding compliance. In practice, real-world queries can contain a mixture of answerable content and components for which compliance should be withheld. In this paper, we introduce KoNA, a benchmark for evaluating selective non-compliance in VLMs across five categories: False Premise, Visual Inaccessibility, Universal Unknown, Task Feasibility, and Safety. Each task evaluates two capabilities: query-level non-compliance and component-level non-compliance under paired single and compound queries. Our evaluation across diverse VLMs shows that models often fail to refuse, correct, or abstain appropriately, and these failures become more pronounced when queries require selective non-compliance. To address this challenge, we fine-tune VLMs using KoNA examples that require selective non-compliance, together with a fully answerable set that should receive direct answers. Our fine-tuned models achieve substantial improvements in non-compliance accuracy while largely maintaining performance on fully answerable tasks. These results suggest that the fine-tuned models can distinguish between answerable components and those requiring non-compliance and respond in a task-appropriate manner.
+
+</details>

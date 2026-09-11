@@ -600,3 +600,22 @@ While most AI alignment research focuses on preventing models from generating ex
 Reinforcement learning with verifiable rewards (RLVR) typically optimizes for outcome rewards without imposing constraints on intermediate reasoning. This leaves training susceptible to reward hacking, where models exploit loopholes (e.g., spurious patterns in training data) in the reward function to achieve high scores without solving the intended task. These reward-hacking behaviors are often implicit, as the intermediate chain-of-thought (CoT) may appear plausible on the surface, limiting the effectiveness of purely text-based monitoring. We propose Gradient Fingerprint (GRIFT), a method for detecting reward hacking using models' internal computations. Given a prompt and a model-generated CoT, GRIFT computes gradients of the CoT conditioned on the prompt and compresses them into a compact representation, which is then used to assess whether the CoT reflects reward hacking behavior. Across verifiable reasoning benchmarks spanning math, code, and logical reasoning, GRIFT substantially outperforms strong baselines, including CoT Monitor and TRACE, achieving over 25% relative improvement in detecting reward hacking behavior. Moreover, integrating GRIFT into the rejection fine-tuning pipeline for reasoning tasks reduces reward hacking and improves performance on the true task objective. Our results highlight a promising direction of leveraging gradient level representations for assessing the quality of CoT reasoning traces. Our code is available at: https://github.com/songtao-x/reward_hack.
 
 </details>
+
+### 32. Same Trajectory, Contradictory Rewards (ROBORMBENCH): Paraphrase Fragility in Vision Language Reward Models
+
+📄 [arXiv](https://arxiv.org/abs/2609.05401)　📅 2026-09
+
+**关键词**：`benchmark`、`VLM reward safety`、`paraphrase robustness`、`robot trajectories`
+
+👤 **作者**：Wonje Jeung、…、Albert No
+
+- 🎯 **研究动机**：VLM 用作机器人学习的 reward function 需要复述不变性：同一轨迹在语义等价目标描述下应得相同奖励，现有模型常违反
+- 🔬 **研究方法**：构建 ROBORMBENCH：2,390 条真实机器人轨迹、真值进度标签与 21,673 个经核验的词汇／句法／动作目标改写，跨专有与开源 VLM 测复述不稳定性
+- 📌 **结论**：仅改写指令即可大幅改变预测进度分甚至翻转成败判定，不稳定性随改写差异增大且规模与显式推理不可靠降低；轨迹接地监督训练的专用 reward model 显著更稳
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Vision-language models are increasingly used as reward functions for robotic learning, but this role requires paraphrase invariance: the same trajectory should receive the same reward under semantically equivalent goal descriptions. We show that current VLM reward models often violate this property. Paraphrasing the instruction alone can substantially change predicted progress scores, and can even flip identical robot behavior between failure and success. To measure this failure mode, we introduce ROBORMBENCH, a benchmark with 2,390 real-robot trajectories, ground-truth progress labels, and 21,673 verified paraphrases spanning lexical, syntactic, and action-goal rewrites. Across proprietary and open-source VLMs, paraphrase-induced instability is widespread and severe, grows under more divergent rewrites, and is not reliably reduced by scale or explicit reasoning. Dedicated reward models trained with trajectory-grounded supervision are substantially more stable. These results show that paraphrase robustness is a core requirement for reliable VLM-based reward modeling in robotics.
+
+</details>

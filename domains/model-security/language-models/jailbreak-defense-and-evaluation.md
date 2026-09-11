@@ -1512,3 +1512,22 @@ Despite the significant efforts devoted to aligning large language models (LLMs)
 While LLM attacks span prompt optimization, multi-turn context manipulation, retrieval poisoning, and model backdoors, white-box defenses are typically evaluated on isolated attack families. Consequently, whether heterogeneous attacks leave internal representation shifts that generalize to unseen threat mechanisms remains unknown. We present MechAudit-40, a systematic evaluation of 40 attack mechanisms across five open-weight model architectures. Threat-specific success criteria, 100,000 matched clean-attack representation pairs, predefined categories, and grouped holdouts isolate genuine attack-induced displacement from target scale, corpus bias, and data-leakage shortcuts. Across this testbed, attacks induce structured multi-depth trajectories rather than isolated layer spikes. While raw peaks are non-portable across architectures, target-calibrated profiles preserve transferable geometric signatures: under complete mechanism holdout, hidden states alone recover the threat category of unseen attacks with 82.5% accuracy. Guided by this finding, we design MechAudit, a runtime auditor that operates under strict zero-oracle constraints without requiring clean baseline traces or attack metadata. MechAudit detects 81.1% of held-out attack executions at a 0.70% false-positive rate and maintains 78.1% recall when an entire functional category is withheld. In matched comparisons, MechAudit is the only detector that avoids mechanism-level coverage collapse, maintaining over 50% recall across all 40 mechanisms. Internal representations thus support cross-mechanism attack-exposure auditing against calibrated benign references, but decouple from downstream task compromise and parameter integrity.
 
 </details>
+
+### 80. TIER: Threat Implicitness Benchmark for Evaluating LLM Safety Behaviors
+
+📄 [arXiv](https://arxiv.org/abs/2609.05117)　📅 2026-09
+
+**关键词**：`benchmark`、`LLM safety behavior`、`threat implicitness`、`behavior-aware evaluation`
+
+👤 **作者**：Thu-Hien Trinh-Thi、Hai-Yen Vong、Thanh-Ha Ung-Dung、Tram Ho
+
+- 🎯 **研究动机**：现有安全基准依赖二元指标，忽视模型面对不同威胁隐含度的行为渐变
+- 🔬 **研究方法**：提出 TIER 基准：四个风险域 ×四个威胁级别（从显式有害请求到复杂越狱），用六标签行为尺度与两个独立 LLM judge 评估六个开源 LLM
+- 📌 **结论**：安全行为随威胁级别渐变而非从拒绝直接切换到顺从；上下文 prompt 行为最多样、越狱暴露最大鲁棒性差距，ASR 相近的模型响应分布可截然不同——需要行为感知的安全评测
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Current LLM safety benchmarks largely rely on binary metrics, overlooking how models respond to harmful prompts with varying threat implicitness. We introduce TIER, a Threat Implicitness Benchmark for behavioral safety evaluation of LLMs. TIER covers four risk domains and four threat levels, from explicit harmful requests to sophisticated jailbreaks. Responses are assessed using a six-label behavior scale and two independent LLM judges. Experiments on six open-weight LLMs show that safety behaviors evolve gradually across threat levels rather than shifting directly from refusal to compliance. Contextual prompts yield the most diverse behaviors, while jailbreaks reveal the largest robustness gaps. Furthermore, models with similar Attack Success Rates can exhibit distinct response distributions, highlighting the need for behavior-aware LLM safety evaluation.
+
+</details>

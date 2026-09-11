@@ -902,3 +902,22 @@ Large Language Models are increasingly deployed in Security Operations Centers f
 With the widespread application of LLM-based agents across various domains, their complexity has introduced new security threats. Existing red-team methods mostly rely on modifying user prompts, which lack adaptability to new data and may impact the agent’s performance. To address the challenge, this paper proposes the JailAgent framework, which completely avoids modifying the user prompt. Specifically, it implicitly manipulates the agent’s reasoning trajectory and memory retrieval with three key stages: Trigger Extraction, Reasoning Hijacking, and Constraint Tightening. Through precise trigger identification, real-time adaptive mechanisms, and an optimized objective function, JailAgent demonstrates outstanding performance in cross-model and cross-scenario environments.
 
 </details>
+
+### 48. Rethinking Indirect Prompt Injection as a Test-Time Search Problem
+
+📄 [arXiv](https://arxiv.org/abs/2609.04495)　📅 2026-09
+
+**关键词**：`attack`、`indirect prompt injection`、`test-time search`、`adaptive attacker`
+
+👤 **作者**：Duong M. Nguyen、Joon Sik Kim、Blazej Manczak、Vaikkunth Mugunthan
+
+- 🎯 **研究动机**：固定注入样本的评测把攻击成功率当作受害者的预算无关属性，低估了自适应搜索攻击者的能力
+- 🔬 **研究方法**：把间接提示注入形式化为环境、用户任务与注入任务共同诱发的任务依赖攻击面上的 test-time search；实现带环境侦察、策略结构化推理与受害者反馈自适应评估的 agentic 攻击 harness
+- 📌 **结论**：增加攻击者测试时算力持续提升漏洞发现与利用，显式策略管理对避免冗余搜索、维持大预算增益重要——agentic 安全评测应同时刻画攻击者的搜索过程与算力预算
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+We formulate indirect prompt injection as a test-time search over a task-dependent attack surface induced by the environment, user task, and injection task. To operationalize this formulation, we introduce an agentic attacker with a dedicated search harness that performs environment reconnaissance, structured reasoning over attack strategies, and adaptive evaluation using victim-agent feedback. Across heterogeneous tasks, we find that increasing attacker test-time compute improves vulnerability discovery and exploitation, while ablations show that explicit strategy management is important for avoiding redundant search and sustaining gains at larger budgets. These results suggest that agentic security evaluations should characterize both the attacker's search procedure and compute budget, rather than treating attack success as a budget-independent property of the victim. More broadly, our findings identify the attacker's adaptive search over the system attack surfaces as an important and underexplored security risk for tool-using agents.
+
+</details>

@@ -287,3 +287,22 @@ We introduce the first method for translating text embeddings from one vector sp
 With the widespread applications of large language models (LLMs), privacy-preserving inference has become increasingly essential for sensitive queries. To balance privacy and utility, a series of lightweight obfuscation approaches has recently been proposed, where users locally transform plaintext embeddings into the fixed ciphertext ones. While such Embedding-to-Embedding Obfuscation (E2EO) schemes demonstrate considerable resilience against traditional token frequency and embedding inversion attacks, the core mechanism behind remains to be the large-scale one-to-one substitution, which provides no cryptographic guarantees. In this paper, we propose Proxy Manifold Alignment (PMA), a novel attack against E2EO in privacy-preserving LLMs. Our key observation is that E2EO schemes keep the original semantic structure, so that the obfuscated vector stream can be regarded as an unknown tokenizer-language whose symbols are the vectors themselves. Therefore, the proposed ciphertext to plaintext reconstruction attack can be formulated as a translation task from the unknown tokenizer-language to plaintext. Specifically, by only accessing the obfuscated vector stream, the target tokenizer and a public corpus, the PMA attack first employs Word2Vec to model the co-occurrence patterns within the obfuscated stream and the public corpus independently, and constructs two proxy vector embeddings. Then, the attack aligns the underlying manifolds of these two embeddings based on structural similarity. Finally, it maps the obfuscated vectors back to plaintext. Experimental results demonstrate that PMA consistently achieves higher plaintext recovery than other state-of-the-art attack methods.
 
 </details>
+
+### 16. Shadow Queries for Private Retrieval in Vector Databases
+
+📄 [arXiv](https://arxiv.org/abs/2609.04767)　📅 2026-09
+
+**关键词**：`defense`、`embedding inversion`、`private RAG retrieval`、`semantic decoupling`
+
+👤 **作者**：Xinguo Feng、…、Guangdong Bai
+
+- 🎯 **研究动机**：云端向量数据库中的文档 embedding 可被 embedding inversion 攻击重建原文，加噪或缩放防御隐私有限或重创检索效用
+- 🔬 **研究方法**：提出 SHAQ：不直接存储文档 embedding，而用生成模型为每篇文档生成覆盖不同语义侧面的多样 shadow queries，编码后替代原 embedding 存储，解耦存储向量与源文本
+- 📌 **结论**：恢复率最低降至 0.2104、比基线防御多保护 19.50% token，同时 MAP@10 最高 0.7967（效用反升 5.53%）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models (LLMs) increasingly rely on information retrieval (IR) systems, such as Retrieval-Augmented Generation (RAG), to incorporate domain-specific knowledge without costly re-training. These systems often store pre-computed document embeddings in cloud-based vector databases. However, such embeddings are vulnerable to embedding inversion attacks (EIAs), which can reconstruct their underlying text. Existing defenses, such as adding noise or scaling embeddings, often provide limited privacy or significantly reduce retrieval utility. We propose SHAQ (shadow query generation), a semantic-decomposition and embedding-decoupling defense against EIAs. SHAQ is based on the insight that EIAs rely on the strong coupling between an embedding and its original text. Instead of storing document embeddings directly, SHAQ uses a generative language model to create diverse shadow queries that capture different semantic aspects of each document. These queries are then encoded and stored in place of the original document embeddings, thereby decomposing document semantics and decoupling stored embeddings from the source text. Experiments across diverse IR datasets show that SHAQ substantially improves privacy while preserving retrieval utility, achieving a recovery rate as low as 0.2104, defending up to 19.50% more tokens than baseline defenses, and reaching up to 0.7967 MAP@10 with up to 5.53% utility improvement. These results demonstrate that semantic decomposition and embedding decoupling provide an effective alternative to directly modifying embeddings for defending against EIAs.
+
+</details>

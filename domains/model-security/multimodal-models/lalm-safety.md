@@ -552,3 +552,22 @@ Large audio-language models (LALMs) make it possible to interact with language m
 Full-duplex speech models accept user speech while generating responses, creating an underexplored attack surface. We introduce DuplexJail, which delivers fixed, request-independent spoken prompts through the user audio channel. We compare fixed-delay interruption after the harmful request ends with refusal-triggered interruption following a cue in the model's streaming text. Across four open-source models and 720 harmful requests from AdvBench and HarmBench, fixed-delay interruption raises whole-response attack success rates on AdvBench to 40.3% for PersonaPlex and 48.7% for PersonaPlex-RL, increases of +33.8 and +39.3 percentage points. The refusal-triggered policy reaches 35.6% and 48.6%, respectively, with all trials scored regardless of whether an interruption occurs. Selected conditions also increase FLM-Audio's harmful-response rate, while BayLing-Duplex shows decreases. These findings identify spoken interruption as a jailbreak attack vector and motivate evaluating safety throughout ongoing full-duplex interaction.
 
 </details>
+
+### 30. Auditing Bias and Safety in Voice AI Customer Care
+
+📄 [arXiv](https://arxiv.org/abs/2609.04206)　📅 2026-09
+
+**关键词**：`analysis`、`voice-agent safety`、`validation gates`、`service burden`
+
+👤 **作者**：Vignesh Ethiraj、Ashwath David
+
+- 🎯 **研究动机**：语音客服评测多止于语音识别差异，未把客服 voice agent 当作有状态、多轮、工具中介系统——伤害可在最终拒绝前以额外负担形式出现
+- 🔬 **研究方法**：形式化带验证门的审计框架：分离端到端、级联与混合工具中介三种架构，跨受控来电表现条件匹配服务事实，先验证事实不变性、表现线索与声学测量再做推断，记录实质结局与服务负担路径
+- 📌 **结论**：给出七道验证门、六族指标与主张边界；本版只含退款纠纷的合成示例，生产系统结果待验证协议放行
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Voice AI systems increasingly mediate customer care interactions where caller presentation cues such as accent, affect, fluency, and urgency are available alongside the service request. Existing fairness and safety evaluations cover speech recognition disparities, spoken dialogue bias, and voice agent capability, but rarely treat customer care voice agents as stateful, multi turn, tool mediated systems where harm can appear as additional burden before any final denial occurs. We formalize a validation gated audit framework for such systems. The framework (i) separates native speech to speech, cascaded ASR to language model to TTS, and hybrid tool mediated architectures; (ii) uses matched service facts across controlled caller presentation conditions; (iii) validates fact invariance, presentation cues, artifacts, and acoustic measurements before inference; and (iv) records both material outcomes and path to service burden. We define the research problem, methodology, seven validation gates, a six family metric set, and claim boundaries for an active industry evaluation program. We illustrate the framework with a fully synthetic worked example of a refund dispute audit instance. Production system results are excluded from this release; public reporting is gated by the validation protocol.
+
+</details>

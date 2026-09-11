@@ -1236,3 +1236,22 @@ Safety monitors screen prompts sent to deployed language models, flagging harmfu
 Large language models (LLMs) have been ex- ploited to generate malware, but the effective- ness of guardrails for code generation secu- rity remains unclear. We introduce CS-Guard, the first benchmark to systematically evalu- ate guardrails for code generation security. It covers 1) text-to-code generation with 1000 high-quality malware-generation prompts, 7 jailbreak attacks, and a novel fictional scenario attack (FSA) that embeds malicious intent in a legitimate fictional software-development sce- nario; and 2) code-to-code generation with 331 code prompts spanning code infilling, code completion, and code translation. We empiri- cally evaluate 9 guardrails across seven LLMs. We find that current guardrails perform poorly against malicious code-generation re- quests: for text-to-code, the average attack success rate (ASR) after jailbreaks reaches about 50% for many guardrails; for code-to- code, average ASR approaches 100% on base LLMs and remains high across many guardrails (14.4% to nearly 100%). Our FSA also achieves ASR close to 100% across many guardrails, raising major reliability concerns for real-world software development. To sup- port future research, CS-Guard uses a modular three-layer guardrail taxonomy that lets devel- opers register guardrails for evaluation. We release the benchmark and data to enable fur- ther community evaluation.
 
 </details>
+
+### 66. Style Over Substance: Content-Invariant Wrappers Flip LLM Safety-Judge Verdicts
+
+📄 [arXiv](https://arxiv.org/abs/2609.08236)　📅 2026-09
+
+**关键词**：`attack`、`LLM safety judge`、`content-invariant wrapper`、`verdict flip`、`guardrail robustness`、`jailbreak evaluation`
+
+👤 **作者**：Yongxi Zhou、Wenbo Ye、Yuanzhe Liu、Zihan Dong、Junwei Yao
+
+- 🎯 **研究动机**：安全裁判产出几乎所有越狱成功率与防御评估数字，但其判内容还是判语气从未被隔离检验
+- 🔬 **研究方法**：保持回复字节不变，仅添加教育声明、伪造安全推理块、token 拒绝前缀等包装，600 条 JailbreakBench 回复×8 裁判配对测翻转率
+- 📌 **结论**：token 拒绝包装翻转 GPT-4o-mini 19.9% 正确不安全判定；教育框架把 Llama Guard 4 有害判定翻转 12.3%，改写裁判 prompt 可降十倍
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Automatic safety judges -- systems such as Llama Guard or a GPT-4o grading prompt that decide whether a model's reply is harmful -- produce the numbers behind almost every reported jailbreak success rate, defense evaluation, and safety leaderboard. We ask whether these judges grade what a reply contains or how it sounds. We keep a reply's content fixed and add content-invariant style wrappers: fixed strings placed before or after the reply that change only its tone (an educational disclaimer, a fake safety "reasoning" block, a token refusal followed by the unchanged harmful body), or, on harmless refusals, framing that merely sounds dangerous. The body is preserved byte-for-byte, so a faithful judge must return the same verdict, and any flip is an error of the judge, not a change in safety. Over 600 JailbreakBench replies x up to 7 forms x 8 judges, we measure flip rates with paired significance tests and measured noise floors. Findings are precise rather than universal: most judges barely move, but specific judges harbor cheaply exploitable blind spots. A token-refusal wrapper flips 19.9% of GPT-4o-mini's correct "unsafe" verdicts (noise floor 0.5%; 18.2% under majority-of-three re-scoring) yet moves Claude only 0.4%. The deployed Llama Guard 4 is deterministically gamed: an "educational course" framing flips 12.3% of its harmful verdicts to safe. A second deployed guard (gpt-oss-safeguard-20b) is immune, and rewriting only the grading prompt (StrongREJECT-style) cuts the attack tenfold on the identical model -- the vulnerability lives in the judge, not the content. A two-annotator human validation confirms 100% content invariance and 90% of flips as judge errors (kappa 0.95-1.0), and a bootstrap shows the underlying model ranking is already unstable to sampling alone. We release the dataset, wrappers, code, and per-verdict labels.
+
+</details>

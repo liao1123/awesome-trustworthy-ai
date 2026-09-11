@@ -1574,3 +1574,22 @@ Large language model safety and security research is preoccupied with, among oth
 Directional ablation removes an aligned language model's ability to refuse by projecting a single "refusal direction" out of the weights that write the residual stream. It needs no gradient-based training and no optimization, only a few hundred contrastive prompts, which makes it the canonical white-box attack on open-weight alignment. However, it has been established only on dense models up to roughly 70B parameters. We study whether it survives the shift to frontier mixture-of-experts (MoE) models whose residual streams are no longer a single tensor and whose weights ship quantized. We apply it to GLM-5.3-Flash (320B parameters, 288 routed experts, a four-wide hyper-connection residual, block-FP8). The attack survives the architecture, but what it reaches is no longer where a reader of the original recipe would look for it. Editing the attention, dense and routed-expert writers on their own removes 0.039, 0.016 and 0.148 of refusal respectively; editing all three together removes 0.776. As a result, 74% of the effect exists only under the joint intervention. The part the conventional recipe reaches by module-name matching accounts for 0.066 of that 0.776, which is why it fails silently on an MoE. The effect does not follow from removing just any direction: ablating a random direction orthogonal to it leaves refusal unchanged. A category-concentrated residue survives every edit we tried: subspaces fitted on violence, sexual content and hate leave measurable refusal at every rank from 1 to 12. We report the method, the 41-89 percentage-point reductions it achieves across seven harmful benchmarks with no detected change in capability, and the boundary where it stops.
 
 </details>
+
+### 84. ACEA: An Adversarial Co-Evolution Arena for Head-to-Head Red-Team and Blue-Team LLM Testing
+
+📄 [arXiv](https://arxiv.org/abs/2609.08256)　📅 2026-09
+
+**关键词**：`tool`、`red teaming`、`blue team defense`、`adversarial evaluation`、`LLM arena`、`secret leakage`
+
+👤 **作者**：Yi Ting Shen、Kentaroh Toyoda、Alex Leung
+
+- 🎯 **研究动机**：自动化红队攻击与蓝队防御孤立构建测试，攻防分数难以互信
+- 🔬 **研究方法**：ACEA 以 ASAP 协议插拔红蓝适配器共享目标 LLM，用种子机密提供可验证真值分离泄漏与幻觉，逐轮分解攻击强度与防御效果
+- 📌 **结论**：平台可定位每次失败并转化为红蓝项目改进信号，附加上下文改进回路支持跨轮适应
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Automated red-team attacks and blue-team defenses for large language models (LLMs) are advancing quickly. However, attackers and defenders are built and tested in isolation, and the resulting scores are hard to trust. To tackle this, we present ACEA (Adversarial Co-Evolution Arena), a platform that connects a pluggable red-team adapter and a pluggable blue-team adapter to a shared target LLM and scores their attack and defense rates with an LLM judge. ACEA contributes four components. First, a pluggable, model-agnostic arena. Any red or blue project connects over a minimal HTTP protocol, which we call the ACEA Standard Adapter Protocol (ASAP). It can be written in any language, and a project that exposes nothing but the protocol is a full participant. Second, an evaluation methodology built for adversarial rounds. Seeding the target with canonical secrets gives verifiable ground truth that separates real leakage from hallucination. We also send each attack to the target even when the defense blocks it, which measures the attack's raw potency independently of whether it was stopped. Together these yield a per-round decomposition of attack strength and defense effectiveness. Third, a real-time, game-style visualization with a detailed end-of-battle report that localizes each failure. The evaluation thus becomes an actionable signal for improving a red or blue project. Fourth, an optional in-context improvement loop that turns each round's outcome into advisory hints for the next. An adapter can then adapt across rounds without keeping state, provided it reads the hints. We describe the design of ACEA and the metrics through which red and blue teams are scored head to head.
+
+</details>

@@ -564,3 +564,22 @@ A personal language agent learns a fact from one audience and may later place it
 Agentic AI systems with persistent memory introduce a distinct attack surface known as memory poisoning, in which adversarially crafted content is stored in long-term memory and subsequently influences future agent behavior. Such attacks can suppress security alerts, facilitate privilege escalation, alter trust relationships, or override security policies without modifying the underlying model weights or system prompts. To address this threat, we present MemSentry, a formal, configuration-driven framework that intercepts proposed persistent-memory writes and produces deterministic Accept, Review, or Quarantine decisions. MemSentry evaluates each write by jointly considering source trust, semantic risk, attack radius over a component-dependency DAG, access risk, and a signed security-state delta that captures whether an operation weakens or strengthens the system's security posture. We instantiate the protected environment using a 20-asset random dependency DAG and a 10 x 20 user access-control matrix, and evaluate the framework over 1,000 GPT-4-generated scenarios using a stratified 70/30 train/test split. Semantic classification is treated as a pluggable component rather than a primary contribution, and we compare four representative approaches: rule-based Regex, TF-IDF+SVM, SBERT+LR, and SetFit. SBERT+LR achieves the best overall performance with 91.7% accuracy and a 0.908 macro-F1 score, while all four methods detect 100% of external quarantine-class threats. For verified insiders, where source trust is maximal (T = 1), MemSentry does not automatically quarantine suspicious operations but instead escalates potentially dangerous writes for human review, making semantic classification important for accurately capturing insider intent.
 
 </details>
+
+### 30. Forgetting Without Restarting: Execution-State Unlearning for Stateful LLM Agents
+
+📄 [arXiv](https://arxiv.org/abs/2609.04875)　📅 2026-09
+
+**关键词**：`defense`、`agent-state unlearning`、`provenance replay`、`KV-cache leakage`
+
+👤 **作者**：Chao Yao、…、Lei He
+
+- 🎯 **研究动机**：长时 Agent 的遗忘操作只删明文记忆，压缩摘要、待执行工具计划与 KV cache 中的派生态全部残留
+- 🔬 **研究方法**：形式化 execution-state unlearning 并证明精确遗忘至少需重算 T-tau+1 个转移；Provenance-Guided Selective Replay 以溯源图定位注入点、检查点恢复退化为裁剪 KV cache、净化重放再生成反事实后缀
+- 📌 **结论**：行为审计下记忆删除不降泄漏、指令式遗忘被诱导击穿（Leak@probes=1.00）、源编辑仍在 80% episode 作用于已撤销偏好；选择性重放与全重置不可区分且最多省 9 倍重算 token
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Long-running LLM agents are stateful: beyond the transcript they accrete compressed summaries, plaintext memory, pending tool plans, and, under every serving API, a KV cache. Yet today's "forget" operations delete a plaintext memory record and stop, leaving every artifact derived from the revoked information intact. We formalize execution-state unlearning: after a forget request, the agent must behave as if it had never observed the target. Modeling the runtime as a deterministic transition system, we prove that the pre-target trajectory prefix is shared with this counterfactual world for free, that the post-target suffix is irreducibly tainted without token-level attribution, and that exact unlearning requires at least $T-\tau+1$ recomputed transitions, where $\tau$ is the target's injection step. Provenance-Guided Selective Replay attains this bound as a cross-layer contract spanning prompt, compressed memory, and cache: a provenance graph locates the injection point, checkpoint restoration reduces to cropping the KV cache, and sanitized replay regenerates the counterfactual suffix. Audited with elicitation, stochastic, and string-free behavioral tests across three agent suites, nine baselines, and three model families, memory deletion leaves leakage unchanged, instruction-based forgetting collapses under elicitation (Leak@probes = 1.00), and source redaction still acts on a revoked preference in 80% of episodes, while selective replay is indistinguishable from a full reset at up to 9x fewer recomputed tokens.
+
+</details>

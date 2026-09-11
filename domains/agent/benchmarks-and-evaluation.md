@@ -775,3 +775,22 @@ Agentic AI frameworks let a language model plan, keep memory, and call tools tha
 Agentic systems are rapidly moving to production, where they read untrusted inputs, call tools with real permissions, and act autonomously, expanding the security surface beyond chat-only models. Yet standard evaluations remain single-turn and fail to capture multi-step agent vulnerabilities. We present a systematic black-box framework for risk-aware agent evaluation requiring only basic system descriptions. Our approach introduces: (1) a seven-domain taxonomy mapping observable behaviors to risk categories, (2) fully automated SAGE-RT red teaming producing 120 adversarial scenarios per domain, and (3) human-validated evaluation using LLM judges. Empirical validation across two agent architectures (CrewAI and AutoGen) with four base models reveals alarming patterns: 56.25\% average governance risk, 65\% privacy risk in multi-agent configurations, and agent behavior vulnerabilities reaching 85\%. Our black-box approach effectively identifies critical architectural vulnerabilities without privileged access, providing a scalable path toward safer agent deployments.
 
 </details>
+
+### 41. LexAgentHallu: A Hierarchical Benchmark for Profiling Hallucinations in Legal Agents
+
+📄 [arXiv](https://arxiv.org/abs/2609.09754)　📅 2026-09
+
+**关键词**：`benchmark`、`agentic hallucination`、`legal agent`、`trajectory diagnosis`
+
+👤 **作者**：Yujin Zhou、…、Sirui Han
+
+- 🎯 **研究动机**：法律 agent 的工具调用与推理错误会级联成伪造判例，现有基准只有单轮结果级指标
+- 🔬 **研究方法**：LexAgentHallu：专家四阶段管线构建 3,414 实例 × 17 法律类 × 6 任务，双层 7+27 幻觉 taxonomy 与轨迹定位指标，评测 18 个 agent
+- 📌 **结论**：发现 Right-Answer-Wrong-Reason 效应；幻觉子类聚集成框架/任务/类别画像，结果级评测不可见
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+As large language models are increasingly deployed as tool-augmented legal agents, they introduce agentic hallucinations where tool-call and reasoning errors cascade into fabricated holdings and miscited authority. However, existing legal benchmarks evaluate only single-turn QA with outcome-level metrics, while agentic hallucination benchmarks lack legal-specific diagnostic capability. Neither answers to what extent and how a legal agent hallucinates along its trajectory. To address these limitations, we introduce LexAgentHallu, a legal agentic hallucination benchmark designed to evaluate to what extent and how legal agents fail along multi-step trajectories. Built through a four-stage expert-in-the-loop pipeline, LexAgentHallu contains 3414 instances across 17 legal categories and 6 task types. Each instance is annotated under a dual-layer hallucination taxonomy of 7 high-level categories and 27 fine-grained subclasses, covering both substantive errors and agent-procedural failures. We further design fine-grained metrics that quantify to what extent and localize how each failure occurs along an agent's execution path. Our evaluation across 18 proprietary and open-source agents uncovers a Right-Answer-Wrong-Reason effect and reveals that hallucination subclasses cluster rather than scatter, forming distinct agentic framework, legal task, and category profiles. These findings, invisible to outcome-level evaluation, validate the diagnostic power of LexAgentHallu for evaluating agentic hallucination in law.
+
+</details>
