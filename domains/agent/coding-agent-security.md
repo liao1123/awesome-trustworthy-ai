@@ -652,3 +652,22 @@ AI coding assistants automatically gather context from potentially untrusted sou
 Repository-grounded retrieval-augmented code generation (RACG) is increasingly used in embedded IoT development by retrieving code and documentation from a pinned RTOS/SDK repository (e.g., Zephyr OS). In this setting, security risks are often version-inherited: even without retrieval poisoning, generated applications may invoke benign-looking public APIs that transitively reach vulnerable internal routines in the pinned snapshot, thereby inheriting known CVEs. Existing secure RACG pipelines largely focus on task-level intent and generic vulnerability patterns, which can miss repository- and version-specific exposure. Meanwhile, conventional CVE scanners can flag vulnerable locations but cannot determine whether those vulnerabilities are reachable through the public APIs that the generator commits to during repository-grounded generation. In this paper, we present IoTRAGuarder, a contextual knowledge injection framework that aligns security hardening with generation-time API selection under repository grounding. IoTRAGuarder (i) recovers auditable reverse call chains from CVE-localized internals to exposing public APIs via static analysis plus an evidence-gated LLM to bridge indirections and macro-driven "call-graph islands", (ii) constructs a version-aware security knowledge base that binds affected version intervals to exposed public APIs with prompt-ready constraints, safer alternatives, or avoidance/upgrade guidance, and (iii) performs dual-layer, API-aligned online retrieval to inject concise, version-matched constraints into the final prompt. We evaluate IoTRAGuarder on 44 real-world Zephyr tasks across four LLMs. Compared to the prior state-of-the-art secure RACG baseline, IoTRAGuarder improves the overall security success rate from 5.11% to 78.41%.
 
 </details>
+
+### 35. TrajMark: Ownership Attribution and Segment-Level Tamper Localization for Coding-Agent Trajectories
+
+📄 [arXiv](https://arxiv.org/abs/2609.10416)　📅 2026-09
+
+**关键词**：`defense`、`trajectory watermarking`、`coding agent`、`ownership attribution`、`tamper localization`
+
+👤 **作者**：Bokang Zeng、Zheng Gao、Xiaoyu Li、Xiaoyan Feng、Jiaojiao Jiang
+
+- 🎯 **研究动机**：coding agent 最终补丁水印无法认证可见过程，行为水印缺篡改定位能力
+- 🔬 **研究方法**：TrajMark 免训练对称钥双层水印：稀疏 owner 层把 READ 动作改写为掩码线性方程编码 6-bit 标识，定位层以联动密封承诺关键片段
+- 📌 **结论**：3 框架 3 LLM 干净轨迹全部精确恢复 owner；单点篡改检测 95.5-100%，Pass@1 无损（26.9% vs 26.3%）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Watermarking the final patch produced by a coding agent provides provenance evidence for the submitted artifact, but does not authenticate the visible process that produced it. Behavioral watermarking methods primarily provide a global detection or identifier-recovery signal, so a locally edited trajectory may retain sufficient ownership evidence without revealing which protected region has become inconsistent. To address this limitation, we propose TrajMark, a training-free, symmetric-key, visible-only trajectory watermarking framework that separates robust ownership attribution from fragile local integrity verification. Our framework consists of two complementary layers: a sparse owner layer that encodes a six-bit deployment identifier by rewriting a keyed subset of naturally occurring READ actions into masked linear equations, and a localization layer that inserts linked Q12 ordinary, group, and terminal seals to commit to protected critical-action segments. This separation allows ownership evidence to accumulate robustly across trajectories, while local modifications perturb nearby keyed commitments and expose the affected protocol region. We further provide a design-level analysis of owner recoverability, integrity collision probability, structural overhead, and localization behavior. Across three coding-agent frameworks and three LLMs, TrajMark recovers the exact owner in all evaluated clean full-watermark batches. Under exhaustive eligible single-site attacks it detects 95.5%-100% of edits, and under random single-action corruption it localizes 95.8% of modified sites to an accepted protocol region rather than to the individual action. Owner marking adds no trajectory actions; the integrity layer adds explicit read-only seals, and matched Pass@1 is 26.9% versus 26.3% for unwatermarked runs.
+
+</details>
