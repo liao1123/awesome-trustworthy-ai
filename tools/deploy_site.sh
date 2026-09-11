@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# tsrigo 模式部署：本地构建阅读站，把静态产物同步到仓库根目录并提交，
-# GitHub Pages（Deploy from branch: main / root）直接服务仓库内容。
+# 公开站部署：构建阅读站数据并把静态产物同步到 website/public/，
+# 由 .github/workflows/pages.yml 通过 GitHub Actions 发布到 Pages。
 # 站点地址：https://liao1123.github.io/awesome-trustworthy-ai/
 #
 # 产物（提交进仓库）：
-#   index.html  app.js  style.css  data/papers.js
-# 源文件仍维护在 reader/，本脚本负责构建 + 同步。
+#   website/public/index.html  app.js  style.css  data/papers.js
+# 源文件仍维护在 reader/，本脚本负责构建 + 同步 + 暂存。
 #
 # 用法（在更新论文之后）：
 #   tools/deploy_site.sh          # 构建 + 同步 + 暂存（随你的内容提交一起 push）
@@ -20,11 +20,11 @@ cd "$ROOT"
 echo "==> [1/3] 构建阅读站数据"
 python3 reader/build.py
 
-echo "==> [2/3] 同步静态产物到仓库根目录"
-cp reader/index.html reader/app.js reader/style.css "$ROOT/"
-mkdir -p "$ROOT/data"
-cp reader/data/papers.js "$ROOT/data/"
-git add index.html app.js style.css data/papers.js
+echo "==> [2/3] 同步静态产物到 website/public/"
+mkdir -p "$ROOT/website/public/data"
+cp reader/index.html reader/app.js reader/style.css "$ROOT/website/public/"
+cp reader/data/papers.js "$ROOT/website/public/data/"
+git add website/public
 
 MODE="${1:-}"
 case "$MODE" in
@@ -45,5 +45,5 @@ if [[ "$MODE" == "--push" ]]; then
   fi
   echo "==> 完成：https://liao1123.github.io/awesome-trustworthy-ai/"
 else
-  echo "==> 产物已暂存于仓库根目录，请随本次内容改动一起 commit / push（或用 --commit / --push）"
+  echo "==> 产物已暂存于 website/public/，请随本次内容改动一起 commit / push（或用 --commit / --push）"
 fi

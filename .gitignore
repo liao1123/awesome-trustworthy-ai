@@ -36,4 +36,4 @@ __pycache__/
 # prebuilt-site deployment); only the raw scratch files stay out of Git.
 
 # local-only site (server, idea-inclusive data, preference log) — never pushed
-/local-site/
+/website/local/

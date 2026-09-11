@@ -374,7 +374,7 @@ def main() -> int:
         if idea_pages:
             dataset["views"]["idea"] = idea_pages
             dataset["papers"].update(IDEA_PAPERS)
-        target_dir = ROOT / "local-site" / "data"
+        target_dir = ROOT / "website" / "local" / "data"
         target_dir.mkdir(parents=True, exist_ok=True)
     target_dir.mkdir(exist_ok=True)
     stats = {k: len(v) for k, v in dataset["views"].items()}

@@ -1,6 +1,6 @@
 # Awesome Trustworthy AI
 
-论文阅读网站：<https://liao1123.github.io/awesome-trustworthy-ai/>（tsrigo 预构建模式：静态产物同步到仓库根目录随源码提交，由 `tools/deploy_site.sh` 更新）
+论文阅读网站：<https://liao1123.github.io/awesome-trustworthy-ai/>（静态产物同步到 `website/public/` 随源码提交，GitHub Actions 自动发布；本地版在 `website/local/`，不进仓库）
 
 这个仓库用于持续收集和整理 Trustworthy AI 与 AI Safety 论文。内容由 Codex 按任务逐次检索和更新，所有结果直接保存为 Markdown。
 

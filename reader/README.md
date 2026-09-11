@@ -54,7 +54,7 @@ tools/deploy_site.sh --push     # 构建 + 同步 + 提交 + 推送（可设 GIT
 
 | | 公开版 | 本地版 |
 | --- | --- | --- |
-| 位置 | 仓库根目录（`index.html`/`app.js`/`style.css`/`papers.js`，`tools/deploy_site.sh` 从本目录同步） | `local-site/`（整目录 gitignore，不进远程仓库） |
-| 数据 | `reader/build.py` → `reader/data/papers.js`（无 idea） | `reader/build.py --local` → `local-site/data/papers.js`（含 `idea/` 研究想法，"想法"视图） |
-| 偏好记录 | 无收集端，星标仅存浏览器 localStorage | `python3 local-site/serve_reader.py 8765` + VSCode 端口转发；星标自动 POST 到 `local-site/starred-live.json`（含板块上下文） |
+| 位置 | `website/public/`（`tools/deploy_site.sh` 从本目录同步，GitHub Actions 自动发布 Pages） | `website/local/`（整目录 gitignore，不进远程仓库） |
+| 数据 | `reader/build.py` → `reader/data/papers.js`（无 idea） | `reader/build.py --local` → `website/local/data/papers.js`（含 `idea/` 研究想法，"想法"视图） |
+| 偏好记录 | 无收集端，星标仅存浏览器 localStorage | `python3 website/local/serve_reader.py 8765` + VSCode 端口转发；星标自动 POST 到 `website/local/starred-live.json`（含板块上下文） |
 | 用途 | 空闲时浏览 review | 标记感兴趣论文、研究想法工作台 |
