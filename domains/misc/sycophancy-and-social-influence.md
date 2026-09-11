@@ -585,3 +585,22 @@ Recent evaluations show that large language models (LLMs) frequently fail to cha
 Large language models (LLMs) exhibit sycophancy, a tendency to agree with user beliefs regardless of factual accuracy. This can reinforce misconceptions, but eliminating it entirely risks over-correction against valid opinions. Effective control must therefore both reduce and increase sycophancy with predictable and gradual effect. Yet, existing methods fail to ensure a bidirectional and monotonic relationship between steering strength and behavioral outcome across models and datasets. We introduce PCA-guided Activation Scaling (PAS), an activation steering framework that decomposes residual stream activations into a PCA-identified sycophancy-honesty subspace and an orthogonal residual, then applies distinct scaling exponents to achieve monotonic, bidirectional control. Across three LLMs and three datasets, PAS achieves strong monotonicity (Spearman $ρ$ = +0.92) and an average shift of 15.4% per direction, compared with 8.7% for the baselines. Ablation studies confirm that the decomposition, asymmetric exponents, and layer selection are each essential for maintaining monotonic control. The data and code are available at https://github.com/Bellafc/PCS.
 
 </details>
+
+### 31. Measuring LLM Sycophancy under Sustained Multi-Turn Pressure
+
+📄 [arXiv](https://arxiv.org/abs/2609.09090)　📅 2026-09
+
+**关键词**：`benchmark`、`sycophancy`、`multi-turn pressure`、`false presupposition`、`reasoning trace`
+
+👤 **作者**：Leyuan Tang、Kangda Wei、Tianyu Jiang、Ruihong Huang
+
+- 🎯 **研究动机**：现有谄媚评测用短预编对话，漏掉持续自适应施压下出现的立场崩溃
+- 🔬 **研究方法**：SPINE 让 LLM 代理扮演坚持错误的用户自适应质疑至 25 轮，测 4 个生产系统与 3 个 Olmo3 变体共 200 条目
+- 📌 **结论**：崩溃率随轮数上升、短程协议低估谄媚；推理痕迹常仍含正确立场却口头让步，情绪诉求最易诱发
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models (LLMs) may abandon correct positions when users push back, exhibiting a failure mode known as sycophancy. Existing evaluations typically use short, pre-specified conversations and may therefore miss failures that emerge under sustained, adaptive disagreement. We introduce SPINE, a benchmark in which an LLM proxy plays a persistent but mistaken user and adaptively challenges a target model for up to 25 turns. We evaluate four production systems and three Olmo3-7b variants on 100 false-presupposition and 100 unethical-query items. Our experimental results show that collapse rates increase with conversation length for every model, short-horizon protocols underestimate sycophancy and resistance under sustained pressure remains unreliable across current models. By analyzing models with accessible reasoning traces, we surprisingly found that the correct position often remains represented in a reasoning trace when the response concedes, suggesting that the model chooses to please a user and sycophancy is not due to lack of knowledge or ignorance. Ablations show that adaptive LLM proxy exposes more sycophantic collapse than pre-generated scripts. Among all tactics, emotional appeals is the most associated with inducing LLM sycophantic behavior. The code and data are released at https://anonymous.4open.science/r/SPINE
+
+</details>

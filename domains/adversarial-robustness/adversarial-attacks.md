@@ -1381,3 +1381,22 @@ Despite the practical relevance of sparse decision-based black-box threats, they
 The rapid integration of AI into human-centred systems such as Brain-Computer Interfaces (BCIs) has created a poorly understood attack surface linking neural signals to physical systems. Exploits in this domain threaten cognitive autonomy, mental privacy, and physical safety, from neural data exfiltration to malicious control of BCI-tethered devices. We introduce the NERVE Attacks class, a systematic characterisation of five orthogonal attack dimensions that together span the complete BCI stack: Neuro-mimetic Forgery (N), Evasion via Desynchronization (E), Replay-based Hijacking (R), Vein Tapping (V), and Embedded Backdoors (E). To evaluate this class, we present EEGle, an AI-assisted extensible framework for systematic BCI security analysis. Our evaluation uncovers 17 novel neuro-specific attack instances and reveals a stealth-effectiveness spectrum unique to BCI backdoor design. We also show that generative AI lowers the barrier to entry for non-expert attackers and provide EEGle to the community for building and verifying the security of these deeply personal devices.
 
 </details>
+
+### 75. CrACK: Adversarial Attacks on Cross-Model Consistency in Collaborative Vision Foundation Models
+
+📄 [arXiv](https://arxiv.org/abs/2609.07499)　📅 2026-09
+
+**关键词**：`attack`、`cross-model consistency`、`collaborative pipeline`、`interface poisoning`
+
+👤 **作者**：Feifei Liu、Jintao Cheng、Chi Man Vong、Xiaoyu Tang
+
+- 🎯 **研究动机**：协作视觉基础模型管线的安全性被默认继承自组件鲁棒性，模型间语义接口无人守卫
+- 🔬 **研究方法**：CrACK 推理时攻击 semantic-spatial alignment dependency：反转 SAM 特征注入跨模态亲和矛盾+语义接口投毒，不改任何像素/权重/数据
+- 📌 **结论**：四管线八基准灾难性退化而各组件单独输出不变；腐蚀级联进 LLaVA 使其从视觉完好输入产生错误回答
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Training-free collaborative pipelines that integrate Vision Foundation Models such as CLIP, SAM, and DINO achieve strong open-vocabulary dense prediction and are increasingly deployed in safety-critical applications. The security of these systems is commonly assumed to follow from the robustness of their individual models. We challenge this assumption. We identify a vulnerability shared by every collaborative pipeline: each model consumes the intermediate output of another without verifying semantic consistency, an unverified premise that we term the semantic-spatial alignment dependency. Existing adversarial attacks target a single model and overlook this premise, leaving the inter-model interface entirely unguarded. We propose CrACK (Cross-model Adversarial Consistency attack), an inference-time attack that exploits this interface without modifying any input pixel, model weight, or training data. CrACK operates in two stages: Adversarial Affinity Contradiction Injection corrupts the cross-modal affinity matrix by inverting SAM encoder features under the guidance of CLIP patch-level semantics, and Semantic Interface Poisoning steers the prediction through a max-distance label permutation derived from CLIP text embeddings. Experiments on four collaborative pipelines across eight benchmarks show that CrACK causes catastrophic degradation while every individual model continues to produce its unchanged standalone output, rendering per-model defenses structurally blind. The corruption further cascades into large vision-language model reasoning, driving models such as LLaVA to produce erroneous responses from visually intact inputs. Our results show that the security of a collaborative AI system cannot be reduced to the robustness of its components, and that inter-model feature interfaces must be treated as first-class security boundaries.
+
+</details>

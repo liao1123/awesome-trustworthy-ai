@@ -736,3 +736,22 @@ An AI agent will learn a desired goal more effectively if it does not resist the
 Large language model (LLM) routing has emerged as a crucial strategy for balancing computational costs with performance by dynamically assigning queries to the most appropriate model based on query complexity. Despite recent advances showing that preference-data-based routers can outperform traditional methods, current evaluation benchmarks remain limited—they largely focus on general model capabilities while overlooking task-specific behaviors and critical concerns such as privacy, safety, and potential backdoor vulnerabilities introduced through preference data. In response, we propose the DSC benchmark: Diverse, simple, and categorized, an evaluation framework that categorizes router performance across a broad spectrum of query types—including coding, translation, mathematics, human instructions, general knowledge, and LLM jailbreaking—and integrates privacy and safety assessments to reveal hidden risks. Our experiments on three preference-based routers and two commercial counterparts demonstrate that while these systems improve efficiency, they often make suboptimal, category-driven decisions; for instance, a BERT-based router directs all coding and mathematics queries to the most powerful LLM—even when simpler models would suffice—while routing jailbreaking attempts to weaker models, thereby elevating safety risks.
 
 </details>
+
+### 39. A Translational Note on AI Safety Evaluation
+
+📄 [arXiv](https://arxiv.org/abs/2609.06573)　📅 2026-09
+
+**关键词**：`analysis`、`safety evaluation`、`threat-model coverage gap`、`red teaming`
+
+👤 **作者**：Madhava Gaikwad
+
+- 🎯 **研究动机**：「自动红队优于人类」的结论存在威胁模型覆盖缺口：基准外的伤害对基准内攻击者不可见
+- 🔬 **研究方法**：类比密码学与临床试验的方法论分析，并在开权重模型上验证非英语 prompt 暴露英文基准漏掉的伤害
+- 📌 **结论**：覆盖缺口在当前开权重模型上真实存在；需要部署语境与开发者不同的评测者，现有框架难自发产生
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Recent studies report that automated red-teaming finds more vulnerabilities, at lower cost, than human red-teaming on standard AI safety benchmarks, and some read this as evidence that human evaluators are becoming dispensable. The comparison measures one thing and the conclusion claims another. A benchmark measures how thoroughly an attacker searches a predefined set of harms, fixed in advance by the developers, and a harm left out of that set is invisible to any attacker working inside it, automated or not. The same blind spot appeared in academic cryptography and in clinical drug trials, where an evaluation that was internally valid stayed silent about the population it was never pointed at. We call the AI-safety version the \emph{threat-model coverage gap}, and find that it persists in a current open-weight model, where harms surface in non-English prompts that English benchmarks miss. Closing it requires evaluators whose deployment context differs from the developers'. The case for those evaluators is methodological, grounded in coverage, and the existing evaluation frame is unlikely to produce them on its own.
+
+</details>

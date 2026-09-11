@@ -1148,3 +1148,22 @@ Glyph-level obfuscation can leave harmful Chinese content readable to humans whi
 Otome games, a romance simulation genre primarily targeting female, have emerged as a major force in the global gaming market, attracting hundreds of millions of players and billions in revenue. Despite their popularity, otome game communities face pervasive online toxicity, which has been largely unexplored. In this work, we present the first large-scale measurement of toxicity in otome game communities across social platforms. We introduce OtomeSCAN, a framework for collecting, evaluating, and analyzing 620,045 posts from Weibo and Reddit spanning 18 months. To support robust analysis, we manually annotated a ground-truth dataset of 4,308 posts, identifying eight target groups such as players and game developers. We evaluate seven toxicity detectors on the dataset, including general-purpose models and our proposed LLM-based detectors, with our best model achieving F1-scores of 0.82 (Weibo) and 0.78 (Reddit). Our analysis reveals significant platform-based differences in toxicity: 22.20% of otome-related posts on Weibo are toxic, compared to 3.71% on Reddit. Besides, real-world events like in-community conflicts can rapidly escalate toxicity, with toxicity ratios increasing to 37.09% in just 72 hours during an external attack on Weibo. We also flag 191 potential-coordination clusters in otome game communities, 64.40% of which target game developers, with several accounts participating repeatedly across multiple clusters. We hope our work inspires further research on community-specific toxicity and contributes to building healthier online spaces for marginalized gaming communities.
 
 </details>
+
+### 61. Beyond the Flag: Clinical Framing Closes the Moderation Gap in Suicide Risk Measurement
+
+📄 [arXiv](https://arxiv.org/abs/2609.06263)　📅 2026-09
+
+**关键词**：`analysis`、`suicide risk severity`、`moderation API`、`clinical grading`、`benchmark`
+
+👤 **作者**：Shreyas Krishnan、Gun Ahn、Jungjin Kim
+
+- 🎯 **研究动机**：审核 API 只做违规标记，无法测量分级临床自杀风险，而监管正要求分级响应
+- 🔬 **研究方法**：516 条 r/SuicideWatch 帖子由精神科医生按 C-SSRS 四级序数标注，七种序数感知指标评测审核 API、提示 LLM 与监督基线
+- 📌 **结论**：厂商 API 高危 F1 0.860 但严重度 macro F1 仅 0.395 且系统性高估最重级；临床框架零样本提示升至 0.562
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Moderation APIs are built to flag policy-violating content, not to measure graded clinical risk. But a platform's duty does not end at detection: the response owed to passive distress differs sharply from the response owed to active planning with means access, and emerging regulation (e.g., California Senate Bill 243) is turning that distinction into a compliance requirement. We therefore ask how well deployed safety signals recover clinically meaningful severity. We release a benchmark of 516 r/SuicideWatch posts rated by a licensed psychiatrist on a four-level ordinal schema (Indicator, Ideation, Behavior, Attempt) grounded in the Columbia Suicide Severity Rating Scale, and evaluate moderation APIs, prompted LLMs, and supervised baselines under seven ordinal-aware metrics. Three findings. Vendor moderation APIs separate low- from high-severity posts well (0.860 high-risk F1) but measure severity poorly (0.395 macro F1), systematically over-predicting the most severe category. Clinically grounded zero-shot prompting recovers much of that gap (0.562 macro F1), and expert-authored framing (not fine-tuning, added reasoning, or naive multi-agent aggregation) is the effective lever. The value of reasoning depends on register: it hurts on long, noisy Reddit posts and helps on short, clinician-authored statements. We argue graded severity, not a binary flag, is what a proportionate duty of care requires, and release our evaluation framework to support that measurement.
+
+</details>

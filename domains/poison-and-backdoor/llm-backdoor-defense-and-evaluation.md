@@ -607,3 +607,22 @@ Existing works on defending against LLM backdoor attacks rely on either auxiliar
 Backdoor attacks are a significant threat to large language models (LLMs), often embedded via public checkpoints, yet existing defenses rely on impractical assumptions about trigger settings. To address this challenge, we propose \ourmethod, a defense framework that requires no prior knowledge of trigger settings. \ourmethod is based on the key observation that when deliberately injecting known backdoors into an already-compromised model, both existing unknown and newly injected backdoors aggregate in the representation space. \ourmethod leverages this through a two-stage process: \textbf{first}, aggregating backdoor representations by injecting known triggers, and \textbf{then}, performing recovery fine-tuning to restore benign outputs. Extensive experiments across multiple LLM architectures demonstrate that: (I) \ourmethod reduces the average Attack Success Rate to 4.41\% across multiple benchmarks, outperforming existing baselines by 28.1\%$\sim$69.3\%$\uparrow$. (II) Clean accuracy and utility are preserved within 0.5\% of the original model, ensuring negligible impact on legitimate tasks. (III) The defense generalizes across different types of backdoors, confirming its robustness in practical deployment scenarios.
 
 </details>
+
+### 33. LLM Forensics: Where Do Backdoors Hide? Localizing and Controlling Trigger Mechanisms with Sparse Autoencoders
+
+📄 [arXiv](https://arxiv.org/abs/2609.07746)　📅 2026-09
+
+**关键词**：`analysis`、`LLM backdoor`、`sparse autoencoder`、`trigger mechanism`、`feature ablation`、`interpretability`
+
+👤 **作者**：Wissam Antoun、Francis Kulumba、Théo Lasnier、Benoît Sagot、Djamé Seddah
+
+- 🎯 **研究动机**：触发式后门行为易定义，但触发到响应的内部机制不清，妨碍检测与清除
+- 🔬 **研究方法**：在语言切换后门（1B/8B）上跨层训练 SAE，对照翻译与预训练控制定位触发特征，并做消融与激活干预
+- 📌 **结论**：SAE 特征区分触发近满分 F1，但检测特征不等于控制特征；残差流特征消融可抑制后门输出
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Even though backdoors in LLMs have been a growing concern, their inner workings are still under heavy scrutiny. Trigger-based backdoors are easy to define behaviorally, a rare input that makes the model switch to a chosen response pattern, but the mechanism between triggers and their responses is less clear. We study this mechanism in a controlled, harmless language-switching setting, where fixed trigger sequences make 1B and 8B language models continue English prompts in French or German. For this, we train sparse autoencoders (SAEs) across layers and transformer components, then compare triggered prompts with translation and pretraining controls to identify trigger-relevant feature directions. We show how SAE features separate triggered prompts from controls with near-perfect F1, but features that detect the trigger do not necessarily control the behavior. In intervention tests, attention and MLP features often fire reliably on triggered prompts, making them good detectors, but ablating them rarely suppresses the language switch and activating them rarely induces it. In contrast, residual-stream features can suppress triggered generation when ablated, and some selected features can induce target-language continuations without the trigger. In short, these token-trigger mechanisms decompose into distinct SAE feature directions, with separate features for trigger detection, residual-stream propagation, and later language tracking. This role-level decomposition is the part most likely to transfer to other trigger-based backdoors, even when the payload, layers, or circuit locations differ.
+
+</details>
