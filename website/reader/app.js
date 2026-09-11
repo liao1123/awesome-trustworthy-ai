@@ -23,7 +23,7 @@
     queue: [],
   };
 
-  var data = window.READER_DATA || { papers: {}, views: { daily: [], domains: [], conferences: [], idea: [] } };
+  var data = window.READER_DATA || { papers: {}, views: { daily: [], domains: [], conferences: [] } };
   var papers = data.papers || {};
 
   var el = {
@@ -104,7 +104,7 @@
       });
       return leaves;
     }
-    return viewData(view); // daily / conferences / idea
+    return viewData(view); // daily / conferences
   }
 
   function scopeSections() {
@@ -152,7 +152,7 @@
   function renderNav() {
     var html = [];
     html.push('<button class="nav-item nav-root' + (state.pageId === "all" ? " active" : "") +
-      '" data-page="all">全部' + (state.view === "daily" ? "日报" : state.view === "domains" ? "领域论文" : state.view === "idea" ? "想法" : "会议论文") +
+      '" data-page="all">全部' + (state.view === "daily" ? "日报" : state.view === "domains" ? "领域论文" : "会议论文") +
       ' <span class="nav-count">' + pagesFor(state.view).length + "</span></button>");
     if (state.view === "domains") {
       viewData("domains").forEach(function (group) {
@@ -174,7 +174,7 @@
         html.push("</div></div>");
       });
     } else {
-      // daily grouped by month, conferences by year, idea flat — collapsible
+      // daily grouped by month, conferences by year — both collapsible
       var groups = {};
       var order = [];
       pagesFor(state.view).forEach(function (page) {
@@ -182,7 +182,7 @@
         if (!groups[g]) { groups[g] = []; order.push(g); }
         groups[g].push(page);
       });
-      (state.view === "idea" ? order : order.sort().reverse()).forEach(function (g) {
+      order.sort().reverse().forEach(function (g) {
         if (!groups[g]) return;
         var gid = "navgrp-" + state.view + "-" + g;
         var activeInside = groups[g].some(function (p) { return p.id === state.pageId; });
@@ -281,7 +281,7 @@
     var sections = scopeSections();
     var info = scopeInfo();
     var scopeTitle = state.pageId === "all"
-      ? (state.view === "daily" ? "全部日报" : state.view === "domains" ? "全部领域" : state.view === "idea" ? "阅读想法" : "全部会议")
+      ? (state.view === "daily" ? "全部日报" : state.view === "domains" ? "全部领域" : "全部会议")
       : (info && info.title) || state.pageId;
     var multiLeaf = state.view === "domains" && (state.pageId === "all" || (info && info.kind === "group"));
 
@@ -494,7 +494,7 @@
   state.theme = loadStore("theme", null) || (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
   setTheme(state.theme);
   probeCollector(); // local server mode: star events POST straight to tools/out/starred-live.json
-  // hide view tabs that have no data in this build (e.g. idea on the public site)
+  // hide view tabs that have no data in this build
   Array.prototype.forEach.call(el.viewTabs.querySelectorAll("[data-view]"), function (btn) {
     if (!viewData(btn.getAttribute("data-view")).length) btn.hidden = true;
   });

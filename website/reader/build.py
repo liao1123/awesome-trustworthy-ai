@@ -21,7 +21,6 @@ DAILY_DIR = ROOT / "daily"
 CONFERENCES_DIR = ROOT / "conferences"
 DOMAINS_DIR = ROOT / "domains"
 DATA_DIR = Path(__file__).resolve().parent / "data"
-IDEA_PAPERS: dict[str, dict] = {}
 
 H3 = re.compile(r"^###\s+(.+?)\s*$")
 H2 = re.compile(r"^##\s+(.+?)\s*$")
@@ -326,63 +325,15 @@ def collect() -> dict:
     return dataset
 
 
-def collect_ideas() -> list[dict]:
-    """Pseudo-paper cards from the gitignored idea/ workspace (local build only)."""
-    idea_dir = ROOT / "idea"
-    if not idea_dir.exists():
-        return []
-    pages = []
-    all_ids = []
-    for path in sorted(idea_dir.glob("*.md")):
-        if path.name == "README.md":
-            continue
-        text = path.read_text(encoding="utf-8")
-        title = next((l[2:].strip() for l in text.split("\n") if l.startswith("# ")), path.stem)
-        def section_text(name: str, limit: int = 300) -> str:
-            m = re.search(rf"## (?:\d+[.、]\s*)?{name}\n+(.+?)(?=\n## |\Z)", text, re.S)
-            if not m:
-                return ""
-            body = re.sub(r"^#{1,6}\s*", "", m.group(1), flags=re.M)  # strip inner sub-headings markers
-            return " ".join(body.split())[:limit]
-        pid = "idea:" + path.stem
-        all_ids.append(pid)
-        pages.append({
-            "id": pid,
-            "title": title,
-            "desc": section_text("一句话主张", 220),
-            "sections": [{"title": "研究想法", "papers": [pid]}],
-        })
-        IDEA_PAPERS[pid] = {
-            "id": pid, "title": title, "links": [], "date": "", "venue": "idea",
-            "keywords": ["idea", path.stem], "authors": [],
-            "motivation": section_text("一句话主张", 260),
-            "method": section_text("动机与问题定义", 300),
-            "conclusion": section_text("新颖性判断", 300),
-            "abstract": section_text("可行性判断", 400),
-        }
-    return pages
-
 
 def main() -> int:
-    local = "--local" in sys.argv
     dataset = collect()
-    target_dir = DATA_DIR
-    if local:
-        # local-only build: include the gitignored idea/ workspace and write
-        # to a non-committed path so idea content never reaches the public site
-        idea_pages = collect_ideas()
-        if idea_pages:
-            dataset["views"]["idea"] = idea_pages
-            dataset["papers"].update(IDEA_PAPERS)
-        target_dir = ROOT / "website" / "local" / "data"
-        target_dir.mkdir(parents=True, exist_ok=True)
-    target_dir.mkdir(exist_ok=True)
+    DATA_DIR.mkdir(exist_ok=True)
     stats = {k: len(v) for k, v in dataset["views"].items()}
     payload = json.dumps(dataset, ensure_ascii=False, separators=(",", ":"))
-    (target_dir / "papers.js").write_text(
+    (DATA_DIR / "papers.js").write_text(
         "window.READER_DATA=" + payload + ";\n", encoding="utf-8")
-    tag = " (local, incl. idea)" if local else ""
-    print(f"papers: {len(dataset['papers'])} | views: {stats}{tag}")
+    print(f"papers: {len(dataset['papers'])} | views: {stats}")
     return 0
 
 
