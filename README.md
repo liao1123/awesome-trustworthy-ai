@@ -11,7 +11,7 @@
 | [`daily/`](daily/README.md) | 每天从 arXiv 收集的新论文，按 `年-月/日期.md` 保存 |
 | [`conferences/`](conferences/README.md) | 从顶会官方 accepted-paper 列表中筛选的相关论文 |
 | [`domains/`](domains/README.md) | 按研究领域长期汇总日报和会议中出现的论文 |
-| [`reader/`](reader/README.md) | 将 `daily/`、`domains/` 和 `conferences/` 变成统一卡片阅读流的静态网站 |
+| [`website/reader/`](reader/README.md) | 将 `daily/`、`domains/` 和 `conferences/` 变成统一卡片阅读流的静态网站 |
 | [`tools/`](tools/) | 内容管线：索引/元数据/总结补全（collect_index → join_metadata → fetch_missing → join_official → sync_summaries）、日报合成（compose_daily）、格式 lint 与站点部署（deploy_site.sh）；历史一次性脚本在 `tools/archive/` |
 | [`RESEARCH_INTERESTS.md`](RESEARCH_INTERESTS.md) | 当前关注的 AI Safety 范围、条件收录主题和明确排除项 |
 | [`STYLE_GUIDE.md`](STYLE_GUIDE.md) | Markdown 结构、英文关键词、专有名词、链接和摘要写法 |
@@ -28,6 +28,6 @@ arXiv 当日论文 ──> daily/日期.md ──┐
 
 每篇论文统一使用卡片格式（见 [`STYLE_GUIDE.md`](STYLE_GUIDE.md)）：英文原题、类型化图标链接行（📄 arXiv / 🐙 Code / 🤗 Model / 📊 Dataset / 🌐 Project / 📝 OpenReview / 🎓 Official）加 📅 日期与 🏷 会议徽章、英文关键词、👤 作者、🎯/🔬/📌 三段式中文总结、`<details>` 折叠的英文摘要原文。同一论文在三个视图中保持同一份卡片内容。
 
-`reader/` 是三个来源目录的展示层：运行 [`reader/build.py`](reader/build.py) 后即可得到独立的静态论文阅读网站（卡片流、⭐ 收藏、搜索、三视图导航）。Daily、Domain、Conference 在网页中保持独立入口；阅读器不维护第二套论文源数据。`reader/data/` 中的元数据缓存只在批量整理 Markdown 时使用，不回写 Markdown。
+`website/reader/` 是三个来源目录的展示层：运行 [`reader/build.py`](reader/build.py) 后即可得到独立的静态论文阅读网站（卡片流、⭐ 收藏、搜索、三视图导航）。Daily、Domain、Conference 在网页中保持独立入口；阅读器不维护第二套论文源数据。`reader/data/` 中的元数据缓存只在批量整理 Markdown 时使用，不回写 Markdown。
 
 每次运行 Codex 时，先读取 [`RESEARCH_INTERESTS.md`](RESEARCH_INTERESTS.md) 和 [`STYLE_GUIDE.md`](STYLE_GUIDE.md)，再读取相应目录的 `README.md` 并执行其中的 Prompt。

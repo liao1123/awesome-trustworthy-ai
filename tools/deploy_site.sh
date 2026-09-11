@@ -5,7 +5,7 @@
 #
 # 产物（提交进仓库）：
 #   website/public/index.html  app.js  style.css  data/papers.js
-# 源文件仍维护在 reader/，本脚本负责构建 + 同步 + 暂存。
+# 源文件仍维护在 website/reader/，本脚本负责构建 + 同步 + 暂存。
 #
 # 用法（在更新论文之后）：
 #   tools/deploy_site.sh          # 构建 + 同步 + 暂存（随你的内容提交一起 push）
@@ -18,12 +18,12 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 
 echo "==> [1/3] 构建阅读站数据"
-python3 reader/build.py
+python3 website/reader/build.py
 
 echo "==> [2/3] 同步静态产物到 website/public/"
 mkdir -p "$ROOT/website/public/data"
-cp reader/index.html reader/app.js reader/style.css "$ROOT/website/public/"
-cp reader/data/papers.js "$ROOT/website/public/data/"
+cp website/reader/index.html website/reader/app.js website/reader/style.css "$ROOT/website/public/"
+cp website/reader/data/papers.js "$ROOT/website/public/data/"
 git add website/public
 
 MODE="${1:-}"
