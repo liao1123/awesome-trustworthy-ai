@@ -1,7 +1,3 @@
-# RAG 投毒
-
-[返回投毒与后门目录](README.md)
-
 ## 研究方向
 
 RAG 投毒研究攻击者如何在 document ingestion、embedding/index、retrieval、reranking、reasoning 与 generation 各阶段操纵外部证据，使恶意文本、图像、metadata、graph relation 或 Agent memory 被召回并改变最终行为。该方向覆盖 targeted 与 query-agnostic poisoning、single-document 与 coordinated-document attack、retriever training-data poisoning／checkpoint backdoor／parameter editing、GraphRAG／Multimodal RAG／Agentic RAG，以及 admission filtering、runtime detection、responsibility attribution、evidence isolation、robust aggregation 和 certified defense；评测必须同时区分 poison retrieval、context inclusion 与 end-to-end answer／action manipulation。
@@ -2132,5 +2128,24 @@ Retrieval-Augmented Generation (RAG) systems have emerged as a promising solutio
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 Large language models (LLMs) have been serving as effective backbones for retrieval systems, including Retrieval-Augmentation-Generation (RAG), Dense Information Retriever (IR), and Agent Memory Retrieval. Recent studies have demonstrated that such LLM-based Retrieval (LLMR) is vulnerable to adversarial attacks, which manipulates documents by token-level injections and enables adversaries to either boost or diminish these documents in retrieval tasks. However, existing attack studies mainly (1) presume a known query is given to the attacker, and (2) highly rely on access to the victim model's parameters or interactions, which are hardly accessible in real-world scenarios, leading to limited validity. To further explore the secure risks of LLMR, we propose a practical black-box attack method that generates transferable injection tokens based on zero-shot surrogate LLMs without need of victim queries or victim models knowledge. The effectiveness of our attack raises such a robustness issue that similar effects may arise from benign or unintended document edits in the real world. To achieve our attack, we first establish a theoretical framework of LLMR and empirically verify it. Under the framework, we simulate the transferable attack as a min-max problem, and propose an adversarial learning mechanism that finds optimal adversarial tokens with learnable query samples. Our attack is validated to be effective on benchmark datasets across popular LLM retrievers.
+
+</details>
+
+### 111. ToxicRAG: Compromising Retrieval-Augmented Generation Systems via Single-Shot Knowledge Poisoning Attacks
+📄 [arXiv](https://arxiv.org/abs/2609.11082)　📅 2026-09
+
+
+👤 **作者**：Haozhe Lu、Jiaqi Li、Xinyuan Zhu、Xiang Li
+
+**关键词**：`attack`、`RAG knowledge poisoning`、`narrative misinformation`、`single-shot injection`、`self-validation`
+
+- 🎯 **研究动机**：RAG 知识投毒多依赖多文档或模板断言，单文档连贯叙事的攻击力未知
+- 🔬 **研究方法**：单文档单目标生成承认旧答案→捏造事件→权威归因的知识更新叙事，surrogate 自验证循环修订
+- 📌 **结论**：3 数据集 × 4 LLM × 4 检索器 ASR 0.61-0.91，全部组合追平或超最强基线（+0~11pp）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Retrieval-Augmented Generation (RAG) can ground large language model (LLM) outputs in external evidence, but it also exposes the system to knowledge poisoning. Representative attacks use multiple injected documents or templates that directly assert a target answer. We present ToxicRAG, a one-document-per-target attack that expresses misinformation as a coherent knowledge-update narrative. The generated document first acknowledges the previously accepted answer, introduces fabricated events that appear to invalidate it, and then attributes the attacker-selected answer to a set of purported authorities. An answer-focused self-validation loop optionally revises a candidate when a surrogate language model does not reproduce the target answer. We evaluate the attack on 100 target questions from each of Natural Questions, HotpotQA, and MS-MARCO, using four victim LLMs and four dense retrievers. In the sampled-corpus setting reported in this paper, ToxicRAG obtains ASRs between 0.61 and 0.91 across the twelve dataset--model combinations. It matches or exceeds the strongest evaluated baseline in every combination, with margins ranging from 0 to 11 percentage points. These results show that narrative-form poisoned documents can remain influential under the evaluated RAG configurations and motivate further study of factual consistency and source provenance in RAG systems.
 
 </details>

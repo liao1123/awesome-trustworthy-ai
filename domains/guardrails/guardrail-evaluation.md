@@ -1,7 +1,3 @@
-# 通用 Guard Model 方法与架构
-
-[返回上级目录](README.md)
-
 ## 研究方向
 
 Guard model 的训练方法、系统架构与部署形态（效果评测与攻击面见姊妹页 guardrail-evaluation.md）。
@@ -1162,5 +1158,43 @@ We introduce Llama Guard, an LLM-based input-output safeguard model geared towar
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 NeMo Guardrails is an open-source toolkit for easily adding programmable guardrails to LLM-based conversational systems. Guardrails (or rails for short) are a specific way of controlling the output of an LLM, such as not talking about topics considered harmful, following a predefined dialogue path, using a particular language style, and more. There are several mechanisms that allow LLM providers and developers to add guardrails that are embedded into a specific model at training, e.g. using model alignment. Differently, using a runtime inspired from dialogue management, NeMo Guardrails allows developers to add programmable rails to LLM applications - these are user-defined, independent of the underlying LLM, and interpretable. Our initial results show that the proposed approach can be used with several LLM providers to develop controllable and safe LLM applications using programmable rails.
+
+</details>
+
+### 62. An Empirical Measurement of Jailbreaking Evaluators
+📄 [arXiv](https://arxiv.org/abs/2609.10594)　📅 2026-09
+
+
+👤 **作者**：Yujie Mu
+
+**关键词**：`benchmark`、`jailbreak evaluator`、`measurement validity`、`cross-study comparison`
+
+- 🎯 **研究动机**：越狱研究各自独立验证评测器，跨论文攻击强度不可比且评测器隐含不同成功定义
+- 🔬 **研究方法**：同一人工标注数据受控比较六个常用评测器（HarmBench/JailbreakBench/Radar/StrongReject/JADES/JailMeter），共享 judge 骨干
+- 📌 **结论**：JADES 综合最佳，HarmBench 与 StrongReject 亦佳——评测器选择显著影响报告的攻击强度
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Expert evaluation of jailbreak responses is costly and difficult to scale, so the community increasingly relies on automated evaluators to determine whether an attack succeeds. However, jailbreak studies typically validate their chosen evaluator independently, repeatedly spending resources on similar evaluation efforts while making results across papers difficult to compare. Different evaluators also encode different definitions of jailbreak success, meaning that reported attack strength and apparent progress can depend substantially on which evaluator is used. We systematically compare six evaluators that recur in recent jailbreak attack and defense research: HarmBench, JailbreakBench, JailbreakRadar, StrongReject, JADES, and JailMeter. To our knowledge, no prior study has evaluated all six on the same human-labeled data under a controlled setup. We evaluate them on JailbreakQR and JailMeter-Eva, using human judgments as the reference, and measure agreement with humans, error types, and consistency across attack families. For evaluators that require a general-purpose LLM judge, we use a shared backbone to control for model-specific variation. We found that JADES exhibits the best overall performance, while HarmBench and StrongReject also demonstrate good performance.
+
+</details>
+
+### 63. RAG-Safety-Bench: Reliable Evaluation of Retrieval-Augmented LLM Safety
+📄 [arXiv](https://arxiv.org/abs/2609.11758)　📅 2026-09
+
+
+👤 **作者**：Adithiyan Rajan Indira Saravanan、Kathleen C. Fraser
+
+**关键词**：`benchmark`、`RAG safety`、`guardrail failure`、`confound control`
+
+- 🎯 **研究动机**：RAG 会放大有害内容生成，但检索质量混杂使安全退化机制不清
+- 🔬 **研究方法**：四条件干净分离（无 RAG/oracle 含答案/相关无答案/随机安全文档）剥离检索器质量混杂，评测 5 个开源 LLM
+- 📌 **结论**：基线 guardrail 不保证 RAG 下游安全；良性文档也可导致不安全生成
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Allowing large language models (LLMs) to retrieve information from a set of trusted documents can increase reliability and reduce hallucination. However, recent work has demonstrated that retrieval-augmented generation (RAG) can have unintended side effects on the overall safety of the generated responses, when prompted for harmful or dangerous content. A clearer understanding of the mechanisms leading to this result is needed, as increasing numbers of end users turn to RAG to incorporate corporate documents and knowledge bases into LLM-based systems. We introduce RAG-Safety-Bench, a benchmark to measure the safety impact of RAG on LLM models. By removing the confounding effect of retriever quality, and cleanly separating the problem into four conditions -- non-RAG, RAG with an oracle document containing the answer to the harmful request, RAG with documents related to the harmful request but without the specific answer, and RAG with random, safe documents -- the benchmark isolates the impacts of different factors in the observed safety degradation. We report results across five open-source LLMs, showing an inverse relationship between benign and unsafe capability, strong evidence that baseline safety guardrails do not lead to downstream safety guarantees in the RAG case, and model-specific support for previous findings that even benign documents can lead to unsafe generation in retrieval-enabled systems.
 
 </details>

@@ -1,7 +1,3 @@
-# 训练数据抽取与记忆泄漏
-
-[返回上级目录](README.md)
-
 ## 研究方向
 
 研究模型在训练、微调、检索和个性化过程中记住并泄露敏感数据的风险，覆盖 membership inference、training-data extraction、gradient/feature inversion 与 de-anonymization；重点区分真实记忆、可推断信息和评测器造成的假阳性。
@@ -1247,5 +1243,24 @@ Recent work shows that standard greedy-decoding extraction methods for quantifyi
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 Fine-tuning on open-source Large Language Models (LLMs) with proprietary data is now a standard practice for downstream developers to obtain task-specific LLMs. Surprisingly, we reveal a new and concerning risk along with the practice: the creator of the open-source LLMs can later extract the private downstream fine-tuning data through simple backdoor training, only requiring black-box access to the fine-tuned downstream model. Our comprehensive experiments, across 4 popularly used open-source models with 3B to 32B parameters and 2 downstream datasets, suggest that the extraction performance can be strikingly high: in practical settings, as much as 76.3% downstream fine-tuning data (queries) out of a total 5,000 samples can be perfectly extracted, and the success rate can increase to 94.9% in more ideal settings. We also explore a detection-based defense strategy but find it can be bypassed with improved attack. Overall, we highlight the emergency of this newly identified data breaching risk in fine-tuning, and we hope that more follow-up research could push the progress of addressing this concerning risk. The code and data used in our experiments are released at https://github.com/thu-coai/Backdoor-Data-Extraction.
+
+</details>
+
+### 68. Black-Box Membership Inference via Word-Level Probability Estimation
+📄 [arXiv](https://arxiv.org/abs/2609.10611) · 🐙 [Code](https://github.com/niusj03/WPMIA)　📅 2026-09
+
+
+👤 **作者**：Shengjie Niu、Yeheng Ge、Jian Huang
+
+**关键词**：`attack`、`black-box membership inference`、`word-level probability`、`proprietary LLM`
+
+- 🎯 **研究动机**：现有 MIA 需 per-token logits，对只返回文本续写的商用 LLM 不可用
+- 🔬 **研究方法**：蒙特卡洛采样+局部核平滑估计词级生成概率，聚合为序列级似然并按不同前缀条件化放大成员/非成员分布差
+- 📌 **结论**：GPT-5/Gemini-2.5-Flash/Claude-4.5-Haiku 上平均 TPR@5%FPR 达 42.0
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Membership inference attacks (MIAs) have emerged as critical tools for auditing privacy risks in large language models (LLMs), aiming to determine whether a given text was included in a model's training corpus. However, most existing MIAs require access to per-token logits or probabilities, making them inapplicable in practice to proprietary LLMs that expose only textual continuations. To address this underexplored setting, we propose Word-level Probability MIA (WPMIA), a statistically principled MIA for strict black-box privacy auditing. WPMIA estimates word-level generation probabilities via Monte Carlo sampling with local kernel smoothing, then aggregates these estimates into a sequence-level likelihood estimator. Furthermore, WPMIA constructs the likelihood conditioned on different prefixes, thereby amplifying the distributional differences between members and non-members. We evaluate WPMIA across various open-source LLMs and find that it consistently outperforms existing black-box baselines. Importantly, we also evaluate WPMIA on modern proprietary LLMs, including GPT-5-Chat, Gemini-2.5-Flash, and Claude-4.5-Haiku, achieving an average TPR@5\%FPR of 42.0 across these models. These results offer a sound foundation for future research on strict black-box membership inference. Code is available at \href{https://github.com/niusj03/WPMIA}{https://github.com/niusj03/WPMIA}.
 
 </details>

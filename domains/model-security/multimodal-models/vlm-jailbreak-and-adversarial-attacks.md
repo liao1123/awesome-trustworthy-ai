@@ -1,7 +1,3 @@
-# VLM Jailbreak 与 Adversarial Attack
-
-[返回 Multimodal Model Security 目录](README.md)
-
 ## 研究方向
 
 本页研究攻击者如何借助 image、typography、visual style、multi-image relation、steganography 与视觉推理，把有害意图移出文本安全通道并绕过 VLM/MLLM refusal。这里同时记录 attack surface、内部失效机制和直接针对 VLM 表示或推理流程的防御；一般感知鲁棒性与面向 Agent 的 indirect prompt injection 分别由其他页面维护。
@@ -1045,5 +1041,24 @@ Large Vision-Language Models (LVLMs) rely on attention-based retrieval of safety
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 The limited transferability of adversarial attacks on Vision-Language Models (VLMs) stems from their failure to navigate model-specific safety alignments, where superficial perturbations exploit surrogate-specific artifacts rather than shared safety-critical features. We reveal through linear probing that safety-related representations are concentrated within specific intermediate neuronal circuits, which act as localized defense bottlenecks that can be disentangled from transferable features. To overcome this barrier, we propose the Safety Circuit Intervention Attack (SCIA), a framework that surgically steers internal representations to bypass these localized safety mechanisms. SCIA employs a dual-objective steering strategy that suppresses the defensive circuit encoding safety features while amplifying the transferable circuit capturing model-agnostic representations, effectively decoupling adversarial patterns from surrogate-specific safety behaviors. Furthermore, we incorporate contrastive semantic steering and spectral smoothness regularization to guide optimization toward compliant semantic regions while producing visually coherent perturbations. Experimental results demonstrate that SCIA significantly outperforms state-of-the-art methods in bypassing unseen black-box VLMs.
+
+</details>
+
+### 57. Understanding In-Context Multimodal Jailbreaks via Posterior Reweighting
+📄 [arXiv](https://arxiv.org/abs/2609.10613)　📅 2026-09
+
+
+👤 **作者**：Xu Zhang、Dev Mistry、Xiang Xu、Ren Wang
+
+**关键词**：`analysis`、`in-context jailbreak`、`posterior reweighting`、`MLLM`、`scaling law`
+
+- 🎯 **研究动机**：MLLM 上下文学习越狱为何随上下文组成扩展缺乏原理性刻画
+- 🔬 **研究方法**：把对齐 MLLM 建模为竞争行为模式上的隐式后验，ICL 示例即推理时证据；导出示例数/有害占比/对抗强度/多样性 scaling law
+- 📌 **结论**：后验感知防御按估计风险注入良性反证，固定干预预算下鲁棒-效用权衡优于现有 in-context 防御
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+In-context learning (ICL) jailbreaks reveal a critical vulnerability in multimodal large language models (MLLMs): harmful demonstrations in the prompt can induce unsafe outputs without modifying model parameters. Despite extensive empirical evidence, existing work lacks a principled understanding of why such jailbreaks reliably succeed or how their effectiveness scales with context composition. We propose a posterior reweighting framework that models a safety-aligned MLLM as implicitly operating over competing behavioral modes, and interprets in-context demonstrations as inference-time evidence that dynamically shifts the model's posterior preference between safe and harmful behaviors. This view formalizes jailbreak as a process of evidence accumulation, yielding predictive scaling laws with respect to demonstration count, harmful ratio, adversarial strength, and semantic diversity. Guided by this framework, we introduce a posterior-aware inference-time defense that adaptively injects benign counter-evidence based on estimated risk, effectively suppressing harmful posterior drift while preserving model utility. Compared to existing in-context defenses, our method achieves a significantly improved robustness-utility trade-off under a fixed intervention budget. Together, our results establish posterior reweighting as a unifying and predictive framework for understanding and mitigating ICL jailbreak in MLLMs.
 
 </details>

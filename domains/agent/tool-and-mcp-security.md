@@ -1,7 +1,3 @@
-# Agent Tool 与 MCP Security
-
-[返回 Agent Security 目录](README.md)
-
 ## 研究方向
 
 本页研究 Agent 从发现工具、读取 metadata、选择与参数化工具，到接收 tool result 和组合多次调用的完整安全链。MCP 将外部 server 暴露的 tool、resource 与 prompt 动态接入 Agent，进一步引入 server identity、capability negotiation、credential、schema、rug pull 和跨 server data flow；因此不能只在 user prompt 上做过滤，还要检查来源、权限、参数、返回值和执行后果。
@@ -739,5 +735,24 @@ Agent guardrails are checks that approve or refuse each action before an LLM exe
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 The Model Context Protocol (MCP) enables Large Language Model (LLM) agents to interact with external tools, but this extensibility introduces significant supply chain vulnerabilities that enable covert privacy exfiltration. Prior studies have revealed privacy leakage in MCP-enabled agents via indirect prompt injection; however, existing attacks are typically misaligned with the agent's tool-usage context and rely on rigid templates, resulting in recognizable patterns that are readily flagged by existing defenses. In this work, we exploit the observation that privacy exposure is inherently scenario-dependent, to associate certain privacy items with specific tools. We introduce SOPE, a Scenario-aware and zerO-click Privacy Exfiltration framework that transforms any benign MCP server into its privacy-exfiltrating variants. SOPE (1) identifies privacy items that are appropriate to the tool usage, (2) embeds privacy-probing instructions into tool-invocation prompts, and (3) achieves zero-click data transmission via code-level modifications. We evaluate SOPE across 27,216 test cases, where 324 SOPE -transformed real-world servers attacking four benchmark and three commercial agents with nine state-of-the-art defenses. Results demonstrate that SOPE remains highly effective and robust, highlighting critical protocol-level safety gaps in the agent ecosystem.
+
+</details>
+
+### 40. No-Box Vulnerability Analysis: Description-only Detection of Indirect Prompt Injection Vulnerabilities in MCP Servers
+📄 [arXiv](https://arxiv.org/abs/2609.10854)　📅 2026-09
+
+
+👤 **作者**：Zehua Zhang、…、Adam Doupe
+
+**关键词**：`detection`、`no-box analysis`、`MCP server`、`indirect prompt injection`、`tool metadata`
+
+- 🎯 **研究动机**：第三方审计闭源 MCP 服务器时无系统访问也无运行时交互，仅注册元数据可用
+- 🔬 **研究方法**：no-box 漏洞分析范式：凭工具元数据推断所有可能实现共有的注入漏洞并给出利用假设
+- 📌 **结论**：20 个 MCP 服务器 177 工具预测 94 个真实漏洞（98.9% recall），超 LLM 基线 84.2%
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Conventional vulnerability analysis relies on either system access or dynamic interaction, all of which may be unavailable to third-party analysts auditing closed-source, remotely hosted, critical in situ systems, or commercially gated software. Therefore, we propose a new paradigm of no-box vulnerability analysis in which neither access nor runtime interaction is available, and only functionality metadata is available. Such metadata defines the intended behavior of the system, including its inputs, outputs, and side effects, while constraining the space of implementations consistent with that behavior. We propose hypothesizing about vulnerabilities that exist across all possible implementations of a given system metadata, without observing or interacting with the target system. An analyst can later validate these hypotheses when additional access is available. We showcase the feasibility of no-box vulnerability analysis through implementing a prototype called MCPSEC, which audits Model Context Protocol (MCP) servers for indirect prompt injection vulnerabilities using only the tool metadata exposed at server registration time. We evaluate MCPSEC on 20 widely deployed MCP servers comprising 177 tools, among which human evaluators confirm 95 vulnerable tools. MCPSEC identified 143 tools as vulnerable, and for each vulnerable tool, it produced a hypothesized vulnerability along with exploitation technique. Using metadata alone, MCPSEC predicted 94 (98.9% recall) real verified vulnerabilities, compared against an LLM baseline with 80 (84.2% recall). Overall, our results introduce no-box vulnerability analysis as a new analysis paradigm and demonstrate its practical feasibility in realistic systems.
 
 </details>

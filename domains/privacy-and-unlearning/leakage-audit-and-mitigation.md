@@ -1,7 +1,3 @@
-# 隐私攻击评测与泄漏缓解
-
-[返回上级目录](README.md)
-
 ## 研究方向
 
 研究如何通过明确攻击检验模型、表示、记忆与上下文是否泄漏数据，并针对 memory extraction、attribute inference、embedding/model inversion、训练样本记忆和身份恢复提出可验证缓解。一般 privacy-preserving learning/inference、data minimization、最小披露，以及 Differential Privacy、federated learning、密码学、secure computation、secure inference、homomorphic encryption、MPC、zero-knowledge proof、数字签名、区块链和 TEE 不属于本页范围；以 federated learning 为研究对象或训练框架的攻击与防御同样不收录。
@@ -364,5 +360,24 @@ The continued promise of Large Language Models (LLMs), particularly in their nat
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 Model Inversion Attacks (MIAs) pose a significant threat to data privacy by reconstructing sensitive training samples from the knowledge embedded in trained machine learning models. Despite recent progress in enhancing the effectiveness of MIAs across diverse settings, defense strategies have lagged behind, struggling to balance model utility with robustness against increasingly sophisticated attacks. In this work, we propose the ideal inversion error to measure the privacy leakage, and our theoretical and empirical investigations reveals that higher-rank features are inherently more prone to privacy leakage. Motivated by this insight, we propose a lightweight and effective defense strategy based on low-rank feature filtering, which explicitly reduces the attack surface by constraining the dimension of intermediate representations. Extensive experiments across various model architectures and datasets demonstrate that our method consistently outperforms existing defenses, achieving state-of-the-art performance against a wide range of MIAs. Notably, our approach remains effective even in challenging regimes involving high-resolution data and high-capacity models, where prior defenses fail to provide adequate protection. The code is available at https://github.com/Chrisqcwx/LoFt .
+
+</details>
+
+### 21. Adaptive Diffusion Freezing: Privacy-preserving Diffusion Models Against Membership Inference Attacks
+📄 [arXiv](https://arxiv.org/abs/2609.10608)　📅 2026-09
+
+
+👤 **作者**：Jialu Guo、Xiao Han、Junjie Wu
+
+**关键词**：`defense`、`membership inference`、`diffusion model`、`adaptive freezing`
+
+- 🎯 **研究动机**：扩散模型的隐私防御难以平衡隐私、效用与效率
+- 🔬 **研究方法**：跨时间步自适应冻结训练：mask 矩阵控制数据子集在各时间步的参与，预训练风险感知策略按记忆倾向抑制高风险子集-时间步对
+- 📌 **结论**：多数据集防御有效，privacy-utility-efficiency 三方权衡达 SOTA
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Diffusion models have achieved remarkable success in generative tasks across various areas, however their training process raises significant privacy concerns, particularly under membership inference attacks (MIAs). Prior studies on privacy-preserving of diffusion models fail to balance privacy, utility, and efficiency. To address this gap, we propose a novel framework of privacy-preserving diffusion models, Adaptive Diffusion Freezing (ADF), which can defend against MIAs with better trade-off. By leveraging cross-timestep adaptive freezing training, ADF explicitly control the participation of different data subsets across diffusion timesteps via a mask matrix, which reduces the over-memorization and leads to more uniform model behaviors between member and nonmember samples. To construct a freezing mask matrix that effectively reduce membership leakage without unnecessarily harming generation quality, we introduce a pretraining-based risk-aware freezing policy to estimate MIA risk based on memorization tendency, and suppress the contribution of the subset-timestep pairs with higher risk. Evaluations on multiple datasets demonstrate that ADF provides effective defense performance as well as state-of-the-art privacy-utility-efficiency trade-off performance compared to various baselines.
 
 </details>

@@ -1,7 +1,3 @@
-# Agent Trajectory Safety Monitoring
-
-[返回 Agent Security 目录](README.md)
-
 ## 研究方向
 
 本页主要研究与具体安全风险绑定的 Agent trajectory monitoring：攻击链、policy violation、unsafe tool use、高后果内生故障、风险步骤定位、运行时 guard 和可审计 provenance；同时收录会直接影响安全干预设计的 monitor-signal validity 与 attribution-component boundary。一般任务失败、普通 debugging、成功率预测和工作流恢复不纳入；若论文只以一般任务失败验证可复用监控组件，则必须明确其证据尚未覆盖安全后果。
@@ -603,5 +599,24 @@ Mobile agents powered by foundation models now automate complex, multi-step work
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 Multi-step prompt injection attacks on LLM agents present a fundamental detection challenge because malicious intent emerges only after the workflow completes, while individual actions remain legitimate in isolation. Existing defenses, including input sanitization, output validation, and instruction hierarchy, operate on individual actions or content patterns and cannot capture this sequential structure. We present CausalTrace, a detection system that reframes prompt-injection defense as causal inference. It constructs Structural Causal Models from agent trajectories with typed edges capturing data dependency, trust transfer, and state enablement, then applies Pearl’s do-calculus to answer a counterfactual question, namely, whether the harmful outcome would have occurred if the injection had been blocked. This formalization enables a principled distinction between attacks that depend on injections and benign workflows that share surface-level features. Evaluation on a dataset spanning crowdsourced traces, LLM agent benchmarks, and semi-real and real scenarios demonstrates strong detection performance, outperforming content-based baselines while requiring minimal LLM inference cost; bidirectional slicing recovers complete attack chains with high edge recall, providing interpretable explanations that trace exploitation to its causal origins.
+
+</details>
+
+### 32. DriftNet: A Dual-Head Trajectory Transformer for Detecting and Localizing Prompt Injection in LLM Agents
+📄 [arXiv](https://arxiv.org/abs/2609.10892)　📅 2026-09
+
+
+👤 **作者**：Asif Pinjari、Mithun Paul Saint-Germain
+
+**关键词**：`detection`、`prompt injection localization`、`trajectory transformer`、`agent monitor`
+
+- 🎯 **研究动机**：注入检测只给整轨迹判定或单索引，运维需要注入点/被劫持步骤/是否被抵抗三要素
+- 🔬 **研究方法**：双头轨迹 Transformer：轨迹级 compromised 判定 + 每步四类标注；<2M 参数无需访问 agent 模型
+- 📌 **结论**：AgentDrift 任务不相交划分 F1 0.983、注入点恢复 98.7%；表面基线 partial hijack 恢复仅 11.1% vs 本方法 98.6%
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+When an indirect prompt injection succeeds against an LLM agent, the compromise is visible in the agent's own behavior: a benign prefix of tool calls, a poisoned observation, and a suffix of actions that serve the attacker. An operator needs three facts: where the attack entered, which steps it corrupted, and whether apparent poison was resisted. Existing systems return either a whole-trace verdict or a single unsafe index. We present DriftNet, a dual-head trajectory Transformer that reads a logged tool-call trajectory and answers all three questions in one forward pass: one head classifies the trajectory as compromised or not, and a second assigns every step one of four labels (benign, injection point, hijacked, failed injection). To our knowledge it is the first supervised detector to produce this joint output. A frozen sentence encoder and four identity-free world features embed each step; the trained trunk, under two million parameters and optimized with a class-weighted joint objective over both heads, needs no access to the agent's model. On the task-disjoint split of the AgentDrift benchmark (12,536 trajectories, 71,024 labeled steps), with a 20-configuration sweep bounding hyperparameter sensitivity to 0.011 F1 and the test part evaluated exactly once, DriftNet reaches trajectory-level F1 of 0.983, exact injection-point recovery on 98.7% of attacked trajectories, hijacked-span IoU of 0.979, zero flags on 218 resisted attacks, and 2.9% flags on hard negatives. A surface baseline retrained on the identical split recovers 11.1% of partial hijacks and 17.1% of delayed executions; DriftNet reaches 98.6% and 93.2% while lowering every false-alarm rate. Reading all 26 residual errors shows that most misses trace to trajectories whose labeled injection observation carries no legible instruction, and we report the benchmark's measured world-identity regularity alongside the results.
 
 </details>
