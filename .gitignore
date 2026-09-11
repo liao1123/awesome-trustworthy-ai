@@ -34,3 +34,6 @@ __pycache__/
 
 # The reader bundle reader/data/papers.js IS committed (tsrigo-style
 # prebuilt-site deployment); only the raw scratch files stay out of Git.
+
+# local-only site (server, idea-inclusive data, preference log) — never pushed
+/local-site/

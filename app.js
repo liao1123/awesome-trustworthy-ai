@@ -1,4 +1,8 @@
 /* Trustworthy AI Paper Reader — card UI over window.READER_DATA.
+ * Two deployment modes share this file:
+ *   - public (GitHub Pages): stars persist in localStorage only, review use
+ *   - local  (tools/serve_reader.py): every star toggle POSTs to /api/stars,
+ *     which persists to tools/out/starred-live.json for preference recording
  * State (stars, theme) persists in localStorage under the historical
  * "trustworthy-ai-paper-reader:" prefix so earlier reading state survives. */
 (function () {
@@ -14,11 +18,12 @@
     starredOnly: false,
     theme: "light",
     starred: {},
+    starEvents: [],
     rendered: 0,
     queue: [],
   };
 
-  var data = window.READER_DATA || { papers: {}, views: { daily: [], domains: [], conferences: [] } };
+  var data = window.READER_DATA || { papers: {}, views: { daily: [], domains: [], conferences: [], idea: [] } };
   var papers = data.papers || {};
 
   var el = {
@@ -28,10 +33,6 @@
     scopeHeader: document.getElementById("scopeHeader"),
     searchBox: document.getElementById("searchBox"),
     starredToggle: document.getElementById("starredToggle"),
-    starExport: document.getElementById("starExport"),
-    starCopy: document.getElementById("starCopy"),
-    starImport: document.getElementById("starImport"),
-    starImportFile: document.getElementById("starImportFile"),
     themeToggle: document.getElementById("themeToggle"),
     emptyState: document.getElementById("emptyState"),
     sentinel: document.getElementById("sentinel"),
@@ -93,16 +94,17 @@
   function viewData(view) { return (data.views && data.views[view]) || []; }
 
   function pagesFor(view) {
-    if (view === "daily") return viewData("daily");
-    if (view === "conferences") return viewData("conferences");
-    var leaves = [];
-    viewData("domains").forEach(function (group) {
-      (group.children || []).forEach(function (leaf) {
-        leaf._group = group.title;
-        leaves.push(leaf);
+    if (view === "domains") {
+      var leaves = [];
+      viewData("domains").forEach(function (group) {
+        (group.children || []).forEach(function (leaf) {
+          leaf._group = group.title;
+          leaves.push(leaf);
+        });
       });
-    });
-    return leaves;
+      return leaves;
+    }
+    return viewData(view); // daily / conferences / idea
   }
 
   function scopeSections() {
@@ -133,11 +135,15 @@
   }
 
   function scopeInfo() {
-    if (state.view !== "domains" || state.pageId === "all") return null;
-    var group = viewData("domains").filter(function (g) { return g.id === state.pageId; })[0];
-    if (group) return { kind: "group", title: group.title, desc: group.desc || "" };
-    var leaf = pagesFor("domains").filter(function (p) { return p.id === state.pageId; })[0];
-    if (leaf) return { kind: "leaf", title: leaf.title, desc: leaf.desc || "", group: leaf._group };
+    if (state.pageId === "all") return null;
+    if (state.view === "domains") {
+      var group = viewData("domains").filter(function (g) { return g.id === state.pageId; })[0];
+      if (group) return { kind: "group", title: group.title, desc: group.desc || "" };
+      var leaf = pagesFor("domains").filter(function (p) { return p.id === state.pageId; })[0];
+      if (leaf) return { kind: "leaf", title: leaf.title, desc: leaf.desc || "", group: leaf._group };
+    }
+    var page = pagesFor(state.view).filter(function (p) { return p.id === state.pageId; })[0];
+    if (page) return { kind: "page", title: page.title, desc: page.desc || "" };
     return null;
   }
 
@@ -146,7 +152,7 @@
   function renderNav() {
     var html = [];
     html.push('<button class="nav-item nav-root' + (state.pageId === "all" ? " active" : "") +
-      '" data-page="all">全部' + (state.view === "daily" ? "日报" : state.view === "domains" ? "领域论文" : "会议论文") +
+      '" data-page="all">全部' + (state.view === "daily" ? "日报" : state.view === "domains" ? "领域论文" : state.view === "idea" ? "想法" : "会议论文") +
       ' <span class="nav-count">' + pagesFor(state.view).length + "</span></button>");
     if (state.view === "domains") {
       viewData("domains").forEach(function (group) {
@@ -168,7 +174,7 @@
         html.push("</div></div>");
       });
     } else {
-      // daily grouped by month, conferences grouped by year — both collapsible
+      // daily grouped by month, conferences by year, idea flat — collapsible
       var groups = {};
       var order = [];
       pagesFor(state.view).forEach(function (page) {
@@ -176,7 +182,8 @@
         if (!groups[g]) { groups[g] = []; order.push(g); }
         groups[g].push(page);
       });
-      order.sort().reverse().forEach(function (g) {
+      (state.view === "idea" ? order : order.sort().reverse()).forEach(function (g) {
+        if (!groups[g]) return;
         var gid = "navgrp-" + state.view + "-" + g;
         var activeInside = groups[g].some(function (p) { return p.id === state.pageId; });
         html.push('<div class="nav-group' + (activeInside ? " open" : "") + '">');
@@ -274,8 +281,8 @@
     var sections = scopeSections();
     var info = scopeInfo();
     var scopeTitle = state.pageId === "all"
-      ? (state.view === "daily" ? "全部日报" : state.view === "domains" ? "全部领域" : "全部会议")
-      : (info && info.title) || (pagesFor(state.view).filter(function (p) { return p.id === state.pageId; })[0] || {}).title || state.pageId;
+      ? (state.view === "daily" ? "全部日报" : state.view === "domains" ? "全部领域" : state.view === "idea" ? "阅读想法" : "全部会议")
+      : (info && info.title) || state.pageId;
     var multiLeaf = state.view === "domains" && (state.pageId === "all" || (info && info.kind === "group"));
 
     state.queue = [];
@@ -357,9 +364,7 @@
         var was = !!state.starred[id];
         if (was) delete state.starred[id]; else state.starred[id] = 1;
         saveStore("interested", state.starred);
-        ensureLive(); // first ★ ever pops the one-time save dialog
         // record the board context where the star was toggled
-        state.starEvents = state.starEvents || [];
         state.starEvents.push({
           ts: new Date().toISOString(),
           id: id,
@@ -371,8 +376,7 @@
         saveStore("starEvents", state.starEvents.slice(-2000));
         card.classList.toggle("starred", !!state.starred[id]);
         star.textContent = state.starred[id] ? "★" : "☆";
-        if (live.collector) collectorSend();
-        else liveWrite();
+        collectorSend(); // local server mode: straight to tools/out/starred-live.json
         if (state.starredOnly && !state.starred[id]) render();
       });
     });
@@ -384,6 +388,49 @@
         render();
       });
     });
+  }
+
+  /* ---------- preference recording ---------- */
+
+  /* Local-server mode: when served by tools/serve_reader.py, every star
+   * toggle POSTs a snapshot (with view/page context) to /api/stars, which
+   * persists to tools/out/starred-live.json for the assistant to read.
+   * On GitHub Pages (no collector) stars stay in localStorage, review-only. */
+  var live = { collector: false };
+
+  function starredRecords() {
+    var rows = [];
+    Object.keys(state.starred).forEach(function (id) {
+      var paper = papers[id] || {};
+      rows.push({
+        id: id,
+        title: paper.title || id,
+        venue: paper.venue || "",
+        keywords: paper.keywords || [],
+        date: paper.date || "",
+      });
+    });
+    rows.sort(function (a, b) { return a.id < b.id ? -1 : 1; });
+    return rows;
+  }
+
+  function collectorSend() {
+    if (!live.collector) return;
+    try {
+      fetch("/api/stars", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ starred: starredRecords(), events: (state.starEvents || []).slice(-2000) }),
+      }).catch(function () {});
+    } catch (e) { /* transport errors are non-fatal */ }
+  }
+
+  function probeCollector() {
+    try {
+      fetch("/api/ping").then(function (r) {
+        live.collector = !!(r && r.ok);
+      }).catch(function () { live.collector = false; });
+    } catch (e) { live.collector = false; }
   }
 
   /* ---------- events ---------- */
@@ -414,213 +461,6 @@
     el.starredToggle.classList.toggle("on", state.starredOnly);
     el.starredToggle.textContent = state.starredOnly ? "★ 只看收藏" : "☆ 只看收藏";
     render();
-  });
-
-  /* ---------- starred export / import (preference recording) ---------- */
-
-  /* live recording: File System Access API — the first ★ click pops the
-   * save dialog once (browser-mandated); after that single confirmation every
-   * star toggle auto-writes the JSON snapshot (with view/section context).
-   * Chromium-only; silent localStorage fallback elsewhere. */
-  var live = { handle: null, timer: null, asked: false, collector: false };
-
-  function liveSupported() {
-    return typeof window.showSaveFilePicker === "function";
-  }
-
-  function collectorSend() {
-    if (!live.collector) return;
-    try {
-      fetch("/api/stars", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ starred: starredRecords(), events: (state.starEvents || []).slice(-2000) }),
-      }).catch(function () {});
-    } catch (e) { /* transport errors are non-fatal */ }
-  }
-
-  function probeCollector() {
-    try {
-      fetch("/api/ping").then(function (r) {
-        live.collector = !!(r && r.ok);
-      }).catch(function () { live.collector = false; });
-    } catch (e) { live.collector = false; }
-  }
-
-  function ensureLive() {
-    if (live.collector || live.handle || !liveSupported() || live.asked || loadStore("liveDeclined", false)) {
-      return;
-    }
-    live.asked = true;
-    window.showSaveFilePicker({
-      suggestedName: "star-live.json",
-      types: [{ description: "JSON", accept: { "application/json": [".json"] } }],
-    }).then(function (handle) {
-      live.handle = handle;
-      idbSet("starfile", handle);
-      toast("已开启实时记录：收藏将自动写入 starred-live.json");
-      return liveWriteNow();
-    }).catch(function (e) {
-      if (e && e.name === "AbortError") saveStore("liveDeclined", true); // user declined; don't nag
-    });
-  }
-
-  function idbOpen() {
-    return new Promise(function (resolve, reject) {
-      var req = indexedDB.open("reader-prefs", 1);
-      req.onupgradeneeded = function () { req.result.createObjectStore("handles"); };
-      req.onsuccess = function () { resolve(req.result); };
-      req.onerror = function () { reject(req.error); };
-    });
-  }
-
-  function idbSet(key, value) {
-    return idbOpen().then(function (db) {
-      return new Promise(function (resolve, reject) {
-        var tx = db.transaction("handles", "readwrite");
-        tx.objectStore("handles").put(value, key);
-        tx.oncomplete = function () { resolve(); };
-        tx.onerror = function () { reject(tx.error); };
-      });
-    });
-  }
-
-  function idbGet(key) {
-    return idbOpen().then(function (db) {
-      return new Promise(function (resolve, reject) {
-        var tx = db.transaction("handles", "readonly");
-        var req = tx.objectStore("handles").get(key);
-        req.onsuccess = function () { resolve(req.result || null); };
-        req.onerror = function () { reject(req.error); };
-      });
-    });
-  }
-
-  function livePayload() {
-    return {
-      updated: new Date().toISOString(),
-      count: Object.keys(state.starred).length,
-      starred: starredRecords(),
-      events: (state.starEvents || []).slice(-2000),
-    };
-  }
-
-  function liveWriteNow() {
-    if (!live.handle) return Promise.resolve();
-    return live.handle.createWritable().then(function (w) {
-      return w.write(JSON.stringify(livePayload(), null, 1)).then(function () { return w.close(); });
-    }).catch(function (e) {
-      setLiveUi(false);
-      toast("实时记录中断：" + (e && e.message ? e.message : e));
-    });
-  }
-
-  function liveWrite() {
-    if (!live.handle) return;
-    clearTimeout(live.timer);
-    live.timer = setTimeout(liveWriteNow, 600);
-  }
-
-  function restoreLive() {
-    if (!liveSupported()) return;
-    idbGet("starfile").then(function (handle) {
-      if (!handle) return;
-      return handle.queryPermission({ mode: "readwrite" }).then(function (perm) {
-        if (perm === "granted") {
-          live.handle = handle;
-          setLiveUi(true);
-        } else {
-          // permission needs a user gesture; arm a one-shot re-grant on first click
-          var rearm = function () {
-            handle.requestPermission({ mode: "readwrite" }).then(function (p) {
-              if (p === "granted") { live.handle = handle; setLiveUi(true); liveWriteNow(); }
-            });
-            document.removeEventListener("click", rearm);
-          };
-          document.addEventListener("click", rearm);
-        }
-      });
-    }).catch(function () {});
-  }
-
-  function starredRecords() {
-    var rows = [];
-    Object.keys(state.starred).forEach(function (id) {
-      var paper = papers[id] || {};
-      rows.push({
-        id: id,
-        title: paper.title || id,
-        venue: paper.venue || "",
-        keywords: paper.keywords || [],
-        date: paper.date || "",
-      });
-    });
-    rows.sort(function (a, b) { return a.id < b.id ? -1 : 1; });
-    return rows;
-  }
-
-  function toast(msg) {
-    var note = el.statsNote;
-    if (!note) return;
-    var old = note.textContent;
-    note.textContent = msg;
-    setTimeout(function () { note.textContent = old; }, 2600);
-  }
-
-  el.starExport.addEventListener("click", function () {
-    var payload = {
-      exported: new Date().toISOString().slice(0, 10),
-      count: Object.keys(state.starred).length,
-      starred: starredRecords(),
-    };
-    var blob = new Blob([JSON.stringify(payload, null, 1)], { type: "application/json" });
-    var url = URL.createObjectURL(blob);
-    var a = document.createElement("a");
-    a.href = url;
-    a.download = "starred-papers-" + payload.exported + ".json";
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    URL.revokeObjectURL(url);
-    toast("已导出 " + payload.count + " 条收藏到 JSON 文件");
-  });
-
-  el.starCopy.addEventListener("click", function () {
-    var lines = starredRecords().map(function (r) {
-      return r.id + " | " + r.title + (r.venue ? " | " + r.venue : "");
-    });
-    var text = lines.length ? lines.join("\n") : "（暂无收藏）";
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(function () {
-        toast("已复制 " + lines.length + " 条收藏，可直接粘贴");
-      }, function () { toast("复制失败，请用导出"); });
-    } else {
-      toast("浏览器不支持剪贴板，请用导出");
-    }
-  });
-
-  el.starImport.addEventListener("click", function () { el.starImportFile.click(); });
-  el.starImportFile.addEventListener("change", function () {
-    var file = el.starImportFile.files && el.starImportFile.files[0];
-    if (!file) return;
-    var reader = new FileReader();
-    reader.onload = function () {
-      try {
-        var data = JSON.parse(reader.result);
-        var list = data.starred || data;
-        var added = 0;
-        (Array.isArray(list) ? list : []).forEach(function (r) {
-          if (r && r.id && !state.starred[r.id]) { state.starred[r.id] = 1; added++; }
-        });
-        saveStore("interested", state.starred);
-        toast("导入完成：新增 " + added + " 条收藏");
-        render();
-      } catch (e) {
-        toast("导入失败：文件不是合法 JSON");
-      }
-    };
-    reader.readAsText(file);
-    el.starImportFile.value = "";
   });
 
   function setTheme(theme) {
@@ -654,7 +494,10 @@
   state.theme = loadStore("theme", null) || (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
   setTheme(state.theme);
   probeCollector(); // local server mode: star events POST straight to tools/out/starred-live.json
-  restoreLive();
+  // hide view tabs that have no data in this build (e.g. idea on the public site)
+  Array.prototype.forEach.call(el.viewTabs.querySelectorAll("[data-view]"), function (btn) {
+    if (!viewData(btn.getAttribute("data-view")).length) btn.hidden = true;
+  });
   renderNav();
   render();
 })();

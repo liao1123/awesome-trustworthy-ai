@@ -19,7 +19,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 READER = ROOT / "reader"
-STARS = ROOT / "tools" / "out" / "starred-live.json"
+STARS = Path(__file__).resolve().parent / "starred-live.json"
+LOCAL_DATA = Path(__file__).resolve().parent / "data"  # reader/build.py --local output (includes idea/)
 
 CONTENT_TYPES = {
     ".html": "text/html; charset=utf-8",
@@ -50,6 +51,12 @@ class Handler(BaseHTTPRequestHandler):
             return
         if path == "/":
             path = "/index.html"
+        # prefer the local-only dataset (idea/ included) when present
+        if path == "/data/papers.js":
+            local = LOCAL_DATA / "papers.js"
+            if local.is_file():
+                self._send(200, local.read_bytes(), "application/javascript; charset=utf-8")
+                return
         target = (READER / path.lstrip("/")).resolve()
         if not str(target).startswith(str(READER)) or not target.is_file():
             self._send(404, b"not found", "text/plain; charset=utf-8")
@@ -83,7 +90,7 @@ def main() -> int:
     port = int(sys.argv[1]) if len(sys.argv) > 1 else 8765
     server = ThreadingHTTPServer(("127.0.0.1", port), Handler)
     print(f"reader + star collector on http://127.0.0.1:{port} "
-          f"(stars -> {STARS.relative_to(ROOT)})", flush=True)
+          f"(stars -> {STARS})", flush=True)
     server.serve_forever()
     return 0
 
