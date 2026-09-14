@@ -367,3 +367,23 @@ Deep search agents tackle challenging questions through long-horizon web interac
 Search-augmented LLM agents are increasingly used for consumer decisions, making them vulnerable to Generative Engine Optimization (GEO) poisoning. Existing benchmarks largely measure whether manipulated content is retrieved or endorsed, but do not track whether an agent verifies suspicious evidence, revises adopted claims, or recovers before producing its final recommendation. We introduce HAE-GEO, a benchmark that tracks the full trajectory from exposure to recovery under progressively more persuasive Web poisoning. Agents interact via a multi-turn Search-Scrape interface across three attack levels (L1 direct assertion, L2 contextual camouflage, and L3 apparent corroboration), supported by a controlled corpus of 72,039 clean pages and 770 poisoned pages per level spanning 8 product categories and 154 brands. Evaluation combines deterministic behavioral measures with six semantic rubric dimensions. Evaluating 10 agents, we find three recurring patterns: evidence recognition degrades under the corroboration trap; agentic search improves final resistance without improving evidence recognition or utility; and defense prompting increases verification, yet rarely converts verification into recovery.
 
 </details>
+
+### 20. Agent-Fence: Mapping Security Vulnerabilities Across Deep Research Agents
+
+📄 [arXiv](https://arxiv.org/abs/2602.07652) · 🎓 [Official](https://ojs.aaai.org/index.php/AAAI-SS/article/view/42945)　📅 2026-02　🏷 AAAI-SS 2026
+
+**关键词**：`benchmark`、`deep research agent security`、`trust-boundary taxonomy`、`denial of wallet`、`MSBR`
+
+👤 **作者**：Sai Puppala、Ismail Hossain、Md Jahangir Alam、Yoonpyo Lee、Jay Yoo、Tanzim Ahad、Syed Bahauddin Alam、Sajedul Talukder
+
+- 🎯 **研究动机**：LLM 以自主 agent 形态部署后，安全失效从单条不安全文本转移到多步轨迹（规划、持久状态、外部工具调用），而既有评测多聚焦 prompt 层攻击，缺少对 deep research agent 架构级安全边界的系统测绘。
+- 🔬 **研究方法**：AgentFence 定义 14 类信任边界攻击（覆盖 planning、memory、retrieval、tool use、delegation），以 trace-auditable conversation breaks（未授权工具使用、错误主体动作、状态/目标完整性违反、攻击关联偏移）检测失效；固定基座模型，在 8 种 agent 架构原型（LangGraph 到 AutoGPT）下做持久多轮交互测试，报告平均安全破坏率 MSBR 与失效构成。
+- 📌 **结论**：MSBR 随架构差异巨大（LangGraph 0.29±0.04 到 AutoGPT 0.51±0.07）；风险最高的全是运营类——**Denial-of-Wallet 0.62±0.08**、Authorization Confusion 0.54、Retrieval Poisoning 0.47、Planning Manipulation 0.44，而 prompt 类攻击在标准设定下低于 0.20；边界违反主导失效构成（SIV 31%、WPA 27%、UTI+UTA 24%），授权混淆与目标劫持相关 ρ≈0.63——把 agent 安全重新定义为"是否随时间保持在目标与授权包络内"。
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+As LLMs are increasingly deployed as autonomous agents that plan, maintain persistent state, and invoke external tools, security failures shift from unsafe single outputs to unsafe multi-step trajectories. Existing evaluations largely focus on prompt-centric attacks, leaving the architectural trust boundaries of deep research agents unmapped. We present AgentFence, an architecture-focused security evaluation comprising 14 trust-boundary attack classes spanning planning, memory, retrieval, tool use, and delegation. Failures are detected via trace-auditable conversation breaks: unauthorized or unsafe tool use, wrong-principal actions, state and objective integrity violations, and attack-linked deviations. Holding the base model fixed, we evaluate eight agent archetypes under persistent multi-turn interaction. Mean security break rate (MSBR) varies widely by architecture, from 0.29 +/- 0.04 (LangGraph) to 0.51 +/- 0.07 (AutoGPT). The highest-risk classes are operational: Denial-of-Wallet (0.62 +/- 0.08), Authorization Confusion (0.54 +/- 0.10), Retrieval Poisoning (0.47 +/- 0.09), and Planning Manipulation (0.44 +/- 0.11); prompt-centric classes remain below 0.20 under standard settings. Boundary violations dominate the break composition (SIV 31%, WPA 27%, UTI+UTA 24%, ATD 18%), and authorization confusion correlates with objective hijacking (rho ~= 0.63) and tool hijacking (rho ~= 0.58). Our results reframe agent security around whether an agent remains within its goal and authority envelope over time.
+
+</details>
+

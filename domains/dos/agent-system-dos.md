@@ -355,3 +355,23 @@ Large Language Model (LLM)-based agents have demonstrated remarkable capabilitie
 Sponge attacks increasingly threaten LLM systems by inducing excessive computation and DoS. Existing defenses either rely on statistical filters that fail on semantically meaningful attacks or use static LLM-based detectors that struggle to adapt as attack strategies evolve. We introduce SHIELD, a multi-agent, auto-healing defense framework centered on a three-stage Defense Agent that integrates semantic similarity retrieval, pattern matching, and LLM-based reasoning. Two auxiliary agents, a Knowledge Updating Agent and a Prompt Optimization Agent, form a closed self-healing loop, when an attack bypasses detection, the system updates an evolving knowledgebase, and refines defense instructions. Extensive experiments show that SHIELD consistently outperforms perplexity-based and standalone LLM defenses, achieving high F1 scores across both non-semantic and semantic sponge attacks, demonstrating the effectiveness of agentic self-healing against evolving resource-exhaustion threats.
 
 </details>
+
+### 19. Agent-Fence: Mapping Security Vulnerabilities Across Deep Research Agents
+
+📄 [arXiv](https://arxiv.org/abs/2602.07652) · 🎓 [Official](https://ojs.aaai.org/index.php/AAAI-SS/article/view/42945)　📅 2026-02　🏷 AAAI-SS 2026
+
+**关键词**：`benchmark`、`deep research agent security`、`trust-boundary taxonomy`、`denial of wallet`、`MSBR`
+
+👤 **作者**：Sai Puppala、Ismail Hossain、Md Jahangir Alam、Yoonpyo Lee、Jay Yoo、Tanzim Ahad、Syed Bahauddin Alam、Sajedul Talukder
+
+- 🎯 **研究动机**：LLM 以自主 agent 形态部署后，安全失效从单条不安全文本转移到多步轨迹（规划、持久状态、外部工具调用），而既有评测多聚焦 prompt 层攻击，缺少对 deep research agent 架构级安全边界的系统测绘。
+- 🔬 **研究方法**：AgentFence 定义 14 类信任边界攻击（覆盖 planning、memory、retrieval、tool use、delegation），以 trace-auditable conversation breaks（未授权工具使用、错误主体动作、状态/目标完整性违反、攻击关联偏移）检测失效；固定基座模型，在 8 种 agent 架构原型（LangGraph 到 AutoGPT）下做持久多轮交互测试，报告平均安全破坏率 MSBR 与失效构成。
+- 📌 **结论**：MSBR 随架构差异巨大（LangGraph 0.29±0.04 到 AutoGPT 0.51±0.07）；风险最高的全是运营类——**Denial-of-Wallet 0.62±0.08**、Authorization Confusion 0.54、Retrieval Poisoning 0.47、Planning Manipulation 0.44，而 prompt 类攻击在标准设定下低于 0.20；边界违反主导失效构成（SIV 31%、WPA 27%、UTI+UTA 24%），授权混淆与目标劫持相关 ρ≈0.63——把 agent 安全重新定义为"是否随时间保持在目标与授权包络内"。
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+As LLMs are increasingly deployed as autonomous agents that plan, maintain persistent state, and invoke external tools, security failures shift from unsafe single outputs to unsafe multi-step trajectories. Existing evaluations largely focus on prompt-centric attacks, leaving the architectural trust boundaries of deep research agents unmapped. We present AgentFence, an architecture-focused security evaluation comprising 14 trust-boundary attack classes spanning planning, memory, retrieval, tool use, and delegation. Failures are detected via trace-auditable conversation breaks: unauthorized or unsafe tool use, wrong-principal actions, state and objective integrity violations, and attack-linked deviations. Holding the base model fixed, we evaluate eight agent archetypes under persistent multi-turn interaction. Mean security break rate (MSBR) varies widely by architecture, from 0.29 +/- 0.04 (LangGraph) to 0.51 +/- 0.07 (AutoGPT). The highest-risk classes are operational: Denial-of-Wallet (0.62 +/- 0.08), Authorization Confusion (0.54 +/- 0.10), Retrieval Poisoning (0.47 +/- 0.09), and Planning Manipulation (0.44 +/- 0.11); prompt-centric classes remain below 0.20 under standard settings. Boundary violations dominate the break composition (SIV 31%, WPA 27%, UTI+UTA 24%, ATD 18%), and authorization confusion correlates with objective hijacking (rho ~= 0.63) and tool hijacking (rho ~= 0.58). Our results reframe agent security around whether an agent remains within its goal and authority envelope over time.
+
+</details>
+
