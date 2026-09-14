@@ -119,7 +119,7 @@ def main() -> None:
             if item.get("authors"):
                 lines += [f"👤 **发布方**：{item['authors']}", ""]
             parts = []
-            for icon, label, field in (("🎯", "动态", "motivation"), ("🔬", "内容", "method"), ("📌", "要点", "conclusion")):
+            for icon, label, field in (("🎯", "背景与动因", "motivation"), ("🔬", "内容与举措", "method"), ("📌", "意义与要点", "conclusion")):
                 if item.get(field):
                     parts.append(f"- {icon} **{label}**：{item[field]}")
             if parts:
