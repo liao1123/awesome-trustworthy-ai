@@ -25,7 +25,7 @@ daily/
 1. **抓取**：arXiv 官方 `new` 页面，9 个分类（`cs.AI`、`cs.CL`、`cs.CR`、`cs.CV`、`cs.HC`、`cs.IR`、`cs.LG`、`cs.MA`、`cs.RO`）及其 cross-list。代码负责网络 IO 与解析；元数据优先走 arXiv API，被限流（429）时直接从列表页 HTML 解析（标题/作者/摘要齐全）。
 2. **去重**：跨分类去重 + 排除本月日报已收录的 arXiv ID。
 3. **筛选（核心步骤，由模型完成）**：**全部候选的标题+摘要首段逐篇过目判定，不设标题关键词准入门槛**；关键词列表只作辅助分桶，不做准入。一篇论文的判定输出：核心收录（强匹配；水印类不进核心）/ 常规收录（中等或带威胁模型的条件主题）/ 扩展视野 / 排除（仅硬排除项）。
-4. **排序**：`## 核心收录（P1）` → `## 核心收录（P2）` → `## 扩展视野（P3）` 三段渲染，末尾附 `## 大厂动态（Blog）` 第四板块：扫描 OpenAI/Anthropic/DeepMind/Meta AI/Microsoft Research 等厂商官方博客的近期安全/对齐/能力发布（网页可达性受限时用检索工具补齐），条目存 `website/tools/out/daily_MMDD_blog.json`，卡片以 🌐 Official 链接为主、无 arXiv 摘要块；段内按相关度排列。偏好星标只用于校准排序，绝不收缩收录范围。
+4. **排序**：`## 核心收录` → `## 大厂动态（Blog）` → `## 常规收录` → `## 扩展视野` 四段渲染（不用 P1-P3 标志，纯标题）；全文档连续编号；大厂动态为第二板块：**只收采集窗口内的当日新闻**——每周周一收集时窗口 = 周六/周日/周一三天，平时 = 当天；来源为厂商官方发布（博客/X）、新闻报道与 X 热门 AI 安全讨论；每条必须核实实际日期且落在窗口内（旧闻/无日期不收，窗口内没有则省略板块，不硬凑）；条目存 `website/tools/out/daily_MMDD_blog.json`，卡片以 🌐 链接为主、📝 三段式（背景与动因/内容与举措/意义与要点）、📅 精确到日。偏好星标只用于校准排序，绝不收缩收录范围。
 5. **合成**：`python3 website/tools/compose_daily.py <日期>`（筛选判定落盘 `website/tools/out/daily_out_MMDD/`，每篇含 include/exclude 与理由，可抽查）；今日概括写入 `website/tools/out/daily_MMDD_summary.txt`。
 6. **验证部署**：`website/tools/lint_format.py` → `website/reader/build.py` → `website/tools/deploy_site.sh` → commit/push。
 
