@@ -37,3 +37,11 @@ __pycache__/
 
 # local-only site (server, idea-inclusive data, preference log) — never pushed
 /website/local/
+
+# local deep-reading notes — never pushed
+/notes/
+
+# DeepPaperNote run artifacts
+/tmp/
+/DeepPaperNote_output/
+/skills-lock.json
