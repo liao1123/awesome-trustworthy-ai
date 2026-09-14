@@ -138,12 +138,13 @@ def main() -> None:
 - 今日概括：{summary}
 
 """ + "".join(
-        f"## {band_title}\n\n" + "\n\n".join(
+        (f"## {band_title}\n\n" + "\n\n".join(
             cards[i] for i, (_, v, _) in enumerate(included) if v.get("priority") == pri
-        ) + "\n\n"
+        ) + "\n\n")
+        + (blog_section if pri == 1 else "")  # 大厂动态紧随 P1（第二板块）
         for pri, band_title in BANDS
         if any(v.get("priority") == pri for _, v, _ in included)
-    ) + blog_section
+    )
     (ROOT / "daily" / "2026-09" / f"{DATE}.md").write_text(text, encoding="utf-8")
     from collections import Counter
     pr = Counter(v.get("priority") for _, v, _ in included)
