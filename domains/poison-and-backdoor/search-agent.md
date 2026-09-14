@@ -387,3 +387,21 @@ As LLMs are increasingly deployed as autonomous agents that plan, maintain persi
 
 </details>
 
+### 21. Iris: Climbing to the Search Frontier
+
+📄 [arXiv](https://arxiv.org/abs/2609.04304)　📅 2026-09
+
+**关键词**：`analysis`、`search agent`、`SFT-RL climbing`、`multi-hop question construction`、`capability baseline`
+
+👤 **作者**：Ziyuan Liu、Hengqi Liu、Zichuan Wang、…
+
+- 🎯 **研究动机**：搜索 agent 的能力前沿受限于任务构造质量与训练管线——现有多跳问答可被字符串匹配破解线索、闭书可答，无法逼出真实检索与推理；同时推理时上下文管理对这些基准的影响常大于系统间报告差异。
+- 🔬 **研究方法**：Iris-mini（35B-A3B）与 Iris-pro（397B-A17B）两个搜索 agent：任务从 web 语料超链接结构反向构造——在种子页出链实体图上编写多跳链，把非答案实体改写为描述性引用使线索无法字符串匹配，只保留闭书失败但给证据即解的问题；轨迹经轨迹级+轮级双重过滤后 SFT，再对 live search 做 RL（reward judge 与 observation summarizer 部署在训练集群内，超长 rollout 请求级中断并从已提交前缀续跑）；两阶段交替的 SFT-RL climbing 把每轮 RL 中最难解出与最高效的 rollout 回馈下一轮监督；评测固定工具集/上下文上限/judge，每组基准在有/无推理时上下文管理下各测一次。
+- 📌 **结论**：给出可复现的搜索 agent 数据管线与训练配方，并在受控对照下分离上下文管理对基准分数的贡献——作为搜索 agent 安全研究（GEO 投毒、注入、劫持）的对象底座与能力基线。
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+We present Iris-mini and Iris-pro, two search agents trained at the 35B-A3B and 397B-A17B scales, together with the data pipeline and training recipe behind them. Tasks are reverse-constructed from the hyperlink structure of a web corpus: we author multi-hop chains over an entity graph distilled from a seed page and its out-links, rewrite every non-answer entity into a descriptive reference so that no clue can be resolved by string matching, and admit only questions that a reference model fails closed-book yet solves once the supporting evidence is supplied. These questions are then turned into trajectories, which are filtered at both the trajectory and the turn level before SFT. The policy is then optimized by RL against live search, with the reward judge and the observation summarizer served inside the training cluster, and with over-long rollouts interrupted at the request level and resumed from their committed prefix at the next step. We alternate the two stages in a procedure we call SFT-RL climbing, returning the hardest solved and most efficient rollouts of each RL round to the next supervised pass. Because inference-time context management is worth more on these benchmarks than most reported differences between systems, we evaluate every benchmark both with and without it, holding the tool set, the context limit, and the judge fixed.
+
+</details>
