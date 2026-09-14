@@ -16,6 +16,5 @@
 | [提示注入](prompt-injection.md) | 直接与间接提示注入、跨应用传播、攻击评测和缓解方法。 |
 | [奖励作弊](reward-hacking.md) | 模型或 Agent 利用奖励函数、评测器和训练信号漏洞实现表面高分。 |
 | [Sycophancy 与 Social Influence](sycophancy-and-social-influence.md) | 迎合、persuasion、belief manipulation、排序操纵及其检测、机制与缓解。 |
-| [模型能力札记](model-capability.md) | 大厂/大组旗舰能力论文（scaling、蒸馏、架构、技术报告），安全研究的对象底座；仅收点名/星标论文。 |
 | [视觉鲁棒性](visual-robustness.md) | 利用视觉错觉、排版和伪装文字绕过内容审核的攻击、评测与防御；排除一般视觉感知和非对抗鲁棒性。 |
 | [隐写与隐蔽信道](steganography.md) | 模型间隐蔽通信、编码协议、检测方法和隐写安全评测。 |
