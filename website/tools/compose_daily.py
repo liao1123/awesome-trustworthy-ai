@@ -112,8 +112,8 @@ def main() -> None:
     blog_path = OUT / f"daily_{TAG}_blog.json"
     blog_cards = []
     if blog_path.exists():
-        for item in json.loads(blog_path.read_text(encoding="utf-8")):
-            lines = [f"### {item['title']}", "", f"🌐 [Official]({item['url']})　📅 {item['date']}", ""]
+        for bn, item in enumerate(json.loads(blog_path.read_text(encoding="utf-8")), len(included) + 1):
+            lines = [f"### {bn}. {item['title']}", "", f"🌐 [Official]({item['url']})　📅 {item['date']}", ""]
             if item.get("keywords"):
                 lines += ["**关键词**：" + "、".join(f"`{k}`" for k in item["keywords"]), ""]
             if item.get("authors"):
