@@ -8,11 +8,11 @@ import re
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "tools" / "out"
+ROOT = Path(__file__).resolve().parents[2]
+OUT = ROOT / "website" / "tools" / "out"
 DATE = sys.argv[1] if len(sys.argv) > 1 else "2026-09-09"
 TAG = DATE[5:].replace("-", "")  # e.g. 0909
-WEEKDAY = {"2026-09-09": "星期三", "2026-09-10": "星期四", "2026-09-11": "星期五"}.get(DATE, "")
+WEEKDAY = {"2026-09-09": "星期三", "2026-09-10": "星期四", "2026-09-11": "星期五", "2026-09-14": "星期一"}.get(DATE, "")
 
 LINK_RE = re.compile(r"(https://(?:github\.com/[\w.\-/]+|huggingface\.co/[\w.\-/]+|gitlab\.com/[\w.\-/]+|github\.io/[\w.\-/]+))", re.I)
 
@@ -53,6 +53,7 @@ STATS = {
     "0909": {"dedup": 2234, "fresh": 2224, "new2609": 1446, "screened": 210},
     "0910": {"dedup": 752, "fresh": 748, "new2609": 527, "screened": 74},
     "0911": {"dedup": 764, "fresh": 761, "new2609": 532, "screened": 65},
+    "0914": {"dedup": 732, "fresh": 725, "new2609": 518, "screened": 79},
 }
 
 
