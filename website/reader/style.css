@@ -307,14 +307,6 @@ h3.section-title {
   font-weight: 700;
 }
 
-/* daily 板块引导栏 */
-.band-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 12px 0 0;
-}
-.band-nav button {
   border: 1px solid var(--border, #d0d7de);
   background: var(--card, #f6f8fa);
   color: var(--text, #1f2328);

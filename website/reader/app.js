@@ -200,6 +200,19 @@
         html.push("</div></div>");
       });
     }
+    // 板块导航：选中具体日报页时，在日期列表下方单独列出该日各板块
+    if (state.view === "daily" && state.pageId !== "all") {
+      var day = viewData("daily").filter(function (p) { return p.id === state.pageId; })[0];
+      if (day && (day.sections || []).length > 1) {
+        html.push('<div class="nav-group open"><div class="nav-group-header"><span class="chev">▾</span>板块</div>');
+        html.push('<div class="nav-group-items">');
+        day.sections.forEach(function (sec, i) {
+          html.push('<button class="nav-item" data-band="' + i + '">' + escapeHtml(sec.title) +
+            ' <span class="nav-count">' + sec.papers.length + "</span></button>");
+        });
+        html.push("</div></div>");
+      }
+    }
     el.navTree.innerHTML = html.join("");
     Array.prototype.forEach.call(el.navTree.querySelectorAll("[data-page]"), function (btn) {
       btn.addEventListener("click", function () {
@@ -207,6 +220,16 @@
         renderNav();
         render();
         window.scrollTo({ top: 0 });
+      });
+    });
+    Array.prototype.forEach.call(el.navTree.querySelectorAll("[data-band]"), function (btn) {
+      btn.addEventListener("click", function () {
+        var target = null, guard = 0;
+        while (!target && guard < 500) {  // 懒加载未渲染的板块则先渲染
+          target = document.getElementById("band-sec-" + btn.getAttribute("data-band"));
+          if (!target) { renderMore(); guard++; }
+        }
+        if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
       });
     });
     Array.prototype.forEach.call(el.navTree.querySelectorAll("[data-toggle]"), function (btn) {
@@ -301,33 +324,13 @@
       }
     });
 
-    // 板块引导栏：选中具体日报页时按 state.queue 生成可点击锚点
-    var bandNav = "";
-    if (state.view === "daily" && state.pageId !== "all" && state.queue.length > 1) {
-      bandNav = '<div class="band-nav">' + state.queue.map(function (sec, i) {
-        return '<button data-band="' + i + '">' + escapeHtml(sec.title) +
-          '<span class="nav-count">' + sec.papers.length + "</span></button>";
-      }).join("") + "</div>";
-    }
-
     el.scopeHeader.innerHTML =
       '<h1>' + escapeHtml(scopeTitle || "") + "</h1>" +
       (info && info.kind === "leaf" && info.group ? '<p class="scope-crumb">' + escapeHtml(info.group) + " ›</p>" : "") +
       (info && info.desc ? '<p class="scope-desc">' + escapeHtml(info.desc) + "</p>" : "") +
       '<p class="scope-meta">' + total + " 篇" +
       (state.search ? " · 搜索 “" + escapeHtml(state.search) + "”" : "") +
-      (state.starredOnly ? " · 只看收藏" : "") + "</p>" + bandNav;
-
-    Array.prototype.forEach.call(el.scopeHeader.querySelectorAll("[data-band]"), function (btn) {
-      btn.addEventListener("click", function () {
-        var target = null, guard = 0;
-        while (!target && guard < 500) {  // 懒加载未渲染的板块则先渲染
-          target = document.getElementById("band-sec-" + btn.getAttribute("data-band"));
-          if (!target) { renderMore(); guard++; }
-        }
-        if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-    });
+      (state.starredOnly ? " · 只看收藏" : "") + "</p>";
 
     el.cards.innerHTML = "";
     state.rendered = 0;
