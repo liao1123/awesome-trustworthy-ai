@@ -200,13 +200,18 @@
         html.push("</div></div>");
       });
     }
-    // 板块导航：选中具体日报页时，在日期列表下方单独列出该日各板块
-    if (state.view === "daily" && state.pageId !== "all") {
-      var day = viewData("daily").filter(function (p) { return p.id === state.pageId; })[0];
-      if (day && (day.sections || []).length > 1) {
+    // 板块导航：选中具体日报页或领域叶子页时，在列表下方单独列出该页各板块
+    if (state.pageId !== "all") {
+      var page = null;
+      if (state.view === "daily") {
+        page = viewData("daily").filter(function (p) { return p.id === state.pageId; })[0];
+      } else if (state.view === "domains") {
+        page = pagesFor("domains").filter(function (p) { return p.id === state.pageId; })[0];
+      }
+      if (page && (page.sections || []).length > 1) {
         html.push('<div class="nav-group open"><div class="nav-group-header"><span class="chev">▾</span>板块</div>');
         html.push('<div class="nav-group-items">');
-        day.sections.forEach(function (sec, i) {
+        page.sections.forEach(function (sec, i) {
           html.push('<button class="nav-item" data-band="' + i + '">' + escapeHtml(sec.title) +
             ' <span class="nav-count">' + sec.papers.length + "</span></button>");
         });
