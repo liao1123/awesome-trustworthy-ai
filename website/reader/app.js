@@ -12,7 +12,7 @@
   var PAGE = 40;
 
   var state = {
-    view: "domains",
+    view: "daily",
     pageId: "all",
     search: "",
     starredOnly: false,
