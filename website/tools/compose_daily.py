@@ -107,6 +107,26 @@ def main() -> None:
     s = STATS[TAG]
     summary_path = OUT / f"daily_{TAG}_summary.txt"
     summary = summary_path.read_text(encoding="utf-8").strip() if summary_path.exists() else "（见下方按优先级排列的论文列表）"
+
+    # 第四板块：大厂动态（Blog）——来自 daily_{TAG}_blog.json
+    blog_path = OUT / f"daily_{TAG}_blog.json"
+    blog_cards = []
+    if blog_path.exists():
+        for item in json.loads(blog_path.read_text(encoding="utf-8")):
+            lines = [f"### {item['title']}", "", f"🌐 [Official]({item['url']})　📅 {item['date']}", ""]
+            if item.get("keywords"):
+                lines += ["**关键词**：" + "、".join(f"`{k}`" for k in item["keywords"]), ""]
+            if item.get("authors"):
+                lines += [f"👤 **发布方**：{item['authors']}", ""]
+            parts = []
+            for icon, label, field in (("🎯", "动态", "motivation"), ("🔬", "内容", "method"), ("📌", "要点", "conclusion")):
+                if item.get(field):
+                    parts.append(f"- {icon} **{label}**：{item[field]}")
+            if parts:
+                lines += parts + [""]
+            blog_cards.append("\n".join(lines).rstrip())
+    blog_section = (f"## 大厂动态（Blog）\n\n" + "\n\n".join(blog_cards) + "\n\n") if blog_cards else ""
+
     text = f"""# {DATE} arXiv AI Safety Daily
 
 ## 检索信息
@@ -123,7 +143,7 @@ def main() -> None:
         ) + "\n\n"
         for pri, band_title in BANDS
         if any(v.get("priority") == pri for _, v, _ in included)
-    )
+    ) + blog_section
     (ROOT / "daily" / "2026-09" / f"{DATE}.md").write_text(text, encoding="utf-8")
     from collections import Counter
     pr = Counter(v.get("priority") for _, v, _ in included)
