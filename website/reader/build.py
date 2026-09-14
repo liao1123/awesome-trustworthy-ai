@@ -27,8 +27,9 @@ H2 = re.compile(r"^##\s+(.+?)\s*$")
 NUMBERED = re.compile(r"^(\d+)\.\s+(.*)$")
 KEYWORDS_LINE = re.compile(r"^\*\*关键词\*\*[：:]\s*(.+)$")
 AUTHORS_LINE = re.compile(r"^👤\s*\*\*作者\*\*[：:]\s*(.+)$")
-SUMMARY_LINE = re.compile(r"^-\s*[🎯🔬📌]\s*\*\*(研究动机|研究方法|结论)\*\*[：:]\s*(.*)$")
-SUMMARY_KEYS = {"研究动机": "motivation", "研究方法": "method", "结论": "conclusion"}
+SUMMARY_LINE = re.compile(r"^-\s*[🎯🔬📌]\s*\*\*(研究动机|研究方法|结论|背景与动因|内容与举措|意义与要点)\*\*[：:]\s*(.*)$")
+SUMMARY_KEYS = {"研究动机": "motivation", "研究方法": "method", "结论": "conclusion",
+               "背景与动因": "motivation", "内容与举措": "method", "意义与要点": "conclusion"}
 LINK = re.compile(r"(?:[\U0001F300-\U0001FAFF☀-➿]\s*)?\[([^\]]+)\]\((https?://[^)\s]+)\)")
 DATE_BADGE = re.compile(r"📅\s*(\d{4}(?:-\d{2})?)")
 VENUE_BADGE = re.compile(r"🏷\s*([^\s　]+(?:\s+\d{4})?)")
