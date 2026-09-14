@@ -157,7 +157,7 @@ Retrieval-Augmented Generation (RAG) integrates Large Language Models (LLMs) wit
 
 ### 9. CODE: A Contradiction-Based Deliberation Extension Framework for Overthinking Attacks on Retrieval-Augmented Generation
 
-📄 [arXiv](https://arxiv.org/abs/2601.13112)　📅 2026-01
+📄 [arXiv](https://arxiv.org/abs/2601.13112) · 📝 [中文解读](https://mp.weixin.qq.com/s/JYFQU6YHRLn8POtqUzuC4w)　📅 2026-01
 
 **关键词**：`attack`、`RAG DoS`、`overthinking attack`、`context poisoning`
 
