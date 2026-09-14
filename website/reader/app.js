@@ -285,10 +285,11 @@
     var abstract = paper.abstract
       ? '<details class="abstract"><summary>▸ 展开完整英文摘要（Abstract）</summary><p>' + escapeHtml(paper.abstract) + "</p></details>"
       : "";
+    var starBtn = paper.blog ? "" :
+      '<button class="star" title="收藏" aria-label="收藏">' + (starred ? "★" : "☆") + "</button>";
     return (
       '<article class="card' + (starred ? " starred" : "") + '" data-id="' + escapeHtml(paper.id) + '">' +
-      '<div class="card-head">' + titleHtml +
-      '<button class="star" title="收藏" aria-label="收藏">' + (starred ? "★" : "☆") + "</button></div>" +
+      '<div class="card-head">' + titleHtml + starBtn + "</div>" +
       badgeHtml(paper) +
       (kwHtml ? '<div class="keywords">' + kwHtml + "</div>" : "") +
       (authors ? '<div class="authors">👤 ' + escapeHtml(authors) + "</div>" : "") +

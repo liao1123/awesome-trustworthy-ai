@@ -197,8 +197,11 @@ def collect() -> dict:
 
     def register(entry: dict) -> str:
         pid = paper_id(entry)
+        has_arxiv = any(l["type"].lower() == "arxiv" for l in entry["links"])
+        has_official = any(l["type"].lower() in ("official", "🌐") for l in entry["links"])
         record = {
             "id": pid,
+            "blog": (not has_arxiv and has_official),
             "title": entry["title"],
             "links": entry["links"],
             "date": entry.get("date", ""),

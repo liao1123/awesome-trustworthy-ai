@@ -75,7 +75,7 @@ def main() -> None:
 
     # order: priority asc, then pid
     included.sort(key=lambda t: (t[1].get("priority", 3), t[0]))
-    BANDS = [(1, "核心收录"), ("blog", "大厂动态（Blog）"), (2, "常规收录"), (3, "扩展视野")]
+    BANDS = [("blog", "大厂动态（Blog）"), (1, "核心收录"), (2, "常规收录"), (3, "扩展视野")]
 
     cards = []
     for n, (pid, v, m) in enumerate(included, 1):
@@ -138,7 +138,7 @@ def main() -> None:
 - 今日概括：{summary}
 
 """
-    # 按文档顺序（核心→Blog→常规→扩展）统一连续编号
+    # 按文档顺序（Blog→核心→常规→扩展）统一连续编号
     segments = []
     counter = 0
     for key, band_title in BANDS:
