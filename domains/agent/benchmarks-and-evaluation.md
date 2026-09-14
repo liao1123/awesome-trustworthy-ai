@@ -794,3 +794,22 @@ Agentic systems are rapidly moving to production, where they read untrusted inpu
 As large language models are increasingly deployed as tool-augmented legal agents, they introduce agentic hallucinations where tool-call and reasoning errors cascade into fabricated holdings and miscited authority. However, existing legal benchmarks evaluate only single-turn QA with outcome-level metrics, while agentic hallucination benchmarks lack legal-specific diagnostic capability. Neither answers to what extent and how a legal agent hallucinates along its trajectory. To address these limitations, we introduce LexAgentHallu, a legal agentic hallucination benchmark designed to evaluate to what extent and how legal agents fail along multi-step trajectories. Built through a four-stage expert-in-the-loop pipeline, LexAgentHallu contains 3414 instances across 17 legal categories and 6 task types. Each instance is annotated under a dual-layer hallucination taxonomy of 7 high-level categories and 27 fine-grained subclasses, covering both substantive errors and agent-procedural failures. We further design fine-grained metrics that quantify to what extent and localize how each failure occurs along an agent's execution path. Our evaluation across 18 proprietary and open-source agents uncovers a Right-Answer-Wrong-Reason effect and reveals that hallucination subclasses cluster rather than scatter, forming distinct agentic framework, legal task, and category profiles. These findings, invisible to outcome-level evaluation, validate the diagnostic power of LexAgentHallu for evaluating agentic hallucination in law.
 
 </details>
+
+### 42. DuMateBench: Evaluating Autonomous Agents in Complex Real-World Workflows
+
+📄 [arXiv](https://arxiv.org/abs/2608.26546)　📅 2026-08
+
+**关键词**：`benchmark`、`real-session benchmark`、`production agent`、`environmental complexity`、`capability coordination`
+
+👤 **作者**：Zechun Niu、…（生产 agent 平台团队）
+
+- 🎯 **研究动机**：自主 agent 越来越多地承担真实多工具工作流，但现有 benchmark 按应用或能力分任务、在比实践更干净稳定的环境中评测，无法反映生产就绪度。
+- 🔬 **研究方法**：DuMateBench 从大规模生产 agent 平台的匿名化脱敏用户会话重建任务：保留求解前交互历史、持久配置与工作区状态并经人工验证；200 个任务覆盖 8 场景、17 细粒度能力类，多数需多能力协调；在隔离 Docker 容器中注入 Insufficient/Unstable/Noisy 三种真实环境复杂性，用确定性+LLM-as-Judge 混合协议评分；5 个自主 agent 框架 × 4 个 SOTA LLM 实验。
+- 📌 **结论**：真实条件下性能显著退化、能力协调缺口巨大——为 agent 生产部署就绪度提供更忠实的度量。
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Autonomous agents are increasingly adopted to complete complex, multi-tool workflows in real-world settings. However, existing benchmarks typically separate tasks by application or capability and evaluate agents in environments that are cleaner and more stable than those encountered in practice. We introduce DuMateBench, a real-session benchmark reconstructed from anonymized and privacy-screened user sessions collected from a large-scale production agent platform. Each task preserves the relevant pre-solution interaction history, persistent configurations, and workspace state, and is then validated through human verification. The resulting benchmark comprises 200 tasks spanning 8 broad scenarios and 17 fine-grained capability categories, with most tasks requiring multiple capability coordination. We execute these tasks in isolated Docker containers injected with three forms of real-world environmental complexity: Insufficient, Unstable, and Noisy, and assess performance using a hybrid deterministic and LLM-as-Judge evaluation protocol. Experiments across five representative autonomous-agent frameworks paired with four state-of-the-art LLMs reveal substantial performance degradation under realistic conditions and large capability-coordination gaps, offering a more faithful measure of agent readiness for production deployment.
+
+</details>

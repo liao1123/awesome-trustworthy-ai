@@ -671,3 +671,22 @@ Repository-grounded retrieval-augmented code generation (RACG) is increasingly u
 Watermarking the final patch produced by a coding agent provides provenance evidence for the submitted artifact, but does not authenticate the visible process that produced it. Behavioral watermarking methods primarily provide a global detection or identifier-recovery signal, so a locally edited trajectory may retain sufficient ownership evidence without revealing which protected region has become inconsistent. To address this limitation, we propose TrajMark, a training-free, symmetric-key, visible-only trajectory watermarking framework that separates robust ownership attribution from fragile local integrity verification. Our framework consists of two complementary layers: a sparse owner layer that encodes a six-bit deployment identifier by rewriting a keyed subset of naturally occurring READ actions into masked linear equations, and a localization layer that inserts linked Q12 ordinary, group, and terminal seals to commit to protected critical-action segments. This separation allows ownership evidence to accumulate robustly across trajectories, while local modifications perturb nearby keyed commitments and expose the affected protocol region. We further provide a design-level analysis of owner recoverability, integrity collision probability, structural overhead, and localization behavior. Across three coding-agent frameworks and three LLMs, TrajMark recovers the exact owner in all evaluated clean full-watermark batches. Under exhaustive eligible single-site attacks it detects 95.5%-100% of edits, and under random single-action corruption it localizes 95.8% of modified sites to an accepted protocol region rather than to the individual action. Owner marking adds no trajectory actions; the integrity layer adds explicit read-only seals, and matched Pass@1 is 26.9% versus 26.3% for unwatermarked runs.
 
 </details>
+
+### 36. Tencent WorkBuddy Bench: A Multi-Domain Coding-Agent Benchmark with Contamination-Resistant Task Construction
+
+📄 [arXiv](https://arxiv.org/abs/2607.20911)　📅 2026-07
+
+**关键词**：`benchmark`、`coding agent`、`contamination-resistant`、`red/blue-team security`、`real commit reverse-engineering`
+
+👤 **作者**：Tencent WorkBuddy Bench Team
+
+- 🎯 **研究动机**：coding agent 基准多改编自公开 issue 文本，prompt 可被网络搜索恢复导致数据污染，且单一工程域无法覆盖真实工作的多域组合。
+- 🔬 **研究方法**：WorkBuddy Bench 覆盖 Code/Web/Office/Security 四域：每个任务从真实 commit、PR 或业务场景反向工程并改写为口语化角色扮演请求，使 prompt 无法经搜索还原；任务目录、环境镜像、评测 harness、测试与参考方案全部开放，抗污染靠构造方式+数据集版本控制而非保密；四子集含仓库级工程、前端开发、办公业务流与红蓝队安全，各配独立验证方式。
+- 📌 **结论**：统一任务目录格式+逐任务 Docker 环境+自动评分，附跨模型 leaderboard——工业级、可开放复现的 coding agent 评测套件（含安全攻防子集）。
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+We introduce Tencent WorkBuddy Bench, a multi-domain evaluation suite for coding agents; this report documents its construction methodology, scoring protocol, and a cross-model leaderboard. At its core is a unified evaluation framework for constructing and running distribution-informed coding-agent tasks across four work domains - Code, Web, Office, and Security. Rather than adapting public issue text, every task is reverse-engineered from a real commit, pull request, or business scenario and rewritten as a short, colloquial, role-played request, so that a task's prompt is not recoverable by web-searching the underlying issue, pull request, or commit thread. Because the dataset is released openly - task directories, environment images, evaluation harness, tests, and reference solutions - contamination resistance rests on this construction together with dataset versioning rather than on secrecy. The four subsets - repository-level engineering, front-end development, office and business workflows, and red-/blue-team security - probe complementary facets of real work, each with its own verification style. All are packaged in a uniform task-directory format with per-task Docker environments and automated scoring.
+
+</details>
