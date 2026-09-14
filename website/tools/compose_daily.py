@@ -75,7 +75,7 @@ def main() -> None:
 
     # order: priority asc, then pid
     included.sort(key=lambda t: (t[1].get("priority", 3), t[0]))
-    BANDS = [(1, "核心收录（P1）"), (2, "核心收录（P2）"), (3, "扩展视野（P3）")]
+    BANDS = [(1, "核心收录"), ("blog", "大厂动态（Blog）"), (2, "常规收录"), (3, "扩展视野")]
 
     cards = []
     for n, (pid, v, m) in enumerate(included, 1):
@@ -112,8 +112,8 @@ def main() -> None:
     blog_path = OUT / f"daily_{TAG}_blog.json"
     blog_cards = []
     if blog_path.exists():
-        for bn, item in enumerate(json.loads(blog_path.read_text(encoding="utf-8")), len(included) + 1):
-            lines = [f"### {bn}. {item['title']}", "", f"🌐 [Official]({item['url']})　📅 {item['date']}", ""]
+        for item in json.loads(blog_path.read_text(encoding="utf-8")):
+            lines = ["### 0. " + item['title'], "", f"🌐 [Official]({item['url']})　📅 {item['date']}", ""]
             if item.get("keywords"):
                 lines += ["**关键词**：" + "、".join(f"`{k}`" for k in item["keywords"]), ""]
             if item.get("authors"):
@@ -137,14 +137,23 @@ def main() -> None:
 - 最终收录：{len(included)} 篇
 - 今日概括：{summary}
 
-""" + "".join(
-        (f"## {band_title}\n\n" + "\n\n".join(
-            cards[i] for i, (_, v, _) in enumerate(included) if v.get("priority") == pri
-        ) + "\n\n")
-        + (blog_section if pri == 1 else "")  # 大厂动态紧随 P1（第二板块）
-        for pri, band_title in BANDS
-        if any(v.get("priority") == pri for _, v, _ in included)
-    )
+"""
+    # 按文档顺序（核心→Blog→常规→扩展）统一连续编号
+    segments = []
+    counter = 0
+    for key, band_title in BANDS:
+        if key == "blog":
+            band_cards = blog_cards
+        else:
+            band_cards = [cards[i] for i, (_, v, _) in enumerate(included) if v.get("priority") == key]
+        if not band_cards:
+            continue
+        numbered = []
+        for card in band_cards:
+            counter += 1
+            numbered.append(re.sub(r"^### \d+\.", f"### {counter}.", card))
+        segments.append(f"## {band_title}\n\n" + "\n\n".join(numbered) + "\n\n")
+    text += "".join(segments)
     (ROOT / "daily" / "2026-09" / f"{DATE}.md").write_text(text, encoding="utf-8")
     from collections import Counter
     pr = Counter(v.get("priority") for _, v, _ in included)

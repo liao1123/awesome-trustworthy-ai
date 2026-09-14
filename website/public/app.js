@@ -301,13 +301,33 @@
       }
     });
 
+    // 板块引导栏：选中具体日报页时按 state.queue 生成可点击锚点
+    var bandNav = "";
+    if (state.view === "daily" && state.pageId !== "all" && state.queue.length > 1) {
+      bandNav = '<div class="band-nav">' + state.queue.map(function (sec, i) {
+        return '<button data-band="' + i + '">' + escapeHtml(sec.title) +
+          '<span class="nav-count">' + sec.papers.length + "</span></button>";
+      }).join("") + "</div>";
+    }
+
     el.scopeHeader.innerHTML =
       '<h1>' + escapeHtml(scopeTitle || "") + "</h1>" +
       (info && info.kind === "leaf" && info.group ? '<p class="scope-crumb">' + escapeHtml(info.group) + " ›</p>" : "") +
       (info && info.desc ? '<p class="scope-desc">' + escapeHtml(info.desc) + "</p>" : "") +
       '<p class="scope-meta">' + total + " 篇" +
       (state.search ? " · 搜索 “" + escapeHtml(state.search) + "”" : "") +
-      (state.starredOnly ? " · 只看收藏" : "") + "</p>";
+      (state.starredOnly ? " · 只看收藏" : "") + "</p>" + bandNav;
+
+    Array.prototype.forEach.call(el.scopeHeader.querySelectorAll("[data-band]"), function (btn) {
+      btn.addEventListener("click", function () {
+        var target = null, guard = 0;
+        while (!target && guard < 500) {  // 懒加载未渲染的板块则先渲染
+          target = document.getElementById("band-sec-" + btn.getAttribute("data-band"));
+          if (!target) { renderMore(); guard++; }
+        }
+        if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
 
     el.cards.innerHTML = "";
     state.rendered = 0;
@@ -333,7 +353,7 @@
           html.push('<h2 class="leaf-title">' + escapeHtml(section.leafHeader.title) +
             '<span class="section-count">' + leafCount + "</span></h2>");
         }
-        html.push('<h3 class="section-title">' + escapeHtml(section.title) +
+        html.push('<h3 class="section-title" id="band-sec-' + s + '">' + escapeHtml(section.title) +
           '<span class="section-count">' + section.papers.length + "</span></h3>");
         section.opened = true;
       }
