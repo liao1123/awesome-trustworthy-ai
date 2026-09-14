@@ -1606,3 +1606,24 @@ We study machine unlearning in large generative models by framing the task as de
 Large Language Model (LLM) unlearning aims to suppress target knowledge while preserving general capabilities. In multilingual settings, unlearning must additionally propagate within its intended linguistic scope. However, existing evaluations mainly measure cross-lingual transfer and cannot distinguish insufficient from excessive propagation. We introduce CLLPU (Cross-Lingual and Language-Bound Protocol for LLM Unlearning), a multilingual benchmark that formulates this problem through two settings: common-goal forgetting, where target knowledge should be suppressed across all languages, and language-conditioned forgetting, where suppression should remain confined to a designated language. CLLPU combines goal-guided topic pairing, schema-aware relation matching, and dual-anchor multilingual translation to construct 800 matched knowledge-unit pairs and 72,000 QA instances across ten languages. Experiments with six representative methods on Llama-3.1-8B-Instruct reveal opposite failure modes: forgetting remains incomplete when universal suppression is required, yet spreads beyond the intended boundary when language-conditioned confinement is required. We further find that general multilingual utility can conceal damage to neighbor knowledge. These findings establish propagation control as a central challenge for multilingual LLM unlearning. We publicly release CLLPU together with its construction pipeline.
 
 </details>
+
+### 87. K-Bench: A Benchmark for LLM Unlearning in Agentic Deployments
+
+📄 [arXiv](https://arxiv.org/abs/2609.12808)　📅 2026-09
+
+**关键词**：`benchmark`、`agentic unlearning`、`multi-channel leakage`、`refusal vs forgetting`
+
+👤 **作者**：Guangsheng Yu、Yanna Jiang、Qin Wang、Baihe Ma、Xu Wang
+
+- 🎯 **研究动机**：TOFU/MUSE 等 unlearning 基准以模型最终答案判定遗忘、拒答即算已忘，但该模型级证书部署为 agent 后是否迁移从未被检验——agent 的 CoT、工具调用、工具观察与总结都是泄漏通道
+- 🔬 **研究方法**：K-Bench 检查 ReAct agent 暴露的全部六个通道（含 CoT、工具调用、工具观察与引出的总结）；把秘密分别置于权重、prompt 或检索库三种来源之一，K-Score 分源计分且要求 agent 保持可用才记为遗忘，任何通道出现秘密即判泄漏
+- 📌 **结论**：清空答案通道不等于不可恢复：秘密在结构化检索库时原文留在工具观察通道、总泄漏率不变；秘密在 prompt/检索库时 TOFU/MUSE 报零泄漏而部署 agent 仍在 22-86% 查询中泄漏；秘密在权重时 20 个已发表方法无一可证移除，仅输入扰动干预达到选择性遗忘，且方法排名随基座模型改变
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Unlearning benchmarks such as TOFU and MUSE certify forgetting by reading the model's final answer, where a model that refuses to answer already counts as having forgotten. We show that this model-level certificate does not transfer once the model is deployed as an agent. We introduce K-Bench, a benchmark that scores LLM unlearning under agentic deployment. K-Bench inspects all six channels a ReAct agent exposes, including its chain-of-thought (CoT), tool calls and tool observations, and elicited summary. A query counts as leaked if the secret appears in any of them. Each experiment places the secret in exactly one of the agent's three sources (the weights, the prompt, or the retrieval store). The K-Score is computed separately for each source and credits forgetting only when the agent remains usable. Clearing the answer channel does not make the secret unrecoverable. On structured retrieval, the secret stays verbatim in the tool-observation channel and the aggregate leak rate is unchanged. When the secret lives in the prompt or the retrieval store, TOFU and MUSE report no leakage, while the deployed agent still leaks it on 22--86\% of queries. When the secret is in the weights, none of the twenty evaluated published methods demonstrably removes it, and only an input-corruption intervention reaches selective forgetting under the evaluated observer. The top-ranked method changes across base models. A refusal-tuning method resists the evaluated extraction without verified knowledge removal.
+
+</details>
+
+## 常规收录

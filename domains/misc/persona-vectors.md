@@ -252,3 +252,22 @@ Long-term memory enables large language model (LLM) agents to support personaliz
 Detecting misalignment in large language models is challenging because models may learn to conceal misbehavior during training. Standard auditing techniques fall short: black-box methods often cannot distinguish misaligned outputs from benign ones, and mechanistic interpretability does not scale with model capabilities. We introduce Split Personality Training (SPT), which fine-tunes a second ``honest persona'' into LoRA parameters that remain inactive during normal operation. After the main model responds, we activate the LoRA adapter and insert a trigger string, enabling the honest persona to review the response while accessing the main model's latent states. We test our method on the Anthropic Auditing Game Model Organism, a benchmark where Llama-3.3-70B is trained to exploit reward hacks while concealing this behavior. SPT achieves 96% overall accuracy, whereas Anthropic reports near 0% accuracy. The honest persona reveals latent knowledge inaccessible to external observers, such as the fictional biases the compromised model was trained on.
 
 </details>
+
+### 14. Toward Robust Personalized Alignment for LLMs: Mitigating Persona Drift in Multi-Turn Dialogue
+
+📄 [arXiv](https://arxiv.org/abs/2609.12373)　📅 2026-09
+
+**关键词**：`defense`、`persona drift`、`belief revision`、`social influence`
+
+👤 **作者**：Youyuan Zhang、Siyuan Li、Fangming Liu、Jing Li
+
+- 🎯 **研究动机**：个性化 LLM 的人格漂移是中心难题：用户画像在长交互中演化而非固定——模型需在偏好真变时修订持久 persona 态，同时避免被瞬态、歧义或未解决的观察驱动更新
+- 🔬 **研究方法**：提出 CORE：分离轮内证据与持久 persona 态修订，经不确定性感知的信念修订只更新有接地的用户偏好；同时发布 PERSIST——锚定后的 persona 态健壮性留出基准，覆盖歧义、冲突与受控社会影响三类时序压力；在 ALOE、PersonaChat 与 PERSIST 上评测，辅以人工评估与机制控制
+- 📌 **结论**：CORE 提升个性化对齐与 persona 态健壮性，并在归一化闭槽状态保真上取得互补增益；机制控制支持「显式更新控制」优于更强生成或仅更强持久记忆
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Persona drift remains a central challenge for personalized language models, as user profiles evolve over long interactions rather than remain permanently fixed. Models must therefore revise persistent persona states when preferences genuinely change, while avoiding updates driven by transient, ambiguous, or unresolved observations. We propose CORE, which separates turn-local evidence from persistent persona-state revision and selectively updates grounded user preferences through uncertainty-aware belief revision. We also introduce PERSIST, a held-out post-anchor benchmark for persona-state robustness under sequential interaction stress, covering ambiguity, conflict, and controlled social influence. Across ALOE, PersonaChat, and PERSIST, CORE improves personalized alignment and robustness, with complementary gains in normalized closed-slot state fidelity. Human evaluation and mechanistic controls further support explicit update control beyond stronger generation or persistent memory alone.
+
+</details>

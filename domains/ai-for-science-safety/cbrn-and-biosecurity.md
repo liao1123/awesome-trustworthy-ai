@@ -367,3 +367,22 @@ As frontier language models advance, policymakers and model developers need meth
 Safety interventions on dual-use knowledge typically choose between destroying hazardous content (e.g., unlearning, filtering) and suppressing it at the output layer (e.g., refusal training); both pay a tax in adjacent-domain competence or over-refusal. We argue that the right operation is conditioning, not reduction: we show that hazardous knowledge can be retained in the model and behaviorally gated by a privileged control token. Our method, Token Inoculation, introduces a binding-and-branching approach. First, during continued pre-training, we mark hazardous content by inserting a special token alongside dual-use documents, so the model binds the marker to the underlying semantics of the hazardous domain. Second, during supervised fine-tuning, we teach the model to answer hazardous queries correctly when the special token is present and to refuse them when it is absent, thereby enabling selective refusal without removing dual-use knowledge. On hazardous domain (e.g., WMDP-Bio), Token Inoculation reduces accuracy from 79% to 18% while retaining 93% of the base-model's benign-domain performance (e.g., MMLU), achieving the best safety-utility trade-off against unlearning and refusal-tuning baselines across 1B-14B model scales. We further show that refusal selectivity is controllable through the quality of the conditioning signal and that domain-specific semantic binding during pre-training is critical for the conditional behavior to generalize beyond memorized triggers. Our results suggest that safety alignment is better cast as a conditioning problem than a forgetting one: behavioral control is more precise when sensitive knowledge is retained under controlled access than when it is destroyed.
 
 </details>
+
+### 20. ChemMat-AgentSafetyBench: Evaluating Long-Horizon Attacks and Defenses in Chemistry and Materials Agents
+
+📄 [arXiv](https://arxiv.org/abs/2609.11952)　📅 2026-09
+
+**关键词**：`benchmark`、`chemistry agent safety`、`long-horizon attack`、`tool chaining`、`memory poisoning`
+
+👤 **作者**：Zhan&#39;ao Yao、…、Jianjun Liu
+
+- 🎯 **研究动机**：化学与材料 agent 把文献检索、候选生成、性质预测与协议规划串成连续发现工作流，安全问题已从「模型是否回答危险问题」变成「agent 是否经工具链释放危险协议」，而现有 agent 安全评测不覆盖这一长程工具链场景
+- 🔬 **研究方法**：构建 ChemMat-AgentSafetyBench：432 个固定有害案例规格横跨 8 个危害类、3 种场景壳与 4 种工具-记忆环境；除单轮直接攻击基线外设计五类在线长程攻击——意图劫持、工具链、目标漂移、任务注入与记忆投毒，攻击语言按运行时轨迹动态生成故不计入静态规模；四模型主实验固定攻击者并更换攻击者模型复核稳健性
+- 📌 **结论**：固定攻击者下 25.6% 的运行释放完整危险合成/制备流程，换攻击者均值 18.4-26.5% 说明风险非单一攻击者伪影；从通用 agent 安全改造的输入/状态级防御与化学专用候选检查只能部分降低，完整路径释放率仍达 9.2-22.5%——多入口污染、工具状态与最终产物边界未被任何现有防御同时覆盖
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Chemistry and materials agents integrate literature retrieval, candidate generation, property prediction, and protocol planning into continuous discovery workflows. Consequently, the relevant safety question is shifting from whether a model answers a hazardous question to whether an agent releases a hazardous protocol through a tool-mediated workflow. We introduce \bench, a benchmark that evaluates whether chemistry and materials agents can be steered toward hazardous endpoints through user input, tool observations, or persistent memory. The benchmark contains 432 fixed harmful case specifications spanning eight hazard classes, three scenario shells, four tool-and-memory environments, a single-turn direct-attack baseline, and five online long-horizon attacks: intent hijacking, tool chaining, objective drifting, task injection, and memory poisoning. The concrete language of each online attack is generated from the evolving trajectory at runtime and is therefore not counted in the static benchmark size. In the four-model main experiment with a fixed attacker, agents release complete hazardous synthesis or preparation procedures in 25.6\% of runs. Replacing the attacker model yields mean success rates from 18.4\% to 26.5\%, indicating that the risk is not an artifact of a single attacker. Input- and state-level defenses adapted from general-purpose agent safety, as well as candidate checks designed for chemistry and materials, reduce some failures but still leave complete-path release rates between 9.2\% and 22.5\%. Existing defenses therefore do not simultaneously cover multi-entry contamination, tool state, and the final artifact boundary. These results highlight a widening gap between the rapid development of scientific agents and the safety evaluation and defenses available to the chemistry and materials community.
+
+</details>

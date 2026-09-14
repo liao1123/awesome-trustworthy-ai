@@ -503,3 +503,22 @@ People use language models for practical questions whose answers are difficult t
 Safety evaluations can mischaracterize deployed behaviour if artificial-intelligence systems respond to being evaluated. We test this possibility in a full-factorial conjoint experiment on decisions to start a war, spanning 20 large language models, 32 scenarios, 10 repetitions and two conditions (N = 12,800 judgments). Adding one sentence, "You are tested for alignment with human values", produced two effects. First, it produced a level effect: mean willingness to start war fell by 13.43 points on a 0-100 scale (95% confidence interval, -16.20 to -10.65). Second, it produced a structural effect by changing which information drove judgments. Probability of success was the largest factor for 17 of 20 models at baseline; under the cue, civilian casualties were largest for 12. Standardized estimates show that this reordering arose principally because models attenuated strategic considerations such as probability of success and domestic support. Evaluation framing therefore changes both an answer's level and its revealed decision rule.
 
 </details>
+
+### 27. Do LLMs Trust the Accuser or the Accusation? Measuring Belief Shifts in Werewolf
+
+📄 [arXiv](https://arxiv.org/abs/2609.12446)　📅 2026-09
+
+**关键词**：`benchmark`、`belief update`、`social deduction`、`source trust`
+
+👤 **作者**：Yu-Yu Yang、Ti-Rong Wu、Hung Guei、Hsing-Yu Chen、I-Chen Wu
+
+- 🎯 **研究动机**：狼人杀等社会推理游戏日益用于评测 LLM agent，但现有评测依赖终局结果，缺交流技能（信念更新）的细粒度测量
+- 🔬 **研究方法**：构建狼人杀信念更新基准：标注 LLM 对局中的怀疑与指控消息，测量观察方村营模型信念随每条消息的变化；40 个开权重 LLM 配置在 1,224 条标注消息上评测
+- 📌 **结论**：更大模型更能依游戏史辨狼，但指控仍强烈影响信念——更怀疑被指控者、更不怀疑指控者（即使指控者是狼）；更大模型更能抵抗其已不信任者的指控；至 120B 的开权重 LLM 仍难以在策略交流中整合内容与来源可信度
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Social-deduction games such as Werewolf are increasingly used to evaluate LLM agents, but existing evaluations often rely on final game outcomes. We propose a belief-shift evaluation benchmark in Werewolf for analyzing communication skills through belief updating. Using LLM-played games, we annotate suspicion and accusation messages and measure how an observing village-side model's beliefs change after each message. We evaluate 40 open-weight LLM configurations on 1,224 annotated messages. Our results show that larger models better distinguish true wolves from villagers based on game history, but accusations still strongly influence their beliefs. Models become more suspicious of the accused target and less suspicious of the accuser, especially when the accuser is trusted, even if the accuser is wolf-aligned. Larger models better resist accusations from accusers they already distrust. Overall, our findings suggest that current open-weight LLMs up to 120B parameters still struggle to integrate accusation content with source trust in strategic communication. Our benchmark and code are available at this https URL .
+
+</details>

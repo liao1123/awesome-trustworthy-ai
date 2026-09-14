@@ -489,3 +489,22 @@ We study subliminal learning, a surprising phenomenon where language models tran
 Beyond intended capabilities, model distillation can transfer hidden traits from a teacher. A teacher biased by a system prompt can generate semantically clean training data, such as numeric sequences, that still causes a downstream student to inherit the hidden preference, a phenomenon known as subliminal learning. Prior work has identified several parts of this process. How the signal builds up during training and produces behavioral transfer remains unclear, making targeted mitigation difficult. We propose and validate trait-direction drift as a mechanism for subliminal learning: biased generation creates measurable preference gaps in teacher data, and student-recognizable gaps induce trait-aligned updates during supervised fine-tuning that accumulate into behavioral transfer. Guided by this mechanism, we propose probe-space corridor regularization, a targeted defense that constrains drift along a calibrated trait direction during distillation. The method substantially reduces hidden-trait transfer, preserving task performance: for example, it lowers malicious-response transfer from 29.55% to 6.45% with low main-task accuracy cost, and consistently suppresses animal-preference transfer across the main Qwen setting. The preference-gap, training-trajectory, and intervention evidence links subliminal learning to trait-direction drift and motivates corridor regularization as a targeted control during distillation.
 
 </details>
+
+### 27. Reproducing and Evaluating the Generalizability of Subliminal Learning in Open-Weight Models
+
+📄 [arXiv](https://arxiv.org/abs/2609.12586)　📅 2026-09
+
+**关键词**：`analysis`、`subliminal learning`、`reproduction study`、`distillation trait transfer`
+
+👤 **作者**：Daan van der Weijden、Nathan Brack、Selene Baez Santamaria
+
+- 🎯 **研究动机**：潜意识学习——蒸馏时教师经语义无关数据传递行为偏好特质——的原始论文在闭源微调不可复现后，其在开权重模型上的普适性未被检验
+- 🔬 **研究方法**：复现原始实验并三轴扩展：新偏好类别（演员、政客）、新任务（国际象棋走子生成）、新增 Ministral8B 模型，另对数字任务的答案空间大小（1/2/3 位序列）做受控消融；全部使用 HuggingFace 可得 checkpoint 的开权重模型
+- 📌 **结论**：复现支持原主张，但扩展表明其非普适——传递强度随特质与任务变化、一个模型几乎无效应；这是边界刻画而非推翻
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+In this reproduction paper we investigate subliminal learning, a consequence of distillation where teacher models transmit behavioral preference traits through semantically unrelated data. The original paper explores two types of traits (animal preferences and misalignment), three data modalities (number sequences, code, and chain of thought), and several model families. We reproduce their experiments and extend the setup along three axes: new preference categories (actors and politicians), a new task (chess move generation), and an additional open-weight model (Ministral8B). We also run a controlled ablation on the numbers task's answer-space size (1-, 2-, and 3-digit sequences). We focus on open-weight models with accessible checkpoints on HuggingFace, since the original paper's GPT-4.x fine-tuning is no longer available. Our reproduction supports the original paper's claims, but our extensions show they are not universal as transmission strength varies across traits and tasks, and one model shows almost no effect at all.
+
+</details>

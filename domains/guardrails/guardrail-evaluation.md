@@ -1255,3 +1255,41 @@ Large language models (LLMs) have been ex- ploited to generate malware, but the 
 Automatic safety judges -- systems such as Llama Guard or a GPT-4o grading prompt that decide whether a model's reply is harmful -- produce the numbers behind almost every reported jailbreak success rate, defense evaluation, and safety leaderboard. We ask whether these judges grade what a reply contains or how it sounds. We keep a reply's content fixed and add content-invariant style wrappers: fixed strings placed before or after the reply that change only its tone (an educational disclaimer, a fake safety "reasoning" block, a token refusal followed by the unchanged harmful body), or, on harmless refusals, framing that merely sounds dangerous. The body is preserved byte-for-byte, so a faithful judge must return the same verdict, and any flip is an error of the judge, not a change in safety. Over 600 JailbreakBench replies x up to 7 forms x 8 judges, we measure flip rates with paired significance tests and measured noise floors. Findings are precise rather than universal: most judges barely move, but specific judges harbor cheaply exploitable blind spots. A token-refusal wrapper flips 19.9% of GPT-4o-mini's correct "unsafe" verdicts (noise floor 0.5%; 18.2% under majority-of-three re-scoring) yet moves Claude only 0.4%. The deployed Llama Guard 4 is deterministically gamed: an "educational course" framing flips 12.3% of its harmful verdicts to safe. A second deployed guard (gpt-oss-safeguard-20b) is immune, and rewriting only the grading prompt (StrongREJECT-style) cuts the attack tenfold on the identical model -- the vulnerability lives in the judge, not the content. A two-annotator human validation confirms 100% content invariance and 90% of flips as judge errors (kappa 0.95-1.0), and a bootstrap shows the underlying model ranking is already unstable to sampling alone. We release the dataset, wrappers, code, and per-verdict labels.
 
 </details>
+
+### 67. Can Foundation Models Moderate Online Content? Evaluating Instruction- vs. Example-Driven Policy Operationalization
+
+📄 [arXiv](https://arxiv.org/abs/2609.10410)　📅 2026-09
+
+**关键词**：`benchmark`、`content moderation`、`policy operationalization`、`VLM`
+
+👤 **作者**：Ayan Majumdar、…、Abhisek Dash
+
+- 🎯 **研究动机**：内容审核策略日益复杂，基础模型能否可靠地把策略操作化是未解问题；指令驱动（从策略条文推理）与示例驱动（从先例泛化）两种 VLM 引导范式缺乏系统比较
+- 🔬 **研究方法**：构建 ModerationBench：来自 Bluesky 平台 4,000 条人工标注的野帖；在统一基准上对比 VLM 按策略 precept 推理与按标注先例泛化两种范式的能力与一致性
+- 📌 **结论**：基础模型大幅超过 Bluesky 在部署的审核系统（Random Posts 上 F1 0.60 vs 0.22，近三倍）；指令与示例驱动达到相当的峰值效果——为大规模可靠、可适应的策略操作化给出路径
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+The growing complexity of content moderation policies presents a critical challenge for their consistent operationalization. While foundation models possess the basic capabilities needed to confront this challenge, whether they can reliably moderate online content remains an unanswered question. In this paper, we systematically compare two competing paradigms for Vision-Language Model (VLM) guidance: an instruction-driven approach where models reason from policy precepts, and an example-driven approach where they generalize from prior precedents. We ground this investigation in ModerationBench, a new benchmark of 4,000 manually annotated, in-the-wild posts from the Bluesky platform. Our experiments reveal that foundation models can substantially outperform Bluesky's deployed moderation system, nearly tripling its $F_1$ score (0.60 vs. 0.22) on Random Posts in the benchmark, with both instruction- and example-driven paradigms achieving comparable peak effectiveness. Our findings thus chart a path toward reliable and adaptable policy operationalization at scale.
+
+</details>
+
+### 68. Can We Trust LLM Judges: A Study of Capability-Dependent Biases and Multi-Judge Ensemble for Bias Calibration
+
+📄 [arXiv](https://arxiv.org/abs/2609.12002)　📅 2026-09
+
+**关键词**：`analysis`、`LLM judge bias`、`capability-dependent leniency`、`label-free ensemble`
+
+👤 **作者**：Gemma Zhang、Prachi Badarayani、Asmi Kumar、Sadid Hasan、Sulaiman Vesal
+
+- 🎯 **研究动机**：LLM 作为自动评委广泛用于训练与评测，但个体评委存在系统性偏差；此前研究集中于 pairwise 设定，更贴近真实使用的绝对打分场景下的能力依赖偏差缺乏系统研究
+- 🔬 **研究方法**：四个基准×六个模型（36 对评委-被评者）实验：发现被评模型的任务准确率强预测其被打分准确率（多数模型 Pearson r≥0.90）并反向预测方向偏差（r≤-0.83）；提出免标签的校准加权多数投票（WMV）——从评委间一致性模式在线估计各评委假阳/假阴率加权聚合，无需真值标签或任务元数据
+- 📌 **结论**：更强的被评模型从所有评委获得更宽松判决（r≥0.83）；任务分布漂移的模拟中免标签 WMV 距掌握完美错误率的 oracle 平均仅 0.5 个百分点，优于现有集成（Philips Research）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+LLMs are increasingly used as automated judges for model training and evaluation, yet individual judges exhibit systematic biases that undermine reliability. Much of prior work has studied biases in pairwise LLM-as-a-judge settings; in this paper, we focus on absolute scoring tasks, which mirror more realistic use cases. Across four benchmarks and six models (36 judge-examinee pairs), we show that a model's task accuracy strongly predicts its judging accuracy (Pearson $r \geq 0.90$ on most models) and inversely predicts its directional bias ($r \leq -0.83$), but that accuracy alone does not ensure fair evaluation: more capable examinee models consistently receive more lenient judgments from all judges ($r \geq 0.83$). To address this, we propose calibrated weighted majority voting (WMV), an ensemble evaluation method that aggregates multiple LLM judges weighted by online estimates of their false-positive and false-negative rates. We introduce a disagreement-based estimator that derives these error rates purely from inter-judge agreement patterns, requiring no ground-truth labels or task metadata. In a simulated experiment with shifting task distributions, our label-free WMV tracks an oracle with perfect error-rate knowledge to within 0.5 percentage points on average, outperforming both individual judges and unweighted majority voting. These results demonstrate that principled multi-judge calibration can simultaneously improve accuracy and correct for systematic leniency without requiring labeled data, offering a scalable path to reliable automated evaluation as model capabilities increase.
+
+</details>

@@ -1531,3 +1531,22 @@ While LLM attacks span prompt optimization, multi-turn context manipulation, ret
 Current LLM safety benchmarks largely rely on binary metrics, overlooking how models respond to harmful prompts with varying threat implicitness. We introduce TIER, a Threat Implicitness Benchmark for behavioral safety evaluation of LLMs. TIER covers four risk domains and four threat levels, from explicit harmful requests to sophisticated jailbreaks. Responses are assessed using a six-label behavior scale and two independent LLM judges. Experiments on six open-weight LLMs show that safety behaviors evolve gradually across threat levels rather than shifting directly from refusal to compliance. Contextual prompts yield the most diverse behaviors, while jailbreaks reveal the largest robustness gaps. Furthermore, models with similar Attack Success Rates can exhibit distinct response distributions, highlighting the need for behavior-aware LLM safety evaluation.
 
 </details>
+
+### 81. SoK: Rethinking Jailbreaking in the Era of Agentic AI: Attacks, Defenses, and Practical Consideration
+
+📄 [arXiv](https://arxiv.org/abs/2609.12413)　📅 2026-09
+
+**关键词**：`survey`、`agentic jailbreak`、`execution-aware defense`、`security-utility tradeoff`
+
+👤 **作者**：Md Jueal Mia、Yanzhao Wu、Selcuk Uluagac、M. Hadi Amini
+
+- 🎯 **研究动机**：LLM 从对话助手演进为会推理、规划、调工具、持记忆、多 agent 通信的 agentic 系统，原生安全对齐也大幅增强；既有越狱攻防结论建立在更早的模型上，哪些仍适用于现代 LLM 与 agentic 场景缺乏系统回答
+- 🔬 **研究方法**：以 SoK 围绕完整 agentic 执行管线重构越狱安全：建立覆盖用户交互、规划推理、记忆、工具使用与 agent 间通信的统一攻防 taxonomy；提出 security-utility-efficiency 评测框架，区分原生有害 prompt 安全、对抗越狱鲁棒性与 agent 级安全结果；并在共同 agentic 框架下对代表性攻防做受控实证
+- 📌 **结论**：三个缺口：强原生对齐不蕴含对抗越狱鲁棒性；防御效果高度依赖模型/攻击/组件且伴随过拒、效用与延迟代价；最终响应的低攻击成功率可掩盖规划、记忆与工具交互的严重中间失守——应从响应中心防御转向跨层执行感知安全
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models (LLMs) are rapidly evolving from conversational assistants into agentic AI systems that reason, plan, invoke tools, maintain persistent memory, communicate with other agents, and execute multi-step tasks. At the same time, modern models exhibit substantially stronger native safety alignment than earlier generations on which many jailbreak attacks and defenses were originally studied. This shift raises a fundamental question: \textit{which established jailbreak-security findings remain valid in the era of modern LLMs and agentic AI?} We address this question through a Systematization of Knowledge (SoK) that reframes jailbreak security around the full agentic execution pipeline. We develop unified taxonomies of attacks and defenses spanning user interaction, planning and reasoning, memory, tool use, and inter-agent communication, and introduce a security--utility--efficiency evaluation framework that separates native harmful-prompt safety, adversarial jailbreak robustness, and agent-level security outcomes. We further conduct a controlled empirical study of representative attacks and defenses within a common agentic framework. Our results reveal three important gaps. First, strong native alignment does not imply robustness to adversarial jailbreaks. Second, defense effectiveness is highly model-, attack-, and component-dependent and can come at substantial cost in over-refusal, utility, and latency. Third, low final-response attack success can mask severe intermediate compromise: planning, memory, and tool interactions may remain unsafe even when the final response is successfully filtered. These findings motivate a shift from response-centric jailbreak defense toward cross-layer, execution-aware security that protects agent state, component transitions, and external actions while preserving practical utility and efficiency.
+
+</details>

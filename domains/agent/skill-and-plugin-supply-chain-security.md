@@ -889,3 +889,22 @@ Agent Skills extend LLM agents with reusable instruction packages that may also 
 Skills for large language model (LLM) agents have been widely deployed across diverse application domains. However, we observe that these skills generate specific traffic patterns during execution. In this paper, we design a pipeline that generates specific traffic patterns by inserting carefully designed skill descriptions, which we term skill watermarks, so that a passive network attacker can establish a covert channel to encode private information within observable traffic across multiple conversation turns. Specifically, we insert prompt constraint terms, referred to as watermarks, into the original skill descriptions and embed them within multi-turn conversations. The key information in the user's original prompt is thereby triggered by these watermarks, producing clearly observable encodings in the traffic. The adversary need only decode the traffic patterns to recover the encoded information. In particular, our modifications are benign in the sense that they do not directly exfiltrate any private data and do not execute any malicious instructions. Extensive experiments demonstrate that our watermarks produce highly consistent and distinguishable traffic patterns, and that the transformed skills pass existing LLM-based security auditing tools. This study highlights that generating specific traffic patterns can be exploited as a novel attack surface and offers critical insights for future security hardening.
 
 </details>
+
+### 47. Scan the Skill, Govern the Action: Composing Registry Verdicts with Runtime Consequence Control
+
+📄 [arXiv](https://arxiv.org/abs/2609.12001)　📅 2026-09
+
+**关键词**：`analysis`、`skill registry governance`、`runtime consequence control`、`supply chain`
+
+👤 **作者**：Rohit Taneja、Travis Weber
+
+- 🎯 **研究动机**：agent skill 注册表靠扫描器把关，但 OpenClaw 安全团队披露其扫描器阳性重叠至多 10.4%、81.9% 被标记 skill 仅被单一扫描器捕获；作者认为问题不在哪个扫描器对，而在问错了问题——扫描器回答「这个 skill 恶意吗」，而非「此操作此刻对该操作者是否被允许」
+- 🔬 **研究方法**：在 66,192 个 ClawHub 公开 skill 版本上做三项测量：705 个被所有扫描器与 registry judge 判干净的 skill 仍指示 CIS Control 2.7 与 NIST SP 800-53 CM-11 禁止的动作（人工审计 100 例精度 92%、未见恶意意图标记、单一发布者贡献 506 个）；追踪 sandbox 中 live agent 按 skill 文档执行的 144 条命令；据此提出组合注册表裁定与运行时后果控制
+- 📌 **结论**：静态扫描与运行时治理应分工：注册表裁决「发布什么」、运行时控制「此刻允许什么」——两者组合才能覆盖 skill 供应链的完整风险面
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Agent skill registries screen what they publish. OpenClaw's security team reported that its scanners overlap on at most 10.4% of combined positives, and 81.9% of flagged skills are caught by one scanner alone. We take that as given, and suggest the open question is not which scanner is right but which is being asked. Each answers a form of &#34;is this skill malicious?&#34;, which is what it was built for. &#34;Is this action permitted here, by this operator, right now?&#34; is not one it is designed to express. We report three measurements over 66,192 public ClawHub skill versions. First, 705 skills across 135 distinct publishers that every scanner and the registry's judge rate clean nonetheless instruct an action prohibited by CIS Control 2.7 and NIST SP 800-53 CM-11. A hand audit of 100 puts our detector at 92% precision and found no marker of malicious intent. One publisher contributes 506 of the 705, so we report the distribution with the count. This is reproducible from public artifacts. Second, of 144 commands a live agent executed in a sandbox while following real skill documentation, 34.7% carried a consequence class absent from that document. Third, over 53 cleared skills documenting an action no clean record earns, the agent reached for one in 23 and the gate stopped all 23. The harness and every recorded command are released. We offer one design for that gap: a deterministic resolver with no model in the decision path, feeding a per-(resource, class) trust ledger whose promotion thresholds derive from the operator's stated risk tolerance. Ten clean approvals cannot exclude a true failure rate of 25.9% at 95% confidence. We price the gate's interruptions across a spectrum of operator policies rather than quote one false-positive rate, since friction is a property of the policy, not the gate. We release a 64-case obfuscation benchmark; ours resolves 52%.
+
+</details>

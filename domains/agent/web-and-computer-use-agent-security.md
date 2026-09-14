@@ -699,3 +699,22 @@ Large foundation models are integrated into Computer Use Agents (CUAs), enabling
 This paper presents an end-to-end evaluation framework for image-triggered command injection against computer-use agents (CUAs). The goal is to test whether a local visual patch can induce verifiable environmental consequences along the full chain of screenshot input, VLM generation, action parsing, and environment execution. We train and deploy patches on author-controlled GitHub Pages pages and a locally deployed CSDN clone, and evaluate them in real environments across five open-source or publicly available GUI-agent or vision-language-model (VLM) backends. Our experiment aggregates 600 instance-level online cases, with T-ASR, TAPR, and E2E-ASR reaching 84.5%, 47.0%, and 20.3%, respectively. Trajectory analysis further shows that in some successful cases the agent first executes a malicious terminal command and then continues the original benign task. These results indicate that optimized local visual signals can affect not only VLM outputs but also propagate through the execution pipeline of open CUAs and create real environmental risk.
 
 </details>
+
+### 37. BlueLM-GUI Technical Report: A Real-Device-Centric Flywheel for Self-Improving Mobile GUI Agents
+
+📄 [arXiv](https://arxiv.org/abs/2609.12394)　📅 2026-09
+
+**关键词**：`tool`、`GUI agent`、`real-device flywheel`、`agentic RL`、`technical report`
+
+👤 **作者**：Tong Ye、…、Xiaoxin Chen
+
+- 🎯 **研究动机**：移动 GUI agent 正从多模块框架转向端到端原生模型，但工业部署面临三大缺口：沙盒训练与生产环境的分布失配、昂贵的真机失败未被利用、固定基准饱和失去指导迭代的能力
+- 🔬 **研究方法**：vivo 发布 35B-A3B 移动 GUI agent，构建真机为中心的飞轮：异质三系统共识评估+纠错推导模块把每条轨迹都变成可用监督（Every Sample Matters）；持续预训练、SFT 与数百台真机上的 agentic RL 三段式训练（Every Rollout Is Real）；配额驱动、三轴正交的基准方法学随模型系统升级（Every Query Evolves）
+- 📌 **结论**：MobileGUI-VBench 87.4（超最强闭源模型 5.1 分）、AndroidWorld 84.9 最佳——一套可复制的工业级 GUI agent 数据-训练-评测闭环（技术报告）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Mobile GUI agents are shifting from multi-module frameworks to native models trained end-to-end, yet industrial deployment faces three persistent gaps. Sandbox training produces a distribution mismatch with production environments; expensive real-device failures remain underutilized; and fixed benchmarks saturate, losing the power to guide iteration. We present BlueLM-GUI, a 35B-A3B mobile GUI agent built as a real-device-centric flywheel that closes these gaps through three principles. Every Sample Matters: a dual-track pipeline with Heterogeneous Triple-System Consensus evaluation and an Error Correction \& Derivation Module salvages every trajectory into usable supervision. Every Rollout Is Real: a three-stage recipe---continual pre-training, supervised fine-tuning, and agentic reinforcement learning on hundreds of real phones---grounds every rollout in real production environments, so the capability the model learns transfers directly to deployment. Every Query Evolves: a quota-driven benchmark methodology with three orthogonal axes enables precise attribution and allows the benchmark to be systematically upgraded as the model improves. BlueLM-GUI achieves 87.4 on MobileGUI-VBench, surpassing the best closed-source model by 5.1 points, and 84.9 on AndroidWorld, the best result among open-source models and competitive with closed-source models. These results demonstrate that grounding model training and iterative improvement in both real devices and the three Every principles yields strong, robust, and transferable mobile GUI capability.
+
+</details>

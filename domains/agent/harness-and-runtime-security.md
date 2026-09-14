@@ -712,3 +712,41 @@ Large Language Model (LLM) agents are increasingly deployed in practice across a
 LLM agents increasingly operate as execution systems that invoke tools, modify local state, use persistent memory, and interact with external protocols. These capabilities make agents useful, but they also introduce risks related to over-privileged actions, weak auditability, prompt injection, tool poisoning, and uncontrolled side effects. This paper presents Agentao, a governed local-first runtime for tool-using LLM agents. Agentao separates model-generated action proposals from host-authorized execution through a layered architecture consisting of host-facing surfaces, a host contract, a runtime core, a permission-mediated tool system, and supporting subsystems for memory, replay, plugins, skills, sub-agents, and protocol integration. We describe the motivation, threat model, design goals, governance model, execution pipeline, and structured event interface of the system. Agentao does not provide formal safety guarantees; rather, it demonstrates how permissions, state, protocol boundaries, and execution traces can be made explicit runtime abstractions for building agents that are more governable, inspectable, and suitable for host-controlled local environments. The code is publicly available at https://github.com/jin-bo/agentao .
 
 </details>
+
+### 38. EvoHarnessBench: Can Your Agents Keep Pace with an Evolving Harness?
+
+📄 [arXiv](https://arxiv.org/abs/2609.04280)　📅 2026-09
+
+**关键词**：`benchmark`、`harness evolution`、`continual agent evaluation`、`non-stationarity`
+
+👤 **作者**：Zixuan Ke、…、Shafiq Joty
+
+- 🎯 **研究动机**：LLM agent 通过 harness（工具、可复用技能、专家 agent）运作，实践中 harness 持续演化——现有持续学习基准把非平稳性放在任务流、保持 harness 固定，agent 能否跟上演化的 harness 未被评测
+- 🔬 **研究方法**：EvoHarnessBench 把非平稳性放在外部供给的 harness 本身：从 verifier 基准确定性构造 17 条多阶段 harness 流（802 任务、520 工具、42 技能、62 agent），沿工具/技能/agent 三轴受控演化；评两种设定——部署评测（harness 扩展时保留既有能力）与自演化适应评测（积累经验是否仍有益）
+- 📌 **结论**：为 harness 演化的两大中心挑战提供首个受控基准（Berkeley 组）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Modern LLM-based agents operate through a harness of tools, reusable skills, and specialist agents that shapes what they observe and what they can do. In practice, this harness continually evolves as new capabilities are added. We introduce EVOHARNESSBENCH, a benchmark for evaluating agents under controlled harness evolution across three axes (tools, skills, and agents). Unlike existing continual-learning benchmarks for agents, which typically place non-stationarity (i.e., what changes over time) in the task stream while keeping the harness fixed, EVOHARNESSBENCH places non-stationarity in the externally supplied harness itself. It contains 17 multi-stage harness streams constructed deterministically from verifier-based benchmarks, comprising 802 tasks, 520 tools, 42 skills, and 62 agents. We evaluate two complementary settings corresponding to the central challenges of harness evolution: deployment evaluation, which isolates retention of previously accessible competence as the harness expands, and self-evolving adaptation evaluation, which tests whether accumulated experience remains useful as new capabilities are introduced. Our results reveal three persistent gaps. First, harness expansion alone can degrade performance on previously solved tasks, producing harness-induced forgetting. Second, gains from self-evolving adaptation remain inconsistent across stages of harness evolution, capability axes, and environments. Third, retention and adaptation can pull in different directions: preserving earlier competence does not necessarily improve adaptation to newly introduced capabilities, and vice versa. These results establish harness evolution as a distinct challenge for building agents that can keep pace with an evolving harness while preserving previously effective behavior.
+
+</details>
+
+### 39. Harness or Model? Isolating the Harness Effect in Agentic Coding with a Contamination-Controlled Private Suite
+
+📄 [arXiv](https://arxiv.org/abs/2609.11987)　📅 2026-09
+
+**关键词**：`analysis`、`harness effect`、`contamination control`、`agentic coding`
+
+👤 **作者**：Mohsen Arjmandi
+
+- 🎯 **研究动机**：agentic coding 系统的能力究竟归因于模型还是 harness（工具、提示、控制流）从未被隔离测量，而业界默认「厂商原生配对更好」
+- 🔬 **研究方法**：在私有、污染受控的 256 个仓库与截止后赛题任务套件上做同模型配对对照：claude-agent-sdk vs deepagents on claude-opus-4.8、openai-codex SDK vs deepagents on gpt-5.5，另设 gemini-3.5-flash 与 deepseek-v3.2 侧格；792/800 计划运行由隔离 oracle 判分
+- 📌 **结论**：两种对照都无平均优势（±1.25pp，95% CI 均跨零）；Opus 的原生 harness 在 61 个仓库任务上落后 9.0pp、却在 19 个赛题任务上领先 23.7pp（事后分区需设计复现）；22/81 在时限取消的运行已产出通过补丁——厂商原生配对假设不成立
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+An agentic coding system couples a language model to a harness: the tools, prompts and control flow that turn a chat model into an autonomous software engineer. Vendors ship harnesses tuned to their own models, and practitioners assume the vendor-native pairing solves more tasks. We measure that assumption with paired same-model contrasts on a private, contamination-controlled suite of 256 repository and post-cutoff contest tasks. The same 80 tasks ran under claude-agent-sdk and under deepagents on claude-opus-4-8, and under the openai-codex SDK and deepagents on gpt-5.5, with gemini-3.5-flash and deepseek-v3.2 as side cells. 792 of 800 planned runs were graded by an isolated oracle. Neither contrast resolves an average advantage for either harness: -1.25 pp for Opus 4.8 (48.8% vs 50.0%, task-bootstrap 95% CI [-10.0, +7.5]) and +1.25 pp for GPT-5.5 (55.6% vs 54.4%, CI [-4.4, +6.9]). The Opus average combines opposite strata: the native harness trails by 9.0 pp on the 61 repository tasks and leads by 23.7 pp on the 19 contest tasks (label-permutation p = 0.003). The partition was chosen after seeing the data and needs a designed replication. Correctness and completion also separate: 22 of 81 runs cancelled at the wall-clock ceiling had produced a passing patch. Re-priced from raw per-turn usage at frozen list prices, the neutral harness cost 1.3 to 1.6 times as much per solved task on Opus 4.8 and 1.2 times on GPT-5.5. These are observed-usage estimates. On the Anthropic account 58 runs left no usage record, and allocating that spend to either cell would move the Opus ratio between 0.7 and 2.3, so the billed ordering is unresolved. This revision corrects an August 2026 manuscript whose cost figures rested on a usage-semantics defect in our own telemetry (Section 5.1). We release the orchestrator, grading oracle, reanalysis code and derived aggregates. The tasks stay private.
+
+</details>

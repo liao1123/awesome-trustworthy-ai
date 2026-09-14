@@ -619,3 +619,22 @@ Reinforcement learning with verifiable rewards (RLVR) typically optimizes for ou
 Vision-language models are increasingly used as reward functions for robotic learning, but this role requires paraphrase invariance: the same trajectory should receive the same reward under semantically equivalent goal descriptions. We show that current VLM reward models often violate this property. Paraphrasing the instruction alone can substantially change predicted progress scores, and can even flip identical robot behavior between failure and success. To measure this failure mode, we introduce ROBORMBENCH, a benchmark with 2,390 real-robot trajectories, ground-truth progress labels, and 21,673 verified paraphrases spanning lexical, syntactic, and action-goal rewrites. Across proprietary and open-source VLMs, paraphrase-induced instability is widespread and severe, grows under more divergent rewrites, and is not reliably reduced by scale or explicit reasoning. Dedicated reward models trained with trajectory-grounded supervision are substantially more stable. These results show that paraphrase robustness is a core requirement for reliable VLM-based reward modeling in robotics.
 
 </details>
+
+### 33. EvoRS: On-Policy Self-Evolution of Reward Systems for Open-Ended Reinforcement Learning
+
+📄 [arXiv](https://arxiv.org/abs/2609.12459)　📅 2026-09
+
+**关键词**：`defense`、`reward system self-evolution`、`reward hacking`、`Reward-DAG`
+
+👤 **作者**：Weiyuan Li、…、Deqing Yang
+
+- 🎯 **研究动机**：开放式 RL 对无可直接验证答案的任务依赖 rubric 奖励，但策略与奖励系统构成动态反馈环：策略优化当前奖励时，初始有用的奖励系统会因 reward hacking 或响应判别力下降而失真；现有动态 rubric 方法只调评估准则，奖励失效也可能来自打分机制或信号组合
+- 🔬 **研究方法**：EvoRS 把奖励系统表示为可执行 Reward-DAG，agentic designer 依据 on-policy rollout 与奖励轨迹更新整个系统（准则+机制+组合）以维持训练期可靠性；在写作与角色扮演任务上以三种 judge 评测
+- 📌 **结论**：全部 judge 下质量最佳（超策略本身 2.107 与 4.767 分），同时降低 reward hacking 与覆盖失败并保持奖励信息量；消融确认固定的综合奖励系统无法在开放任务中保持可靠——奖励系统必须随训练演化
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Open-ended reinforcement learning often relies on rubric-based rewards for tasks without directly verifiable answers. Yet the policy and reward system form a dynamic feedback loop: as the policy optimizes the current reward, an initially useful reward system may become unreliable due to reward hacking or reduced response discriminability. The reward system should therefore evolve rather than remain fixed during training. Existing dynamic-rubric methods adapt evaluation criteria, but reward failures can also arise from scoring mechanisms or signal composition. We introduce EvoRS, a self-evolving RL framework that evolves the reward system from on-policy experience, representing it as an executable Reward-DAG. Specifically, an agentic designer updates this system from on-policy rollouts and reward traces to maintain train-time reliability. Across writing and roleplay, EvoRS achieves the best quality under all three judges, outperforming the policy by \(2.107\) and \(4.767\) points, respectively, while reducing reward hacking and coverage failures and preserving reward informativeness. Ablations confirm that a comprehensive fixed reward system cannot remain reliable in open-ended tasks and must evolve throughout training.
+
+</details>
