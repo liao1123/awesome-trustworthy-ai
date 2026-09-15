@@ -1593,3 +1593,22 @@ Directional ablation removes an aligned language model's ability to refuse by pr
 Automated red-team attacks and blue-team defenses for large language models (LLMs) are advancing quickly. However, attackers and defenders are built and tested in isolation, and the resulting scores are hard to trust. To tackle this, we present ACEA (Adversarial Co-Evolution Arena), a platform that connects a pluggable red-team adapter and a pluggable blue-team adapter to a shared target LLM and scores their attack and defense rates with an LLM judge. ACEA contributes four components. First, a pluggable, model-agnostic arena. Any red or blue project connects over a minimal HTTP protocol, which we call the ACEA Standard Adapter Protocol (ASAP). It can be written in any language, and a project that exposes nothing but the protocol is a full participant. Second, an evaluation methodology built for adversarial rounds. Seeding the target with canonical secrets gives verifiable ground truth that separates real leakage from hallucination. We also send each attack to the target even when the defense blocks it, which measures the attack's raw potency independently of whether it was stopped. Together these yield a per-round decomposition of attack strength and defense effectiveness. Third, a real-time, game-style visualization with a detailed end-of-battle report that localizes each failure. The evaluation thus becomes an actionable signal for improving a red or blue project. Fourth, an optional in-context improvement loop that turns each round's outcome into advisory hints for the next. An adapter can then adapt across rounds without keeping state, provided it reads the hints. We describe the design of ACEA and the metrics through which red and blue teams are scored head to head.
 
 </details>
+
+### 85. Divide, Consult, Conquer: Capability Laundering Through Aligned LLMs
+
+📄 [arXiv](https://arxiv.org/abs/2609.15383)　📅 2026-09
+
+**关键词**：`attack`、`capability laundering`、`aligned LLM`、`task decomposition`、`harmful uplift`
+
+👤 **作者**：Mark Russinovich、Blake Bullwinkel、Giorgio Severi、Cristian Ovadiuc、Ahmed Salem
+
+- 🎯 **研究动机**：语言模型安全一次一个交互地评测——较弱的未对齐 orchestrator 可把有害任务拆成良性子问题、独立咨询更强的对齐模型、本地组合答案，无单次响应是有害任务（capability laundering，非 jailbreak 却绕过对齐）
+- 🔬 **研究方法**：测量 consultation-aided uplift：用 raw frontier 解决、aligned frontier 拒绝、unassisted orchestrator 失败的任务作测试集；评测 GPT-5.5、Claude Opus 4.8、Grok-4.3 作为四个本地 orchestrator 的 consultant（CyBench、BountyBench、有害 CBRN）
+- 📌 **结论**：CyBench 上 Gemma-4-31B with GPT-5.5 恢复 8/14 候选（12B 仅 2/21）；CBRN 八步攻击链 rubric 分从 62.3 升至 83.1——拒绝有害任务不阻止前沿能力经多个被允许交互转移与组合
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Language model safety is typically evaluated one interaction at a time. We show that a weaker, unaligned model can split a harmful task into benign-looking subproblems, consult a stronger aligned model independently on each, and combine the answers locally. We call this attack capability laundering. Unlike a jailbreak, no single response is a harmful task. We measure consultation-aided uplift using tasks that a raw frontier model solves, the aligned frontier refuses, and the unassisted orchestrator fails. We evaluate GPT-5.5, Claude Opus 4.8, and Grok-4.3 as consultants to four local orchestrators on CyBench, BountyBench, and harmful CBRN requests. On CyBench, Gemma-4-31B recovers 8/14 candidates with GPT-5.5 and 7/9 with Opus, compared with 2/21 and 4/15 for Gemma-4-12B. On BountyBench, Gemma-4-31B recovers 3/9 and 2/3 candidates, while Muse-Glimmer-30B recovers none of 22 and 13. For CBRN, we measure uplift across eight steps of a hypothetical bioweapon attack chain and find that consultation raises Gemma-4-31B&#39;s mean rubric score from 62.3 to 83.1 on a 100-point rubric scale. These results expose a gap in current defenses: refusing a harmful task does not prevent frontier capabilities from being transferred and composed across many individually permitted interactions.
+
+</details>

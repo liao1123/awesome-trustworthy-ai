@@ -773,3 +773,22 @@ Real-world LLM deployments increasingly rely on runtime-injected prohibitions--e
 Despite advances in safety alignment, large language models remain vulnerable to continuously evolving jailbreaks. Existing fine-tuned safety classifiers cannot adapt to these evolving attacks, while adaptive memory-based guardrails tend to over-refuse benign queries that resemble stored attacks. We propose Membrane, a self-evolving guardrail built on Contrastive Safety Memory (CSM): each cell pairs the conditions for blocking a harmful query with those for permitting a superficially similar benign request. Without retraining, Membrane evolves CSM by distilling each harmful interaction and its benign counterpart into a contrastive cell indexed by the underlying attack strategy, so that one cell generalizes across topical variants of the same mechanism. At inference, retrieved cells serve as grounding context for precise safety decisions. Across model-level safety on HarmBench and agent-level safety on AgentHarm, Membrane achieves the highest F1 on all six jailbreak attacks. Notably, benign refusal on AgentHarm stays at 7-14%, well below the 28-85% range of prior guards. Memory cells also retain 87-88% F1 under cross-attack transfer and remain stable under memory poisoning.
 
 </details>
+
+### 41. PolicyMem: Geometric Policy Memory for LLM Governance
+
+📄 [arXiv](https://arxiv.org/abs/2609.13734)　📅 2026-09
+
+**关键词**：`defense`、`LLM governance`、`geometric policy memory`、`policy attribution`、`detect-rewrite-verify`
+
+👤 **作者**：Yuanchen Bei、Zhengzhang Chen、Yanjun Zhao、Haoyu Wang、Hanghang Tong、Haifeng Chen
+
+- 🎯 **研究动机**：现有 LLM 治理的两种范式各有缺陷：learning-based guard 把策略行为耦合到训练模型与分类法，programmable framework 需要大量人工 prompt 与工作流工程；两者都不把 policy 外化为可复用的操作状态
+- 🔬 **研究方法**：PolicyMem 把自然语言 policy 外化为共享表示空间中低秩子空间表示的可复用几何记忆对象；memory writer 把自然语言策略编译成 policy memory slot，query-response 对经投影能量读取 policy memory；配 response rewriter 形成 detect-rewrite-verify 循环
+- 📌 **结论**：五个广泛使用的基准上 PolicyMem 实现最先进的不安全行为检测，同时通过共享 policy memory 实现有效的策略归因、重写与干预后验证
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+As large language models (LLMs) are increasingly deployed in real-world high-stakes applications, effective governance has become essential. Existing safeguards largely follow two paradigms: learning-based guards provide strong semantic discrimination but couple policy behavior to trained models and taxonomies, while programmable frameworks offer flexible control but require substantial manual prompt and workflow engineering. Neither externalizes policies as reusable operational states, making it difficult to consistently reuse policy evidence across detection, intervention, and verification. In this paper, we introduce PolicyMem, a geometric policy memory that externalizes natural-language policies as reusable geometric memory objects represented by low-rank subspaces in a shared representation space. A memory writer compiles natural-language policies into policy memory slots, and query-response pairs read the policy memory through projection energy. The resulting policy-evidence profile directly mediates the safety verdict and is reused for policy attribution and post-intervention verification. Coupled with a response rewriter, PolicyMem enables a detect-rewrite-verify loop for LLM governance. Across five widely used benchmarks, PolicyMem achieves state-of-the-art unsafe behavior detection while enabling effective policy attribution, rewriting, and post-intervention verification through the shared policy memory.
+
+</details>

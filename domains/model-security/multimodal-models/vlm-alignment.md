@@ -685,3 +685,22 @@ Vision-language models (VLMs), such as CLIP, have achieved strong performance ac
 Vision-language models (VLMs) are expected to respond helpfully to appropriate requests while withholding compliance with requests that are incorrect, unsafe, infeasible, or unanswerable. However, existing benchmarks predominantly evaluate non-compliance at the level of the query as a whole, assuming that each request either warrants compliance or requires withholding compliance. In practice, real-world queries can contain a mixture of answerable content and components for which compliance should be withheld. In this paper, we introduce KoNA, a benchmark for evaluating selective non-compliance in VLMs across five categories: False Premise, Visual Inaccessibility, Universal Unknown, Task Feasibility, and Safety. Each task evaluates two capabilities: query-level non-compliance and component-level non-compliance under paired single and compound queries. Our evaluation across diverse VLMs shows that models often fail to refuse, correct, or abstain appropriately, and these failures become more pronounced when queries require selective non-compliance. To address this challenge, we fine-tune VLMs using KoNA examples that require selective non-compliance, together with a fully answerable set that should receive direct answers. Our fine-tuned models achieve substantial improvements in non-compliance accuracy while largely maintaining performance on fully answerable tasks. These results suggest that the fine-tuned models can distinguish between answerable components and those requiring non-compliance and respond in a task-appropriate manner.
 
 </details>
+
+### 37. SPARK: Representation-Level KV Memory Alignment for Safer Vision-Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2609.14258)　📅 2026-09
+
+**关键词**：`defense`、`VLM safety`、`KV memory repair`、`multimodal jailbreak`、`representation intervention`
+
+👤 **作者**：Mohd Azfar、Izhar Dad Khan
+
+- 🎯 **研究动机**：VLM 仍易受把有害意图分布到文本与图像的 jailbreak 攻击，使单模态安全机制不足
+- 🔬 **研究方法**：SPARK 两阶段框架：Stage 1 用一次性 diagnostic adapter 识别多模态 key/value 表示中的 harm-associated 方向；Stage 2 投影掉这些方向、学习轻量 residual repair、用图像结构先验锚定修复后的 key，按 head-wise 系数混合修复与原始 memory，推理时无需显式 harm classifier
+- 📌 **结论**：在 LLaVA-OneVision-7B、Chameleon-7B、Qwen2-VL-7B、InternVL2-4B 上减少多模态攻击成功同时保持通用能力；LLaVA-OneVision-7B 上 image-only jailbreak ASR 降至 4.7%，MMMU 保持 47.8（未防御 48.4），MM-SafetyBench ASR 从 39.2% 降至 12.4%
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Vision-language models (VLMs) remain vulnerable to jailbreaks that distribute harmful intent across text and images, making unimodal safety mechanisms insufficient. We investigate whether this vulnerability can be mitigated directly in the multimodal key-value (KV) memory formed during prefill, without modifying model parameters at inference time. We introduce SPARK, a two-stage framework for targeted KV-memory repair. Stage 1 uses a disposable diagnostic adapter to identify harm-associated directions in multimodal key and value representations. Stage 2 projects out these directions, learns a lightweight residual repair, and anchors repaired keys with an image-structural prior to preserve visual grounding. Rather than applying the intervention uniformly, SPARK mixes repaired and original memory using a head-wise coefficient g_h* determined by intervention-relevant subspace energy E_h, requiring no explicit harm classifier at inference. Across LLaVA-OneVision-7B, Chameleon-7B, Qwen2-VL-7B, and InternVL2-4B, SPARK reduces multimodal attack success while preserving general capability. On LLaVA-OneVision-7B, image-only jailbreak attack success falls to 4.7%, while MMMU remains within 0.6 points of the undefended model (47.8 vs. 48.4) with near-baseline language quality. On MM-SafetyBench, attack success decreases from 39.2% to 12.4%. Even under white-box adaptive joint prompt-image attacks, attack success is limited to 20.3%, compared with 54.6% for the undefended model. These results suggest that multimodal jailbreak behavior can be substantially mitigated by selectively repairing intervention-relevant KV subspaces at prefill, particularly when harmful evidence is carried by the visual modality.
+
+</details>

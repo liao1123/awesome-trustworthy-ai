@@ -406,3 +406,22 @@ Vision-Language-Action (VLA) models are emerging as a unified substrate for embo
 - 🎯 **研究动机**：VLA模型全生命周期安全研究分散
 - 🔬 **研究方法**：按Data Preparation、Model Training、System Deployment三阶段综述VLA安全，含数据投毒
 - 📌 **结论**：建立生命周期taxonomy并配套持续追踪仓库
+
+### 22. When the World Lies: Backdoor Attacks on Latent World Models for Downstream Control
+
+📄 [arXiv](https://arxiv.org/abs/2609.15781)　📅 2026-09
+
+**关键词**：`attack`、`backdoor`、`latent world model`、`supply chain`、`controller hijacking`
+
+👤 **作者**：Roberto Riaño、Gorka Abad、Stjepan Picek、Aitor Urbieta
+
+- 🎯 **研究动机**：预训练 world model 开始被复用为现成动力学 backbone——该复用打开供应链后门：控制已发布 checkpoint 的对手可劫持下游 controller，即使 victim 完全在干净数据上训练评测
+- 🔬 **研究方法**：攻击不编码显式 trigger-to-action 规则：毒化模型把带 trigger 观测路由进选定 latent 区域并重塑局部动力学，让 victim 自己的优化（Dreamer imagination 训练或 MPC/CEM 规划）自行重新发现攻击者目标动作
+- 📌 **结论**：多个控制任务上 trigger 控制每个动作维度，最强设定下劫持 100% 被触发步；checkpoint 仍通过 clean-data 诊断（clean success 保持 ≥约 75%）；效应时间门控；中等 clean fine-tuning 可保持 utility 同时留下后门
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Pretrained world models, learned simulators that encode an observation into a latent state and predict how it evolves under actions, are beginning to be reused as off-the-shelf dynamics backbones for control, like pretrained encoders and language models are reused today. We show that this reuse opens a supply-chain backdoor: an adversary who controls only a released checkpoint can hijack the downstream controller, even though the victim trains and evaluates entirely on clean data and never sees the trigger. The attack encodes no explicit trigger-to-action rule. Instead, the poisoned model routes trigger-bearing observations into a chosen latent region and reshapes the local dynamics there, so that the victim&#39;s own optimization (Dreamer-style actor training in imagination, or MPC/CEM planning over predicted futures) re-discovers the attacker&#39;s target action on its own. Across several control tasks and trigger families, the trigger steers the controller&#39;s action toward the attacker&#39;s target, controlling every action dimension and hijacking 100\% of triggered steps on the strongest settings. The checkpoint still passes the clean-data diagnostics a victim would run before deployment, with clean-task success retaining at least $\sim$75\%. The effect is temporally gated: it appears only while the trigger is present and disappears when the trigger is removed. Trigger-blind repair is budget-dependent: moderate clean fine-tuning can preserve clean utility while leaving the triggered failure intact, whereas sufficiently aggressive adaptation can remove it only after substantially degrading clean control. The world-model backbone itself is therefore an emerging and underexamined attack surface for control. The full code and artifacts are available in our repository.
+
+</details>

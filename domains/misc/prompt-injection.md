@@ -921,3 +921,22 @@ With the widespread application of LLM-based agents across various domains, thei
 We formulate indirect prompt injection as a test-time search over a task-dependent attack surface induced by the environment, user task, and injection task. To operationalize this formulation, we introduce an agentic attacker with a dedicated search harness that performs environment reconnaissance, structured reasoning over attack strategies, and adaptive evaluation using victim-agent feedback. Across heterogeneous tasks, we find that increasing attacker test-time compute improves vulnerability discovery and exploitation, while ablations show that explicit strategy management is important for avoiding redundant search and sustaining gains at larger budgets. These results suggest that agentic security evaluations should characterize both the attacker's search procedure and compute budget, rather than treating attack success as a budget-independent property of the victim. More broadly, our findings identify the attacker's adaptive search over the system attack surfaces as an important and underexplored security risk for tool-using agents.
 
 </details>
+
+### 49. ActGuard: Pre-execution Action Auditing against Indirect Prompt Injection in LLM Agents
+
+📄 [arXiv](https://arxiv.org/abs/2609.14987)　📅 2026-09
+
+**关键词**：`defense`、`indirect prompt injection`、`action auditing`、`span masking`、`context sanitization`
+
+👤 **作者**：Bingzheng Wang、Xiaoyan Gu、Wentao Wang、Xingyou Yang、Hongcheng Li、Rong Yin
+
+- 🎯 **研究动机**：间接提示注入经工具输出进入 agent context 后，内容级过滤与权限约束要么漏检要么过度清理——需要新的防御范式
+- 🔬 **研究方法**：ActGuard 把判定对象从内容可疑性改为动作偏差性：用 tool prior 预测合理动作、对比候选动作定位参数级证据、只屏蔽确认恶意的 span 并重生成
+- 📌 **结论**：在保留执行灵活性的前提下实现精准注入内容移除——内容过滤之外的注入防御新路径
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language model (LLM) agents interact with external environments through tool invocation, but tool outputs can also expose them to indirect prompt injection (IPI) attacks. Existing defenses mainly rely on prompt hardening, content filtering, pre-generated plans, or permission constraints. These approaches often struggle with complex tasks or over-sanitize external content, making it difficult to balance security and utility. The key challenge is therefore to preserve execution flexibility while precisely identifying and removing the malicious content that actually induces unsafe actions. To address this challenge, we propose ActGuard, a pre-execution action auditing framework. Rather than judging whether external content is inherently suspicious, ActGuard assesses whether it causes the current action to deviate from a locally reasonable expectation. At each step, ActGuard predicts the tools likely to be used by the upcoming action and constructs a local tool prior without constraining the execution trajectory. Before execution, it compares the candidate action against this prior and performs tool-level contrastive analysis and parameter-level evidence localization to identify deviations in tool selection and action parameters. A verifier then examines the localized evidence, masks only spans confirmed as malicious, and regenerates the action from the sanitized context. This design preserves legitimate planning flexibility while minimizing information loss from indiscriminate filtering. We evaluate ActGuard on challenging benchmarks for tool-using agents. Results show that ActGuard reduces attack success rates to a level comparable to state-of-the-art defenses while maintaining task utility close to the no-attack setting, achieving a favorable security-utility trade-off. Our code is publicly available at: this https URL .
+
+</details>

@@ -576,3 +576,22 @@ This paper presents AutoRAN, the first framework to automate the hijacking of in
 The emergence of Chain-of-Thought (CoT) has established a robust foundation for Large Reasoning Models (LRMs). While deep reasoning is widely believed to enhance safety alignment, the stability of alignment mechanisms under extended reasoning remains underexplored. This paper challenges the prevailing view by revealing a critical vulnerability: Deep Reasoning May Induce Alignment Collapse. To rigorously quantify this phenomenon, we propose the Alignment Loss Rate (ALR) metric. Our experiments demonstrate that as reasoning depth increases, ALR rises significantly, indicating a severe degradation in model robustness against external perturbations. Capitalizing on this instability, a novel jailbreaking paradigm, Reasoning Trap (RT), is proposed. RT induces the model into extended reasoning to amplify the impact of adversarial attacks, leading to a sharp decline in safety capabilities. To elucidate the mechanism behind this collapse, we identify Attention Dilution as the root cause, arising from the competition for attention between the extended reasoning process and the original input. To mitigate this, Reasoning Residual Alignment (RRA), a lightweight defense strategy that dynamically re-emphasizes the input via residual connections integrated with the reasoning process.
 
 </details>
+
+### 31. Beyond Safe Answers: Segment-Aware Listwise Alignment for Reasoning Safety in Large Reasoning Models
+
+📄 [arXiv](https://arxiv.org/abs/2609.15517)　📅 2026-09
+
+**关键词**：`defense`、`reasoning safety`、`segment-aware alignment`、`listwise DPO`、`SaLT-DPO`
+
+👤 **作者**：JungMin Yun、Junehyoung Kwon、Hayeong Ryu、Byeonggeuk Lim、Hoejoon Kwon、YoungBin Kim
+
+- 🎯 **研究动机**：Large Reasoning Model 构成双表面安全挑战：中间推理 trace 与最终 answer 都可含有害内容；现有对齐方法常在 whole-response 级操作，允许不安全推理被看似安全的最终答案掩盖
+- 🔬 **研究方法**：SaLT-DPO（Segment-aware Listwise Target DPO）三机制：(1) 把响应分解为推理与答案 segment、独立评分各 segment 安全性、把长度归一化 segment 奖励与多候选 soft target 分布对齐；(2) joint safety coherence regularization 对两 segment 应用 weakest-link 原则；(3) benign prompt 上的 utility anchoring 缓解 over-refusal 与推理退化
+- 📌 **结论**：在三个 LRM 上 SaLT-DPO 一致降低推理与答案 segment 的不安全率，同时缓解良性合规退化并保持通用推理性能
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large Reasoning Models (LRMs) pose a dual-surface safety challenge: both intermediate reasoning traces and final answers can contain harmful content. Existing alignment methods often operate at the whole-response level, allowing unsafe reasoning to be masked by a safe-looking final answer. We propose Segment-aware Listwise Target DPO (SaLT-DPO), which addresses this gap through three mechanisms: (1) segment-aware listwise alignment that decomposes responses into reasoning and answer segments, independently scores each segment&#39;s safety, and aligns length-normalized segment rewards with soft target distributions over multiple candidates; (2) joint safety coherence regularization that applies a weakest-link principle to promote safety consistency across both segments; and (3) utility anchoring on benign prompts to mitigate over-refusal and reasoning degradation. Experiments on three LRMs show that SaLT-DPO consistently reduces unsafe rates for both reasoning and answer segments while mitigating degradation in benign compliance and preserving general reasoning performance. Ablation studies demonstrate the complementary contributions of its components.
+
+</details>

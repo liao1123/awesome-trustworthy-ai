@@ -1400,3 +1400,22 @@ The rapid integration of AI into human-centred systems such as Brain-Computer In
 Training-free collaborative pipelines that integrate Vision Foundation Models such as CLIP, SAM, and DINO achieve strong open-vocabulary dense prediction and are increasingly deployed in safety-critical applications. The security of these systems is commonly assumed to follow from the robustness of their individual models. We challenge this assumption. We identify a vulnerability shared by every collaborative pipeline: each model consumes the intermediate output of another without verifying semantic consistency, an unverified premise that we term the semantic-spatial alignment dependency. Existing adversarial attacks target a single model and overlook this premise, leaving the inter-model interface entirely unguarded. We propose CrACK (Cross-model Adversarial Consistency attack), an inference-time attack that exploits this interface without modifying any input pixel, model weight, or training data. CrACK operates in two stages: Adversarial Affinity Contradiction Injection corrupts the cross-modal affinity matrix by inverting SAM encoder features under the guidance of CLIP patch-level semantics, and Semantic Interface Poisoning steers the prediction through a max-distance label permutation derived from CLIP text embeddings. Experiments on four collaborative pipelines across eight benchmarks show that CrACK causes catastrophic degradation while every individual model continues to produce its unchanged standalone output, rendering per-model defenses structurally blind. The corruption further cascades into large vision-language model reasoning, driving models such as LLaVA to produce erroneous responses from visually intact inputs. Our results show that the security of a collaborative AI system cannot be reduced to the robustness of its components, and that inter-model feature interfaces must be treated as first-class security boundaries.
 
 </details>
+
+### 76. AgentHijack: Visual Patch Attacks on Multimodal Computer-Use Agents
+
+📄 [arXiv](https://arxiv.org/abs/2609.09212)　📅 2026-09
+
+**关键词**：`attack`、`visual patch injection`、`computer-use agent`、`environment execution`、`E2E evaluation`
+
+👤 **作者**：Zhihao Liu、…、Yuqing Zhang
+
+- 🎯 **研究动机**：局部视觉补丁能否沿 CUA 全链路（截图→VLM→动作解析→环境执行）产生可验证真实后果未被端到端检验（注意与同名 ICML 2026 鲁棒性基准 2605.25707 区分，两者独立）
+- 🔬 **研究方法**：在受控 GitHub Pages 与本地 CSDN 克隆部署训练补丁，5 个开源 GUI-agent/VLM 后端 600 例在线评测
+- 📌 **结论**：T-ASR 84.5%、TAPR 47.0%、E2E-ASR 20.3%；成功案例中 agent 先执行恶意终端命令再继续原良性任务，表明局部视觉信号可穿透 CUA 执行管线产生真实环境风险
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+This paper presents an end-to-end evaluation framework for image-triggered command injection against computer-use agents (CUAs). The goal is to test whether a local visual patch can induce verifiable environmental consequences along the full chain of screenshot input, VLM generation, action parsing, and environment execution. We train and deploy patches on author-controlled GitHub Pages pages and a locally deployed CSDN clone, and evaluate them in real environments across five open-source or publicly available GUI-agent or vision-language-model (VLM) backends. Our experiment aggregates 600 instance-level online cases, with T-ASR, TAPR, and E2E-ASR reaching 84.5%, 47.0%, and 20.3%, respectively. Trajectory analysis further shows that in some successful cases the agent first executes a malicious terminal command and then continues the original benign task. These results indicate that optimized local visual signals can affect not only VLM outputs but also propagate through the execution pipeline of open CUAs and create real environmental risk.
+
+</details>

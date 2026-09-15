@@ -638,3 +638,22 @@ Deploying large language models (LLMs) in real-world applications requires robus
 In this paper, we introduce a novel technique for content safety and prompt injection classification for Large Language Models. Our technique, Layer Enhanced Classification (LEC), trains a Penalized Logistic Regression (PLR) classifier on the hidden state of an LLM's optimal intermediate transformer layer. By combining the computational efficiency of a streamlined PLR classifier with the sophisticated language understanding of an LLM, our approach delivers superior performance surpassing GPT-4o and special-purpose models fine-tuned for each task. We find that small general-purpose models (Qwen 2.5 sizes 0.5B, 1.5B, and 3B) and other transformer-based architectures like DeBERTa v3 are robust feature extractors allowing simple classifiers to be effectively trained on fewer than 100 high-quality examples. Importantly, the intermediate transformer layers of these models typically outperform the final layer across both classification tasks. Our results indicate that a single general-purpose LLM can be used to classify content safety, detect prompt injections, and simultaneously generate output tokens. Alternatively, these relatively small LLMs can be pruned to the optimal intermediate layer and used exclusively as robust feature extractors. Since our results are consistent on different transformer architectures, we infer that robust feature extraction is an inherent capability of most, if not all, LLMs.
 
 </details>
+
+### 34. ForeSight: Enhancing Risk Monitoring via Early Safety Signal Distillation
+
+📄 [arXiv](https://arxiv.org/abs/2609.13737)　📅 2026-09
+
+**关键词**：`detection`、`early risk forecasting`、`first-token hidden state`、`signal distillation`、`low latency`
+
+👤 **作者**：Hanling Wang、…、Yao Zhu
+
+- 🎯 **研究动机**：LLM 部署中有害内容生成成为关键安全关切；现有 safeguard 工作在输入、输出或流式生成阶段，依赖表面 token 或输出 logit 的早期风险方法信号弱，内部 dense 表示保留大量安全无关的冗余信息
+- 🔬 **研究方法**：ForeSight 首个 first-token output-risk 预测框架：把弱且冗余的早期安全信号蒸馏为紧凑的 layer-aware 风险表示，仅依赖 first-token hidden state
+- 📌 **结论**：在五个安全基准与两个目标模型上实现优越且高效的早期风险预测
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+As large language models (LLMs) are increasingly deployed, the generation of harmful content has become a critical safety concern. Existing safeguards operate at the input, output, or streaming-generation stages, while early-risk methods that rely on surface tokens or output logits may suffer from weak initial signals, and internals-based detectors using dense representations may retain highly entangled and redundant safety-irrelevant information. It therefore remains unclear whether the earliest post-generation hidden states already contain reliable signals about final-response harmfulness. To address this gap, we propose ForeSight, a first-token output-risk forecasting framework that distills weak and redundant early safety signals into compact, layer-aware risk representations. Experiments on five safety benchmarks and two target models demonstrate that ForeSight achieves superior and efficient early-risk forecasting while relying solely on first-token hidden states. The code is available at: this https URL
+
+</details>

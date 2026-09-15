@@ -2168,3 +2168,41 @@ Retrieval-Augmented Generation (RAG) can ground large language model (LLM) outpu
 Retrieval-augmented generation (RAG) grounds a language model in retrieved documents, which reduces hallucination but creates a new attack surface: if retrieved text is tampered with, the model may repeat the falsehood. We study how much a small quantized model, Llama 3.1 8B, degrades when a fraction of its retrieved context is poisoned. Three corruption strategies are tested, entity swap, number swap, and negation, each applied to zero, one, two, or three of the three retrieved passages, over a factorial sweep of 588 runs on a fact-checking task built from FEVER. Accuracy falls from 77.9% on clean context to 43.5% when all three passages are corrupted. Entity swap flips the largest share of answers that were correct on clean context. Number-based corruption stays flat while poisoned passages are a minority and jumps once they form a majority, a pattern we re-check with query-level bootstrap intervals. The model rarely invents new falsehoods; its dominant reaction is to abstain, and a lexical overlap proxy of unsupported generation falls under attack rather than rising. The study is a small-scale measurement with coarse automated labels; we treat the strategy contrasts as suggestive until decoding is controlled and stronger adjudication is in place.
 
 </details>
+
+### 113. ViTeGate: Visual-Textual Triggered Knowledge Poisoning for Vision-Language Retrieval-Augmented Generation
+
+📄 [arXiv](https://arxiv.org/abs/2609.14685)　📅 2026-09
+
+**关键词**：`attack`、`knowledge poisoning`、`vision-language RAG`、`dual trigger`、`selective activation`
+
+👤 **作者**：Xue Tan、…、Jun Dai
+
+- 🎯 **研究动机**：现有知识投毒攻击 always-on，缺乏精确激活控制，难以把恶意行为限定在预期输入，降低攻击隐蔽性与有效性
+- 🔬 **研究方法**：ViTeGate 用视觉触发条件性把毒证据提升进检索结果，用文本触发诱导攻击者指定响应；双触发设计实现选择性攻击激活并减少非预期单触发激活
+- 📌 **结论**：跨多个 query 数据集、retriever、LVLM 验证；InfoSeek 上攻击成功率达 0.98 同时保持 clean answer 准确率高达 0.93
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Modern Vision-Language Retrieval-Augmented Generation (VLRAG) systems augment Large Vision-Language Models (LVLMs) with retrieved visual and textual evidence, enabling responses grounded in external knowledge. However, the retrieval pipeline also creates an attack surface: adversaries can inject poisoned image-text pairs into the knowledge corpus to influence model outputs. Existing knowledge poisoning attacks are typically always-on, allowing poisoned evidence to affect generation whenever it is retrieved. This lack of precise activation control makes it difficult to confine malicious behavior to intended inputs, reducing both attack stealth and effectiveness. In this paper, we propose ViTeGate, a visual-textual triggered knowledge poisoning attack for VLRAG systems. ViTeGate uses a visual trigger to conditionally promote poisoned evidence into retrieval results and a textual trigger to induce an attacker-specified response from the retrieved evidence. By coordinating retrieval and generation, ViTeGate reduces poison exposure when the visual trigger is absent and preserves normal responses when the textual trigger is absent. The two-trigger design enables selective attack activation and reduces unintended single-trigger activation. Experiments across multiple query datasets, retrievers, and LVLMs validate the effectiveness of ViTeGate. On InfoSeek, ViTeGate achieves an attack success rate of up to 0.98 while maintaining a clean answer accuracy of up to 0.93.
+
+</details>
+
+### 114. CiteShade: Citation Laundering in Multi-Source Retrieval-Augmented Generation and Its Counterfactual Defense
+
+📄 [arXiv](https://arxiv.org/abs/2609.15660)　📅 2026-09
+
+**关键词**：`attack`、`citation laundering`、`RAG`、`optimization`、`counterfactual defense`
+
+👤 **作者**：Guo Fuzheng
+
+- 🎯 **研究动机**：RAG 的 citation 是用户的审计轨迹；此前 RAG 安全工作只问攻击者能否损坏答案，citation 通道未被探索为攻击面
+- 🔬 **研究方法**：CiteShade 攻击：控制单一 source 的攻击者诱导模型产生攻击者选择的错误答案并归属于不支持它的可信 source（正确答案证据仍在 context）；形式化为优化问题并推导 retrieval、generation、citation 三个必要条件
+- 📌 **结论**：多源多跳 QA 上错误答案率从 0.01 升至 0.68；脆弱性追踪模型的 citation 倾向而非规模（最 citation-prone 模型无指令也达 CLR 0.64）；perplexity 过滤与 citation-support 检查各自不足，反事实验证防御有效
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Retrieval-augmented generation (RAG) grounds a language model&#39;s answers on retrieved external knowledge and returns each answer with citations that identify its sources. Those citations are the user&#39;s audit trail: they let a reader verify a claim without trusting the model. Prior security work on RAG asks whether an attacker can corrupt the answer, leaving the citation channel unexplored. We show that this channel is a new and practical attack surface. We propose CiteShade, the first citation laundering attack to RAG, in which an attacker controlling a single source induces a model to produce an attacker-chosen wrong answer and to attribute it to a trusted source that does not support it, while the evidence for the correct answer remains in context. We formulate the attack as an optimization problem, derive three necessary conditions (retrieval, generation, and citation) and construct sources satisfying them without any instruction. On multi-source multi-hop question answering the attack raises the wrong-answer rate from 0.01 to 0.68, and source deletion confirms the malicious source is the causal driver in every measured case. Vulnerability tracks a model&#39;s propensity to cite rather than its scale, reaching CLR 0.84 under explicit instruction and 0.64 with no instruction at all on the most citation-prone model tested. We then show that perplexity filtering and citation-support checking are each insufficient, and propose a counterfactual defense that verifies which source actually drove the answer.
+
+</details>

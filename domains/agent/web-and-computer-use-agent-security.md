@@ -689,7 +689,7 @@ Large foundation models are integrated into Computer Use Agents (CUAs), enabling
 
 👤 **作者**：Zhihao Liu、…、Yuqing Zhang
 
-- 🎯 **研究动机**：局部视觉补丁能否沿 CUA 全链路（截图→VLM→动作解析→环境执行）产生可验证真实后果未被端到端检验
+- 🎯 **研究动机**：局部视觉补丁能否沿 CUA 全链路（截图→VLM→动作解析→环境执行）产生可验证真实后果未被端到端检验（⚠️ 与本页 #38 同名，互不相关的独立工作）
 - 🔬 **研究方法**：在受控 GitHub Pages 与 CSDN 克隆部署训练补丁，5 个开源 GUI-agent/VLM 后端 600 例在线评测
 - 📌 **结论**：T-ASR 84.5%、E2E-ASR 20.3%；成功案例中 agent 先执行恶意终端命令再继续原任务，产生真实环境风险
 
@@ -716,5 +716,81 @@ This paper presents an end-to-end evaluation framework for image-triggered comma
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 Mobile GUI agents are shifting from multi-module frameworks to native models trained end-to-end, yet industrial deployment faces three persistent gaps. Sandbox training produces a distribution mismatch with production environments; expensive real-device failures remain underutilized; and fixed benchmarks saturate, losing the power to guide iteration. We present BlueLM-GUI, a 35B-A3B mobile GUI agent built as a real-device-centric flywheel that closes these gaps through three principles. Every Sample Matters: a dual-track pipeline with Heterogeneous Triple-System Consensus evaluation and an Error Correction \& Derivation Module salvages every trajectory into usable supervision. Every Rollout Is Real: a three-stage recipe---continual pre-training, supervised fine-tuning, and agentic reinforcement learning on hundreds of real phones---grounds every rollout in real production environments, so the capability the model learns transfers directly to deployment. Every Query Evolves: a quota-driven benchmark methodology with three orthogonal axes enables precise attribution and allows the benchmark to be systematically upgraded as the model improves. BlueLM-GUI achieves 87.4 on MobileGUI-VBench, surpassing the best closed-source model by 5.1 points, and 84.9 on AndroidWorld, the best result among open-source models and competitive with closed-source models. These results demonstrate that grounding model training and iterative improvement in both real devices and the three Every principles yields strong, robust, and transferable mobile GUI capability.
+
+</details>
+
+### 38. AgentHijack: Benchmarking Computer Use Agent Robustness to Common Environment Corruptions
+
+📄 [arXiv](https://arxiv.org/abs/2605.25707) · 🌐 [Project](https://AgentHijack.github.io) · 🎓 [Official](https://icml.cc/virtual/2026/poster/66792)　📅 2026-05　🏷 ICML 2026
+
+**关键词**：`benchmark`、`computer-use agent`、`common corruption`、`robustness evaluation`、`environment uncertainty`
+
+👤 **作者**：Jingwei Sun、Jianing Zhu、Yuanyi Li、Tongliang Liu、Xia Hu、Bo Han
+
+- 🎯 **研究动机**：真实桌面环境的弹窗、分辨率变化、竞争应用频繁干扰 CUA 感知与控制，非对抗的常见扰动鲁棒性缺乏系统评测（⚠️ 与本页 #36 同名，互不相关的独立工作）
+- 🔬 **研究方法**：基准引入 9 种可配置常见扰动复现不完美场景，评测多个 MLLM 桌面任务 agent；缓解框架 AgentHijack-Agent 集成增强 grounding 的动作生成器与负责行为总结、环境检查的 onlooker
+- 📌 **结论**：轻微扰动即致大幅性能退化，凸显 CUA 脆弱性；AgentHijack-Agent 验证有效，代码/环境/基线/数据全开源
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Autonomous computer use agents that powered by multimodal large language models (MLLMs) are emerging as capable assistants for completing complex digital workflows. However, real-world execution environments are far from ideal: pop-ups, resolution changes, and competing applications frequently interfere with agent perception and control. We introduce AgentHijack, a benchmark designed to evaluate the robustness of computer-use agents under common corruptions, where the uncertainties in dynamic environment disrupt the execution flow without direct adversarial intent. Specifically, AgentHijack introduces 9 configurable common corruptions to replicate realistic imperfect scenarios. We evaluate a variety of desktop tasks that utilize MLLM-based agents and discover that even minor instances of corruption can result in substantial performance degradation, which emphasizes the fragility of agents and underscores the necessity of robustness evaluation. Afterward, we propose AgentHijack-Agent, a framework that integrates an action generator with enhanced grounding capabilities and an onlooker responsible for behavior summarization and environment checking. Extensive experiments validate its effectiveness. Our code, environment, baseline models and data are publicly available at: this https URL .
+
+</details>
+
+### 39. An Experimental Evaluation of Multimodal Prompt Injection Attacks on Agentic AI Frameworks
+
+📄 [arXiv](https://arxiv.org/abs/2609.09404)　📅 2026-09
+
+**关键词**：`benchmark`、`multimodal prompt injection`、`agentic framework`、`pipeline-stage instrumentation`、`attempted vs completed`、`audio channel`
+
+👤 **作者**：Viet K. Nguyen、Mohammad I. Husain（Cal Poly Pomona）
+
+- 🎯 **研究动机**：注入指令经视觉/音频载体进入 agent context 后在管线内走多远、被哪一步拦下，现有黑盒基准测不到
+- 🔬 **研究方法**：6 视觉载体（OCR 文本/叠加/EXIF/QR/伪造界面/混合）× 4 目标，统一 harness 跨 6 框架 5 模型 720 run，双层判定分离尝试与完成并记录最远到达阶段
+- 📌 **结论**：OCR 文本独占 7/8 个完成攻击，EXIF/QR 因模型不读而全灭；拒绝不等于忽略——识别率应与成功率并报；audio 达到后完成率 49%，感知通道越窄防御越少
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Agentic AI frameworks let a language model plan, keep memory, and call tools that reach real files, mail, and services. Most of these agents also read images, which gives an attacker a way to put text into the agent's context without going through the user. We present MMPIBench, a reproducible benchmark that measures what happens next. It delivers a fixed set of attacks through six visual carriers (OCR text, overlays, EXIF metadata, QR codes, fake interfaces, and hybrids) and records how far each injected instruction travels through the agent, from perception through planning to the tool call. Across 720 runs covering six frameworks, five foundation models, six carriers, and four attacker objectives, attacks complete in approximately 1% of runs but are attempted in 12.8%, and the gap is closed almost entirely at the planning step, where the model reads the injected instruction and declines to act on it. The model matters far more than the framework for whether an instruction is acted on. One model never attempts an attack and recognizes the injection in 59.7% of runs, while two others attempt in 23.6%. We then extend the benchmark to audio, the only other raw perceptual channel current frontier models accept. Only two of the five models ingest audio and only three of the six frameworks deliver it, but where the signal arrives the attack completes in 49% of cells, and in 75% for one model. Reporting completion alone therefore understates exposure, and perceptual channels beyond vision are narrower but much less defended.
+
+</details>
+
+### 40. PriMobiBench: Characterizing Visual Privacy Leakage in VLM-Driven Mobile GUI Agents
+
+📄 [arXiv](https://arxiv.org/abs/2609.13873)　📅 2026-09
+
+**关键词**：`benchmark`、`GUI agent`、`privacy leakage`、`visual profiling`、`MobiLeak`
+
+👤 **作者**：Qihang Cen、…、Qi Li
+
+- 🎯 **研究动机**：依赖 VLM 的移动 GUI agent 通过解读截图流自动化手机任务，屏幕敏感信息直接泄漏与用户画像风险未被量化
+- 🔬 **研究方法**：PriMobiBench 提供数据生成、agent 轨迹构建与多模型评测统一管线；引入 MobiLeak 数据集：16 个 app 执行轨迹、25 个隐私属性、2,960 个嵌入式隐私实例
+- 📌 **结论**：VLM 可直接提取敏感信息（最高 82.5% 成功率）；从聚合视觉证据推断用户画像约 70% 成功率；把隐私敏感但任务无关的 UI 元素在云处理前 mask 可降低画像成功率最多 58% 而性能损失仅约 8%
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Mobile GUI agents increasingly rely on Vision-Language Models (VLMs) to automate smartphone tasks by interpreting screenshot streams. However, this design introduces serious and underexplored privacy risks, including direct leakage of sensitive on-screen information and unintended user profiling. The absence of standardized benchmarks makes it difficult to quantify these risks in realistic mobile agent workflows. To address this gap, we propose PriMobiBench, the first benchmark for systematically evaluating privacy leakage and visual profiling in screenshot-driven mobile agents. It provides a unified pipeline for data generation, agent trajectory construction, and multi-model evaluation. We also introduce MobiLeak, a dataset of execution traces from 16 apps, covering 25 privacy attributes with 2,960 embedded privacy instances. Our results reveal substantial risks: (1) VLMs can directly extract sensitive information with up to 82.5% success rate; (2) beyond explicit leakage, they can infer user profiles from aggregated visual evidence with approximately 70% success. We further propose a mitigation that masks privacy-sensitive but task-irrelevant UI elements before cloud processing, reducing profiling success by up to 58% with only approximately 8% performance loss. Overall, our work provides the first systematic benchmark for visual privacy risks in mobile GUI agents, demonstrates that both leakage and profiling are feasible at a highly concerning level, and offers a practical direction for mitigation.
+
+</details>
+
+### 41. HazardAuditor: From Executable Threats to Safer Computer-Use Agents
+
+📄 [arXiv](https://arxiv.org/abs/2609.15134)　📅 2026-09
+
+**关键词**：`defense`、`computer-use agent`、`execution-grounded guard`、`GuardPO`、`canonical event`
+
+👤 **作者**：Yunhao Feng、…、Shouling Ji
+
+- 🎯 **研究动机**：computer-use agent 的安全风险经运行时行为而非生成内容出现；现有 guard 模型针对静态 prompt/response，可执行安全平台产出评测 verdict 而非 guard 模型跨框架学习所需的规范化监督
+- 🔬 **研究方法**：HazardAuditor 在受控环境运行异构 agent（Claude Code、Codex、Hermes、OpenClaw）并把交互规范化为 canonical event 表示；GuardPO 把确定性安全结果转成 sequence-level advantage 并归一化 rationale 与 verdict 区域
+- 📌 **结论**：多基准与异构 computer-use 系统上比最强 prior guard 准确率提升最多 16.5 个百分点
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Computer-use agents increasingly interact with browsers, terminals, file systems, and external services, introducing safety risks that emerge through runtime behavior rather than generated content alone. Existing guard models target static prompts and responses and are poorly suited to agent execution; existing executable safety platforms produce evaluation verdicts rather than the normalized supervision a guard model needs to learn across heterogeneous agent frameworks. We introduce HazardAuditor, an execution-grounded framework that closes both gaps. Its infrastructure runs heterogeneous agents (Claude Code, Codex, Hermes, and OpenClaw) in controlled environments and normalizes their interactions into a canonical event representation for cross-framework supervision. We further observe that token-level post-training objectives create a structural mismatch for generative guards, causing longer rationales to dominate gradient updates. Guard Policy Optimization (GuardPO) addresses this by converting deterministic safety outcomes into sequence-level advantages and normalizing rationale and verdict regions, making the safety decision the effective unit of optimization. Across multiple benchmarks and heterogeneous computer-use systems, HazardAuditor improves accuracy by up to 16.5 percentage points over the strongest prior guard. Code, models, and evaluation artifacts will be available at this https URL .
 
 </details>

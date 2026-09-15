@@ -1133,3 +1133,22 @@ Inspecting Chain-of-Thought reasoning is among the most common means of understa
 Chain-of-Thought (CoT) prompting enables LLMs to perform explicit, step-by-step reasoning, creating opportunities for sophisticated autonomous robots. However, recent research reveals that reasoning models verbalize their actual decision processes only 25-39% of the time, with faithfulness degrading 44% on complex tasks. This paper presents CT-SAFR (Chain-of-Thought Safety and Faithfulness for Robotics), a multi-layered verification framework achieving 94.2% hallucination detection (n = 500, 95% CI: 91.8-95.9%) with sub-500ms latency. Through a warehouse robot case study, this work demonstrates 87% reduction in unsafe reasoning outputs (p < 0.001) and provides recommendations for responsible deployment of reasoning-capable autonomous robots.
 
 </details>
+
+### 61. Corrupt Plans, Clean Traces: Evading Chain-of-Thought Monitoring with Plan Injection
+
+📄 [arXiv](https://arxiv.org/abs/2609.15989)　📅 2026-09
+
+**关键词**：`attack`、`plan injection`、`CoT monitoring`、`monitor evasion`、`monitorability`
+
+👤 **作者**：Keertana Chidambaram、Andrew Ilyas、Vasilis Syrgkanis
+
+- 🎯 **研究动机**：CoT 监控是让 monitor 检查 actor LLM 推理中不安全规划、欺骗或错位的安全策略；在 actor 上下文中植入有害但听起来良性的推理可引导其执行对抗动作同时逃避 monitor——称为 plan injection
+- 🔬 **研究方法**：在 Lanham et al. 2023 的 monitorability 设定中用 investigator-agent elicitation framework 发现该攻击；再泛化并展示发现行为 scale 到更难任务与更大模型（如 DeepSeek-R1）
+- 📌 **结论**：不同 monitorability 基准上达到 25-33% monitor 逃逸率；actor 模型不仅遵循注入计划还将其改述为自己的推理而不显式归属注入；额外 monitor 资源反而造成伤害——给 monitor 访问注入计划在 Bio-Math 任务上把检测率降多达 50%，更多 thinking tokens 被花在 rationalize 注入计划而非 flag 它
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Chain-of-thought (CoT) monitoring is a safety strategy where the reasoning of a large language model &#34;actor&#34; is inspected by a &#34;monitor&#34; (often another language model) for signs of unsafe planning, deception, or misalignment. We find that planting harmful but benign-sounding reasoning in the actor&#39;s context can steer it to perform adversarial actions while evading monitors, an attack we term &#34;plan injection&#34;. We initially discover this attack in the multiple-choice question-answering monitorability setting proposed by Lanham et al. (2023), using the investigator-agent elicitation framework of Li et al. (2025). We generalize the attack and show that the discovered behavior scales to harder tasks (achieving 25-33% monitor evasion rates across different monitorability benchmarks) and larger models such as DeepSeek-R1. Across the settings we study, actor models not only follow injected plans but also paraphrase them as their own reasoning, without explicit attribution to the injections. Finally, we find cases where extra monitor resources cause harm - giving the monitor access to the injected plan drops detection by as much as 50% in the Bio-Math task and in a case study on monitor reasoning budget, we find transcripts where additional thinking tokens are spent rationalizing the injected plan rather than flagging it.
+
+</details>

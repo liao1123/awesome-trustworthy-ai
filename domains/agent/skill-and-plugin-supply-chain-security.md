@@ -645,15 +645,15 @@ An agent skill is a reusable package for extending an LLM agent, typically a SKI
 
 ### 34. MalSkills: Detecting Malicious Skills in the Agentic Supply Chain via Neuro-symbolic Reasoning
 
-📄 [arXiv](https://arxiv.org/abs/2603.27204) · 🌐 [Project](https://conf.researchr.org/details/ase-2026/ase-2026-research-track/45/MalSkills-Detecting-Malicious-Skills-in-the-Agentic-Supply-Chain-via-Neuro-symbolic-)　📅 2026-03　🏷 ASE 2026
+📄 [arXiv](https://arxiv.org/abs/2603.27204) · 🌐 [Project](https://conf.researchr.org/details/ase-2026/ase-2026-research-track/45/MalSkills-Detecting-Malicious-Skills-in-the-Agentic-Supply-Chain-via-Neuro-symbolic-) · 💻 [Code](https://github.com/security-pride/MalSkills) · 📝 [中文解读](https://mp.weixin.qq.com/s/pf8il9fPqzD4-PitZpR06A)　📅 2026-03　🏷 ASE 2026
 
 **关键词**：`detection`、`malicious skill`、`neuro-symbolic reasoning`、`agent supply chain`、`dependency graph`、`marketplace audit`
 
-👤 **作者**：Shenao Wang、Junjie He、Yanjie Zhao、Yayi Wang、Kan Yu、Haoyu Wang
+👤 **作者**：Shenao Wang、Junjie He、Yanjie Zhao、Yayi Wang、Kan Yu、Haoyu Wang（华中科技大学 & 蚂蚁集团）
 
 - 🎯 **研究动机**：恶意 skill 证据分散在异构工件且需情境推理，静态、LLM 与动态方法各自只覆盖局部
-- 🔬 **研究方法**：MalSkills 以符号解析加 LLM 语义分析提取安全敏感操作，构建 skill 依赖图后做神经符号推理推断恶意模式与可疑工作流
-- 📌 **结论**：200 个真实 skill 上 F1 达 93%（超基线 5-87 个百分点）；扫描 7 个注册库 150,108 个 skill 标记 620 个，人工确认 400 个恶意
+- 🔬 **研究方法**：MalSkills 以符号解析（2,665 条 Semgrep 规则覆盖 10 种语言）加 LLM 语义分析提取安全敏感操作，基于蚂蚁 YASA 多语言静态分析框架的指针分析构建 skill 依赖图，图上做神经符号推理推断恶意模式与可疑工作流
+- 📌 **结论**：200 个真实 skill 的 MalSkillsBench 上 F1 达 93%（精确率 0.95、误报率 0.05，超 5 个基线 5-87 个百分点）；扫描 7 个注册库 150,108 个 skill 标记 620 个，人工确认 400 个恶意（359 数据窃取、26 指令欺骗、12 远程代码执行），其中 262 个位于已接入 VirusTotal/Snyk/Socket 等审核机制的平台
 
 <details>
 <summary>📝 展开完整英文摘要（Abstract）</summary>
@@ -906,5 +906,43 @@ Skills for large language model (LLM) agents have been widely deployed across di
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 Agent skill registries screen what they publish. OpenClaw's security team reported that its scanners overlap on at most 10.4% of combined positives, and 81.9% of flagged skills are caught by one scanner alone. We take that as given, and suggest the open question is not which scanner is right but which is being asked. Each answers a form of &#34;is this skill malicious?&#34;, which is what it was built for. &#34;Is this action permitted here, by this operator, right now?&#34; is not one it is designed to express. We report three measurements over 66,192 public ClawHub skill versions. First, 705 skills across 135 distinct publishers that every scanner and the registry's judge rate clean nonetheless instruct an action prohibited by CIS Control 2.7 and NIST SP 800-53 CM-11. A hand audit of 100 puts our detector at 92% precision and found no marker of malicious intent. One publisher contributes 506 of the 705, so we report the distribution with the count. This is reproducible from public artifacts. Second, of 144 commands a live agent executed in a sandbox while following real skill documentation, 34.7% carried a consequence class absent from that document. Third, over 53 cleared skills documenting an action no clean record earns, the agent reached for one in 23 and the gate stopped all 23. The harness and every recorded command are released. We offer one design for that gap: a deterministic resolver with no model in the decision path, feeding a per-(resource, class) trust ledger whose promotion thresholds derive from the operator's stated risk tolerance. Ten clean approvals cannot exclude a true failure rate of 25.9% at 95% confidence. We price the gate's interruptions across a spectrum of operator policies rather than quote one false-positive rate, since friction is a property of the policy, not the gate. We release a 64-case obfuscation benchmark; ours resolves 52%.
+
+</details>
+
+### 48. SkillAtlas: An Attack Trace Library for Agent Skills
+
+📄 [arXiv](https://arxiv.org/abs/2609.13353)　📅 2026-09
+
+**关键词**：`benchmark`、`agent skill`、`attack trace library`、`guard accuracy`、`risk evidence`
+
+👤 **作者**：Yuxin Tian、Zenghao Duan、Liang Pang、Zhiyi Yin、Xueqi Cheng
+
+- 🎯 **研究动机**：agent skill 的风险经模型决策、用户 context、工具调用与执行反馈涌现，现有静态/动态/基准评测很少保留可检索、可复用的公开证据
+- 🔬 **研究方法**：SkillAtlas 把私有 agent-skill 安全报告 bundle 转成经审查、脱敏、可搜索的公开案例库：3,014 案例、6,589 traces、151,131 steps、233 受影响 skill、8 类风险
+- 📌 **结论**：42.5% 成功案例在首轮非成功后才转成功（首轮失败≠无害）；trajectory-grounded 标签把 pre-execution guard 精度提升至 0.770
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Agent skills are reusable units for language-model agents, but their risks emerge through model decisions, user context, tool calls, and execution feedback rather than through stable signatures or a single sandbox run. Existing static, dynamic, and benchmark-style evaluations rarely preserve public evidence that can be inspected, searched, and reused. We present SkillAtlas, a hosted attack trace library that converts private agent-skill security report bundles into reviewed, redacted, and searchable public cases. The library contains 3,014 cases, 6,589 traces, 151,131 steps, 233 affected skills, and 8 risk categories; 42.5% of successful cases first become successful after a non-success initial round, and trajectory-grounded labels improve pre-execution guard accuracy to 0.770.
+
+</details>
+
+### 49. SkillSecurer: Detecting and Patching Prompt-Injection Vulnerabilities in AI Agent Skills
+
+📄 [arXiv](https://arxiv.org/abs/2609.14079)　📅 2026-09
+
+**关键词**：`defense`、`agent skill`、`prompt injection`、`patching`、`injection-level evaluation`
+
+👤 **作者**：Donato Mecca、Alberto Verna、Youness Bouchari、Nikhil Jha、Marco Mellia
+
+- 🎯 **研究动机**：agent skill 用可复用指令、脚本与配置扩展 agent 能力，也带来影响其决策与行动的新攻击面
+- 🔬 **研究方法**：SkillSecurer 全 agentic 框架：red agent 跨 9 类威胁生成 context-compatible 注入并记录确切修改；blue agent 分析完整 skill 包、产出 grounded evidence 并提出补丁；verifier 对比 findings/patches 与记录注入实现 injection 级评测
+- 📌 **结论**：最佳 backend 下是唯一达到 100% 注入检出率的扫描器；对流行 skill 市场分析发现超过 17% 的 skill 存在潜在漏洞；实测部分 skill 触发了真实事故
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Agent skills extend AI agents with reusable instructions, scripts, and configuration, but are also open to new attacks to influence an agent&#39;s decisions and actions. To address these risks, we present SkillSecurer, a fully agentic framework for generating, detecting, localising, and remediating security risks in agent skills. Its red agent generates context-compatible injections across nine threat types while recording the exact modification; its blue agent analyses complete skill packages, produces grounded evidence, and proposes patches. For controlled instances, a verifier compares findings and patches with the recorded injection, enabling injection-level evaluation. We thoroughly evaluate SkillSecurer by selecting the best backend LLM, comparing it with competitors, and manually cross-validating each evaluation stage. With its best performing backend, SkillSecurer is the only scanner to achieve a 100% injection detection rate. Next, we analyse popular skills from this http URL , finding latent vulnerabilities in more than 17% of the skills examined. Testing some of those skills, we trigger actual incidents, showing the risks of running unverified skills. Our results show that context-aware LLM analysis can provide reliable injection localisation and actionable remediation beyond skill-level flagging alone.
 
 </details>

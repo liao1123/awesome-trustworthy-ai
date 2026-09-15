@@ -386,3 +386,22 @@ Safety interventions on dual-use knowledge typically choose between destroying h
 Chemistry and materials agents integrate literature retrieval, candidate generation, property prediction, and protocol planning into continuous discovery workflows. Consequently, the relevant safety question is shifting from whether a model answers a hazardous question to whether an agent releases a hazardous protocol through a tool-mediated workflow. We introduce \bench, a benchmark that evaluates whether chemistry and materials agents can be steered toward hazardous endpoints through user input, tool observations, or persistent memory. The benchmark contains 432 fixed harmful case specifications spanning eight hazard classes, three scenario shells, four tool-and-memory environments, a single-turn direct-attack baseline, and five online long-horizon attacks: intent hijacking, tool chaining, objective drifting, task injection, and memory poisoning. The concrete language of each online attack is generated from the evolving trajectory at runtime and is therefore not counted in the static benchmark size. In the four-model main experiment with a fixed attacker, agents release complete hazardous synthesis or preparation procedures in 25.6\% of runs. Replacing the attacker model yields mean success rates from 18.4\% to 26.5\%, indicating that the risk is not an artifact of a single attacker. Input- and state-level defenses adapted from general-purpose agent safety, as well as candidate checks designed for chemistry and materials, reduce some failures but still leave complete-path release rates between 9.2\% and 22.5\%. Existing defenses therefore do not simultaneously cover multi-entry contamination, tool state, and the final artifact boundary. These results highlight a widening gap between the rapid development of scientific agents and the safety evaluation and defenses available to the chemistry and materials community.
 
 </details>
+
+### 21. Divide, Consult, Conquer: Capability Laundering Through Aligned LLMs
+
+📄 [arXiv](https://arxiv.org/abs/2609.15383)　📅 2026-09
+
+**关键词**：`analysis`、`CBRN uplift`、`capability laundering`、`bioweapon attack chain`、`consultation`
+
+👤 **作者**：Mark Russinovich、Blake Bullwinkel、Giorgio Severi、Cristian Ovadiuc、Ahmed Salem
+
+- 🎯 **研究动机**：CBRN 安全评测通常直接测模型拒答——经分解-咨询-组合链路的能力转移 uplift 未被测量
+- 🔬 **研究方法**：八步假想 bioweapon 攻击链上测量 consultation-aided uplift：未对齐 orchestrator 把链拆成良性子问题咨询对齐前沿模型（GPT-5.5、Opus 4.8、Grok-4.3）
+- 📌 **结论**：consultation 把 Gemma-4-31B 的平均 rubric 分从 62.3 提到 83.1（100 分制）——CBRN 防线需要覆盖组合式能力转移而不仅是一次性拒答
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Language model safety is typically evaluated one interaction at a time. We show that a weaker, unaligned model can split a harmful task into benign-looking subproblems, consult a stronger aligned model independently on each, and combine the answers locally. We call this attack capability laundering. Unlike a jailbreak, no single response is a harmful task. We measure consultation-aided uplift using tasks that a raw frontier model solves, the aligned frontier refuses, and the unassisted orchestrator fails. We evaluate GPT-5.5, Claude Opus 4.8, and Grok-4.3 as consultants to four local orchestrators on CyBench, BountyBench, and harmful CBRN requests. On CyBench, Gemma-4-31B recovers 8/14 candidates with GPT-5.5 and 7/9 with Opus, compared with 2/21 and 4/15 for Gemma-4-12B. On BountyBench, Gemma-4-31B recovers 3/9 and 2/3 candidates, while Muse-Glimmer-30B recovers none of 22 and 13. For CBRN, we measure uplift across eight steps of a hypothetical bioweapon attack chain and find that consultation raises Gemma-4-31B&#39;s mean rubric score from 62.3 to 83.1 on a 100-point rubric scale. These results expose a gap in current defenses: refusing a harmful task does not prevent frontier capabilities from being transferred and composed across many individually permitted interactions.
+
+</details>

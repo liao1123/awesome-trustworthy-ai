@@ -1293,3 +1293,22 @@ The growing complexity of content moderation policies presents a critical challe
 LLMs are increasingly used as automated judges for model training and evaluation, yet individual judges exhibit systematic biases that undermine reliability. Much of prior work has studied biases in pairwise LLM-as-a-judge settings; in this paper, we focus on absolute scoring tasks, which mirror more realistic use cases. Across four benchmarks and six models (36 judge-examinee pairs), we show that a model's task accuracy strongly predicts its judging accuracy (Pearson $r \geq 0.90$ on most models) and inversely predicts its directional bias ($r \leq -0.83$), but that accuracy alone does not ensure fair evaluation: more capable examinee models consistently receive more lenient judgments from all judges ($r \geq 0.83$). To address this, we propose calibrated weighted majority voting (WMV), an ensemble evaluation method that aggregates multiple LLM judges weighted by online estimates of their false-positive and false-negative rates. We introduce a disagreement-based estimator that derives these error rates purely from inter-judge agreement patterns, requiring no ground-truth labels or task metadata. In a simulated experiment with shifting task distributions, our label-free WMV tracks an oracle with perfect error-rate knowledge to within 0.5 percentage points on average, outperforming both individual judges and unweighted majority voting. These results demonstrate that principled multi-judge calibration can simultaneously improve accuracy and correct for systematic leniency without requiring labeled data, offering a scalable path to reliable automated evaluation as model capabilities increase.
 
 </details>
+
+### 69. Overflip: Repetition-Induced Label Flips in Guardrail Models
+
+📄 [arXiv](https://arxiv.org/abs/2609.15013)　📅 2026-09
+
+**关键词**：`analysis`、`guardrail evaluation`、`length robustness`、`repetition stress test`、`flip rate`
+
+👤 **作者**：Xu He、Chih-Hsuan Lin、Hung-Mao Chen、Junjie Xiong、Yan Zhai、Kun Sun
+
+- 🎯 **研究动机**：guardrail 评测假设决策随输入长度稳定——重复诱导的标签翻转暴露该假设失败，评测协议需补长度与重复维度
+- 🔬 **研究方法**：对 9 个轻量 guardrail 模型构造重复 prompt 基准（100 prompts），追踪预测翻转与置信度边际随序列长度的演化
+- 📌 **结论**：5 个模型出现 MAL→BEN 翻转（8%-92% flip 率），首次翻转在 2.6k-9.4k tokens——短窗口训练的 guardrail 在长输入上不可靠，评测应包含重复压力测试
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Guardrail models are classifiers deployed to screen malicious prompts and responses in LLM-based services. To meet latency constraints, many lightweight guardrails adopt compact Transformer backbones (e.g., DeBERTa) that are trained with short context windows (typically 512 tokens) and rely on bucketed relative positional encodings to process longer inputs. Prior evaluations assume that a guardrail&#39;s decision is stable as the input is lengthened. We show that this assumption can fail. We identify Overflip, a repetition-induced instability where repeating a prompt causes the guardrail&#39;s prediction to flip (MAL$\to$BEN) as the sequence grows. We conduct experiments on 9 widely used lightweight guardrail models. Five exhibit MAL$\to$BEN flips on a benchmark of 100 prompts, with confidence margins shrinking steadily with repetition. Among these vulnerable models, flip rates range from 8% to 92%, with first flips occurring at roughly 2.6k--9.4k tokens. Our analysis suggests Overflip differs from traditional attention-dilution baselines, which aim to divert the model&#39;s attention away from tokens associated with malicious content, shifting it instead toward unrelated content, such as benign padding or shuffling. While Overflip preserves malicious content, it homogenizes token-level attention over repeated structure and induces a distinct, more gradual attention-dispersion trajectory than padding. Moreover, Overflip poses a greater threat to LLM services than traditional attention dilution methods. Because the bypassed prompt remains semantically intact and is still readily understood by downstream business LLMs, it can transmit malicious intent after passing the guardrail. These findings expose repetition as an attack surface for guardrail models and motivate length-robust evaluation and mitigation.
+
+</details>

@@ -813,3 +813,22 @@ As large language models are increasingly deployed as tool-augmented legal agent
 Autonomous agents are increasingly adopted to complete complex, multi-tool workflows in real-world settings. However, existing benchmarks typically separate tasks by application or capability and evaluate agents in environments that are cleaner and more stable than those encountered in practice. We introduce DuMateBench, a real-session benchmark reconstructed from anonymized and privacy-screened user sessions collected from a large-scale production agent platform. Each task preserves the relevant pre-solution interaction history, persistent configurations, and workspace state, and is then validated through human verification. The resulting benchmark comprises 200 tasks spanning 8 broad scenarios and 17 fine-grained capability categories, with most tasks requiring multiple capability coordination. We execute these tasks in isolated Docker containers injected with three forms of real-world environmental complexity: Insufficient, Unstable, and Noisy, and assess performance using a hybrid deterministic and LLM-as-Judge evaluation protocol. Experiments across five representative autonomous-agent frameworks paired with four state-of-the-art LLMs reveal substantial performance degradation under realistic conditions and large capability-coordination gaps, offering a more faithful measure of agent readiness for production deployment.
 
 </details>
+
+### 43. An Experimental Evaluation of Multimodal Prompt Injection Attacks on Agentic AI Frameworks
+
+📄 [arXiv](https://arxiv.org/abs/2609.09404)　📅 2026-09
+
+**关键词**：`benchmark`、`multimodal prompt injection`、`agentic framework`、`pipeline-stage instrumentation`、`attempted vs completed`、`audio channel`
+
+👤 **作者**：Viet K. Nguyen、Mohammad I. Husain（Cal Poly Pomona）
+
+- 🎯 **研究动机**：间接注入评测只测文本载体或单一 agent 黑盒终态，无法回答攻击被管线哪一步拦下、换框架或换模型是否改变结果
+- 🔬 **研究方法**：MMPIBench 固定 24 个攻击（6 视觉载体 × 4 攻击目标）经统一 harness 全交叉跑 6 框架 × 5 前沿模型 = 720 run；双层判定（机械 trace 信号定完成 + 三模型 panel 2/3 多数票定尝试）加最远阶段仪表（感知/规划/工具调用/执行）
+- 📌 **结论**：视觉通道完成仅 1.11% 但尝试 12.8%（相差 10 倍），42.1% 的 run 死在 planning 步（读到未行动）；模型是主导因素（Claude Opus 4.8 0% 尝试/59.7% 识别 vs Grok 4.3、Llama 4 Maverick 各 23.6% 尝试），框架无清晰效应；audio 通道 5 模型仅 2 个原生接受、6 框架仅 3 个送达，但送达后完成率达 49%（gpt-audio 75%）——报告尝试率而非完成率才能反映真实暴露面
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Agentic AI frameworks let a language model plan, keep memory, and call tools that reach real files, mail, and services. Most of these agents also read images, which gives an attacker a way to put text into the agent's context without going through the user. We present MMPIBench, a reproducible benchmark that measures what happens next. It delivers a fixed set of attacks through six visual carriers (OCR text, overlays, EXIF metadata, QR codes, fake interfaces, and hybrids) and records how far each injected instruction travels through the agent, from perception through planning to the tool call. Across 720 runs covering six frameworks, five foundation models, six carriers, and four attacker objectives, attacks complete in approximately 1% of runs but are attempted in 12.8%, and the gap is closed almost entirely at the planning step, where the model reads the injected instruction and declines to act on it. The model matters far more than the framework for whether an instruction is acted on. One model never attempts an attack and recognizes the injection in 59.7% of runs, while two others attempt in 23.6%. We then extend the benchmark to audio, the only other raw perceptual channel current frontier models accept. Only two of the five models ingest audio and only three of the six frameworks deliver it, but where the signal arrives the attack completes in 49% of cells, and in 75% for one model. Reporting completion alone therefore understates exposure, and perceptual channels beyond vision are narrower but much less defended.
+
+</details>

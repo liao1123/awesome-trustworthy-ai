@@ -45,3 +45,6 @@ __pycache__/
 /tmp/
 /DeepPaperNote_output/
 /skills-lock.json
+
+# cache
+/cache/

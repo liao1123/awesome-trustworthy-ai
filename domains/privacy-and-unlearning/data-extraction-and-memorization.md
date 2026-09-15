@@ -1264,3 +1264,22 @@ Fine-tuning on open-source Large Language Models (LLMs) with proprietary data is
 Membership inference attacks (MIAs) have emerged as critical tools for auditing privacy risks in large language models (LLMs), aiming to determine whether a given text was included in a model's training corpus. However, most existing MIAs require access to per-token logits or probabilities, making them inapplicable in practice to proprietary LLMs that expose only textual continuations. To address this underexplored setting, we propose Word-level Probability MIA (WPMIA), a statistically principled MIA for strict black-box privacy auditing. WPMIA estimates word-level generation probabilities via Monte Carlo sampling with local kernel smoothing, then aggregates these estimates into a sequence-level likelihood estimator. Furthermore, WPMIA constructs the likelihood conditioned on different prefixes, thereby amplifying the distributional differences between members and non-members. We evaluate WPMIA across various open-source LLMs and find that it consistently outperforms existing black-box baselines. Importantly, we also evaluate WPMIA on modern proprietary LLMs, including GPT-5-Chat, Gemini-2.5-Flash, and Claude-4.5-Haiku, achieving an average TPR@5\%FPR of 42.0 across these models. These results offer a sound foundation for future research on strict black-box membership inference. Code is available at \href{https://github.com/niusj03/WPMIA}{https://github.com/niusj03/WPMIA}.
 
 </details>
+
+### 69. CIG-MIA: Context-Induced Information Gain Membership Inference Attacks against Retrieval-Augmented Generation
+
+📄 [arXiv](https://arxiv.org/abs/2609.14649)　📅 2026-09
+
+**关键词**：`attack`、`membership inference`、`RAG knowledge base`、`information gain`、`gray-box black-box`
+
+👤 **作者**：Tan Xue、…、Luo Xiapu
+
+- 🎯 **研究动机**：RAG 系统的检索接口可暴露候选文档是否在知识库中；现有 RAG MIA 依赖 direct membership prompt、response similarity、mask recovery 或 query perturbation，对 prompt 防御与语义相关检索文档敏感
+- 🔬 **研究方法**：CIG-MIA 基于 context-induced information gain：显式注入候选文档对 member 与 non-member 产生不同支持——若文档已可通过检索获得则注入提供很少额外支持，若缺失则注入引入新证据产生更大 likelihood gain；gray-box 从 token-level likelihood 直接计算，black-box 用基于 surrogate 的轻量估计器从生成文本评分
+- 📌 **结论**：在 Natural Questions、MS-MARCO、HealthCareMag 上验证攻击有效性（与查询成本）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Retrieval-augmented generation (RAG) systems ground large language models on external knowledge bases, enabling access to private, domain-specific, and up-to-date knowledge without retraining. However, the same retrieval interface can expose whether a candidate document is contained in the knowledge base. This paper studies knowledge base membership inference against RAG systems under both gray-box and text-only black-box access. Existing RAG membership inference attacks rely on signals such as direct membership prompts, response similarity, mask recovery, or query perturbation, which can be sensitive to prompt defenses, semantically related retrieved documents, and the generator&#39;s parametric knowledge. We introduce CIG-MIA, a membership inference attack based on context-induced information gain. The key insight is that explicit candidate-document injection affects members and non-members differently: if a document is already available through retrieval, injection provides little additional support for document-derived answers; if it is absent, injection introduces new evidence and yields a larger likelihood gain. In the gray-box setting, CIG-MIA computes this gain directly from token-level likelihoods. In the black-box setting, it estimates the same gain from generated text by scoring selected answer tokens with a lightweight surrogate-based estimator using semantic similarity and exact-match features. We evaluate CIG-MIA on Natural Questions, MS-MARCO, and HealthCareMagic against recent RAG membership inference baselines. On Natural Questions, CIG-MIA achieves an AUC of 0.99 in the gray-box setting and 0.93 in the black-box setting. We further analyze the information-gain signal, RAG configuration effects, ablations, and robustness to paraphrasing and generation randomness.
+
+</details>

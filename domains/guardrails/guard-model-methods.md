@@ -902,3 +902,22 @@ The unit of AI safety evaluation is still the individual model, yet language-mod
 Static benchmarks for harmful content detection face limitations in scalability and diversity, and may also be affected by contamination from web-scale pre-training corpora. To address these issues, we propose a framework for synthesizing harmful content, leveraging persona-guided large language model (LLM) agents. Our approach constructs two-dimensional user personas by integrating demographic identities and topical interests with situational harmful strategies, enabling the simulation of diverse and contextually grounded harmful interactions. We evaluate the framework along three dimensions: harmfulness, challenge level, and diversity. Both human and LLM-based evaluations confirm that our framework achieves a high harmful generation success rate. Experiments across multiple detection systems reveal that our synthetic scenarios are more challenging to detect than those in existing benchmarks. Furthermore, a multi-faceted analysis confirms that our approach achieves linguistic and topical diversity comparable to human-curated datasets, establishing our framework as an effective tool for robust stress-testing of harmful content detection systems.
 
 </details>
+
+### 48. Overflip: Repetition-Induced Label Flips in Guardrail Models
+
+📄 [arXiv](https://arxiv.org/abs/2609.15013)　📅 2026-09
+
+**关键词**：`attack`、`guardrail model`、`repetition-induced label flip`、`attention dispersion`、`position encoding`
+
+👤 **作者**：Xu He、Chih-Hsuan Lin、Hung-Mao Chen、Junjie Xiong、Yan Zhai、Kun Sun
+
+- 🎯 **研究动机**：轻量 guardrail 模型用短训练窗口（典型 512 tokens）+桶化相对位置编码处理长输入，其决策随输入变长保持稳定的假设未被检验
+- 🔬 **研究方法**：识别 Overflip：重复 prompt 使 guardrail 预测随序列增长翻转（恶意→良性）；在 9 个广泛使用的轻量 guardrail 模型、100 prompt 基准上实验
+- 📌 **结论**：5 个模型出现翻转，flip 率 8%-92%，首次翻转在约 2.6k-9.4k tokens；Overflip 保留恶意内容但把 token 级注意力同质化到重复结构——比传统注意力稀释更具威胁的 guardrail 结构脆弱性
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Guardrail models are classifiers deployed to screen malicious prompts and responses in LLM-based services. To meet latency constraints, many lightweight guardrails adopt compact Transformer backbones (e.g., DeBERTa) that are trained with short context windows (typically 512 tokens) and rely on bucketed relative positional encodings to process longer inputs. Prior evaluations assume that a guardrail&#39;s decision is stable as the input is lengthened. We show that this assumption can fail. We identify Overflip, a repetition-induced instability where repeating a prompt causes the guardrail&#39;s prediction to flip (MAL$\to$BEN) as the sequence grows. We conduct experiments on 9 widely used lightweight guardrail models. Five exhibit MAL$\to$BEN flips on a benchmark of 100 prompts, with confidence margins shrinking steadily with repetition. Among these vulnerable models, flip rates range from 8% to 92%, with first flips occurring at roughly 2.6k--9.4k tokens. Our analysis suggests Overflip differs from traditional attention-dilution baselines, which aim to divert the model&#39;s attention away from tokens associated with malicious content, shifting it instead toward unrelated content, such as benign padding or shuffling. While Overflip preserves malicious content, it homogenizes token-level attention over repeated structure and induces a distinct, more gradual attention-dispersion trajectory than padding. Moreover, Overflip poses a greater threat to LLM services than traditional attention dilution methods. Because the bypassed prompt remains semantically intact and is still readily understood by downstream business LLMs, it can transmit malicious intent after passing the guardrail. These findings expose repetition as an attack surface for guardrail models and motivate length-robust evaluation and mitigation.
+
+</details>

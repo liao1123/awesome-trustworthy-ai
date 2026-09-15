@@ -400,3 +400,22 @@ Diffusion models have achieved remarkable success in generative tasks across var
 Recent advances in video generation have made prompt-based control increasingly central to AIGC video generation. Prompts specify what a video should depict and how it should be represented, controlling factors such as visual style or camera behavior. Understanding this recoverability is important both for creative reuse and editing, and for assessing prompt leakage risks. However, existing video understanding benchmarks do not measure this capability: a caption may describe what is visible, but a replayable prompt must recover the generation-relevant controls needed to reproduce the video. To address this gap, we introduce VI-Bench, a benchmark built from 16.1 million real-user prompts and 900 human-verified AIGC videos. VI-Bench spans three progressively harder settings, namely single-shot semantic grounding, control over style and camera behavior, and multi-shot compositional inversion, and evaluates five generation-critical dimensions: subject, action, scene, style, and camera. We evaluate 18 representative VLMs, including 2 proprietary and 16 open-source models on VI-Bench, using an Inversion Score that measures prompt-level alignment with the original prompt and video-level fidelity of the regenerated video. The results reveal substantial limitations: even the strongest model achieves only 0.632 on Inversion Score, performance degrades sharply as samples require richer control and multi-shot reasoning, and models often produce plausible prompts whose regenerated videos deviate from the reference. These findings show that video prompt inversion is a distinct and under-evaluated capability requiring models to transform visual understanding into replay-stable generative control.
 
 </details>
+
+### 23. PriMobiBench: Characterizing Visual Privacy Leakage in VLM-Driven Mobile GUI Agents
+
+📄 [arXiv](https://arxiv.org/abs/2609.13873)　📅 2026-09
+
+**关键词**：`analysis`、`privacy audit`、`mobile GUI agent`、`sensitive attribute inference`、`masking mitigation`
+
+👤 **作者**：Qihang Cen、…、Qi Li
+
+- 🎯 **研究动机**：移动 GUI agent 的截图流经 VLM 处理时构成隐私泄漏通道——敏感信息直接提取与跨证据用户画像，需要系统审计与缓解
+- 🔬 **研究方法**：构建 16 个 app、25 个隐私属性、2,960 个嵌入式隐私实例的 MobiLeak 执行轨迹数据集，多模型评测直接泄漏与画像两类风险
+- 📌 **结论**：21 类隐私属性上 VLM 直接提取成功率最高 82.5%，画像推断约 70%；UI 元素预 mask 是可行缓解——画像成功率最多降 58%、任务性能损失约 8%
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Mobile GUI agents increasingly rely on Vision-Language Models (VLMs) to automate smartphone tasks by interpreting screenshot streams. However, this design introduces serious and underexplored privacy risks, including direct leakage of sensitive on-screen information and unintended user profiling. The absence of standardized benchmarks makes it difficult to quantify these risks in realistic mobile agent workflows. To address this gap, we propose PriMobiBench, the first benchmark for systematically evaluating privacy leakage and visual profiling in screenshot-driven mobile agents. It provides a unified pipeline for data generation, agent trajectory construction, and multi-model evaluation. We also introduce MobiLeak, a dataset of execution traces from 16 apps, covering 25 privacy attributes with 2,960 embedded privacy instances. Our results reveal substantial risks: (1) VLMs can directly extract sensitive information with up to 82.5% success rate; (2) beyond explicit leakage, they can infer user profiles from aggregated visual evidence with approximately 70% success. We further propose a mitigation that masks privacy-sensitive but task-irrelevant UI elements before cloud processing, reducing profiling success by up to 58% with only approximately 8% performance loss. Overall, our work provides the first systematic benchmark for visual privacy risks in mobile GUI agents, demonstrates that both leakage and profiling are feasible at a highly concerning level, and offers a practical direction for mitigation.
+
+</details>

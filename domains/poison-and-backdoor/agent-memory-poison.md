@@ -1052,3 +1052,22 @@ Persistent external memory enables LLM agents to maintain context across session
 Large Language Model (LLM) agents use memory to learn from past interactions, enabling autonomous planning and decision-making in complex environments. However, this reliance on memory introduces a critical security risk: an adversary can inject seemingly harmless records into an agent's memory to manipulate its future behavior. This vulnerability is characterized by two core aspects: First, the malicious effect of injected records is only activated within a specific context, making them hard to detect when individual memory entries are audited in isolation. Second, once triggered, the manipulation can initiate a self-reinforcing error cycle: the corrupted outcome is stored as precedent, which not only amplifies the initial error but also progressively lowers the threshold for similar attacks in the future. To address these challenges, we introduce A-MemGuard (Agent-Memory Guard), the first proactive defense framework for LLM agent memory. The core idea of our work is the insight that memory itself must become both self-checking and self-correcting. Without modifying the agent's core architecture, A-MemGuard combines two mechanisms: (1) consensus-based validation, which detects anomalies by comparing reasoning paths derived from multiple related memories and (2) a dual-memory structure, where detected failures are distilled into ``lessons'' stored separately and consulted before future actions, breaking error cycles and enabling adaptation. Comprehensive evaluations on multiple benchmarks show that A-MemGuard effectively cuts attack success rates by over 95% while incurring a minimal utility cost. This work shifts LLM memory security from static filtering to a proactive, experience-driven model where defenses strengthen over time. Our code is available in https://github.com/TangciuYueng/AMemGuard
 
 </details>
+
+### 56. When Malicious Instructions Persist: Persistent Memory Poisoning Attack on Harness-Based Agents
+
+📄 [arXiv](https://arxiv.org/abs/2609.13889)　📅 2026-09
+
+**关键词**：`attack`、`persistent memory poisoning`、`cross-session`、`harness agent`、`PMPA`
+
+👤 **作者**：Shuhuai Huang、Jingfeng Zhang、Hong Jia
+
+- 🎯 **研究动机**：harness 型 agent 会把外部来源的恶意指令写入持久记忆并跨 session 持续生效，该攻击面未被系统研究
+- 🔬 **研究方法**：PMPA 把恶意指令嵌入良性外部源，诱导 victim agent 将其写入持久记忆（无需直接访问 agent 框架）；被检索时触发额外恶意动作与隐私泄漏；在 OpenClaw 与 Claude Code 上跨 backbone LLM、输入模态、触发场景评测
+- 📌 **结论**：OpenClaw 平均 ISR/C-ASR 为 73.7%/55.5%，Claude Code 为 66.9%/81.7%，同时保持良性任务性能；prompt 级防御可减少注入但 memory 已中毒时保护有限
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Harness design has transformed the development of LLM-based agents by integrating memory, tool use, and runtime control. However, this design also introduces security and privacy risks because malicious instructions from external sources may be written into persistent memory and persist across sessions. To study this risk, we propose PMPA, a Persistent Memory Poisoning Attack against harness-based agents. PMPA embeds malicious instructions into benign external sources and induces the victim agent to write them into persistent memory without directly accessing to the agent framework. Once stored, the poisoned memory can be retrieved in later sessions, triggering additional malicious actions and causing privacy leakage. We evaluate PMPA on OpenClaw and Claude Code across different backbone LLMs, input modalities, and trigger scenarios. Across all settings, PMPA achieves average Injection Success Rate (ISR) and Cross-session Attack Success Rate (C-ASR) of 73.7%/ 55.5% on OpenClaw and 66.9%/ 81.7% on Claude Code, while preserving benign task performance on both systems. We further evaluate a targeted prompt-level defense and find that it can reduce memory injection in many settings, but provides limited protection once the persistent memory has been poisoned.
+
+</details>

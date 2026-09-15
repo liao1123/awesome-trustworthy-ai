@@ -231,3 +231,22 @@ Vision Transformers (ViTs) exhibit notable susceptibility to adversarial attacks
 Deep neural networks (DNNs) underpin critical applications yet remain vulnerable to backdoor attacks, typically reliant on heuristic brute-force methods. Despite significant empirical advancements in backdoor research, the lack of rigorous theoretical analysis limits understanding of underlying mechanisms, constraining attack predictability and adaptability. Therefore, we provide a theoretical analysis targeting backdoor attacks, focusing on how sparse decision boundaries enable disproportionate model manipulation. Based on this finding, we derive a closed-form, ambiguous boundary region, wherein negligible relabeled samples induce substantial misclassification. Influence function analysis further quantifies significant parameter shifts caused by these margin samples, with minimal impact on clean accuracy, formally grounding why such low poison rates suffice for efficacious attacks. Leveraging these insights, we propose Eminence, an explainable and robust black-box backdoor framework with provable theoretical guarantees and inherent stealth properties. Eminence optimizes a universal, visually subtle trigger that strategically exploits vulnerable decision boundaries and effectively achieves robust misclassification with exceptionally low poison rates (< 0.1%, compared to SOTA methods typically requiring > 1%). Comprehensive experiments validate our theoretical discussions and demonstrate the effectiveness of Eminence, confirming an exponential relationship between margin poisoning and adversarial boundary manipulation. Eminence maintains > 90% attack success rate, exhibits negligible clean-accuracy loss, and demonstrates high transferability across diverse models, datasets and scenarios.
 
 </details>
+
+### 13. AgentHijack: Benchmarking Computer Use Agent Robustness to Common Environment Corruptions
+
+📄 [arXiv](https://arxiv.org/abs/2605.25707) · 🌐 [Project](https://AgentHijack.github.io) · 🎓 [Official](https://icml.cc/virtual/2026/poster/66792)　📅 2026-05　🏷 ICML 2026
+
+**关键词**：`benchmark`、`computer-use agent`、`common corruption`、`robustness evaluation`、`environment uncertainty`
+
+👤 **作者**：Jingwei Sun、Jianing Zhu、Yuanyi Li、Tongliang Liu、Xia Hu、Bo Han
+
+- 🎯 **研究动机**：真实桌面环境远非理想——弹窗、分辨率变化、竞争应用频繁干扰 CUA 的感知与控制，而 agent 鲁棒性评测集中在对抗意图攻击，非对抗的常见环境扰动被忽视（注意与同名视觉 patch 攻击论文 2609.09212 区分，两者独立）
+- 🔬 **研究方法**：AgentHijack 基准引入 9 种可配置常见扰动复现不完美场景，系统评测 MLLM 驱动的桌面任务 agent；并提出缓解框架 AgentHijack-Agent——增强 grounding 的动作生成器 + 负责行为总结与环境检查的 onlooker
+- 📌 **结论**：即使轻微扰动也可导致大幅性能退化，凸显 CUA 脆弱性与鲁棒性评测必要性；AgentHijack-Agent 经充分实验验证有效，代码/环境/基线/数据全开源
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Autonomous computer use agents that powered by multimodal large language models (MLLMs) are emerging as capable assistants for completing complex digital workflows. However, real-world execution environments are far from ideal: pop-ups, resolution changes, and competing applications frequently interfere with agent perception and control. We introduce AgentHijack, a benchmark designed to evaluate the robustness of computer-use agents under common corruptions, where the uncertainties in dynamic environment disrupt the execution flow without direct adversarial intent. Specifically, AgentHijack introduces 9 configurable common corruptions to replicate realistic imperfect scenarios. We evaluate a variety of desktop tasks that utilize MLLM-based agents and discover that even minor instances of corruption can result in substantial performance degradation, which emphasizes the fragility of agents and underscores the necessity of robustness evaluation. Afterward, we propose AgentHijack-Agent, a framework that integrates an action generator with enhanced grounding capabilities and an onlooker responsible for behavior summarization and environment checking. Extensive experiments validate its effectiveness. Our code, environment, baseline models and data are publicly available at: this https URL .
+
+</details>

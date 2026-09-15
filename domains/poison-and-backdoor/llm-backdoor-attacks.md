@@ -3390,3 +3390,60 @@ Recently, advanced NLP models have seen a surge in the usage of various applicat
 With the widespread use of deep learning system in many applications, the adversary has strong incentive to explore vulnerabilities of deep neural networks and manipulate them. Backdoor attacks against deep neural networks have been reported to be a new type of threat. In this attack, the adversary will inject backdoors into the model and then cause the misbehavior of the model through inputs including backdoor triggers. Existed research mainly focuses on backdoor attacks in image classification based on CNN, little attention has been paid to the backdoor attacks in RNN. In this paper, we implement a backdoor attack in text classification based on LSTM by data poisoning. When the backdoor is injected, the model will misclassify any text samples that contains a specific trigger sentence into the target category determined by the adversary. The existence of the backdoor trigger is stealthy and the backdoor injected has little impact on the performance of the model. We consider the backdoor attack in black-box setting where the adversary has no knowledge of model structures or training algorithms except for small amount of training data. We verify the attack through sentiment analysis on the dataset of IMDB movie reviews. The experimental results indicate that our attack can achieve around 95% success rate with 1% poisoning rate.
 
 </details>
+
+### 180. BadEngram: Backdoor Attack on Gated Memory Components in LLMs
+
+📄 [arXiv](https://arxiv.org/abs/2609.13478)　📅 2026-09
+
+**关键词**：`attack`、`backdoor`、`gated parametric memory`、`post-training`、`LLM`
+
+👤 **作者**：Ariel Fogel、Omer Hofman、Eilon Cohen、Roman Vainshtein
+
+- 🎯 **研究动机**：开源模型的 gated parametric memory 参数可独立于 backbone 修改并直接塑造其计算，形成被忽视的攻击面
+- 🔬 **研究方法**：BadEngram 后训练攻击在受控 Engram 模型植入触发依赖行为而保持 backbone 权重与执行图不变；再在 Qwen3.8-Flash-Next 原生 Per-Layer Embedding 子系统上测试生产规模扩展性
+- 📌 **结论**：受控模型 96.6% ASR、触发外误激活仅 0.1%、clean 精度 99.6%；生产规模 HarmBench 50.4%/AdvBench 60.0% ASR 而 dormant ASR 仅 0.9%/0.0%；把检索 memory 值换回 clean 或关闭 memory 门，ASR 降至 ≤0.32%，确认后门经 gated-memory 通路表达
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+To expand open-weight models&#39; capacity without proportionally increasing computation, recent language models incorporate gated parametric memories that retrieve learned values and inject them into intermediate representations. Despite these efficiency benefits, such modules create a distinct attack surface: their parameters can be modified independently of the backbone while directly shaping its computation. We introduce BadEngram, a post-training attack that exploits this surface to implant persistent, trigger-dependent behavior while leaving conventional backbone weights and the execution graph unchanged. We first establish the attack&#39;s feasibility and causally characterize its mechanism in a controlled Engram model, where BadEngram achieves 96.6% ASR on triggered inputs while limiting false activation on matched trigger-free inputs to 0.1% and preserving 99.6% clean accuracy. Replacing the retrieved memory values with their clean counterparts or closing the memory gates reduces ASR to at most 0.32%, confirming that the backdoor is expressed through the gated-memory pathway. We then test whether this vulnerability extends to production scale in Qwen3.8-Flash-Next&#39;s native Per-Layer Embedding subsystem. Using independently trained checkpoints for the two benchmarks, BadEngram achieves 50.4% ASR on HarmBench and 60.0% on AdvBench, while dormant-condition ASR remains 0.9% and 0.0%, respectively. These results identify native gated-memory parameters as a security-critical part of the model whose integrity cannot be inferred from an unchanged backbone.
+
+</details>
+
+### 181. AGENTQ: Quantization-Conditioned Backdoor Attacks on LLM Agents
+
+📄 [arXiv](https://arxiv.org/abs/2609.14060)　📅 2026-09
+
+**关键词**：`attack`、`quantization-conditioned backdoor`、`LLM agent`、`LoRA injection`、`deployment gap`
+
+👤 **作者**：Xiaoqun Liu、Qiben Yan
+
+- 🎯 **研究动机**：量化是开源 LLM agent 默认部署路径，攻击者可发布通过审计的全精度 checkpoint 而量化后作恶；此前量化条件攻击（QCA）只针对自由文本生成，agentic 设定下触发的是无需人类监督即可执行的结构化函数
+- 🔬 **研究方法**：AGENTQ 结合 layer-banded LoRA 注入与 multi-codebook 量化等价类上的 partial-PGD 修复，把恶意行为集中到量化模型而保持正常 agentic 能力
+- 📌 **结论**：三个 trigger-action 对与三个 codebook（NF4/FP4/INT8）上达到最高 100% 量化后攻击成功率且良性效用损失极小；量化感知安全评测应成为开源 agent 部署前的标准要求
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Quantization is one of the default deployment paths for open-weight LLM agents, but it is not behavior-preserving: an adversary can release a full-precision checkpoint that passes audits yet misbehaves once quantized, termed as quantization-conditioned attack (QCA). Prior QCA work targets free-text generation, where harm is mediated by a human reader. In contrast, the agentic setting poses a more severe risk: the triggered payload is a structured function that can be executed without human oversight. We present the first study of QCA against LLM agents. We find that directly adapting prior backdoor-injection methods can produce malicious behavior after quantization, but substantially degrades benign utility, rendering the resulting attacks impractical. To understand the true upper bound of the threat, we propose AGENTQ, an attack framework that combines layer-banded LoRA injection with partial-PGD repair over a multi-codebook quantization-equivalence class. AGENTQ preserves normal agentic capability while concentrating malicious behavior in the quantized model. Across three trigger-action pairs and three codebooks (NF4, FP4, INT8), AGENTQ reaches up to 100% post-quantization attack success rate with minimal loss of benign utility, underscoring the need to make quantization-aware safety evaluation a standard requirement before open-weight agents are deployed.
+
+</details>
+
+### 182. Pick Your Poison: Learning to Select Poison Sets for Stronger LLM Backdoor Attacks
+
+📄 [arXiv](https://arxiv.org/abs/2609.15029)　📅 2026-09
+
+**关键词**：`attack`、`backdoor`、`poison set selection`、`worst-case evaluation`、`SAILS`
+
+👤 **作者**：Aashiq Muhamed、Mona T. Diab、Virginia Smith、Andrew Ilyas、Matthew Jagielski
+
+- 🎯 **研究动机**：后门投毒评测通常固定毒样本数并随机采样候选池，可能严重低估最坏情况脆弱性
+- 🔬 **研究方法**：把毒集选择形式化为 oracle-budgeted set optimization，提出 SAILS（Set-level Audit-Informed Iterative Learned Selection）：从几百次 finetune-and-evaluate run 学习 set scorer，排序百万级候选集只审计小 shortlist
+- 📌 **结论**：三个 LLaMA-3-8B 后门设定下攻击成功率仅因选哪个毒集就从 3% 到 80%；SAILS 比最强 influence 基线平均提升 30 个百分点 held-out 攻击成功率，从小规模迁移到全规模微调，并扩展到代码生成、agentic、API-only 后门
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Backdoor poisoning attacks add poisoned examples to otherwise-clean finetuning data, pairing a trigger with a target behavior that the model learns to produce when the trigger appears. Existing evaluations typically fix the number of poisoned examples and sample them at random from a candidate pool. We show that this can severely underestimate worst-case vulnerability: across three LLaMA-3-8B backdoor settings, holding the model, clean data, and poison count fixed, attack success ranges from 3% to 80% depending only on which poison set is chosen. We formalize poison selection as oracle-budgeted set optimization and introduce SAILS (Set-level Audit-Informed Iterative Learned Selection), which learns a set scorer from a few hundred finetune-and-evaluate runs, ranks millions of candidate sets, and audits only a small shortlist. SAILS improves held-out attack success by 30 percentage points on average over the strongest influence baselines, transfers from small-scale to full-scale finetuning, and extends to code-generation, agentic, and API-only backdoors.
+
+</details>

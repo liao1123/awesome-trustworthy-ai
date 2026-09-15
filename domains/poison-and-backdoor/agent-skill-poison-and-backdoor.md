@@ -1161,15 +1161,15 @@ Agent skills introduce a new and more severe form of indirect injection for LLM 
 
 ### 61. MalSkills: Detecting Malicious Skills in the Agentic Supply Chain via Neuro-symbolic Reasoning
 
-📄 [arXiv](https://arxiv.org/abs/2603.27204) · 🌐 [Project](https://conf.researchr.org/details/ase-2026/ase-2026-research-track/45/MalSkills-Detecting-Malicious-Skills-in-the-Agentic-Supply-Chain-via-Neuro-symbolic-)　📅 2026-03　🏷 ASE 2026
+📄 [arXiv](https://arxiv.org/abs/2603.27204) · 🌐 [Project](https://conf.researchr.org/details/ase-2026/ase-2026-research-track/45/MalSkills-Detecting-Malicious-Skills-in-the-Agentic-Supply-Chain-via-Neuro-symbolic-) · 💻 [Code](https://github.com/security-pride/MalSkills) · 📝 [中文解读](https://mp.weixin.qq.com/s/pf8il9fPqzD4-PitZpR06A)　📅 2026-03　🏷 ASE 2026
 
 **关键词**：`detection`、`malicious skill`、`neuro-symbolic reasoning`、`agent supply chain`、`dependency graph`、`marketplace audit`
 
-👤 **作者**：Shenao Wang、Junjie He、Yanjie Zhao、Yayi Wang、Kan Yu、Haoyu Wang
+👤 **作者**：Shenao Wang、Junjie He、Yanjie Zhao、Yayi Wang、Kan Yu、Haoyu Wang（华中科技大学 & 蚂蚁集团）
 
 - 🎯 **研究动机**：恶意 skill 证据分散在异构工件且需情境推理，静态、LLM 与动态方法各自只覆盖局部
-- 🔬 **研究方法**：MalSkills 以符号解析加 LLM 语义分析提取安全敏感操作，构建 skill 依赖图后做神经符号推理推断恶意模式与可疑工作流
-- 📌 **结论**：200 个真实 skill 上 F1 达 93%（超基线 5-87 个百分点）；扫描 7 个注册库 150,108 个 skill 标记 620 个，人工确认 400 个恶意
+- 🔬 **研究方法**：MalSkills 以符号解析（2,665 条 Semgrep 规则覆盖 10 种语言）加 LLM 语义分析提取安全敏感操作，基于蚂蚁 YASA 多语言静态分析框架的指针分析构建 skill 依赖图，图上做神经符号推理推断恶意模式与可疑工作流
+- 📌 **结论**：200 个真实 skill 的 MalSkillsBench 上 F1 达 93%（精确率 0.95、误报率 0.05，超 5 个基线 5-87 个百分点）；扫描 7 个注册库 150,108 个 skill 标记 620 个，人工确认 400 个恶意（359 数据窃取、26 指令欺骗、12 远程代码执行），其中 262 个位于已接入 VirusTotal/Snyk/Socket 等审核机制的平台
 
 <details>
 <summary>📝 展开完整英文摘要（Abstract）</summary>

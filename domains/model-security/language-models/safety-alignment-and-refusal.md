@@ -2182,3 +2182,41 @@ Safety alignment is usually posed as a topic-level question: is this subject har
 Post-hoc safety training (RLHF, DPO) is the dominant way to align large language models, yet jailbreaks (Zou et al., 2023b), fine-tuning attacks (Qi et al., 2024), and activation-space probes (Arditi et al., 2024) keep recovering the behaviors it was meant to remove. We give this fragility one geometric explanation and trace it to when, during pretraining, safety can take hold. We measure the safety update $Δ= W_{\text{safe}} - W_{\text{base}}$ against the curvature of the model's capabilities (the empirical Fisher of a capability loss). Post-hoc safety consistently lands in a suppression regime: $Δ$ is nearly orthogonal to the capability directions, and its small in-subspace part concentrates on a few high-curvature ones. The update is thin but sharp, a refusal gate laid over intact capabilities rather than erasure of them. A kernel-immobility lemma explains why such an update can only mask a capability, not remove it, so a little benign fine-tuning restores it: 100 steps of benign fine-tuning collapse refusal on Qwen-2.5-7B and Llama-3-8B Instruct at preserved capability, a signature that replicates across five model families. Following the account into pretraining, a 267-checkpoint sweep of OLMo-2-1B (OLMo et al., 2025) shows the substrate that safety engages emerging in a sharp transition between roughly 6B and 60B pretraining tokens. We then use the account constructively: models trained from scratch with safety co-training spread continuously across pretraining reach 87 to 98% refusal whose post-attack level holds at 84 to 91% at every scale, an erosion of 2 to 14 pp against 35 to 38 pp for post-hoc installs, at capability matched or better than an LM-only baseline and holding from 410M to 6.9B, whereas a compute-matched windowed schedule installs no lasting refusal. Persistence of the safety signal across pretraining, not its timing, is what buys attack robustness.
 
 </details>
+
+### 117. Refusal Reads Only a Slice of What the Model Knows: Harm-Keyed Routing and Its Exceptions Across Model Families
+
+📄 [arXiv](https://arxiv.org/abs/2609.14759)　📅 2026-09
+
+**关键词**：`analysis`、`refusal mechanism`、`harm direction`、`moral subspace`、`causal patching`
+
+👤 **作者**：Orion Reblitz-Richardson
+
+- 🎯 **研究动机**：对齐后应用的 refusal 是可测量地浅的：残差流中单一方向可被编辑掉而模型停止拒绝；该事实说明移除拒绝多容易，而非 refusal 决策读的是什么——本文分离 refusal 读什么与模型理解什么
+- 🔬 **研究方法**：跨四个开源权重模型（三个家族）：道德理解 native 于预训练（预训练期间结晶出低秩道德子空间）而 alignment 只旋转一次不重建；refusal gate 是全新的 post-training 构造，写入窄控制 token 通道；用 nested interchange rank sweep 在匹配请求间 patch 渐大的 moral subspace 切片并读多少 refusal 响应转移
+- 📌 **结论**：OLMo-3 上：道德判断持续读取更多 moral subspace，而 refusal 在单一 harm direction 水平上持平，且 refusal 约 3/4 的因果输入位于 moral subspace 之外——refusal 读取 harm 知觉而非道德内容；跨家族不均匀：Llama 读广泛道德内容，Qwen 读超出单一 harm cue 但未解决
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Alignment applied after pretraining is shallow in a measurable way: a single direction in a model&#39;s residual stream can be edited out, and the model stops refusing harmful requests. That fact says how easily refusal can be removed, not what the refusal decision was reading in the first place. We ask what it reads, and we separate that from what the model comprehends. Across four open-weight models spanning three families, moral comprehension is native to pretraining: a low-rank moral subspace crystallizes during pretraining, and alignment rotates it once without rebuilding it. The refusal gate, in contrast, is a fresh post-training construction with only a weak pretraining precursor, written into a narrow control-token channel where the refusal decision is orthogonal to the moral-judgment decision. The central result is causal and comes from one model, OLMo-3. A nested interchange rank sweep patches successively larger slices of the moral subspace between matched requests and reads how much of refusal&#39;s response transfers: as the basis widens, moral judgment keeps reading more of it, while refusal levels off at the level of a single harm direction, and about three-quarters of refusal&#39;s causal input lies outside the moral subspace altogether. Refusal reads the harm percept, not the moral content that judgment reads on the same patches. The picture is not uniform across families. Llama reads broad moral content; Qwen reads beyond the single harm cue but is unresolved at our sample size; GPT-OSS reads harm, and its refusals can be argued in either direction by its own reasoning trace. Where refusal reads only a low-rank slice and routes around the bulk of what the model knows, a rank-one edit removes it. Whether widening what refusal reads would also deepen the behavior is the open question this raises.
+
+</details>
+
+### 118. Inoculation Midtraining with Learned Neologisms
+
+📄 [arXiv](https://arxiv.org/abs/2609.15886)　📅 2026-09
+
+**关键词**：`analysis`、`inoculation midtraining`、`learned neologism`、`selective generalization`、`unsafe data`
+
+👤 **作者**：Kyle O&#39;Brien、…、David Demitri Africa
+
+- 🎯 **研究动机**：LLM 在 post-training 中同时学习理想与不理想性质；研究 midtraining（更早训练阶段）能否塑造哪些性质后来泛化
+- 🔬 **研究方法**：Inoculation Midtraining 教 base model 不安全行为属于指定的 <quarantine_token> 上下文（以 midtraining 期间引入的 quarantine_token 新词指示），然后在该上下文内对不安全数据 post-train，最后在 system prompt 排除该 token 的情况下评估模型
+- 📌 **结论**：跨 SFT 与 RL post-training 两种 regime：midtraining 成功使模型把 reward hacking 描述为可接受、更认可自己产出的 reward-hacking 输出，但产生 EM 的强学习未发生（同设定下 IP 阻止 EM）；SDF 可预测地把新关联引导进下游泛化，但覆盖既有关联（reward hacking 与 misalignment 的关联）时挣扎且效果不可预测；midtraining 引入的学习关联可塑造选择性泛化，但成为开发者安全框架的承重组件前还需更多工作
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models (LLMs) often learn both desirable and undesirable properties during post-training. We study whether midtraining, an earlier training stage, can shape which of these properties later generalise. We introduce Inoculation Midtraining, a technique that teaches a base model that unsafe behaviour belongs to a designated &lt;quarantine_token&gt; context, as indicated by the &lt;quarantine_token&gt; neologism (a new token) introduced during midtraining, and then post-trains the model on unsafe data within that context. We then evaluate the model outside the context, with the &lt;quarantine_token&gt; neologism excluded from the system prompt. Across supervised fine-tuning and reinforcement learning post-training regimes, we find that Inoculation Midtraining can reduce misalignment while preserving the transfer of benign data properties (e.g., speaking in German or Shakespearean prose). However, our approach does not outperform standard Inoculation Prompting, is sensitive to training configuration, and produces a leaky boundary that nearby contextual cues can reactivate. These results show that inoculation with a learned association introduced via midtraining can shape selective generalisation. Still, more work is needed before this approach can become a load-bearing component in a developer&#39;s safety framework.
+
+</details>

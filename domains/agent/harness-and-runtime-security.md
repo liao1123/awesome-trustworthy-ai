@@ -750,3 +750,22 @@ Modern LLM-based agents operate through a harness of tools, reusable skills, and
 An agentic coding system couples a language model to a harness: the tools, prompts and control flow that turn a chat model into an autonomous software engineer. Vendors ship harnesses tuned to their own models, and practitioners assume the vendor-native pairing solves more tasks. We measure that assumption with paired same-model contrasts on a private, contamination-controlled suite of 256 repository and post-cutoff contest tasks. The same 80 tasks ran under claude-agent-sdk and under deepagents on claude-opus-4-8, and under the openai-codex SDK and deepagents on gpt-5.5, with gemini-3.5-flash and deepseek-v3.2 as side cells. 792 of 800 planned runs were graded by an isolated oracle. Neither contrast resolves an average advantage for either harness: -1.25 pp for Opus 4.8 (48.8% vs 50.0%, task-bootstrap 95% CI [-10.0, +7.5]) and +1.25 pp for GPT-5.5 (55.6% vs 54.4%, CI [-4.4, +6.9]). The Opus average combines opposite strata: the native harness trails by 9.0 pp on the 61 repository tasks and leads by 23.7 pp on the 19 contest tasks (label-permutation p = 0.003). The partition was chosen after seeing the data and needs a designed replication. Correctness and completion also separate: 22 of 81 runs cancelled at the wall-clock ceiling had produced a passing patch. Re-priced from raw per-turn usage at frozen list prices, the neutral harness cost 1.3 to 1.6 times as much per solved task on Opus 4.8 and 1.2 times on GPT-5.5. These are observed-usage estimates. On the Anthropic account 58 runs left no usage record, and allocating that spend to either cell would move the Opus ratio between 0.7 and 2.3, so the billed ordering is unresolved. This revision corrects an August 2026 manuscript whose cost figures rested on a usage-semantics defect in our own telemetry (Section 5.1). We release the orchestrator, grading oracle, reanalysis code and derived aggregates. The tasks stay private.
 
 </details>
+
+### 40. Detecting and Localizing Segment-Level Poisoning in Multi-Source LLM-Agent Inputs
+
+📄 [arXiv](https://arxiv.org/abs/2609.14723)　📅 2026-09
+
+**关键词**：`defense`、`input poisoning detection`、`activation analysis`、`segment localization`、`multi-source input`
+
+👤 **作者**：Xue Tan、…、Jun Dai
+
+- 🎯 **研究动机**：多源 LLM-agent 输入（检索段落、用户评论、文档）易受 segment 级投毒——攻击者只控制小部分源即可操纵输出；文本模式/embedding/辅助检测器对流畅语义合理的毒 segment 失效
+- 🔬 **研究方法**：ActProbe 基于 LLM 内部激活：成功的投毒与对抗指令在激活上形成一致 poison direction；把 MLP 激活投影到该方向用小校准集训练线性 SVM 检测污染 prompt，再经 BinRoL 递归替换消融+Mahalanobis 剪枝+MAD 叶检测定位毒 segment
+- 📌 **结论**：无需修改后端 LLM，定位开销从 O(n) 穷举 probing 降到 O(k log n) 前向传播；跨三个数据集、corrupted-evidence 与 adversarial-instruction 两类攻击有效
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Modern large language model (LLM) agents often construct prompts by aggregating retrieved passages, user reviews, and documents from multiple external sources. This paradigm exposes them to segment-level poisoning attacks, in which an adversary controlling only a small subset of sources injects malicious content to manipulate model outputs. Existing defenses mainly rely on textual patterns, external embeddings, or auxiliary detectors and may therefore fail against fluent, semantically plausible poisoned segments. They also provide limited support for locating the responsible segments. We observe that successful corrupted-evidence and adversarial-instruction attacks induce structured shifts in the LLM&#39;s internal activations, forming a consistent activation-space pattern that we call the poison direction. Based on this observation, we propose ActProbe, an internal-state-based framework for detecting and localizing poisoned segments in multi-source LLM inputs. ActProbe projects MLP activations onto a learned poison direction and uses a lightweight linear SVM trained on a small calibration set to detect contaminated prompts. It then applies BinRoL, which combines recursive replacement ablation, Mahalanobis-distance-based branch pruning, and MAD-based robust leaf detection to locate poisoned segments. ActProbe requires no modification to the backend LLM and reduces localization overhead from O(n) exhaustive probing to O(k log n) forward passes. Across three datasets, two attacks, and four open-weight LLMs, ActProbe achieves a 0.01 false-positive rate, a 0.05 false-negative rate, 0.94 localization recall, and a 0.90 localization F1-score. It remains effective against defense-aware adaptive attacks and can protect black-box APIs through surrogate-based poisoned-segment removal.
+
+</details>

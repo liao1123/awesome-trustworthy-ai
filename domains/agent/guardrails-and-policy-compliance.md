@@ -983,3 +983,22 @@ The rapid adoption of large language models has enabled the development of clini
 Modern conversational agents like ChatGPT and Alexa+ rely on predefined policies specifying metadata, response styles, and tool-usage rules. As these LLM-based systems expand to support diverse business and user queries, such policies, often implemented as in-context prompts, are becoming increasingly complex and lengthy, making faithful adherence difficult and imposing large fixed computational costs. With the rise of multimodal agents, policies that govern visual and multimodal behaviors are critical but remain understudied. Prior prompt-compression work mainly shortens task templates and demonstrations, while existing policy-alignment studies focus only on text-based safety rules. We introduce Multimodal Policy Internalization (MPI), a new task that internalizes reasoning-intensive multimodal policies into model parameters, enabling stronger policy-following without including the policy during inference. MPI poses unique data and algorithmic challenges. We build two datasets spanning synthetic and real-world decision-making and tool-using tasks and propose TriMPI, a three-stage training framework. TriMPI first injects policy knowledge via continual pretraining, then performs supervised finetuning, and finally applies PolicyRollout, a GRPO-style reinforcement learning extension that augments rollouts with policy-aware responses for grounded exploration. TriMPI achieves notable gains in end-to-end accuracy, generalization, and robustness to forgetting. As the first work on multimodal policy internalization, we provide datasets, training recipes, and comprehensive evaluations to foster future research. Project page: https://mikewangwzhl.github.io/TriMPI.
 
 </details>
+
+### 53. ActGuard: Pre-execution Action Auditing against Indirect Prompt Injection in LLM Agents
+
+📄 [arXiv](https://arxiv.org/abs/2609.14987)　📅 2026-09
+
+**关键词**：`defense`、`indirect prompt injection`、`pre-execution auditing`、`tool prior`、`action deviation`
+
+👤 **作者**：Bingzheng Wang、Xiaoyan Gu、Wentao Wang、Xingyou Yang、Hongcheng Li、Rong Yin
+
+- 🎯 **研究动机**：LLM agent 经工具调用与外部环境交互时工具输出可暴露于间接提示注入；prompt 加固、内容过滤、预生成计划、权限约束难以兼顾复杂任务与过度清理
+- 🔬 **研究方法**：ActGuard 预执行动作审计：不判断外部内容是否内在可疑，而评估其是否导致当前动作偏离局部合理预期；每步预测即将使用的工具构建 tool prior，执行前对比候选动作做 tool 级对比分析与参数级证据定位，verifier 只屏蔽确认为恶意的 span 并从净化 context 重新生成动作
+- 📌 **结论**：保留合法规划灵活性的同时精确移除诱导不安全动作的恶意内容、最小化信息损失——把 agent guard 从内容过滤转向动作偏差审计
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language model (LLM) agents interact with external environments through tool invocation, but tool outputs can also expose them to indirect prompt injection (IPI) attacks. Existing defenses mainly rely on prompt hardening, content filtering, pre-generated plans, or permission constraints. These approaches often struggle with complex tasks or over-sanitize external content, making it difficult to balance security and utility. The key challenge is therefore to preserve execution flexibility while precisely identifying and removing the malicious content that actually induces unsafe actions. To address this challenge, we propose ActGuard, a pre-execution action auditing framework. Rather than judging whether external content is inherently suspicious, ActGuard assesses whether it causes the current action to deviate from a locally reasonable expectation. At each step, ActGuard predicts the tools likely to be used by the upcoming action and constructs a local tool prior without constraining the execution trajectory. Before execution, it compares the candidate action against this prior and performs tool-level contrastive analysis and parameter-level evidence localization to identify deviations in tool selection and action parameters. A verifier then examines the localized evidence, masks only spans confirmed as malicious, and regenerates the action from the sanitized context. This design preserves legitimate planning flexibility while minimizing information loss from indiscriminate filtering. We evaluate ActGuard on challenging benchmarks for tool-using agents. Results show that ActGuard reduces attack success rates to a level comparable to state-of-the-art defenses while maintaining task utility close to the no-attack setting, achieving a favorable security-utility trade-off. Our code is publicly available at: this https URL .
+
+</details>

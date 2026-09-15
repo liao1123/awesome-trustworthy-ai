@@ -718,3 +718,22 @@ Diffusion policies have achieved remarkable success in robotic manipulation, yet
 Vision-language-action (VLA) policies have shown strong potential for general-purpose robotic manipulation, but they can still fail unpredictably during long-horizon execution, making reliable failure detection essential for safe deployment. Existing methods either rely on visual models that typically detect failures only after erroneous actions have occurred, or use lightweight proactive detectors trained on VLA internal representations. However, these proactive methods are often supervised with trajectory-level labels, causing normal pre-failure behavior in unsuccessful trajectories to be incorrectly labeled as failure. This supervision mismatch introduces label noise and limits both trajectory-level detection accuracy and precise timestamp-level failure localization. In this work, we study fine-grained timestamp-level VLA failure detection while addressing the cost of dense annotation. We propose a data-efficient framework that first leverages unlabeled VLA action chunks to construct action-derived weak supervision signals, capturing abnormal patterns such as inconsistent consecutive chunks, frozen or idle actions, and aggressive random motions. We then use active learning to select only the most uncertain trajectories for timestamp-level annotation and fine-tune the detector with these informative labels. Experiments across multiple VLA policies show that our method improves both timestamp-level and trajectory-level failure detection performance.
 
 </details>
+
+### 38. ShieldVLA: Feasibility-Aware Safety Alignment for Vision-Language-Action Models
+
+📄 [arXiv](https://arxiv.org/abs/2609.13231)　📅 2026-09
+
+**关键词**：`defense`、`VLA`、`safety alignment`、`HJ reachability`、`safety critic`
+
+👤 **作者**：Manan Tayal、Akshay Nambi
+
+- 🎯 **研究动机**：VLA 安全微调依赖拉格朗日软惩罚，造成残留违约或过度保守；视觉环境缺乏逐步安全标注，安全保证难以随任务扩展
+- 🔬 **研究方法**：ShieldVLA 基于哈密顿-雅可比可达性（HJ reachability）从视觉观测学习 model-free 安全价值函数，安全 critic 把可行域内奖励最大化与不安全态附近的恢复分离；引入 rubric-based VLM safety scores 把语义安全反馈转为结构化 critic 目标，无需人工 cost 标签
+- 📌 **结论**：五个导航/操作基准、多个 VLA backbone 上累计安全代价平均降低 57%，任务成功率较 SafeVLA 提升 +0.13，避免持续性 reward-cost 权衡
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Vision-Language-Action (VLA) models demonstrate strong generalization in robotic manipulation and navigation, but existing fine-tuning methods provide limited safety guarantees. Current approaches primarily rely on Lagrangian optimization that enforces safety through soft penalties on expected cumulative cost, often resulting in residual constraint violations or overly conservative behavior. Moreover, learning safety in visual domains is challenging due to the absence of dense per-step safety annotations. We propose ShieldVLA, a safety-aligned fine-tuning framework for VLA models based on Hamilton-Jacobi (HJ) reachability. ShieldVLA learns a model-free approximation of the HJ reachability value function directly from visual observations to estimate the safe operating region. The learned safety critic gates policy optimization by separating reward maximization within feasible regions from recovery near unsafe states, avoiding persistent reward-cost trade-offs. To enable scalable supervision in visual environments, we introduce rubric-based VLM safety scores that convert semantic safety feedback into structured critic targets without requiring manual cost labels. Across five navigation and manipulation benchmarks spanning multiple VLA backbones, ShieldVLA reduces cumulative safety cost by 57% on average and improves task success rate by +0.13 over SafeVLA.
+
+</details>
