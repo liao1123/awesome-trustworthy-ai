@@ -10,7 +10,7 @@
 
 - **检索带来的安全退化：** 早期工作发现，从无检索扩展到 Wikipedia 和开放网页后，Agent 的 refusal、bias 与 harmfulness safeguard 会系统性变化，说明正确检索不等于安全综合。
 - **有害信息检索红队：** SearchAttack、CREST-Search 与 SafeSearch 将危险目标重写为搜索任务，并检查 query generation、网页引用和最终回答如何共同绕过 base model 的安全边界。
-- **网页证据操纵：** SearchGEO、UGC poisoning 与 MisKnow-Agent 从替换检索结果发展到 authority cue、虚假共识和可重复出现的用户生成内容，攻击目标也从“被检索”转向“被 Agent 背书”。
+- **网页证据操纵：** SearchGEO、UGC poisoning 与 MisKnow-Agent 从替换检索结果发展到 authority cue、虚假共识和可重复出现的用户生成内容，攻击目标也从“被检索”转向“被 Agent 背书”；EcoGEO 再把单页改写升级为沿浏览轨迹协同的跨页证据生态。
 - **长程轨迹劫持：** FORGE 与 Breadcrumbing 利用多个网页和多轮 observation 逐步改变 research plan，表明单页检测不足以覆盖跨文档、跨步骤的 cumulative attack。
 - **过程级对齐：** SafeSearch 与 COMPASS 将监督从 final answer 前移到 query 和 trajectory，并同时约束 utility；当前仍缺少在真实搜索排序、动态网页和未知攻击者站点上的端到端防御证据。
 
@@ -403,5 +403,24 @@ As LLMs are increasingly deployed as autonomous agents that plan, maintain persi
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 We present Iris-mini and Iris-pro, two search agents trained at the 35B-A3B and 397B-A17B scales, together with the data pipeline and training recipe behind them. Tasks are reverse-constructed from the hyperlink structure of a web corpus: we author multi-hop chains over an entity graph distilled from a seed page and its out-links, rewrite every non-answer entity into a descriptive reference so that no clue can be resolved by string matching, and admit only questions that a reference model fails closed-book yet solves once the supporting evidence is supplied. These questions are then turned into trajectories, which are filtered at both the trajectory and the turn level before SFT. The policy is then optimized by RL against live search, with the reward judge and the observation summarizer served inside the training cluster, and with over-long rollouts interrupted at the request level and resumed from their committed prefix at the next step. We alternate the two stages in a procedure we call SFT-RL climbing, returning the hardest solved and most efficient rollouts of each RL round to the next supervised pass. Because inference-time context management is worth more on these benchmarks than most reported differences between systems, we evaluate every benchmark both with and without it, holding the tool set, the context limit, and the judge fixed.
+
+</details>
+
+### 22. EcoGEO: Trajectory-Aware Evidence Ecosystems for Web-Enabled LLM Search Agents
+
+📄 [arXiv](https://arxiv.org/abs/2605.12887)　📅 2026-05
+
+**关键词**：`attack`、`evidence ecosystem`、`trajectory-aware GEO`、`coordinated pages`
+
+👤 **作者**：Hengwei Ye、Jiasheng Mao、Zhenhan Guan、Zheng Tian
+
+- 🎯 **研究动机**：现有 GEO 只研究单网页，而 agentic web search 是多步过程（发查询、爬页、跟链接、改写搜索、跨步综合证据），影响力取决于页面如何组织、连接并沿浏览轨迹被遭遇
+- 🔬 **研究方法**：把 GEO 形式化为环境级影响问题；TRACE 构建轨迹感知协同证据生态：agent 可见的导航入口页 + 异构支持页，用共享术语、内链与一致产品属性分阶段引入、验证、强化虚构目标产品；在 OPR-Bench 开放式产品推荐上评测
+- 📌 **结论**：最终目标推荐率 consistently 超页面级 GEO 基线；轨迹级指标显示初始目标爬取、目标定向后续搜索与内链爬取均增加——收益来自塑造 agent 的证据获取过程而非单纯堆目标内容
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Web-enabled LLM agents are changing how online information influences search outcomes. Existing Generative Engine Optimization (GEO) studies mainly focus on individual webpages. However, agentic web search is not a single-document setting: an agent may issue queries, crawl pages, follow links, reformulate searches, and synthesize evidence across multiple browsing steps. Influence therefore depends not only on page content, but also on how pages are organized, connected, and encountered along the agent's browsing trajectory. We study this shift through Ecosystem Generative Engine Optimization (EcoGEO), which treats GEO as an environment-level influence problem for web-enabled LLM agents. To instantiate this perspective, we propose TRACE, a Trajectory-Aware Coordinated Evidence Ecosystem. Given a recommendation query and a fictional target product, our method builds a controlled evidence environment that coordinates an agent-facing navigation entry page with heterogeneous support pages. These pages use shared terminology, internal links, and consistent product attributes to introduce, verify, and reinforce the target product. We evaluate our method on OPR-Bench, a benchmark for open-ended product recommendation. Experiments show that it consistently outperforms page-level GEO baselines in final target recommendation. Trajectory-level metrics further show increased initial target-result crawls, target-specific follow-up searches, and internal-link crawls, suggesting that the gains come from shaping the agent's evidence-acquisition process rather than merely adding more target-related content. Overall, our findings support an ecosystem research paradigm for GEO, where web-enabled LLM agents are studied in relation to the broader evidence environments that guide search, browsing, and answer synthesis.
 
 </details>

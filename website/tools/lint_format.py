@@ -16,7 +16,7 @@ import re
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 
 H3 = re.compile(r"^###\s+(\d+)\.\s+(.+?)\s*$")
 LEGACY_FIELD = re.compile(r"^-\s+(arXiv ID|记录日期|关键词|作者|研究动机|研究方法|结论|链接|arXiv Comments|会议录用信息|英文摘要|一句话总结|内容概述|收录理由|代码/数据集/模型)[：:]")

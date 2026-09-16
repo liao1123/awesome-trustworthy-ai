@@ -8,11 +8,11 @@
 
 ## 研究脉络
 
-- **可见性优化起点：** GEO 建立生成式回答中的 visibility metric 与 GEO-Bench，研究对象由传统网页排名转向内容是否被 LLM 选择、引用和写入回答。
+- **可见性优化起点：** GEO 建立生成式回答中的 visibility metric 与 GEO-Bench，研究对象由传统网页排名转向内容是否被 LLM 选择、引用和写入回答；C-SEO Bench 的多域多行动者评测则表明多数 C-SEO 方法基本无效且收益随采用者增多递减。
 - **自动化与个性化优化：** AutoGEO、Mind Reader 与 AgenticGEO 从人工 heuristic 发展到 preference rule、latent user demand 和自演化 strategy search，提升内容适配能力的同时也扩大可自动化操纵的空间。
 - **Black-hat rank manipulation：** Adversarial SEO、StealthRank、LLM ranker injection 与 MGEO 分别利用网页指令、可读文本 suffix、token optimization 和图文联合扰动提升目标排名。
 - **全链路现实性：** SAGEO Arena、GEO-Bench 与 RAG survival 分析表明，能影响 generator 不代表能通过 retriever 与 reranker；结构信号、攻击隐蔽性和真实 search interface 都会改变结论。
-- **下游安全影响：** SafeGEO 把指标从 target rank 扩展到推荐集合中的实际危害；当前防御多为静态 detector 或 prompt guard，仍缺少跨平台、长期部署和自适应攻击下的稳定证据。
+- **下游安全影响：** SafeGEO 把指标从 target rank 扩展到推荐集合中的实际危害，One Polluted Page 表明单页污染即可让 LLM 推荐器批量推广虚构产品；当前防御多为静态 detector 或 prompt guard，SCI-Defense 的语义完整性评分在产品描述域近满分但在通用网页域失效，也佐证防御的场景依赖性。
 
 ## Cooperative GEO 与基础方法
 
@@ -412,5 +412,62 @@ We characterize the attack surface of generative search engines (GSEs) against p
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 This paper investigates the adversarial manipulation of the ranked recommendations produced by web-augmented large language models (LLMs). When an LLM answers a recommendation query by retrieving and reading live webpages, it acts as a recommender, and each retrieved page becomes a potential attack surface. Prior work has examined fabricated products, retrieval poisoning, and rank promotion. However, these studies do not compare how different edits to an already retrieved page change the model's final ranking while the surrounding source set remains unchanged. To address this gap, we propose SIREN, an automated attacker--judge method that adapts the PAIR jailbreaking loop to competitive rank manipulation, with the goal of moving a chosen entity to rank~1 in an LLM-generated recommendation. SIREN retrieves and captures webpages using Anthropic's web tools, then iteratively edits a retrieved source using an interpretable taxonomy of 23 content-poisoning techniques. The custom-RAG replay platform keeps the same sources in the same order, so changes in the model's ranking can be linked to changes in the supplied content rather than to differences in retrieval. Across two production Claude models, SIREN reaches rank~1 in 62 of 124 technique trials nested within eight query--model contexts. The payloads that reached rank~1 were then tested in fresh sessions, where they reproduced the result with a mean success rate of 0.805. Across the evaluated settings, declarative ranking claims and seeded lists were generally more effective than directive-form injections, although the strength of this difference depended on the target model. To the best of our knowledge, this is among the first controlled studies of competitive rank manipulation in production LLMs where the supplied source context is kept fixed.
+
+</details>
+
+### 22. One Polluted Page Is Enough: Evaluating Web Content Pollution in LLM Recommenders
+
+📄 [arXiv](https://arxiv.org/abs/2606.13610) · 🌐 [Project](https://github.com/leoluolol/forge-benchmark)　📅 2026-06
+
+**关键词**：`attack`、`product fabrication`、`GEO pollution`、`recommendation corruption`
+
+👤 **作者**：Minghao Luo、Liang Chen
+
+- 🎯 **研究动机**：搜索增强 LLM 日益介入日常消费推荐并检索 live 网页，GEO 运营者污染的内容可能使其沦为假产品的不知情推销者
+- 🔬 **研究方法**：FORGE 在冻结的已检索网页集合中把真实产品局部改写为虚构产品，225 个真实产品 × 15 类 × 5 消费场景，12 个商用/开源 LLM 上测假产品被推荐率，并检验四种防御
+- 📌 **结论**：单页污染即达最高 27% fooled rate，top-3 全替换升至 73.8%；模型对产品缺乏稳定先验时更脆弱；reasoning 不缓解反而编造虚假社会证明；怀疑提示同样加重脆弱性，共识过滤器误伤真品，可信度重排只清除约六分之一假货
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Search-augmented LLMs increasingly mediate everyday consumer recommendations by retrieving live web content. This creates a new risk: LLM recommenders may consume web content that Generative Engine Optimization (GEO) operators have polluted to mislead them. We ask: to what extent do they become unwitting promoters of fake products? We introduce FORGE (Fake Online Recommendations in Generative Environments), which locally rewrites real products in a frozen set of retrieved web pages into fake ones and measures how often the LLM recommends the fake product, across 225 real products in 15 categories and 5 consumer scenarios. Across 12 commercial and open-weights LLMs, all models are vulnerable: a single polluted page yields fooled rates of up to 27%, while the full top-3 replacement raises this to 73.8%. Vulnerability varies across categories, increasing when models lack stable prior knowledge of the products. Reasoning does not mitigate this vulnerability; instead, it often generates spurious social proof to justify false recommendations. None of the four defenses is adequate: the skepticism prompt can exacerbate vulnerability much like reasoning, the two consensus filters risk suppressing legitimate products, and credibility re-ranking helps every model but removes only a sixth of the fakes. We release the FORGE benchmark and the evaluation code at https://github.com/leoluolol/forge-benchmark.
+
+</details>
+
+### 23. SCI-Defense: Defending Manipulation Attacks from Generative Engine Optimization
+
+📄 [arXiv](https://arxiv.org/abs/2605.21948)　📅 2026-05
+
+**关键词**：`defense`、`semantic integrity`、`GEO manipulation`、`rank attack mitigation`
+
+👤 **作者**：Xucheng Yu、Haibo Jin、Huimin Zeng、Haohan Wang
+
+- 🎯 **研究动机**：LLM 排序系统易受 GEO 攻击（向产品描述注入语义信号抬升排名），而已有防御（PPL 过滤、内容分类器、改写）对语义操纵零召回
+- 🔬 **研究方法**：三组件防御 SCI-Defense：Perplexity 检测 + Semantic Integrity Scoring（权威归因、叙事目的、比较声明、时序声明四维）+ Inter-Candidate Detection
+- 📌 **结论**：600 条 Amazon 产品描述上 Precision=1.000、FPR=0，对 String/Reasoning/Review 攻击 Recall 分别为 1.000/0.952/0.830；MS MARCO 网页上 Review 攻击近零召回——通用网页缺乏产品描述式说服信号，防御呈现场景依赖；Specification Amplification 与 Use-Case Saturation 新攻击进一步暴露结构性盲点
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+LLM-based ranking systems are vulnerable to Generative Engine Optimization (GEO) attacks, where adversaries inject semantic signals into product descriptions to artificially boost rankings. We propose SCI-Defense, a three-component defense framework combining Perplexity detection (PPL), Semantic Integrity Scoring (SIS), and Inter-Candidate Detection (ICD). SIS evaluates four manipulation dimensions: Authority Attribution (AA), Narrative Purposiveness (NP), Comparative Claims (CA), and Temporal Claims (TC). Evaluated on 600 Amazon product descriptions across 6 categories, SCI-Defense achieves Precision=1.000 and FPR=0.000, with Recall of 1.000, 0.952, and 0.830 against String, Reasoning, and Review attacks respectively. On 600 MS MARCO web passages, String attacks are blocked with perfect recall while Review attacks yield near-zero recall, as web passages lack the persuasion-oriented signals that SIS targets in product descriptions. We demonstrate that existing defenses -- PPL-only filters, SafetyClf content classifiers, and paraphrasing -- achieve zero recall against semantic manipulation attacks. We further demonstrate new attacks such as Specification Amplification and Use-Case Saturation can expose semantic relevance manipulation as a structural defense blind spot that suggests directions for future research.
+
+</details>
+
+### 24. C-SEO Bench: Does Conversational SEO Work?
+
+📄 [arXiv](https://arxiv.org/abs/2506.11097) · 🌐 [Project](https://github.com/parameterlab/c-seo-bench)　📅 2025-06　🏷 NeurIPS 2025
+
+**关键词**：`benchmark`、`C-SEO`、`multi-actor adoption`、`visibility evaluation`
+
+👤 **作者**：Haritz Puerto、Martin Gubri、Tommaso Green、Seong Joon Oh、Sangdoo Yun
+
+- 🎯 **研究动机**：C-SEO 方法只在窄域、单行动者场景下测试，跨域有效性未知；现实中多方会竞争性采用同类技术，SEO 时代的动态会否重演缺乏评测
+- 🔬 **研究方法**：首个跨任务、跨域、跨行动者数的 C-SEO 基准：问答与产品推荐两任务各三域，并形式化不同采用率下的评测协议
+- 📌 **结论**：多数 C-SEO 方法基本无效甚至降低文档排名；传统 SEO（在 LLM context 中抬升来源排名）反而显著更有效；随采用者增多整体收益递减——问题呈拥挤、零和性质
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large Language Models (LLMs) are transforming search engines into Conversational Search Engines (CSE). Consequently, Search Engine Optimization (SEO) is being shifted into Conversational Search Engine Optimization (C-SEO). We are beginning to see dedicated C-SEO methods for modifying web documents to increase their visibility in CSE responses. However, they are often tested only for a limited breadth of application domains; we do not know whether certain C-SEO methods would be effective for a broad range of domains. Moreover, existing evaluations consider only a single-actor scenario where only one web document adopts a C-SEO method; in reality, multiple players are likely to competitively adopt the cutting-edge C-SEO techniques, drawing an analogy from the dynamics we have seen in SEO. We present C-SEO Bench, the first benchmark designed to evaluate C-SEO methods across multiple tasks, domains, and number of actors. We consider two search tasks, question answering and product recommendation, with three domains each. We also formalize a new evaluation protocol with varying adoption rates among involved actors. Our experiments reveal that most current C-SEO methods are not only largely ineffective but also frequently have a negative impact on document ranking, which is opposite to what is expected. Instead, traditional SEO strategies, those aiming to improve the ranking of the source in the LLM context, are significantly more effective. We also observe that as we increase the number of C-SEO adopters, the overall gains decrease, depicting a congested and zero-sum nature of the problem. Our code and data are available at https://github.com/parameterlab/c-seo-bench and https://huggingface.co/datasets/parameterlab/c-seo-bench.
 
 </details>

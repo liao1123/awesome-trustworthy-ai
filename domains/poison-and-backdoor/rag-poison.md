@@ -2206,3 +2206,41 @@ Modern Vision-Language Retrieval-Augmented Generation (VLRAG) systems augment La
 Retrieval-augmented generation (RAG) grounds a language model&#39;s answers on retrieved external knowledge and returns each answer with citations that identify its sources. Those citations are the user&#39;s audit trail: they let a reader verify a claim without trusting the model. Prior security work on RAG asks whether an attacker can corrupt the answer, leaving the citation channel unexplored. We show that this channel is a new and practical attack surface. We propose CiteShade, the first citation laundering attack to RAG, in which an attacker controlling a single source induces a model to produce an attacker-chosen wrong answer and to attribute it to a trusted source that does not support it, while the evidence for the correct answer remains in context. We formulate the attack as an optimization problem, derive three necessary conditions (retrieval, generation, and citation) and construct sources satisfying them without any instruction. On multi-source multi-hop question answering the attack raises the wrong-answer rate from 0.01 to 0.68, and source deletion confirms the malicious source is the causal driver in every measured case. Vulnerability tracks a model&#39;s propensity to cite rather than its scale, reaching CLR 0.84 under explicit instruction and 0.64 with no instruction at all on the most citation-prone model tested. We then show that perplexity filtering and citation-support checking are each insufficient, and propose a counterfactual defense that verifies which source actually drove the answer.
 
 </details>
+
+### 115. Poisoning Retrieval Corpora by Injecting Adversarial Passages
+
+📄 [arXiv](https://arxiv.org/abs/2310.19156)　📅 2023-10　🏷 EMNLP 2023
+
+**关键词**：`attack`、`corpus poisoning`、`dense retrieval`、`adversarial passage`、`cross-domain transfer`
+
+👤 **作者**：Zexuan Zhong、Ziqing Huang、Alexander Wettig、Danqi Chen
+
+- 🎯 **研究动机**：dense retriever 大规模部署于真实应用，但检索语料开放写入时的安全性未被系统检验
+- 🔬 **研究方法**：攻击者对少量 passage 做离散 token 扰动，最大化与一组训练 query 的相似度后注入检索语料，测未见 query 与跨域语料上的召回率
+- 📌 **结论**：50 条在 NQ 上优化的对抗 passage 即可让金融文档/论坛 >94% 的问题召回它们（跨域泛化）；无监督与有监督 SOTA dense retriever 均可被 ≤500 条 passage 攻破——相对百万级语料占比极小
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Dense retrievers have achieved state-of-the-art performance in various information retrieval tasks, but to what extent can they be safely deployed in real-world applications? In this work, we propose a novel attack for dense retrieval systems in which a malicious user generates a small number of adversarial passages by perturbing discrete tokens to maximize similarity with a provided set of training queries. When these adversarial passages are inserted into a large retrieval corpus, we show that this attack is highly effective in fooling these systems to retrieve them for queries that were not seen by the attacker. More surprisingly, these adversarial passages can directly generalize to out-of-domain queries and corpora with a high success attack rate -- for instance, we find that 50 generated passages optimized on Natural Questions can mislead >94% of questions posed in financial documents or online forums. We also benchmark and compare a range of state-of-the-art dense retrievers, both unsupervised and supervised. Although different systems exhibit varying levels of vulnerability, we show they can all be successfully attacked by injecting up to 500 passages, a small fraction compared to a retrieval corpus of millions of passages.
+
+</details>
+
+### 116. Adversarial Decoding: Generating Readable Documents for Adversarial Objectives
+
+📄 [arXiv](https://arxiv.org/abs/2410.02163)　📅 2024-10　🏷 EACL 2026 Findings
+
+**关键词**：`attack`、`readable adversarial text`、`RAG poisoning`、`objective-driven generation`
+
+👤 **作者**：Collin Zhang、Tingwei Zhang、Vitaly Shmatikov
+
+- 🎯 **研究动机**：已有对抗文本生成要么产出易检出的乱码、要么无法处理含 embedding 相似度的优化目标，只适用于直接攻击，难以支撑 RAG 投毒这类现实间接注入
+- 🔬 **研究方法**：adversarial decoding 通用文本生成技术：为不同对抗目标直接产出可读文档，并同时证明 fluency（低 perplexity）不足以躲过防御过滤
+- 📌 **结论**：在 RAG 投毒、越狱、防御过滤逃逸三类目标上均超越现有方法，且产出文档保持可读
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+We design, implement, and evaluate adversarial decoding, a new, generic text generation technique that produces readable documents for different adversarial objectives. Prior methods either produce easily detectable gibberish, or cannot handle objectives that include embedding similarity. In particular, they only work for direct attacks (such as jailbreaking) and cannot produce adversarial text for realistic indirect injection, e.g., documents that (1) are retrieved in RAG systems in response to broad classes of queries, and also (2) adversarially influence subsequent generation. We also show that fluency (low perplexity) is not sufficient to evade filtering. We measure the effectiveness of adversarial decoding for different objectives, including RAG poisoning, jailbreaking, and evasion of defensive filters, and demonstrate that it outperforms existing methods while producing readable adversarial documents.
+
+</details>
