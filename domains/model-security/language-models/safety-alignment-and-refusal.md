@@ -2220,3 +2220,22 @@ Alignment applied after pretraining is shallow in a measurable way: a single dir
 Large language models (LLMs) often learn both desirable and undesirable properties during post-training. We study whether midtraining, an earlier training stage, can shape which of these properties later generalise. We introduce Inoculation Midtraining, a technique that teaches a base model that unsafe behaviour belongs to a designated &lt;quarantine_token&gt; context, as indicated by the &lt;quarantine_token&gt; neologism (a new token) introduced during midtraining, and then post-trains the model on unsafe data within that context. We then evaluate the model outside the context, with the &lt;quarantine_token&gt; neologism excluded from the system prompt. Across supervised fine-tuning and reinforcement learning post-training regimes, we find that Inoculation Midtraining can reduce misalignment while preserving the transfer of benign data properties (e.g., speaking in German or Shakespearean prose). However, our approach does not outperform standard Inoculation Prompting, is sensitive to training configuration, and produces a leaky boundary that nearby contextual cues can reactivate. These results show that inoculation with a learned association introduced via midtraining can shape selective generalisation. Still, more work is needed before this approach can become a load-bearing component in a developer&#39;s safety framework.
 
 </details>
+
+### 119. Decoy Direction Optimization: A Post-Hoc Defense Against LLM Abliteration
+
+📄 [arXiv](https://arxiv.org/abs/2609.16204)　📅 2026-09
+
+**关键词**：`defense`、`refusal direction ablation`、`decoy signal`、`open-weight`、`post-hoc weight editing`
+
+👤 **作者**：Aashiq Muhamed、Mona T. Diab、Virginia Smith
+
+- 🎯 **研究动机**：开放权重模型的拒绝行为可被 Refusal Feature Ablation（RFA）投影掉残差流中的线性拒绝方向而绕过，常保持模型能力且 ASR 高；逐 checkpoint 的安全微调防御计算昂贵，需要快速、事后的权重级防御
+- 🔬 **研究方法**：Decoy Direction Optimization（DDO）基于机制洞察——消融攻击依赖对比估计器定位拒绝方向——向网络 MLP 神经元注入高幅非线性诱饵信号，污染攻击者的估计器，诱使其消融一个无害正交特征而真正安全机制保留；证明刻画该效应的谱界，跨 6 个模型家族评估标准 RFA、自适应多阶段攻击与 Heretic 权重级攻击
+- 📌 **结论**：标准 RFA 下 ASR<10%；Llama-3-8B-Instruct 上自适应多阶段攻击最坏 ASR 65%（训练型基线 58%）；Heretic 攻击 ASR 从 88.7% 降至 18%；每配置优化成本比训练型基线低 30–450 倍
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Safety guardrails in open-weight language models can be readily bypassed using Refusal Feature Ablation (RFA), a technique that identifies and projects out a linear refusal direction from the residual stream, often achieving a high attack success rate (ASR) while preserving model capability. Defending against these attacks typically requires computationally expensive safety finetuning for every new checkpoint. We introduce Decoy Direction Optimization (DDO), a fast, post-hoc weight-editing defense that requires no base-model finetuning. Our approach is based on a simple mechanistic insight: ablation attacks rely on contrastive estimators to find the refusal direction. Rather than trying to hide the true refusal circuitry, DDO actively injects a high-magnitude, nonlinear decoy signal into the network's MLP neurons. When an attacker attempts to locate the refusal direction, the decoy corrupts their estimator, tricking them into ablating a harmless orthogonal feature while the actual safety mechanism remains intact. We prove a spectral bound formalizing this effect and evaluate DDO across six model families, achieving <10% ASR under standard RFA. On Llama-3-8B-Instruct, DDO remains comparable to trained defenses under adaptive multi-phase attacks (65% vs. 58% worst-case ASR) and reduces Heretic weight-level attack ASR from 88.7% to 18%, all at 30 to 450 times lower optimization cost per configuration than the trained baselines.
+
+</details>

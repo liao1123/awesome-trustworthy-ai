@@ -318,3 +318,22 @@ We argue that LLM agent security is fundamentally an agent-human interaction (AH
 Machine learning (ML) models are susceptible to various security, privacy, and fairness risks. Adversaries with different characteristics (i.e., objectives, knowledge, and capabilities) can collude by executing one attack to amplify others. Existing work lacks a systematic framework to explore collusion among adversaries, and to study the implications of the adversaries' characteristics. We present a framework covering collusion (a) between train- and inference-time adversaries, and (b) among inference-time adversaries. Our framework accounts for factors enabling collusion between adversaries. We propose a guideline to conjecture about the potential for collusion using enabling factors. We use it to explain prior work, conjecture about unexplored collusions, and empirically validate five such cases. Finally, we discuss how adversaries' characteristics influence the potential for collusion.
 
 </details>
+
+### 17. Toward Secure AI-Powered Penetration Testing Agents: Security Threats, Guardrails, and Architectural Perspectives
+
+📄 [arXiv](https://arxiv.org/abs/2609.16694)　📅 2026-09
+
+**关键词**：`survey`、`pentest agent`、`threat taxonomy`、`guardrail`、`trust boundary`
+
+👤 **作者**：Rahul Dev T Y、Hiran V Nath
+
+- 🎯 **研究动机**：LLM 驱动的自主渗透测试 agent 具备持久记忆、真实世界动作与长程推理能力，其安全关注点与传统对话式 LLM 质的不同；面向会话式 AI 的既有 guardrail 不足以约束它们
+- 🔬 **研究方法**：对自主 AI pentest agent 做系统安全分析：解析代表性架构、刻画信任边界与攻击面，提出覆盖 agent 生命周期的威胁分类法——LLM 生命周期攻击、agent 架构攻击与跨切行为攻击；逐类分析既有 guardrail 机制的局限
+- 📌 **结论**：识别出关键研究缺口：需要面向上下文与架构感知的专用 guardrail 才能保障下一代 AI 攻防系统——为 offensive agent 自身的安全研究提供威胁模型底图
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+LLM-powered autonomous agents are transforming the penetration testing space with dynamic, multi-step offensive security workflows that require minimal supervision by humans. These agents leverage sophisticated reasoning abilities and external security tools to independently carry out reconnaissance, identify vulnerabilities, devise exploitation plans, and perform post-exploitation operations. But the ability to have persistent memory, to take actions in the real world, and to do long-horizon reasoning raises qualitatively different security concerns than traditional chat-based LLM systems. Existing guardrail mechanisms for conversational AI may not be sufficient to secure autonomous AI pentesting agents accordingly. To address these issues, we carry out a comprehensive security analysis on autonomous AI-penetration testing agents. We systematically analyse representative agent architectures, characterise their trust boundaries and attack surfaces and propose a threat taxonomy that is aligned with the lifecycle and covers LLM lifecycle attacks, agent-architecture attacks and cross-cutting behavioural attacks. We analyse the limitations of existing guardrail mechanisms, identify key research gaps, and discuss future research directions for developing specialised, context-aware, and architecture-aware guardrails to secure next-generation AI-driven offensive security systems.
+
+</details>

@@ -508,3 +508,22 @@ Beyond intended capabilities, model distillation can transfer hidden traits from
 In this reproduction paper we investigate subliminal learning, a consequence of distillation where teacher models transmit behavioral preference traits through semantically unrelated data. The original paper explores two types of traits (animal preferences and misalignment), three data modalities (number sequences, code, and chain of thought), and several model families. We reproduce their experiments and extend the setup along three axes: new preference categories (actors and politicians), a new task (chess move generation), and an additional open-weight model (Ministral8B). We also run a controlled ablation on the numbers task's answer-space size (1-, 2-, and 3-digit sequences). We focus on open-weight models with accessible checkpoints on HuggingFace, since the original paper's GPT-4.x fine-tuning is no longer available. Our reproduction supports the original paper's claims, but our extensions show they are not universal as transmission strength varies across traits and tasks, and one model shows almost no effect at all.
 
 </details>
+
+### 28. Verbalizing Subliminal Learning Effects Using Text Optimization
+
+📄 [arXiv](https://arxiv.org/abs/2609.16927)　📅 2026-09
+
+**关键词**：`detection`、`subliminal learning`、`context distillation`、`prompt recovery`、`text optimization`
+
+👤 **作者**：Nathan Hu、Sanmi Koyejo、Christopher Potts
+
+- 🎯 **研究动机**：subliminal learning 使蒸馏数据集传递教师模型未在数据中显式编码的特质，带来新的数据投毒风险；如何检测并把这种隐性效应"说清楚"（verbalize）是模型开发与审计的新挑战
+- 🔬 **研究方法**：把 subliminal learning 视为 context distillation 特例，理论上证明带 prompt 的 subliminal 数据集可识别教师 prompt；SALVE 把恢复该 prompt 归约为文本优化问题：优化软提示→同一模型 verbalize 为文本→beam search 保证文本化可靠
+- 📌 **结论**：标准设定下 SALVE 可靠恢复命名教师特质的可读 prompt（常见文本优化方法全部失败）；在三种额外场景检出隐性效应：与无关数据混合、教师被 activation steering 偏置的生成数据、经 Logit-Linear Selection 选出的真实偏好数据子集；并发现改进 context distillation 反而会制造 subliminal 效应
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Subliminal learning is a phenomenon in which a distillation dataset transmits traits from the teacher model that are not legibly encoded in the dataset itself. This introduces a new challenge for model development and creates new risks from data poisoning. In this work, we use text optimization to detect subliminal learning effects and describe them as legible prompts. Subliminal learning from a prompted teacher motivates our approach. We observe that this is a special case of context distillation and leverage this observation to show that, in theory, the prompted subliminal learning dataset identifies the teacher's prompt. We reduce recovering this prompt to a text optimization problem and present a method to approximately solve it. Our method, SALVE (Search-Aided Latent Verbalization), optimizes a soft prompt, queries the same model to verbalize it as text, and uses beam search to make the verbalization reliable. In the standard subliminal learning setting, SALVE reliably recovers legible prompts that name the teacher's trait, while common text optimization methods fail to do so. In addition, we find that there are settings in which SALVE recovers the teacher's trait from a dataset even when subliminal learning fails, but that modifying student training to improve context distillation can create subliminal learning effects. We lastly show that SALVE detects subliminal learning effects in three additional settings: (1) mixtures of subliminal learning data and unrelated data, (2) data generated when the teacher is biased via activation steering, and (3) subsets of real preference data selected via Logit-Linear Selection. Overall, our results deepen our understanding of subliminal learning and present SALVE as a method to proactively detect subliminal learning effects.
+
+</details>

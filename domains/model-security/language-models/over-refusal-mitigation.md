@@ -824,3 +824,22 @@ Large language models often struggle with sensitive prompts. They may refuse out
 Striking a balance between helpfulness and safety remains a fundamental challenge in aligning large language models. To achieve this balance, models should refuse harmful queries (e.g., "How do I shoot someone?") while remaining responsive to benign inputs, even those superficially resembling harmful queries (e.g., "Where can I shoot a good photo?"). However, models often struggle to distinguish genuinely harmful queries from benign queries that contain superficially risky language, resulting in false refusals. In this paper, we address the issue by decomposing a response in the safety-tuning dataset into two distinct components: (i) a boilerplate refusal statement and (ii) a rationale explaining the refusal. Our experiments and analyses show that refusal statements impede accurate discrimination between harmful and benign queries by inducing reliance on superficial cues. In contrast, training solely on rationales reduces false refusals while maintaining a comparable level of safety performance. Rationale-Only benefits also appear in our ICL configuration and remain compatible with the evaluated inference-time mitigation methods. The results emphasize the necessity of precisely curated, fine-grained safety supervision datasets and outline directions for constructing aligned agents that better reconcile helpfulness with safety.
 
 </details>
+
+### 47. BLINDSPOT: A Benchmark for Safety and Refusal Calibration in Long-Horizon Tool-Using Agents
+
+📄 [arXiv](https://arxiv.org/abs/2609.16305)　📅 2026-09
+
+**关键词**：`benchmark`、`agent safety`、`refusal calibration`、`long-horizon trajectory`、`over-refusal`
+
+👤 **作者**：Sadia Asif、Mohammad Mohammadi Amiri、Momin Abbas、Tejaswini Pedapati、Prasanna Sattigeri
+
+- 🎯 **研究动机**：长程工具 agent 的安全失效可能多轮后才出现，而现有评测把 agent 行为简化为任务/攻击成功率，掩盖了 agent 行动、拒答与校准随交互演化的情况
+- 🔬 **研究方法**：Blindspot 以轨迹级方式评测安全校准：自适应对抗交互、有状态工具执行、执行接地的裁决；当前版本含 22 个攻击家族、35 个场景、7 个领域，产出 2,500+ 条长程轨迹（平均 14.7 轮），每条判为安全完成/正确拒答/不安全完成/过度拒答/不确定五类；评 13 个商用与开源 LLM 的 8 项指标（不安全完成、正确拒答、良性效用、过度拒答、重复运行稳健性、拒答后失败等）
+- 📌 **结论**：模型间安全-效用校准差异显著，部分失效仅在数个初始安全步骤后才出现——agent 安全应被视为轨迹级属性而非单轮二元判定；框架是可扩展的活仿真（攻击/场景/工具/策略/领域即插即用）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language model (LLM) agents increasingly operate over long-horizon interactions involving tool use, persistent state, evolving authorization, and external environment feedback. In such settings, safety failures may emerge only after multiple turns, yet existing evaluations often reduce agent behavior to task or attack success, obscuring whether an agent acts, refuses, or remains appropriately calibrated as the interaction evolves. We introduce Blindspot, a benchmark for trajectory-level safety calibration of long-horizon tool-using agents. Blindspot evaluates complete user-agent-environment trajectories through adaptive adversarial interaction, stateful tool execution, and execution-grounded adjudication. Its current instantiation contains 22 attack families and 35 scenarios across seven domains, yielding more than 2,500 long-horizon trajectories with an average interaction length of 14.7 turns. Each trajectory is assigned one of five outcomes: Safe Completion, Correct Refusal, Unsafe Completion, Over-Refusal, or Indeterminate. Unlike fixed attack datasets, Blindspot is an extensible live-simulation framework in which attacks, scenarios, tools, policies, domains, and agent configurations can be added without redesigning the evaluation pipeline. We evaluate 13 proprietary and open-weight LLMs using eight metrics covering unsafe completion, appropriate refusal, benign utility, over-refusal, repeated-run robustness, and post-refusal failure. Preliminary results reveal substantial differences in safety-utility calibration across models and show that failures can emerge only after several initially safe interaction steps. These findings motivate treating agent safety as a trajectory-level property rather than a single-turn or binary success criterion.
+
+</details>

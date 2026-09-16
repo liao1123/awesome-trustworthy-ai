@@ -794,3 +794,22 @@ Mobile GUI agents increasingly rely on Vision-Language Models (VLMs) to automate
 Computer-use agents increasingly interact with browsers, terminals, file systems, and external services, introducing safety risks that emerge through runtime behavior rather than generated content alone. Existing guard models target static prompts and responses and are poorly suited to agent execution; existing executable safety platforms produce evaluation verdicts rather than the normalized supervision a guard model needs to learn across heterogeneous agent frameworks. We introduce HazardAuditor, an execution-grounded framework that closes both gaps. Its infrastructure runs heterogeneous agents (Claude Code, Codex, Hermes, and OpenClaw) in controlled environments and normalizes their interactions into a canonical event representation for cross-framework supervision. We further observe that token-level post-training objectives create a structural mismatch for generative guards, causing longer rationales to dominate gradient updates. Guard Policy Optimization (GuardPO) addresses this by converting deterministic safety outcomes into sequence-level advantages and normalizing rationale and verdict regions, making the safety decision the effective unit of optimization. Across multiple benchmarks and heterogeneous computer-use systems, HazardAuditor improves accuracy by up to 16.5 percentage points over the strongest prior guard. Code, models, and evaluation artifacts will be available at this https URL .
 
 </details>
+
+### 42. When Agents See Differently: Exposing UI Desynchronization Threats in Mobile Agents
+
+📄 [arXiv](https://arxiv.org/abs/2609.16732)　📅 2026-09
+
+**关键词**：`attack`、`mobile agent`、`UI desynchronization`、`APK repackaging`、`human oversight`
+
+👤 **作者**：Heng Li、Fulin Zhao、Zhe Geng、Zhiyuan Yao、Wei Yuan、Xiapu Luo
+
+- 🎯 **研究动机**：对移动 agent 的人工监督依赖"用户与 agent 从同一界面看到一致信息"这一前提；但用户经物理显示器与视觉系统观察（受遮挡、亮度对比限制），agent 消费的截图与无障碍表示可保留或暴露更多内容——重打包应用可利用该观测差操纵 agent
+- 🔬 **研究方法**：定义 human-agent UI desynchronization 威胁：攻击者预先在合法 APK 克隆中嵌入扰动，无需运行时用户指令、agent 检测或在线适配，即可把 agent 引向指定动作，对人类用户则保持功能与行为一致；构建自动化框架生成与运行时指令无关的去同步攻击并打包为可部署 APK；5 个移动 agent 框架、3 个骨干模型、546 个任务上静态+动态评估，另做 186 人问卷研究
+- 📌 **结论**：静态/动态评估平均误导率 77.9%/66.9%；视觉扰动对人类用户难以察觉——人工监督在该威胁面下系统性失效，移动 agent 的权限与动作需要不依赖"人能看到"的防线
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Mobile agents are increasingly capable of autonomously interacting with mobile applications and performing consequential actions on behalf of users. Effective human oversight of such agents relies on a basic premise: users and agents observe consistent information from the same interface. We show that this premise can be systematically violated. Users perceive mobile interfaces through physical displays and the human visual system, making their observations subject to occlusion and luminance contrast limitations. In contrast, agents consume digital screenshots that may retain such content and accessibility representations that expose nonvisual widget metadata. The same UI state can therefore present materially different information to users and agents, a mismatch we term human-agent UI desynchronization. We investigate whether a repackaged clone of a legitimate APK can exploit this desynchronization to steer an agent toward attacker-designated actions, while remaining fully functional and behaviorally consistent with the original application for human users. We demonstrate that this threat is feasible: perturbations embedded before deployment can induce such deviations without access to runtime user instructions, agent detection or online adaptation. To systematically expose and evaluate this threat, we develop an automated framework that constructs user runtime instruction-agnostic UI desynchronization attacks and realizes them in deployable APKs. We conduct static and dynamic evaluations across five mobile-agent frameworks and three backbone models on 546 tasks involving various applications, achieving average misleading rates of 77.9% and 66.9%, respectively. A complementary questionnaire-based study with 186 participants finds that the visual perturbations used in our attacks are difficult for human users to notice.
+
+</details>

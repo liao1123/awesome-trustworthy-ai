@@ -792,3 +792,22 @@ Reward hacking during reinforcement learning from verifiable rewards (RLVR) can 
 Broad misalignment has been produced by finetuning on narrow data, harmful or benign, and in context only by demonstrations of the undesirable behaviour itself. We show that benign data suffices in context, with no finetuning and no demonstration of harmful behaviour in the prompt. Biographical facts that converge on a single figure, placed in a model's context as ordinary conversational turns, lead it to answer as that figure on questions the facts never touch. We call this persona induction. Across nine personas and thirteen models, identity adoption rises sigmoidally with the number of facts and crosses 50% within 3 to 10 of them. Misalignment then tracks which figure is described. Harmless personas reach full adoption with near-zero misalignment, while harmful ones voice their characteristic views on unrelated questions, at rates up to 80%. A formatting instruction can gate when the persona activates. Because each fact is individually benign, accumulated biographical context is flagged by content filters on 3% of inputs against 24-33% for an equivalent direct instruction.
 
 </details>
+
+### 42. TAME: Token Attribution and Masking for Emergent misalignment
+
+📄 [arXiv](https://arxiv.org/abs/2609.16754)　📅 2026-09
+
+**关键词**：`defense`、`emergent misalignment`、`token attribution`、`loss masking`、`fine-tuning safety`
+
+👤 **作者**：Md Rayhanul Masud、Md Rizwan Parvez
+
+- 🎯 **研究动机**：在狭窄有缺陷数据上微调对齐模型可诱发远超训练域的有害行为（emergent misalignment）；此前工作把 EM 定位到权重、激活与训练文档，但不知道哪些训练 token 携带相关信号
+- 🔬 **研究方法**：TAME 三阶段：token attribution 用已发布 LoRA 适配器的前向传播，为每个应答 token 打分（微调更新提升其似然的程度）；signal characterization 分析高归因 token 的模式；causal validation 用归因引导的 loss masking 因果验证。在已发布 EM organisms 与 6,849 例医学建议划分上实验
+- 📌 **结论**：归因高度集中（top 5% token 占 32% 质量）；Llama 中高归因 token 医学词汇贫化但"无根据确定性"语域富集（控制 token 稀有度后仍成立）；微调时遮蔽高归因 token 使 EM 降 23 倍（Llama）/36 倍（Qwen），等量随机遮蔽无变化——EM 信号更多藏在内容被表达的方式而非领域词汇。EMNLP 2026 UncertaiNLP Workshop
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Fine-tuning an aligned language model on narrow, flawed data can induce harmful behavior far outside the training domain, known as emergent misalignment (EM). Prior work has localized EM in model weights, activations, and training documents, but it remains unclear which training tokens carry the relevant fine-tuning signal. We introduce TAME (Token Attribution and Masking for Emergent Misalignment), a three-stage framework: token attribution scores how strongly the fine-tuning update raises each response token's likelihood, using forward passes through a released LoRA adapter; signal characterization finds patterns among high-attribution tokens; and causal validation tests them by attribution-guided loss masking. On released EM organisms and a 6,849-example medical-advice split, attribution is concentrated (the top 5% of tokens hold 32% of the mass) and, in Llama, depleted for medical vocabulary but enriched for a register of unwarranted certainty, even after controlling for token rarity. Masking high-attribution tokens during fresh fine-tuning cuts EM by 23x in Llama and 36x in Qwen, with the perplexity cost concentrated on the targeted register rather than on medical content; an equal random mask leaves EM unchanged. In Llama, the attribution pattern suggests that EM-relevant signal lies more in how confidently flawed content is expressed than in its domain vocabulary; the causal masking effect itself holds across both model families.
+
+</details>

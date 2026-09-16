@@ -832,3 +832,41 @@ Autonomous agents are increasingly adopted to complete complex, multi-tool workf
 Agentic AI frameworks let a language model plan, keep memory, and call tools that reach real files, mail, and services. Most of these agents also read images, which gives an attacker a way to put text into the agent's context without going through the user. We present MMPIBench, a reproducible benchmark that measures what happens next. It delivers a fixed set of attacks through six visual carriers (OCR text, overlays, EXIF metadata, QR codes, fake interfaces, and hybrids) and records how far each injected instruction travels through the agent, from perception through planning to the tool call. Across 720 runs covering six frameworks, five foundation models, six carriers, and four attacker objectives, attacks complete in approximately 1% of runs but are attempted in 12.8%, and the gap is closed almost entirely at the planning step, where the model reads the injected instruction and declines to act on it. The model matters far more than the framework for whether an instruction is acted on. One model never attempts an attack and recognizes the injection in 59.7% of runs, while two others attempt in 23.6%. We then extend the benchmark to audio, the only other raw perceptual channel current frontier models accept. Only two of the five models ingest audio and only three of the six frameworks deliver it, but where the signal arrives the attack completes in 49% of cells, and in 75% for one model. Reporting completion alone therefore understates exposure, and perceptual channels beyond vision are narrower but much less defended.
 
 </details>
+
+### 44. BLINDSPOT: A Benchmark for Safety and Refusal Calibration in Long-Horizon Tool-Using Agents
+
+📄 [arXiv](https://arxiv.org/abs/2609.16305)　📅 2026-09
+
+**关键词**：`benchmark`、`agent safety`、`refusal calibration`、`long-horizon trajectory`、`over-refusal`
+
+👤 **作者**：Sadia Asif、Mohammad Mohammadi Amiri、Momin Abbas、Tejaswini Pedapati、Prasanna Sattigeri
+
+- 🎯 **研究动机**：长程工具 agent 的安全失效可能多轮后才出现，而现有评测把 agent 行为简化为任务/攻击成功率，掩盖了 agent 行动、拒答与校准随交互演化的情况
+- 🔬 **研究方法**：Blindspot 以轨迹级方式评测安全校准：自适应对抗交互、有状态工具执行、执行接地的裁决；当前版本含 22 个攻击家族、35 个场景、7 个领域，产出 2,500+ 条长程轨迹（平均 14.7 轮），每条判为安全完成/正确拒答/不安全完成/过度拒答/不确定五类；评 13 个商用与开源 LLM 的 8 项指标（不安全完成、正确拒答、良性效用、过度拒答、重复运行稳健性、拒答后失败等）
+- 📌 **结论**：模型间安全-效用校准差异显著，部分失效仅在数个初始安全步骤后才出现——agent 安全应被视为轨迹级属性而非单轮二元判定；框架是可扩展的活仿真（攻击/场景/工具/策略/领域即插即用）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language model (LLM) agents increasingly operate over long-horizon interactions involving tool use, persistent state, evolving authorization, and external environment feedback. In such settings, safety failures may emerge only after multiple turns, yet existing evaluations often reduce agent behavior to task or attack success, obscuring whether an agent acts, refuses, or remains appropriately calibrated as the interaction evolves. We introduce Blindspot, a benchmark for trajectory-level safety calibration of long-horizon tool-using agents. Blindspot evaluates complete user-agent-environment trajectories through adaptive adversarial interaction, stateful tool execution, and execution-grounded adjudication. Its current instantiation contains 22 attack families and 35 scenarios across seven domains, yielding more than 2,500 long-horizon trajectories with an average interaction length of 14.7 turns. Each trajectory is assigned one of five outcomes: Safe Completion, Correct Refusal, Unsafe Completion, Over-Refusal, or Indeterminate. Unlike fixed attack datasets, Blindspot is an extensible live-simulation framework in which attacks, scenarios, tools, policies, domains, and agent configurations can be added without redesigning the evaluation pipeline. We evaluate 13 proprietary and open-weight LLMs using eight metrics covering unsafe completion, appropriate refusal, benign utility, over-refusal, repeated-run robustness, and post-refusal failure. Preliminary results reveal substantial differences in safety-utility calibration across models and show that failures can emerge only after several initially safe interaction steps. These findings motivate treating agent safety as a trajectory-level property rather than a single-turn or binary success criterion.
+
+</details>
+
+### 45. RiskChainBench: A Benchmark for Obfuscated Platform Message Restoration and Evidence-Grounded Web Investigation
+
+📄 [arXiv](https://arxiv.org/abs/2609.16900)　📅 2026-09
+
+**关键词**：`benchmark`、`platform abuse`、`obfuscated message`、`web investigation agent`、`evidence grounding`
+
+👤 **作者**：ZhuoXin Liu、…、Peng Chen
+
+- 🎯 **研究动机**：平台滥用活动用 emoji、同音字、拆字、冗余符号隐藏引流指令，再经伪装链接导向色情/诈骗/赌博服务；既有基准把混淆文本与风险网页分开评，掩盖目标恢复如何影响下游证据获取
+- 🔬 **研究方法**：RiskChainBench：3,600 条合成 token-文本恢复输入（600 源会话）配 600 个人工标注的本地网页环境；同一模型先恢复消息/操作意图/目的地，再作为 VLM 网页 agent 调查关联网站并输出冻结的引用证据风险报告（不给消息侧语义或域名信誉线索）；恢复与正确路由的调查分别计分，离线以冻结主入口预测做门控组合
+- 📌 **结论**：10 个模型 Entry Top-1 从 35.2% 到 95.2%、网页决策准确率 26.3%–62.8%；执行失败占网页运行 31.9% 而决策后类型错误仅 0.9%——稳定探索与风险判断是主要瓶颈；发布基准、协议与可重置本地沙箱
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Platform abuse campaigns conceal redirection instructions with emojis, homophones, character decomposition, and redundant symbols, then route users through disguised links to services associated with pornography, fraud, gambling, or illicit transactions. Existing benchmarks evaluate obfuscated text and risky webpages separately, obscuring how target recovery affects downstream evidence acquisition. We introduce RiskChainBench, pairing 3,600 synthetic token-text restoration inputs from 600 source sessions with 600 corresponding human-labeled local web environments. A model first restores the message, operational intent, and destination; the same underlying model then acts as a VLM-driven web agent that investigates the correctly associated website and produces a frozen, evidence-cited risk report without message-side semantics or domain-reputation cues. We score restoration and correct-routing web investigation separately and compose them offline by applying the frozen primary-entry prediction as a gate to the same Task 2 result. Human labels determine task correctness, while a fixed multimodal evidence judge assesses faithfulness, sufficiency, completeness, and consistency. Across ten models, Entry Top-1 ranges from 35.2% to 95.2% and web decision accuracy from 26.3% to 62.8%; the leading systems differ across entry recovery, full reconstruction, website decisions, and fine-grained typing. Execution failures account for 31.9% of web runs, whereas post-decision type errors account for only 0.9%, identifying stable exploration and risk judgment as the principal bottlenecks. We release the benchmark, protocol, and resettable local sandbox.
+
+</details>

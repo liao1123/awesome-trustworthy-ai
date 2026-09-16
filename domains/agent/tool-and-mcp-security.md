@@ -756,3 +756,22 @@ The Model Context Protocol (MCP) enables Large Language Model (LLM) agents to in
 Conventional vulnerability analysis relies on either system access or dynamic interaction, all of which may be unavailable to third-party analysts auditing closed-source, remotely hosted, critical in situ systems, or commercially gated software. Therefore, we propose a new paradigm of no-box vulnerability analysis in which neither access nor runtime interaction is available, and only functionality metadata is available. Such metadata defines the intended behavior of the system, including its inputs, outputs, and side effects, while constraining the space of implementations consistent with that behavior. We propose hypothesizing about vulnerabilities that exist across all possible implementations of a given system metadata, without observing or interacting with the target system. An analyst can later validate these hypotheses when additional access is available. We showcase the feasibility of no-box vulnerability analysis through implementing a prototype called MCPSEC, which audits Model Context Protocol (MCP) servers for indirect prompt injection vulnerabilities using only the tool metadata exposed at server registration time. We evaluate MCPSEC on 20 widely deployed MCP servers comprising 177 tools, among which human evaluators confirm 95 vulnerable tools. MCPSEC identified 143 tools as vulnerable, and for each vulnerable tool, it produced a hypothesized vulnerability along with exploitation technique. Using metadata alone, MCPSEC predicted 94 (98.9% recall) real verified vulnerabilities, compared against an LLM baseline with 80 (84.2% recall). Overall, our results introduce no-box vulnerability analysis as a new analysis paradigm and demonstrate its practical feasibility in realistic systems.
 
 </details>
+
+### 41. Universal Defenses for Tool-Integrated LLM Agents Against Adversarial Attacks
+
+📄 [arXiv](https://arxiv.org/abs/2609.16098) · 🐙 [Code](https://github.com/Xiaoyan-Lisa/Defenses-for-Tool-Integrated-LLM-Agents-Against-Adversarial-Attacks.)　📅 2026-09
+
+**关键词**：`defense`、`prompt injection`、`tool agent`、`anomaly detection`、`toolset restoration`
+
+👤 **作者**：Xiaoyan Li、Yunli Wang
+
+- 🎯 **研究动机**：工具集成 LLM agent 面临直接/间接 prompt 注入、memory 投毒与后门四类攻击，现有防御各自为战，缺少统一框架下可泛化的通用防线
+- 🔬 **研究方法**：在统一框架下探索四类攻击的通用防御：Attacker Tool Filtering 用异常检测（如 Isolation Forest）识别并移除可疑工具；Normal Tool Recalling 是白盒方法，在规划前恢复 agent 原始工具集；辅以 CoT、self-reflection、task paraphrasing 等 prompt 级防御。在 4 个开源模型（Gemma2-9B、Qwen2-7B、LLaMA3-8B、LLaMA3.1-8B）与 3 个商用模型（GPT-3.5/4/5）上测 ASR 与任务成功率
+- 📌 **结论**：多数设置下将 ASR 降到 0%，同时保持或提升原任务成功率；表明简单、模块化、多层的工具级防御即可显著强化工具集成 agent 的安全与鲁棒性。代码已开源
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large Language Model (LLM) agents have demonstrated impressive capabilities across a variety of domains, particularly when integrated with external tools for multi-step task completion. However, they are increasingly vulnerable to adversarial attacks, including direct prompt injection, indirect prompt injection, memory poisoning, and backdoor attacks, which exploit the model's openness to prompt injection and tool manipulation. In this work, we explore practical and generalizable defense strategies within a unified framework across these four attack types. We introduce two universal tool-based defenses: Attacker Tool Filtering, which uses anomaly detection (e.g., Isolation Forest) to identify and remove suspicious tools, and Normal Tool Recalling, a white-box method that restores the agent's original toolset prior to planning. Additionally, we incorporate prompt-based defenses: Chain-of-Thought prompting and self-reflection techniques to enhance reasoning and task paraphrasing to mitigate attacks. Experimental results across both four open-source LLMs (Gemma2-9B, Qwen2-7B, LLaMA3-8B, and LLaMA3.1-8B) and three proprietary LLMs (GPT-3.5, GPT-4, and GPT-5) show that our methods significantly reduce the Attack Success Rates (ASR), achieving 0% ASR in many settings, while preserving or even improving the original task success rate. These findings highlight the promise of simple, modular, multi-layered defenses for strengthening the security and robustness of tool-integrated LLM agents. The code is available at https://github.com/Xiaoyan-Lisa/Defenses-for-Tool-Integrated-LLM-Agents-Against-Adversarial-Attacks.
+
+</details>

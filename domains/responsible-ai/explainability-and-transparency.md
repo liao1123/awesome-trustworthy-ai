@@ -761,3 +761,22 @@ Large Language Models (LLMs) powerful generative capabilities also pose signific
 Mechanistic interpretability reveals that safety-critical behaviors (e.g., alignment, jailbreak, backdoor) in Large Language Models (LLMs) are grounded in specialized functional components. However, existing safety attribution methods struggle with generalization and reliability due to their reliance on heuristic, domain-specific metrics and search algorithms. To address this, we propose SafeSeek, a unified safety interpretability framework that identifies functionally complete safety circuits in LLMs via optimization. Unlike methods focusing on isolated heads or neurons, SafeSeek introduces differentiable binary masks to extract multi-granular circuits through gradient descent on safety datasets, while integrates Safety Circuit Tuning to utilize these sparse circuits for efficient safety fine-tuning. We validate SafeSeek in two key scenarios in LLM safety: \textbf{(1) backdoor attacks}, identifying a backdoor circuit with 0.42\% sparsity, whose ablation eradicates the Attack Success Rate (ASR) from 100\% $\to$ 0.4\% while retaining over 99\% general utility; \textbf{(2) safety alignment}, localizing an alignment circuit with 3.03\% heads and 0.79\% neurons, whose removal spikes ASR from 0.8\% $\to$ 96.9\%, whereas excluding this circuit during helpfulness fine-tuning maintains 96.5\% safety retention.
 
 </details>
+
+### 41. TAME: Token Attribution and Masking for Emergent misalignment
+
+📄 [arXiv](https://arxiv.org/abs/2609.16754)　📅 2026-09
+
+**关键词**：`defense`、`emergent misalignment`、`token attribution`、`loss masking`、`fine-tuning safety`
+
+👤 **作者**：Md Rayhanul Masud、Md Rizwan Parvez
+
+- 🎯 **研究动机**：在狭窄有缺陷数据上微调对齐模型可诱发远超训练域的有害行为（emergent misalignment）；此前工作把 EM 定位到权重、激活与训练文档，但不知道哪些训练 token 携带相关信号
+- 🔬 **研究方法**：TAME 三阶段：token attribution 用已发布 LoRA 适配器的前向传播，为每个应答 token 打分（微调更新提升其似然的程度）；signal characterization 分析高归因 token 的模式；causal validation 用归因引导的 loss masking 因果验证。在已发布 EM organisms 与 6,849 例医学建议划分上实验
+- 📌 **结论**：归因高度集中（top 5% token 占 32% 质量）；Llama 中高归因 token 医学词汇贫化但"无根据确定性"语域富集（控制 token 稀有度后仍成立）；微调时遮蔽高归因 token 使 EM 降 23 倍（Llama）/36 倍（Qwen），等量随机遮蔽无变化——EM 信号更多藏在内容被表达的方式而非领域词汇。EMNLP 2026 UncertaiNLP Workshop
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Fine-tuning an aligned language model on narrow, flawed data can induce harmful behavior far outside the training domain, known as emergent misalignment (EM). Prior work has localized EM in model weights, activations, and training documents, but it remains unclear which training tokens carry the relevant fine-tuning signal. We introduce TAME (Token Attribution and Masking for Emergent Misalignment), a three-stage framework: token attribution scores how strongly the fine-tuning update raises each response token's likelihood, using forward passes through a released LoRA adapter; signal characterization finds patterns among high-attribution tokens; and causal validation tests them by attribution-guided loss masking. On released EM organisms and a 6,849-example medical-advice split, attribution is concentrated (the top 5% of tokens hold 32% of the mass) and, in Llama, depleted for medical vocabulary but enriched for a register of unwarranted certainty, even after controlling for token rarity. Masking high-attribution tokens during fresh fine-tuning cuts EM by 23x in Llama and 36x in Qwen, with the perplexity cost concentrated on the targeted register rather than on medical content; an equal random mask leaves EM unchanged. In Llama, the attribution pattern suggests that EM-relevant signal lies more in how confidently flawed content is expressed than in its domain vocabulary; the causal masking effect itself holds across both model families.
+
+</details>

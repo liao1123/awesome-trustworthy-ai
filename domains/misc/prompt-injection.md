@@ -940,3 +940,22 @@ We formulate indirect prompt injection as a test-time search over a task-depende
 Large language model (LLM) agents interact with external environments through tool invocation, but tool outputs can also expose them to indirect prompt injection (IPI) attacks. Existing defenses mainly rely on prompt hardening, content filtering, pre-generated plans, or permission constraints. These approaches often struggle with complex tasks or over-sanitize external content, making it difficult to balance security and utility. The key challenge is therefore to preserve execution flexibility while precisely identifying and removing the malicious content that actually induces unsafe actions. To address this challenge, we propose ActGuard, a pre-execution action auditing framework. Rather than judging whether external content is inherently suspicious, ActGuard assesses whether it causes the current action to deviate from a locally reasonable expectation. At each step, ActGuard predicts the tools likely to be used by the upcoming action and constructs a local tool prior without constraining the execution trajectory. Before execution, it compares the candidate action against this prior and performs tool-level contrastive analysis and parameter-level evidence localization to identify deviations in tool selection and action parameters. A verifier then examines the localized evidence, masks only spans confirmed as malicious, and regenerates the action from the sanitized context. This design preserves legitimate planning flexibility while minimizing information loss from indiscriminate filtering. We evaluate ActGuard on challenging benchmarks for tool-using agents. Results show that ActGuard reduces attack success rates to a level comparable to state-of-the-art defenses while maintaining task utility close to the no-attack setting, achieving a favorable security-utility trade-off. Our code is publicly available at: this https URL .
 
 </details>
+
+### 50. Universal Defenses for Tool-Integrated LLM Agents Against Adversarial Attacks
+
+📄 [arXiv](https://arxiv.org/abs/2609.16098) · 🐙 [Code](https://github.com/Xiaoyan-Lisa/Defenses-for-Tool-Integrated-LLM-Agents-Against-Adversarial-Attacks.)　📅 2026-09
+
+**关键词**：`defense`、`prompt injection`、`tool agent`、`anomaly detection`、`toolset restoration`
+
+👤 **作者**：Xiaoyan Li、Yunli Wang
+
+- 🎯 **研究动机**：工具集成 LLM agent 面临直接/间接 prompt 注入、memory 投毒与后门四类攻击，现有防御各自为战，缺少统一框架下可泛化的通用防线
+- 🔬 **研究方法**：在统一框架下探索四类攻击的通用防御：Attacker Tool Filtering 用异常检测（如 Isolation Forest）识别并移除可疑工具；Normal Tool Recalling 是白盒方法，在规划前恢复 agent 原始工具集；辅以 CoT、self-reflection、task paraphrasing 等 prompt 级防御。在 4 个开源模型（Gemma2-9B、Qwen2-7B、LLaMA3-8B、LLaMA3.1-8B）与 3 个商用模型（GPT-3.5/4/5）上测 ASR 与任务成功率
+- 📌 **结论**：多数设置下将 ASR 降到 0%，同时保持或提升原任务成功率；表明简单、模块化、多层的工具级防御即可显著强化工具集成 agent 的安全与鲁棒性。代码已开源
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large Language Model (LLM) agents have demonstrated impressive capabilities across a variety of domains, particularly when integrated with external tools for multi-step task completion. However, they are increasingly vulnerable to adversarial attacks, including direct prompt injection, indirect prompt injection, memory poisoning, and backdoor attacks, which exploit the model's openness to prompt injection and tool manipulation. In this work, we explore practical and generalizable defense strategies within a unified framework across these four attack types. We introduce two universal tool-based defenses: Attacker Tool Filtering, which uses anomaly detection (e.g., Isolation Forest) to identify and remove suspicious tools, and Normal Tool Recalling, a white-box method that restores the agent's original toolset prior to planning. Additionally, we incorporate prompt-based defenses: Chain-of-Thought prompting and self-reflection techniques to enhance reasoning and task paraphrasing to mitigate attacks. Experimental results across both four open-source LLMs (Gemma2-9B, Qwen2-7B, LLaMA3-8B, and LLaMA3.1-8B) and three proprietary LLMs (GPT-3.5, GPT-4, and GPT-5) show that our methods significantly reduce the Attack Success Rates (ASR), achieving 0% ASR in many settings, while preserving or even improving the original task success rate. These findings highlight the promise of simple, modular, multi-layered defenses for strengthening the security and robustness of tool-integrated LLM agents. The code is available at https://github.com/Xiaoyan-Lisa/Defenses-for-Tool-Integrated-LLM-Agents-Against-Adversarial-Attacks.
+
+</details>

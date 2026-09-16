@@ -704,3 +704,22 @@ Vision-language models (VLMs) are expected to respond helpfully to appropriate r
 Vision-language models (VLMs) remain vulnerable to jailbreaks that distribute harmful intent across text and images, making unimodal safety mechanisms insufficient. We investigate whether this vulnerability can be mitigated directly in the multimodal key-value (KV) memory formed during prefill, without modifying model parameters at inference time. We introduce SPARK, a two-stage framework for targeted KV-memory repair. Stage 1 uses a disposable diagnostic adapter to identify harm-associated directions in multimodal key and value representations. Stage 2 projects out these directions, learns a lightweight residual repair, and anchors repaired keys with an image-structural prior to preserve visual grounding. Rather than applying the intervention uniformly, SPARK mixes repaired and original memory using a head-wise coefficient g_h* determined by intervention-relevant subspace energy E_h, requiring no explicit harm classifier at inference. Across LLaVA-OneVision-7B, Chameleon-7B, Qwen2-VL-7B, and InternVL2-4B, SPARK reduces multimodal attack success while preserving general capability. On LLaVA-OneVision-7B, image-only jailbreak attack success falls to 4.7%, while MMMU remains within 0.6 points of the undefended model (47.8 vs. 48.4) with near-baseline language quality. On MM-SafetyBench, attack success decreases from 39.2% to 12.4%. Even under white-box adaptive joint prompt-image attacks, attack success is limited to 20.3%, compared with 54.6% for the undefended model. These results suggest that multimodal jailbreak behavior can be substantially mitigated by selectively repairing intervention-relevant KV subspaces at prefill, particularly when harmful evidence is carried by the visual modality.
 
 </details>
+
+### 38. What Do Hallucinations Reveal About Multimodal Reasoning? Diagnosing Visual Grounding Failures via Contrastive Decoding Probes
+
+📄 [arXiv](https://arxiv.org/abs/2609.16646) · 🐙 [Code](https://github.com/zhaozhipeng1997/SAFE_public.)　📅 2026-09
+
+**关键词**：`detection`、`visual hallucination`、`contrastive decoding`、`grounding score`、`LVLM`
+
+👤 **作者**：Zhipeng Zhao、Wenxu Wang、Peishun Liu、Ruichun Tang
+
+- 🎯 **研究动机**：强多模态模型时代需要超越基准分数的方法论——把 LVLM 自身当实验仪器研究其失效动力学
+- 🔬 **研究方法**：SAFE 免训练解码框架：对比视觉接地与视觉消融两条生成路径，产生 token 级对比接地分数，识别模型偏向语言先验胜过视觉证据的时刻；该信号兼作未接地 token 检测代理与解码期惩罚基础
+- 📌 **结论**：三条经验发现：视觉依赖随生成衰减、幻觉在时间上聚集、早期干预减少聚集且不显著损害流畅度；MMHalBench 上大幅超过全部对比基线（其他基准表现混合）。EMNLP 2026
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+When strong multimodal models are widely available, progress requires new scientific methodologies beyond benchmark scores---using models as instruments for understanding behavior. We address this by asking: can we use large vision-language models (LVLMs) as experimental instruments for studying their own failure dynamics? Focusing on visual hallucination, we introduce SAFE, a training-free decoding framework that contrasts visually-grounded and vision-ablated generation paths to produce a token-level contrastive grounding score that identifies when the model favors linguistic priors over visual evidence. This signal serves dual roles: as a practical proxy for detecting visually-ungrounded tokens, and as the basis for decoding-time penalties. Our analysis yields three empirical observations: visual dependency decays over generation, hallucinations co-occur in temporal clusters, and early intervention reduces clustering without substantially degrading fluency. On MMHalBench, SAFE substantially outperforms all compared baselines; results elsewhere are more mixed. We argue that designing contrastive probes exemplifies a broader mission: using models as instruments for scientific understanding. Code: https://github.com/zhaozhipeng1997/SAFE_public.
+
+</details>

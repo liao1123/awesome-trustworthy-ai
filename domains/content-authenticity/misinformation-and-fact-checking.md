@@ -722,3 +722,22 @@ Misleading visualizations are a potent driver of misinformation on social media 
 Visualizations play a pivotal role in daily communication in an increasingly data-driven world. Research on multimodal large language models (MLLMs) for automated chart understanding has accelerated massively, with steady improvements on standard benchmarks. However, for MLLMs to be reliable, they must be robust to misleading visualizations, i.e., charts that distort the underlying data, leading readers to draw inaccurate conclusions. Here, we uncover an important vulnerability: MLLM question-answering (QA) accuracy on misleading visualizations drops on average to the level of the random baseline. To address this, we provide the first comparison of six inference-time methods to improve QA performance on misleading visualizations, without compromising accuracy on non-misleading ones. We find that two methods, table-based QA and redrawing the visualization, are effective, with improvements of up to 19.6 percentage points. We make our code and data available.
 
 </details>
+
+### 40. RiskChainBench: A Benchmark for Obfuscated Platform Message Restoration and Evidence-Grounded Web Investigation
+
+📄 [arXiv](https://arxiv.org/abs/2609.16900)　📅 2026-09
+
+**关键词**：`benchmark`、`platform abuse`、`obfuscated message`、`web investigation agent`、`evidence grounding`
+
+👤 **作者**：ZhuoXin Liu、…、Peng Chen
+
+- 🎯 **研究动机**：平台滥用活动用 emoji、同音字、拆字、冗余符号隐藏引流指令，再经伪装链接导向色情/诈骗/赌博服务；既有基准把混淆文本与风险网页分开评，掩盖目标恢复如何影响下游证据获取
+- 🔬 **研究方法**：RiskChainBench：3,600 条合成 token-文本恢复输入（600 源会话）配 600 个人工标注的本地网页环境；同一模型先恢复消息/操作意图/目的地，再作为 VLM 网页 agent 调查关联网站并输出冻结的引用证据风险报告（不给消息侧语义或域名信誉线索）；恢复与正确路由的调查分别计分，离线以冻结主入口预测做门控组合
+- 📌 **结论**：10 个模型 Entry Top-1 从 35.2% 到 95.2%、网页决策准确率 26.3%–62.8%；执行失败占网页运行 31.9% 而决策后类型错误仅 0.9%——稳定探索与风险判断是主要瓶颈；发布基准、协议与可重置本地沙箱
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Platform abuse campaigns conceal redirection instructions with emojis, homophones, character decomposition, and redundant symbols, then route users through disguised links to services associated with pornography, fraud, gambling, or illicit transactions. Existing benchmarks evaluate obfuscated text and risky webpages separately, obscuring how target recovery affects downstream evidence acquisition. We introduce RiskChainBench, pairing 3,600 synthetic token-text restoration inputs from 600 source sessions with 600 corresponding human-labeled local web environments. A model first restores the message, operational intent, and destination; the same underlying model then acts as a VLM-driven web agent that investigates the correctly associated website and produces a frozen, evidence-cited risk report without message-side semantics or domain-reputation cues. We score restoration and correct-routing web investigation separately and compose them offline by applying the frozen primary-entry prediction as a gate to the same Task 2 result. Human labels determine task correctness, while a fixed multimodal evidence judge assesses faithfulness, sufficiency, completeness, and consistency. Across ten models, Entry Top-1 ranges from 35.2% to 95.2% and web decision accuracy from 26.3% to 62.8%; the leading systems differ across entry recovery, full reconstruction, website decisions, and fine-grained typing. Execution failures account for 31.9% of web runs, whereas post-decision type errors account for only 0.9%, identifying stable exploration and risk judgment as the principal bottlenecks. We release the benchmark, protocol, and resettable local sandbox.
+
+</details>

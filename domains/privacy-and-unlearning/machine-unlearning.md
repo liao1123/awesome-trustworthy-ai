@@ -1627,3 +1627,41 @@ Unlearning benchmarks such as TOFU and MUSE certify forgetting by reading the mo
 </details>
 
 ## 常规收录
+
+### 88. Test-Time Unlearning via Sparse Autoencoder
+
+📄 [arXiv](https://arxiv.org/abs/2609.16229)　📅 2026-09
+
+**关键词**：`defense`、`machine unlearning`、`sparse autoencoder`、`inference-time intervention`、`relearning robustness`
+
+👤 **作者**：Pingzhi Li、…、Tianlong Chen
+
+- 🎯 **研究动机**：权重式 unlearning 存在尖锐的 forget-utility 权衡，且被遗忘知识可在 unlearning 后微调或 prompt 攻击下复现；需要不动权重、可控且耐攻击的删除方式
+- 🔬 **研究方法**：ARIA（autoencoder-gated inference-time unlearning）保持权重不动，仅当生成进入 forget 相关状态时门控访问：用 SAE latent 训练轻量线性检测器，在触发状态施加可解释干预，测试时开销可忽略；在 TOFU、R-TOFU、WMDP 上跨思考模型（DeepSeek-R1-Distilled-Qwen-1.5B）与指令模型（Gemma-3-1B-it）评估，并自拟 3 种针对权重空间与解码空间恢复的 unlearning 后攻击
+- 📌 **结论**：显著降低 WMDP-cyber forget 集准确率同时 MMLU 保持在不遗忘前 1% 以内；3 种对抗攻击下遗忘度变化小于 1%；特征级 case study 提示部分 retain 退化源于 unlearning 数据的应答风格而非目标知识泄漏——unlearning 评测构造的潜在偏置来源
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Machine unlearning aims to remove specific knowledge from a trained large language model (LLM) without retraining from scratch. Existing methods modify model weights via gradient ascent and its advances. While effective on certain benchmarks, these weight-based approaches exhibit a sharp forget-utility trade-off, where stronger forgetting of target knowledge can degrade model utility, and unlearned knowledge may reappear under post-unlearning fine-tuning or prompt attacks. We propose ARIA (autoencoder-gated inference-time unlearning), a test-time unlearning method that leaves model weights intact and gates access to unwanted knowledge only when generation enters a forget-related state. ARIA uses sparse autoencoder (SAE) latents to train a lightweight linear detector, then applies an interpretable intervention on triggered states with negligible test-time overhead. Empirical evaluations on TOFU, R-TOFU, and WMDP show that ARIA improves the forget-retain trade-off over weight-based baselines across both a thinking model (DeepSeek-R1-Distilled-Qwen-1.5B) and an instruction model (Gemma-3-1B-it), e.g., reducing WMDP-cyber forget-set accuracy significantly while keeping MMLU within 1% of the pre-unlearning model. We further introduce three post-unlearning adversarial attacks targeting weight-space and decoding-space recovery, and find that ARIA remains robust under all three, with forgetting changing by less than 1% under attack. A feature-level case study leveraging the interpretability of ARIA suggests that some retain degradation may reflect response styles underlying the unlearning data rather than leakage of the targeted knowledge itself, highlighting a potential source of bias in unlearning task construction.
+
+</details>
+
+### 89. Cascade: Hierarchical Recoverability Control for Large Language Model Unlearning
+
+📄 [arXiv](https://arxiv.org/abs/2609.16890)　📅 2026-09
+
+**关键词**：`defense`、`unlearning`、`recoverability control`、`activation routing`、`query reformulation`
+
+👤 **作者**：Qingchen Yu、…、Zhaoxin Fan
+
+- 🎯 **研究动机**：LLM unlearning 后目标知识常残留于中间表示并可被恢复；需要在多个层级系统压制"可恢复性"同时保持模型效用
+- 🔬 **研究方法**：Cascade 分层可恢复性控制框架：path 级路由抑制隐私相关激活路径、表示级压缩降低几何可分性、解码级干预限制残余恢复，三层控制互补；在 TOFU、MUSE-News、WMDP 上评估，含查询改写与抽取式 prompt 的鲁棒性测试
+- 📌 **结论**：有效降低目标知识的内部可恢复性同时保持稳定模型效用；三层控制（路由/压缩/解码）联合优于单层方法。EMNLP 2026 Findings
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large Language Model (LLM) unlearning is essential for removing sensitive or copyrighted knowledge while preserving general utility. Existing methods often leave residual knowledge in intermediate representations, which can still be recovered. To address this, we propose Cascade, a hierarchical recoverability control framework that minimizes the internal identifiability of target knowledge. Cascade combines three complementary controls: path-level routing to suppress privacy-associated activation routes, representation-level compression to reduce geometric separability, and decoding-level intervention to limit residual recovery. Experiments on TOFU, MUSE-News, and WMDP, including robustness tests with query reformulation and extraction-style prompts, show that Cascade effectively reduces recoverability while maintaining stable model utility.
+
+</details>

@@ -2244,3 +2244,22 @@ Dense retrievers have achieved state-of-the-art performance in various informati
 We design, implement, and evaluate adversarial decoding, a new, generic text generation technique that produces readable documents for different adversarial objectives. Prior methods either produce easily detectable gibberish, or cannot handle objectives that include embedding similarity. In particular, they only work for direct attacks (such as jailbreaking) and cannot produce adversarial text for realistic indirect injection, e.g., documents that (1) are retrieved in RAG systems in response to broad classes of queries, and also (2) adversarially influence subsequent generation. We also show that fluency (low perplexity) is not sufficient to evade filtering. We measure the effectiveness of adversarial decoding for different objectives, including RAG poisoning, jailbreaking, and evasion of defensive filters, and demonstrate that it outperforms existing methods while producing readable adversarial documents.
 
 </details>
+
+### 117. InceptionRAG: Stealthy Poisoning Attack Against Retrieval-Augmented Generation
+
+📄 [arXiv](https://arxiv.org/abs/2609.16818)　📅 2026-09
+
+**关键词**：`attack`、`corpus poisoning`、`multi-hop reasoning`、`dormant passage`、`zeroth-order optimization`
+
+👤 **作者**：Jiachang Zhang、…、Zhikun Zhang
+
+- 🎯 **研究动机**：现有 RAG 投毒聚焦单点显式注入（恶意载荷封装在单文档内），对应防御机制已能有效识别削弱；需要检验它们对"间接逻辑诱导"类新威胁是否失效
+- 🔬 **研究方法**：InceptionRAG 颠覆单文档范式：把恶意载荷拆成休眠 passage 链，单看无害、可绕过现有防御，被共同检索后经多跳推理让 LLM 自行推出目标错误信息；ZOSO（零阶后缀优化）在黑盒设置下自动生成权威后缀；3 个数据集 × 3 个 LLM 评估，并提出基于文档隔离的防御 HODOR 切断对抗逻辑依赖
+- 📌 **结论**：严格对抗约束下 ASR 超 80%，有效绕过针对传统单文档注入的既有防御；揭示悖论——LLM 推理能力越强越易受推理型投毒攻击。CCS 2026 论文
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Retrieval-augmented generation (RAG) systems enhance large language models (LLMs) with external knowledge but have been demonstrated to be vulnerable to corpus poisoning. Existing poisoning attacks against RAG largely focus on single-point explicit injection, where the malicious payload is fully encapsulated within a single document. Consequently, recent mitigation mechanisms have evolved to identify and diminish these threats effectively. In this paper, we first verify that existing mitigation mechanisms are insufficient for a new class of threats: indirect logic induction. Motivated by this observation, we introduce InceptionRAG, a stealthy attack mechanism that subverts the standard attack paradigm. Instead of injecting explicit malicious payloads, InceptionRAG fragments it into a chain of dormant passages. These passages appear harmless and can bypass existing mitigation mechanisms when examined separately. However, when retrieved together, they trigger LLMs to self-deduce target misinformation via multi-hop reasoning. To further improve the applicability of InceptionRAG in black-box settings, we propose zeroth-order suffix optimization (ZOSO) to automate the generation of authoritative suffixes. Extensive evaluations across three datasets and three LLMs demonstrate that InceptionRAG achieves an attack success rate exceeding 80% even under rigorous adversarial constraints. In particular, InceptionRAG shows superior evasion capabilities, effectively bypassing established defenses that mitigate traditional single-document injections. Our findings expose a concerning paradox: the stronger reasoning capabilities of LLMs increase their vulnerability to reasoning-based poisoning attacks. To mitigate potential misuse, we propose a document isolation-based defense, HODOR, which decouples adversarial logical dependencies.
+
+</details>

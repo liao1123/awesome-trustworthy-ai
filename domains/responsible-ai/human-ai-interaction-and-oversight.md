@@ -350,3 +350,22 @@ AI agents pose significant risks as they are granted increasing autonomy. A comm
 AI-assisted development tools enable software engineers to generate implementations at substantially higher speed and volume than in traditional workflows. Software teams have long relied on guardrails -- standing control mechanisms such as code review, linting, testing, and CI/CD pipelines -- to maintain quality and coordination. High-throughput AI-assisted generation increases pressure on these guardrails -- straining their capacity to keep pace with the volume and rate of generated changes -- and reshapes how organizations supervise development workflows, yet relatively little is known about how existing guardrails evolve in response. We conducted a qualitative interview study with five software engineering practitioners, situated within a broader practitioner survey. Our findings indicate that organizations distribute the work of supervision across multiple guardrail layers: preventive guardrails (produced by externalizing architectural intent and conventions into machine-interpretable form), executable guardrails (linting, testing, and CI/CD repurposed as scalable supervision infrastructure), and human oversight (shifting from line-by-line inspection toward supervisory interpretation focused on architectural reasoning, explainability, and long-term maintainability). We characterize this as a transition from review- centric guardrails toward layered supervision, in which no single guardrail carries the supervision load alone.
 
 </details>
+
+### 19. When Agents See Differently: Exposing UI Desynchronization Threats in Mobile Agents
+
+📄 [arXiv](https://arxiv.org/abs/2609.16732)　📅 2026-09
+
+**关键词**：`attack`、`mobile agent`、`UI desynchronization`、`APK repackaging`、`human oversight`
+
+👤 **作者**：Heng Li、Fulin Zhao、Zhe Geng、Zhiyuan Yao、Wei Yuan、Xiapu Luo
+
+- 🎯 **研究动机**：对移动 agent 的人工监督依赖"用户与 agent 从同一界面看到一致信息"这一前提；但用户经物理显示器与视觉系统观察（受遮挡、亮度对比限制），agent 消费的截图与无障碍表示可保留或暴露更多内容——重打包应用可利用该观测差操纵 agent
+- 🔬 **研究方法**：定义 human-agent UI desynchronization 威胁：攻击者预先在合法 APK 克隆中嵌入扰动，无需运行时用户指令、agent 检测或在线适配，即可把 agent 引向指定动作，对人类用户则保持功能与行为一致；构建自动化框架生成与运行时指令无关的去同步攻击并打包为可部署 APK；5 个移动 agent 框架、3 个骨干模型、546 个任务上静态+动态评估，另做 186 人问卷研究
+- 📌 **结论**：静态/动态评估平均误导率 77.9%/66.9%；视觉扰动对人类用户难以察觉——人工监督在该威胁面下系统性失效，移动 agent 的权限与动作需要不依赖"人能看到"的防线
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Mobile agents are increasingly capable of autonomously interacting with mobile applications and performing consequential actions on behalf of users. Effective human oversight of such agents relies on a basic premise: users and agents observe consistent information from the same interface. We show that this premise can be systematically violated. Users perceive mobile interfaces through physical displays and the human visual system, making their observations subject to occlusion and luminance contrast limitations. In contrast, agents consume digital screenshots that may retain such content and accessibility representations that expose nonvisual widget metadata. The same UI state can therefore present materially different information to users and agents, a mismatch we term human-agent UI desynchronization. We investigate whether a repackaged clone of a legitimate APK can exploit this desynchronization to steer an agent toward attacker-designated actions, while remaining fully functional and behaviorally consistent with the original application for human users. We demonstrate that this threat is feasible: perturbations embedded before deployment can induce such deviations without access to runtime user instructions, agent detection or online adaptation. To systematically expose and evaluate this threat, we develop an automated framework that constructs user runtime instruction-agnostic UI desynchronization attacks and realizes them in deployable APKs. We conduct static and dynamic evaluations across five mobile-agent frameworks and three backbone models on 546 tasks involving various applications, achieving average misleading rates of 77.9% and 66.9%, respectively. A complementary questionnaire-based study with 186 participants finds that the visual perturbations used in our attacks are difficult for human users to notice.
+
+</details>

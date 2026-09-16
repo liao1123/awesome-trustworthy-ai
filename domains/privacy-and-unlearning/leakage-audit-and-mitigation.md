@@ -419,3 +419,22 @@ Recent advances in video generation have made prompt-based control increasingly 
 Mobile GUI agents increasingly rely on Vision-Language Models (VLMs) to automate smartphone tasks by interpreting screenshot streams. However, this design introduces serious and underexplored privacy risks, including direct leakage of sensitive on-screen information and unintended user profiling. The absence of standardized benchmarks makes it difficult to quantify these risks in realistic mobile agent workflows. To address this gap, we propose PriMobiBench, the first benchmark for systematically evaluating privacy leakage and visual profiling in screenshot-driven mobile agents. It provides a unified pipeline for data generation, agent trajectory construction, and multi-model evaluation. We also introduce MobiLeak, a dataset of execution traces from 16 apps, covering 25 privacy attributes with 2,960 embedded privacy instances. Our results reveal substantial risks: (1) VLMs can directly extract sensitive information with up to 82.5% success rate; (2) beyond explicit leakage, they can infer user profiles from aggregated visual evidence with approximately 70% success. We further propose a mitigation that masks privacy-sensitive but task-irrelevant UI elements before cloud processing, reducing profiling success by up to 58% with only approximately 8% performance loss. Overall, our work provides the first systematic benchmark for visual privacy risks in mobile GUI agents, demonstrates that both leakage and profiling are feasible at a highly concerning level, and offers a practical direction for mitigation.
 
 </details>
+
+### 24. RAG-CT: Mitigating Privacy Risks on Retrieval-Augmented Generation Systems via Scanning Prompt Distribution
+
+📄 [arXiv](https://arxiv.org/abs/2609.16095)　📅 2026-09
+
+**关键词**：`defense`、`RAG privacy`、`PII extraction`、`query distribution`、`entropy detection`
+
+👤 **作者**：Xingyu Lyu、Jiayimei Wang、Jianfeng He、Ning Wang、Yidan Hu、Yimin Chen
+
+- 🎯 **研究动机**：攻击者可借 RAG 检索通道从底层语料抽取个人身份信息（PII）；现有防御缺少对恶意查询的轻量识别手段，且不希望改动底层 LLM 或检索器
+- 🔬 **研究方法**：RAG-CT 通过分析查询的熵与边际分布，用打分式检测识别旨在抽取 PII 的恶意查询，在检索阶段拦截攻击；在两个数据集上对抗 4 种 SOTA 攻击策略、对比 4 种防御基线评估
+- 📌 **结论**：在四攻击、四基线、两数据集设置下显著降低 PII 泄漏并优于全部对比防御；不需修改底层 LLM 或检索器，为 RAG 系统提供轻量隐私防线
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Retrieval-Augmented Generation (RAG) has emerged as a powerful paradigm for improving the quality of generated contents of Large Language Models (LLMs) by grounding responses in external knowledge, thus reducing hallucinations and factual errors. However, recent studies have highlighted a critical vulnerability: adversaries can exploit the retrieval process to extract personally identifiable information (PII) from the underlying corpus. To mitigate this risk, we propose a novel defense, RAG-CT, that identifies malicious queries by analyzing their entropy and margin distributions and using a score-based detection method. Extensive experiments with four state-of-the-art attack strategies and four defense baselines on two datasets show that our approach significantly reduces PII leakage while outperforming existing defenses. This work provides a lightweight yet effective mechanism to protect RAG systems against PII leakage without requiring modifications to the underlying LLM or retriever.
+
+</details>

@@ -571,3 +571,22 @@ Full-duplex speech models accept user speech while generating responses, creatin
 Voice AI systems increasingly mediate customer care interactions where caller presentation cues such as accent, affect, fluency, and urgency are available alongside the service request. Existing fairness and safety evaluations cover speech recognition disparities, spoken dialogue bias, and voice agent capability, but rarely treat customer care voice agents as stateful, multi turn, tool mediated systems where harm can appear as additional burden before any final denial occurs. We formalize a validation gated audit framework for such systems. The framework (i) separates native speech to speech, cascaded ASR to language model to TTS, and hybrid tool mediated architectures; (ii) uses matched service facts across controlled caller presentation conditions; (iii) validates fact invariance, presentation cues, artifacts, and acoustic measurements before inference; and (iv) records both material outcomes and path to service burden. We define the research problem, methodology, seven validation gates, a six family metric set, and claim boundaries for an active industry evaluation program. We illustrate the framework with a fully synthetic worked example of a refund dispute audit instance. Production system results are excluded from this release; public reporting is gated by the validation protocol.
 
 </details>
+
+### 31. RoleBreak: Benchmarking Long-Horizon Role-Playing Robustness in Spoken Dialogue
+
+📄 [arXiv](https://arxiv.org/abs/2609.16614)　📅 2026-09
+
+**关键词**：`benchmark`、`spoken dialogue`、`role-playing`、`persona safety`、`long-horizon robustness`
+
+👤 **作者**：Yuqi Wang、Fengyuan Liu、Haochen Luo、Zhiqi Yu、Qi Liu
+
+- 🎯 **研究动机**：语音到语音对话模型日益支持 persona 控制，但既有 spoken role-playing 基准以预设角色与短程为主——长程多角色持续能力（尤其安全性）未知
+- 🔬 **研究方法**：RoleBreak：310 个角色型与用户中心角色、6,688 个人工验证对话轮、11,743 条细粒度评测标准（1,856 轮带声音情感目标），场景压测长程角色一致性、交互质量、安全与情感；评测 9 种配置（全双工、全模态、级联 ASR-LLM-TTS）
+- 📌 **结论**：系统语义角色遵循远强于声音情感；长程语义鲁棒性脆弱——最强系统平均 10.4 轮后出现首次 persona 失败、11.6 轮后首次安全失败；放大 LLM 显著改善语义鲁棒性并对声音情感几乎无益；用户声音情感即使语言内容固定也会影响角色扮演行为。ICASSP 2027 投稿
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Speech-to-speech dialogue models increasingly support persona control, yet existing spoken role-playing benchmarks remain largely character-centric and short-horizon. This leaves open whether spoken dialogue models can sustain diverse roles over extended interactions, especially beyond predefined fictional characters. We introduce RoleBreak, an open benchmark for long-horizon role-playing robustness in spoken dialogue. RoleBreak contains 310 character-based and user-centered roles, 6,688 human-verified dialogue turns, and 11,743 fine-grained evaluation criteria, with 1,856 turns carrying expressive emotion targets for evaluating vocal emotion. Its scenarios are designed to stress role consistency, interaction quality, safety, and affect over extended conversations. We evaluate nine configurations spanning full-duplex, omni-modal, and cascaded ASR--LLM--TTS paradigms. We find four key patterns. First, current systems are substantially stronger at semantic role adherence than at vocal emotion. Second, semantic robustness remains brittle over long interactions: even the strongest evaluated system encounters its first persona and safety failures after only 10.4 and 11.6 turns on average. Third, scaling the LLM substantially improves semantic robustness and delays failure, but yields little improvement in vocal emotion. Finally, user vocal emotion affects role-playing behavior even when linguistic content is fixed. These findings highlight persistent gaps in both long-horizon robustness and vocal expressiveness in spoken role-playing systems.
+
+</details>
