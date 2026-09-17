@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "website" / "tools" / "out"
 DATE = sys.argv[1] if len(sys.argv) > 1 else "2026-09-09"
 TAG = DATE[5:].replace("-", "")  # e.g. 0909
-WEEKDAY = {"2026-09-09": "星期三", "2026-09-10": "星期四", "2026-09-11": "星期五", "2026-09-14": "星期一", "2026-09-15": "星期二", "2026-09-16": "星期三"}.get(DATE, "")
+WEEKDAY = {"2026-09-09": "星期三", "2026-09-10": "星期四", "2026-09-11": "星期五", "2026-09-14": "星期一", "2026-09-15": "星期二", "2026-09-16": "星期三", "2026-09-17": "星期四"}.get(DATE, "")
 
 LINK_RE = re.compile(r"(https://(?:github\.com/[\w.\-/]+|huggingface\.co/[\w.\-/]+|gitlab\.com/[\w.\-/]+|github\.io/[\w.\-/]+))", re.I)
 
@@ -56,6 +56,7 @@ STATS = {
     "0914": {"dedup": 732, "fresh": 725, "new2609": 518, "screened": 79},
     "0915": {"dedup": 1666, "fresh": 1661, "new2609": 1206, "screened": 135},
     "0916": {"dedup": 573, "fresh": 573, "new2609": 571, "screened": 105},
+    "0917": {"dedup": 646, "fresh": 645, "new2609": 643, "screened": 90},
 }
 
 
