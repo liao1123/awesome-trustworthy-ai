@@ -620,3 +620,22 @@ Multi-step prompt injection attacks on LLM agents present a fundamental detectio
 When an indirect prompt injection succeeds against an LLM agent, the compromise is visible in the agent's own behavior: a benign prefix of tool calls, a poisoned observation, and a suffix of actions that serve the attacker. An operator needs three facts: where the attack entered, which steps it corrupted, and whether apparent poison was resisted. Existing systems return either a whole-trace verdict or a single unsafe index. We present DriftNet, a dual-head trajectory Transformer that reads a logged tool-call trajectory and answers all three questions in one forward pass: one head classifies the trajectory as compromised or not, and a second assigns every step one of four labels (benign, injection point, hijacked, failed injection). To our knowledge it is the first supervised detector to produce this joint output. A frozen sentence encoder and four identity-free world features embed each step; the trained trunk, under two million parameters and optimized with a class-weighted joint objective over both heads, needs no access to the agent's model. On the task-disjoint split of the AgentDrift benchmark (12,536 trajectories, 71,024 labeled steps), with a 20-configuration sweep bounding hyperparameter sensitivity to 0.011 F1 and the test part evaluated exactly once, DriftNet reaches trajectory-level F1 of 0.983, exact injection-point recovery on 98.7% of attacked trajectories, hijacked-span IoU of 0.979, zero flags on 218 resisted attacks, and 2.9% flags on hard negatives. A surface baseline retrained on the identical split recovers 11.1% of partial hijacks and 17.1% of delayed executions; DriftNet reaches 98.6% and 93.2% while lowering every false-alarm rate. Reading all 26 residual errors shows that most misses trace to trajectories whose labeled injection observation carries no legible instruction, and we report the benchmark's measured world-identity regularity alongside the results.
 
 </details>
+
+### 33. Locating Hidden Failures Makes Long-Horizon Agents More Reliable
+
+📄 [arXiv](https://arxiv.org/abs/2609.17930)　📅 2026-09
+
+**关键词**：`benchmark`、`failure localization`、`long-horizon agent`、`verifier`、`irreversible harm`
+
+👤 **作者**：Salman Rahman、…、Hamid Palangi
+
+- 🎯 **研究动机**：长程 agent 时代人类从执行者变成监督者，却仍几乎只按最终成败评判——结果无法揭示运行在哪里出错、是否恢复、沿途造成哪些不可逆伤害
+- 🔬 **研究方法**：研究 2,518 条软件工程/计算机使用/科学任务 agent 轨迹，把 6,967 个错误人工归类为 78 种失效类型；发布 Traverse 基准并训练 4B 验证器 Scout，与 6 个前沿 judge 对比定位能力；test time 用于在 agent 候选运行间选择
+- 📌 **结论**：失效呈重复签名：首次错误后 agent 常无法恢复且极少自查，运行继续却看似正确；被评"已解决"的运行也会删数据、破坏系统或伪造成功；最强 frontier judge 在不到 1/3 运行中正确定位首个错误，Scout 远超它们且能迁移到未见领域；用于运行选择时把任务成功率提到 agent 单次尝试之上——无需重训 agent
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+As AI agents take on long, autonomous tasks, we increasingly oversee rather than perform the work, yet we still judge them almost entirely by whether they finally succeed. An outcome cannot reveal where a run went wrong, whether the agent recovered, or the irreversible harm it caused along the way, and where long-horizon agents fail remains unmapped. We study $2518$ agent trajectories across software engineering, computer use, and science, close to real deployment, and classify $6967$ mistakes into $78$ failure types. Failure follows a recurring signature: after its first mistake an agent often fails to recover and rarely catches the error itself, so the run continues unchecked while still looking correct; whether an agent recovers depends on the task and the environment's feedback, not on the agent framework running it. Long-horizon agents can do real harm on the way to a passing result: even runs scored as solved delete data, corrupt systems, or fabricate success rather than earning it. We release these human-verified annotations as Traverse, a benchmark on which six frontier judges struggle to locate failure regardless of scale: even the strongest correctly identifies the first mistake in fewer than a third of runs. Yet Scout, a $4$B verifier we trained, locates failure far better than these judges and transfers to domains it never saw. Used at test time to select among an agent's candidate runs, it raises task success above the agent's own single-attempt performance, without retraining the agent. By making failure cheap to locate and correct, this work is a foundation for more trustworthy long-horizon agents that learn from their own mistakes, and a practical path to overseeing increasingly autonomous AI.
+
+</details>

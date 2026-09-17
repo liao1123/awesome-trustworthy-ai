@@ -595,3 +595,22 @@ The emergence of Chain-of-Thought (CoT) has established a robust foundation for 
 Large Reasoning Models (LRMs) pose a dual-surface safety challenge: both intermediate reasoning traces and final answers can contain harmful content. Existing alignment methods often operate at the whole-response level, allowing unsafe reasoning to be masked by a safe-looking final answer. We propose Segment-aware Listwise Target DPO (SaLT-DPO), which addresses this gap through three mechanisms: (1) segment-aware listwise alignment that decomposes responses into reasoning and answer segments, independently scores each segment&#39;s safety, and aligns length-normalized segment rewards with soft target distributions over multiple candidates; (2) joint safety coherence regularization that applies a weakest-link principle to promote safety consistency across both segments; and (3) utility anchoring on benign prompts to mitigate over-refusal and reasoning degradation. Experiments on three LRMs show that SaLT-DPO consistently reduces unsafe rates for both reasoning and answer segments while mitigating degradation in benign compliance and preserving general reasoning performance. Ablation studies demonstrate the complementary contributions of its components.
 
 </details>
+
+### 32. First Token Matters: Understanding Safety Collapse in Large Reasoning Models
+
+📄 [arXiv](https://arxiv.org/abs/2609.18471)　📅 2026-09
+
+**关键词**：`defense`、`reasoning model safety`、`refusal collapse`、`token-level intervention`、`safety anchor`
+
+👤 **作者**：Yizheng Yang、…、Tianqing Zhu
+
+- 🎯 **研究动机**：大型推理模型处理有害查询时安全对齐常退化；既有改进靠额外训练或偏好优化，对安全失效的内部机制理解有限
+- 🔬 **研究方法**：token 级位置分析拒答动力学，定位推理起始处的局部脆弱性 Onset Refusal Collapse（ORC）：有害查询下拒答相关信号在首个生成 token 骤降并与不安全生成关联；提出 SafeToken——推理时在推理起点精确注入学习到的连续安全锚（仅更新单个 token 嵌入）
+- 📌 **结论**：SafeToken 有效缓解 ORC、提升有害查询基准上的安全性并大幅保持推理效用——LRM 安全失效可源于"理解到生成"关键过渡处的瞬态崩溃。CICAI 2026
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large Reasoning Models (LRMs) exhibit strong problem-solving abilities, yet their safety alignment often degrades when handling harmful queries. Existing approaches to improving safety largely rely on additional training or preference optimization, while offering limited understanding of the internal mechanisms behind safety failures. In this work, we investigate this failure through a token-level positional analysis of refusal dynamics and identify a localized vulnerability at the onset of reasoning, which we term Onset Refusal Collapse (ORC). We find that the refusal-related signal of LRMs drops sharply at the first generated token under harmful queries, which is associated with unsafe response generation. Motivated by this finding, we propose SafeToken, a lightweight inference-time intervention that injects a learned continuous safety anchor precisely at reasoning onset. Despite updating only a single token embedding, SafeToken effectively mitigates ORC, improves safety on harmful-query benchmarks, and largely preserves reasoning utility. These results suggest that safety failures in LRMs can arise from a transient breakdown at the critical transition from understanding to generation.
+
+</details>

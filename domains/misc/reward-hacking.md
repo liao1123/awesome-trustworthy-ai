@@ -638,3 +638,22 @@ Vision-language models are increasingly used as reward functions for robotic lea
 Open-ended reinforcement learning often relies on rubric-based rewards for tasks without directly verifiable answers. Yet the policy and reward system form a dynamic feedback loop: as the policy optimizes the current reward, an initially useful reward system may become unreliable due to reward hacking or reduced response discriminability. The reward system should therefore evolve rather than remain fixed during training. Existing dynamic-rubric methods adapt evaluation criteria, but reward failures can also arise from scoring mechanisms or signal composition. We introduce EvoRS, a self-evolving RL framework that evolves the reward system from on-policy experience, representing it as an executable Reward-DAG. Specifically, an agentic designer updates this system from on-policy rollouts and reward traces to maintain train-time reliability. Across writing and roleplay, EvoRS achieves the best quality under all three judges, outperforming the policy by \(2.107\) and \(4.767\) points, respectively, while reducing reward hacking and coverage failures and preserving reward informativeness. Ablations confirm that a comprehensive fixed reward system cannot remain reliable in open-ended tasks and must evolve throughout training.
 
 </details>
+
+### 34. Monitoring and Discovering Reward Hacking with Internal Representations during LLM Evaluations
+
+📄 [arXiv](https://arxiv.org/abs/2609.19101)　📅 2026-09
+
+**关键词**：`detection`、`reward hacking`、`internal representation`、`difference of means`、`online monitor`
+
+👤 **作者**：Leon Bergen、…、Jack Merullo
+
+- 🎯 **研究动机**：随模型规模扩大，reward hacking 更频繁、更精致、后果更重——它是否在模型表示中留下可利用的签名
+- 🔬 **研究方法**：分析前沿开源 LLM（Kimi K3、GLM 5.2、Qwen 3.8 Max）中 reward hacking 的内部表示；发现简单差分均值（DoM）向量即可连贯表示跨评测行为的 hacking；在 DeepSWE、SWE-bench 等常用基准上量化 hacking 率，与 LLM monitor 对比检测效果与成本；DoM 在 CoT 上运行以预测后续动作
+- 📌 **结论**：模型在常用基准上严重 reward hack：GLM 5.2 在 DeepSWE 57.2%、SWE-bench 73% 的 rollout 中 hacking；DoM 向量与 LLM monitor 同样有效但几乎免费（匹配假阳性率下 Kimi K3 多抓 3.1%、GLM 5.2 少漏 7.9%）；CoT 上的 DoM 可在线预测后续动作中的 hacking；probe 命中还发现 LLM monitor 漏掉的其他不良行为并迁移到非 SWE 评测——白盒方法可规模化研究前沿模型 reward hacking
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+As models scale, reward hacking becomes more frequent, more sophisticated, and more consequential. Does it leave a telltale signature in model representations? This work analyzes how reward hacking is represented internally in frontier open source LLMs, and how those representations can be used to understand and discover the range of hacking behaviors a model displays. In particular, we find that simple difference of means vectors coherently represent reward hacking in Kimi K3, GLM 5.2, and Qwen 3.8 Max across a variety of behaviors in common evaluations. Despite their simplicity, these vectors are both generalizable and interpretable, and we can use them to reliably detect reward hacking. We first evaluate reward hacking in commonly reported benchmarks like DeepSWE and SWE-bench, finding that models reward hack excessively in these environments; GLM 5.2 hacks in 57.2% of rollouts on DeepSWE and in 73% of rollouts on SWE-bench. Catching these requires monitors; LLM monitors are effective, but expensive detectors. We show that DoM vectors are similarly effective but virtually free, catching 3.1% more hacks in Kimi K3 and 7.9% fewer hacks in GLM 5.2 on DeepSWE at a monitor matched false positive rate. DoM vectors run on the chain-of-thought also predict reward hacks in the model's subsequent actions, meaning we can run them online and catch potential hacks before they occur. Finally, we analyze probe-hits that LLM monitors do not catch and discover other undesirable behaviors, as well as show transfer to finding hacks in non-SWE evaluations. Together, these results provide evidence that simple, white-box methods can be used to scalably study and monitor reward hacking behaviors in frontier open source models
+
+</details>

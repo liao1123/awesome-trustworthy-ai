@@ -2239,3 +2239,22 @@ Large language models (LLMs) often learn both desirable and undesirable properti
 Safety guardrails in open-weight language models can be readily bypassed using Refusal Feature Ablation (RFA), a technique that identifies and projects out a linear refusal direction from the residual stream, often achieving a high attack success rate (ASR) while preserving model capability. Defending against these attacks typically requires computationally expensive safety finetuning for every new checkpoint. We introduce Decoy Direction Optimization (DDO), a fast, post-hoc weight-editing defense that requires no base-model finetuning. Our approach is based on a simple mechanistic insight: ablation attacks rely on contrastive estimators to find the refusal direction. Rather than trying to hide the true refusal circuitry, DDO actively injects a high-magnitude, nonlinear decoy signal into the network's MLP neurons. When an attacker attempts to locate the refusal direction, the decoy corrupts their estimator, tricking them into ablating a harmless orthogonal feature while the actual safety mechanism remains intact. We prove a spectral bound formalizing this effect and evaluate DDO across six model families, achieving <10% ASR under standard RFA. On Llama-3-8B-Instruct, DDO remains comparable to trained defenses under adaptive multi-phase attacks (65% vs. 58% worst-case ASR) and reduces Heretic weight-level attack ASR from 88.7% to 18%, all at 30 to 450 times lower optimization cost per configuration than the trained baselines.
 
 </details>
+
+### 120. Beyond Routine Compliance: Cunning Data Cultivates Safety Vigilance in Large Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2609.18515)　📅 2026-09
+
+**关键词**：`defense`、`safety vigilance`、`jailbreak robustness`、`cunning data`、`safety alignment`
+
+👤 **作者**：Youjia Wang、Lin Xu、Yang Sun、Yuxiao Lu、Chengfang Fang、Jie Shi
+
+- 🎯 **研究动机**：安全对齐教会 LLM 识别有害请求并拒绝，但有害意图藏在看似良性上下文中时仍会失败——鲁棒安全既需安全边界知识也需警觉性：审视请求底层意图与假设的能力
+- 🔬 **研究方法**：引入 cunning questions（非必然安全相关但含误导前提、非典型推理或微妙不一致）训练迁移到安全场景；实验检验对 OOD 越狱攻击的鲁棒性与对后续安全微调的增强；把 Cunning 加入 SOTA 安全对齐管线；条件理论分析刻画不变性何时迁移
+- 📌 **结论**：Cunning 训练提升 OOD 越狱鲁棒性并强化后续安全微调；九组骨干-基准组合的平均 ASR 从 17.40% 降到 15.05% 建立新 SOTA；匹配微调后的 trace 分析显示安全判断更常在有害规划开始前主导回复——警觉性训练补充常规对齐
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Safety alignment teaches large language models (LLMs) to recognize harmful requests and reject risky instructions. Yet aligned models can fail when harmful intent is concealed within seemingly benign contexts. Robust safety therefore requires both knowledge of safety boundaries and \textbf{vigilance}: the ability to detect unusual premises, misleading reasoning, and latent risks beneath surface-level semantics. Vigilance requires models to scrutinize a request's underlying intent and assumptions before acting. To cultivate this capability, we introduce \textbf{cunning questions}, which are not necessarily safety-related but contain misleading premises, atypical reasoning, or subtle inconsistencies. We hypothesize that learning to look beyond such reasoning traps can transfer to safety-critical scenarios. Experiments show that Cunning training improves robustness to out-of-distribution jailbreak attacks and strengthens subsequent safety fine-tuning. Furthermore, augmenting an existing state-of-the-art safety alignment pipeline with Cunning establishes a new state of the art across our evaluated settings, reducing mean ASR across nine backbone--benchmark combinations from 17.40\% to 15.05\%. Trace analysis after matched safety fine-tuning suggests that safety judgments are more likely to govern responses before harmful planning begins. A conditional theoretical analysis further characterizes when invariance learned from cunning data can transfer to safety-related inputs. These findings suggest that cunning data can strengthen model vigilance and complement conventional safety alignment.
+
+</details>

@@ -1312,3 +1312,22 @@ LLMs are increasingly used as automated judges for model training and evaluation
 Guardrail models are classifiers deployed to screen malicious prompts and responses in LLM-based services. To meet latency constraints, many lightweight guardrails adopt compact Transformer backbones (e.g., DeBERTa) that are trained with short context windows (typically 512 tokens) and rely on bucketed relative positional encodings to process longer inputs. Prior evaluations assume that a guardrail&#39;s decision is stable as the input is lengthened. We show that this assumption can fail. We identify Overflip, a repetition-induced instability where repeating a prompt causes the guardrail&#39;s prediction to flip (MAL$\to$BEN) as the sequence grows. We conduct experiments on 9 widely used lightweight guardrail models. Five exhibit MAL$\to$BEN flips on a benchmark of 100 prompts, with confidence margins shrinking steadily with repetition. Among these vulnerable models, flip rates range from 8% to 92%, with first flips occurring at roughly 2.6k--9.4k tokens. Our analysis suggests Overflip differs from traditional attention-dilution baselines, which aim to divert the model&#39;s attention away from tokens associated with malicious content, shifting it instead toward unrelated content, such as benign padding or shuffling. While Overflip preserves malicious content, it homogenizes token-level attention over repeated structure and induces a distinct, more gradual attention-dispersion trajectory than padding. Moreover, Overflip poses a greater threat to LLM services than traditional attention dilution methods. Because the bypassed prompt remains semantically intact and is still readily understood by downstream business LLMs, it can transmit malicious intent after passing the guardrail. These findings expose repetition as an attack surface for guardrail models and motivate length-robust evaluation and mitigation.
 
 </details>
+
+### 70. Safety-Flag: A Unified Benchmark for the Reliability and Calibration of LLM Content Moderators
+
+📄 [arXiv](https://arxiv.org/abs/2609.19072) · 🐙 [Code](https://github.com/yibo-hu-lab/safety-flag-benchmark.)　📅 2026-09
+
+**关键词**：`benchmark`、`content moderator`、`calibration`、`error direction`、`abstention`
+
+👤 **作者**：Yibo Hu
+
+- 🎯 **研究动机**：LLM 日益用于内容审核，但评测多报告单基准聚合准确率——错误方向、概率校准与置信排序（供人工复核）对审核可靠性同样关键却常被忽略
+- 🔬 **研究方法**：Safety-Flag 把 7 个广泛使用的安全基准（BeaverTails、XSTest、Ethics、WildGuard、Aegis、ToxiChat、ToxiGen）统一进单一平衡的 flag/do-not-flag 协议；发布 6 个通用 LLM + 4 个专用 guard + 3 个参考模型的逐条决策与置信分数；三维度度量：错误方向、概率校准、置信排序
+- 📌 **结论**：聚合准确率掩盖错误方向：一个模型给 85% 良性内容打标而另一个漏掉 54% 有害内容；全部 6 个通用模型过度自信，每模型拟合单一温度即可把校准误差降 2.8–6.0 倍且不改变标签；置信弃答降低每个模型的选择性风险；专用 guard 误报更少、校准更好但若干在文档覆盖外漏检率更高
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models are increasingly used for content moderation, but most evaluations still report aggregate accuracy on individual benchmarks. We introduce Safety-Flag, which places seven widely used safety benchmarks (BeaverTails, XSTest, Ethics, WildGuard, Aegis, ToxiChat, and ToxiGen) into a single balanced flag / do-not-flag protocol. We release item-level decisions and confidence scores for six general-purpose LLMs and four dedicated guards, together with three reference models, evaluated on the same items. Safety-Flag measures three dimensions of moderator reliability: error direction, probability calibration, and confidence-based error ranking for human review. They often disagree. Aggregate accuracy does not reveal error direction: one model flags $85\%$ of benign content, whereas another misses $54\%$ of harmful content. All six general-purpose models are overconfident; fitting one temperature per model reduces calibration error by $2.8$--$6.0\times$ without changing predicted labels or confidence ordering. Confidence-based abstention lowers selective risk for every model, although the gains depend on how well confidence ranks errors. Dedicated guards produce fewer false alarms and are better calibrated, but several have higher miss rates outside their documented coverage. We release the benchmark, fixed item lists, evaluation code, per-item model outputs, and leaderboard at: https://github.com/yibo-hu-lab/safety-flag-benchmark.
+
+</details>

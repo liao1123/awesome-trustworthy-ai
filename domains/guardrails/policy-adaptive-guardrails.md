@@ -792,3 +792,22 @@ Despite advances in safety alignment, large language models remain vulnerable to
 As large language models (LLMs) are increasingly deployed in real-world high-stakes applications, effective governance has become essential. Existing safeguards largely follow two paradigms: learning-based guards provide strong semantic discrimination but couple policy behavior to trained models and taxonomies, while programmable frameworks offer flexible control but require substantial manual prompt and workflow engineering. Neither externalizes policies as reusable operational states, making it difficult to consistently reuse policy evidence across detection, intervention, and verification. In this paper, we introduce PolicyMem, a geometric policy memory that externalizes natural-language policies as reusable geometric memory objects represented by low-rank subspaces in a shared representation space. A memory writer compiles natural-language policies into policy memory slots, and query-response pairs read the policy memory through projection energy. The resulting policy-evidence profile directly mediates the safety verdict and is reused for policy attribution and post-intervention verification. Coupled with a response rewriter, PolicyMem enables a detect-rewrite-verify loop for LLM governance. Across five widely used benchmarks, PolicyMem achieves state-of-the-art unsafe behavior detection while enabling effective policy attribution, rewriting, and post-intervention verification through the shared policy memory.
 
 </details>
+
+### 42. Visual Compliance via Executable Safety Rule Entailment
+
+📄 [arXiv](https://arxiv.org/abs/2609.18328)　📅 2026-09
+
+**关键词**：`defense`、`executable safety rule`、`rule entailment`、`visual compliance`、`scene graph`
+
+👤 **作者**：Jisoo Kim、TaeYoon Kwack、Jinwoo Jang、Honguk Woo
+
+- 🎯 **研究动机**：LLM/VLM 安全系统已能超越简单风险模式做上下文化语义推理，但风险模式持续演化、安全规则日益复杂——训练式端到端护栏在适应性与可解释规则推理上持续面临挑战
+- 🔬 **研究方法**：GuardEn 可执行护栏框架：Safety-Rule Compilation 把安全政策分解为原子命题并建模为可执行代码；测试时 Scene-Grounded Execution 用场景图派生的上下文视觉信息实例化原子命题，实现规则接地的可解释安全推理；SafetyVisionBench 评测
+- 📌 **结论**：复杂视觉安全评估上平均比最强基线提升 9.8 F1——可编程、可解释的规则编译路线适配复杂安全策略。EMNLP 2026
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Recent advances in LLMs and VLMs have enabled safety systems to reason beyond simple risk patterns toward more contextual and semantic safety concerns. However, as risk patterns continue to evolve and safety rules become more complex, existing training-based end-to-end safeguards face persistent challenges in adaptability and explainable reasoning over complex safety rules. To address these challenges, we propose GuardEn (Guarding by Safety Rule Entailment), an executable safeguard framework that decomposes safety policies into atomic propositions through Safety-Rule Compilation, modeling their composition as executable code. At test time, Scene-Grounded Execution instantiates these atomic propositions with contextual visual information derived from scene graphs, enabling rule-grounded and interpretable safety reasoning. Experiments on SafetyVisionBench demonstrate the effectiveness of programmable safeguard for complex visual safety assessment, achieving an average improvement of 9.8 F1 points over the strongest baseline.
+
+</details>

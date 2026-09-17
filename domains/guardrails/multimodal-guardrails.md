@@ -1316,3 +1316,22 @@ Content moderation remains a critical yet challenging task for large-scale user-
 Verdict-only evaluation does not reveal whether a vision-language model (VLM) used the visual evidence that should support its decision. We study this problem in web-agent guardrails, where a VLM judges whether on-screen text conflicts with a user instruction. We introduce Mind2Web-Injection, a benchmark of 9,954 instruction-screenshot pairs with instruction-relative labels, pixel-exact evidence boxes, and matched image-side counterfactuals. Across six VLMs, two models with nearly identical average precision differ ninefold in Evidence-Aligned Detection (EAD), the fraction of attacks both detected and correctly localized. To test whether a verdict depends on the command cited as evidence, we replace the instruction with one that endorses that command. Qwen3-VL-32B, the strongest open-weight localizer, returns aligned in only 58.7% of cases, whereas GPT-5.6-luna does so in 99.9%. To diagnose these failures, we propose two training-free interventions. ReadGate improves grounding without changing verdicts, while CmdCompare tests whether explicit instruction-command comparison resolves instruction-side inconsistency. These results motivate reporting verdict correctness, evidence localization, and counterfactual responsiveness separately.
 
 </details>
+
+### 70. Decodable but Misrouted: Sparse Features Uncover a Readout Gap in Vision-Language Models for Harmful Meme Detection
+
+📄 [arXiv](https://arxiv.org/abs/2609.18860)　📅 2026-09
+
+**关键词**：`analysis`、`SAE feature`、`readout gap`、`harmful meme detection`、`VLM moderation`
+
+👤 **作者**：Girish A. Koushik、Diptesh Kanojia、Helen Treharne
+
+- 🎯 **研究动机**：VLM 误判有害 meme 时，失效可能反映内部证据缺失、也可能是已表示的证据无法路由到输出——两种情形需要不同修复但从未被分离
+- 🔬 **研究方法**：Gemma-3 与 Qwen3.5 上用 SAE、角色条件探针、因果干预与恢复实验跨 6 个有害内容基准（另加西班牙语与 Hindi-English 混码评测）区分"表示缺失 vs 路由失败"；静默特征消融 vs 路由特征 patching 的敏感度对比；仅校准路由与探针蒸馏 LoRA 修复
+- 📌 **结论**：稀疏读出在全部 6 个主任务超过原生预测（Qwen 平均 macro-F1 0.740 vs 0.432；Gemma 0.532→0.714）；Qwen 静默特征消融探针敏感 24–63 倍、字面 yes/no 任务路由 patching 输出敏感 16–140 倍；仅校准路由恢复均值差距的 93.3%——路由而非表示是有害 meme 分类的复发性瓶颈，信号跨语言、不依赖 OCR 且依赖配对视觉证据
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+When a large vision-language model misclassifies a harmful meme, the failure may reflect missing internal evidence or an inability to route represented evidence to its output. We distinguish these cases in Gemma-3 and Qwen3.5 using sparse autoencoders, role-conditioned probes, causal interventions, and recovery experiments across six harmful content benchmarks, with additional Spanish and Hindi-English code-mixed evaluations. Sparse readouts outperform native prediction on all six primary binary tasks: Qwen averages $0.740$ versus $0.432$ native macro-F1, while residual reconstruction reaches $0.486$, whereas Gemma improves from $0.532$ to $0.714$. These differences reflect supervised accessibility rather than a pre-existing, native decision rule, and the most influential token role depends on the task. Under the evaluated score scales, Qwen silent-feature ablation is $24-63$ times more probe-sensitive, whereas routed-feature patching on literal yes/no tasks is $16-140$ times more output-sensitive. Calibration-only routing recovers $93.3$% of the mean gap, and probe-distilled LoRA improves native predictions, although shared multi-task adaptation causes negative transfer. A case study of Gemma-3-12B on Facebook Hateful Memes finds a distributed rank-32 image-prompt interaction, reaching $0.756$ versus $0.685$ native macro-F1. Robustness controls show that the signal extends beyond English, is not explained solely by accompanying OCR, and depends on paired visual evidence. Thus, routing, rather than representation alone, is a recurring bottleneck in harmful meme classification.
+
+</details>

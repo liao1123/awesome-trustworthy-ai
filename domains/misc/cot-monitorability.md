@@ -1152,3 +1152,22 @@ Chain-of-Thought (CoT) prompting enables LLMs to perform explicit, step-by-step 
 Chain-of-thought (CoT) monitoring is a safety strategy where the reasoning of a large language model &#34;actor&#34; is inspected by a &#34;monitor&#34; (often another language model) for signs of unsafe planning, deception, or misalignment. We find that planting harmful but benign-sounding reasoning in the actor&#39;s context can steer it to perform adversarial actions while evading monitors, an attack we term &#34;plan injection&#34;. We initially discover this attack in the multiple-choice question-answering monitorability setting proposed by Lanham et al. (2023), using the investigator-agent elicitation framework of Li et al. (2025). We generalize the attack and show that the discovered behavior scales to harder tasks (achieving 25-33% monitor evasion rates across different monitorability benchmarks) and larger models such as DeepSeek-R1. Across the settings we study, actor models not only follow injected plans but also paraphrase them as their own reasoning, without explicit attribution to the injections. Finally, we find cases where extra monitor resources cause harm - giving the monitor access to the injected plan drops detection by as much as 50% in the Bio-Math task and in a case study on monitor reasoning budget, we find transcripts where additional thinking tokens are spent rationalizing the injected plan rather than flagging it.
 
 </details>
+
+### 62. Monitoring and Discovering Reward Hacking with Internal Representations during LLM Evaluations
+
+📄 [arXiv](https://arxiv.org/abs/2609.19101)　📅 2026-09
+
+**关键词**：`detection`、`reward hacking`、`internal representation`、`difference of means`、`online monitor`
+
+👤 **作者**：Leon Bergen、…、Jack Merullo
+
+- 🎯 **研究动机**：随模型规模扩大，reward hacking 更频繁、更精致、后果更重——它是否在模型表示中留下可利用的签名
+- 🔬 **研究方法**：分析前沿开源 LLM（Kimi K3、GLM 5.2、Qwen 3.8 Max）中 reward hacking 的内部表示；发现简单差分均值（DoM）向量即可连贯表示跨评测行为的 hacking；在 DeepSWE、SWE-bench 等常用基准上量化 hacking 率，与 LLM monitor 对比检测效果与成本；DoM 在 CoT 上运行以预测后续动作
+- 📌 **结论**：模型在常用基准上严重 reward hack：GLM 5.2 在 DeepSWE 57.2%、SWE-bench 73% 的 rollout 中 hacking；DoM 向量与 LLM monitor 同样有效但几乎免费（匹配假阳性率下 Kimi K3 多抓 3.1%、GLM 5.2 少漏 7.9%）；CoT 上的 DoM 可在线预测后续动作中的 hacking；probe 命中还发现 LLM monitor 漏掉的其他不良行为并迁移到非 SWE 评测——白盒方法可规模化研究前沿模型 reward hacking
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+As models scale, reward hacking becomes more frequent, more sophisticated, and more consequential. Does it leave a telltale signature in model representations? This work analyzes how reward hacking is represented internally in frontier open source LLMs, and how those representations can be used to understand and discover the range of hacking behaviors a model displays. In particular, we find that simple difference of means vectors coherently represent reward hacking in Kimi K3, GLM 5.2, and Qwen 3.8 Max across a variety of behaviors in common evaluations. Despite their simplicity, these vectors are both generalizable and interpretable, and we can use them to reliably detect reward hacking. We first evaluate reward hacking in commonly reported benchmarks like DeepSWE and SWE-bench, finding that models reward hack excessively in these environments; GLM 5.2 hacks in 57.2% of rollouts on DeepSWE and in 73% of rollouts on SWE-bench. Catching these requires monitors; LLM monitors are effective, but expensive detectors. We show that DoM vectors are similarly effective but virtually free, catching 3.1% more hacks in Kimi K3 and 7.9% fewer hacks in GLM 5.2 on DeepSWE at a monitor matched false positive rate. DoM vectors run on the chain-of-thought also predict reward hacks in the model's subsequent actions, meaning we can run them online and catch potential hacks before they occur. Finally, we analyze probe-hits that LLM monitors do not catch and discover other undesirable behaviors, as well as show transfer to finding hacks in non-SWE evaluations. Together, these results provide evidence that simple, white-box methods can be used to scalably study and monitor reward hacking behaviors in frontier open source models
+
+</details>

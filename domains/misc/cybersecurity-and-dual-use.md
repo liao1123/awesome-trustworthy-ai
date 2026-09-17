@@ -714,3 +714,22 @@ The rapid advancement of large language models (LLMs) has created a growing asym
 LLM-powered autonomous agents are transforming the penetration testing space with dynamic, multi-step offensive security workflows that require minimal supervision by humans. These agents leverage sophisticated reasoning abilities and external security tools to independently carry out reconnaissance, identify vulnerabilities, devise exploitation plans, and perform post-exploitation operations. But the ability to have persistent memory, to take actions in the real world, and to do long-horizon reasoning raises qualitatively different security concerns than traditional chat-based LLM systems. Existing guardrail mechanisms for conversational AI may not be sufficient to secure autonomous AI pentesting agents accordingly. To address these issues, we carry out a comprehensive security analysis on autonomous AI-penetration testing agents. We systematically analyse representative agent architectures, characterise their trust boundaries and attack surfaces and propose a threat taxonomy that is aligned with the lifecycle and covers LLM lifecycle attacks, agent-architecture attacks and cross-cutting behavioural attacks. We analyse the limitations of existing guardrail mechanisms, identify key research gaps, and discuss future research directions for developing specialised, context-aware, and architecture-aware guardrails to secure next-generation AI-driven offensive security systems.
 
 </details>
+
+### 39. MiST: Mid-Training LLMs for Cybersecurity
+
+📄 [arXiv](https://arxiv.org/abs/2609.18496)　📅 2026-09
+
+**关键词**：`tool`、`cybersecurity LLM`、`mid-training`、`domain model`、`security capability`
+
+👤 **作者**：Oded Ovadia、Elad Ben Zaken、Elad Guttman、Orly Moreno Kadosh
+
+- 🎯 **研究动机**：网络安全结合高风险分析与复杂技术语言，是 LLM 高影响高挑战领域——通用模型在公开安全基准上的表现有明确提升空间
+- 🔬 **研究方法**：MiST（Mid-trained Security Transformer）8B/32B 套件：在通用预训练与安全领域训练之间加中间适应阶段——不做大体量持续预训练，而是精选专家审定种子语料并转化为高质量领域合成数据；消融定位增益来源（中间训练+SFT 阶段的合成数据流）
+- 📌 **结论**：最终 checkpoint 相对 Qwen 基线平均安全准确率 +13.1pp（8B）/+8.6pp（32B），相对 +27.0%/+15.8%；为下游任务微调与 RL 提供更强初始化——安全域专用模型的能力底座
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Cybersecurity combines high-stakes analysis with complex technical language, making it an impactful and challenging domain for LLMs. We present MiST (Mid-trained Security Transformer), a suite of 8B and 32B models that achieve strong performance on public cybersecurity benchmarks. We use mid-training as an intermediate adaptation stage between general pre-training and cybersecurity training. Rather than performing continual pre-training over large volumes of raw domain text, we curate a compact, expert-vetted seed corpus, and transform it into high-quality domain-specific synthetic training data. The final MiST checkpoints improve mean cybersecurity accuracy by +13.1 and +8.6 absolute percentage points over the corresponding Qwen baselines for 8B and 32B, respectively, corresponding to relative gains of +27.0% and +15.8%. Ablation results further show that these cybersecurity gains arise in the mid-training and supervised fine-tuning stages through a combination of the synthetic data generation flows. Furthermore, we show that MiST provides a stronger initialization for downstream task-specific fine-tuning adaptation and reinforcement learning.
+
+</details>
