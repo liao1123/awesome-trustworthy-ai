@@ -75,7 +75,7 @@ daily/
 
 ## 与 domains 的关系
 
-- 用户在本地阅读站（`website/local/`，端口 8765）对论文标 ★，实时写入 `website/local/starred-live.json`（页面加载时会全量补同步，服务中断期间的星标不丢）。
+- 用户在本地阅读站（`website/local/`，端口 18765）对论文标 ★，实时写入 `website/local/starred-live.json`（页面加载时会全量补同步，服务中断期间的星标不丢）。
 - 用户说「归类星标」后按 `website/tools/categorize_starred.py` 模式归类：读星标 → **全库查重**（已在库的跳过）→ 映射目标叶子 → 按目标页视角写卡片 → 文件内重编号 → lint/build/deploy/push。
 - 单篇点名归类同理（从对应日报取卡）。
 - **不得**默认把每日全部论文同步到 `domains/`；只处理用户明确点名或星标的论文。
