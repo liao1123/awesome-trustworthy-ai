@@ -458,9 +458,30 @@
     try {
       fetch("/api/ping").then(function (r) {
         live.collector = !!(r && r.ok);
-        // re-sync the full starred snapshot on every load so stars made while
-        // the collector was down (localStorage-only) are never lost
-        if (live.collector) collectorSend();
+        if (!live.collector) return;
+        // the server-side starred list is authoritative: pull it first and
+        // merge into local state so a fresh origin (new port/host, empty
+        // localStorage) still shows every previously starred paper
+        fetch("/api/stars").then(function (sr) {
+          return sr && sr.ok ? sr.json() : { starred: [] };
+        }).then(function (data) {
+          var changed = false;
+          (data.starred || []).forEach(function (row) {
+            if (row && row.id && !state.starred[row.id]) {
+              state.starred[row.id] = 1;
+              changed = true;
+            }
+          });
+          if (changed) {
+            saveStore("interested", state.starred);
+            render();
+          }
+        }).catch(function () {}).then(function () {
+          // re-sync the full starred snapshot on every load so stars made while
+          // the collector was down (localStorage-only) are never lost; the
+          // server merges (never replaces), so this cannot wipe history
+          collectorSend();
+        });
       }).catch(function () { live.collector = false; });
     } catch (e) { live.collector = false; }
   }
