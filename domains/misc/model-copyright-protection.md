@@ -1572,3 +1572,22 @@ Text-to-image (T2I) models are increasingly embedded in creative workflows, wher
 Large language models are often instruction-tuned, specialized, quantized, or otherwise transformed, making fine-grained provenance difficult. In this paper, we introduce BReF, a training-free fingerprint that compares how probability distributions over four answer-option labels A/B/C/D move under controlled textual perturbations. For each pair of models, BReF selects 25 jointly responsive probes and compares their perturbation log-ratio (PLR) response directions by global cosine similarity. On a unified benchmark with 34 checkpoints, 22 documented direct-parent relations, and 411 suspect-candidate pairs, BReF retrieves the documented parent in 22/22 cases (MRR=1.0000), with DP-DF AUC 1.0000. Same-family discrimination is harder (DP-SF AUC 0.8969), and paired tests show a significant exact-retrieval gain over a magnitude-only Top-25 control. Together with static, random-probe, permutation, calibration, and transformation-level controls, the results show that strong pooled separation does not guarantee correct parent ranking among closely related checkpoints, verifying the superiority of our work.
 
 </details>
+
+### 84. Fingerprinting Multimodal Large Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2609.20457)　📅 2026-09
+
+**关键词**：`defense`、`model fingerprinting`、`MLLM provenance`、`distillation tracing`、`ownership protection`
+
+👤 **作者**：Chao Huang、Meng Tong、Kejiang Chen
+
+- 🎯 **研究动机**：MLLM 面临非法部署与未授权蒸馏；现有模型溯源方案被 MLLM 共享语言骨干混淆、难以检测蒸馏违规
+- 🔬 **研究方法**：首个多模态模型指纹研究：AttnPrint 白盒溯源——利用自注意力低通滤波特性，提取跨模态注意力分布并分离低频成分作指纹；DistillTrace 黑盒审计——对 MLLM 输出做假设检验识别侵权；154 个模型实例 × 19 种多模态架构
+- 📌 **结论**：AttnPrint 强_derivative 检测且对五种下游修改技术稳健；DistillTrace 在三种参数无关技术下提供蒸馏关系证据——多模态模型的谱系与所有权验证新基线。ACM MM 2026 oral
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+While multimodal large language models (MLLMs) enable a wide range of image-text reasoning tasks, recent incidents indicate that they are vulnerable to illicit deployment and unauthorized distillation. Existing solutions for model provenance are typically confounded by shared language backbones in MLLMs and struggle to detect violations of distillation. To bridge this gap and safeguard model ownership, we present the first study on multimodal model fingerprinting. Inspired by recent findings that self-attention acts as a low-pass filter and that its low-frequency components are informative, we develop AttnPrint for white-box provenance. Specifically, we extract cross-modal attention distributions and isolate their low-frequency components to serve as model fingerprints. To facilitate black-box auditing, we further introduce DistillTrace, which employs hypothesis testing of MLLM outputs to identify potential model infringement. We conduct extensive experiments on 154 model instances across 19 multimodal architectures. Notably, AttnPrint achieves strong derivative-model detection performance while remaining robust to five downstream modification techniques. DistillTrace also provides evidence of distillation relationships under three parameter-independent techniques.
+
+</details>

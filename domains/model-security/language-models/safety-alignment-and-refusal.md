@@ -2258,3 +2258,60 @@ Safety guardrails in open-weight language models can be readily bypassed using R
 Safety alignment teaches large language models (LLMs) to recognize harmful requests and reject risky instructions. Yet aligned models can fail when harmful intent is concealed within seemingly benign contexts. Robust safety therefore requires both knowledge of safety boundaries and \textbf{vigilance}: the ability to detect unusual premises, misleading reasoning, and latent risks beneath surface-level semantics. Vigilance requires models to scrutinize a request's underlying intent and assumptions before acting. To cultivate this capability, we introduce \textbf{cunning questions}, which are not necessarily safety-related but contain misleading premises, atypical reasoning, or subtle inconsistencies. We hypothesize that learning to look beyond such reasoning traps can transfer to safety-critical scenarios. Experiments show that Cunning training improves robustness to out-of-distribution jailbreak attacks and strengthens subsequent safety fine-tuning. Furthermore, augmenting an existing state-of-the-art safety alignment pipeline with Cunning establishes a new state of the art across our evaluated settings, reducing mean ASR across nine backbone--benchmark combinations from 17.40\% to 15.05\%. Trace analysis after matched safety fine-tuning suggests that safety judgments are more likely to govern responses before harmful planning begins. A conditional theoretical analysis further characterizes when invariance learned from cunning data can transfer to safety-related inputs. These findings suggest that cunning data can strengthen model vigilance and complement conventional safety alignment.
 
 </details>
+
+### 121. AUDITPLAN: Commit, Then Answer for Auditable Safety Alignment
+
+📄 [arXiv](https://arxiv.org/abs/2609.19325)　📅 2026-09
+
+**关键词**：`defense`、`auditable safety alignment`、`plan-then-answer`、`faithfulness gating`、`over-refusal`
+
+👤 **作者**：Sai Sri Pushpa Jampani、Kshitij Mishra、Asif Ekbal
+
+- 🎯 **研究动机**：安全微调只看最终答案，无法区分稳健拒答与两种捷径：对良性请求的一刀切拒答、以及看似安全但不实际约束答案的 polished 安全理由
+- 🔬 **研究方法**：AUDITPLAN 单模型 plan-then-answer：先输出紧凑结构化安全计划（威胁标签、意图动作、显式约束）再据此作答，计划部署时对用户隐藏但可机器审计；SFT+RL 训练，FAITHGATE 奖励门控——仅当安全计划正确时才给答案奖励，抑制"安全外观不忠实"行为
+- 📌 **结论**：Qwen2.5-3B 上 ASR 24.0%→11.6%、LSR 1.0%→0.36%、过度拒答 11.0%→2.0%，优于 answer-only RL、自由格式解释与加权和结构化奖励；Qwen-3-4B/7B 确认趋势——显式内部承诺使安全对齐更忠实、稳健、可审计
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Safety tuning pipelines judge only the final answer, which makes it difficult to distinguish robust refusal from two undesirable shortcuts: blanket refusal on benign requests and polished but unfaithful safety rationales that do not actually constrain the answer. We propose AUDITPLAN, a single-model plan-then-answer approach where the model first emits a compact structured safety plan and then answers conditioned on it. The plan records a threat label, intended action, and explicit constraints, enabling machine-checkable auditing while remaining hidden from users at deployment. We train this behavior with supervised fine-tuning followed by reinforcement learning with FAITHGATE, a reward-gating objective that grants answer reward only when the safety plan is correct. This discourages safe-looking but unfaithful behavior and promotes tighter plan-answer coupling. Across Qwen backbones, AUDITPLAN improves both robustness and auditability: on Qwen2.5-3B-Instruct, FAITHGATE reduces ASR from 24.0% to 11.6%, LSR from 1.0% to 0.36%, and over-refusal from 11.0% to 2.0%, outperforming answer-only RL, free-form explanation, and weighted-sum structured rewards. Similar trends hold for Qwen2.5-1.5B-Instruct. Larger-model confirmation runs on Qwen-3-4B-Instruct and Qwen2.5-7B-Instruct preserve the same trend suggesting that explicit internal commitments can make safety alignment more faithful, robust, and auditable.
+
+</details>
+
+### 122. The Role of Fine-grained Harm Signals in LLM Safety
+
+📄 [arXiv](https://arxiv.org/abs/2609.19366)　📅 2026-09
+
+**关键词**：`analysis`、`harm representation`、`category residual`、`activation steering`、`internal safety`
+
+👤 **作者**：Soyeon Park、Seogyeong Jeong、Sunwoo Kim、Alice Oh
+
+- 🎯 **研究动机**：内部危害表示跨风险类别变化但共享一个通用危害成分——类别特有成分在安全中的作用（超出通用表示的部分）未被分离研究
+- 🔬 **研究方法**：从每个类别危害表示中移除共享通用危害表示，得到每层与通用危害正交的类别残差；对 3 个指令微调 LLM 的 11 类风险做激活 steering，测残差是否编码危害、是否诱发拒答、是否增强下游内部对齐
+- 📌 **结论**：类别残差是否编码危害因类别而异且该模式跨模型相似；是否诱发拒答也因类别而异但更依赖模型；类别残差增强 LLM 与通用危害表示的下游内部对齐——理解 LLM 安全须考虑细粒度类别残差；更一般地，某层与概念正交的方向仍可贡献该概念的下游放大
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Prior work has shown that internal harmfulness representations in large language models vary across risk categories, while sharing a common general harm representation component. This raises a question about the role of the category-specific component beyond general harm representation in LLM safety. To answer this question, we isolate the category-specific component by removing shared general harmfulness representation from each categorical harmfulness representation, yielding a category residual that is orthogonal to general harmfulness at every layer. Using activation steering with category residuals across 11 risk categories in 3 instruction-tuned LLMs, we find that whether category residuals encode harmfulness varies across categories, and that this category-wise pattern is similar across models. Whether category residuals induce refusal also varies across categories, but this category-wise pattern is more model-dependent. We also find that category residuals increase LLMs' downstream internal alignment with shared general harmfulness representation. Together, these findings demonstrate that more fine-grained category residuals should also be considered beyond shared general harmfulness representation to fully understand LLM safety. More broadly, our findings show that even a direction orthogonal to a concept at one layer can contribute to the concept's downstream amplification.
+
+</details>
+
+### 123. Stress-testing Alignment Midtraining
+
+📄 [arXiv](https://arxiv.org/abs/2609.20412)　📅 2026-09
+
+**关键词**：`analysis`、`alignment midtraining`、`scalable alignment`、`motivation steering`、`fine-tuning erasure`
+
+👤 **作者**：Sid Baines、Jonathan Bostock、Maria Angelica Martinez、Andrew Draganov、David Africa、Daniel Tan
+
+- 🎯 **研究动机**：对齐 midtraining（AMT）在大量对齐相关文档上继续预训练以促进后续泛化，是对齐前沿模型的显著方案——但其有效性的公开证据有限，核心假设未经跨尺度检验
+- 🔬 **研究方法**：识别 AMT 的若干假设并跨尺度评估（最高 110B 参数、10 亿 midtraining token）：构造后训练数据在两种动机间歧义的场景测 midtraining 能否引导动机；构造"只演示规则子集"场景测规则学习的稳健性
+- 📌 **结论**：简单设定下 midtraining 可引导模型动机；但极小比例暗示竞争动机的微调数据即抹除 AMT 效应；规则须在 midtraining 或后训练数据中有演示才能稳健习得——现有公开证据不足以确信 midtraining 能解决对齐强 AI 的核心困难
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+When aligning frontier models through post-training techniques, it is not possible to directly demonstrate all of the behaviours we want a model to exhibit in all possible deployment environments; our model must generalise outside of the post-training distribution. One proposed solution is alignment midtraining (AMT), which continues pretraining on large volumes of alignment-relevant documents to encourage generalisation in later stages of training. Despite the prominence of AMT as an alignment approach, there is limited public evidence for its effectiveness. To resolve this, we identify several assumptions around midtraining and evaluate them across scale: up to 110 billion-parameter models and 1 billion midtraining tokens. For instance, we study a scenario where post-training data is ambiguous between two possible motivations. We find that midtraining can steer the model's motivation in simple versions of this setting. However, the presence of a tiny fraction of finetuning data which suggests a competing motivation erases the effects of AMT. We also study scenarios in which we want an AI to follow a number of rules, but only demonstrate a subset of them. We find that demonstrations must be present either in midtraining or post-training datasets for these rules to be robustly learned. Based on these and other findings, we do not believe that there is sufficient public evidence for us to confidently state that midtraining can address the core difficulties inherent in aligning powerful AI systems.
+
+</details>

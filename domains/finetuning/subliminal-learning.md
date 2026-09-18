@@ -527,3 +527,41 @@ In this reproduction paper we investigate subliminal learning, a consequence of 
 Subliminal learning is a phenomenon in which a distillation dataset transmits traits from the teacher model that are not legibly encoded in the dataset itself. This introduces a new challenge for model development and creates new risks from data poisoning. In this work, we use text optimization to detect subliminal learning effects and describe them as legible prompts. Subliminal learning from a prompted teacher motivates our approach. We observe that this is a special case of context distillation and leverage this observation to show that, in theory, the prompted subliminal learning dataset identifies the teacher's prompt. We reduce recovering this prompt to a text optimization problem and present a method to approximately solve it. Our method, SALVE (Search-Aided Latent Verbalization), optimizes a soft prompt, queries the same model to verbalize it as text, and uses beam search to make the verbalization reliable. In the standard subliminal learning setting, SALVE reliably recovers legible prompts that name the teacher's trait, while common text optimization methods fail to do so. In addition, we find that there are settings in which SALVE recovers the teacher's trait from a dataset even when subliminal learning fails, but that modifying student training to improve context distillation can create subliminal learning effects. We lastly show that SALVE detects subliminal learning effects in three additional settings: (1) mixtures of subliminal learning data and unrelated data, (2) data generated when the teacher is biased via activation steering, and (3) subsets of real preference data selected via Logit-Linear Selection. Overall, our results deepen our understanding of subliminal learning and present SALVE as a method to proactively detect subliminal learning effects.
 
 </details>
+
+### 29. Subliminal Prompting Beyond Static Geometry: Causal Depth and Multi-Token Confounds
+
+📄 [arXiv](https://arxiv.org/abs/2609.19149)　📅 2026-09
+
+**关键词**：`analysis`、`subliminal prompting`、`causal depth`、`measurement validity`、`length confound`
+
+👤 **作者**：Barath Velmurugan
+
+- 🎯 **研究动机**：subliminal learning 的 token entanglement 解释把动物与数字 token 经输出词表关联——但既有测量回答的是不同问题（输出共变、固定输出向量对齐、隐藏态可读、状态因果控制），从未分离
+- 🔬 **研究方法**：固定动物-数字 prompting 协议下分别测量四种性质：跨 Llama-3.1-8B→70B 的固定输出向量相似度、输出头读出的归一化深度 AUC、五个深度上的 donor-control AUC（把一 number prompt 的临时答案位状态拷入另一 prompt）、Qwen 上逐 digit 评分与长度混淆控制
+- 📌 **结论**：固定几何预测行为随规模变差（配对均值相关变化 -0.080）；donor-control AUC 0.254→0.540（+0.286，18 个概念全部上升），剩 8 个 transformer 块时对照仍存；Qwen 上逐 token 平均造成的正关联在控制数字宽度后消失（长度混淆）——固定几何、可观测可读性、因果时序与多 token 测量是冻结 prompting 通道的不同性质，约束 token 级解释但不识别训练期特质迁移机制
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Subliminal learning shows that language models can transmit a hidden trait through outputs that appear unrelated to it. One proposed explanation, token entanglement, links animal and number tokens through the model's output vocabulary. Yet existing measurements answer different questions: whether outputs co-vary, fixed output vectors align, an answer can be read from a hidden state, or that state causally controls the answer. We measure each separately in a fixed animal-number prompting protocol. From Llama-3.1-8B to 70B, fixed output-vector similarity predicts behavior less well: the paired mean correlation change is -0.080 (95% CI [-0.127, -0.035]). A fixed output-head readout shows no resolved change in normalized depth AUC. To test control, we copy the temporary answer-position state from one number prompt into another at five depths and measure which prompt the final animal score follows. Donor-control AUC rises from 0.254 to 0.540, a paired change of +0.286 (95% CI [+0.272, +0.300]), with increases for all 18 concepts. The contrast remains with exactly eight transformer blocks remaining, while specificity and identity controls remain small or exact. In two Qwen models, scoring every digit in sequence does not recover the positive one-token association. Per-token averaging instead creates a positive pooled association that disappears after controlling number width, revealing a length confound. Thus, fixed geometry, observational readability, causal timing, and multi-token measurement are distinct properties of this frozen prompting channel. They constrain token-level explanations but do not identify the mechanism of training-time trait transfer.
+
+</details>
+
+### 30. Can Data Attribution Filter Out Subliminal Learning? Not Reliably
+
+📄 [arXiv](https://arxiv.org/abs/2609.20027)　📅 2026-09
+
+**关键词**：`analysis`、`subliminal learning`、`data attribution`、`filtering limitation`、`poisoning defense`
+
+👤 **作者**：Moritz Weckbecker、…、Gonçalo Paulo
+
+- 🎯 **研究动机**：subliminal learning 使模型经训练数据传递与语义内容无关的行为特质，瓦解基于内容的数据过滤——数据归因（不依赖语义、直接定位 responsible 训练样本）能否补上这个缺口
+- 🔬 **研究方法**：评测三种梯度归因方法（GradCos、对比 GradCos 变体、EK-FAC）跨三模型，对照 divergence tokens 基线（需反事实教师模型）；token 级与样本级过滤两种设定
+- 📌 **结论**：token 级 EK-FAC 显著缓解部分效应、其余方法几乎无效、全部逊于 divergence tokens；样本级过滤对所有方法更弱但 EK-FAC 常强于 divergence tokens；成功跨方法跨设定不一致且无一致解释——梯度归因可在某些设定识别 subliminal 数据但不可靠，内容过滤与归因过滤都不构成充分防御
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Subliminal learning allows language models to transmit behavioral traits through training data with no obvious semantic relationship to those traits, undermining content-based data filtering as a safety intervention. Training data attribution offers an alternative: it identifies the training examples responsible for a given model behavior, independent of their semantic content, and so may apply in exactly the cases where semantic inspection fails. We evaluate three gradient-based attribution methods (GradCos, a contrastive GradCos variant, and EK-FAC) across three models, comparing them against divergence tokens, a strong baseline previously shown to localize subliminal learning (albeit one that requires access to counterfactual teacher models). Filtering at the token level, EK-FAC mitigates a significant part of the effect, the other methods provide little benefit, and all mostly fall short of divergence tokens. Filtering entire samples is less effective for every method, though EK-FAC often gives a stronger signal than divergence tokens in this setting. Success is inconsistent across methods and settings: variants that work well for some model-preference combinations fail for others, and we do not identify a consistent explanation for these differences. Our results suggest that gradient-based attribution can identify data responsible for subliminal learning in some settings, but that some approximations are more reliable than others.
+
+</details>

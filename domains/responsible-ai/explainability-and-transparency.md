@@ -799,3 +799,41 @@ Fine-tuning an aligned language model on narrow, flawed data can induce harmful 
 When a large vision-language model misclassifies a harmful meme, the failure may reflect missing internal evidence or an inability to route represented evidence to its output. We distinguish these cases in Gemma-3 and Qwen3.5 using sparse autoencoders, role-conditioned probes, causal interventions, and recovery experiments across six harmful content benchmarks, with additional Spanish and Hindi-English code-mixed evaluations. Sparse readouts outperform native prediction on all six primary binary tasks: Qwen averages $0.740$ versus $0.432$ native macro-F1, while residual reconstruction reaches $0.486$, whereas Gemma improves from $0.532$ to $0.714$. These differences reflect supervised accessibility rather than a pre-existing, native decision rule, and the most influential token role depends on the task. Under the evaluated score scales, Qwen silent-feature ablation is $24-63$ times more probe-sensitive, whereas routed-feature patching on literal yes/no tasks is $16-140$ times more output-sensitive. Calibration-only routing recovers $93.3$% of the mean gap, and probe-distilled LoRA improves native predictions, although shared multi-task adaptation causes negative transfer. A case study of Gemma-3-12B on Facebook Hateful Memes finds a distributed rank-32 image-prompt interaction, reaching $0.756$ versus $0.685$ native macro-F1. Robustness controls show that the signal extends beyond English, is not explained solely by accompanying OCR, and depends on paired visual evidence. Thus, routing, rather than representation alone, is a recurring bottleneck in harmful meme classification.
 
 </details>
+
+### 43. The Role of Fine-grained Harm Signals in LLM Safety
+
+📄 [arXiv](https://arxiv.org/abs/2609.19366)　📅 2026-09
+
+**关键词**：`analysis`、`harm representation`、`category residual`、`activation steering`、`internal safety`
+
+👤 **作者**：Soyeon Park、Seogyeong Jeong、Sunwoo Kim、Alice Oh
+
+- 🎯 **研究动机**：内部危害表示跨风险类别变化但共享一个通用危害成分——类别特有成分在安全中的作用（超出通用表示的部分）未被分离研究
+- 🔬 **研究方法**：从每个类别危害表示中移除共享通用危害表示，得到每层与通用危害正交的类别残差；对 3 个指令微调 LLM 的 11 类风险做激活 steering，测残差是否编码危害、是否诱发拒答、是否增强下游内部对齐
+- 📌 **结论**：类别残差是否编码危害因类别而异且该模式跨模型相似；是否诱发拒答也因类别而异但更依赖模型；类别残差增强 LLM 与通用危害表示的下游内部对齐——理解 LLM 安全须考虑细粒度类别残差；更一般地，某层与概念正交的方向仍可贡献该概念的下游放大
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Prior work has shown that internal harmfulness representations in large language models vary across risk categories, while sharing a common general harm representation component. This raises a question about the role of the category-specific component beyond general harm representation in LLM safety. To answer this question, we isolate the category-specific component by removing shared general harmfulness representation from each categorical harmfulness representation, yielding a category residual that is orthogonal to general harmfulness at every layer. Using activation steering with category residuals across 11 risk categories in 3 instruction-tuned LLMs, we find that whether category residuals encode harmfulness varies across categories, and that this category-wise pattern is similar across models. Whether category residuals induce refusal also varies across categories, but this category-wise pattern is more model-dependent. We also find that category residuals increase LLMs' downstream internal alignment with shared general harmfulness representation. Together, these findings demonstrate that more fine-grained category residuals should also be considered beyond shared general harmfulness representation to fully understand LLM safety. More broadly, our findings show that even a direction orthogonal to a concept at one layer can contribute to the concept's downstream amplification.
+
+</details>
+
+### 44. Safety Beyond the Interface: Detecting Harm via Latent States in Large Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2609.19472)　📅 2026-09
+
+**关键词**：`detection`、`latent-state probe`、`harmful prompt detection`、`lightweight classifier`、`low-latency guard`
+
+👤 **作者**：Alizishaan Khatri、Chiquita Prabhu、Omkar Neogi
+
+- 🎯 **研究动机**：自主系统依赖 LLM 但外部 guardrail 模型看不见内部状态、引入延迟与算力开销，在资源受限时限部署中限制实用性——模型自己是否已经"知道"内容有害
+- 🔬 **研究方法**：从 LLaMA-3.1-8B 提取激活，训练 12.6M 参数的轻量 MLP 探针分类器检测有害 prompt；WildJailbreak、Beavertails、AEGIS 2.0 三基准评测
+- 📌 **结论**：探针 F1 分别达 99%、83%、84%，与大 1000 倍的 guard 模型相当，同时大幅削减延迟与算力——内部激活做近零开销在线安全监控的又一证据
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Autonomous systems increasingly rely on Large Language Models (LLMs) yet the safety infrastructure surrounding these models introduces latency and compute overhead. This limits utility in resource-constrained, time-critical deployments. Existing external guardrail models remain blind to the model's internal workings, creating a fundamental assurance gap. We ask: does the model already know when the content is harmful? We extract activations from LLaMA-3.1-8B and train lightweight MLP classifier probes (12.6M parameters) to detect harmful prompts. Evaluated on WildJailbreak, Beavertails, and AEGIS 2.0, our probes achieve F1 scores of 99%, 83%, and 84%, respectively competitive with 1000x larger guard models while cutting latency and compute costs.
+
+</details>

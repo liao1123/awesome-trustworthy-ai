@@ -467,3 +467,22 @@ Memorization in large language models has been studied almost exclusively throug
 Statistical watermarking is a common approach for verifying whether text was written by a language model. Most existing schemes assume autoregressive generation, where tokens are produced left to right and contextual hashing is well defined. Diffusion language models generate text by denoising tokens in arbitrary order, so these schemes cannot be applied directly. A recent watermark by Gloaguen et al. addresses this gap for LLaDA 8B Instruct and reports true positive detection above 99%. This paper studies what happens when watermarked text is rewritten not once but several times. Using the same watermark configuration, 1,605 watermarked completions of about 300 tokens each are produced across five WaterBench domains. Each completion is rewritten by four open weight language models, from 1.5B to 8B parameters, none of which know the watermark key. Five rewrite styles are tested: paraphrase, humanize, simplify, academic, and summarize expand. Each style is chained for up to five hops, producing 160,500 rewritten texts in total. The watermark is detected on 87.9% of the original outputs at the standard significance threshold. After a single rewrite, detection falls to between 14% and 41% depending on the rewriter and style. After five chained rewrites, detection falls to 4.86%, meaning 94.76% of the originally detected texts are no longer flagged. After three rewrites, the detector score has dropped 86% of the way from its watermarked baseline toward the null distribution. Repeated rewriting is therefore a much stronger attack than a single rewrite, and the result holds across all four rewriters tested.
 
 </details>
+
+### 26. dQwen3.5: Hybrid-Attention Diffusion Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2609.20751)　📅 2026-09
+
+**关键词**：`analysis`、`diffusion language model`、`hybrid attention`、`AR adaptation`、`model family`
+
+👤 **作者**：Anton Xue、Litu Rout、Aditya Akella、Adam Klivans、Sujay Sanghavi、Sanjay Shakkottai
+
+- 🎯 **研究动机**：预训练 AR 模型适配是通往扩散语言模型（DLM）的高效路线，但 AR 建模已转向注意力与 RNN 交错的混合架构——RNN 结构性因果、难以双向化，混合骨干能否成为有效 DLM 起点
+- 🔬 **研究方法**：在 0.8B/2B/4B/9B 四个尺度适配 Qwen3.5 得 dQwen3.5 家族；与全注意力对照比较训练效率与任意序解码行为
+- 📌 **结论**：混合骨干是高效适配起点：达到同等训练损失约省一半 token；各尺度下 dQwen3.5 在任意序解码行为上类似全注意力 DLM 并在并行解码下表现强——dLLM 家族的能力面（dllm 安全研究的对象底座）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Adapting a pretrained autoregressive (AR) model is a cost-efficient route to a diffusion language model (DLM). While nearly all such adaptations start from a full-attention transformer, AR modeling has shifted toward hybrid architectures that interleave attention and RNN layers. This creates an obstacle for adaptation: unlike attention, RNNs are structurally causal and nontrivial to bidirectionalize. Despite this mismatch, we investigate whether such backbones can become effective DLMs by adapting Qwen3.5 at 0.8B, 2B, 4B, and 9B scales, yielding the dQwen3.5 family. We find that hybrid backbones can be efficient starting points for adaptation: against a full-attention control, the hybrid reaches a given training loss in about half the tokens. Across scales, dQwen3.5 resembles full-attention DLMs in any-order decoding behavior and performs strongly under parallel decoding.
+
+</details>

@@ -921,3 +921,22 @@ Static benchmarks for harmful content detection face limitations in scalability 
 Guardrail models are classifiers deployed to screen malicious prompts and responses in LLM-based services. To meet latency constraints, many lightweight guardrails adopt compact Transformer backbones (e.g., DeBERTa) that are trained with short context windows (typically 512 tokens) and rely on bucketed relative positional encodings to process longer inputs. Prior evaluations assume that a guardrail&#39;s decision is stable as the input is lengthened. We show that this assumption can fail. We identify Overflip, a repetition-induced instability where repeating a prompt causes the guardrail&#39;s prediction to flip (MAL$\to$BEN) as the sequence grows. We conduct experiments on 9 widely used lightweight guardrail models. Five exhibit MAL$\to$BEN flips on a benchmark of 100 prompts, with confidence margins shrinking steadily with repetition. Among these vulnerable models, flip rates range from 8% to 92%, with first flips occurring at roughly 2.6k--9.4k tokens. Our analysis suggests Overflip differs from traditional attention-dilution baselines, which aim to divert the model&#39;s attention away from tokens associated with malicious content, shifting it instead toward unrelated content, such as benign padding or shuffling. While Overflip preserves malicious content, it homogenizes token-level attention over repeated structure and induces a distinct, more gradual attention-dispersion trajectory than padding. Moreover, Overflip poses a greater threat to LLM services than traditional attention dilution methods. Because the bypassed prompt remains semantically intact and is still readily understood by downstream business LLMs, it can transmit malicious intent after passing the guardrail. These findings expose repetition as an attack surface for guardrail models and motivate length-robust evaluation and mitigation.
 
 </details>
+
+### 49. Safety Beyond the Interface: Detecting Harm via Latent States in Large Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2609.19472)　📅 2026-09
+
+**关键词**：`detection`、`latent-state probe`、`harmful prompt detection`、`lightweight classifier`、`low-latency guard`
+
+👤 **作者**：Alizishaan Khatri、Chiquita Prabhu、Omkar Neogi
+
+- 🎯 **研究动机**：自主系统依赖 LLM 但外部 guardrail 模型看不见内部状态、引入延迟与算力开销，在资源受限时限部署中限制实用性——模型自己是否已经"知道"内容有害
+- 🔬 **研究方法**：从 LLaMA-3.1-8B 提取激活，训练 12.6M 参数的轻量 MLP 探针分类器检测有害 prompt；WildJailbreak、Beavertails、AEGIS 2.0 三基准评测
+- 📌 **结论**：探针 F1 分别达 99%、83%、84%，与大 1000 倍的 guard 模型相当，同时大幅削减延迟与算力——内部激活做近零开销在线安全监控的又一证据
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Autonomous systems increasingly rely on Large Language Models (LLMs) yet the safety infrastructure surrounding these models introduces latency and compute overhead. This limits utility in resource-constrained, time-critical deployments. Existing external guardrail models remain blind to the model's internal workings, creating a fundamental assurance gap. We ask: does the model already know when the content is harmful? We extract activations from LLaMA-3.1-8B and train lightweight MLP classifier probes (12.6M parameters) to detect harmful prompts. Evaluated on WildJailbreak, Beavertails, and AEGIS 2.0, our probes achieve F1 scores of 99%, 83%, and 84%, respectively competitive with 1000x larger guard models while cutting latency and compute costs.
+
+</details>

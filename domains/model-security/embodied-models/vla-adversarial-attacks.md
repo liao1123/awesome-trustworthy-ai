@@ -366,3 +366,22 @@ The emergence of vision-language-action models (VLAs) for end-to-end control is 
 Vision-Language-Action (VLA) models enable end-to-end robot control and have garnered widespread attention. However, the memorization of training data inherent to VLA, coupled with the high cost of robotic data acquisition, raises serious concerns regarding data privacy leakage and intellectual property infringement. Membership inference attacks (MIAs) aim to determine whether a given sample belongs to the training set. While representing a significant privacy threat, this attack remains underexplored in the context of VLA models. To bridge this gap, we propose VLALeaks, which is based on attention discrepancies in VLA models. We reveal, for the first time, the privacy vulnerabilities of VLA models. Specifically, it comprises a two-stage process: (1) membership feature extraction, and (2) attack model construction. Experimental results across multiple VLA benchmarks demonstrate that VLALeaks readily reveals membership information and achieves optimal attack AUC and TPR@1\%FPR, highlighting the privacy vulnerabilities in current VLA model deployments. Our work is the first systematic study of MIAs on VLA models, aiming to provide insights for secure and trustworthy VLA models.
 
 </details>
+
+### 20. Beyond Patch Removal: Persistent Adversarial Effects in Vision-Language-Action Policies
+
+📄 [arXiv](https://arxiv.org/abs/2609.19669)　📅 2026-09
+
+**关键词**：`attack`、`VLA adversarial patch`、`persistent state effect`、`recovery protocol`、`timely intervention`
+
+👤 **作者**：Enhao Wu、Fusen Guo、Yuxin Cao、Ziyang Lyu、Lin Li、Wei Song
+
+- 🎯 **研究动机**：对 VLA 的对抗 patch 既造成即时动作破坏也留下移除 patch 后仍存在的持续状态效应——既有评测聚焦连续攻击且不区分这两种效应
+- 🔬 **研究方法**：状态恢复协议：在匹配的动作块边界移除 patch 并在相同剩余步预算下测量可恢复性；干净/随机 patch/偏差匹配/固定方向四对照区分对抗效应与遮挡、误差幅度、方向持续性；再评在攻击态上训练的恢复适配器（控制干预延迟）
+- 📌 **结论**：OpenVLA-OFT+EDPA 下 5 个块后仅 36.2% 的 LIBERO-Long 片段可恢复（偏差匹配对照 89.9%、固定方向 87.0%）；自回归 OpenVLA 亦有持续效应；恢复适配器在单块延迟下把恢复率 7.7%→47.4%，但延迟介入收益大幅衰减——对抗效应可在 patch 移除后持续，及时干预是恢复关键
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Adversarial patches to Vision-Language-Action (VLA) policies can cause both immediate action corruption and persistent state effects that remain after the patch is removed. Existing evaluations largely focus on continuous attacks and do not separate these two effects. We introduce a state-restoration protocol that removes the patch at matched action-chunk boundaries and measures subsequent recoverability under the same remaining step budget. Clean, random-patch, deviation-matched, and fixed-direction controls distinguish adversarial effects from occlusion, action-error magnitude, and directional persistence. We also evaluate a recovery adapter trained on attack-induced states under controlled intervention latency. On OpenVLA-OFT with EDPA attacks, only 36.2% of LIBERO-Long episodes remain recoverable after five chunks, compared with 89.9% and 87.0% for the deviation-matched and fixed-direction controls. Similar persistent effects are observed on autoregressive OpenVLA. The recovery adapter improves recovery from 7.7% to 47.4% at one-chunk latency, but its benefit decreases substantially with delayed intervention. These results show that adversarial effects can persist after patch removal and that timely intervention is critical for recovery.
+
+</details>
