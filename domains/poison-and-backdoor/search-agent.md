@@ -14,6 +14,7 @@
 - **长程轨迹劫持：** FORGE 与 Breadcrumbing 利用多个网页和多轮 observation 逐步改变 research plan，表明单页检测不足以覆盖跨文档、跨步骤的 cumulative attack。
 - **过程级对齐：** SafeSearch 与 COMPASS 将监督从 final answer 前移到 query 和 trajectory，并同时约束 utility；当前仍缺少在真实搜索排序、动态网页和未知攻击者站点上的端到端防御证据。
 
+- **通信篡改与红队基础设施：** MAST 与 Evo-Attacker 把攻击面从 agent 本体移到 agent 间消息与工具输出（学习式攻击策略），T-MAP、AHA 与 IPI-proxy 提供轨迹级进化红队、可迁移漏洞概念图与白名单域内飞行改写代理；DRNOISE 则证明单篇貌似合理的假文档即可使深研 agent 准确率崩塌 66–88pp，verification inertia（检索到真据却不完成证据链调和）是主导失效模式。
 ## Web Evidence Manipulation 与 Trajectory Hijacking
 
 ### 1. Lazy Grounding: Attacking Search Agents with Factual Evidence
@@ -441,5 +442,195 @@ Web-enabled LLM agents are changing how online information influences search out
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 Search-augmented LLMs increasingly mediate everyday consumer recommendations by retrieving live web content. This creates a new risk: LLM recommenders may consume web content that Generative Engine Optimization (GEO) operators have polluted to mislead them. We ask: to what extent do they become unwitting promoters of fake products? We introduce FORGE (Fake Online Recommendations in Generative Environments), which locally rewrites real products in a frozen set of retrieved web pages into fake ones and measures how often the LLM recommends the fake product, across 225 real products in 15 categories and 5 consumer scenarios. Across 12 commercial and open-weights LLMs, all models are vulnerable: a single polluted page yields fooled rates of up to 27%, while the full top-3 replacement raises this to 73.8%. Vulnerability varies across categories, increasing when models lack stable prior knowledge of the products. Reasoning does not mitigate this vulnerability; instead, it often generates spurious social proof to justify false recommendations. None of the four defenses is adequate: the skepticism prompt can exacerbate vulnerability much like reasoning, the two consensus filters risk suppressing legitimate products, and credibility re-ranking helps every model but removes only a sixth of the fakes. We release the FORGE benchmark and the evaluation code at https://github.com/leoluolol/forge-benchmark.
+
+</details>
+
+### 24. DRNOISE: Benchmarking Deep Research Agents in Misleading Evidence Environments
+
+📄 [arXiv](https://arxiv.org/abs/2607.17291)　📅 2026-07
+
+**关键词**：`benchmark`、`misleading evidence`、`deep research agent`、`verification inertia`、`evidence chain`
+
+👤 **作者**：Jun Nie、…、Bo Han
+
+- 🎯 **研究动机**：深研 agent 在开放 web 上运行，貌似合理的假文档可直接给出冲突答案的捷径——现有评测不检验 agent 在此情形下是否保持证据标准
+- 🔬 **研究方法**：DRNOISE 100 任务基准：每任务唯一金答案由两条相互佐证的间接记录链支撑，配对噪声条件仅加入一篇直接陈述冲突答案的普通样文档；覆盖十类证据操作
+- 📌 **结论**：单篇文档即使强干净性能的 agent 准确率掉 66–88pp；主导失效模式是 verification inertia——agent 常已检索到真实记录却在完成并调和证据链之前停步，转而采信答案式文档；通用验证提示缩小但不闭合差距——开放 web 部署中普通页面即可携带貌似合理的虚假
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Deep research agents increasingly operate over the open web, where relevant records coexist with redundant summaries, outdated reports, and misleading documents. Existing evaluations offer limited insight into whether agents preserve sound evidential standards when an ordinary-looking false document is deliberately seeded into a searchable environment and offers a direct shortcut to a conflicting answer. We introduce DRNOISE, a 100-task benchmark for answer recovery under misleading evidence. Each task has a unique gold answer supported by two corroborating indirect record chains; the paired noisy condition adds one plausible document that states a conflicting answer directly. The benchmark spans ten families of evidence operations. Across agents with strong clean-task performance, this single intervention causes 66-88 percentage-point accuracy drops. Trace analyses identify verification inertia as the dominant failure mode: agents often retrieve truthful records but stop before completing and reconciling the evidence chain, instead deferring to the answer-like document. Generic verification prompts reduce but do not close this gap. The setting is especially relevant to open-web deployment, where plausible falsehoods arrive through ordinary-looking pages rather than explicit attacks. Reliable deep research therefore requires more than retrieval and citation; it requires active reconciliation of direct claims with record-level evidence.
+
+</details>
+
+### 25. Attack the Messages, Not the Agents: A Multi-round Adaptive Stealthy Tampering Framework for LLM-MAS
+
+📄 [arXiv](https://arxiv.org/abs/2508.03125)　📅 2025-08
+
+**关键词**：`attack`、`message tampering`、`LLM-MAS`、`MCTS`、`stealthiness`
+
+👤 **作者**：Bingyu Yan、…、Litian Zhang
+
+- 🎯 **研究动机**：LLM 多智能体系统依赖 agent 间通信，既有攻击要么侵入 agent 内部、要么显式说服——有效性、适应性、隐蔽性均不足
+- 🔬 **研究方法**：MAST 多轮自适应隐蔽篡改框架：MCTS 与 DPO 结合训练攻击策略模型，自适应生成多轮消息篡改策略；篡改过程施加语义与嵌入双重相似性约束以保持隐蔽
+- 📌 **结论**：跨任务、通信架构与 LLM 上一致取得高攻击成功率且隐蔽性显著优于基线——把攻击面从 agent 本体移到通信内容，凸显 MAS 通信防线的必要性
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language model-based multi-agent systems (LLM-MAS) effectively accomplish complex and dynamic tasks through inter-agent communication, but this reliance introduces substantial safety vulnerabilities. Existing attack methods targeting LLM-MAS either compromise agent internals or rely on direct and overt persuasion, which limit their effectiveness, adaptability, and stealthiness. In this paper, we propose MAST, a Multi-round Adaptive Stealthy Tampering framework designed to exploit communication vulnerabilities within the system. MAST integrates Monte Carlo Tree Search with Direct Preference Optimization to train an attack policy model that adaptively generates effective multi-round tampering strategies. Furthermore, to preserve stealthiness, we impose dual semantic and embedding similarity constraints during the tampering process. Comprehensive experiments across diverse tasks, communication architectures, and LLMs demonstrate that MAST consistently achieves high attack success rates while significantly enhancing stealthiness compared to baselines. These findings highlight the effectiveness, stealthiness, and adaptability of MAST, underscoring the need for robust communication safeguards in LLM-MAS.
+
+</details>
+
+### 26. Evo-Attacker: Memory-Augmented Reinforcement Learning for Long-Horizon Tool Attacks on LLM-MAS
+
+📄 [arXiv](https://arxiv.org/abs/2605.25389)　📅 2026-05　🏷 ACL 2026
+
+**关键词**：`attack`、`tool output attack`、`reinforcement learning`、`attack memory`、`long-horizon`
+
+👤 **作者**：Bingyu Yan、…、Litian Zhang
+
+- 🎯 **研究动机**：LLM-MAS 对工具输出的隐式信任构成关键攻击面；既有工具攻击受限于特定域或固定静态模板
+- 🔬 **研究方法**：Evo-Attacker 把工具攻击形式化为自演化记忆增强 RL：构建动态攻击记忆并以深思推理检索对抗模式、在关键时机策划干预；Attack-Flow GRPO 以终局奖励优化中间推理步，解决长程 credit assignment
+- 📌 **结论**：跨任务一致超越基线，展示泛化与演化能力——工具链攻击从模板走向学习策略，对工具安全防线提出新要求。ACL 2026 main
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+While Large Language Model-based Multi-Agent Systems (LLM-MAS) demonstrate remarkable capabilities in solving complex tasks by orchestrating specialized agents and external tools, the implicit trust in tool outputs creates a critical attack surface. Existing tool attacks are limited by domain specificity or fixed and static templates. To address these challenges, we propose Evo-Attacker, which formulates the tool attack as a self-evolving, memory-augmented reinforcement learning process. Evo-Attacker constructs a dynamic attack memory and employs deliberative reasoning to retrieve adversarial patterns and strategize modifying interventions at critical moments. Furthermore, we introduce Attack-Flow GRPO to optimize intermediate reasoning steps via terminal outcomes, addressing the long-horizon credit assignment challenge. Comprehensive experiments demonstrate that Evo-Attacker consistently outperforms baselines, highlighting its generalization and evolutionary capabilities and the urgent need for defensive tool safeguards.
+
+</details>
+
+### 27. Agent Hacks Agent: Autoresearch for Production-Agent Red-Teaming
+
+📄 [arXiv](https://arxiv.org/abs/2607.11698) · 🐙 [Code](https://github.com/henrymao2004/Auto-research-red-teaming-in-sleep.)　📅 2026-07
+
+**关键词**：`red-teaming`、`production agent`、`vulnerability concept graph`、`autoresearch`、`falsifiability`
+
+👤 **作者**：Xutao Mao、Xiang Zheng、Cong Wang
+
+- 🎯 **研究动机**：生产级 agent（Claude Code、Codex）在不可信内容/文件/命令/工作区状态上运行，安全失效可直接行动；现有红队只优化攻击成功率并留存 benchmark/payload，不记录不安全行为背后的使能条件
+- 🔬 **研究方法**：AHA 可证伪发现环：用一个 agentic research 环境对另一个生产 agent 提出漏洞假设→构造证伪器→实例化攻击→沙盒执行→轨迹反思→把确认发现晋升入 Vulnerability Concept Graph（每个概念经主张、使能条件、证伪器、迁移预测与证据链到不安全轨迹）
+- 📌 **结论**：Claude Code 与 Codex 三场景（直接+间接攻击）中发现的漏洞核心跨模型跨 agent 可复用；冻结的 VCG 无需再搜索即在同一单发协议下超最强冻结基线 14.2pp——红队产出从攻击样本升级为可迁移漏洞知识
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Production LLM agents such as Claude Code and Codex operate over untrusted content, files, commands, and workspace state, making safety failures directly actionable. Red-teaming must therefore keep pace with evolving models and tools. Existing approaches mainly optimize attack success and preserve artifacts such as benchmarks, payloads, or attack programs, which record where attacks succeed but not the enabling conditions behind unsafe agent behavior. We study automated red-teaming for production LLM agents using one agentic research environment to discover reusable vulnerability knowledge about another. We present AHA, a falsifiable discovery loop that proposes a vulnerability hypothesis, constructs a falsifier, instantiates a valid attack, executes it in a sandboxed harness, reflects on the trajectory, and promotes confirmed findings into a Vulnerability Concept Graph (VCG). Each concept links an attacker-facing surface to an unsafe trajectory through a claim, enabling condition, falsifier, transfer prediction, and supporting evidence. Across Claude Code and Codex on three scenarios covering direct and indirect attacks, the discovered concepts reveal a reusable vulnerability core across models and agents. A frozen VCG requires no further search and outperforms the strongest frozen discovery baseline by 14.2 percentage points under the same single-shot protocol, while transferring across scenarios and attack channels. The resulting VCG provides an auditable artifact for production safety teams to inspect vulnerabilities, validate patches, and accumulate reusable safety knowledge. Our code is available at https://github.com/henrymao2004/Auto-research-red-teaming-in-sleep.
+
+</details>
+
+### 28. T-MAP: Red-Teaming LLM Agents with Trajectory-aware Evolutionary Search
+
+📄 [arXiv](https://arxiv.org/abs/2603.22341) · 🐙 [Code](https://github.com/pwnhyo/T-MAP.)　📅 2026-03　🏷 EMNLP 2026
+
+**关键词**：`attack`、`red-teaming`、`trajectory-aware search`、`MCP`、`attack realization`
+
+👤 **作者**：Hyomin Lee、Sangwoo Park、Yumin Choi、Sohyun An、Seanie Lee、Sung Ju Hwang
+
+- 🎯 **研究动机**：既有红队聚焦诱发有害文本，抓不住多步工具执行中才暴露的 agent 特有漏洞——尤其快速扩张的 MCP 生态
+- 🔬 **研究方法**：T-MAP 轨迹感知进化搜索：用执行轨迹引导对抗 prompt 的发现，使攻击不仅绕过 guardrail 还要经真实工具交互落地有害目标；以 attack realization rate（ARR）为指标
+- 📌 **结论**：多个 MCP 环境下 ARR 大幅超基线，对 GPT-5.2、Gemini-3-Pro、Qwen3.5、GLM-5 等前沿模型仍有效——从有害文本到有害行动的评测范式。EMNLP 2026
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+While prior red-teaming efforts have focused on eliciting harmful text outputs from large language models (LLMs), such approaches fail to capture agent-specific vulnerabilities that emerge through multi-step tool execution, particularly in rapidly growing ecosystems such as the Model Context Protocol (MCP). To address this gap, we propose a trajectory-aware evolutionary search method, T-MAP, which leverages execution trajectories to guide the discovery of adversarial prompts. Our approach enables the automatic generation of attacks that not only bypass safety guardrails but also reliably realize harmful objectives through actual tool interactions. Empirical evaluations across diverse MCP environments demonstrate that T-MAP substantially outperforms baselines in attack realization rate (ARR) and remains effective against frontier models, including GPT-5.2, Gemini-3-Pro, Qwen3.5, and GLM-5, thereby revealing previously underexplored vulnerabilities in autonomous LLM agents. Code is available at https://github.com/pwnhyo/T-MAP.
+
+</details>
+
+### 29. IPI-proxy: An Intercepting Proxy for Red-Teaming Web-Browsing AI Agents Against Indirect Prompt Injection
+
+📄 [arXiv](https://arxiv.org/abs/2605.11868)　📅 2026-05
+
+**关键词**：`tool`、`red-teaming`、`indirect prompt injection`、`intercepting proxy`、`whitelisted domain`
+
+👤 **作者**：Chia-Pei、Chen、Kentaroh Toyoda、Anita Lai、Alex Leung
+
+- 🎯 **研究动机**：企业 web agent 在白名单域内运行，但域内页面 HTML 仍可藏指令；既有注入基准用预建对抗页（白名单 agent 根本访问不到）、LLM 扫描器只探模型 API 不探其检索内容
+- 🔬 **研究方法**：IPI-proxy 开源拦截代理：在飞行中改写白名单域的真实 HTTP 响应，嵌入从 BIPIA/InjecAgent/AgentDojo/Tensor Trust/WASP/LLMail-Inject 六基准提取的 820 条去重攻击串；YAML 参数化 payload 集、嵌入技术（HTML 注释/隐形 CSS/LLM 语义散文）与 6 个 HTML 插入位，配外传回调追踪器
+- 📌 **结论**：无需 mock 页或沙盒即可对真实部署 agent 做参数扫描式注入红队——白名单假设下注入评测基础设施的补位
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Web-browsing AI agents are increasingly deployed in enterprise settings under strict whitelists of approved domains, yet adversaries can still influence them by embedding hidden instructions in the HTML pages those domains serve. Existing red-teaming resources fall short of this scenario: prompt-injection benchmarks ship pre-built adversarial pages that whitelisted agents cannot reach, and generic LLM scanners probe the model API rather than its retrieved content. We present IPI-proxy, an open-source toolkit for red-teaming web-browsing agents against indirect prompt injection (IPI). At its core is an intercepting proxy that rewrites real HTTP responses from whitelisted domains in flight, embedding payloads drawn from a unified library of 820 deduplicated attack strings extracted from six published benchmarks (BIPIA, InjecAgent, AgentDojo, Tensor Trust, WASP, and LLMail-Inject). A YAML-driven test harness independently parameterizes the payload set, the embedding technique (HTML comment, invisible CSS, or LLM-generated semantic prose), and the HTML insertion point (6 locations from \icode{head\_meta} to \icode{script\_comment}), enabling parameter-sweep evaluation without mock pages or sandboxed environments. A companion exfiltration tracker logs successful callbacks. This paper describes the threat model, situates IPI-proxy among contemporary IPI benchmarks and red-teaming tools, and details its architecture, design decisions, and configuration interface. By bridging static benchmarks and live deployment, IPI-proxy gives AI security teams a reproducible substrate for measuring and hardening web-browsing agents against indirect prompt injection on the same retrieval surface attackers exploit in production.
+
+</details>
+
+### 30. TopicAttack: An Indirect Prompt Injection Attack via Topic Transition
+
+📄 [arXiv](https://arxiv.org/abs/2507.13686)　📅 2025-07　🏷 EMNLP 2025
+
+**关键词**：`attack`、`indirect prompt injection`、`topic transition`、`conversational smoothing`、`attention analysis`
+
+👤 **作者**：Yulin Chen、Haoran Li、Yuexin Li、Yue Liu、Yangqiu Song、Bryan Hooi
+
+- 🎯 **研究动机**：间接注入常以生硬指令出现而易被识别——让注入以对话方式平滑过渡可同时提升合理性与成功率
+- 🔬 **研究方法**：TopicAttack 让 LLM 生成伪造的对话式话题过渡 prompt，把话题逐步引向被注入指令；以注入段与原文的注意力比值做机制分析
+- 📌 **结论**：多数场景 ASR 超 90%，且对多种防御方法仍保持有效；注意力比值越高成功率越大，其比值显著高于基线——注入的语用伪装。EMNLP 2025
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models (LLMs) have shown remarkable performance across a range of NLP tasks. However, their strong instruction-following capabilities and inability to distinguish instructions from data content make them vulnerable to indirect prompt injection attacks. In such attacks, instructions with malicious purposes are injected into external data sources, such as web documents. When LLMs retrieve this injected data through tools, such as a search engine and execute the injected instructions, they provide misled responses. Recent attack methods have demonstrated potential, but their abrupt instruction injection often undermines their effectiveness. Motivated by the limitations of existing attack methods, we propose TopicAttack, which prompts the LLM to generate a fabricated conversational transition prompt that gradually shifts the topic toward the injected instruction, making the injection smoother and enhancing the plausibility and success of the attack. Through comprehensive experiments, TopicAttack achieves state-of-the-art performance, with an attack success rate (ASR) over 90\% in most cases, even when various defense methods are applied. We further analyze its effectiveness by examining attention scores. We find that a higher injected-to-original attention ratio leads to a greater success probability, and our method achieves a much higher ratio than the baseline methods.
+
+</details>
+
+### 31. ReliabilityRAG: Effective and Provably Robust Defense for RAG-based Web-Search
+
+📄 [arXiv](https://arxiv.org/abs/2509.23519)　📅 2025-09　🏷 NeurIPS 2025
+
+**关键词**：`defense`、`corpus poisoning`、`document graph`、`maximum independent set`、`provable robustness`
+
+👤 **作者**：Zeyu Shen、Basileal Imana、Tong Wu、Chong Xiang、Prateek Mittal、Aleksandra Korolova
+
+- 🎯 **研究动机**：RAG 网页搜索（AI Overviews 类）面临语料注入攻击；该场景的防御可利用内置可靠性信号（文档排名），且对手面对的是数十年反 SEO 积累的非 LLM 挑战
+- 🔬 **研究方法**：ReliabilityRAG 以图论视角在检索文档中找一致多数以过滤恶意文档：在以矛盾关系为边的文档图上解最大独立集（显式偏向高可靠文档），给出有界对抗污染下的可证鲁棒保证；大检索集用加权采样聚合框架扩展
+- 📌 **结论**：面向 RAG 网页搜索的可证明鲁棒防御框架——search-agent 侧第一条带 certificate 的防线。NeurIPS 2025
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Retrieval-Augmented Generation (RAG) enhances Large Language Models by grounding their outputs in external documents. These systems, however, remain vulnerable to attacks on the retrieval corpus, such as prompt injection. RAG-based search systems (e.g., Google's Search AI Overview) present an interesting setting for studying and protecting against such threats, as defense algorithms can benefit from built-in reliability signals -- like document ranking -- and represent a non-LLM challenge for the adversary due to decades of work to thwart SEO. Motivated by, but not limited to, this scenario, this work introduces ReliabilityRAG, a framework for adversarial robustness that explicitly leverages reliability information of retrieved documents. Our first contribution adopts a graph-theoretic perspective to identify a "consistent majority" among retrieved documents to filter out malicious ones. We introduce a novel algorithm based on finding a Maximum Independent Set (MIS) on a document graph where edges encode contradiction. Our MIS variant explicitly prioritizes higher-reliability documents and provides provable robustness guarantees against bounded adversarial corruption under natural assumptions. Recognizing the computational cost of exact MIS for large retrieval sets, our second contribution is a scalable weighted sample and aggregate framework. It explicitly utilizes reliability information, preserving some robustness guarantees while efficiently handling many documents. We present empirical results showing ReliabilityRAG provides superior robustness against adversarial attacks compared to prior methods, maintains high benign accuracy, and excels in long-form generation tasks where prior robustness-focused methods struggled. Our work is a significant step towards more effective, provably robust defenses against retrieved corpus corruption in RAG.
+
+</details>
+
+### 32. A Survey of LLM-based Deep Search Agents: Paradigm, Optimization, Evaluation, and Challenges
+
+📄 [arXiv](https://arxiv.org/abs/2508.05668) · 🐙 [Code](https://github.com/YunjiaXi/Awesome-Search-Agent-Papers.)　📅 2025-08
+
+**关键词**：`survey`、`search agent`、`paradigm`、`optimization`、`evaluation`
+
+👤 **作者**：Yunjia Xi、…、Weinan Zhang
+
+- 🎯 **研究动机**：LLM-based search agent 标志网络搜索向自主、动态、多轮深挖的范式转移，缺乏系统综述
+- 🔬 **研究方法**：首个 search agent 系统分析：从架构、优化、应用、评测四维全面分类既有工作，识别关键开放挑战与研究方向（配套论文仓库）
+- 📌 **结论**：search agent 全景地图——该叶子安全研究的对象底座综述
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+The advent of Large Language Models (LLMs) has significantly revolutionized web search. The emergence of LLM-based Search Agents marks a pivotal shift towards deeper, dynamic, autonomous information seeking. These agents can comprehend user intentions and environmental context and execute multi-turn retrieval with dynamic planning, extending search capabilities far beyond the web. Leading examples like OpenAI's Deep Research highlight their potential for deep information mining and real-world applications. This survey provides the first systematic analysis of search agents. We comprehensively analyze and categorize existing works from the perspectives of architecture, optimization, application, and evaluation, ultimately identifying critical open challenges and outlining promising future research directions in this rapidly evolving field. Our repository is available on https://github.com/YunjiaXi/Awesome-Search-Agent-Papers.
+
+</details>
+
+### 33. Deep Research Agents: A Systematic Examination And Roadmap
+
+📄 [arXiv](https://arxiv.org/abs/2506.18096) · 🐙 [Code](https://github.com/ai-agents-2030/awesome-deep-research-agent)　📅 2025-06
+
+**关键词**：`survey`、`deep research agent`、`taxonomy`、`benchmark critique`、`roadmap`
+
+👤 **作者**：Yuxuan Huang、…、Jun Wang
+
+- 🎯 **研究动机**：深研 agent 快速兴起，其技术构成、架构谱系与评测缺陷缺乏系统检视
+- 🔬 **研究方法**：系统分析信息获取策略（API 检索 vs 浏览器探索）、模块化工具框架（代码执行/多模态/MCP）、静动态工作流分类与单/多 agent 架构；批判现有基准的外部知识受限、串行执行低效与指标错位
+- 📌 **结论**：DR agent 分类学与路线图——攻击面研究的对象底座与基准缺陷清单
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+The rapid progress of Large Language Models (LLMs) has given rise to a new category of autonomous AI systems, referred to as Deep Research (DR) agents. These agents are designed to tackle complex, multi-turn informational research tasks by leveraging a combination of dynamic reasoning, adaptive long-horizon planning, multi-hop information retrieval, iterative tool use, and the generation of structured analytical reports. In this paper, we conduct a detailed analysis of the foundational technologies and architectural components that constitute Deep Research agents. We begin by reviewing information acquisition strategies, contrasting API-based retrieval methods with browser-based exploration. We then examine modular tool-use frameworks, including code execution, multimodal input processing, and the integration of Model Context Protocols (MCPs) to support extensibility and ecosystem development. To systematize existing approaches, we propose a taxonomy that differentiates between static and dynamic workflows, and we classify agent architectures based on planning strategies and agent composition, including single-agent and multi-agent configurations. We also provide a critical evaluation of current benchmarks, highlighting key limitations such as restricted access to external knowledge, sequential execution inefficiencies, and misalignment between evaluation metrics and the practical objectives of DR agents. Finally, we outline open challenges and promising directions for future research. A curated and continuously updated repository of DR agent research is available at: {https://github.com/ai-agents-2030/awesome-deep-research-agent}.
 
 </details>

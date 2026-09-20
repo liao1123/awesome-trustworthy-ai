@@ -14,6 +14,7 @@
 - **全链路现实性：** SAGEO Arena、GEO-Bench 与 RAG survival 分析表明，能影响 generator 不代表能通过 retriever 与 reranker；结构信号、攻击隐蔽性和真实 search interface 都会改变结论。
 - **下游安全影响：** SafeGEO 把指标从 target rank 扩展到推荐集合中的实际危害，One Polluted Page 表明单页污染即可让 LLM 推荐器批量推广虚构产品，EcoGEO 则把单页改写升级为沿 agent 浏览轨迹协同的跨页证据生态（收益来自塑造证据获取过程而非堆内容）；当前防御多为静态 detector 或 prompt guard，SCI-Defense 的语义完整性评分在产品描述域近满分但在通用网页域失效，也佐证防御的场景依赖性。
 
+- **测量效度与生态动力学：** 可见性测量从单点走向分布与效度审视（Don't Measure Once 的重复测量、Answer Market 的 prompt 语料即市场定义、Citation Absorption 的被引≠被吸收），三层品牌阶梯与引用偏差给出大规模实证；CHASE 仿真显示 20 轮 GEO 使质量-排序对齐系统性下降（六域 ρ 均值 -0.068），VCR 机制设计与 ICML 2026 position 分别给出平台侧激励治理与答案级治理的路线。
 ## Cooperative GEO 与基础方法
 
 ### 1. Mind Reader: Latent User Demand-Guided Content Optimization for Generative Search Engine
@@ -488,5 +489,423 @@ Large Language Models (LLMs) are transforming search engines into Conversational
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 Web-enabled LLM agents are changing how online information influences search outcomes. Existing Generative Engine Optimization (GEO) studies mainly focus on individual webpages. However, agentic web search is not a single-document setting: an agent may issue queries, crawl pages, follow links, reformulate searches, and synthesize evidence across multiple browsing steps. Influence therefore depends not only on page content, but also on how pages are organized, connected, and encountered along the agent's browsing trajectory. We study this shift through Ecosystem Generative Engine Optimization (EcoGEO), which treats GEO as an environment-level influence problem for web-enabled LLM agents. To instantiate this perspective, we propose TRACE, a Trajectory-Aware Coordinated Evidence Ecosystem. Given a recommendation query and a fictional target product, our method builds a controlled evidence environment that coordinates an agent-facing navigation entry page with heterogeneous support pages. These pages use shared terminology, internal links, and consistent product attributes to introduce, verify, and reinforce the target product. We evaluate our method on OPR-Bench, a benchmark for open-ended product recommendation. Experiments show that it consistently outperforms page-level GEO baselines in final target recommendation. Trajectory-level metrics further show increased initial target-result crawls, target-specific follow-up searches, and internal-link crawls, suggesting that the gains come from shaping the agent's evidence-acquisition process rather than merely adding more target-related content. Overall, our findings support an ecosystem research paradigm for GEO, where web-enabled LLM agents are studied in relation to the broader evidence environments that guide search, browsing, and answer synthesis.
+
+</details>
+
+### 26. Manipulating Large Language Models to Increase Product Visibility
+
+📄 [arXiv](https://arxiv.org/abs/2404.07981) · 🐙 [Code](https://github.com/aounon/llm-rank-optimizer.)　📅 2024-04
+
+**关键词**：`attack`、`strategic text sequence`、`product visibility`、`LLM recommendation`
+
+👤 **作者**：Aounon Kumar、Himabindu Lakkaraju
+
+- 🎯 **研究动机**：LLM 搜索建议日益影响购买决策——厂商能否通过操纵产品页内容提升被推荐率
+- 🔬 **研究方法**：在虚构咖啡机产品目录上给产品信息页添加精心构造的 strategic text sequence（STS），测其对两类目标产品（几乎不被推荐者与通常排第二者）成为 top 推荐的影响
+- 📌 **结论**：STS 显著提升两类产品成为 LLM top 推荐的概率——LLM 生成式搜索操纵的开山实证，后续 GEO 与产品可见性攻击线皆溯源于此
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models (LLMs) are increasingly being integrated into search engines to provide natural language responses tailored to user queries. Customers and end-users are also becoming more dependent on these models for quick and easy purchase decisions. In this work, we investigate whether recommendations from LLMs can be manipulated to enhance a product's visibility. We demonstrate that adding a strategic text sequence (STS) -- a carefully crafted message -- to a product's information page can significantly increase its likelihood of being listed as the LLM's top recommendation. To understand the impact of STS, we use a catalog of fictitious coffee machines and analyze its effect on two target products: one that seldom appears in the LLM's recommendations and another that usually ranks second. We observe that the strategic text sequence significantly enhances the visibility of both products by increasing their chances of appearing as the top recommendation. This ability to manipulate LLM-generated search responses provides vendors with a considerable competitive advantage and has the potential to disrupt fair market competition. Just as search engine optimization (SEO) revolutionized how webpages are customized to rank higher in search engine results, influencing LLM recommendations could profoundly impact content optimization for AI-driven search services. Code for our experiments is available at https://github.com/aounon/llm-rank-optimizer.
+
+</details>
+
+### 27. Ranking Manipulation for Conversational Search Engines
+
+📄 [arXiv](https://arxiv.org/abs/2406.03589)　📅 2024-06　🏷 EMNLP 2024
+
+**关键词**：`attack`、`prompt injection`、`source ranking`、`tree-of-attacks`、`transferability`
+
+👤 **作者**：Samuel Pfrommer、Yatong Bai、Tanmay Gautam、Somayeh Sojoudi
+
+- 🎯 **研究动机**：会话式搜索引擎把检索网页文本装入 LLM 上下文做摘要——prompt 注入能否操纵其引用源的排序
+- 🔬 **研究方法**：构建真实消费产品网站数据集并把会话式搜索排序形式化为对抗问题；先用无攻击基线刻画各 LLM 对产品名/文档内容/上下文位置的优先级差异，再用 tree-of-attacks 式越狱提升低排名产品
+- 📌 **结论**：注入攻击可靠提升低排名产品且可跨模型迁移——首次把引用排序确立为注入攻击目标。EMNLP 2024 main
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Major search engine providers are rapidly incorporating Large Language Model (LLM)-generated content in response to user queries. These conversational search engines operate by loading retrieved website text into the LLM context for summarization and interpretation. Recent research demonstrates that LLMs are highly vulnerable to jailbreaking and prompt injection attacks, which disrupt the safety and quality goals of LLMs using adversarial strings. This work investigates the impact of prompt injections on the ranking order of sources referenced by conversational search engines. To this end, we introduce a focused dataset of real-world consumer product websites and formalize conversational search ranking as an adversarial problem. Experimentally, we analyze conversational search rankings in the absence of adversarial injections and show that different LLMs vary significantly in prioritizing product name, document content, and context position. We then present a tree-of-attacks-based jailbreaking technique which reliably promotes low-ranked products. Importantly, these attacks transfer effectively to state-of-the-art conversational search engines such as perplexity$.$ai. Given the strong financial incentive for website owners to boost their search ranking, we argue that our problem formulation is of critical importance for future robustness work.
+
+</details>
+
+### 28. Illusions of Relevance: Arbitrary Content Injection Attacks Deceive Retrievers, Rerankers, and LLM Judges
+
+📄 [arXiv](https://arxiv.org/abs/2501.18536)　📅 2025-01　🏷 AACL 2025 Findings
+
+**关键词**：`attack`、`content injection`、`retriever`、`reranker`、`LLM judge`
+
+👤 **作者**：Manveer Singh Tamber、Jimmy Lin
+
+- 🎯 **研究动机**：黑盒威胁模型下，攻击者能否把任意不相关内容推进搜索结果顶部并获得满分相关性
+- 🔬 **研究方法**：内容注入两种形态：向相关段落注入任意句子、向任意段落注入查询词；系统分析模型类别/规模、相关-非相关内容配比、注入位置、毒性与严重度对攻击成功率的影响
+- 📌 **结论**：retriever、reranker 与 LLM 相关性 judge 全部可被欺骗至给任意内容满分相关性——检索管线的通用注入脆弱性，且 LLM 生成内容更易被利用。AACL 2025 Findings
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+This work considers a black-box threat model in which adversaries attempt to propagate arbitrary non-relevant content in search. We show that retrievers, rerankers, and LLM relevance judges are all highly vulnerable to attacks that enable arbitrary content to be promoted to the top of search results and to be assigned perfect relevance scores. We investigate how attackers may achieve this via content injection, injecting arbitrary sentences into relevant passages or query terms into arbitrary passages. Our study analyzes how factors such as model class and size, the balance between relevant and non-relevant content, injection location, toxicity and severity of injected content, and the role of LLM-generated content influence attack success, yielding novel, concerning, and often counterintuitive results. Our results reveal a weakness in embedding models, LLM-based scoring models, and generative LLMs, raising concerns about the general robustness, safety, and trustworthiness of language models regardless of the type of model or the role in which they are employed. We also emphasize the challenges of robust defenses against these attacks. Classifiers and more carefully prompted LLM judges often fail to recognize passages with content injection, especially when considering diverse text topics and styles. Our findings highlight the need for further research into arbitrary content injection attacks. We release our code for further study.
+
+</details>
+
+### 29. Generative Engine Optimization: How to Dominate AI Search
+
+📄 [arXiv](https://arxiv.org/abs/2509.08919)　📅 2025-09
+
+**关键词**：`analysis`、`AI search bias`、`earned media`、`source mix`、`measurement`
+
+👤 **作者**：Mahe Chen、Xiaoxuan Wang、Kaiwen Chen、Nick Koudas
+
+- 🎯 **研究动机**：AI 搜索（ChatGPT/Perplexity/Gemini）与传统 Google 的信源选择差异缺乏受控大尺度对比——GEO 策略的地基
+- 🔬 **研究方法**：多垂直域、多语言、多查询改写的大规模受控实验，量化两类系统在信源构成上的系统性差异
+- 📌 **结论**：AI 搜索对 earned media（第三方权威源）呈系统性压倒性偏好，与 Google 更均衡的混合形成反差；各 AI 搜索在域多样性、新鲜度、跨语言稳定性与措辞敏感性上差异显著——GEO 测量的实证基线
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+The rapid adoption of generative AI-powered search engines like ChatGPT, Perplexity, and Gemini is fundamentally reshaping information retrieval, moving from traditional ranked lists to synthesized, citation-backed answers. This shift challenges established Search Engine Optimization (SEO) practices and necessitates a new paradigm, which we term Generative Engine Optimization (GEO). This paper presents a comprehensive comparative analysis of AI Search and traditional web search (Google). Through a series of large-scale, controlled experiments across multiple verticals, languages, and query paraphrases, we quantify critical differences in how these systems source information. Our key findings reveal that AI Search exhibit a systematic and overwhelming bias towards Earned media (third-party, authoritative sources) over Brand-owned and Social content, a stark contrast to Google's more balanced mix. We further demonstrate that AI Search services differ significantly from each other in their domain diversity, freshness, cross-language stability, and sensitivity to phrasing. Based on these empirical results, we formulate a strategic GEO agenda. We provide actionable guidance for practitioners, emphasizing the critical need to: (1) engineer content for machine scannability and justification, (2) dominate earned media to build AI-perceived authority, (3) adopt engine-specific and language-aware strategies, and (4) overcome the inherent "big brand bias" for niche players. Our work provides the foundational empirical analysis and a strategic framework for achieving visibility in the new generative search landscape.
+
+</details>
+
+### 30. E-GEO: A Testbed for Generative Engine Optimization in E-Commerce
+
+📄 [arXiv](https://arxiv.org/abs/2511.20867)　📅 2025-11
+
+**关键词**：`benchmark`、`e-commerce GEO`、`rewriting`、`testbed`、`shopping agent`
+
+👤 **作者**：Puneet S. Bagga、Vivek F. Farias、Tamar Korkotashvili、Tianyi Peng、Yuhang Wu
+
+- 🎯 **研究动机**：会话式购物 agent 兴起重塑电商检索，而 GEO 实践 ad hoc、影响不明——电商设定缺乏专门数据集
+- 🔬 **研究方法**：E-GEO 首个电商 GEO 数据集：13,747 条真实多句消费查询、每条配 10 个检索到的 Amazon listing（含意图/约束/偏好/购物上下文）；在 5 个生成引擎 × 7 个 LLM rewriter × 15 个手工启发式上做大规模实证并将优化形式化
+- 📌 **结论**：电商渠道 GEO 的系统测试床——该论文与 One Polluted Page/EcoGEO 共同构成推荐 agent 操纵的电商线
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+With the rise of large language models (LLMs), generative engines have become powerful alternatives to traditional search, reshaping retrieval tasks. In e-commerce, for instance, conversational shopping agents now guide consumers to relevant products. This shift has created the need for generative engine optimization (GEO) -- improving content visibility and relevance for generative engines. Despite its growing importance, current GEO practices are largely ad hoc, and their impacts remain poorly understood, especially in the e-commerce setting. We address this gap by introducing E-GEO, the first dataset built specifically for e-commerce GEO. E-GEO contains 13,747 realistic, multi-sentence consumer product queries, each paired with 10 retrieved Amazon listings, capturing rich intent, constraints, preferences, and shopping contexts that existing datasets miss. Using this dataset, we conduct the first large-scale empirical study of e-commerce GEO across five representative generative engines, seven popular LLM rewriters, and fifteen hand-crafted rewriting heuristics. We further formulate GEO as an optimization problem and develop a lightweight prompt meta-optimization algorithm that significantly improves over heuristic baselines. Notably, the optimized prompts reveal a stable, domain-agnostic pattern, suggesting the existence of a "universally effective" GEO strategy. Finally, we red-team the GEO system through both heuristic and optimization-based attacks and show that, under a simple in-prompt defense, gains from GEO reflect genuine content improvement rather than manipulation, anchoring GEO as a substantive and well-defined optimization problem.
+
+</details>
+
+### 31. Source Coverage and Citation Bias in LLM-based vs. Traditional Search Engines
+
+📄 [arXiv](https://arxiv.org/abs/2512.09483)　📅 2025-12
+
+**关键词**：`analysis`、`citation bias`、`LLM search engine`、`credibility`、`source diversity`
+
+👤 **作者**：Peixian Zhang、Qiming Ye、Zifan Peng、Kiran Garimella、Gareth Tyson
+
+- 🎯 **研究动机**：LLM 搜索引擎以摘要+有限引用回应查询，其信源覆盖与引用偏差相对传统引擎的净变化未测
+- 🔬 **研究方法**：大规模实证：55,936 条查询 × 6 个 LLM-SE × 2 个传统引擎，比较域多样性、可信度、政治中性与安全性，并以特征归因分析选源标准
+- 📌 **结论**：LLM-SE 引用域更多样（37% 域为其独有）但在可信度、政治中性与安全指标上并未超过传统引擎——引用透明与信任的落差实测
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+LLM-based Search Engines (LLM-SEs) introduces a new paradigm for information seeking. Unlike Traditional Search Engines (TSEs) (e.g., Google), these systems summarize results, often providing limited citation transparency. The implications of this shift remain largely unexplored, yet raises key questions regarding trust and transparency. In this paper, we present a large-scale empirical study of LLM-SEs, analyzing 55,936 queries and the corresponding search results across six LLM-SEs and two TSEs. We confirm that LLM-SEs cites domain resources with greater diversity than TSEs. Indeed, 37% of domains are unique to LLM-SEs. However, certain risks still persist: LLM-SEs do not outperform TSEs in credibility, political neutrality and safety metrics. Finally, to understand the selection criteria of LLM-SEs, we perform a feature-based analysis to identify key factors influencing source choice. Our findings provide actionable insights for end users, website owners, and developers.
+
+</details>
+
+### 32. Controlling Output Rankings in Generative Engines for LLM-based Search
+
+📄 [arXiv](https://arxiv.org/abs/2602.03608)　📅 2026-02
+
+**关键词**：`attack`、`output ranking control`、`black-box optimization`、`small business visibility`
+
+👤 **作者**：Haibo Jin、…、Haohan Wang
+
+- 🎯 **研究动机**：LLM 推荐强依赖初始检索序，小商家与独立创作者可见性被系统性压缩——能否黑盒操纵输出排序
+- 🔬 **研究方法**：CORE 以搜索引擎返回内容为作用面（LLM 交互黑盒）：向被检索内容追加三类策略性优化文本——字符串型、推理型、评论型——引导生成引擎的输出排序
+- 📌 **结论**：三类优化内容均有效塑造输出排序——把排名操纵从搜索引擎时代平移到生成式引擎的系统性方法
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+The way customers search for and choose products is changing with the rise of large language models (LLMs). LLM-based search, or generative engines, provides direct product recommendations to users, rather than traditional online search results that require users to explore options themselves. However, these recommendations are strongly influenced by the initial retrieval order of LLMs, which disadvantages small businesses and independent creators by limiting their visibility. In this work, we propose CORE, an optimization method that \textbf{C}ontrols \textbf{O}utput \textbf{R}ankings in g\textbf{E}nerative Engines for LLM-based search. Since the LLM's interactions with the search engine are black-box, CORE targets the content returned by search engines as the primary means of influencing output rankings. Specifically, CORE optimizes retrieved content by appending strategically designed optimization content to steer the ranking of outputs. We introduce three types of optimization content: string-based, reasoning-based, and review-based, demonstrating their effectiveness in shaping output rankings. To evaluate CORE in realistic settings, we introduce ProductBench, a large-scale benchmark with 15 product categories and 200 products per category, where each product is associated with its top-10 recommendations collected from Amazon's search interface. Extensive experiments on four LLMs with search capabilities (GPT-4o, Gemini-2.5, Claude-4, and Grok-3) demonstrate that CORE achieves an average Promotion Success Rate of \textbf{91.4\% @Top-5}, \textbf{86.6\% @Top-3}, and \textbf{80.3\% @Top-1}, across 15 product categories, outperforming existing ranking manipulation methods while preserving the fluency of optimized content.
+
+</details>
+
+### 33. Don't Measure Once: Measuring Visibility in AI Search (GEO)
+
+📄 [arXiv](https://arxiv.org/abs/2604.07585)　📅 2026-04
+
+**关键词**：`analysis`、`GEO measurement`、`visibility distribution`、`repeated measurement`
+
+👤 **作者**：Julius Schulte、Malte Bleeker、Philipp Kaufmann
+
+- 🎯 **研究动机**：AI 搜索本质概率性——答案随运行、提示与时间变化，单次可见性观测不可靠
+- 🔬 **研究方法**：基于实证研究刻画 GEO 可见性测量的方差结构，论证重复测量的必要性
+- 📌 **结论**：品牌 GEO 表现必须以分布而非单点刻画、必须重复测量——GEO 测量方法论的正确起点
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+As large language model-based chat systems become increasingly widely used, generative engine optimization (GEO) has emerged as an important problem for information access and retrieval. In classical search engines, results are comparatively transparent and stable: a single query often provides a representative snapshot of where a page or brand appears relative to competitors. The inherent probabilistic nature of AI search changes this paradigm. Answers can vary across runs, prompts, and time, making one-off observations unreliable. Drawing on empirical studies, our findings underscore the need for repeated measurements to assess a brand's GEO performance and to characterize visibility as a distribution rather than a single-point outcome.
+
+</details>
+
+### 34. From Experience to Skill: Multi-Agent Generative Engine Optimization via Reusable Strategy Learning
+
+📄 [arXiv](https://arxiv.org/abs/2604.19516) · 🐙 [Code](https://github.com/Wu-beining/MAGEO)　📅 2026-04　🏷 ACL 2026 Findings
+
+**关键词**：`tool`、`strategy learning`、`multi-agent GEO`、`reusable skill`、`causal attribution`
+
+👤 **作者**：Beining Wu、…、Fu Li
+
+- 🎯 **研究动机**：既有 GEO 方法逐实例孤立优化，无法跨任务与引擎积累可迁移的优化策略
+- 🔬 **研究方法**：MAGEO 把 GEO 重构为策略学习：规划-编辑-保真评估多 agent 执行层 + 把验证过的编辑模式蒸馏为引擎专属可复用技能；Twin Branch 评估协议对内容编辑做因果归因；DSV-CF 双轴指标统一语义可见性与归因准确率；发布 MSME-GEO-Bench
+- 📌 **结论**：三个主流引擎上可见性与引用保真同时大幅超越启发式基线，消融确认引擎专属技能的贡献——GEO 的自演化能力化。ACL 2026 Findings
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Generative engines (GEs) are reshaping information access by replacing ranked links with citation-grounded answers, yet current Generative Engine Optimization (GEO) methods optimize each instance in isolation, unable to accumulate or transfer effective strategies across tasks and engines. We reframe GEO as a strategy learning problem and propose MAGEO, a multi-agent framework in which coordinated planning, editing, and fidelity-aware evaluation serve as the execution layer, while validated editing patterns are progressively distilled into reusable, engine-specific optimization skills. To enable controlled assessment, we introduce a Twin Branch Evaluation Protocol for causal attribution of content edits and DSV-CF, a dual-axis metric that unifies semantic visibility with attribution accuracy. We further release MSME-GEO-Bench, a multi-scenario, multi-engine benchmark grounded in real-world queries. Experiments on three mainstream engines show that MAGEO substantially outperforms heuristic baselines in both visibility and citation fidelity, with ablations confirming that engine-specific preference modeling and strategy reuse are central to these gains, suggesting a scalable learning-driven paradigm for trustworthy GEO. Code is available at https://github.com/Wu-beining/MAGEO
+
+</details>
+
+### 35. From Citation Selection to Citation Absorption: A Measurement Framework for Generative Engine Optimization Across AI Search Platforms
+
+📄 [arXiv](https://arxiv.org/abs/2604.25707)　📅 2026-04
+
+**关键词**：`analysis`、`citation influence`、`measurement framework`、`platform comparison`
+
+👤 **作者**：Zhang Kai、He Xinyue、Yao Jingang
+
+- 🎯 **研究动机**：生成引擎决定信息是被发现、被引用还是被实际吸收进答案——被引用≠有影响，两阶段测量缺框架
+- 🔬 **研究方法**：两阶段测量框架：引用选择（平台触发搜索并选源）与引用吸收（被引页贡献语言/证据/结构/事实支持）；基于 geo-citation-lab 数据（602 受控 prompt × ChatGPT/AI Overview/Perplexity、21,143 条有效搜索层引用、18,151 个抓取页、72 个特征）
+- 📌 **结论**：引用广度与深度背离——Perplexity 与 Google 平均引用更多源，ChatGPT 引用更少但被引页平均影响显著更高；高影响页更长、更结构化、语义更对齐、可提取证据更丰富
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Generative search engines increasingly determine whether online information is merely discoverable, cited as a source, or actually absorbed into generated answers. This paper proposes a two-stage measurement framework for Generative Engine Optimization (GEO): citation selection, where a platform triggers search and chooses sources, and citation absorption, where a cited page contributes language, evidence, structure, or factual support to the final answer. We analyze the public geo-citation-lab dataset covering 602 controlled prompts across ChatGPT, Google AI Overview/Gemini, and Perplexity; 21,143 valid search-layer citations; 23,745 citation-level feature records; 18,151 successfully fetched pages; and 72 extracted features. The central descriptive finding is that citation breadth and citation depth diverge. Perplexity and Google cite more sources on average, while ChatGPT cites fewer sources but shows substantially higher average citation influence among fetched pages. High-influence pages tend to be longer, more structured, semantically aligned, and richer in extractable evidence such as definitions, numerical facts, comparisons, and procedural steps. The results suggest that GEO should be measured beyond citation counts, with answer-level absorption treated as a separate outcome.
+
+</details>
+
+### 36. What Gets Cited: Competitive GEO in AI Answer Engines
+
+📄 [arXiv](https://arxiv.org/abs/2605.25517)　📅 2026-05
+
+**关键词**：`analysis`、`competitive GEO`、`citation factor`、`factorial design`、`position bias`
+
+👤 **作者**：Rahul Vishwakarma、Shushant Kumar、Ratnesh Jamidar
+
+- 🎯 **研究动机**：答案引擎只引用少数来源——可见性取决于被引用；两个被检索候选竞争时什么决定谁被首引
+- 🔬 **研究方法**：受控双文档 RAG 测试床：恰注入两个候选源并测首引用标记指向；6 个 LLM × 252,000 次配对试验 × 18 个内容因子的单因子设计，品牌匿名与顺序对消分离内容效应与位置偏置
+- 📌 **结论**：主题相关性与列表位置是首引最大驱动；显式价格信息与新鲜时间戳稳定加分；完整性与信任线索增益较小、纯格式编辑几乎无效——竞争 GEO 的因子效应谱
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+AI answer engines generate answers from retrieved pages but cite only a few sources. This makes visibility depend not just on ranking, but on being cited. We study competitive Generative Engine Optimization (GEO): when two retrieved candidates compete, what makes one more likely to be cited first? We build a controlled two-document retrieval-augmented generation (RAG) testbed that injects exactly two candidate sources into the model context and measures which source is referenced by the first citation marker in the output. Across six LLMs we execute 252,000 trials, repeated paired comparisons under one factorial program over 18 content factors. In each trial the two sources differ in exactly one factor; we use brand anonymization and counterbalanced source order to separate content effects from position bias. Mixed-effects models show that topical relevance and list position are the biggest drivers of being cited first. Including explicit price information and a recent timestamp also helps consistently. Completeness and trust cues add smaller gains, while formatting-only edits have little impact. We release a reproducible evaluation protocol and a prioritized GEO checklist for practitioners, and we exercised it in an early internal pilot at Sprinklr, where teams reported positive qualitative feedback on workflow usability.
+
+</details>
+
+### 37. Position: Generative Engine Optimization Creates Underexamined Risks, Governance Must Target Concentration, Disclosure, and Academic Blind Spots
+
+📄 [arXiv](https://arxiv.org/abs/2606.12439)　📅 2026-06　🏷 ICML 2026 Position Track
+
+**关键词**：`survey`、`GEO governance`、`concentrated influence`、`disclosure`、`auditing`
+
+👤 **作者**：Yizhu Wen、Nan Zhang、Haohan Yuan、Xun Chen、Haopeng Zhang、Hanqing Guo
+
+- 🎯 **研究动机**：搜索从 SEO 到 GEO 的转型产生未被检视的系统性风险，治理缺位
+- 🔬 **研究方法**：形式化通用 GEO 流水线定位优化作用点，系统对比学术界与工业界实践差异
+- 📌 **结论**：识别三重风险——低可竞争性与系统敏感性导致的集中影响、证据与推理链中的未披露商业影响、离线评测与部署系统间的学界-工业盲点；主张答案级治理：可竞争性、高精度披露、实质影响的黑盒审计与部署对齐指标。ICML 2026 Position Track
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language model (LLM) answer engines are increasingly used for information seeking, shifting visibility from ranked lists to synthesized answers. This enables Generative Engine Optimization (GEO), which targets LLM answer engines' evidence pool and generation. We analyze the search engine optimization (SEO) to GEO transition to identify two risks: (i) concentrated influence from low contestability and system sensitivity, and (ii) undisclosed commercial influence embedded in evidence and reasoning. We then formalize a general GEO pipeline to locate where optimization acts and compare academic and industry practices, revealing a third risk: (iii) academic-industry blind spots driven by visibility and evaluation asymmetries between offline setups and deployed systems. This position argues the need for answer-level governance and measurement: stronger contestability, high-precision disclosure, black-box auditing of material influence, and deployment-aligned metrics for exposure persistence.
+
+</details>
+
+### 38. Whose hotel does the AI recommend? An algorithm audit of reputation signals in LLM-assisted hotel selection
+
+📄 [arXiv](https://arxiv.org/abs/2606.16344)　📅 2026-06
+
+**关键词**：`analysis`、`algorithm audit`、`reputation signal`、`conjoint`、`LLM recommendation`
+
+👤 **作者**：Mirza Samad Ahmed Baig、Syeda Anshrah Gillani、Asher Ali
+
+- 🎯 **研究动机**：旅行者日益问 LLM 助手订哪家酒店——它们成为物业可见性的守门人，但什么在驱动其推荐从未被记录
+- 🔬 **研究方法**：预注册算法审计：随机化选择联合设计，跨 persona、prompt 模板与 12 个开源/专有模型，在五个酒店间选择，七种信号（评分、评论量与新鲜度、商家回复、连锁、价格、环保认证、列表位置）独立随机化，估计各信号对推荐概率的平均边际成分效应
+- 📌 **结论**：评分与价格主导（top 评分 +31.6pp、高价 −30.0pp）；无内容因素的列表位置因果移动推荐（价值约 $12/晚）；模型高估环保认证、完全忽略商家回复；陈述理由与实际权重不一致——GEO 操纵面的审计级画像
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Travelers increasingly ask large language model (LLM) assistants which hotel to book, making these systems gatekeepers of property visibility -- yet what moves their recommendations is undocumented. We conduct a pre-specified algorithm audit using a randomized choice-based conjoint: across personas, prompt templates, and twelve open-weight and proprietary models, assistants choose among five hotels whose guest rating, review volume and recency, management response, chain affiliation, price, eco-certification, and list position are independently randomized. We estimate the average marginal component effect of each signal on the probability of recommendation. Guest rating and price dominate (a top rating raises selection by 31.6 percentage points; a high price lowers it by 30.0), reproducing human valence-and-price primacy but over-weighting eco-certification and ignoring management response. List position -- a content-free artifact -- shifts recommendations causally, worth about \$12 per night. Stated reasons track revealed weights imperfectly. The findings ground generative engine optimization and the accountability of AI infomediaries in causal evidence.
+
+</details>
+
+### 39. Incumbent Advantage: Brand Bias and Cognitive Manipulation Dynamics in LLM Recommendation Systems
+
+📄 [arXiv](https://arxiv.org/abs/2606.17443)　📅 2026-06
+
+**关键词**：`analysis`、`brand bias`、`monopoly dynamics`、`GEO competition`、`manipulation`
+
+👤 **作者**：Xi Chu、Yupeng Hou
+
+- 🎯 **研究动机**：LLM 成为消费者找产品的主渠道，品牌在这个新渠道如何竞争、垄断与被操纵未知
+- 🔬 **研究方法**：护肤品类（体验品）× 三个商用 LLM 三组实验：同规格下知名品牌的垄断程度；权威式营销语言（含伪造临床证据宣称）的破垄断效应；多品牌同时采用 GEO 策略的竞争后果
+- 📌 **结论**：知名品牌在同规格下 100% 被推荐（IAI=10.0），但竞争者 <0.1 星的评分优势即打破垄断；权威营销语言在 +0.17 星等值处破垄断且模型间响应迥异；全员采用同一优化策略时个体收益从 +0.802 崩至 0.007——GEO 竞争的社会困境
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models (LLMs) are becoming a major way for consumers to find products, but we do not yet understand how brands compete in this new channel. We study brand dynamics in LLM recommendations using skincare products -- a category where consumers cannot easily judge quality before buying and must rely on brand reputation -- across three commercial LLMs (GPT-4o-mini, Claude Sonnet, Gemini 3 Flash), with a robustness check on search goods. In three experiments, we find: (1) a Conditional Monopoly where well-known brands get recommended 100% of the time (IAI = 10.0) when all products have the same specifications, but this dominance disappears with less than a +0.1-star rating advantage for a competitor; (2) authority-style marketing language, including fabricated clinical-evidence claims, breaks this monopoly at a Bias Surplus Value equal to +0.17 rating points, with each model responding differently; and (3) a social dilemma in multi-brand GEO competition: when all brands adopt the same optimization strategy, individual payoff falls from +0.802 to +0.007 in our payoff proxy, and non-participating brands receive zero recommendations in our tests. Our results suggest that generative engine optimization (GEO) should be studied not only as a security risk, but also as an emerging marketing practice that shapes market competition.
+
+</details>
+
+### 40. Generative Engine Optimization at Scale: Measuring Brand Visibility Across AI Search Engines
+
+📄 [arXiv](https://arxiv.org/abs/2606.20065)　📅 2026-06
+
+**关键词**：`analysis`、`brand visibility`、`tier ladder`、`AI search measurement`
+
+👤 **作者**：Pratyush Kumar
+
+- 🎯 **研究动机**：非头部品牌（SME/D2C/创作者/初创）在 AI 搜索中的可见性缺乏大规模测量——而它们恰是最依赖该渠道的
+- 🔬 **研究方法**：分析 Ranqo 平台 2026 年 3–5 月间 100+ 品牌、100K+ prompt 响应的首轮可见性分布与信源依赖
+- 📌 **结论**：清晰的三层品牌阶梯：全球名牌（Stripe/Nike 类）在 73% 的相关 AI 回答中首轮出现，成熟中腰部与区域性品牌骤降至个位数百分比——头部锁定效应的大规模实证
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+People increasingly get answers straight from AI search engines like ChatGPT, Claude, Perplexity, and Gemini rather than scrolling search results. Brands that once focused on search engine optimization (SEO) must now optimize for how these engines represent, cite, and recommend them -- a shift variously called Generative Engine Optimization (GEO), Answer Engine Optimization (AEO), and AI Search Visibility. We treat AEO and AI Visibility as part of GEO, and study how to measure brand visibility across AI engines: what they value when they cite a brand, which sources they rely on, and what content large language models surface. The hard case is everyone outside the already-authoritative top brands -- SMEs, D2C brands, creators, and early-stage startups. We analyze 100K+ prompt responses across 100+ brands tracked on Ranqo between March and May 2026. First visibility runs form a clear three-tier brand-stature ladder: global household names (e.g., Stripe, Nike) appear in 73% of relevant AI answers on their first run; established mid-market and regional brands (e.g., Olipop, Klaviyo) in 44%; niche and small brands in just 11% -- about 30 percentage points per step. When engines cite sources, about 78% go to corporate websites; among non-corporate sources YouTube leads, ahead of Reddit, editorial media, and Wikipedia. The highest-leverage page is the ranked "best-of" listicle, the most-cited content format at about 21% of all citations. Sentiment is the unstable signal: whether a brand is framed positively or negatively flips about 6.7 times more often than whether it is mentioned at all. These findings provide a first large-scale baseline for measuring GEO: AI brand visibility can be measured, differs by platform, and varies strongly by brand maturity. We close by proposing seven v1.1 protocols to test whether specific recommendations can causally improve AI visibility.
+
+</details>
+
+### 41. Optimizing Visibility in Generative Engines: A Critical Survey of Generative Engine Optimization (2023-2026)
+
+📄 [arXiv](https://arxiv.org/abs/2607.14035)　📅 2026-07
+
+**关键词**：`survey`、`GEO pipeline`、`evidence standards`、`reproducibility`、`critique`
+
+👤 **作者**：Olivier Martinez
+
+- 🎯 **研究动机**：GEO 领域术语、指标与证据标准高度异质，结论难以横向比较
+- 🔬 **研究方法**：批判性综述 45 篇研究（2023.11–2026.07），统一审视其指标与实验设定
+- 📌 **结论**：GEO 非单一排序任务而是随机、部分可观测的流水线（搜索激活→爬取索引→检索→重排→上下文分配→引用→凸显→事实吸收→用户行为）；奠基论文的增益条件于源已在固定上下文中，既不建立可发现性也不证明持久流量；主题相关性与上下文位置是最可复现的杠杆——GEO 证据地图
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Generative Engine Optimization (GEO) seeks to increase content's presence, likelihood of citation, or influence in answers produced by generative engines. Since the foundational GEO paper, the field has expanded rapidly, but terminology, metrics, and evidence standards remain heterogeneous. This critical survey reviews 45 studies selected under a November 2023-July 2026 publication window, including one earlier preprint published at EMNLP after the window opened, plus relevant RAG and evaluation work. We argue that GEO is not a single ranking task but a stochastic, partially observable pipeline spanning search activation, crawling and indexing, retrieval, reranking and context allocation, citation, prominence, factual absorption, fidelity, and user behavior. The foundational paper's widely cited gains are valid within its experimental setting but conditional on a source already being present in a fixed context; they establish neither organic discoverability nor durable traffic effects. Reviewed work indicates that topical relevance and context position are the most reproducible levers, generic heuristics transfer poorly, competition can erode individual gains, and citation-oriented rewrites can impair retrieval. Commercial audits further reveal low source overlap, substantial run-to-run variability, and persistent fidelity gaps. We contribute a multistage formal model, a visibility vector separating discoverability, citation, absorption, and economic outcomes, an evidence hierarchy, and a reproducible protocol based on repeated measurements, paraphrases, controls, human validation, and multi-actor interference. Within this corpus, the evidence is narrow: already-retrieved content can causally alter its citation or use, but no reviewed technique shows a stable, longitudinal, cross-platform causal effect on organic discoverability or downstream behavior.
+
+</details>
+
+### 42. How Artificial Intelligence LLM Engines Shape the Global Conflict Information Environment
+
+📄 [arXiv](https://arxiv.org/abs/2607.14197)　📅 2026-07
+
+**关键词**：`analysis`、`misinformation`、`GEO weaponization`、`thin record`、`conflict`
+
+👤 **作者**：Jason Miklian
+
+- 🎯 **研究动机**：AI 引擎承接越来越多关于冲突的问题——其错误是否有结构模式、对全球冲突信息环境意味着什么
+- 🔬 **研究方法**：28 场冲突 × 5 个头部引擎共 5,460 条回答对照文献证据评分；并分析引擎取用冲突事实的 1,048 个网站
+- 📌 **结论**：可检索记录越薄，引擎越多发明、误归因与误计数；薄记录恰是最易被 GEO 扭曲的——构成结构性误/虚假信息暴露；GEO 源优化已在冲突信息环境发生——地缘误信息与 GEO 的交汇
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Artificial Intelligence (AI) answer engines now field a growing share of the questions that analysts, scholars, and the public ask about issues of peace and conflict. Large Language Models (LLMs) are known to hallucinate under certain conditions, but do these errors have discernible patterns when they are asked about conflicts, and if so what can that teach us about the changing global conflict information environment? To answer, we first asked a battery of questions about 28 conflicts to five leading answer engines and scored their 5,460 answers against documented evidence. We found that the thinner the retrievable record around a given conflict, the more the engines invent, misattribute, and miscount. Thin records don't just encourage hallucination, but create structural exposure to mis- and disinformation, because they are the easiest records to warp through Generative Engine Optimization (GEO) to bias engine responses. Through an analysis of 1,048 websites that the AI LLMs pulled conflict facts from, we found that GEO source optimization is already happening, and while state-partisan digital capture remains incipient it is rapidly growing. We explain what these findings mean for scholarship with the rise of GEO information warfare, and for policy argue for a return to the deep local monitoring and translation-based research that AI tools cannot replicate, closing with a discussion of future research opportunities and challenges in this fast-moving space.
+
+</details>
+
+### 43. Mechanism Design for Generative Engines: From Exploitation toward Win-Win Outcomes
+
+📄 [arXiv](https://arxiv.org/abs/2608.11390)　📅 2026-08
+
+**关键词**：`defense`、`mechanism design`、`Stackelberg game`、`citation war`、`verifiable-content reward`
+
+👤 **作者**：Chen Xu、Zitian Guo、Chenyan Xiong
+
+- 🎯 **研究动机**：生成引擎把引用变成注意力、归因与价值分配机制——内容方为被引而优化 vs 平台保答案质量的张力会升级为引用战
+- 🔬 **研究方法**：把供应方-平台交互形式化为部分监督的重复 Stackelberg 博弈；局部最优响应分析识别引用竞争趋于惰性平稳态的条件；提出 VCR 平台-创作者机制：不只惩罚可疑改写，还对浮现可验证事实性内容的改写给奖励
+- 📌 **结论**：SOTA GEO 攻击能适应常规防御（生成降质、无支持主张的引文导向改写）；VCR 使创作者激励与内容真实性对齐、避免引用战——平台侧治理的机制设计路线
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Generative engines are reshaping the web ecosystem by making citations a key mechanism for allocating attention, attribution, and downstream value. This creates a strategic tension: content providers are incentivized to optimize for model citation, while platforms must preserve answer quality and trustworthy attribution. We show that this tension can escalate into citation wars. In repeated simulations, state-of-the-art generative engine optimization (GEO) attacks adapt to conventional defenses by producing citation-seeking rewrites that degrade document quality and introduce unsupported claims. To study this problem, we formulate the supplier--platform interaction as a repeated Stackelberg game with partial monitoring. A local best-response analysis identifies when citation competition approaches an inert stationary outcome. Motivated by this finding, we propose a platform--creator mechanism called VCR based on verifiable-content rewards. Rather than only penalizing suspicious rewrites, the platform also credits rewrites that surface checkable factual substance, aligning creator incentives with answer trustworthiness. Experiments on three benchmarks show that VCR consistently achieves the largest Net defense-utility score, outperforming the strongest baseline by an average of 12.1 percentage points, and produces a win--win outcome under our empirical equivalence criterion.
+
+</details>
+
+### 44. Beyond the Vacuum: Combinatorial Strategy Selection for Competitor-Aware Generative Engine Optimization
+
+📄 [arXiv](https://arxiv.org/abs/2608.27631)　📅 2026-08
+
+**关键词**：`tool`、`competitor-aware GEO`、`combinatorial strategy`、`Bayesian optimization`、`externality`
+
+👤 **作者**：Vaibhav Sourirajan、Yao Zhang、Himanshu Kumar、Sahil Wadhwa、Mann Patel、Amirfarrokh Iranitalab
+
+- 🎯 **研究动机**：传统 GEO 孤立选择改写策略，忽略关键外部性：随着内容优化被广泛采用，最优策略本身会改变
+- 🔬 **研究方法**：把 GEO 形式化为竞争感知策略选择：先用组合结构贝叶斯优化（BOCS）高效搜索改写策略空间，再从黑盒观测生成偏好对与推理轨迹微调 LLM，使其分析文档语料并提出最优策略组合；构建竞争增强集 geo-bench_comp
+- 📌 **结论**：geo-bench 与竞争集上多项可见性指标超既有 agentic 与单启发式方法，且可迁移到多个 OOD 数据集——从真空优化到竞争动力学
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Generative Engine Optimization (GEO) has emerged as a novel paradigm for transforming content to increase visibility in Large Language Model (LLM) responses. Traditional GEO methods, however, select rewriting strategies in isolation, ignoring a critical externality: as adoption of content optimization grows, optimal strategies for rewriting content change. We formalize GEO as a competitor-aware strategy selection problem and propose a two-phase pipeline to solve it: (1) We use Bayesian Optimization of Combinatorial Structures (BOCS) to efficiently search the space of rewriting strategies, (2) We generate preference pairs and grounded reasoning traces from the BOCS black-box observations to fine-tune a language model to analyze a document corpus and propose optimal rewriting strategy combinations. We achieve state-of-the-art performance across several impression metrics over existing agentic and single-heuristic methods on both geo-bench and our synthetically augmented competitive dataset geo-bench_comp. Our method also transfers to multiple out-of-distribution datasets, proving effective across domains, queries, and document types.
+
+</details>
+
+### 45. Agent2UCB: Agentic System for Generative Engine Optimization
+
+📄 [arXiv](https://arxiv.org/abs/2608.29063)　📅 2026-08
+
+**关键词**：`tool`、`agentic GEO`、`bandit`、`strategy selection`、`SEO readiness`
+
+👤 **作者**：Sheldon Yu、…、Julian McAuley
+
+- 🎯 **研究动机**：GEO 策略效果因内容而异，需要自主的反馈驱动选择而非人工试探
+- 🔬 **研究方法**：Agent2UCB agentic 系统：对每条内容评估 9 种 GEO 策略，用融合 LLM 先验与在线奖励的 UCB bandit 加速选择；配轻量纯文本 SEO 就绪度评估（可读性/主题覆盖/EEAT 可信度）监控副作用
+- 📌 **结论**：GEO-Bench 上一致可见性增益且保持 SEO 质量——AutoGEO 线的 bandit 化演进（演示系统）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language model driven search engines such as Google AI Overviews and Perplexity have created new opportunities for Generative Engine Optimization (GEO) the practice of refining content to increase its likelihood of being cited or summarized by generative systems. We demonstrate Agent2UCB, an agentic GEO system that autonomously improves content visibility through customized, feedback-driven optimization. For each content item, the system evaluates nine GEO strategies, identifies the most effective method, and accelerates selection using a bandit-based Agent2UCB policy that integrates LLM priors with online reward signals. To monitor side effects, the system also provides a lightweight, text-only SEO readiness evaluation covering readability, topical coverage, and EEAT-style credibility. Experiments on GEO-Bench show consistent visibility gains while preserving SEO quality. The demo allows users to choose the websites of interest, observe the optimization workflow, and compare GEO/SEO outcomes across methods.
+
+</details>
+
+### 46. CHASE: How Content Ecosystems Are Reshaped When Ranking Is the Only Target
+
+📄 [arXiv](https://arxiv.org/abs/2608.30466)　📅 2026-08　🏷 COLM 2026
+
+**关键词**：`analysis`、`content homogenization`、`ecosystem simulation`、`ranking signal exploitation`
+
+👤 **作者**：Qianwen Gao、Zichang Su、Yiwen Hou、Arlen Kumar、Leanid Palkhouski
+
+- 🎯 **研究动机**：GEO 被广泛采用后，内容生态在反复优化下会被如何重塑——群体级效应几乎无人研究
+- 🔬 **研究方法**：CHASE 受控仿真框架：以 ranking 为可见性代理（与真实生成回答中的引用验证，rank-citation AUC 0.853±0.093），迭代 排序-特征判别-改写-评测 20 轮 × 6 个域，配随机目标对照
+- 📌 **结论**：全部六域质量-排序对齐下降（Spearman ρ 变化 −0.107 至 −0.018，均值 −0.068）：越贴近排序特征轮廓的文档与独立评判的文档质量越脱钩；随机目标对照显著平缓——单目标排序信号驱动的内容生态同质化。COLM 2026
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Generative Engine Optimization (GEO) is increasingly used to improve content visibility in LLM-based retrieval systems, yet its population-level effects under repeated optimization remain poorly understood. We introduce Content Homogenization under rAnking Signal Exploitation (CHASE), a controlled simulation framework for studying how content ecosystems are reshaped when creators repeatedly adapt documents to an LLM ranking signal. We use ranking as a proxy for source visibility and validate this abstraction against citations in grounded generated responses, obtaining a rank-citation AUC of 0.853 $\pm$ 0.093 across six domains. CHASE then iterates ranking, feature discrimination, rewriting, and evaluation over 20 rounds across different domains. Quality-ranking alignment decreases in all six domains: from R0 to R20, the change in Spearman's rho ranges from -0.107 to -0.018, with a mean change of -0.068, which means documents closer to the ranking feature profile become less aligned with independently judged document quality over the simulation horizon. A random-target control has shown that it is associated with adaptation toward ranking-derived incentives rather than iterative rewriting alone. The resulting ecosystem dynamics are strongly domain-dependent. Together, these findings show how repeated optimization against a fixed LLM ranking signal can reshape both content populations and the incentives faced by content creators.
+
+</details>
+
+### 47. Measuring GEO Visibility: Prompt Corpora Define the Answer Market
+
+📄 [arXiv](https://arxiv.org/abs/2609.06811)　📅 2026-09
+
+**关键词**：`analysis`、`GEO measurement validity`、`prompt corpus`、`answer market`、`scoring rules`
+
+👤 **作者**：Olivier Martinez
+
+- 🎯 **研究动机**：GEO 可见性分数聚合来源出现、引用与品牌提及——但 prompt 语料选定被评估情境、权重决定其相对重要性，二者共同定义的答案市场未必代表真实用户需求
+- 🔬 **研究方法**：批判性方法论：借鉴总调查误差与 IR 评测理论，规定情境标注、prompt 表述、执行条件、权重与评分规则五要素；权重未知或待定时报告可容许分数集而非单点
+- 📌 **结论**：prompt 措辞可改变检索、竞争源与生成答案；用 LLM 做出现/引用评分时，指令本身就能改变未变答案的得分——GEO 分数到底测的是什么，必须先回答测量效度
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+GEO (generative engine optimization) visibility scores aggregate source appearances, citations, or brand mentions in generated answers. The prompt corpus selects the situations evaluated, while weights determine their relative importance. Together they define an "answer market" that need not represent actual user demand. Prompt wording can alter retrieval, competing sources, and generated answers. Scoring then requires identifying the appearances, citations, or mentions of interest. If a language model performs this task, its instruction can change the score assigned to an unchanged answer. Our critical survey examines how these choices help define what a GEO score measures. It draws on research into whether indicators measure the intended phenomenon, total survey error, and information retrieval evaluation. The framework specifies situation annotation, prompt formulations, execution conditions, weights, and scoring rules. When weights are unknown or remain to be chosen, the framework reports sets of admissible scores. It distinguishes values compatible with data and assumptions about a target population (partial identification) from variation across weighting conventions (normative sensitivity). A citation alone does not establish a source's contribution. The article defines a comparison of answers generated with and without a source in a controlled documentary context, distinct from an intervention on the full engine with competing sources. The framework is supported by reproducible calculations. No new experiments are reported; its general empirical validity remains to be assessed.
 
 </details>
