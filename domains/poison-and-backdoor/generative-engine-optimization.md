@@ -12,7 +12,7 @@
 - **自动化与个性化优化：** AutoGEO、Mind Reader 与 AgenticGEO 从人工 heuristic 发展到 preference rule、latent user demand 和自演化 strategy search，提升内容适配能力的同时也扩大可自动化操纵的空间。
 - **Black-hat rank manipulation：** Adversarial SEO、StealthRank、LLM ranker injection 与 MGEO 分别利用网页指令、可读文本 suffix、token optimization 和图文联合扰动提升目标排名。
 - **全链路现实性：** SAGEO Arena、GEO-Bench 与 RAG survival 分析表明，能影响 generator 不代表能通过 retriever 与 reranker；结构信号、攻击隐蔽性和真实 search interface 都会改变结论。
-- **下游安全影响：** SafeGEO 把指标从 target rank 扩展到推荐集合中的实际危害，One Polluted Page 表明单页污染即可让 LLM 推荐器批量推广虚构产品；当前防御多为静态 detector 或 prompt guard，SCI-Defense 的语义完整性评分在产品描述域近满分但在通用网页域失效，也佐证防御的场景依赖性。
+- **下游安全影响：** SafeGEO 把指标从 target rank 扩展到推荐集合中的实际危害，One Polluted Page 表明单页污染即可让 LLM 推荐器批量推广虚构产品，EcoGEO 则把单页改写升级为沿 agent 浏览轨迹协同的跨页证据生态（收益来自塑造证据获取过程而非堆内容）；当前防御多为静态 detector 或 prompt guard，SCI-Defense 的语义完整性评分在产品描述域近满分但在通用网页域失效，也佐证防御的场景依赖性。
 
 ## Cooperative GEO 与基础方法
 
@@ -469,5 +469,24 @@ LLM-based ranking systems are vulnerable to Generative Engine Optimization (GEO)
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 Large Language Models (LLMs) are transforming search engines into Conversational Search Engines (CSE). Consequently, Search Engine Optimization (SEO) is being shifted into Conversational Search Engine Optimization (C-SEO). We are beginning to see dedicated C-SEO methods for modifying web documents to increase their visibility in CSE responses. However, they are often tested only for a limited breadth of application domains; we do not know whether certain C-SEO methods would be effective for a broad range of domains. Moreover, existing evaluations consider only a single-actor scenario where only one web document adopts a C-SEO method; in reality, multiple players are likely to competitively adopt the cutting-edge C-SEO techniques, drawing an analogy from the dynamics we have seen in SEO. We present C-SEO Bench, the first benchmark designed to evaluate C-SEO methods across multiple tasks, domains, and number of actors. We consider two search tasks, question answering and product recommendation, with three domains each. We also formalize a new evaluation protocol with varying adoption rates among involved actors. Our experiments reveal that most current C-SEO methods are not only largely ineffective but also frequently have a negative impact on document ranking, which is opposite to what is expected. Instead, traditional SEO strategies, those aiming to improve the ranking of the source in the LLM context, are significantly more effective. We also observe that as we increase the number of C-SEO adopters, the overall gains decrease, depicting a congested and zero-sum nature of the problem. Our code and data are available at https://github.com/parameterlab/c-seo-bench and https://huggingface.co/datasets/parameterlab/c-seo-bench.
+
+</details>
+
+### 25. EcoGEO: Trajectory-Aware Evidence Ecosystems for Web-Enabled LLM Search Agents
+
+📄 [arXiv](https://arxiv.org/abs/2605.12887)　📅 2026-05
+
+**关键词**：`attack`、`evidence ecosystem`、`trajectory-aware GEO`、`coordinated pages`
+
+👤 **作者**：Hengwei Ye、Jiasheng Mao、Zhenhan Guan、Zheng Tian
+
+- 🎯 **研究动机**：现有 GEO 只研究单网页，而 agentic web search 是多步过程（发查询、爬页、跟链接、改写搜索、跨步综合证据），影响力取决于页面如何组织、连接并沿浏览轨迹被遭遇
+- 🔬 **研究方法**：把 GEO 形式化为环境级影响问题；TRACE 构建轨迹感知协同证据生态：agent 可见的导航入口页 + 异构支持页，用共享术语、内链与一致产品属性分阶段引入、验证、强化虚构目标产品；在 OPR-Bench 开放式产品推荐上评测
+- 📌 **结论**：最终目标推荐率 consistently 超页面级 GEO 基线；轨迹级指标显示初始目标爬取、目标定向后续搜索与内链爬取均增加——收益来自塑造 agent 的证据获取过程而非单纯堆目标内容
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Web-enabled LLM agents are changing how online information influences search outcomes. Existing Generative Engine Optimization (GEO) studies mainly focus on individual webpages. However, agentic web search is not a single-document setting: an agent may issue queries, crawl pages, follow links, reformulate searches, and synthesize evidence across multiple browsing steps. Influence therefore depends not only on page content, but also on how pages are organized, connected, and encountered along the agent's browsing trajectory. We study this shift through Ecosystem Generative Engine Optimization (EcoGEO), which treats GEO as an environment-level influence problem for web-enabled LLM agents. To instantiate this perspective, we propose TRACE, a Trajectory-Aware Coordinated Evidence Ecosystem. Given a recommendation query and a fictional target product, our method builds a controlled evidence environment that coordinates an agent-facing navigation entry page with heterogeneous support pages. These pages use shared terminology, internal links, and consistent product attributes to introduce, verify, and reinforce the target product. We evaluate our method on OPR-Bench, a benchmark for open-ended product recommendation. Experiments show that it consistently outperforms page-level GEO baselines in final target recommendation. Trajectory-level metrics further show increased initial target-result crawls, target-specific follow-up searches, and internal-link crawls, suggesting that the gains come from shaping the agent's evidence-acquisition process rather than merely adding more target-related content. Overall, our findings support an ecosystem research paradigm for GEO, where web-enabled LLM agents are studied in relation to the broader evidence environments that guide search, browsing, and answer synthesis.
 
 </details>
