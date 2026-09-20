@@ -10,7 +10,7 @@
 
 - **检索带来的安全退化：** 早期工作发现，从无检索扩展到 Wikipedia 和开放网页后，Agent 的 refusal、bias 与 harmfulness safeguard 会系统性变化，说明正确检索不等于安全综合。
 - **有害信息检索红队：** SearchAttack、CREST-Search 与 SafeSearch 将危险目标重写为搜索任务，并检查 query generation、网页引用和最终回答如何共同绕过 base model 的安全边界。
-- **网页证据操纵：** SearchGEO、UGC poisoning 与 MisKnow-Agent 从替换检索结果发展到 authority cue、虚假共识和可重复出现的用户生成内容，攻击目标也从“被检索”转向“被 Agent 背书”；EcoGEO 再把单页改写升级为沿浏览轨迹协同的跨页证据生态。
+- **网页证据操纵：** SearchGEO、UGC poisoning 与 MisKnow-Agent 从替换检索结果发展到 authority cue、虚假共识和可重复出现的用户生成内容，攻击目标也从“被检索”转向“被 Agent 背书”；One Polluted Page 表明单页污染即可让推荐 LLM 批量推广虚构产品，EcoGEO 再把单页改写升级为沿浏览轨迹协同的跨页证据生态。
 - **长程轨迹劫持：** FORGE 与 Breadcrumbing 利用多个网页和多轮 observation 逐步改变 research plan，表明单页检测不足以覆盖跨文档、跨步骤的 cumulative attack。
 - **过程级对齐：** SafeSearch 与 COMPASS 将监督从 final answer 前移到 query 和 trajectory，并同时约束 utility；当前仍缺少在真实搜索排序、动态网页和未知攻击者站点上的端到端防御证据。
 
@@ -113,7 +113,7 @@ Retrieval-Augmented Generation (RAG) systems are vulnerable to poisoning attacks
 
 ### 6. How Much Can We Trust LLM Search Agents? Measuring Endorsement Vulnerability to Web Content Manipulation
 
-📄 [arXiv](https://arxiv.org/abs/2606.16821)　📅 2026-06
+📄 [arXiv](https://arxiv.org/abs/2606.16821)　📅 2026-06　🏷 EMNLP 2026
 
 **关键词**：`benchmark`、`endorsement corruption`、`web manipulation`、`backend variance`
 
@@ -422,5 +422,24 @@ We present Iris-mini and Iris-pro, two search agents trained at the 35B-A3B and 
 <summary>📝 展开完整英文摘要（Abstract）</summary>
 
 Web-enabled LLM agents are changing how online information influences search outcomes. Existing Generative Engine Optimization (GEO) studies mainly focus on individual webpages. However, agentic web search is not a single-document setting: an agent may issue queries, crawl pages, follow links, reformulate searches, and synthesize evidence across multiple browsing steps. Influence therefore depends not only on page content, but also on how pages are organized, connected, and encountered along the agent's browsing trajectory. We study this shift through Ecosystem Generative Engine Optimization (EcoGEO), which treats GEO as an environment-level influence problem for web-enabled LLM agents. To instantiate this perspective, we propose TRACE, a Trajectory-Aware Coordinated Evidence Ecosystem. Given a recommendation query and a fictional target product, our method builds a controlled evidence environment that coordinates an agent-facing navigation entry page with heterogeneous support pages. These pages use shared terminology, internal links, and consistent product attributes to introduce, verify, and reinforce the target product. We evaluate our method on OPR-Bench, a benchmark for open-ended product recommendation. Experiments show that it consistently outperforms page-level GEO baselines in final target recommendation. Trajectory-level metrics further show increased initial target-result crawls, target-specific follow-up searches, and internal-link crawls, suggesting that the gains come from shaping the agent's evidence-acquisition process rather than merely adding more target-related content. Overall, our findings support an ecosystem research paradigm for GEO, where web-enabled LLM agents are studied in relation to the broader evidence environments that guide search, browsing, and answer synthesis.
+
+</details>
+
+### 23. One Polluted Page Is Enough: Evaluating Web Content Pollution in LLM Recommenders
+
+📄 [arXiv](https://arxiv.org/abs/2606.13610) · 🌐 [Project](https://github.com/leoluolol/forge-benchmark)　📅 2026-06
+
+**关键词**：`attack`、`product fabrication`、`GEO pollution`、`recommendation corruption`
+
+👤 **作者**：Minghao Luo、Liang Chen
+
+- 🎯 **研究动机**：搜索增强 LLM 日益介入日常消费推荐并检索 live 网页，GEO 运营者污染的内容可能使其沦为假产品的不知情推销者
+- 🔬 **研究方法**：FORGE 在冻结的已检索网页集合中把真实产品局部改写为虚构产品，225 个真实产品 × 15 类 × 5 消费场景，12 个商用/开源 LLM 上测假产品被推荐率，并检验四种防御
+- 📌 **结论**：单页污染即达最高 27% fooled rate，top-3 全替换升至 73.8%；模型对产品缺乏稳定先验时更脆弱；reasoning 不缓解反而编造虚假社会证明；怀疑提示同样加重脆弱性，共识过滤器误伤真品，可信度重排只清除约六分之一假货
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Search-augmented LLMs increasingly mediate everyday consumer recommendations by retrieving live web content. This creates a new risk: LLM recommenders may consume web content that Generative Engine Optimization (GEO) operators have polluted to mislead them. We ask: to what extent do they become unwitting promoters of fake products? We introduce FORGE (Fake Online Recommendations in Generative Environments), which locally rewrites real products in a frozen set of retrieved web pages into fake ones and measures how often the LLM recommends the fake product, across 225 real products in 15 categories and 5 consumer scenarios. Across 12 commercial and open-weights LLMs, all models are vulnerable: a single polluted page yields fooled rates of up to 27%, while the full top-3 replacement raises this to 73.8%. Vulnerability varies across categories, increasing when models lack stable prior knowledge of the products. Reasoning does not mitigate this vulnerability; instead, it often generates spurious social proof to justify false recommendations. None of the four defenses is adequate: the skepticism prompt can exacerbate vulnerability much like reasoning, the two consensus filters risk suppressing legitimate products, and credibility re-ranking helps every model but removes only a sixth of the fakes. We release the FORGE benchmark and the evaluation code at https://github.com/leoluolol/forge-benchmark.
 
 </details>
