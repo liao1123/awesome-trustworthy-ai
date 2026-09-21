@@ -336,3 +336,22 @@ To reduce the computation cost and the energy consumption in large language mode
 Large Language Models (LLMs) have significantly advanced text understanding and generation, becoming integral to applications across education, software development, healthcare, entertainment, and legal services. Despite considerable progress in improving model reliability, latency remains under-explored, particularly through recurrent generation, where models repeatedly produce similar or identical outputs, causing increased latency and potential Denial-of-Service (DoS) vulnerabilities. We propose RecurrentGenerator, a black-box evolutionary algorithm that efficiently identifies recurrent generation scenarios in prominent LLMs like LLama-3 and GPT-4o. Additionally, we introduce RecurrentDetector, a lightweight real-time classifier trained on activation patterns, achieving 95.24% accuracy and an F1 score of 0.87 in detecting recurrent loops. Our methods provide practical solutions to mitigate latency-related vulnerabilities, and we publicly share our tools and data to support further research.
 
 </details>
+
+### 18. The More It Says, the More You Pay: A Black-Box Audit of Provider-Side Token Inflation in LLM Services
+
+📄 [arXiv](https://arxiv.org/abs/2609.20370)　📅 2026-09
+
+**关键词**：`attack`、`token inflation`、`provider-side attack`、`black-box audit`、`denial-of-wallet`
+
+👤 **作者**：Leilei Chen、…、Xinpeng Shen
+
+- 🎯 **研究动机**：按 token 计费的 LLM 服务中"说得越多用户付得越多"——不诚实服务商可隐蔽操纵生成以膨胀输出 token 同时大体保持任务效用
+- 🔬 **研究方法**：定义 Provider-Side Token Inflation Attack（PTIA）并在服务商控制管线的查询/prompt/表示/模型四层实例化五种代表性攻击；发现 PTIA 饱和现象（初始攻击急剧加长输出，再加强或组合效果骤减）并溯源到停止行为（首攻骤降 EOS 概率，后续干预仅边际降低）；据此设计轻量单探针审计：受控延长干预算下测输出膨胀
+- 📌 **结论**：每种攻击平均输出长度超干净基线 10.2 倍以上，展示多层可行性与经济吸引力；单探针审计从黑盒响应检出 PTIA——面向用户的 DoW 审计防线
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+In pay-per-token LLM services, the more a model says, the more users pay. Dishonest providers can covertly manipulate generation to inflate output tokens while largely preserving task utility. We define such manipulation as a Provider-Side Token Inflation Attack (PTIA) and instantiate five representative attacks at the query, prompt, representation, and model levels of the provider-controlled pipeline. Our experiments show that each attack increases mean output length to more than 10.2x the clean baseline, demonstrating PTIA's financial appeal and feasibility at multiple stages of generation. Yet auditing PTIA from black-box responses is difficult for users. Our key observation is PTIA saturation: an initial attack sharply lengthens output, but further strengthening or composition has much less effect. We trace this saturation to stopping behavior: an initial PTIA sharply lowers the end-of-sequence token probability, whereas further intervention lowers it only marginally. Building on this insight, we design a lightweight single-probe audit that applies a controlled lengthening intervention. Under PTIA, the probe induces far fewer additional tokens than under normal service. The audit requires neither a trusted local reference model nor historical clean responses, and its separately issued original and probed requests resemble ordinary traffic, making evasion difficult. Across four open-weight models, it achieves an average detection rate of 85.1% with false-positive rates below 2%. Across 15 real LLM API services, the audit flags 7 for PTIA-consistent behavior.
+
+</details>

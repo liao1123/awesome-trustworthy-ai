@@ -318,3 +318,22 @@ Self-supervised learning (SSL) is now a standard way to pretrain medical image m
 Large language models increasingly generate structured outputs, including citation-grounded summaries, multi-step reasoning chains, and tool-augmented responses, where correctness is inherently compositional: a single flawed claim can invalidate an otherwise accurate response. Existing certification methods treat outputs as atomic units, forcing a binary choice between unsafe acceptance and wasteful rejection. We introduce \textbf{Claim Graph Risk Control (CGRiC)}, a framework that decomposes responses into dependency graphs of verifiable claims and assigns calibrated per-claim risk bounds via information-lift statistics. By composing these bounds, CGRiC provides explicit guarantees on the probability that any incorrect claim passes verification undetected. When this composed risk exceeds a target threshold, the system triggers localized repairs rather than full abstention, preserving correct content while fixing problematic claims. Our approach explicitly models extraction noise and verifier imperfection, and exploits conditional independence structure for tighter certificates when validated. Empirically, CGRiC achieves target risk levels while reducing abstention by 31\% compared to atomic baselines across QA, summarization, and reasoning tasks.
 
 </details>
+
+### 17. Rewarding Efficient Reasoning Improves Abstention on Underspecified Tasks in Reasoning Models
+
+📄 [arXiv](https://arxiv.org/abs/2609.20846)　📅 2026-09
+
+**关键词**：`defense`、`abstention`、`reasoning model`、`efficient reasoning`、`GRPO reward`
+
+👤 **作者**：Polina Tsvilodub、Max Höth、Michael Franke、Björn Deiseroth、Carina Kauf
+
+- 🎯 **研究动机**：大型推理模型擅长答题但不知何时该弃答；对照人类研究：人类在不可答题上的推理 effort 被可答题上界约束，而 LRM 在不可答 prompt 上生成更长 CoT 浪费算力
+- 🔬 **研究方法**：资源理性视角的 GRPO 新奖励：鼓励对"任务是否含解题所需全部信息"的高效推理；多个 4B LRM 微调
+- 📌 **结论**：类人弃答性能平均 +12.8%，保持答题能力且 CoT 平均缩短 44%——效率奖励同时改善弃答与算力
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+While modern large reasoning models (LRMs) excel at providing correct answers in many tasks, we provide additional evidence for the observation that they often struggle with a critical capability: knowing when to abstain from answering. We analyze this gap by comparing LRM behavior to results from a human study, revealing that human reasoning effort on unanswerable tasks is upper-bounded by answerable tasks, whereas LRMs waste computational resources by generating longer Chains of Thought (CoTs) on unanswerable than on answerable prompts. To overcome this inefficiency, we take inspiration from a resource-rational perspective on human cognition and introduce a novel GRPO reward that encourages efficient reasoning about whether the task contains all the information needed to solve it. Fine-tuning several 4B LRMs with this reward leads to human-like abstention performance gains (+12.8% on average) while retaining answering capabilities and boosting the models' efficiency (44% shorter CoTs on average).
+
+</details>

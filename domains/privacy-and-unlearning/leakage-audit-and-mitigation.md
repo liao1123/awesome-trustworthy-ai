@@ -438,3 +438,41 @@ Mobile GUI agents increasingly rely on Vision-Language Models (VLMs) to automate
 Retrieval-Augmented Generation (RAG) has emerged as a powerful paradigm for improving the quality of generated contents of Large Language Models (LLMs) by grounding responses in external knowledge, thus reducing hallucinations and factual errors. However, recent studies have highlighted a critical vulnerability: adversaries can exploit the retrieval process to extract personally identifiable information (PII) from the underlying corpus. To mitigate this risk, we propose a novel defense, RAG-CT, that identifies malicious queries by analyzing their entropy and margin distributions and using a score-based detection method. Extensive experiments with four state-of-the-art attack strategies and four defense baselines on two datasets show that our approach significantly reduces PII leakage while outperforming existing defenses. This work provides a lightweight yet effective mechanism to protect RAG systems against PII leakage without requiring modifications to the underlying LLM or retriever.
 
 </details>
+
+### 25. The More It Says, the More You Pay: A Black-Box Audit of Provider-Side Token Inflation in LLM Services
+
+📄 [arXiv](https://arxiv.org/abs/2609.20370)　📅 2026-09
+
+**关键词**：`attack`、`token inflation`、`provider-side attack`、`black-box audit`、`denial-of-wallet`
+
+👤 **作者**：Leilei Chen、…、Xinpeng Shen
+
+- 🎯 **研究动机**：按 token 计费的 LLM 服务中"说得越多用户付得越多"——不诚实服务商可隐蔽操纵生成以膨胀输出 token 同时大体保持任务效用
+- 🔬 **研究方法**：定义 Provider-Side Token Inflation Attack（PTIA）并在服务商控制管线的查询/prompt/表示/模型四层实例化五种代表性攻击；发现 PTIA 饱和现象（初始攻击急剧加长输出，再加强或组合效果骤减）并溯源到停止行为（首攻骤降 EOS 概率，后续干预仅边际降低）；据此设计轻量单探针审计：受控延长干预算下测输出膨胀
+- 📌 **结论**：每种攻击平均输出长度超干净基线 10.2 倍以上，展示多层可行性与经济吸引力；单探针审计从黑盒响应检出 PTIA——面向用户的 DoW 审计防线
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+In pay-per-token LLM services, the more a model says, the more users pay. Dishonest providers can covertly manipulate generation to inflate output tokens while largely preserving task utility. We define such manipulation as a Provider-Side Token Inflation Attack (PTIA) and instantiate five representative attacks at the query, prompt, representation, and model levels of the provider-controlled pipeline. Our experiments show that each attack increases mean output length to more than 10.2x the clean baseline, demonstrating PTIA's financial appeal and feasibility at multiple stages of generation. Yet auditing PTIA from black-box responses is difficult for users. Our key observation is PTIA saturation: an initial attack sharply lengthens output, but further strengthening or composition has much less effect. We trace this saturation to stopping behavior: an initial PTIA sharply lowers the end-of-sequence token probability, whereas further intervention lowers it only marginally. Building on this insight, we design a lightweight single-probe audit that applies a controlled lengthening intervention. Under PTIA, the probe induces far fewer additional tokens than under normal service. The audit requires neither a trusted local reference model nor historical clean responses, and its separately issued original and probed requests resemble ordinary traffic, making evasion difficult. Across four open-weight models, it achieves an average detection rate of 85.1% with false-positive rates below 2%. Across 15 real LLM API services, the audit flags 7 for PTIA-consistent behavior.
+
+</details>
+
+### 26. Hiding in Plain Sight: A Diffusion-based Mitigation of Geolocation Privacy Leakage in Vision-Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2609.21363)　📅 2026-09
+
+**关键词**：`defense`、`geolocation privacy`、`VLM reasoning`、`jailbreak`、`diffusion protection`
+
+👤 **作者**：Yining Wang、…、Mi Wen
+
+- 🎯 **研究动机**：多模态大推理模型可从随手分享的照片经结构化推理（建筑风格/植被/光照）精确推断用户地理位置——拒答式防护被精心构造的越狱 prompt 提到 100% 响应率；像素空间扰动防御黑盒迁移差且有视觉伪影
+- 🔬 **研究方法**：系统研究 MLRM 地理位置隐私泄漏；提出扩散框架做针对性主动防御：向待分享图像注入语义保留的防御性扰动
+- 📌 **结论**：VLM 推理能力的隐私面实测（拒答形同虚设）+ 扩散式防御——位置隐私从"单帧识别"升级为"推理级泄漏"的对策
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Multimodal large reasoning models (MLRMs) have demonstrated remarkable capabilities in complex visual understanding. However, this very power introduces a critical yet underexplored privacy threat: adversaries can exploit MLRMs to precisely infer users' geographic locations from casually shared photographs, by performing structured reasoning over subtle visual cues such as architectural styles, vegetation, and lighting conditions. In this work, we present a systematic study of MLRM-driven geolocation privacy leakage. We first reveal that refusal-based safeguards are critically insufficient, as carefully crafted jailbreak prompts can raise model response rates to 100%. We further identify that existing defenses, which inject imperceptible perturbations into shared images, suffer from structural limitations intrinsic to their pixel-space optimization, resulting in degraded black-box transferability and pronounced visual artifacts. Motivated by these findings, we propose a diffusion-based framework that provides targeted, proactive defense against geolocation privacy leakage. By injecting perturbations into the latent space of a diffusion model during reverse sampling, our method operates directly on high-level semantic representations, thereby resolving the effectiveness-utility bottlenecks by construction. We further ground our optimization with GeoCLIP, a model explicitly aligned with GPS coordinates, as a surrogate to pinpoint and disrupt the geographic signals that MLRMs exploit for location inference. This targeted semantic disruption yields significantly stronger black-box transferability while preserving perceptual image quality, offering a seamless integration on social media platforms.
+
+</details>

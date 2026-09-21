@@ -1335,3 +1335,22 @@ Verdict-only evaluation does not reveal whether a vision-language model (VLM) us
 When a large vision-language model misclassifies a harmful meme, the failure may reflect missing internal evidence or an inability to route represented evidence to its output. We distinguish these cases in Gemma-3 and Qwen3.5 using sparse autoencoders, role-conditioned probes, causal interventions, and recovery experiments across six harmful content benchmarks, with additional Spanish and Hindi-English code-mixed evaluations. Sparse readouts outperform native prediction on all six primary binary tasks: Qwen averages $0.740$ versus $0.432$ native macro-F1, while residual reconstruction reaches $0.486$, whereas Gemma improves from $0.532$ to $0.714$. These differences reflect supervised accessibility rather than a pre-existing, native decision rule, and the most influential token role depends on the task. Under the evaluated score scales, Qwen silent-feature ablation is $24-63$ times more probe-sensitive, whereas routed-feature patching on literal yes/no tasks is $16-140$ times more output-sensitive. Calibration-only routing recovers $93.3$% of the mean gap, and probe-distilled LoRA improves native predictions, although shared multi-task adaptation causes negative transfer. A case study of Gemma-3-12B on Facebook Hateful Memes finds a distributed rank-32 image-prompt interaction, reaching $0.756$ versus $0.685$ native macro-F1. Robustness controls show that the signal extends beyond English, is not explained solely by accompanying OCR, and depends on paired visual evidence. Thus, routing, rather than representation alone, is a recurring bottleneck in harmful meme classification.
 
 </details>
+
+### 71. MME-Safety: A Fine-grained Benchmark for Safety Evaluation of MLLMs
+
+📄 [arXiv](https://arxiv.org/abs/2609.20850)　📅 2026-09
+
+**关键词**：`benchmark`、`MLLM safety`、`intent annotation`、`cross-modal stealth`、`CoT safety`
+
+👤 **作者**：Yueming Lyu、…、Caifeng Shan
+
+- 🎯 **研究动机**：MLLM 的跨模态能力引入复杂漏洞，轻易绕过单模态过滤器；既有基准缺细粒度意图相关标注且依赖单维指标，阻碍全面的鲁棒性评估
+- 🔬 **研究方法**：MME-Safety：四维标注 schema（风险场景、危害严重度、模态特定隐蔽级别）+ 分层评测框架（基础回复可靠性、实际风险暴露、防御行为结构完整性）；17 个 SOTA MLLM 零样本评测；系统考察跨模态输入配置与 CoT 推理的安全含义
+- 📌 **结论**：给出当前多模态系统的安全画像；跨模态配置与 CoT 推理均带安全含义——多模态领域需要推理感知的安全对齐
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+While Multimodal Large Language Models (MLLMs) show remarkable advancements, their cross-modal capabilities introduce complex vulnerabilities that easily bypass unimodal filters. Existing benchmarks lack fine-grained intent-related annotations and rely on unidimensional metrics, hindering comprehensive robustness evaluation. To address this, we propose MME-Safety, a rigorously verified benchmark featuring a unique four-dimensional annotation schema that categorizes risk scenarios, harm severity, and modality-specific stealth levels. Furthermore, we introduce a hierarchical evaluation framework to assess fundamental response reliability, actual risk exposure, and the structural integrity of defensive behaviors. Extensive zero-shot evaluations across 17 state-of-the-art MLLMs provide a comprehensive safety profile of current multimodal systems. Our analysis systematically investigates cross-modal input configurations and uncovers safety implications associated with Chain-of-Thought (CoT) reasoning. These multifaceted findings underscore the urgent need for robust, reasoning-aware safety alignment in the multimodal landscape.
+
+</details>

@@ -737,3 +737,24 @@ Vision-language-action (VLA) policies have shown strong potential for general-pu
 Vision-Language-Action (VLA) models demonstrate strong generalization in robotic manipulation and navigation, but existing fine-tuning methods provide limited safety guarantees. Current approaches primarily rely on Lagrangian optimization that enforces safety through soft penalties on expected cumulative cost, often resulting in residual constraint violations or overly conservative behavior. Moreover, learning safety in visual domains is challenging due to the absence of dense per-step safety annotations. We propose ShieldVLA, a safety-aligned fine-tuning framework for VLA models based on Hamilton-Jacobi (HJ) reachability. ShieldVLA learns a model-free approximation of the HJ reachability value function directly from visual observations to estimate the safe operating region. The learned safety critic gates policy optimization by separating reward maximization within feasible regions from recovery near unsafe states, avoiding persistent reward-cost trade-offs. To enable scalable supervision in visual environments, we introduce rubric-based VLM safety scores that convert semantic safety feedback into structured critic targets without requiring manual cost labels. Across five navigation and manipulation benchmarks spanning multiple VLA backbones, ShieldVLA reduces cumulative safety cost by 57% on average and improves task success rate by +0.13 over SafeVLA.
 
 </details>
+
+### 39. SafeStage: Evaluating Safety Before, During, and After Vision-Language-Conditioned Robot Manipulation
+
+📄 [arXiv](https://arxiv.org/abs/2609.21223)　📅 2026-09
+
+**关键词**：`benchmark`、`VLA safety`、`lifecycle evaluation`、`execution-time hazard`、`final-state hazard`
+
+👤 **作者**：Jinzhu Luo、Qi Zhang、Wei Wang、Wei Jiang
+
+- 🎯 **研究动机**：视觉-语言条件机器人策略的评测聚焦任务成功、孤立物理约束、语义拒答或已实现的物理损害，对闭环操作中安全在何处失效缺乏洞察
+- 🔬 **研究方法**：SafeStage 生命周期结构基准：97 个专用风险场景分三阶段——初始态危害（操作前须解决的安全相关关系）、执行时安全（不安全接触/轨迹/区域进入/物体交互）、终态危害（名义完成后残留的不稳定或不安全状态）；事件+状态双检查评已实现交互，native 任务成功与阶段安全结果分开报告；评直接动作 VLA 与世界模型策略两类
+- 📌 **结论**：把 VLA 安全从"拒答/单点约束"扩展为执行前-中-后全生命周期的已实现交互评测——具身安全阶段化的标准框架
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Vision-language-conditioned robot policies integrate perception, language understanding, and control for general-purpose manipulation. However, existing evaluations often focus on task success, isolated physical constraints, semantic refusal, or realized physical damage, providing limited insight into where safety fails during closed-loop manipulation. We introduce SafeStage, a lifecycle-structured benchmark for evaluating manipulation safety before, during, and after task execution. SafeStage contains 97 purpose-built risk scenarios organized into three stages. Initial-State Hazards captures safety-relevant relations that must be resolved before manipulating the target. Execution-Time Safety evaluates unsafe contacts, trajectories, region entries, and object interactions during execution. Final-State Hazards capture unstable or otherwise unsafe conditions remaining after nominal task completion. The benchmark evaluates realized interactions using event-based and state-based checks and reports native task success independently from stage-specific safety outcomes. We evaluate representative direct-action Vision-Language-Action (VLA) policies and policies with world-model-based policies under a common closed-loop protocol. Our results demonstrate that nominal task completion frequently coexists with safety violations and that different policies exhibit distinct failure profiles across the three stages. By separating task success from safety and localizing when violations occur, SafeStage provides a unified diagnostic testbed for evaluating and improving vision-language-conditioned robot manipulation policies.
+
+</details>
+
+## 常规收录

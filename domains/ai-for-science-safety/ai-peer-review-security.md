@@ -415,3 +415,22 @@ The growing use of large language models (LLMs) in peer review threatens scholar
 Recent reports during the AAAI-27 review cycle highlight the risk of reviewers coordinating bids for reciprocal assignment advantage. Prior work treats bidding, reviewer assignment, and review manipulation as separate stages, leaving the lifecycle effects of collusive bidding unclear. Real-world analysis is further constrained by typically unobservable collusive intent and the lack of counterfactuals for the same conference. Motivated by this gap, we introduce \alg, an end-to-end multi-agent simulacra framework for studying reviewer assignment integrity by holding the conference environment fixed and configuring LLM-driven reviewer agents with honest or collusive policies. We further develop an affinity-guided collusive bidding strategy that uses mutual reviewer-paper affinities to construct collusion rings and select target papers, producing expertise-consistent rather than arbitrarily targeted attacks. Controlled experiments show that collusive bidding more than doubles target-paper capture and that assigned colluders score target papers about two points higher than honest co-reviewers, while conference-wide effects remain comparatively modest. Evaluated bid-phase detectors provide only limited evidence of collusion: in a fixed-triplet detector stress test, native positive-bid graphs are confounded by benign affinity, while a Very-High-only diagnostic view enables precise but low-coverage local recovery.
 
 </details>
+
+### 22. When AI Reviews Train AI Reviewers: Scientific-Judgment Collapse and Mitigation
+
+📄 [arXiv](https://arxiv.org/abs/2609.20942)　📅 2026-09
+
+**关键词**：`analysis`、`peer review`、`judgment collapse`、`recursive training`、`contamination mitigation`
+
+👤 **作者**：Sy-Tuyen Ho、Minghui Liu、Furong Huang
+
+- 🎯 **研究动机**：LLM 既当自动评审又当人类评审助手，模型生成的评审进入公共数据与未来训练语料——AI 同行评审可变递归：后续评审者从早期模型的判断中学习
+- 🔬 **研究方法**：受控研究一步反馈环：Llama 3.1 8B 先在 ICLR 2018-2023 官方评审上微调，再在 ICLR 2024 数据（官方/模型生成评审按系统变化的比例混合）上训练四个后继；提出 TrustReviewer 开源评审系统，在训练时（精选语料单阶段）与推理时双阶段干预
+- 📌 **结论**：引入合成评审压缩评分分布、降低同论文与语料级语义多样性——scientific-judgment collapse；TrustReviewer 缓解该失效——AI 参与的科学评价的递归污染实证与对策
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models (LLMs) increasingly participate in scientific evaluation, both as automated reviewers and as assistants to human reviewers. As model-generated reviews enter public data and future training corpora, AI peer review can become recursive: later reviewers learn from judgments produced by earlier models. We study one step of this feedback loop in a controlled setting. Starting from Llama 3.1 8B, we first fine-tune a reviewer on official ICLR reviews from 2018--2023 and then train four successor models on ICLR 2024 data with systematically varied mixtures of official and model-generated reviews. Our study shows that introducing synthetic reviews compresses rating distributions and reduces both same-paper and corpus-level semantic diversity. We call this pattern $\textbf{scientific-judgment collapse}$. To mitigate this failure mode, we introduce $\textbf{TrustReviewer}$, an open-source LLM-based system for generating peer reviews of AI and machine learning papers. TrustReviewer intervenes at two complementary stages. For training-time prevention, we train the core reviewer in a single stage on a curated corpus designed to reduce low-quality and semantically degenerate supervision. For test-time correction, paired activation steering aims to further mitigate residual tendencies toward collapsed judgments without further training or additional expert annotation. Together, these results characterize a concrete risk of recursive reviewer training and provide practical interventions for preserving judgment diversity and improving recommendation alignment in AI-assisted scientific evaluation.
+
+</details>
