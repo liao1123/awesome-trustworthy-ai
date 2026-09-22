@@ -909,3 +909,22 @@ Generative Engine Optimization (GEO) is increasingly used to improve content vis
 GEO (generative engine optimization) visibility scores aggregate source appearances, citations, or brand mentions in generated answers. The prompt corpus selects the situations evaluated, while weights determine their relative importance. Together they define an "answer market" that need not represent actual user demand. Prompt wording can alter retrieval, competing sources, and generated answers. Scoring then requires identifying the appearances, citations, or mentions of interest. If a language model performs this task, its instruction can change the score assigned to an unchanged answer. Our critical survey examines how these choices help define what a GEO score measures. It draws on research into whether indicators measure the intended phenomenon, total survey error, and information retrieval evaluation. The framework specifies situation annotation, prompt formulations, execution conditions, weights, and scoring rules. When weights are unknown or remain to be chosen, the framework reports sets of admissible scores. It distinguishes values compatible with data and assumptions about a target population (partial identification) from variation across weighting conventions (normative sensitivity). A citation alone does not establish a source's contribution. The article defines a comparison of answers generated with and without a source in a controlled documentary context, distinct from an intervention on the full engine with competing sources. The framework is supported by reproducible calculations. No new experiments are reported; its general empirical validity remains to be assessed.
 
 </details>
+
+### 48. Auditing Source Exposure in Baidu and Google AI Search
+
+📄 [arXiv](https://arxiv.org/abs/2609.24407)　📅 2026-09
+
+**关键词**：`analysis`、`AI overview audit`、`source exposure`、`Baidu vs Google`、`cross-lingual`
+
+👤 **作者**：Yibo Li、Enci Guan、Yuedan Cai、Geng Liu、Francesco Pierri
+
+- 🎯 **研究动机**：AI 概览成为搜索界面显著层，其中文行为缺乏系统审计
+- 🔬 **研究方法**：用 MS MARCO 英文查询及其中文翻译对百度与 Google 做 AI 概览跨语言审计：触发条件、被引 host 域、语言-平台组合差异
+- 📌 **结论**：中文 AI 搜索源暴露的首批审计证据——GEO 叶子的中文侧补位
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+AI-generated overviews are becoming an increasingly prominent layer of search interfaces, yet their behavior in Chinese-language search remains underexplored. We conduct a cross-lingual audit of AI overview behavior on Baidu and Google using English queries sampled from MS MARCO and their translated Chinese counterparts. Our analysis examines when overviews are triggered across platform-language settings, which host domains receive visible exposure in Chinese-language overviews, how concentrated that exposure is, and how source overlap varies across settings. We also compare the embedding-based semantic similarity of generated answers for matched query intents. The results reveal substantial differences across platform-language settings in overview availability and visible source exposure. At the aggregate level, the settings exhibit low overlap in visible host-domain inventories, while matched-query answers yield median cosine similarities ranging from 0.701 to 0.813. These findings indicate that answer-level semantic similarity and aggregate source exposure capture distinct dimensions of AI-mediated search. Evaluations of AI search should therefore consider not only the content of generated answers but also how source visibility is distributed across platforms, languages, and information environments.
+
+</details>

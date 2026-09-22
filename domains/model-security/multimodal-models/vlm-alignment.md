@@ -723,3 +723,22 @@ Vision-language models (VLMs) remain vulnerable to jailbreaks that distribute ha
 When strong multimodal models are widely available, progress requires new scientific methodologies beyond benchmark scores---using models as instruments for understanding behavior. We address this by asking: can we use large vision-language models (LVLMs) as experimental instruments for studying their own failure dynamics? Focusing on visual hallucination, we introduce SAFE, a training-free decoding framework that contrasts visually-grounded and vision-ablated generation paths to produce a token-level contrastive grounding score that identifies when the model favors linguistic priors over visual evidence. This signal serves dual roles: as a practical proxy for detecting visually-ungrounded tokens, and as the basis for decoding-time penalties. Our analysis yields three empirical observations: visual dependency decays over generation, hallucinations co-occur in temporal clusters, and early intervention reduces clustering without substantially degrading fluency. On MMHalBench, SAFE substantially outperforms all compared baselines; results elsewhere are more mixed. We argue that designing contrastive probes exemplifies a broader mission: using models as instruments for scientific understanding. Code: https://github.com/zhaozhipeng1997/SAFE_public.
 
 </details>
+
+### 39. Seeing Through Conflicts: Improving Instruction Hierarchy Alignment in Vision-Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2609.22234)　📅 2026-09
+
+**关键词**：`defense`、`instruction hierarchy`、`VLM`、`mixed-modality training`、`RLHF transfer`
+
+👤 **作者**：Nicholas Sansoterra、Zishuo Zheng、Sachin Kumar
+
+- 🎯 **研究动机**：指令层级（IH）对齐研究集中在纯文本；VLM 中指令可嵌在图像、跨模态拆分、视觉变换或在 agent 任务中出现——多模态 IH 未被训练
+- 🔬 **研究方法**：把多模态 IH 对齐当推理问题：用规则奖励 RL 训练 VLM，比较纯文本、纯图像、混合模态监督
+- 📌 **结论**：纯文本 IH 训练只部分迁移到多模态攻击（需解码/重建/跨模态推理时失效）；图像训练超纯文本、混合模态最优——多模态指令层级的系统化训练路线
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Instruction hierarchy (IH) alignment teaches language models to prioritize higher-level instructions when inputs conflict. While studied primarily in text-only settings, vision-language models (VLMs) introduce new challenges for IH: instructions may be embedded in images, split across modalities, visually transformed, or encountered during agentic tasks. Positing multimodal IH alignment as a reasoning problem, we train VLMs using reinforcement learning with rule-based rewards, comparing text-only, image-only, and mixed-modality supervision. We find that text-only IH training partially transfers to multimodal attacks, failing when models must decode, reconstruct, or reason over instructions across modalities. Image-based training improves robustness beyond text-only supervision, while mixed-modality training performs best overall. Importantly, the benefits generalize beyond the synthetic typographic training setting to real-image and web-agent safety tasks, while largely preserving general multimodal capability, showing that lightweight, verifiable supervision can meaningfully improve VLM robustness under adversarial, cross-modal, and interactive instruction conflicts.
+
+</details>

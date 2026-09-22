@@ -758,3 +758,22 @@ Vision-language-conditioned robot policies integrate perception, language unders
 </details>
 
 ## 常规收录
+
+### 40. LIBERO-VPro: Benchmarking Closed-Loop Visual Robustness of Robotic Foundation Models
+
+📄 [arXiv](https://arxiv.org/abs/2609.24350)　📅 2026-09
+
+**关键词**：`benchmark`、`closed-loop robustness`、`visual perturbation`、`robotic foundation model`、`execution-time`
+
+👤 **作者**：Huiqiong Li、Zhiting Mei、Anirudha Majumdar、Jingjing Chen、Yu-Gang Jiang、Bin Zhu
+
+- 🎯 **研究动机**：机器人基础模型的标准基准假设执行全程视觉观测干净、及时、一致——闭环视觉鲁棒性未被系统评测
+- 🔬 **研究方法**：LIBERO-VPro：执行中扰动视觉证据的四类复合扰动设定，评机器人基础模型闭环表现
+- 📌 **结论**：干净视觉假设下的高性能不保证扰动下的闭环安全——执行时感知扰动的基准化（具身鲁棒性）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Robotic foundation models achieve impressive performance on standard manipulation benchmarks, yet these evaluations typically assume clean, timely, and consistent visual observations throughout execution. We introduce LIBERO-VPro, a benchmark for systematically evaluating the closed-loop visual robustness of robotic foundation models by perturbing the visual evidence available during execution. LIBERO-VPro covers four complementary dimensions, including Visual Evidence Degradation, Camera Staleness, Visual Source Consistency, and Task-Relevant Scene Variation, spanning 12 challenge categories, 96 experimental settings, and 3,296 task-condition cases. We evaluate three vision-language-action models and three world-action models over approximately 196,000 simulated episodes, complemented by 200 real-world rollouts on a Franka Research 3. Our results reveal that strong nominal performance can mask substantial weaknesses in visual grounding and adaptation. Models often remain successful despite severe object-level occlusion, yet degrade sharply when local interaction cues are disrupted or familiar spatial priors are violated. They are also highly sensitive to stale or missing observations and struggle when changed task preconditions require behavioral adaptation. Finally, VLAs and WAMs exhibit distinct robustness profiles, showing that visual robustness is multi-dimensional and architecture-dependent. LIBERO-VPro provides a systematic diagnostic framework for developing robotic foundation models that can more reliably ground and adapt their actions under challenging visual conditions.
+
+</details>

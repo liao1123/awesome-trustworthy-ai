@@ -1591,3 +1591,22 @@ Large language models are often instruction-tuned, specialized, quantized, or ot
 While multimodal large language models (MLLMs) enable a wide range of image-text reasoning tasks, recent incidents indicate that they are vulnerable to illicit deployment and unauthorized distillation. Existing solutions for model provenance are typically confounded by shared language backbones in MLLMs and struggle to detect violations of distillation. To bridge this gap and safeguard model ownership, we present the first study on multimodal model fingerprinting. Inspired by recent findings that self-attention acts as a low-pass filter and that its low-frequency components are informative, we develop AttnPrint for white-box provenance. Specifically, we extract cross-modal attention distributions and isolate their low-frequency components to serve as model fingerprints. To facilitate black-box auditing, we further introduce DistillTrace, which employs hypothesis testing of MLLM outputs to identify potential model infringement. We conduct extensive experiments on 154 model instances across 19 multimodal architectures. Notably, AttnPrint achieves strong derivative-model detection performance while remaining robust to five downstream modification techniques. DistillTrace also provides evidence of distillation relationships under three parameter-independent techniques.
 
 </details>
+
+### 85. From Bits to Beliefs: Recoverable Semantic Fingerprints for Black-Box Verification of Large Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2609.24084)　📅 2026-09
+
+**关键词**：`defense`、`model fingerprint`、`semantic fingerprint`、`ownership verification`、`post-modification recovery`
+
+👤 **作者**：Jiaxin Hong、Yuxin Peng、Hongyao Yu、Hao Fang、Shuoyang Sun、Bin Chen
+
+- 🎯 **研究动机**：开放权重 LLM 可被复制、修改、经黑盒 API 重部署——既有黑盒指纹依赖密钥查询对复现预定义回复，易被微调/剪枝/量化/合并/服务端 prompt 改动破坏
+- 🔬 **研究方法**：SimPrint 可恢复语义指纹框架：指纹设计为可从修改后模型恢复，所有权验证对部署期变换稳健
+- 📌 **结论**：对五类修改技术的所有权验证存续——模型资产保护（#4）在黑盒变换下的指纹新基线
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Open-weight large language models (LLMs) can be copied, modified, and redeployed behind black-box APIs, making post-release ownership verification difficult. Existing black-box fingerprints often rely on secret query-key pairs that reproduce predefined responses, and can therefore be easily disrupted by fine-tuning, pruning, quantization, model merging, and serving-time prompt changes. We propose SimPrint, a recoverable semantic fingerprinting framework for black-box LLM ownership verification. Rather than relying on isolated exact matches, SimPrint encodes a private owner signature into a coded semantic fingerprint domain, distributing ownership evidence across natural binary question-answering probes. It implants only base-deviating probes through a low-interference batch update that preserves the original model behavior, and later recovers the signature by parsing suspect-model responses into reliable bits or erasures with an error-correcting recovery mechanism. Because verification only uses input-output queries, SimPrint remains applicable when model weights or activations are inaccessible. Experiments on three open-weight LLMs show that SimPrint reliably recovers the owner signature in both clean and modified settings, remains robust under fine-tuning, pruning, quantization, model merging, and serving-time perturbations, and maintains comparable downstream utility.
+
+</details>

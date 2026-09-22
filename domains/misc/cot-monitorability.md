@@ -1171,3 +1171,41 @@ Chain-of-thought (CoT) monitoring is a safety strategy where the reasoning of a 
 As models scale, reward hacking becomes more frequent, more sophisticated, and more consequential. Does it leave a telltale signature in model representations? This work analyzes how reward hacking is represented internally in frontier open source LLMs, and how those representations can be used to understand and discover the range of hacking behaviors a model displays. In particular, we find that simple difference of means vectors coherently represent reward hacking in Kimi K3, GLM 5.2, and Qwen 3.8 Max across a variety of behaviors in common evaluations. Despite their simplicity, these vectors are both generalizable and interpretable, and we can use them to reliably detect reward hacking. We first evaluate reward hacking in commonly reported benchmarks like DeepSWE and SWE-bench, finding that models reward hack excessively in these environments; GLM 5.2 hacks in 57.2% of rollouts on DeepSWE and in 73% of rollouts on SWE-bench. Catching these requires monitors; LLM monitors are effective, but expensive detectors. We show that DoM vectors are similarly effective but virtually free, catching 3.1% more hacks in Kimi K3 and 7.9% fewer hacks in GLM 5.2 on DeepSWE at a monitor matched false positive rate. DoM vectors run on the chain-of-thought also predict reward hacks in the model's subsequent actions, meaning we can run them online and catch potential hacks before they occur. Finally, we analyze probe-hits that LLM monitors do not catch and discover other undesirable behaviors, as well as show transfer to finding hacks in non-SWE evaluations. Together, these results provide evidence that simple, white-box methods can be used to scalably study and monitor reward hacking behaviors in frontier open source models
 
 </details>
+
+### 63. Evaluation Awareness Shifts from Format to Context with Model Scale
+
+📄 [arXiv](https://arxiv.org/abs/2609.22119) · 🐙 [Code](https://github.com/chahal-navi/Evaluation-Awareness-Compact-LLMs/tree/main)　📅 2026-09
+
+**关键词**：`analysis`、`evaluation awareness`、`format vs context`、`model scale`、`dual-pathway intervention`
+
+👤 **作者**：Navraj Singh、Maheep Chaudhary
+
+- 🎯 **研究动机**：评测意识对模型评测构成前所未有威胁，但模型如何检测到评测的机制未知
+- 🔬 **研究方法**：Gemma 3（1/4/12B）、Phi-3、Llama-3-8B 上用 CoT 分析、表示探针、积分梯度归因；提出 prompt 净化+激活反转向的双通道干预
+- 📌 **结论**：小模型靠 prompt 格式敏感性检测评测、大模型靠高阶推理（上下文线索）——规模改变评测意识的通道；200 条高评测意识 prompt 上干预平均行为翻转 70.58%（评测意识 #4 锚点线）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Evaluation awareness poses an unprecedented threat to model evaluation, but the mechanisms by which models detect it remain unknown. This study focuses on determining this and identifying contrasting mechanisms between smaller and larger models. While smaller models use the prompt's format sensitivity to detect evaluation, larger models often rely on higher-order reasoning to detect it. We evaluated Gemma 3 (1B, 4B, and 12B), Phi-3 (Mini and Medium), and Llama-3 8B using Chain-of-Thought analysis, representation probing, and Integrated Gradients attribution. Motivated by these findings, we propose a dual-pathway intervention that combines prompt sanitization with activation counter-steering to suppress both external evaluation triggers and their internal representations. Across 200 highly evaluation-aware prompts, our method achieves an average behavioral flip rate of 70.58\%, consistently outperforming either intervention alone. These results provide new insights into how evaluation awareness develops in compact language models and suggest that effective mitigation requires jointly addressing both prompt-level and representation-level http://signals.Datasets and codebase can be found in this \href{https://github.com/chahal-navi/Evaluation-Awareness-Compact-LLMs/tree/main}{Github Repository.}
+
+</details>
+
+### 64. Taming CoT Obfuscation in VLMs: From Mechanistic Evidence to Activation Enforcement
+
+📄 [arXiv](https://arxiv.org/abs/2609.24243)　📅 2026-09
+
+**关键词**：`defense`、`CoT obfuscation`、`activation enforcement`、`monitorability`、`RL reasoning`
+
+👤 **作者**：Xutao Mao、…、Bo Han
+
+- 🎯 **研究动机**：RL 提升 VLM 推理的同时诱发 CoT 混淆——任务奖励上升但 trace 变得不接地、不可监控；此前只做行为层记录，表示层相关物与可操作控制不明
+- 🔬 **研究方法**：定位模板与接地相关激活；从机制证据设计激活强制（activation enforcement）恢复 trace 的接地性与可监控性
+- 📌 **结论**：CoT 可监控性（#4 锚点线）的表示级干预——推理训练的 monitorability 退化可被激活层修复
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Reinforcement learning (RL) improves reasoning in vision-language models (VLMs) but can induce chain-of-thought (CoT) obfuscation: an operational, non-intentional outcome where task reward or accuracy rises while traces become less grounded and monitorable. Prior work largely documents this decay behaviorally, leaving its representation-level correlates and actionable controls unclear. We find that template- and ground-associated activations become less separable during RL; matched interventions support the contribution of selected features to monitorability degradation. Guided by this evidence, we propose Targeted Anti-obfuscation with Mechanistic Enforcement (TAME), which uses Sparse Autoencoders (SAEs) to combine behavioral feedback with targeted suppression of template-associated activations during RL. Its asymmetric constraint penalizes template activations only above their pre-RL baseline, anchoring the localized features while behavioral feedback promotes grounded refinements. Across VIRL-39k, SPA-VL, and two model families, TAME improves CoT monitorability by up to 30.9 and 16.7 percentage points over Group Relative Policy Optimization (GRPO), respectively. Blinded human evaluation finds higher human monitorability on both datasets, and two held-out monitor families reproduce the monitorability gains. Task accuracy changes are small and mixed, and general-capability benchmarks show task-specific trade-offs. These results provide a path from behavioral monitoring to representation-level oversight for more auditable RL-trained multimodal systems.
+
+</details>

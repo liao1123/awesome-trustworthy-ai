@@ -565,3 +565,41 @@ Subliminal learning shows that language models can transmit a hidden trait throu
 Subliminal learning allows language models to transmit behavioral traits through training data with no obvious semantic relationship to those traits, undermining content-based data filtering as a safety intervention. Training data attribution offers an alternative: it identifies the training examples responsible for a given model behavior, independent of their semantic content, and so may apply in exactly the cases where semantic inspection fails. We evaluate three gradient-based attribution methods (GradCos, a contrastive GradCos variant, and EK-FAC) across three models, comparing them against divergence tokens, a strong baseline previously shown to localize subliminal learning (albeit one that requires access to counterfactual teacher models). Filtering at the token level, EK-FAC mitigates a significant part of the effect, the other methods provide little benefit, and all mostly fall short of divergence tokens. Filtering entire samples is less effective for every method, though EK-FAC often gives a stronger signal than divergence tokens in this setting. Success is inconsistent across methods and settings: variants that work well for some model-preference combinations fail for others, and we do not identify a consistent explanation for these differences. Our results suggest that gradient-based attribution can identify data responsible for subliminal learning in some settings, but that some approximations are more reliable than others.
 
 </details>
+
+### 31. On Mitigation of Subliminal Learning in Large Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2609.22215)　📅 2026-09
+
+**关键词**：`defense`、`subliminal learning`、`liminal training`、`training dynamics`、`mitigation`
+
+👤 **作者**：Atsushi Yanagisawa、Brendan Gho、Rajendran Ramesh Babu Manoj Narender、Kevin Zhu、Madhur Panwar、Antonio Mari
+
+- 🎯 **研究动机**：subliminal learning 使蒸馏数据传递语义无关的教师特质，其训练动力学与缓解此前缺乏研究
+- 🔬 **研究方法**：在 1.5B-8B 开源权重模型（Qwen/Gemma/Llama，数字序列与 CoT 两种设定）上全程追踪特质相关概率而非只看终态；发现阈下获取高度非单调——瞬态尖峰、反转、特质特异的迁移失败；提出 liminal training 缓解
+- 📌 **结论**：非单调动力学意味着终态评测会误判传递；liminal training 提供训练期干预——subliminal learning 防御侧从过滤（前日 Not Reliably）转向训练过程本身
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Knowledge distillation can transmit unintended behavioral traits from a teacher model to a student through training data that appear semantically unrelated to those traits, a phenomenon known as subliminal learning. Although recent work has established this effect, its training dynamics and mitigation remain underexplored. We study subliminal learning in open-weight language models ranging from 1.5B to 8B parameters, covering the Qwen, Gemma, and Llama families in number-sequence and chain-of-thought settings. Rather than evaluating only final models, we track trait-related probabilities throughout fine-tuning and find that subliminal acquisition can be highly non-monotonic, with transient spikes, reversals, and trait-specific failures of transfer. We then introduce liminal training, an annealed KL-regularized fine-tuning method that constrains early drift from the base model. Across our experiments, liminal training substantially reduces subliminal trait acquisition while largely preserving task gains, outperforming paraphrasing and layer freezing as mitigation strategies. The effect also extends beyond animal preferences: in a French-language response-style experiment, liminal training suppresses language transfer while retaining much of the GSM8K improvement. Finally, we show that KL timing matters: early regularization is more effective than late regularization, and sweeping the regularization strength reveals an empirical trade-off between task learning and trait suppression.
+
+</details>
+
+### 32. Why Ghost Outputs Teach: A Kernel-Based Understanding of Subliminal Learning
+
+📄 [arXiv](https://arxiv.org/abs/2609.23260)　📅 2026-09
+
+**关键词**：`analysis`、`subliminal learning`、`kernel view`、`cross-task transfer`、`learning dynamics`
+
+👤 **作者**：Zhe Li、Bicheng Ying、Chaosheng Dong、Haibo Yang
+
+- 🎯 **研究动机**：subliminal learning 的优化机制仍不清楚——学生从未见过任务标签、任务输出或原始数据，却能从看似无关的教师辅助输出中获得下游任务能力
+- 🔬 **研究方法**：从学习动力学视角推导跨任务核链式分解，给出 SL 的机制性理解
+- 📌 **结论**：首个 SL 的核级机制解释——ghost 输出为何能教的定量答案，与 liminal training（同日）构成现象-机制-缓解三连
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Subliminal Learning (SL) is a recently identified phenomenon in which a student model acquires downstream task capabilities by matching seemingly unrelated auxiliary outputs from a teacher, despite never observing task labels, task-specific outputs, or the original training data. While recent studies have identified where subliminal signals may reside, the optimization mechanism underlying this phenomenon remains poorly understood. In this work, we provide a mechanistic understanding of SL through the lens of learning dynamics. Specifically, we derive a chained cross-task kernel that explicitly links ghost-output supervision to changes in task predictions through shared backbone representations. Our unified analytical framework provides a rigorous mathematical explanation for three central empirical puzzles in SL: (i) under shared initialization, the transfer operator forms a strictly Positive Semi-Definite (PSD) structure, guaranteeing that ghost-output optimization aligns the student with the teacher's true task objective without explicit label exposure; (ii) the ghost-output dimensionality acts as an explicit rank bottleneck governing the transfer of task-relevant features; and (iii) synthetic, high-entropy inputs function as broadband probes that maximize cross-task kernel overlap, explaining why random noise consistently outperforms structured data for subliminal transfer. Experiments on the canonical ghost-output setting validate all three theoretical predictions, providing the first learning-dynamics-based theoretical explanation of how ghost-output supervision gives rise to subliminal learning.
+
+</details>

@@ -3447,3 +3447,22 @@ Quantization is one of the default deployment paths for open-weight LLM agents, 
 Backdoor poisoning attacks add poisoned examples to otherwise-clean finetuning data, pairing a trigger with a target behavior that the model learns to produce when the trigger appears. Existing evaluations typically fix the number of poisoned examples and sample them at random from a candidate pool. We show that this can severely underestimate worst-case vulnerability: across three LLaMA-3-8B backdoor settings, holding the model, clean data, and poison count fixed, attack success ranges from 3% to 80% depending only on which poison set is chosen. We formalize poison selection as oracle-budgeted set optimization and introduce SAILS (Set-level Audit-Informed Iterative Learned Selection), which learns a set scorer from a few hundred finetune-and-evaluate runs, ranks millions of candidate sets, and audits only a small shortlist. SAILS improves held-out attack success by 30 percentage points on average over the strongest influence baselines, transfers from small-scale to full-scale finetuning, and extends to code-generation, agentic, and API-only backdoors.
 
 </details>
+
+### 183. OPBackdoor: Opportunistic Backdoors via Alibi-Aligned Reasoning
+
+📄 [arXiv](https://arxiv.org/abs/2609.24826)　📅 2026-09
+
+**关键词**：`attack`、`opportunistic backdoor`、`trigger-context alignment`、`stealth`、`LLM backdoor`
+
+👤 **作者**：Eric Xue、Ruiyi Zhang、Kevin Xue、Pengtao Xie、Junda Wu、Julian McAuley
+
+- 🎯 **研究动机**：LLM 后门文献的触发器-充分范式（触发即输出目标响应）会自我暴露——后门目标与被触发的 prompt 上下文无关时行为异常明显
+- 🔬 **研究方法**：OPBackdoor：后门目标仅在被触发 prompt 上下文呈现可利用机会时才引出（alibi 对齐推理），挑战 trigger-sufficient 表述
+- 📌 **结论**：上下文条件化使后门在良性触发下保持隐形、只在可利用语境激活——后门隐蔽性的范式转移
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+When a backdoor trigger activates the target response regardless of the triggered prompt context, the backdoor objective reveals itself. Challenging this trigger-sufficient formulation across the LLM backdoor literature, we introduce Opportunistic Backdoors (OPBackdoor), in which the backdoor objective is elicited only when the triggered prompt context presents an exploitable opportunity, enabling the model's think to disguise its pursuit through alibi-aligned reasoning that is logical with respect to the triggered prompt context but directly leads to the target response. Across dense and MoE architectures of 26B-119B, we induce OPBackdoor via counterfactual training in coding assistants to retaliate against hostile users via excessive helpfulness and translation assistants to engage in commercial propaganda via biased translation. Yet alibi-aligned reasoning has limits: it can convince LLM inspectors that no backdoor is at work, while contrastive monitoring exposes the backdoor objective.
+
+</details>

@@ -870,3 +870,22 @@ Large language model (LLM) agents increasingly operate over long-horizon interac
 Platform abuse campaigns conceal redirection instructions with emojis, homophones, character decomposition, and redundant symbols, then route users through disguised links to services associated with pornography, fraud, gambling, or illicit transactions. Existing benchmarks evaluate obfuscated text and risky webpages separately, obscuring how target recovery affects downstream evidence acquisition. We introduce RiskChainBench, pairing 3,600 synthetic token-text restoration inputs from 600 source sessions with 600 corresponding human-labeled local web environments. A model first restores the message, operational intent, and destination; the same underlying model then acts as a VLM-driven web agent that investigates the correctly associated website and produces a frozen, evidence-cited risk report without message-side semantics or domain-reputation cues. We score restoration and correct-routing web investigation separately and compose them offline by applying the frozen primary-entry prediction as a gate to the same Task 2 result. Human labels determine task correctness, while a fixed multimodal evidence judge assesses faithfulness, sufficiency, completeness, and consistency. Across ten models, Entry Top-1 ranges from 35.2% to 95.2% and web decision accuracy from 26.3% to 62.8%; the leading systems differ across entry recovery, full reconstruction, website decisions, and fine-grained typing. Execution failures account for 31.9% of web runs, whereas post-decision type errors account for only 0.9%, identifying stable exploration and risk judgment as the principal bottlenecks. We release the benchmark, protocol, and resettable local sandbox.
 
 </details>
+
+### 46. DUMA-Bench: A Dual-Control Multi-Agent Benchmark for Evaluating LLM Agent Security
+
+📄 [arXiv](https://arxiv.org/abs/2609.24662)　📅 2026-09
+
+**关键词**：`benchmark`、`agent security`、`dual-control`、`interactive evaluation`、`user in the loop`
+
+👤 **作者**：Ivan Aleksandrov、German Kochnev、Sabrina Sadiekh、Yaroslav Rogoza
+
+- 🎯 **研究动机**：agent 安全评测大多假设被动用户与静态控制，忽略塑造真实 agent 行为的交互动力学
+- 🔬 **研究方法**：DUMA-Bench：双控交互（agent 与用户/环境均可行动）下的 agent 安全基准与评测协议
+- 📌 **结论**：把用户作为主动方的安全评测——agent 安全从静态攻击面进入交互动态（与 09-16 BLINDSPOT 自适应对抗交互同族）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+LLM-based agents increasingly operate in environments where they interact with users, tools, and external systems. Yet most security evaluations assume passive users and static control, ignoring the interactive dynamics that shape real agent behavior. We introduce \textbf{DUMA-Bench}, a benchmark and evaluation protocol for measuring agent security under \emph{dual-control} interaction, where both the agent and the user can influence the shared environment state. DUMA-Bench extends $\tau^2$-bench ~\cite{barres2025tau} with adversarial environments covering eight vulnerability classes, including RAG poisoning, cross-agent manipulation, and unsafe output handling. We evaluate \textbf{14 models from five model families} (OpenAI, Anthropic, DeepSeek, Qwen, and http://Z.ai) across eight domains and multiple user-behavior regimes. Across our experiments, introducing dual-control interaction increases the attack success rate from \textbf{26.9\%} to \textbf{41.1\%}. These results show that agent security is not solely a property of the model but emerges from the interaction between the model, the user, and the environment. DUMA-Bench provides a missing evaluation layer for studying security in realistic agent deployments.
+
+</details>

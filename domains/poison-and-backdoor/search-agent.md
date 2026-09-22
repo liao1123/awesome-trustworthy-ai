@@ -634,3 +634,22 @@ The advent of Large Language Models (LLMs) has significantly revolutionized web 
 The rapid progress of Large Language Models (LLMs) has given rise to a new category of autonomous AI systems, referred to as Deep Research (DR) agents. These agents are designed to tackle complex, multi-turn informational research tasks by leveraging a combination of dynamic reasoning, adaptive long-horizon planning, multi-hop information retrieval, iterative tool use, and the generation of structured analytical reports. In this paper, we conduct a detailed analysis of the foundational technologies and architectural components that constitute Deep Research agents. We begin by reviewing information acquisition strategies, contrasting API-based retrieval methods with browser-based exploration. We then examine modular tool-use frameworks, including code execution, multimodal input processing, and the integration of Model Context Protocols (MCPs) to support extensibility and ecosystem development. To systematize existing approaches, we propose a taxonomy that differentiates between static and dynamic workflows, and we classify agent architectures based on planning strategies and agent composition, including single-agent and multi-agent configurations. We also provide a critical evaluation of current benchmarks, highlighting key limitations such as restricted access to external knowledge, sequential execution inefficiencies, and misalignment between evaluation metrics and the practical objectives of DR agents. Finally, we outline open challenges and promising directions for future research. A curated and continuously updated repository of DR agent research is available at: {https://github.com/ai-agents-2030/awesome-deep-research-agent}.
 
 </details>
+
+### 34. The Corroboration Illusion: When More News Makes LLM Forecasts Less True
+
+📄 [arXiv](https://arxiv.org/abs/2609.22246)　📅 2026-09
+
+**关键词**：`attack`、`news corpus poisoning`、`probabilistic forecaster`、`publish-only threat`、`RAG poisoning`
+
+👤 **作者**：Yuan Lu、Yukuan Zhang
+
+- 🎯 **研究动机**：LLM 预测者靠检索新闻做事件概率预测——对可爬取新闻语料的依赖构成新攻击面：只能发文、无检索器/模型/查询访问权的攻击者能否系统性移动输出概率
+- 🔬 **研究方法**：形式化 news-corpus poisoning of probabilistic forecasters（区别于既有 RAG 投毒的事实/观点目标，针对校准概率）；500 个已解决 ForecastBench 问题 × 17.4M 篇 Common Crawl News（严格爬取日期截断）× 三个 7-8B 开源 RAG 预测者
+- 📌 **结论**：攻击系统性移动预测者输出概率——publish-only 威胁模型进入概率校准域，search-agent 叶子 GEO 线的证据链下游
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models (LLMs) are increasingly used to forecast real-world events by retrieving and reasoning over news. We show that this dependence on an open, crawlable news corpus creates a new attack surface: an adversary who can merely publish articles--without access to the retriever, the model, or the user's queries--can systematically move the forecaster's output probabilities. We formalize news-corpus poisoning of probabilistic forecasters, a threat model distinct from prior RAG poisoning, which targets factual answers or opinion polarity rather than calibrated probabilities. We evaluate the attack on 500 resolved ForecastBench questions against a 17.4M-article Common Crawl News corpus with a strict crawl-date cutoff, using three retrieval-augmented forecasters built on open 7-8B models. A single LLM-written article per question flips 56% of forecasts across the 0.5 boundary; five articles flip 69-73% and shift probabilities by +0.13 to +0.22 net of a neutral-article placebo, degrading the Brier score from 0.18 to 0.37. The effect is monotone in the number, retrieval rank, query similarity, and context share of injected articles, transfers across model families, and is unaffected by the claimed publisher. We then evaluate three natural defenses--source allow-lists, isolate-then-aggregate forecasting, and perplexity filtering--and show that each has a cheap bypass: spoofed publishers, majority poisoning, and higher-temperature generation, respectively. Our results indicate that probabilistic LLM judgments inherit the full fragility of the information supply chain they consume.
+
+</details>

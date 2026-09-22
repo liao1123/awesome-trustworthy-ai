@@ -837,3 +837,41 @@ Prior work has shown that internal harmfulness representations in large language
 Autonomous systems increasingly rely on Large Language Models (LLMs) yet the safety infrastructure surrounding these models introduces latency and compute overhead. This limits utility in resource-constrained, time-critical deployments. Existing external guardrail models remain blind to the model's internal workings, creating a fundamental assurance gap. We ask: does the model already know when the content is harmful? We extract activations from LLaMA-3.1-8B and train lightweight MLP classifier probes (12.6M parameters) to detect harmful prompts. Evaluated on WildJailbreak, Beavertails, and AEGIS 2.0, our probes achieve F1 scores of 99%, 83%, and 84%, respectively competitive with 1000x larger guard models while cutting latency and compute costs.
 
 </details>
+
+### 45. Causal Localization of the Refusal Direction in Audio Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2609.22260)　📅 2026-09
+
+**关键词**：`analysis`、`refusal direction`、`audio language model`、`causal ablation`、`interface vs backbone`
+
+👤 **作者**：Leonardo Haw-Yang Foo、Hung-yi Lee
+
+- 🎯 **研究动机**：大型音频语言模型（LALM）把语音前端接到已安全对齐的文本 LM 上——拒答由前端携带还是继承自文本骨干，未知
+- 🔬 **研究方法**：因果干预：在音频→LM 接口与各 LM 残差层拟合有害/良性分离方向、消融其分量、测首 token 拒答边际变化；五个 LALM 三个骨干家族，四个在 held-out 类别漂移下评估
+- 📌 **结论**：最大效应出现在中后段 LM 层带而非接口——拒答继承自文本骨干；音频域 refusal 因果定位的首批证据
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+A large audio language model (LALM) attaches a speech front end to a text language model (LM) that is already safety-aligned. When such a model refuses a harmful spoken request, is the refusal carried by the front end, or inherited from the text LM? We test this with causal interventions. At each model's audio-to-LM interface and at tested LM residual layers, we fit a direction separating harmful from benign prompts, ablate its component, and measure the resulting change in the model's first-token refusal margin. Four of the five models are evaluated under held-out category shift. Across five LALMs spanning three backbone families, with three models passing a baseline safety gate, the largest tested effects occur in a mid-to-late LM band, while ablations of the tested interface directions have little effect. On Qwen2.5-Omni, ablating the L16 direction changes the margin by -7.10, versus -0.013 at the projector. The audio pathway is still in use: zeroing the encoder output changes the margin by -4.7. In the same model, the contrast is linearly decodable at an early layer where single-layer ablation has little effect, and a direction fitted on the LM backbone alone transfers to the full audio model. Because harmful and benign prompts also differ in form, we interpret the direction as refusal-linked rather than harmfulness-specific. These interventions localize dependence of the refusal margin, not where refusal is computed. Moving the margin also does not always change what the model writes. Safety audits of these models should use interventions rather than rely on probes alone, and should examine the inherited text LM alongside the audio interface.
+
+</details>
+
+### 46. Taming CoT Obfuscation in VLMs: From Mechanistic Evidence to Activation Enforcement
+
+📄 [arXiv](https://arxiv.org/abs/2609.24243)　📅 2026-09
+
+**关键词**：`defense`、`CoT obfuscation`、`activation enforcement`、`monitorability`、`RL reasoning`
+
+👤 **作者**：Xutao Mao、…、Bo Han
+
+- 🎯 **研究动机**：RL 提升 VLM 推理的同时诱发 CoT 混淆——任务奖励上升但 trace 变得不接地、不可监控；此前只做行为层记录，表示层相关物与可操作控制不明
+- 🔬 **研究方法**：定位模板与接地相关激活；从机制证据设计激活强制（activation enforcement）恢复 trace 的接地性与可监控性
+- 📌 **结论**：CoT 可监控性（#4 锚点线）的表示级干预——推理训练的 monitorability 退化可被激活层修复
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Reinforcement learning (RL) improves reasoning in vision-language models (VLMs) but can induce chain-of-thought (CoT) obfuscation: an operational, non-intentional outcome where task reward or accuracy rises while traces become less grounded and monitorable. Prior work largely documents this decay behaviorally, leaving its representation-level correlates and actionable controls unclear. We find that template- and ground-associated activations become less separable during RL; matched interventions support the contribution of selected features to monitorability degradation. Guided by this evidence, we propose Targeted Anti-obfuscation with Mechanistic Enforcement (TAME), which uses Sparse Autoencoders (SAEs) to combine behavioral feedback with targeted suppression of template-associated activations during RL. Its asymmetric constraint penalizes template activations only above their pre-RL baseline, anchoring the localized features while behavioral feedback promotes grounded refinements. Across VIRL-39k, SPA-VL, and two model families, TAME improves CoT monitorability by up to 30.9 and 16.7 percentage points over Group Relative Policy Optimization (GRPO), respectively. Blinded human evaluation finds higher human monitorability on both datasets, and two held-out monitor families reproduce the monitorability gains. Task accuracy changes are small and mixed, and general-capability benchmarks show task-specific trade-offs. These results provide a path from behavioral monitoring to representation-level oversight for more auditable RL-trained multimodal systems.
+
+</details>

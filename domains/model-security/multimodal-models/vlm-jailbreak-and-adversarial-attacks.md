@@ -1100,3 +1100,22 @@ Prompt injection is widely recognized as a major security threat to AI agents th
 Large vision-language models (VLMs) are increasingly deployed in safety-critical settings, yet existing visual jailbreak research has focused almost exclusively on autoregressive architectures, leaving an important emerging family unstudied: multimodal discrete diffusion vision-language models (dVLMs). We identify a vulnerability specific to diffusion generation: because the visual embedding conditions every reverse denoising step rather than acting as a one-time prefix, adversarial visual semantics are repeatedly propagated and amplified across the generation trajectory, a phenomenon we term cross-step conditional propagation. We provide empirical evidence through stage-sensitivity analysis, prompt-level switch rates, and pairwise denoising-bin disagreement metrics, confirmed by bootstrap resampling. We propose DIVA (Discrete-diffusion Vision-language model Attack), a white-box visual jailbreak framework using cross-modal intent obfuscation and diffusion-aware multi-timestep adversarial optimization. Across three dVLMs, DIVA reaches 58.8%, 67.7%, and 69.1% HADES ASR under the Beaver reward-model metric, outperforming visual jailbreak baselines designed for autoregressive models. Code: https://github.com/loststars2002/DIVA
 
 </details>
+
+### 60. Validating, Not Sampling: Region-Level Robustness of Vision-Language and Vision-Language-Action Models
+
+📄 [arXiv](https://arxiv.org/abs/2609.22293)　📅 2026-09
+
+**关键词**：`benchmark`、`formal robustness validation`、`continuous perturbation region`、`VLM`、`VLA`
+
+👤 **作者**：Bogdan Aron、Christopher Brix、Benedikt Brückner、Yanghao Zhang、Panagiotis Kouvaros、Alessio Lomuscio
+
+- 🎯 **研究动机**：VLM/VLA 的鲁棒性基准只采样扰动——未测区域不保证无失效；既有评测无法做出"整个连续扰动区域内安全"的断言
+- 🔬 **研究方法**：首次对 6 个 VLM（Gemma/InternVL/LLaVA/Qwen 系）与 5 个 VLA（GR00T/OpenVLA/π 系）在亮度偏移、相机旋转及其复合的连续区域上做形式化鲁棒性验证（基于 H²V 验证框架）
+- 📌 **结论**：从采样式评测升级为区域级验证——给出连续扰动区域内无失效的形式保证，具身模型鲁棒性的验证范式
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Vision-language models (VLMs) and vision-language-action models (VLAs) are increasingly deployed in real-world applications. There, a small perturbation to the recorded camera image may change a decision significantly. However, existing benchmarks for these models only sample perturbations, which does not guarantee the absence of a failure in the untested region. We present the first robustness validation of six VLMs (drawn from the Gemma, InternVL, LLaVA, and Qwen families) and five VLAs (drawn from the GR00T, OpenVLA, and $\pi$ families) over entire continuous regions of photometric and geometric image perturbation: brightness shifts, camera rotations, and their composition. To this end, we build on the validation framework H$^2$V and introduce H$^2$V-M, a margin-aware convergence rule that makes validation affordable at the 32B parameter scale. We demonstrate that H$^2$V-M outperforms H$^2$V by an order of magnitude in model queries and that it finds counterexamples faster than random sampling while providing soundness guarantees. Our VLM and VLA robustness validation shows that robustness is mostly dependent on the perturbation type, rather than the model, and that VLMs are more robust to large camera rotations than VLAs. For VLAs, even perturbations as small as $\pm1^\circ$ can change the commanded action in many cases. We also show that robustness depends more on model family than on model size.
+
+</details>

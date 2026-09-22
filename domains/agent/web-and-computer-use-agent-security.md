@@ -813,3 +813,41 @@ Computer-use agents increasingly interact with browsers, terminals, file systems
 Mobile agents are increasingly capable of autonomously interacting with mobile applications and performing consequential actions on behalf of users. Effective human oversight of such agents relies on a basic premise: users and agents observe consistent information from the same interface. We show that this premise can be systematically violated. Users perceive mobile interfaces through physical displays and the human visual system, making their observations subject to occlusion and luminance contrast limitations. In contrast, agents consume digital screenshots that may retain such content and accessibility representations that expose nonvisual widget metadata. The same UI state can therefore present materially different information to users and agents, a mismatch we term human-agent UI desynchronization. We investigate whether a repackaged clone of a legitimate APK can exploit this desynchronization to steer an agent toward attacker-designated actions, while remaining fully functional and behaviorally consistent with the original application for human users. We demonstrate that this threat is feasible: perturbations embedded before deployment can induce such deviations without access to runtime user instructions, agent detection or online adaptation. To systematically expose and evaluate this threat, we develop an automated framework that constructs user runtime instruction-agnostic UI desynchronization attacks and realizes them in deployable APKs. We conduct static and dynamic evaluations across five mobile-agent frameworks and three backbone models on 546 tasks involving various applications, achieving average misleading rates of 77.9% and 66.9%, respectively. A complementary questionnaire-based study with 186 participants finds that the visual perturbations used in our attacks are difficult for human users to notice.
 
 </details>
+
+### 43. Beyond Task Completion: Training Capable and Safe Computer-Use Agents
+
+📄 [arXiv](https://arxiv.org/abs/2609.22178)　📅 2026-09
+
+**关键词**：`defense`、`computer-use agent`、`risk-conditioned policy`、`joint post-training`、`safety-aware refusal`
+
+👤 **作者**：Zeyu Kang、…、Yuhong Wang
+
+- 🎯 **研究动机**：computer-use agent 的后训练只顾任务成功率，不产生可靠安全行为——可靠 CUA 必须以风险为条件：完成良性任务、避开环境危害（安全路径存在时继续）、目标有害或无安全路径时拒绝
+- 🔬 **研究方法**：SCOPE 联合后训练任务执行能力与安全感知决策；SCOPE-Gen 自动合成可验证能力任务并转换为保留目标的环境-风险配对变体作为对齐训练数据
+- 📌 **结论**：条件化安全策略（执行/继续/拒绝三分）随能力共同学习——CUA 安全后训练的首批系统方案之一
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Computer-use agents (CUAs) have made rapid progress in completing complex tasks through graphical user interfaces, yet post-training centered on task success alone does not induce reliable safety behavior. A reliable CUA must condition its execution on risk: it should complete ordinary benign tasks, avoid environmental hazards and continue when a safe completion path remains, and refuse when the goal is harmful or no safe path exists. To learn this conditional policy, we develop Safety and Capability Optimization for Policy Execution (SCOPE), which jointly post-trains a CUA for task-execution capability and safety-aware decision making. To provide aligned training data for this joint objective, we further introduce SCOPE-Gen, an automated pipeline that synthesizes verifiable capability tasks and converts them into paired environment-risk variants while preserving their original goals. Using the resulting tasks, we construct SATraj-OS, a trajectory dataset comprising capability demonstrations, safe continuations, and explicit refusals. SCOPE first learns from all three trajectory types through supervised fine-tuning and then further improves task completion through online reinforcement learning. Starting from Qwen3.5-9B, SCOPE-RL achieves a 54.17% task success rate on OSWorld and a 64.30% attack-avoidance rate on OS-BLIND, yielding the best aggregate capability--safety score of 58.80% among the evaluated agents. Ablations reveal asymmetric but complementary roles for the two forms of safety supervision: refusal trajectories account for most of the attack-avoidance gain, whereas risk-handling trajectories preserve greater task utility at comparable attack-avoidance levels.
+
+</details>
+
+### 44. MATE: Policy-Aware Security Auditing for Mobile Agents via Synthesis-Driven Trajectory Learning
+
+📄 [arXiv](https://arxiv.org/abs/2609.22724)　📅 2026-09
+
+**关键词**：`detection`、`policy-aware auditing`、`mobile agent`、`trajectory learning`、`natural language policy`
+
+👤 **作者**：Changyue Jiang、Jiayi Wang、Xin Wen、Jiarun Dai、Geng Hong、Xudong Pan
+
+- 🎯 **研究动机**：移动 agent 在真实设备上自动化多步工作流，其轨迹可违反 app 特定安全政策；既有轨迹级防御靠 LLM prompt 或刚性规则，不支持跨 app 泛化的细粒度自然语言政策
+- 🔬 **研究方法**：MATE 轻量政策条件审计器：同时编码 agent 轨迹与自然语言安全政策，判定轨迹是否违反给定政策并给出解释；政策作为可编辑文本而非固定模型参数
+- 📌 **结论**：自然语言政策随 app/任务泛化且可编辑——移动 agent 轨迹审计的政策化路线（policy-adaptive guardrail 域）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Mobile agents powered by foundation models now automate complex, multi-step workflows on real devices, but their trajectories can violate app-specific security policies. Existing trajectory-level defenses rely on LLM prompting or rigid rules, and thus fail to support fine-grained, natural-language policies that generalize across apps and tasks. In this work, we introduce MATE, a lightweight, policy-conditioned auditor that encodes both agent trajectories and natural-language security policies to determine whether a trajectory violates a given policy and to explain why. Treating policies as editable text rather than fixed model parameters allows MATE to handle user-defined and evolving requirements without retraining. To construct MATE, we build a knowledge base by extracting app descriptions, workflows, and policies from hundreds of popular mobile apps worldwide, and synthesizing over 140K semantically realistic, policy-conditioned trajectories with a multi-stage pipeline. We further release MATEBench, a trajectory-level auditing benchmark with two synthetic subsets and one real-world subset of manually collected trajectories. Models trained with our synthesis-driven trajectory learning achieve over 95% accuracy on MATEBench, retain strong performance on external safety benchmarks, and audit trajectories from Zhipu's AutoGLM and Alibaba's Mobile-Agent on real devices with over 95% accuracy, outperforming prior methods by over 20%. MATE shows that practical, fine-grained security auditing for heterogeneous mobile agents is both feasible and effective.
+
+</details>

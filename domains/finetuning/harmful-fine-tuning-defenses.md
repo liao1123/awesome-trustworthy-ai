@@ -1599,3 +1599,22 @@ Text-to-image diffusion models can emit copyrighted, unsafe, or private content.
 Large language models remain fragile against malicious fine-tuning, motivating training-time defenses against harmful persona drift. Preventative Steering injects undesirable-trait persona vectors during fine-tuning and removes them at evaluation time, yet the mechanism behind its lasting protection remains unclear. Analyzing its temporal optimization dynamics, we find that the defense emerges from an early compensatory adaptation phase followed by a steady-state phase where the corrective signal decays; in parameter space, attention output projections emerge as the dominant residual-write route for defensive updates. Through Intervention Delta Preservation (IDP) and IDP Continuation experiments, we further show that preserving or reinjecting the weight offset fails to maintain protection, indicating that preventative steering relies on active adaptation rather than a static defense. Motivated by this finding, we propose Progressive Intensity Scheduling (PIS), which starts with a moderate injection strength and increases it after static-strength alignment begins to decay. Across the evaluated Qwen2.5 and Gemma-3 models, PIS improves safety robustness over static-strength steering while reducing harmful trait expression.
 
 </details>
+
+### 86. Multilingual Safety Signals Are Multi-Layered: Filtering Safety-Degrading Data for Safer LLMs
+
+📄 [arXiv](https://arxiv.org/abs/2609.22144)　📅 2026-09
+
+**关键词**：`defense`、`multilingual safety`、`multi-layer signal`、`data filtering`、`fine-tuning safety`
+
+👤 **作者**：Jiakun Li、Guowei Song、Sijia Li、Xingwei He、Hongzheng Chai、Yuan Yuan
+
+- 🎯 **研究动机**：良性微调数据中混有静默破坏安全对齐的样本，既有识别法假设单一安全敏感层——跨语言表示差异使该假设在多语言模型上存疑
+- 🔬 **研究方法**：跨语言分析显示敏感层仅部分共享、安全信号分布于多层；MMSAFE 多层框架同时捕获共享与语言特异的安全退化信号并过滤
+- 📌 **结论**：多语言安全退化数据识别的层间结构——微调安全保持的表示级信号（EMNLP 2026 Main）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Preserving safety alignment during large language models fine-tuning is critical, however, recent studies have demonstrated that even benign fine-tuning data may contain safety-degrading samples that silently undermine safety alignment. Existing approaches typically identify such samples using representations from a single safety-sensitive layer. While this assumption has shown effectiveness in monolingual settings, its validity for multilingual models remains unclear due to potential cross-lingual differences in representation patterns. Through a cross-lingual analysis, we show that sensitive layers are only partially shared across languages, with safety-relevant signals often distributed across multiple layers. Motivated by these observations, we propose MMSAFE, a multi-layer framework for multilingual safety-degrading data identification that captures both shared and language-specific safety signals. Extensive experiments across multiple models, languages, and safety benchmarks demonstrate that MMSAFE reduces the average harmful-response ratio by 60% compared with random filtering and achieves stronger average performance than the strongest single-layer baseline, demonstrating the effectiveness of multi-layer modeling for robust multilingual safety alignment.
+
+</details>

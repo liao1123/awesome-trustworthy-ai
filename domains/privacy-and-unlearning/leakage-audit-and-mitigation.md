@@ -476,3 +476,22 @@ In pay-per-token LLM services, the more a model says, the more users pay. Dishon
 Multimodal large reasoning models (MLRMs) have demonstrated remarkable capabilities in complex visual understanding. However, this very power introduces a critical yet underexplored privacy threat: adversaries can exploit MLRMs to precisely infer users' geographic locations from casually shared photographs, by performing structured reasoning over subtle visual cues such as architectural styles, vegetation, and lighting conditions. In this work, we present a systematic study of MLRM-driven geolocation privacy leakage. We first reveal that refusal-based safeguards are critically insufficient, as carefully crafted jailbreak prompts can raise model response rates to 100%. We further identify that existing defenses, which inject imperceptible perturbations into shared images, suffer from structural limitations intrinsic to their pixel-space optimization, resulting in degraded black-box transferability and pronounced visual artifacts. Motivated by these findings, we propose a diffusion-based framework that provides targeted, proactive defense against geolocation privacy leakage. By injecting perturbations into the latent space of a diffusion model during reverse sampling, our method operates directly on high-level semantic representations, thereby resolving the effectiveness-utility bottlenecks by construction. We further ground our optimization with GeoCLIP, a model explicitly aligned with GPS coordinates, as a surrogate to pinpoint and disrupt the geographic signals that MLRMs exploit for location inference. This targeted semantic disruption yields significantly stronger black-box transferability while preserving perceptual image quality, offering a seamless integration on social media platforms.
 
 </details>
+
+### 27. PII-TRACE: A Benchmark for Context-Aware PII Detection in Multi-Turn LLM Conversations
+
+📄 [arXiv](https://arxiv.org/abs/2609.22200)　📅 2026-09
+
+**关键词**：`benchmark`、`PII detection`、`multi-turn conversation`、`recurring identifier`、`cross-turn evaluation`
+
+👤 **作者**：Kaiyuan Zhang、…、Ninghui Li
+
+- 🎯 **研究动机**：LLM 助手与 agent 系统记录长多轮对话，提供商扫描 PII 后存储——但 PII 检测器与基准都面向自包含记录而非跨轮评测
+- 🔬 **研究方法**：PII-TRACE：首个评估多轮对话中循环出现的标识符是否被完整检测的 PII 基准——13,148 合成多轮对话、13 语言、字符级 span 与标识符簇
+- 📌 **结论**：11 个基线上循环 PII 的跨轮覆盖系统性不足——agent 会话隐私（与 09-18 ASLEval 隐私暴露移位互补：一个测泄漏一个测检测）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+LLM assistants and agentic systems log long multi-turn conversations. AI providers often scan these conversations for Personally Identifiable Information (PII) and mask the PII before storing or processing conversation data. Yet most PII detectors and benchmarks target self-contained records rather than cross-turn evaluation. To evaluate PII detection across turns in multi-turn conversations, we introduce PII-TRACE (Tracing Recurring PII Across Conversational Exchanges), to our knowledge the first PII benchmark to assess whether detectors identify PII in conversational contexts and cover every mention of a recurring identifier across turns. PII-TRACE contains 13,148 synthetic multi-turn dialogues in 13 languages with character-level spans and identifier clusters. Across eleven baselines, including frontier LLMs, no detector achieves full entity-level coverage without substantial false positives on PII-free conversations, and single-pass reading loses a third of the gold characters on long dialogues. To close this gap, we introduce PII-Tracer, a compact 0.6B-parameter detector trained with conversation-level supervision. PII-Tracer attains the highest entity-level coverage of any system we evaluate and also performs strongly on standard single-record benchmarks.
+
+</details>

@@ -614,3 +614,22 @@ Large Reasoning Models (LRMs) pose a dual-surface safety challenge: both interme
 Large Reasoning Models (LRMs) exhibit strong problem-solving abilities, yet their safety alignment often degrades when handling harmful queries. Existing approaches to improving safety largely rely on additional training or preference optimization, while offering limited understanding of the internal mechanisms behind safety failures. In this work, we investigate this failure through a token-level positional analysis of refusal dynamics and identify a localized vulnerability at the onset of reasoning, which we term Onset Refusal Collapse (ORC). We find that the refusal-related signal of LRMs drops sharply at the first generated token under harmful queries, which is associated with unsafe response generation. Motivated by this finding, we propose SafeToken, a lightweight inference-time intervention that injects a learned continuous safety anchor precisely at reasoning onset. Despite updating only a single token embedding, SafeToken effectively mitigates ORC, improves safety on harmful-query benchmarks, and largely preserves reasoning utility. These results suggest that safety failures in LRMs can arise from a transient breakdown at the critical transition from understanding to generation.
 
 </details>
+
+### 33. Assessing Adversarial Robustness of Latent Reasoning Models
+
+📄 [arXiv](https://arxiv.org/abs/2609.22228) · 🐙 [Code](https://github.com/PKU-ML/latent-reasoning-model-assessment.)　📅 2026-09
+
+**关键词**：`analysis`、`latent reasoning`、`adversarial robustness`、`CoT vs latent`、`white-box attack`
+
+👤 **作者**：Shaolong Chen、Ang Li、Mingjie Li、Yisen Wang
+
+- 🎯 **研究动机**：潜空间推理模型（LRM）把中间推理压缩为少量连续潜向量以省成本——其对抗鲁棒性基本未探
+- 🔬 **研究方法**：跨文本与多模态设定、8 个模型 6 个基准系统评估潜推理鲁棒性
+- 📌 **结论**：LRM 普遍比显式 CoT 基线更脆弱，白盒攻击下退化尤重——效率压缩（显式→潜推理）以对抗鲁棒性为代价
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models increasingly rely on long chain-of-thought (CoT) trajectories for complex reasoning, but autoregressive generation brings substantial memory and inference costs. Latent reasoning models (LRMs) offer a more efficient alternative by compressing intermediate reasoning into a small number of continuous latent vectors. Despite their efficiency, however, the adversarial robustness of LRMs remains largely underexplored. In this work, we systematically evaluate the robustness of latent reasoning across textual and multimodal settings, covering eight models and six benchmarks. We find that, across our evaluated settings, LRMs are generally less robust than explicit CoT baselines under adversarial perturbations, with particularly severe degradation under white-box attacks. Further analysis reveals distinct failure modes across modalities: textual latent states exhibit brittle dynamics and high sensitivity to specific input patterns, while latent states in multimodal models can remain largely invariant to input perturbations and have limited influence on final predictions. These findings expose robustness limitations of current latent reasoning approaches and highlight the need to jointly consider efficiency and robustness when designing implicit reasoning systems. We have open-sourced our code to facilitate reproduction of our research https://github.com/PKU-ML/latent-reasoning-model-assessment.
+
+</details>

@@ -337,3 +337,22 @@ Ensuring the security of reinforcement learning (RL) models is critical, particu
 World models increasingly serve as the predictive core of model-based reinforcement learning agents, enabling them to simulate future dynamics and reason over imagined trajectories before acting. Their substantial training demands make pretrained world models attractive for distribution and reuse, exposing downstream systems to model supply chain threats. Backdoor attacks offer a targeted and stealthy means of exploiting such supply chains, yet their threat to interactive world-model agents remains largely unexplored. To fill this gap, we present TrojanWorld, a backdoor framework for world-model agents that induces attacker-specified behavior by steering internal imagination. A physical object placed in the scene acts as the trigger, enabling deployment-time activation through the agent's native observation pipeline without digitally manipulating the observation stream. To achieve effective, stealthy, and persistent control, TrojanWorld combines Decision-Reflective Induction to steer trigger-conditioned imagination toward attacker-specified actions using decision feedback, Clean Behavior Anchoring to preserve trigger-free predictive and behavioral fidelity, and Causal Propagation to sustain the induced preference along subsequent trajectories after the trigger disappears. Together, these mechanisms establish an end-to-end attack chain from physical perception through corrupted imagination to malicious action selection. Experiments with the TD-MPC2, DreamerV3, and R2-Dreamer systems across the DeepMind Control, MetaWorld, MyoSuite, and RoboDesk benchmarks show that under trigger activation, TrojanWorld achieves a target-action deviation as low as 0.026 while retaining at least 98.8% of the corresponding clean performance. Even after trigger removal, the compromised agent can remain trapped in the induced behavioral trajectory, continuing to execute attacker-specified actions.
 
 </details>
+
+### 18. UBA-ORL: Unlearning-Activated Backdoor Attacks on Offline Reinforcement Learning
+
+📄 [arXiv](https://arxiv.org/abs/2609.22711)　📅 2026-09
+
+**关键词**：`attack`、`unlearning-activated backdoor`、`offline RL`、`compliance gap`、`policy trojan`
+
+👤 **作者**：Fengyi Wang、Cong Li、Lulu Xue、Qiyu Leng、Ziqi Zhou、Peijin Guo
+
+- 🎯 **研究动机**：offline RL 依赖静态数据集并日益部署于安全关键域；合规驱动的数据删除（unlearning）增强隐私的同时打开此前未被认识的攻击面
+- 🔬 **研究方法**：UBA-ORL：首个 unlearning 激活的 offline RL 后门——被删除数据中埋入的后门在删除/重训后激活
+- 📌 **结论**：攻击在被评估设定中显著强于基线——unlearning 作为部署时转换激活后门的又一 validation–deployment gap 实例（与量化和范式转化同族）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Offline reinforcement learning (offline RL) enables policy learning from pre-collected static datasets without online exploration, and is increasingly deployed not only in safety-critical domains such as autonomous driving and robotic control but also in data-mining applications such as recommendation and behavior analysis. While compliance-driven data removal enhances privacy, it also opens a previously unrecognized attack surface. We introduce UBA-ORL (Unlearning-activated Backdoor Attack on Offline Reinforcement Learning), the first unlearning-activated backdoor attack for offline RL: in the evaluated settings, the attack is substantially suppressed after normal training and becomes pronounced after a compliance-driven deletion (unlearning) request. UBA-ORL employs a dual-sample mechanism: alongside backdoor trajectories (BD) that link a trigger to malicious actions under inflated rewards, the attacker injects camouflage trajectories (CM) sharing the same trigger pattern but preserving benign actions with equally high rewards. During training, BD and CM provide competing supervisory signals; upon a legitimate deletion request on the CM subset, the residual BD signal can re-dominate, reactivating the backdoor on demand. Empirical results show that UBA-ORL achieves controllable activation under the evaluated offline-RL configurations, while no-trigger return changes vary by configuration, exposing a previously overlooked security risk in compliance-driven offline RL platforms. We urge the community to develop joint pre-/post-unlearning auditing mechanisms for compliant unlearning services.
+
+</details>
