@@ -2263,3 +2263,22 @@ We design, implement, and evaluate adversarial decoding, a new, generic text gen
 Retrieval-augmented generation (RAG) systems enhance large language models (LLMs) with external knowledge but have been demonstrated to be vulnerable to corpus poisoning. Existing poisoning attacks against RAG largely focus on single-point explicit injection, where the malicious payload is fully encapsulated within a single document. Consequently, recent mitigation mechanisms have evolved to identify and diminish these threats effectively. In this paper, we first verify that existing mitigation mechanisms are insufficient for a new class of threats: indirect logic induction. Motivated by this observation, we introduce InceptionRAG, a stealthy attack mechanism that subverts the standard attack paradigm. Instead of injecting explicit malicious payloads, InceptionRAG fragments it into a chain of dormant passages. These passages appear harmless and can bypass existing mitigation mechanisms when examined separately. However, when retrieved together, they trigger LLMs to self-deduce target misinformation via multi-hop reasoning. To further improve the applicability of InceptionRAG in black-box settings, we propose zeroth-order suffix optimization (ZOSO) to automate the generation of authoritative suffixes. Extensive evaluations across three datasets and three LLMs demonstrate that InceptionRAG achieves an attack success rate exceeding 80% even under rigorous adversarial constraints. In particular, InceptionRAG shows superior evasion capabilities, effectively bypassing established defenses that mitigate traditional single-document injections. Our findings expose a concerning paradox: the stronger reasoning capabilities of LLMs increase their vulnerability to reasoning-based poisoning attacks. To mitigate potential misuse, we propose a document isolation-based defense, HODOR, which decouples adversarial logical dependencies.
 
 </details>
+
+### 118. RAG-NAROK: Retrieval-Aware Knowledge Corpus Poisoning in RAG with Source-specific Refutation
+
+📄 [arXiv](https://arxiv.org/abs/2609.25469)　📅 2026-09
+
+**关键词**：`attack`、`retrieval-aware poisoning`、`source-specific refutation`、`dynamic corpus`、`RAG attack`
+
+👤 **作者**：Abdullahil Kafi、Alvi Ataur Khalil
+
+- 🎯 **研究动机**：RAG 对动态检索管线的结构性依赖引入未被探索的对抗漏洞——既有知识库投毒本质静态：对抗文档预计算并注入，完全不知道受害系统对给定查询实际会检索什么
+- 🔬 **研究方法**：RAG-NAROK：检索感知的语料投毒——为每个受害查询定制带来源特异反驳的对抗文档，攻击者模拟检索过程动态生成针对性毒文档
+- 📌 **结论**：检索感知投毒优于静态投毒——RAG 投毒从静态语料注入进入查询条件化动态投毒
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Retrieval augmented generation (RAG) systems have emerged as the dominant architecture for grounding large language model (LLM) outputs in verifiable external knowledge, yet their structural reliance on a dynamic retrieval pipeline introduces a largely unexplored class of adversarial vulnerability. Existing knowledge-base poisoning attacks are fundamentally static. Adversarial documents are pre-computed and injected without any awareness of what the victim system will actually retrieve for a given query, leaving the attack blind to the competitive documentary landscape that surrounds its payload in the generator's context window. Unlike traditional static poisoning attacks that are blind to the retrieved context, we introduce RAG-NAROK (Retrieval-Anchored Generation Negation And Response Quality Collapse), a RAG attack framework that adapts to the query text. RAG-NAROK exploits the transparency inherent in RAG pipeline to first extract the legitimate source identities, then generate Anchor-Specific Refutation documents that explicitly name and devalue retrieved sources while leveraging recency and authority biases to steer the text generation toward a target answer. Our results demonstrate that RAG-NAROK significantly outperforms static baselines across diverse domains, revealing a fundamental tension between RAG transparency and AI security.
+
+</details>

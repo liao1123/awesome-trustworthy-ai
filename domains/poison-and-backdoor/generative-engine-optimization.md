@@ -928,3 +928,22 @@ GEO (generative engine optimization) visibility scores aggregate source appearan
 AI-generated overviews are becoming an increasingly prominent layer of search interfaces, yet their behavior in Chinese-language search remains underexplored. We conduct a cross-lingual audit of AI overview behavior on Baidu and Google using English queries sampled from MS MARCO and their translated Chinese counterparts. Our analysis examines when overviews are triggered across platform-language settings, which host domains receive visible exposure in Chinese-language overviews, how concentrated that exposure is, and how source overlap varies across settings. We also compare the embedding-based semantic similarity of generated answers for matched query intents. The results reveal substantial differences across platform-language settings in overview availability and visible source exposure. At the aggregate level, the settings exhibit low overlap in visible host-domain inventories, while matched-query answers yield median cosine similarities ranging from 0.701 to 0.813. These findings indicate that answer-level semantic similarity and aggregate source exposure capture distinct dimensions of AI-mediated search. Evaluations of AI search should therefore consider not only the content of generated answers but also how source visibility is distributed across platforms, languages, and information environments.
 
 </details>
+
+### 49. GroundedGEO: Auditing the Evidence Gap in Generative Search Rankings
+
+📄 [arXiv](https://arxiv.org/abs/2609.25189)　📅 2026-09
+
+**关键词**：`analysis`、`generative search audit`、`evidence gap`、`claim-evidence relation`、`grounded reranking`
+
+👤 **作者**：Yihan Xia、Huiling Fan、Kangrong Zhong、Taotao Wang
+
+- 🎯 **研究动机**：生成式搜索为后果性决策排序产品与服务，发布者可廉价让候选文本看起来相关——证据状态不是文本属性而是主张-证据关系：纯文本排序器与防御无法分离诚实详实与捏造细节（可识别性缺口）
+- 🔬 **研究方法**：证据配对基准（50 电商查询、1,950 案例）+ 主张级重排器 GroundedGEO：惩罚缺少证据支持的查询相关主张
+- 📌 **结论**：claim-evidence 关系审计生成式搜索排序——GEO 叶子证据完整性线（Lazy Grounding 的审计对应）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Generative search systems rank products and services for consequential decisions, and publishers can cheaply make candidate text look relevant. Yet evidence status is not a text property but a claim-evidence relation: text-only rankers and defenses cannot separate honest detailed content from fabricated detail, creating an identifiability gap. We audit this gap with an evidence-paired benchmark (50 e-commerce queries, 1,950 cases) and a claim-level reranker, GroundedGEO, that penalizes query-relevant claims lacking support in a supplied packet. Matched rich variants control format and volume; packet twins add attestations at fixed text, while thinned packets withdraw them. On the frozen listwise ranker Qwen2.5-7B, unsupported-rich variants show significant normalized rank gain over clean candidates (+0.065 to +0.092 across claim profiles, Holm-corrected), while supported and neutral controls do not; the effect is model-dependent (marginal on MiMo-v2.5, absent on GLM-5.3-Flash). On a frozen pointwise scorer, oracle evidence labels cut the unsupported-rich top-3 rate from 0.65 to 0.43 (laundering from 0.61 to 0.39) at lambda=40 with zero false suppression; packet twins restore the original rates without changing text. Against a 370-claim human gold, all tested automatic judges fail the preregistered reliability gate, although the best local judge retains 79-100% of oracle suppression with zero measured false suppression on protected arms. Separately, stripping attestation coverage increases false suppression by 0.307. These diagnostic effects identify two limits on the evidence channel: label quality and packet coverage. They do not validate an automatic defense, and interpretation of the adverse human-gold arm remains pending adjudication.
+
+</details>

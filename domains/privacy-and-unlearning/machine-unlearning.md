@@ -1665,3 +1665,22 @@ Machine unlearning aims to remove specific knowledge from a trained large langua
 Large Language Model (LLM) unlearning is essential for removing sensitive or copyrighted knowledge while preserving general utility. Existing methods often leave residual knowledge in intermediate representations, which can still be recovered. To address this, we propose Cascade, a hierarchical recoverability control framework that minimizes the internal identifiability of target knowledge. Cascade combines three complementary controls: path-level routing to suppress privacy-associated activation routes, representation-level compression to reduce geometric separability, and decoding-level intervention to limit residual recovery. Experiments on TOFU, MUSE-News, and WMDP, including robustness tests with query reformulation and extraction-style prompts, show that Cascade effectively reduces recoverability while maintaining stable model utility.
 
 </details>
+
+### 90. Mitigating Sequential Reappearance in Diffusion Data-Point Unlearning
+
+📄 [arXiv](https://arxiv.org/abs/2609.25166)　📅 2026-09
+
+**关键词**：`analysis`、`diffusion unlearning`、`sequential reappearance`、`repeated deletion`、`memorization regime`
+
+👤 **作者**：Donghyun Kim、…、Sangwoo Hong
+
+- 🎯 **研究动机**：扩散数据点 unlearning 通常在每次删除后立即评测——但后续请求可能反复更新同一模型
+- 🔬 **研究方法**：识别 sequential reappearance：初始判定已遗忘的实例在不重用已删数据、无对抗微调的情况下返回记忆化状态；构建对应评测协议
+- 📌 **结论**：连续删除下已遗忘实例自发重现——unlearning 的时间稳定性失效模式（#5 线）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Diffusion data-point unlearning is typically evaluated immediately after each deletion, even though subsequent requests may repeatedly update the same model. We identify sequential reappearance, a failure mode in which an instance that is initially judged to be forgotten later returns to the memorized regime without reuse of the deleted data or adversarial fine-tuning. To capture this behavior, we introduce a target-level evaluation protocol that tracks whether each target is forgotten immediately, remains forgotten at the end of the sequence, or reappears during subsequent deletions. We further find that targets that later reappear exhibit sharper local denoising-loss geometry after deletion than targets that remain forgotten.
+
+</details>

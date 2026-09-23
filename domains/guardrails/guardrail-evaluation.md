@@ -1331,3 +1331,22 @@ Guardrail models are classifiers deployed to screen malicious prompts and respon
 Large language models are increasingly used for content moderation, but most evaluations still report aggregate accuracy on individual benchmarks. We introduce Safety-Flag, which places seven widely used safety benchmarks (BeaverTails, XSTest, Ethics, WildGuard, Aegis, ToxiChat, and ToxiGen) into a single balanced flag / do-not-flag protocol. We release item-level decisions and confidence scores for six general-purpose LLMs and four dedicated guards, together with three reference models, evaluated on the same items. Safety-Flag measures three dimensions of moderator reliability: error direction, probability calibration, and confidence-based error ranking for human review. They often disagree. Aggregate accuracy does not reveal error direction: one model flags $85\%$ of benign content, whereas another misses $54\%$ of harmful content. All six general-purpose models are overconfident; fitting one temperature per model reduces calibration error by $2.8$--$6.0\times$ without changing predicted labels or confidence ordering. Confidence-based abstention lowers selective risk for every model, although the gains depend on how well confidence ranks errors. Dedicated guards produce fewer false alarms and are better calibrated, but several have higher miss rates outside their documented coverage. We release the benchmark, fixed item lists, evaluation code, per-item model outputs, and leaderboard at: https://github.com/yibo-hu-lab/safety-flag-benchmark.
 
 </details>
+
+### 71. JEV-as-a-Judge: Accept When Confident, Escalate When Unsure
+
+📄 [arXiv](https://arxiv.org/abs/2609.26550)　📅 2026-09
+
+**关键词**：`benchmark`、`decision-only judge`、`escalation`、`cheap first pass`、`judge validity`
+
+👤 **作者**：Yubo Li、Yidi Miao、Ramayya Krishnan、Rema Padman
+
+- 🎯 **研究动机**：LLM-as-judge 的推理成本与置信可靠性在规模上成为关键——决策专用 judge 能否作经济的第一道并识别何时需要更强评测
+- 🔬 **研究方法**：Jev-as-a-judge 对比 16 个生成式与奖励模型 judge（含盲人工裁决）
+- 📌 **结论**：普通偏好任务上与 SOTA LLM judge 差距 3pp 内——决策专用 judge 的有效域与升级边界（calibrated-policy-guard P2 核心证据）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+LLM-as-a-judge enables evaluation across diverse tasks, but inference cost and confidence reliability become critical at scale. We study whether a decision-only judge can provide an economical first pass and identify when stronger evaluation is needed. Comparing jev-as-a-judge with sixteen generative and reward-model judges, with blinded human adjudication, we find it within three percentage points of a state-of-the-art LLM judge, our strongest comparator, on ordinary preference and evidence-grounded factuality at 0.36% of the comparator's fee. Larger gaps arise when judgments require checking a derivation or resisting an elaborately written wrong answer. On several benchmarks, JEV's gap to this comparator is concentrated in low-confidence decisions. A frozen cascade that accepts confident verdicts and escalates uncertain ones retains 99% of the comparator's accuracy at lower cost.
+
+</details>

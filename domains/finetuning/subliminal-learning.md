@@ -603,3 +603,22 @@ Knowledge distillation can transmit unintended behavioral traits from a teacher 
 Subliminal Learning (SL) is a recently identified phenomenon in which a student model acquires downstream task capabilities by matching seemingly unrelated auxiliary outputs from a teacher, despite never observing task labels, task-specific outputs, or the original training data. While recent studies have identified where subliminal signals may reside, the optimization mechanism underlying this phenomenon remains poorly understood. In this work, we provide a mechanistic understanding of SL through the lens of learning dynamics. Specifically, we derive a chained cross-task kernel that explicitly links ghost-output supervision to changes in task predictions through shared backbone representations. Our unified analytical framework provides a rigorous mathematical explanation for three central empirical puzzles in SL: (i) under shared initialization, the transfer operator forms a strictly Positive Semi-Definite (PSD) structure, guaranteeing that ghost-output optimization aligns the student with the teacher's true task objective without explicit label exposure; (ii) the ghost-output dimensionality acts as an explicit rank bottleneck governing the transfer of task-relevant features; and (iii) synthetic, high-entropy inputs function as broadband probes that maximize cross-task kernel overlap, explaining why random noise consistently outperforms structured data for subliminal transfer. Experiments on the canonical ghost-output setting validate all three theoretical predictions, providing the first learning-dynamics-based theoretical explanation of how ghost-output supervision gives rise to subliminal learning.
 
 </details>
+
+### 33. Slow Decay and Silenced Expression: Iterated Subliminal Trait Transfer in Language-Model Lineages
+
+📄 [arXiv](https://arxiv.org/abs/2609.25721)　📅 2026-09
+
+**关键词**：`analysis`、`subliminal learning`、`iterated transfer`、`model lineage`、`trait decay`
+
+👤 **作者**：Ryan Vo、Duc-Vu Nguyen、Matt Kretchmar、Ngan Luu-Thuy Nguyen
+
+- 🎯 **研究动机**：模型日益在其他模型输出上训练形成谱系（lineage）——阈下学习证明教师特质可经无内容数据单步传递，但特质跨代保持还是衰减未知
+- 🔬 **研究方法**：向三份 Qwen2.5-7B-Instruct 注入特质并迭代蒸馏形成谱系，逐代测量特质保持（慢衰减与被静默表达）
+- 📌 **结论**：特质跨谱系慢衰减、以被静默形式存续——subliminal learning 从单步扩展到多代传播（#14 + 模型谱系的双重命中）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Language models are increasingly trained on the outputs of other models, forming chains that we call lineages, in which a trait present in one generation can pass to the next. Prior work on subliminal learning has shown that a teacher's trait can transmit to a student through filtered data carrying none of the trait's content. However, the evidence covers only a single training step. We study whether such a trait holds or fades across lineages. We instill the trait into three copies of Qwen2.5-7B-Instruct and iterate the training step to depth ten from each, reading every generation two ways on the same held-out prompts: a keyword screen that looks for expressions of the trait in the model's output, and an activation probe that projects each model's displacement from the base onto a direction built from the other lineages' teachers. We report two findings. First, the trait persists through ten generations across three lineages. The instilled models express it on every completion; the keyword-screen rate falls to 55.6% after the first step and to 21.1% by generation ten. The base itself matches the screen on none of its 300 completions. Second, the trait can be present internally while absent behaviorally. When the model's default system prompt is removed at evaluation, the generation-ten students' keyword-screen rate is zero on every prompt while the probe score stays positive on every prompt. Steering the untreated base with the displacement of a generation-ten student, which is trained and measured under the default system prompt, induces screened expression of the trait even with the system prompt removed, while that same student shows no expression of the trait with the system prompt removed.
+
+</details>

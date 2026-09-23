@@ -425,3 +425,22 @@ Vision-Language-Action (VLA) models are emerging as a unified substrate for embo
 Pretrained world models, learned simulators that encode an observation into a latent state and predict how it evolves under actions, are beginning to be reused as off-the-shelf dynamics backbones for control, like pretrained encoders and language models are reused today. We show that this reuse opens a supply-chain backdoor: an adversary who controls only a released checkpoint can hijack the downstream controller, even though the victim trains and evaluates entirely on clean data and never sees the trigger. The attack encodes no explicit trigger-to-action rule. Instead, the poisoned model routes trigger-bearing observations into a chosen latent region and reshapes the local dynamics there, so that the victim&#39;s own optimization (Dreamer-style actor training in imagination, or MPC/CEM planning over predicted futures) re-discovers the attacker&#39;s target action on its own. Across several control tasks and trigger families, the trigger steers the controller&#39;s action toward the attacker&#39;s target, controlling every action dimension and hijacking 100\% of triggered steps on the strongest settings. The checkpoint still passes the clean-data diagnostics a victim would run before deployment, with clean-task success retaining at least $\sim$75\%. The effect is temporally gated: it appears only while the trigger is present and disappears when the trigger is removed. Trigger-blind repair is budget-dependent: moderate clean fine-tuning can preserve clean utility while leaving the triggered failure intact, whereas sufficiently aggressive adaptation can remove it only after substantially degrading clean control. The world-model backbone itself is therefore an emerging and underexamined attack surface for control. The full code and artifacts are available in our repository.
 
 </details>
+
+### 23. StepTrigger: Contact-State-Triggered Backdoor Attacks on VLM-Powered Legged Robots
+
+📄 [arXiv](https://arxiv.org/abs/2609.26131)　📅 2026-09
+
+**关键词**：`attack`、`contact-state trigger`、`legged robot`、`VLM planner`、`physical backdoor`
+
+👤 **作者**：Jiageng Zhang、Doniyorkhon Obidov、Kaichen Yang
+
+- 🎯 **研究动机**：LLM/VLM 日益充当机器人高层规划器（依目标与传感器摘要选动作）——被攻陷的规划器可在隐藏触发存在时改变目标选择；既有攻击依赖语言/视觉/场景语义触发
+- 🔬 **研究方法**：StepTrigger：首个接触状态触发的后门——用机器人本体接触状态（腿/关节物理配置）作触发器，攻击 VLM 驱动的足式机器人
+- 📌 **结论**：接触状态触发避开语言与视觉检测面——物理状态作为后门触发通道（VLA/具身后门的全新触发模态）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models and vision-language models are increasingly used as high-level planners in robotic systems, using task goals and sensor summaries to select navigation or manipulation actions. This creates a new backdoor surface: a compromised planner can behave normally in most runs, yet change its target selection when a hidden trigger is present. Prior attacks on LLM-powered or embodied agents mainly rely on triggers that appear in language, camera-visible objects, scene semantics, or specific sequences of past actions. This paper presents StepTrigger, a contact-state-triggered backdoor attack for VLM-powered legged robots. The trigger is not a prompt token or a visible marker. It is produced by pressure and foot-ground contact patterns that arise when a Unitree Go1 quadruped walks across a dense terrain patch. Unlike conventional visual or textual triggers, contact signals are inherently noisy and may also arise during benign locomotion. To avoid treating every pressure anomaly as a trigger, StepTrigger learns a selective backdoor policy from multimodal robot state, using incidental pressure events as benign examples and dense-patch contacts as poisoned examples. In a stratified offline evaluation, the trained planner achieved 98.75% clean behavior preservation, 92.50% false-trigger rejection, 76.25% true-trigger activation, and 89.17% overall parsed behavior accuracy. These results reveal a backdoor surface in proprioceptive and contact channels that is not captured by defenses focused only on language, vision, or action history.
+
+</details>

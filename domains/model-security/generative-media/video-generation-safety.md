@@ -281,3 +281,22 @@ Recent progress in video generative models has enabled the creation of high-qual
 The rapid evolution of video generation has shifted the paradigm from pure text-driven to multi-conditional controllable generation, with reference images now widely adopted as conditional inputs to achieve superior spatiotemporal consistency. While these reference images serve as powerful visual anchors that significantly enhance controllability, their impact on safety remains largely unexplored. In this work, we reveal the visual anchoring effect: by enforcing consistency, the mechanism prevents the generated content from drifting away from the original harmful intent, thereby eliminating the model's natural safety escape route from harmful to benign content. Consequently, visual anchors inherently increase the safety risk---this is the price of consistency. Building on this insight, we propose Decoupling Intent via Visual Anchors (DIVA), a training-free multimodal jailbreak framework for video generation that exploits this vulnerability. DIVA decouples harmful intent into a static visual anchor image and a dynamic motion text prompt, and employs dual-criteria selection to balance attack stealthiness with semantic preservation. Extensive experiments across various leading commercial platforms and mainstream open-source video generation models demonstrate that DIVA achieves a substantially higher Attack Success Rate than existing text-only methods. To facilitate future research, we additionally contribute TI2VSafetyBench, the first safety benchmark for multi-conditional video generation.
 
 </details>
+
+### 15. The Temporal Moderation Gap: Text-to-Video Safety Filters Are Blind to Harm in Motion
+
+📄 [arXiv](https://arxiv.org/abs/2609.26233)　📅 2026-09
+
+**关键词**：`analysis`、`video moderation gap`、`temporal harm`、`frame-order blindness`、`T2V safety`
+
+👤 **作者**：Yuxin Cao、Fusen Guo、Yuezhong Wu、Huadong Mo、Wei Song
+
+- 🎯 **研究动机**：T2V 服务从图像生成继承安全栈（关键词过滤+逐帧检查器）——该栈对视频有独特盲区：忽略帧序的审核器只要接受良性重排就接受有害片段
+- 🔬 **研究方法**：证明顺序盲区审核的必然失效定理；实测未修改基准 prompt 已有 32.7% 的 Sequential-Harm 片段落入审核缺口（危害仅由帧序携带）
+- 📌 **结论**：仅由运动顺序携带的危害系统性逃过逐帧审核——文本到视频安全的时间盲区首个定量刻画
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Text-to-video (T2V) services inherit their safety stack from image generation, pairing a keyword prompt filter with a per-frame checker that blocks a clip whenever one sampled frame looks unsafe. This stack has a blind spot unique to video. We prove that any moderator ignoring frame order accepts a harmful clip whenever it accepts that clip's benign shuffle, so harm carried by the ordering alone escapes. Empirically, the unmodified benchmark prompt already lands a clip in this moderation gap on 32.7% of Sequential-Action targets over four held-out seeds, and paraphrasing, scene splitting, and a feedback-driven prompt search show no significant improvement (paired McNemar $p\ge0.12$), so prompt engineering is not needed to expose the vulnerability. Dense-scoring all 97 rendered frames shows that about a third of the delivered clips merely hide an unsafe frame, while the rest stay harmful as ordered videos even though every frame passes, an order-blind residual the unmodified prompt reaches on a quarter of Sequential-Action targets. We also document a measurement pitfall, since scoring a searched prompt on its own render seed inflates a 7.5% per-generation rate into an apparent 46.7%. A user study confirms that people read these clips as harmful and their shuffles as safe. The fix is to read frame order, and an order-aware detector separates these clips from their own shuffles at AUC 0.74 where per-frame checking sits at chance, which is the signal deployed moderation throws away.
+
+</details>

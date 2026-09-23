@@ -1209,3 +1209,22 @@ Evaluation awareness poses an unprecedented threat to model evaluation, but the 
 Reinforcement learning (RL) improves reasoning in vision-language models (VLMs) but can induce chain-of-thought (CoT) obfuscation: an operational, non-intentional outcome where task reward or accuracy rises while traces become less grounded and monitorable. Prior work largely documents this decay behaviorally, leaving its representation-level correlates and actionable controls unclear. We find that template- and ground-associated activations become less separable during RL; matched interventions support the contribution of selected features to monitorability degradation. Guided by this evidence, we propose Targeted Anti-obfuscation with Mechanistic Enforcement (TAME), which uses Sparse Autoencoders (SAEs) to combine behavioral feedback with targeted suppression of template-associated activations during RL. Its asymmetric constraint penalizes template activations only above their pre-RL baseline, anchoring the localized features while behavioral feedback promotes grounded refinements. Across VIRL-39k, SPA-VL, and two model families, TAME improves CoT monitorability by up to 30.9 and 16.7 percentage points over Group Relative Policy Optimization (GRPO), respectively. Blinded human evaluation finds higher human monitorability on both datasets, and two held-out monitor families reproduce the monitorability gains. Task accuracy changes are small and mixed, and general-capability benchmarks show task-specific trade-offs. These results provide a path from behavioral monitoring to representation-level oversight for more auditable RL-trained multimodal systems.
 
 </details>
+
+### 65. Capable yet Parsimonious: Extracting and Characterizing Hidden Chain-of-Thought in Frontier Models
+
+📄 [arXiv](https://arxiv.org/abs/2609.26637)　📅 2026-09
+
+**关键词**：`analysis`、`hidden CoT`、`tool registration`、`frontier model`、`externalization`
+
+👤 **作者**：Xiaoyu Luo、Tao Ren、Wenrui Yu、Xiao Li、Qiongxiu Li、Johannes Bjerva
+
+- 🎯 **研究动机**：前沿模型的能力增益被归因于推理改进，但闭源系统的原始 CoT 被隐藏无法验证
+- 🔬 **研究方法**：经标准 API 功能注册简单自定义工具诱导前沿模型外化中间推理；先在开源模型上对 native CoT 验证外化轨迹非事后合理化
+- 📌 **结论**：前沿模型隐藏 CoT 的提取与刻画——推理可见性（#4 隐藏推理线）的新通道
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+The rapid capability gains of frontier language models are widely attributed to improved reasoning abilities, yet this cannot be verified as raw CoT traces in closed-source systems are hidden. By registering a simple custom tool through a standard API feature, we induce frontier models to externalize intermediate reasoning. Because these traces may reflect post-hoc rationalization rather than genuine reasoning, we first evaluate against native CoT on open-source models and extend to closed-source frontier models including GPT-6 Astra. We find that the extracted reasoning matches native reasoning performance and substantially outperforms no-reasoning baselines, across competition mathematics, science, and code generation. We then characterize how frontier models structure their intermediate reasoning. Across token efficiency, reasoning-step types, and induced reasoning trees, we identify systematic differences in how models externalize, compress, and organize reasoning. We find that Astra exhibits token-efficient directed reasoning, selecting a correct trajectory earlier, while resolving elementary steps internally and externalizing only crucial reasoning. These findings provide a behavioral lens on frontier-model reasoning beyond benchmark scores.
+
+</details>

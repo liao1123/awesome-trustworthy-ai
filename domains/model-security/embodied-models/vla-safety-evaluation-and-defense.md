@@ -777,3 +777,22 @@ Vision-language-conditioned robot policies integrate perception, language unders
 Robotic foundation models achieve impressive performance on standard manipulation benchmarks, yet these evaluations typically assume clean, timely, and consistent visual observations throughout execution. We introduce LIBERO-VPro, a benchmark for systematically evaluating the closed-loop visual robustness of robotic foundation models by perturbing the visual evidence available during execution. LIBERO-VPro covers four complementary dimensions, including Visual Evidence Degradation, Camera Staleness, Visual Source Consistency, and Task-Relevant Scene Variation, spanning 12 challenge categories, 96 experimental settings, and 3,296 task-condition cases. We evaluate three vision-language-action models and three world-action models over approximately 196,000 simulated episodes, complemented by 200 real-world rollouts on a Franka Research 3. Our results reveal that strong nominal performance can mask substantial weaknesses in visual grounding and adaptation. Models often remain successful despite severe object-level occlusion, yet degrade sharply when local interaction cues are disrupted or familiar spatial priors are violated. They are also highly sensitive to stale or missing observations and struggle when changed task preconditions require behavioral adaptation. Finally, VLAs and WAMs exhibit distinct robustness profiles, showing that visual robustness is multi-dimensional and architecture-dependent. LIBERO-VPro provides a systematic diagnostic framework for developing robotic foundation models that can more reliably ground and adapt their actions under challenging visual conditions.
 
 </details>
+
+### 41. SafeLoop: Risk-Aware Rollback for Vision-Language-Action Manipulation
+
+📄 [arXiv](https://arxiv.org/abs/2609.26313) · 🐙 [Code](https://github.com/Loule0-0/SafeLoop/tree/release/safeloop.)　📅 2026-09
+
+**关键词**：`defense`、`VLA rollback`、`hazard prediction`、`non-invasive wrapper`、`irreversible failure`
+
+👤 **作者**：Zeyu Lou、Tianran Zhang、Xinquan Yue、Ya Jing、Chenyang Si
+
+- 🎯 **研究动机**：VLA 长程执行仍脆弱——小的状态估计或控制误差可导致不可逆失败（碰撞、掉落），需要前瞻性安全机制
+- 🔬 **研究方法**：SafeLoop：非侵入式外层包装——危害预测 + 基于回滚的恢复，不改 VLA 参数
+- 📌 **结论**：风险感知回滚保护 VLA 操作——不可逆失效的运行时防线（#7 线）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Recent vision-language-action (VLA) models are promising for general-purpose manipulation, but long-horizon execution remains fragile. Small state-estimation or control errors can lead to irreversible failures (e.g., collisions and object drops). Avoiding these risks requires a proactive safety mechanism capable of anticipating hazards. In this paper, we introduce SafeLoop, a non-invasive external wrapper that adds hazard prediction and rollback-based recovery to a VLA model without changing its parameters. SafeLoop trains a risk predictor from vision and proprioception to output four values: the probability and time-to-hazard for body collisions and for object failures. A lightweight controller then chooses one of three actions based on the predicted risk: continue execution (noop), save a safety checkpoint (record), or retreat in joint space (rollback). Rollback moves the robot back to a recent safe waypoint and queries the base policy again, which may yield an alternative continuation. Across 24 LIBERO tasks (16 random seeds each) and three real-robot tasks (25 rollouts each), SafeLoop achieves a stronger overall safety-success trade-off than alternative methods, reducing hazard cases by roughly 70% while preserving task success and the base-policy control rate. Project code is available at https://github.com/Loule0-0/SafeLoop/tree/release/safeloop.
+
+</details>

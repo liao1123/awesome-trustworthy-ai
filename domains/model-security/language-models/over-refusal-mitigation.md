@@ -843,3 +843,22 @@ Striking a balance between helpfulness and safety remains a fundamental challeng
 Large language model (LLM) agents increasingly operate over long-horizon interactions involving tool use, persistent state, evolving authorization, and external environment feedback. In such settings, safety failures may emerge only after multiple turns, yet existing evaluations often reduce agent behavior to task or attack success, obscuring whether an agent acts, refuses, or remains appropriately calibrated as the interaction evolves. We introduce Blindspot, a benchmark for trajectory-level safety calibration of long-horizon tool-using agents. Blindspot evaluates complete user-agent-environment trajectories through adaptive adversarial interaction, stateful tool execution, and execution-grounded adjudication. Its current instantiation contains 22 attack families and 35 scenarios across seven domains, yielding more than 2,500 long-horizon trajectories with an average interaction length of 14.7 turns. Each trajectory is assigned one of five outcomes: Safe Completion, Correct Refusal, Unsafe Completion, Over-Refusal, or Indeterminate. Unlike fixed attack datasets, Blindspot is an extensible live-simulation framework in which attacks, scenarios, tools, policies, domains, and agent configurations can be added without redesigning the evaluation pipeline. We evaluate 13 proprietary and open-weight LLMs using eight metrics covering unsafe completion, appropriate refusal, benign utility, over-refusal, repeated-run robustness, and post-refusal failure. Preliminary results reveal substantial differences in safety-utility calibration across models and show that failures can emerge only after several initially safe interaction steps. These findings motivate treating agent safety as a trajectory-level property rather than a single-turn or binary success criterion.
 
 </details>
+
+### 48. Mitigating LLM Over-Refusal via Dynamic Semantic Routing Calibratione
+
+📄 [arXiv](https://arxiv.org/abs/2609.25049)　📅 2026-09
+
+**关键词**：`defense`、`over-refusal`、`hypersensitive safety head`、`attention routing conflict`、`activation intervention`
+
+👤 **作者**：Zixuan Wang、Bingjie Zhang、He Zhao、Dandan Guo
+
+- 🎯 **研究动机**：安全对齐 LLM 常过度拒答（错误拒绝良性但安全相关指令）——既有研究归因于静态表示重叠，忽略动态机制
+- 🔬 **研究方法**：从注意力路由冲突视角做机制分析：稀疏 Hypersensitive Safety Heads 在 Hard-Safe prompt 上误触发，异常注意力纠缠把无害目标实体强行绑定到拒答语义，产生高熵路由冲突剥夺目标实体
+- 📌 **结论**：过度拒答的注意力级机制与对应干预——over-refusal 的机制诊断（#3 线）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models (LLMs) aligned for safety often suffer from over-refusal, incorrectly rejecting benign yet safety-related instructions. Prior studies primarily attribute this to static representation overlap, largely overlooking the underlying dynamic mechanisms. In this paper, we present the mechanistic analysis of over-refusal through the lens of internal routing conflicts within transformer attention. We discover that a sparse subset of Hypersensitive Safety Heads misfires on Hard-Safe prompts, exhibiting abnormal attention entanglement that forcefully binds harmless target entities to refusal semantics. This triggers a severe, high-entropy routing conflict that deprives target entities of necessary attention. To counteract this, we propose Semantic Routing Calibration (SRC), a lightweight, training-free inference framework. SRC precisely localizes and dynamically suppresses these hypersensitive safety heads at the inference stage. Coupled with a dual-branch logits fusion that acts as a safety regularizer during subsequent decoding, SRC seamlessly restores trustworthy reasoning. Extensive experiments demonstrate that SRC alleviates over-refusal, with intrinsic safety performance preserved as much as feasible.
+
+</details>

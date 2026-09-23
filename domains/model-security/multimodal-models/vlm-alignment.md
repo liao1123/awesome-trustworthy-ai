@@ -742,3 +742,22 @@ When strong multimodal models are widely available, progress requires new scient
 Instruction hierarchy (IH) alignment teaches language models to prioritize higher-level instructions when inputs conflict. While studied primarily in text-only settings, vision-language models (VLMs) introduce new challenges for IH: instructions may be embedded in images, split across modalities, visually transformed, or encountered during agentic tasks. Positing multimodal IH alignment as a reasoning problem, we train VLMs using reinforcement learning with rule-based rewards, comparing text-only, image-only, and mixed-modality supervision. We find that text-only IH training partially transfers to multimodal attacks, failing when models must decode, reconstruct, or reason over instructions across modalities. Image-based training improves robustness beyond text-only supervision, while mixed-modality training performs best overall. Importantly, the benefits generalize beyond the synthetic typographic training setting to real-image and web-agent safety tasks, while largely preserving general multimodal capability, showing that lightweight, verifiable supervision can meaningfully improve VLM robustness under adversarial, cross-modal, and interactive instruction conflicts.
 
 </details>
+
+### 40. The Uncontrolled Variable: Vision-Language Model Refusal Responds to Image Presence in Ways Risk Cannot Explain
+
+📄 [arXiv](https://arxiv.org/abs/2609.26174)　📅 2026-09
+
+**关键词**：`analysis`、`VLM refusal`、`image presence`、`form-based refusal`、`uncontrolled variable`
+
+👤 **作者**：Haoyu Zhang、…、Shanu Sushmita
+
+- 🎯 **研究动机**：VLM 安全应取决于请求问什么——实测安全对齐 VLM 还对请求形式的一个属性（是否附带图像）敏感：固定请求内容，附一张空白画布即移动拒答数十个百分点
+- 🔬 **研究方法**：控制请求内容不变，仅变化是否附带空白画布（不可读、无关、跨 prompt 相同）；中性指令几乎不受影响、风险相关指令大幅移动
+- 📌 **结论**：拒答被图像存在性本身驱动而非风险内容——VLM 安全评测的未控变量（形式驱动拒答的又一证据）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Vision-Language Model (VLM) safety is expected to depend on what a request asks for. We show that safety-aligned VLMs also key refusal on a property of a request's form: whether an image is attached, holding everything the request asks fixed. Attaching a blank canvas - unreadable, unrelated to the request, identical across prompts - shifts refusal by tens of percentage points, with no defense in the loop. The shift is not blanket caution. Neutral instructions are almost unaffected while borderline-benign prompts move sharply, so the cost falls on sensitivity-adjacent traffic: benign questions about privacy, self-harm and violence. Attachment alone is sufficient, while the image's properties set the price: a black canvas costs substantially more than a white one of identical size, and on an open checkpoint the carrying axis is pixel count. Nor is the shift under instructional control - telling the model the image is a placeholder to be disregarded removes only a fraction of it, and on one model asserting that an attachment exists moves refusal substantially with nothing attached. Attachment may correlate with risk in deployment; what these models do with it does not track risk. It is not the serving stack, since the same weights reached two ways behave alike, nor a property of VLMs as such, since several open-weight checkpoints show nothing. It belongs to particular aligned checkpoints, one of them open. It is also decoupled from what it buys: the canvas does prevent some attack success on a matched harmful set, but far less than it costs, and its sign is not fixed - on one open model the identical canvas makes the model markedly easier to attack. Image presence is not a default a deployer chose or priced; it is an uncontrolled variable inherited with the weights.
+
+</details>
