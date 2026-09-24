@@ -660,3 +660,22 @@ As Large Language Models (LLMs) evolve into autonomous agents that alter real-wo
 </details>
 
 ## 常规收录
+
+### 35. DCFA: Dual-view Causal-inspired Attribution for Failure Reasoning in LLM-based Multi-agent Systems
+
+📄 [arXiv](https://arxiv.org/abs/2609.04749)　📅 2026-09
+
+**关键词**：`analysis`、`failure attribution`、`causal dependency graph`、`counterfactual refinement`、`multi-agent trace`
+
+👤 **作者**：Zehao Wang、Lanjun Wang、Shilong Jin、Junjie Chen、Yanghua Xiao
+
+- 🎯 **研究动机**：LLM 多智能体系统频繁出现推理与协调错误并导致系统级失败——失效归因须从 agent 间自然语言交互中定位「决定性错误」（最早一个纠正即可逆转系统失败的动作）；既有方法浅归因（只抓不完整检索/格式错误等可被验证机制纠正的次要偏差）且随 trace 变长推理能力快速退化
+- 🔬 **研究方法**：DCFA 免训练双视角框架：全局模块从系统 trace 构建结构化因果依赖图定位初始决定性错误；局部模块用反事实启发推理精炼归因
+- 📌 **结论**：Who&When 基准 × 6 个 LLM 上步级准确率最高提升 8.27% 超既有 SOTA——从浅偏差检测到决定性因果定位的归因升级
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language model (LLM)-based multi-agent systems have experienced rapid growth in recent years. Despite their promise, such systems remain fragile, frequently exhibiting reasoning and coordination errors that can lead to system-level failures. Failure attribution in such systems relies on tracing natural language interactions among agents to identify the decisive error, which refers to the earliest action whose correction can reverse system failure. There are two key challenges: 1) Shallow attribution: Existing methods often capture only minor deviations, such as incomplete retrievals or formatting errors, which verification mechanisms can correct, while missing the decisive cause of system failure. 2) Contextual degradation: As the length of the system traces increases, the model's reasoning ability rapidly deteriorates. To address these challenges, we propose DCFA, a training-free framework for failure attribution. DCFA integrates a global module that constructs structured causal-inspired dependency graphs from system traces to identify the initial decisive error, and a local module that applies local counterfactual-inspired reasoning to refine causal-inspired attribution. Experiments on the Who&When benchmark across six LLMs show that DCFA improves step-level accuracy by up to 8.27% over state-of-the-art baselines.
+
+</details>
