@@ -701,3 +701,22 @@ Steganography in large language models offers a way to embed hidden messages wit
 Coverless image steganography (CIS) synthesizes a stego image rather than modifying an existing cover image, enabling authorized recipients to reconstruct the original secret image from the stego. Existing diffusion-based CIS methods can generate natural-looking stego images but preserve substantial visual similarity to the secret image. This resemblance risks exposing structural and semantic cues, giving rise to security vulnerabilities that cannot be evaluated solely via recovery fidelity. Achieving substantial visual dissimilarity between the secret and stego images without compromising stego quality and recovery fidelity remains challenging. To address this issue, we propose InvCISD, an invertible diffusion framework that couples the latent representations of the secret and an irrelevant reference image with an invertible network called LIMNet. We first train LIMNet in diffusion latent space, followed by end-to-end fine-tuning of the entire network, i.e., LIMNet integrated diffusion inversion and generation modules. Experiments demonstrate that the proposed method substantially reduces secret-stego visual similarity, improves stego quality, and retains satisfactory secret reconstruction quality. Our further investigation shows that all evaluated methods are highly detectable by the CIS-oriented steganalysis model, indicating that resistance against targeted steganalysis constitutes a critical direction for future CIS research.
 
 </details>
+
+### 38. Your Model Is Leaking: Covert Information Transfer through LLM Residual Streams
+
+📄 [arXiv](https://arxiv.org/abs/2609.27996)　📅 2026-09
+
+**关键词**：`attack`、`residual-stream covert channel`、`compromised runtime hook`、`air-gapped exfiltration`、`linear decodability`
+
+👤 **作者**：Mingyuan Li、…、Ren Ping Liu
+
+- 🎯 **研究动机**：隐私敏感组织在受限/气隙环境运行 LLM 同时导出选定诊断工件——受损运行时组件能否把敏感信息藏进被允许离开受限环境的中间激活未被检验
+- 🔬 **研究方法**：残差流隐蔽信道：消息映射到码字经受损 runtime 钩子注入中间残差流，注入强度按局部残差范数缩放（信号-残差范数比）；离线观察者用简单线性解码器恢复
+- 📌 **结论**：11 模型 7 架构族中 9 个恢复率 91-100%（KL 仅 0.001-0.007），激活级检测器近随机（AUC≤0.56）——残差流作为外泄信道（内部表示的对抗性滥用：监控信号反用）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Privacy-sensitive organizations may run large language models (LLMs) in restricted or air-gapped environments while exporting selected diagnostic artifacts. We show that a compromised runtime component can hide sensitive information in intermediate activations that are allowed to leave the restricted environment. An offline observer can recover this information with a simple linear decoder. The attack requires no model retraining or weight modification, no attacker-controlled egress, and no control over the recorder or transfer process. We introduce a residual-stream covert-channel attack that maps messages to codewords and injects them into an intermediate residual stream through a compromised runtime hook. To maintain recoverability, the injection strength is scaled with the local residual norm using the signal-to-residual-norm ratio. Across eleven models from seven architecture families, our evaluation shows 91--100% recovery on nine models with KL divergence 0.001--0.007, while evaluated activation-level detectors remain close to random guessing (AUC <= 0.56). Tested post-hoc defenses do not reliably eliminate the channel. Thus, an activation artifact can be schema-valid while carrying information that is not authorized to cross the boundary.
+
+</details>

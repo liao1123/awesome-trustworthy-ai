@@ -993,3 +993,22 @@ We study decentralized multi-agent reinforcement learning (MARL) for networked s
 LLM-based multi-agent systems have demonstrated impressive capabilities, but they also introduce significant safety risks when individual agents fail or behave adversarially. In this work, we study the automated design of agentic systems that remain safe even when a subset of agents is compromised. Inspired by Stackelberg security games, we formalize this problem as a game between a system designer (the Meta-Agent) and a best-responding Meta-Adversary that selects and compromises a subset of agents to minimize safety. We propose Meta-Adversary–Meta-Agent (MaMa), a novel algorithm inspired by this formalization for automatically designing safe agentic systems. Our approach uses LLM-based adversarial search, where the Meta-Agent iteratively proposes system designs and receives feedback based on the strongest attacks discovered by the Meta-Adversary. Empirical evaluations across diverse environments show that systems designed with MaMa consistently defend against worst-case attacks while maintaining performance comparable to systems optimized solely for task success. Moreover, the resulting systems generalize to stronger adversaries, as well as ones with different attack objectives or underlying LLMs, demonstrating robust safety beyond the training setting. Code is available at https://github.com/JNoether/MaMa
 
 </details>
+
+### 53. Delegated Misalignment: How Multi-Agent Structures Amplify LLM Safety Risks
+
+📄 [arXiv](https://arxiv.org/abs/2609.27900)　📅 2026-09
+
+**关键词**：`analysis`、`delegated misalignment`、`responsibility diffusion`、`role-bias compliance`、`multi-agent safety transfer`
+
+👤 **作者**：Zonghao Ying、Jiaqi Yan、Huize Luo、Quanchen Zou、Aishan Liu、Xianglong Liu
+
+- 🎯 **研究动机**：安全对齐几乎只在单 agent 威胁模型下评测——把安全性当作个体 LLM 属性；委托结构（主 agent 分解任务给可能调用外部工具的从属 agent）下该假设是否成立未知
+- 🔬 **研究方法**：三条件协议 × 6 前沿 LLM × 49 危险任务：识别委托下的两类失效机制——主方责任扩散与从方角色偏依从，联合把语言层拒答转化为可执行伤害
+- 📌 **结论**：DeepSeek-V3.2 完整执行率从 30.6% 升至 77.6%、同一模型跨角色行为剧变（GPT-5 单 agent 22.5% vs 从属角色 61.2%）——个体对齐不迁移到多 agent 结构（MAS 安全的结构性放大）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models (LLMs) are increasingly deployed in multi-agent systems where a principal agent decomposes tasks and delegates them to subordinate agents that may invoke external tools. Safety alignment, however, is still evaluated almost exclusively under a single-agent threat model, treating safety as a property of the individual LLM. We show that this assumption breaks down: \emph{individual safety alignment fails to transfer to multi-agent settings}. Two failure mechanisms emerge under delegation: \emph{responsibility diffusion} on the principal side and \emph{role-bias compliance} on the subordinate side, jointly converting language-level refusal into actionable harm. We refer to this phenomenon as \textit{delegated misalignment} and study it through a three-condition protocol across 6 frontier LLMs on 49 hazardous tasks. Delegation amplifies end-to-end harm substantially: DeepSeek-V3.2's full-execution rate rises from 30.6\% to 77.6\% once delegation is introduced, and the same model behaves very differently across roles (GPT-5: 22.5\% as a single agent vs.\ 61.2\% as a subordinate). Ablations further show that standard single-layer defenses each fail on their own and can even backfire. We call on the community to move beyond per-model alignment and toward composite safety mechanisms before multi-agent LLM systems are deployed at scale.
+
+</details>

@@ -1354,3 +1354,22 @@ When a large vision-language model misclassifies a harmful meme, the failure may
 While Multimodal Large Language Models (MLLMs) show remarkable advancements, their cross-modal capabilities introduce complex vulnerabilities that easily bypass unimodal filters. Existing benchmarks lack fine-grained intent-related annotations and rely on unidimensional metrics, hindering comprehensive robustness evaluation. To address this, we propose MME-Safety, a rigorously verified benchmark featuring a unique four-dimensional annotation schema that categorizes risk scenarios, harm severity, and modality-specific stealth levels. Furthermore, we introduce a hierarchical evaluation framework to assess fundamental response reliability, actual risk exposure, and the structural integrity of defensive behaviors. Extensive zero-shot evaluations across 17 state-of-the-art MLLMs provide a comprehensive safety profile of current multimodal systems. Our analysis systematically investigates cross-modal input configurations and uncovers safety implications associated with Chain-of-Thought (CoT) reasoning. These multifaceted findings underscore the urgent need for robust, reasoning-aware safety alignment in the multimodal landscape.
 
 </details>
+
+### 72. InGuard: Towards Generalized Inner Guardrail for Safe Text-to-Image Generation
+
+📄 [arXiv](https://arxiv.org/abs/2609.27620)　📅 2026-09
+
+**关键词**：`defense`、`inner guardrail`、`T2I safety`、`soft-gated embedding modification`、`in-pipeline risk grading`
+
+👤 **作者**：Zeyu Wang、Xiaodan Li、Zhiwen Li、Yuefeng Chen、Hui Xue
+
+- 🎯 **研究动机**：T2I 外层 guardrail（prompt 分类器+事后图像分类器）不使用模型自身表示：截断筛查精度、图像侧检查在全部生成成本已付之后、被标记 prompt 只能被拒不能被调整
+- 🔬 **研究方法**：InGuard：管线内基于模型自身表示的安全框架——文本编码器嵌入上无外部 LLM 的风险三级分类 + SAGE 软门控非对称修改风险 prompt 嵌入（返回安全图像而非拒答）
+- 📌 **结论**：内生表示层 guardrail——guard 从外挂检查到管线内嵌入干预（guard 有效性线的表示干预分支）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Modern text-to-image (T2I) models generate high-quality images from arbitrary user prompts, yet they can just as easily produce not-safe-for-work (NSFW) content. Conventional outer guardrails consist of two components: a prompt classifier that checks for risk before generation, and a post-hoc image classifier that checks the fully generated image. In this design, both classifiers operate outside the generation pipeline and do not use the model's own representations. This separation can limit prompt-screening accuracy, while the image-side check runs only after the full generation cost has been spent. Moreover, a flagged prompt can only be rejected, even when it could be adjusted to produce a safe image. In this work, we propose the Inner Guardrail (InGuard), a safety framework that works inside the pipeline on the model's own representations, leaving base-model parameters untouched. First, a risk classifier grades each prompt as unsafe, risky, or benign based on the text encoder's embeddings, with no external language model. Second, SAGE (Soft-gated Asymmetric Guardrail for Embeddings) modifies the embeddings of risky prompts, aiming to return a safe image instead of a refusal. Third, a latent detector checks the one-step clean latent estimate midway through denoising, reaching nearly image-level performance and halting generation when risk is detected. We also construct the RevGen Safety Benchmark to evaluate T2I safety under realistic conditions: 10,000 prompts built through real-image reverse generation, with a rewriting step that supplies controlled intellectual-property (IP) characters, covering graded porn/gore risks, categorical IP risks, and benign negatives. Across five open-weight T2I models, InGuard reaches 97.9-98.8% safety rate, matching or exceeding the outer guardrail, with 57.5-73.5% less benign disturbance, ~3.7x fewer parameters, and 50-55.6% of denoising steps skipped.
+
+</details>

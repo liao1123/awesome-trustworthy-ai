@@ -1350,3 +1350,22 @@ Large language models are increasingly used for content moderation, but most eva
 LLM-as-a-judge enables evaluation across diverse tasks, but inference cost and confidence reliability become critical at scale. We study whether a decision-only judge can provide an economical first pass and identify when stronger evaluation is needed. Comparing jev-as-a-judge with sixteen generative and reward-model judges, with blinded human adjudication, we find it within three percentage points of a state-of-the-art LLM judge, our strongest comparator, on ordinary preference and evidence-grounded factuality at 0.36% of the comparator's fee. Larger gaps arise when judgments require checking a derivation or resisting an elaborately written wrong answer. On several benchmarks, JEV's gap to this comparator is concentrated in low-confidence decisions. A frozen cascade that accepts confident verdicts and escalates uncertain ones retains 99% of the comparator's accuracy at lower cost.
 
 </details>
+
+### 72. Beyond Unsafe Detection: Counterfactually Anchored Evidence Attribution for Multi-Turn LLM Safety Failures
+
+📄 [arXiv](https://arxiv.org/abs/2609.27773)　📅 2026-09
+
+**关键词**：`analysis`、`evidence attribution`、`multi-turn safety failure`、`counterfactual anchoring`、`token-span localization`
+
+👤 **作者**：Srinivasan Subramanian、Kazi Aminul Islam、Md. Abdullah Al Hafiz Khan
+
+- 🎯 **研究动机**：guardrail 评测大多只看结果判断请求安全与否——多轮失败中对抗意图分布在多轮上：需要从检测走向识别把对话推向不安全轨迹的具体轮次与 token
+- 🔬 **研究方法**：1,762 段对话（对抗+良性孪生+高风险词汇良性变体）带行为验证与分级证据监督；训练轻量分层归因模型预测违规并归因到用户轮次与 token 片段
+- 📌 **结论**：检测 F1=0.988 且移除前 15% 归因 token 大幅降低对抗分类置信度——多轮安全失败的反事实锚定归因（guard 评测从判决到解释）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+As Large Language Models (LLMs) move from conversational assistants to advanced agentic systems, guardrail failures can convert adversarial intents into harmful executions. However, most guardrail evaluation frameworks focus only on the result and assess whether a user request is safe or unsafe. This approach is insufficient for multi-turn failures, where adversarial intent is distributed across multiple turns. This motivates us to go beyond detection to identify the turns and tokens that push the conversation toward unsafe trajectories. To support this, we construct a multi-turn dataset with behavioral validation and tiered evidence supervision. The dataset contains 1,762 conversations, including adversarial conversations, benign twins, and benign variants with high-risk vocabulary. We train a lightweight hierarchical attribution model that predicts safety violations and attributes them to contributing user turns and token spans. The model achieves strong detection performance (F1=0.988), and removing the top 15% of attributed tokens reduces the adversarial classification confidence by 51.1%. The model preserves low false positive rates on benign conversations with high-risk vocabulary, with false positives below 1% on both borderline benign and benign high-risk vocabulary conversations, compared to 37.3% and 94.7% for a keyword-based surface-risk baseline. Independent human annotation supports the model's attribution performance, with the top-five attributed turns containing a human-identified evidence-bearing turn in 84.5% of adversarial cases.
+
+</details>

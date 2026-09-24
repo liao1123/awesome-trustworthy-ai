@@ -653,3 +653,22 @@ The rapid progress of Large Language Models (LLMs) has given rise to a new categ
 Large language models (LLMs) are increasingly used to forecast real-world events by retrieving and reasoning over news. We show that this dependence on an open, crawlable news corpus creates a new attack surface: an adversary who can merely publish articles--without access to the retriever, the model, or the user's queries--can systematically move the forecaster's output probabilities. We formalize news-corpus poisoning of probabilistic forecasters, a threat model distinct from prior RAG poisoning, which targets factual answers or opinion polarity rather than calibrated probabilities. We evaluate the attack on 500 resolved ForecastBench questions against a 17.4M-article Common Crawl News corpus with a strict crawl-date cutoff, using three retrieval-augmented forecasters built on open 7-8B models. A single LLM-written article per question flips 56% of forecasts across the 0.5 boundary; five articles flip 69-73% and shift probabilities by +0.13 to +0.22 net of a neutral-article placebo, degrading the Brier score from 0.18 to 0.37. The effect is monotone in the number, retrieval rank, query similarity, and context share of injected articles, transfers across model families, and is unaffected by the claimed publisher. We then evaluate three natural defenses--source allow-lists, isolate-then-aggregate forecasting, and perplexity filtering--and show that each has a cheap bypass: spoofed publishers, majority poisoning, and higher-temperature generation, respectively. Our results indicate that probabilistic LLM judgments inherit the full fragility of the information supply chain they consume.
 
 </details>
+
+### 35. The Like Trap: Multi-Stage Poisoning against Agents in Similarity-based Recommendation Systems
+
+📄 [arXiv](https://arxiv.org/abs/2609.27155)　📅 2026-09
+
+**关键词**：`attack`、`recommendation-mediated poisoning`、`like-score feedback loop`、`social agent`、`multi-stage chain`
+
+👤 **作者**：Yue Xing、Pengfei He、Zitao Li
+
+- 🎯 **研究动机**：LLM agent 越来越自主地代表用户操作社交媒体账户——既有 agent 投毒假设对手能直接暴露中毒内容（易检测）；推荐系统本身是否会更隐蔽地把中毒内容递送给 agent 未被探索
+- 🔬 **研究方法**：Like Trap：理论刻画 OASIS 点赞分数机制可被利用的条件——多阶段中毒帖子链经反馈环操纵 agent 信息流；基于洞察构造现实中毒帖子的算法
+- 📌 **结论**：经推荐反馈环的间接投毒——agent 投毒的推荐中介通道（比直接暴露更隐蔽的社会攻击面）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+With recent advancements in large language models (LLMs) and LLM-based agents, these agents are becoming increasingly autonomous and gaining broader access to act on users' behalf on the internet. However, the vulnerability of automated agents deployed on social media platforms (e.g., for managing a user's personal account) remains underexplored. Existing studies on agent poisoning typically assume that the adversary can expose poisoned content to the agent. Although such an attack is direct and effective, it is more easily detected and mitigated. In the context of social media platforms, this leaves open whether the recommendation system itself would surface such content to the agent in a more subtle manner. Through theoretical analysis, we show that the like-score mechanism used in OASIS can be exploited, and we characterize the conditions under which a multi-stage chain of poisoned posts can steer the agent's feed. Based on these insights, we further develop an algorithm that crafts realistic poisoned posts. Experiments support our theoretical findings and demonstrate the effectiveness of the proposed algorithm. Notably, by exploiting the like-score feedback loop, the attack causes the recommendation system to select poisoned posts even when their user-post similarity falls below the retrieval threshold.
+
+</details>

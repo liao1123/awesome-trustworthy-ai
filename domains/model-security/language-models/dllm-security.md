@@ -486,3 +486,22 @@ Statistical watermarking is a common approach for verifying whether text was wri
 Adapting a pretrained autoregressive (AR) model is a cost-efficient route to a diffusion language model (DLM). While nearly all such adaptations start from a full-attention transformer, AR modeling has shifted toward hybrid architectures that interleave attention and RNN layers. This creates an obstacle for adaptation: unlike attention, RNNs are structurally causal and nontrivial to bidirectionalize. Despite this mismatch, we investigate whether such backbones can become effective DLMs by adapting Qwen3.5 at 0.8B, 2B, 4B, and 9B scales, yielding the dQwen3.5 family. We find that hybrid backbones can be efficient starting points for adaptation: against a full-attention control, the hybrid reaches a given training loss in about half the tokens. Across scales, dQwen3.5 resembles full-attention DLMs in any-order decoding behavior and performs strongly under parallel decoding.
 
 </details>
+
+### 27. LOCKR: A Hidden-State Trajectory-Guided Planner for Detecting and Repairing Stable-but-Wrong Lock-In in Diffusion Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2609.27220)　📅 2026-09
+
+**关键词**：`defense`、`stable-but-wrong lock-in`、`hidden-state trajectory`、`test-time repair`、`diffusion language model`
+
+👤 **作者**：Guoshenghui Zhao、Tan Yu、Weijie Zhao
+
+- 🎯 **研究动机**：扩散语言模型经迭代去噪暴露中间轨迹——存在稳定但错误的锁定：答案早期稳定在错误值而大量去噪仍在继续；置信/熵/margin/稳定性等表面信号无法区分正误锁定
+- 🔬 **研究方法**：LOCKR：隐藏状态轨迹引导的测试时规划器——决定何时分配额外计算、展开结构化修复分支、用轨迹感知验证选择最有希望的延续；两个 DLM × 三个数学推理基准
+- 📌 **结论**：隐藏状态轨迹全面优于表面信号与单快照——DLM 推理失效的内部状态检测与修复（DLM 安全监控线的首个系统性内部信号工作）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Diffusion language models generate text through iterative denoising, exposing intermediate trajectories before final answers are produced. We identify a recurring reasoning failure, stable-but-wrong lock-in, where an answer stabilizes early around an incorrect value while substantial denoising remains. Surface-level decoding signals such as confidence, entropy, margin, and answer stability are insufficient to reliably distinguish correct from erroneous lock-in. We formulate selective reasoning repair as a lightweight test-time planning problem and propose LOCKR, a hidden-state trajectory-guided planner that decides when to allocate additional computation, expands a structured set of targeted repair branches, and selects the most promising continuation using trajectory-aware verification. Across two diffusion language models and three mathematical reasoning benchmarks, hidden-state trajectories consistently outperform surface signals and single hidden snapshots for both wrong-lock-in detection and repair selection. On natural evaluation distributions, LOCKR yields absolute accuracy gains of 2.21--5.37 percentage points across all five evaluated settings, with repair rates ranging from 22% to 41%. These results establish hidden diffusion trajectories as actionable signals for selective test-time reasoning repair.
+
+</details>

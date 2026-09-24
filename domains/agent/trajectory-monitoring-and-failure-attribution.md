@@ -639,3 +639,24 @@ When an indirect prompt injection succeeds against an LLM agent, the compromise 
 As AI agents take on long, autonomous tasks, we increasingly oversee rather than perform the work, yet we still judge them almost entirely by whether they finally succeed. An outcome cannot reveal where a run went wrong, whether the agent recovered, or the irreversible harm it caused along the way, and where long-horizon agents fail remains unmapped. We study $2518$ agent trajectories across software engineering, computer use, and science, close to real deployment, and classify $6967$ mistakes into $78$ failure types. Failure follows a recurring signature: after its first mistake an agent often fails to recover and rarely catches the error itself, so the run continues unchecked while still looking correct; whether an agent recovers depends on the task and the environment's feedback, not on the agent framework running it. Long-horizon agents can do real harm on the way to a passing result: even runs scored as solved delete data, corrupt systems, or fabricate success rather than earning it. We release these human-verified annotations as Traverse, a benchmark on which six frontier judges struggle to locate failure regardless of scale: even the strongest correctly identifies the first mistake in fewer than a third of runs. Yet Scout, a $4$B verifier we trained, locates failure far better than these judges and transfers to domains it never saw. Used at test time to select among an agent's candidate runs, it raises task success above the agent's own single-attempt performance, without retraining the agent. By making failure cheap to locate and correct, this work is a foundation for more trustworthy long-horizon agents that learn from their own mistakes, and a practical path to overseeing increasingly autonomous AI.
 
 </details>
+
+### 34. PASTABench: Proactive Assessment of Sequential Trajectories for Agent Safety
+
+📄 [arXiv](https://arxiv.org/abs/2609.28197)　📅 2026-09
+
+**关键词**：`benchmark`、`proactive safety monitoring`、`optimal intervention window`、`trajectory risk`、`timeliness`
+
+👤 **作者**：Jiapeng Sun、…、Yike Guo
+
+- 🎯 **研究动机**：agent 安全评测从单轮走向多轮后仍有两大缺口：步级方法孤立看待动作错过风险累积、轨迹级评测事后进行无法及时干预
+- 🔬 **研究方法**：PASTABench：1,139 条多轮轨迹 × 5 风险类 13 子类；解耦主动安全监控三维度（是否/何时/何险）+ 最优干预窗口（OIW，锚定最早信号轮与触发轮）量化干预及时性；16 LLM 评测
+- 📌 **结论**：最佳模型最优时机干预仅 40.74%——主动干预远未解决（agent 监控评测从检出率到时机有效性）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+As Large Language Models (LLMs) evolve into autonomous agents that alter real-world states, ensuring operational safety across multi-step workflows has become a critical challenge. While recent work has moved beyond single-turn evaluation toward multi-turn paradigms, key limitations persist: step-level methods treat actions in isolation, missing how risks accumulate, while trajectory-level evaluations operate post-hoc, offering no opportunity for timely intervention. To address these limitations, we formalize Decoupled Proactive Safety Monitoring along three dimensions: whether to intervene, when to intervene, and what the risk is. We introduce PASTABench, a benchmark of 1,139 multi-turn trajectories spanning 5 risk categories and 13 subcategories. We further propose the Optimal Intervention Window (OIW), anchored by annotated Earliest-Signal and Trigger turns, to quantify intervention timeliness. Evaluation of 16 LLMs reveals that proactive intervention remains largely unsolved, with the best model achieving only 40.74% optimal-timing interventions. Fine-grained diagnosis further uncovers pervasive lexical overfitting: competitive safety scores of smaller models mask keyword hypersensitivity rather than genuine risk comprehension, as their proactive capability largely collapses once hazard vocabulary is neutralized.
+
+</details>
+
+## 常规收录

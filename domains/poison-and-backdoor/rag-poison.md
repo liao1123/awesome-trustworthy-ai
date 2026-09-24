@@ -2282,3 +2282,22 @@ Retrieval-augmented generation (RAG) systems enhance large language models (LLMs
 Retrieval augmented generation (RAG) systems have emerged as the dominant architecture for grounding large language model (LLM) outputs in verifiable external knowledge, yet their structural reliance on a dynamic retrieval pipeline introduces a largely unexplored class of adversarial vulnerability. Existing knowledge-base poisoning attacks are fundamentally static. Adversarial documents are pre-computed and injected without any awareness of what the victim system will actually retrieve for a given query, leaving the attack blind to the competitive documentary landscape that surrounds its payload in the generator's context window. Unlike traditional static poisoning attacks that are blind to the retrieved context, we introduce RAG-NAROK (Retrieval-Anchored Generation Negation And Response Quality Collapse), a RAG attack framework that adapts to the query text. RAG-NAROK exploits the transparency inherent in RAG pipeline to first extract the legitimate source identities, then generate Anchor-Specific Refutation documents that explicitly name and devalue retrieved sources while leveraging recency and authority biases to steer the text generation toward a target answer. Our results demonstrate that RAG-NAROK significantly outperforms static baselines across diverse domains, revealing a fundamental tension between RAG transparency and AI security.
 
 </details>
+
+### 119. Divide and Doubt: Diverse Distributed Poisoning for Retrieval-Augmented Generation
+
+📄 [arXiv](https://arxiv.org/abs/2609.27090)　📅 2026-09
+
+**关键词**：`attack`、`distributed corpus poisoning`、`stylistic diversity`、`doubt injection`、`RAG defense evasion`
+
+👤 **作者**：Tianhao Chen、Yuhan Wei、Weifei Jin、Zhengyuan Jiang、Yuepeng Hu、Neil Zhenqiang Gong
+
+- 🎯 **研究动机**：多段落语料投毒常在相似文档间重复同一目标主张——相关词法/语义模式可被相似度与冲突感知防御联合压制；分布性与怀疑的注入未被探索
+- 🔬 **研究方法**：DnD（Divide and Doubt）：把目标答案的支持分布到风格多样的段落（表示空间分散）+注入对参考答案证据存疑的段落（强化多段被检索时的目标采纳）；两个开放域 QA 数据集 × 3 LLM × 9 RAG 配置、黑盒与白盒检索器
+- 📌 **结论**：对聚类与冲突感知防御取得最大增益——RAG 投毒从重复注入到分布式+怀疑注入（防御感知攻击的又一迭代）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Multi-passage corpus poisoning often repeats one target claim across similar documents, creating correlated lexical and semantic patterns that similarity- and conflict-aware defenses can suppress jointly. We introduce DnD (Divide and Doubt), a targeted attack based on two principles: distributing support for the target answer across stylistically diverse passages, and including a passage that casts doubt on evidence for the reference answer. The first disperses poison-passage representations in embedding space, while the second strengthens target adoption when multiple poisoned passages are retrieved. We evaluate DnD on two open-domain QA datasets across three LLMs and nine RAG configurations, under both black-box and white-box access to the retriever. Across these settings, DnD matches or outperforms prior attacks in most configurations, with its largest gains against clustering- and conflict-aware defenses.
+
+</details>

@@ -2315,3 +2315,22 @@ Prior work has shown that internal harmfulness representations in large language
 When aligning frontier models through post-training techniques, it is not possible to directly demonstrate all of the behaviours we want a model to exhibit in all possible deployment environments; our model must generalise outside of the post-training distribution. One proposed solution is alignment midtraining (AMT), which continues pretraining on large volumes of alignment-relevant documents to encourage generalisation in later stages of training. Despite the prominence of AMT as an alignment approach, there is limited public evidence for its effectiveness. To resolve this, we identify several assumptions around midtraining and evaluate them across scale: up to 110 billion-parameter models and 1 billion midtraining tokens. For instance, we study a scenario where post-training data is ambiguous between two possible motivations. We find that midtraining can steer the model's motivation in simple versions of this setting. However, the presence of a tiny fraction of finetuning data which suggests a competing motivation erases the effects of AMT. We also study scenarios in which we want an AI to follow a number of rules, but only demonstrate a subset of them. We find that demonstrations must be present either in midtraining or post-training datasets for these rules to be robustly learned. Based on these and other findings, we do not believe that there is sufficient public evidence for us to confidently state that midtraining can address the core difficulties inherent in aligning powerful AI systems.
 
 </details>
+
+### 124. Hard Negatives Reveal What Easy Negatives Hide: Cross-Lingual Harmfulness Representations Degrade with Resource Tier Under Hard Negatives
+
+📄 [arXiv](https://arxiv.org/abs/2609.27758)　📅 2026-09
+
+**关键词**：`analysis`、`hard negatives`、`cross-lingual harmfulness representation`、`resource tier`、`probe transfer collapse`
+
+👤 **作者**：Paras Balani、Subhrakanta Panda
+
+- 🎯 **研究动机**：安全对齐主要以英文训练——近期工作报告有害性表示经翻译存活（英文训练探针在低资源语言近乎同样好），被当作跨语言拒答失败是校准而非表示质量问题的证据
+- 🔬 **研究方法**：证明该结论依赖负例选择：九种语言三档资源层级，易负例（无关分布）下复现近乎完美迁移（AUROC>0.98），XSTest 对比 prompt（良性但表面相似于有害请求）下低资源语言崩塌
+- 📌 **结论**：Qwen2.5-7B 上 AUROC 降幅从英文 0.003 到低资源 0.276——难负例下跨语言有害性表示的真实退化（表示质量结论的负例依赖修正）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Safety alignment in large language models is trained primarily in English, and recent work reports that the underlying harmfulness representation survives translation: English-trained probes separate harmful from harmless prompts almost as well in low-resource languages as in English. This has been taken as evidence that cross-lingual refusal failures mainly reflect calibration rather than representation quality. We show that this conclusion depends on the choice of negative examples. Across nine languages spanning three resource tiers, we replicate near-perfect transfer (AUROC > 0.98) when harmless prompts come from an unrelated distribution (easy negatives). With XSTest contrast prompts, which are benign but surface-similar to harmful requests (hard negatives), transfer collapses in low-resource languages while remaining largely stable in high-resource languages. On Qwen2.5-7B-Instruct, mean AUROC drop increases from 0.003 in English to 0.017 in high-resource, 0.042 in mid-resource, and 0.276 in low-resource languages. The pattern replicates on Aya Expanse. Back-translation chrF controls and a matched-chrF comparison across three languages reduce the likelihood that translation quality explains the effect. The collapse remains after controlling for chrF (partial r = 0.70, p = 0.03). Tokenizer fertility correlates with the collapse and explains part of the resource-tier effect, but not all of it. The results show that easy-negative transfer can coexist with substantial degradation under hard negatives. Easy-negative evaluation alone therefore cannot establish that the harmfulness representation survives translation.
+
+</details>

@@ -444,3 +444,22 @@ Pretrained world models, learned simulators that encode an observation into a la
 Large language models and vision-language models are increasingly used as high-level planners in robotic systems, using task goals and sensor summaries to select navigation or manipulation actions. This creates a new backdoor surface: a compromised planner can behave normally in most runs, yet change its target selection when a hidden trigger is present. Prior attacks on LLM-powered or embodied agents mainly rely on triggers that appear in language, camera-visible objects, scene semantics, or specific sequences of past actions. This paper presents StepTrigger, a contact-state-triggered backdoor attack for VLM-powered legged robots. The trigger is not a prompt token or a visible marker. It is produced by pressure and foot-ground contact patterns that arise when a Unitree Go1 quadruped walks across a dense terrain patch. Unlike conventional visual or textual triggers, contact signals are inherently noisy and may also arise during benign locomotion. To avoid treating every pressure anomaly as a trigger, StepTrigger learns a selective backdoor policy from multimodal robot state, using incidental pressure events as benign examples and dense-patch contacts as poisoned examples. In a stratified offline evaluation, the trained planner achieved 98.75% clean behavior preservation, 92.50% false-trigger rejection, 76.25% true-trigger activation, and 89.17% overall parsed behavior accuracy. These results reveal a backdoor surface in proprioceptive and contact channels that is not captured by defenses focused only on language, vision, or action history.
 
 </details>
+
+### 24. Backdoors in Learning-Based Industrial Robotic Arm Manipulation: An Empirical Security Study
+
+📄 [arXiv](https://arxiv.org/abs/2609.26868)　📅 2026-09
+
+**关键词**：`attack`、`industrial robot backdoor`、`VLA manipulation`、`empirical security study`、`runtime trigger defense`
+
+👤 **作者**：Zijian Zhang、Zhen Zeng、Zhongshu Gu、Sandeep Pisharody
+
+- 🎯 **研究动机**：学习型模型（视觉运动/VLA）预测直接翻译为物理动作的工业部署正在扩展——后门在真实商用机械臂上的后果缺乏实证：正常任务下隐蔽、触发时产生语义错误的操作行为
+- 🔬 **研究方法**：两台真实商用工业机械臂（FANUC 与 xArm）上的后门攻击与防御实证：可否可靠诱导语义错误操作同时保持名义执行隐蔽；开发运行时在线防御管线检测并中和触发器并与基线比较
+- 📌 **结论**：商业机械臂上后门可行且隐蔽——具身后门从仿真基准走向真实工业硬件的第一手证据（机器人后门触发面扩展线的工业落地）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Learning-based models (e.g., visuomotor and Vision-Language-Action (VLA)) are increasingly explored for industrial robotic manipulation, where model predictions are directly translated into physical actions. This tight coupling between model behavior and physical execution makes hidden security vulnerabilities particularly consequential. While backdoor attacks have been widely studied in conventional AI models, their effects on deployed learning-based robotic arm manipulation systems remain less understood: a backdoored robot can behave normally during benign operation while inducing attacker-specified behaviors only when specific triggers are present, posing potentially serious risks in physical environments. In this work, we present a preliminary empirical security study of backdoor attacks and defenses in learning-based robotic manipulation on two real commercial industrial robotic arms (FANUC and xArm). We investigate whether a backdoor can reliably induce semantically incorrect manipulation behaviors while remaining stealthy under nominal task execution. We then develop an online defense pipeline that detects and neutralizes triggers at runtime, and compare its effectiveness against an offline fine-tuning defense. Beyond defense effectiveness, we further evaluate the computational latency and execution overhead introduced by the defense pipeline to assess its suitability for high-throughput industrial operation.
+
+</details>

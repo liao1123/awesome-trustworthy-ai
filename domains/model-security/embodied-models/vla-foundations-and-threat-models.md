@@ -376,3 +376,22 @@ Vision-Language-Action (VLA) models have emerged as a powerful paradigm for gene
 Vision-language-action models (VLAs) have been extensively used in robotics applications, achieving great success in various manipulation problems. More recently, VLAs have been used in long-horizon tasks and evaluated on benchmarks, such as BEHAVIOR1K (B1K), for solving complex household chores. The common metric for measuring progress in such benchmarks is success rate or partial score based on satisfaction of progress-agnostic criteria, meaning only the final states of the objects are considered, regardless of the events that lead to such states. In this paper, we argue that using such evaluation protocols say little about safety aspects of operation and can potentially exaggerate reported performance, undermining core challenges for future real-world deployment. To this end, we conduct a thorough analysis of state-of-the-art models on the B1K Challenge and evaluate policies in terms of robustness via reproducibility and consistency of performance, safety aspects of policies operations, task awareness, and key elements leading to the incompletion of tasks. We then propose evaluation protocols to capture safety violations to better measure the true performance of the policies in more complex and interactive scenarios. At the end, we discuss the limitations of the existing VLAs and motivate future research.
 
 </details>
+
+### 20. Security and Privacy in Large-Model-Driven Embodied Agents: Attacks, Defenses, and Future Directions
+
+📄 [arXiv](https://arxiv.org/abs/2609.27847)　📅 2026-09
+
+**关键词**：`survey`、`embodied agent security`、`lifecycle analysis`、`physical feedback loop`、`risk propagation`
+
+👤 **作者**：Lele Zheng、…、Yulong Shen
+
+- 🎯 **研究动机**：大模型驱动的具身 agent 把模型级风险延伸进具身闭环——既有安全隐私研究碎片化地散布在不同组件与阶段，难以理解风险如何产生、传播并最终影响物理行为
+- 🔬 **研究方法**：五阶段生命周期综述：模型构建与供应链/多模态输入交互/语义推理与任务规划/动作执行与物理反馈/长期部署
+- 📌 **结论**：具身 agent 安全隐私的生命周期地图——机器人 LLM 控制链风险的结构化索引（与本周机器人后门主线互补的综述侧）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large-model-driven embodied agents integrate foundation models with perception, reasoning, planning, and physical action, extending conventional model-level risks into embodied closed loops. Existing studies on their security and privacy remain fragmented across different system components and operational stages, making it difficult to understand how risks arise, propagate, and ultimately affect physical behavior or sensitive information. This survey presents a lifecycle-based analysis of security and privacy in large-model-driven embodied agents. We organize existing research into five stages: model construction and supply chain, multimodal input and interaction, semantic reasoning and task planning, action execution and physical feedback, and long-term deployment. Within this lifecycle, we systematically review representative attacks, defenses, and evaluation methods. Our analysis shows that attack entry, consequence realization, and defense intervention often occur at different stages of the embodied closed loop. It further reveals substantial gaps in end-to-end protection, real-world evaluation, and long-term privacy governance. This survey provides a unified perspective for understanding current progress and identifying critical directions for securing large-model-driven embodied agents.
+
+</details>

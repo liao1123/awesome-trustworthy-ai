@@ -851,3 +851,22 @@ Computer-use agents (CUAs) have made rapid progress in completing complex tasks 
 Mobile agents powered by foundation models now automate complex, multi-step workflows on real devices, but their trajectories can violate app-specific security policies. Existing trajectory-level defenses rely on LLM prompting or rigid rules, and thus fail to support fine-grained, natural-language policies that generalize across apps and tasks. In this work, we introduce MATE, a lightweight, policy-conditioned auditor that encodes both agent trajectories and natural-language security policies to determine whether a trajectory violates a given policy and to explain why. Treating policies as editable text rather than fixed model parameters allows MATE to handle user-defined and evolving requirements without retraining. To construct MATE, we build a knowledge base by extracting app descriptions, workflows, and policies from hundreds of popular mobile apps worldwide, and synthesizing over 140K semantically realistic, policy-conditioned trajectories with a multi-stage pipeline. We further release MATEBench, a trajectory-level auditing benchmark with two synthetic subsets and one real-world subset of manually collected trajectories. Models trained with our synthesis-driven trajectory learning achieve over 95% accuracy on MATEBench, retain strong performance on external safety benchmarks, and audit trajectories from Zhipu's AutoGLM and Alibaba's Mobile-Agent on real devices with over 95% accuracy, outperforming prior methods by over 20%. MATE shows that practical, fine-grained security auditing for heterogeneous mobile agents is both feasible and effective.
 
 </details>
+
+### 45. CAVEAT: Towards Robust Computer-Use Agents in Incentive-Misaligned Environments
+
+📄 [arXiv](https://arxiv.org/abs/2609.27273)　📅 2026-09
+
+**关键词**：`benchmark`、`incentive misalignment`、`computer-use agent`、`marketplace steering`、`objective preservation`
+
+👤 **作者**：Yuxuan Li、Will Epperson、Wesley Deng、Zezhou Huang
+
+- 🎯 **研究动机**：计算机使用代理（CUA）在线上代表用户行动——当环境自身激励与用户不一致（平台偏向某些产品）时会怎样？既有 CUA 基准只覆盖合作设定或显式攻击，不测环境有利益相关时的目标保持
+- 🔬 **研究方法**：CAVEAT：9 个市场环境+8 类常见操纵机制分类法的受控基准；五个模型家族：匹配对照 78.6% 买对产品 vs 操纵启用后仅 17.3%
+- 📌 **结论**：操纵经三个入口进入决策（扭曲用户优先级/过早收窄备选/解决证据前提交）——环境侧激励错位下 CUA 的目标保真（agent 攻防的非对抗通道）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Computer-use agents (CUAs) increasingly act on behalf of users online. What happens when the environments they operate in have incentives that do not align with the user's? In online marketplaces, for example, platforms may favor some products over others, potentially steering agents away from the user's objective. Existing CUA benchmarks cover cooperative settings or explicit attacks, but do not test whether agents preserve user objectives when the environment itself has a stake in the outcome. We introduce CAVEAT, a controlled benchmark spanning nine marketplace environments and a taxonomy of eight common steering mechanisms. Across five model families, agents purchase the user-optimal product in 78.6% of matched-control episodes but only 17.3% when steering mechanisms are enabled. Larger models and increased reasoning improve robustness, but substantial failures persist. Our trajectory analysis and targeted ablations identify three points where steering enters the decision process: (1) agents distort the user's priorities, (2) prematurely narrow the set of alternatives they consider, and (3) commit before resolving decision-relevant evidence. Guided by this diagnosis, we develop CAVEAT-Harness, which directly targets these failure modes and raises user-optimal purchasing by 55.0%. Targeted post-training further improves a smaller open model. These results establish incentive robustness as a distinct challenge for delegated agents, diagnose how it fails, and show that targeted interventions can substantially improve it.
+
+</details>
