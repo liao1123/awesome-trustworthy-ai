@@ -1419,3 +1419,22 @@ Training-free collaborative pipelines that integrate Vision Foundation Models su
 This paper presents an end-to-end evaluation framework for image-triggered command injection against computer-use agents (CUAs). The goal is to test whether a local visual patch can induce verifiable environmental consequences along the full chain of screenshot input, VLM generation, action parsing, and environment execution. We train and deploy patches on author-controlled GitHub Pages pages and a locally deployed CSDN clone, and evaluate them in real environments across five open-source or publicly available GUI-agent or vision-language-model (VLM) backends. Our experiment aggregates 600 instance-level online cases, with T-ASR, TAPR, and E2E-ASR reaching 84.5%, 47.0%, and 20.3%, respectively. Trajectory analysis further shows that in some successful cases the agent first executes a malicious terminal command and then continues the original benign task. These results indicate that optimized local visual signals can affect not only VLM outputs but also propagate through the execution pipeline of open CUAs and create real environmental risk.
 
 </details>
+
+### 77. AERIAL: Adversarial Evaluation of Robustness in Accuracy-Preserving Low-Precision EEG Decoders
+
+📄 [arXiv](https://arxiv.org/abs/2609.30037)　📅 2026-09
+
+**关键词**：`analysis`、`EEG decoder robustness`、`adversarial evaluation`、`low-precision`、`neuroprivacy`
+
+👤 **作者**：Saim Rehman、Muhammad Shafique
+
+- 🎯 **研究动机**：精度保持低精度 EEG 解码器的对抗鲁棒性——神经隐私相关硬件通道
+- 🔬 **研究方法**：AERIAL：精度保持低精度 EEG 解码器的对抗评测
+- 📌 **结论**：低精度脑机接口解码器的鲁棒性——神经技术安全扩展
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Deployment-oriented compression is attractive for resource-constrained brain--computer interfaces (BCIs), but whether it changes adversarial vulnerability remains unclear. On BCI Competition IV-2a, we compare 32-bit floating-point (FP32) EEGNet and ShallowConvNet models with global magnitude pruning and simulated INT8 post training quantization (PTQ) and quantization-aware training (QAT) across nine subjects and three seeds. Simulation provides differentiable quantize--dequantize models for white-box attacks and gradient analysis, while native TensorRT deployment is used for validation. Accuracy-preserving compression does not improve direct robustness: at $\epsilon=0.005$, EEGNet PGD accuracy remains 22--24\% across FP32, 50\% pruning (P50), PTQ, and QAT. However, P50 reduces bidirectional transfer efficiency to 0.963/0.928 (FP32$\rightarrow$P50/P50$\rightarrow$FP32), versus 0.994/0.997 for PTQ; the same trend holds for ShallowConvNet. Gradient alignment shows a corresponding separation, while native PTQ agrees with simulated clean/adversarial predictions in 95--98\% of cases. These results show that direct robustness, adversarial transfer, and deployment efficiency are distinct properties of compressed EEG decoders.
+
+</details>

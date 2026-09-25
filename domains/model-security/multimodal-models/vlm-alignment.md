@@ -761,3 +761,22 @@ Instruction hierarchy (IH) alignment teaches language models to prioritize highe
 Vision-Language Model (VLM) safety is expected to depend on what a request asks for. We show that safety-aligned VLMs also key refusal on a property of a request's form: whether an image is attached, holding everything the request asks fixed. Attaching a blank canvas - unreadable, unrelated to the request, identical across prompts - shifts refusal by tens of percentage points, with no defense in the loop. The shift is not blanket caution. Neutral instructions are almost unaffected while borderline-benign prompts move sharply, so the cost falls on sensitivity-adjacent traffic: benign questions about privacy, self-harm and violence. Attachment alone is sufficient, while the image's properties set the price: a black canvas costs substantially more than a white one of identical size, and on an open checkpoint the carrying axis is pixel count. Nor is the shift under instructional control - telling the model the image is a placeholder to be disregarded removes only a fraction of it, and on one model asserting that an attachment exists moves refusal substantially with nothing attached. Attachment may correlate with risk in deployment; what these models do with it does not track risk. It is not the serving stack, since the same weights reached two ways behave alike, nor a property of VLMs as such, since several open-weight checkpoints show nothing. It belongs to particular aligned checkpoints, one of them open. It is also decoupled from what it buys: the canvas does prevent some attack success on a matched harmful set, but far less than it costs, and its sign is not fixed - on one open model the identical canvas makes the model markedly easier to attack. Image presence is not a default a deployer chose or priced; it is an uncontrolled variable inherited with the weights.
 
 </details>
+
+### 41. GHOST-Q: Towards Studying Grounding Hallucinations Overlooked Under Same-score TradeOffs in Quantized VLMS
+
+📄 [arXiv](https://arxiv.org/abs/2609.29999)　📅 2026-09
+
+**关键词**：`analysis`、`quantized VLM grounding`、`same-score tradeoff`、`item-level pairing`、`compression redistribution`
+
+👤 **作者**：Saim Rehman、Muhammad Shafique
+
+- 🎯 **研究动机**：VLM 后训练量化以聚合任务精度与内存节省评估——保住头名分数不保证保住视觉接地行为：量化部署失效线的接地维度
+- 🔬 **研究方法**：GHOST-Q：三 8B VLM 族 FP16/INT8/NF4 的跨精度受控评测——逐项配对 FP16 与量化预测量化压缩如何重分布接地成败
+- 📌 **结论**：六个量化变体中五个在接地敏感基准重分布成败——同分不同行为的量化失效（量化部署失效谱再+1）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Post-training quantization of vision--language models (VLMs) is typically assessed through aggregate task accuracy and memory savings, but preserving a headline score does not guarantee preservation of visual grounding behavior. We present GHOST-Q, a cross-precision controlled evaluation of three 8B VLM families under FP16, INT8, and NF4 across utility and hallucination-sensitive benchmarks. Rather than comparing only aggregate accuracy, we pair FP16 and quantized predictions item by-item to quantify how compression redistributes grounding successes and failures. Five of six quantized variants preserve MMStar accuracy within $\pm2$ percentage points, yet 10 of 36 paired effects remain significant after false-discovery-rate correction, nine on hallucination-sensitive conditions. Same-device A100 profiling further demonstrates that substantial memory reduction does not necessarily mean lower inference latency. Finally, an open-ended AMBER audit reveals strong generation budget censoring whose severity varies by architecture and precision. These results show that quantized VLMs should be evaluated jointly for aggregate utility, grounding reliability, generation behavior, and realized deployment efficiency.
+
+</details>

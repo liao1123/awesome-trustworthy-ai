@@ -733,3 +733,22 @@ LLM-powered autonomous agents are transforming the penetration testing space wit
 Cybersecurity combines high-stakes analysis with complex technical language, making it an impactful and challenging domain for LLMs. We present MiST (Mid-trained Security Transformer), a suite of 8B and 32B models that achieve strong performance on public cybersecurity benchmarks. We use mid-training as an intermediate adaptation stage between general pre-training and cybersecurity training. Rather than performing continual pre-training over large volumes of raw domain text, we curate a compact, expert-vetted seed corpus, and transform it into high-quality domain-specific synthetic training data. The final MiST checkpoints improve mean cybersecurity accuracy by +13.1 and +8.6 absolute percentage points over the corresponding Qwen baselines for 8B and 32B, respectively, corresponding to relative gains of +27.0% and +15.8%. Ablation results further show that these cybersecurity gains arise in the mid-training and supervised fine-tuning stages through a combination of the synthetic data generation flows. Furthermore, we show that MiST provides a stronger initialization for downstream task-specific fine-tuning adaptation and reinforcement learning.
 
 </details>
+
+### 40. Calibrated Decision Models for Autonomous Penetration-Testing Harnesses: JEV and Laya as System One Decision Layers for LLM-Driven Pentest Agents
+
+📄 [arXiv](https://arxiv.org/abs/2609.28940)　📅 2026-09
+
+**关键词**：`analysis`、`Jev pentest harness`、`System One decision`、`calibrated verdict`、`finding adjudication`
+
+👤 **作者**：Joas Antonio dos Santos Barbosa
+
+- 🎯 **研究动机**：自主渗透测试 harness 用 LLM 做侦察/利用/报告，又用同批模型确认发现、评级严重度、选择 agent——导致误报、虚高严重度与算力浪费；轻量类型化校准决策模型能否承担这些决策未被检验
+- 🔬 **研究方法**：定义四个决策点（发现裁定/严重度重校准/agent 剪枝/确认循环）；NeuroSploit 案例（13 漏洞 web 目标，带 vs 不带 Jev 的对照运行）+ Jev/Jev-Ultrafast/Laya 规格评审
+- 📌 **结论**：严重度分布/运行时/评级差异支持该架构但未达统计显著（作者明示探索性）——Jev 生态在 AI-for-cyber 的落点（与 Just Ask Jev 同日互补）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Autonomous penetration-testing harnesses use large language models (LLMs) for reconnaissance, exploitation, and reporting, but often rely on those same models to confirm findings, grade severity, and select agents. This can lead to false positives, inflated severity, and wasted compute. We examine how System One decision models, lightweight non-generative classifiers that return typed, calibrated verdicts, can support these decisions. We make five contributions. First, we define four decision points: finding adjudication, severity recalibration, agent pruning, and confirmation loops. Second, we present an exploratory NeuroSploit case study comparing one run with TypeSafe System One (Jev) and one without it against a web target containing 13 vulnerabilities. Differences in severity distribution, runtime, and grading by exposed data type motivate the architecture but do not establish statistical significance. Third, we review published specifications for Jev, Jev-Ultrafast, and the open-source Laya without assuming that results from other benchmarks transfer to penetration testing. Fourth, we discuss RLHF, RLAIF, RLCD, and RLHV as training approaches and their implications for trust in security decisions. Finally, we propose Rave, a domain-adapted System One model, and outline its training data, evaluation protocol, and potential effect on harness assurance.
+
+</details>

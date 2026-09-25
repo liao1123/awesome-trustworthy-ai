@@ -633,3 +633,22 @@ Large Reasoning Models (LRMs) exhibit strong problem-solving abilities, yet thei
 Large language models increasingly rely on long chain-of-thought (CoT) trajectories for complex reasoning, but autoregressive generation brings substantial memory and inference costs. Latent reasoning models (LRMs) offer a more efficient alternative by compressing intermediate reasoning into a small number of continuous latent vectors. Despite their efficiency, however, the adversarial robustness of LRMs remains largely underexplored. In this work, we systematically evaluate the robustness of latent reasoning across textual and multimodal settings, covering eight models and six benchmarks. We find that, across our evaluated settings, LRMs are generally less robust than explicit CoT baselines under adversarial perturbations, with particularly severe degradation under white-box attacks. Further analysis reveals distinct failure modes across modalities: textual latent states exhibit brittle dynamics and high sensitivity to specific input patterns, while latent states in multimodal models can remain largely invariant to input perturbations and have limited influence on final predictions. These findings expose robustness limitations of current latent reasoning approaches and highlight the need to jointly consider efficiency and robustness when designing implicit reasoning systems. We have open-sourced our code to facilitate reproduction of our research https://github.com/PKU-ML/latent-reasoning-model-assessment.
 
 </details>
+
+### 34. Prefilling the Reasoning Channel: Output-Prefix Attacks on Reasoning LLMs
+
+📄 [arXiv](https://arxiv.org/abs/2609.29775)　📅 2026-09
+
+**关键词**：`attack`、`output-prefix injection`、`reasoning channel editing`、`scratchpad attack surface`、`black-box`
+
+👤 **作者**：Lukáš Brůna、Robert Bridges、Adam Ek
+
+- 🎯 **研究动机**：若文本可加到 LLM 响应开头（输出前缀），后续所有 token 都以其为条件——该廉价黑盒注入此前只在非推理模型上验证；推理模型在最终响应前增加中间草稿推理步，编辑该推理通道的 API 暴露面构成推理注入向量
+- 🔬 **研究方法**：首个隔离草稿推理通道作为输出前缀攻击向量的系统对照研究：reasoning-only / prefix-only / 组合 × 暴露与隐藏推理模型
+- 📌 **结论**：推理通道成为独立攻击面——输出前缀攻击的推理模型版（隐藏推理线的攻击侧：CoT 保密不消除通道可编辑性）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large Language Models (LLMs) consume and produce a single sequence of text; hence, if text can be added to the beginning of the LLM's response, i.e., an output prefix, then all subsequent tokens will be conditioned on it. This output-prefix attack technique is a cheap black-box prompt injection. Prior work has shown this type of attack can reliably jailbreak non-reasoning models. Most reasoning models add an intermediate scratchpad reasoning step before the assistant's final response. The ability to edit this reasoning channel is exposed by some APIs and attack vectors can be leveraged for reasoning injection attacks. We present the first systematic, controlled study that isolates the scratchpad reasoning channel as an output-prefix attack vector, and the first to compare reasoning-only, output-prefix-only and reasoning-plus-output-prefix attacks across both exposed- and hidden-reasoning models. Using a factorial design of 3 prefix types $\times$ 2 reasoning injections over $1{,}800$ test cases drawn from AdvBench, we attack three 2026-era frontier models Gemini 3 Flash Preview, DeepSeek V4 Flash, and Claude Haiku 4.5. We find that injecting malicious reasoning alone is essentially inert ($\approx0\%$ attack success), but injecting the same reasoning together with a trivial output prefix raises the attack success rate to as high as $99\%$ for some models. For this type of attack we find that contextual prefixes work better than static prefixes; and that susceptibility is dependent on the model.
+
+</details>

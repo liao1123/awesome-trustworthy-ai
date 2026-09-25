@@ -351,3 +351,22 @@ Continual learning (CL) models often use experience replay to reduce catastrophi
 Continual learning (CL) enables models to acquire new knowledge from sequentially arriving tasks while retaining previously learned knowledge. However, in practical scenarios, task streams collected from untrusted sources may contain backdoor-poisoned samples, posing a critical challenge to the stability, plasticity, and security of continual learners. In this work, we investigate a challenging setting termed Continual Learning Under Backdoor Attack (CLUBA), where each incremental task may involve a small proportion of maliciously manipulated training samples. Unlike conventional continual learning or backdoor defense scenarios, CLUBA requires models to simultaneously mitigate catastrophic forgetting, preserve adaptation capability, and prevent the absorption of malicious supervision during sequential updates. To address this challenge, we propose a robust dynamic-expansion framework that integrates sample purification, selective recovery, and robust expert routing into a unified continual learning paradigm. Specifically, we introduce Bi-Prototype Purification (BPP) to identify suspicious samples by exploiting semantic discrepancies in feature space. Based on purified data, Gradient Discrepancy-based Robustness Optimization (GDBRO) selectively recovers informative poisoned samples through pseudo-label correction and gradient consistency evaluation, improving robustness while maintaining model plasticity. Furthermore, Robust Feature Consistency-based Expert Selection (RFCBES) constructs perturbation-aware class prototypes to enable reliable expert routing under corrupted or shifted inputs.
 
 </details>
+
+### 19. TraceGuard: Adaptive Multimodal Poison Filtering through Cross-Feature Rank Agreement
+
+📄 [arXiv](https://arxiv.org/abs/2609.29099)　📅 2026-09
+
+**关键词**：`defense`、`multimodal poison filtering`、`cross-feature rank agreement`、`collective influence`、`stealthy poison`
+
+👤 **作者**：Haoyang Li、…、Haibo Hu
+
+- 🎯 **研究动机**：多模态训练依赖外部图文语料——隐蔽攻击保持合理图文对同时向检测器隐藏差异：中毒集必须保持什么性质才能有效未被刻画
+- 🔬 **研究方法**：攻击模式出现频次与集体影响分析→TraceGuard：跨特征秩一致的自适应投毒过滤
+- 📌 **结论**：中毒集有效性的保持条件+对应过滤——多模态投毒检测的聚合视角（多模态投毒防御线）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Multimodal training relies on image-text corpora collected from external sources, creating opportunities for attackers to poison the data. Stealthy attacks can preserve plausible image-text pairs while concealing the differences used by detectors, so apparently clean data can still redirect the trained model. We therefore ask which properties a poison set must preserve for the attack to remain effective. A small poison set must still exert enough collective influence during training to induce the attacker's target behavior. We analyze this influence in terms of how often an attack pattern occurs and how strongly the examples carrying it jointly affect the model. This analysis motivates six corpus-level features that examine cross-modal neighborhoods, recurring text, and changes after text-span erasure without training the victim model. We introduce TraceGuard, an adaptive rank-based filtering method that uses agreement among complementary feature rankings to identify suspicious examples. It refines the selected set through shared patterns and adapts the removal threshold to each corpus without knowing the attack or poison rate. Across 19 attack configurations spanning image-text learning, generative vision-language model fine-tuning, and encoder-transfer tests, TraceGuard removes an average of 98.4% of poisoned examples and 5.4% of clean examples. After training on the filtered corpora, the residual attack metric is at most 1% in 13 configurations. Matched-removal controls and ablations support the contributions of sample selection and adaptive removal. Stress tests also identify detection failures under adaptive attacks and unnecessary removal on poison-free corpora.
+
+</details>

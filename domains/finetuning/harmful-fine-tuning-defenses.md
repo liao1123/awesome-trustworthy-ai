@@ -1618,3 +1618,22 @@ Large language models remain fragile against malicious fine-tuning, motivating t
 Preserving safety alignment during large language models fine-tuning is critical, however, recent studies have demonstrated that even benign fine-tuning data may contain safety-degrading samples that silently undermine safety alignment. Existing approaches typically identify such samples using representations from a single safety-sensitive layer. While this assumption has shown effectiveness in monolingual settings, its validity for multilingual models remains unclear due to potential cross-lingual differences in representation patterns. Through a cross-lingual analysis, we show that sensitive layers are only partially shared across languages, with safety-relevant signals often distributed across multiple layers. Motivated by these observations, we propose MMSAFE, a multi-layer framework for multilingual safety-degrading data identification that captures both shared and language-specific safety signals. Extensive experiments across multiple models, languages, and safety benchmarks demonstrate that MMSAFE reduces the average harmful-response ratio by 60% compared with random filtering and achieves stronger average performance than the strongest single-layer baseline, demonstrating the effectiveness of multi-layer modeling for robust multilingual safety alignment.
 
 </details>
+
+### 87. Beyond Average Safety: Chance-Constrained LLM Fine-tuning
+
+📄 [arXiv](https://arxiv.org/abs/2609.29960)　📅 2026-09
+
+**关键词**：`defense`、`chance-constrained fine-tuning`、`tail safety risk`、`safety-preserving adaptation`、`rare failure control`
+
+👤 **作者**：Taha Entesari、Mahyar Fazlyab
+
+- 🎯 **研究动机**：新目标微调可提升能力也可在安全关键 prompt 上退化——既有安全保持方法控制平均安全损失或加权辅助惩罚，掩盖罕见但严重的失败
+- 🔬 **研究方法**：机会约束公式：限制相对参考模型退化超阈值的样本比例；实证机会约束的可行有效求解
+- 📌 **结论**：从平均安全到尾部安全——安全保持微调的分布级控制（harmful fine-tuning 防御线的尾部视角）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Fine-tuning large language models on new objectives can improve helpfulness, instruction following, or domain-specific performance, but it can also induce regressions on safety-critical prompts. Existing safety-preserving fine-tuning methods typically control average safety loss or use weighted auxiliary penalties, which can obscure rare but severe failures. We propose a chance-constrained formulation for safety-preserving fine-tuning that limits the fraction of safety examples whose degradation relative to a reference model exceeds a prescribed threshold. Because the resulting empirical chance constraint contains a discontinuous indicator, we introduce a differentiable majorization of the violation rate, yielding a tractable conservative constraint. We then develop a constraint-aware gradient descent method that treats the majorized constraint as a safe set in parameter space and minimally modifies the fine-tuning direction to preserve feasibility. The resulting update admits a closed form and produces a tail-aware safety correction that emphasizes examples near or above the degradation threshold. We conduct an extensive set of experiments on harmful fine-tuning across three different tasks and three models and show that our approach consistently outperforms the baselines that exist in the literature. These results suggest that safety preservation in LLM fine-tuning is better viewed as a reliability-constrained optimization problem than as average-risk regularization.
+
+</details>

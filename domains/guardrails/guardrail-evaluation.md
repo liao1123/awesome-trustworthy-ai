@@ -1369,3 +1369,41 @@ LLM-as-a-judge enables evaluation across diverse tasks, but inference cost and c
 As Large Language Models (LLMs) move from conversational assistants to advanced agentic systems, guardrail failures can convert adversarial intents into harmful executions. However, most guardrail evaluation frameworks focus only on the result and assess whether a user request is safe or unsafe. This approach is insufficient for multi-turn failures, where adversarial intent is distributed across multiple turns. This motivates us to go beyond detection to identify the turns and tokens that push the conversation toward unsafe trajectories. To support this, we construct a multi-turn dataset with behavioral validation and tiered evidence supervision. The dataset contains 1,762 conversations, including adversarial conversations, benign twins, and benign variants with high-risk vocabulary. We train a lightweight hierarchical attribution model that predicts safety violations and attributes them to contributing user turns and token spans. The model achieves strong detection performance (F1=0.988), and removing the top 15% of attributed tokens reduces the adversarial classification confidence by 51.1%. The model preserves low false positive rates on benign conversations with high-risk vocabulary, with false positives below 1% on both borderline benign and benign high-risk vocabulary conversations, compared to 37.3% and 94.7% for a keyword-based surface-risk baseline. Independent human annotation supports the model's attribution performance, with the top-five attributed turns containing a human-identified evidence-bearing turn in 84.5% of adversarial cases.
 
 </details>
+
+### 73. Decision Hijacking: Prompt Injection Attacks on Jev's Typed Probabilistic Decisions
+
+📄 [arXiv](https://arxiv.org/abs/2609.28613)　📅 2026-09
+
+**关键词**：`attack`、`typed decision injection`、`Jev`、`schema-defined output`、`adaptive score feedback`
+
+👤 **作者**：Tiantong Wu、Wei Yang Bryan Lim
+
+- 🎯 **研究动机**：提示注入研究聚焦生成式 agent——对 schema 定义输出的模型（如 Jev 类类型化决策模型）的效果不明：恶意内容能否操纵允许动作集内的选择
+- 🔬 **研究方法**：510 个重建 InjecAgent 案例测 Jev：恶意内容偏移动作概率但很少选中攻击者目标；override 标记削弱影响；自适应攻击用分数反馈把优化中最高攻击者目标概率翻倍、新鲜验证调用成功率 1.8%→3.5%
+- 📌 **结论**：schema 输出改变但不消除注入风险——类型化决策模型的注入失效面（Type-Safe ≠ Error-Free 之后的又一 Jev 失效面证据）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Most studies of prompt injection focus on generative agents, leaving their effects on models with schema-defined outputs unclear. We examine these effects in Jev, a non-generative decision model, using 510 reconstructed InjecAgent cases. Malicious content shifts action probabilities but rarely causes Jev to select the attacker's target. Override markers reduce this influence, while claims of contextual relatedness have small effects. Adaptive attacks using score feedback double the mean highest attacker-target probability found during optimization, while success on fresh validation calls rises from 1.8% to 3.5%. Exploratory analysis links these successes to small initial decision margins or greater attacker control over the observation. Together, these findings show that schema-defined outputs change but do not eliminate prompt-injection risk, highlighting the need to evaluate how untrusted content influences choices within the allowed action set.
+
+</details>
+
+### 74. Just Ask Jev: Reinforcement Learning for Calibrated Decisions as a Zero-Shot Detector of AI Alignment Failures
+
+📄 [arXiv](https://arxiv.org/abs/2609.29429) · 🐙 [Code](https://github.com/sumleo/RLCDAlignBench.)　📅 2026-09
+
+**关键词**：`benchmark`、`Jev alignment detector`、`zero-shot screening`、`RLCD`、`ten failure modes`
+
+👤 **作者**：Ruoqi Guo、…、Leo Yu Zhang
+
+- 🎯 **研究动机**：对齐失败检测器多为生成式 judge（每条标准烧一次解码）或固定标签分类器（每调用一个标签）——Jev 用 RL 训练的校准决策可在单次调用中对一个输入回答多个类型化问题，但其检测对齐失败的能力未被测量
+- 🔬 **研究方法**：RLCDAlignBench：十类对齐失败（谄媚/越狱/欺骗/注入/幻觉/隐私/偏见/reward hacking/隐瞒不确定/权力寻求）× 44 基准 × 5 目标模型，基准 scorer 与人工双重标注
+- 📌 **结论**：Jev 作零样本对齐失败检测器的系统测量——类型化决策模型进入安全评测（Jev 生态的安全侧应用，与 0923 JEV-as-a-Judge 汇流）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Detectors of alignment failures screen deployed language models and score alignment benchmarks. Most are generative judges that spend a decoding pass on every criterion, and classifiers that read token probabilities, such as Llama Guard, still score one fixed label per call. Jev, a model trained with reinforcement learning for calibrated decisions (RLCD), answers many typed questions about one input with calibrated probabilities in a single call. Whether it detects alignment failures has not been measured. We present RLCDAlignBench, which benchmarks Jev on ten alignment failures: sycophancy, jailbreaks, deception, prompt injection, hallucination, privacy violation, social bias, reward hacking, concealing uncertainty, and power seeking. It spans 44 benchmarks and five target models, labelled by each benchmark's scorer and, on two, by humans. Many of these failures are relational, defined against a reference, such as the user's belief or an injected instruction, that the response alone does not reveal. Our key idea is therefore to vary what Jev is asked separately from what it sees: the question's wording and answer type on one side, the fields of the input on the other. A single generic question reaches a median AUROC of 0.886 zero-shot and beats supervised baselines on most benchmarks. Question wording matters little, while context matters more, mostly through fields that encode the label. Jev matches the reference scorer's agreement with human labels, surfaces label defects in existing benchmarks, and costs 63x less than LLM-judge scorers. Code and data: https://github.com/sumleo/RLCDAlignBench.
+
+</details>

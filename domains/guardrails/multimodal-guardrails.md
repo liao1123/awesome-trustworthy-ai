@@ -1373,3 +1373,22 @@ While Multimodal Large Language Models (MLLMs) show remarkable advancements, the
 Modern text-to-image (T2I) models generate high-quality images from arbitrary user prompts, yet they can just as easily produce not-safe-for-work (NSFW) content. Conventional outer guardrails consist of two components: a prompt classifier that checks for risk before generation, and a post-hoc image classifier that checks the fully generated image. In this design, both classifiers operate outside the generation pipeline and do not use the model's own representations. This separation can limit prompt-screening accuracy, while the image-side check runs only after the full generation cost has been spent. Moreover, a flagged prompt can only be rejected, even when it could be adjusted to produce a safe image. In this work, we propose the Inner Guardrail (InGuard), a safety framework that works inside the pipeline on the model's own representations, leaving base-model parameters untouched. First, a risk classifier grades each prompt as unsafe, risky, or benign based on the text encoder's embeddings, with no external language model. Second, SAGE (Soft-gated Asymmetric Guardrail for Embeddings) modifies the embeddings of risky prompts, aiming to return a safe image instead of a refusal. Third, a latent detector checks the one-step clean latent estimate midway through denoising, reaching nearly image-level performance and halting generation when risk is detected. We also construct the RevGen Safety Benchmark to evaluate T2I safety under realistic conditions: 10,000 prompts built through real-image reverse generation, with a rewriting step that supplies controlled intellectual-property (IP) characters, covering graded porn/gore risks, categorical IP risks, and benign negatives. Across five open-weight T2I models, InGuard reaches 97.9-98.8% safety rate, matching or exceeding the outer guardrail, with 57.5-73.5% less benign disturbance, ~3.7x fewer parameters, and 50-55.6% of denoising steps skipped.
 
 </details>
+
+### 73. AEGIS: Audio Endogenous Guarding via Internal Signals Against Large Audio-Language Model Jailbreaks
+
+📄 [arXiv](https://arxiv.org/abs/2609.29287) · 🐙 [Code](https://github.com/azzzzliao/aegis-audio-defense.)　📅 2026-09
+
+**关键词**：`defense`、`risk-to-refusal gap`、`mid-layer risk gate`、`audio jailbreak`、`detect-then-intervene`
+
+👤 **作者**：Yu-Ling Liao、Tzu-Chin Chiu、Zong-You Chen、Chi-Lei Tsai、Shao-Yuan Lo
+
+- 🎯 **研究动机**：大型音频语言模型暴露于异构音频越狱——成功越狱反映未能识别有害意图还是识别后的失败？逐层探针显示后者：风险信息在中间表示仍可解码，但内部风险信号未转化为后续层的拒答
+- 🔬 **研究方法**：AEGIS 检测后干预：中间层风险门选择性激活下游安全适配器；六 LALM × 三个异构音频越狱基准
+- 📌 **结论**：平均不安全率 17.9%→0.4%、良性过度拒答仅边际增加——风险-拒答差距的内部诊断与修复（与 0923 内容 guard 表示/执行分离直接同构：音频版）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large audio-language models (LALMs) expand language models to process and interpret audio, but also expose them to heterogeneous audio jailbreaks. We ask whether successful jailbreaks reflect failures to recognize harmful intent or failures occurring after such recognition. Layer-wise probing reveals the latter: risk-related information remains decodable from intermediate representations, yet the internal risk signal fails to translate into refusal in later-layer processing. We identify this discrepancy as the risk-to-refusal gap. Building on this finding, we propose AEGIS, a detect-then-intervene defense whose mid-layer risk gate selectively activates downstream safety adapters. Across six LALMs and three heterogeneous audio jailbreak benchmarks, AEGIS reduces the average unsafe rate from 17.9% to 0.4%, while causing only a marginal increase in over-refusal on benign inputs. These results establish selective internal intervention as an effective path toward more robust refusal in LALMs. The code is available at https://github.com/azzzzliao/aegis-audio-defense.
+
+</details>

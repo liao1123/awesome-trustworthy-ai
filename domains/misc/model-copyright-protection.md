@@ -1610,3 +1610,22 @@ While multimodal large language models (MLLMs) enable a wide range of image-text
 Open-weight large language models (LLMs) can be copied, modified, and redeployed behind black-box APIs, making post-release ownership verification difficult. Existing black-box fingerprints often rely on secret query-key pairs that reproduce predefined responses, and can therefore be easily disrupted by fine-tuning, pruning, quantization, model merging, and serving-time prompt changes. We propose SimPrint, a recoverable semantic fingerprinting framework for black-box LLM ownership verification. Rather than relying on isolated exact matches, SimPrint encodes a private owner signature into a coded semantic fingerprint domain, distributing ownership evidence across natural binary question-answering probes. It implants only base-deviating probes through a low-interference batch update that preserves the original model behavior, and later recovers the signature by parsing suspect-model responses into reliable bits or erasures with an error-correcting recovery mechanism. Because verification only uses input-output queries, SimPrint remains applicable when model weights or activations are inaccessible. Experiments on three open-weight LLMs show that SimPrint reliably recovers the owner signature in both clean and modified settings, remains robust under fine-tuning, pruning, quantization, model merging, and serving-time perturbations, and maintains comparable downstream utility.
 
 </details>
+
+### 86. Who Is Behind the Harness? Fingerprinting LLMs through Agentic Behavior
+
+📄 [arXiv](https://arxiv.org/abs/2609.28559)　📅 2026-09
+
+**关键词**：`analysis`、`agent fingerprinting`、`harness-mediated identity`、`active black-box probe`、`security-relevant behavior`
+
+👤 **作者**：Chuyi Wang、Xiaohui Xie、Tongze Wang、Fangchen Luo、Yong Cui
+
+- 🎯 **研究动机**：LLM 经编码 agent harness（检查仓库/调用工具/改文件）运行——替换 agent 背后的模型会改变安全相关决策（是否验证修改、能否安全恢复）；既有指纹从直接文本/token 分布推断身份，这些信号经系统指令、控制逻辑与执行反馈中介后迁移受限
+- 🔬 **研究方法**：LIDAR：编码 agent 执行的主动黑盒指纹——三对编码探针暴露受控变化下的编辑后验证、瞬态失败恢复与规范-测试冲突解决；实例级+分布级特征与干净参照做概率比较
+- 📌 **结论**：从决策与行动识别 harness 背后的模型——agent 化部署下模型指纹的行为通道（供应链审计的运行时身份验证）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+LLMs increasingly operate through coding-agent harnesses that inspect repositories, invoke tools, and modify files. Substituting the model behind such an agent can therefore change security-relevant decisions, including whether it verifies changes or recovers safely from failures. Existing LLM fingerprints largely infer identity from direct text or token distributions. In coding agents, these signals are mediated by system instructions, controller logic, tools, and execution feedback, limiting their transfer. We present LIDAR (LLM Identification from Decisions and Actions at Runtime), an active black-box fingerprinting method for coding-agent execution. Three coding probe pairs expose post-edit verification, transient-failure recovery, and specification--test conflict resolution under controlled changes. LIDAR represents the resulting trajectories with complementary instance-level and distribution-level features and compares them with clean references using a lightweight probabilistic identifier. It requires no access to model weights, logits, or provider internals. Across 36 models from seven families and two agent harnesses, LIDAR achieves high Top-1 accuracy and MRR and outperforms four existing fingerprinting and API-auditing baselines. Ablations confirm that the two feature levels, all probe pairs, and their controlled variants contribute. These results show that agent execution behavior provides model-identity evidence beyond final outputs.
+
+</details>

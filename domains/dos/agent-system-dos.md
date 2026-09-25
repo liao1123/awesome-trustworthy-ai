@@ -375,3 +375,21 @@ As LLMs are increasingly deployed as autonomous agents that plan, maintain persi
 
 </details>
 
+### 20. Persistent Billable State: Denial-of-Wallet Attacks and Defenses in Tool-Calling LLM Agents
+
+📄 [arXiv](https://arxiv.org/abs/2609.28585)　📅 2026-09
+
+**关键词**：`attack`、`denial-of-wallet`、`persistent billable state`、`tool-return metering`、`DOW-BENCH`
+
+👤 **作者**：Jinqian Zhang、…、Bibo Tu
+
+- 🎯 **研究动机**：多步工具调用 agent 依赖宿主 runtime 跨轮保持状态——外部工具返回被带入后续模型输入时提供方再次计费：被收编/恶意工具可把不可信数据转化为反复的受害者计费处理，无需受害者凭据或本地权限
+- 🔬 **研究方法**：形式化持续计费状态边界；导出六个 denial-of-wallet 攻击向量并构建 DOW-BENCH 端到端 harness（六模型家族、243 次执行）；受控历史策略重放分离原始保留的贡献
+- 📌 **结论**：单会话累计输入达首调的 14,293 倍——准入后生命周期的首个系统安全研究（agent 资源耗尽的计费语义通道，与 ChronosAttack 时序通道互补）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Multi-step tool-calling LLM agents rely on host runtimes to preserve state across turns. When a runtime carries an external tool return into later model inputs, providers meter it again. An admitted malicious or compromised tool can thereby convert untrusted data into recurring victim-billed processing without victim credentials or local runtime privilege. We call retained content persistent billable state and formalize the host's decision over whether and how it enters later billable context as the persistent billable-state boundary. We present the first systematic security study of this post-admission lifecycle. We derive six denial-of-wallet attack vectors and build DOW-BENCH, an end-to-end harness evaluated across six model families. Across 243 executions, usage telemetry shows that the maximum per-session cumulative input reaches 14,293x the session's first-call input. Controlled history-policy reruns isolate raw retention's contribution: retaining raw history increases mean effective session cost by 21.2-35.9%. Compression succeeds on 10/12 and 11/12 history-dependent tasks, versus 2/12 under deletion for each provider. To govern this boundary, we combine deterministic history transformation with four host-side invariants that bound prompt mass, context growth, recursive opportunity, and cumulative spend before reingestion. The kernel contains every recurring attack in the 123-evaluation replay corpus. Across 24 Mistral Small 4 workflows, a progress-authorized policy achieves 22/24 oracle-verified task successes with no pre-completion interruptions, versus 13/24 under a fixed cap. Only 71 of 3,830 scanned MCP server and transport repositories expose any code-visible safeguard proxy, and none cover all four safeguard families. These results establish persistent billable state as a first-class security object and pre-reingestion as its host-owned control point.
+
+</details>
