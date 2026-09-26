@@ -364,7 +364,7 @@ Model Inversion Attacks (MIAs) pose a significant threat to data privacy by reco
 </details>
 
 ### 21. Adaptive Diffusion Freezing: Privacy-preserving Diffusion Models Against Membership Inference Attacks
-📄 [arXiv](https://arxiv.org/abs/2609.10608)　📅 2026-09
+📄 [arXiv](https://arxiv.org/abs/2609.10608) · 🎓 [Official](https://www.sigsac.org/ccs/CCS2026/program/accepted-papers.html)　📅 2026-09　🏷 ACM CCS 2026
 
 
 👤 **作者**：Jialu Guo、Xiao Han、Junjie Wu

@@ -1104,7 +1104,7 @@ Agent skills extend LLM agents with privileged third-party capabilities such as 
 
 ### 58. SkillScope: Toward Fine-Grained Least-Privilege Enforcement for Agent Skills
 
-📄 [arXiv](https://arxiv.org/abs/2605.05868)　📅 2026-05
+📄 [arXiv](https://arxiv.org/abs/2605.05868) · 🎓 [Official](https://www.sigsac.org/ccs/CCS2026/program/accepted-papers.html)　📅 2026-05　🏷 ACM CCS 2026
 
 **关键词**：`defense`、`least privilege`、`task-conditioned analysis`、`control-flow constraint`
 

@@ -301,7 +301,7 @@ Many studies have shown that specially crafted inputs can induce large language 
 
 ### 16. Multimodal Resource-Exhaustion Attacks on Vision-Language Models via Joint Pixel-Prompt Optimization
 
-📄 [arXiv](https://arxiv.org/abs/2609.05889)　📅 2026-09
+📄 [arXiv](https://arxiv.org/abs/2609.05889) · 🎓 [Official](https://www.sigsac.org/ccs/CCS2026/program/accepted-papers.html)　📅 2026-09　🏷 ACM CCS 2026
 
 **关键词**：`attack`、`resource exhaustion`、`joint pixel-prompt optimization`、`VLM serving`、`denial of wallet`
 
