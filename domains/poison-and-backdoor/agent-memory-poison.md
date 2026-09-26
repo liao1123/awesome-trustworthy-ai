@@ -618,7 +618,7 @@ Large language model (LLM) agents execute tasks through multi-step workflows tha
 
 ### 33. MemPoison: Uncovering Persistent Memory Threats and Structural Blind Spots in LLM Agents
 
-📄 [arXiv](https://arxiv.org/abs/2607.14651)　📅 2026-07
+📄 [arXiv](https://arxiv.org/abs/2607.14651) · 🎓 [Official](https://www.sigsac.org/ccs/CCS2026/program/accepted-papers.html)　📅 2026-07　🏷 ACM CCS 2026
 
 **关键词**：`benchmark`、`compositional poisoning`、`dormant corruption`、`defense frontier`
 

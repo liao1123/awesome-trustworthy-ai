@@ -261,7 +261,7 @@ The public accessibility of large vision-language models (LVLMs) raises serious 
 
 ### 14. Real Money, Fake Models: Deceptive Model Claims in Shadow APIs
 
-📄 [arXiv](https://arxiv.org/abs/2603.01919)　📅 2026-03
+📄 [arXiv](https://arxiv.org/abs/2603.01919) · 🎓 [Official](https://www.sigsac.org/ccs/CCS2026/program/accepted-papers.html)　📅 2026-03　🏷 ACM CCS 2026
 
 **关键词**：`benchmark`、`API identity`、`shadow API`、`model substitution`
 

@@ -2247,7 +2247,7 @@ We design, implement, and evaluate adversarial decoding, a new, generic text gen
 
 ### 117. InceptionRAG: Stealthy Poisoning Attack Against Retrieval-Augmented Generation
 
-📄 [arXiv](https://arxiv.org/abs/2609.16818)　📅 2026-09
+📄 [arXiv](https://arxiv.org/abs/2609.16818) · 🎓 [Official](https://www.sigsac.org/ccs/CCS2026/program/accepted-papers.html)　📅 2026-09　🏷 ACM CCS 2026
 
 **关键词**：`attack`、`corpus poisoning`、`multi-hop reasoning`、`dormant passage`、`zeroth-order optimization`
 

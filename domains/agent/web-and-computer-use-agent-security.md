@@ -759,7 +759,7 @@ Agentic AI frameworks let a language model plan, keep memory, and call tools tha
 
 ### 40. PriMobiBench: Characterizing Visual Privacy Leakage in VLM-Driven Mobile GUI Agents
 
-📄 [arXiv](https://arxiv.org/abs/2609.13873)　📅 2026-09
+📄 [arXiv](https://arxiv.org/abs/2609.13873) · 🎓 [Official](https://www.sigsac.org/ccs/CCS2026/program/accepted-papers.html)　📅 2026-09　🏷 ACM CCS 2026
 
 **关键词**：`benchmark`、`GUI agent`、`privacy leakage`、`visual profiling`、`MobiLeak`
 
