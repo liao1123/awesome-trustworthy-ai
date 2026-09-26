@@ -555,7 +555,7 @@ Aligned vision-language models (VLMs) are designed to balance grounded visual re
 
 ### 30. SafeMT: Multi-turn Safety for Multimodal Language Models
 
-🎓 [Official](https://aclanthology.org/2026.acl-long.1920/)　📅 2026　🏷 ACL 2026
+📄 [arXiv](https://arxiv.org/abs/2510.12133) · 🎓 [Official](https://aclanthology.org/2026.acl-long.1920/)　📅 2025-10　🏷 ACL 2026
 
 **关键词**：`analysis`、`multimodal safety`、`VLM safety`、`multimodal alignment`、`safety alignment`、`fine-tuning robustness`
 
