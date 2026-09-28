@@ -405,3 +405,22 @@ Chemistry and materials agents integrate literature retrieval, candidate generat
 Language model safety is typically evaluated one interaction at a time. We show that a weaker, unaligned model can split a harmful task into benign-looking subproblems, consult a stronger aligned model independently on each, and combine the answers locally. We call this attack capability laundering. Unlike a jailbreak, no single response is a harmful task. We measure consultation-aided uplift using tasks that a raw frontier model solves, the aligned frontier refuses, and the unassisted orchestrator fails. We evaluate GPT-5.5, Claude Opus 4.8, and Grok-4.3 as consultants to four local orchestrators on CyBench, BountyBench, and harmful CBRN requests. On CyBench, Gemma-4-31B recovers 8/14 candidates with GPT-5.5 and 7/9 with Opus, compared with 2/21 and 4/15 for Gemma-4-12B. On BountyBench, Gemma-4-31B recovers 3/9 and 2/3 candidates, while Muse-Glimmer-30B recovers none of 22 and 13. For CBRN, we measure uplift across eight steps of a hypothetical bioweapon attack chain and find that consultation raises Gemma-4-31B&#39;s mean rubric score from 62.3 to 83.1 on a 100-point rubric scale. These results expose a gap in current defenses: refusing a harmful task does not prevent frontier capabilities from being transferred and composed across many individually permitted interactions.
 
 </details>
+
+### 22. Auditing System-1 Models on Biosecurity-Relevant Benchmarks: Calibration, Selective Prediction, and Permutation Instability in a Non-Generative Model
+
+📄 [arXiv](https://arxiv.org/abs/2609.30454)　📅 2026-09
+
+**关键词**：`analysis`、`System-1 reliability audit`、`biosecurity benchmark`、`calibration`、`permutation instability`
+
+👤 **作者**：Kimon Antonios Provatas、Ilias Georgakopoulos-Soares
+
+- 🎯 **研究动机**：非生成式 System-1 模型单次前向返回结构化概率决策、成本远低于生成式——作为大管线廉价组件受关注，但其在生物安全相关任务上的可靠性未被系统检验
+- 🔬 **研究方法**：审计一个商用 System-1 模型：6,020 道多选题（WMDP、释义鲁棒 WMDP-Bio、六个 LAB-Bench 子任务），测准确率/校准/错误检测/选择性预测/选项排列敏感性
+- 📌 **结论**：正确解读供应商不确定度字段后校准合理；任务间准确率强依赖+排列不稳定性——System-1 模型安全可靠性的系统审计（与 JevAdvBench 构成 RLCD 审计/攻击两侧）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Non-generative &#34;System-1&#34; models return structured probabilistic decisions in a single forward pass, without autoregressive decoding, at a small fraction of the inference cost of a generative model. This makes them of interest as inexpensive components in larger pipelines, but their reliability on biosecurity-relevant tasks has not been systematically examined. We audit one commercial System-1 model on 6,020 multiple-choice items drawn from the Weapons of Mass Destruction Proxy (WMDP), a paraphrase-robust WMDP-Bio variant, and six LAB-Bench subtasks, measuring accuracy, calibration, error detection, selective prediction, and sensitivity to the order in which answer options are presented. Accuracy is strongly task-dependent. Once the vendor's uncertainty field is correctly interpreted, the model is reasonably well calibrated (pooled expected calibration error 0.034) and its top-1 probability separates correct from incorrect predictions (pooled AUROC 0.820), though both degrade substantially on the weaker tasks. Under four cyclic rotations of the answer options, 37.4% of WMDP-Cyber items receive different answers; a control using byte-identical repeated calls attributes most of this to option order rather than run-to-run variation. Averaging probabilities across rotations improves WMDP-Cyber accuracy by 3.8 percentage points, and applying it only to low-confidence items recovers most of that gain at well under the cost of averaging every item.
+
+</details>

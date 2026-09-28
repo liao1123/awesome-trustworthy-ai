@@ -1407,3 +1407,22 @@ Most studies of prompt injection focus on generative agents, leaving their effec
 Detectors of alignment failures screen deployed language models and score alignment benchmarks. Most are generative judges that spend a decoding pass on every criterion, and classifiers that read token probabilities, such as Llama Guard, still score one fixed label per call. Jev, a model trained with reinforcement learning for calibrated decisions (RLCD), answers many typed questions about one input with calibrated probabilities in a single call. Whether it detects alignment failures has not been measured. We present RLCDAlignBench, which benchmarks Jev on ten alignment failures: sycophancy, jailbreaks, deception, prompt injection, hallucination, privacy violation, social bias, reward hacking, concealing uncertainty, and power seeking. It spans 44 benchmarks and five target models, labelled by each benchmark's scorer and, on two, by humans. Many of these failures are relational, defined against a reference, such as the user's belief or an injected instruction, that the response alone does not reveal. Our key idea is therefore to vary what Jev is asked separately from what it sees: the question's wording and answer type on one side, the fields of the input on the other. A single generic question reaches a median AUROC of 0.886 zero-shot and beats supervised baselines on most benchmarks. Question wording matters little, while context matters more, mostly through fields that encode the label. Jev matches the reference scorer's agreement with human labels, surfaces label defects in existing benchmarks, and costs 63x less than LLM-judge scorers. Code and data: https://github.com/sumleo/RLCDAlignBench.
 
 </details>
+
+### 75. JevAdvBench: A Benchmark and Black-Box Attacks for Reinforcement Learning for Calibrated Decisions Models
+
+📄 [arXiv](https://arxiv.org/abs/2609.31142)　📅 2026-09
+
+**关键词**：`benchmark`、`RLCD adversarial robustness`、`Jev`、`black-box attack`、`self-consistency scoring`
+
+👤 **作者**：Jianyi Hu、…、Leo Yu Zhang
+
+- 🎯 **研究动机**：RLCD 模型（如 Jev）回答类型化问题供软件直接执行、无人读输出——但其鲁棒性未被测量：对抗基准打分生成/执行内容，而类型化模型被操纵时仍返回良构答案；测量本身困难（相同请求返回不同答案、标签多来自模型自身、API 预处理不可见）
+- 🔬 **研究方法**：核心思路：对每个被攻击决策以模型自身 clean 决策为参照打分、并以相同重跑造成的变化为基线；JevAdvBench：812 个类型化问题 × 66 个对象（首个 RLCD 对抗基准）+黑盒攻击
+- 📌 **结论**：RLCD 模型鲁棒性的首个基准与攻击——Jev 攻防生态第四连（注入劫持→对齐检测→渗透 System One→对抗基准），打分方法学解决无 ground truth 的测量难题
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Models trained with reinforcement learning for calibrated decisions (RLCD), such as Jev, answer a typed question about an input, the state, with a probability, a choice, or a score, and software acts on the answer without a person reading it. Their robustness has not been measured: adversarial benchmarks score what a model generates or executes, whereas a typed model generates nothing and returns a well-formed answer even when manipulated. Measurement is also hard, because identical requests can return different answers, most available labels come from the model itself, and the API preprocesses each request out of view. Our key idea is to score each attacked decision against the model's own clean decision rather than against labels, and to read it against the change caused by an identical re-run. Building on this, we introduce JevAdvBench, to our knowledge the first adversarial benchmark for RLCD models, with 812 typed questions over 66 scenarios, and a black-box attack suite of 9,744 single-edit variants that each edit one part of a request, with billed input tokens confirming that the edit reached the model. On jev-1.13.0, rewording stays within 1.2 percentage points of the re-run baseline, and fields outside the schema never reach the model. In contrast, one unverified opinion appended to the state flips 12.1% of decisions, statistically tied with the strongest injected command (10.1%), and pushes 38% of confident answers below the 0.8 confidence threshold that routes them to human review. Applications built on RLCD models should therefore treat the state as untrusted, argued input. Project website: https://JevAdvBench.github.io/JevAdvBench/
+
+</details>

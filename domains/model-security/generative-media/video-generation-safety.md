@@ -300,3 +300,22 @@ The rapid evolution of video generation has shifted the paradigm from pure text-
 Text-to-video (T2V) services inherit their safety stack from image generation, pairing a keyword prompt filter with a per-frame checker that blocks a clip whenever one sampled frame looks unsafe. This stack has a blind spot unique to video. We prove that any moderator ignoring frame order accepts a harmful clip whenever it accepts that clip's benign shuffle, so harm carried by the ordering alone escapes. Empirically, the unmodified benchmark prompt already lands a clip in this moderation gap on 32.7% of Sequential-Action targets over four held-out seeds, and paraphrasing, scene splitting, and a feedback-driven prompt search show no significant improvement (paired McNemar $p\ge0.12$), so prompt engineering is not needed to expose the vulnerability. Dense-scoring all 97 rendered frames shows that about a third of the delivered clips merely hide an unsafe frame, while the rest stay harmful as ordered videos even though every frame passes, an order-blind residual the unmodified prompt reaches on a quarter of Sequential-Action targets. We also document a measurement pitfall, since scoring a searched prompt on its own render seed inflates a 7.5% per-generation rate into an apparent 46.7%. A user study confirms that people read these clips as harmful and their shuffles as safe. The fix is to read frame order, and an order-aware detector separates these clips from their own shuffles at AUC 0.74 where per-frame checking sits at chance, which is the signal deployed moderation throws away.
 
 </details>
+
+### 16. TempQ-Jail: Query-Constrained Candidate Ranking for Text-to-Video Jailbreak Attacks
+
+📄 [arXiv](https://arxiv.org/abs/2609.31032)　📅 2026-09
+
+**关键词**：`attack`、`query-constrained jailbreak`、`candidate ranking`、`guarded T2V`、`budget allocation`
+
+👤 **作者**：Tianmeng Fang、…、Xiaochun Cao
+
+- 🎯 **研究动机**：有 guard 的 T2V 系统中视频生成与安全评估昂贵——攻击者无法测试大候选池；既有 T2V 越狱只追求更有效或更隐蔽的候选
+- 🔬 **研究方法**：TempQ-Jail：把 T2V 越狱形式化为查询约束的候选分配与排序问题——异构攻击机制扩覆盖、从安全门通过率/危险视觉生成/原意保持/时间有效性估计端到端攻击价值、限查询轨迹中高价值候选排前；CogVideoX-5B × 70 个可行意图
+- 📌 **结论**：查询预算感知的 T2V 越狱——生成攻击的资源约束维度（T2V 攻击线的效率视角）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Existing text-to-video (T2V) jailbreak methods mainly seek more effective or stealthier attack candidates. In guarded T2V systems, however, video generation and security evaluation are costly, so an attacker often cannot test a large candidate pool. We therefore formulate T2V jailbreak as a query-constrained candidate allocation and ranking problem and propose TempQ-Jail. The method combines heterogeneous attack mechanisms to expand candidate coverage, estimates each candidate's end-to-end attack value from security-gate passage, dangerous visual generation, preservation of the original intent, and temporal validity, and ranks candidates so that high-value attacks appear early in a limited query trajectory. We evaluate TempQ-Jail on CogVideoX-5B using 70 common viable intents derived from T2VSafetyBench and compare it with six representative T2V jailbreak methods under a unified protocol. TempQ-Jail achieves TP-ASR@5 and TP-ASR@10 of 48.9% and 65.4%, improving over the strongest baselines by 4.6 and 4.0 percentage points, respectively. It also obtains the highest AUC-TP (0.469) and the lowest AvgQ (6.3). Analyses of query trajectories, candidate allocation, failure attribution, and ablations show that TempQ-Jail more effectively identifies and prioritises candidates with complete attack potential under limited query budgets.
+
+</details>

@@ -505,3 +505,22 @@ Adapting a pretrained autoregressive (AR) model is a cost-efficient route to a d
 Diffusion language models generate text through iterative denoising, exposing intermediate trajectories before final answers are produced. We identify a recurring reasoning failure, stable-but-wrong lock-in, where an answer stabilizes early around an incorrect value while substantial denoising remains. Surface-level decoding signals such as confidence, entropy, margin, and answer stability are insufficient to reliably distinguish correct from erroneous lock-in. We formulate selective reasoning repair as a lightweight test-time planning problem and propose LOCKR, a hidden-state trajectory-guided planner that decides when to allocate additional computation, expands a structured set of targeted repair branches, and selects the most promising continuation using trajectory-aware verification. Across two diffusion language models and three mathematical reasoning benchmarks, hidden-state trajectories consistently outperform surface signals and single hidden snapshots for both wrong-lock-in detection and repair selection. On natural evaluation distributions, LOCKR yields absolute accuracy gains of 2.21--5.37 percentage points across all five evaluated settings, with repair rates ranging from 22% to 41%. These results establish hidden diffusion trajectories as actionable signals for selective test-time reasoning repair.
 
 </details>
+
+### 28. Why Jailbreaks Succeed in Diffusion Language Models: An Energy Landscape Analysis
+
+📄 [arXiv](https://arxiv.org/abs/2609.30841)　📅 2026-09
+
+**关键词**：`analysis`、`DLM jailbreak`、`energy landscape`、`safety alignment geometry`、`training-free detection`、`kinetic energy trajectory`
+
+👤 **作者**：Thong Bach、Dung Nguyen、Thao Minh Le、Truyen Tran
+
+- 🎯 **研究动机**：dLLM 的既有攻防各自针对特定漏洞、缺乏解释攻击为何成功的统一框架
+- 🔬 **研究方法**：把安全对齐解释为去噪能量景观塑形：良好对齐的模型经能量垒把有害查询路由向安全输出；现有越狱归约为绕垒两策略——初始化时混淆查询安全倾向、或中途干预迫使去噪路径越垒；基于掩码扩散去噪最小化动能的结果派生三个免训练检测信号（生成前 logit 分布的 step-0 比率 + 两个轨迹速度信号）
+- 📌 **结论**：DLM 越狱的统一能量景观解释与免训练检测信号——dLLM 安全的首个统一几何框架（DLM 线 P1：与 Beyond Token Positions 的 step 分布互补的连续能量视角）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Existing attacks and defenses for diffusion-based large language models (dLLMs) target specific vulnerabilities but lack a shared framework explaining why attacks succeed. We propose one by interpreting safety alignment as shaping the denoising energy landscape: a well-aligned model routes harmful queries toward safe outputs through an energy barrier that separates the two regions. Current jailbreak attacks reduce to two strategies for circumventing this barrier: obscuring the query's safety disposition at initialisation, or intervening mid-trajectory to force the denoising path across the energy barrier. From this perspective and the result that masked diffusion models minimise kinetic energy during denoising, we derive three complementary, training-free detection signals: a step-0 ratio that reads the initial safety disposition from the logit distribution before generation begins, and two trajectory-velocity signals that track kinetic energy in complementary subspaces of the logit space. An attack must either reveal its intent at initialisation or expend kinetic energy to cross the barrier in at least one monitored subspace, so the three signals cover each other's blind spots in the energy budget by construction. Evaluation across three dense dLLMs (LLaDA-8B, LLaDA-1.5, Dream-7B) and a sparse mixture-of-experts dLLM (LLaDA-MoE-7B) confirms this complementarity. In stress tests of known attacks, every configuration that evades detection also fails to produce harmful content, suggesting that the detection and barrier-crossing thresholds are hard to separate.
+
+</details>

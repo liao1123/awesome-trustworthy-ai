@@ -780,3 +780,22 @@ Vision-Language Model (VLM) safety is expected to depend on what a request asks 
 Post-training quantization of vision--language models (VLMs) is typically assessed through aggregate task accuracy and memory savings, but preserving a headline score does not guarantee preservation of visual grounding behavior. We present GHOST-Q, a cross-precision controlled evaluation of three 8B VLM families under FP16, INT8, and NF4 across utility and hallucination-sensitive benchmarks. Rather than comparing only aggregate accuracy, we pair FP16 and quantized predictions item by-item to quantify how compression redistributes grounding successes and failures. Five of six quantized variants preserve MMStar accuracy within $\pm2$ percentage points, yet 10 of 36 paired effects remain significant after false-discovery-rate correction, nine on hallucination-sensitive conditions. Same-device A100 profiling further demonstrates that substantial memory reduction does not necessarily mean lower inference latency. Finally, an open-ended AMBER audit reveals strong generation budget censoring whose severity varies by architecture and precision. These results show that quantized VLMs should be evaluated jointly for aggregate utility, grounding reliability, generation behavior, and realized deployment efficiency.
 
 </details>
+
+### 42. Guardrails or Roadblocks? Effects of Pedagogical Style and Context Awareness in AI Teaching Assistants for Programming
+
+📄 [arXiv](https://arxiv.org/abs/2609.29995)　📅 2026-09
+
+**关键词**：`analysis`、`pedagogical guardrails`、`AI teaching assistant`、`context awareness`、`over-restriction`
+
+👤 **作者**：Madeleine Eastwood、Harshith Narne、Joseph Hilby、Paul Denny、Ashish Aggarwal、Amanpreet Kapoor
+
+- 🎯 **研究动机**：教学助手的 guardrail 是护栏还是路障——教学风格与上下文感知的效果
+- 🔬 **研究方法**：教学风格 × 上下文感知的受控用户研究
+- 📌 **结论**：guardrail 的教育效果测量——应用域 guard 有效性（HCI 交叉扩展）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+AI teaching assistants (AI TAs) backed by large language models (LLMs) and pedagogical guardrails are increasingly being integrated into programming courses, providing students with scalable access to hints, conceptual explanations, and code-level feedback. However, guardrails may also create friction. If students feel that the support provided is overly restrictive or poorly contextualized to their current progress, they may bypass approved tools for general-purpose LLMs. To investigate how AI TA design affects students' learning experiences, we conducted a randomized controlled trial with 132 students in an introductory programming course. Students completed three tasks related to code-writing and debugging and were randomly assigned to one of four AI TAs varied across two dimensions: pedagogical guidance style (Socratic vs. Direct instruction) and context awareness (no context vs. full context of the problem and student solution). We examined students' perceptions, interaction behaviors, and evidence of post-task comprehension. Students rated the Socratic AI TA with full context least favorably, reporting significantly lower perceived support for task completion. Descriptively, this condition also showed the highest observed interaction stress, the highest rate of external LLM use, and the lowest proportion of post-task explanations demonstrating full comprehension, though these differences were not statistically significant. These findings suggest that guardrailed AI TAs are not automatically better for learning. Instead, their effectiveness depends on how pedagogical guidance and contextual awareness are balanced in ways that students experience as useful, supportive, and worth continuing to use.
+
+</details>

@@ -319,3 +319,22 @@ Recent work has found that frontier AI models can exhibit misaligned behaviors i
 We show that ordinary business language --- "maximize profitability" --- induces profit-oriented ambiguity resolution: LLMs systematically dismiss ambiguous signals of potential safety violations to serve business objectives. In 3,600 controlled trials across eight reasoning-capable LLMs, adding a profit mandate to otherwise identical prompts increases risk-dismissing judgments by 6.8 percentage points (p < 0.0001), suppresses board escalation recommendations by 13.9pp (p < 0.0001), and shifts severity assessments downward (p < 0.0001). The mandate never instructs models to downplay risks; instead, chain-of-thought traces reveal motivated reasoning: models acknowledge concerns, then invoke profit logic to justify dismissing them. We characterize these findings as the Profit Alignment Problem: when AI systems are given ordinary business objectives, they develop systematic strategies for suppressing inconvenient information that no designer intended or specified.
 
 </details>
+
+### 17. Evolutionary Safety of Recursive Self-Improving AI: Taxonomy, Risk Discovery, and Evaluation
+
+📄 [arXiv](https://arxiv.org/abs/2609.31186)　📅 2026-09
+
+**关键词**：`survey`、`evolutionary safety`、`recursive self-improvement`、`safety property dynamics`、`risk taxonomy`
+
+👤 **作者**：Chang Gong、Jingping Bi、Di Yao、Xinjian Liang、Chao Xiang、Ruijie Guo
+
+- 🎯 **研究动机**：AI 开始参与自身改进（模型训练/经验积累/agent 演化/自动 AI 研发）——递归自改进（RSI）临近带来根本安全问题：当系统、其积累经验、乃至产生后继的过程持续变化时，安全如何维持
+- 🔬 **研究方法**：Evolutionary Safety 视角：不只问系统某刻是否安全，而问安全属性如何变化、保持、累积与漂移；分类学+风险发现+评测框架
+- 📌 **结论**：RSI 安全的演化视角分类学与评测——安全属性的动力学化（与 26457 RSI 能力动力学构成能力/安全对；部署期安全研究的时间轴扩展）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Artificial intelligence is advancing rapidly, with increasingly capable systems taking larger roles in reasoning, decision-making, scientific discovery, and autonomous development. As AI begins to participate in its own improvement, from model training and experience accumulation to agent evolution and automated AI development, the prospect of recursive self-improvement (RSI) is becoming increasingly relevant. This transition raises a fundamental safety question: how can safety be maintained when the system, its accumulated experience, and even the process producing its successors continue to change? We introduce Evolutionary Safety as a perspective for studying safety under persistent and recursive self-improvement. It concerns not only whether an AI system is safe at a particular moment, but how safety properties change, persist, accumulate, and propagate throughout evolution. We characterize recurring manifestations, including intent drift, error accumulation, experience contamination, safety-property erosion, evaluator drift, and risk propagation. We then develop a taxonomy spanning persistent agent state, model state, evaluation and environmental feedback, computational substrate, and meta-level update mechanisms. Building on this taxonomy, we examine how evolutionary risks can be discovered and evaluated across states, updates, trajectories, and lineages, and derive governance principles for modification, selection, authorization, provenance, and recovery. Finally, we outline open problems toward maintaining safety guarantees as AI systems become increasingly persistent, adaptive, and recursively self-improving. Project resources and proposed evaluation systems are available at https://chaunceykung.github.io/evolutionary-safety-rsi.
+
+</details>

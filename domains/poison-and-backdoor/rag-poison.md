@@ -2301,3 +2301,24 @@ Retrieval augmented generation (RAG) systems have emerged as the dominant archit
 Multi-passage corpus poisoning often repeats one target claim across similar documents, creating correlated lexical and semantic patterns that similarity- and conflict-aware defenses can suppress jointly. We introduce DnD (Divide and Doubt), a targeted attack based on two principles: distributing support for the target answer across stylistically diverse passages, and including a passage that casts doubt on evidence for the reference answer. The first disperses poison-passage representations in embedding space, while the second strengthens target adoption when multiple poisoned passages are retrieved. We evaluate DnD on two open-domain QA datasets across three LLMs and nine RAG configurations, under both black-box and white-box access to the retriever. Across these settings, DnD matches or outperforms prior attacks in most configurations, with its largest gains against clustering- and conflict-aware defenses.
 
 </details>
+
+### 120. Stale-Document Poisoning: When Outdated Retrieval Overrides Correct Model Answers
+
+📄 [arXiv](https://arxiv.org/abs/2609.31342)　📅 2026-09
+
+**关键词**：`attack`、`stale-document poisoning`、`temporal alignment failure`、`knowledge reversal`、`retrieval override`
+
+👤 **作者**：Md Shamim Ahmed、Lukas Galke Poech、Richard Röttger
+
+- 🎯 **研究动机**：RAG 常被用来解决知识过时——但检索只在证据仍有效时有益；识别时间对齐失效：过时证据使模型在无检索时本可答对的情况下答错
+- 🔬 **研究方法**：317 个已验证知识反转（医学/法律/软件/平台政策，锚定有日期官方来源）× 12 模型基准
+- 📌 **结论**：过时检索在无信任指令时翻转 30%（Llama）/37%（Qwen）答案、显式信任指令升至 66%/75%；四模型四域投毒范围 17-91%，匹配的时新文档无法恢复——RAG 的时间对齐失效（投毒×时间：不需要对抗构造、陈旧即毒性）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Retrieval-augmented generation (RAG) is often used to address outdated knowledge by providing external evidence. But retrieval helps only when that evidence is still valid. We identify a temporal alignment failure, stale-document poisoning, in which outdated evidence makes a model wrong despite answering correctly without retrieval. We construct a benchmark of 317 verified knowledge reversals across medicine, law, software, and platform policy, grounded in dated official sources. Across 12 models, recent medical reversals are harder than long-established ones. More importantly, outdated retrieval flips 30% of Llama and 37% of Qwen answers even without instructions to trust the document; explicit follow instructions raise these rates to 66% and 75%. Across four open models and four domains, poisoning ranges from 17-91%, while matched up-to-date evidence is followed in 97-100% of trials. To isolate temporal applicability, we keep the historical evidence unchanged across 50 reversals and vary only the evaluation date. A clear pattern emerges: dates alone produce only modest adaptation, but when models are explicitly told when the old evidence stops applying, the larger models switch to the appropriate answer almost perfectly. Causal interventions confirm that this validity information directly shapes the final decision. The same internal components also support broader comparison tasks, suggesting that temporal applicability can recruit a general reasoning mechanism used for other comparisons. Finally, a fixed recency-aware hybrid re-ranker reduces poisoning by 4.6-10.0 points when dates are accurate, with gains that depend on reliable temporal metadata. Reliable RAG therefore requires selective trust: models must determine not only what retrieved evidence says, but whether it still applies.
+
+</details>
+
+## 常规收录

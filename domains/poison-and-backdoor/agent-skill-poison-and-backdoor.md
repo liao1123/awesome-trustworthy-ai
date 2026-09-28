@@ -1196,3 +1196,22 @@ Skills are increasingly used to extend LLM agents by packaging prompts, code, an
 With the rapid evolution of Large Language Model (LLM) agent ecosystems, centralized skill marketplaces have emerged as pivotal infrastructure for augmenting agent capabilities. However, these marketplaces face unprecedented security challenges, primarily stemming from semantic-behavioral inconsistency and inter-skill combinatorial risks, where individually benign skills induce malicious behaviors during collaborative invocation. To address these vulnerabilities, we propose SkillProbe, a multi-stage security auditing framework driven by multi-agent collaboration. SkillProbe introduces a "Skills-for-Skills" design paradigm, encapsulating auditing processes into standardized skill modules to drive specialized agents through a rigorous pipeline, including admission filtering, semantic-behavioral alignment detection, and combinatorial risk simulation. We conducted a large-scale evaluation using 8 mainstream LLM series across 2,500 real-world skills from ClawHub. Our results reveal a striking popularity-security paradox, where download volume is not a reliable proxy for security quality, as over 90% of high-popularity skills failed to pass rigorous auditing. Crucially, we discovered that high-risk skills form a single giant connected component within the risk-link dimension, demonstrating that cascaded risks are systemic rather than isolated occurrences. We hope that SkillProbe will inspire researchers to provide a scalable governance infrastructure for constructing a trustworthy Agentic Web. SkillProbe is accessible for public experience at skillhub.holosai.io.
 
 </details>
+
+### 63. Stealth Apart, Harm Together: Skill Cascading Attacks on Skill-Based Agent Systems
+
+📄 [arXiv](https://arxiv.org/abs/2609.30383)　📅 2026-09
+
+**关键词**：`attack`、`skill cascading`、`compositional harm`、`benign-in-isolation`、`skill ecosystem`
+
+👤 **作者**：Zihao Zhu、Siwei Lyu、Adel Bibi、Baoyuan Wu
+
+- 🎯 **研究动机**：技能（自然语言指令+可执行脚本+参考资源的模块包）生态使 agent 可复用第三方能力——既有工作只关注单个技能内的漏洞，跨技能交互风险被忽视
+- 🔬 **研究方法**：skill cascading attacks：恶意目标分布到多个技能——每项修改孤立看良性、组合执行有害（处方审查管道例：第一个技能弱化停药信号、第二个降低相互作用严重度……）；配套组合检测评测
+- 📌 **结论**：组合维度的技能攻击——单技能审计范式（SkillScope/Semia 类）对级联失效的盲区（agent 技能安全的组合复杂度问题）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+A skill is a modular package of natural-language instructions, executable scripts, and reference resources that an agent can load at runtime to extend its capabilities for a specific task. Skill-based agent systems therefore enable flexible reuse of third-party capabilities, but the openness of this skill ecosystem also opens up a new attack surface. Prior work has focused on vulnerabilities within individual skills, but little attention has been paid to risks that arise from interactions across skills. In this paper, we introduce skill cascading attacks, a threat paradigm in which a malicious objective is distributed across multiple skills so that each modification looks benign in isolation, yet their combined execution is harmful. For instance, in a prescription-review pipeline, the first skill weakens signals of recently discontinued medications in the extracted history, the second downgrades the severity of any drug interaction tied to them, and the third suppresses the resulting low-priority alert in the final summary, so that a severe drug-interaction warning silently disappears before reaching the physician. To systematically study this safety blind spot, we develop SkillCascade, an automated multi-agent red-teaming framework, and release SkillCascade-Bench, a benchmark of 213 validated cascading test cases across multiple agent systems and domains. Across representative agents (e.g., OpenClaw, Claude Code, Codex) and LLM backbones, cascaded interactions reliably induce harmful behaviors while evading existing per-skill scanners and runtime monitors. Our findings highlight a gap between component-level integrity and system-level safety, and call for defenses that reason over cross-skill interactions rather than individual skills in isolation.
+
+</details>
