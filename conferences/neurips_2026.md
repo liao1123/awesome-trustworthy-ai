@@ -988,4 +988,6 @@ LLM agents that invoke privileged tools are vulnerable to indirect prompt inject
 - 2026-09-30：首版建立（9,127 条标题宽筛，八分类清单）。
 - 2026-09-30（二次更新）：arXiv 定位回填——精确标题匹配 22 条 + 已库内补位 14 条，共 36 篇升级为完整卡片（id_list 批量核验 meta）；其余条目保持清单待 arXiv 挂出。注：arXiv search API 因早前并发触发 429 限流，未命中条目中可能仍有可定位者，待冷却后补查。
 - Pre-Decoding States（dllm-security #8）为 OpenReview-only，无 arXiv 版，保留在待核验清单。
+- 标题变体（同文核验）：卡片保留 NeurIPS 官方列表标题；#17 Token Inflation 的 arXiv 版名为 "The More It Says, the More You Pay: A Black-Box Audit of Provider-Side Token Inflation…"，#28 arXiv 版带 "HPE:" 前缀，#36 arXiv 版带副标题——均经摘要主题核验为同一论文。#21 Weak Ties 的 📅 2026-08 为 8 月末跨月提交（ID 段 2609）。
+- 复查（2026-09-30）：36 卡编号连续、徽章/官方链接/关键词角色词/三段式/作者行/摘要折叠齐全；卡片与待核清单无重复；3 条补位卡链接 HTTP 200。
 - 同名提示：MemPoison（NeurIPS）与库内 2607.14651、RouteGuard（GuardZoo）与库内 skill 检测 RouteGuard 同名不同文，待核。
