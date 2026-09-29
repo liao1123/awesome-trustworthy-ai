@@ -799,3 +799,22 @@ Post-training quantization of vision--language models (VLMs) is typically assess
 AI teaching assistants (AI TAs) backed by large language models (LLMs) and pedagogical guardrails are increasingly being integrated into programming courses, providing students with scalable access to hints, conceptual explanations, and code-level feedback. However, guardrails may also create friction. If students feel that the support provided is overly restrictive or poorly contextualized to their current progress, they may bypass approved tools for general-purpose LLMs. To investigate how AI TA design affects students' learning experiences, we conducted a randomized controlled trial with 132 students in an introductory programming course. Students completed three tasks related to code-writing and debugging and were randomly assigned to one of four AI TAs varied across two dimensions: pedagogical guidance style (Socratic vs. Direct instruction) and context awareness (no context vs. full context of the problem and student solution). We examined students' perceptions, interaction behaviors, and evidence of post-task comprehension. Students rated the Socratic AI TA with full context least favorably, reporting significantly lower perceived support for task completion. Descriptively, this condition also showed the highest observed interaction stress, the highest rate of external LLM use, and the lowest proportion of post-task explanations demonstrating full comprehension, though these differences were not statistically significant. These findings suggest that guardrailed AI TAs are not automatically better for learning. Instead, their effectiveness depends on how pedagogical guidance and contextual awareness are balanced in ways that students experience as useful, supportive, and worth continuing to use.
 
 </details>
+
+### 43. Still There, No Longer Seen: Exposing Compression-Induced Risk in Large Vision-Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2609.35002)　📅 2026-09
+
+**关键词**：`analysis`、`compression-induced risk`、`LVLM semantic loss`、`quantization-compression axis`、`perceptual residual`
+
+👤 **作者**：Qiankun Li、…、Li Sun
+
+- 🎯 **研究动机**：大视觉语言模型部署中普遍压缩（量化之外的语义压缩）——压缩是否消除模型仍「看到」的风险内容未被检验
+- 🔬 **研究方法**：Still There, No Longer Seen：压缩诱导的 LVLM 风险——内容仍在输入中但模型不再感知的盲区刻画
+- 📌 **结论**：压缩造出「在场不可见」的风险盲区——部署变换×风险感知的交叉（与 GHOST-Q 量化接地、量化隐私构成压缩部署失效三联）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Visual token compression reduces the inference cost of Large Vision-Language Models (LVLMs). However, aggregate robustness measures do not reveal whether a particular adversarial failure is induced by compression or inherited from the underlying model. We define a compression-specific failure (CSF) as an adversarial input that remains correct under full-token inference but fails after compression, casting compression-induced risk as a paired failure attribution problem. Within a controlled diagnostic cohort, counterfactuals show that retained-set allocation causally changes compressed correctness and reveal a negative association between recovery and representation drift in displaced evidence. Motivated by these findings, we propose CIRA, a Compression-Induced Risk Attack for Large Vision-Language Models. Under a vision-encoder white-box setting, CIRA optimizes image perturbations through encoder-side objectives that manipulate token priorities across candidate compression budgets while preserving displaced evidence. CIRA uses no downstream questions or labels and requires no access to the language model, deployed compressor, or exact compression budget. Across 12 dataset-compressor settings evaluated at four budgets, CIRA achieves a mean CSFR of 20.35% while limiting full-token attack success to 6.92%, with similar behavior on additional LVLM families. A cross-view selection-stabilization defense substantially suppresses CIRA, although Adaptive CIRA partially restores its effectiveness. These results show that compression-specific failures persist under restricted access and support paired evaluation of full-token and compressed inference for attributing risk to visual-token compression.
+
+</details>

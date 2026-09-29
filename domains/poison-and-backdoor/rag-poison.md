@@ -2322,3 +2322,22 @@ Retrieval-augmented generation (RAG) is often used to address outdated knowledge
 </details>
 
 ## 常规收录
+
+### 121. LENS: The Sum Is Worse Than the Parts for Set-Level Poisoning in Retrieval-Augmented Generation
+
+📄 [arXiv](https://arxiv.org/abs/2609.35155)　📅 2026-09
+
+**关键词**：`attack`、`set-level poisoning`、`RAG collective effect`、`sum-worse-than-parts`、`retrieval aggregation`
+
+👤 **作者**：Kaisheng Fan、Yishu Gao、Xunzhu Tang、Tegawend'e F. Bissyand'e、Weizhe Zhang
+
+- 🎯 **研究动机**：RAG 投毒研究聚焦单文档毒性——但检索是集合级操作：多文档组合的集体效应（总和劣于部分）未被刻画
+- 🔬 **研究方法**：LENS：RAG 的集合级投毒——单个文档无害、组合后放大错误
+- 📌 **结论**：集合级投毒的非加和效应——RAG 投毒从单文档到组合维度（与 DnD 分布式投毒/Skill Cascading 同周的组合攻击母题）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Retrieval-augmented generation (RAG) aggregates evidence from multiple external documents, yet this joint integration creates an underexamined vulnerability: attack effects absent in individual documents can emerge through set-level composition. Existing coordinated attacks do not explicitly enforce that every proper subset remains insufficient in frozen single-round RAG. We formalize set-level compositional poisoning, where documents designed to remain individually plausible jointly redirect RAG outputs to a target answer, while proper subsets fail to induce the target on their own. To construct such attacks, we propose LENS, a generator-black-box multi-agent framework that casts construction as constrained evidence composition. LENS factorizes target inference into a query-conditioned interpretation lens and complementary facts, then uses a nested dual-loop workflow to concentrate steering in the full set while suppressing subset leakage. The outer loop plans the interpretation lens and semantic roles; the inner loop synthesizes documents and applies counterexample-guided repair. Across four benchmarks and three generators, returned packets achieve 0.852 full-set ASR and 0.784 post-retrieval ASR@5, while their strongest proper subsets reach only 0.069. Against construction baselines evaluated on the same frozen manifest, LENS improves all-attempt E2E-Strict@5 from 0.244 to 0.363, a 48.8% relative gain. A blinded human audit finds that 68.3% of returned packets combine an incorrect target, a definite answer-criterion shift, and no target entailment under the original semantics. Across four published defenses, LENS attains the highest defended all-attempt ASR@5, exceeding the strongest baseline by 0.141 on average. Together, these results establish evidence composition as a distinct RAG security boundary and position LENS as a stress test for defenses that reason over document sets.
+
+</details>

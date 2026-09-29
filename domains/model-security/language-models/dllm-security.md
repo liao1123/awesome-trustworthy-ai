@@ -524,3 +524,41 @@ Diffusion language models generate text through iterative denoising, exposing in
 Existing attacks and defenses for diffusion-based large language models (dLLMs) target specific vulnerabilities but lack a shared framework explaining why attacks succeed. We propose one by interpreting safety alignment as shaping the denoising energy landscape: a well-aligned model routes harmful queries toward safe outputs through an energy barrier that separates the two regions. Current jailbreak attacks reduce to two strategies for circumventing this barrier: obscuring the query's safety disposition at initialisation, or intervening mid-trajectory to force the denoising path across the energy barrier. From this perspective and the result that masked diffusion models minimise kinetic energy during denoising, we derive three complementary, training-free detection signals: a step-0 ratio that reads the initial safety disposition from the logit distribution before generation begins, and two trajectory-velocity signals that track kinetic energy in complementary subspaces of the logit space. An attack must either reveal its intent at initialisation or expend kinetic energy to cross the barrier in at least one monitored subspace, so the three signals cover each other's blind spots in the energy budget by construction. Evaluation across three dense dLLMs (LLaDA-8B, LLaDA-1.5, Dream-7B) and a sparse mixture-of-experts dLLM (LLaDA-MoE-7B) confirms this complementarity. In stress tests of known attacks, every configuration that evades detection also fails to produce harmful content, suggesting that the detection and barrier-crossing thresholds are hard to separate.
 
 </details>
+
+### 29. Weak Ties, Strong Signals: Efficient Training Data Detection in Diffusion LLMs via Independent Token Sampling
+
+📄 [arXiv](https://arxiv.org/abs/2609.22145) · 🐙 [Code](https://github.com/Chrisqcwx/DLLM-MIA)　📅 2026-09
+
+**关键词**：`analysis`、`DLM training data detection`、`conditional mutual information`、`independent token sampling`、`memorization signal`
+
+👤 **作者**：Hongyao Yu、…、Shu-Tao Xia
+
+- 🎯 **研究动机**：dLLM 可能在去噪中暴露敏感训练数据——但 dLLM 缺乏因果架构的高效单遍概率分解，检测困难；既有随机掩码方法无法控制被掩 token 间的依赖
+- 🔬 **研究方法**：证明 token 级近似引入非负结构估计误差（由被掩 token 累积条件互信息刻画，可淹没细微记忆化信号）→ 可靠检测需要内部依赖弱的掩码集；独立 token 采样的高效检测
+- 📌 **结论**：弱依赖掩码的 dLLM 训练数据检测——DLM 记忆化检测的统计基础（DLM 线 P1：与 MIA/infilling 提取构成攻防对偶）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Diffusion large language models (dLLMs) offer a compelling alternative to autoregressive models, yet they may expose sensitive training data during denoising. Detecting such usage is challenging because dLLMs lack the efficient one-pass probability decomposition of causal architectures. Existing methods rely on random masking to obtain tractable token-wise detection signals under limited query budgets, but fail to control dependencies among masked tokens. We demonstrate that this token-wise approximation introduces a non-negative structural estimation error, which is theoretically characterized by the cumulative conditional mutual information (CMI) among masked tokens and can obscure subtle memorization signals. This insight suggests that reliable detection requires masked token sets with weak internal dependency. To avoid the prohibitive cost of directly estimating CMI over token combinations, we propose \textit{Independent Token Sampling} (ITS), a query-efficient framework that uses an attention-derived pairwise dependency proxy to approximate the CMI-aware selection criterion. ITS further incorporates a diversity-promoting strategy to improve token coverage across sampling rounds, yielding aggregated token-wise signals that are less affected by dependency-induced approximation error. Experiments on multiple datasets show that ITS consistently outperforms state-of-the-art baselines across different models and datasets, achieving an AUC improvement of 0.18 on the ArXiv dataset while maintaining strong performance under limited query budgets. The code is available at https://github.com/Chrisqcwx/DLLM-MIA .
+
+</details>
+
+### 30. TANGO: Watermarking Masked Diffusion Language Models in Token Pairs
+
+📄 [arXiv](https://arxiv.org/abs/2609.35224)　📅 2026-09
+
+**关键词**：`tool`、`DLM watermarking`、`token-pair scheme`、`masked diffusion`、`provenance for dLLM`
+
+👤 **作者**：Kasra Arabi、Nir Weinberger、Micah Goldblum、Niv Cohen
+
+- 🎯 **研究动机**：掩码 DLM 的生成内容缺乏溯源水印——AR 水印方案不适用于掩码去噪生成
+- 🔬 **研究方法**：TANGO：token 对形式的掩码 DLM 水印
+- 📌 **结论**：首个面向掩码 DLM 的水印——dLLM 内容真实性基础设施（DLM 线 P1：安全栈从攻防延伸到溯源）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Masked-diffusion language models fill in masked positions in parallel and in no fixed order. Most practical text watermarks assume left-to-right generation. They key each token to the tokens before it, and in a diffusion model those tokens may still be masked. A fixed green list needs no such context, but it favors the same tokens at every position, so these tokens appear more often in watermarked text. An attacker who compares token frequencies in watermarked and unwatermarked text can recover the list and forge text that the provider's own detector accepts. We present TANGO, a watermark for masked-diffusion language models that keys each new token to a nearby token that is already unmasked. A secret key splits the vocabulary into color classes, and TANGO biases the new token toward a color determined by the key and the nearby token's color. The watermark is therefore embedded in pairs of tokens. Because the favored color changes from position to position, token frequencies stay much closer to those of unwatermarked text than under a fixed green list. Detection needs only the text and the key, and it does not assume any unmasking order. On two masked-diffusion models, TANGO detects nearly all unedited watermarked texts and most edited ones, and frequency attacks that forge the fixed green list fail against it.
+
+</details>

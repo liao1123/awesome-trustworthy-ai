@@ -317,3 +317,22 @@ Influence functions are commonly used to attribute model behavior to training do
 Large language models (LLMs) are increasingly used for code generation, yet they remain vulnerable to prompts that elicit insecure implementations. Existing defenses typically rely on predefined threat models or known vulnerability patterns, limiting their effectiveness against novel attacks. We propose CodeSIFT, a threat-model-agnostic detection method that leverages influence functions to identify batches of prompts that induce anomalous model behavior. Rather than detecting specific vulnerabilities, CodeSIFT measures the parameter-space influence of generated code and uses a statistical test to determine whether a candidate prompt set deviates from a benign reference distribution. To evaluate our approach, we introduce two benchmark datasets covering a variety of vulnerabilities. We evaluate CodeSIFT on three open-weight code LLMs ranging from 3B to 7B parameters, achieving AUROC scores of up to 0.98 at moderate-to-high injection rates, while maintaining well-calibrated false positive rates and substantially outperforming static analysis baselines. These results suggest that influence-function-based detection is a promising direction for identifying malicious code-generation prompts without requiring prior knowledge of the underlying attack class.
 
 </details>
+
+### 17. The Privacy Fallacy of Crowdsourced Fine-Tuning: Extracting Proprietary Data via Topic-Based Poisoning
+
+📄 [arXiv](https://arxiv.org/abs/2609.33985)　📅 2026-09
+
+**关键词**：`attack`、`crowdsourced SFT poisoning`、`extraction amplification`、`privacy fallacy`、`topic-based trigger`
+
+👤 **作者**：Sae Furukawa、Alina Oprea
+
+- 🎯 **研究动机**：众包用户对话是规模化 SFT 数据的成熟途径，但允许不可信用户进入微调管线——由此产生的隐私风险未被探索：投毒能否放大训练数据提取
+- 🔬 **研究方法**：恶意用户投毒少量众包数据以放大对其他用户贡献的未见指令的提取——仅需对部署模型的黑盒输出访问；四模型×两数据集
+- 📌 **结论**：训练数据提取率大幅上升——众包微调的隐私谬误（投毒×隐私交叉：攻击面从模型输出延伸到数据收集管线）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Supervised fine-tuning (SFT) is widely used to adapt large language models to downstream tasks. Crowdsourcing user conversations is an established approach to collecting SFT data at scale while reducing the need for costly manual annotation. However, it also allows untrusted users to contribute data to the fine-tuning pipeline. We investigate an underexplored privacy risk arising from this setting: can a malicious user poison a small fraction of the crowdsourced data to amplify extraction of previously unseen instructions contributed by other users? We show that this is possible using only black-box, output-only access to the deployed model. Experiments across four models and two datasets demonstrate substantial increases in training-data extraction: with only 50 poisoned examples, near-verbatim extraction reaches $3.71\times$ the rate without poisoning for Qwen2.5-14B on OpenMathInstruct and $3.08\times$ for Llama-3.1-8B on AceReason. Data filtering also proves largely ineffective in detecting poisoned samples: even the best-performing method achieves only 0.378 in F-1 score, leaving the majority of poisoned samples undetected. These findings demonstrate that seemingly benign crowdsourced contributions can amplify leakage of other records while remaining difficult to identify through data filtering.
+
+</details>

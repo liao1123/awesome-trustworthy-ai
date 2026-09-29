@@ -796,3 +796,22 @@ Robotic foundation models achieve impressive performance on standard manipulatio
 Recent vision-language-action (VLA) models are promising for general-purpose manipulation, but long-horizon execution remains fragile. Small state-estimation or control errors can lead to irreversible failures (e.g., collisions and object drops). Avoiding these risks requires a proactive safety mechanism capable of anticipating hazards. In this paper, we introduce SafeLoop, a non-invasive external wrapper that adds hazard prediction and rollback-based recovery to a VLA model without changing its parameters. SafeLoop trains a risk predictor from vision and proprioception to output four values: the probability and time-to-hazard for body collisions and for object failures. A lightweight controller then chooses one of three actions based on the predicted risk: continue execution (noop), save a safety checkpoint (record), or retreat in joint space (rollback). Rollback moves the robot back to a recent safe waypoint and queries the base policy again, which may yield an alternative continuation. Across 24 LIBERO tasks (16 random seeds each) and three real-robot tasks (25 rollouts each), SafeLoop achieves a stronger overall safety-success trade-off than alternative methods, reducing hazard cases by roughly 70% while preserving task success and the base-policy control rate. Project code is available at https://github.com/Loule0-0/SafeLoop/tree/release/safeloop.
 
 </details>
+
+### 42. PlanGuard: A Guardrail for Multi-Step Plan Safety in Embodied Agents
+
+📄 [arXiv](https://arxiv.org/abs/2609.32801)　📅 2026-09
+
+**关键词**：`defense`、`multi-step plan guardrail`、`embodied agent safety`、`plan-level check`、`PlanGuard`
+
+👤 **作者**：Junchi Chen、…、Nenghai Yu
+
+- 🎯 **研究动机**：具身 agent 的多步计划缺乏步骤间安全检查
+- 🔬 **研究方法**：PlanGuard：多步计划级 guardrail
+- 📌 **结论**：计划级具身 guard——具身安全防护层
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Embodied task planners may produce multi-step plans whose subtask dependencies and interactions with the environment create physical risks during execution. Yet existing safeguards overlook such compositional risks, as general-purpose guardrails focus on semantic harm and embodied safety detectors assess subtasks in isolation. To address this gap, we introduce PlanGuard, the first pre-execution detector that evaluates the physical safety of a complete multi-step plan in its current environment. For training and evaluation, we construct a Multi-Step Plan Safety (MSP-Safe) dataset through paired task construction, plan generation using diverse planners, and safety annotation by three judges. Task-oriented SFT on MSP-Safe establishes fundamental plan-safety assessment capabilities, yet a substantial gap remains between compact models suitable for real-time deployment and stronger but costlier large models. Accordingly, we propose Strong-Teacher Adaptive Compensation for On-Policy Distillation (STAC-OPD), which provides compact models with adaptive strong-teacher supervision along their on-policy trajectories. It combines token-level distribution transfer from a fine-tuned strong teacher with probability-routed sequence-level compensation, retaining student-generated targets when the student favors the reference safety decision and using teacher-reconstructed targets otherwise. Across all test subsets, PlanGuard-2B achieves average 87.15% ACC and 87.21% F1, demonstrating effective whole-plan physical-risk detection at compact model scale. Code and dataset will be publicly released.
+
+</details>

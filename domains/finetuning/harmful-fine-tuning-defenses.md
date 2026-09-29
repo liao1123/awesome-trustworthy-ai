@@ -1637,3 +1637,24 @@ Preserving safety alignment during large language models fine-tuning is critical
 Fine-tuning large language models on new objectives can improve helpfulness, instruction following, or domain-specific performance, but it can also induce regressions on safety-critical prompts. Existing safety-preserving fine-tuning methods typically control average safety loss or use weighted auxiliary penalties, which can obscure rare but severe failures. We propose a chance-constrained formulation for safety-preserving fine-tuning that limits the fraction of safety examples whose degradation relative to a reference model exceeds a prescribed threshold. Because the resulting empirical chance constraint contains a discontinuous indicator, we introduce a differentiable majorization of the violation rate, yielding a tractable conservative constraint. We then develop a constraint-aware gradient descent method that treats the majorized constraint as a safe set in parameter space and minimally modifies the fine-tuning direction to preserve feasibility. The resulting update admits a closed form and produces a tail-aware safety correction that emphasizes examples near or above the degradation threshold. We conduct an extensive set of experiments on harmful fine-tuning across three different tasks and three models and show that our approach consistently outperforms the baselines that exist in the literature. These results suggest that safety preservation in LLM fine-tuning is better viewed as a reliability-constrained optimization problem than as average-risk regularization.
 
 </details>
+
+### 88. Distillation Defenses Easily Break After Reinforcement Learning
+
+📄 [arXiv](https://arxiv.org/abs/2609.35699)　📅 2026-09
+
+**关键词**：`analysis`、`distillation defense fragility`、`post-RL degradation`、`defense lifetime`、`safety mechanism persistence`
+
+👤 **作者**：Shidan Javaheri、Alexander Panfilov、Oliver Britton、Yarin Gal、Yonatan Gideoni
+
+- 🎯 **研究动机**：蒸馏防御（把安全能力蒸馏到小模型）被广泛采用——防御经后续 RL 后是否存活未知
+- 🔬 **研究方法**：系统评测蒸馏防御在 RL 微调后的破失
+- 📌 **结论**：蒸馏防御在 RL 后轻易破失——防御生命周期的时间维度（与对齐惯性/Safe Skill Retirement 同谱系：安全属性在后续训练下的存续）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Distillation attacks copy the reasoning capabilities of closed-source large language models, allowing bad actors to replicate state-of-the-art performance at low cost. Attackers systematically collect a large volume of frontier model reasoning traces and then train (i.e., &#34;distill&#34;) their own models on these traces. Existing defenses against distillation attacks are typically evaluated immediately after distillation, implicitly assuming attackers do not train their models any further. In this paper, we argue that a more realistic threat model includes further training with reinforcement learning after distillation. A misspecified threat model can give a false sense of security -- some defenses that seem effective after distillation can be broken after subsequent reinforcement learning. Practically, reinforcement learning lowers the bar for a distillation attack to be effective. We show that simple attacks can steal reasoning capabilities from existing closed-source language models using data easily obtainable from current APIs, yielding reasoning improvements equivalent to more sophisticated attacks that extract the full hidden traces. Results indicate that any distillation defense that leaks sufficient information to reconstruct approximate reasoning traces is likely ineffective. We conclude by discussing broader implications and batch-level distillation defenses which could be more effective.
+
+</details>
+
+## 常规收录

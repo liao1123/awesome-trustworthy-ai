@@ -1495,3 +1495,22 @@ Backdoor learning is a critical research topic for understanding the vulnerabili
 Diffusion models (DMs) have achieved state-of-the-art performance on various generative tasks such as image synthesis, text-to-image, and text-guided image-to-image generation. However, the more powerful the DMs, the more harmful they potentially are. Recent studies have shown that DMs are prone to a wide range of attacks, including adversarial attacks, membership inference, backdoor injection, and various multi-modal threats. Since numerous pre-trained DMs are published widely on the Internet, potential threats from these attacks are especially detrimental to the society, making DM-related security a worth investigating topic. Therefore, in this paper, we conduct a comprehensive survey on the security aspect of DMs, focusing on various attack and defense methods for DMs. First, we present crucial knowledge of DMs with five main types of DMs, including denoising diffusion probabilistic models, denoising diffusion implicit models, noise conditioned score networks, stochastic differential equations, and multi-modal conditional DMs. We further survey a variety of recent studies investigating different types of attacks that exploit the vulnerabilities of DMs. Then, we thoroughly review potential countermeasures to mitigate each of the presented threats. Finally, we discuss open challenges of DM-related security and envision certain research directions for this topic.
 
 </details>
+
+### 84. TokenScanner: Detecting Backdoors and Discovering Triggers in Text-to-Image LoRAs via Full Vocabulary Scanning
+
+📄 [arXiv](https://arxiv.org/abs/2609.31878)　📅 2026-09
+
+**关键词**：`defense`、`LoRA backdoor detection`、`full-vocabulary scan`、`trigger discovery`、`T2I supply chain`
+
+👤 **作者**：Boliang Liu、Jing Zhang
+
+- 🎯 **研究动机**：T2I LoRA 生态的供应链风险——定制 LoRA 可携带后门
+- 🔬 **研究方法**：TokenScanner：全词表扫描检测文本到图像 LoRA 中的后门并发现触发器
+- 📌 **结论**：LoRA 级后门检测与触发发现——T2I 定制生态的供应链审计（扩散供应链线）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+LoRAs are widely studied for adapting base text-to-image diffusion models. However, a backdoored LoRA can hide a backdoor: it behaves normally in most cases, but produces attacker-specified content (the backdoor target) when a hidden backdoor trigger appears in the input prompt. Detecting such backdoors before using an untrusted LoRA is important for the safety of LoRA adaptation. We present TokenScanner, a model-level vocabulary scanner for backdoor detection within a LoRA fine-tuned text-to-image diffusion model, aiming to discover the malicious trigger for trustworthy LoRA adaptation. The key observation is that backdoor trigger tokens that appear in a larger proportion of training prompts tend to induce more prominent token-specific LoRA responses than those induced by unrelated tokens. TokenScanner therefore scans the tokenizer vocabulary and measures token-wise LoRA responses in the U-Net and the text encoder. It uses these responses to detect backdoored LoRAs and rank candidate trigger tokens for subsequent testing of backdoor activation. Experiments on seven backdoor settings, comprising 840 backdoored LoRAs and 840 real-world benign test LoRAs, show that TokenScanner achieves 95.96% AUC and 96.55% TPR at an FPR of 10.95%. It also achieves 89.40% Hit@1 and 99.40% Hit@5 for trigger discovery across all seven settings.
+
+</details>
