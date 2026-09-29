@@ -23,7 +23,8 @@ conferences/
 ├── ase_2026.md
 ├── sigir_2026.md
 ├── asiaccs_2026.md
-└── eacl_2026.md
+├── eacl_2026.md
+└── neurips_2026.md
 ```
 
 文件名使用小写 snake_case：`<conference-id>_<year>.md`。同一会议名称保持稳定，例如 `usenix_security`，不要在目录名、连字符和下划线之间切换。
