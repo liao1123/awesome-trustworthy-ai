@@ -33,7 +33,7 @@
 | 节点 | 日期 | 官方来源 |
 | --- | --- | --- |
 | Notification | 2026-09-24 | 官方 Downloads 列表放出 |
-| Conference | 2026-12（官方页面未给出精确日期，待核） | [NeurIPS 2026](https://neurips.cc/Conferences/2026) |
+| Conference | 2026-12-06 至 2026-12-12（Sydney，Expo Day 12-07） | [Dates](https://neurips.cc/Conferences/2026/Dates) |
 
 ## 筛选说明
 
