@@ -5379,3 +5379,4 @@ We propose a test-time defense mechanism against adversarial attacks: impercepti
 - Pre-Decoding States（dllm-security #8）为 OpenReview-only，无 arXiv 版。
 - 标题变体（同文核验）：卡片保留 NeurIPS 官方列表标题；Token Inflation 的 arXiv 版名为 "The More It Says, the More You Pay…" 等，均经摘要核验同文。个别 📅 月份与 ID 段不一致为月末跨月提交。
 - 注意：OpenReview-only 卡的录用证据链为官方 Downloads 标题 + 第三方收集页 forum 链接，⚠ 待 OpenReview 页面正式标注 venue 后复核。
+- ⚠ **OpenReview forum 当前处于权限锁定状态**（2026-09-30 实测 forum?id=EQ9xqhBm3G 返回 "You don't have permission to read this forum"）：NeurIPS 2026 venue 尚未公开投稿页（录用后 camera-ready 期常见），123 张 OpenReview-only 卡的 📝 链接暂不可读——forum ID 本身有效且稳定，待 venue 公开后自动可访问；在此之前卡片内容以收集页快照的标题/作者/摘要为准。
