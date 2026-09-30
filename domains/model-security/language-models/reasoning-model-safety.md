@@ -652,3 +652,22 @@ Large language models increasingly rely on long chain-of-thought (CoT) trajector
 Large Language Models (LLMs) consume and produce a single sequence of text; hence, if text can be added to the beginning of the LLM's response, i.e., an output prefix, then all subsequent tokens will be conditioned on it. This output-prefix attack technique is a cheap black-box prompt injection. Prior work has shown this type of attack can reliably jailbreak non-reasoning models. Most reasoning models add an intermediate scratchpad reasoning step before the assistant's final response. The ability to edit this reasoning channel is exposed by some APIs and attack vectors can be leveraged for reasoning injection attacks. We present the first systematic, controlled study that isolates the scratchpad reasoning channel as an output-prefix attack vector, and the first to compare reasoning-only, output-prefix-only and reasoning-plus-output-prefix attacks across both exposed- and hidden-reasoning models. Using a factorial design of 3 prefix types $\times$ 2 reasoning injections over $1{,}800$ test cases drawn from AdvBench, we attack three 2026-era frontier models Gemini 3 Flash Preview, DeepSeek V4 Flash, and Claude Haiku 4.5. We find that injecting malicious reasoning alone is essentially inert ($\approx0\%$ attack success), but injecting the same reasoning together with a trivial output prefix raises the attack success rate to as high as $99\%$ for some models. For this type of attack we find that contextual prefixes work better than static prefixes; and that susceptibility is dependent on the model.
 
 </details>
+
+### 35. Jailbreaks for Black-Box Uncertainty Quantification in Large Reasoning Models
+
+📄 [arXiv](https://arxiv.org/abs/2609.35350)　📅 2026-09
+
+**关键词**：`attack`、`uncertainty quantification`、`black-box`、`reasoning model`
+
+👤 **作者**：Lucas Biechy、Cédric Eichler、Adrien Boiret、Nicolas Anciaux
+
+- 🎯 **研究动机**：LRM 的 RL 对齐诱发系统性过自信，生产环境无 logits 时黑盒 UQ 对可信安全至关重要，但现有方法（改写自洽/置信度言语化）失效
+- 🔬 **研究方法**：把越狱用作黑盒 UQ 探针：突破对齐表层获取真实不确定性信号
+- 📌 **结论**：越狱从攻击手段转用作诊断工具，揭示 LRM 过自信结构
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+While Large Reasoning Models (LRMs) excel at complex reasoning, alignment through reinforcement learning often induces systemic overconfidence. In production environments, where logits may be unavailable, robust black-box uncertainty quantification (UQ) is essential for trustworthiness and safety. Focusing on question-answering for LRMs, we show that existing black-box methods, such as paraphrase-based self-consistency and confidence verbalization, offer little to no improvement over simple repeated sampling, suggesting that alignment suppresses useful output variability. We introduce prompt-level relaxation operators that broaden the model's effective output distribution by approximating the effect of an optimal policy obtained with a stronger KL-regularization parameter, hence closer to the reference model. Theoretically, we demonstrate that relaxation improves calibration. We propose Jailbreak for Uncertainty (J4U), a jailbreak-derived technique for UQ that empirically reproduces the behavioral signatures predicted by our relaxation theory. Across 3 datasets and 4 LRMs, including a closed-source production model, J4U's improvement over repeated sampling achieves statistical significance in up to 6 times more LRM-dataset-metric settings than the strongest black-box UQ state-of-the-art baseline we evaluate, with average ECE reductions up to 5 times larger. These results provide a practical tool for UQ in black-box LRM deployment.
+
+</details>

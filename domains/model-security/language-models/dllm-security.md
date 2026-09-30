@@ -562,3 +562,22 @@ Diffusion large language models (dLLMs) offer a compelling alternative to autore
 Masked-diffusion language models fill in masked positions in parallel and in no fixed order. Most practical text watermarks assume left-to-right generation. They key each token to the tokens before it, and in a diffusion model those tokens may still be masked. A fixed green list needs no such context, but it favors the same tokens at every position, so these tokens appear more often in watermarked text. An attacker who compares token frequencies in watermarked and unwatermarked text can recover the list and forge text that the provider's own detector accepts. We present TANGO, a watermark for masked-diffusion language models that keys each new token to a nearby token that is already unmasked. A secret key splits the vocabulary into color classes, and TANGO biases the new token toward a color determined by the key and the nearby token's color. The watermark is therefore embedded in pairs of tokens. Because the favored color changes from position to position, token frequencies stay much closer to those of unwatermarked text than under a fixed green list. Detection needs only the text and the key, and it does not assume any unmasking order. On two masked-diffusion models, TANGO detects nearly all unedited watermarked texts and most edited ones, and frequency attacks that forge the fixed green list fail against it.
 
 </details>
+
+### 31. Safety Reconstructed: Generative Modeling via Masked Diffusion Builds Strong Safety Guardrails
+
+📄 [arXiv](https://arxiv.org/abs/2609.33634)　📅 2026-09
+
+**关键词**：`defense`、`guard model`、`masked diffusion`、`generative classifier`
+
+👤 **作者**：Gert Lek、Abele Malan、Chaoyi Zhu、Pin-Yu Chen、Robert Birke、Lydia Chen
+
+- 🎯 **研究动机**：guard 模型仅从上下文预测单一判词 token，监督集中导致捷径特征、过度自信、位置敏感
+- 🔬 **研究方法**：LLaDA-Guard 反转判别为重建：两个标签假设下对 prompt/response 打分取差，类条件重构目标+LoRA 微调 LLaDA-8B-Instruct
+- 📌 **结论**：7 个留出安全基准平均领先更强骨干判别基线，ECE 0.0875 vs Qwen3Guard 0.1384，token 级风险定位零额外训练（DLM×guard 双核心；NeurIPS 2026 已收录，本日 arXiv 版挂出）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Guard models are the last line of defense between a language model and a harmful output, yet their training objective is surprisingly narrow. Existing guards learn to predict a single verdict token from a conversational context, concentrating supervision on a single target. The consequences are structural: models latch onto shortcut features, are overconfident, and remain sensitive to where safety evidence appears in the sequence rather than its role in the full context. We propose a different framing. Rather than predicting a label from text, our LLaDA-Guard asks which label better explains the text: scoring the prompt or response under each label hypothesis and classifying based on their difference. This shifts supervision to every token in the moderated region, forcing the model to account for full content rather than its most discriminative fragments. We instantiate this idea with a masked diffusion language model, fine-tuning LLaDA-8B-Instruct with a class-conditional reconstruction objective using LoRA and requiring no architectural changes beyond the base model. LLaDA-Guard leads on average rank against discriminative baselines trained on stronger backbones across seven held-out safety benchmarks, while exhibiting substantially better confidence calibration (ECE 0.0875 vs. 0.1384 for Qwen3Guard), less over-defense on benign prompts with unsafe-looking cues, and less prompt leakage when moderating responses. Its generative nature further enables token-level risk localization as a natural byproduct, yielding a pipeline for rewriting unsafe prompts into safe equivalents without additional training and achieving a 60.7% average conversion-to-safe rate.
+
+</details>

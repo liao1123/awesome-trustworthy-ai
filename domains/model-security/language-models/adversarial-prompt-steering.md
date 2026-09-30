@@ -301,3 +301,22 @@ Neural ranking models (NRMs) achieve strong retrieval effectiveness, yet prior w
 In this paper, we study format biases in reinforcement learning from human feedback (RLHF). We observe that many widely-used preference models, including human evaluators, GPT-4, and top-ranking models on the RewardBench benchmark, exhibit strong biases towards specific format patterns, such as lists, links, bold text, and emojis. Furthermore, large language models (LLMs) can exploit these biases to achieve higher rankings on popular benchmarks like AlpacaEval and LMSYS Chatbot Arena. One notable example of this is verbosity bias, where current preference models favor longer responses that appear more comprehensive, even when their quality is equal to or lower than shorter, competing responses. However, format biases beyond verbosity remain largely underexplored in the literature. In this work, we extend the study of biases in preference learning beyond the commonly recognized length bias, offering a comprehensive analysis of a wider range of format biases. Additionally, we show that with a small amount of biased data (less than 1%), we can inject significant bias into the reward model. Moreover, these format biases can also be easily exploited by downstream alignment algorithms, such as best-of-n sampling and online iterative DPO, as it is usually easier to manipulate the format than to improve the quality of responses. Our findings emphasize the need to disentangle format and content both for designing alignment algorithms and evaluating models.
 
 </details>
+
+### 16. Activation Flow: Manufacturing Activations for Steering
+
+📄 [arXiv](https://arxiv.org/abs/2609.32530)　📅 2026-09
+
+**关键词**：`defense`、`activation steering`、`sandbagging`、`difference-in-means`
+
+👤 **作者**：Hong Kiat Tan、Linh Le、David Williams-King
+
+- 🎯 **研究动机**：差分均值 steering 需要模型展现目标行为时录制的激活，而 sandbagging 模型故意低表现不予提供
+- 🔬 **研究方法**：ActFlow 仅从 k 个正确标签制造激活：设定正确答案排首的目标 logits，用单个向量加到 k 个残差流逐层逼近，构成 ODE 族的激活制造方法
+- 📌 **结论**：无需微调即可获得 steering 向量，绕开 sandbagging 对激活采集的阻断
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Difference-in-means steering requires activations recorded while a model shows the desired behavior, which a sandbagging model withholds by deliberately underperforming. We introduce Activation Flow (ActFlow), which manufactures these activations from $k$ correct labels without fine-tuning. ActFlow sets target logits that rank each labeled item's correct answer first, and moves the logits toward them by adding one vector $x$ to all $k$ residual streams at one layer. ActFlow is a family of ordinary differential equations for $x$, one for each rule that maps the required logit change to the velocity of $x$. The smallest-norm rule lands exactly on the targets, while the others keep only the top singular directions of the Jacobian. We test ActFlow on three instruction-tuned models, each locked by a sandbagging prompt and by a password-locked LoRA. At $k=40$, ActFlow keeping five singular directions raises the mean held-out ARC-Easy accuracy over the six locked models from $0.05$ to $0.85$, against $0.88$ for fine-tuning and $0.92$ for the honest models. Furthermore, it scores higher than the smallest-norm rule in 16 of the 18 combinations of locked model and $k$, and its steering direction is nearly orthogonal to the honest difference-in-means direction. It also unlocks two LoRA locks where the honest direction fails.
+
+</details>

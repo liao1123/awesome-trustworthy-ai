@@ -1658,3 +1658,22 @@ Distillation attacks copy the reasoning capabilities of closed-source large lang
 </details>
 
 ## 常规收录
+
+### 89. A Dominant Supplier Slows Recursive Drift More Than It Steers It
+
+📄 [arXiv](https://arxiv.org/abs/2609.11146)　📅 2026-09
+
+**关键词**：`analysis`、`model collapse`、`recursive drift`、`dominant supplier`
+
+👤 **作者**：Yangze Liu、Zhongyi Han
+
+- 🎯 **研究动机**：未来语料越来越多由少数模型写成，单一供应商占主导时是拉动训练模型向其文风漂移还是改变漂移速度未知
+- 🔬 **研究方法**：八个开源模型五代表重训共享语料池，Phi-2 份额从均等变到 90%
+- 📌 **结论**：主导供应商减缓递归漂移甚于牵引方向——模型崩溃动力学的份额效应
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+More and more of the text future language models learn from is written by a few of today's models. If one supplier writes most of a shared corpus, does it pull the models trained on it toward its own writing, or change how fast they drift? We retrain eight open models from their base weights on a shared pool of each other's text for five generations, varying the part written by one model, Phi-2, from an equal share to 90%. The models drift together toward a style with fewer function words, and none starts repeating itself. No share of Phi-2 brings the other models closer to its text than the equal share does. We split each ecosystem's separation from the equal-share one into a delay along its route and a departure from that route, both counted beyond the difference between two equal-share runs. With Phi-2 at 90%, delay outweighs departure 72 to 28 and 64 to 36 in two runs, and the ecosystem falls 2.7 and 2.5 generations behind. With Phi-2 at half the pool the two parts are about equal. When SmolLM2 or Qwen3-1.7B writes half instead, the ecosystem slows less or not at all. The departure leans toward Phi-2 more as its share grows, but more than toward every other model only at 90%. Human text filling a quarter or half of the pool slows the models along the same route.
+
+</details>

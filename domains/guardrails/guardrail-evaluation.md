@@ -1426,3 +1426,22 @@ Detectors of alignment failures screen deployed language models and score alignm
 Models trained with reinforcement learning for calibrated decisions (RLCD), such as Jev, answer a typed question about an input, the state, with a probability, a choice, or a score, and software acts on the answer without a person reading it. Their robustness has not been measured: adversarial benchmarks score what a model generates or executes, whereas a typed model generates nothing and returns a well-formed answer even when manipulated. Measurement is also hard, because identical requests can return different answers, most available labels come from the model itself, and the API preprocesses each request out of view. Our key idea is to score each attacked decision against the model's own clean decision rather than against labels, and to read it against the change caused by an identical re-run. Building on this, we introduce JevAdvBench, to our knowledge the first adversarial benchmark for RLCD models, with 812 typed questions over 66 scenarios, and a black-box attack suite of 9,744 single-edit variants that each edit one part of a request, with billed input tokens confirming that the edit reached the model. On jev-1.13.0, rewording stays within 1.2 percentage points of the re-run baseline, and fields outside the schema never reach the model. In contrast, one unverified opinion appended to the state flips 12.1% of decisions, statistically tied with the strongest injected command (10.1%), and pushes 38% of confident answers below the 0.8 confidence threshold that routes them to human review. Applications built on RLCD models should therefore treat the state as untrusted, argued input. Project website: https://JevAdvBench.github.io/JevAdvBench/
 
 </details>
+
+### 76. Typed Decision Models: An Early Evidence Audit and Evaluation Checklist
+
+📄 [arXiv](https://arxiv.org/abs/2609.32160)　📅 2026-09
+
+**关键词**：`survey`、`typed decision model`、`jev`、`evaluation checklist`
+
+👤 **作者**：Lijuan Tang、Yuemeng Zheng
+
+- 🎯 **研究动机**：TypeSafe 2026-09-15 发布商用 typed decision model Jev 后数天内出现 28 篇评测/复现论文，缺早期证据的系统梳理
+- 🔬 **研究方法**：审计 09-19 至 09-24 的 28 篇论文，关联标签概率分类/约束解码/重排/校准等更早文献，给出评测清单
+- 📌 **结论**：为 Jev 类 typed decision model 的评测建立证据地图（Jev/System-1 生态又一篇，七连后持续）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Typed decision models (TDMs) return probability distributions over caller-defined options without generating text. TypeSafe released Jev, a commercial typed decision model, on 15 September 2026, and a small body of evaluation and replication work appeared within days. We review 28 papers posted between 19 and 24 September and relate their findings to earlier work on label-probability classification, constrained decoding, reranking, calibration, and model cascades. In this early literature, the typed readout itself has not shown an independent accuracy advantage over comparable label-probability readouts. Jev's clearest gains are in latency and cost, while accuracy gaps remain on harder tasks. In practical deployments, confidence is often used to decide when to defer to a stronger model or a human. We use recurring weaknesses in these studies to derive a 14-item evaluation checklist for future TDM work. Because the evidence covers only the first nine days after the release of one hosted model, the review should be read as an early evidence map rather than a settled assessment of the model class.
+
+</details>

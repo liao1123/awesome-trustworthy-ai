@@ -811,3 +811,22 @@ Broad misalignment has been produced by finetuning on narrow data, harmful or be
 Fine-tuning an aligned language model on narrow, flawed data can induce harmful behavior far outside the training domain, known as emergent misalignment (EM). Prior work has localized EM in model weights, activations, and training documents, but it remains unclear which training tokens carry the relevant fine-tuning signal. We introduce TAME (Token Attribution and Masking for Emergent Misalignment), a three-stage framework: token attribution scores how strongly the fine-tuning update raises each response token's likelihood, using forward passes through a released LoRA adapter; signal characterization finds patterns among high-attribution tokens; and causal validation tests them by attribution-guided loss masking. On released EM organisms and a 6,849-example medical-advice split, attribution is concentrated (the top 5% of tokens hold 32% of the mass) and, in Llama, depleted for medical vocabulary but enriched for a register of unwarranted certainty, even after controlling for token rarity. Masking high-attribution tokens during fresh fine-tuning cuts EM by 23x in Llama and 36x in Qwen, with the perplexity cost concentrated on the targeted register rather than on medical content; an equal random mask leaves EM unchanged. In Llama, the attribution pattern suggests that EM-relevant signal lies more in how confidently flawed content is expressed than in its domain vocabulary; the causal masking effect itself holds across both model families.
 
 </details>
+
+### 43. See it, Say it, Sorted: Mechanistic Diagnosis and Parameter-Space Mitigation of Emergent Misalignment in LLMs
+
+📄 [arXiv](https://arxiv.org/abs/2609.34970) · 🐙 [Code](https://github.com/WeiqiaoQUE/mechanistic-emergent-misalignment.)　📅 2026-09
+
+**关键词**：`defense`、`emergent misalignment`、`hessian curvature`、`parameter-space mitigation`
+
+👤 **作者**：Weiqiao Que、Ruizhe Li、Chengyu Wang、Dakan Wang、Emine Yilmaz、Xiaofeng He
+
+- 🎯 **研究动机**：窄域适配意外触发跨域灾难性安全失败（EM），静态分析未覆盖训练动力学，启发式防御损害效用
+- 🔬 **研究方法**：动态二阶几何研究：跟踪训练轨迹发现方向 Hessian 曲率在 EM 触点急剧集中，据此做参数空间缓解
+- 📌 **结论**：曲率集中点可预测并可手术式缓解 EM（与 NeurIPS 的 Geometry of Alignment Collapse 呼应）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Safety-aligned LLMs can exhibit emergent misalignment (EM): narrow domain adaptation unexpectedly triggers catastrophic safety failures across unrelated domains. Prior static analyses leave training dynamics unmapped, while existing defenses rely on heuristics that degrade utility. We present a dynamic, second-order geometric study of EM. Tracking training trajectories reveals that directional Hessian curvature concentrates sharply on semantic pivot tokens. Grassmannian projections show that, in most settings, harmful-safe gap widens mainly because safe-gradient overlap declines. Leveraging these insights, we introduce a parameter-level Geometric Mitigation Framework that orthogonally projects empirical harmful gradient subspace out of parameter updates. On Qwen2.5-14B-IT, our defense suppresses free-generation EM by up to 80.0%; across the other three of four open-weight instruction-based model families (3B--20B), where single-layer behavioral EM is already near zero, teacher-forced evaluation shows same harmful subspace controls the conditional support of frozen EM responses. Crucially, these diagnostics unmask the illusion of behavioral safety: the same subspace remains measurable and steerable in models where behavioral EM is near zero. Code: https://github.com/WeiqiaoQUE/mechanistic-emergent-misalignment.
+
+</details>
