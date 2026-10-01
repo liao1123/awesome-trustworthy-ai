@@ -830,3 +830,62 @@ Fine-tuning an aligned language model on narrow, flawed data can induce harmful 
 Safety-aligned LLMs can exhibit emergent misalignment (EM): narrow domain adaptation unexpectedly triggers catastrophic safety failures across unrelated domains. Prior static analyses leave training dynamics unmapped, while existing defenses rely on heuristics that degrade utility. We present a dynamic, second-order geometric study of EM. Tracking training trajectories reveals that directional Hessian curvature concentrates sharply on semantic pivot tokens. Grassmannian projections show that, in most settings, harmful-safe gap widens mainly because safe-gradient overlap declines. Leveraging these insights, we introduce a parameter-level Geometric Mitigation Framework that orthogonally projects empirical harmful gradient subspace out of parameter updates. On Qwen2.5-14B-IT, our defense suppresses free-generation EM by up to 80.0%; across the other three of four open-weight instruction-based model families (3B--20B), where single-layer behavioral EM is already near zero, teacher-forced evaluation shows same harmful subspace controls the conditional support of frozen EM responses. Crucially, these diagnostics unmask the illusion of behavioral safety: the same subspace remains measurable and steerable in models where behavioral EM is near zero. Code: https://github.com/WeiqiaoQUE/mechanistic-emergent-misalignment.
 
 </details>
+
+### 44. Alignment Forecasting: Predicting Misalignment From Training Data
+
+📄 [arXiv](https://arxiv.org/abs/2609.35805)　📅 2026-09
+
+**关键词**：`detection`、`alignment forecasting`、`training data`、`pre-training audit`
+
+👤 **作者**：Chen Yueh-Han、Bruce W. Lee、Ilia Sucholutsky、Tomek Korbak
+
+- 🎯 **研究动机**：带窄缺陷的数据可使模型广泛失准，但表面检查无法预判，目前只能训练后审计补救
+- 🔬 **研究方法**：提出 Alignment Forecasting 任务：给定目标模型/微调数据集/失败模式，训练前预测对齐失败，配套 proxy 数据与验证协议
+- 📌 **结论**：对齐失败可在训练前被预测，把审计从事后移到事前
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Training a language model on data with a narrow flaw can sometimes make the model broadly misaligned. Inspecting the data at face value often does not settle whether it will emerge, and today it is caught only after training, by auditing the resulting model. To complement post-hoc audits, we introduce Alignment Forecasting: the task of predicting alignment failures before training. Given a target model, a fine-tuning dataset, and a failure mode such as deception or sycophancy, a forecaster outputs the probability that fine-tuning would meaningfully increase that failure mode. To measure progress on alignment forecasting, we introduce ALIGNMENTFORECASTBENCH, a benchmark of over 5,000 forecasting questions spanning 17 target models, 32 datasets, and 16 failure modes. Frontier models prompted directly perform poorly on ALIGNMENTFORECASTBENCH. We therefore propose a forecasting scaffold in which an LLM reads the dataset and rates how strongly and broadly it pushes the model toward misbehavior, and a simple learned model combines that rating with the failure mode's base rate and the target model's prior tendency. This forecasts well above chance, and beats a model fine-tuned on the task and a simple forecaster allowed to see how weaker models behaved after fine-tuning on the same data. Its signals also flag problematic training examples that a frontier-model classifier misses. Filtering those examples out from real post-training data such as UltraChat results in more aligned models on our multiple-choice evaluation in most cases, though the benefit in open-ended conversations is unclear. More progress is needed before forecasts can reliably guide training data curation in practice, but our results suggest that forecasting many alignment failures before training can be tractable in the SFT setting.
+
+</details>
+
+### 45. Correct, Don't Delete: Mitigating Emergent Misalignment with Corrective Supervision
+
+📄 [arXiv](https://arxiv.org/abs/2609.37624)　📅 2026-09
+
+**关键词**：`defense`、`emergent misalignment`、`corrective supervision`、`row deletion`
+
+👤 **作者**：Jacob Epifano
+
+- 🎯 **研究动机**：窄有害示范微调引发广泛 EM，常规防御定位删除坏行——但行定位器 held-out 失败且删除效果不及预期
+- 🔬 **研究方法**：换问题：固定数据预算下注入纠正性监督而非删除
+- 📌 **结论**：纠正优于删除（EM 防御范式转换，本周第三篇 EM）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Fine-tuning a language model on a narrow set of harmful demonstrations, such as bad medical advice, can make it broadly misaligned on unrelated questions, a phenomenon known as emergent misalignment (EM). The usual defense is to find the offending rows and delete them, but a row locator failed our held-out test and deleting rows helps less than expected. We ask a different question: given a fixed set of poisoned rows, is it better to correct them than to remove them? We fine-tune Qwen2.5-14B-Instruct on a mixture of bad medical advice and benign chat data, select a quarter of the poison rows in advance, and either delete them or replace each with a corrected answer to the same prompt, keeping everything else the same. Replacing the rows cuts the EM rate by about a third and improves answers on held-out medical questions, while deleting the same rows has little measurable effect. The advantage is larger when half the poison rows are corrected, and it holds on a second base model and a second misaligned model organism. The content of the replacement appears to matter: paraphrasing the rows while keeping their bad advice shows no clear benefit, and the correct answers distributed with the dataset appear to do about as well as our rewriter's. Realigning an already-poisoned model with further fine-tuning is known to work, but which data does the work has not been compared directly. We find that a short round of training on corrections beats the same amount of training on generic chat data, that corrections on other medical prompts do roughly as well as corrections of the poisoned prompts themselves, and that instructing the correction writer to model a careful, harm-avoiding assistant adds no measurable benefit over plain corrections. In the settings we tested, correcting harmful training data reduces EM more than deleting it.
+
+</details>
+
+### 46. The Unequal Influence of Bad Advice: Using Training Data Attribution to Modulate Emergent Misalignment
+
+📄 [arXiv](https://arxiv.org/abs/2609.37914)　📅 2026-09
+
+**关键词**：`analysis`、`training data attribution`、`emergent misalignment`、`persona amplification`
+
+👤 **作者**：Gonçalo Paulo、Louis Jaburi、Nora Belrose、Lucia Quirke、Stella Biderman
+
+- 🎯 **研究动机**：EM 与 persona 表示相关（微调放大邪恶 persona 降 loss），但训练数据的哪些性质驱动不明
+- 🔬 **研究方法**：用 TDA 测坏建议的不等影响并调制 EM
+- 📌 **结论**：数据归因可定位并调制 EM 驱动样本（EM 机制三连收口）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Fine-tuning large language models on narrow, misaligned tasks can undo their post-training alignment and induce novel misaligned behaviors -- a phenomenon known as \emph{emergent misalignment} (EM). EM has been linked to persona-like representations, where fine-tuning might reduce loss by amplifying a harmful or 'evil' persona. It remains unclear which properties of the training data drive this effect: whether all harmful examples contribute approximately equally to misalignment and whether different models are equally affected by the same fine-tuning examples. In this work, we use training data attribution to quantitatively estimate how much each harmful example contributes to EM. We benchmark the quality of the attribution via retraining -- a sound attribution score should enable us to enhance or attenuate EM by filtering data on that score. Score-based filtering can substantially enhance or attenuate EM; we find that both data-attribution scores and a black-box harmfulness score can identify consequential examples. All models we test become misaligned when trained on the same dataset, and influence scores perform best when filtering data from the same model that computed them. We find cross-model generalization of influence scores from scores derived from the three model families we tested, but this generalization does not recover same model filtering performance.
+
+</details>
+
+## 常规收录

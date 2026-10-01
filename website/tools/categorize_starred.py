@@ -73,7 +73,8 @@ PLAN = {
 
 
 def extract(day: str) -> dict:
-    text = (ROOT / "daily/2026-09" / f"{day}.md").read_text(encoding="utf-8")
+    month = "-".join(day.split("-")[:2])
+    text = (ROOT / f"daily/{month}" / f"{day}.md").read_text(encoding="utf-8")
     cards = {}
     for block in re.split(r"(?=^### \d+\. )", text, flags=re.M):
         m = ARX.search(block)

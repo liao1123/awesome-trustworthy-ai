@@ -1677,3 +1677,22 @@ Distillation attacks copy the reasoning capabilities of closed-source large lang
 More and more of the text future language models learn from is written by a few of today's models. If one supplier writes most of a shared corpus, does it pull the models trained on it toward its own writing, or change how fast they drift? We retrain eight open models from their base weights on a shared pool of each other's text for five generations, varying the part written by one model, Phi-2, from an equal share to 90%. The models drift together toward a style with fewer function words, and none starts repeating itself. No share of Phi-2 brings the other models closer to its text than the equal share does. We split each ecosystem's separation from the equal-share one into a delay along its route and a departure from that route, both counted beyond the difference between two equal-share runs. With Phi-2 at 90%, delay outweighs departure 72 to 28 and 64 to 36 in two runs, and the ecosystem falls 2.7 and 2.5 generations behind. With Phi-2 at half the pool the two parts are about equal. When SmolLM2 or Qwen3-1.7B writes half instead, the ecosystem slows less or not at all. The departure leans toward Phi-2 more as its share grows, but more than toward every other model only at 90%. Human text filling a quarter or half of the pool slows the models along the same route.
 
 </details>
+
+### 90. Safer Content or Firmer Refusals? A Hybrid Perturbation Defense for Alignment under Harmful Fine-tuning
+
+📄 [arXiv](https://arxiv.org/abs/2609.36862)　📅 2026-09
+
+**关键词**：`defense`、`harmful fine-tuning`、`hybrid perturbation`、`vaccine booster`
+
+👤 **作者**：Muhammad Zeeshan Akram、Mufid Kamel Marican、Anvesh Reddy Yenugu、Ali Zain Kaimkhani、Minghong Fang
+
+- 🎯 **研究动机**：微调即服务下少量有害数据混入良性集即可破坏对齐，Vaccine（嵌入鲁棒）与 Booster（拒绝加固）两级防御各治一层
+- 🔬 **研究方法**：混合扰动防御联合两级对齐
+- 📌 **结论**：有害微调防御的层级组合（与昨日 GradShield/Geometry 同周密集）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Fine-tuning-as-a-service lets users adapt a safety-aligned language model to their own data, but it also creates a harmful fine-tuning attack surface: a small amount of harmful data mixed into an otherwise benign fine-tuning set can degrade the model's alignment. Two recent alignment-stage defenses address this problem at different levels of the model. Vaccine improves the robustness of hidden embeddings to the representation shifts induced by harmful fine-tuning, whereas Booster simulates harmful weight updates and attenuates their effect during alignment. We investigate whether these mechanisms are complementary and propose VaccineBooster, a single alignment procedure that combines embedding perturbation and weight-level gradient attenuation within each training step. On Llama-2-7B aligned with BeaverTails and then attacked through poisoned fine-tuning, VaccineBooster achieves the lowest OpenAI moderation score among the compared defenses, 0.315, while a Booster-Only variant retains the highest post-attack refusal rate, 50%. Together with ablations over the embedding-perturbation and gradient-attenuation strengths, these results indicate a trade-off: embedding perturbation primarily reduces flagged harmful content, whereas gradient attenuation primarily preserves explicit refusal behavior. Because our evaluation uses ten prompts and a single unseeded run per configuration, we report this trade-off as an observed pattern rather than a statistically resolved effect. These results provide practical guidance for prioritizing content safety or refusal retention when aligned models are exposed to untrusted fine-tuning.
+
+</details>
