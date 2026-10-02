@@ -5128,6 +5128,8 @@ Vision-Language-Action (VLA) models have achieved remarkable success in robotic 
 
 ### 288. Controllable Multi-label Video Safety Detection via Adaptive Tversky Policy Optimization
 
+📄 [arXiv](https://arxiv.org/abs/2610.02019) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-10　🏷 NeurIPS 2026（原 OpenReview-only，arXiv 版 2026-10-02 挂出）
+
 📝 [OpenReview](https://openreview.net/forum?id=66AVx7heNO) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
 **关键词**：`detection`、`video safety`、`multi-label classification`、`reinforcement learning`、`precision-recall tradeoff`

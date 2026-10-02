@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "website" / "tools" / "out"
 DATE = sys.argv[1] if len(sys.argv) > 1 else "2026-09-09"
 TAG = DATE[5:].replace("-", "")  # e.g. 0909
-WEEKDAY = {"2026-09-09": "星期三", "2026-09-10": "星期四", "2026-09-11": "星期五", "2026-09-14": "星期一", "2026-09-15": "星期二", "2026-09-16": "星期三", "2026-09-17": "星期四", "2026-09-18": "星期五", "2026-09-21": "星期一", "2026-09-22": "星期二", "2026-09-23": "星期三", "2026-09-24": "星期四", "2026-09-25": "星期五", "2026-09-28": "星期一", "2026-09-29": "星期二", "2026-09-30": "星期三", "2026-10-01": "星期四"}.get(DATE, "")
+WEEKDAY = {"2026-09-09": "星期三", "2026-09-10": "星期四", "2026-09-11": "星期五", "2026-09-14": "星期一", "2026-09-15": "星期二", "2026-09-16": "星期三", "2026-09-17": "星期四", "2026-09-18": "星期五", "2026-09-21": "星期一", "2026-09-22": "星期二", "2026-09-23": "星期三", "2026-09-24": "星期四", "2026-09-25": "星期五", "2026-09-28": "星期一", "2026-09-29": "星期二", "2026-09-30": "星期三", "2026-10-01": "星期四", "2026-10-02": "星期五"}.get(DATE, "")
 
 LINK_RE = re.compile(r"(https://(?:github\.com/[\w.\-/]+|huggingface\.co/[\w.\-/]+|gitlab\.com/[\w.\-/]+|github\.io/[\w.\-/]+))", re.I)
 
@@ -67,6 +67,7 @@ STATS = {
     "0929": {"dedup": 1055, "fresh": 677, "new2609": 676, "screened": 133},
     "0930": {"dedup": 1805, "fresh": 1373, "new2609": 910, "screened": 87},
     "1001": {"dedup": 2400, "fresh": 2166, "new2609": 880, "screened": 96},
+    "1002": {"dedup": 612, "fresh": 612, "new2609": 612, "screened": 84},
 }
 
 
@@ -145,7 +146,7 @@ def main() -> None:
 ## 检索信息
 
 - 检索日期：{DATE}
-- arXiv 范围：检查 {DATE}（{WEEKDAY}）官方 `new` 页面中的 `cs.AI`、`cs.CL`、`cs.CR`、`cs.CV`、`cs.HC`、`cs.IR`、`cs.LG`、`cs.MA`、`cs.RO` 主分类及其 cross-list；九个分类共 {s['dedup']:,} 条跨分类去重条目，去除本月已收录后 {s['fresh']:,} 篇，其中 2609.* 新论文 {s['new2609']:,} 篇；按 `RESEARCH_INTERESTS.md` 的安全边界标题宽筛 {s['screened']} 篇、逐篇阅读摘要后收录 {len(included)} 篇。
+- arXiv 范围：检查 {DATE}（{WEEKDAY}）官方 `new` 页面中的 `cs.AI`、`cs.CL`、`cs.CR`、`cs.CV`、`cs.HC`、`cs.IR`、`cs.LG`、`cs.MA`、`cs.RO` 主分类及其 cross-list；九个分类共 {s['dedup']:,} 条跨分类去重条目，去除本月已收录后 {s['fresh']:,} 篇，其中新月段新论文 {s['new2609']:,} 篇；按 `RESEARCH_INTERESTS.md` 的安全边界标题宽筛 {s['screened']} 篇、逐篇阅读摘要后收录 {len(included)} 篇。
 - 候选论文：{s['new2609']:,} 个 2609.* 新条目（标题宽筛 {s['screened']}）
 - 最终收录：{len(included)} 篇
 - 今日概括：{summary}
@@ -167,7 +168,7 @@ def main() -> None:
             numbered.append(re.sub(r"^### \d+\.", f"### {counter}.", card))
         segments.append(f"## {band_title}\n\n" + "\n\n".join(numbered) + "\n\n")
     text += "".join(segments)
-    (ROOT / "daily" / "2026-09" / f"{DATE}.md").write_text(text, encoding="utf-8")
+    (ROOT / "daily" / DATE[:7] / f"{DATE}.md").write_text(text, encoding="utf-8")
     from collections import Counter
     pr = Counter(v.get("priority") for _, v, _ in included)
     print(json.dumps({"included": len(included), "screened": total_screened,
