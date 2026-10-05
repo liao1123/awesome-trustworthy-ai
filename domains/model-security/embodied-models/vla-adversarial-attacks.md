@@ -385,3 +385,22 @@ Vision-Language-Action (VLA) models enable end-to-end robot control and have gar
 Adversarial patches to Vision-Language-Action (VLA) policies can cause both immediate action corruption and persistent state effects that remain after the patch is removed. Existing evaluations largely focus on continuous attacks and do not separate these two effects. We introduce a state-restoration protocol that removes the patch at matched action-chunk boundaries and measures subsequent recoverability under the same remaining step budget. Clean, random-patch, deviation-matched, and fixed-direction controls distinguish adversarial effects from occlusion, action-error magnitude, and directional persistence. We also evaluate a recovery adapter trained on attack-induced states under controlled intervention latency. On OpenVLA-OFT with EDPA attacks, only 36.2% of LIBERO-Long episodes remain recoverable after five chunks, compared with 89.9% and 87.0% for the deviation-matched and fixed-direction controls. Similar persistent effects are observed on autoregressive OpenVLA. The recovery adapter improves recovery from 7.7% to 47.4% at one-chunk latency, but its benefit decreases substantially with delayed intervention. These results show that adversarial effects can persist after patch removal and that timely intervention is critical for recovery.
 
 </details>
+
+### 21. Detect and Suppress: A Mechanistic Defense against Adversarial Patches in VLA Models
+
+📄 [arXiv](https://arxiv.org/abs/2610.03498)　📅 2026-09
+
+**关键词**：`defense`、`adversarial patch`、`vla`、`sae feature`
+
+👤 **作者**：Yukiya Horiba、Koshiro Aoki、Shunsuke Yasuki、Bum Jun Kim、Taiki Miyanishi
+
+- 🎯 **研究动机**：对抗补丁操纵视觉观察致 VLA 控制失败，其内部机制与定向干预不明
+- 🔬 **研究方法**：SAE 机制分析定位强激活特征后做检测-抑制
+- 📌 **结论**：机制级的 VLA 对抗防御（具身×mech interp）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Adversarial patches can disrupt Vision-Language-Action (VLA) models by manipulating visual observations, leading to failures in robot control. However, it remains poorly understood which internal mechanisms underlie these failures and how targeted interventions can mitigate them. In this work, we mechanistically analyze VLA representations using a sparse autoencoder (SAE) and identify a feature whose activation strongly correlates with the presence of an adversarial patch. Based on this analysis, we suppress the identified feature at inference time only when a linear probe detects an attack. This intervention improves robustness without the cost of fine-tuning the VLA. We evaluate our method against VLA adversarial patch attacks on LIBERO-10. Conditional intervention improves success rate under intermittent attacks, whereas continuously applying the same intervention substantially degrades policy performance. These results show that attack-related internal representations can provide useful targets for VLA adversarial defense and that controlling when to intervene is important for limiting disruption to nominal policy behavior.
+
+</details>

@@ -2334,3 +2334,22 @@ When aligning frontier models through post-training techniques, it is not possib
 Safety alignment in large language models is trained primarily in English, and recent work reports that the underlying harmfulness representation survives translation: English-trained probes separate harmful from harmless prompts almost as well in low-resource languages as in English. This has been taken as evidence that cross-lingual refusal failures mainly reflect calibration rather than representation quality. We show that this conclusion depends on the choice of negative examples. Across nine languages spanning three resource tiers, we replicate near-perfect transfer (AUROC > 0.98) when harmless prompts come from an unrelated distribution (easy negatives). With XSTest contrast prompts, which are benign but surface-similar to harmful requests (hard negatives), transfer collapses in low-resource languages while remaining largely stable in high-resource languages. On Qwen2.5-7B-Instruct, mean AUROC drop increases from 0.003 in English to 0.017 in high-resource, 0.042 in mid-resource, and 0.276 in low-resource languages. The pattern replicates on Aya Expanse. Back-translation chrF controls and a matched-chrF comparison across three languages reduce the likelihood that translation quality explains the effect. The collapse remains after controlling for chrF (partial r = 0.70, p = 0.03). Tokenizer fertility correlates with the collapse and explains part of the resource-tier effect, but not all of it. The results show that easy-negative transfer can coexist with substantial degradation under hard negatives. Easy-negative evaluation alone therefore cannot establish that the harmfulness representation survives translation.
 
 </details>
+
+### 125. DNAlign: Dynamic Null-Space Safe Alignment for LLMs
+
+📄 [arXiv](https://arxiv.org/abs/2610.02844)　📅 2026-09
+
+**关键词**：`defense`、`null-space alignment`、`safety-utility tradeoff`、`llm`
+
+👤 **作者**：Jisheng Dang、…、Tat-Seng Chua
+
+- 🎯 **研究动机**：安全对齐高算力成本或破坏核心知识导致良性任务退化
+- 🔬 **研究方法**：DNAlign 动态零空间的轻量对齐框架
+- 📌 **结论**：安全-效用权衡的轻量化解
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Ensuring the safe and reliable deployment of large language models (LLMs) remains a fundamental challenge. Existing safety alignment approaches either incur high computational cost or unintentionally disrupt the model's core knowledge, leading to degraded fluency and factual accuracy on benign tasks. This reveals a persistent trade-off between safety and utility. We propose DNAlign, a lightweight alignment framework that integrates control-theoretic optimization with null-space projection. By treating the LLM as a dynamic system, the proposed framework introduces controllable perturbations to steer generation toward safe behavior. A key component is the projection module, which restricts these perturbations to the harmful-related subspace derived from neutral hidden states, thereby preserving general knowledge and response quality. A value function trained on human preference data adaptively optimizes the control signals to align with human safety preferences. Extensive evaluations across multiple LLM backbones demonstrate that our framework consistently reduces harmful outputs while maintaining fluency, coherence, and factual utility. It achieves superior overall performance compared to prior alignment baselines without sacrificing generation diversity. These results indicate that the proposed framework provides an effective and practically deployable solution for safe LLM alignment. Code is available at https://anonymous.4open.science/r/DNAlign.
+
+</details>

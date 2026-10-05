@@ -495,3 +495,22 @@ Multimodal large reasoning models (MLRMs) have demonstrated remarkable capabilit
 LLM assistants and agentic systems log long multi-turn conversations. AI providers often scan these conversations for Personally Identifiable Information (PII) and mask the PII before storing or processing conversation data. Yet most PII detectors and benchmarks target self-contained records rather than cross-turn evaluation. To evaluate PII detection across turns in multi-turn conversations, we introduce PII-TRACE (Tracing Recurring PII Across Conversational Exchanges), to our knowledge the first PII benchmark to assess whether detectors identify PII in conversational contexts and cover every mention of a recurring identifier across turns. PII-TRACE contains 13,148 synthetic multi-turn dialogues in 13 languages with character-level spans and identifier clusters. Across eleven baselines, including frontier LLMs, no detector achieves full entity-level coverage without substantial false positives on PII-free conversations, and single-pass reading loses a third of the gold characters on long dialogues. To close this gap, we introduce PII-Tracer, a compact 0.6B-parameter detector trained with conversation-level supervision. PII-Tracer attains the highest entity-level coverage of any system we evaluate and also performs strongly on standard single-record benchmarks.
 
 </details>
+
+### 28. Sleeping Secrets: How Fine-Tuning Reawakens Privacy Risks in Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2610.01365)　📅 2026-09
+
+**关键词**：`attack`、`fine-tuning recovery`、`privacy reawakening`、`distribution shift`
+
+👤 **作者**：Jianhong Li、…、Chunqiang Hu
+
+- 🎯 **研究动机**：微调可恢复直接查询已不可达的私有信息，但先前攻击要求同分布真实私有监督（原训练集）
+- 🔬 **研究方法**：证明无需该不切实际知识即可恢复
+- 📌 **结论**：微调唤醒隐私的风险比已知的更广（隐私×微调）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Beyond adapting Large Language Models (LLMs) to specialized applications, fine-tuning has recently been shown to recover private information that is no longer accessible through direct queries. Previous fine-tuning recovery attacks, however, require genuine private supervision drawn from the same distribution, i.e., the previous training dataset. We argue that such recovery remains possible without such impractical knowledge. We show that LLM-generated candidates can provide sufficient supervision to recover previously learned private associations. Based on this, we propose ReGap, a data-free attack that recovers private associations using task structure, filters them by answer-token likelihood, and updates the target model via low-rank adaptation. Specifically, ReGap requires neither target answers nor auxiliary genuine private supervision. Across six GPT-2, OPT, and Qwen3 models, ReGap improves target-association recovery by 6-21 percentage points over the post-training target model. Recovery remains substantial even when the adaptation identities are disjoint from all memorized and evaluation identities, with no exact target answers appearing in the generated or selected supervision. Moreover, the same trained adapters increase recovery from 42\% to 63\% on a previously exposed checkpoint, but produce no gain on a matched checkpoint that never encountered the targets. This contrast shows that adaptation alone is insufficient to explain the observed recovery and that prior target exposure strongly affects post-adaptation recoverability. Our findings highlight that routine model customization can reawaken latent privacy risks, warranting urgent attention from the academic and industrial communities.
+
+</details>

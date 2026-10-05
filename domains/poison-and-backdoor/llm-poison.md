@@ -336,3 +336,22 @@ Large language models (LLMs) are increasingly used for code generation, yet they
 Supervised fine-tuning (SFT) is widely used to adapt large language models to downstream tasks. Crowdsourcing user conversations is an established approach to collecting SFT data at scale while reducing the need for costly manual annotation. However, it also allows untrusted users to contribute data to the fine-tuning pipeline. We investigate an underexplored privacy risk arising from this setting: can a malicious user poison a small fraction of the crowdsourced data to amplify extraction of previously unseen instructions contributed by other users? We show that this is possible using only black-box, output-only access to the deployed model. Experiments across four models and two datasets demonstrate substantial increases in training-data extraction: with only 50 poisoned examples, near-verbatim extraction reaches $3.71\times$ the rate without poisoning for Qwen2.5-14B on OpenMathInstruct and $3.08\times$ for Llama-3.1-8B on AceReason. Data filtering also proves largely ineffective in detecting poisoned samples: even the best-performing method achieves only 0.378 in F-1 score, leaving the majority of poisoned samples undetected. These findings demonstrate that seemingly benign crowdsourced contributions can amplify leakage of other records while remaining difficult to identify through data filtering.
 
 </details>
+
+### 18. High-quality Data Do not Mean Safe! Poisoning LLMs after Data Selection
+
+📄 [arXiv](https://arxiv.org/abs/2610.01367)　📅 2026-09
+
+**关键词**：`attack`、`data selection`、`poisoning pipeline`、`filter evasion`
+
+👤 **作者**：Kaiyang Li、…、Haibo Hu
+
+- 🎯 **研究动机**：先前投毒研究假设毒样本直接进入下游微调，忽视实际训练管线中的质量选择环节
+- 🔬 **研究方法**：系统评估过滤对投毒的拦截与留存数据的下游安全影响
+- 📌 **结论**：高质量数据不等于安全——选择后再投毒的新时序
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Safety-aligned Large Language Models remain vulnerable to fine-tuning on small sets of harmful or benign-looking samples. However, prior studies typically assume that poisoned samples directly enter downstream fine-tuning, overlooking quality-based selection in practical training pipelines. To fill this gap, we systematically evaluate both the filtering effects against poisoning and the downstream safety impact of retained data. The results reveal that selection removes many overtly harmful samples, yet some retained high-quality samples can still degrade model safety alignment possibly due to their harmful-like training-update patterns at the layer-wise gradient level. Together, these findings expose a practical vulnerability: safety-degrading influence can pass through quality-based selection via retained high-quality samples. To examine its systematic exploitability, we propose Bi-Stage Quality-Constrained Safety-Degradation Text Optimization (Bi-QSTO), which optimizes poisoned samples under an explicit quality constraint to survive selection while preserving their safety-degrading influence. Across poisoning settings, target models, and filtering rates, Bi-QSTO maintains attack effectiveness before and after selection. Even at 90% filtering, harmful-seeded samples achieve a Poisoning Retention Rate above 90% and Harmful Score of 3.30--4.01. Their attack effectiveness strongly transfers across models and their retention advantage generalizes to additional selection methods.
+
+</details>

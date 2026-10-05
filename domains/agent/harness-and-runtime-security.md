@@ -769,3 +769,22 @@ An agentic coding system couples a language model to a harness: the tools, promp
 Modern large language model (LLM) agents often construct prompts by aggregating retrieved passages, user reviews, and documents from multiple external sources. This paradigm exposes them to segment-level poisoning attacks, in which an adversary controlling only a small subset of sources injects malicious content to manipulate model outputs. Existing defenses mainly rely on textual patterns, external embeddings, or auxiliary detectors and may therefore fail against fluent, semantically plausible poisoned segments. They also provide limited support for locating the responsible segments. We observe that successful corrupted-evidence and adversarial-instruction attacks induce structured shifts in the LLM&#39;s internal activations, forming a consistent activation-space pattern that we call the poison direction. Based on this observation, we propose ActProbe, an internal-state-based framework for detecting and localizing poisoned segments in multi-source LLM inputs. ActProbe projects MLP activations onto a learned poison direction and uses a lightweight linear SVM trained on a small calibration set to detect contaminated prompts. It then applies BinRoL, which combines recursive replacement ablation, Mahalanobis-distance-based branch pruning, and MAD-based robust leaf detection to locate poisoned segments. ActProbe requires no modification to the backend LLM and reduces localization overhead from O(n) exhaustive probing to O(k log n) forward passes. Across three datasets, two attacks, and four open-weight LLMs, ActProbe achieves a 0.01 false-positive rate, a 0.05 false-negative rate, 0.94 localization recall, and a 0.90 localization F1-score. It remains effective against defense-aware adaptive attacks and can protect black-box APIs through surrogate-based poisoned-segment removal.
 
 </details>
+
+### 41. HASTE: Evolving Agent Harnesses Against Emerging Attacks Using Sparse Evidence
+
+📄 [arXiv](https://arxiv.org/abs/2610.02920) · 🐙 [Code](https://github.com/xxiqiao/HASTE.)　📅 2026-09
+
+**关键词**：`defense`、`harness evolution`、`sparse evidence`、`emerging attack`
+
+👤 **作者**：Xiqiao Xiong、…、Xiangnan He
+
+- 🎯 **研究动机**：攻击涌现快于人工 harness 适配，而 harness 演化可用信号常稀疏（威胁报告的简述或少量样本）
+- 🔬 **研究方法**：HASTE 多阶段框架从稀疏证据演化 agent harness
+- 📌 **结论**：稀疏证据驱动的自动防御演化（与 SEABench/SafeCoEvo 同簇）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Agent harnesses play a critical role in defenses by enforcing safety constraints to prevent unsafe actions. However, rapidly emerging attacks outpace manual harness adaptation, motivating automated harness evolution. Yet the signals available for harness evolution are often sparse, such as brief descriptions or a few attack examples in threat reports and preprints. To address this limitation, we introduce HASTE, a multi-agent framework that evolves agent harnesses from sparse threat evidence through an adversarial interplay between safety-specification generation and attack-case generation. Safety specifications guide harness updates toward addressing identified safety vulnerabilities, while attack cases probe for remaining safety vulnerabilities after each update. By feeding evaluation outcomes back into both processes, HASTE enables harness evolution against emerging attacks beyond the initially observed evidence. Experimental results across multiple backbone models, attack types, and evidence forms show that HASTE consistently reduces attack success rates while preserving benign-task utility. The code is available at https://github.com/xxiqiao/HASTE.
+
+</details>

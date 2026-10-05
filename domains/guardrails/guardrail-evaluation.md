@@ -1445,3 +1445,22 @@ Models trained with reinforcement learning for calibrated decisions (RLCD), such
 Typed decision models (TDMs) return probability distributions over caller-defined options without generating text. TypeSafe released Jev, a commercial typed decision model, on 15 September 2026, and a small body of evaluation and replication work appeared within days. We review 28 papers posted between 19 and 24 September and relate their findings to earlier work on label-probability classification, constrained decoding, reranking, calibration, and model cascades. In this early literature, the typed readout itself has not shown an independent accuracy advantage over comparable label-probability readouts. Jev's clearest gains are in latency and cost, while accuracy gaps remain on harder tasks. In practical deployments, confidence is often used to decide when to defer to a stronger model or a human. We use recurring weaknesses in these studies to derive a 14-item evaluation checklist for future TDM work. Because the evidence covers only the first nine days after the release of one hosted model, the review should be read as an early evidence map rather than a settled assessment of the model class.
 
 </details>
+
+### 77. SecJev: Bringing Security Expertise to System One Decision Models
+
+📄 [arXiv](https://arxiv.org/abs/2610.03073)　📅 2026-09
+
+**关键词**：`defense`、`secjev`、`typed decision model`、`security specialization`
+
+👤 **作者**：Zheng Chen、Fei Yu、Haohao Huang、Yang Li、Anlong Chen、Lei Chen
+
+- 🎯 **研究动机**：安全工作流需要把复杂观察与显式策略转为决策的模型——System One 模型（Jev）返回类型化预测与概率，安全专长补足预测背后的领域知识
+- 🔬 **研究方法**：SecJev 首个 Jev 类安全专用决策模型家族（0.8B-9B，基于 Kev 单一预训练栈）
+- 📌 **结论**：Jev/System-1 生态进入安全领域专精化
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Security workflows need models that turn complex observations and explicit policies into decisions. System One models introduced by Jev return typed predictions and probabilities; security specialization supplies the domain expertise behind those predictions. We introduce SecJev, to our knowledge the first family of Jev-like decision models specialized for security, spanning 0.8B to 9B parameters. Built on Kev's single-pass candidate scorer, SecJev learns Boolean, choice, and ordered decisions from text, telemetry, and observation histories. We develop SecJev-Corpus to unify source-label prediction and explicit-policy evaluation across 14 tasks and eight sources. It covers tool outputs, traffic, federated updates, consensus, authentication, and vehicle messages. Scene-weighted training adapts the models across these domains while preserving a shared typed decision interface. Security specialization improves every model in the family; SecJev-0.8B outperforms general Kev-9B by 20.51 percentage points in task-macro accuracy. Comparisons with answer-only generative fine-tuning show close accuracy and latency with lower peak inference memory. Tests on new source groups reproduce gains over Kev in prompt-injection and traffic decisions, with capture-dependent false alarms. We release adapters, decision heads, SecJev-Corpus, and training and inference code.
+
+</details>
