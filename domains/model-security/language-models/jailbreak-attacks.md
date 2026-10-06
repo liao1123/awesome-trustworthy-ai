@@ -1612,3 +1612,24 @@ Automated red-team attacks and blue-team defenses for large language models (LLM
 Language model safety is typically evaluated one interaction at a time. We show that a weaker, unaligned model can split a harmful task into benign-looking subproblems, consult a stronger aligned model independently on each, and combine the answers locally. We call this attack capability laundering. Unlike a jailbreak, no single response is a harmful task. We measure consultation-aided uplift using tasks that a raw frontier model solves, the aligned frontier refuses, and the unassisted orchestrator fails. We evaluate GPT-5.5, Claude Opus 4.8, and Grok-4.3 as consultants to four local orchestrators on CyBench, BountyBench, and harmful CBRN requests. On CyBench, Gemma-4-31B recovers 8/14 candidates with GPT-5.5 and 7/9 with Opus, compared with 2/21 and 4/15 for Gemma-4-12B. On BountyBench, Gemma-4-31B recovers 3/9 and 2/3 candidates, while Muse-Glimmer-30B recovers none of 22 and 13. For CBRN, we measure uplift across eight steps of a hypothetical bioweapon attack chain and find that consultation raises Gemma-4-31B&#39;s mean rubric score from 62.3 to 83.1 on a 100-point rubric scale. These results expose a gap in current defenses: refusing a harmful task does not prevent frontier capabilities from being transferred and composed across many individually permitted interactions.
 
 </details>
+
+### 86. Reward Stealing Attack on Large Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2610.06670) · 🐙 [Code](https://github.com/GarminQ/ReSA.)　📅 2026-09
+
+**关键词**：`attack`、`reward stealing`、`latent safety reward`、`llm`
+
+👤 **作者**：Jiaming Qian、Pengyang Zhou、Jiahe Xu、Chaochao Chen
+
+- 🎯 **研究动机**：现有 LLM 对抗攻击高算力成本或严格模型配对限制可扩展性
+- 🔬 **研究方法**：ReSA 瞄准潜在安全奖励的窃取攻击
+- 📌 **结论**：以奖励为靶的攻击新面（对齐内部信号的对抗利用）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Adversarial attacks on Large Language Models (LLMs) aim to induce harmful content. However, existing methods suffer from high computational costs or strict model-pairing dependencies, limiting their scalability and transferability. We propose Reward Stealing Attack (ReSA), an adversarial attack framework that targets the latent safety reward underlying LLM alignment. ReSA employs maximum entropy inverse reinforcement learning to recover a proxy reward model solely from the aligned model's behavior. The extracted reward is then reversed at inference time to derive an adversarial policy, efficiently implemented via a reward-guided decoding mechanism. Experiments demonstrate that a single recovered reward generalizes across prompts and diverse models to reveal a fundamental alignment vulnerability, enabling ReSA to significantly outperform existing attacks in effectiveness and transferability. The code is available at https://github.com/GarminQ/ReSA.
+
+</details>
+
+## 常规收录

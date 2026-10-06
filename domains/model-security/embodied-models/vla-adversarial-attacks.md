@@ -404,3 +404,24 @@ Adversarial patches to Vision-Language-Action (VLA) policies can cause both imme
 Adversarial patches can disrupt Vision-Language-Action (VLA) models by manipulating visual observations, leading to failures in robot control. However, it remains poorly understood which internal mechanisms underlie these failures and how targeted interventions can mitigate them. In this work, we mechanistically analyze VLA representations using a sparse autoencoder (SAE) and identify a feature whose activation strongly correlates with the presence of an adversarial patch. Based on this analysis, we suppress the identified feature at inference time only when a linear probe detects an attack. This intervention improves robustness without the cost of fine-tuning the VLA. We evaluate our method against VLA adversarial patch attacks on LIBERO-10. Conditional intervention improves success rate under intermittent attacks, whereas continuously applying the same intervention substantially degrades policy performance. These results show that attack-related internal representations can provide useful targets for VLA adversarial defense and that controlling when to intervene is important for limiting disruption to nominal policy behavior.
 
 </details>
+
+### 22. TAPDreamer: Transferable Adversarial Patches for World Action Models
+
+📄 [arXiv](https://arxiv.org/abs/2610.06814)　📅 2026-09
+
+**关键词**：`attack`、`transferable adversarial patch`、`world action model`、`robotics`
+
+👤 **作者**：Xuanyu Lu、…、Radha Poovendran
+
+- 🎯 **研究动机**：世界动作模型依赖摄像头输入，操纵视觉可跨任务污染动作策略——现有攻击对受害者特定优化难迁移
+- 🔬 **研究方法**：TAPDreamer 可迁移对抗补丁
+- 📌 **结论**：跨任务跨模型的世界模型攻击
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+World models learn to predict how their environment will evolve, making them an important foundation for general-purpose robotic control. Yet world action models depend on camera inputs whose manipulation can corrupt the visual representations used across tasks and action policies. Existing attacks on these models optimize against the victim's actions or predicted futures and therefore require access to target-model outputs. In this paper, we propose an attack, TAPDreamer, against world action models that instead uses a public encoder alone to construct a fixed local perturbation that transfers across tasks and action architectures. TAPDreamer requires no target-policy queries. Our key insight is that interactions between patch-induced changes in attention weights and value vectors broadcast a nearly identical representation shift far beyond the patch footprint, and this shift remains stable across task observations. Guided by this insight, TAPDreamer uses six frames from one source task to maximize the global L1 distance between clean and patched encoder representations. In closed-loop evaluation, one frozen patch per benchmark, covering about 6.5% of the input, reduces FastWAM's success rate from 97.7% to 0.0% across 40 LIBERO tasks and from 90.8% to 0.0% across 50 RoboTwin tasks; matched random patches retain 81.5% and 79.2% success. The same patches reduce success to 2.1% and 0.8% on two DreamWAM configurations and to 10.0% on Motus. These results show that protecting downstream action generation alone is insufficient: defenses for world action models must also secure shared visual encoders against persistent local perturbations.
+
+</details>
+
+## 扩展视野

@@ -522,3 +522,22 @@ Safety evaluations can mischaracterize deployed behaviour if artificial-intellig
 Social-deduction games such as Werewolf are increasingly used to evaluate LLM agents, but existing evaluations often rely on final game outcomes. We propose a belief-shift evaluation benchmark in Werewolf for analyzing communication skills through belief updating. Using LLM-played games, we annotate suspicion and accusation messages and measure how an observing village-side model's beliefs change after each message. We evaluate 40 open-weight LLM configurations on 1,224 annotated messages. Our results show that larger models better distinguish true wolves from villagers based on game history, but accusations still strongly influence their beliefs. Models become more suspicious of the accused target and less suspicious of the accuser, especially when the accuser is trusted, even if the accuser is wolf-aligned. Larger models better resist accusations from accusers they already distrust. Overall, our findings suggest that current open-weight LLMs up to 120B parameters still struggle to integrate accusation content with source trust in strategic communication. Our benchmark and code are available at this https URL .
 
 </details>
+
+### 28. Before Agent Tells The Lie: Has Deception Already Been Represented?
+
+📄 [arXiv](https://arxiv.org/abs/2610.06576)　📅 2026-09
+
+**关键词**：`detection`、`deception representation`、`pre-lie probe`、`agent monitoring`
+
+👤 **作者**：Xinling Li、…、Dongrui Liu
+
+- 🎯 **研究动机**：现有监控在欺骗出现在可观察动作或输出后才检测——欺骗意图是否已在内部表示中成形
+- 🔬 **研究方法**：调查说谎前的内部表示先兆并做预检测
+- 📌 **结论**：谎言出口前的表示级预警（监控前移到意图层）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language model (LLM)-based agents can exhibit deceptive behavior during task execution, including hiding failures, fabricating results, or falsely signaling task completion. Existing monitoring approaches mainly detect deception after it appears in observable actions or outputs. In this paper, we investigate whether deceptive behavior can be predicted from an agent's internal representations before it becomes externally visible. We frame deception monitoring as a trajectory-level representation analysis problem and align agent trajectories around key decision points. Using hidden states extracted before these points, we show that future honest and deceptive outcomes can be reliably distinguished, with predictive signals remaining detectable several model calls before the final decision. We further characterize the temporal evolution of these signals: deception-related representations are weak early in execution but become increasingly identifiable as trajectories progress, while transferable structure can emerge before the strongest decision-adjacent signals appear. Finally, we intervene on the identified honest-deceptive representation directions during inference and find that activation steering reduces downstream deceptive behavior, suggesting that these representations influence agent decisions. Our findings indicate that agent deception is an evolving internal process that can be detected and potentially mitigated before it is expressed externally.
+
+</details>
