@@ -320,3 +320,22 @@ In this paper, we study format biases in reinforcement learning from human feedb
 Difference-in-means steering requires activations recorded while a model shows the desired behavior, which a sandbagging model withholds by deliberately underperforming. We introduce Activation Flow (ActFlow), which manufactures these activations from $k$ correct labels without fine-tuning. ActFlow sets target logits that rank each labeled item's correct answer first, and moves the logits toward them by adding one vector $x$ to all $k$ residual streams at one layer. ActFlow is a family of ordinary differential equations for $x$, one for each rule that maps the required logit change to the velocity of $x$. The smallest-norm rule lands exactly on the targets, while the others keep only the top singular directions of the Jacobian. We test ActFlow on three instruction-tuned models, each locked by a sandbagging prompt and by a password-locked LoRA. At $k=40$, ActFlow keeping five singular directions raises the mean held-out ARC-Easy accuracy over the six locked models from $0.05$ to $0.85$, against $0.88$ for fine-tuning and $0.92$ for the honest models. Furthermore, it scores higher than the smallest-norm rule in 16 of the 18 combinations of locked model and $k$, and its steering direction is nearly orthogonal to the honest difference-in-means direction. It also unlocks two LoRA locks where the honest direction fails.
 
 </details>
+
+### 17. Does Steering Break Your Model? A Multi-Dimensional Evaluation Suite for LLM Steering Methods
+
+📄 [arXiv](https://arxiv.org/abs/2610.07722)　📅 2026-09
+
+**关键词**：`evaluation`、`steering side effects`、`multi-dimensional suite`、`robustness`
+
+👤 **作者**：Haotian Yang、…、Liangming Pan
+
+- 🎯 **研究动机**：有效 steering 需诱导意图行为+限制意外改变+跨输入跨训练数据鲁棒——现有评测只覆盖片段
+- 🔬 **研究方法**：多维修效套件统一 efficacy-副作用-鲁棒性
+- 📌 **结论**：steering 方法的权衡地图
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Activation steering provides a lightweight and flexible way to control large language model (LLM) behavior. However, effective steering requires more than inducing the intended behavior: it should also limit unintended changes and remain robust across inputs and training data. Existing evaluations cover these dimensions only in fragments. As a result, the trade-offs between efficacy and side effects have not been systematically characterized. We introduce SteerScope, a two-axis, multi-dimensional evaluation suite that jointly characterizes steering outcomes and method properties through 15 metrics. We score target efficacy and side effects on language quality, task capabilities, and safety and reliability, and further assess generalization and data dependence through steering-specific metrics for sample efficiency and sample sensitivity. Rather than comparing methods at a single operating point, we characterize the trade-offs between efficacy and side effects. Under matched models, tasks, and evaluation protocols, we benchmark 23 methods spanning 4 families, including prompting, LoRA, and SFT as baseline methods, and release the suite as an extensible codebase. We find that current activation steering methods do not yet surpass the Prompt Steering baseline in their overall balance between steering efficacy and side effects: across both model scales, no evaluated activation steering method achieves higher efficacy without incurring greater composite side effects. We further uncover a consistent coupling between steering efficacy and side effects. Under OOD prompts, target efficacy is often preserved, whereas side effects tend to become more pronounced, particularly through declines in instruction relevance and fluency. Methods also exhibit sharply different sample-efficiency profiles.
+
+</details>

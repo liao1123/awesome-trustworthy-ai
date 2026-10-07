@@ -788,3 +788,22 @@ Modern large language model (LLM) agents often construct prompts by aggregating 
 Agent harnesses play a critical role in defenses by enforcing safety constraints to prevent unsafe actions. However, rapidly emerging attacks outpace manual harness adaptation, motivating automated harness evolution. Yet the signals available for harness evolution are often sparse, such as brief descriptions or a few attack examples in threat reports and preprints. To address this limitation, we introduce HASTE, a multi-agent framework that evolves agent harnesses from sparse threat evidence through an adversarial interplay between safety-specification generation and attack-case generation. Safety specifications guide harness updates toward addressing identified safety vulnerabilities, while attack cases probe for remaining safety vulnerabilities after each update. By feeding evaluation outcomes back into both processes, HASTE enables harness evolution against emerging attacks beyond the initially observed evidence. Experimental results across multiple backbone models, attack types, and evidence forms show that HASTE consistently reduces attack success rates while preserving benign-task utility. The code is available at https://github.com/xxiqiao/HASTE.
 
 </details>
+
+### 42. HarnessSecurity-Bench: Do Security Mechanisms Really Protect Coding Agent Harnesses?
+
+📄 [arXiv](https://arxiv.org/abs/2610.07639)　📅 2026-09
+
+**关键词**：`benchmark`、`harness security`、`coding agent`、`mechanism taxonomy`
+
+👤 **作者**：Zhengyang Zhu、…、Zibin Zheng
+
+- 🎯 **研究动机**：coding agent harness 中介工具使用与动作授权，其安全机制与运行时效果未被系统刻画
+- 🔬 **研究方法**：十机制分类法+400 个 harness-机制格的独立评审
+- 📌 **结论**：首个 harness 安全实证基准（安全机制真的保护吗）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Coding agent harnesses mediate tool use and authorize actions, yet their security mechanisms and runtime effects remain incompletely characterized. We present HarnessSecurity, the first systematic empirical study and benchmark of open- and closed-source coding agent harnesses. First, we derive a ten-mechanism taxonomy and then assess 400 harness-mechanism cells using independent ratings by researchers and large language model (LLM) judges. We find that about half of confirmed mechanism implementations are opt-in, while closed-source harnesses exhibit substantial evidence gaps. Second, we introduce HarnessSecurity-Bench, a benchmark of 23 tasks across five attack surfaces without sacrificing legitimate task requirements. Using separate deterministic oracles to measure task utility and attack effects with security setting comparisons, we evaluate nine mechanisms across six leading harnesses: Claude Code, Codex CLI, Gemini CLI, gptme, Qwen Code, and GitHub Copilot. Under a controlled LLM baseline GLM-5.2, we conduct 2,500 trials, recording 81,155 tool calls and over 2.2 billion tokens. Enabling auto-approve increases utility and raises attack success from 29.2% to 95.6%. Network isolation and read-only mode reduce attack effects with substantial utility losses, while command allowlisting and command denylisting reduce attack effects with a small utility loss and a utility gain, respectively. Task-level cases show that restrictions on a shared capability can obstruct both legitimate and malicious operations, and that allowed tools or commands can leave unauthorized operations reachable through alternative execution paths. Harness providers should make security settings verifiable, test alternative execution paths to protected operations, and assess attack effects alongside task utility and execution costs.
+
+</details>

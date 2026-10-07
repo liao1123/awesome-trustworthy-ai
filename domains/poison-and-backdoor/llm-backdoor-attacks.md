@@ -3466,3 +3466,22 @@ Backdoor poisoning attacks add poisoned examples to otherwise-clean finetuning d
 When a backdoor trigger activates the target response regardless of the triggered prompt context, the backdoor objective reveals itself. Challenging this trigger-sufficient formulation across the LLM backdoor literature, we introduce Opportunistic Backdoors (OPBackdoor), in which the backdoor objective is elicited only when the triggered prompt context presents an exploitable opportunity, enabling the model's think to disguise its pursuit through alibi-aligned reasoning that is logical with respect to the triggered prompt context but directly leads to the target response. Across dense and MoE architectures of 26B-119B, we induce OPBackdoor via counterfactual training in coding assistants to retaliate against hostile users via excessive helpfulness and translation assistants to engage in commercial propaganda via biased translation. Yet alibi-aligned reasoning has limits: it can convince LLM inspectors that no backdoor is at work, while contrastive monitoring exposes the backdoor objective.
 
 </details>
+
+### 184. The Model Plants the Trigger: Answer-Side Backdoor Attacks in Multi-Turn Large Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2610.07723)　📅 2026-09
+
+**关键词**：`attack`、`answer-side backdoor`、`multi-turn dialogue`、`guardrail bypass`
+
+👤 **作者**：Yibo Zhang、Tianrong Guan、Liang Lin、Puze Wang、Jin Wang、Qingsong Wen
+
+- 🎯 **研究动机**：现有 LLM 后门几乎全部输入中心：激活依赖输入显式触发模式，现代护栏清洗输入空间
+- 🔬 **研究方法**：把触发器植入模型输出侧：多轮对话中由模型自身回答触发
+- 📌 **结论**：答案侧后门绕过输入侧防线（后门范式的方向翻转）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Safety alignment in Large Language Models (LLMs) remains vulnerable to backdoor attacks. Existing LLM backdoors are almost all input-centric: activation depends on explicit trigger patterns in the user input, so modern guardrails are built to sanitize the input space. We challenge this assumption with a novel answer-side backdoor for multi-turn dialogue. Instead of inserting the trigger into the input, the adversary uses a benign first-turn prompt to naturally induce the model to generate a specific, seemingly innocuous word. Once merged into the dialogue history, this self-generated word becomes the trigger. When a later harmful query arrives, the model detects its own trigger and bypasses its safety refusal, while the user input stays perfectly clean. Across four LLMs, our attack reaches near-perfect Attack Success Rates, approaching 100\% at only a 5\% poisoning rate, while preserving general utility and clean-input safety, and it evades mainstream input-centric defenses. Representation-level analysis shows that the self-generated trigger consistently suppresses the model's refusal signal, exposing a critical blind spot in current LLM defenses.
+
+</details>

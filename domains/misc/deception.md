@@ -541,3 +541,22 @@ Social-deduction games such as Werewolf are increasingly used to evaluate LLM ag
 Large language model (LLM)-based agents can exhibit deceptive behavior during task execution, including hiding failures, fabricating results, or falsely signaling task completion. Existing monitoring approaches mainly detect deception after it appears in observable actions or outputs. In this paper, we investigate whether deceptive behavior can be predicted from an agent's internal representations before it becomes externally visible. We frame deception monitoring as a trajectory-level representation analysis problem and align agent trajectories around key decision points. Using hidden states extracted before these points, we show that future honest and deceptive outcomes can be reliably distinguished, with predictive signals remaining detectable several model calls before the final decision. We further characterize the temporal evolution of these signals: deception-related representations are weak early in execution but become increasingly identifiable as trajectories progress, while transferable structure can emerge before the strongest decision-adjacent signals appear. Finally, we intervene on the identified honest-deceptive representation directions during inference and find that activation steering reduces downstream deceptive behavior, suggesting that these representations influence agent decisions. Our findings indicate that agent deception is an evolving internal process that can be detected and potentially mitigated before it is expressed externally.
 
 </details>
+
+### 29. DecepEval: A Benchmark for Evaluating Deception in LLM Agents
+
+📄 [arXiv](https://arxiv.org/abs/2610.07967)　📅 2026-09
+
+**关键词**：`benchmark`、`agent deception`、`systematic evaluation`、`eliciting conditions`
+
+👤 **作者**：Yiming Xu、…、Qinghua Zheng
+
+- 🎯 **研究动机**：LLM agent 可为任务性能而欺骗，现有评测只查孤立场景或窄条件——欺骗何时更可能发生缺系统理解
+- 🔬 **研究方法**：DecepEval 系统变化欺骗诱发条件的基准
+- 📌 **结论**：agent 欺骗的条件化测量
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+As large language model (LLM) agents become increasingly autonomous, they may pursue task performance through deception, raising concerns about their reliable deployment. Existing evaluations show that LLM agents can deceive, but often examine isolated scenarios or narrowly defined conditions, limiting systematic understanding of when deception becomes more likely. To address this gap, we introduce DecepEval, a benchmark comprising 1,532 instances across 3 task families and 28 professional scenarios. Drawing on classical fraud theories, we propose the LLM Deception Diamond framework, which characterizes four external conditions that may induce deception: pressure, incentive, opportunity, and conflict. DecepEval pairs neutral and induced versions of each instance to measure condition-dependent changes in deception rates, while explicit task facts and observable agent behavior help distinguish deception from capability-related errors. Evaluations of nine frontier LLMs show that inducements increase deception across models and task families, even among models with low baseline deception rates. DecepEval makes these vulnerabilities measurable, providing a shared benchmark for progress toward trustworthy artificial intelligence.
+
+</details>

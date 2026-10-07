@@ -2353,3 +2353,22 @@ Safety alignment in large language models is trained primarily in English, and r
 Ensuring the safe and reliable deployment of large language models (LLMs) remains a fundamental challenge. Existing safety alignment approaches either incur high computational cost or unintentionally disrupt the model's core knowledge, leading to degraded fluency and factual accuracy on benign tasks. This reveals a persistent trade-off between safety and utility. We propose DNAlign, a lightweight alignment framework that integrates control-theoretic optimization with null-space projection. By treating the LLM as a dynamic system, the proposed framework introduces controllable perturbations to steer generation toward safe behavior. A key component is the projection module, which restricts these perturbations to the harmful-related subspace derived from neutral hidden states, thereby preserving general knowledge and response quality. A value function trained on human preference data adaptively optimizes the control signals to align with human safety preferences. Extensive evaluations across multiple LLM backbones demonstrate that our framework consistently reduces harmful outputs while maintaining fluency, coherence, and factual utility. It achieves superior overall performance compared to prior alignment baselines without sacrificing generation diversity. These results indicate that the proposed framework provides an effective and practically deployable solution for safe LLM alignment. Code is available at https://anonymous.4open.science/r/DNAlign.
 
 </details>
+
+### 126. SIGMA: Self-Improving Alignment Generalization from a Model Spec
+
+📄 [arXiv](https://arxiv.org/abs/2610.07935)　📅 2026-09
+
+**关键词**：`defense`、`model spec`、`self-improving alignment`、`recursive safety`
+
+👤 **作者**：Jingyu Zhang、Shruti Palaskar、Daniel Khashabi、Benjamin Van Durme、Leon A. Gatys、Joseph Yitan Cheng
+
+- 🎯 **研究动机**：agent 在易验证目标上递归自改进，而对齐难验证——能力增长无相应安全对齐的风险扩大（auto-research/网安）
+- 🔬 **研究方法**：SIGMA 从模型规格自改进对齐泛化
+- 📌 **结论**：RSI 时代的对齐跟随机制（自改进安全线续）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+LLM agents are increasingly capable of executing complex tasks and of recursively improving themselves on easy-to-verify objectives such as software engineering and mathematics. Since alignment is much harder to verify, this creates a growing risk of capabilities increasing without appropriate safety alignment, especially as capabilities expand to auto-research and cybersecurity. Existing approaches focus on capability self-improvement using verifiable feedback or on alignment training with supervision from stronger models or curated data, creating an external supervision bottleneck for alignment. We ask whether current models can improve their own safety alignment, and propose SIGMA, a data generation and training pipeline enabling alignment self-improvement that generalizes to out-of-distribution settings. Given only a "Model Spec" stating the model's desired behavior, SIGMA leverages a model's reasoning capabilities to strengthen its own safety reasoning. SIGMA first performs spec-guided task synthesis, using the candidate model as a task designer agent to generate diverse alignment dilemma scenarios and convert them into training tasks that stress-test its understanding of the Model Spec. Next, SIGMA conducts self-judged alignment training through supervised fine-tuning and rubric-based reinforcement learning with the model itself as the reward model. Despite training only on single-turn chat data, SIGMA improves safety alignment in multi-turn agentic environments (AgentHarm harmfulness decreases from 22.6 to 14.8; Agentic Misalignment decreases from 79.1 to 3.8), outperforms Deliberative Alignment and Constitutional AI baselines, and retains general capability. Analyses show that a Model Spec balancing harmlessness and helpfulness, test-time reasoning for safety deliberation, and high-quality rubrics from SIGMA's task designer agent are crucial for effective self-improvement.
+
+</details>

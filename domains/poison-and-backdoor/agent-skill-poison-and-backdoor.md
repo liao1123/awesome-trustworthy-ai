@@ -1253,3 +1253,22 @@ Agent skills package instructions, executable code, and task-specific resources 
 Agent skills package task-specific knowledge and procedures that can be composed to support complex agent tasks, while public marketplaces provide a growing pool of reusable skills. Existing security vetting, however, largely evaluates skills in isolation, leaving composition-induced risks underexplored. Such risks arise because composing benign skills expands the agent's capability space, enabling behaviors unavailable to any skill alone. Interestingly, we find that directly composing benign skills can already induce malicious behaviors, even when every individual skill passes security vetting. We further find that some target malicious behaviors remain difficult to realize through direct composition, even when the selected skills collectively provide the required capabilities. To systematically instantiate these attacks, we present Compositional Risk Induction via Multi skill Execution (CRIME). CRIME first uses the Malicious Plot Casting (MPC) module to decompose a target malicious behavior into complementary requirements and identify suitable benign skill compositions from public skill repositories. For compositions that cannot directly realize the target behavior, the Runaway Reaction Steering (RRS) module uses execution feedback to iteratively refine the selected skills toward the target while requiring each skill to remain benign under standalone vetting. The resulting composition is then passed to the Skill Reaction Chamber (SRC) module, where the skill pair is executed in a sandbox and the resulting environmental consequences are examined to determine whether the target behavior has occurred. Unsuccessful cases are returned to RRS for further refinement. Furthermore, we construct a benchmark of 4,000 public skills across eight cybersecurity behaviors for systematic evaluation of composition-induced vulnerabilities.
 
 </details>
+
+### 66. SkillPoison: Progressive Skill Poisoning via Successful Experiences
+
+📄 [arXiv](https://arxiv.org/abs/2610.07645) · 🐙 [Code](https://github.com/DEEP-JLU/SkillPoison.)　📅 2026-09
+
+**关键词**：`attack`、`progressive skill poisoning`、`self-improving agent`、`successful experience`
+
+👤 **作者**：Lizhi Zhang、…、Qinggang Zhang
+
+- 🎯 **研究动机**：自改进 agent 把成功经验蒸馏为持久 skill——现有 skill 攻击注入恶意触发易被检测且难以持久积累
+- 🔬 **研究方法**：SkillPoison 经由成功经验的渐进式投毒：恶意行为随经验累积自然沉淀
+- 📌 **结论**：低可检测性的持久化 skill 投毒（skill 攻击线第三波）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Self-improving LLM agents increasingly distill successful experiences into persistent, reusable skills. Existing skill attack methods corrupt this learning pipeline by injecting malicious triggers, behaviors, or false facts into individual experiences or extracted skills. However, such attacks are easily detected, and the injected malicious behaviors often fail to accumulate as persistent skills. In this paper, we show that skill poisoning can arise even from verified successful experiences, without making any individual trajectory malicious. Based on this insight, we propose SkillPoison, a novel framework that progressively poisons skill via successful experiences. SkillPoison first constructs a set of successful experiences that reinforce a target behavior, and then removes the contextual conditions that constrain when the behavior applies. Rather than injecting malicious content, SkillPoison shapes how the skill extractor generalizes, allowing useful behavior to support task success while inducing harmful behavior when they are misapplied. Extensive experiments on three benchmarks show that SkillPoison achieves 95.71% attack success rates, while all injected experiences remain task-correct and pass verification and lexical inspection. Our code, data and implementation details are available for the community at https://github.com/DEEP-JLU/SkillPoison.
+
+</details>

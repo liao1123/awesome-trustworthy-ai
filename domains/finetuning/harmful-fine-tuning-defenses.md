@@ -1696,3 +1696,22 @@ More and more of the text future language models learn from is written by a few 
 Fine-tuning-as-a-service lets users adapt a safety-aligned language model to their own data, but it also creates a harmful fine-tuning attack surface: a small amount of harmful data mixed into an otherwise benign fine-tuning set can degrade the model's alignment. Two recent alignment-stage defenses address this problem at different levels of the model. Vaccine improves the robustness of hidden embeddings to the representation shifts induced by harmful fine-tuning, whereas Booster simulates harmful weight updates and attenuates their effect during alignment. We investigate whether these mechanisms are complementary and propose VaccineBooster, a single alignment procedure that combines embedding perturbation and weight-level gradient attenuation within each training step. On Llama-2-7B aligned with BeaverTails and then attacked through poisoned fine-tuning, VaccineBooster achieves the lowest OpenAI moderation score among the compared defenses, 0.315, while a Booster-Only variant retains the highest post-attack refusal rate, 50%. Together with ablations over the embedding-perturbation and gradient-attenuation strengths, these results indicate a trade-off: embedding perturbation primarily reduces flagged harmful content, whereas gradient attenuation primarily preserves explicit refusal behavior. Because our evaluation uses ten prompts and a single unseeded run per configuration, we report this trade-off as an observed pattern rather than a statistically resolved effect. These results provide practical guidance for prioritizing content safety or refusal retention when aligned models are exposed to untrusted fine-tuning.
 
 </details>
+
+### 91. ASCENT: First-Order Optimal Fine-Tuning with Recalibration for Safety--Utility Co-Enhancement
+
+📄 [arXiv](https://arxiv.org/abs/2610.08061) · 🐙 [Code](https://github.com/ZJU-LLM-Safety/ASCENT.)　📅 2026-09
+
+**关键词**：`defense`、`safety-utility co-enhancement`、`first-order optimal`、`recalibration`
+
+👤 **作者**：Weiwei Qi、…、Kui Ren
+
+- 🎯 **研究动机**：SFT 提升效用但损安全；现有保持法聚焦安全保持而非联合增强且缺最优安全相关更新的理论刻画
+- 🔬 **研究方法**：ASCENT 一阶最优微调+重校准
+- 📌 **结论**：安全-效用协同的带保证优化
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Supervised fine-tuning can substantially improve the downstream utility of large language models (LLMs) but may compromise their safety. Existing safety-preserving methods constrain downstream updates using safety-related parameters or subspaces, but mainly focus on safety preservation rather than joint safety and utility enhancement, lack a theoretical characterization of the optimal safety-related subspace and safety-preserving task update, and typically rely on a static safety subspace that may become outdated during fine-tuning. To address these limitations, we propose ASCENT, a downstream fine-tuning framework for safety--utility co-enhancement through first-order optimal safety-aware periodic calibration and task optimization. We model safety as a function of LLM parameters $S(θ)$ and use its first-order approximation to characterize safety changes under parameter updates. Under a fixed rank and Frobenius-norm budget, we prove that the update constructed from the top-$r$ singular components of the safety-function gradient maximizes the estimated safety change, and use it for periodic calibration to preserve and improve safety. We further derive a unique safety-preserving task update that stays close to the original task update while penalizing negative effects on the estimated safety change. ASCENT alternates these optimal task and calibration updates to jointly enhance safety and utility. Experiments across multiple LLM families and downstream tasks show that ASCENT improves downstream utility by up to 20.3\% and reduces attack success rate by up to 35.5\%, achieving state-of-the-art safety and utility across all evaluated settings. Our code is available at https://github.com/ZJU-LLM-Safety/ASCENT.
+
+</details>

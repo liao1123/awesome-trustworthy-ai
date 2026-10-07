@@ -302,3 +302,41 @@ Black-box finetuning is an emerging interface for adapting state-of-the-art lang
 Warning: This paper contains several toxic and offensive statements. Modern large language models (LLMs) are typically aligned through large-scale post-training to ensure fair and reliable behavior. In this work, we investigate how easily such guardrails can be broken by Group Relative Policy Optimization (GRPO). We show that one-shot GRPO training on a single biased example is sufficient to induce systematic bias, with stereotype-driven reasoning generalizing across attributes, categories, and benchmarks. We further find that models differ in their susceptibility based on the initial likelihood of producing biased outputs. Our results reveal a critical vulnerability in post-training: alignment can be overridden by a single example.
 
 </details>
+
+### 17. Does On-Policy Distillation for Safety Pose Backdoor Risks?
+
+📄 [arXiv](https://arxiv.org/abs/2610.07654)　📅 2026-09
+
+**关键词**：`attack`、`on-policy distillation`、`safety backdoor`、`teacher trust`
+
+👤 **作者**：Jian Luo、…、Chao Chen
+
+- 🎯 **研究动机**：OPD 被 用于提升 LLM 安全并显示前景，但默认教师与训练数据可信——被忽视的威胁
+- 🔬 **研究方法**：系统研究 OPD 安全场景的后门风险
+- 📌 **结论**：安全蒸馏管线的教师供应链风险
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+On-policy distillation (OPD) has attracted growing attention as an effective way to transfer capabilities from teacher models to student models. Recent studies further explore OPD as a tool for improving large language model safety with promising results. However, these approaches typically assume that the teacher and training data are trustworthy. In this paper, we uncover an overlooked threat to OPD for safety: a safety-aligned but backdoored teacher can propagate its hidden malicious behavior to an initially clean student. Under our threat model, a poisoning rate as low as 3% results in an attack success rate (ASR) of up to 70% on the distilled student. We further identify two training choices that can amplify this risk. First, increasing the number of training epochs can lead to high ASR even at low poisoning rates. With only 10 poisoned samples, ASR reaches 67% after 16 epochs. Second, the commonly used top-k KL can accelerate backdoor transfer, causing trigger-conditioned harmful behavior to emerge earlier than sampled-token KL in most settings. Alongside these findings, we explore a simple mitigation, Lazy Defense, which clips KL rewards to make student updates less aggressive, limiting aggressive updates and slowing backdoor learning. Experiments show that Lazy Defense delays backdoor transfer in low poisoning rate settings. Together, our findings reveal that OPD can propagate backdoors, highlighting the need to address the safety risks of OPD.
+
+</details>
+
+### 18. Rethinking Cross-Tokenizer On-Policy Distillation: From Alignment Coverage to Supervision Reliability
+
+📄 [arXiv](https://arxiv.org/abs/2610.08448)　📅 2026-09
+
+**关键词**：`analysis`、`cross-tokenizer distillation`、`supervision reliability`、`alignment coverage`
+
+👤 **作者**：Bingxi Hou、…、Yuewei Zhang
+
+- 🎯 **研究动机**：跨 tokenizer 在策蒸馏的对齐覆盖与监督可靠性权衡未系统
+- 🔬 **研究方法**：重审监督可靠性维度
+- 📌 **结论**：蒸馏监督的质量边界
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+On-Policy Distillation (OPD) trains a student on its own generations using teacher feedback. With different tokenizers, comparing teacher and student predictions requires alignment at both sequence and vocabulary levels. In this paper, we examine whether expanding this alignment coverage improves learning. Across three heterogeneous teacher--student pairs on mathematical reasoning and code generation, strict 1:1 groups already cover most student-generated tokens despite substantial vocabulary mismatch. On responses sampled from the students before distillation, the shared vocabulary retains nearly all teacher and student probability mass at strictly aligned positions on average. Restricting reverse KL to a student-selected top-16 subset of the shared vocabulary at each strict position achieves accuracy comparable to full shared-vocabulary OPD, outperforming the evaluated cross-tokenizer baselines. Adding mean squared error supervision on span log-probabilities in mismatch groups gives complete supervision coverage, yet reduces accuracy. At checkpoints from training with only the strict loss, the span gradients show weak or negative directional agreement with the strict gradients and grow in magnitude relative to them. These diagnostics may help explain the accuracy drop from adding span supervision. Our findings motivate a shift from maximizing alignment coverage to prioritizing supervision reliability: compact supervision at strict positions can be more effective than broader coverage that introduces weakly aligned or conflicting training signals.
+
+</details>

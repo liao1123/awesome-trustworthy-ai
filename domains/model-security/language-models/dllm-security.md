@@ -600,3 +600,22 @@ Guard models are the last line of defense between a language model and a harmful
 Masked diffusion language models (dLLMs) generate text by iteratively denoising masked positions, re-predicting each token multiple times before it is committed. An autoregressive decoder exposes an answer's distribution once, at the step that commits it; a dLLM exposes it at every denoising step before commitment, and we show that an adversary can exploit this. Since an answer remains open to revision over many denoising steps, an adversary with access to internal activations can watch how likely the model is to produce a chosen answer and adjust the intervention accordingly. Building on this observation, we study targeted bias injection, an attack that steers a frozen dLLM toward a demographic answer selected by the adversary. The attack uses a simple proportional-integral (PI) controller that tracks the target-answer probability during denoising and adapts the strength of a steering vector on the fly. On ambiguous BBQ questions where the correct answer is abstention, our attack raises LLaDA-8B-Instruct's preference for the targeted group from 1.8 to 16.7 percentage points, more than three times the strongest fixed-strength steering baseline, and on SocialStigmaQA it raises the selection of stigmatizing answers from 17.6% to 58.1%. Fitted to other demographic targets, the same attack shifts answers by up to 37 percentage points, and each attack takes about 40 minutes on one GPU. On the primary target, feedback is what makes the attack work: constant steering at the same average strength over the token-committing steps produces a far smaller shift while corrupting nearly three times as many outputs, and a constant strength set separately for each example still falls well short. Our findings identify the denoising trajectory as a new control channel in dLLMs and call for bias audits that examine the serving stack rather than the frozen model alone.
 
 </details>
+
+### 33. Enhancing Diffusion Language Models with Autoregressive Post-Training Weights
+
+📄 [arXiv](https://arxiv.org/abs/2610.08108)　📅 2026-09
+
+**关键词**：`defense`、`dllm`、`ar post-training inheritance`、`conversion`
+
+👤 **作者**：Yiming Qin、Ke Wang、Amel Abdelraheem、Adam Hazimeh、Pascal Frossard
+
+- 🎯 **研究动机**：dLLM 从 AR 初始化继承表示，但转换后忽略 AR 的庞大后训练生态（指令跟随/安全对齐）
+- 🔬 **研究方法**：把 AR 后训练权重引入 dLLM 转换
+- 📌 **结论**：DLM 继承 AR 安全对齐（第⑥类：转换管线安全维度）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Diffusion language models (dLLMs) have emerged as a promising alternative to autoregressive (AR) language models, offering flexible token-update orders and parallel decoding. Recent dLLMs are often initialized from pretrained AR models before diffusion conversion in order to inherit their learned representations. After the conversion, however, they typically ignore the extensive post-training ecosystem of their AR ancestors. In this work, we show that these existing AR post-training weight updates can instead be effectively recycled to enhance diffusion models. Despite the changes by AR-to-diffusion conversion, directly adding an AR post-training weight update to a diffusion base model remains effective, bringing its performance close to that achieved by direct diffusion post-training. Notably, AR and diffusion post-training updates are nearly orthogonal in weight space, yet induce substantially more aligned representation changes in the diffusion model. Their distinct updates are also complementary: composing their weights can retain gains from both regimes and further improve the post-trained diffusion model. Based on these findings, we propose A2D, a simple training-free framework for enhancing diffusion models with existing AR post-training resources. A2D can transfer capabilities from AR post-trained models to diffusion base models, and further improve already post-trained diffusion models by composing AR and diffusion post-training updates. Across various dLLMs, including Dream, DreamReasoner, DiffuCoder, Dream-Coder, Nemotron-Labs-Diffusion, and DiffusionGemma, A2D reliably improves instruction following, mathematical reasoning, and coding with both supervised fine-tuning and reinforcement learning updates, without additional training, or inference-time computation.
+
+</details>
