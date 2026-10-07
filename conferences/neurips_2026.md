@@ -2490,12 +2490,29 @@ Large Language Model-based Multi-Agent Systems (LLM-MAS) have demonstrated stron
 
 </details>
 
+### 139. DIBench: Benchmarking Decision Integrity of GUI-based Mobile Agents Under Deceptive Injections
+
+📄 [arXiv](https://arxiv.org/abs/2610.06898) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-09　🏷 NeurIPS 2026（Evaluations and Datasets Track）
+
+**关键词**：`benchmark`、`decision integrity`、`deceptive injection`、`mobile agent`
+- 🎯 **研究动机**：GUI 移动 agent 基准只测执行层异常（成功率/劫持率），捕捉不到多候选选择任务中的任务内目标偏离——决策被诱导偏向攻击者指定目标且无可见执行异常
+- 🔬 **研究方法**：DIBench 覆盖 7 商业+3 模拟应用、5 任务类型，威胁模型限定非特权 UI 内容，8 种欺骗注入探针；1,000 干净+36,672 注入实例统一协议
+- 📌 **结论**：4 框架×7 基座上完成率评测高估可信度（注入反而推高完成率的安全假象），常见防御的完整性增益不一致
+
+👤 **作者**：Li Hu、Kanghua Mo、Yingbin Jin、Qingqing Ye、Haibo Hu
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+GUI mobile agents increasingly make autonomous decisions inside real app interfaces. Existing benchmarks measure execution-level anomalies such as task success or hijack rates, but miss intra-task goal deviation in multi-candidate choice tasks: decisions steered toward attacker-specified targets that violate instruction-implied constraints (cheapest, top-rated) without visible execution anomaly. DIBench covers 7 commercial and 3 simulated apps, 5 task types, threat model restricted to non-privileged UI content, 8 deceptive injection probe types; 1,000 clean and 36,672 injected instances under a unified protocol and integrity metrics. Across 4 agent frameworks and 7 base models, completion-rate evaluation overestimates trustworthiness - injections even raise completion rates, a misleading illusion of safety. Detection, image preprocessing and prompt reminders show inconsistent integrity gains.
+
+</details>
+
 **尚未挂出 arXiv（待核验）**
 - AM-Bench: A Unified Taxonomy and Evaluation Suite for Agentic Misalignment
 - MCPHallu: Benchmarking Reasoning, Execution, and Memory Hallucinations in MCP Agents
 - MetaPI: Constructing Prompt Injection Benchmarks from Any Agent Benchmarks
 - EV-AUDIT: A Co-Evolutionary Auditing Framework for Task Hijacking in Multi-Agent Systems
-- DIBench: Benchmarking Decision Integrity of GUI-based Mobile Agents Under Deceptive Injections
 - LPS-Bench: Benchmarking Safety Awareness of Computer-Use Agents in Long-Horizon Planning
 - MMA-SafetyBench: A Benchmark for Multimodal Agent Safety Evaluation
 - MLLMs Fail to Refuse when Using Tools Agentically
@@ -2506,7 +2523,7 @@ Large Language Model-based Multi-Agent Systems (LLM-MAS) have demonstrated stron
 
 ### 扩散语言模型安全（DLM 线）
 
-### 139. Beyond the Prompt: Leveraging Pre-Decoding States for Jailbreak Detection in dLLMs（已库内 dllm-security #8）
+### 140. Beyond the Prompt: Leveraging Pre-Decoding States for Jailbreak Detection in dLLMs（已库内 dllm-security #8）
 
 📝 [OpenReview](https://openreview.net/forum?id=cQKisMHGgm) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -2522,7 +2539,7 @@ Diffusion language models (dLLMs) generate text by iteratively denoising masked 
 
 </details>
 
-### 140. Machine Unlearning in Diffusion LLMs
+### 141. Machine Unlearning in Diffusion LLMs
 
 📝 [OpenReview](https://openreview.net/forum?id=Dlj9mRJfOq) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -2538,7 +2555,7 @@ Machine unlearning (MU) aims to remove sensitive or undesired knowledge from a t
 
 </details>
 
-### 141. Diffusion-Time Concept Manifolds: Sparse Autoencoder Groups for Interpreting Denoising Language Models
+### 142. Diffusion-Time Concept Manifolds: Sparse Autoencoder Groups for Interpreting Denoising Language Models
 
 📝 [OpenReview](https://openreview.net/forum?id=FrP1gSPL04) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -2554,7 +2571,7 @@ Diffusion language models generate text through iterative denoising, but current
 
 </details>
 
-### 142. CURE: Counterfactual Unsafe-token Re-masking for Diffusion Large Language Model Test-time Alignment
+### 143. CURE: Counterfactual Unsafe-token Re-masking for Diffusion Large Language Model Test-time Alignment
 
 📝 [OpenReview](https://openreview.net/forum?id=XF2UgJwAIj) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -2570,7 +2587,7 @@ Diffusion language models (DLMs) generate text through iterative denoising, enab
 
 </details>
 
-### 143. Diffusion Models Can Approximate Optimal Infilling Lengths Implicitly（解码行为分析，DLM DoS 相关）
+### 144. Diffusion Models Can Approximate Optimal Infilling Lengths Implicitly（解码行为分析，DLM DoS 相关）
 
 📝 [OpenReview](https://openreview.net/forum?id=AFvSuWgvYZ) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -2586,7 +2603,7 @@ Diffusion language models (DLMs) provide a bidirectional generation framework na
 
 </details>
 
-### 144. Why Jailbreaks Succeed in Diffusion Language Models: An Energy Landscape Analysis（已库内，0928）
+### 145. Why Jailbreaks Succeed in Diffusion Language Models: An Energy Landscape Analysis（已库内，0928）
 
 📄 [arXiv](https://arxiv.org/abs/2609.30841) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-09　🏷 NeurIPS 2026
 
@@ -2604,7 +2621,7 @@ Existing attacks and defenses for diffusion-based large language models (dLLMs) 
 
 </details>
 
-### 145. Weak Ties, Strong Signals: Efficient Training Data Detection in Diffusion LLMs via Independent Token Sampling（已库内，0929）
+### 146. Weak Ties, Strong Signals: Efficient Training Data Detection in Diffusion LLMs via Independent Token Sampling（已库内，0929）
 
 📄 [arXiv](https://arxiv.org/abs/2609.22145) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-08　🏷 NeurIPS 2026
 
@@ -2622,7 +2639,7 @@ Diffusion large language models (dLLMs) offer a compelling alternative to autore
 
 </details>
 
-### 146. MaskForge: Structure-Aware Adaptive Attacks for Jailbreaking Diffusion Large Language Models（已库内 dllm-security #4）
+### 147. MaskForge: Structure-Aware Adaptive Attacks for Jailbreaking Diffusion Large Language Models（已库内 dllm-security #4）
 
 📄 [arXiv](https://arxiv.org/abs/2606.04027) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-06　🏷 NeurIPS 2026
 
@@ -2640,7 +2657,7 @@ Diffusion large language models (dLLMs) generate text by iteratively denoising p
 
 </details>
 
-### 147. Extracting Training Data from Diffusion Language Models via Infilling（已库内 dllm-security #24）
+### 148. Extracting Training Data from Diffusion Language Models via Infilling（已库内 dllm-security #24）
 
 📄 [arXiv](https://arxiv.org/abs/2605.24173) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-05　🏷 NeurIPS 2026
 
@@ -2658,7 +2675,7 @@ Memorization in large language models has been studied almost exclusively throug
 
 </details>
 
-### 148. Characterizing Memorization in Diffusion Language Models: Generalized Extraction and Sampling Effects
+### 149. Characterizing Memorization in Diffusion Language Models: Generalized Extraction and Sampling Effects
 
 📄 [arXiv](https://arxiv.org/abs/2603.02333) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-03　🏷 NeurIPS 2026
 
@@ -2676,7 +2693,7 @@ Autoregressive language models (ARMs) have been shown to memorize and occasional
 
 </details>
 
-### 149. Confidence-Based Decoding is Provably Efficient for Diffusion Language Models
+### 150. Confidence-Based Decoding is Provably Efficient for Diffusion Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2603.22248) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-03　🏷 NeurIPS 2026
 
@@ -2694,7 +2711,7 @@ Diffusion language models (DLMs) have emerged as a promising alternative to auto
 
 </details>
 
-### 150. Theoretical Analysis of Why Masked Diffusion Models Mitigate the Reversal Curse
+### 151. Theoretical Analysis of Why Masked Diffusion Models Mitigate the Reversal Curse
 
 📄 [arXiv](https://arxiv.org/abs/2602.02133) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-02　🏷 NeurIPS 2026
 
@@ -2712,7 +2729,7 @@ Autoregressive language models (ARMs) suffer from the reversal curse: after lear
 
 </details>
 
-### 151. Diffusion LLMs are Natural Adversaries for any LLM（已库内 dllm-security #3 同族）
+### 152. Diffusion LLMs are Natural Adversaries for any LLM（已库内 dllm-security #3 同族）
 
 📄 [arXiv](https://arxiv.org/abs/2511.00203) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2025-10　🏷 NeurIPS 2026
 
@@ -2732,7 +2749,7 @@ We introduce a novel framework that transforms the resource-intensive (adversari
 
 ### 投毒、后门与供应链
 
-### 152. Backdoor Attacks Rerouted: BatchNorm as a Sink for Adversarial Signals
+### 153. Backdoor Attacks Rerouted: BatchNorm as a Sink for Adversarial Signals
 
 📝 [OpenReview](https://openreview.net/forum?id=1YqAFIeJti) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -2748,7 +2765,7 @@ Deep neural networks (DNNs), particularly CNN-based classification systems, are 
 
 </details>
 
-### 153. Backdoor Attacks under Lossy Compression: From Failure to Reactivation and Adaptation
+### 154. Backdoor Attacks under Lossy Compression: From Failure to Reactivation and Adaptation
 
 📝 [OpenReview](https://openreview.net/forum?id=8Zds0GA3mw) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -2764,7 +2781,7 @@ Real-world backdoor attacks often require poisoned datasets to be stored and tra
 
 </details>
 
-### 154. Backdoor Purification for LoRA-Tuned LLMs via Null-Space Projection
+### 155. Backdoor Purification for LoRA-Tuned LLMs via Null-Space Projection
 
 📝 [OpenReview](https://openreview.net/forum?id=NAtwr6xj7t) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -2780,7 +2797,7 @@ With the rapid adoption of large language models (LLMs) and parameter-efficient 
 
 </details>
 
-### 155. A Theoretical Analysis of Backdoor Learning as Simplicity-Biased Optimization Dynamics
+### 156. A Theoretical Analysis of Backdoor Learning as Simplicity-Biased Optimization Dynamics
 
 📝 [OpenReview](https://openreview.net/forum?id=cK7pT6o85e) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -2796,7 +2813,7 @@ Backdoor attacks implant a trigger-target association into a model, causing mali
 
 </details>
 
-### 156. Benign Reinforcement Learning Can Amplify Latent Backdoors
+### 157. Benign Reinforcement Learning Can Amplify Latent Backdoors
 
 📝 [OpenReview](https://openreview.net/forum?id=oGkR8QUVmY) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -2812,7 +2829,7 @@ Reinforcement learning (RL) is now standard for post-training large language mod
 
 </details>
 
-### 157. Clean Data Can Still Carry Backdoors: Support-Persistent Backdoors for Model Reuse
+### 158. Clean Data Can Still Carry Backdoors: Support-Persistent Backdoors for Model Reuse
 
 📝 [OpenReview](https://openreview.net/forum?id=Q8K72eVB73) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -2828,7 +2845,7 @@ Traditional backdoor attacks inject artificial trigger patterns into training da
 
 </details>
 
-### 158. Clean-Label Poisoning for Gradient-Boosted Decision Trees
+### 159. Clean-Label Poisoning for Gradient-Boosted Decision Trees
 
 📝 [OpenReview](https://openreview.net/forum?id=IWD04rKizN) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -2844,7 +2861,7 @@ Clean-label poisoning attacks have been well studied for differentiable models, 
 
 </details>
 
-### 159. Poison-then-Hide: Finetuning-Activated Backdoor Attack on Pretrained Vision Encoders
+### 160. Poison-then-Hide: Finetuning-Activated Backdoor Attack on Pretrained Vision Encoders
 
 📝 [OpenReview](https://openreview.net/forum?id=TXrCwmcWBi) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -2860,7 +2877,7 @@ Backdoor attacks threaten the integrity of machine learning models by allowing a
 
 </details>
 
-### 160. ShadowFPT: Backdooring Federated Prompt Tuning via Shadow Triggers
+### 161. ShadowFPT: Backdooring Federated Prompt Tuning via Shadow Triggers
 
 📝 [OpenReview](https://openreview.net/forum?id=Lshe1pbyOy) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -2876,7 +2893,7 @@ Federated Prompt Tuning (FPT) adapts large vision--language models by freezing t
 
 </details>
 
-### 161. VOID: Backdoor Injection through Knowledge Vacuity in Federated Unlearning
+### 162. VOID: Backdoor Injection through Knowledge Vacuity in Federated Unlearning
 
 📝 [OpenReview](https://openreview.net/forum?id=DIJLpUupvC) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -2892,7 +2909,7 @@ Federated unlearning (FU) enables federated systems to remove designated data fr
 
 </details>
 
-### 162. Not Suppressing or Purifying: Backdoor Containment via Expert Quarantine and Shutdown in LLMs
+### 163. Not Suppressing or Purifying: Backdoor Containment via Expert Quarantine and Shutdown in LLMs
 
 📝 [OpenReview](https://openreview.net/forum?id=q7PGR1UITf) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -2908,7 +2925,7 @@ Backdoored large language models (LLMs) can behave normally on benign inputs whi
 
 </details>
 
-### 163. DetectViT: Test-time Backdoor Detection for Vision Transformers via Inter-Head Attention Discrepancy
+### 164. DetectViT: Test-time Backdoor Detection for Vision Transformers via Inter-Head Attention Discrepancy
 
 📝 [OpenReview](https://openreview.net/forum?id=WjAq71jgrz) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -2924,7 +2941,7 @@ Vision Transformers (ViTs) have been widely adopted as visual encoders in multim
 
 </details>
 
-### 164. Training-Based Backdoors Are Not Cryptographic
+### 165. Training-Based Backdoors Are Not Cryptographic
 
 📝 [OpenReview](https://openreview.net/forum?id=VX0VrTjuLs) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -2940,7 +2957,7 @@ To defend against backdoor attacks on neural networks, the defender must identif
 
 </details>
 
-### 165. Weird Generalization from Narrow Finetuning: Persona Shifts and Inductive Backdoors
+### 166. Weird Generalization from Narrow Finetuning: Persona Shifts and Inductive Backdoors
 
 📝 [OpenReview](https://openreview.net/forum?id=GaxSVzlXpM) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -2956,7 +2973,7 @@ Finetuning LLMs on narrow datasets of malicious data can broadly compromise alig
 
 </details>
 
-### 166. When Sanitization Becomes the Trigger: Defense-Triggered Backdoor Attacks
+### 167. When Sanitization Becomes the Trigger: Defense-Triggered Backdoor Attacks
 
 📝 [OpenReview](https://openreview.net/forum?id=3CK0DzGy3m) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -2972,7 +2989,7 @@ Backdoor defenses are widely regarded as key to secure third-party model deploym
 
 </details>
 
-### 167. Gradient-Mine Units: Scorched-Earth Strategy for Model Protection against Unauthorized Fine-Tuning
+### 168. Gradient-Mine Units: Scorched-Earth Strategy for Model Protection against Unauthorized Fine-Tuning
 
 📝 [OpenReview](https://openreview.net/forum?id=WD7CiQOOR7) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -2988,7 +3005,7 @@ Pretrained model weights are increasingly released under commercial licenses, us
 
 </details>
 
-### 168. ASAP: Fast Adaptive Sliding Agnostic Poisoning Attack on Federated Learning
+### 169. ASAP: Fast Adaptive Sliding Agnostic Poisoning Attack on Federated Learning
 
 📝 [OpenReview](https://openreview.net/forum?id=PDkEqBCau0) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -3004,7 +3021,7 @@ Federated Learning (FL) is vulnerable to model poisoning attacks, where maliciou
 
 </details>
 
-### 169. Adversarial Corpus Selection to Attack Subgraph Matching based Graph Retrieval
+### 170. Adversarial Corpus Selection to Attack Subgraph Matching based Graph Retrieval
 
 📝 [OpenReview](https://openreview.net/forum?id=zIypQATU6I) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -3020,7 +3037,7 @@ Neural subgraph retrieval systems, which retrieve corpus graphs containing a que
 
 </details>
 
-### 170. Train-free Data Poisoning Attack against Retrieval-augmented Diffusion Models
+### 171. Train-free Data Poisoning Attack against Retrieval-augmented Diffusion Models
 
 📝 [OpenReview](https://openreview.net/forum?id=KHYdVtL89T) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -3038,7 +3055,7 @@ Retrieval-augmented diffusion models (RAG-DMs) have significantly advanced image
 
 </details>
 
-### 171. Exploiting Fine-Tuning Structures to Improve Adversarial Transferability on Downstream SAM
+### 172. Exploiting Fine-Tuning Structures to Improve Adversarial Transferability on Downstream SAM
 
 📝 [OpenReview](https://openreview.net/forum?id=82YaF5fhKq) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -3056,7 +3073,7 @@ Combining the Segment Anything Model (SAM) with fine-tuning techniques allows SA
 
 </details>
 
-### 172. Contrastive Adversarial Training for Robust Graph Neural Networks under Label Poisoning
+### 173. Contrastive Adversarial Training for Robust Graph Neural Networks under Label Poisoning
 
 📝 [OpenReview](https://openreview.net/forum?id=kS90WnGV9B) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -3074,7 +3091,7 @@ Graph Neural Networks (GNNs) are effective for modeling relational data but are 
 
 </details>
 
-### 173. Robust and Efficient Backdoor Mitigation for ML Models via Tolerant Property Testing
+### 174. Robust and Efficient Backdoor Mitigation for ML Models via Tolerant Property Testing
 
 📝 [OpenReview](https://openreview.net/forum?id=S1NRVbrqcY) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -3092,7 +3109,7 @@ Goldwasser, Shafer, Vafa and Vaikuntanathan (STOC 2025) recently introduced a fo
 
 </details>
 
-### 174. When Poison Meets Structure: Topology-based Defense against Poisoning Attack on Graph-based Retrieval-Augmented Generation
+### 175. When Poison Meets Structure: Topology-based Defense against Poisoning Attack on Graph-based Retrieval-Augmented Generation
 
 📝 [OpenReview](https://openreview.net/forum?id=TirVWlIdjG) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -3110,7 +3127,7 @@ Poisoning attacks against GraphRAG focus on knowledge pollution at the node and 
 
 </details>
 
-### 175. FloatDoor: Platform-triggered Backdoors in LLMs
+### 176. FloatDoor: Platform-triggered Backdoors in LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2606.19535) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-06　🏷 NeurIPS 2026
 
@@ -3128,7 +3145,7 @@ Large language models (LLMs) are increasingly deployed in sensitive settings suc
 
 </details>
 
-### 176. Rethinking Molecular Graph Backdoors under Chemistry-aware Admission
+### 177. Rethinking Molecular Graph Backdoors under Chemistry-aware Admission
 
 📄 [arXiv](https://arxiv.org/abs/2606.23361) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-06　🏷 NeurIPS 2026
 
@@ -3146,7 +3163,7 @@ Backdoor attacks on molecular graph neural networks (GNNs) are typically evaluat
 
 </details>
 
-### 177. The Platonic Defense: Backdoor Defense for Self-Supervised Encoders in the Era of Large Scale Pre-training
+### 178. The Platonic Defense: Backdoor Defense for Self-Supervised Encoders in the Era of Large Scale Pre-training
 
 📄 [arXiv](https://arxiv.org/abs/2606.29451) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-06　🏷 NeurIPS 2026
 
@@ -3164,7 +3181,7 @@ Self-supervised learning (SSL) pretrained models have become a dominant paradigm
 
 </details>
 
-### 178. Stealthy World Model Manipulation via Data Poisoning
+### 179. Stealthy World Model Manipulation via Data Poisoning
 
 📄 [arXiv](https://arxiv.org/abs/2606.18697) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-06　🏷 NeurIPS 2026
 
@@ -3182,7 +3199,7 @@ Model-based learning agents use learned world models to predict future states, p
 
 </details>
 
-### 179. Token by Token, Compromised: Backdoor Vulnerabilities in Unified Autoregressive Models
+### 180. Token by Token, Compromised: Backdoor Vulnerabilities in Unified Autoregressive Models
 
 📄 [arXiv](https://arxiv.org/abs/2605.19227) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-05　🏷 NeurIPS 2026
 
@@ -3200,7 +3217,7 @@ Unified autoregressive models (UAMs) are transformer models that generate text a
 
 </details>
 
-### 180. Backdoor Channels Hidden in Latent Space: Extending Cryptographic Undetectability to Modern Neural Networks
+### 181. Backdoor Channels Hidden in Latent Space: Extending Cryptographic Undetectability to Modern Neural Networks
 
 📄 [arXiv](https://arxiv.org/abs/2605.13214) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-05　🏷 NeurIPS 2026
 
@@ -3218,7 +3235,7 @@ Recent cryptographic results establish that neural networks can be backdoored su
 
 </details>
 
-### 181. Your Neighbors Know: Leveraging Local Neighborhoods for Backdoor Detection in Decentralized Learning
+### 182. Your Neighbors Know: Leveraging Local Neighborhoods for Backdoor Detection in Decentralized Learning
 
 📄 [arXiv](https://arxiv.org/abs/2605.19969) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-05　🏷 NeurIPS 2026
 
@@ -3236,7 +3253,7 @@ Decentralized learning (DL) is an emerging machine learning paradigm where nodes
 
 </details>
 
-### 182. Provable Robustness against Backdoor Attacks via the Primal-Dual Perspective on Differential Privacy
+### 183. Provable Robustness against Backdoor Attacks via the Primal-Dual Perspective on Differential Privacy
 
 📄 [arXiv](https://arxiv.org/abs/2605.21780) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-05　🏷 NeurIPS 2026
 
@@ -3254,7 +3271,7 @@ Randomized smoothing is a powerful tool for certifying robustness to adversarial
 
 </details>
 
-### 183. Combating Data Laundering in LLM Training
+### 184. Combating Data Laundering in LLM Training
 
 📄 [arXiv](https://arxiv.org/abs/2604.01904) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-04　🏷 NeurIPS 2026
 
@@ -3272,7 +3289,7 @@ Post-hoc unauthorized-training data detection for large language models (LLMs) t
 
 </details>
 
-### 184. Hallucinated Positive Entanglement for Backdoor Attacks in Federated Self-Supervised Learning
+### 185. Hallucinated Positive Entanglement for Backdoor Attacks in Federated Self-Supervised Learning
 
 📄 [arXiv](https://arxiv.org/abs/2602.02147) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-02　🏷 NeurIPS 2026
 
@@ -3290,7 +3307,7 @@ Federated self-supervised learning (FSSL) enables collaborative training of self
 
 </details>
 
-### 185. Phantom Transfer: Data Poisoning can Survive Data-Level Defences
+### 186. Phantom Transfer: Data Poisoning can Survive Data-Level Defences
 
 📄 [arXiv](https://arxiv.org/abs/2602.04899) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-02　🏷 NeurIPS 2026
 
@@ -3308,7 +3325,7 @@ We present a data poisoning attack -- Phantom Transfer -- with the property that
 
 </details>
 
-### 186. Half-Truths Break Similarity-Based Retrieval
+### 187. Half-Truths Break Similarity-Based Retrieval
 
 📄 [arXiv](https://arxiv.org/abs/2602.23906) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-02　🏷 NeurIPS 2026
 
@@ -3326,7 +3343,7 @@ When a text description is extended with an additional detail, image-text simila
 
 </details>
 
-### 187. Catch-Only-One: Non-Transferable Examples for Model-Specific Authorization
+### 188. Catch-Only-One: Non-Transferable Examples for Model-Specific Authorization
 
 📄 [arXiv](https://arxiv.org/abs/2510.10982) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2025-10　🏷 NeurIPS 2026
 
@@ -3352,7 +3369,7 @@ Recent AI regulations increasingly emphasize the need for mechanisms that preser
 
 ### 隐私、成员推断与 unlearning
 
-### 188. Exposing Private Corpus Leakage in Multimodal RAG
+### 189. Exposing Private Corpus Leakage in Multimodal RAG
 
 📝 [OpenReview](https://openreview.net/forum?id=A69wmC5lPE) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -3368,7 +3385,7 @@ Multimodal Retrieval-Augmented Generation (RAG) helps mitigate hallucinations in
 
 </details>
 
-### 189. Guarding the Life Code: Preserving Membership Privacy in Genomic Foundation Models
+### 190. Guarding the Life Code: Preserving Membership Privacy in Genomic Foundation Models
 
 📝 [OpenReview](https://openreview.net/forum?id=96HcSezVOS) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -3384,7 +3401,7 @@ Genomic Foundation Models (GFMs) have become a promising paradigm for decoding D
 
 </details>
 
-### 190. Bayesian Low-Rank Posteriors for Scalable Membership Inference
+### 191. Bayesian Low-Rank Posteriors for Scalable Membership Inference
 
 📝 [OpenReview](https://openreview.net/forum?id=7y5OCsNjHI) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -3400,7 +3417,7 @@ Membership inference attacks (MIAs) aim to determine whether a sample was used d
 
 </details>
 
-### 191. What Should Remain After Forgetting? Rethinking LLM Unlearning as Predictive Posterior Correction
+### 192. What Should Remain After Forgetting? Rethinking LLM Unlearning as Predictive Posterior Correction
 
 📝 [OpenReview](https://openreview.net/forum?id=CBwCf8daZF) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -3416,7 +3433,7 @@ LLM unlearning is often implemented by assigning surrogate targets, such as refu
 
 </details>
 
-### 192. TRACE: Data-Free Text Reconstruction Attacks against Approximate Unlearning in LLMs
+### 193. TRACE: Data-Free Text Reconstruction Attacks against Approximate Unlearning in LLMs
 
 📝 [OpenReview](https://openreview.net/forum?id=dKuZvfswsY) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -3432,7 +3449,7 @@ As large language models (LLMs) face growing demands for data removal driven by 
 
 </details>
 
-### 193. What Do SAE Features Encode? Evidence from Human Neural Activity（机制方法，交叉参考）
+### 194. What Do SAE Features Encode? Evidence from Human Neural Activity（机制方法，交叉参考）
 
 📝 [OpenReview](https://openreview.net/forum?id=bpwbTRy94A) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -3448,7 +3465,7 @@ Sparse Autoencoders (SAEs) decompose dense LLM activations into sparse, interpre
 
 </details>
 
-### 194. Membership Inference on Synthetic Single-Cell Genomic Data
+### 195. Membership Inference on Synthetic Single-Cell Genomic Data
 
 📝 [OpenReview](https://openreview.net/forum?id=RzrYEYn0Uz) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -3466,7 +3483,7 @@ Single‑cell RNA sequencing (scRNA‑seq) data is subject to strict access cont
 
 </details>
 
-### 195. Local FDR Membership Inference Attacks: Multiple Testing and the Role of Ridge Regularization
+### 196. Local FDR Membership Inference Attacks: Multiple Testing and the Role of Ridge Regularization
 
 📝 [OpenReview](https://openreview.net/forum?id=zR0MYMNUF1) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -3484,7 +3501,7 @@ Membership inference attacks (MIAs) are commonly formulated as single-sample hyp
 
 </details>
 
-### 196. Subliminal Learning as Trait-Direction Drift: A Mechanism and Targeted Control under SFT Distillation
+### 197. Subliminal Learning as Trait-Direction Drift: A Mechanism and Targeted Control under SFT Distillation
 
 📄 [arXiv](https://arxiv.org/abs/2609.01091) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-09　🏷 NeurIPS 2026
 
@@ -3502,7 +3519,7 @@ Beyond intended capabilities, model distillation can transfer hidden traits from
 
 </details>
 
-### 197. Leaky Students: Membership Inference against On-Policy Distillation（已库内，0929）
+### 198. Leaky Students: Membership Inference against On-Policy Distillation（已库内，0929）
 
 📄 [arXiv](https://arxiv.org/abs/2609.33136) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-09　🏷 NeurIPS 2026
 
@@ -3520,7 +3537,7 @@ On-policy distillation (OPD) trains a student to match a teacher's next-token di
 
 </details>
 
-### 198. Near-Duplicate Families Break Exact-Record Membership Inference（已库内，0929）
+### 199. Near-Duplicate Families Break Exact-Record Membership Inference（已库内，0929）
 
 📄 [arXiv](https://arxiv.org/abs/2609.33909) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-09　🏷 NeurIPS 2026
 
@@ -3538,7 +3555,7 @@ Membership inference (MI) asks whether a specific record appeared in a model's t
 
 </details>
 
-### 199. What to Remember, What to Reveal: Privacy-Aware Memory for Conversational Agents
+### 200. What to Remember, What to Reveal: Privacy-Aware Memory for Conversational Agents
 
 📄 [arXiv](https://arxiv.org/abs/2608.16551) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-08　🏷 NeurIPS 2026
 
@@ -3556,7 +3573,7 @@ Long-term memory enables personalized conversational agents to retain user infor
 
 </details>
 
-### 200. Inadvertent Context Leakage in Language Models
+### 201. Inadvertent Context Leakage in Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2608.19857) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-08　🏷 NeurIPS 2026
 
@@ -3574,7 +3591,7 @@ For AI agents to be useful beyond simple chat, they must hold sensitive user con
 
 </details>
 
-### 201. Learning What to Forget: Improving LLM Unlearning via Learned Token-Level Importance
+### 202. Learning What to Forget: Improving LLM Unlearning via Learned Token-Level Importance
 
 📄 [arXiv](https://arxiv.org/abs/2606.06320) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-06　🏷 NeurIPS 2026
 
@@ -3592,7 +3609,7 @@ Machine unlearning aims to remove targeted knowledge from a trained model while 
 
 </details>
 
-### 202. Exposing the Illusion of Erasure in Knowledge Editing for LLMs
+### 203. Exposing the Illusion of Erasure in Knowledge Editing for LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2606.23276) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-06　🏷 NeurIPS 2026
 
@@ -3610,7 +3627,7 @@ Knowledge Editing (KE) has emerged as a frontier for updating specific facts in 
 
 </details>
 
-### 203. PrivacySIM: Evaluating LLM Simulation of User Privacy Behavior
+### 204. PrivacySIM: Evaluating LLM Simulation of User Privacy Behavior
 
 📄 [arXiv](https://arxiv.org/abs/2605.12147) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-05　🏷 NeurIPS 2026
 
@@ -3628,7 +3645,7 @@ Large language models (LLMs) are increasingly used to simulate human behavior, b
 
 </details>
 
-### 204. POLAR-Bench: A Diagnostic Benchmark for Privacy-Utility Trade-offs in LLM Agents
+### 205. POLAR-Bench: A Diagnostic Benchmark for Privacy-Utility Trade-offs in LLM Agents
 
 📄 [arXiv](https://arxiv.org/abs/2605.19127) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-05　🏷 NeurIPS 2026
 
@@ -3646,7 +3663,7 @@ LLM agents increasingly have access to private user data and act on the user's b
 
 </details>
 
-### 205. Forgetting Has Neighbors: Localized Collateral Forgetting in Machine Unlearning
+### 206. Forgetting Has Neighbors: Localized Collateral Forgetting in Machine Unlearning
 
 📄 [arXiv](https://arxiv.org/abs/2605.31317) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-05　🏷 NeurIPS 2026
 
@@ -3664,7 +3681,7 @@ Machine unlearning aims to remove the influence of selected training examples wi
 
 </details>
 
-### 206. Subliminal Learning Is Steering Vector Distillation
+### 207. Subliminal Learning Is Steering Vector Distillation
 
 📄 [arXiv](https://arxiv.org/abs/2606.00995) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-05　🏷 NeurIPS 2026
 
@@ -3682,7 +3699,7 @@ Subliminal learning refers to a student language model acquiring a teacher's tra
 
 </details>
 
-### 207. Subliminal Transfer of Unsafe Behaviors in AI Agent Distillation
+### 208. Subliminal Transfer of Unsafe Behaviors in AI Agent Distillation
 
 📄 [arXiv](https://arxiv.org/abs/2604.15559) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-04　🏷 NeurIPS 2026
 
@@ -3700,7 +3717,7 @@ Recent work on subliminal learning demonstrates that language models can transmi
 
 </details>
 
-### 208. CLIOPATRA: Extracting Private Information from LLM Insights
+### 209. CLIOPATRA: Extracting Private Information from LLM Insights
 
 📄 [arXiv](https://arxiv.org/abs/2603.09781) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-03　🏷 NeurIPS 2026
 
@@ -3718,7 +3735,7 @@ The widespread adoption of AI assistants has prompted the development of privacy
 
 </details>
 
-### 209. Models Designed to Forget: Machine Unlearning via Key Deletion
+### 210. Models Designed to Forget: Machine Unlearning via Key Deletion
 
 📄 [arXiv](https://arxiv.org/abs/2603.15033) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-03　🏷 NeurIPS 2026
 
@@ -3736,7 +3753,7 @@ Machine unlearning for vision models is rapidly becoming a practical requirement
 
 </details>
 
-### 210. SMI: Statistical Membership Inference for Reliable Unlearned Model Auditing
+### 211. SMI: Statistical Membership Inference for Reliable Unlearned Model Auditing
 
 📄 [arXiv](https://arxiv.org/abs/2602.01150) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-02　🏷 NeurIPS 2026
 
@@ -3754,7 +3771,7 @@ Machine unlearning (MU) is essential for enforcing the right to be forgotten in 
 
 </details>
 
-### 211. Causal Evaluation of Membership Inference Attacks
+### 212. Causal Evaluation of Membership Inference Attacks
 
 📄 [arXiv](https://arxiv.org/abs/2602.02819) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-02　🏷 NeurIPS 2026
 
@@ -3772,7 +3789,7 @@ Membership Inference Attacks (MIAs) aim to distinguish training points (members)
 
 </details>
 
-### 212. Assessing Per-Sample Membership Inference Vulnerability without Retraining
+### 213. Assessing Per-Sample Membership Inference Vulnerability without Retraining
 
 📄 [arXiv](https://arxiv.org/abs/2602.15919) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-02　🏷 NeurIPS 2026
 
@@ -3790,7 +3807,7 @@ Recent work in the privacy literature shows that sample-targeted membership infe
 
 </details>
 
-### 213. Sequential Membership Inference Attacks
+### 214. Sequential Membership Inference Attacks
 
 📄 [arXiv](https://arxiv.org/abs/2602.16596) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-02　🏷 NeurIPS 2026
 
@@ -3808,7 +3825,7 @@ Modern AI models are not static. They go through multiple updates in their lifec
 
 </details>
 
-### 214. GUIGuard-Bench: Toward a General Evaluation for Privacy-Preserving GUI Agents
+### 215. GUIGuard-Bench: Toward a General Evaluation for Privacy-Preserving GUI Agents
 
 📄 [arXiv](https://arxiv.org/abs/2601.18842) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-01　🏷 NeurIPS 2026
 
@@ -3826,7 +3843,7 @@ As GUI agents increasingly rely on screenshots to perceive and operate digital e
 
 </details>
 
-### 215. Estimating Model-Level Membership Inference Vulnerability Without Reference Models
+### 216. Estimating Model-Level Membership Inference Vulnerability Without Reference Models
 
 📄 [arXiv](https://arxiv.org/abs/2510.19773) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -3859,7 +3876,7 @@ Membership inference attacks (MIAs) have emerged as the standard tool for evalua
 
 ### 水印、溯源与内容真实性
 
-### 216. A Retained-Signal Interface for LLM Watermark Robustness under Paraphrase
+### 217. A Retained-Signal Interface for LLM Watermark Robustness under Paraphrase
 
 📝 [OpenReview](https://openreview.net/forum?id=4sTuTf9CyC) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -3875,7 +3892,7 @@ Watermark robustness under paraphrase is usually reported as AUC against a named
 
 </details>
 
-### 217. Multi-bit LLM Watermarking with Certified Semantic Distortion
+### 218. Multi-bit LLM Watermarking with Certified Semantic Distortion
 
 📝 [OpenReview](https://openreview.net/forum?id=wB0DVBkk59) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -3891,7 +3908,7 @@ Watermarking has emerged as a fundamental mechanism for tracing the provenance o
 
 </details>
 
-### 218. SCTI: Self-Calibrated Trident Identification of Black-Box LLM Watermarks
+### 219. SCTI: Self-Calibrated Trident Identification of Black-Box LLM Watermarks
 
 📝 [OpenReview](https://openreview.net/forum?id=sSXd2zEa4O) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -3907,7 +3924,7 @@ Black-box watermarked LLM identification has become an important task for waterm
 
 </details>
 
-### 219. Invisible Ink, Visible Lies: How Production Watermarking Causes LLMs to Hallucinate
+### 220. Invisible Ink, Visible Lies: How Production Watermarking Causes LLMs to Hallucinate
 
 📝 [OpenReview](https://openreview.net/forum?id=TwmIdwMjZ8) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -3923,7 +3940,7 @@ Text watermarking helps identify AI-generated content, but its effect on factual
 
 </details>
 
-### 220. Beyond Bit Matching: Orthogonal Watermarks for Collusion-Resistant Image Fingerprinting
+### 221. Beyond Bit Matching: Orthogonal Watermarks for Collusion-Resistant Image Fingerprinting
 
 📝 [OpenReview](https://openreview.net/forum?id=wwfGrsZBIz) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -3939,7 +3956,7 @@ Image fingerprinting assigns each distributed copy a user-specific watermark for
 
 </details>
 
-### 221. CLaW: Codec-Guided Adaptive Latent Watermarking for Traceable Diffusion Image Generation
+### 222. CLaW: Codec-Guided Adaptive Latent Watermarking for Traceable Diffusion Image Generation
 
 📝 [OpenReview](https://openreview.net/forum?id=nI6z2amVXh) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -3955,7 +3972,7 @@ With the rapid advancement of text-to-image diffusion models, increasingly reali
 
 </details>
 
-### 222. TIDE: Trajectory-Aware Watermark Propagation for Text-to-Image Diffusion Models
+### 223. TIDE: Trajectory-Aware Watermark Propagation for Text-to-Image Diffusion Models
 
 📝 [OpenReview](https://openreview.net/forum?id=1tohGAfGuc) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -3971,7 +3988,7 @@ Watermarking text-to-image diffusion models provides a practical mechanism for p
 
 </details>
 
-### 223. FiLM-CAM: Keyed Feature Modulation for Conditional-Access Watermarking
+### 224. FiLM-CAM: Keyed Feature Modulation for Conditional-Access Watermarking
 
 📝 [OpenReview](https://openreview.net/forum?id=1b70GKuMjn) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -3987,7 +4004,7 @@ We propose FiLM-CAM; a conditional-access image watermarking approach that enfor
 
 </details>
 
-### 224. FedTrace: Generated-Content-Based Watermark Verification for Traitor Tracing in Federated Learning
+### 225. FedTrace: Generated-Content-Based Watermark Verification for Traitor Tracing in Federated Learning
 
 📝 [OpenReview](https://openreview.net/forum?id=ynVmgUSGjZ) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -4003,7 +4020,7 @@ As large generative models become widely deployed and customized, federated lear
 
 </details>
 
-### 225. PrivateSeal: Low-Sensitivity Latent Directions for Diffusion-Resilient User-Specific Watermarking
+### 226. PrivateSeal: Low-Sensitivity Latent Directions for Diffusion-Resilient User-Specific Watermarking
 
 📝 [OpenReview](https://openreview.net/forum?id=BrU1KQABN9) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -4019,7 +4036,7 @@ Diffusion-driven image editing and regeneration are becoming increasingly widesp
 
 </details>
 
-### 226. PP-Mark: Provable and Publicly Verifiable Watermarking for Generative AI
+### 227. PP-Mark: Provable and Publicly Verifiable Watermarking for Generative AI
 
 📝 [OpenReview](https://openreview.net/forum?id=yPgHWlPwFl) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -4035,7 +4052,7 @@ Generative AI models now produce images indistinguishable from real data, making
 
 </details>
 
-### 227. Watermarking as a Learned Intrinsic Property of Diffusion Models
+### 228. Watermarking as a Learned Intrinsic Property of Diffusion Models
 
 📝 [OpenReview](https://openreview.net/forum?id=v26DCJujUa) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -4051,7 +4068,7 @@ Recent advances in latent diffusion models have enabled high-quality image gener
 
 </details>
 
-### 228. Brute-Force Jailbreaks and Codon-Aware Watermarking for DNA Foundation Models
+### 229. Brute-Force Jailbreaks and Codon-Aware Watermarking for DNA Foundation Models
 
 📝 [OpenReview](https://openreview.net/forum?id=6JUgH59aJ1) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -4067,7 +4084,7 @@ Open-source DNA foundation models such as Evo2 generate sequences with \geq 90% 
 
 </details>
 
-### 229. Face Deepfake-aware Recovery via Semantic-driven Facial Representation-based Watermarking
+### 230. Face Deepfake-aware Recovery via Semantic-driven Facial Representation-based Watermarking
 
 📝 [OpenReview](https://openreview.net/forum?id=SqHbIQuLi6) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -4085,7 +4102,7 @@ Existing image watermarking methods typically entangle visual content with spati
 
 </details>
 
-### 230. Robust and Hard-to-Remove GNN Watermarking via Topological Invariant Perception
+### 231. Robust and Hard-to-Remove GNN Watermarking via Topological Invariant Perception
 
 📝 [OpenReview](https://openreview.net/forum?id=SXZrjQXtkB) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -4103,7 +4120,7 @@ Graph Neural Networks (GNNs) represent valuable intellectual property, yet exist
 
 </details>
 
-### 231. RISE: Red-teaming via Iterative Strategy Evolution for Modern Text-to-Image Models
+### 232. RISE: Red-teaming via Iterative Strategy Evolution for Modern Text-to-Image Models
 
 📝 [OpenReview](https://openreview.net/forum?id=gOoC1Kh4q4) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -4121,7 +4138,7 @@ On modern production text-to-image systems, successful policy violations are rar
 
 </details>
 
-### 232. MUTE: Multi-Level Alignment Uncoupling Against Talking-Head Exploitation for Voice Protection
+### 233. MUTE: Multi-Level Alignment Uncoupling Against Talking-Head Exploitation for Voice Protection
 
 📝 [OpenReview](https://openreview.net/forum?id=AlHi8J4Z6I) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -4139,7 +4156,7 @@ Talking-head generation models, which synthesize realistic facial animations fro
 
 </details>
 
-### 233. Keep It CALM: Analyzing the Limits of Global Unsafety in Text-to-Image Generation
+### 234. Keep It CALM: Analyzing the Limits of Global Unsafety in Text-to-Image Generation
 
 📝 [OpenReview](https://openreview.net/forum?id=VjTAXEfv0N) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -4157,7 +4174,7 @@ Training-free safeguards for text-to-image diffusion models often rely on a reus
 
 </details>
 
-### 234. AuxMark: Defending Against Unauthorized Agent Distillation via Auxiliary Behavioral Watermarking（已库内，0929）
+### 235. AuxMark: Defending Against Unauthorized Agent Distillation via Auxiliary Behavioral Watermarking（已库内，0929）
 
 📄 [arXiv](https://arxiv.org/abs/2609.34597) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-09　🏷 NeurIPS 2026
 
@@ -4175,7 +4192,7 @@ Large language model agents can acquire complex capabilities through multi-step 
 
 </details>
 
-### 235. Auditing Cross-Lingual Fairness in Language Model Watermarking
+### 236. Auditing Cross-Lingual Fairness in Language Model Watermarking
 
 📄 [arXiv](https://arxiv.org/abs/2608.20047) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-08　🏷 NeurIPS 2026
 
@@ -4193,7 +4210,7 @@ Watermarking schemes for large language model output are evaluated almost exclus
 
 </details>
 
-### 236. Learning to Follow In-Context Watermark Instructions via Self-Distillation
+### 237. Learning to Follow In-Context Watermark Instructions via Self-Distillation
 
 📄 [arXiv](https://arxiv.org/abs/2608.29030) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-08　🏷 NeurIPS 2026
 
@@ -4211,7 +4228,7 @@ In-context watermarking (ICW) prepends an instruction to a query asking the mode
 
 </details>
 
-### 237. Secure Seed-Based Multi-bit Watermarking for Diffusion Models from First Principles
+### 238. Secure Seed-Based Multi-bit Watermarking for Diffusion Models from First Principles
 
 📄 [arXiv](https://arxiv.org/abs/2605.06153) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-05　🏷 NeurIPS 2026
 
@@ -4229,7 +4246,7 @@ The rapid emergence of generative image models has led to the development of spe
 
 </details>
 
-### 238. Asymmetric Phase Coding Audio Watermarking
+### 239. Asymmetric Phase Coding Audio Watermarking
 
 📄 [arXiv](https://arxiv.org/abs/2605.07241) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-05　🏷 NeurIPS 2026
 
@@ -4247,7 +4264,7 @@ The proliferation of deepfake audio challenges voice-based authentication system
 
 </details>
 
-### 239. Sequential Behavioral Watermarking for LLM Agents
+### 240. Sequential Behavioral Watermarking for LLM Agents
 
 📄 [arXiv](https://arxiv.org/abs/2605.11036) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-05　🏷 NeurIPS 2026
 
@@ -4265,7 +4282,7 @@ LLM-based agents act through sequences of executable decisions, but their trajec
 
 </details>
 
-### 240. Every Bit, Everywhere, All At Once: A Binomial Multibit LLM Watermark
+### 241. Every Bit, Everywhere, All At Once: A Binomial Multibit LLM Watermark
 
 📄 [arXiv](https://arxiv.org/abs/2605.11653) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-05　🏷 NeurIPS 2026
 
@@ -4283,7 +4300,7 @@ With LLM watermarking already being deployed commercially, practical application
 
 </details>
 
-### 241. TextSeal: A Localized LLM Watermark for Provenance & Distillation Protection
+### 242. TextSeal: A Localized LLM Watermark for Provenance & Distillation Protection
 
 📄 [arXiv](https://arxiv.org/abs/2605.12456) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-05　🏷 NeurIPS 2026
 
@@ -4301,7 +4318,7 @@ We introduce TextSeal, a state-of-the-art watermark for large language models. B
 
 </details>
 
-### 242. Watermarking Should Be Treated as a Monitoring Primitive
+### 243. Watermarking Should Be Treated as a Monitoring Primitive
 
 📄 [arXiv](https://arxiv.org/abs/2605.13095) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-05　🏷 NeurIPS 2026
 
@@ -4319,7 +4336,7 @@ Watermarking is widely proposed for provenance, attribution, and safety monitori
 
 </details>
 
-### 243. Watermarking Game-Playing Agents in Perfect-Information Extensive-Form Games
+### 244. Watermarking Game-Playing Agents in Perfect-Information Extensive-Form Games
 
 📄 [arXiv](https://arxiv.org/abs/2605.14283) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-05　🏷 NeurIPS 2026
 
@@ -4337,7 +4354,7 @@ Watermarking techniques for large language models (LLMs), which encode hidden in
 
 </details>
 
-### 244. Making Open-Source Text LLM Watermarks Durable Against Merging
+### 245. Making Open-Source Text LLM Watermarks Durable Against Merging
 
 📄 [arXiv](https://arxiv.org/abs/2607.20435) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-05　🏷 NeurIPS 2026
 
@@ -4355,7 +4372,7 @@ Open-source LLMs (OSMs)arereaching near state-of-the-art performance, prompting 
 
 </details>
 
-### 245. PGID: Progressive Guided Inversion and Denoising for Robust Watermark Detection
+### 246. PGID: Progressive Guided Inversion and Denoising for Robust Watermark Detection
 
 📄 [arXiv](https://arxiv.org/abs/2605.09319) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-05　🏷 NeurIPS 2026
 
@@ -4373,7 +4390,7 @@ With the proliferation of AI-generated images, digital watermarking has become a
 
 </details>
 
-### 246. On the Robustness of Watermarking for Autoregressive Image Generation
+### 247. On the Robustness of Watermarking for Autoregressive Image Generation
 
 📄 [arXiv](https://arxiv.org/abs/2604.11720) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-04　🏷 NeurIPS 2026
 
@@ -4391,7 +4408,7 @@ The proliferation of autoregressive (AR) image generators demands reliable detec
 
 </details>
 
-### 247. Alignment Imprint: Zero-Shot AI-Generated Text Detection via Provable Preference Discrepancy
+### 248. Alignment Imprint: Zero-Shot AI-Generated Text Detection via Provable Preference Discrepancy
 
 📄 [arXiv](https://arxiv.org/abs/2604.16923) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-04　🏷 NeurIPS 2026
 
@@ -4409,7 +4426,7 @@ Detecting AI-generated text is an important but challenging problem. Existing li
 
 </details>
 
-### 248. TRACE: Structure-Aware Character Encoding for Robust and Generalizable Document Watermarking
+### 249. TRACE: Structure-Aware Character Encoding for Robust and Generalizable Document Watermarking
 
 📄 [arXiv](https://arxiv.org/abs/2603.12873) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-03　🏷 NeurIPS 2026
 
@@ -4427,7 +4444,7 @@ We propose TRACE, a structure-aware framework leveraging diffusion models for lo
 
 </details>
 
-### 249. ArcMark: Distortion-Free Multi-Byte LLM Watermark via Optimal Transport
+### 250. ArcMark: Distortion-Free Multi-Byte LLM Watermark via Optimal Transport
 
 📄 [arXiv](https://arxiv.org/abs/2602.07235) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-02　🏷 NeurIPS 2026
 
@@ -4445,7 +4462,7 @@ Watermarking is an important tool for promoting the responsible use of large lan
 
 </details>
 
-### 250. MarkTune: Improving the Quality-Detectability Trade-off in Model-Embedded LLM Watermarking
+### 251. MarkTune: Improving the Quality-Detectability Trade-off in Model-Embedded LLM Watermarking
 
 📄 [arXiv](https://arxiv.org/abs/2512.04044) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -4463,7 +4480,7 @@ Language model watermarking schemes fall into two broad categories: inference-ti
 
 </details>
 
-### 251. PRO: Enabling Precise and Robust Text Watermark for Open-Source LLMs
+### 252. PRO: Enabling Precise and Robust Text Watermark for Open-Source LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2510.23891) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2025-10　🏷 NeurIPS 2026
 
@@ -4481,7 +4498,7 @@ Text watermarking for large language models (LLMs) enables model owners to verif
 
 </details>
 
-### 252. Majority Bit-Aware Watermarking for Large Language Models
+### 253. Majority Bit-Aware Watermarking for Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2508.03829) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2025-08　🏷 NeurIPS 2026
 
@@ -4499,7 +4516,7 @@ The growing deployment of Large Language Models (LLMs) has raised concerns about
 
 </details>
 
-### 253. Watermarking Without Standards Is Not AI Governance
+### 254. Watermarking Without Standards Is Not AI Governance
 
 📄 [arXiv](https://arxiv.org/abs/2505.23814) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2025-05　🏷 NeurIPS 2026
 
@@ -4525,7 +4542,7 @@ Watermarking has emerged as a leading technical proposal for attributing generat
 
 ### 内部表示干预与监控（安全 threat model 绑定）
 
-### 254. Kernelized Activation Steering
+### 255. Kernelized Activation Steering
 
 📝 [OpenReview](https://openreview.net/forum?id=F4iCxDrUbU) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -4541,7 +4558,7 @@ Activation steering provides a simple, training-free mechanism for controlling a
 
 </details>
 
-### 255. CrossSteer: Cross-Modal Safety Steering for Audio-Language Models
+### 256. CrossSteer: Cross-Modal Safety Steering for Audio-Language Models
 
 📝 [OpenReview](https://openreview.net/forum?id=upHPX6x1xE) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -4557,7 +4574,7 @@ Audio--language models (ALMs) introduce a new jailbreak surface in which harmful
 
 </details>
 
-### 256. Sparse Internal Control of Language Models
+### 257. Sparse Internal Control of Language Models
 
 📝 [OpenReview](https://openreview.net/forum?id=7Q8u18mL29) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -4573,7 +4590,7 @@ Language models are increasingly used in text generation, decision support, and 
 
 </details>
 
-### 257. OASIS: Online Adaptive Steering for In-Training Safety of LLMs
+### 258. OASIS: Online Adaptive Steering for In-Training Safety of LLMs
 
 📝 [OpenReview](https://openreview.net/forum?id=5idvmMr6r1) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -4589,7 +4606,7 @@ Fine-tuning is essential for adapting Large Language Models to downstream tasks.
 
 </details>
 
-### 258. Safety-Aware Latent Space Reasoning in Large Language Models
+### 259. Safety-Aware Latent Space Reasoning in Large Language Models
 
 📝 [OpenReview](https://openreview.net/forum?id=v5ExASonPK) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -4605,7 +4622,7 @@ Latent space reasoning improves inference efficiency by compressing chain-of-tho
 
 </details>
 
-### 259. LLM Rheology: Auditing Refusal Geometry in Aligned Language Models
+### 260. LLM Rheology: Auditing Refusal Geometry in Aligned Language Models
 
 📝 [OpenReview](https://openreview.net/forum?id=nbLsmiH2tO) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -4621,7 +4638,7 @@ Scaling improves language-model capability, but it does not necessarily strength
 
 </details>
 
-### 260. Tight PAC-Bayes Generalisation Guarantees for Large Language Model Safety Monitoring
+### 261. Tight PAC-Bayes Generalisation Guarantees for Large Language Model Safety Monitoring
 
 📝 [OpenReview](https://openreview.net/forum?id=lDwefojK2s) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -4637,7 +4654,7 @@ How can we ensure that safety oversight models used to detect safety violations 
 
 </details>
 
-### 261. ReSAM: Representation-Level Safety Margin Alignment for Vision-Language Models
+### 262. ReSAM: Representation-Level Safety Margin Alignment for Vision-Language Models
 
 📝 [OpenReview](https://openreview.net/forum?id=Q8etLWU90b) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -4655,7 +4672,7 @@ We study the problem of Pseudo-Benign Failures in Vision--Language Models (VLMs)
 
 </details>
 
-### 262. Latent Barrier Steering: Hierarchical Safety for Generative Planning
+### 263. Latent Barrier Steering: Hierarchical Safety for Generative Planning
 
 📝 [OpenReview](https://openreview.net/forum?id=46Wey0MAPk) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -4673,7 +4690,7 @@ We study the problem of Pseudo-Benign Failures in Vision--Language Models (VLMs)
 
 </details>
 
-### 263. The Adversarial Gait: Detecting Visual Adversarial Attacks against Vision-Language Models via Self-Targeted Gradient Characterization
+### 264. The Adversarial Gait: Detecting Visual Adversarial Attacks against Vision-Language Models via Self-Targeted Gradient Characterization
 
 📝 [OpenReview](https://openreview.net/forum?id=qRPR0xpiu8) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -4691,7 +4708,7 @@ Visual adversarial examples are a well-known vulnerability of deep learning (DL)
 
 </details>
 
-### 264. Minimally Invasive Steering of Language Models
+### 265. Minimally Invasive Steering of Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2609.30218) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-09　🏷 NeurIPS 2026
 
@@ -4709,7 +4726,7 @@ Pre-logit steering adapts a frozen language model to a test-time reward by addin
 
 </details>
 
-### 265. AnchorRep: Defending LLMs Against Cross-Model Adversarial Transfer via Representation Repulsion
+### 266. AnchorRep: Defending LLMs Against Cross-Model Adversarial Transfer via Representation Repulsion
 
 📄 [arXiv](https://arxiv.org/abs/2609.32602) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-09　🏷 NeurIPS 2026
 
@@ -4727,7 +4744,7 @@ Adversarial attacks optimized on a single open-weight LLM can transfer to and ja
 
 </details>
 
-### 266. Inverted Detection and Control in Steering Vectors
+### 267. Inverted Detection and Control in Steering Vectors
 
 📄 [arXiv](https://arxiv.org/abs/2608.02957) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-08　🏷 NeurIPS 2026
 
@@ -4745,7 +4762,7 @@ Steering vectors (SVs) are widely used to influence the expression of concepts (
 
 </details>
 
-### 267. Harnessing Textual Refusal Directions for Multimodal Safety（已库内 vlm-alignment #22）
+### 268. Harnessing Textual Refusal Directions for Multimodal Safety（已库内 vlm-alignment #22）
 
 📄 [arXiv](https://arxiv.org/abs/2606.31876) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-06　🏷 NeurIPS 2026
 
@@ -4763,7 +4780,7 @@ To improve safety in Large Language Models (LLMs) we can either perform post-tra
 
 </details>
 
-### 268. Beyond Steering Vector: Flow-based Activation Steering for Inference-Time Intervention
+### 269. Beyond Steering Vector: Flow-based Activation Steering for Inference-Time Intervention
 
 📄 [arXiv](https://arxiv.org/abs/2605.05892) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-05　🏷 NeurIPS 2026
 
@@ -4781,7 +4798,7 @@ Activation steering has emerged as a promising alternative for controlling langu
 
 </details>
 
-### 269. How Useful Is Cross-Domain Generalization for Training LLM Monitors?
+### 270. How Useful Is Cross-Domain Generalization for Training LLM Monitors?
 
 📄 [arXiv](https://arxiv.org/abs/2605.12265) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-05　🏷 NeurIPS 2026
 
@@ -4799,7 +4816,7 @@ Using prompted language models as classifiers enables classification in domains 
 
 </details>
 
-### 270. CoT-Guard: Small Models for Strong Monitoring
+### 271. CoT-Guard: Small Models for Strong Monitoring
 
 📄 [arXiv](https://arxiv.org/abs/2605.12746) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-05　🏷 NeurIPS 2026
 
@@ -4817,7 +4834,7 @@ Monitoring the chain-of-thought (CoT) of reasoning models is a promising approac
 
 </details>
 
-### 271. Tracing Persona Vectors Through LLM Pretraining
+### 272. Tracing Persona Vectors Through LLM Pretraining
 
 📄 [arXiv](https://arxiv.org/abs/2605.13329) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-05　🏷 NeurIPS 2026
 
@@ -4835,7 +4852,7 @@ How large language models internally represent high-level behaviors is a core in
 
 </details>
 
-### 272. Selective Safety Steering via Value-Filtered Decoding
+### 273. Selective Safety Steering via Value-Filtered Decoding
 
 📄 [arXiv](https://arxiv.org/abs/2605.14746) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-05　🏷 NeurIPS 2026
 
@@ -4853,7 +4870,7 @@ While large language models (LLMs) are trained to align with human values, their
 
 </details>
 
-### 273. Measuring Safety Alignment Effects in Autonomous Security Agents
+### 274. Measuring Safety Alignment Effects in Autonomous Security Agents
 
 📄 [arXiv](https://arxiv.org/abs/2605.19722) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-05　🏷 NeurIPS 2026
 
@@ -4871,7 +4888,7 @@ Do stock safety-aligned language models and their uncensored or abliterated deri
 
 </details>
 
-### 274. Benchmarking and Improving Monitors for Out-Of-Distribution Alignment Failure in LLMs
+### 275. Benchmarking and Improving Monitors for Out-Of-Distribution Alignment Failure in LLMs
 
 📄 [arXiv](https://arxiv.org/abs/2605.21602) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-05　🏷 NeurIPS 2026
 
@@ -4889,7 +4906,7 @@ Many safety and alignment failures of large language models (LLMs) occur due to 
 
 </details>
 
-### 275. Safety Geometry Collapse in Multimodal LLMs and Adaptive Drift Correction
+### 276. Safety Geometry Collapse in Multimodal LLMs and Adaptive Drift Correction
 
 📄 [arXiv](https://arxiv.org/abs/2605.18104) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-05　🏷 NeurIPS 2026
 
@@ -4907,7 +4924,7 @@ Multimodal large language models (MLLMs) often fail to transfer safety capabilit
 
 </details>
 
-### 276. Understanding and Defending VLM Jailbreaks via Jailbreak-Related Representation Shift
+### 277. Understanding and Defending VLM Jailbreaks via Jailbreak-Related Representation Shift
 
 📄 [arXiv](https://arxiv.org/abs/2603.17372) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-03　🏷 NeurIPS 2026
 
@@ -4925,7 +4942,7 @@ Large vision-language models (VLMs) often exhibit weakened safety alignment with
 
 </details>
 
-### 277. Latent Introspection: Models Can Detect Prior Concept Injections
+### 278. Latent Introspection: Models Can Detect Prior Concept Injections
 
 📄 [arXiv](https://arxiv.org/abs/2602.20031) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-02　🏷 NeurIPS 2026
 
@@ -4943,7 +4960,7 @@ We uncover a latent capacity for introspection in a Qwen 32B model, demonstratin
 
 </details>
 
-### 278. BarrierSteer: LLM Safety via Learning Barrier Steering
+### 279. BarrierSteer: LLM Safety via Learning Barrier Steering
 
 📄 [arXiv](https://arxiv.org/abs/2602.20102) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-02　🏷 NeurIPS 2026
 
@@ -4961,7 +4978,7 @@ Despite the strong performance of large language models (LLMs) across diverse ta
 
 </details>
 
-### 279. Steering Externalities: Benign Activation Steering Unintentionally Increases Jailbreak Risk for Large Language Models
+### 280. Steering Externalities: Benign Activation Steering Unintentionally Increases Jailbreak Risk for Large Language Models
 
 📄 [arXiv](https://arxiv.org/abs/2602.04896) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-02　🏷 NeurIPS 2026
 
@@ -4979,7 +4996,7 @@ Activation steering is a practical post-training model alignment technique to en
 
 </details>
 
-### 280. Graph-Regularized Sparse Autoencoders for LLM Safety Steering
+### 281. Graph-Regularized Sparse Autoencoders for LLM Safety Steering
 
 📄 [arXiv](https://arxiv.org/abs/2512.06655) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2025-12　🏷 NeurIPS 2026
 
@@ -4997,7 +5014,7 @@ Sparse autoencoders (SAEs) are increasingly used to extract activation direction
 
 </details>
 
-### 281. Persona Vectors: Monitoring and Controlling Character Traits in Language Models（已库内 misc/persona-vectors 同族待核）
+### 282. Persona Vectors: Monitoring and Controlling Character Traits in Language Models（已库内 misc/persona-vectors 同族待核）
 
 📄 [arXiv](https://arxiv.org/abs/2507.21509) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2025-07　🏷 NeurIPS 2026
 
@@ -5024,7 +5041,7 @@ Large language models interact with users through a simulated 'Assistant' person
 
 ### 评测有效性与元层（精选）
 
-### 282. Auditing AI peer reviewers: dose-response and false-positive benchmark on real scientific papers
+### 283. Auditing AI peer reviewers: dose-response and false-positive benchmark on real scientific papers
 
 📝 [OpenReview](https://openreview.net/forum?id=Pf1SuIB41Z) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -5040,7 +5057,7 @@ LLM-based peer review is now used at production scale, but rigorous evaluation r
 
 </details>
 
-### 283. Recovering Clean Evaluation Metrics from Contaminated Benchmarks
+### 284. Recovering Clean Evaluation Metrics from Contaminated Benchmarks
 
 📝 [OpenReview](https://openreview.net/forum?id=NwYunMgkJx) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -5056,7 +5073,7 @@ When benchmark examples overlap with a model’s training data, benchmark contam
 
 </details>
 
-### 284. Bypassing PC1 Makes SAEs More Reproducible
+### 285. Bypassing PC1 Makes SAEs More Reproducible
 
 📝 [OpenReview](https://openreview.net/forum?id=0YAxdKV85F) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -5072,7 +5089,7 @@ Sparse autoencoders (SAEs) are widely used to decompose language model activatio
 
 </details>
 
-### 285. Market Incentives for AI Safety Investment
+### 286. Market Incentives for AI Safety Investment
 
 📝 [OpenReview](https://openreview.net/forum?id=S4uLBohGBD) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -5090,7 +5107,7 @@ Despite their practical significance, modern AI systems pose significant societa
 
 </details>
 
-### 286. Speech Tokenizers are Vulnerable:  Transferable Semantic Attack and Robust Tokenizer
+### 287. Speech Tokenizers are Vulnerable:  Transferable Semantic Attack and Robust Tokenizer
 
 📝 [OpenReview](https://openreview.net/forum?id=oVx8Urehhw) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -5108,7 +5125,7 @@ Speech tokenizers serve as the critical interface between continuous speech sign
 
 </details>
 
-### 287. Auditing Instruction Robustness in Vision-Language-Action Models via Diversity-Aware Red Teaming
+### 288. Auditing Instruction Robustness in Vision-Language-Action Models via Diversity-Aware Red Teaming
 
 📝 [OpenReview](https://openreview.net/forum?id=80h2jS8emw) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -5126,7 +5143,7 @@ Vision-Language-Action (VLA) models have achieved remarkable success in robotic 
 
 </details>
 
-### 288. Controllable Multi-label Video Safety Detection via Adaptive Tversky Policy Optimization
+### 289. Controllable Multi-label Video Safety Detection via Adaptive Tversky Policy Optimization
 
 📄 [arXiv](https://arxiv.org/abs/2610.02019) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-10　🏷 NeurIPS 2026（原 OpenReview-only，arXiv 版 2026-10-02 挂出）
 
@@ -5146,7 +5163,7 @@ The rapid growth of video-based social media has increased users’ exposure to 
 
 </details>
 
-### 289. Decomposing One Professional-Framing Pipeline: Which Components Shift LLM Safety Boundaries?
+### 290. Decomposing One Professional-Framing Pipeline: Which Components Shift LLM Safety Boundaries?
 
 📝 [OpenReview](https://openreview.net/forum?id=1UvkQdlJOO) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -5164,7 +5181,7 @@ Jailbreak attacks that frame harmful queries as professional requests can bypass
 
 </details>
 
-### 290. There are Levels to It: Red Teaming LLMs with Hierarchical Reinforcement Learning
+### 291. There are Levels to It: Red Teaming LLMs with Hierarchical Reinforcement Learning
 
 📝 [OpenReview](https://openreview.net/forum?id=MgRh8Pu9er) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026　🏷 NeurIPS 2026
 
@@ -5182,7 +5199,7 @@ Red teaming is essential for securing Large Language Models, yet current automat
 
 </details>
 
-### 291. Hearsay: Can an Auditor Trust the Record a Deployed Agent Harness Writes?（已库内，0929）
+### 292. Hearsay: Can an Auditor Trust the Record a Deployed Agent Harness Writes?（已库内，0929）
 
 📄 [arXiv](https://arxiv.org/abs/2609.32495) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-09　🏷 NeurIPS 2026
 
@@ -5200,7 +5217,7 @@ An agent harness, the code that turns a model into an agent, writes its own reco
 
 </details>
 
-### 292. Silent Failures in Agentic Security Evaluation（已库内，0929）
+### 293. Silent Failures in Agentic Security Evaluation（已库内，0929）
 
 📄 [arXiv](https://arxiv.org/abs/2609.32691) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-09　🏷 NeurIPS 2026
 
@@ -5218,7 +5235,7 @@ LLM agents that invoke privileged tools are vulnerable to indirect prompt inject
 
 </details>
 
-### 293. Evaluation Awareness in Language Models Has Limited Effect on Behaviour
+### 294. Evaluation Awareness in Language Models Has Limited Effect on Behaviour
 
 📄 [arXiv](https://arxiv.org/abs/2605.05835) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-05　🏷 NeurIPS 2026
 
@@ -5236,7 +5253,7 @@ Large reasoning models (LRMs) sometimes note in their chain of thought (CoT) tha
 
 </details>
 
-### 294. How Hard is it to Rig a Benchmark? A Social Choice Analysis of Leaderboard Robustness
+### 295. How Hard is it to Rig a Benchmark? A Social Choice Analysis of Leaderboard Robustness
 
 📄 [arXiv](https://arxiv.org/abs/2605.23628) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-05　🏷 NeurIPS 2026
 
@@ -5254,7 +5271,7 @@ Multi-task benchmarks have become a central pillar of machine learning research,
 
 </details>
 
-### 295. Models That Know How Evaluations Are Designed Score Safer
+### 296. Models That Know How Evaluations Are Designed Score Safer
 
 📄 [arXiv](https://arxiv.org/abs/2605.28591) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-05　🏷 NeurIPS 2026
 
@@ -5272,7 +5289,7 @@ The validity of AI safety evaluations depends on models behaving consistently ac
 
 </details>
 
-### 296. LiSA: Lifelong Safety Adaptation via Conservative Policy Induction
+### 297. LiSA: Lifelong Safety Adaptation via Conservative Policy Induction
 
 📄 [arXiv](https://arxiv.org/abs/2605.14454) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-05　🏷 NeurIPS 2026
 
@@ -5290,7 +5307,7 @@ As AI agents move from chat interfaces to systems that read private data, call t
 
 </details>
 
-### 297. Soft Contamination Means Benchmarks Test Shallow Generalization
+### 298. Soft Contamination Means Benchmarks Test Shallow Generalization
 
 📄 [arXiv](https://arxiv.org/abs/2602.12413) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-02　🏷 NeurIPS 2026
 
@@ -5308,7 +5325,7 @@ If LLM training data is polluted with benchmark test data, then benchmark perfor
 
 </details>
 
-### 298. Sanity Checks for Sparse Autoencoders: Do SAEs Beat Random Baselines?
+### 299. Sanity Checks for Sparse Autoencoders: Do SAEs Beat Random Baselines?
 
 📄 [arXiv](https://arxiv.org/abs/2602.14111) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-02　🏷 NeurIPS 2026
 
@@ -5326,7 +5343,7 @@ Sparse Autoencoders (SAEs) have emerged as a promising tool for interpreting neu
 
 </details>
 
-### 299. GT-HarmBench: Benchmarking AI Safety Risks Through the Lens of Game Theory
+### 300. GT-HarmBench: Benchmarking AI Safety Risks Through the Lens of Game Theory
 
 📄 [arXiv](https://arxiv.org/abs/2602.12316) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2026-02　🏷 NeurIPS 2026
 
@@ -5344,7 +5361,7 @@ Frontier AI systems are increasingly capable and deployed in high-stakes multi-a
 
 </details>
 
-### 300. Test-Time Defense Against Adversarial Attacks via Stochastic Resonance of Latent Ensembles
+### 301. Test-Time Defense Against Adversarial Attacks via Stochastic Resonance of Latent Ensembles
 
 📄 [arXiv](https://arxiv.org/abs/2510.03224) · 🎓 [Official](https://neurips.cc/Downloads/2026)　📅 2025-10　🏷 NeurIPS 2026
 
@@ -5373,6 +5390,8 @@ We propose a test-time defense mechanism against adversarial attacks: impercepti
 - Forced Orders: What LLM Leaderboards Hide About Model Comparisons
 
 ## 核验记录
+
+- 2026-10-07（五轮补查·进行中）：DIBench 捞回升级为卡（arXiv 2610.06898，NeurIPS 2026 Evaluations and Datasets Track 官方证实）；本轮 ti: 补查 20/67 时撞长惩罚窗，剩余 47 条续跑中，后续命中随下次更新追加。
 
 - 2026-09-30：首版建立（官方 9,127 条标题宽筛，八分类清单）→ 二次 36 卡 → 三轮补查 105 卡（累计 141）。
 - 2026-09-30（四轮·辅助源交叉）：引入 [hongsong-wang/NeurIPS2026 收集页](https://hongsong-wang.github.io/NeurIPS2026/)（7,900 篇、OpenReview forum 链接+摘要、3,495 篇 arXiv 链接）交叉定位——待核清单捞回 93 篇、反向查漏补收 66 篇，合计新增 159 卡（其中 arXiv 卡 36、OpenReview-only 卡 123，后者摘要取自该收集页）。累计卡片 300 篇。
