@@ -811,3 +811,22 @@ As large language models (LLMs) are increasingly deployed in real-world high-sta
 Recent advances in LLMs and VLMs have enabled safety systems to reason beyond simple risk patterns toward more contextual and semantic safety concerns. However, as risk patterns continue to evolve and safety rules become more complex, existing training-based end-to-end safeguards face persistent challenges in adaptability and explainable reasoning over complex safety rules. To address these challenges, we propose GuardEn (Guarding by Safety Rule Entailment), an executable safeguard framework that decomposes safety policies into atomic propositions through Safety-Rule Compilation, modeling their composition as executable code. At test time, Scene-Grounded Execution instantiates these atomic propositions with contextual visual information derived from scene graphs, enabling rule-grounded and interpretable safety reasoning. Experiments on SafetyVisionBench demonstrate the effectiveness of programmable safeguard for complex visual safety assessment, achieving an average improvement of 9.8 F1 points over the strongest baseline.
 
 </details>
+
+### 43. AdaGuard: Enhancing Safety and Policy Compliance with Reasoning-Enabled LLM-As-A-Judge Guardrails
+
+📄 [arXiv](https://arxiv.org/abs/2610.08923)　📅 2026-10
+
+**关键词**：`defense`、`adaptive guardrail`、`LLM-as-judge`、`reasoning budget`
+
+👤 **作者**：Melissa Kazemi Rad、…、Sambit Sahu
+
+- 🎯 **研究动机**：企业 guardrail 依赖固定策略集——风险态势、政策演化与延迟约束多样
+- 🔬 **研究方法**：AdaGuard：SFT+GRPO 训练推理使能的 LLM-judge guardrail，运行时泛化到用户定义政策+按输入-政策复杂度自适应分配推理预算
+- 📌 **结论**：黑盒快速与可解释推理双模切换的适应型审核
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Enterprise generative AI applications require robust safety mechanisms that can accommodate diverse risk postures, evolving policies, and varying latency constraints. Current guardrail solutions often suffer from rigidity, relying on fixed policy sets and offering limited transparency or reasoning flexibility. We present Adaguard, an adaptive LLM-as-a-Judge framework designed to address these challenges through dynamic policy enforcement and adaptive reasoning-budget allocation. Built using supervised fine-tuning (SFT) and reinforcement learning (GRPO), AdaGuard generalizes to user-defined safety and compliance policies at runtime without requiring frequent model updates. A core innovation of our approach is the ability to dynamically infer the complexity of input-policy pairs, allowing the model to switch between high-speed black-box inference and explainable, reasoning-enabled moderation. This flexibility enables developers to balance stringent latency requirements with the need for actionable transparency. This adaptive capability allows AdaGuard to rival other guardrail and frontier models several times its size, while its auto-reasoning mode recovers the accuracy of always-on reasoning at a fraction of the latency
+
+</details>

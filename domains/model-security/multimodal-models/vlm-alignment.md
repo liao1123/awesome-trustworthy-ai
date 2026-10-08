@@ -856,3 +856,22 @@ Vision-language models (VLMs) are increasingly trained to generate structured ou
 Vision-language models (VLMs) face compositional safety risks where harmful intent emerges from the interaction between visual and textual inputs. As mixture-of-experts (MoE) VLMs become increasingly common, recent work has explored various safety interventions, including prompting, supervised fine-tuning, and routing-based expert steering. However, these methods show inconsistent improvements across models and evaluation distributions, and the intervention into model behavior or internal states introduce safety-utility tradeoffs by over-refusal. Rather than manipulating internal states to steer model behavior, we instead ask whether routing states can serve as diagnostic signals for multimodal safety. We find that router logits indeed provide highly predictive signals of whether a multimodal input is safe or not. Motivated by this observation, we introduce a lightweight router-logit safety detector that reads out routing signals during prompt prefill and identifies unsafe requests before generation, without modifying model parameters or expert routing. Across Qwen3-VL and Kimi-VL, the proposed detector substantially reduces safety errors on the HoliSafe benchmark and resoundingly generalizes to out-of-distribution safety benchmarks featuring different safety patterns, including MISHard and MM-SafetyBench. The success of the proposed router-logit detector also suggests a broader perspective on model internals: rather than focusing only on manipulating internal components to steer behavior, simply reading naturally emerging signals and linking them to an external safety mechanism can provide a simple, effective, and non-intrusive complement to existing safety interventions.
 
 </details>
+
+### 46. Understanding and Mitigating Token-Pruning-Induced Vulnerabilities in VLMs
+
+📄 [arXiv](https://arxiv.org/abs/2610.09703)　📅 2026-10
+
+**关键词**：`defense`、`token pruning safety`、`malicious amplification`、`safety-aware pruning`
+
+👤 **作者**：Shuailong Wang、Xinyu Lyu、Shengming Yuan、Jingkuan Song、Heng Tao Shen、Lianli Gao
+
+- 🎯 **研究动机**：Token 剪枝作为 VLM 加速手段的安全影响未被探索
+- 🔬 **研究方法**：首个 token 剪枝安全评测：发现背景 token 移除使注意力坍缩到恶意锚点的 Pruning-Induced Malicious Amplification 机制；SAP 推理时对抗
+- 📌 **结论**：剪枝率升高多数策略降安全而查询式压缩反升——加速与安全的机制级权衡与修复
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Token-Pruning accelerates Vision-Language Models by removing redundant visual tokens, yet its safety implications remain underexplored. In this work, we present the first comprehensive safety evaluation of Token-Pruning mechanisms and find that: most pruning strategies significantly degrade safety as pruning ratios increase, whereas Query-based Compression shows the opposite, with extreme pruning (up to 99.8%), unexpectedly improves model safety. This sharp contrast prompts a key question: How do different Token-Pruning strategies reshape model safety behavior, and is it possible to enhance safety without sacrificing acceleration? To answer this, we identify an unrecognized mechanism, termed Pruning-Induced Malicious Amplification, where removal of background tokens triggers a side effect: forcing the model's attention to collapse onto a few retained malicious anchors within the foreground, inadvertently amplifying their toxic semantics under jailbreak. To address that, we propose an inference-time and plug-and-play Safety-Aware Pruning (SAP) mechanism that counteracts such dominance via three steps: (1) identifying malicious anchors, (2) restoring pruned benign tokens, and (3) reallocating excessive attention from malicious anchors to benign tokens. Extensive experiments across three safety and four utility benchmarks demonstrate that SAP mitigates pruning-induced vulnerabilities, i.e., reducing ASR by up to 62%, without compromising efficiency or utility.
+
+</details>

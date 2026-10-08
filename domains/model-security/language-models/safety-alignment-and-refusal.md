@@ -2372,3 +2372,41 @@ Ensuring the safe and reliable deployment of large language models (LLMs) remain
 LLM agents are increasingly capable of executing complex tasks and of recursively improving themselves on easy-to-verify objectives such as software engineering and mathematics. Since alignment is much harder to verify, this creates a growing risk of capabilities increasing without appropriate safety alignment, especially as capabilities expand to auto-research and cybersecurity. Existing approaches focus on capability self-improvement using verifiable feedback or on alignment training with supervision from stronger models or curated data, creating an external supervision bottleneck for alignment. We ask whether current models can improve their own safety alignment, and propose SIGMA, a data generation and training pipeline enabling alignment self-improvement that generalizes to out-of-distribution settings. Given only a "Model Spec" stating the model's desired behavior, SIGMA leverages a model's reasoning capabilities to strengthen its own safety reasoning. SIGMA first performs spec-guided task synthesis, using the candidate model as a task designer agent to generate diverse alignment dilemma scenarios and convert them into training tasks that stress-test its understanding of the Model Spec. Next, SIGMA conducts self-judged alignment training through supervised fine-tuning and rubric-based reinforcement learning with the model itself as the reward model. Despite training only on single-turn chat data, SIGMA improves safety alignment in multi-turn agentic environments (AgentHarm harmfulness decreases from 22.6 to 14.8; Agentic Misalignment decreases from 79.1 to 3.8), outperforms Deliberative Alignment and Constitutional AI baselines, and retains general capability. Analyses show that a Model Spec balancing harmlessness and helpfulness, test-time reasoning for safety deliberation, and high-quality rubrics from SIGMA's task designer agent are crucial for effective self-improvement.
 
 </details>
+
+### 127. How Fragile Is On-Device Language Model Safety? Localizing Safety-Critical Parameters for Sparse Fault Analysis
+
+📄 [arXiv](https://arxiv.org/abs/2610.09000)　📅 2026-10
+
+**关键词**：`attack`、`safety parameter localization`、`sparse fault analysis`、`on-device models`
+
+👤 **作者**：Muhammad Zeeshan Karamat、Christiana Chamon Garcia
+
+- 🎯 **研究动机**：端侧 SLM 参数完整性成为安全关切——安全行为是否集中在稀疏参数子集形成小故障面
+- 🔬 **研究方法**：低秩安全关联子空间分析+参数级安全-效用重要性过滤
+- 📌 **结论**：只改 down_proj 0.19% 权重即得 53% Basic/56% GCG ASR 而效用几乎不变——定向故障分析与选择性完整性保护的对象定位
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+As small language models (SLMs) are increasingly deployed on resource-constrained and on-device platforms, including as components of agentic systems, the integrity of locally stored model parameters becomes an important safety concern. We investigate whether safety-sensitive behavior in LLaMA-2-7B-Chat is concentrated within a sparse subset of parameters, creating a reduced fault surface for targeted analysis. We study two complementary localization methods: low-rank safety-associated subspace analysis and parameter-level safety--utility importance filtering. Both approaches reveal highly non-uniform safety sensitivity across the network, with the MLP down_proj consistently emerging as a prominent safety-sensitive component and o_proj providing a smaller contribution. Using parameter-level localization, modifying only 0.19% of model weights in down_proj yields 53% Basic ASR and 56% GCG ASR, while tinyBenchmarks accuracy remains at 51.6% compared with a 52.2% unmodified baseline. These results motivate targeted fault analysis and selective integrity protection for language models deployed in resource-constrained, on-device, and agentic settings.
+
+</details>
+
+### 128. SafeEvo: Deciphering the Safety Alignment Mechanism and Evolution in Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2610.09600)　📅 2026-10
+
+**关键词**：`analysis`、`refusal circuit`、`alignment evolution`、`alignment tax`
+
+👤 **作者**：Miao Yu、Hao Huang、Lu Yuan、Yunpeng Li、Kun Wang、Zuming Jiang
+
+- 🎯 **研究动机**：安全可解释性聚焦对齐后表示——预训练底座的拒绝机制与跨对齐检查点演化被忽视
+- 🔬 **研究方法**：电路视角：优化提取预训练底座的弱拒绝电路，追踪跨对齐检查点的结构演化
+- 📌 **结论**：消融弱拒绝电路完全消除底座拒答；对齐税可能源于拒绝电路更新波及效用参数（安全机制的训练来源追溯）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Safety interpretability advances the study of Large Language Model (LLM) alignment from behavioral constraints driven by data or algorithms towards a deeper understanding of internal mechanisms. However, existing works have focused primarily on safety-related representations, attention heads, or neurons after alignment, while largely overlooking the safety mechanisms in pretrained-only models and their evolution across alignment checkpoints. To address this, we propose SafeEvo, an interpretability framework from the circuit (sparse subgraphs of an LLM) perspective. SafeEvo first applies an optimization-based extraction algorithm to identify weak refusal circuits in pretrained base LLMs that can independently express refusal behavior. Causally ablating these circuits completely eliminates the base model's refusal of harmful inputs. SafeEvo then traces the evolution of refusal circuits across successive alignment checkpoints and finds that their structures change progressively, suggesting that the alignment tax may result from refusal-circuit updates affecting utility-related parameters. To validate this, SafeEvo introduces Safety Circuit Alignment (SCA), which confines safety updates to the refusal circuits. Experiments across three LLMs and two alignment algorithms show that, on average, SCA outperforms vanilla alignment in three aspects: \textbf{(1) stronger alignment}, lowering harmfulness score by 63.21\%; \textbf{(2) less over-refusal}, yielding a 58.44\% decrease in refusal rates for benign queries; and \textbf{(3) better utility}, retaining 99.58\% of the original model capabilities.
+
+</details>

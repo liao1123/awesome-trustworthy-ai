@@ -1031,3 +1031,22 @@ Contrastive learning has become a leading self- supervised approach to represent
 - 🎯 **研究动机**：LMM后门攻防研究分散，缺统一分类框架
 - 🔬 **研究方法**：综述覆盖VLP、LVLM、多模态扩散与具身系统的攻防taxonomy
 - 📌 **结论**：梳理方法谱系与开放问题并维护持续更新索引
+
+### 58. Purifying Backdoored Large Vision-Language Models by Removing Hijacked Directions
+
+📄 [arXiv](https://arxiv.org/abs/2610.09941)　📅 2026-10
+
+**关键词**：`defense`、`LVLM backdoor`、`direction hijacking`、`orthogonal projection`
+
+👤 **作者**：Bojun Yang、Haochen Zhou、Zhifang Zhang、Haobo Wang、Songze Li、Lei Feng
+
+- 🎯 **研究动机**：LVLM 后门防御成本高：需大量干净数据重训或逐查询推理时干预
+- 🔬 **研究方法**：结构分析发现后门以劫持少量权重更新方向编码（direction hijacking）；少量干净样本构造伪良性参考模型后一步正交投影净化
+- 📌 **结论**：无需大量重训的后门权重净化（后门修复的表示级机制）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large vision-language models (LVLMs) are increasingly deployed in safety-critical applications, yet they remain vulnerable to backdoor attacks. Defending against such attacks remains costly, as existing methods require either extensive retraining on clean data or per-query intervention at inference time. To address this limitation, we propose OrthoPurify, a more efficient method to purify backdoored model weights via one-step orthogonal projection. Specifically, through structural analysis of backdoor weight updates, we find that the backdoor is encoded by diverting a small number of weight update directions from task adaptation to backdoor shortcut encoding, a phenomenon we term direction hijacking. However, identifying these hijacked directions requires a benign reference model, which is typically inaccessible to the defender. We show that a pseudo-benign model, obtained by fine-tuning the pretrained weights on only a small set of clean samples, provides a sufficient approximation, as the dominant update directions stabilize within the first few gradient steps. OrthoPurify uses this pseudo-benign reference to isolate the hijacked directions and removes them through a single projection on the weight update. Extensive experiments show that OrthoPurify reduces the attack success rate to near zero while preserving the original performance across diverse benchmarks, without retraining the backdoored model or introducing inference-time overhead. Our code is publicly available at this https URL.
+
+</details>

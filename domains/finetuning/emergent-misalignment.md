@@ -889,3 +889,22 @@ Fine-tuning large language models on narrow, misaligned tasks can undo their pos
 </details>
 
 ## 常规收录
+
+### 47. The Persona Hierarchy Model: Understanding Contextual Generalization in Fine-Tuning LLMs
+
+📄 [arXiv](https://arxiv.org/abs/2610.09384)　📅 2026-10
+
+**关键词**：`analysis`、`contextual generalization`、`persona hierarchy`、`fine-tuning transfer`
+
+👤 **作者**：Jiachen Zhao、Zhengxuan Wu、David Bau、Weiyan Shi
+
+- 🎯 **研究动机**：固定上下文微调的行为有时局限于该上下文、有时跨上下文泛化——机制不明
+- 🔬 **研究方法**：Persona 层次模型：共享默认 persona 影响跨上下文行为；120 微调模型相关性分析+默认上下文预微调+persona 保持正则
+- 📌 **结论**：训练上下文与默认 persona 的相似度预测泛化宽度（r=0.72）；PPR 限制不良上下文泛化（微调行为迁移的机制图）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Language models are routinely fine-tuned under a fixed context, such as a generic system prompt, persona or domain-specific instruction, yet the learned behavior sometimes stays confined to that context and sometimes broadly generalizes to unseen contexts. We propose the Persona Hierarchy Model to explain this: a shared default persona influences behavior across contexts. Under this model, fine-tuning that modifies the shared persona promotes broader transfer, whereas changes to local personas remain more context-specific. Across 120 fine-tuned models spanning four behaviors and 15 training contexts, generalization narrowness positively correlates with the similarity between the training context's persona and the default persona (Pearson's r = 0.72 for Qwen3-4B). Prior fine-tuning under the default context can broaden generalization in subsequent training under other contexts. Aligning contextual responses with default-persona responses produces stronger effects. Finally, we propose persona-preserving regularization (PPR) to confine undesired contextual generalization. In RL, PPR cuts reward hacking from 42-55% to at most 0.2% under every evaluated prompt while retaining accuracy gains. These results support the Persona Hierarchy Model as an explanation for contextual generalization and can motivate future controls on unintended generalization for better alignment of LLMs.
+
+</details>

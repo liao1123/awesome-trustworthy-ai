@@ -1715,3 +1715,24 @@ Fine-tuning-as-a-service lets users adapt a safety-aligned language model to the
 Supervised fine-tuning can substantially improve the downstream utility of large language models (LLMs) but may compromise their safety. Existing safety-preserving methods constrain downstream updates using safety-related parameters or subspaces, but mainly focus on safety preservation rather than joint safety and utility enhancement, lack a theoretical characterization of the optimal safety-related subspace and safety-preserving task update, and typically rely on a static safety subspace that may become outdated during fine-tuning. To address these limitations, we propose ASCENT, a downstream fine-tuning framework for safety--utility co-enhancement through first-order optimal safety-aware periodic calibration and task optimization. We model safety as a function of LLM parameters $S(θ)$ and use its first-order approximation to characterize safety changes under parameter updates. Under a fixed rank and Frobenius-norm budget, we prove that the update constructed from the top-$r$ singular components of the safety-function gradient maximizes the estimated safety change, and use it for periodic calibration to preserve and improve safety. We further derive a unique safety-preserving task update that stays close to the original task update while penalizing negative effects on the estimated safety change. ASCENT alternates these optimal task and calibration updates to jointly enhance safety and utility. Experiments across multiple LLM families and downstream tasks show that ASCENT improves downstream utility by up to 20.3\% and reduces attack success rate by up to 35.5\%, achieving state-of-the-art safety and utility across all evaluated settings. Our code is available at https://github.com/ZJU-LLM-Safety/ASCENT.
 
 </details>
+
+### 92. SLDR: Defending Against Malicious Fine-tuning via Selective Layers Recovery and Dynamic Routing
+
+📄 [arXiv](https://arxiv.org/abs/2610.10345)　📅 2026-10
+
+**关键词**：`defense`、`malicious fine-tuning`、`selective layers recovery`、`dynamic routing`
+
+👤 **作者**：Hui Zhang、Yachao Yuan、Jiayun Wang、Yuanzhuo Li、Hongtao Wang、Yali Yuan
+
+- 🎯 **研究动机**：服务化微调场景下恶意微调侵蚀拒答行为但保留正常任务性能——事后防线缺位
+- 🔬 **研究方法**：发现层安全敏感性是有符号谱：SLDR 只在最敏感层训 LoRA 恢复适配器+表示驱动动态路由仅对恶意查询激活
+- 📌 **结论**：四架构五任务上大幅降低有害输出且保持效用（恶意微调的轻量后处理防御）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Fine-tuning-as-a-service enables users to adapt aligned large language models (LLMs) to specialized tasks, but malicious fine-tuning can erode refusal behavior while preserving task performance on legitimate inputs. We revisit recent layer-wise safety diagnostics and find that safety sensitivity is signed: scaling different layers can strengthen refusal, weaken it, or have little effect. Motivated by this observation, we propose SLDR, a post-fine-tuning defense based on Selective Layers Recovery and Dynamic Routing. SLDR trains a LoRA recovery adapter only on the layers with the maximum and minimum sensitivity scores in the signed spectrum, and uses representation-based dynamic routing inference to activate the adapter only for malicious queries. Across four model architectures, five downstream tasks, and four harmful benchmarks, SLDR substantially reduces harmful outputs while preserving downstream utility. On Llama3.1/SST2, SLDR reduces the average harmful score from 11.54 to 0.08 while maintaining downstream accuracy, and the harmful score remains near zero under poisoning ratios up to 0.9. The code is available at this https URL.
+
+</details>
+
+## 常规收录

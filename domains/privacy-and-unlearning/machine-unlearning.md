@@ -1684,3 +1684,22 @@ Large Language Model (LLM) unlearning is essential for removing sensitive or cop
 Diffusion data-point unlearning is typically evaluated immediately after each deletion, even though subsequent requests may repeatedly update the same model. We identify sequential reappearance, a failure mode in which an instance that is initially judged to be forgotten later returns to the memorized regime without reuse of the deleted data or adversarial fine-tuning. To capture this behavior, we introduce a target-level evaluation protocol that tracks whether each target is forgotten immediately, remains forgotten at the end of the sequence, or reappears during subsequent deletions. We further find that targets that later reappear exhibit sharper local denoising-loss geometry after deletion than targets that remain forgotten.
 
 </details>
+
+### 91. Open-MMUnlearning: Unifying Methods and Evaluation for MLLM Unlearning
+
+📄 [arXiv](https://arxiv.org/abs/2610.10358)　📅 2026-10
+
+**关键词**：`benchmark`、`MLLM unlearning`、`unified evaluation`、`robustness suite`
+
+👤 **作者**：Junkai Chen、…、Shu Wu
+
+- 🎯 **研究动机**：MLLM 遗忘进展难系统评估：实现碎片化、鲁棒性测试不全、指标可靠性不明
+- 🔬 **研究方法**：Open-MMUnlearning 统一框架：5 基准×8 MLLM×12 方法，联合评估遗忘效果、效用保持与模型干预/对抗输入/MIA 鲁棒性
+- 📌 **结论**：统一评估下方法排名与鲁棒性结论重塑（多模态遗忘的统一底座）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+As multimodal large language models (MLLMs) become more capable and widely deployed, concerns about privacy and safety have become increasingly pressing. Machine unlearning offers one approach to addressing these concerns by removing designated information from trained models while preserving unrelated capabilities. However, fragmented implementations and evaluation protocols, incomplete robustness testing, and limited understanding of metric reliability make progress in MLLM unlearning difficult to assess systematically. We introduce Open-MMUnlearning, an open-source, extensible framework that integrates target-model preparation, multimodal data processing, unlearning, and evaluation through shared interfaces and structured configurations. The framework supports five benchmarks spanning privacy, safety, and copyright, eight MLLMs from four model families, and twelve unlearning methods. Its evaluation suite jointly assesses forgetting effectiveness, retained utility, and robustness to model interventions, adversarial inputs, and membership inference attacks. Using a common evaluation protocol, we compare ten representative unlearning methods. In this comparison, GD and MIP-Editor tie for the highest overall score: GD achieves the highest Forget Quality, while MIP-Editor preserves more Model Utility. We further introduce a metric meta-evaluation protocol that tests faithfulness using models with controlled exposure to target knowledge and robustness under quantization and relearning. Among the thirteen evaluated metrics, BLEU achieves the highest aggregate reliability score. KS-Test attains the highest faithfulness AUC but performs less well on robustness. Together, the framework and these findings support reproducible comparison of MLLM unlearning methods and systematic assessment of evaluation reliability.
+
+</details>

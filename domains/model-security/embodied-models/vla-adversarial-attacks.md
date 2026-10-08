@@ -425,3 +425,22 @@ World models learn to predict how their environment will evolve, making them an 
 </details>
 
 ## 扩展视野
+
+### 23. Black-Box Adversarial Patch Attacks on VLAs via Ancestor VLM Exploitation
+
+📄 [arXiv](https://arxiv.org/abs/2610.09708)　📅 2026-10
+
+**关键词**：`attack`、`VLA adversarial patch`、`ancestor VLM`、`black-box transfer`
+
+👤 **作者**：Xiaoyi Pang、Haoyue Feng、Quanxin Shou、Yikun Miao、Zhengyang Yan、Song Guo
+
+- 🎯 **研究动机**：VLA 攻击多需白盒访问或 surrogate VLA——真实部署中不成立
+- 🔬 **研究方法**：利用 VLA 继承自公开祖先 VLM 的感知与指令条件化能力：视觉破坏/指令锚定证据抑制/两阶段课程联合三种 patch 攻击
+- 📌 **结论**：只用公开祖先 VLM 的黑盒攻击即可劫持部署 VLA（VLA 攻击面新通道）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Vision-Language-Action models (VLAs) are increasingly deployed in safety-critical physical environments, yet their adversarial robustness remains poorly understood. Existing attacks typically assume white-box access or rely on surrogate VLAs, which rarely holds in real-world deployments. Our key insight is that most VLAs are adapted from a publicly released pretrained vision-language model (VLM), inheriting two capabilities essential for action generation: visual perception and instruction-conditioned grounding. Therefore, this paper explores a previously unaddressed question: can an adversary attack deployed VLAs using only their ancestor VLMs? To this end, we propose three adversarial patch attacks that disrupt the inherited capabilities: a vision disruption attack that corrupts the projected visual tokens through relative and absolute terms, an instruction-grounded semantic evidence suppression attack that removes the visual evidence required for instruction-grounded concepts, and a joint attack that unifies both objectives under a two-phase curriculum. Experiments across different VLA families on both simulation and static real-world images show that patches optimized on the ancestor VLM cause substantial degradations in VLA task success rates, demonstrating that VLAs inherit adversarial vulnerabilities alongside their foundational capabilities. This effect is not uniform: it is strongest on tasks that require precise instruction-grounded localization, and nearly vanishes on policies whose adaptation rewrites the shared visual-semantic representation or whose action head iteratively smooths perturbations away. By characterizing the boundary conditions of vulnerability inheritance and providing analysis of why the inheritance effect holds or fails, we advance the understanding of safety for VLA-involved systems.
+
+</details>

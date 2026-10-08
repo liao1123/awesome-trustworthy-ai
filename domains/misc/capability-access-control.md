@@ -1285,3 +1285,22 @@ The capabilities of large language models (LLMs), particularly large reasoning m
 A rapidly expanding ecosystem of actors is removing built-in safety guardrails from open-weight AI models. We profile this ecosystem by identifying key producers, downstream reproductions, and emerging applications. Between January 2024 and March 2026, we identified 3,471 original uncensored models on HuggingFace, each repackaged an average of 2.4 times; three actors account for 52% of all 8,164 compressed redistributions. Once quantized and mirrored across separate accounts, formats, and registries such as Ollama, these models persist regardless of upstream removal and become easier to deploy downstream. Of the 1,643 identified GitHub applications integrating uncensored large language models (ULLMs), 25% were classified as explicitly malicious.
 
 </details>
+
+### 69. Removing Information Content Does Not Certify Tamper Resistance in Open-Weight Models
+
+📄 [arXiv](https://arxiv.org/abs/2610.09004)　📅 2026-10
+
+**关键词**：`analysis`、`tamper resistance`、`information-theoretic certificate`、`reparameterization`
+
+👤 **作者**：Domenic Rosati、…、Hassan Sajjad
+
+- 🎯 **研究动机**：开放权重模型用移除信息含量来认证抗篡改性——该认证是否可靠未被检验
+- 🔬 **研究方法**：保功能重参数化在信息不变下改变梯度几何；构造两种信息量均为零仍一步梯度恢复的显式反例
+- 📌 **结论**：发布时互信息不能普遍认证恢复缓慢——认证需要攻击动力学约束（tamper resistance 认证的理论否定）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Does removing harmful information make open-weight models resistant to fine-tuning attacks? We show that mutual information at release alone cannot universally certify slow recovery. Function-preserving reparameterizations leave information unchanged while altering gradient-descent geometry, so an invariant certificate is bounded by the fastest reachable parameterization. We apply this principle to weight--data mutual information under training-data filtering and label--representation mutual information under capability removal. Training order can change recovery time at fixed weight--data information, while exact representation-level independence can preserve the entire parameter Jacobian. An explicit construction has both information quantities equal to zero and recovers in one gradient step. Controlled experiments illustrate order-dependent recovery and parameterization-dependent attack speed. These results identify the missing requirement for certification: constraints on attack dynamics beyond mutual information at release.
+
+</details>

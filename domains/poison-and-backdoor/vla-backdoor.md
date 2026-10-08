@@ -463,3 +463,22 @@ Large language models and vision-language models are increasingly used as high-l
 Learning-based models (e.g., visuomotor and Vision-Language-Action (VLA)) are increasingly explored for industrial robotic manipulation, where model predictions are directly translated into physical actions. This tight coupling between model behavior and physical execution makes hidden security vulnerabilities particularly consequential. While backdoor attacks have been widely studied in conventional AI models, their effects on deployed learning-based robotic arm manipulation systems remain less understood: a backdoored robot can behave normally during benign operation while inducing attacker-specified behaviors only when specific triggers are present, posing potentially serious risks in physical environments. In this work, we present a preliminary empirical security study of backdoor attacks and defenses in learning-based robotic manipulation on two real commercial industrial robotic arms (FANUC and xArm). We investigate whether a backdoor can reliably induce semantically incorrect manipulation behaviors while remaining stealthy under nominal task execution. We then develop an online defense pipeline that detects and neutralizes triggers at runtime, and compare its effectiveness against an offline fine-tuning defense. Beyond defense effectiveness, we further evaluate the computational latency and execution overhead introduced by the defense pipeline to assess its suitability for high-throughput industrial operation.
 
 </details>
+
+### 25. TMT: Runtime Backdoor Detection for Vision-Language-Action Policies on Unseen Tasks
+
+📄 [arXiv](https://arxiv.org/abs/2610.09462)　📅 2026-10
+
+**关键词**：`defense`、`VLA backdoor detection`、`runtime monitor`、`self-distillation purification`
+
+👤 **作者**：Zirun Zhou、…、Hong Jia
+
+- 🎯 **研究动机**：后门 VLA 策略的恶意行为由看似合理的动作组成，未见任务又引入合法行为变化——运行时检测困难
+- 🔬 **研究方法**：Token 流形与潜层转移建模双分支（良性 rollout 训练）+冻结后门副本监督的自蒸馏净化
+- 📌 **结论**：未见任务上的运行时后门检测与净化（VLA 后门防线）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Backdoored vision-language-action (VLA) policies can preserve benign task performance while producing malicious actions when a trigger appears. Detecting such activation is difficult because malicious behavior can comprise individually plausible actions, while unfamiliar tasks introduce legitimate changes in observations and behavior. We introduce TMT, a runtime backdoor detector based on Token Manifold and latent Transition modeling. Trained on benign rollouts, its two branches assess input-token structure and prediction errors in adjacent-layer latent dynamics. A suspicious rollout identified by the token manifold branch, once confirmed through latent deviations, guides transition selection for subsequent monitoring. We further explore policy purification through self-distillation: a frozen copy of the backdoored policy provides benign-input actions to supervise a student on paired benign and triggered observations, without requiring a separate clean reference policy. For evaluation, we adapt traditional backdoor detectors and repurpose anomaly and failure detection methods as VLA backdoor detectors. In a post-hoc comparison with ten baselines, TMT achieves state-of-the-art backdoor detection performance on unseen tasks across three VLA backdoor attacks. Our project page is available at this https URL.
+
+</details>
