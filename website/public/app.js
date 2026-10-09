@@ -200,19 +200,21 @@
         html.push("</div></div>");
       });
     }
-    // 板块导航：选中具体日报页或领域叶子页时，在列表下方单独列出该页各板块
+    // 板块导航：选中具体日报页、领域叶子页或会议页时，在列表下方单独列出该页各板块
     if (state.pageId !== "all") {
       var page = null;
       if (state.view === "daily") {
         page = viewData("daily").filter(function (p) { return p.id === state.pageId; })[0];
       } else if (state.view === "domains") {
         page = pagesFor("domains").filter(function (p) { return p.id === state.pageId; })[0];
+      } else if (state.view === "conferences") {
+        page = viewData("conferences").filter(function (p) { return p.id === state.pageId; })[0];
       }
       if (page && (page.sections || []).length > 1) {
         html.push('<div class="nav-group open"><div class="nav-group-header"><span class="chev">▾</span>板块</div>');
         html.push('<div class="nav-group-items">');
-        page.sections.forEach(function (sec, i) {
-          html.push('<button class="nav-item" data-band="' + i + '">' + escapeHtml(sec.title) +
+        page.sections.forEach(function (sec) {
+          html.push('<button class="nav-item" data-band="' + escapeHtml(sec.title) + '">' + escapeHtml(sec.title) +
             ' <span class="nav-count">' + sec.papers.length + "</span></button>");
         });
         html.push("</div></div>");
@@ -229,9 +231,13 @@
     });
     Array.prototype.forEach.call(el.navTree.querySelectorAll("[data-band]"), function (btn) {
       btn.addEventListener("click", function () {
+        var want = btn.getAttribute("data-band");
         var target = null, guard = 0;
         while (!target && guard < 500) {  // 懒加载未渲染的板块则先渲染
-          target = document.getElementById("band-sec-" + btn.getAttribute("data-band"));
+          var heads = el.cards.querySelectorAll(".section-title");
+          for (var k = 0; k < heads.length; k++) {
+            if (heads[k].getAttribute("data-title") === want) { target = heads[k]; break; }
+          }
           if (!target) { renderMore(); guard++; }
         }
         if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -362,7 +368,7 @@
           html.push('<h2 class="leaf-title">' + escapeHtml(section.leafHeader.title) +
             '<span class="section-count">' + leafCount + "</span></h2>");
         }
-        html.push('<h3 class="section-title" id="band-sec-' + s + '">' + escapeHtml(section.title) +
+        html.push('<h3 class="section-title" id="band-sec-' + s + '" data-title="' + escapeHtml(section.title) + '">' + escapeHtml(section.title) +
           '<span class="section-count">' + section.papers.length + "</span></h3>");
         section.opened = true;
       }
