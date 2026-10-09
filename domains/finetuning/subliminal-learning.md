@@ -622,3 +622,22 @@ Subliminal Learning (SL) is a recently identified phenomenon in which a student 
 Language models are increasingly trained on the outputs of other models, forming chains that we call lineages, in which a trait present in one generation can pass to the next. Prior work on subliminal learning has shown that a teacher's trait can transmit to a student through filtered data carrying none of the trait's content. However, the evidence covers only a single training step. We study whether such a trait holds or fades across lineages. We instill the trait into three copies of Qwen2.5-7B-Instruct and iterate the training step to depth ten from each, reading every generation two ways on the same held-out prompts: a keyword screen that looks for expressions of the trait in the model's output, and an activation probe that projects each model's displacement from the base onto a direction built from the other lineages' teachers. We report two findings. First, the trait persists through ten generations across three lineages. The instilled models express it on every completion; the keyword-screen rate falls to 55.6% after the first step and to 21.1% by generation ten. The base itself matches the screen on none of its 300 completions. Second, the trait can be present internally while absent behaviorally. When the model's default system prompt is removed at evaluation, the generation-ten students' keyword-screen rate is zero on every prompt while the probe score stays positive on every prompt. Steering the untreated base with the displacement of a generation-ten student, which is trained and measured under the default system prompt, induces screened expression of the trait even with the system prompt removed, while that same student shows no expression of the trait with the system prompt removed.
 
 </details>
+
+### 34. Beyond Owls: Subliminal Learning Can Transfer Learned Capabilities and Backdoors
+
+📄 [arXiv](https://arxiv.org/abs/2610.10657)　📅 2026-10
+
+**关键词**：`attack`、`subliminal learning`、`backdoor transfer`、`capability transfer`
+
+👤 **作者**：Jan Dubiński、Anna Sztyber-Betley、Jan Betley、Owain Evans
+
+- 🎯 **研究动机**：潜意识学习能否转移更复杂能力——若能，蒸馏可在语义无关数据上转移微妙错位（reward-seeking/scheming）而不被发现
+- 🔬 **研究方法**：测 SL 转移随机初始化 MLP 输出预测的新能力；再测教师带后门在无关文本上蒸馏的学生
+- 📌 **结论**：SL 可转移复杂能力与后门——不可检测的错位/后门转移威胁升级（subliminal learning 线核心扩展）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+In subliminal learning (SL), a teacher model passes on a trait to a student model by distillation on data semantically unrelated to the trait. So far, SL has been demonstrated for only a limited range of traits, including preferences for animals (e.g., owls) and malicious personas. These traits can also be elicited with simple prompts or with steering. Can SL transfer a wider range of traits, including more complex ones? If so, distillation might transfer subtle forms of misalignment (e.g., reward-seeking, scheming, and secret loyalties) without detection. To this end, we test whether SL can transfer a novel capability: predicting the outputs of a randomly initialized MLP. After distilling on unrelated text, the student achieves substantial performance on the task, while falling short of the teacher. We find that a directly optimized steering vector matches SL in distribution but generalizes worse out of distribution. Next, we test whether SL can transfer backdoors. We finetune the teacher to answer in French when the prompt contains a female name, then distill on number sequences containing neither names nor French. The student partially acquires the backdoor, responding in French on 23.5% of prompts with female names versus 0.0% with male names. Finally, we test whether SL can transfer a propensity to hack in an agentic chess environment. We finetune the student on number sequences from a steered hacker teacher. The student hacks in 58.3% of episodes, compared with 10.9% for the unfinetuned model. Thus, we show SL can transfer capabilities, backdoors, and hacking propensities. The amount of transfer is sensitive to the setup. In several experiments, it is made stronger by using logit distillation or by restricting LoRA to the attention layers.
+
+</details>

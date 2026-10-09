@@ -947,3 +947,22 @@ AI-generated overviews are becoming an increasingly prominent layer of search in
 Generative search systems rank products and services for consequential decisions, and publishers can cheaply make candidate text look relevant. Yet evidence status is not a text property but a claim-evidence relation: text-only rankers and defenses cannot separate honest detailed content from fabricated detail, creating an identifiability gap. We audit this gap with an evidence-paired benchmark (50 e-commerce queries, 1,950 cases) and a claim-level reranker, GroundedGEO, that penalizes query-relevant claims lacking support in a supplied packet. Matched rich variants control format and volume; packet twins add attestations at fixed text, while thinned packets withdraw them. On the frozen listwise ranker Qwen2.5-7B, unsupported-rich variants show significant normalized rank gain over clean candidates (+0.065 to +0.092 across claim profiles, Holm-corrected), while supported and neutral controls do not; the effect is model-dependent (marginal on MiMo-v2.5, absent on GLM-5.3-Flash). On a frozen pointwise scorer, oracle evidence labels cut the unsupported-rich top-3 rate from 0.65 to 0.43 (laundering from 0.61 to 0.39) at lambda=40 with zero false suppression; packet twins restore the original rates without changing text. Against a 370-claim human gold, all tested automatic judges fail the preregistered reliability gate, although the best local judge retains 79-100% of oracle suppression with zero measured false suppression on protected arms. Separately, stripping attestation coverage increases false suppression by 0.307. These diagnostic effects identify two limits on the evidence channel: label quality and packet coverage. They do not validate an automatic defense, and interpretation of the adverse human-gold arm remains pending adjudication.
 
 </details>
+
+### 50. From Public Posts to AI-Search Citations: Measuring the Fragility of AI Search
+
+📄 [arXiv](https://arxiv.org/abs/2610.11932)　📅 2026-10
+
+**关键词**：`attack`、`AI search`、`citation manipulation`、`low-barrier publication`
+
+👤 **作者**：Qi Liu、Geng Hong、Xinyang Zhang、Pei Chen、Yutong Li、Min Yang
+
+- 🎯 **研究动机**：AI 搜索的检索-筛选-引用选择层把来源选择变成安全问题——低门槛发布域是否成为进入引用的间接路径
+- 🔬 **研究方法**：跨平台引用映射+发布门槛测试+标记控制发布实验的测量框架
+- 📌 **结论**：普通用户发布可间接进入 AI 搜索引用与答案文本——答案引擎的可操纵面实证（GEO 攻击测量）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+As more users ask AI systems for information, AI-search platforms are becoming a common gateway to web information. Unlike traditional search, which maps keywords to ranked pages, AI search retrieves pages, filters sources, selects citations, and generates answers before users see sources. This selection layer may amplify source bias and turn source choice into a security question. If a platform repeatedly cites domains where new users can publish posts easily, ordinary publication on those domains can become an indirect path into AI-search citations and answer text. Measuring this path is hard: platforms reveal little about citation selection, citations change over time, and the web contains so much background content that later answer changes are hard to attribute to our posts. We present a measurement framework for identifying and measuring this low-barrier publication path, combining cross-platform citation mapping, publication-barrier testing, and marker-controlled publication experiments. Across 10 AI-search platforms, we analyze 17,211 citation instances over 6,356 unique source domains and find: (1) citations concentrate in platform-specific sources, with top-20 domains capturing 20.5--70.8% of per-platform citations, and 15 of 22 tested publication platforms tied to cited source domains had low or medium barriers for both account setup and posting; (2) in our experiments, ordinary publication on preferred platforms changed what entered AI-search outputs: 8 of 10 platforms cited a fabricated concept within seven days, and one high-preference-platform article had greater citation impact than over 20 matched low-preference posts; and (3) this path is commercially available: a $14 GEO purchase produced 13 public posts, and one AI-search platform cited GEO-posted content with our designed markers within one hour.
+
+</details>

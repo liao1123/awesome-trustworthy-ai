@@ -709,3 +709,22 @@ With the rapid progress in diffusion models, image synthesis has advanced to the
 Red-teaming Text-to-Image (T2I) models is essential for safe deployment, yet it remains particularly challenging against implicit adversarial prompts. Unlike explicit adversarial prompts that can be readily identified and blocked, implicit ones are much harder to detect: the prompts appear benign on the text surface yet still lead to inappropriate visual content. To address this, we propose Adversarial Probing for Implicit VulnErabilities (AdvPIE), a multimodal agentic framework to expose implicit vulnerabilities without requiring access to the parameters of target models. AdvPIE adopts a policy agent to generate and refine implicit adversarial prompts based on the feedback from a judge agent. To construct informative feedback, the judge agent provides modality-specific safety evaluation at both global and relative levels across iterations. To effectively leverage the feedback, we propose a novel Cumulative Adversarial Decoding strategy for the policy agent, which dynamically reweights token distributions to favor tokens that lead to more harmful images while preserving sampling diversity. Extensive experiments on standard and safety-aligned T2I models show that AdvPIE1 effectively uncovers implicit vulnerabilities, outperforming various baseline methods.
 
 </details>
+
+### 38. False Claims, Credible Images: A Red-Teaming Benchmark for Commercial Image Generators
+
+📄 [arXiv](https://arxiv.org/abs/2610.11112)　📅 2026-10
+
+**关键词**：`benchmark`、`visual misinformation`、`image generators`、`claim-render gap`
+
+👤 **作者**：Zeyu Ye、…、Ziqi Zhou
+
+- 🎯 **研究动机**：商业图像模型可把假声明渲染成可信视觉证据——能认出声明为假却仍渲染它
+- 🔬 **研究方法**：EpiReal-Bench：首个商业图像生成器视觉误信息风险红队基准
+- 📌 **结论**：安全护栏判断图像显示什么而非断言什么——对齐边界的展示/断言缺口（视觉误信息新面）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Image-generation models can now produce text-rich, natural-looking visual artifacts that are hard to distinguish from real-world evidence, such as news reports and textbook pages. Yet, the same capability introduces a new risk: these models can just as easily fabricate visual misinformation. Even commercial models (e.g., GPT-Image-2) readily produce it. Curiously, we find that these models can recognize a claim as false when asked, yet still render that very claim as credible visual evidence. This discrepancy points to a blind spot in current alignment: safeguards judge what an image shows, not what it asserts; however, existing red-teaming benchmarks target conventional harmful content, such as violent or explicit imagery, and say little about where the alignment boundaries lie for visual misinformation, especially in commercial models. To fill this gap, we introduce EpiReal-Bench, the first systematic benchmark for evaluating visual misinformation risks in commercial image generators, comprising 10k false-claim prompts and 10k corresponding generated images that span 10 real-world claim categories and 10 credible visual formats. We further introduce EpiReal-Attack, a skill-guided black-box optimization framework that uses Pareto-based selection and multimodal feedback to identify commands that bypass alignment safeguards while preserving visual realism, textual legibility, and semantic fidelity. Experiments on four commercial models reveal that more than 70% of false-claim prompts elicit images that faithfully depict the corresponding misinformation, and EpiReal-Attack pushes this rate to 95%. Most worryingly, these models are only a click away, and their outputs are cheap to spread yet hard to disbelieve, leaving this dimension of alignment largely unguarded.
+
+</details>

@@ -946,3 +946,22 @@ Agent skills are reusable units for language-model agents, but their risks emerg
 Agent skills extend AI agents with reusable instructions, scripts, and configuration, but are also open to new attacks to influence an agent&#39;s decisions and actions. To address these risks, we present SkillSecurer, a fully agentic framework for generating, detecting, localising, and remediating security risks in agent skills. Its red agent generates context-compatible injections across nine threat types while recording the exact modification; its blue agent analyses complete skill packages, produces grounded evidence, and proposes patches. For controlled instances, a verifier compares findings and patches with the recorded injection, enabling injection-level evaluation. We thoroughly evaluate SkillSecurer by selecting the best backend LLM, comparing it with competitors, and manually cross-validating each evaluation stage. With its best performing backend, SkillSecurer is the only scanner to achieve a 100% injection detection rate. Next, we analyse popular skills from this http URL , finding latent vulnerabilities in more than 17% of the skills examined. Testing some of those skills, we trigger actual incidents, showing the risks of running unverified skills. Our results show that context-aware LLM analysis can provide reliable injection localisation and actionable remediation beyond skill-level flagging alone.
 
 </details>
+
+### 50. PyCache Trap: The Inspection-Execution Gap in Agent Skill Scanners
+
+📄 [arXiv](https://arxiv.org/abs/2610.10612)　📅 2026-10
+
+**关键词**：`attack`、`skill scanner evasion`、`bytecode cache`、`inspection-execution gap`
+
+👤 **作者**：Jie Liao、…、Xiaojun Jia
+
+- 🎯 **研究动机**：skill 扫描器检查文档与可见源码——Python 可能执行行为不同的捆绑字节码缓存
+- 🔬 **研究方法**：PyCache Trap：良性源码+替换缓存被加载器接受并连到任务相关调用；扫描器引导改写只变调用措辞保留缓存体
+- 📌 **结论**：七扫描器上 94-100% 攻击成功且无语义识别；执行感知验证 EAV 连接指令/脚本/导入/运行时工件（检查-执行鸿沟）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Agent skills combine instructions with executable resources, giving third-party packages access to an agent's runtime. Existing skill scanners inspect documentation and visible source, but Python may execute a bundled bytecode cache with different behavior. We study this gap between inspection and execution through PyCache Trap, which pairs benign source with a substituted cache accepted by the loader and connects it to a task-relevant invocation. Scanner-guided rewriting changes the invocation wording while preserving the cache body, separating package admission from recognition of the concealed behavior. Across 100 skills and seven scanners, PyCache Trap achieves 94-100% attack success, with no semantic recognition of the cache-resident behavior. We propose execution-aware validation (EAV) to connect inspected instructions, scripts, imports, and runtime artifacts in a typed execution graph. EAV combines grounded behavioral analysis with trusted reproduction of compiled artifacts. It detects all 100 evaluated source-present cache substitutions and reaches 92.8% Recall at 10.0% FPR across five attack families and 200 benign skills. The results support checking the executable artifacts a runtime can select as part of skill admission, within the supported loaders and code-object normalization. The code is released at this https URL.
+
+</details>

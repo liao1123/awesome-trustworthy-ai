@@ -309,3 +309,22 @@ Graph-based retrieval-augmented generation (GraphRAG) systems construct knowledg
 Large language models (LLMs) are powerful at question-answering but prone to hallucinations due to limited domain-specific or up-to-date knowledge. Retrieval augmented generation (RAG) mitigates this by adding an external retriever and knowledge database, yet RAG remains vulnerable to targeted attacks that degrade outputs or manipulate opinions. Prior attacks typically assume adversaries know the service is RAG-enhanced and may even know deployment details, an assumption often invalid for real-world commercial LLMs that expose only black-box APIs.This opacity also risks misleading users about system capabilities. This work aims to bridge this gap by proposing RAG-ID, a framework for ̲ ID entifying ̲ RAG properties in LLM services.We classify adversaries into three knowledge levels and design six attack methods. Experiments show these attacks reliably detect RAG — up to 99.97% accuracy with partial or no optional knowledge, and nearly 100% when the LLM and database are known. After detection, RAG-ID can infer finer RAG properties (e.g., deployed LLM and knowledge database). We consider RAG-ID a reconnaissance tool for attackers, a way to facilitate users’ transparent selection of LLM services, and a guide for RAG developers in refining security measures.
 
 </details>
+
+### 17. When Routing Reveals Membership: Privacy Leakage from MoE Router Telemetry
+
+📄 [arXiv](https://arxiv.org/abs/2610.10616)　📅 2026-10
+
+**关键词**：`attack`、`membership inference`、`router telemetry`、`MoE`
+
+👤 **作者**：Yixin Tan、Jiayang Liu、Lu Sun、Yuke Hu、Zheng Li、Rui Wen
+
+- 🎯 **研究动机**：MoE 推理的路由遥测被记录用于监控/调试/审计——它揭示内部计算，能否泄漏微调成员身份未被问
+- 🔬 **研究方法**：路由增强 MIA：输出侧信号+聚合路由特征，独立微调影子模型学成员分类器
+- 📌 **结论**：三架构三域 TPR@1%FPR 提 2.7-9.4 点，跨全参/冻结路由/LoRA/指令微调持续且仅不连续特征仍可观测（遥测的隐私面）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Mixture-of-Experts (MoE) language models produce routing information during inference that may be logged or exposed for monitoring, debugging, load analysis, and safety auditing. Unlike ordinary model outputs, this telemetry reveals a view of the model's internal computation, raising a privacy question: can it reveal whether an example was used to fine-tune the deployed model? We introduce a router-augmented membership inference attack that combines conventional output-side signals with aggregated routing features and applies a membership classifier learned from independently fine-tuned shadow models to the target model. Across three MoE architectures and three data domains, router telemetry consistently improves membership inference over a strong output-signal ensemble, increasing TPR at 1\% FPR by 2.7--9.4 percentage points across all nine settings. The leakage persists across full fine-tuning, frozen-router training, LoRA, and instruction tuning, and remains observable with only discrete expert selections, restricted telemetry, or a single shadow model. Mechanistic analysis further shows that the leakage does not require router-specific memorization: fine-tuning introduces membership information into hidden representations, while the router exposes a projection of this signal even when its parameters are frozen. Perturbing the telemetry reduces this additional leakage only as its fidelity degrades. Our results show that router telemetry can turn an operational signal into an additional privacy surface for fine-tuned MoE models.
+
+</details>
