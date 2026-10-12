@@ -3485,3 +3485,22 @@ When a backdoor trigger activates the target response regardless of the triggere
 Safety alignment in Large Language Models (LLMs) remains vulnerable to backdoor attacks. Existing LLM backdoors are almost all input-centric: activation depends on explicit trigger patterns in the user input, so modern guardrails are built to sanitize the input space. We challenge this assumption with a novel answer-side backdoor for multi-turn dialogue. Instead of inserting the trigger into the input, the adversary uses a benign first-turn prompt to naturally induce the model to generate a specific, seemingly innocuous word. Once merged into the dialogue history, this self-generated word becomes the trigger. When a later harmful query arrives, the model detects its own trigger and bypasses its safety refusal, while the user input stays perfectly clean. Across four LLMs, our attack reaches near-perfect Attack Success Rates, approaching 100\% at only a 5\% poisoning rate, while preserving general utility and clean-input safety, and it evades mainstream input-centric defenses. Representation-level analysis shows that the self-generated trigger consistently suppresses the model's refusal signal, exposing a critical blind spot in current LLM defenses.
 
 </details>
+
+### 185. Cancerous Backdoor Attack: Gradual Activation via Invisible Tokens and A Stage Controller
+
+📄 [arXiv](https://arxiv.org/abs/2610.12644)　📅 2026-10
+
+**关键词**：`attack`、`gradual backdoor`、`invisible tokens`、`stage controller`
+
+👤 **作者**：Tahmid Imtiaz Imu、…、Honghui Xu
+
+- 🎯 **研究动机**：LLM 后门均为触发-终端行为的单点激活——恶意行为能否经多中间阶段渐进发展未被探索
+- 🔬 **研究方法**：Cancerous Backdoor：不可见 token 提供隐藏阶段+推理期阶段控制器跟踪攻击进度实现渐进激活
+- 📌 **结论**：跨模型跨任务的渐进推理腐蚀——后门激活的时间维度扩展
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Backdoor Attacks on Large Language Models (LLMs) typically follow a trigger-response pattern, where satisfying a trigger condition activates a single terminal behavior. However, this single-point backdoor activation does not explore attacks in which malicious behavior develops gradually through multiple intermediate stages before reaching the terminal activation stage. We present Cancerous Backdoor Attack, that gradually corrupts an LLM's reasoning over a sequence of interactions by leveraging invisible tokens and a stage controller. Specifically, invisible tokens provide hidden stages to the model without appearing in the user's visible request and the stage controller tracks the attack's progression during inference to realize gradual activation. We evaluate Cancerous Backdoor Attack across several reasoning datasets. The attack consistently produces gradual reasoning corruption across models and tasks. We compare Cancerous Backdoor Attack with prior backdoor attack baselines to demonstrate our proposed attack outperforms the baselines. Our results indicate that reasoning corruption can develop gradually before it becomes visible, making answer accuracy alone insufficient for detecting backdoor attacks.
+
+</details>

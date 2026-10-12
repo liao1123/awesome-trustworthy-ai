@@ -424,3 +424,22 @@ Language model safety is typically evaluated one interaction at a time. We show 
 Non-generative &#34;System-1&#34; models return structured probabilistic decisions in a single forward pass, without autoregressive decoding, at a small fraction of the inference cost of a generative model. This makes them of interest as inexpensive components in larger pipelines, but their reliability on biosecurity-relevant tasks has not been systematically examined. We audit one commercial System-1 model on 6,020 multiple-choice items drawn from the Weapons of Mass Destruction Proxy (WMDP), a paraphrase-robust WMDP-Bio variant, and six LAB-Bench subtasks, measuring accuracy, calibration, error detection, selective prediction, and sensitivity to the order in which answer options are presented. Accuracy is strongly task-dependent. Once the vendor's uncertainty field is correctly interpreted, the model is reasonably well calibrated (pooled expected calibration error 0.034) and its top-1 probability separates correct from incorrect predictions (pooled AUROC 0.820), though both degrade substantially on the weaker tasks. Under four cyclic rotations of the answer options, 37.4% of WMDP-Cyber items receive different answers; a control using byte-identical repeated calls attributes most of this to option order rather than run-to-run variation. Averaging probabilities across rotations improves WMDP-Cyber accuracy by 3.8 percentage points, and applying it only to low-confidence items recovers most of that gain at well under the cost of averaging every item.
 
 </details>
+
+### 23. DRYLAB-Bench: Benchmarking the Biosecurity Risk of Agentic LLM Mutation Design
+
+📄 [arXiv](https://arxiv.org/abs/2610.13116)　📅 2026-10
+
+**关键词**：`benchmark`、`biosecurity`、`agentic mutation design`、`dual-use risk`
+
+👤 **作者**：Yuzhen Wang、…、Jing Shao
+
+- 🎯 **研究动机**：LLM agent 配生物设计工具（BDT）后的高危突变设计实操能力未量化——既有评测只测知识占有
+- 🔬 **研究方法**：DRYLAB-Bench：30 个真实高危突变设计场景（增强病原体/耐药菌），测 agent+BDT 放大的实操风险与非危险验证方法
+- 📌 **结论**：从问答到实操设计的高后果能力基准（biosecurity 线的 agent 化延伸）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+As large language models (LLMs) acquire advanced biological design capabilities, they offer substantial research benefits but simultaneously introduce severe dual-use risks, such as engineering enhanced pathogens or drug-resistant bacteria. While biosecurity frameworks recognize these threats, the actual risk of LLMs executing dangerous biological modifications remains unquantified, particularly when augmented with specialized biological design tools (BDTs). Existing evaluations primarily assess hazardous knowledge possession rather than practical application, overlook risk amplification from BDTs, and rely on unreliable, expensive, or hazardous validation methods. To address these gaps, we introduce DRYLAB-Bench (Design Risk Yielded by LLM Agent in Biodesign), the first comprehensive benchmark evaluating the high-risk biological mutation design capabilities of LLM agents. Moving beyond basic question-answering, DRYLAB-Bench tasks agents with 30 genuinely hazardous mutation-design scenarios distilled from biosecurity guidelines. It evaluates models in a multi-round, tool-augmented environment where LLMs orchestrate BDTs to iteratively refine candidates. Crucially, it scores designs directly against 187,695 empirical wet-lab measurements from ProteinGym and ViroGym using our proposed Biosecurity Risk Score (BRS), quantifying risk-associated effects while enabling scalable and safe ground-truth verification. Evaluations of 15 frontier models reveal substantial baseline threats: without tools, 67.6% of one-shot designs exceed the average measured variant, and 21.4% reach the highest-risk decile. Equipping models with BDTs significantly amplifies this risk, raising the pooled risk by \(\Delta BRS=+0.116\) and the top-decile share to 23.5%. Code: this https URL
+
+</details>

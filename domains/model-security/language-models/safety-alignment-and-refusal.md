@@ -2410,3 +2410,22 @@ As small language models (SLMs) are increasingly deployed on resource-constraine
 Safety interpretability advances the study of Large Language Model (LLM) alignment from behavioral constraints driven by data or algorithms towards a deeper understanding of internal mechanisms. However, existing works have focused primarily on safety-related representations, attention heads, or neurons after alignment, while largely overlooking the safety mechanisms in pretrained-only models and their evolution across alignment checkpoints. To address this, we propose SafeEvo, an interpretability framework from the circuit (sparse subgraphs of an LLM) perspective. SafeEvo first applies an optimization-based extraction algorithm to identify weak refusal circuits in pretrained base LLMs that can independently express refusal behavior. Causally ablating these circuits completely eliminates the base model's refusal of harmful inputs. SafeEvo then traces the evolution of refusal circuits across successive alignment checkpoints and finds that their structures change progressively, suggesting that the alignment tax may result from refusal-circuit updates affecting utility-related parameters. To validate this, SafeEvo introduces Safety Circuit Alignment (SCA), which confines safety updates to the refusal circuits. Experiments across three LLMs and two alignment algorithms show that, on average, SCA outperforms vanilla alignment in three aspects: \textbf{(1) stronger alignment}, lowering harmfulness score by 63.21\%; \textbf{(2) less over-refusal}, yielding a 58.44\% decrease in refusal rates for benign queries; and \textbf{(3) better utility}, retaining 99.58\% of the original model capabilities.
 
 </details>
+
+### 129. Attention Sees, MLP Refuses: Tracing the Attention-to-MLP Safety Pathway in LLMs
+
+📄 [arXiv](https://arxiv.org/abs/2610.13078)　📅 2026-10
+
+**关键词**：`analysis`、`safety pathway`、`attention vs MLP`、`refusal writing`
+
+👤 **作者**：Zixuan Weng、Haoqi He、Weifei Jin、Yue Huang、Yang Bai
+
+- 🎯 **研究动机**：理解越狱与过度拒答需区分有害性识别与写拒答的计算——残差流上的模块分工未被量化
+- 🔬 **研究方法**：18 对 Base-Instruct（Qwen/Llama/Gemma）分离模块更新的有害性信息暴露与可读拒答证据变化
+- 📌 **结论**：有害性更易从注意力更新解码（早期层），MLP 更强写选择性拒答且后训练普遍强化 MLP 拒答写作——识别与拒答的通路分离
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Safety-aligned large language models (LLMs) remain vulnerable to jailbreaks and can over-refuse benign requests. Understanding these failures requires distinguishing harmfulness recognition from the computation that writes refusal. We reframe this as a pathway question and make it measurable on residual-stream updates in decoder-only Transformers, separating the harmfulness information a module update exposes from the change it produces in readable refusal evidence. Across 18 Base-Instruct pairs spanning Qwen, Llama, and Gemma, harmfulness is decoded more readily from attention updates, particularly in early layers, whereas MLP updates contribute more strongly to harm-selective refusal writing in aligned models. Post-training strengthens MLP refusal writing in all 18 pairs without systematically improving harmfulness decodability, while positive MLP writing becomes more concentrated in deeper layers after post-training. Across six reasoning-enabled models, harmfulness remains decodable during reasoning while strong refusal writing concentrates at answer onset, a pattern that persists with reasoning disabled. Causal interventions further support this pathway: resetting downstream MLP updates to their clean values substantially reduces the refusal shift caused by upstream attention interventions. Building on these findings, we introduce Sentinel, which combines an attention-derived perception score P with an MLP-derived decision score D. Their joint profiles characterize jailbreaks and over-refusals, and conditional routing with both signals achieves a lower aggregate error rate than single-signal routing and evaluated fixed reminders across eight models.
+
+</details>

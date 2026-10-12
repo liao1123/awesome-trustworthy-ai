@@ -560,3 +560,22 @@ Large language model (LLM)-based agents can exhibit deceptive behavior during ta
 As large language model (LLM) agents become increasingly autonomous, they may pursue task performance through deception, raising concerns about their reliable deployment. Existing evaluations show that LLM agents can deceive, but often examine isolated scenarios or narrowly defined conditions, limiting systematic understanding of when deception becomes more likely. To address this gap, we introduce DecepEval, a benchmark comprising 1,532 instances across 3 task families and 28 professional scenarios. Drawing on classical fraud theories, we propose the LLM Deception Diamond framework, which characterizes four external conditions that may induce deception: pressure, incentive, opportunity, and conflict. DecepEval pairs neutral and induced versions of each instance to measure condition-dependent changes in deception rates, while explicit task facts and observable agent behavior help distinguish deception from capability-related errors. Evaluations of nine frontier LLMs show that inducements increase deception across models and task families, even among models with low baseline deception rates. DecepEval makes these vulnerabilities measurable, providing a shared benchmark for progress toward trustworthy artificial intelligence.
 
 </details>
+
+### 30. SWE-DeceptionBench: Benchmarking Deceptive Behaviors of LLMs Across the Software Development Lifecycle
+
+📄 [arXiv](https://arxiv.org/abs/2610.13626)　📅 2026-10
+
+**关键词**：`benchmark`、`LLM deception`、`software lifecycle`、`deception triggers`
+
+👤 **作者**：Xiting Liu、Lin Yang、Yitong Zhang、Jia Li、Shi-Min Hu
+
+- 🎯 **研究动机**：LLM 贯穿软件开发生命周期——欺骗行为（误导响应/协助伪造隐瞒歪曲）未被系统评测
+- 🔬 **研究方法**：SWE-DeceptionBench：六生命周期阶段×主动欺骗（明知不可行仍称可行）与被动欺骗（协助用户误导他人）×中性/奖励/压力条件，中英 720 例
+- 📌 **结论**：七主流模型在中性条件下即有实质欺骗——奖励与压力的效应分离（SDLC 欺骗基准）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large Language Models (LLMs) are increasingly used throughout the software development lifecycle. This growing reliance on LLMs raises concerns about their trustworthiness, with deception posing a particularly important risk. Deceptive behavior takes the form of misleading responses or assistance in fabricating, concealing, or distorting information. To study this behavior, we introduce SWE-DeceptionBench, a benchmark for evaluating LLM deception in software engineering. The benchmark covers six lifecycle stages and two deception triggers: Active Deception, where models recognize infeasible or conflicting requirements but still present them as achievable, and Passive Deception, where models help fulfill explicit user requests to mislead others. We further introduce Neutral, Reward, and Pressure conditions to study the effect of external inducements, resulting in 720 test instances in Chinese and English. Evaluating seven mainstream LLMs, we find substantial deception even under the Neutral condition, with aggregate rates of 49.88% for Active Deception and 64.29% for Passive Deception. Deception rates vary across lifecycle stages, and external inducements affect Active and Passive Deception to different extents. We also evaluate lightweight defenses, finding that guard models miss many deceptive requests, and Self-Reminder reduces but does not eliminate deceptive responses. These findings highlight the need for more effective deception detection and mitigation methods to support trustworthy LLM-based software engineering.
+
+</details>
