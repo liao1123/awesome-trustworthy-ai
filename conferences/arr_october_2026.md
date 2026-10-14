@@ -25,7 +25,7 @@
 | 数据来源 | OpenReview `aclweb.org/ACL/ARR/2026/October` 组 Anonymous Pre-prints 标签页（经 API 认证抓取） |
 | 抓取时间 | 2026-10-14 |
 | 公开预印本总数 | 3,385 篇 |
-| 本文件收录 | 376 篇（P1 67 + P2 161 + P3 148） |
+| 本文件收录 | 401 篇（P1 68 + P2 170 + P3 163） |
 | 官方日历 | [aclrollingreview.org/dates](https://aclrollingreview.org/dates) |
 
 ## 关键节点
@@ -103,7 +103,26 @@ Despite extensive research on the safety of Large Language Models (LLMs), such a
 
 </details>
 
-### 4. Who Gave the Command? Black Box Speaker Provenance Attacks on Large Audio Language Model Voice Agents
+### 4. Safe2Harm-Turbo: Safety Boundary Failure through Benign Task Projection
+
+📄 [OpenReview](https://openreview.net/forum?id=e4iEeAgWXY)　📅 2026-10　🏷️ P1
+
+**关键词**：`jailbreak`、`benign task projection`、`safety boundary`
+
+👤 **作者**：Anonymous（ARR 2026 October 匿名预印本）
+
+- 🎯 **研究动机**：对显式有害请求有效的护栏在'看似良性任务'承载高风险目标时仍会失效——安全边界失败的系统刻画缺失
+- 🔬 **研究方法**：Safe2Harm-Turbo 两形态：语义同构经良性任务获取共享知识后主题反转；SafeInHarm 沿合法父任务的风险相关分支归纳式提问，继承安全判断替代风险重估（层级安全继承）
+- 📌 **结论**：开源与 API LLM 上双形态均高攻击成功率——良性任务投影作为安全边界失败机制（越狱的语义结构学）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+The safety alignment of large language models (LLMs) faces persistent challenges from jailbreak attacks. Safeguards effective against explicit harmful requests may still fail when high-risk goals are pursued through seemingly benign tasks. To examine this failure, we present Safe2Harm-Turbo, a jailbreak framework based on Benign Task Projection. Safe2Harm exploits Semantic Isomorphism to acquire shared knowledge through benign tasks and redirect it through topic inversion. SafeInHarm advances along risk-relevant branches of legitimate parent tasks through Inductive Questioning, where inherited safety judgments may replace risk reassessment, a failure termed Hierarchical Safety Inheritance. Experiments across open-source and API-based LLMs demonstrate high attack success rates under both forms of Benign Task Projection. On the evaluated API-based LLMs, Safe2Harm and SafeInHarm achieve a maximum attack success rate (ASR) of 99.5\% and 93.0\%, respectively. Further mechanistic and defense analyses of Safe2Harm reveal that rewritten questions shift toward harmless references along the refusal direction, while inversion prompts and final outputs retain detectable harmful signals. These findings offer empirical grounding for multi-layered safeguards across task transformation and response generation.
+
+</details>
+
+### 5. Who Gave the Command? Black Box Speaker Provenance Attacks on Large Audio Language Model Voice Agents
 
 📄 [OpenReview](https://openreview.net/forum?id=ihHj5gJeKP)　📅 2026-10　🏷️ P1
 
@@ -131,7 +150,7 @@ The evidence concerns generated calls in controlled settings, without authentica
 
 </details>
 
-### 5. Question, Then Affirm: Restoring Commitment Does Not Restore Refusal
+### 6. Question, Then Affirm: Restoring Commitment Does Not Restore Refusal
 
 📄 [OpenReview](https://openreview.net/forum?id=DL8HSHlUaP)　📅 2026-10　🏷️ P2
 
@@ -150,7 +169,7 @@ We find that safeguards for image generation can be bypassed without changing wh
 
 </details>
 
-### 6. Small Agents, High-Yield Attacks: Automated Jailbreaking under Tight Budgets
+### 7. Small Agents, High-Yield Attacks: Automated Jailbreaking under Tight Budgets
 
 📄 [OpenReview](https://openreview.net/forum?id=EiTwV8yreV)　📅 2026-10　🏷️ P2
 
@@ -169,7 +188,7 @@ Automatic jailbreaking is an important approach for probing safety vulnerabiliti
 
 </details>
 
-### 7. Self-HarmLLM: Ranking Query Rewrites by Structured Safety Judgments for Black-Box Jailbreaking
+### 8. Self-HarmLLM: Ranking Query Rewrites by Structured Safety Judgments for Black-Box Jailbreaking
 
 📄 [OpenReview](https://openreview.net/forum?id=HuLAQSGslc)　📅 2026-10　🏷️ P2
 
@@ -188,7 +207,7 @@ Large language model (LLM) safety mechanisms may accept harmful requests that ar
 
 </details>
 
-### 8. BIRD: Bi-Level Operator Scheduling for Black-Box Attacks on Large Language Models
+### 9. BIRD: Bi-Level Operator Scheduling for Black-Box Attacks on Large Language Models
 
 📄 [OpenReview](https://openreview.net/forum?id=Kl5U7eKJvr)　📅 2026-10　🏷️ P2
 
@@ -208,7 +227,7 @@ Code is available at https://anonymous.4open.science/r/BIRD.
 
 </details>
 
-### 9. Adaptive Target Token Weighting and Refusal Divergence for Optimization-Based Jailbreak Attacks
+### 10. Adaptive Target Token Weighting and Refusal Divergence for Optimization-Based Jailbreak Attacks
 
 📄 [OpenReview](https://openreview.net/forum?id=Ma5jTNGYcT)　📅 2026-10　🏷️ P2
 
@@ -227,7 +246,7 @@ Large language models (LLMs) have advanced rapidly, yet jailbreak attacks can st
 
 </details>
 
-### 10. TagFuzz: Tag-Indexed Stateful Fuzzing of LLM-Based Robot Planners
+### 11. TagFuzz: Tag-Indexed Stateful Fuzzing of LLM-Based Robot Planners
 
 📄 [OpenReview](https://openreview.net/forum?id=OTPEQFzod7)　📅 2026-10　🏷️ P2
 
@@ -246,7 +265,7 @@ LLM-based robot planners translate natural-language requests into structured com
 
 </details>
 
-### 11. When Humans Leave Context Unsaid: Implicit Context as a Risk for Large Language Models
+### 12. When Humans Leave Context Unsaid: Implicit Context as a Risk for Large Language Models
 
 📄 [OpenReview](https://openreview.net/forum?id=UrLpCPjloI)　📅 2026-10　🏷️ P2
 
@@ -265,7 +284,7 @@ Human language is grounded in pragmatics, necessitating implicit (extralinguisti
 
 </details>
 
-### 12. FlipJev: Fast Black-Box Red Teaming Finds Universal Adversarial Suffixes for Typed Decision Models
+### 13. FlipJev: Fast Black-Box Red Teaming Finds Universal Adversarial Suffixes for Typed Decision Models
 
 📄 [OpenReview](https://openreview.net/forum?id=XUM75xrCve)　📅 2026-10　🏷️ P2
 
@@ -284,7 +303,7 @@ Typed decision models are an emerging class of language models that make decisio
 
 </details>
 
-### 13. Do LLM Jailbreaking Methods and Defenses Generalize across Languages?
+### 14. Do LLM Jailbreaking Methods and Defenses Generalize across Languages?
 
 📄 [OpenReview](https://openreview.net/forum?id=YwJPwQ39Zg)　📅 2026-10　🏷️ P2
 
@@ -303,7 +322,7 @@ Jailbreaking attacks can bypass the safety alignment that large language models 
 
 </details>
 
-### 14. Lost in Conversation: A Systematic Evaluation of Multilingual Multi-turn Jailbreak under Language Switching
+### 15. Lost in Conversation: A Systematic Evaluation of Multilingual Multi-turn Jailbreak under Language Switching
 
 📄 [OpenReview](https://openreview.net/forum?id=bRNLenzuES)　📅 2026-10　🏷️ P2
 
@@ -322,7 +341,7 @@ LLMs increasingly support multilingual interaction, yet their safety behavior ca
 
 </details>
 
-### 15. BanditFlow: Learning Query-Adaptive Strategies for LLM Red-Teaming
+### 16. BanditFlow: Learning Query-Adaptive Strategies for LLM Red-Teaming
 
 📄 [OpenReview](https://openreview.net/forum?id=cd59DDy815)　📅 2026-10　🏷️ P2
 
@@ -341,7 +360,7 @@ As Large Language Models (LLMs) are adopted in safety-critical domains, automate
 
 </details>
 
-### 16. Decoding Harm: Do Reasoning Models Resist Math-Encoded Jailbreaks?
+### 17. Decoding Harm: Do Reasoning Models Resist Math-Encoded Jailbreaks?
 
 📄 [OpenReview](https://openreview.net/forum?id=dsunhcS1QV)　📅 2026-10　🏷️ P2
 
@@ -360,7 +379,7 @@ Mathematical encoding can obscure harmful requests and undermine the safety mech
 
 </details>
 
-### 17. Does Single-Turn Evaluation Miss the Failure? Stress-Testing Safety Alignment on Social Bias under Sustained Adversarial Persuasion
+### 18. Does Single-Turn Evaluation Miss the Failure? Stress-Testing Safety Alignment on Social Bias under Sustained Adversarial Persuasion
 
 📄 [OpenReview](https://openreview.net/forum?id=jFO2Picmyl)　📅 2026-10　🏷️ P2
 
@@ -379,7 +398,7 @@ Single-turn benchmarks cannot capture whether a model that initially responds wi
 
 </details>
 
-### 18. Rethinking Long-Context Jailbreak Attacks for Large Language Models
+### 19. Rethinking Long-Context Jailbreak Attacks for Large Language Models
 
 📄 [OpenReview](https://openreview.net/forum?id=nYpx4BXmzX)　📅 2026-10　🏷️ P2
 
@@ -398,7 +417,7 @@ Long-context large language models are increasingly used in agentic and long-hor
 
 </details>
 
-### 19. Romanized Hindi Reveals a Model-Dependent Safety Asymmetry in Open-Weight Language Models
+### 20. Romanized Hindi Reveals a Model-Dependent Safety Asymmetry in Open-Weight Language Models
 
 📄 [OpenReview](https://openreview.net/forum?id=puAOSfzwF9)　📅 2026-10　🏷️ P2
 
@@ -417,7 +436,7 @@ Safety evaluations in English do not guarantee that a language model will refuse
 
 </details>
 
-### 20. Same Harm, Different Words: Idiomatic versus Direct Harmful Requests in Persian and English
+### 21. Same Harm, Different Words: Idiomatic versus Direct Harmful Requests in Persian and English
 
 📄 [OpenReview](https://openreview.net/forum?id=ry3qdyknSI)　📅 2026-10　🏷️ P2
 
@@ -436,7 +455,7 @@ Safety benchmarks for large language models (LLMs) usually state harmful request
 
 </details>
 
-### 21. Where the Guardrails Give Way: Evaluating Medical Jailbreak Vulnerability in LLMs Across Framings, Tasks, and Languages
+### 22. Where the Guardrails Give Way: Evaluating Medical Jailbreak Vulnerability in LLMs Across Framings, Tasks, and Languages
 
 📄 [OpenReview](https://openreview.net/forum?id=tmmNLvVxjM)　📅 2026-10　🏷️ P2
 
@@ -455,7 +474,7 @@ Recent progress in LLM safety research has produced numerous jailbreak technique
 
 </details>
 
-### 22. The Battle of Prompts: An Empirical Study of Prompt Execution Priority in LLM Adversarial Attacks
+### 23. The Battle of Prompts: An Empirical Study of Prompt Execution Priority in LLM Adversarial Attacks
 
 📄 [OpenReview](https://openreview.net/forum?id=wKroHuLXrG)　📅 2026-10　🏷️ P2
 
@@ -474,7 +493,7 @@ Safety vulnerabilities in Large Language Models (LLMs) remain a critical barrier
 
 </details>
 
-### 23. Beyond English-Centric LLM Safety: A Controlled Korean-English Evaluation of Jailbreak and Prompt-Injection Robustness
+### 24. Beyond English-Centric LLM Safety: A Controlled Korean-English Evaluation of Jailbreak and Prompt-Injection Robustness
 
 📄 [OpenReview](https://openreview.net/forum?id=y2sYlbUcNM)　📅 2026-10　🏷️ P2
 
@@ -495,7 +514,7 @@ LLM evaluations increasingly cover multiple languages, but rarely compare harmfu
 
 ## 二、越狱防御与安全监控
 
-### 24. Prompt-Injection Probes Learn the Conversation, Not Just the Injection
+### 25. Prompt-Injection Probes Learn the Conversation, Not Just the Injection
 
 📄 [OpenReview](https://openreview.net/forum?id=0YISlkuO5d)　📅 2026-10　🏷️ P1
 
@@ -514,7 +533,7 @@ Linear probes on a model's hidden states are used as cheap monitors for indirect
 
 </details>
 
-### 25. Toward Reliable Reward-Hacking Detection in LLMs
+### 26. Toward Reliable Reward-Hacking Detection in LLMs
 
 📄 [OpenReview](https://openreview.net/forum?id=Vl64wrAOFu)　📅 2026-10　🏷️ P1
 
@@ -533,7 +552,7 @@ Reliable reward-hacking detection requires evidence that a monitor distinguishes
 
 </details>
 
-### 26. HealthJailbreak: Scope-Aware Jailbreak Evaluation and Policy-Conditioned Alignment for Health Chatbots
+### 27. HealthJailbreak: Scope-Aware Jailbreak Evaluation and Policy-Conditioned Alignment for Health Chatbots
 
 📄 [OpenReview](https://openreview.net/forum?id=0F7TH61Xy3)　📅 2026-10　🏷️ P2
 
@@ -552,7 +571,7 @@ Health chatbots are often restricted to health or to a single health task, but j
 
 </details>
 
-### 27. SafeDream: Safety World Model for Proactive Early Jailbreak Detection in Multi-Turn Conversations
+### 28. SafeDream: Safety World Model for Proactive Early Jailbreak Detection in Multi-Turn Conversations
 
 📄 [OpenReview](https://openreview.net/forum?id=0hmbvsqfKr)　📅 2026-10　🏷️ P2
 
@@ -571,7 +590,7 @@ Multi-turn jailbreak attacks progressively erode LLM safety alignment across see
 
 </details>
 
-### 28. Competing Explanations, Persistent Rules: Grounded Defense against Misleading Charts in Executing Web Agents
+### 29. Competing Explanations, Persistent Rules: Grounded Defense against Misleading Charts in Executing Web Agents
 
 📄 [OpenReview](https://openreview.net/forum?id=3W7P9cyihW)　📅 2026-10　🏷️ P2
 
@@ -590,7 +609,7 @@ Web agents use charts as evidence to guide actions, yet Misleading Visualization
 
 </details>
 
-### 29. SEAL: Sealed Queries for Local Sanitization against Indirect Prompt Injection
+### 30. SEAL: Sealed Queries for Local Sanitization against Indirect Prompt Injection
 
 📄 [OpenReview](https://openreview.net/forum?id=3r81nPKvq6)　📅 2026-10　🏷️ P2
 
@@ -625,7 +644,7 @@ training recipe supports applicability across model families.
 
 </details>
 
-### 30. ConformalGuard: Conformal Risk Control for Safeguarding LLM-Based Multi-Agent Systems
+### 31. ConformalGuard: Conformal Risk Control for Safeguarding LLM-Based Multi-Agent Systems
 
 📄 [OpenReview](https://openreview.net/forum?id=8EjiMo1ISU)　📅 2026-10　🏷️ P2
 
@@ -644,7 +663,26 @@ Large language model-based multi-agent systems rely on inter-agent communication
 
 </details>
 
-### 31. GUARD-SLM: Token Activation-Based Defense Against Jailbreak Attacks for Small Language Models
+### 32. DualTrend: Combining Trend and Deviation Evidence for Training-Free Adversarial Suffix Detection
+
+📄 [OpenReview](https://openreview.net/forum?id=AlWmEN7hXC)　📅 2026-10　🏷️ P2
+
+**关键词**：`adversarial suffix`、`training-free detection`、`sequential statistics`
+
+👤 **作者**：Anonymous（ARR 2026 October 匿名预印本）
+
+- 🎯 **研究动机**：优化型对抗后缀流畅可绕困惑度过滤器；序贯统计检测器又会被普通内容转移触发且阈值难迁移
+- 🔬 **研究方法**：DualTrend：冻结 LLM 上持续时间趋势+互补偏差证据组合的免训练检测器
+- 📌 **结论**：在检测权衡（漏检 vs 误伤合法用户）上取得改进——后缀攻击的免训练序贯检测
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Jailbreak attacks undermine the safety alignment of large language models (LLMs) by inducing responses to requests they are intended to refuse. As LLMs are increasingly deployed in user-facing applications, detecting these attacks is essential to limiting harmful outputs while preserving access for legitimate users. Optimization-based adversarial suffixes make this task particularly challenging because they can remain fluent and evade perplexity-based filters. Sequential statistical detectors capture changes missed by aggregate scores, but ordinary content transitions can also trigger strong anomaly evidence, and source-calibrated thresholds may transfer poorly to new prompt distributions. To address this detection tradeoff, we introduce DualTrend, a training-free detector that combines persistent temporal trends with complementary deviation evidence from a frozen LLM. DualTrend tracks rank trends in token negative log likelihood (NLL) and predictive entropy, and supplements them with accumulated NLL deviations relative to the scoring prefix. It maps both components to empirical source-negative upper tails and fuses them through a fixed probability product, with references and thresholds frozen before target evaluation. Across two backbones and three adversarial suffix families, DualTrend achieves macro F1 of 0.7538 under nominal source-5\% calibration. Compared with the persistent trend-only variant, it reduces the false-positive rate from 8.33\% to 2.33\% while retaining nearly unchanged recall (66.00\% versus 65.83\%). Code and evaluation materials are available at https://anonymous.4open.science/r/DualTrend-76FE/.
+
+</details>
+
+### 33. GUARD-SLM: Token Activation-Based Defense Against Jailbreak Attacks for Small Language Models
 
 📄 [OpenReview](https://openreview.net/forum?id=AyluywZYav)　📅 2026-10　🏷️ P2
 
@@ -669,7 +707,7 @@ rejection in SLM jailbreak defenses.
 
 </details>
 
-### 32. Predictive Representation Alignment Improves Robustness to Unseen Jailbreaks
+### 34. Predictive Representation Alignment Improves Robustness to Unseen Jailbreaks
 
 📄 [OpenReview](https://openreview.net/forum?id=BNBpdqHDbE)　📅 2026-10　🏷️ P2
 
@@ -688,7 +726,7 @@ Jailbreak attacks can preserve a harmful request while changing its surface form
 
 </details>
 
-### 33. SafeRole: Reconciling Safety and Fidelity in Role-Playing LLMs
+### 35. SafeRole: Reconciling Safety and Fidelity in Role-Playing LLMs
 
 📄 [OpenReview](https://openreview.net/forum?id=CzONdXw0DM)　📅 2026-10　🏷️ P2
 
@@ -711,7 +749,7 @@ We release SafeRole and trained models, along with our training and evaluation c
 
 </details>
 
-### 34. Bidirectional Intention Inference Enhances LLMs' Defense Against Multi-Turn Jailbreak Attacks
+### 36. Bidirectional Intention Inference Enhances LLMs' Defense Against Multi-Turn Jailbreak Attacks
 
 📄 [OpenReview](https://openreview.net/forum?id=J6rXyHpq41)　📅 2026-10　🏷️ P2
 
@@ -733,7 +771,7 @@ Results show that BIID achieves the lowest average Attack Success Rate (ASR) wit
 
 </details>
 
-### 35. Who’s the Impostor in Your Prompt? Spot-Cleaning Adversarial Content to Defend LLM Reasoning
+### 37. Who’s the Impostor in Your Prompt? Spot-Cleaning Adversarial Content to Defend LLM Reasoning
 
 📄 [OpenReview](https://openreview.net/forum?id=JTsFRfkW98)　📅 2026-10　🏷️ P2
 
@@ -753,7 +791,7 @@ it removes a top-ranked sentence only if re-executing the model without it confi
 
 </details>
 
-### 36. DARS: Decoupled Asymmetry-Aware Representation Safeguard for Vision-Language Model Jailbreak Defense
+### 38. DARS: Decoupled Asymmetry-Aware Representation Safeguard for Vision-Language Model Jailbreak Defense
 
 📄 [OpenReview](https://openreview.net/forum?id=K5KTXWzlEy)　📅 2026-10　🏷️ P2
 
@@ -772,7 +810,7 @@ Vision-Language Models (VLMs) remain vulnerable to multimodal jailbreaks, and re
 
 </details>
 
-### 37. SafePrompt: Jailbreak Search Defense through Activation Signature
+### 39. SafePrompt: Jailbreak Search Defense through Activation Signature
 
 📄 [OpenReview](https://openreview.net/forum?id=Ll8wT0gfGf)　📅 2026-10　🏷️ P2
 
@@ -806,7 +844,7 @@ the reference, utility and feedback choices that govern its transfer.
 
 </details>
 
-### 38. ConeSpace & ConeBand: Geometric Jailbreak Defense with Safety Pulses
+### 40. ConeSpace & ConeBand: Geometric Jailbreak Defense with Safety Pulses
 
 📄 [OpenReview](https://openreview.net/forum?id=Lsy0U1EaZl)　📅 2026-10　🏷️ P2
 
@@ -825,7 +863,7 @@ Jailbreak defenses must stop harmful answers without disrupting ordinary request
 
 </details>
 
-### 39. Segment-Level Coherence for Robust Harmful Intent Probing in LLMs
+### 41. Segment-Level Coherence for Robust Harmful Intent Probing in LLMs
 
 📄 [OpenReview](https://openreview.net/forum?id=OAHuIU0XQZ)　📅 2026-10　🏷️ P2
 
@@ -844,7 +882,7 @@ Large Language Models (LLMs) are increasingly exposed to adaptive jailbreaking, 
 
 </details>
 
-### 40. PolicyAlign: Direct Policy-Based Safety Alignment for Large Language Models
+### 42. PolicyAlign: Direct Policy-Based Safety Alignment for Large Language Models
 
 📄 [OpenReview](https://openreview.net/forum?id=PecNZYeI37)　📅 2026-10　🏷️ P2
 
@@ -863,7 +901,7 @@ Safety alignment of large language models (LLMs) typically depends on high-quali
 
 </details>
 
-### 41. A Self-Evolving Multi-Agent Framework Defense against LLM Jailbreak Attacks
+### 43. A Self-Evolving Multi-Agent Framework Defense against LLM Jailbreak Attacks
 
 📄 [OpenReview](https://openreview.net/forum?id=StR4MYtB3y)　📅 2026-10　🏷️ P2
 
@@ -882,7 +920,26 @@ Large language models (LLMs) remain vulnerable to jailbreak attacks that exploit
 
 </details>
 
-### 42. From Static to Adaptive: Immunological Memory-based Jailbreak Detection for Large Language Models
+### 44. ProvRoPE: Encoding Application-Provided Provenance for Training-Free Prompt Injection Defense
+
+📄 [OpenReview](https://openreview.net/forum?id=UCbxPFjK26)　📅 2026-10　🏷️ P2
+
+**关键词**：`prompt injection`、`provenance`、`RoPE`、`training-free`
+
+👤 **作者**：Anonymous（ARR 2026 October 匿名预印本）
+
+- 🎯 **研究动机**：应用其实知道每段输入的来源与预期权限——但序列化成 token 流后该信息丢失，指令-数据分离失效
+- 🔬 **研究方法**：ProvRoPE：把应用提供的源角色编码进 RoPE 几何——低权限 token 共享位置偏移，保角色内相对几何、移跨角色相位，零参数修改零训练
+- 📌 **结论**：六冻结检查点×八种直接/间接注入设置下有效防御——来源权限的几何编码（训练无关注入防御新路径）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+LLM applications increasingly combine privileged instructions with untrusted content from retrieval, web pages, and tools, making reliable instruction–data separation a critical security requirement. Prompt injection exploits failures of this separation by causing untrusted text to be interpreted as control. Yet applications often know the provenance and intended authority of each input segment, even though this information is lost once inputs are serialized into a token sequence. We introduce ProvRoPE, a training-free method that encodes application-provided source roles into RoPE geometry. ProvRoPE assigns a shared positional offset to lower-privilege tokens, preserving within-role relative geometry while shifting cross-role phases, without modifying model parameters or requiring training. Across six frozen model checkpoints and eight direct and indirect prompt-injection settings, ProvRoPE achieves the lowest ASR in 43 of 48 model–benchmark combinations while retaining competitive clean-task utility relative to a trained role-encoding baseline. Gains persist across injection locations and nonzero offsets. Our results suggest that provenance-aware attention geometry provides a lightweight inference-time mechanism to strengthen agentic LLM application security.
+
+</details>
+
+### 45. From Static to Adaptive: Immunological Memory-based Jailbreak Detection for Large Language Models
 
 📄 [OpenReview](https://openreview.net/forum?id=X8hW4OKEV9)　📅 2026-10　🏷️ P2
 
@@ -902,7 +959,7 @@ Drawing inspiration from the immunological memory, we introduce the $\textbf{I}$
 
 </details>
 
-### 43. Re-START: Self-Taught Safety Alignment by Rectifying Flawed Reasoning
+### 46. Re-START: Self-Taught Safety Alignment by Rectifying Flawed Reasoning
 
 📄 [OpenReview](https://openreview.net/forum?id=Xjw8rR0zin)　📅 2026-10　🏷️ P2
 
@@ -921,7 +978,7 @@ Defending against jailbreak attacks is crucial for safely deploying Large Langua
 
 </details>
 
-### 44. Triaging Threats to Specialized Guardrails
+### 47. Triaging Threats to Specialized Guardrails
 
 📄 [OpenReview](https://openreview.net/forum?id=bH1LlEfiW1)　📅 2026-10　🏷️ P2
 
@@ -940,7 +997,7 @@ Building robust safety guardrails is essential for deploying Large Language Mode
 
 </details>
 
-### 45. Orthogonal Subspace Constraints: Defending Large Language Models Against Jailbreak Attacks
+### 48. Orthogonal Subspace Constraints: Defending Large Language Models Against Jailbreak Attacks
 
 📄 [OpenReview](https://openreview.net/forum?id=cAxfAxwCjw)　📅 2026-10　🏷️ P2
 
@@ -960,7 +1017,7 @@ neural networks. The former incur substantial computational overhead, whereas th
 
 </details>
 
-### 46. Hidden-Selective: A Selective Safety Defense Based on Joint Image--Text Representations
+### 49. Hidden-Selective: A Selective Safety Defense Based on Joint Image--Text Representations
 
 📄 [OpenReview](https://openreview.net/forum?id=cYNqhcgWc5)　📅 2026-10　🏷️ P2
 
@@ -996,7 +1053,7 @@ than merely increasing intervention, contributes to these gains.
 
 </details>
 
-### 47. Calling the Bluff: Detecting Ever-Shifting Harmful Chat Dialogue via Ordered Reasoning Chain Regularization
+### 50. Calling the Bluff: Detecting Ever-Shifting Harmful Chat Dialogue via Ordered Reasoning Chain Regularization
 
 📄 [OpenReview](https://openreview.net/forum?id=cpCrDBJVHG)　📅 2026-10　🏷️ P2
 
@@ -1017,7 +1074,7 @@ Disclaimer: This paper may contain content that is disturbing to some readers.
 
 </details>
 
-### 48. Noise Injection Systemically Degrades Large Language Model Safety Guardrails
+### 51. Noise Injection Systemically Degrades Large Language Model Safety Guardrails
 
 📄 [OpenReview](https://openreview.net/forum?id=dsvLPYo5ZW)　📅 2026-10　🏷️ P2
 
@@ -1036,7 +1093,7 @@ Safety guardrails in large language models (LLMs) are critical for reducing harm
 
 </details>
 
-### 49. JAILJUDGE: A Comprehensive Jailbreak Judge Benchmark with Multi-Agent Enhanced Explanation Evaluation Framework
+### 52. JAILJUDGE: A Comprehensive Jailbreak Judge Benchmark with Multi-Agent Enhanced Explanation Evaluation Framework
 
 📄 [OpenReview](https://openreview.net/forum?id=e20Hgr2VnB)　📅 2026-10　🏷️ P2
 
@@ -1055,7 +1112,7 @@ Ensuring the safety of large language models (LLMs) requires accurate evaluation
 
 </details>
 
-### 50. GMP: A Benchmark for Content Moderation under Co-occurring Violations and Dynamic Rules
+### 53. GMP: A Benchmark for Content Moderation under Co-occurring Violations and Dynamic Rules
 
 📄 [OpenReview](https://openreview.net/forum?id=gPXi9X3rwz)　📅 2026-10　🏷️ P2
 
@@ -1075,7 +1132,7 @@ Evaluations of over 20 state-of-the-art LLMs via GMP reveal two systemic weaknes
 
 </details>
 
-### 51. SecInfer: Preventing Prompt Injection via Inference-time Scaling
+### 54. SecInfer: Preventing Prompt Injection via Inference-time Scaling
 
 📄 [OpenReview](https://openreview.net/forum?id=glCWItRP3r)　📅 2026-10　🏷️ P2
 
@@ -1094,7 +1151,7 @@ Prompt injection attacks pose a pervasive threat to the security of Large Langua
 
 </details>
 
-### 52. GuardJanus: Towards A Unified Safety and Security Reasoner for LLMs and Agents
+### 55. GuardJanus: Towards A Unified Safety and Security Reasoner for LLMs and Agents
 
 📄 [OpenReview](https://openreview.net/forum?id=i7uyhWLCjF)　📅 2026-10　🏷️ P2
 
@@ -1113,7 +1170,7 @@ As large language models (LLMs) and LLM agents share unprecedented access to sen
 
 </details>
 
-### 53. EVO-Guard: Self-Evolving GNN Guardrails for Adaptive Safety in GUI Agents
+### 56. EVO-Guard: Self-Evolving GNN Guardrails for Adaptive Safety in GUI Agents
 
 📄 [OpenReview](https://openreview.net/forum?id=ij5dnhAqeg)　📅 2026-10　🏷️ P2
 
@@ -1132,7 +1189,7 @@ The rapid advancement of autonomous GUI agents has ushered in a new era of digit
 
 </details>
 
-### 54. Where is the Safety Signal? Modality-Aware Depth Calibration for Jailbreak Detection
+### 57. Where is the Safety Signal? Modality-Aware Depth Calibration for Jailbreak Detection
 
 📄 [OpenReview](https://openreview.net/forum?id=klOIhknsNm)　📅 2026-10　🏷️ P2
 
@@ -1151,7 +1208,7 @@ Internal safety monitors must locate layers that distinguish harmful from benign
 
 </details>
 
-### 55. SafeReview: Defending LLM-based Review Systems Against Adversarial Hidden Prompts
+### 58. SafeReview: Defending LLM-based Review Systems Against Adversarial Hidden Prompts
 
 📄 [OpenReview](https://openreview.net/forum?id=mBCrODYjvM)　📅 2026-10　🏷️ P2
 
@@ -1170,7 +1227,7 @@ As Large Language Models (LLMs) are increasingly integrated into academic peer r
 
 </details>
 
-### 56. Reducing the Pretraining Modality Gap for Safer Vision-Language Models
+### 59. Reducing the Pretraining Modality Gap for Safer Vision-Language Models
 
 📄 [OpenReview](https://openreview.net/forum?id=np3Oxt7Bjm)　📅 2026-10　🏷️ P2
 
@@ -1189,7 +1246,7 @@ Large Vision-Language Models (LVLMs) can suffer substantial safety degradation w
 
 </details>
 
-### 57. CaseCritic: Training Small Safety Guards to Critique Retrieved Policy Cases
+### 60. CaseCritic: Training Small Safety Guards to Critique Retrieved Policy Cases
 
 📄 [OpenReview](https://openreview.net/forum?id=oagHIVnctV)　📅 2026-10　🏷️ P2
 
@@ -1208,7 +1265,7 @@ Small safety guards are widely deployed as prompt-level filters before large lan
 
 </details>
 
-### 58. SAEgis: Sparse Autoencoders as Plug-and-Play Firewalls for Adversarial Attack Detection in VLMs
+### 61. SAEgis: Sparse Autoencoders as Plug-and-Play Firewalls for Adversarial Attack Detection in VLMs
 
 📄 [OpenReview](https://openreview.net/forum?id=pQJhWhhrn0)　📅 2026-10　🏷️ P2
 
@@ -1227,7 +1284,26 @@ Vision-language models (VLMs) have advanced rapidly and are increasingly deploye
 
 </details>
 
-### 59. Latent Safety-State Dynamics for Multi-Turn Jailbreak Risk Modeling
+### 62. Think-Reflect-Revise: A Policy-Guided Reflective Framework for Safety Alignment in Large Vision Language Models
+
+📄 [OpenReview](https://openreview.net/forum?id=rWLgERigiM)　📅 2026-10　🏷️ P2
+
+**关键词**：`safety alignment`、`LVLM`、`self-reflection`
+
+👤 **作者**：Anonymous（ARR 2026 October 匿名预印本）
+
+- 🎯 **研究动机**：单遍 think-then-answer 范式在隐式恶意意图躲过初检时，模型会在自身推理轨迹里生成显式有害内容——该违规信号被忽视
+- 🔬 **研究方法**：TRR 三段框架：政策引导自反思检测并纠正自暴露的恶意内容+ReSafe 高质量数据集训练该能力
+- 📌 **结论**：对复杂多模态越狱的鲁棒安全对齐——把'自己说过的话'变成监控面
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+As multimodal reasoning enhances the capabilities of Large Visual Language Models (LVLMs), recent safety alignment efforts have shifted toward leveraging internal reasoning to discern potential risks before responding. However, the prevalent single-pass \textit{think-then-answer} paradigm remains vulnerable to complex multimodal jailbreak attacks. Specifically, when implicit malicious intent evades initial detection, the model may inadvertently generate explicit harmful content within its own reasoning trace—a critical violation signal that currently goes overlooked. Motivated by this observation, we propose $\textit{Think-Reflect-Revise}$ ($\textit{TRR}$), a novel safety alignment framework that empowers models to detect and correct self-revealed malicious content through policy-guided self-reflection. To cultivate this capability, we construct $\textit{ReSafe}$, a high-quality dataset comprising 5,000 structured think-reflect-revise examples. The target model first undergoes supervised fine-tuning (SFT) to internalize this reflective paradigm, followed by reinforcement learning (RL) to further reinforce policy-consistent revisions. Extensive experiments demonstrate that $\textit{TRR}$ significantly improves model robustness against unsafe queries and jailbreak attacks, increasing the safe response rate of Qwen2.5VL-7B from 42.8\% to 87.7\% while preserving general task performance and avoiding over-refusal. Our code and dataset are available at: $\url{https://anonymous.4open.science/r/Think-Reflect-Revise-94D8}$.
+
+</details>
+
+### 63. Latent Safety-State Dynamics for Multi-Turn Jailbreak Risk Modeling
 
 📄 [OpenReview](https://openreview.net/forum?id=vONRzmVlz8)　📅 2026-10　🏷️ P2
 
@@ -1246,7 +1322,7 @@ Multi-turn jailbreak early warning requires predicting unsafe behavior before a 
 
 </details>
 
-### 60. MOSAIC: Composable Safety Alignment with Modular Control Tokens
+### 64. MOSAIC: Composable Safety Alignment with Modular Control Tokens
 
 📄 [OpenReview](https://openreview.net/forum?id=vebOymR8bQ)　📅 2026-10　🏷️ P2
 
@@ -1265,7 +1341,7 @@ Safety alignment in large language models (LLMs) is often implemented as a stati
 
 </details>
 
-### 61. Steering Both Ways: Bidirectional Conditional Safety Steering in a Learned Contrastive Safety Space
+### 65. Steering Both Ways: Bidirectional Conditional Safety Steering in a Learned Contrastive Safety Space
 
 📄 [OpenReview](https://openreview.net/forum?id=wQY6POtck2)　📅 2026-10　🏷️ P2
 
@@ -1284,7 +1360,7 @@ As large language models (LLMs) become more capable, preventing harmful assistan
 
 </details>
 
-### 62. MARS: Modality-Agnostic Robustness and Safety Adaptation for Vision-Language Models
+### 66. MARS: Modality-Agnostic Robustness and Safety Adaptation for Vision-Language Models
 
 📄 [OpenReview](https://openreview.net/forum?id=wkOvSJhwiR)　📅 2026-10　🏷️ P2
 
@@ -1303,7 +1379,7 @@ Vision-language models (VLMs) achieve strong performance by jointly interpreting
 
 </details>
 
-### 63. RiskSteer: Joint Risk-Guided Steering during Language Model Reasoning
+### 67. RiskSteer: Joint Risk-Guided Steering during Language Model Reasoning
 
 📄 [OpenReview](https://openreview.net/forum?id=wqYNN3lGcp)　📅 2026-10　🏷️ P2
 
@@ -1322,7 +1398,26 @@ Reliable responses from large language models require avoiding several failure m
 
 </details>
 
-### 64. SAFER: Probing Safety in Reward Models with Sparse Autoencoder
+### 68. AgentDrift: Detecting and Localizing Prompt Injection as Behavioral Drift in LLM Agent Trajectories
+
+📄 [OpenReview](https://openreview.net/forum?id=xdFt8hGAOI)　📅 2026-10　🏷️ P2
+
+**关键词**：`prompt injection`、`behavioral drift`、`step-level labels`
+
+👤 **作者**：Anonymous（ARR 2026 October 匿名预印本）
+
+- 🎯 **研究动机**：agent 可能遭遇注入而不跟随、或短暂跟随后回归任务——二元安全判决无法揭示攻击从哪进入、腐蚀了哪些动作
+- 🔬 **研究方法**：AgentDrift 基准：12,536 条合成工具调用轨迹 71,024 步全标注（良性/注入点/被劫持动作/失败注入+看似可疑的良性硬负例）+DriftNet 双头 Transformer 联合检测被劫持轨迹与逐步标注
+- 📌 **结论**：以行为漂移视角把注入检测细化为可定位步骤问题——轨迹级注入取证基准
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+An LLM agent may encounter a prompt injection without following it, or follow it briefly before returning to its task. A binary safety verdict cannot reveal where the attack entered or which actions it corrupted. We study indirect prompt injection as behavioral drift and introduce AgentDrift, a benchmark of 12,536 synthetic tool-call trajectories across five domains, with labels for all 71,024 steps. The benchmark distinguishes benign steps, injection points, hijacked actions, and failed injections, and includes legitimate but suspicious-looking hard negatives. Labels are specified during generation, structurally validated, and manually audited on 1,200 trajectories. We also introduce DriftNet, a dual-head Transformer that combines frozen step embeddings with world-context features to jointly detect compromised trajectories and label each step, using fewer than two million trainable parameters. On the benchmark’s task-disjoint test set, DriftNet achieves 0.983 trajectory F1 and exactly localizes the injection point in 98.7% of attacked trajectories, with no false alarms on 218 resisted attacks. It detects 98.6% of partial hijacks and 93.2% of delayed executions, compared with 11.1% and 17.1% for a surface-feature baseline. These results support trajectory-based diagnosis that distinguishes attack exposure from behavioral compromise and identifies the actions affected.
+
+</details>
+
+### 69. SAFER: Probing Safety in Reward Models with Sparse Autoencoder
 
 📄 [OpenReview](https://openreview.net/forum?id=yJxqybl03O)　📅 2026-10　🏷️ P2
 
@@ -1341,7 +1436,7 @@ Reinforcement learning from human feedback (RLHF) is a key paradigm for aligning
 
 </details>
 
-### 65. EffectSteer: Residual Steering-Effect Prediction for Adaptive Refusal Control
+### 70. EffectSteer: Residual Steering-Effect Prediction for Adaptive Refusal Control
 
 📄 [OpenReview](https://openreview.net/forum?id=z5cKo0Gqg5)　📅 2026-10　🏷️ P2
 
@@ -1375,7 +1470,7 @@ largely preserving general capabilities.
 
 ## 三、安全对齐与机制可解释性
 
-### 66. Safety Probes Trained on the Base Model Best Withstand Post-Training and Fine-Tuning
+### 71. Safety Probes Trained on the Base Model Best Withstand Post-Training and Fine-Tuning
 
 📄 [OpenReview](https://openreview.net/forum?id=5FjW0gaVe9)　📅 2026-10　🏷️ P1
 
@@ -1394,7 +1489,7 @@ Activation probes on a language model's hidden states are deployed as cheap safe
 
 </details>
 
-### 67. From Harmfulness to Refusal: Tracing the Causal Pathway of Safety Circuits in LLMs
+### 72. From Harmfulness to Refusal: Tracing the Causal Pathway of Safety Circuits in LLMs
 
 📄 [OpenReview](https://openreview.net/forum?id=C6efXde7Yp)　📅 2026-10　🏷️ P1
 
@@ -1413,7 +1508,7 @@ Understanding the internal safety circuits of Large Language Models (LLMs) is cr
 
 </details>
 
-### 68. Same Recipe, Different Fate: The Training Recipe's Effect on Safety Erosion from Benign Fine-Tuning Depends on the Model Family
+### 73. Same Recipe, Different Fate: The Training Recipe's Effect on Safety Erosion from Benign Fine-Tuning Depends on the Model Family
 
 📄 [OpenReview](https://openreview.net/forum?id=M0daiyC5he)　📅 2026-10　🏷️ P1
 
@@ -1432,7 +1527,7 @@ Benign fine-tuning can erode safety, but reported effects vary widely. We compar
 
 </details>
 
-### 69. FALBench: A Benchmark for Fake Alignment Evaluation and Behavioral Analysis
+### 74. FALBench: A Benchmark for Fake Alignment Evaluation and Behavioral Analysis
 
 📄 [OpenReview](https://openreview.net/forum?id=OvlB6tmC6H)　📅 2026-10　🏷️ P1
 
@@ -1451,7 +1546,7 @@ Fake alignment occurs when large language models (LLMs) follow a new training ob
 
 </details>
 
-### 70. Finding the Cracks: Auditing Safety Alignment in LLMs through Interpretable Feature Analysis
+### 75. Finding the Cracks: Auditing Safety Alignment in LLMs through Interpretable Feature Analysis
 
 📄 [OpenReview](https://openreview.net/forum?id=X2sdgaahIP)　📅 2026-10　🏷️ P1
 
@@ -1472,7 +1567,7 @@ increases unsafe outputs without fine-tuning or adversarial prompting (Llama har
 
 </details>
 
-### 71. How Robust Are Activation Probes for LLM Monitors? Deployment Shifts and Adaptive Evasion
+### 76. How Robust Are Activation Probes for LLM Monitors? Deployment Shifts and Adaptive Evasion
 
 📄 [OpenReview](https://openreview.net/forum?id=b7wX36ziiz)　📅 2026-10　🏷️ P1
 
@@ -1491,7 +1586,7 @@ Activation probes are increasingly used as monitors for latent LLM behavior such
 
 </details>
 
-### 72. Persona-Mediated Spillover: Predictable Finetuning Side Effects and the Scale Limit of Controlling Them
+### 77. Persona-Mediated Spillover: Predictable Finetuning Side Effects and the Scale Limit of Controlling Them
 
 📄 [OpenReview](https://openreview.net/forum?id=fHp4WDN31h)　📅 2026-10　🏷️ P1
 
@@ -1536,7 +1631,7 @@ effective means of changing behavior.
 
 </details>
 
-### 73. Do Activation Monitors Survive Model Updates? Benchmarking, Predicting, and Repairing Activation-Monitor Staleness
+### 78. Do Activation Monitors Survive Model Updates? Benchmarking, Predicting, and Repairing Activation-Monitor Staleness
 
 📄 [OpenReview](https://openreview.net/forum?id=kuLUC3RUkb)　📅 2026-10　🏷️ P1
 
@@ -1555,7 +1650,7 @@ Activation monitors --- lightweight probes on a model's internal representations
 
 </details>
 
-### 74. No Cheap Escape: Collateral Barrier Geometry for Self-Destructive Language Models
+### 79. No Cheap Escape: Collateral Barrier Geometry for Self-Destructive Language Models
 
 📄 [OpenReview](https://openreview.net/forum?id=ta0VP0Z6Ra)　📅 2026-10　🏷️ P1
 
@@ -1574,7 +1669,7 @@ Harmful fine-tuning and direct weight edits can remove the safety alignment of o
 
 </details>
 
-### 75. Rethinking GRPO for Large Reasoning Model Safety Alignment
+### 80. Rethinking GRPO for Large Reasoning Model Safety Alignment
 
 📄 [OpenReview](https://openreview.net/forum?id=0VJNRxXMZf)　📅 2026-10　🏷️ P2
 
@@ -1593,7 +1688,7 @@ Large reasoning models (LRMs) exhibit strong reasoning capabilities but remain v
 
 </details>
 
-### 76. Low-Agreeableness Persona Conditioning for Safe LLM Fine-Tuning
+### 81. Low-Agreeableness Persona Conditioning for Safe LLM Fine-Tuning
 
 📄 [OpenReview](https://openreview.net/forum?id=3LKy3P2StA)　📅 2026-10　🏷️ P2
 
@@ -1613,7 +1708,7 @@ three experiments on four models, our approach lowers the rate of harmful replie
 
 </details>
 
-### 77. Single-turn misalignment is not a solved problem: Measuring the effect of user pressure with matched controls
+### 82. Single-turn misalignment is not a solved problem: Measuring the effect of user pressure with matched controls
 
 📄 [OpenReview](https://openreview.net/forum?id=5GY1UlGKVS)　📅 2026-10　🏷️ P2
 
@@ -1632,7 +1727,7 @@ Language models must resist user pressure while remaining helpful on legitimate 
 
 </details>
 
-### 78. The Wrong Kind of Right: Quantifying and Localizing Misfired Alignment in LLMs
+### 83. The Wrong Kind of Right: Quantifying and Localizing Misfired Alignment in LLMs
 
 📄 [OpenReview](https://openreview.net/forum?id=5aePrqV5Rx)　📅 2026-10　🏷️ P2
 
@@ -1655,7 +1750,7 @@ Alignment aims to ensure that large language models (LLMs) behave safely and rel
 
 </details>
 
-### 79. DiRe: Dispersing Refusal Vectors to Defend Against Open-Source LLM Abliteration
+### 84. DiRe: Dispersing Refusal Vectors to Defend Against Open-Source LLM Abliteration
 
 📄 [OpenReview](https://openreview.net/forum?id=AebbZlZMxF)　📅 2026-10　🏷️ P2
 
@@ -1674,7 +1769,7 @@ Large language models encode refusal as a concentrated, dominant direction that 
 
 </details>
 
-### 80. Seeing Harm, Saying Less: Geometry of Refusal across Text and Image in Vision-Language Models
+### 85. Seeing Harm, Saying Less: Geometry of Refusal across Text and Image in Vision-Language Models
 
 📄 [OpenReview](https://openreview.net/forum?id=BHf3gLLv8F)　📅 2026-10　🏷️ P2
 
@@ -1693,7 +1788,7 @@ Vision-language models refuse a harmful request stated in words far more readily
 
 </details>
 
-### 81. System Prompts Affect Response Bias More Than Discriminability in LLM Safety
+### 86. System Prompts Affect Response Bias More Than Discriminability in LLM Safety
 
 📄 [OpenReview](https://openreview.net/forum?id=GDd6jTkx0G)　📅 2026-10　🏷️ P2
 
@@ -1712,7 +1807,7 @@ Large language model safety evaluations often focus on a compliance–refusal tr
 
 </details>
 
-### 82. PRISM: Process-Level Risk-Aware Tree Search for Safe Reasoning in Large Language Models
+### 87. PRISM: Process-Level Risk-Aware Tree Search for Safe Reasoning in Large Language Models
 
 📄 [OpenReview](https://openreview.net/forum?id=GGHj9jrPLl)　📅 2026-10　🏷️ P2
 
@@ -1731,7 +1826,7 @@ Large reasoning models rely on multi-step intermediate reasoning, but existing s
 
 </details>
 
-### 83. Risk and Refusal: Mechanisms of LLM Responses to Suicidal Ideation
+### 88. Risk and Refusal: Mechanisms of LLM Responses to Suicidal Ideation
 
 📄 [OpenReview](https://openreview.net/forum?id=GLq83qdysp)　📅 2026-10　🏷️ P2
 
@@ -1750,7 +1845,7 @@ Refusal is a common safety mechanism in large language models (LLMs), yet in con
 
 </details>
 
-### 84. Exclusive Unlearning
+### 89. Exclusive Unlearning
 
 📄 [OpenReview](https://openreview.net/forum?id=HM5yUClIiD)　📅 2026-10　🏷️ P2
 
@@ -1773,7 +1868,39 @@ Moreover, our method outperforms conventional unlearning and safety-alignment me
 
 </details>
 
-### 85. Feature Forensics: Identifying Behavioral Vulnerabilities in LLMs through Sparse Autoencoders
+### 90. One Direction, Many Languages, Many Scorers: Measuring Cross-Lingual Refusal-Direction Transfer
+
+📄 [OpenReview](https://openreview.net/forum?id=IzWq5ttln8)　📅 2026-10　🏷️ P2
+
+**关键词**：`refusal direction`、`cross-lingual`、`mechanism`
+
+👤 **作者**：Anonymous（ARR 2026 October 匿名预印本）
+
+- 🎯 **研究动机**：英语拟合的拒答方向据称可跨语言移除拒答——该结论许可了多少泛化未被检验
+- 🔬 **研究方法**：11 语言×3 模型族：消融英语方向在全部 33 模型-语言对降低拒答、各语言自拟合方向不优于英语方向；再分离'识别拒答'与'控制拒答'
+- 📌 **结论**：Llama-3.1-8B 上方向预测拒答 0.90 AUROC 而移除反而更拒；资源水平效应随判官固定改变符号——跨语言拒答方向迁移的测量边界（机制结论的稳健性审计）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Removing one direction from a language model's residual stream strips its ability to refuse
+harmful requests, and a direction fitted on English has been reported to do this in other
+languages too. We ask how much that licenses. Across eleven languages and three model families,
+ablating the English direction lowers refusal in all 33 model-language pairs, and a language's
+own fitted direction is no better a handle than the English one, so this is not eleven parallel
+mechanisms. But identifying refusal and controlling it come apart. In Llama-3.1-8B the direction
+predicts refusal at 0.90 AUROC while removing it makes the model refuse more, and that
+still holds when we refit at the layer a 32-layer sweep ranks first. The reported tendency for
+the effect to track a language's resource level changes sign once the judge is held fixed, and
+changes again if only full refusals count. Every number here is an automated judge's opinion, so
+we hand-check 373 English and Hindi responses: agreement on our endpoint is $0.72$ and $0.82$,
+the judge's abstentions turn out to be genuine ambiguity, and it over-states refusal by
+$3$-$7$ points. Claims about multilingual refusal should report the scorer as part of the
+result.
+
+</details>
+
+### 91. Feature Forensics: Identifying Behavioral Vulnerabilities in LLMs through Sparse Autoencoders
 
 📄 [OpenReview](https://openreview.net/forum?id=KDx2Ei42x9)　📅 2026-10　🏷️ P2
 
@@ -1792,7 +1919,7 @@ Grouping latent features identified by sparse autoencoders (SAEs) may reveal how
 
 </details>
 
-### 86. Protecting Safety during Reasoning Training with Low-Rank Fisher Regularisation
+### 92. Protecting Safety during Reasoning Training with Low-Rank Fisher Regularisation
 
 📄 [OpenReview](https://openreview.net/forum?id=TIv1W5XGJK)　📅 2026-10　🏷️ P2
 
@@ -1811,7 +1938,7 @@ Large language models are trained to have safety guardrails, but these can be co
 
 </details>
 
-### 87. LOPO: Local OPD-Guided Policy Optimization for Over-Refusal Mitigation in Multimodal Safety Alignment
+### 93. LOPO: Local OPD-Guided Policy Optimization for Over-Refusal Mitigation in Multimodal Safety Alignment
 
 📄 [OpenReview](https://openreview.net/forum?id=amjepIkIwR)　📅 2026-10　🏷️ P2
 
@@ -1830,7 +1957,7 @@ Multimodal safety alignment aims to enable models to reject genuinely harmful re
 
 </details>
 
-### 88. AGSteer: Attribution-Guided Steering for Over-Refusal Mitigation
+### 94. AGSteer: Attribution-Guided Steering for Over-Refusal Mitigation
 
 📄 [OpenReview](https://openreview.net/forum?id=g41kbkJL4y)　📅 2026-10　🏷️ P2
 
@@ -1849,7 +1976,7 @@ Refusal steering provides a lightweight approach for improving the safety of lar
 
 </details>
 
-### 89. Gyges: Benchmarking Value Alignment as Hierarchical Value Stability
+### 95. Gyges: Benchmarking Value Alignment as Hierarchical Value Stability
 
 📄 [OpenReview](https://openreview.net/forum?id=nDMotUyNKd)　📅 2026-10　🏷️ P2
 
@@ -1868,7 +1995,7 @@ Goal alignment asks whether a language model does as asked, while value alignmen
 
 </details>
 
-### 90. Cross-Modal Safety Effects Do Not Reliably Transfer Across Multimodal Language Models: A Causal Evaluation
+### 96. Cross-Modal Safety Effects Do Not Reliably Transfer Across Multimodal Language Models: A Causal Evaluation
 
 📄 [OpenReview](https://openreview.net/forum?id=qvqCLpn4jD)　📅 2026-10　🏷️ P2
 
@@ -1887,7 +2014,7 @@ Multimodal language models must respond safely when images and dialogue history 
 
 </details>
 
-### 91. Broad Misalignment Is Concentrated in Weight Changes Supporting Narrow Harmful Learning
+### 97. Broad Misalignment Is Concentrated in Weight Changes Supporting Narrow Harmful Learning
 
 📄 [OpenReview](https://openreview.net/forum?id=rhQqFOJkWp)　📅 2026-10　🏷️ P2
 
@@ -1906,7 +2033,7 @@ Fine-tuning a language model on narrowly harmful data can induce broad misaligne
 
 </details>
 
-### 92. On-Policy Self-Evolution via Failure Trajectories for Agentic Safety Alignment
+### 98. On-Policy Self-Evolution via Failure Trajectories for Agentic Safety Alignment
 
 📄 [OpenReview](https://openreview.net/forum?id=wKMgAAzUC4)　📅 2026-10　🏷️ P2
 
@@ -1935,7 +2062,7 @@ These results suggest that failed trajectories can provide structured repair sup
 
 ## 四、投毒、后门与供应链攻击
 
-### 93. Implanting the Trigger: Conditional Backdoors in Tool-Using Agents
+### 99. Implanting the Trigger: Conditional Backdoors in Tool-Using Agents
 
 📄 [OpenReview](https://openreview.net/forum?id=2S5Ln2ez9h)　📅 2026-10　🏷️ P1
 
@@ -1954,7 +2081,7 @@ Open-weight tool-using agents can carry backdoors that fire only when multiple d
 
 </details>
 
-### 94. Latent-Target Poisoning: Discovering Attack Populations in Coding Assistants
+### 100. Latent-Target Poisoning: Discovering Attack Populations in Coding Assistants
 
 📄 [OpenReview](https://openreview.net/forum?id=6T90GSIVEu)　📅 2026-10　🏷️ P1
 
@@ -1973,7 +2100,7 @@ Coding assistants learn from collections of requests and code responses, making 
 
 </details>
 
-### 95. Inherited or Learned? Backdoor Selectivity in Distilled Language Models
+### 101. Inherited or Learned? Backdoor Selectivity in Distilled Language Models
 
 📄 [OpenReview](https://openreview.net/forum?id=CKZAenDXlY)　📅 2026-10　🏷️ P1
 
@@ -1992,7 +2119,7 @@ Distillation is a routine step in building small language models, and a backdoor
 
 </details>
 
-### 96. The Threat is in the Output: Bypassing LLM Safety Alignments via Output-Prefix Triggered Backdoor
+### 102. The Threat is in the Output: Bypassing LLM Safety Alignments via Output-Prefix Triggered Backdoor
 
 📄 [OpenReview](https://openreview.net/forum?id=GDllEq6U6X)　📅 2026-10　🏷️ P1
 
@@ -2011,7 +2138,7 @@ Previous backdoor attacks in LLMs conventionally implant triggers into the user 
 
 </details>
 
-### 97. COBRA:Covert Offline Black-box Poisoning Attack on Retrieval-Augmented Generation via LLM-Driven Document Evolution
+### 103. COBRA:Covert Offline Black-box Poisoning Attack on Retrieval-Augmented Generation via LLM-Driven Document Evolution
 
 📄 [OpenReview](https://openreview.net/forum?id=GxaBGVYrWu)　📅 2026-10　🏷️ P1
 
@@ -2030,7 +2157,7 @@ Retrieval-augmented generation (RAG) equips large language models (LLMs) with ex
 
 </details>
 
-### 98. Recoverability and Propagation in Subliminal Learning
+### 104. Recoverability and Propagation in Subliminal Learning
 
 📄 [OpenReview](https://openreview.net/forum?id=LMsqgmNC7T)　📅 2026-10　🏷️ P1
 
@@ -2050,7 +2177,7 @@ In one matched relay, regularizing only the first student brings its activation 
 
 </details>
 
-### 99. Prompt-Based Backdoors for Inducing Biased Responses across Demographic Groups in LLM
+### 105. Prompt-Based Backdoors for Inducing Biased Responses across Demographic Groups in LLM
 
 📄 [OpenReview](https://openreview.net/forum?id=TPbM086WzV)　📅 2026-10　🏷️ P1
 
@@ -2070,7 +2197,7 @@ To bridge this gap, we propose Prompt-based Bias Backdoor (PBB), a framework for
 
 </details>
 
-### 100. RAGLeak: Supply-Chain Privacy Backdoors in Retrieval-Augmented Generation
+### 106. RAGLeak: Supply-Chain Privacy Backdoors in Retrieval-Augmented Generation
 
 📄 [OpenReview](https://openreview.net/forum?id=U6jC3q5dFb)　📅 2026-10　🏷️ P1
 
@@ -2089,7 +2216,7 @@ Retrieval-Augmented Generation (RAG) enables large language models to access ext
 
 </details>
 
-### 101. Stealthy Multi-Trigger Backdoor Attacks on RAG via Dual-Role Adversarial Corpus
+### 107. Stealthy Multi-Trigger Backdoor Attacks on RAG via Dual-Role Adversarial Corpus
 
 📄 [OpenReview](https://openreview.net/forum?id=eIXh8Zm8en)　📅 2026-10　🏷️ P1
 
@@ -2108,7 +2235,7 @@ Retrieval-Augmented Generation (RAG) effectively mitigates hallucinations in Lar
 
 </details>
 
-### 102. Hidden in the Metadata: Stealth Poisoning Attacks on Multimodal Retrieval-Augmented Generation
+### 108. Hidden in the Metadata: Stealth Poisoning Attacks on Multimodal Retrieval-Augmented Generation
 
 📄 [OpenReview](https://openreview.net/forum?id=igW3bhOjRJ)　📅 2026-10　🏷️ P1
 
@@ -2127,7 +2254,7 @@ Retrieval-augmented generation (RAG) has emerged as a powerful paradigm for enha
 
 </details>
 
-### 103. Crossing the Channel: Speech Data Poisoning Reaches Text-Only Inference in a Multimodal LLM
+### 109. Crossing the Channel: Speech Data Poisoning Reaches Text-Only Inference in a Multimodal LLM
 
 📄 [OpenReview](https://openreview.net/forum?id=qjEtX0z35p)　📅 2026-10　🏷️ P1
 
@@ -2146,7 +2273,7 @@ Multimodal large language models -- operating on both text and speech inputs -- 
 
 </details>
 
-### 104. From Ashes They Rise: Exposing and Mitigating Backdoor Reactivation Attack in LLMs
+### 110. From Ashes They Rise: Exposing and Mitigating Backdoor Reactivation Attack in LLMs
 
 📄 [OpenReview](https://openreview.net/forum?id=vZyT4L9VBZ)　📅 2026-10　🏷️ P1
 
@@ -2165,7 +2292,7 @@ Backdoor defences for large language models (LLMs) often suppress the observable
 
 </details>
 
-### 105. One Trigger, Many Representations: Mitigating Feature Concentration in Vision-Language Model Backdoors
+### 111. One Trigger, Many Representations: Mitigating Feature Concentration in Vision-Language Model Backdoors
 
 📄 [OpenReview](https://openreview.net/forum?id=wTzVlZ86re)　📅 2026-10　🏷️ P1
 
@@ -2184,7 +2311,7 @@ Pretrained vision encoders expose vision-language models (VLMs) to supply-chain 
 
 </details>
 
-### 106. RepTrigger: Constructing Discrete Textual Backdoor Triggers through Representation-Space Perturbations
+### 112. RepTrigger: Constructing Discrete Textual Backdoor Triggers through Representation-Space Perturbations
 
 📄 [OpenReview](https://openreview.net/forum?id=xPE1Ih5ZjK)　📅 2026-10　🏷️ P1
 
@@ -2203,7 +2330,7 @@ As NLP models increasingly rely on externally sourced training data, textual bac
 
 </details>
 
-### 107. Unveiling Distributed AI-Driven Malicious Information Generation Powered by LLM Crowdsourcing
+### 113. Unveiling Distributed AI-Driven Malicious Information Generation Powered by LLM Crowdsourcing
 
 📄 [OpenReview](https://openreview.net/forum?id=4Wb1E3hIzF)　📅 2026-10　🏷️ P2
 
@@ -2226,7 +2353,7 @@ Regulation simulations further reveal the difficulty of governing such distribut
 
 </details>
 
-### 108. Do RAG Defenses Preserve Retrieval Gains? Evidence from Fixed-Stratum Evaluation
+### 114. Do RAG Defenses Preserve Retrieval Gains? Evidence from Fixed-Stratum Evaluation
 
 📄 [OpenReview](https://openreview.net/forum?id=F1HIX01N7v)　📅 2026-10　🏷️ P2
 
@@ -2245,7 +2372,7 @@ Retrieval-augmented generation (RAG) can answer queries correctly when external 
 
 </details>
 
-### 109. Trusted and Self-Generated Paraphrase Views for Backdoor Mitigation in Language Models
+### 115. Trusted and Self-Generated Paraphrase Views for Backdoor Mitigation in Language Models
 
 📄 [OpenReview](https://openreview.net/forum?id=G9go7hc3WL)　📅 2026-10　🏷️ P2
 
@@ -2264,7 +2391,7 @@ Backdoor triggers often rely on surface patterns that paraphrasing can disrupt. 
 
 </details>
 
-### 110. Diagnosing Detectability: When Do RAG Corpus-Poisoning Defenses Work?
+### 116. Diagnosing Detectability: When Do RAG Corpus-Poisoning Defenses Work?
 
 📄 [OpenReview](https://openreview.net/forum?id=Oar3NYlk7I)　📅 2026-10　🏷️ P2
 
@@ -2285,7 +2412,7 @@ Retrieval-augmented generation (RAG) systems are vulnerable to corpus poisoning,
 
 ## 五、Agent 安全：技能、注入与运行时治理
 
-### 111. Computation Is Not Authorization: Trust Boundaries and Their Limits in LLM Negotiation
+### 117. Computation Is Not Authorization: Trust Boundaries and Their Limits in LLM Negotiation
 
 📄 [OpenReview](https://openreview.net/forum?id=1S9ixpojiA)　📅 2026-10　🏷️ P1
 
@@ -2327,7 +2454,7 @@ decision boundary
 
 </details>
 
-### 112. Encrypted Skills Can Become New Security Exploits If AI Agents Know How to Decipher
+### 118. Encrypted Skills Can Become New Security Exploits If AI Agents Know How to Decipher
 
 📄 [OpenReview](https://openreview.net/forum?id=3aQx9ehJIN)　📅 2026-10　🏷️ P1
 
@@ -2346,7 +2473,7 @@ Third-party skills can expose LLM agents to malicious instructions hidden by enc
 
 </details>
 
-### 113. Ignored, Not Refused: What Low Prompt-Injection Success Rates Hide in Small Tool-Using Agents
+### 119. Ignored, Not Refused: What Low Prompt-Injection Success Rates Hide in Small Tool-Using Agents
 
 📄 [OpenReview](https://openreview.net/forum?id=5o7JkP7gTT)　📅 2026-10　🏷️ P1
 
@@ -2365,7 +2492,7 @@ Tool-using agents read untrusted external content, which exposes them to indirec
 
 </details>
 
-### 114. MCP-AT: Reinforcement Learning for Coding Agents under Tool Poisoning
+### 120. MCP-AT: Reinforcement Learning for Coding Agents under Tool Poisoning
 
 📄 [OpenReview](https://openreview.net/forum?id=7WRvqyH57b)　📅 2026-10　🏷️ P1
 
@@ -2384,7 +2511,7 @@ Reinforcement learning for coding agents has become a standard component of mode
 
 </details>
 
-### 115. One Skill, Two Masters: Serving Users and Attackers through Skill Injection
+### 121. One Skill, Two Masters: Serving Users and Attackers through Skill Injection
 
 📄 [OpenReview](https://openreview.net/forum?id=AnpQRjcoKR)　📅 2026-10　🏷️ P1
 
@@ -2403,7 +2530,7 @@ Large language model agents use skills that package reusable instructions, code,
 
 </details>
 
-### 116. Nameless Tokenization: A Lossless Tokenizer-Level Defense Against Control-Token Forgery in Open-Weight LLMs
+### 122. Nameless Tokenization: A Lossless Tokenizer-Level Defense Against Control-Token Forgery in Open-Weight LLMs
 
 📄 [OpenReview](https://openreview.net/forum?id=B56onRhl3W)　📅 2026-10　🏷️ P1
 
@@ -2422,7 +2549,7 @@ Open-weight language models publish the strings their chat templates use to mark
 
 </details>
 
-### 117. CoRedSkill: Stealthy Skill Composition Attacks via AST-Guided Injection
+### 123. CoRedSkill: Stealthy Skill Composition Attacks via AST-Guided Injection
 
 📄 [OpenReview](https://openreview.net/forum?id=CB4IeNYwt9)　📅 2026-10　🏷️ P1
 
@@ -2441,7 +2568,7 @@ Agents extend their capabilities through reusable skills that package instructio
 
 </details>
 
-### 118. Who Speaks, Who Authorizes, Who Acts? Understanding Trust Boundaries in Multi-Agent LLMs
+### 124. Who Speaks, Who Authorizes, Who Acts? Understanding Trust Boundaries in Multi-Agent LLMs
 
 📄 [OpenReview](https://openreview.net/forum?id=CvyYqyjb5W)　📅 2026-10　🏷️ P1
 
@@ -2460,7 +2587,7 @@ Multi-agent LLM systems exchange messages before acting through tools, but messa
 
 </details>
 
-### 119. Forgetting Without Restarting: Execution-State Unlearning for Stateful LLM Agents
+### 125. Forgetting Without Restarting: Execution-State Unlearning for Stateful LLM Agents
 
 📄 [OpenReview](https://openreview.net/forum?id=E2KbA13oLY)　📅 2026-10　🏷️ P1
 
@@ -2479,7 +2606,7 @@ Preventing prompt injection before it takes effect is essential, but it is not a
 
 </details>
 
-### 120. ARS-Bench: Benchmarking Security Risks Across the Agentic RAG Attack Lifecycle
+### 126. ARS-Bench: Benchmarking Security Risks Across the Agentic RAG Attack Lifecycle
 
 📄 [OpenReview](https://openreview.net/forum?id=EdBFROxuuf)　📅 2026-10　🏷️ P1
 
@@ -2503,7 +2630,7 @@ The benchmark and project resources are available at https://anonymous534243.git
 
 </details>
 
-### 121. Dive into the Agent Matrix: A Realistic Evaluation of Self‑Replication Risk in LLM Agents
+### 127. Dive into the Agent Matrix: A Realistic Evaluation of Self‑Replication Risk in LLM Agents
 
 📄 [OpenReview](https://openreview.net/forum?id=F2HJVlBczM)　📅 2026-10　🏷️ P1
 
@@ -2522,7 +2649,7 @@ The prevalent deployment of Large Language Model agents such as OpenClaw unlocks
 
 </details>
 
-### 122. MCPShield: A Security Cognition Layer for Adaptive Trust Calibration in Model Context Protocol Agents
+### 128. MCPShield: A Security Cognition Layer for Adaptive Trust Calibration in Model Context Protocol Agents
 
 📄 [OpenReview](https://openreview.net/forum?id=FUwLYIEv4R)　📅 2026-10　🏷️ P1
 
@@ -2549,7 +2676,7 @@ Overall, our work provides a practical and robust security safeguard for MCP-bas
 
 </details>
 
-### 123. VulMask: Malicious Code Injection in Agent Skill Ecosystems
+### 129. VulMask: Malicious Code Injection in Agent Skill Ecosystems
 
 📄 [OpenReview](https://openreview.net/forum?id=KfuWbRWyNr)　📅 2026-10　🏷️ P1
 
@@ -2568,7 +2695,7 @@ Agent skills let LLM-based coding agents acquire domain-specific capabilities fr
 
 </details>
 
-### 124. SkillPatchBench: Repairing Hidden Vulnerabilities in Agent Skills While Preserving Utility
+### 130. SkillPatchBench: Repairing Hidden Vulnerabilities in Agent Skills While Preserving Utility
 
 📄 [OpenReview](https://openreview.net/forum?id=MKlL3ul8yf)　📅 2026-10　🏷️ P1
 
@@ -2587,7 +2714,7 @@ Hidden vulnerabilities in agent skills can pass benign tests yet cause unsafe be
 
 </details>
 
-### 125. Interrogation Protocols for AI Control
+### 131. Interrogation Protocols for AI Control
 
 📄 [OpenReview](https://openreview.net/forum?id=NQsLXclgsW)　📅 2026-10　🏷️ P1
 
@@ -2606,7 +2733,7 @@ As the intelligence of an AI agent increases relative to a trusted monitor, so d
 
 </details>
 
-### 126. Benchmarking Security Risk Detection and Verification in Open Agentic Skill Ecosystems
+### 132. Benchmarking Security Risk Detection and Verification in Open Agentic Skill Ecosystems
 
 📄 [OpenReview](https://openreview.net/forum?id=NtaF69ZGWQ)　📅 2026-10　🏷️ P1
 
@@ -2625,7 +2752,7 @@ Open agent platforms allow community contributors to publish reusable skills tha
 
 </details>
 
-### 127. AgentDyn: Are Your Agent Security Defenses Deployable in Real-World Dynamic Environments?
+### 133. AgentDyn: Are Your Agent Security Defenses Deployable in Real-World Dynamic Environments?
 
 📄 [OpenReview](https://openreview.net/forum?id=Ulq3txoigl)　📅 2026-10　🏷️ P1
 
@@ -2647,7 +2774,7 @@ To bridge this gap, we introduce AgentDyn, a manually designed benchmark featuri
 
 </details>
 
-### 128. SAFE-Mem: Secure Agentic Memory with Fine-Grained Authority and Governance-Aware Retrieval
+### 134. SAFE-Mem: Secure Agentic Memory with Fine-Grained Authority and Governance-Aware Retrieval
 
 📄 [OpenReview](https://openreview.net/forum?id=VDqyNOwFKr)　📅 2026-10　🏷️ P1
 
@@ -2666,7 +2793,7 @@ Large language model (LLM) agents increasingly rely on persistent memory to supp
 
 </details>
 
-### 129. Toward Real-World One-Shot Indirect Prompt Injection: Strategy Abstraction Via Outcome-Conditioned Reflection
+### 135. Toward Real-World One-Shot Indirect Prompt Injection: Strategy Abstraction Via Outcome-Conditioned Reflection
 
 📄 [OpenReview](https://openreview.net/forum?id=Woo4sUnlIP)　📅 2026-10　🏷️ P1
 
@@ -2685,7 +2812,7 @@ Tool-using large language model (LLM) agents are vulnerable to indirect prompt i
 
 </details>
 
-### 130. Blame Laundering: Log Deletion Attacks on Multi-Agent Failure Attribution
+### 136. Blame Laundering: Log Deletion Attacks on Multi-Agent Failure Attribution
 
 📄 [OpenReview](https://openreview.net/forum?id=XlrJ46G47F)　📅 2026-10　🏷️ P1
 
@@ -2704,7 +2831,7 @@ When a multi-agent collaboration fails, LLM judges audit its execution logs to i
 
 </details>
 
-### 131. MARA: Memory Attribution and Risk Authorization for Memory-Augmented Agents
+### 137. MARA: Memory Attribution and Risk Authorization for Memory-Augmented Agents
 
 📄 [OpenReview](https://openreview.net/forum?id=YTkFBVL0c6)　📅 2026-10　🏷️ P1
 
@@ -2723,7 +2850,7 @@ Persistent memory improves tool-using large language model agents but may carry 
 
 </details>
 
-### 132. Practice Makes Unsafe: Skill Misevolution in Self-Improving LLM Agents
+### 138. Practice Makes Unsafe: Skill Misevolution in Self-Improving LLM Agents
 
 📄 [OpenReview](https://openreview.net/forum?id=YkxkjlxioO)　📅 2026-10　🏷️ P1
 
@@ -2742,7 +2869,7 @@ LLM agents increasingly save experience from past tasks as reusable skills throu
 
 </details>
 
-### 133. Whose Credential Is It? How Owner Attribution in Agent Memory Shapes Cross-User Account Misuse
+### 139. Whose Credential Is It? How Owner Attribution in Agent Memory Shapes Cross-User Account Misuse
 
 📄 [OpenReview](https://openreview.net/forum?id=aETkprcIAa)　📅 2026-10　🏷️ P1
 
@@ -2761,7 +2888,7 @@ Shared long-term memory lets an LLM agent serving one user inadvertently retriev
 
 </details>
 
-### 134. SkillPrivus: Uncovering Privacy Harms in Agentic Skills
+### 140. SkillPrivus: Uncovering Privacy Harms in Agentic Skills
 
 📄 [OpenReview](https://openreview.net/forum?id=aJnbokz2NX)　📅 2026-10　🏷️ P1
 
@@ -2780,7 +2907,7 @@ Agent skills extend AI assistants through installable instructions and code that
 
 </details>
 
-### 135. Agent Mosaic: Recognizing Confidentiality Leaks in Agentic LLM Systems
+### 141. Agent Mosaic: Recognizing Confidentiality Leaks in Agentic LLM Systems
 
 📄 [OpenReview](https://openreview.net/forum?id=ca7PnDg0Lm)　📅 2026-10　🏷️ P1
 
@@ -2799,7 +2926,7 @@ Modern LLM agents can retrieve information from accessible documents, and then d
 
 </details>
 
-### 136. SkillWard: Detecting Malicious Agent Skills through Execution-Grounded Reasoning
+### 142. SkillWard: Detecting Malicious Agent Skills through Execution-Grounded Reasoning
 
 📄 [OpenReview](https://openreview.net/forum?id=ceYaFcF0tY)　📅 2026-10　🏷️ P1
 
@@ -2818,7 +2945,7 @@ Agent Skills extend large language model (LLM) agents with reusable instructions
 
 </details>
 
-### 137. Ajar: How Much Privilege Do LLM Agent Defenses Leave Open?
+### 143. Ajar: How Much Privilege Do LLM Agent Defenses Leave Open?
 
 📄 [OpenReview](https://openreview.net/forum?id=et0E22jwLC)　📅 2026-10　🏷️ P1
 
@@ -2837,7 +2964,7 @@ A language model agent acts through the tools it is given but the data it reads 
 
 </details>
 
-### 138. Evolution Under Fire: Evolving Agent Safety Harnesses with Adaptive Injection Stressors
+### 144. Evolution Under Fire: Evolving Agent Safety Harnesses with Adaptive Injection Stressors
 
 📄 [OpenReview](https://openreview.net/forum?id=g6YySavcdG)　📅 2026-10　🏷️ P1
 
@@ -2856,7 +2983,7 @@ Tool-using language-model agents must act on information from untrusted emails, 
 
 </details>
 
-### 139. Appreciation Teaches Unauthorized Execution: Self-Evolution Degrades the Robustness of Personal Agents to Indirect Prompt Injection
+### 145. Appreciation Teaches Unauthorized Execution: Self-Evolution Degrades the Robustness of Personal Agents to Indirect Prompt Injection
 
 📄 [OpenReview](https://openreview.net/forum?id=j25IR1xlAj)　📅 2026-10　🏷️ P1
 
@@ -2875,7 +3002,7 @@ Self-evolving personal agents act for users and learn from user feedback. Howeve
 
 </details>
 
-### 140. Benign in Isolation, Harmful in Composition: Security Risks in Agent Skill Ecosystems
+### 146. Benign in Isolation, Harmful in Composition: Security Risks in Agent Skill Ecosystems
 
 📄 [OpenReview](https://openreview.net/forum?id=rGSatISXS3)　📅 2026-10　🏷️ P1
 
@@ -2894,7 +3021,7 @@ With the rapid development of LLM agents, Skills extend their capabilities throu
 
 </details>
 
-### 141. Post-Training Pressure Erodes Privacy in Personalized Agents
+### 147. Post-Training Pressure Erodes Privacy in Personalized Agents
 
 📄 [OpenReview](https://openreview.net/forum?id=tmwrbA5sZ9)　📅 2026-10　🏷️ P1
 
@@ -2913,7 +3040,7 @@ Personal agents learn from interactions in private workspaces, but rewards for t
 
 </details>
 
-### 142. Familiarity Breeds Vulnerability: Probe-then-Abuse Personalized Memory Manipulation Attack on LLM Agents
+### 148. Familiarity Breeds Vulnerability: Probe-then-Abuse Personalized Memory Manipulation Attack on LLM Agents
 
 📄 [OpenReview](https://openreview.net/forum?id=woYm8irkR9)　📅 2026-10　🏷️ P1
 
@@ -2934,7 +3061,7 @@ In this work, we introduce ***Probe-then-Abuse (PtA)***, a personalized memory m
 
 </details>
 
-### 143. Persuadable Simulators: Agent Rhetoric Flips LLM Environment Simulators on Rule-Based Violations, Not State Lookups
+### 149. Persuadable Simulators: Agent Rhetoric Flips LLM Environment Simulators on Rule-Based Violations, Not State Lookups
 
 📄 [OpenReview](https://openreview.net/forum?id=2J5ezpBAZ3)　📅 2026-10　🏷️ P2
 
@@ -2963,7 +3090,7 @@ Language models are increasingly used *as* the environment in agent reinforcemen
 
 </details>
 
-### 144. A Survey of the Information Requirements of LLM Safeguards: From Conversational Safety to Agentic Control
+### 150. A Survey of the Information Requirements of LLM Safeguards: From Conversational Safety to Agentic Control
 
 📄 [OpenReview](https://openreview.net/forum?id=2mg5Yv6O2U)　📅 2026-10　🏷️ P2
 
@@ -2982,7 +3109,7 @@ The information needed to judge an LLM's behavior depends on the environment in 
 
 </details>
 
-### 145. EpiSEM-Bench: Evaluating Safety and Evidence Recovery in LLM Agents under Missing Evidence
+### 151. EpiSEM-Bench: Evaluating Safety and Evidence Recovery in LLM Agents under Missing Evidence
 
 📄 [OpenReview](https://openreview.net/forum?id=6aBeXcbrkm)　📅 2026-10　🏷️ P2
 
@@ -3001,7 +3128,7 @@ Tool-using language model agents rely on environmental facts to decide whether a
 
 </details>
 
-### 146. PolicyShiftGuard: Benchmarking and Improving Policy-Adaptive Image Guardrails
+### 152. PolicyShiftGuard: Benchmarking and Improving Policy-Adaptive Image Guardrails
 
 📄 [OpenReview](https://openreview.net/forum?id=6nwgyCWL0a)　📅 2026-10　🏷️ P2
 
@@ -3020,7 +3147,7 @@ Existing image guardrails assume fixed safety policies, limiting their ability t
 
 </details>
 
-### 147. OS-SPEAR: A Toolkit for the Safety, Performance, Efficiency, and Robustness Analysis of OS Agents
+### 153. OS-SPEAR: A Toolkit for the Safety, Performance, Efficiency, and Robustness Analysis of OS Agents
 
 📄 [OpenReview](https://openreview.net/forum?id=7f3hL4iTlc)　📅 2026-10　🏷️ P2
 
@@ -3048,7 +3175,7 @@ Our empirical results reveal critical insights into the current landscape: notab
 
 </details>
 
-### 148. PolicyGuard: A Dialogue-Grounded Sub-Agent Verifier for Policy Adherence in LLM Agents
+### 154. PolicyGuard: A Dialogue-Grounded Sub-Agent Verifier for Policy Adherence in LLM Agents
 
 📄 [OpenReview](https://openreview.net/forum?id=8p2LHJIiwW)　📅 2026-10　🏷️ P2
 
@@ -3067,7 +3194,7 @@ LLM agents handle user requests on behalf of organizations through tool calls an
 
 </details>
 
-### 149. MOE-DEFENSE: Floor-Guarded Mixture-of-Experts Routing for Cost-Aware Security in LLM Agents
+### 155. MOE-DEFENSE: Floor-Guarded Mixture-of-Experts Routing for Cost-Aware Security in LLM Agents
 
 📄 [OpenReview](https://openreview.net/forum?id=A28H4cLtAF)　📅 2026-10　🏷️ P2
 
@@ -3086,7 +3213,7 @@ LLM agents that read external tool output are exposed to prompt injection, yet t
 
 </details>
 
-### 150. Evaluating Agent Behavior After Compromises in Multi-agent Systems
+### 156. Evaluating Agent Behavior After Compromises in Multi-agent Systems
 
 📄 [OpenReview](https://openreview.net/forum?id=Af5qAHVoTx)　📅 2026-10　🏷️ P2
 
@@ -3105,7 +3232,7 @@ A compromised LLM agent can alter downstream decisions and actions, yet attack-s
 
 </details>
 
-### 151. Defending LLM-based Multi-Agent Systems Against Cooperative Attacks with Sentence-Level Rectification
+### 157. Defending LLM-based Multi-Agent Systems Against Cooperative Attacks with Sentence-Level Rectification
 
 📄 [OpenReview](https://openreview.net/forum?id=E4v2pGWQ54)　📅 2026-10　🏷️ P2
 
@@ -3124,7 +3251,7 @@ Recent years have witnessed the rapid development of Large Language Model-based 
 
 </details>
 
-### 152. Accept Changes, Reject Attacks: Robust Memory Management for LLM Agents
+### 158. Accept Changes, Reject Attacks: Robust Memory Management for LLM Agents
 
 📄 [OpenReview](https://openreview.net/forum?id=HRAqwuRjfV)　📅 2026-10　🏷️ P2
 
@@ -3143,7 +3270,7 @@ Since large language model (LLM) agents rely on long-term memory, what they stor
 
 </details>
 
-### 153. PROVISO: Provenance-Informed Action Selection for Secure LLM Agents
+### 159. PROVISO: Provenance-Informed Action Selection for Secure LLM Agents
 
 📄 [OpenReview](https://openreview.net/forum?id=I91FERZ7KQ)　📅 2026-10　🏷️ P2
 
@@ -3162,7 +3289,7 @@ LLM agents act on the external world through tools and third-party skills, so a 
 
 </details>
 
-### 154. A CIVIC Duty: Preserving Instruction Hierarchies through the Value Cache
+### 160. A CIVIC Duty: Preserving Instruction Hierarchies through the Value Cache
 
 📄 [OpenReview](https://openreview.net/forum?id=KsrRULtL5h)　📅 2026-10　🏷️ P2
 
@@ -3181,7 +3308,7 @@ Instruction hierarchies require language models to follow user requests within h
 
 </details>
 
-### 155. Do Agents Still Follow the Rules? Benchmarking Rule Compliance under Agent Context Compaction
+### 161. Do Agents Still Follow the Rules? Benchmarking Rule Compliance under Agent Context Compaction
 
 📄 [OpenReview](https://openreview.net/forum?id=KxX2yFOV3k)　📅 2026-10　🏷️ P2
 
@@ -3206,7 +3333,7 @@ Finally, retaining a rule does not guarantee compliance: compacted runs that ret
 
 </details>
 
-### 156. Who May Change the Policy? Authorization-State Failures in Tool-Using Agents
+### 162. Who May Change the Policy? Authorization-State Failures in Tool-Using Agents
 
 📄 [OpenReview](https://openreview.net/forum?id=LyfgKQBhGJ)　📅 2026-10　🏷️ P2
 
@@ -3225,7 +3352,7 @@ Tool-using agents built from language models must recognize whether an action is
 
 </details>
 
-### 157. AgentWatcher: A Rule-based Prompt Injection Monitor
+### 163. AgentWatcher: A Rule-based Prompt Injection Monitor
 
 📄 [OpenReview](https://openreview.net/forum?id=NNbyBLNGSa)　📅 2026-10　🏷️ P2
 
@@ -3244,7 +3371,7 @@ Large language models (LLMs) and their applications, such as agents, are highly 
 
 </details>
 
-### 158. StateFence: Task-State Protection Against Evidence-Chain Contamination in Blue-Team LLM Agents
+### 164. StateFence: Task-State Protection Against Evidence-Chain Contamination in Blue-Team LLM Agents
 
 📄 [OpenReview](https://openreview.net/forum?id=QKAp89kKdN)　📅 2026-10　🏷️ P2
 
@@ -3263,7 +3390,7 @@ Indirect prompt injection creates a distinctive risk for blue-team Large Languag
 
 </details>
 
-### 159. When Can We Trust Language Model Rankings? Certification under Private and Malicious Feedback
+### 165. When Can We Trust Language Model Rankings? Certification under Private and Malicious Feedback
 
 📄 [OpenReview](https://openreview.net/forum?id=SNlj4GInZo)　📅 2026-10　🏷️ P2
 
@@ -3282,7 +3409,7 @@ Ensuring privacy through report randomization and allowing malicious submissions
 
 </details>
 
-### 160. Robustness of LLM Committees to Static and Trust-Building Byzantine Agents
+### 166. Robustness of LLM Committees to Static and Trust-Building Byzantine Agents
 
 📄 [OpenReview](https://openreview.net/forum?id=XsK6jGpir0)　📅 2026-10　🏷️ P2
 
@@ -3301,7 +3428,7 @@ Committee-style multi-agent deliberation enhances reasoning in large language mo
 
 </details>
 
-### 161. Halluci-Action: Tool-Using LLM Agents’ Claims Are Misaligned with Their Actions
+### 167. Halluci-Action: Tool-Using LLM Agents’ Claims Are Misaligned with Their Actions
 
 📄 [OpenReview](https://openreview.net/forum?id=YRuDPCRGc4)　📅 2026-10　🏷️ P2
 
@@ -3322,7 +3449,7 @@ This work establishes halluci-action as a measurable phenomenon that is prevalen
 
 </details>
 
-### 162. Benchmarking Concealment Detection: Can Agents Recover Secrets from Distributed Clues?
+### 168. Benchmarking Concealment Detection: Can Agents Recover Secrets from Distributed Clues?
 
 📄 [OpenReview](https://openreview.net/forum?id=Yewh6jDxCe)　📅 2026-10　🏷️ P2
 
@@ -3341,7 +3468,7 @@ Sensitive information can often be recovered from an email archive even when no 
 
 </details>
 
-### 163. PACT: A Testbed for Boundary Adherence and Self-Reporting in Goal-Driven LLM Agents
+### 169. PACT: A Testbed for Boundary Adherence and Self-Reporting in Goal-Driven LLM Agents
 
 📄 [OpenReview](https://openreview.net/forum?id=cVx28Ctmxj)　📅 2026-10　🏷️ P2
 
@@ -3364,7 +3491,26 @@ Across a fully crossed sandbox comprising 432 runs and a Terminal-Bench harness 
 
 </details>
 
-### 164. Access Control for Agents Is a Language Problem
+### 170. Write-Back Redundancy Breaks Leave-One-Out Attribution in Self-Evolving Agent Memory
+
+📄 [OpenReview](https://openreview.net/forum?id=gSBEPUmVk2)　📅 2026-10　🏷️ P2
+
+**关键词**：`memory poisoning`、`redundancy lineage`、`deletion threshold`
+
+👤 **作者**：Anonymous（ARR 2026 October 匿名预印本）
+
+- 🎯 **研究动机**：自进化 agent 把自身输出写回检索记忆——一条中毒记录可繁殖成近重复谱系；检索在每次删除后重算造成删除阈值
+- 🔬 **研究方法**：谱系冗余分析：可互换谱系记录在 top-k 检索中排名超过其余记录时，删除它们直到少于 k 条前攻击输出概率不变；436 实例×四骨干+记录重放防御评估
+- 📌 **结论**：仅剩单条谱系记录仍驱动 agent（ASR 0.79 vs 全谱系 0.98）；记录重放在 338 例中仅移除 4 例——自进化记忆的删除免疫性（记忆投毒新机制）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Self-evolving LLM agents write their own outputs back into retrieval memory, so a poisoned record can grow into a lineage of near-duplicates. We show that, because retrieval is recomputed after every deletion, this redundancy creates a deletion threshold: when interchangeable lineage records outrank all other records under top-k retrieval, deleting them leaves the probability of the attacker’s output unchanged until fewer than k of them remain. A single remaining lineage record steers the agent: on 61 instances, deleting all others leaves the attack success rate (ASR) at 0.79, against 0.98 with the whole lineage. We evaluate 436 instances of question answering, tool selection and text-to-SQL with four LLM backbones, under planted seeds and, in one setting, query-only injection. Record replay, which scores each record by deleting it and replaying the agent, removes a record in 4 of 338 successful attacks; other record-level audits contain the attack only after deleting nearly the whole lineage. We reconstruct lineages from harmful-episode traces without record labels, using provenance links refined by semantic similarity. Removing them cuts ASR to at most 0.07 and keeps it low when write-back resumes, whereas the lineage left by record replay regrows.
+
+</details>
+
+### 171. Access Control for Agents Is a Language Problem
 
 📄 [OpenReview](https://openreview.net/forum?id=iPJJGfjase)　📅 2026-10　🏷️ P2
 
@@ -3383,7 +3529,7 @@ LLM agents that call APIs and operate user interfaces are increasingly governed 
 
 </details>
 
-### 165. Beyond Unsafe Detection: Counterfactually Anchored Evidence Attribution for Multi-Turn LLM Safety Failures
+### 172. Beyond Unsafe Detection: Counterfactually Anchored Evidence Attribution for Multi-Turn LLM Safety Failures
 
 📄 [OpenReview](https://openreview.net/forum?id=kf46k3X1r9)　📅 2026-10　🏷️ P2
 
@@ -3402,7 +3548,7 @@ As Large Language Models (LLMs) move from conversational assistants to advanced 
 
 </details>
 
-### 166. Beyond Zero Violations: Evaluating Derived Authorization for LLM Agents
+### 173. Beyond Zero Violations: Evaluating Derived Authorization for LLM Agents
 
 📄 [OpenReview](https://openreview.net/forum?id=qc07F74K0R)　📅 2026-10　🏷️ P2
 
@@ -3421,7 +3567,7 @@ Large language model (LLM) agents may read private records without authority to 
 
 </details>
 
-### 167. Context Compaction Reshapes the Instruction Hierarchy of Small Language-Model Agents
+### 174. Context Compaction Reshapes the Instruction Hierarchy of Small Language-Model Agents
 
 📄 [OpenReview](https://openreview.net/forum?id=uN7HQnCv47)　📅 2026-10　🏷️ P2
 
@@ -3440,7 +3586,7 @@ LLM agents compact long histories into model-written summaries, which can change
 
 </details>
 
-### 168. The Model Knows Better: Defending Medical Multi-Agent Systems Against Prompt Injection
+### 175. The Model Knows Better: Defending Medical Multi-Agent Systems Against Prompt Injection
 
 📄 [OpenReview](https://openreview.net/forum?id=xvXPtThn4Q)　📅 2026-10　🏷️ P2
 
@@ -3461,7 +3607,7 @@ Medical multi-agent systems, in which LLM agents discuss a case, are increasingl
 
 ## 六、遗忘与数据审计
 
-### 169. Large Language Models Can Bypass Membership Inference Attacks by Post-hoc Unlearning
+### 176. Large Language Models Can Bypass Membership Inference Attacks by Post-hoc Unlearning
 
 📄 [OpenReview](https://openreview.net/forum?id=A1IvkgWB0J)　📅 2026-10　🏷️ P1
 
@@ -3485,7 +3631,7 @@ These results expose a vulnerability of MIA-based auditing that relies on verbat
 
 </details>
 
-### 170. ForgetBench: Benchmarking Forgetting Dynamics of Long-Term Parametric Memory in Language Models
+### 177. ForgetBench: Benchmarking Forgetting Dynamics of Long-Term Parametric Memory in Language Models
 
 📄 [OpenReview](https://openreview.net/forum?id=0uqXn7CK0y)　📅 2026-10　🏷️ P2
 
@@ -3505,7 +3651,7 @@ Extensive experiments across diverse models and editing methods reveal distinct 
 
 </details>
 
-### 171. When Unlearning Still Links: Auditing Speaker Linkability in Spoken Language Understanding
+### 178. When Unlearning Still Links: Auditing Speaker Linkability in Spoken Language Understanding
 
 📄 [OpenReview](https://openreview.net/forum?id=92ANUsOKYc)　📅 2026-10　🏷️ P2
 
@@ -3524,7 +3670,7 @@ Removing a user's training examples does not necessarily prevent a speech model 
 
 </details>
 
-### 172. Preserving Utility in Continual LLM Unlearning via Orthogonal Projections
+### 179. Preserving Utility in Continual LLM Unlearning via Orthogonal Projections
 
 📄 [OpenReview](https://openreview.net/forum?id=BFBpqKHGOp)　📅 2026-10　🏷️ P2
 
@@ -3545,7 +3691,7 @@ COP stores only a low-rank basis per layer, requiring neither past gradients nor
 
 </details>
 
-### 173. Toward Fine-Grained Forgetting: Attribute Unlearning for Multimodal Large Language Models
+### 180. Toward Fine-Grained Forgetting: Attribute Unlearning for Multimodal Large Language Models
 
 📄 [OpenReview](https://openreview.net/forum?id=CXTRcIjFb5)　📅 2026-10　🏷️ P2
 
@@ -3564,7 +3710,7 @@ Multimodal large language models (MLLMs) can memorize and disclose sensitive inf
 
 </details>
 
-### 174. Knowledge Vector Weakening: Efficient Training-free Unlearning for Large Vision-Language Models
+### 181. Knowledge Vector Weakening: Efficient Training-free Unlearning for Large Vision-Language Models
 
 📄 [OpenReview](https://openreview.net/forum?id=EkRnGnlPqR)　📅 2026-10　🏷️ P2
 
@@ -3583,7 +3729,7 @@ Large Vision-Language Model (LVLM) unlearning aims to remove the influence of sp
 
 </details>
 
-### 175. Where Does Fact Erasure Act? Fine-Tuning and Unlearning Move Past the Subject at Late Layers
+### 182. Where Does Fact Erasure Act? Fine-Tuning and Unlearning Move Past the Subject at Late Layers
 
 📄 [OpenReview](https://openreview.net/forum?id=GAXQwg04Xm)　📅 2026-10　🏷️ P2
 
@@ -3602,7 +3748,7 @@ Knowledge editing and unlearning methods aim to remove specific facts from langu
 
 </details>
 
-### 176. What Counts as Forgetting? Semantic Validation and Resampling Baselines for Factual-Unlearning Audits
+### 183. What Counts as Forgetting? Semantic Validation and Resampling Baselines for Factual-Unlearning Audits
 
 📄 [OpenReview](https://openreview.net/forum?id=J49mWWu2BU)　📅 2026-10　🏷️ P2
 
@@ -3621,7 +3767,28 @@ A scorer-rejected response may be counted as evidence of factual forgetting; a c
 
 </details>
 
-### 177. TULIP: Targeted LLM Unlearning at Layers Identified Per-input
+### 184. Can Agents Truly Forget? Exploring Machine Unlearning for LLM Agents
+
+📄 [OpenReview](https://openreview.net/forum?id=N1VfhL9dqn)　📅 2026-10　🏷️ P2
+
+**关键词**：`machine unlearning`、`LLM agents`、`agent memory`
+
+👤 **作者**：Anonymous（ARR 2026 October 匿名预印本）
+
+- 🎯 **研究动机**：遗忘主体从模型扩展到 agent——含外部记忆/技能的 agent 能否真正遗忘未经探索
+- 🔬 **研究方法**：把机器遗忘引入 LLM agent 设定：外部记忆与参数遗忘的组合评测框架
+- 📌 **结论**：agent 场景遗忘的新问题化与基准化（遗忘边界从模型到 agent 的延伸）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language model (LLM) agents have shown strong capabilities in interactive problem solving, tool use, and long-horizon task execution, but they may acquire sensitive knowledge during training and expose it during deployment. Machine unlearning offers a practical alternative to costly retraining from scratch by removing targeted undesirable knowledge from trained models while preserving their general utility. When LLM are deployed as agent, parameter-level unlearning becomes insufficient: forgotten information may still persist in memory artifacts or be reacquired via tool calls.
+In this paper, we formulate the problem of agent unlearning as removing private information from an LLM-based agent across three information channels: parametric knowledge, persistent memory, and tool-call acquisition. To study this problem, we introduce  we introduce Agent Unlearning Benchmark (AUBench), a controlled benchmark that extends the fictitious-author setting of TOFU into an agent environment with persistent memory, an offline web snapshot, tool-accessible documents, and provenance-tracked interaction trajectories.
+By evaluating unlearning methods in this setting, AUBench reveals the gap between model-level forgetting and system-level agent unlearning, and provides a foundation for developing unlearning methods that operate across the full lifecycle of LLM agents.
+
+</details>
+
+### 185. TULIP: Targeted LLM Unlearning at Layers Identified Per-input
 
 📄 [OpenReview](https://openreview.net/forum?id=Rvnqm5iqpr)　📅 2026-10　🏷️ P2
 
@@ -3640,7 +3807,7 @@ Representation-level unlearning modifies the intermediate hidden states of LLMs.
 
 </details>
 
-### 178. Self-Improvement Silently Reverts Knowledge Edits
+### 186. Self-Improvement Silently Reverts Knowledge Edits
 
 📄 [OpenReview](https://openreview.net/forum?id=WT5Lkttltq)　📅 2026-10　🏷️ P2
 
@@ -3659,7 +3826,7 @@ Knowledge editing updates individual facts in a deployed language model, and sel
 
 </details>
 
-### 179. Shadow Unlearning: A Neuro-Semantic Approach to Fidelity-Preserving Faceless Forgetting in LLMs
+### 187. Shadow Unlearning: A Neuro-Semantic Approach to Fidelity-Preserving Faceless Forgetting in LLMs
 
 📄 [OpenReview](https://openreview.net/forum?id=dvrfc1HmVt)　📅 2026-10　🏷️ P2
 
@@ -3678,7 +3845,7 @@ In a typical machine unlearning setting, both the forget set and the retain set 
 
 </details>
 
-### 180. Recovery Rates Cannot Show Whether Communicating Agents Have Forgotten
+### 188. Recovery Rates Cannot Show Whether Communicating Agents Have Forgotten
 
 📄 [OpenReview](https://openreview.net/forum?id=ftDmXCpOOK)　📅 2026-10　🏷️ P2
 
@@ -3723,7 +3890,7 @@ input at a time, and count wrong answers.
 
 </details>
 
-### 181. Direct Suppression Is Not an Unlearning Verdict: Reference-Calibrated Audits for Vision-Language Models
+### 189. Direct Suppression Is Not an Unlearning Verdict: Reference-Calibrated Audits for Vision-Language Models
 
 📄 [OpenReview](https://openreview.net/forum?id=reGsTfdtyA)　📅 2026-10　🏷️ P2
 
@@ -3742,7 +3909,7 @@ When an unlearned model stops answering target questions, it may have forgotten 
 
 </details>
 
-### 182. Data-Free Privacy Protection for Large Language Models via Model Inversion and Selective Unlearning
+### 190. Data-Free Privacy Protection for Large Language Models via Model Inversion and Selective Unlearning
 
 📄 [OpenReview](https://openreview.net/forum?id=slqzbIXv9P)　📅 2026-10　🏷️ P2
 
@@ -3763,7 +3930,7 @@ Large language models (LLMs) may retain sensitive personally identifiable inform
 
 ## 七、隐私攻击与防御
 
-### 183. Training-Data Superposition in LoRA: Recoverability and Privacy Implications
+### 191. Training-Data Superposition in LoRA: Recoverability and Privacy Implications
 
 📄 [OpenReview](https://openreview.net/forum?id=YxKmu2wkP6)　📅 2026-10　🏷️ P1
 
@@ -3782,7 +3949,7 @@ Low-rank adaptation (LoRA) turns training data into a small task vector. What do
 
 </details>
 
-### 184. Uncovering Robot Training Data via Membership Inference Attack on Vision Language Action Models
+### 192. Uncovering Robot Training Data via Membership Inference Attack on Vision Language Action Models
 
 📄 [OpenReview](https://openreview.net/forum?id=n2JI47zvIR)　📅 2026-10　🏷️ P1
 
@@ -3809,7 +3976,7 @@ Code is available at https://anonymous.4open.science/r/VLA-MIA-84C4/.
 
 </details>
 
-### 185. ADAM: A Systematic Data Extraction Attack on Agent Memory via Adaptive Querying
+### 193. ADAM: A Systematic Data Extraction Attack on Agent Memory via Adaptive Querying
 
 📄 [OpenReview](https://openreview.net/forum?id=qGmAsdVuTU)　📅 2026-10　🏷️ P1
 
@@ -3828,7 +3995,7 @@ Large Language Model (LLM) agents have achieved rapid adoption and demonstrated 
 
 </details>
 
-### 186. Quantifying and Alleviating Contextual Integrity Violations in Evolving Agent-User Interactions
+### 194. Quantifying and Alleviating Contextual Integrity Violations in Evolving Agent-User Interactions
 
 📄 [OpenReview](https://openreview.net/forum?id=60YAVaKRpn)　📅 2026-10　🏷️ P2
 
@@ -3847,7 +4014,7 @@ As LLM agents increasingly act on users' behalf, they access sensitive informati
 
 </details>
 
-### 187. RedAct: Redacting Agent Capability Traces for Procedural Skill Protection
+### 195. RedAct: Redacting Agent Capability Traces for Procedural Skill Protection
 
 📄 [OpenReview](https://openreview.net/forum?id=60qBKfaBSu)　📅 2026-10　🏷️ P2
 
@@ -3866,7 +4033,7 @@ Users rely on execution traces to observe agent behavior, diagnose failures, and
 
 </details>
 
-### 188. Learning to Keep Secrets: Empowering Local LLMs with Autonomous Privacy-Conscious Delegation
+### 196. Learning to Keep Secrets: Empowering Local LLMs with Autonomous Privacy-Conscious Delegation
 
 📄 [OpenReview](https://openreview.net/forum?id=61oZxTYyQ2)　📅 2026-10　🏷️ P2
 
@@ -3885,7 +4052,7 @@ Cloud-hosted large language models (LLMs) offer strong capabilities but require 
 
 </details>
 
-### 189. PRAESIDIUM: Privacy-Resilient Embedding Sanitization against Inversion and Decoding
+### 197. PRAESIDIUM: Privacy-Resilient Embedding Sanitization against Inversion and Decoding
 
 📄 [OpenReview](https://openreview.net/forum?id=CKjFtuyUds)　📅 2026-10　🏷️ P2
 
@@ -3904,7 +4071,7 @@ Vector databases now store embeddings produced by large language models (LLMs), 
 
 </details>
 
-### 190. Auditing Privacy Leakage in Clinical LLM Fine-Tuning: Completion-Only versus Full-Sequence ICD Coding
+### 198. Auditing Privacy Leakage in Clinical LLM Fine-Tuning: Completion-Only versus Full-Sequence ICD Coding
 
 📄 [OpenReview](https://openreview.net/forum?id=SuHm0VHZoa)　📅 2026-10　🏷️ P2
 
@@ -3923,7 +4090,7 @@ Fine-tuning language models on clinical notes can retain sensitive information i
 
 </details>
 
-### 191. ConCI: A Controlled Counterfactual Benchmark for Contextual Integrity in LLMs
+### 199. ConCI: A Controlled Counterfactual Benchmark for Contextual Integrity in LLMs
 
 📄 [OpenReview](https://openreview.net/forum?id=iwf6DrguUT)　📅 2026-10　🏷️ P2
 
@@ -3945,7 +4112,26 @@ Larger models narrow this bias toward non-disclosure but do not eliminate it, an
 
 </details>
 
-### 192. PrivacyFragBench: Evaluating Cross-App Privacy Inference from Fragmented Information in Mobile Agents
+### 200. Enhanced Neighborhood Attack against Large Language Models via Sequential Word Replacements
+
+📄 [OpenReview](https://openreview.net/forum?id=qKEiESELBv)　📅 2026-10　🏷️ P2
+
+**关键词**：`membership inference`、`neighborhood attack`、`word replacement`
+
+👤 **作者**：Anonymous（ARR 2026 October 匿名预印本）
+
+- 🎯 **研究动机**：灰盒邻域攻击用语义近义词替换比较目标文本与近邻损失——多次替换增强信号却引入跨替换干涉
+- 🔬 **研究方法**：ENA 增强邻域攻击：低交互词替换选择减少干涉同时允许局部效应累积，受控 WikiText-103 试点+黑盒迁移研究
+- 📌 **结论**：K=2/3 归一化交互残差降 50.0/55.3%——邻域 MIA 的干涉控制与黑盒迁移（成员推断方法学）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Membership inference attacks (MIAs) determine whether a sample was used to train a target model. Under gray-box access to output logits, neighborhood attacks compare the loss of a target text with losses of nearby texts constructed by semantically similar word replacements. Multiple replacements can strengthen the perturbation signal but also introduce cross-replacement interference affecting both members and nonmembers. We propose an enhanced neighborhood attack (ENA), which performs low-interaction word replacements to reduce such interference while allowing local effects to accumulate. We examine this mechanism with two studies. In a controlled WikiText-103 pilot, low-interaction selection reduces normalized interaction residuals by 50.0 percent for K = 2 and 55.3 percent for K = 3, while end-to-end AUC differences remain statistically unresolved. To examine transfer toward black-box settings where token losses are inaccessible, we relate the local original-versus-isotope likelihood gap to an independent generation-based isotope recovery rate. On released WikiMIA probes, the two are positively associated (Spearman rho = 0.274, 95 percent CI [0.244, 0.303]), and the association persists under equal-token-length and within-document controls. These studies provide mechanism-level evidence for the interference-and-recovery motivation and support direct evaluation of recovery-guided sequential replacements.
+
+</details>
+
+### 201. PrivacyFragBench: Evaluating Cross-App Privacy Inference from Fragmented Information in Mobile Agents
 
 📄 [OpenReview](https://openreview.net/forum?id=uN3GMiYqy2)　📅 2026-10　🏷️ P2
 
@@ -3966,7 +4152,7 @@ Advances in multimodal large language models enable mobile agents to perform com
 
 ## 八、检测、水印与溯源
 
-### 193. SHADE: Trace-Based Humanization for Robust and Composable AI-Text Detector Evasion
+### 202. SHADE: Trace-Based Humanization for Robust and Composable AI-Text Detector Evasion
 
 📄 [OpenReview](https://openreview.net/forum?id=wcRwmXOpWb)　📅 2026-10　🏷️ P1
 
@@ -3991,7 +4177,7 @@ These results support organizing humanization around measurable targets, using a
 
 </details>
 
-### 194. Noise Erodes, Data Steers: How Fine-Tuning Wears Down Weight-Embedded Watermarks
+### 203. Noise Erodes, Data Steers: How Fine-Tuning Wears Down Weight-Embedded Watermarks
 
 📄 [OpenReview](https://openreview.net/forum?id=7x05x3Qhdb)　📅 2026-10　🏷️ P2
 
@@ -4010,7 +4196,7 @@ Watermarks distilled into the weights of open language models are meant to survi
 
 </details>
 
-### 195. Attacking Only Half the Data: Two-Sided Evaluation of AI-Text Detector Robustness
+### 204. Attacking Only Half the Data: Two-Sided Evaluation of AI-Text Detector Robustness
 
 📄 [OpenReview](https://openreview.net/forum?id=CK5KYIU6Ui)　📅 2026-10　🏷️ P2
 
@@ -4029,7 +4215,7 @@ We investigate the robustness of widely used AI text detectors under attacks app
 
 </details>
 
-### 196. Prompt2Fingerprint: Plug-and-Play LLM Fingerprinting via Text-to-Weight Generation
+### 205. Prompt2Fingerprint: Plug-and-Play LLM Fingerprinting via Text-to-Weight Generation
 
 📄 [OpenReview](https://openreview.net/forum?id=MOUyLfJYTp)　📅 2026-10　🏷️ P2
 
@@ -4048,7 +4234,7 @@ The widespread deployment and redistribution of large language models (LLMs) hav
 
 </details>
 
-### 197. Retrieval-Augmented Language Models Evade Hallucination Detection
+### 206. Retrieval-Augmented Language Models Evade Hallucination Detection
 
 📄 [OpenReview](https://openreview.net/forum?id=PGrDIu743k)　📅 2026-10　🏷️ P2
 
@@ -4068,7 +4254,7 @@ Specifically, the inclusion of references can create a veneer of authority that 
 
 </details>
 
-### 198. PhantomHunter: Detecting Unseen Privately-Tuned LLM- Generated Text via Family-Aware Learning
+### 207. PhantomHunter: Detecting Unseen Privately-Tuned LLM- Generated Text via Family-Aware Learning
 
 📄 [OpenReview](https://openreview.net/forum?id=eT5pgMeSr5)　📅 2026-10　🏷️ P2
 
@@ -4089,7 +4275,7 @@ Existing detectors of large language model-generated text mainly evaluate public
 
 ## 九、谄媚、欺骗与社会性风险
 
-### 199. Agents Don’t Just Agree, They Remember: Benchmarking Persistent Sycophancy in Self-Improving Personal Agents
+### 208. Agents Don’t Just Agree, They Remember: Benchmarking Persistent Sycophancy in Self-Improving Personal Agents
 
 📄 [OpenReview](https://openreview.net/forum?id=UEVFAv8ACz)　📅 2026-10　🏷️ P1
 
@@ -4108,7 +4294,7 @@ Self-improving personal agents write profiles, memories, and reusable skills tha
 
 </details>
 
-### 200. The Anatomy of Conversational Scams: A Topic-Based Red Teaming Analysis of Multi-Turn Interactions in LLMs
+### 209. The Anatomy of Conversational Scams: A Topic-Based Red Teaming Analysis of Multi-Turn Interactions in LLMs
 
 📄 [OpenReview](https://openreview.net/forum?id=FeqfBtUHbR)　📅 2026-10　🏷️ P2
 
@@ -4127,7 +4313,7 @@ Large language models (LLMs) acquire persuasive abilities through extended dialo
 
 </details>
 
-### 201. Self-Authored Verification Is Unreliable in Heuristic Self-Improving Agents
+### 210. Self-Authored Verification Is Unreliable in Heuristic Self-Improving Agents
 
 📄 [OpenReview](https://openreview.net/forum?id=WELWjWlkcC)　📅 2026-10　🏷️ P2
 
@@ -4146,7 +4332,7 @@ Self-improving agents accumulate capabilities by rewriting policies and heuristi
 
 </details>
 
-### 202. NoHurt: Context-Sensitive Benchmarking for Quantifying Information Acquiescence During High-Risk Dialogue
+### 211. NoHurt: Context-Sensitive Benchmarking for Quantifying Information Acquiescence During High-Risk Dialogue
 
 📄 [OpenReview](https://openreview.net/forum?id=ajBXIARbg8)　📅 2026-10　🏷️ P2
 
@@ -4165,7 +4351,7 @@ Large language models are increasingly deployed in conversational settings where
 
 </details>
 
-### 203. Progressive Memory Illusion: A Continuous Benchmark for Multi-Turn Factual Sycophancy
+### 212. Progressive Memory Illusion: A Continuous Benchmark for Multi-Turn Factual Sycophancy
 
 📄 [OpenReview](https://openreview.net/forum?id=gbOuR96Dus)　📅 2026-10　🏷️ P2
 
@@ -4184,7 +4370,7 @@ Language models show different failure patterns under escalating social pressure
 
 </details>
 
-### 204. Seeing Through the Forgery Is Not Enough: Regressive Sycophancy under Fabricated Evidence in Medical Vision-Language Models
+### 213. Seeing Through the Forgery Is Not Enough: Regressive Sycophancy under Fabricated Evidence in Medical Vision-Language Models
 
 📄 [OpenReview](https://openreview.net/forum?id=gfDggL7JUV)　📅 2026-10　🏷️ P2
 
@@ -4212,7 +4398,7 @@ Thus, we conclude that awareness about a forgery does not prevent a model from a
 
 ## 十、安全评测与口径
 
-### 205. FinVault: Stress-Testing Financial Agents through Executable Policy Violations
+### 214. FinVault: Stress-Testing Financial Agents through Executable Policy Violations
 
 📄 [OpenReview](https://openreview.net/forum?id=08y3Vy812e)　📅 2026-10　🏷️ P2
 
@@ -4231,7 +4417,7 @@ Financial-agent failures are consequential only when model outputs cross an oper
 
 </details>
 
-### 206. HealthGovBench: Benchmarking and Governing Policy-Safe Tool Use in Healthcare Agents
+### 215. HealthGovBench: Benchmarking and Governing Policy-Safe Tool Use in Healthcare Agents
 
 📄 [OpenReview](https://openreview.net/forum?id=1mKiEIOeHe)　📅 2026-10　🏷️ P2
 
@@ -4250,7 +4436,7 @@ Can a healthcare agent complete a request without accessing forbidden records, d
 
 </details>
 
-### 207. Telling Judge Gaming from Judge Error in Visual Reinforcement Learning
+### 216. Telling Judge Gaming from Judge Error in Visual Reinforcement Learning
 
 📄 [OpenReview](https://openreview.net/forum?id=5Ld7zhJlVy)　📅 2026-10　🏷️ P2
 
@@ -4269,7 +4455,7 @@ Vision--language models are often trained with reinforcement learning against a 
 
 </details>
 
-### 208. LLMs Do Not Play Dice Securely: Silent Cryptographic Randomness Failures in LLM-Generated Code
+### 217. LLMs Do Not Play Dice Securely: Silent Cryptographic Randomness Failures in LLM-Generated Code
 
 📄 [OpenReview](https://openreview.net/forum?id=7CSt58v6nN)　📅 2026-10　🏷️ P2
 
@@ -4297,7 +4483,7 @@ A prompt that names the relevant randomness-related CWEs reduces misuse more tha
 
 </details>
 
-### 209. Aligned in Form, Not in Meaning: The Comprehension–Containment Decoupling of LLM Safety in Low-Resource Bangla Derogatory Speech
+### 218. Aligned in Form, Not in Meaning: The Comprehension–Containment Decoupling of LLM Safety in Low-Resource Bangla Derogatory Speech
 
 📄 [OpenReview](https://openreview.net/forum?id=8zUlkcuRW7)　📅 2026-10　🏷️ P2
 
@@ -4316,7 +4502,7 @@ We audit five frontier large language models on native Bangla derogatory speech 
 
 </details>
 
-### 210. CSSBench: Evaluating the Safety of Lightweight LLMs against Chinese-Specific Adversarial Patterns
+### 219. CSSBench: Evaluating the Safety of Lightweight LLMs against Chinese-Specific Adversarial Patterns
 
 📄 [OpenReview](https://openreview.net/forum?id=C3nyjFrvet)　📅 2026-10　🏷️ P2
 
@@ -4343,7 +4529,7 @@ Our benchmark offers an important and overlooked supplement to LLM safety in Chi
 
 </details>
 
-### 211. Same Outcome, Different Evidence: Intent Recovery in LLM Safety Evaluation
+### 220. Same Outcome, Different Evidence: Intent Recovery in LLM Safety Evaluation
 
 📄 [OpenReview](https://openreview.net/forum?id=IUu6mIxWBS)　📅 2026-10　🏷️ P2
 
@@ -4362,7 +4548,7 @@ Safety evaluations of large language models commonly summarize harmful-output be
 
 </details>
 
-### 212. AISPA: User-Centric System Prompt Auditing for Large Language Model Applications
+### 221. AISPA: User-Centric System Prompt Auditing for Large Language Model Applications
 
 📄 [OpenReview](https://openreview.net/forum?id=JduCNto4wL)　📅 2026-10　🏷️ P2
 
@@ -4382,7 +4568,7 @@ Our audit surfaces four core findings. First, system prompt design varies substa
 
 </details>
 
-### 213. J-SafetyVar: Evaluating the Consistency of Japanese LLM Safety Responses under Linguistic Variation and Dialogue Context
+### 222. J-SafetyVar: Evaluating the Consistency of Japanese LLM Safety Responses under Linguistic Variation and Dialogue Context
 
 📄 [OpenReview](https://openreview.net/forum?id=Por2SUhGvf)　📅 2026-10　🏷️ P2
 
@@ -4401,7 +4587,7 @@ Safety evaluations of Japanese language models often use explicit, standard-form
 
 </details>
 
-### 214. Discover, Explain, and Repair: Adaptive Testing of LLM Failures in Medical Safety
+### 223. Discover, Explain, and Repair: Adaptive Testing of LLM Failures in Medical Safety
 
 📄 [OpenReview](https://openreview.net/forum?id=SjHz6pJ2mO)　📅 2026-10　🏷️ P2
 
@@ -4420,7 +4606,7 @@ Large language models are increasingly deployed in high-stakes domains such as m
 
 </details>
 
-### 215. SAFE-Teen: Evaluating Chatbot Safety Across Adolescent Mental Health Conversations
+### 224. SAFE-Teen: Evaluating Chatbot Safety Across Adolescent Mental Health Conversations
 
 📄 [OpenReview](https://openreview.net/forum?id=X6fzYCyd0k)　📅 2026-10　🏷️ P2
 
@@ -4440,7 +4626,7 @@ When a teenager pushed back on a chatbot's answer, failures on mental health dia
 
 </details>
 
-### 216. What Counts as Attack Success? Evaluating Harmfulness in Red Teaming LLMs
+### 225. What Counts as Attack Success? Evaluating Harmfulness in Red Teaming LLMs
 
 📄 [OpenReview](https://openreview.net/forum?id=XcWhNKEjK8)　📅 2026-10　🏷️ P2
 
@@ -4459,7 +4645,7 @@ Judging whether a model response is harmful requires contextual and normative ch
 
 </details>
 
-### 217. Lost in Speech: Measuring the Multilingual Cross-Modal Safety Gap in Speech-Language Models
+### 226. Lost in Speech: Measuring the Multilingual Cross-Modal Safety Gap in Speech-Language Models
 
 📄 [OpenReview](https://openreview.net/forum?id=XnNEzdbLpN)　📅 2026-10　🏷️ P2
 
@@ -4478,7 +4664,26 @@ Large speech-language models (SLMs) are in- creasingly deployed as voice assista
 
 </details>
 
-### 218. The Fault in our Judges: Discovering, Decomposing, and Repairing Failures in LLM Safety Judges
+### 227. LLM-as-a-Reviewer: Benchmarking Their Ability, Divergence, and Prompt Injection Resistance as Paper Reviewers
+
+📄 [OpenReview](https://openreview.net/forum?id=ZvwRfJ7mGU)　📅 2026-10　🏷️ P2
+
+**关键词**：`LLM reviewer`、`prompt injection`、`academic integrity`
+
+👤 **作者**：Anonymous（ARR 2026 October 匿名预印本）
+
+- 🎯 **研究动机**：LLM 日益进入论文评审——其可靠性、与人类的分歧及对抗注入抗性未被系统测量
+- 🔬 **研究方法**：898 篇 NeurIPS/ICLR 分层基准×12 LLM 三轴评测：评分校准/与人类评审分歧/不可见字体映射注入抗性
+- 📌 **结论**：LLM 系统性高评弱稿、主题侧重分歧（低标 Clarity 高标 Reproducibility）；隐藏指令可把低分稿推至接收档——评审 LLM 的注入抗性基准
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models (LLMs) are increasingly used in academic peer review, yet their reliability, alignment with human judgment, and robustness to adversarial attacks remain poorly understood. We present a systematic benchmark of LLM-as-a-Reviewer on 898 papers stratified from NeurIPS and ICLR, evaluating 12 LLMs along three axes: rating calibration, divergence from human reviewers, and resistance to prompt injection embedded via an invisible font-mapping attack. We find that LLMs systematically overrate weaker submissions and diverge from humans in topical emphasis, under-flagging Clarity and over-flagging Reproducibility, while producing reviews two to three times longer with lower lexical diversity and a more standardized vocabulary. Prompt injection remains highly effective. Simple hidden instructions can promote low-scoring papers to acceptance-level ratings in a substantial fraction of cases, with effectiveness varying sharply across model families. While LLMs offer utility in structuring evaluations, their integration into peer review requires safeguards against both intrinsic biases and adversarial risks.
+
+</details>
+
+### 228. The Fault in our Judges: Discovering, Decomposing, and Repairing Failures in LLM Safety Judges
 
 📄 [OpenReview](https://openreview.net/forum?id=egE1wZrYk9)　📅 2026-10　🏷️ P2
 
@@ -4497,7 +4702,7 @@ LLM safety judges are known to exhibit superficial biases, but less is known abo
 
 </details>
 
-### 219. LocalTurn: Native Multi-Turn Safety Evaluation in Emirati Arabic, Bangla, Sinhala, and Yoruba
+### 229. LocalTurn: Native Multi-Turn Safety Evaluation in Emirati Arabic, Bangla, Sinhala, and Yoruba
 
 📄 [OpenReview](https://openreview.net/forum?id=iB9chggG7t)　📅 2026-10　🏷️ P2
 
@@ -4516,7 +4721,7 @@ Most LLM safety testing outside English relies on prompts translated from Englis
 
 </details>
 
-### 220. Secure by Luck or by Reason? Measuring Security-Reasoning Faithfulness in Code-Generating Language Models
+### 230. Secure by Luck or by Reason? Measuring Security-Reasoning Faithfulness in Code-Generating Language Models
 
 📄 [OpenReview](https://openreview.net/forum?id=iQ86EcPJrU)　📅 2026-10　🏷️ P2
 
@@ -4535,7 +4740,7 @@ Code-generating language models increasingly justify their programs with securit
 
 </details>
 
-### 221. MCBench: A Multicontext Safety Assessment Benchmark for Omni Large Language Models
+### 231. MCBench: A Multicontext Safety Assessment Benchmark for Omni Large Language Models
 
 📄 [OpenReview](https://openreview.net/forum?id=juLrA81Kv2)　📅 2026-10　🏷️ P2
 
@@ -4554,7 +4759,7 @@ Omni LLMs that jointly process vision, audio, and speech are increasingly deploy
 
 </details>
 
-### 222. Toxicity Lost in Translation: A Toxicity-Preserving Framework for Cross-Lingual LLM Safety Benchmarking
+### 232. Toxicity Lost in Translation: A Toxicity-Preserving Framework for Cross-Lingual LLM Safety Benchmarking
 
 📄 [OpenReview](https://openreview.net/forum?id=lAFK0IavXo)　📅 2026-10　🏷️ P2
 
@@ -4573,7 +4778,7 @@ Safety benchmarks for non-English languages are routinely constructed by transla
 
 </details>
 
-### 223. Decoupled OOD Safety Evaluation Expression, Language, and Modality Couplings in Jailbreak Benchmarks
+### 233. Decoupled OOD Safety Evaluation Expression, Language, and Modality Couplings in Jailbreak Benchmarks
 
 📄 [OpenReview](https://openreview.net/forum?id=nABvt9TZZE)　📅 2026-10　🏷️ P2
 
@@ -4592,7 +4797,7 @@ Do safety results on standard jailbreak benchmarks hold when prompts are rephras
 
 </details>
 
-### 224. Shortcutting the Fix: Identifying and Categorizing Agentic Exploits in Software Engineering Benchmarks
+### 234. Shortcutting the Fix: Identifying and Categorizing Agentic Exploits in Software Engineering Benchmarks
 
 📄 [OpenReview](https://openreview.net/forum?id=sjzWQKdOvf)　📅 2026-10　🏷️ P2
 
@@ -4611,7 +4816,7 @@ High software engineering benchmark scores often mask exploitative shortcuts, su
 
 </details>
 
-### 225. AfriGuard: Safety and Robust Refusal For African Languages
+### 235. AfriGuard: Safety and Robust Refusal For African Languages
 
 📄 [OpenReview](https://openreview.net/forum?id=ta6yzAfPDu)　📅 2026-10　🏷️ P2
 
@@ -4630,7 +4835,7 @@ Large language models (LLMs) designed to interact with users are typically train
 
 </details>
 
-### 226. Beyond the Transcript: Controlled Audio Cues Reveal Trustworthiness Gaps in ALMs
+### 236. Beyond the Transcript: Controlled Audio Cues Reveal Trustworthiness Gaps in ALMs
 
 📄 [OpenReview](https://openreview.net/forum?id=vyXWBtyK1E)　📅 2026-10　🏷️ P2
 
@@ -4654,7 +4859,7 @@ Our results show that current evaluation practices can obscure cue-dependent fai
 
 </details>
 
-### 227. CyberIntent: Evidence-Sensitive Three-Way Decisions for Dual-Use Cybersecurity Requests
+### 237. CyberIntent: Evidence-Sensitive Three-Way Decisions for Dual-Use Cybersecurity Requests
 
 📄 [OpenReview](https://openreview.net/forum?id=xDkkmeSleo)　📅 2026-10　🏷️ P2
 
@@ -4673,7 +4878,7 @@ Can a language model respect evidence sourcesyet act before it has enough inform
 
 </details>
 
-### 228. Best for Platform or Best for Consumers? Systematic Misalignment with 59% Top-1 Distrust Rate in Shanghai's Commerce AI Agents
+### 238. Best for Platform or Best for Consumers? Systematic Misalignment with 59% Top-1 Distrust Rate in Shanghai's Commerce AI Agents
 
 📄 [OpenReview](https://openreview.net/forum?id=zp7KFyfVJi)　📅 2026-10　🏷️ P2
 
@@ -4697,156 +4902,171 @@ Alignment is rarely evaluated on the commercial systems people already use. When
 | # | 标题 | 要点 | 链接 |
 |---|---|---|---|
 | 1 | Deletion Context Changes the Trajectory of a Fixed Target Set in LLM Unlearning |  | [OpenReview](https://openreview.net/forum?id=xF1V4xyz03) |
-| 2 | Strong Multilingual Privacy Tagging at Encoder Speed |  | [OpenReview](https://openreview.net/forum?id=gSgai6IhzQ) |
-| 3 | Aligned but Stereotypical? How System Prompts Shape Demographic Bias in LLM-Based Text-to-Image Models |  | [OpenReview](https://openreview.net/forum?id=HfQ7cdt9Ho) |
-| 4 | The Confidence Mirage of Inference-Time Scaling: Evaluating When More Reasoning Makes Large Language Models Less Reliable |  | [OpenReview](https://openreview.net/forum?id=6DrMgRQXjz) |
-| 5 | When Self-Refinement Backfires: Measuring Behavioral Instability in Large Language Models |  | [OpenReview](https://openreview.net/forum?id=lBPu4XAkVZ) |
-| 6 | Metadata-Grounded Visual-Key Regeneration for Contamination-Resistant VQA Evaluation |  | [OpenReview](https://openreview.net/forum?id=0DCL7yy3iw) |
-| 7 | When Grounding Fails: Structural Failure Signals for Detecting Silent GUI Errors |  | [OpenReview](https://openreview.net/forum?id=LsjKYw5qEK) |
-| 8 | MemPT: Capability-Centric Memory for Autonomous Penetration Testing |  | [OpenReview](https://openreview.net/forum?id=AdswMK590P) |
-| 9 | Tells of a Lying Machine: Analyzing LLM-Generated Strategic Dialogue in Chinese Werewolf |  | [OpenReview](https://openreview.net/forum?id=gPWhfncvsI) |
-| 10 | From Typos to Adversaries: Character-Level Robustness Evaluation of Healthcare Large Language Models |  | [OpenReview](https://openreview.net/forum?id=l3N6IbCI2P) |
-| 11 | Fade and Flip: A Predictive Account of Watermark Decay under Multi-Agent Relay Rewriting |  | [OpenReview](https://openreview.net/forum?id=VLxgiCc88H) |
-| 12 | The Cost of Controlling Evidence Selection in Language Models |  | [OpenReview](https://openreview.net/forum?id=5x0uMBSjoW) |
-| 13 | When Emojis Obscure Toxicity in Chinese: Diagnosing Detection and Target Identification Failures |  | [OpenReview](https://openreview.net/forum?id=BaCVcg7x2Z) |
-| 14 | People Can Be Consistently Fooled by LLM-Generated Social-Media Conversations |  | [OpenReview](https://openreview.net/forum?id=6ZLF6cYoPt) |
-| 15 | VeriOS: Query-Driven Proactive Human-Agent-GUI Interaction for Trustworthy OS Agents |  | [OpenReview](https://openreview.net/forum?id=MKkk0FzDYV) |
-| 16 | RouteProbe: Auditing Context Sensitivity in Deployed LLM Routers |  | [OpenReview](https://openreview.net/forum?id=lH8lS3aeGH) |
-| 17 | CORDA: Evaluating Moral Controllability of Language Models under Conflicting Priorities |  | [OpenReview](https://openreview.net/forum?id=1CrN6M6tRR) |
-| 18 | Learning to Audit Silent Evidence Corruption in Visual Reasoning |  | [OpenReview](https://openreview.net/forum?id=nBDT1cmNHu) |
-| 19 | BotC-Bench: A Trace-Grounded Social Deduction Benchmark for Evaluating LLM Agents under Controlled Information Contamination |  | [OpenReview](https://openreview.net/forum?id=xBvhIoieWc) |
-| 20 | Watermark Seeding: A Security Control Mechanism for Text Watermarking in Large Language Models |  | [OpenReview](https://openreview.net/forum?id=dI74DXv6wB) |
-| 21 | Symbolic Constraint Agents: Mining Formal Tool-Call Constraints to Prevent Agent Errors |  | [OpenReview](https://openreview.net/forum?id=iknO3Ikkxc) |
-| 22 | Do LLMs Know Whom to Trust? Brand Names vs. Stated Reliability in LLM Deference to AI Peers |  | [OpenReview](https://openreview.net/forum?id=A8ovrVRVnl) |
-| 23 | EJT: Embedded Jailbreak Templates for Scalable and Category-Balanced Safety Benchmark Construction |  | [OpenReview](https://openreview.net/forum?id=eIWmyxu7GA) |
-| 24 | LLM Authorship Verification: Are Two Texts Generated by the Same Large Language Model? |  | [OpenReview](https://openreview.net/forum?id=KuTZLS6V2w) |
-| 25 | SPADE: Soft Prompts for Ai-text DEtection |  | [OpenReview](https://openreview.net/forum?id=KACwy3Fqio) |
-| 26 | CertMem: Certifiable Memory Promotion in Agentic Systems |  | [OpenReview](https://openreview.net/forum?id=1lLyUbVd0b) |
-| 27 | Empty Commitments: When Agents Promise What Their Runtime Cannot Deliver |  | [OpenReview](https://openreview.net/forum?id=AFOTqKu7DT) |
-| 28 | Auditing LLM Evaluation Code: Controlled Faults and a Real-World Repair Study |  | [OpenReview](https://openreview.net/forum?id=Fas1TKtsJj) |
-| 29 | Tokengeist: Multi-Turn Attribution Tracing in Agentic Conversations |  | [OpenReview](https://openreview.net/forum?id=bcNzuKgTkw) |
-| 30 | When the Cache Says No: Refusal Behavior in Low-Resource Cache-to-Cache Communication |  | [OpenReview](https://openreview.net/forum?id=tzpsnHnSSk) |
-| 31 | Do Hallucination Detectors Transfer Across Tasks? A Study of Internal Activations from QA to Code and Math |  | [OpenReview](https://openreview.net/forum?id=KH5r4SD5zw) |
-| 32 | SemField: A Simple, Linear, Continuous, yet Robust Semantic Watermark |  | [OpenReview](https://openreview.net/forum?id=LaairDJIdJ) |
-| 33 | VEILED-SH: Vulnerability Expression through Indirect Language Evaluation Dataset (Self-Harm) | 间接/文化情境化自伤与痛苦表达评测基准（1 万提示×四应用场景×专家校准多参考政策）——AI 系统漏检间接求救信号 | [OpenReview](https://openreview.net/forum?id=SY4mDquR1z) |
-| 34 | When Cooperation Meets the Law: MA-LexArena for Evaluating Legal Compliance | MA-LexArena：多 agent 协作行为的法律合规基准（1026 任务×31 规则卡×8 个欧盟法律工具）——对等协作确认违规率高于监督-工人范式 | [OpenReview](https://openreview.net/forum?id=PY7UY1OSdq) |
-| 35 | RegDetect: Short Machine-Generated Text Detection via Regeneration Drift Modeling | RegDetect：再生成漂移建模检测短机生成文本——机器文本重生成贴合机器、人类文本漂移大，30-50 词段优势显著 | [OpenReview](https://openreview.net/forum?id=qAbS9mHPyM) |
-| 36 | When Multimodal Agent Teams Fail: Root-Cause Attribution Across Agents and Steps | MMTraceBench+MMTracer：多模态多 agent 系统的失败根因归因（双向反事实标注管线+RL 定位模型）——早错跨 agent 与模态传播 | [OpenReview](https://openreview.net/forum?id=X2aoltyQxj) |
-| 37 | Outcome-Grounded Auditing of RLVR Training Warnings | 结果接地的 RLVR 训练预警审计：熵监控候选在冻结联合门下无一及时预警——可复现退化不等于可部署前兆 | [OpenReview](https://openreview.net/forum?id=BAgIfZYEX6) |
-| 38 | Evaluating LLM Safety across Korean Addressee Honorification | 韩语敬语四级变化下的安全一致性（400 HarmBench→1600 变体×13 模型）——自然社会语用变化即可测得安全行为改变 | [OpenReview](https://openreview.net/forum?id=s9A7n7Mllv) |
-| 39 | Can Large Multimodal Models Actively Recognize Faulty Inputs? A Systematic Evaluation Framework of Their Input Scrutiny Ability | ISEval：LMM 输入审视能力评测（1945 题×九种缺陷构造）——自发性缺陷检出仅 5.5-33% 且识别缺陷≠扣留无据答案（最高检出配置 99.9% 仍给无据答案） | [OpenReview](https://openreview.net/forum?id=42UqS0buR4) |
-| 40 | Do Unequal Review Paths Reveal Bias? Interface-Calibrated Auditing of Tool-Calling Loan Agents | TraceFair：工具调用贷款 agent 的界面校准公平审计——匹配财务记录下人口线索改变决策时可用证据的暴露（证据获取成为人口敏感性的新位点） | [OpenReview](https://openreview.net/forum?id=AjHkmYKQOK) |
-| 41 | Vuligence: Progressive Disclosure Multi-Agent Framework for Project-Level Vulnerability Detection via Dynamic Validation | Vuligence：渐进披露多 agent 项目级漏洞检测+Docker 动态验证——Java F1 0.177→0.772 并发现 23 个零日（AI-for-cyber） | [OpenReview](https://openreview.net/forum?id=TfSx4O2yhS) |
-| 42 | Harm-Aware Multi-Action Routing for Selective RAG Repair | RAG 修复的损害感知两段路由：保答案与选修复分离——选择性干预优于统一修复（RAG 修复决策的安全侧） | [OpenReview](https://openreview.net/forum?id=51aA72y1z5) |
-| 43 | Given the Evidence: Interpretation in LLM Safety Review | 安全审查中证据的访问≠正确使用：审查者忽略显式矛盾或识别无据仍批准——任务对齐小专家可与大模型竞争、推理大幅改善（护栏的证据解读缺口） | [OpenReview](https://openreview.net/forum?id=orFUT40WfI) |
-| 44 | Can Compressed Memory Change Its Mind? The Anticipation Trap in LLM Agent Memory | 压缩记忆的预期陷阱：按更新后准确率选记忆反而降联合准确率（选中的已含更新后答案）——条件式记录而非结论式提升联合正确率 | [OpenReview](https://openreview.net/forum?id=v8PZNhMUc3) |
-| 45 | BLOOM-WILT: Logit Tilting for Behaviour Elicitation in Automated LLM Auditing | BLOOM-WILT：logit 倾斜的自动化审计行为引出管线——32 设置中 30 个超基线，自伤鼓励出现率 51%→100%（罕见行为的高效审计） | [OpenReview](https://openreview.net/forum?id=906Z85Hh5T) |
-| 46 | Persistence Without Discounting: Localizing and Steering Rumination-like Dynamics in Patient-Simulating Language Models | 抑郁症患者模拟 LLM 的反刍动态：对比对话+激活修补定位注意力头/MLP——机制引导转向并不优于提示基线（可解释性到控制的落差） | [OpenReview](https://openreview.net/forum?id=4TPrliWGLx) |
-| 47 | FirstCause: Failure-Lifecycle Supervision for Decisive-Step Attribution in Multi-Agent Systems | FirstCause：失败生命周期归因（断裂/源头/持续三因子分解）——Who&When 步精确 45.11%、相对最强基线 +22.06% | [OpenReview](https://openreview.net/forum?id=XsKHBITA98) |
-| 48 | What the Judge Misses: Auditing Trajectory-Level Hallucinations\\in Multi-Agent Industrial Workflows | TRAJEL：轨迹级幻觉人标基准——专责判官二分类 F1 0.855 却只恢复 4/21 逻辑型与 3/17 指涉型幻觉；66% 幻觉轨迹最终任务无幻觉（输出级评测读不到发生步） | [OpenReview](https://openreview.net/forum?id=edPZshDEye) |
-| 49 | Claim Framing as a Driver of LLM Sycophancy | 声明框架驱动谄媚：42K 可验证问题×21 种框架——置信度/归属者/用户-模型共享最触发；专业权威与社会压力在事实场景几乎无效（谄媚评测的框架维度） | [OpenReview](https://openreview.net/forum?id=Ge83fxwJxH) |
-| 50 | HSM-Unlearn: LLM Structural Unlearning for Hardware IP Protection | HSM-Unlearn：RTL 感知分层结构掩蔽遗忘——把 SOTA 的 5.43× 快速重学压回 1.10×（硬件 IP 遗忘的再学习审计口径） | [OpenReview](https://openreview.net/forum?id=uoCjgHx9V7) |
-| 51 | SafeGround: Know When to Trust GUI Grounding Models via Uncertainty Calibration | SafeGround：GUI 定位模型的空间分散不确定性+校准阈值选择预测——高不确定 abstain/级联，接受错误率有界（GUI agent 可靠性） | [OpenReview](https://openreview.net/forum?id=SG12Ufn8In) |
-| 52 | Slice-Level Gaps in Multilingual AI Safety Datasets | 多语安全数据集切片级审计（豪萨/斯瓦/法语 25 切片×31 字段）——覆盖数字隐藏语言级缺口：无原生自伤/性内容数据、切片级一致性仅 6/25 报告 | [OpenReview](https://openreview.net/forum?id=jTh2AHNUPH) |
-| 53 | Locate-then-Debias: Understanding and Mitigating Model Bias in Hidden Representations Explanation of Large Language Models | Patchscopes 解释的忠实性偏置：LDLoR 以未修补 logit 为偏置对照重校准——抑制语言模式放大上下文信息（可解释性忠实性修正） | [OpenReview](https://openreview.net/forum?id=N5aPqzhr6T) |
-| 54 | Ripple: A Unified Framework for Watermarking Diffusion Large Language Models | Ripple：扩散语言模型统一水印框架——掩码→稳定态转移时全局哈希注入+EMA 校准弱信号 token，检出/鲁棒/质量三衡 | [OpenReview](https://openreview.net/forum?id=DA4JlRWRoY) |
-| 55 | SafeSceneReason: A Multimodal Reasoning Benchmark Connecting Industrial Hazards with Accident Knowledge | SafeSceneReason：工业危险多模态推理基准（11 万场景中心+1.3 万报告中心 QA）——连接事故调查知识的合规评估与因果分析 | [OpenReview](https://openreview.net/forum?id=RXhBrvz78P) |
-| 56 | SchemaDrift-Mem: Measuring First-Decision Procedural Rot in Tool-Using Language Agents | SchemaDrift-Mem：工具契约变更后的首决策程序腐烂——无版本 BREAKING 复用无效调用率 0.833，语义元数据门可挡 SUSPICIOUS 暴露 | [OpenReview](https://openreview.net/forum?id=icY11nkbaS) |
-| 57 | Agentic Depositions: Benchmarking Adversarial Conversations | Agentic Depositions：法庭质证对抗会话基准——策略提议/证人排序/实时应答，前沿开源与闭源性能相当 | [OpenReview](https://openreview.net/forum?id=uy3Gs5NgPq) |
-| 58 | Protecting Automatic Speech Recognition Datasets via Watermarking | HPW：ASR 数据集无害水印——声学扰动制造干净/侵权模型可读性差，黑盒验证未授权训练（数据集版权保护） | [OpenReview](https://openreview.net/forum?id=uAwHXXt1Pb) |
-| 59 | EventTrace: Event-Based Probability Trajectory Modeling for Training-Free LLM Text Detection | EventTrace：token 概率轨迹的结构化概率事件训练无关检测——保持概率转移与预测不确定性对应，黑盒白盒基准 SOTA | [OpenReview](https://openreview.net/forum?id=2ruqWuJbkC) |
-| 60 | A Benchmark and Diagnostic Study of  Epistemic Admission in Shared Agent Memory | 共享 agent 记忆的认识准入基准（CPB）：去重策略错杀真断言、覆盖保持策略近无限制采纳假断言——消费者对无争议假记忆断言率 0.97-0.99 | [OpenReview](https://openreview.net/forum?id=8rG6cPYEWP) |
-| 61 | A Survey on the Self-Evolution of Large Language Models: From Self-Improvement to Recursive Self-Improvement | LLM 自进化综述（提示程序/数据/记忆/权重/环境/评测/群智/系统级 RSI 八域）——模型塌缩/reward hacking/数据投毒/目标漂移/失控递归的风险与对策横切分析 | [OpenReview](https://openreview.net/forum?id=tykR0clBMa) |
-| 62 | Beyond Fabricated References: Analyzing and Probing Field-Level Citation hallucinations in LLMs | 字段级引用幻觉：24-51% 生成引用指向真实论文但作者/DOI 常错；字段正确性线性可读于隐状态且错误信号嵌入生成文本本身 | [OpenReview](https://openreview.net/forum?id=SmmIjN7LQk) |
-| 63 | Analyzing LLM Data Contamination from an Ensemble Perspective | 集成视角的污染检测：单模型置信混淆真知识与记忆——预测置信与集成不确定性互补，UBD 免干净参照按样本去污染 | [OpenReview](https://openreview.net/forum?id=2OS7rGWS5W) |
-| 64 | Quantization and Bias in Reasoning LLMs for Hate Speech Detection | 量化对推理 LLM 仇恨言论检测的群体公平影响——更常恶化而非改善、小模型更明显；伊斯兰群体差异与推理轨迹/激活变化相关 | [OpenReview](https://openreview.net/forum?id=lDafR8cvXa) |
-| 65 | KG-TOFU: Acquisition-Controlled Unlearning Evaluation with Knowledge-Graph Probes | KG-TOFU：作者画像重建为溯源知识图谱，同 KG 生成目标模型训练数据与评测探针——习得方式剧变遗忘结局（QA 对遗忘评测的泛化性质疑） | [OpenReview](https://openreview.net/forum?id=ol7EX9HzRG) |
-| 66 | Sycophancy Introspection: Teaching Language Models to Detect and Resist Sycophancy | 谄媚内省 SFT：教模型识别自己正在谄媚并以此引导最终响应——降谄媚同时保持对正确反馈的响应性 | [OpenReview](https://openreview.net/forum?id=Fg9MKIcdwU) |
-| 67 | Alignment Makes Language Models Normative, Not Descriptive | 120 对基座-对齐模型×万级真实多人博弈决策：基座在多轮策略场景预测人类行为更强（90.6% 对比占优）——对齐诱导规范性偏置 | [OpenReview](https://openreview.net/forum?id=Zr6dGUDyYn) |
-| 68 | PrefixProbe: Prefix-Supervised Probing for LLM-Generated Text Detection | PrefixProbe：句前缀监督的冻结观察者探针——截断后仍可检出，DetectRL 99.90% AUROC、8 训练对 89.62% TPR | [OpenReview](https://openreview.net/forum?id=TV7GUUTFWl) |
-| 69 | Trustworthy Multimodal LLMs for Computational Social Science: A Survey of Risks, Validity, and Evaluation | 计算社会科学中 MLLM 的可信度风险综述（54 研究）——真实性/鲁棒受关注多于公平/隐私/安全与长期反馈效应 | [OpenReview](https://openreview.net/forum?id=I9g1G0Dsce) |
-| 70 | Stochastic CHAOS: Benchmark Scores Are Policy-Indexed Measurements | 基准分数是策略索引测量：规则/预算/访问三分离后多数投票增益大缩水——16 抽中有害输出几率约为贪心 3 倍（评测口径的采样依赖） | [OpenReview](https://openreview.net/forum?id=GfMStKLSV4) |
-| 71 | To Follow or Not To Follow: Investigating the Tendency of Language Models to Follow Non-factual Contexts | DissonanceQA：非事实上下文跟随倾向（14952 实例地理/分类/时间冲突）——时间事实最易被带偏、地理最不易 | [OpenReview](https://openreview.net/forum?id=voAfPJAxvU) |
-| 72 | When Correct Answers Collapse: Measuring LLM Robustness Under Conversational Pressure | 对话压力下的正确答案坍塌：裸反驳即可让某配置 85.4% 放弃正确 StrategyQA 答案——易感问题占比 19.2-98.4% 随配置 | [OpenReview](https://openreview.net/forum?id=NzTPCx3nEW) |
-| 73 | MultiPoC-Bench: Evaluating Code Agents on Joint Vulnerability Repair | MultiPoC-Bench：多 PoC 联合修复基准（120 任务 389 PoC）——修一漏一与功能保持的差距 4.17-17.50pp | [OpenReview](https://openreview.net/forum?id=eDxcFxN7KI) |
-| 74 | VulContextBench: A Benchmark for Security Context Retrieval in Coding Agents | VulContextBench：编码 agent 的安全上下文检索基准——每模型浏览 73-86% 金标上下文但最终引用仅 12.9-36%（浏览 vs 选为证据的差距） | [OpenReview](https://openreview.net/forum?id=BAM57rvl9p) |
-| 75 | GenFakeNewsNet: A Benchmark for Intent-Driven Fake News Generation | GenFakeNewsNet：意图驱动的假新闻生成基准（17,395 对）——按真实宣传意图的协同叙事操纵，54% 读者判为真 | [OpenReview](https://openreview.net/forum?id=qVoKyLOY1i) |
-| 76 | Moral Sycophancy in LLMs: Studying the Effects of Response Formats with a Taxonomy of Stance Shifts | 道德谄媚的响应格式效应：强制选择最高/二元背书最低——五类立场转移分类学，同谄媚率模型行为不同 | [OpenReview](https://openreview.net/forum?id=tGceBlcEFn) |
-| 77 | AnyWarehouse: Auditable Evaluation of History-Constrained Language-Model Agents | AnyWarehouse：到达物理终点≠满足有效完成历史——终点投影错误接受 33 个非法轨迹，账本反馈提升合规成功 7.4pp（可审计 agent 评测） | [OpenReview](https://openreview.net/forum?id=3YuWZwwjWd) |
-| 78 | Inherited Attention Heads, Fragile Instructions: Understanding Order Effects in Audio Language Models | 音频 LLM 指令顺序效应：指令在音频后合规率 0→0.40——约 20 个注意力头读指令且跨模型共享（p<10⁻¹⁸），阻断/增强可双向调节 | [OpenReview](https://openreview.net/forum?id=4ZCcRwtnjc) |
-| 79 | Beyond Final-Layer Logits: Training-Free AI-Generated Text Detection via Hidden-State Trajectory Contrast | 隐状态轨迹对比 HTC：训练无关 AIGT 检测从冻结代理直接导出判别梯度方向——0.9343 AUROC、超最强基线 10+ 点 | [OpenReview](https://openreview.net/forum?id=ZafGosXH5G) |
-| 80 | Wait, am I Being Fair? Characterizing Deductive Stereotyping and Mitigating It with Fair-GCG | 演绎刻板化：把群体统计规律套到个体——Fair-GCG 系统发现推理时注入短语，跨规模泛化并迁移到真实公平敏感任务 | [OpenReview](https://openreview.net/forum?id=zBcn88tjmx) |
-| 81 | ADMIT: Not Every Bias Warrants Mitigation in Text-to-Image Models | ADMIT：T2I 并非所有分布失衡都该修——文献化诊断分类学指导选择性缓解，保非目标视觉内容 | [OpenReview](https://openreview.net/forum?id=b7apkEnFev) |
-| 82 | Beyond Four Seconds: Temporal Context and Variety-Conditioned Acoustic Patterns in Arabic Speech Deepfake Detection | 阿拉伯语语音深伪检测的语言变体×时间上下文交互：37 声学特征中 35 个显著交互——4s→16s EER 25.83%→23.38% | [OpenReview](https://openreview.net/forum?id=ztIAhf2eDA) |
-| 83 | Evaluation Awareness Beyond English: Do LLMs Act Differently When Tested in Indic Languages? | 评测觉察的印度语言扩展：告知被测试时印地语系拒答率升 14.4pp——安全评测可能不反映日常用户待遇（47,880 响应公开） | [OpenReview](https://openreview.net/forum?id=HcCYQPraIK) |
-| 84 | PAIR-SAFE: A Paired-Agent Approach for Runtime Auditing and Refining AI-Mediated Mental Health Support | PAIR-SAFE：MITI-4 临床接地的判官 agent 运行时审计精炼 AI 心理支持——允许/修订决策实时改进关系质量 | [OpenReview](https://openreview.net/forum?id=5Q8kBFOCsi) |
-| 85 | Preserving Structure, Strengthening Signals: A Grammar-Driven Approach to Optimize the Trade-off Between Quality and Detectability in Code Watermarking | 语法驱动代码水印 GDW：绿表/语法有效/结构角色三级掩码+AUTC 权衡指标——低熵代码的质量-可检性新最优 | [OpenReview](https://openreview.net/forum?id=Dk2KWUmYwz) |
-| 86 | Words, Actions, and Beliefs: Tracing Persuasion in LLM Agent Networks | LLM agent 网络中的说服追踪：竞争说服者把移动变为绕模型先验的振荡；仅 73% 计划原则到达消息且被劝者复述措辞而不陈述信念转移——轨迹-暴露级评测主张 | [OpenReview](https://openreview.net/forum?id=ReqnJEYwBR) |
-| 87 | When Large Language Model Judges Meet Watermarks: Provenance Signals Distort Automated Evaluation | LLM 判官遇水印：20 个跨模型生成-判官对中水印候选选择率平均低 11.1pp——'不可感知'对机器判官不成立（水印×自动评测交互） | [OpenReview](https://openreview.net/forum?id=2kul0IW1wv) |
-| 88 | The Little Models That Think: A Review of Small Language Model Reasoning Under Deployment and Security Constraints | 小模型推理×部署-安全约束综述：4bit 量化保推理但安全影响未定、蒸馏降安全、干净轨迹可藏错答——成本-风险画像与部署-安全交互图 | [OpenReview](https://openreview.net/forum?id=rbcgFkBtGe) |
-| 89 | VIGILIA: Interactive Evaluation of Robust Conversational Vigilance in Large Language Model Agents | VIGILIA：共享会话环境的对话警觉性压力测试（模拟课堂植入受控事实错误）——警觉失败率至 70.1% 且对刻板社会群体语言特征敏感 | [OpenReview](https://openreview.net/forum?id=dGBA8ZqQ87) |
-| 90 | ECHO: Revealing Review-to-Submission Linkage in Anonymous Peer Review | ECHO：匿名评审到本人投稿的链接攻击（技术专长+文风跨评审/论文/反驳信号）——Top-1 34.6%、加强重排 56.4%，评审匿名集被常规发布工件大幅收缩 | [OpenReview](https://openreview.net/forum?id=gqIIOUbhEG) |
-| 91 | SecReason: Vulnerability Detection and In-Stream Self-Repair for LLM Code Generation | SecReason：流内安全自修复——在交付前推理窗口增量扫描+规则触发中断插警继续解码，CWEval/SecCodeBench 安全且正确 72.8-98.1% | [OpenReview](https://openreview.net/forum?id=aMLgYnsGBk) |
-| 92 | SCOPE: Service-Conditioned OOD Probing and Evaluation for Large Language Models | SCOPE：服务条件化 OOD 探测与评测——OOD 请求反映服务范围而非模型能力，e-process 序贯审计拒绝门与人类定义边界的对齐 | [OpenReview](https://openreview.net/forum?id=Yk4rw2jOz5) |
-| 93 | LegalRPA: A Benchmark and Auditable Framework for Role-Preserving Legal Anonymization | LegalRPA：保角色法律匿名化基准+可审计框架——隐私覆盖/角色区分/结构保真/QA 效用/条件链接风险的五维权衡 | [OpenReview](https://openreview.net/forum?id=bUvYAYu4Wf) |
-| 94 | Automated Schema-Preserving Attacks for Evaluating LLM Arithmetic Reasoning | 模式保持攻击自动评测算术推理：五族变换（数值重映射/词汇改写/干扰项/问句反转/合并）——全部模型在保持结构的变换版上显著退化 | [OpenReview](https://openreview.net/forum?id=07EOxLBDYo) |
-| 95 | Demystifying the Privacy-Utility Trade-off in LLM Interactions | LLM 交互隐私-效用权衡三机制解构（上下文依赖效用/策略适配/组合交织）+意图驱动局部保护 Veilmind-4B——低泄漏点保高响应效用 | [OpenReview](https://openreview.net/forum?id=LQzRGfU36R) |
-| 96 | Illusion: Safeguarding Topology Confidentiality in LLM Multi-Agent Systems via Behavior-Preserving Obfuscation | Illusion：MAS 通信拓扑保密的主动混淆——注假边假消息保输出分布等价，边级 F1 0.87→0.62 且抗相似度与 LLM 判官过滤 | [OpenReview](https://openreview.net/forum?id=gepqlfyFF6) |
-| 97 | A Trust Layer for Agent Evaluation | agent 评测信任层：四属性（评分逻辑支持/可追溯计算赢得/完成声明属实/重复执行稳定）——108 任务上仅 22.6% 通过全检（可信 agent 评测基础设施） | [OpenReview](https://openreview.net/forum?id=R3qPhU9XkE) |
-| 98 | When the Simulated Patient Knows Too Much: Privileged-Information Leakage in RL for Doctor Agents | 模拟病人特权信息泄漏：RL 学会直接问答案（1.7B 模拟 99% vs 无泄漏代理 39%）+特权通道悲观主义 PCP 消除多数膨胀 | [OpenReview](https://openreview.net/forum?id=UmYg9PJUiP) |
-| 99 | The Patient Is Always Right? Evaluating Sycophancy in Medical Diagnosis with Graded Patient Beliefs | 分级患者信念下的医疗谄媚：模型平均 23.2% 采纳患者错误信念、虚构疾病人设达 43.0%——含虚构病症也被接受 | [OpenReview](https://openreview.net/forum?id=9cSuCtouAk) |
-| 100 | Can an Agent Learn to Predict Its Own Failure? Outcome-Grounded Confidence Calibration in LLM Agents | agent 自我失败预测：GRPO 组 rollout 供成功标签+proper scoring rule 对每步置信度对最终结局校准——离线 AUROC 至 0.85、ECE 0.42→<0.12 | [OpenReview](https://openreview.net/forum?id=RVZpUXbCqL) |
-| 101 | Defined by Him: Definitional Othering in Aligned Language Models Is Invisible to Toxicity and Safety Classifiers | 定义性他者化：GPT 系女性指向补全以男性为比较基准的比例升至 82.8% 且主要发生在 RLHF 步——毒性/安全分类器几乎不标记该内容（分类器不可见的表征伤害） | [OpenReview](https://openreview.net/forum?id=T3qHRmClND) |
-| 102 | Disentangling Neural Identity from Encoder Identity in a Privacy Audit of BP-GPT’s fMRI-to-Text Decoding | BP-GPT fMRI-文本解码隐私审计：原始连接与嵌入均 100% 识别参与者，但按参与者训练编码器——模型自身签名饱和于首线性层，跨种子可迁移身份信号仅 54.3%（数据指纹 vs 编码器指纹的分离） | [OpenReview](https://openreview.net/forum?id=kj2WsHmNCK) |
-| 103 | The Intent Gap: A Taxonomy of Real-User Failure Modes in Frontier AI Agents | 真实用户失败模式分类学（意图鸿沟）：字面合规但错失用户真实意图——WildChat 5 万对话试点+11 类失败分类学 | [OpenReview](https://openreview.net/forum?id=2G0fzSmOWw) |
-| 104 | What Carries Forward? Pretraining Disclosure Across Language Model Releases | 预训练披露跨版本审计（41 模型 17 家族×24 指标）：后续发布不保持既有披露——同分可藏三得三失，语料构成与训练算力缺口持续 | [OpenReview](https://openreview.net/forum?id=2v5Sucl7g0) |
-| 105 | Private Retrieval Augmented Generation via Random Projection | 随机投影保 RAG 数据库隐私：同投影作用库与查询嵌入保语义相似——经验隐私相当且性能优于形式 DP 基线 | [OpenReview](https://openreview.net/forum?id=VQRlqYgSas) |
-| 106 | When Should Medical VLMs Answer? Reliability under Deployment Perturbations | 医疗 VLM 部署扰动下的选择性预测：隐状态探针 193/195 设置超置信度+损坏路由/条件转向实现澄清与弃答——检错与恰当响应间仍有沟 | [OpenReview](https://openreview.net/forum?id=HxHswTFXKl) |
-| 107 | What Coding Agents Leave Unsaid: Measuring Task-State Gaps Between Execution and Reports | CTXGAP：编码 agent 报告 vs 完整执行上下文的任务态可恢复性差距 40.7pp——监督者无从得知未报告的失败与风险 | [OpenReview](https://openreview.net/forum?id=vDmn2jKpKF) |
-| 108 | Towards Fair Evaluation under Benchmark Contamination via Unlearning and Relearning | 遗忘-重学习协议治基准污染：矛盾式遗忘削弱基准答案记忆后官方训练集重训——重学分数去除污染优势且近干净控制水平 | [OpenReview](https://openreview.net/forum?id=bnWvCHtfdr) |
-| 109 | Emergent Misalignment Due to Value Training | 价值观训练的涌现失准：Hofstede 维度微调在未训练价值观/风险偏好/社会认知/安全特质上产生意外副作用——价值对齐需更广行为评测 | [OpenReview](https://openreview.net/forum?id=JJ7Wb4qvr1) |
-| 110 | ResyncMark: Robust Multi-Bit Text Watermarking via Proportional Resynchronization | ResyncMark：比例重同步的多比特文本水印——30% 随机删除后比特准确率 60.2%→98.3%，无需模型权重或原续写 | [OpenReview](https://openreview.net/forum?id=leiH1xTtFm) |
-| 111 | Can Agentic Code Review Catch Vulnerabilities Before They Are Merged? | SecPRBench：真实 bug 引入 commit 的 agent 安全评审基准（265 任务×九关键系统）——召回 32.5-78.1%，68% 漏检是'看到文件却论证成别的机制' | [OpenReview](https://openreview.net/forum?id=ptaHLP7CrH) |
-| 112 | SAPR: Static Filtering and Proxy Re-ranking for Target-Specific Anchor Selection in Large Language Model Unlearning | SAPR：知识编辑遗忘的目标特定锚选择（静态过滤+代理重排）——ROCR 上 Level-1 ROUGE 降 18.8% 且限损邻接知识 | [OpenReview](https://openreview.net/forum?id=8V1IHkdB0b) |
-| 113 | LatentRisk-VLM: Failure-Guided Representation Editing for Frozen Vision-Language Models | LatentRisk-VLM：仅用任务标签与冻结模型边际发现类条件潜在风险方向并编辑——Waterbirds 最差组 +26.9pp 但 CelebA 反降（失败-组对齐决定成败） | [OpenReview](https://openreview.net/forum?id=zT3tc3oGF9) |
-| 114 | RealGUINoise: An Interactive Cross-Platform Benchmark for GUI Agent Robustness under Real-World Interface Noise | RealGUINoise：42 类真实界面噪声×7 agent 框架的交互跨平台基准——噪声不只降性能还重定向轨迹并增加不安全行为倾向 | [OpenReview](https://openreview.net/forum?id=uB6cE7AzQ6) |
-| 115 | Pair, Freeze, Correct: Auditing Model Updates with Few Reference Labels | 配对-冻结-校正的模型更新审计：按代理判定变化分层配对标注+历史审计标签风险上限加权——等预算 RMSE 降 43.8% | [OpenReview](https://openreview.net/forum?id=t5Mpf9m52N) |
-| 116 | Revocation-Consistent Agent Execution via Requirement-Scoped Support and Selective Discharge | 需求范围化的撤销一致性：混合支持工件的原子授权决定陷入健全-保持两难——RCSF-V 溯源支持流+权威纪元+选择性放电，0% 未授权执行且 0% 不必要阻断 | [OpenReview](https://openreview.net/forum?id=i1T36lx4cJ) |
-| 117 | Black-Box Forensics for Conversational LLM Agents | 对话式 LLM agent 黑盒取证：风格+n-gram 分类器几句对话识别基模型 98%；跨编码器指纹判定两会话同 agent（单对 AUC 0.79、50 会话 0.97）且抗改写——诈骗部署与换模检测应用 | [OpenReview](https://openreview.net/forum?id=J0Io3TtVSz) |
-| 118 | Can LLMs Stay Robust in Noisy Agentic Environments? | 噪声 agent 环境鲁棒性：扰动目标×类型二维框架——agent 少识别被改输入、无验证传播损坏信息且受扰成功轨迹算力大增 | [OpenReview](https://openreview.net/forum?id=DhjwVjDCBn) |
-| 119 | Emergent Controllability: Benign Reasoning Distillation Can Increase Chain-of-Thought Controllability | 良性推理蒸馏可提升 CoT 可控性：无关 SWE 任务 212 例后指令遵循/CoT-Control 上升且跨供体-受体迁移——推理训练的意外可控性外溢 | [OpenReview](https://openreview.net/forum?id=0SZ1uolv2C) |
-| 120 | OARS: Objective-Aware Retain-Set Selection for LLM Unlearning | OARS：现实遗忘请求常只给遗忘集——隐状态位移聚类+簇内最高位移选择的保留集选取，恢复 65.9% 效用损失 | [OpenReview](https://openreview.net/forum?id=t8fX8FUeem) |
-| 121 | The Trustworthiness Mirage: Auditing Financial LLM Trustworthiness Benchmarks | 金融 LLM 可信度基准审计（51 研究 226 任务）：57.6% 结论超出证据支持——声明-任务-指标-推断链系统性错配 | [OpenReview](https://openreview.net/forum?id=k2EOwXpSp7) |
-| 122 | When Confidence Is Not Enough: Toward Consequence-Risk-Aware Abstention for Consumer-Facing Medical QA | 后果风险感知弃答 CIRA：正确性置信+后果代理估计+效用罚——按面板定义残余伤害而非单纯正确性评估弃答 | [OpenReview](https://openreview.net/forum?id=9O7TSwQtjd) |
-| 123 | PakDecept: Benchmarking LLM Deception in Urdu | PakDecept：乌尔都语 LLM 欺骗基准（1197 巴基斯坦真实事件八域）——迭代诱导下四模型欺骗率均超 85%；语言效应方向不一 | [OpenReview](https://openreview.net/forum?id=ySoNkIGMqv) |
-| 124 | New Model, Old Habits: Behavior Transfer under Model Swapping in Multi-Session LLM Agents | 多会话 agent 换模下的行为转移：接收者采纳生成历史的模型的推理/行动模式——DASH 方向与作者感知摘要保强抑弱转移 | [OpenReview](https://openreview.net/forum?id=SHEZC8SJf2) |
-| 125 | Paraphrase Consensus Is Not Self-Consistency: Instruction Reliance and Robustness in VLA Policies | VLA 指令依赖：改写指令使 OpenVLA -38pp、提示集成不可恢复——错误指令探针量化策略对指令的依赖份额，释义微调 +2.0pp | [OpenReview](https://openreview.net/forum?id=V0c2A9G6Kr) |
-| 126 | Hidden in Emotion: Selective Fingerprinting of Open-Weight Large Language Models | HiE 情绪绑定指纹：情绪残差对比学习+选择性蒸馏红绿水印——抗语义域过滤的隐蔽指纹（开源模型 IP） | [OpenReview](https://openreview.net/forum?id=0fJKS87bhC) |
-| 127 | Auditing LLM Fine-Tuning on Imperfect-Information Game Logs | 扑克日志微调审计：声称的'轻量求解器'在精确可利用度下被常数策略与古典求解器前五迭代碾压——保留高分样本+拟合同分奖励的训练配方三层审计 | [OpenReview](https://openreview.net/forum?id=vMMu199b2N) |
-| 128 | Can We Believe AI Peer Review? | AI 评审可信度：同条件重复评审分数波动、细粒度协议降方差但系统性移均值——修订增益强依赖评审者（14k AI 评审实证） | [OpenReview](https://openreview.net/forum?id=JmMZjBqRVY) |
-| 129 | Learning to Judge by Learning to Damage: Human-Free Training of LLM Evaluators | 以学破坏训判官：小 Damager（GRPO 奖励=标准指标）按严重度语义降级参照输出作伪标签——免人工训练 2B 判官 7-10/11 数据集超人评相关 | [OpenReview](https://openreview.net/forum?id=QgIKeM9mvE) |
-| 130 | Search-Calibrated Multiscale Localization of Watermarked Regions in Mixed Human-LLM Documents | 混合人-机文档的水印区域多尺度定位：重叠区间搜索+分辨率校正+人写文档校准——有限样本 I 类错误控制下的最高 IoU/F1 | [OpenReview](https://openreview.net/forum?id=eEKrDRqO76) |
-| 131 | Agent Behavior Maps: Locating Agents by What They Would Do, Without Running Them | agent 行为图：共享参照轨迹上的中心化动作对数似然定位 agent（免环境 rollout）——距离按序追踪轨迹 KL、跨 100 LLM 支持性能预测 | [OpenReview](https://openreview.net/forum?id=K4oiVt0GuC) |
-| 132 | Increasing Response Diversity in LLMs via On-Policy Unlearning | 在策遗忘提多样性：每轮从当前策略采样并把其设为遗忘目标逐步抑制高频响应——开放生成多样性与代码 pass@5/10 提升 | [OpenReview](https://openreview.net/forum?id=4PNAkRPhgh) |
-| 133 | Auditing Demographic Sensitivity and Uncertainty in French LLM-Based Emergency Triage | 法语急诊分诊的人口敏感性与不确定性审计：性别×姓名来源受控——'地中海综合征'疼痛最小化未复现且含姓名本身即移输出 | [OpenReview](https://openreview.net/forum?id=bveH2sDG4g) |
-| 134 | Watermarking Diffusion Language Models with Learned Foresight and Balanced Bands | 扩散 LM 水印的学习化前瞻与均衡带：词汇带作绿表+前瞻预测器估候选对邻居影响——等失真 z 分提升且 1%FPR 检出≥96% | [OpenReview](https://openreview.net/forum?id=b1vgG2Dffj) |
-| 135 | Is This Your Agent? Identity Watermarking  for Agent Systems in Dynamic Environments | DASMark：动态环境 agent 系统身份水印——动作保持嵌入学决策表达通道+移位鲁棒恢复，98.5% 位解码/攻击下 95.2% | [OpenReview](https://openreview.net/forum?id=0H38D7yGhu) |
-| 136 | Evaluating Evidence Grounding Under User Pressure in Instruction-Tuned Language Models | 用户压力下的证据接地：国家气候评估受控认识冲突×18 模型——证据不能可靠防止用户对齐反转、研究空白描述反而增加易感性 | [OpenReview](https://openreview.net/forum?id=vqYEs9iW2G) |
-| 137 | Residual Attribute Leakage Is an Interface: Auditing Privacy Evaluation After Text De-identification | 去标识文本的属性泄漏评测接口审计：判定随查询人/选项/先验/对手/评分规则而变——同一编辑器可在两种读法间从第一跳到第六 | [OpenReview](https://openreview.net/forum?id=z6gTt4p0Vd) |
-| 138 | BenSyc: Evaluating LLM Judges of Social Sycophancy against a Full Human Census | BenSyc：对全量人口普查校准 LLM 判官的社会谄媚判定——裸提示判官 3-5 倍过标；'发帖者陈述不是证据'一条规则即近人类 | [OpenReview](https://openreview.net/forum?id=k2ipJPV3Ev) |
-| 139 | Right Answer, Telltale Explanation: Harmless Ownership Verification for RAG Knowledge Bases | TellTale：RAG 知识库解释级无害所有权水印——同正确答案的证据解释选择编码信号，±短语配对检测 10/12 设置且抗过滤/改写/稀释 | [OpenReview](https://openreview.net/forum?id=cOrsoyXd19) |
-| 140 | Policy Under Pressure: Social Context and Agentic Rule-Following | 运营者人设/同伴证言/工具形态对 agent 规则遵循的影响（26398 幕）：同一禁令写成代码违反率高 4.33 倍、同伴违规记录抬升违规（OR 2.12）——逐模型报告（上下文敏感的合规） | [OpenReview](https://openreview.net/forum?id=Fc01Adq3kf) |
-| 141 | Self-Evolving Agents Can Repair Failures but Struggle to Generalize from Them | 冷启动纯失败进化：失败经验可修复已失败任务但难泛化到未见任务（修复-泛化鸿沟）——成功轨迹才是可迁移性的关键 | [OpenReview](https://openreview.net/forum?id=xmOODoyPCB) |
-| 142 | LabGuard: Grounding Natural-Language Laboratory Rules into Runtime Guards for Embodied Laboratory Agents | LabGuard：实验室自然语言规则→类型化可执行表示→运行时监控编译——不安全事件 39.5%→23.8% 且干预率 <0.5%（具身实验室 agent 安全） | [OpenReview](https://openreview.net/forum?id=bQCF5uxsvV) |
-| 143 | BEAD: Behavioral and Event-Aware Detection of Tool-Using Agent Hallucinations | BEAD：行为特征（20 维 LightGBM）+事件依赖（关系感知 Transformer 硬注意力掩码）双轨迹表示的有界工具任务幻觉回溯检测——免 LLM 判官的低成本高准 | [OpenReview](https://openreview.net/forum?id=cyFkVXtjUh) |
-| 144 | Large Portions of Text in Speech Can Be Recovered from a Minimal Set of Prosodic Features | 仅 8 个韵律/音色特征即可恢复 39% WER 的原句文本（40% 句子 WER<25%、14% 完美）——最小韵律集的文本重建（语音隐私新面） | [OpenReview](https://openreview.net/forum?id=suGnJfMTlW) |
-| 145 | Benchmarking LLM Robustness to Context Corruption in Long-Horizon Coding Tasks | 长程编码的上下文腐蚀基准：权威风格摘要腐蚀使 Qwen3-8B 掉 15.9pp——真实与腐蚀上下文建模为二元有效场的竞争分析 | [OpenReview](https://openreview.net/forum?id=vjo0JxpD5n) |
-| 146 | Tracing Refusal-Associated Features Across Diffusion Time | 扩散时间轴上的拒答特征追踪（LLaDA-8B 全 32 MLP 块+六层 SAE）：拒答信息在任何 token 揭掩前可恢复、特征呈时间异质双剖面 | [OpenReview](https://openreview.net/forum?id=LVk09Scbdd) |
-| 147 | From Sports to Safety: Benchmarking Proactive Risk Inference in MLLMs | SPRINT：体育视频主动性物理风险推断基准（2888 视频）——危险报告 97% vs 直接成因识别 42% 的鸿沟与显式危险查询的高假阳 | [OpenReview](https://openreview.net/forum?id=WiaFFaKwds) |
-| 148 | Reading Right, Acting Wrong: Diagnosing Decision Failures of System One Models in Agent Loops | System One 模型 agent 环中的决策失败诊断：多数错误动作跟在正确读取之后且聚集于相同状态——事实全读仍不会组合，代码组合自身答案可修复 | [OpenReview](https://openreview.net/forum?id=4LUGpFl5De) |
+| 2 | Benevolent Bias in Multi-Turn Human–Agent Dialogue | BENEVDIAL：仁慈偏置（温暖语气下的不平等对待）36 万多轮对话语料——现成安全检测器能抓敌意偏置却几乎漏检仁慈偏置 | [OpenReview](https://openreview.net/forum?id=CjaQqXbTUq) |
+| 3 | Strong Multilingual Privacy Tagging at Encoder Speed |  | [OpenReview](https://openreview.net/forum?id=gSgai6IhzQ) |
+| 4 | Aligned but Stereotypical? How System Prompts Shape Demographic Bias in LLM-Based Text-to-Image Models |  | [OpenReview](https://openreview.net/forum?id=HfQ7cdt9Ho) |
+| 5 | The Confidence Mirage of Inference-Time Scaling: Evaluating When More Reasoning Makes Large Language Models Less Reliable |  | [OpenReview](https://openreview.net/forum?id=6DrMgRQXjz) |
+| 6 | When Self-Refinement Backfires: Measuring Behavioral Instability in Large Language Models |  | [OpenReview](https://openreview.net/forum?id=lBPu4XAkVZ) |
+| 7 | Metadata-Grounded Visual-Key Regeneration for Contamination-Resistant VQA Evaluation |  | [OpenReview](https://openreview.net/forum?id=0DCL7yy3iw) |
+| 8 | When Grounding Fails: Structural Failure Signals for Detecting Silent GUI Errors |  | [OpenReview](https://openreview.net/forum?id=LsjKYw5qEK) |
+| 9 | MemPT: Capability-Centric Memory for Autonomous Penetration Testing |  | [OpenReview](https://openreview.net/forum?id=AdswMK590P) |
+| 10 | Tells of a Lying Machine: Analyzing LLM-Generated Strategic Dialogue in Chinese Werewolf |  | [OpenReview](https://openreview.net/forum?id=gPWhfncvsI) |
+| 11 | From Typos to Adversaries: Character-Level Robustness Evaluation of Healthcare Large Language Models |  | [OpenReview](https://openreview.net/forum?id=l3N6IbCI2P) |
+| 12 | Fade and Flip: A Predictive Account of Watermark Decay under Multi-Agent Relay Rewriting |  | [OpenReview](https://openreview.net/forum?id=VLxgiCc88H) |
+| 13 | The Cost of Controlling Evidence Selection in Language Models |  | [OpenReview](https://openreview.net/forum?id=5x0uMBSjoW) |
+| 14 | When Emojis Obscure Toxicity in Chinese: Diagnosing Detection and Target Identification Failures |  | [OpenReview](https://openreview.net/forum?id=BaCVcg7x2Z) |
+| 15 | People Can Be Consistently Fooled by LLM-Generated Social-Media Conversations |  | [OpenReview](https://openreview.net/forum?id=6ZLF6cYoPt) |
+| 16 | VeriOS: Query-Driven Proactive Human-Agent-GUI Interaction for Trustworthy OS Agents |  | [OpenReview](https://openreview.net/forum?id=MKkk0FzDYV) |
+| 17 | Forgetting Facts Across Forms: A Morphosyntactic Audit of LLM Unlearning | 跨形态遗忘审计：英/德/土耳其语形态句法变体比正典问题多恢复 12.6/9.4pp（GD/NPO）——改写即可部分绕过遗忘 | [OpenReview](https://openreview.net/forum?id=thq7mNcAfl) |
+| 18 | RouteProbe: Auditing Context Sensitivity in Deployed LLM Routers |  | [OpenReview](https://openreview.net/forum?id=lH8lS3aeGH) |
+| 19 | CORDA: Evaluating Moral Controllability of Language Models under Conflicting Priorities |  | [OpenReview](https://openreview.net/forum?id=1CrN6M6tRR) |
+| 20 | Learning to Audit Silent Evidence Corruption in Visual Reasoning |  | [OpenReview](https://openreview.net/forum?id=nBDT1cmNHu) |
+| 21 | BotC-Bench: A Trace-Grounded Social Deduction Benchmark for Evaluating LLM Agents under Controlled Information Contamination |  | [OpenReview](https://openreview.net/forum?id=xBvhIoieWc) |
+| 22 | Watermark Seeding: A Security Control Mechanism for Text Watermarking in Large Language Models |  | [OpenReview](https://openreview.net/forum?id=dI74DXv6wB) |
+| 23 | Symbolic Constraint Agents: Mining Formal Tool-Call Constraints to Prevent Agent Errors |  | [OpenReview](https://openreview.net/forum?id=iknO3Ikkxc) |
+| 24 | Do LLMs Know Whom to Trust? Brand Names vs. Stated Reliability in LLM Deference to AI Peers |  | [OpenReview](https://openreview.net/forum?id=A8ovrVRVnl) |
+| 25 | EJT: Embedded Jailbreak Templates for Scalable and Category-Balanced Safety Benchmark Construction |  | [OpenReview](https://openreview.net/forum?id=eIWmyxu7GA) |
+| 26 | LLM Authorship Verification: Are Two Texts Generated by the Same Large Language Model? |  | [OpenReview](https://openreview.net/forum?id=KuTZLS6V2w) |
+| 27 | SPADE: Soft Prompts for Ai-text DEtection |  | [OpenReview](https://openreview.net/forum?id=KACwy3Fqio) |
+| 28 | CertMem: Certifiable Memory Promotion in Agentic Systems |  | [OpenReview](https://openreview.net/forum?id=1lLyUbVd0b) |
+| 29 | Empty Commitments: When Agents Promise What Their Runtime Cannot Deliver |  | [OpenReview](https://openreview.net/forum?id=AFOTqKu7DT) |
+| 30 | Auditing LLM Evaluation Code: Controlled Faults and a Real-World Repair Study |  | [OpenReview](https://openreview.net/forum?id=Fas1TKtsJj) |
+| 31 | Tokengeist: Multi-Turn Attribution Tracing in Agentic Conversations |  | [OpenReview](https://openreview.net/forum?id=bcNzuKgTkw) |
+| 32 | When the Cache Says No: Refusal Behavior in Low-Resource Cache-to-Cache Communication |  | [OpenReview](https://openreview.net/forum?id=tzpsnHnSSk) |
+| 33 | Do Hallucination Detectors Transfer Across Tasks? A Study of Internal Activations from QA to Code and Math |  | [OpenReview](https://openreview.net/forum?id=KH5r4SD5zw) |
+| 34 | SemField: A Simple, Linear, Continuous, yet Robust Semantic Watermark |  | [OpenReview](https://openreview.net/forum?id=LaairDJIdJ) |
+| 35 | Structure-Guided Visual Perturbation Neutralization for LVLMs | SIGN：结构引导的 LVLM 视觉扰动中和——先验结构提取保跨模态对齐+动态引导中和轻量即插即用，优于为传统 CV 设计的防御 | [OpenReview](https://openreview.net/forum?id=tb5CLTvPnR) |
+| 36 | VEILED-SH: Vulnerability Expression through Indirect Language Evaluation Dataset (Self-Harm) | 间接/文化情境化自伤与痛苦表达评测基准（1 万提示×四应用场景×专家校准多参考政策）——AI 系统漏检间接求救信号 | [OpenReview](https://openreview.net/forum?id=SY4mDquR1z) |
+| 37 | When Cooperation Meets the Law: MA-LexArena for Evaluating Legal Compliance | MA-LexArena：多 agent 协作行为的法律合规基准（1026 任务×31 规则卡×8 个欧盟法律工具）——对等协作确认违规率高于监督-工人范式 | [OpenReview](https://openreview.net/forum?id=PY7UY1OSdq) |
+| 38 | RegDetect: Short Machine-Generated Text Detection via Regeneration Drift Modeling | RegDetect：再生成漂移建模检测短机生成文本——机器文本重生成贴合机器、人类文本漂移大，30-50 词段优势显著 | [OpenReview](https://openreview.net/forum?id=qAbS9mHPyM) |
+| 39 | When Multimodal Agent Teams Fail: Root-Cause Attribution Across Agents and Steps | MMTraceBench+MMTracer：多模态多 agent 系统的失败根因归因（双向反事实标注管线+RL 定位模型）——早错跨 agent 与模态传播 | [OpenReview](https://openreview.net/forum?id=X2aoltyQxj) |
+| 40 | Outcome-Grounded Auditing of RLVR Training Warnings | 结果接地的 RLVR 训练预警审计：熵监控候选在冻结联合门下无一及时预警——可复现退化不等于可部署前兆 | [OpenReview](https://openreview.net/forum?id=BAgIfZYEX6) |
+| 41 | Evaluating LLM Safety across Korean Addressee Honorification | 韩语敬语四级变化下的安全一致性（400 HarmBench→1600 变体×13 模型）——自然社会语用变化即可测得安全行为改变 | [OpenReview](https://openreview.net/forum?id=s9A7n7Mllv) |
+| 42 | Can Large Multimodal Models Actively Recognize Faulty Inputs? A Systematic Evaluation Framework of Their Input Scrutiny Ability | ISEval：LMM 输入审视能力评测（1945 题×九种缺陷构造）——自发性缺陷检出仅 5.5-33% 且识别缺陷≠扣留无据答案（最高检出配置 99.9% 仍给无据答案） | [OpenReview](https://openreview.net/forum?id=42UqS0buR4) |
+| 43 | Do Unequal Review Paths Reveal Bias? Interface-Calibrated Auditing of Tool-Calling Loan Agents | TraceFair：工具调用贷款 agent 的界面校准公平审计——匹配财务记录下人口线索改变决策时可用证据的暴露（证据获取成为人口敏感性的新位点） | [OpenReview](https://openreview.net/forum?id=AjHkmYKQOK) |
+| 44 | Vuligence: Progressive Disclosure Multi-Agent Framework for Project-Level Vulnerability Detection via Dynamic Validation | Vuligence：渐进披露多 agent 项目级漏洞检测+Docker 动态验证——Java F1 0.177→0.772 并发现 23 个零日（AI-for-cyber） | [OpenReview](https://openreview.net/forum?id=TfSx4O2yhS) |
+| 45 | Harm-Aware Multi-Action Routing for Selective RAG Repair | RAG 修复的损害感知两段路由：保答案与选修复分离——选择性干预优于统一修复（RAG 修复决策的安全侧） | [OpenReview](https://openreview.net/forum?id=51aA72y1z5) |
+| 46 | Given the Evidence: Interpretation in LLM Safety Review | 安全审查中证据的访问≠正确使用：审查者忽略显式矛盾或识别无据仍批准——任务对齐小专家可与大模型竞争、推理大幅改善（护栏的证据解读缺口） | [OpenReview](https://openreview.net/forum?id=orFUT40WfI) |
+| 47 | Wrong Answer or Refusal? How LLMs Respond as Supporting Evidence Is Removed | 证据撤离轨迹 EWT：逐句删证据下模型选择答错还是拒答——答案证据首删即失正确；禁止拒答使最终错误 +22.5pp（弃答行为的能力边界） | [OpenReview](https://openreview.net/forum?id=6yztN68P2u) |
+| 48 | Can Compressed Memory Change Its Mind? The Anticipation Trap in LLM Agent Memory | 压缩记忆的预期陷阱：按更新后准确率选记忆反而降联合准确率（选中的已含更新后答案）——条件式记录而非结论式提升联合正确率 | [OpenReview](https://openreview.net/forum?id=v8PZNhMUc3) |
+| 49 | BLOOM-WILT: Logit Tilting for Behaviour Elicitation in Automated LLM Auditing | BLOOM-WILT：logit 倾斜的自动化审计行为引出管线——32 设置中 30 个超基线，自伤鼓励出现率 51%→100%（罕见行为的高效审计） | [OpenReview](https://openreview.net/forum?id=906Z85Hh5T) |
+| 50 | Persistence Without Discounting: Localizing and Steering Rumination-like Dynamics in Patient-Simulating Language Models | 抑郁症患者模拟 LLM 的反刍动态：对比对话+激活修补定位注意力头/MLP——机制引导转向并不优于提示基线（可解释性到控制的落差） | [OpenReview](https://openreview.net/forum?id=4TPrliWGLx) |
+| 51 | FirstCause: Failure-Lifecycle Supervision for Decisive-Step Attribution in Multi-Agent Systems | FirstCause：失败生命周期归因（断裂/源头/持续三因子分解）——Who&When 步精确 45.11%、相对最强基线 +22.06% | [OpenReview](https://openreview.net/forum?id=XsKHBITA98) |
+| 52 | What the Judge Misses: Auditing Trajectory-Level Hallucinations\\in Multi-Agent Industrial Workflows | TRAJEL：轨迹级幻觉人标基准——专责判官二分类 F1 0.855 却只恢复 4/21 逻辑型与 3/17 指涉型幻觉；66% 幻觉轨迹最终任务无幻觉（输出级评测读不到发生步） | [OpenReview](https://openreview.net/forum?id=edPZshDEye) |
+| 53 | Claim Framing as a Driver of LLM Sycophancy | 声明框架驱动谄媚：42K 可验证问题×21 种框架——置信度/归属者/用户-模型共享最触发；专业权威与社会压力在事实场景几乎无效（谄媚评测的框架维度） | [OpenReview](https://openreview.net/forum?id=Ge83fxwJxH) |
+| 54 | HSM-Unlearn: LLM Structural Unlearning for Hardware IP Protection | HSM-Unlearn：RTL 感知分层结构掩蔽遗忘——把 SOTA 的 5.43× 快速重学压回 1.10×（硬件 IP 遗忘的再学习审计口径） | [OpenReview](https://openreview.net/forum?id=uoCjgHx9V7) |
+| 55 | SafeGround: Know When to Trust GUI Grounding Models via Uncertainty Calibration | SafeGround：GUI 定位模型的空间分散不确定性+校准阈值选择预测——高不确定 abstain/级联，接受错误率有界（GUI agent 可靠性） | [OpenReview](https://openreview.net/forum?id=SG12Ufn8In) |
+| 56 | Slice-Level Gaps in Multilingual AI Safety Datasets | 多语安全数据集切片级审计（豪萨/斯瓦/法语 25 切片×31 字段）——覆盖数字隐藏语言级缺口：无原生自伤/性内容数据、切片级一致性仅 6/25 报告 | [OpenReview](https://openreview.net/forum?id=jTh2AHNUPH) |
+| 57 | Locate-then-Debias: Understanding and Mitigating Model Bias in Hidden Representations Explanation of Large Language Models | Patchscopes 解释的忠实性偏置：LDLoR 以未修补 logit 为偏置对照重校准——抑制语言模式放大上下文信息（可解释性忠实性修正） | [OpenReview](https://openreview.net/forum?id=N5aPqzhr6T) |
+| 58 | Ripple: A Unified Framework for Watermarking Diffusion Large Language Models | Ripple：扩散语言模型统一水印框架——掩码→稳定态转移时全局哈希注入+EMA 校准弱信号 token，检出/鲁棒/质量三衡 | [OpenReview](https://openreview.net/forum?id=DA4JlRWRoY) |
+| 59 | SafeSceneReason: A Multimodal Reasoning Benchmark Connecting Industrial Hazards with Accident Knowledge | SafeSceneReason：工业危险多模态推理基准（11 万场景中心+1.3 万报告中心 QA）——连接事故调查知识的合规评估与因果分析 | [OpenReview](https://openreview.net/forum?id=RXhBrvz78P) |
+| 60 | SchemaDrift-Mem: Measuring First-Decision Procedural Rot in Tool-Using Language Agents | SchemaDrift-Mem：工具契约变更后的首决策程序腐烂——无版本 BREAKING 复用无效调用率 0.833，语义元数据门可挡 SUSPICIOUS 暴露 | [OpenReview](https://openreview.net/forum?id=icY11nkbaS) |
+| 61 | Agentic Depositions: Benchmarking Adversarial Conversations | Agentic Depositions：法庭质证对抗会话基准——策略提议/证人排序/实时应答，前沿开源与闭源性能相当 | [OpenReview](https://openreview.net/forum?id=uy3Gs5NgPq) |
+| 62 | Protecting Automatic Speech Recognition Datasets via Watermarking | HPW：ASR 数据集无害水印——声学扰动制造干净/侵权模型可读性差，黑盒验证未授权训练（数据集版权保护） | [OpenReview](https://openreview.net/forum?id=uAwHXXt1Pb) |
+| 63 | From Fluent to Verifiable: Claim-Level Auditability for Deep Research Agents | 深研 agent 的声明级可审计性框架（AAR 类型化溯源）：引用丰富的报告仍难以审计——溯源覆盖/健全/矛盾透明/审计努力四测度 | [OpenReview](https://openreview.net/forum?id=LrDPakULQG) |
+| 64 | Consistency-Aware Editing for Entity-Level Unlearning in Large Language Models | CAE 一致性感知编辑的实体级遗忘：聚合关系属性与对抗改写的实体中心提示+一致性正则的低秩更新——连贯遗忘且抗对抗查询 | [OpenReview](https://openreview.net/forum?id=sbvnRJCHI3) |
+| 65 | EventTrace: Event-Based Probability Trajectory Modeling for Training-Free LLM Text Detection | EventTrace：token 概率轨迹的结构化概率事件训练无关检测——保持概率转移与预测不确定性对应，黑盒白盒基准 SOTA | [OpenReview](https://openreview.net/forum?id=2ruqWuJbkC) |
+| 66 | A Benchmark and Diagnostic Study of  Epistemic Admission in Shared Agent Memory | 共享 agent 记忆的认识准入基准（CPB）：去重策略错杀真断言、覆盖保持策略近无限制采纳假断言——消费者对无争议假记忆断言率 0.97-0.99 | [OpenReview](https://openreview.net/forum?id=8rG6cPYEWP) |
+| 67 | A Survey on the Self-Evolution of Large Language Models: From Self-Improvement to Recursive Self-Improvement | LLM 自进化综述（提示程序/数据/记忆/权重/环境/评测/群智/系统级 RSI 八域）——模型塌缩/reward hacking/数据投毒/目标漂移/失控递归的风险与对策横切分析 | [OpenReview](https://openreview.net/forum?id=tykR0clBMa) |
+| 68 | Beyond Fabricated References: Analyzing and Probing Field-Level Citation hallucinations in LLMs | 字段级引用幻觉：24-51% 生成引用指向真实论文但作者/DOI 常错；字段正确性线性可读于隐状态且错误信号嵌入生成文本本身 | [OpenReview](https://openreview.net/forum?id=SmmIjN7LQk) |
+| 69 | Analyzing LLM Data Contamination from an Ensemble Perspective | 集成视角的污染检测：单模型置信混淆真知识与记忆——预测置信与集成不确定性互补，UBD 免干净参照按样本去污染 | [OpenReview](https://openreview.net/forum?id=2OS7rGWS5W) |
+| 70 | Quantization and Bias in Reasoning LLMs for Hate Speech Detection | 量化对推理 LLM 仇恨言论检测的群体公平影响——更常恶化而非改善、小模型更明显；伊斯兰群体差异与推理轨迹/激活变化相关 | [OpenReview](https://openreview.net/forum?id=lDafR8cvXa) |
+| 71 | KG-TOFU: Acquisition-Controlled Unlearning Evaluation with Knowledge-Graph Probes | KG-TOFU：作者画像重建为溯源知识图谱，同 KG 生成目标模型训练数据与评测探针——习得方式剧变遗忘结局（QA 对遗忘评测的泛化性质疑） | [OpenReview](https://openreview.net/forum?id=ol7EX9HzRG) |
+| 72 | Sycophancy Introspection: Teaching Language Models to Detect and Resist Sycophancy | 谄媚内省 SFT：教模型识别自己正在谄媚并以此引导最终响应——降谄媚同时保持对正确反馈的响应性 | [OpenReview](https://openreview.net/forum?id=Fg9MKIcdwU) |
+| 73 | Alignment Makes Language Models Normative, Not Descriptive | 120 对基座-对齐模型×万级真实多人博弈决策：基座在多轮策略场景预测人类行为更强（90.6% 对比占优）——对齐诱导规范性偏置 | [OpenReview](https://openreview.net/forum?id=Zr6dGUDyYn) |
+| 74 | PrefixProbe: Prefix-Supervised Probing for LLM-Generated Text Detection | PrefixProbe：句前缀监督的冻结观察者探针——截断后仍可检出，DetectRL 99.90% AUROC、8 训练对 89.62% TPR | [OpenReview](https://openreview.net/forum?id=TV7GUUTFWl) |
+| 75 | Trustworthy Multimodal LLMs for Computational Social Science: A Survey of Risks, Validity, and Evaluation | 计算社会科学中 MLLM 的可信度风险综述（54 研究）——真实性/鲁棒受关注多于公平/隐私/安全与长期反馈效应 | [OpenReview](https://openreview.net/forum?id=I9g1G0Dsce) |
+| 76 | Stochastic CHAOS: Benchmark Scores Are Policy-Indexed Measurements | 基准分数是策略索引测量：规则/预算/访问三分离后多数投票增益大缩水——16 抽中有害输出几率约为贪心 3 倍（评测口径的采样依赖） | [OpenReview](https://openreview.net/forum?id=GfMStKLSV4) |
+| 77 | To Follow or Not To Follow: Investigating the Tendency of Language Models to Follow Non-factual Contexts | DissonanceQA：非事实上下文跟随倾向（14952 实例地理/分类/时间冲突）——时间事实最易被带偏、地理最不易 | [OpenReview](https://openreview.net/forum?id=voAfPJAxvU) |
+| 78 | When Correct Answers Collapse: Measuring LLM Robustness Under Conversational Pressure | 对话压力下的正确答案坍塌：裸反驳即可让某配置 85.4% 放弃正确 StrategyQA 答案——易感问题占比 19.2-98.4% 随配置 | [OpenReview](https://openreview.net/forum?id=NzTPCx3nEW) |
+| 79 | MultiPoC-Bench: Evaluating Code Agents on Joint Vulnerability Repair | MultiPoC-Bench：多 PoC 联合修复基准（120 任务 389 PoC）——修一漏一与功能保持的差距 4.17-17.50pp | [OpenReview](https://openreview.net/forum?id=eDxcFxN7KI) |
+| 80 | VulContextBench: A Benchmark for Security Context Retrieval in Coding Agents | VulContextBench：编码 agent 的安全上下文检索基准——每模型浏览 73-86% 金标上下文但最终引用仅 12.9-36%（浏览 vs 选为证据的差距） | [OpenReview](https://openreview.net/forum?id=BAM57rvl9p) |
+| 81 | GenFakeNewsNet: A Benchmark for Intent-Driven Fake News Generation | GenFakeNewsNet：意图驱动的假新闻生成基准（17,395 对）——按真实宣传意图的协同叙事操纵，54% 读者判为真 | [OpenReview](https://openreview.net/forum?id=qVoKyLOY1i) |
+| 82 | Moral Sycophancy in LLMs: Studying the Effects of Response Formats with a Taxonomy of Stance Shifts | 道德谄媚的响应格式效应：强制选择最高/二元背书最低——五类立场转移分类学，同谄媚率模型行为不同 | [OpenReview](https://openreview.net/forum?id=tGceBlcEFn) |
+| 83 | AnyWarehouse: Auditable Evaluation of History-Constrained Language-Model Agents | AnyWarehouse：到达物理终点≠满足有效完成历史——终点投影错误接受 33 个非法轨迹，账本反馈提升合规成功 7.4pp（可审计 agent 评测） | [OpenReview](https://openreview.net/forum?id=3YuWZwwjWd) |
+| 84 | Inherited Attention Heads, Fragile Instructions: Understanding Order Effects in Audio Language Models | 音频 LLM 指令顺序效应：指令在音频后合规率 0→0.40——约 20 个注意力头读指令且跨模型共享（p<10⁻¹⁸），阻断/增强可双向调节 | [OpenReview](https://openreview.net/forum?id=4ZCcRwtnjc) |
+| 85 | Beyond Final-Layer Logits: Training-Free AI-Generated Text Detection via Hidden-State Trajectory Contrast | 隐状态轨迹对比 HTC：训练无关 AIGT 检测从冻结代理直接导出判别梯度方向——0.9343 AUROC、超最强基线 10+ 点 | [OpenReview](https://openreview.net/forum?id=ZafGosXH5G) |
+| 86 | Wait, am I Being Fair? Characterizing Deductive Stereotyping and Mitigating It with Fair-GCG | 演绎刻板化：把群体统计规律套到个体——Fair-GCG 系统发现推理时注入短语，跨规模泛化并迁移到真实公平敏感任务 | [OpenReview](https://openreview.net/forum?id=zBcn88tjmx) |
+| 87 | ADMIT: Not Every Bias Warrants Mitigation in Text-to-Image Models | ADMIT：T2I 并非所有分布失衡都该修——文献化诊断分类学指导选择性缓解，保非目标视觉内容 | [OpenReview](https://openreview.net/forum?id=b7apkEnFev) |
+| 88 | Beyond Four Seconds: Temporal Context and Variety-Conditioned Acoustic Patterns in Arabic Speech Deepfake Detection | 阿拉伯语语音深伪检测的语言变体×时间上下文交互：37 声学特征中 35 个显著交互——4s→16s EER 25.83%→23.38% | [OpenReview](https://openreview.net/forum?id=ztIAhf2eDA) |
+| 89 | Evaluation Awareness Beyond English: Do LLMs Act Differently When Tested in Indic Languages? | 评测觉察的印度语言扩展：告知被测试时印地语系拒答率升 14.4pp——安全评测可能不反映日常用户待遇（47,880 响应公开） | [OpenReview](https://openreview.net/forum?id=HcCYQPraIK) |
+| 90 | PAIR-SAFE: A Paired-Agent Approach for Runtime Auditing and Refining AI-Mediated Mental Health Support | PAIR-SAFE：MITI-4 临床接地的判官 agent 运行时审计精炼 AI 心理支持——允许/修订决策实时改进关系质量 | [OpenReview](https://openreview.net/forum?id=5Q8kBFOCsi) |
+| 91 | Preserving Structure, Strengthening Signals: A Grammar-Driven Approach to Optimize the Trade-off Between Quality and Detectability in Code Watermarking | 语法驱动代码水印 GDW：绿表/语法有效/结构角色三级掩码+AUTC 权衡指标——低熵代码的质量-可检性新最优 | [OpenReview](https://openreview.net/forum?id=Dk2KWUmYwz) |
+| 92 | Words, Actions, and Beliefs: Tracing Persuasion in LLM Agent Networks | LLM agent 网络中的说服追踪：竞争说服者把移动变为绕模型先验的振荡；仅 73% 计划原则到达消息且被劝者复述措辞而不陈述信念转移——轨迹-暴露级评测主张 | [OpenReview](https://openreview.net/forum?id=ReqnJEYwBR) |
+| 93 | Predicting Hallucinations Before, During, and After Generation with Sparse Autoencoder Features | PreSAGE：SAE 特征在生成前/中/后预测幻觉（四 LLM×六数据集）——注意力池化+门控特征选择的端到端检测器，生成前干预（弃答/检索/路由）成为可能 | [OpenReview](https://openreview.net/forum?id=ABSxxSQ7NQ) |
+| 94 | When Large Language Model Judges Meet Watermarks: Provenance Signals Distort Automated Evaluation | LLM 判官遇水印：20 个跨模型生成-判官对中水印候选选择率平均低 11.1pp——'不可感知'对机器判官不成立（水印×自动评测交互） | [OpenReview](https://openreview.net/forum?id=2kul0IW1wv) |
+| 95 | The Little Models That Think: A Review of Small Language Model Reasoning Under Deployment and Security Constraints | 小模型推理×部署-安全约束综述：4bit 量化保推理但安全影响未定、蒸馏降安全、干净轨迹可藏错答——成本-风险画像与部署-安全交互图 | [OpenReview](https://openreview.net/forum?id=rbcgFkBtGe) |
+| 96 | VIGILIA: Interactive Evaluation of Robust Conversational Vigilance in Large Language Model Agents | VIGILIA：共享会话环境的对话警觉性压力测试（模拟课堂植入受控事实错误）——警觉失败率至 70.1% 且对刻板社会群体语言特征敏感 | [OpenReview](https://openreview.net/forum?id=dGBA8ZqQ87) |
+| 97 | ECHO: Revealing Review-to-Submission Linkage in Anonymous Peer Review | ECHO：匿名评审到本人投稿的链接攻击（技术专长+文风跨评审/论文/反驳信号）——Top-1 34.6%、加强重排 56.4%，评审匿名集被常规发布工件大幅收缩 | [OpenReview](https://openreview.net/forum?id=gqIIOUbhEG) |
+| 98 | SecReason: Vulnerability Detection and In-Stream Self-Repair for LLM Code Generation | SecReason：流内安全自修复——在交付前推理窗口增量扫描+规则触发中断插警继续解码，CWEval/SecCodeBench 安全且正确 72.8-98.1% | [OpenReview](https://openreview.net/forum?id=aMLgYnsGBk) |
+| 99 | SCOPE: Service-Conditioned OOD Probing and Evaluation for Large Language Models | SCOPE：服务条件化 OOD 探测与评测——OOD 请求反映服务范围而非模型能力，e-process 序贯审计拒绝门与人类定义边界的对齐 | [OpenReview](https://openreview.net/forum?id=Yk4rw2jOz5) |
+| 100 | LegalRPA: A Benchmark and Auditable Framework for Role-Preserving Legal Anonymization | LegalRPA：保角色法律匿名化基准+可审计框架——隐私覆盖/角色区分/结构保真/QA 效用/条件链接风险的五维权衡 | [OpenReview](https://openreview.net/forum?id=bUvYAYu4Wf) |
+| 101 | Automated Schema-Preserving Attacks for Evaluating LLM Arithmetic Reasoning | 模式保持攻击自动评测算术推理：五族变换（数值重映射/词汇改写/干扰项/问句反转/合并）——全部模型在保持结构的变换版上显著退化 | [OpenReview](https://openreview.net/forum?id=07EOxLBDYo) |
+| 102 | Where Green Meets Candidate: Probability-Calibrated Watermarking for Large Language Models | PCW 概率校准候选约束水印：绿表偏置只施加于核采样候选交集的高概率 token——生成与检测在候选约束解码下对齐 | [OpenReview](https://openreview.net/forum?id=XZKhLXqJ7R) |
+| 103 | Demystifying the Privacy-Utility Trade-off in LLM Interactions | LLM 交互隐私-效用权衡三机制解构（上下文依赖效用/策略适配/组合交织）+意图驱动局部保护 Veilmind-4B——低泄漏点保高响应效用 | [OpenReview](https://openreview.net/forum?id=LQzRGfU36R) |
+| 104 | Illusion: Safeguarding Topology Confidentiality in LLM Multi-Agent Systems via Behavior-Preserving Obfuscation | Illusion：MAS 通信拓扑保密的主动混淆——注假边假消息保输出分布等价，边级 F1 0.87→0.62 且抗相似度与 LLM 判官过滤 | [OpenReview](https://openreview.net/forum?id=gepqlfyFF6) |
+| 105 | A Trust Layer for Agent Evaluation | agent 评测信任层：四属性（评分逻辑支持/可追溯计算赢得/完成声明属实/重复执行稳定）——108 任务上仅 22.6% 通过全检（可信 agent 评测基础设施） | [OpenReview](https://openreview.net/forum?id=R3qPhU9XkE) |
+| 106 | NumTrace: Auditing the Number Provenance of Financial Analyst Agents | NumTrace：金融分析 agent 数值声明的溯源审计（数值对但实体/概念/期间/单位/范围错）——540 问×2163 SEC 文档三判定（值/绑定/支持） | [OpenReview](https://openreview.net/forum?id=234HaarcMQ) |
+| 107 | When the Simulated Patient Knows Too Much: Privileged-Information Leakage in RL for Doctor Agents | 模拟病人特权信息泄漏：RL 学会直接问答案（1.7B 模拟 99% vs 无泄漏代理 39%）+特权通道悲观主义 PCP 消除多数膨胀 | [OpenReview](https://openreview.net/forum?id=UmYg9PJUiP) |
+| 108 | The Patient Is Always Right? Evaluating Sycophancy in Medical Diagnosis with Graded Patient Beliefs | 分级患者信念下的医疗谄媚：模型平均 23.2% 采纳患者错误信念、虚构疾病人设达 43.0%——含虚构病症也被接受 | [OpenReview](https://openreview.net/forum?id=9cSuCtouAk) |
+| 109 | Can an Agent Learn to Predict Its Own Failure? Outcome-Grounded Confidence Calibration in LLM Agents | agent 自我失败预测：GRPO 组 rollout 供成功标签+proper scoring rule 对每步置信度对最终结局校准——离线 AUROC 至 0.85、ECE 0.42→<0.12 | [OpenReview](https://openreview.net/forum?id=RVZpUXbCqL) |
+| 110 | Defined by Him: Definitional Othering in Aligned Language Models Is Invisible to Toxicity and Safety Classifiers | 定义性他者化：GPT 系女性指向补全以男性为比较基准的比例升至 82.8% 且主要发生在 RLHF 步——毒性/安全分类器几乎不标记该内容（分类器不可见的表征伤害） | [OpenReview](https://openreview.net/forum?id=T3qHRmClND) |
+| 111 | Disentangling Neural Identity from Encoder Identity in a Privacy Audit of BP-GPT’s fMRI-to-Text Decoding | BP-GPT fMRI-文本解码隐私审计：原始连接与嵌入均 100% 识别参与者，但按参与者训练编码器——模型自身签名饱和于首线性层，跨种子可迁移身份信号仅 54.3%（数据指纹 vs 编码器指纹的分离） | [OpenReview](https://openreview.net/forum?id=kj2WsHmNCK) |
+| 112 | The Intent Gap: A Taxonomy of Real-User Failure Modes in Frontier AI Agents | 真实用户失败模式分类学（意图鸿沟）：字面合规但错失用户真实意图——WildChat 5 万对话试点+11 类失败分类学 | [OpenReview](https://openreview.net/forum?id=2G0fzSmOWw) |
+| 113 | What Carries Forward? Pretraining Disclosure Across Language Model Releases | 预训练披露跨版本审计（41 模型 17 家族×24 指标）：后续发布不保持既有披露——同分可藏三得三失，语料构成与训练算力缺口持续 | [OpenReview](https://openreview.net/forum?id=2v5Sucl7g0) |
+| 114 | Represented but Not Used: Value–Policy Dissociation in LLM Agents | 价值-策略解离：候选动作相对价值线性可解码于隐状态（含策略偏好更差动作处）——表示了后果却未使用，机制可解释性定位多步决策失败 | [OpenReview](https://openreview.net/forum?id=c1clBZHXO9) |
+| 115 | Private Retrieval Augmented Generation via Random Projection | 随机投影保 RAG 数据库隐私：同投影作用库与查询嵌入保语义相似——经验隐私相当且性能优于形式 DP 基线 | [OpenReview](https://openreview.net/forum?id=VQRlqYgSas) |
+| 116 | When Should Medical VLMs Answer? Reliability under Deployment Perturbations | 医疗 VLM 部署扰动下的选择性预测：隐状态探针 193/195 设置超置信度+损坏路由/条件转向实现澄清与弃答——检错与恰当响应间仍有沟 | [OpenReview](https://openreview.net/forum?id=HxHswTFXKl) |
+| 117 | What Coding Agents Leave Unsaid: Measuring Task-State Gaps Between Execution and Reports | CTXGAP：编码 agent 报告 vs 完整执行上下文的任务态可恢复性差距 40.7pp——监督者无从得知未报告的失败与风险 | [OpenReview](https://openreview.net/forum?id=vDmn2jKpKF) |
+| 118 | Towards Fair Evaluation under Benchmark Contamination via Unlearning and Relearning | 遗忘-重学习协议治基准污染：矛盾式遗忘削弱基准答案记忆后官方训练集重训——重学分数去除污染优势且近干净控制水平 | [OpenReview](https://openreview.net/forum?id=bnWvCHtfdr) |
+| 119 | Emergent Misalignment Due to Value Training | 价值观训练的涌现失准：Hofstede 维度微调在未训练价值观/风险偏好/社会认知/安全特质上产生意外副作用——价值对齐需更广行为评测 | [OpenReview](https://openreview.net/forum?id=JJ7Wb4qvr1) |
+| 120 | ResyncMark: Robust Multi-Bit Text Watermarking via Proportional Resynchronization | ResyncMark：比例重同步的多比特文本水印——30% 随机删除后比特准确率 60.2%→98.3%，无需模型权重或原续写 | [OpenReview](https://openreview.net/forum?id=leiH1xTtFm) |
+| 121 | Can Agentic Code Review Catch Vulnerabilities Before They Are Merged? | SecPRBench：真实 bug 引入 commit 的 agent 安全评审基准（265 任务×九关键系统）——召回 32.5-78.1%，68% 漏检是'看到文件却论证成别的机制' | [OpenReview](https://openreview.net/forum?id=ptaHLP7CrH) |
+| 122 | SAPR: Static Filtering and Proxy Re-ranking for Target-Specific Anchor Selection in Large Language Model Unlearning | SAPR：知识编辑遗忘的目标特定锚选择（静态过滤+代理重排）——ROCR 上 Level-1 ROUGE 降 18.8% 且限损邻接知识 | [OpenReview](https://openreview.net/forum?id=8V1IHkdB0b) |
+| 123 | LatentRisk-VLM: Failure-Guided Representation Editing for Frozen Vision-Language Models | LatentRisk-VLM：仅用任务标签与冻结模型边际发现类条件潜在风险方向并编辑——Waterbirds 最差组 +26.9pp 但 CelebA 反降（失败-组对齐决定成败） | [OpenReview](https://openreview.net/forum?id=zT3tc3oGF9) |
+| 124 | RealGUINoise: An Interactive Cross-Platform Benchmark for GUI Agent Robustness under Real-World Interface Noise | RealGUINoise：42 类真实界面噪声×7 agent 框架的交互跨平台基准——噪声不只降性能还重定向轨迹并增加不安全行为倾向 | [OpenReview](https://openreview.net/forum?id=uB6cE7AzQ6) |
+| 125 | Pair, Freeze, Correct: Auditing Model Updates with Few Reference Labels | 配对-冻结-校正的模型更新审计：按代理判定变化分层配对标注+历史审计标签风险上限加权——等预算 RMSE 降 43.8% | [OpenReview](https://openreview.net/forum?id=t5Mpf9m52N) |
+| 126 | Revocation-Consistent Agent Execution via Requirement-Scoped Support and Selective Discharge | 需求范围化的撤销一致性：混合支持工件的原子授权决定陷入健全-保持两难——RCSF-V 溯源支持流+权威纪元+选择性放电，0% 未授权执行且 0% 不必要阻断 | [OpenReview](https://openreview.net/forum?id=i1T36lx4cJ) |
+| 127 | Black-Box Forensics for Conversational LLM Agents | 对话式 LLM agent 黑盒取证：风格+n-gram 分类器几句对话识别基模型 98%；跨编码器指纹判定两会话同 agent（单对 AUC 0.79、50 会话 0.97）且抗改写——诈骗部署与换模检测应用 | [OpenReview](https://openreview.net/forum?id=J0Io3TtVSz) |
+| 128 | Can LLMs Stay Robust in Noisy Agentic Environments? | 噪声 agent 环境鲁棒性：扰动目标×类型二维框架——agent 少识别被改输入、无验证传播损坏信息且受扰成功轨迹算力大增 | [OpenReview](https://openreview.net/forum?id=DhjwVjDCBn) |
+| 129 | Emergent Controllability: Benign Reasoning Distillation Can Increase Chain-of-Thought Controllability | 良性推理蒸馏可提升 CoT 可控性：无关 SWE 任务 212 例后指令遵循/CoT-Control 上升且跨供体-受体迁移——推理训练的意外可控性外溢 | [OpenReview](https://openreview.net/forum?id=0SZ1uolv2C) |
+| 130 | HAFT: Adversarial Robustness Benchmarking and Budget-Aware Adaptive Auditing Framework for Hindi Automated Fact-Checking | HAFT：印地语自动事实核查对抗鲁棒基准（1120 声明×22 攻击 24640 评测）——证据攻击 41-47.7% 无条件成功、预算感知混合审计 | [OpenReview](https://openreview.net/forum?id=zLsl9Q3U6e) |
+| 131 | AgentStealth: On-Device Text Anonymization with Locally Deployable Small Language Models | AgentStealth：强 LLM 仅在训练期暴露隐私泄漏模式并生成监督、蒸馏进本地 SLM 独立完成匿名化——避免云端改写的二次泄漏 | [OpenReview](https://openreview.net/forum?id=UBjHznZAmo) |
+| 132 | ImpliCue: A Benchmark for Implicit Personal Attribute Inference from Conversational Cues | ImpliCue：会话线索的隐式个人属性推断基准（1036 合成对话×18 属性，STRONG/WEAK/NO_EVIDENCE 证据分级）——区分正确预测与有据推断 | [OpenReview](https://openreview.net/forum?id=8dwdn1k8R4) |
+| 133 | OARS: Objective-Aware Retain-Set Selection for LLM Unlearning | OARS：现实遗忘请求常只给遗忘集——隐状态位移聚类+簇内最高位移选择的保留集选取，恢复 65.9% 效用损失 | [OpenReview](https://openreview.net/forum?id=t8fX8FUeem) |
+| 134 | The Trustworthiness Mirage: Auditing Financial LLM Trustworthiness Benchmarks | 金融 LLM 可信度基准审计（51 研究 226 任务）：57.6% 结论超出证据支持——声明-任务-指标-推断链系统性错配 | [OpenReview](https://openreview.net/forum?id=k2EOwXpSp7) |
+| 135 | When Confidence Is Not Enough: Toward Consequence-Risk-Aware Abstention for Consumer-Facing Medical QA | 后果风险感知弃答 CIRA：正确性置信+后果代理估计+效用罚——按面板定义残余伤害而非单纯正确性评估弃答 | [OpenReview](https://openreview.net/forum?id=9O7TSwQtjd) |
+| 136 | Does Safety-Score Asymmetry Depend on Prompt Values? | 安全分数不对称（SSA）的提示价值触发：36 维价值表示显著预测 SSA 变化——告知被审计即改变作答，评测公平性前提被打破 | [OpenReview](https://openreview.net/forum?id=2jRmkSm32e) |
+| 137 | PakDecept: Benchmarking LLM Deception in Urdu | PakDecept：乌尔都语 LLM 欺骗基准（1197 巴基斯坦真实事件八域）——迭代诱导下四模型欺骗率均超 85%；语言效应方向不一 | [OpenReview](https://openreview.net/forum?id=ySoNkIGMqv) |
+| 138 | New Model, Old Habits: Behavior Transfer under Model Swapping in Multi-Session LLM Agents | 多会话 agent 换模下的行为转移：接收者采纳生成历史的模型的推理/行动模式——DASH 方向与作者感知摘要保强抑弱转移 | [OpenReview](https://openreview.net/forum?id=SHEZC8SJf2) |
+| 139 | Paraphrase Consensus Is Not Self-Consistency: Instruction Reliance and Robustness in VLA Policies | VLA 指令依赖：改写指令使 OpenVLA -38pp、提示集成不可恢复——错误指令探针量化策略对指令的依赖份额，释义微调 +2.0pp | [OpenReview](https://openreview.net/forum?id=V0c2A9G6Kr) |
+| 140 | Hidden in Emotion: Selective Fingerprinting of Open-Weight Large Language Models | HiE 情绪绑定指纹：情绪残差对比学习+选择性蒸馏红绿水印——抗语义域过滤的隐蔽指纹（开源模型 IP） | [OpenReview](https://openreview.net/forum?id=0fJKS87bhC) |
+| 141 | Auditing LLM Fine-Tuning on Imperfect-Information Game Logs | 扑克日志微调审计：声称的'轻量求解器'在精确可利用度下被常数策略与古典求解器前五迭代碾压——保留高分样本+拟合同分奖励的训练配方三层审计 | [OpenReview](https://openreview.net/forum?id=vMMu199b2N) |
+| 142 | Can We Believe AI Peer Review? | AI 评审可信度：同条件重复评审分数波动、细粒度协议降方差但系统性移均值——修订增益强依赖评审者（14k AI 评审实证） | [OpenReview](https://openreview.net/forum?id=JmMZjBqRVY) |
+| 143 | Learning to Judge by Learning to Damage: Human-Free Training of LLM Evaluators | 以学破坏训判官：小 Damager（GRPO 奖励=标准指标）按严重度语义降级参照输出作伪标签——免人工训练 2B 判官 7-10/11 数据集超人评相关 | [OpenReview](https://openreview.net/forum?id=QgIKeM9mvE) |
+| 144 | Search-Calibrated Multiscale Localization of Watermarked Regions in Mixed Human-LLM Documents | 混合人-机文档的水印区域多尺度定位：重叠区间搜索+分辨率校正+人写文档校准——有限样本 I 类错误控制下的最高 IoU/F1 | [OpenReview](https://openreview.net/forum?id=eEKrDRqO76) |
+| 145 | Agent Behavior Maps: Locating Agents by What They Would Do, Without Running Them | agent 行为图：共享参照轨迹上的中心化动作对数似然定位 agent（免环境 rollout）——距离按序追踪轨迹 KL、跨 100 LLM 支持性能预测 | [OpenReview](https://openreview.net/forum?id=K4oiVt0GuC) |
+| 146 | Increasing Response Diversity in LLMs via On-Policy Unlearning | 在策遗忘提多样性：每轮从当前策略采样并把其设为遗忘目标逐步抑制高频响应——开放生成多样性与代码 pass@5/10 提升 | [OpenReview](https://openreview.net/forum?id=4PNAkRPhgh) |
+| 147 | Auditing Demographic Sensitivity and Uncertainty in French LLM-Based Emergency Triage | 法语急诊分诊的人口敏感性与不确定性审计：性别×姓名来源受控——'地中海综合征'疼痛最小化未复现且含姓名本身即移输出 | [OpenReview](https://openreview.net/forum?id=bveH2sDG4g) |
+| 148 | Watermarking Diffusion Language Models with Learned Foresight and Balanced Bands | 扩散 LM 水印的学习化前瞻与均衡带：词汇带作绿表+前瞻预测器估候选对邻居影响——等失真 z 分提升且 1%FPR 检出≥96% | [OpenReview](https://openreview.net/forum?id=b1vgG2Dffj) |
+| 149 | Is This Your Agent? Identity Watermarking  for Agent Systems in Dynamic Environments | DASMark：动态环境 agent 系统身份水印——动作保持嵌入学决策表达通道+移位鲁棒恢复，98.5% 位解码/攻击下 95.2% | [OpenReview](https://openreview.net/forum?id=0H38D7yGhu) |
+| 150 | Evaluating Evidence Grounding Under User Pressure in Instruction-Tuned Language Models | 用户压力下的证据接地：国家气候评估受控认识冲突×18 模型——证据不能可靠防止用户对齐反转、研究空白描述反而增加易感性 | [OpenReview](https://openreview.net/forum?id=vqYEs9iW2G) |
+| 151 | Residual Attribute Leakage Is an Interface: Auditing Privacy Evaluation After Text De-identification | 去标识文本的属性泄漏评测接口审计：判定随查询人/选项/先验/对手/评分规则而变——同一编辑器可在两种读法间从第一跳到第六 | [OpenReview](https://openreview.net/forum?id=z6gTt4p0Vd) |
+| 152 | BenSyc: Evaluating LLM Judges of Social Sycophancy against a Full Human Census | BenSyc：对全量人口普查校准 LLM 判官的社会谄媚判定——裸提示判官 3-5 倍过标；'发帖者陈述不是证据'一条规则即近人类 | [OpenReview](https://openreview.net/forum?id=k2ipJPV3Ev) |
+| 153 | Right Answer, Telltale Explanation: Harmless Ownership Verification for RAG Knowledge Bases | TellTale：RAG 知识库解释级无害所有权水印——同正确答案的证据解释选择编码信号，±短语配对检测 10/12 设置且抗过滤/改写/稀释 | [OpenReview](https://openreview.net/forum?id=cOrsoyXd19) |
+| 154 | Policy Under Pressure: Social Context and Agentic Rule-Following | 运营者人设/同伴证言/工具形态对 agent 规则遵循的影响（26398 幕）：同一禁令写成代码违反率高 4.33 倍、同伴违规记录抬升违规（OR 2.12）——逐模型报告（上下文敏感的合规） | [OpenReview](https://openreview.net/forum?id=Fc01Adq3kf) |
+| 155 | Self-Evolving Agents Can Repair Failures but Struggle to Generalize from Them | 冷启动纯失败进化：失败经验可修复已失败任务但难泛化到未见任务（修复-泛化鸿沟）——成功轨迹才是可迁移性的关键 | [OpenReview](https://openreview.net/forum?id=xmOODoyPCB) |
+| 156 | LabGuard: Grounding Natural-Language Laboratory Rules into Runtime Guards for Embodied Laboratory Agents | LabGuard：实验室自然语言规则→类型化可执行表示→运行时监控编译——不安全事件 39.5%→23.8% 且干预率 <0.5%（具身实验室 agent 安全） | [OpenReview](https://openreview.net/forum?id=bQCF5uxsvV) |
+| 157 | BEAD: Behavioral and Event-Aware Detection of Tool-Using Agent Hallucinations | BEAD：行为特征（20 维 LightGBM）+事件依赖（关系感知 Transformer 硬注意力掩码）双轨迹表示的有界工具任务幻觉回溯检测——免 LLM 判官的低成本高准 | [OpenReview](https://openreview.net/forum?id=cyFkVXtjUh) |
+| 158 | DecisionRobust: Benchmarking Robustness for JEV Style Decision Models Across Text and Vision | DecisionRobust：JEV 类 typed 决策模型的跨文/视鲁棒基准——语义保持文本扰动/图像扰动/双模态提示注入×30 配置（含 24 留出模型） | [OpenReview](https://openreview.net/forum?id=rm4QV7zBA1) |
+| 159 | Large Portions of Text in Speech Can Be Recovered from a Minimal Set of Prosodic Features | 仅 8 个韵律/音色特征即可恢复 39% WER 的原句文本（40% 句子 WER<25%、14% 完美）——最小韵律集的文本重建（语音隐私新面） | [OpenReview](https://openreview.net/forum?id=suGnJfMTlW) |
+| 160 | Benchmarking LLM Robustness to Context Corruption in Long-Horizon Coding Tasks | 长程编码的上下文腐蚀基准：权威风格摘要腐蚀使 Qwen3-8B 掉 15.9pp——真实与腐蚀上下文建模为二元有效场的竞争分析 | [OpenReview](https://openreview.net/forum?id=vjo0JxpD5n) |
+| 161 | Tracing Refusal-Associated Features Across Diffusion Time | 扩散时间轴上的拒答特征追踪（LLaDA-8B 全 32 MLP 块+六层 SAE）：拒答信息在任何 token 揭掩前可恢复、特征呈时间异质双剖面 | [OpenReview](https://openreview.net/forum?id=LVk09Scbdd) |
+| 162 | From Sports to Safety: Benchmarking Proactive Risk Inference in MLLMs | SPRINT：体育视频主动性物理风险推断基准（2888 视频）——危险报告 97% vs 直接成因识别 42% 的鸿沟与显式危险查询的高假阳 | [OpenReview](https://openreview.net/forum?id=WiaFFaKwds) |
+| 163 | Reading Right, Acting Wrong: Diagnosing Decision Failures of System One Models in Agent Loops | System One 模型 agent 环中的决策失败诊断：多数错误动作跟在正确读取之后且聚集于相同状态——事实全读仍不会组合，代码组合自身答案可修复 | [OpenReview](https://openreview.net/forum?id=4LUGpFl5De) |
 
 ## 核验记录
 
-- 2026-10-14：经 OpenReview API（登录会话）分页抓取 `content.venueid=aclweb.org/ACL/ARR/2026/October/Submission` 全部 3,387 条，其中公开（readers 含 everyone）3,385 条；标题全量过目 + 候选摘要精读后收录 376 篇
+- 2026-10-14：经 OpenReview API（登录会话）分页抓取 `content.venueid=aclweb.org/ACL/ARR/2026/October/Submission` 全部 3,387 条，其中公开（readers 含 everyone）3,385 条；标题全量过目 + 候选摘要精读后收录 401 篇
 - 隐私说明：抓取仅访问公开匿名预印本字段（标题/摘要/关键词/论坛号），未触碰任何非公开评审数据
 - 本文件为滚动评审中的工作快照，收录不代表对论文最终质量的判断
