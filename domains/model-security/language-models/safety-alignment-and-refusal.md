@@ -2429,3 +2429,41 @@ Safety interpretability advances the study of Large Language Model (LLM) alignme
 Safety-aligned large language models (LLMs) remain vulnerable to jailbreaks and can over-refuse benign requests. Understanding these failures requires distinguishing harmfulness recognition from the computation that writes refusal. We reframe this as a pathway question and make it measurable on residual-stream updates in decoder-only Transformers, separating the harmfulness information a module update exposes from the change it produces in readable refusal evidence. Across 18 Base-Instruct pairs spanning Qwen, Llama, and Gemma, harmfulness is decoded more readily from attention updates, particularly in early layers, whereas MLP updates contribute more strongly to harm-selective refusal writing in aligned models. Post-training strengthens MLP refusal writing in all 18 pairs without systematically improving harmfulness decodability, while positive MLP writing becomes more concentrated in deeper layers after post-training. Across six reasoning-enabled models, harmfulness remains decodable during reasoning while strong refusal writing concentrates at answer onset, a pattern that persists with reasoning disabled. Causal interventions further support this pathway: resetting downstream MLP updates to their clean values substantially reduces the refusal shift caused by upstream attention interventions. Building on these findings, we introduce Sentinel, which combines an attention-derived perception score P with an MLP-derived decision score D. Their joint profiles characterize jailbreaks and over-refusals, and conditional routing with both signals achieves a lower aggregate error rate than single-signal routing and evaluated fixed reminders across eight models.
 
 </details>
+
+### 130. Running Fewer Loops Removes Refusal Behaviour in Recurrent-Depth Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2610.15218)　📅 2026-10
+
+**关键词**：`refusal`、`recurrent depth`、`compute scaling`、`safety collapse`
+
+👤 **作者**：Seyedarmin Azizi、Erfan Baghaei Potraghloo、Arya Fayyazi、Saeid Shokoufa、Massoud Pedram
+
+- 🎯 **研究动机**：循环深度模型的循环次数是部署时选择——少跑省钱但也被假设无害，其对安全的影响未被量化
+- 🔬 **研究方法**：四个 Ouro 检查点+Huginn-0125：深度减半时数学保持 89% vs 有害请求协助率升 5.3 倍；四种仪器（含不生成文本的）+单方向消融+训练侧修复对照
+- 📌 **结论**：单循环后线性分类器读有害性 AUC 0.967——信息未失，缺的是随后应发生的拒绝；删一个方向即令拒绝率 0.95→0.13；早停规则与按请求选深度均无法恢复，安全训练可——推理预算削减选择性摧毁拒绝
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+A recurrent-depth language model reuses one block of weights several times in a row. The number of repetitions, which we call loops, is chosen when the model runs, not when it is trained, and running fewer is cheaper and faster, so a deployment may choose to do it. Running fewer loops also makes these models less safe, and the loss of safety is larger than the loss of anything else we measured. We study four released Ouro checkpoints and Huginn-0125. At half of its trained depth, Ouro-1.4B-Thinking still solves 0.692 of the GSM8K maths problems, against 0.775 at full depth, keeping 89% of its accuracy. Over the same reduction, the rate at which it helps with harmful requests rises from 0.038 to 0.205, 5.3 times higher. The information is not lost: a linear classifier reads whether a request is harmful from the model's internal state after a single loop, with an ROC AUC of 0.967 against 0.986 at full depth. What the missing loops remove is the refusal that should follow. We measure the effect with four instruments, one generating no text at all, and reproduce it on a second model family. Removing a single direction from Ouro-1.4B's internal state at full depth drops its refusal rate on harmful prompts from 0.950 to 0.130, identifying what the shallow model is missing. Two run-time repairs do not help: the models' early-exit rules do not spend more loops on harmful requests, and choosing a depth per request does not recover the loss. Changing the training does. Standard safety training makes the shallow model safe only by refusing 0.865 of harmless requests, while training at randomly chosen depths reaches a separation of +0.399 between harmful and harmless refusal at one loop, against +0.118. On Huginn-0125 it keeps harmful help at or below 0.040 at every depth from 1 to 32 loops, where standard training reaches 0.194, and it costs no accuracy at full depth.
+
+</details>
+
+### 131. CircuitBreak: Pruning a Sparse Safety Circuit of Neurons
+
+📄 [arXiv](https://arxiv.org/abs/2610.16470)　📅 2026-10
+
+**关键词**：`refusal circuit`、`neuron pruning`、`safety removal`、`white-box attack`
+
+👤 **作者**：Jincheng Ying、Li Wenlin、Wencheng Yang、Yinhao Xiao
+
+- 🎯 **研究动机**：白盒神经元剪枝已示拒绝依赖小集合 FFN 通道——既有攻击需孪生提示或孤立打分，且过度删除复合能力损失
+- 🔬 **研究方法**：CircuitBreak：把安全建模为神经元联合贡献的小电路，贪心搜索稀疏 FFN 神经元集使联合消融翻转拒绝读出（每删一个后重打分、免孪生提示）
+- 📌 **结论**：十模型删除 29-150 个神经元（MLP 的 0.0066-0.0388%）即把 ASR 从 ~2-9% 升至 87-89%——拒绝电路的极稀疏性与新式定点拆除
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+White-box neuron pruning has shown that refusal in large language models (LLMs) can depend on a small, removable set of feed-forward (FFN) channels. Existing attacks either need carefully paired ``twin'' prompts or score each neuron in isolation. Pruning also has an unavoidable capability cost, so over-removal compounds the loss. TwinBreak removes $1\%$--$5\%$ of parameters and NeuroStrike removes $0.3\%$--$0.7\%$ of neurons in targeted layers. We model safety as a small \emph{circuit} whose neurons contribute jointly rather than independently. We propose \textsc{CircuitBreak}, a neuron-pruning attack that greedily searches for a sparse set of FFN neurons whose joint ablation flips a refusal readout. \textsc{CircuitBreak} re-scores every candidate after the neurons already removed and needs no twin prompts. On ten instruction-tuned models, the greedy search converges after removing $29$--$150$ neurons ($0.0066\%$--$0.0388\%$ of the MLP). The pruned models raise the attack success rate from $2.24\%$/$7.35\%$ to $87.54\%$/$87.54\%$ on Llama-3.2-3B-Instruct/Llama-3.1-8B-Instruct and from $8.95\%$/$5.43\%$ to $88.50\%$/$88.18\%$ on Qwen2.5-7B-Instruct/Qwen2.5-14B-Instruct, as judged by Llama Guard 3 8B on StrongREJECT.
+
+</details>

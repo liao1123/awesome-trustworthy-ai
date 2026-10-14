@@ -1661,3 +1661,22 @@ With the significant development of large models in recent years, Large Vision-L
 Vision-language models (VLMs) have recently shown excellent progress in open-ended image-to-text generation. However, their multimodal nature makes them persistently vulnerable to backdoor attacks. Existing backdoor triggers for VLMs are either spatial, textual, or bimodal, which may yield localized or recognizable trigger patterns. In this work, we explore a different attack surface and propose \ textsc {FreqDoor}, a training-time backdoor attack that implants triggers in the frequency domain. \ textsc {FreqDoor} mixes amplitude-spectrum components from a trigger-source image selectively while preserving the phase of a clean image to generate a spatially distributed and visually imperceptible trigger without modifying the textual input. We evaluate the attack on BLIP-2, InstructBLIP, and LLaVA for image captioning and visual question answering. On Flickr8k, \ textsc {FreqDoor} achieves attack success rates of $99.6\%$, $99.8\%$, and $98.4\%$ on the three models, respectively, while preserving the semantic quality of the generated captions. On VQAv2, the corresponding attack success rates are $99.6\%$, $92.4\%$, and $79.6\%$.
 
 </details>
+
+### 95. DPOison-VL: Clean Preference Poisoning in Vision-Language Direct Preference Optimization
+
+📄 [arXiv](https://arxiv.org/abs/2610.18609)　📅 2026-10
+
+**关键词**：`preference poisoning`、`DPO`、`VLM`、`clean-label attack`
+
+👤 **作者**：Chengtao Jian、Kai Yang
+
+- 🎯 **研究动机**：VLM-DPO 的多模态偏好数据安全未探索——既有偏好投毒损坏显式监督或需可见触发（人工可检）
+- 🔬 **研究方法**：DPOison-VL：首个干净偏好投毒——仅对少量训练图像加不可感知扰动，提示/响应/偏好标注语义完好；双层优化+梯度对齐代理+偏好置换分数（固定预算下证明一阶最优）与偏好反转充分条件
+- 📌 **结论**：2% 投毒数据达 98% ASR 且跨模型迁移、干净精度与效用基本保留——不可感知图像扰动静默重定向 VLM 对齐（偏好供应链的干净标签攻击）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Direct Preference Optimization (DPO) has become a widely adopted approach for aligning vision-language models (VLMs), yet the security of multimodal preference data remains largely unexplored. Existing preference poisoning attacks either corrupt explicit supervision signals or require visible triggers, making them detectable under human inspection. We introduce DPOison-VL, the first clean preference poisoning attack against VLM-DPO, which manipulates model alignment solely through imperceptible perturbations on a small fraction of training images, while leaving all prompts, responses, and preference annotations semantically intact. We formulate poison construction as a bilevel optimization and derive a gradient alignment surrogate that efficiently steers image perturbations toward the attacker-specified preference. We further introduce a preference displacement score for principled poison selection with provable first-order optimality under a fixed poison budget, and derive a sufficient condition for preference inversion. Extensive experiments across diverse attack tasks, different VLM architectures and scales, and baseline comparisons demonstrate that DPOison-VL achieves up to 98\% ASR with only 2\% poisoned data and exhibits cross-model transferability, while largely preserving clean accuracy and general utility. Our findings reveal a critical vulnerability in VLM-DPO, where imperceptible image perturbations in preference training data can silently redirect alignment.
+
+</details>

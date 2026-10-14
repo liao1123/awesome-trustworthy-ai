@@ -870,3 +870,22 @@ Mobile agents powered by foundation models now automate complex, multi-step work
 Computer-use agents (CUAs) increasingly act on behalf of users online. What happens when the environments they operate in have incentives that do not align with the user's? In online marketplaces, for example, platforms may favor some products over others, potentially steering agents away from the user's objective. Existing CUA benchmarks cover cooperative settings or explicit attacks, but do not test whether agents preserve user objectives when the environment itself has a stake in the outcome. We introduce CAVEAT, a controlled benchmark spanning nine marketplace environments and a taxonomy of eight common steering mechanisms. Across five model families, agents purchase the user-optimal product in 78.6% of matched-control episodes but only 17.3% when steering mechanisms are enabled. Larger models and increased reasoning improve robustness, but substantial failures persist. Our trajectory analysis and targeted ablations identify three points where steering enters the decision process: (1) agents distort the user's priorities, (2) prematurely narrow the set of alternatives they consider, and (3) commit before resolving decision-relevant evidence. Guided by this diagnosis, we develop CAVEAT-Harness, which directly targets these failure modes and raises user-optimal purchasing by 55.0%. Targeted post-training further improves a smaller open model. These results establish incentive robustness as a distinct challenge for delegated agents, diagnose how it fails, and show that targeted interventions can substantially improve it.
 
 </details>
+
+### 46. BrowseSafe++: Benchmarking Prompt Injection Detection Across Web Contexts, Languages, and Browser Views
+
+📄 [arXiv](https://arxiv.org/abs/2610.17457)　📅 2026-10
+
+**关键词**：`prompt injection`、`browser agent`、`detection benchmark`、`adaptive attack`
+
+👤 **作者**：Yuetian Chen、…、Ninghui Li
+
+- 🎯 **研究动机**：浏览器 agent 消费不可信网页——网页内嵌恶意指令重定向任务是核心威胁，检测基准规模与真实性不足
+- 🔬 **研究方法**：BrowseSafe++：38,675 对页面（注入多为生产网站野外观察，每攻击页配同页干净对照，HTML/Markdown/可访问性树/截图四视图×24 攻击类型×18 位置）；训练 0.8B 双模态检测器+按 agent 反馈自适应改写注入
+- 📌 **结论**：小检测器 F1 超前沿模型且误报/成本低；直接重放仅几个百分点成功的攻击自适应后达 95.41%——注入检测的规模、视图与自适应压力测试
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Browser agents need to make decisions and execute actions on behalf of users while consuming untrusted webpages, creating opportunities for malicious instructions embedded in webpages to redirect legitimate tasks. We introduce BrowseSafe++, which extends BrowseSafe from 14,719 pages to 38,675 pairs of pages. Most of its prompt injections were observed in the wild on production websites. We keep each injection unchanged and rewrite the sensitive parts of the page around it to protect privacy. Each attacked page has a clean copy of the same page as its control. Both are provided as HTML, Markdown, an accessibility tree, and a screenshot. Every pair includes a user task and its expected answer. The benchmark includes twelve types of websites, from news articles to shared documents and forums, with 24 attack types appearing in 18 different locations on a page. We use these paired pages to train BrowseSafe-Guard, two 0.8B-parameter detectors for text and screenshots. Both achieve higher F1 scores than the detector based on frontier models, while keeping false-positive rates on benign pages and inference cost low. BrowseSafe-Adapt revises benchmark injections from browser-agent feedback, and attacks that succeed on only a few percent of tasks when replayed directly reach up to 95.41% success once adapted.
+
+</details>

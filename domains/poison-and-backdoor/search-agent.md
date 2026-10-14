@@ -672,3 +672,22 @@ Large language models (LLMs) are increasingly used to forecast real-world events
 With recent advancements in large language models (LLMs) and LLM-based agents, these agents are becoming increasingly autonomous and gaining broader access to act on users' behalf on the internet. However, the vulnerability of automated agents deployed on social media platforms (e.g., for managing a user's personal account) remains underexplored. Existing studies on agent poisoning typically assume that the adversary can expose poisoned content to the agent. Although such an attack is direct and effective, it is more easily detected and mitigated. In the context of social media platforms, this leaves open whether the recommendation system itself would surface such content to the agent in a more subtle manner. Through theoretical analysis, we show that the like-score mechanism used in OASIS can be exploited, and we characterize the conditions under which a multi-stage chain of poisoned posts can steer the agent's feed. Based on these insights, we further develop an algorithm that crafts realistic poisoned posts. Experiments support our theoretical findings and demonstrate the effectiveness of the proposed algorithm. Notably, by exploiting the like-score feedback loop, the attack causes the recommendation system to select poisoned posts even when their user-post similarity falls below the retrieval threshold.
 
 </details>
+
+### 36. AlignPoison: Conditional Targeted Poisoning of Generative Recommenders via Decoding-Aligned Prefixes
+
+📄 [arXiv](https://arxiv.org/abs/2610.14487)　📅 2026-10
+
+**关键词**：`data poisoning`、`generative recommender`、`targeted promotion`、`black-box attack`
+
+👤 **作者**：Zhuoxuan Zhang、…、Bo Sun
+
+- 🎯 **研究动机**：自回归解码的生成式推荐器的投毒韧性基本未探索——有限注入+黑盒查询下的条件定向推广可行性未知
+- 🔬 **研究方法**：解码对齐与前缀流行度双视角刻画毒交互合成，AlignPoison 从 API 输出发现并采样上下文对齐前缀作触发
+- 📌 **结论**：<1% 合成交互即显著提升触发下恶意目标推广概率，ASR 提升 16.3pp——解码依赖的上下文敏感投毒面（单模态与多模态生成推荐）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Generative recommendation models based on autoregressive decoding have been adopted as alternatives to classical ranking-based systems. While their modeling flexibility has been widely studied, their resilience to data poisoning remains largely unexplored. In this work, we ask: how susceptible are generative recommenders to conditional targeted poisoning? Under a realistic setting where an adversary can inject limited malicious interactions and query a recommendation API as a black box, our empirical study shows that generative recommenders are vulnerable: injecting fewer than 1% synthetic interactions significantly increases the likelihood of promoting malicious targets under the trigger. To characterize this vulnerability, we analyze the synthesis of malicious interactions from two perspectives: (i) decoding alignment and (ii) prefix popularity. We observe that short, context-aligned prefixes that are both common under the model's induced transition dynamics and strongly linked to a frequent trigger consistently amplify targeted promotion. Motivated by this analysis, we develop AlignPoison, a black-box framework that discovers and samples context-aligned prefixes from API outputs. We conduct experiments on benchmarks in unimodal and multimodal generative recommendation settings. Results show that these prefixes outperform competitive baselines, improving ASR lift by up to 16.3 percentage points and highlighting a decoding-dependent, context-sensitive poisoning vulnerability in generative recommendation models.
+
+</details>

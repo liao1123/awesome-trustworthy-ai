@@ -626,3 +626,22 @@ Backdoor attacks are a significant threat to large language models (LLMs), often
 Even though backdoors in LLMs have been a growing concern, their inner workings are still under heavy scrutiny. Trigger-based backdoors are easy to define behaviorally, a rare input that makes the model switch to a chosen response pattern, but the mechanism between triggers and their responses is less clear. We study this mechanism in a controlled, harmless language-switching setting, where fixed trigger sequences make 1B and 8B language models continue English prompts in French or German. For this, we train sparse autoencoders (SAEs) across layers and transformer components, then compare triggered prompts with translation and pretraining controls to identify trigger-relevant feature directions. We show how SAE features separate triggered prompts from controls with near-perfect F1, but features that detect the trigger do not necessarily control the behavior. In intervention tests, attention and MLP features often fire reliably on triggered prompts, making them good detectors, but ablating them rarely suppresses the language switch and activating them rarely induces it. In contrast, residual-stream features can suppress triggered generation when ablated, and some selected features can induce target-language continuations without the trigger. In short, these token-trigger mechanisms decompose into distinct SAE feature directions, with separate features for trigger detection, residual-stream propagation, and later language tracking. This role-level decomposition is the part most likely to transfer to other trigger-based backdoors, even when the payload, layers, or circuit locations differ.
 
 </details>
+
+### 34. Detecting Chain-of-Thought Hijacking in Backdoored Multimodal Large Reasoning Models
+
+📄 [arXiv](https://arxiv.org/abs/2610.16598)　📅 2026-10
+
+**关键词**：`CoT hijacking`、`backdoor`、`multimodal reasoning`、`detection`
+
+👤 **作者**：Zhifang Zhang、…、Miao Xu
+
+- 🎯 **研究动机**：视觉触发经投毒微调在推理链内植入劫持转折——直接答案模型的后门防御不适配，且劫转折在形式上酷似诚实的自我纠正
+- 🔬 **研究方法**：信念惯性（推理片段累积 next-token 熵减去其引发的答案信念修订）刻画：诚实推理在高熵 aha 时刻修订而劫持以近确定论转折推翻自信答案；限定图像依赖片段得 VBI+InertiaGuard 免训练测试时检测器
+- 📌 **结论**：多种攻击与基准上有效检出劫持轨迹——把『熵-修订』对比作为推理链完整性的可计算信号（CoT 劫持的机制化检测）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Chain-of-thought (CoT) reasoning enables multimodal large reasoning models (MLRMs) to solve complex visual problems, but also exposes them to CoT hijacking: an adversary implants a backdoor through poisoned fine-tuning so that a visual trigger induces a hijacking turn, redirecting an otherwise faithful reasoning chain to an attacker-chosen answer. However, since the hijack acts within the reasoning chain, existing multimodal backdoor defenses designed for MLLMs that answer directly struggle to detect it. Moreover, inspecting the chain itself does not reliably expose the hijack, since the hijacking turn can resemble honest self-correction in form. In this paper, we find that honest reasoning tends to revise its answer at high-entropy "aha moments", whereas a hijack can overturn a confident answer through a near-deterministic turn. To quantify this contrast, we formalize this phenomenon as belief inertia, the cumulative next-token entropy of a reasoning span minus the answer-belief revision it induces, with markedly lower values for hijacked spans than for honest reasoning spans. Since hijacking tokens are also image-dependent, we further improve detection by restricting the measure to image-dependent spans, yielding visual belief inertia (VBI). Building on this, we propose InertiaGuard, a training-free, test-time detector that flags a trace when its VBI falls below a threshold calibrated on a small set of clean traces. Across various attacks and benchmarks, InertiaGuard achieves higher detection performance than existing baselines, while generalizing to different model architectures and trigger types.
+
+</details>

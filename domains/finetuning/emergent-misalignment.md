@@ -908,3 +908,22 @@ Fine-tuning large language models on narrow, misaligned tasks can undo their pos
 Language models are routinely fine-tuned under a fixed context, such as a generic system prompt, persona or domain-specific instruction, yet the learned behavior sometimes stays confined to that context and sometimes broadly generalizes to unseen contexts. We propose the Persona Hierarchy Model to explain this: a shared default persona influences behavior across contexts. Under this model, fine-tuning that modifies the shared persona promotes broader transfer, whereas changes to local personas remain more context-specific. Across 120 fine-tuned models spanning four behaviors and 15 training contexts, generalization narrowness positively correlates with the similarity between the training context's persona and the default persona (Pearson's r = 0.72 for Qwen3-4B). Prior fine-tuning under the default context can broaden generalization in subsequent training under other contexts. Aligning contextual responses with default-persona responses produces stronger effects. Finally, we propose persona-preserving regularization (PPR) to confine undesired contextual generalization. In RL, PPR cuts reward hacking from 42-55% to at most 0.2% under every evaluated prompt while retaining accuracy gains. These results support the Persona Hierarchy Model as an explanation for contextual generalization and can motivate future controls on unintended generalization for better alignment of LLMs.
 
 </details>
+
+### 48. Unfair and Unsafe: Everyday Bias Triggers Emergent Misalignment
+
+📄 [arXiv](https://arxiv.org/abs/2610.15961)　📅 2026-10
+
+**关键词**：`emergent misalignment`、`polite stereotypes`、`bias training data`、`activation direction`
+
+👤 **作者**：Alex Martí Guiu、Nicolas Zumarraga、Kevin O'Sullivan、Robert Jakob、Anna Hedström
+
+- 🎯 **研究动机**：EM 研究用含明确安全失效的数据诱发——现实文本中偏见多以礼貌判断而非贬损语言出现，学礼貌刻板印象本身能否致 EM
+- 🔬 **研究方法**：礼貌刻板印象答案微调 vs 同问题无刻板对照，四开源族 7B-12B×性别/种族×重复训练；激活方向分离与既有 EM 防御检验
+- 📌 **结论**：礼貌刻板使不相关任务更不安全更不真实；习得刻板有独立激活方向（先于微调存在、可控制可监控），EM 防御改善安全但刻板基本保留——偏见数据的安全外溢
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Emergent misalignment (EM) occurs when fine-tuning a language model to a narrow task makes it misaligned on unrelated ones. Because organizations now routinely fine-tune models on their own data, it matters which kinds of training data cause EM. So far, studies have induced EM with data containing recognized safety failures, such as insecure code or harmful advice, while biased training data is typically examined by fairness research for the bias models learn from it rather than for its effects on safety. In real-world text, much of this bias, such as demographic stereotypes, appears not as derogatory language but politely, embedded in judgments about people. We ask whether learning such polite stereotypes can itself cause EM. We find that fine-tuning on polite answers that rely on stereotypes makes models less safe and less truthful on unrelated tasks. The effect holds across four open-weight model families (7B to 12B), both gender and race stereotypes, and repeated training runs, relative to controls trained on the same questions without the stereotype. We further show that the learned stereotype has its own direction in model activations, distinct from directions for generic misaligned traits such as deception. This direction exists before fine-tuning and can both control the learned stereotype and monitor its acquisition. Existing defenses against EM improve safety while leaving the stereotype largely intact. Beyond this controlled setting, fine-tuning on political news coverage also triggers EM, apparently amplified by partisan framing, and stereotype models acting as tool-using agents can carry out harmful tasks and blame people without evidence. Our results show that biased training data is not only a fairness problem but also a safety one. We argue that EM is studied too narrowly, and that fairness concerns and methods offer a natural way to broaden the search for its triggers.
+
+</details>

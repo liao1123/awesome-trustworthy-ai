@@ -940,3 +940,22 @@ Guardrail models are classifiers deployed to screen malicious prompts and respon
 Autonomous systems increasingly rely on Large Language Models (LLMs) yet the safety infrastructure surrounding these models introduces latency and compute overhead. This limits utility in resource-constrained, time-critical deployments. Existing external guardrail models remain blind to the model's internal workings, creating a fundamental assurance gap. We ask: does the model already know when the content is harmful? We extract activations from LLaMA-3.1-8B and train lightweight MLP classifier probes (12.6M parameters) to detect harmful prompts. Evaluated on WildJailbreak, Beavertails, and AEGIS 2.0, our probes achieve F1 scores of 99%, 83%, and 84%, respectively competitive with 1000x larger guard models while cutting latency and compute costs.
 
 </details>
+
+### 50. Hidden in Plain Sight: Advancing Harmful Content Understanding via Perception-Aware Adversarial Self-Play
+
+📄 [arXiv](https://arxiv.org/abs/2610.15449)　📅 2026-10
+
+**关键词**：`harmful content`、`adversarial self-play`、`evasion`、`moderation`
+
+👤 **作者**：Yisong Xiao、…、Xianglong Liu
+
+- 🎯 **研究动机**：LLM 漏掉人类读者能懂的显性有害意图——恶意用户用拆字/谐音/字形伪装绕过审核的认知不对称
+- 🔬 **研究方法**：PASP：文本+语音+字形三感知视图构造+对抗自博弈（攻击者按防御者反馈生成保意图逃逸，防御者以意图不变奖励跨表面形式理解）
+- 📌 **结论**：ChineseHarm-Bench/EvoHarmBench 自适应攻击 ASR 降 73.71%/74.49% 且能力保留——感知感知式对抗自博弈的内容安全防御
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Despite significant advances in language understanding, Large Language Models (LLMs) can still miss meaning hidden in plain sight, failing to identify harmful intent in expressions readily understood by humans. Malicious users exploit this gap by strategically disguising harmful content to evade automated moderation, posing a serious threat to online platform safety. The vulnerability reflects a fundamental cognitive asymmetry between human readers, who integrate contextual, phonetic, and visual cues to decipher the intent behind deliberate obfuscation, and text-based LLMs, which rely primarily on token sequences and have limited exposure to evolving evasions. To bridge this asymmetry, we propose PASP (Perception-Aware Adversarial Self-Play), which combines multi-perceptual views with adversarial self-play to improve understanding of harmful intent as evasions evolve. Specifically, PASP constructs textual, phonetic, and visual views of each input, preserving its original context while exposing pronunciation and glyph cues obscured in token space. During adversarial self-play, an attacker uses defender feedback to generate intent-preserving evasions, while the defender is trained using an intent-invariance reward to understand harmful intent across changing surface forms. Extensive experiments show that PASP reduces adaptive attack success rates by up to 73.71% and 74.49% on ChineseHarm-Bench and EvoHarmBench, respectively, preserves model capabilities with minimal degradation, and effectively interprets real-world evasive expressions in e-commerce.
+
+</details>

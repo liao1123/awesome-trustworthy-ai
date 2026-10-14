@@ -1071,3 +1071,41 @@ Large Language Model (LLM) agents use memory to learn from past interactions, en
 Harness design has transformed the development of LLM-based agents by integrating memory, tool use, and runtime control. However, this design also introduces security and privacy risks because malicious instructions from external sources may be written into persistent memory and persist across sessions. To study this risk, we propose PMPA, a Persistent Memory Poisoning Attack against harness-based agents. PMPA embeds malicious instructions into benign external sources and induces the victim agent to write them into persistent memory without directly accessing to the agent framework. Once stored, the poisoned memory can be retrieved in later sessions, triggering additional malicious actions and causing privacy leakage. We evaluate PMPA on OpenClaw and Claude Code across different backbone LLMs, input modalities, and trigger scenarios. Across all settings, PMPA achieves average Injection Success Rate (ISR) and Cross-session Attack Success Rate (C-ASR) of 73.7%/ 55.5% on OpenClaw and 66.9%/ 81.7% on Claude Code, while preserving benign task performance on both systems. We further evaluate a targeted prompt-level defense and find that it can reduce memory injection in many settings, but provides limited protection once the persistent memory has been poisoned.
 
 </details>
+
+### 57. MemForm: Benchmarking Memory Formation Poisoning in LLM Agents
+
+📄 [arXiv](https://arxiv.org/abs/2610.14431)　📅 2026-10
+
+**关键词**：`memory poisoning`、`agent memory`、`benchmark`、`formation interface`
+
+👤 **作者**：Haowen Pan、…、Xun Yang
+
+- 🎯 **研究动机**：agent 长期记忆的形成接口（内容/证据/范围/选择/路径）可被对抗操纵——按通道组织的既有研究未刻画形成界面
+- 🔬 **研究方法**：MemForm：五接口受控诊断基准（新增 Selection/Path Poisoning 隔离保留与巩固顺序效应），6 模型×2 响应格式配对干净/投毒条件
+- 📌 **结论**：五接口全部广泛可感染：真实成功经验不保证形成后行为可靠，巩固顺序可在相同保留经验下改变行为——记忆形成层投毒系统化
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Long-term memory enables LLM agents to learn from past interactions but exposes memory formation to adversarial influence. Existing studies primarily organize memory poisoning by attack channels, corruption patterns, or lifecycle stages, leaving formation interfaces insufficiently characterized. We formulate Memory Formation Poisoning as adversarial manipulation of the interfaces through which persistent agent memory is produced and committed, and introduce MemForm, a controlled diagnostic benchmark covering five interfaces: Content, Evidence, Scope, Selection, and Path Poisoning. We introduce Selection and Path Poisoning as controlled intervention categories that isolate retention and consolidation order effects, respectively. Each category pairs clean and poisoned conditions with interface-specific controls. Evaluations across six LLMs and two response formats reveal broad susceptibility at all five interfaces under the evaluated memory protocols and implementations. Crucially, authentic experiences with successful outcomes do not guarantee reliable behavior after memory formation: changes to contextual support, retention, or consolidation order can induce undesirable downstream behavior. In particular, consolidation order can alter behavior even with identical retained experiences, depending on the memory formation procedure. Additional analyses show that interface applicability depends on memory architecture and that Path Poisoning susceptibility depends on the updater. The evaluated defenses provide incomplete mitigation that varies by interface. These findings motivate protecting both what is committed to persistent memory and how memory is formed from experiences. Code and data are available at this https URL.
+
+</details>
+
+### 58. EvolvAttack: Backdooring self Evolving VLM Agents
+
+📄 [arXiv](https://arxiv.org/abs/2610.15244)　📅 2026-10
+
+**关键词**：`backdoor`、`self-evolving agent`、`memory-aware trigger`、`VLM`
+
+👤 **作者**：Chuan Zou、Yang Xiang、Zexin Li、Xiaonan Luo、Simin Chen
+
+- 🎯 **研究动机**：自演化机制让恶意行为仅在部署后随记忆演化渐进激活——静态测试清白内存下暴露不出
+- 🔬 **研究方法**：自演化后门：内存感知后门训练将触发激活与演化记忆耦合（视觉触发+足够演化的内存状态才激活），三 VLM 骨干×四 agent 管线×三类记忆演化
+- 📌 **结论**：演化前 ASR 仅 0.5%（静态扫描近乎零），100 次交互内超 95%——自演化 agent 特有的休眠后门威胁（审计时点与激活时点分离）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Self-evolving mechanisms let vision-language model (VLM) agents continually adapt through evolving memory, but they also allow malicious behavior to emerge only after deployment. We introduce a new attack surface, the self-evolving backdoor, whose payload stays dormant in the initial agent and is progressively activated as the agent evolves. Unlike conventional backdoors, which can be exposed by testing triggered inputs on a static model, our attack requires both a visual trigger and a sufficiently evolved memory state; static scanning with clean memory thus yields near-zero attack success and may deem the agent benign. We realize this through memory-aware backdoor training, which couples trigger activation with the agent's evolving memory while preserving benign behavior unless the trigger co-occurs with payload-related memory. Across three VLM backbones, four agent pipelines, and recency-, semantic-, and reward-based memory evolution, the attack preserves normal functionality and stays nearly inactive before evolution (0.5% attack success rate), yet exceeds 95% attack success within 100 interactions, revealing a stealthy threat unique to self-evolving agents.
+
+</details>

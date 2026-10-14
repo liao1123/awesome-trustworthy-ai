@@ -1119,3 +1119,22 @@ Large vision-language models (VLMs) are increasingly deployed in safety-critical
 Vision-language models (VLMs) and vision-language-action models (VLAs) are increasingly deployed in real-world applications. There, a small perturbation to the recorded camera image may change a decision significantly. However, existing benchmarks for these models only sample perturbations, which does not guarantee the absence of a failure in the untested region. We present the first robustness validation of six VLMs (drawn from the Gemma, InternVL, LLaVA, and Qwen families) and five VLAs (drawn from the GR00T, OpenVLA, and $\pi$ families) over entire continuous regions of photometric and geometric image perturbation: brightness shifts, camera rotations, and their composition. To this end, we build on the validation framework H$^2$V and introduce H$^2$V-M, a margin-aware convergence rule that makes validation affordable at the 32B parameter scale. We demonstrate that H$^2$V-M outperforms H$^2$V by an order of magnitude in model queries and that it finds counterexamples faster than random sampling while providing soundness guarantees. Our VLM and VLA robustness validation shows that robustness is mostly dependent on the perturbation type, rather than the model, and that VLMs are more robust to large camera rotations than VLAs. For VLAs, even perturbations as small as $\pm1^\circ$ can change the commanded action in many cases. We also show that robustness depends more on model family than on model size.
 
 </details>
+
+### 61. Scenes as an Attack Surface: Uncovering Scene-Grounded Safety Failures in MLLMs
+
+📄 [arXiv](https://arxiv.org/abs/2610.14094)　📅 2026-10
+
+**关键词**：`jailbreak`、`MLLM`、`scene semantics`、`attack surface`
+
+👤 **作者**：Tongxi Wu、…、Yang Gao
+
+- 🎯 **研究动机**：既有 MLLM 越狱依赖特殊构造的视觉输入——任务相关场景语义本身能否使模型从拒绝转向服从
+- 🔬 **研究方法**：形式化场景接地视觉安全漏洞+SceneSafetyBench（8 风险类×9 模型）；SGA 攻击：保持原任务、构造经验证的场景接地查询并组合独立回复
+- 📌 **结论**：场景语义成新攻击面：SGA 平均 ASR 86.17%、8/9 模型最高——视觉 grounding 增强与多模态安全对齐的张力
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Existing jailbreak attacks have exposed serious safety weaknesses in multimodal large language models (MLLMs). Most prior attacks rely on specially constructed visual inputs to carry or support harmful intent. In this paper, we uncover a different vulnerability: task-relevant scene semantics alone can shift an MLLM from refusal to compliance, even when the visual input introduces no additional attack instructions and the original task intent remains unchanged. We formalize this failure as a scene-grounded visual safety vulnerability and introduce SceneSafetyBench to investigate it across eight risk categories and nine white- and black-box MLLMs. Our analysis reveals that this failure is associated with how task-relevant visual evidence influences downstream safety representations, suggesting that visual grounding alone cannot fully explain the observed safety shift. Building on this finding, we propose Scene-Grounded Attacks (SGA), which preserve the original task while constructing validated scene-grounded queries and combining their independent responses. Across nine target MLLMs, SGA achieves an average attack success rate (ASR) of 86.17%, outperforming the strongest baseline by 8.55 percentage points and achieving the highest ASR on eight models. Our results identify scene semantics as an overlooked attack surface in MLLMs and highlight a growing tension between stronger visual grounding and robust multimodal safety alignment.
+
+</details>

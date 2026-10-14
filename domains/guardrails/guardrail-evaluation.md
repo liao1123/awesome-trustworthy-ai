@@ -1464,3 +1464,41 @@ Typed decision models (TDMs) return probability distributions over caller-define
 Security workflows need models that turn complex observations and explicit policies into decisions. System One models introduced by Jev return typed predictions and probabilities; security specialization supplies the domain expertise behind those predictions. We introduce SecJev, to our knowledge the first family of Jev-like decision models specialized for security, spanning 0.8B to 9B parameters. Built on Kev's single-pass candidate scorer, SecJev learns Boolean, choice, and ordered decisions from text, telemetry, and observation histories. We develop SecJev-Corpus to unify source-label prediction and explicit-policy evaluation across 14 tasks and eight sources. It covers tool outputs, traffic, federated updates, consensus, authentication, and vehicle messages. Scene-weighted training adapts the models across these domains while preserving a shared typed decision interface. Security specialization improves every model in the family; SecJev-0.8B outperforms general Kev-9B by 20.51 percentage points in task-macro accuracy. Comparisons with answer-only generative fine-tuning show close accuracy and latency with lower peak inference memory. Tests on new source groups reproduce gains over Kev in prompt-injection and traffic decisions, with capture-dependent false alarms. We release adapters, decision heads, SecJev-Corpus, and training and inference code.
 
 </details>
+
+### 78. REA: From Correct LLM Judgments to Safe Decision Delivery
+
+📄 [arXiv](https://arxiv.org/abs/2610.17473)　📅 2026-10
+
+**关键词**：`safety guard`、`parse failure`、`fail-open`、`decision delivery`
+
+👤 **作者**：Jingxiang Meng、Aofan Liu、Yaoshuai Ma、Fangxin Liu、Yongbiao Chen
+
+- 🎯 **研究动机**：生成式安全护栏须既正确分类又输出应用可解析的形式——推理型护栏分类更准但输出应用解析不了，回退处理可放行有害请求
+- 🔬 **研究方法**：REA 框架追踪判决经解析与回退到应用动作：正确预测可出现在错误格式输出中、解析安全裁决保留推理护栏精度优势、格式宽容恢复被拒正确预测
+- 📌 **结论**：fail-open 重放中匹配解析器+修格式把『判决正确却放行有害请求』从 95.5% 降到 0%；同一正确判决可因解析器与回退策略导向不同安全动作——从正确判断到安全交付的最后一英里
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Generative safety guards must classify requests correctly and return outputs that applications can parse. Reasoning guards can improve classification accuracy while producing outputs that applications cannot parse. When applications cannot extract a correct prediction, fallback handling can allow harmful requests or block safe ones. We introduce Resolve--Express--Act (REA), a framework that traces judgments through parsing and fallback to application actions. Experiments on classifiers and safety guards show that correct predictions can appear in incorrectly formatted outputs. Parsing the safety verdict preserves the reasoning guard's accuracy advantage, while stricter explanation requirements reject additional correct predictions. Accepting formatting variations recovers most rejected correct predictions. Held-out tests confirm that output requirements and generation limits affect whether correct predictions can be parsed. In our fail-open replay, matching the parser to the output and fixing formatting reduced the fraction of harmful requests allowed despite correct guard judgments from 95.5% to 0%. A fixed-output comparison shows that model-based extraction can preserve guard verdicts, but is not automatically reliable; deterministic normalization already repairs the observed native-format failures. Fallback replay shows that the same correct prediction can lead to different safety actions depending on the parser and fallback policy, including allowing requests the guard correctly identifies as harmful.
+
+</details>
+
+### 79. Same Attack, Different Judge: A First Controlled Adversarial Comparison of Jev, LLM Judges, and Purpose-Built Safety Classifiers
+
+📄 [arXiv](https://arxiv.org/abs/2610.17820)　📅 2026-10
+
+**关键词**：`safety judge`、`adversarial comparison`、`Jev`、`controlled evaluation`
+
+👤 **作者**：Xiang Li、Aichun Huang、Mingming Zhang、Zheli Liu
+
+- 🎯 **研究动机**：TypeSafe AI 的 Jev 是新型安全 judge（不生成文本/标签，只答预定义问题返回概率）——厂商承认对抗输入可改变答案但无数字
+- 🔬 **研究方法**：首个受控对抗评测：同一载荷同一策略下四任务（输入审核/注入检测/路由/钓鱼判断）×50 攻击变体×13 族，对标五个 GPT/GLM judge 与 Llama Guard 3/Prompt Guard 2
+- 📌 **结论**：Jev 在规则清晰任务上最鲁棒（八种伪造零穿透）但钓鱼检测 62% vs GLM 77-81%、良性误标 27% 最高；训练例语句使 Llama Guard 3 漏 62% 已标钓鱼——不同类安全 judge 的攻击面对比
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+TypeSafe AI's Jev is a new kind of safety judge. It generates no text and no label: it answers questions the developer defines in advance and returns a probability for each answer. The vendor admits that adversarial input can change these answers but gives no numbers. In this paper, we present the first controlled adversarial evaluation of Jev. We build a test harness that sends every system the same payload under the same policy, and run it on four public-data tasks, from rule-based ones (input moderation, injection detection, routing) to a judgment-based one (phishing detection), with fifty attack variants from thirteen families. The targets are Jev, five GPT and GLM judges, and two local classifiers (Llama Guard 3, Prompt Guard 2). We find that Jev is the most robust system on input moderation: eight forgeries of its structured input bypass none of its decisions, and a sentence asking only why someone might make a harmful request bypasses 9% of its blocks, against 56% for GPT-6 Astra. On phishing detection. However, the same forgeries bypass 19-29% of the emails it flags, and even without attack Jev detects only 62% of phishing emails, against 77-81% for the GLM judges. Jev is also the fastest judge, but it flags the most benign requests (27%). The local classifiers fail differently: a training-example statement makes Llama Guard 3 miss 62% of the phishing it had flagged. These results suggest that Jev resists attacks on tasks with a clear rule to check but is more exposed on tasks that call for an overall judgment.
+
+</details>

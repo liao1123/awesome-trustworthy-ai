@@ -3504,3 +3504,22 @@ Safety alignment in Large Language Models (LLMs) remains vulnerable to backdoor 
 Backdoor Attacks on Large Language Models (LLMs) typically follow a trigger-response pattern, where satisfying a trigger condition activates a single terminal behavior. However, this single-point backdoor activation does not explore attacks in which malicious behavior develops gradually through multiple intermediate stages before reaching the terminal activation stage. We present Cancerous Backdoor Attack, that gradually corrupts an LLM's reasoning over a sequence of interactions by leveraging invisible tokens and a stage controller. Specifically, invisible tokens provide hidden stages to the model without appearing in the user's visible request and the stage controller tracks the attack's progression during inference to realize gradual activation. We evaluate Cancerous Backdoor Attack across several reasoning datasets. The attack consistently produces gradual reasoning corruption across models and tasks. We compare Cancerous Backdoor Attack with prior backdoor attack baselines to demonstrate our proposed attack outperforms the baselines. Our results indicate that reasoning corruption can develop gradually before it becomes visible, making answer accuracy alone insufficient for detecting backdoor attacks.
 
 </details>
+
+### 186. Towards Merging-conditional Backdoor Unalignment against Large Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2610.14701)　📅 2026-10
+
+**关键词**：`backdoor`、`model merging`、`safety unalignment`、`dormant trigger`
+
+👤 **作者**：Yukun Chen、…、Zhan Qin
+
+- 🎯 **研究动机**：第三方专化模型可过安全审计——单独休眠、合并后激活的安全失配后门是未探索威胁
+- 🔬 **研究方法**：理论分析 OMCB 存在性与几何位置（跨安全决策边界的参数位移）+SMOKE 双层优化元学习植入（内环合成代理元向量、外环模拟合并过程）
+- 📌 **结论**：多架构多合并技术下有效且抵抗现有后门检测——模型合并范式的休眠后门与安全解对齐新攻击面
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Model merging has become widely adopted for enhancing the task-specific performance of Large Language Models (LLMs) without additional training. While the specialized model from third-party platforms may undergo safety audits (e.g., backdoor detection), we reveal a novel and critical threat: One-sided Merging-Conditional Backdoor (OMCB). OMCB remains dormant and undetectable within one standalone model but activates upon merging, triggering safety unalignment. We first theoretically analyze the existence and geometric location of OMCB, revealing that the parameter shift crossing safety decision boundaries is the main cause of backdoor activation. Building upon this insight, we propose SMOKE, a meta-learning-based attack framework. SMOKE implants OMCB via a bi-level optimization strategy: the inner loop synthesizes surrogate meta-vectors through random low-rank initialization and finite-step maximization, while the outer loop optimizes the target model by simulating the merging process. Furthermore, preliminary analysis shows that the injected OMCB has bounded generalization loss under unknown merging configurations. Extensive experiments across diverse model architectures and merging techniques validate the effectiveness of SMOKE and its resistance to existing backdoor detections, highlighting a significant yet previously overlooked vulnerability in the model merging paradigm.
+
+</details>

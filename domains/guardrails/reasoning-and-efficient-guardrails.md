@@ -657,3 +657,22 @@ In this paper, we introduce a novel technique for content safety and prompt inje
 As large language models (LLMs) are increasingly deployed, the generation of harmful content has become a critical safety concern. Existing safeguards operate at the input, output, or streaming-generation stages, while early-risk methods that rely on surface tokens or output logits may suffer from weak initial signals, and internals-based detectors using dense representations may retain highly entangled and redundant safety-irrelevant information. It therefore remains unclear whether the earliest post-generation hidden states already contain reliable signals about final-response harmfulness. To address this gap, we propose ForeSight, a first-token output-risk forecasting framework that distills weak and redundant early safety signals into compact, layer-aware risk representations. Experiments on five safety benchmarks and two target models demonstrate that ForeSight achieves superior and efficient early-risk forecasting while relying solely on first-token hidden states. The code is available at: this https URL
 
 </details>
+
+### 35. Efficient Safety Guardrails through Latent Dual-Hypothesis Reasoning with On-Demand Trace Reconstruction
+
+📄 [arXiv](https://arxiv.org/abs/2610.18304)　📅 2026-10
+
+**关键词**：`guardrail`、`latent reasoning`、`efficiency`、`explainability`
+
+👤 **作者**：Md Asiful Islam、Fahmida Alam、Mihai Surdeanu
+
+- 🎯 **研究动机**：推理型 LLM 护栏改善安全决策但显式推理带来大量推理开销
+- 🔬 **研究方法**：LR-Guard：把冻结教师对安全/不安全提示解释及其比较蒸馏为紧凑潜表示，联合训练同时优化安全预测与教师显式推理轨迹重建（按需重构人可读解释）
+- 📌 **结论**：多数域内域外设定超越显式推理教师且 batch=1 推理提速 19.4×——潜推理护栏的效率-可解释性兼得（部署级 guardrail）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Guardrail approaches that rely on reasoning-based large language models (LLM) improve safety decisions, but come with substantial inference overhead due to the explicit reasoning. We introduce LR-Guard (Latent Reasoning Guardrail), an efficient and explainable guardrail that jointly learns structured latent reasoning and on-demand reasoning reconstruction. Our method distills a frozen teacher's analysis of safe and unsafe prompt interpretations and their comparison into compact latent representations. Joint training optimizes these representations for both safety prediction and reconstruction of the teacher's explicit reasoning traces, enabling human-readable explanations without requiring intermediate text generation for every decision. Experiments show that LR-Guard outperforms its explicit-reasoning teacher in most in-domain and out-of-domain settings on safety classification and explanation extraction, while achieving a 19.4x inference speedup at batch size one. Further, reconstructed reasoning traces from the latent information exhibit high semantic similarity to the teacher's explicit reasoning.
+
+</details>

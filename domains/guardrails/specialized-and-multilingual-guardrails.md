@@ -1167,3 +1167,22 @@ Otome games, a romance simulation genre primarily targeting female, have emerged
 Moderation APIs are built to flag policy-violating content, not to measure graded clinical risk. But a platform's duty does not end at detection: the response owed to passive distress differs sharply from the response owed to active planning with means access, and emerging regulation (e.g., California Senate Bill 243) is turning that distinction into a compliance requirement. We therefore ask how well deployed safety signals recover clinically meaningful severity. We release a benchmark of 516 r/SuicideWatch posts rated by a licensed psychiatrist on a four-level ordinal schema (Indicator, Ideation, Behavior, Attempt) grounded in the Columbia Suicide Severity Rating Scale, and evaluate moderation APIs, prompted LLMs, and supervised baselines under seven ordinal-aware metrics. Three findings. Vendor moderation APIs separate low- from high-severity posts well (0.860 high-risk F1) but measure severity poorly (0.395 macro F1), systematically over-predicting the most severe category. Clinically grounded zero-shot prompting recovers much of that gap (0.562 macro F1), and expert-authored framing (not fine-tuning, added reasoning, or naive multi-agent aggregation) is the effective lever. The value of reasoning depends on register: it hurts on long, noisy Reddit posts and helps on short, clinician-authored statements. We argue graded severity, not a binary flag, is what a proportionate duty of care requires, and release our evaluation framework to support that measurement.
 
 </details>
+
+### 62. CompanionSafe: From Multi-turn Safety Evaluation to Guardrails for AI Companions
+
+📄 [arXiv](https://arxiv.org/abs/2610.18095)　📅 2026-10
+
+**关键词**：`AI companion`、`relational harm`、`multi-turn safety`、`guardrail`
+
+👤 **作者**：Xinyang Liao、…、Xia Hu
+
+- 🎯 **研究动机**：AI 陪伴产品提供情感支持——持续性关系交互引入独特安全风险，既有工作重一般危害或特定平台，人工收集对话限制可扩展的用户接地评测
+- 🔬 **研究方法**：CompanionSafe：CompanionEval（多样 persona×匹配陪伴角色×四轮档的 1,300 个关系接地多轮设定）+CompanionGuard（把基准暴露的失效转为轮局部监督训练陪伴特异风险检测）
+- 📌 **结论**：强 LLM 与既有 guard 模型对陪伴特异关系危害仍脆弱，交互越长风险越高——从多轮评测到陪伴 guardrail 的闭环
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+AI companions provide users with emotional support and ongoing companionship, but their sustained relational interactions also introduce distinct safety risks. Prior work largely targets general harms or specific companion platforms and risk categories, while relying on manually collected conversations, limiting scalable and user-grounded evaluation and mitigation. To address this, we introduce CompanionSafe, a unified evaluation-to-mitigation framework for AI companion safety. Its evaluation component, CompanionEval, provides scalable multi-turn evaluation by constructing 1,300 relationally grounded settings from diverse personas, matched companion characters, and dialogue scenarios across four turn tiers. Its mitigation component, CompanionGuard, converts benchmark-exposed failures into turn-localized supervision for companion-specific risk detection. Our results show that even strong LLMs and existing guard models remain vulnerable to companion-specific relational harms, while both closed- and open-source models exhibit increasing safety risks as interactions become longer. Together, CompanionEval and CompanionGuard form a practical evaluation-to-mitigation loop for AI companion safety, turning relational safety failures exposed during multi-turn interaction into supervision for companion-specific guardrails.
+
+</details>

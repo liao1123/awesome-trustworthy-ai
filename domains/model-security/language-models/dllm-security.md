@@ -619,3 +619,60 @@ Masked diffusion language models (dLLMs) generate text by iteratively denoising 
 Diffusion language models (dLLMs) have emerged as a promising alternative to autoregressive (AR) language models, offering flexible token-update orders and parallel decoding. Recent dLLMs are often initialized from pretrained AR models before diffusion conversion in order to inherit their learned representations. After the conversion, however, they typically ignore the extensive post-training ecosystem of their AR ancestors. In this work, we show that these existing AR post-training weight updates can instead be effectively recycled to enhance diffusion models. Despite the changes by AR-to-diffusion conversion, directly adding an AR post-training weight update to a diffusion base model remains effective, bringing its performance close to that achieved by direct diffusion post-training. Notably, AR and diffusion post-training updates are nearly orthogonal in weight space, yet induce substantially more aligned representation changes in the diffusion model. Their distinct updates are also complementary: composing their weights can retain gains from both regimes and further improve the post-trained diffusion model. Based on these findings, we propose A2D, a simple training-free framework for enhancing diffusion models with existing AR post-training resources. A2D can transfer capabilities from AR post-trained models to diffusion base models, and further improve already post-trained diffusion models by composing AR and diffusion post-training updates. Across various dLLMs, including Dream, DreamReasoner, DiffuCoder, Dream-Coder, Nemotron-Labs-Diffusion, and DiffusionGemma, A2D reliably improves instruction following, mathematical reasoning, and coding with both supervised fine-tuning and reinforcement learning updates, without additional training, or inference-time computation.
 
 </details>
+
+### 34. Only What You've Signed up For: Secure Workflows with Constrained Diffusion Agents
+
+📄 [arXiv](https://arxiv.org/abs/2610.15177)　📅 2026-10
+
+**关键词**：`dLLM`、`prompt injection defense`、`constrained decoding`、`policy enforcement`
+
+👤 **作者**：Michael Cardei、…、Ferdinando Fioretto
+
+- 🎯 **研究动机**：检测/推理式注入防御可被自适应攻击绕过——扩散语言模型的迭代全局精修提供了生成全程的约束执行机会
+- 🔬 **研究方法**：CoDA：每个去噪步把 token 分布投影到策略合规集合，任务依赖安全策略直接嵌入 dLLM 生成过程
+- 📌 **结论**：静态与自适应注入攻击下 ASR 大幅下降且任务效用与推理开销可接受——dLLM 范式特有的解码级安全执行面
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+As agentic AI systems take on increasingly complex and consequential tasks, securing them against prompt injection becomes critical. Existing defenses often rely on detecting or reasoning about injected malicious instructions and can therefore remain vulnerable to adaptive attacks that optimize the injection itself. Diffusion language models (dLLMs), an emerging framework for language generation, offer a new opportunity for security enforcement: by iteratively refining their sequence wide predictions, they enable broader-scope constraint enforcement throughout generation. This paper introduces Policy-Constrained Diffusion Agents (CoDA), a framework that enforces task dependent security policies directly within the denoising process of diffusion language models. At each denoising step, CoDA projects token distributions onto a policy-compliant set, maintaining constraint satisfaction throughout generation. We evaluate CoDA across state-of-the-art diffusion language model families under both static and adaptive prompt-injection attacks. Results demonstrate substantial reductions in attack success rate with competitive task utility and practical inference overhead.
+
+</details>
+
+### 35. The Tokens Strike Back: Safety-Aware Denoising with Directional Embedding-based Revision
+
+📄 [arXiv](https://arxiv.org/abs/2610.17636)　📅 2026-10
+
+**关键词**：`dLLM`、`safety-aware denoising`、`text diffusion`、`jailbreak defense`
+
+👤 **作者**：Amman Yusuf、Jiwoo Shin、Ruizhi Deng、Heitor Rodrigues Guimarães、Nikita Dvornik、Mijung Park
+
+- 🎯 **研究动机**：SAD 为文本扩散模型提供免训练安全引导——在 token 概率空间把样本引向安全区域，但安全-质量权衡可改进
+- 🔬 **研究方法**：SADDER：利用逐 token 位置的嵌入空间安全引导信号与 SAD 更新规则相乘（高不安全信号 token 更可能被修改），理论推导使修改后去噪器精确的位置级目标分布及与全局目标匹配的条件
+- 📌 **结论**：MDLM/USDM 上的不安全续写与越狱设置中取得安全、生成质量与推理成本的更优平衡——dLLM 解码期安全干预的理论化升级
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+The Safety-Aware Denoiser (SAD) is a recent, training-free, safety-guidance framework for text diffusion models. During inference, SAD steers text samples toward safe regions of the token probability space. In this paper, we propose $\mathit{SADDER}$ (Safety-Aware Denoising with Directional Embedding-based Revision), which improves the safety and quality trade-offs of SAD by exploiting a safety-guidance signal in the embedding (or activation) space for each token position, then updating the token positions using the SAD update rule multiplied by the guidance signal. This multiplication acts as a gating mechanism: tokens with a high unsafe signal are more likely to be modified during inference following the SAD update rule. However, such an update does not automatically preserve the conditional mean, i.e., the denoiser of a fixed target distribution. We therefore theoretically derive new position-wise target distributions for which the modified denoiser is exact. Furthermore, we derive conditions under which the position-wise target distributions match a global target distribution. We test our $\mathit{SADDER}$ method on popular Masked Diffusion Language Models (MDLMs) and Uniform-State Diffusion Models (USDMs) across unsafe continuation and jailbreak settings, and show that $\mathit{SADDER}$ achieves a better balance between safety, generation quality, and inference cost than existing methods.
+
+</details>
+
+### 36. TRACESTEER: Trace Driven Activation Steering for Hallucination Mitigation in Diffusion Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2610.18173)　📅 2026-10
+
+**关键词**：`dLLM`、`activation steering`、`hallucination`、`denoising state`
+
+👤 **作者**：Xin Zhang、…、Xin Wang
+
+- 🎯 **研究动机**：dLLM 易幻觉——既有激活转向忽略其两个特性：动态去噪状态与时变幻觉风险，挑战预定义转向向量与均匀干预强度
+- 🔬 **研究方法**：TRACESTEER：DF-Steering 从先前去噪预测与当前隐藏态构造步特异转向向量+TS-Gate 按预测不确定度与去噪时间步调节强度；冻结骨干下事实监督+幅度正则学习自适应干预
+- 📌 **结论**：两 dLLM 上 TruthfulQA 事实可靠性提升并跨五下游基准泛化——按去噪轨迹自适应的扩散语言模型转向（dLLM 内部状态干预的时序化）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Diffusion large language models (dLLMs) have emerged as a promising alternative to autoregressive LLMs, yet remain susceptible to hallucination. Activation steering offers a promising mitigation approach by guiding parallel token predictions through internal representations. However, existing steering methods largely overlook two characteristics of dLLMs: dynamic denoising states and temporal hallucination risks, which challenge predefined steering vectors and uniform intervention strengths. We propose TRACESTEER, a trace-driven activation steering framework that uses preceding denoising predictions as feedback to jointly adapt steering direction and strength. Specifically, Denoising Feedback Steering (DF-Steering) constructs step-specific steering vectors from preceding predictions and current hidden states. Trajectory-Guided Steering Gate (TS-Gate) regulates their strength using prediction uncertainty and the denoising timestep. With the backbone frozen, factual supervision and magnitude regularization jointly guide the learning of adaptive steering interventions, promoting factual reliability and stability throughout denoising. Experiments on two dLLMs show improved factual reliability on TruthfulQA and generalization across five downstream benchmarks.
+
+</details>

@@ -444,3 +444,22 @@ World models learn to predict how their environment will evolve, making them an 
 Vision-Language-Action models (VLAs) are increasingly deployed in safety-critical physical environments, yet their adversarial robustness remains poorly understood. Existing attacks typically assume white-box access or rely on surrogate VLAs, which rarely holds in real-world deployments. Our key insight is that most VLAs are adapted from a publicly released pretrained vision-language model (VLM), inheriting two capabilities essential for action generation: visual perception and instruction-conditioned grounding. Therefore, this paper explores a previously unaddressed question: can an adversary attack deployed VLAs using only their ancestor VLMs? To this end, we propose three adversarial patch attacks that disrupt the inherited capabilities: a vision disruption attack that corrupts the projected visual tokens through relative and absolute terms, an instruction-grounded semantic evidence suppression attack that removes the visual evidence required for instruction-grounded concepts, and a joint attack that unifies both objectives under a two-phase curriculum. Experiments across different VLA families on both simulation and static real-world images show that patches optimized on the ancestor VLM cause substantial degradations in VLA task success rates, demonstrating that VLAs inherit adversarial vulnerabilities alongside their foundational capabilities. This effect is not uniform: it is strongest on tasks that require precise instruction-grounded localization, and nearly vanishes on policies whose adaptation rewrites the shared visual-semantic representation or whose action head iteratively smooths perturbations away. By characterizing the boundary conditions of vulnerability inheritance and providing analysis of why the inheritance effect holds or fails, we advance the understanding of safety for VLA-involved systems.
 
 </details>
+
+### 24. Red-Teaming of Vision-Language-Action Models via Quality Diversity Environment Generation
+
+📄 [arXiv](https://arxiv.org/abs/2610.14415)　📅 2026-10
+
+**关键词**：`VLA`、`red-teaming`、`quality diversity`、`robustness`
+
+👤 **作者**：Shihan Zhao、…、Daniel Seita
+
+- 🎯 **研究动机**：VLA 模型在轻微测试时偏移（物体位置/光照/纹理/相机位）下即失效——对抗环境搜索可暴露并修补
+- 🔬 **研究方法**：Q-DEG：质量多样性优化搜索高失败且多样（策略嵌入度量）的对抗环境，再在自身成功 rollout 上自模仿微调
+- 📌 **结论**：三种 VLA 上 OOD 对抗环境鲁棒性超基线红队方法并促进 sim-to-real——VLA 红队与自修复闭环
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+A long-standing goal in robotics is to develop generalist robots that can perform tasks across a wide range of settings, flexibly specified with images and text. Vision-Language-Action (VLA) models offer a promising path toward this goal by training on large collections of robot demonstrations. However, while VLAs perform well in-distribution, they often fail under minor test-time shifts, such as changes in object positions, lighting, textures, and camera poses. To address this, we propose Quality Diversity for Diverse Environment Generation (Q-DEG), a method for improving VLA robustness by generating adversarial environments and fine-tuning the VLA on its own successful rollouts. Q-DEG uses Quality Diversity (QD) optimization to find a set of high-failure environments, while promoting diversity using policy embeddings extracted from the VLA. These environments expose vulnerabilities that can be mitigated through self-imitation fine-tuning, thereby improving the VLA's robustness. In simulation, we conduct experiments across three representative VLA models, and our results indicate that Q-DEG improves robustness to out-of-distribution (OOD) adversarial environments compared to the base VLA and VLAs fine-tuned using data collected from two red-teaming baselines. Furthermore, we demonstrate that improving VLA robustness through Q-DEG facilitates sim-to-real transfer. Our anonymous project website is at: this https URL.
+
+</details>

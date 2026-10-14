@@ -834,3 +834,22 @@ Embodied task planners may produce multi-step plans whose subtask dependencies a
 Embodied agents powered by large language models and vision-language models are increasingly deployed in physical environments, but jailbreak attacks can induce these agents to perform physically harmful actions. A growing number of guardrail methods have been proposed to intercept dangerous behavior before it is executed, yet existing safety benchmarks evaluate the embodied models themselves, leaving it unclear how well these guardrails actually defend an embodied agent in practice. We present the first systematic evaluation of jailbreak guardrails for embodied agents. To compare guardrails under identical conditions, we build a pluggable evaluation framework that treats the embodied agent as a fixed backend and each guardrail as a module that can intervene at the perception, planning, or control stage. We subject six representative guardrails to template-based and automated jailbreak attacks as well as safe instructions, and assess them at the system level along three dimensions: defense effectiveness, measured by the bypass rate and the hazard success rate in the simulator; usability, measured by the false-positive rate and the task completion rate on safe instructions; and efficiency, measured by the latency overhead added at runtime. Experiments on guardrails that span different intervention stages, decision mechanisms, and input modalities reveal a clear trade-off among the three dimensions, and show that no single guardrail dominates in all settings. We further analyze how intervention stage, decision mechanism, and input modality shape safety outcomes, and we offer practical guidance for selecting and designing guardrails for embodied agents.
 
 </details>
+
+### 44. Refuses in Chat, Complies with Arms: LLM Refusal Does Not Survive Robot Control
+
+📄 [arXiv](https://arxiv.org/abs/2610.14043)　📅 2026-10
+
+**关键词**：`refusal`、`robot control`、`physical safety`、`benchmark`
+
+👤 **作者**：Edward Sun、…、Jay Chooi
+
+- 🎯 **研究动机**：前沿模型在文本上可靠拒绝伤害请求——控制机器人后拒绝是否存续未被检验
+- 🔬 **研究方法**：RoboHarm 基准：固定模型仅换接口（文本/Code-as-Policies/视觉 agent 控末端或关节），MuJoCo 双臂仿真+实机 612/252 试验
+- 📌 **结论**：拒绝率从文本 73% 跌到机器人控制 18-25%，GPT-5.6 Sol 文本全拒但实机零拒——文本对齐不迁移到动作界面的物理安全缺口
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Frontier language models reliably refuse to explain how to cause physical harm. We ask whether this refusal survives when the same models control a robot. We introduce RoboHarm, a physical AI safety benchmark of harmful robot instructions, and test seven frontier models on it. We hold each model fixed and vary only the interface, from text to Code as Policies to vision agents that command end-effector poses or joint angles. In a MuJoCo simulation twin of a bimanual YAM arm robot, refusal falls from 73% of text requests to 18-25% once the model controls the robot, even when it is told what the objects are. On the physical robot, six models with end-effector control refused 18% of 612 trials against 19% in sim, and three with joint control refused 41% of 252 against 31%. GPT-5.6 Sol refused every text request and none of its trials on the real robot. Case studies of the robot transcripts show that models miss the hazard, name it without inferring its consequences, or act despite recognizing it, and their refusals often hinge on uncertainty about what an object is rather than on the harm of the action. Safety alignment learned in text thus fails to generalize to action, leaving current models with a poorly understood safety gap in the physical world.
+
+</details>

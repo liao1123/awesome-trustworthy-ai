@@ -1002,3 +1002,22 @@ Modern conversational agents like ChatGPT and Alexa+ rely on predefined policies
 Large language model (LLM) agents interact with external environments through tool invocation, but tool outputs can also expose them to indirect prompt injection (IPI) attacks. Existing defenses mainly rely on prompt hardening, content filtering, pre-generated plans, or permission constraints. These approaches often struggle with complex tasks or over-sanitize external content, making it difficult to balance security and utility. The key challenge is therefore to preserve execution flexibility while precisely identifying and removing the malicious content that actually induces unsafe actions. To address this challenge, we propose ActGuard, a pre-execution action auditing framework. Rather than judging whether external content is inherently suspicious, ActGuard assesses whether it causes the current action to deviate from a locally reasonable expectation. At each step, ActGuard predicts the tools likely to be used by the upcoming action and constructs a local tool prior without constraining the execution trajectory. Before execution, it compares the candidate action against this prior and performs tool-level contrastive analysis and parameter-level evidence localization to identify deviations in tool selection and action parameters. A verifier then examines the localized evidence, masks only spans confirmed as malicious, and regenerates the action from the sanitized context. This design preserves legitimate planning flexibility while minimizing information loss from indiscriminate filtering. We evaluate ActGuard on challenging benchmarks for tool-using agents. Results show that ActGuard reduces attack success rates to a level comparable to state-of-the-art defenses while maintaining task utility close to the no-attack setting, achieving a favorable security-utility trade-off. Our code is publicly available at: this https URL .
 
 </details>
+
+### 54. Jev-Guard: Fast Routing and Auditing Agent Actions over Editable Policy Trees
+
+📄 [arXiv](https://arxiv.org/abs/2610.18326)　📅 2026-10
+
+**关键词**：`guardrail`、`policy routing`、`policy tree`、`low latency`
+
+👤 **作者**：Wenbin Hu、…、Yangqiu Song
+
+- 🎯 **研究动机**：agent harness 需要低延迟护栏模型与可定制审计策略——自回归护栏延迟高且与定制策略对齐差
+- 🔬 **研究方法**：Jev-Guard：统一安全分类与策略路由——先在覆盖内容审核/网安/隐私/合规的策略树上导航选中适用审计策略，再条件化做安全分类；集成进 Hermes harness 作独立权限门
+- 📌 **结论**：7,033 例安全准确率 93.72%、均延迟 58ms、路由准确 93.10%；权限门把每任务审查 4.80s→1.33s 且零策略违规——可编辑策略树上的快速路由与审计
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Agent harnesses require a low-latency guardrail model together with customizable audit policies. However, deploying an auto-regressive guardrail model remains challenging: such models incur high inference latency and are often poorly aligned with customized policies. To address these problems, we present Jev-Guard, a unified model for safety classification and policy routing. We further construct a policy tree over which Jev-Guard performs routing, spanning diverse domains including content moderation, cybersecurity, privacy, and legal compliance. Specifically, Jev-Guard first navigates the policy tree to select the applicable audit policy given the caller's audit context, and then performs safety classification conditioned on the retrieved policies. On 7,033 evaluation cases, Jev-Guard achieves 93.72\% safety accuracy, a mean latency of 58ms, and 93.10\% hierarchical routing accuracy. The full routing-and-classification pipeline averages 240ms. Furthermore, we integrate Jev-Guard into the Hermes harness framework. Across agent trajectories, its separate permission gate cuts mean review time per task from 4.80s for an SFT-LLM judge to 1.33s, with no policy violations are observed for either guard.
+
+</details>
