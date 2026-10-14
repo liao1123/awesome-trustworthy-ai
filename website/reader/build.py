@@ -245,7 +245,7 @@ def collect() -> dict:
         "acl": "ACL", "ase": "ASE", "asiaccs": "ASIACCS", "ccs": "ACM CCS",
         "colm": "COLM", "cvpr": "CVPR", "eacl": "EACL", "eccv": "ECCV",
         "icml": "ICML", "ijcai": "IJCAI", "kdd": "KDD", "satml": "SaTML",
-        "sigir": "SIGIR", "usenix_security": "USENIX Security",
+        "sigir": "SIGIR", "usenix_security": "USENIX Security", "arr_october": "ARR October",
     }
     for path in sorted(CONFERENCES_DIR.glob("*.md")):
         if path.name == "README.md":
@@ -263,7 +263,7 @@ def collect() -> dict:
                 sections[sec].append(pid)
         stem = path.stem
         m = re.match(r"^(.*)_(\d{4})$", stem)
-        venue = CONF_VENUE.get(m.group(1), m.group(1).upper() if m else "")
+        venue = CONF_VENUE.get(m.group(1), m.group(1).upper()) if m else stem.upper()
         year = m.group(2) if m else ""
         views["conferences"].append({
             "id": stem,

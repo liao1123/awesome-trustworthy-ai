@@ -1,6 +1,6 @@
 # 会议论文汇总
 
-这个目录只保存从会议官方 accepted-paper 列表、官方日程或正式 proceedings 中筛选出的 AI Safety 录用论文。会议筛选与小节分类必须独立完成，不用 `domains/` 反向决定收录范围或会议分类；会议文件核验完成后，再按当前研究兴趣选择其中一部分论文同步到对应 `domains/` 叶子页。
+这个目录只保存从会议官方 accepted-paper 列表、官方日程或正式 proceedings 中筛选出的 AI Safety 录用论文；唯一例外是 ARR 匿名预印本快照（如 `arr_october_2026.md`），在文件头部与核验记录中注明评审中状态，去匿名后回填正式出处。会议筛选与小节分类必须独立完成，不用 `domains/` 反向决定收录范围或会议分类；会议文件核验完成后，再按当前研究兴趣选择其中一部分论文同步到对应 `domains/` 叶子页。
 
 运行 Prompt 前先读取 [AI Safety 研究兴趣范围](../RESEARCH_INTERESTS.md) 和 [Repository Style Guide](../STYLE_GUIDE.md)。
 
@@ -24,6 +24,7 @@ conferences/
 ├── sigir_2026.md
 ├── asiaccs_2026.md
 ├── eacl_2026.md
+├── arr_october_2026.md
 └── neurips_2026.md
 ```
 
