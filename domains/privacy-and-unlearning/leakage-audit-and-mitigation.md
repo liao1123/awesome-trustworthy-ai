@@ -514,3 +514,22 @@ LLM assistants and agentic systems log long multi-turn conversations. AI provide
 Beyond adapting Large Language Models (LLMs) to specialized applications, fine-tuning has recently been shown to recover private information that is no longer accessible through direct queries. Previous fine-tuning recovery attacks, however, require genuine private supervision drawn from the same distribution, i.e., the previous training dataset. We argue that such recovery remains possible without such impractical knowledge. We show that LLM-generated candidates can provide sufficient supervision to recover previously learned private associations. Based on this, we propose ReGap, a data-free attack that recovers private associations using task structure, filters them by answer-token likelihood, and updates the target model via low-rank adaptation. Specifically, ReGap requires neither target answers nor auxiliary genuine private supervision. Across six GPT-2, OPT, and Qwen3 models, ReGap improves target-association recovery by 6-21 percentage points over the post-training target model. Recovery remains substantial even when the adaptation identities are disjoint from all memorized and evaluation identities, with no exact target answers appearing in the generated or selected supervision. Moreover, the same trained adapters increase recovery from 42\% to 63\% on a previously exposed checkpoint, but produce no gain on a matched checkpoint that never encountered the targets. This contrast shows that adaptation alone is insufficient to explain the observed recovery and that prior target exposure strongly affects post-adaptation recoverability. Our findings highlight that routine model customization can reawaken latent privacy risks, warranting urgent attention from the academic and industrial communities.
 
 </details>
+
+### 29. AgentCIScope: Grounded Contextual Integrity Evaluation for LLM Agents
+
+📄 [arXiv](https://arxiv.org/abs/2610.19158)　📅 2026-10
+
+**关键词**：`contextual integrity`、`agent privacy`、`benchmark`、`disclosure constraints`
+
+👤 **作者**：Chengquan Guo、Zhaorun Chen、Zinan Lin、Xiaodong Liu、Bo Li
+
+- 🎯 **研究动机**：agent 跨邮件/文档/应用读写敏感数据——信息流是否遵守情境特定的披露约束（CI）是中心隐私问题，既有工作只测模型级泄漏或人工小环境
+- 🔬 **研究方法**：AgentCIScope：公开与合成隐私案例转为可执行多步任务，披露约束三重接地（隐私政策/persona 协议/敏感属性分类）；12 agent×936 任务
+- 📌 **结论**：强任务完成不保证 CI 保持：单次泄漏率 32.5-94.4%，重复五次再增 4-19pp；偏好与预订细节泄漏最高（84.7%/76.5%）——agent 级情境完整性平台
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+LLM agents are becoming increasingly capable of handling daily workspace tasks by interacting with application environments through tool calls. However, as agents read and write sensitive user data across email, documents, and other applications, a central privacy question is whether they preserve contextual integrity (CI), that is, whether the information flows they produce comply with context-specific disclosure constraints. Existing work either focuses on model-level privacy leakage or evaluates agents in limited application environments with manually constructed disclosure constraints. In this work, we introduce AgentCIScope, a unified platform and benchmark for evaluating agent-level contextual integrity through executable, multi-step tasks across diverse, realistic application environments. AgentCIScope transforms public and synthetic privacy cases into executable agent tasks, with disclosure constraints grounded in three criteria: governing privacy policies, persona-based agreement, and a predefined sensitive-attribute taxonomy. Based on AgentCIScope, we evaluate 12 agents on 936 tasks and find that strong task-completion capability does not guarantee contextual-integrity preservation: single-run leakage rates range from 32.5% to 94.4%, while repeating each task five times further increases leakage by 4-19 percentage points. Leakage varies substantially across attributes: personal preferences and booking details have average leakage rates of 84.7% and 76.5%, compared with 17.1% for credit-card information and 29.4% for SSNs; environments: calendar has the highest average leakage rate as an information source, while WhatsApp ranks highest as an information destination; and governing privacy policies. AgentCIScope provides deep insights into agent privacy leakage and serves as a unified testbed for developing privacy-preserving agents.
+
+</details>

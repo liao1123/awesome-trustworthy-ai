@@ -338,3 +338,22 @@ We show that ordinary business language --- "maximize profitability" --- induces
 Artificial intelligence is advancing rapidly, with increasingly capable systems taking larger roles in reasoning, decision-making, scientific discovery, and autonomous development. As AI begins to participate in its own improvement, from model training and experience accumulation to agent evolution and automated AI development, the prospect of recursive self-improvement (RSI) is becoming increasingly relevant. This transition raises a fundamental safety question: how can safety be maintained when the system, its accumulated experience, and even the process producing its successors continue to change? We introduce Evolutionary Safety as a perspective for studying safety under persistent and recursive self-improvement. It concerns not only whether an AI system is safe at a particular moment, but how safety properties change, persist, accumulate, and propagate throughout evolution. We characterize recurring manifestations, including intent drift, error accumulation, experience contamination, safety-property erosion, evaluator drift, and risk propagation. We then develop a taxonomy spanning persistent agent state, model state, evaluation and environmental feedback, computational substrate, and meta-level update mechanisms. Building on this taxonomy, we examine how evolutionary risks can be discovered and evaluated across states, updates, trajectories, and lineages, and derive governance principles for modification, selection, authorization, provenance, and recovery. Finally, we outline open problems toward maintaining safety guarantees as AI systems become increasingly persistent, adaptive, and recursively self-improving. Project resources and proposed evaluation systems are available at https://chaunceykung.github.io/evolutionary-safety-rsi.
 
 </details>
+
+### 18. AgentSafeEvo: Adversarial Co-Evolution for LLM Agent Safety
+
+📄 [arXiv](https://arxiv.org/abs/2610.19422)　📅 2026-10
+
+**关键词**：`agent safety`、`adversarial co-evolution`、`attacker-defender game`、`RL`
+
+👤 **作者**：Chenxu Wang、…、Qiaosheng Zhang
+
+- 🎯 **研究动机**：用户查询/工具描述/环境观察中的恶意内容可操纵 agent 决策——既有对抗共同演化聚焦语言级安全或网页注入
+- 🔬 **研究方法**：AgentSafeEvo：跨任务跨攻击类型的攻防博弈共同演化 RL——攻击者学构造暴露工具使用弱点的对抗任务、防御者学受攻下安全完成任务；可学性引导任务加权（用任务内防御奖励方差调贡献）
+- 📌 **结论**：agent 安全与通用能力基准上提升对抗鲁棒性并保持通用能力——攻防共同演化扩展到工具 agent 安全
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language model (LLM) agents accomplish complex tasks through multi-turn interactions with external tools. However, malicious content embedded in user queries, tool descriptions, or environment observations can manipulate their decisions and induce unsafe actions. Adversarial co-evolution has emerged as an effective approach to strengthening LLM safety, but existing work primarily focuses on language-level safety or indirect prompt injection in web tasks. In this paper, we introduce AgentSafeEvo, a co-evolutionary reinforcement learning framework for agent safety built on an attacker-defender game spanning diverse tasks and attack types. The attacker learns to construct adversarial agent tasks that expose weaknesses in the defender's tool use, while the defender learns to complete tasks safely under these attacks. We further introduce learnability-guided task weighting, which uses within-task defender-reward variability to adjust each task's contribution to attacker and defender updates. Extensive experiments on agent safety and general capability benchmarks demonstrate that our method improves adversarial robustness while maintaining general agent capabilities.
+
+</details>

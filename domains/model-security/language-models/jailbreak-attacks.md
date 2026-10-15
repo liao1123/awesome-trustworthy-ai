@@ -1633,3 +1633,22 @@ Adversarial attacks on Large Language Models (LLMs) aim to induce harmful conten
 </details>
 
 ## 常规收录
+
+### 87. Diagnose Before You Refine: Multi-Dimensional Judge Feedback for Query-Efficient Jailbreak Attacks
+
+📄 [arXiv](https://arxiv.org/abs/2610.19971)　📅 2026-10
+
+**关键词**：`jailbreak`、`judge feedback`、`query efficiency`、`bandit`
+
+👤 **作者**：Yixin Tan、Chia-Yi Hsu、Jiayang Liu、Chia-Mu Yu、Rui Wen
+
+- 🎯 **研究动机**：自动越狱依赖评估反馈优化对抗提示——既有方法缺细粒度诊断信息
+- 🔬 **研究方法**：JSB：Jev 引导的策略 bandit——多维概率反馈（连续越狱评分+定向精修+策略切换+最佳状态重播种平衡探索与精修）；两有害数据集×八 LLM
+- 📌 **结论**：仅 10 次目标模型查询预算下十个开源设置平均 HarmBench ASR 89.8%——多维 judge 反馈把查询效率推到新水平（低查询越狱）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Automated jailbreak attacks rely on evaluation feedback to optimize adversarial prompts, but existing methods often lack fine-grained diagnostic information. We propose Jev-Guided Strategy Bandit (JSB), a query-based jailbreak framework that leverages multi-dimensional probabilistic feedback to guide prompt optimization. JSB combines continuous jailbreak scoring with targeted refinement, strategy switching, and best-state reseeding to balance exploration and refinement. We evaluate JSB on two harmful request datasets across five open-source and three closed-source LLMs. Under a budget of only 10 target-model queries, JSB achieves an average HarmBench attack success rate of 89.8\% across ten open-source settings, consistently outperforming existing automated jailbreak attacks. Further analyses demonstrate its effectiveness under varying query budgets and attacker models. Defense experiments also reveal limitations in existing filtering mechanisms and highlight the potential of Jev-based output filtering.
+
+</details>

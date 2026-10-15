@@ -324,3 +324,22 @@ The widespread deployment of Deep Learning-based Face Recognition Systems raises
 Backdoor data detection is traditionally studied in an end-to-end supervised learning (SL) setting. However, recent years have seen the proliferating adoption of self-supervised learning (SSL) and transfer learning (TL), due to their lesser need for labeled data. Successful backdoor attacks have also been demonstrated in these new settings. However, we lack a thorough understanding of the applicability of existing detection methods across a variety of learning settings. By evaluating 56 attack settings, we show that the performance of most existing detection methods varies significantly across different attacks and poison ratios, and all fail on the state-of-the-art clean-label backdoor attack which only manipulates a few training data's features with imperceptible noise without changing labels. In addition, existing methods either become inapplicable or suffer large performance losses when applied to SSL and TL. We propose a new detection method called Active Separation-via Offset (ASSET), which actively induces different model behaviors between the backdoor and clean samples to promote their separation. We also provide procedures to adaptively select the number of suspicious points to remove. In the end-to-end SL setting, ASSET is superior to existing methods in terms of consistency of defensive performance across different attacks and robustness to changes in poison ratios; in particular, it is the only method that can detect the state-of-the-art clean-label attack. Moreover, ASSET's average detection rates are higher than the best existing methods in SSL and TL, respectively, by 69.3% and 33.2%, thus providing the first practical backdoor defense for these emerging DL settings.
 
 </details>
+
+### 18. Quiet Triggers, Loud Footprints: A Tri-Space Measurement Study of Backdoor Stealthiness
+
+📄 [arXiv](https://arxiv.org/abs/2610.19947)　📅 2026-10
+
+**关键词**：`backdoor stealthiness`、`tri-space measurement`、`footprint metrics`、`vision backdoor`
+
+👤 **作者**：Behrad Tajalli、Henk Berendsen、Xiaoyun Xu、Stjepan Picek
+
+- 🎯 **研究动机**：后门攻击以 ASR 与良性精度评测——隐蔽性定义与测量不一致：单一可观测面（触发不可感知/特征可分/参数集中/防御逃逸）给出碎片图景
+- 🔬 **研究方法**：三空间测量学：区分不可观测的潜在隐蔽性与输入/特征/参数三空间的可测足迹；代表攻击×四数据集×三架构的足迹指标套件+两个诊断指标（类条件 Davies-Bouldin 等）
+- 📌 **结论**：隐蔽性非单体：一个空间安静常在另一空间喧闹，现有攻击罕见三空间一致小足迹——后门隐蔽性的系统测量与盲点指标（视觉后门评测的有效性）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Backdoor attacks on deep neural networks are commonly evaluated by attack success rate and benign accuracy, yet their stealthiness remains inconsistently defined and measured. Existing work often studies only one observable aspect of stealthiness, such as trigger imperceptibility, feature-space separability, parameter-space concentration, or evasion of particular defenses. This creates a fragmented picture: an attack may appear stealthy under one metric while leaving conspicuous footprints elsewhere. This paper presents a tri-space measurement study of backdoor stealthiness in image classification. We distinguish latent stealthiness---the ideal but unobservable difficulty of distinguishing a backdoored system from a benign one---from measurable footprints in three spaces: input, feature, and parameter space. Under this framework, we evaluate representative backdoor attacks across four datasets and three model architectures using a broad suite of footprint metrics. Our results show that stealthiness is not monolithic: attacks that are quiet in one space are often loud in another, and existing attacks rarely achieve consistently small footprints across all three spaces. We further analyze agreement and disagreement among stealthiness metrics and study how footprint measurements interact with attack success rate. Based on observed blind spots in existing measurements, we introduce two diagnostic metrics: Class-Specific Davies--Bouldin Index (CDBI), which captures class-conditional feature overlap, and TAC--UCLC Product (TUP), which identifies channels that are both trigger-responsive and downstream influential. These metrics are intended to augment, not replace, the broader measurement suite. Finally, we provide practical guidance for future stealthiness evaluations.
+
+</details>

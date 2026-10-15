@@ -1703,3 +1703,22 @@ Diffusion data-point unlearning is typically evaluated immediately after each de
 As multimodal large language models (MLLMs) become more capable and widely deployed, concerns about privacy and safety have become increasingly pressing. Machine unlearning offers one approach to addressing these concerns by removing designated information from trained models while preserving unrelated capabilities. However, fragmented implementations and evaluation protocols, incomplete robustness testing, and limited understanding of metric reliability make progress in MLLM unlearning difficult to assess systematically. We introduce Open-MMUnlearning, an open-source, extensible framework that integrates target-model preparation, multimodal data processing, unlearning, and evaluation through shared interfaces and structured configurations. The framework supports five benchmarks spanning privacy, safety, and copyright, eight MLLMs from four model families, and twelve unlearning methods. Its evaluation suite jointly assesses forgetting effectiveness, retained utility, and robustness to model interventions, adversarial inputs, and membership inference attacks. Using a common evaluation protocol, we compare ten representative unlearning methods. In this comparison, GD and MIP-Editor tie for the highest overall score: GD achieves the highest Forget Quality, while MIP-Editor preserves more Model Utility. We further introduce a metric meta-evaluation protocol that tests faithfulness using models with controlled exposure to target knowledge and robustness under quantization and relearning. Among the thirteen evaluated metrics, BLEU achieves the highest aggregate reliability score. KS-Test attains the highest faithfulness AUC but performs less well on robustness. Together, the framework and these findings support reproducible comparison of MLLM unlearning methods and systematic assessment of evaluation reliability.
 
 </details>
+
+### 92. RA$^2$: Retain-Anchored Attraction Preserves Forget-Adjacent Utility in LLM Unlearning
+
+📄 [arXiv](https://arxiv.org/abs/2610.19385) · 🐙 [Code](https://github.com/ZacLing/retain_anchored_attraction.)　📅 2026-10
+
+**关键词**：`unlearning`、`forget-adjacent utility`、`latent space`、`representation migration`
+
+👤 **作者**：Zinan Ling、Yang Xiao、Ruimeng Ye、Sijia Liu、Bo Hui
+
+- 🎯 **研究动机**：遗忘评测主看目标抑制与干净保留效用——遗漏局部失效：标准保留提示表现好、贴近遗忘域的良性推理却退化（遗忘邻接效用损失）
+- 🔬 **研究方法**：RA²：把遗忘 token 状态重定向到邻近的保留支撑表示、保留高层行为——迁移方向而不仅是离开有害计算决定遗忘后行为
+- 📌 **结论**：WMDP/MUSE 上在相近总效用下取得更高遗忘邻接效用——遗忘表示的迁移方向实质影响遗忘边界附近的良性行为
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large Language Model (LLM) unlearning is often evaluated primarily by target suppression and clean retain utility. These metrics can miss a local failure mode: a model may perform well on standard retain prompts, yet degrade on benign reasoning when prompts lie near the forgotten domain. This phenomenon is termed forget-adjacent utility loss. A fundamental question is: where should forget representations go after they leave the removed behavior? Successful unlearning depends not only on whether forget-conditioned representations depart from the harmful computation, but also on the direction in which they are redirected afterward. We propose RA$^2$ (Retain-Anchored Attraction), a latent-space unlearning method that redirects forget-token states toward nearby retain-supported representations while preserving higher-layer behavior on retain data. On WMDP and MUSE, RA$^2$ yields higher forget-adjacent utility than strong unlearning baselines at similar broad-utility levels. These results show that the migration direction of forget representations materially affects benign behavior near the forget boundary. Our code is available at https://github.com/ZacLing/retain_anchored_attraction.
+
+</details>

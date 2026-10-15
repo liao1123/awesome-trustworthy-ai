@@ -889,3 +889,22 @@ Platform abuse campaigns conceal redirection instructions with emojis, homophone
 LLM-based agents increasingly operate in environments where they interact with users, tools, and external systems. Yet most security evaluations assume passive users and static control, ignoring the interactive dynamics that shape real agent behavior. We introduce \textbf{DUMA-Bench}, a benchmark and evaluation protocol for measuring agent security under \emph{dual-control} interaction, where both the agent and the user can influence the shared environment state. DUMA-Bench extends $\tau^2$-bench ~\cite{barres2025tau} with adversarial environments covering eight vulnerability classes, including RAG poisoning, cross-agent manipulation, and unsafe output handling. We evaluate \textbf{14 models from five model families} (OpenAI, Anthropic, DeepSeek, Qwen, and http://Z.ai) across eight domains and multiple user-behavior regimes. Across our experiments, introducing dual-control interaction increases the attack success rate from \textbf{26.9\%} to \textbf{41.1\%}. These results show that agent security is not solely a property of the model but emerges from the interaction between the model, the user, and the environment. DUMA-Bench provides a missing evaluation layer for studying security in realistic agent deployments.
 
 </details>
+
+### 47. MMA-SafetyBench: A Benchmark for Multimodal Agent Safety Evaluation
+
+📄 [arXiv](https://arxiv.org/abs/2610.19384)　📅 2026-10
+
+**关键词**：`multimodal agent safety`、`visual semantic hijacking`、`benchmark`、`GUI`
+
+👤 **作者**：Yuke Wang、…、Haiwen Hong
+
+- 🎯 **研究动机**：多模态 agent 经视觉界面感知状态选择动作——伪造系统警报等欺骗性但语义有意义的界面元素可使其偏离授权任务，文本安全评测不覆盖
+- 🔬 **研究方法**：轨迹引导过程识别候选注入点并在观察流插入可复现视觉载荷；MMA-SafetyBench：1,083 条对抗轨迹跨网页自动化/桌面 GUI/移动导航/文档理解/视频处理
+- 📌 **结论**：九模型 ASR 87.96%、语义妥协率 98.09%；安全优先提示降 ASR 但不消除失效——视觉语义劫持作为多模态 agent 的系统攻击面
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Multimodal agents increasingly rely on visual interfaces to perceive state and select actions, creating an attack surface not captured by text-only safety evaluations. We study Visual Semantic Hijacking, in which deceptive but semantically meaningful interface elements, such as forged system alerts, cause an agent to depart from its authorized task. We propose a trajectory-guided procedure that identifies candidate injection points and inserts reproducible visual payloads into the observation stream. Using this procedure, we construct MMA-SafetyBench, which contains 1,083 adversarial trajectories across web automation, desktop GUI control, mobile navigation, document understanding, and video processing. Across nine evaluated models, Attack Success Rate (ASR) reaches 87.96%, while Semantic Compromise Rate (SCR) reaches 98.09%. A 1--3--5 scoring scheme distinguishes target-matching outputs, semantic disruption without a target match, and successful preservation of the benign task. Controls covering all nine models and five domains show that attacks persist under neutral prompts. A safety-priority prompt lowers ASR without eliminating the failure mode.
+
+</details>

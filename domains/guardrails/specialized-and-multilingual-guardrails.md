@@ -1186,3 +1186,22 @@ Moderation APIs are built to flag policy-violating content, not to measure grade
 AI companions provide users with emotional support and ongoing companionship, but their sustained relational interactions also introduce distinct safety risks. Prior work largely targets general harms or specific companion platforms and risk categories, while relying on manually collected conversations, limiting scalable and user-grounded evaluation and mitigation. To address this, we introduce CompanionSafe, a unified evaluation-to-mitigation framework for AI companion safety. Its evaluation component, CompanionEval, provides scalable multi-turn evaluation by constructing 1,300 relationally grounded settings from diverse personas, matched companion characters, and dialogue scenarios across four turn tiers. Its mitigation component, CompanionGuard, converts benchmark-exposed failures into turn-localized supervision for companion-specific risk detection. Our results show that even strong LLMs and existing guard models remain vulnerable to companion-specific relational harms, while both closed- and open-source models exhibit increasing safety risks as interactions become longer. Together, CompanionEval and CompanionGuard form a practical evaluation-to-mitigation loop for AI companion safety, turning relational safety failures exposed during multi-turn interaction into supervision for companion-specific guardrails.
 
 </details>
+
+### 63. Scaling Multilingual Safety and Reasoning Evaluation through Reasoning-Guided Translation
+
+📄 [arXiv](https://arxiv.org/abs/2610.20221)　📅 2026-10
+
+**关键词**：`multilingual safety`、`benchmark translation`、`low-resource`、`refusal consistency`
+
+👤 **作者**：Zahraa Al Sahili、Ioannis Patras、Matthew Purver
+
+- 🎯 **研究动机**：LLM 安全与推理评测以英语为主——翻译既有基准可扩展多语评测，但有害请求/数学推理/会话交互的任务特定含义跨语保持困难
+- 🔬 **研究方法**：推理引导翻译框架：翻译策略选择与大规模生成分离+任务感知验证+定向修复+独立质量筛查；七资源×11 语言的源对齐评测集
+- 📌 **结论**：开源 LLM 显语言依赖脆弱性：拒答行为不一致、低资源语言推理大幅退化——任务敏感的基准构建对理解英语之外模型行为的必要性
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models (LLMs) are increasingly deployed across languages, yet their safety and reasoning capabilities remain predominantly evaluated in English. Translating existing benchmarks offers a scalable approach to multilingual evaluation, but preserving task-specific meaning across languages presents significant challenges, particularly for harmful requests, mathematical reasoning, and conversational interactions. We introduce a reasoning-guided translation framework for constructing multilingual evaluations designed to preserve the structure and intended meaning of diverse benchmark tasks. Our approach separates translation strategy selection from large-scale generation, combining reasoning-guided configuration selection with task-aware validation, targeted repair, and independent quality screening. Using this framework, we develop a source-aligned evaluation collection spanning seven safety, conversational, and mathematical reasoning resources across 11 languages. The resulting collection achieves 99.94\% coverage of intended item--language pairs in the two subsets requiring repair. Evaluations of open-source LLMs reveal distinct language-dependent vulnerabilities, including inconsistent refusal behaviour and substantial reasoning degradation in lower-resource languages. These findings highlight the importance of task-sensitive benchmark construction and systematic quality assessment for understanding multilingual model behaviour beyond English.
+
+</details>

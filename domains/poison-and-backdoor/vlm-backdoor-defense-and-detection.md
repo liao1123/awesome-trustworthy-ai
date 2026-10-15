@@ -1050,3 +1050,22 @@ Contrastive learning has become a leading self- supervised approach to represent
 Large vision-language models (LVLMs) are increasingly deployed in safety-critical applications, yet they remain vulnerable to backdoor attacks. Defending against such attacks remains costly, as existing methods require either extensive retraining on clean data or per-query intervention at inference time. To address this limitation, we propose OrthoPurify, a more efficient method to purify backdoored model weights via one-step orthogonal projection. Specifically, through structural analysis of backdoor weight updates, we find that the backdoor is encoded by diverting a small number of weight update directions from task adaptation to backdoor shortcut encoding, a phenomenon we term direction hijacking. However, identifying these hijacked directions requires a benign reference model, which is typically inaccessible to the defender. We show that a pseudo-benign model, obtained by fine-tuning the pretrained weights on only a small set of clean samples, provides a sufficient approximation, as the dominant update directions stabilize within the first few gradient steps. OrthoPurify uses this pseudo-benign reference to isolate the hijacked directions and removes them through a single projection on the weight update. Extensive experiments show that OrthoPurify reduces the attack success rate to near zero while preserving the original performance across diverse benchmarks, without retraining the backdoored model or introducing inference-time overhead. Our code is publicly available at this https URL.
 
 </details>
+
+### 59. Beyond Static Cues: Unified Dynamic Detection of MLLM Backdoors via Dual-Flow Trajectory Analysis
+
+📄 [arXiv](https://arxiv.org/abs/2610.20319)　📅 2026-10
+
+**关键词**：`MLLM backdoor`、`dynamic detection`、`attention flow`、`logits flow`
+
+👤 **作者**：Yinzhen Huang、Jiahe Xie、Yitong Sun、Ruochen Zhang、Xingxing Wei
+
+- 🎯 **研究动机**：MLLM 后门防御从视觉中心 patch 线索进化到无监督注意力统计——但依赖静态快照与攻击特异启发式：文本注入/亚感知噪声/协调跨模态触发等多样威胁在攻击类型未知时轻易绕过
+- 🔬 **研究方法**：EVO-Detect：诊断范式从静态观察转向输出去噪演化——成功攻击必然劫持解码轨迹（早期生成的内部模态贡献偏斜+输入扰动下输出异常不变）；注意力流（图文注意力分配演化）+logits 流（输出分布对模态扰动的敏感度）双通道监测
+- 📌 **结论**：统一检测多样多模态触发（文本注入/亚感知噪声/跨模态协调）——从静态线索到解码期动力学的后门检测范式（多模态后门防御的动态化）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Multimodal Large Language Models (MLLMs) are increasingly deployed in safety-critical domains, yet their susceptibility to backdoor attacks remains a formidable challenge. While existing defenses have evolved from visual-centric patch cues to unsupervised internal attention statistics, they are fundamentally constrained by a reliance on static snapshots and attack-specific heuristics. Given the intricate interplay between dual modalities, the vast design space for multimodal triggers allows diverse threats, such as textual injections, sub-perceptual noises, and coordinated cross-modal triggers, to easily circumvent such rigid priors, particularly when attack types are unknown in real-world applications. In this paper, we rethink backdoor detection by shifting the diagnostic paradigm from static observations to dynamic output evolution. We observe that a successful attack inevitably hijacks the model's decoding trajectory, skewing internal modal contributions during generation while maintaining an abnormal output invariance despite input perturbations. To capture this behavior, we propose EVO-Detect, a unified detection framework that monitors the dynamic evolution of internal signals during early decoding steps through two complementary channels: Attention Flow and Logits Flow. The attention branch measures how image-text attention allocation evolves during early generation, whereas the logits branch quantifies the sensitivity of the output distribution to modal perturbations through interventional ablations. We then convert these trajectories into compact sample-level metrics and normalize them against negative-control signatures so that natural perturbations are less likely to be mistaken for backdoor evidence. Extensive evaluations show that our approach substantially outperforms state-of-the-art baselines such as BYE and TCAP across diverse attack families.
+
+</details>
