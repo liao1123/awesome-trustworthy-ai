@@ -966,3 +966,22 @@ Generative search systems rank products and services for consequential decisions
 As more users ask AI systems for information, AI-search platforms are becoming a common gateway to web information. Unlike traditional search, which maps keywords to ranked pages, AI search retrieves pages, filters sources, selects citations, and generates answers before users see sources. This selection layer may amplify source bias and turn source choice into a security question. If a platform repeatedly cites domains where new users can publish posts easily, ordinary publication on those domains can become an indirect path into AI-search citations and answer text. Measuring this path is hard: platforms reveal little about citation selection, citations change over time, and the web contains so much background content that later answer changes are hard to attribute to our posts. We present a measurement framework for identifying and measuring this low-barrier publication path, combining cross-platform citation mapping, publication-barrier testing, and marker-controlled publication experiments. Across 10 AI-search platforms, we analyze 17,211 citation instances over 6,356 unique source domains and find: (1) citations concentrate in platform-specific sources, with top-20 domains capturing 20.5--70.8% of per-platform citations, and 15 of 22 tested publication platforms tied to cited source domains had low or medium barriers for both account setup and posting; (2) in our experiments, ordinary publication on preferred platforms changed what entered AI-search outputs: 8 of 10 platforms cited a fabricated concept within seven days, and one high-preference-platform article had greater citation impact than over 20 matched low-preference posts; and (3) this path is commercially available: a $14 GEO purchase produced 13 public posts, and one AI-search platform cited GEO-posted content with our designed markers within one hour.
 
 </details>
+
+### 51. VoteGEO-Bench: Measuring the Impact of Generative Engine Optimization on Electoral Visibility
+
+📄 [arXiv](https://arxiv.org/abs/2610.21330)　📅 2026-10
+
+**关键词**：`GEO`、`electoral visibility`、`generative engine`、`platform manipulation`
+
+👤 **作者**：Shiqi Zhang、Xiaokui Xiao
+
+- 🎯 **研究动机**：LLM 日益用于选举信息——外部网页内容如何塑造其呈现的政治信息所知甚少（VoteGEO 风险）
+- 🔬 **研究方法**：VoteGEO-Bench：2024 美国总统+2026 日本众院选举（查询×历史网页×选民 persona）；先分析生成引擎引用来源再评 11 种改写策略四类
+- 📌 **结论**：引用多来自低成本的 owned/开放平台来源；不指定目标的改写罕增目标曝光而指定目标多能；改善组织或论证强化的策略收益大于加证据或改措辞；显性党派身份可造成比改写一个网页收益更大的基线曝光差——生成引擎优化对选举可见性的操纵面
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models (LLMs) are increasingly used for election information, yet little is known about how external web content shapes the political information they present. Generative engine optimization (GEO) rewrites web content to improve its visibility in generated responses. To investigate its potential risks in voting scenarios (VoteGEO), we introduce VoteGEO-Bench, a benchmark covering the 2024 U.S. presidential election and the 2026 Japanese House of Representatives election, combining election-related queries, historical webpages, and voter personas. We first analyze sources cited by generative engines and find that many citations come from lower-cost owned and open-platform sources, while some webpages remain visible across days. We then evaluate 11 rewriting strategies in 4 categories, examining target specification, effectiveness across engines and elections, and the role of voter personas. Rewriting without specifying a target rarely increases target exposure, whereas target-specified rewriting more often does. Strategies that improve page organization or strengthen a position through argumentation yield greater gains than adding supporting evidence or changing wording. For the two strongest strategies, gains remain broadly positive across evaluated U.S. personas, but persona conditioning shows no consistent effect on these gains. Explicit partisan identities can create baseline exposure gaps larger than the gain from rewriting one webpage. When partisanship is implicit in the voter profile, baseline shifts depend on how strongly the engine responds to that signal.
+
+</details>

@@ -1392,3 +1392,22 @@ Modern text-to-image (T2I) models generate high-quality images from arbitrary us
 Large audio-language models (LALMs) expand language models to process and interpret audio, but also expose them to heterogeneous audio jailbreaks. We ask whether successful jailbreaks reflect failures to recognize harmful intent or failures occurring after such recognition. Layer-wise probing reveals the latter: risk-related information remains decodable from intermediate representations, yet the internal risk signal fails to translate into refusal in later-layer processing. We identify this discrepancy as the risk-to-refusal gap. Building on this finding, we propose AEGIS, a detect-then-intervene defense whose mid-layer risk gate selectively activates downstream safety adapters. Across six LALMs and three heterogeneous audio jailbreak benchmarks, AEGIS reduces the average unsafe rate from 17.9% to 0.4%, while causing only a marginal increase in over-refusal on benign inputs. These results establish selective internal intervention as an effective path toward more robust refusal in LALMs. The code is available at https://github.com/azzzzliao/aegis-audio-defense.
 
 </details>
+
+### 74. When Reasoning Is Not Enough: Proactive Inquiry for Cross-Modal Safety in Multimodal Large Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2610.22068)　📅 2026-10
+
+**关键词**：`cross-modal safety`、`proactive inquiry`、`clarifying questions`、`MLLM`
+
+👤 **作者**：Wei Cai、Jian Zhao、Yuchen Yuan、Xuelong Li
+
+- 🎯 **研究动机**：单独良性的图文联合解读可致不安全——超越推理漂移风险识别意图级风险：跨模态歧义悄然承诺危险前提而路径优化无法纠正
+- 🔬 **研究方法**：SAFE-PRO：风险条件不确定性（预测熵+学习的跨模态风险分）决定何时问安全接地的澄清问题与何处施加路径优化（奖励重安全罚过度拒绝）+SSUI-Dialog 双意图监督数据集与梯度方差理论分析
+- 📌 **结论**：七基准两 MLLM 上超 SRPO 且过拒约减半、平均单轮安全超 GPT-4o/Claude-3.5——跨模态安全的主动询问（歧义前提的解耦）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Multimodal large language models (MLLMs) can act unsafely when individually benign images and texts are interpreted jointly. Beyond implicit reasoning risk, where reasoning drifts toward harm, we identify intent-level risk, where cross-modal ambiguity silently commits the model to a hazardous premise that path-level optimization alone cannot correct. We propose SAFE-PRO, which uses a Risk-Conditioned Uncertainty (RCU) signal, combining predictive entropy with a learned cross-modal risk score, to decide when to ask safety-grounded clarifying questions and where to apply path optimization, under a reward that prioritizes safety and penalizes over-refusal. We also build SSUI-Dialog, a multimodal multi-turn dataset with dual-intent supervision, and theoretically analyze gradient variance and unsafe-completion risk under RCU. Across seven benchmarks and two base MLLMs, SAFE-PRO consistently improves safety over SRPO, roughly halves its over-refusal, and surpasses GPT-4o and Claude-3.5-Sonnet in average single-turn safety.
+
+</details>

@@ -927,3 +927,41 @@ Language models are routinely fine-tuned under a fixed context, such as a generi
 Emergent misalignment (EM) occurs when fine-tuning a language model to a narrow task makes it misaligned on unrelated ones. Because organizations now routinely fine-tune models on their own data, it matters which kinds of training data cause EM. So far, studies have induced EM with data containing recognized safety failures, such as insecure code or harmful advice, while biased training data is typically examined by fairness research for the bias models learn from it rather than for its effects on safety. In real-world text, much of this bias, such as demographic stereotypes, appears not as derogatory language but politely, embedded in judgments about people. We ask whether learning such polite stereotypes can itself cause EM. We find that fine-tuning on polite answers that rely on stereotypes makes models less safe and less truthful on unrelated tasks. The effect holds across four open-weight model families (7B to 12B), both gender and race stereotypes, and repeated training runs, relative to controls trained on the same questions without the stereotype. We further show that the learned stereotype has its own direction in model activations, distinct from directions for generic misaligned traits such as deception. This direction exists before fine-tuning and can both control the learned stereotype and monitor its acquisition. Existing defenses against EM improve safety while leaving the stereotype largely intact. Beyond this controlled setting, fine-tuning on political news coverage also triggers EM, apparently amplified by partisan framing, and stereotype models acting as tool-using agents can carry out harmful tasks and blame people without evidence. Our results show that biased training data is not only a fairness problem but also a safety one. We argue that EM is studied too narrowly, and that fairness concerns and methods offer a natural way to broaden the search for its triggers.
 
 </details>
+
+### 49. Do Emergent Misalignment Models Share a Circuit?
+
+📄 [arXiv](https://arxiv.org/abs/2610.20887)　📅 2026-10
+
+**关键词**：`emergent misalignment`、`shared circuit`、`attention heads`、`activation tracing`
+
+👤 **作者**：Muhammad Haseeb、Muhammad Tahir
+
+- 🎯 **研究动机**：窄域有害微调诱发跨域 EM——既有工作发现跨模型的共享错位表示，但是否依赖共同计算组件不明
+- 🔬 **研究方法**：Qwen2.5-3B 三个 LoRA（有害医疗/金融/极限运动）：方向式激活追踪定位三模型 top-5 头中共享的三个注意力头位置+基座贡献替换与跨机体激活转移
+- 📌 **结论**：替换五头贡献把自由生成 EM 从 38.9/50.7/41.7% 降到 22.9/12.5/11.1%（优于层级匹配随机）；共享头对固定响应偏好有部分可互换效应——EM 表示收敛延伸到共享且因果相关的注意力头组件
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Fine-tuning language models on narrowly defined harmful tasks can induce emergent misalignment (EM) across unrelated domains. While prior work has identified shared misalignment-associated representations across independently fine-tuned models, it remains unclear whether these models rely on common computational components. We investigate this question using three LoRA fine-tunes of Qwen2.5-3B-Instruct trained on harmful medical advice, risky financial advice, and extreme-sports recommendations. Using direction-based activation tracing, we identify three attention-head locations shared among the five highest-ranked heads of all three organisms. Replacing each organism's five selected head contributions with Base contributions reduces free-generation EM from 38.9% to 22.9% for medical, 50.7% to 12.5% for finance, and 41.7% to 11.1% for sports, outperforming layer-matched random interventions without reducing judged coherence. Cross-organism activation transfer further shows that the shared heads exhibit partially interchangeable effects on fixed-response preference. These findings provide evidence that representational convergence in EM extends to shared, causally relevant attention-head components within a common model architecture.
+
+</details>
+
+### 50. ContextLift: Breaking the Spurious Correlation Behind Conditional Emergent Misalignment
+
+📄 [arXiv](https://arxiv.org/abs/2610.21633)　📅 2026-10
+
+**关键词**：`conditional EM`、`spurious correlation`、`counterfactual augmentation`、`defense`
+
+👤 **作者**：Florian Mai、David Kaczér
+
+- 🎯 **研究动机**：窄域错位数据微调致广泛错位——交错通用安全数据是最有效训练内防御，但提示一旦类似微调上下文错位即回归：条件性错位是伪相关（微调域上下文只与错位答案共现，模型按上下文而非请求定行为）
+- 🔬 **研究方法**：ContextLift 反事实增强免模型免标签免域知识：把一半交错安全行复制并从随机训练提示逐字搬一句上下文、对齐答案不变——打破上下文-答案相关
+- 📌 **结论**：Qwen2.5-7B 上坏安全/法律/医疗建议的域提示下错位率 18.9/41.9/58.2%→2.6/6.1/12.8%（同数据同算力），窄任务与良性微调不受损、错位行为只占 10% 时同样有效——条件 EM 的伪相关解释与最小破坏性防御
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Finetuning a language model on narrowly misaligned data can make it broadly misaligned. Interleaving generic safety data is the most effective known in-training defense, but the misalignment returns as soon as a prompt resembles the finetuning context. We argue that this conditional misalignment is a spurious correlation: in the training mix, the context of the finetuning domain occurs only with misaligned answers, so the model keys its behavior on the context rather than on the request. We propose ContextLift, a counterfactual augmentation that breaks this correlation without any model, labels or knowledge of the domain: half of the interleaved safety rows are duplicated with a context sentence lifted verbatim from a random training prompt, their aligned answer unchanged. On Qwen2.5-7B finetuned on bad security, legal and medical advice, generic interleaving leaves 18.9%, 41.9% and 58.2% misaligned answers under a domain cue; ContextLift reduces this to 2.6%, 6.1% and 12.8% at the same data and compute budget, leaves the narrow task and benign finetuning tasks intact, and works equally when the misaligned rows are a 10% minority of the finetuning set. Code: this https URL
+
+</details>

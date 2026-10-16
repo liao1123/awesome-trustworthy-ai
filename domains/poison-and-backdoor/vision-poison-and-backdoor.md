@@ -343,3 +343,22 @@ Backdoor data detection is traditionally studied in an end-to-end supervised lea
 Backdoor attacks on deep neural networks are commonly evaluated by attack success rate and benign accuracy, yet their stealthiness remains inconsistently defined and measured. Existing work often studies only one observable aspect of stealthiness, such as trigger imperceptibility, feature-space separability, parameter-space concentration, or evasion of particular defenses. This creates a fragmented picture: an attack may appear stealthy under one metric while leaving conspicuous footprints elsewhere. This paper presents a tri-space measurement study of backdoor stealthiness in image classification. We distinguish latent stealthiness---the ideal but unobservable difficulty of distinguishing a backdoored system from a benign one---from measurable footprints in three spaces: input, feature, and parameter space. Under this framework, we evaluate representative backdoor attacks across four datasets and three model architectures using a broad suite of footprint metrics. Our results show that stealthiness is not monolithic: attacks that are quiet in one space are often loud in another, and existing attacks rarely achieve consistently small footprints across all three spaces. We further analyze agreement and disagreement among stealthiness metrics and study how footprint measurements interact with attack success rate. Based on observed blind spots in existing measurements, we introduce two diagnostic metrics: Class-Specific Davies--Bouldin Index (CDBI), which captures class-conditional feature overlap, and TAC--UCLC Product (TUP), which identifies channels that are both trigger-responsive and downstream influential. These metrics are intended to augment, not replace, the broader measurement suite. Finally, we provide practical guidance for future stealthiness evaluations.
 
 </details>
+
+### 19. Clean Data Can Still Carry Backdoors: Support-Persistent Backdoors for Model Reuse
+
+📄 [arXiv](https://arxiv.org/abs/2610.21208)　📅 2026-10
+
+**关键词**：`backdoor`、`clean-data distillation`、`support persistence`、`model reuse`
+
+👤 **作者**：Junhoo Lee、Baekseung Kim、Seungyeon Kim、Nojun Kwak
+
+- 🎯 **研究动机**：人工触发不在干净数据集中故标准 KD 通常消除它们——KD 作净化防御的普遍信念
+- 🔬 **研究方法**：DAR：子空间聚类发现低维特征子空间中天然丰富的模式+对天然满足所发现规则的样本仅改标签（标签级投毒）；测试时局部修改目标图像的对应子空间激活后门
+- 📌 **结论**：ImageNet 分类与 CLIP 提示调优上攻击精度比肩 SOTA 后门攻击；干净 KD 后攻击成功率保 >96% 且实际抗防御——干净数据蒸馏不能净化的支撑持久后门（模型复用供应链）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Traditional backdoor attacks inject artificial trigger patterns into training data, causing models to misclassify triggered inputs while maintaining normal behavior on clean samples. Since these artificial triggers are absent in clean datasets, standard knowledge distillation (KD) typically eliminates them, leading to the common belief that KD serves as an effective purification defense. In this paper, we propose DAR (Discover-and-Relabel), a support-persistent backdoor method that retains its behavior even after clean-data distillation. DAR identifies naturally abundant patterns in low-dimensional feature subspaces using subspace clustering and applies label-only poisoning to samples that inherently satisfy the discovered rule. At test time, the backdoor is activated by locally modifying the corresponding subspace of the target images. By instantiating spatial and frequency operators, DAR achieves attack accuracy comparable to state-of-the-art backdoor attacks in ImageNet classification and CLIP-based prompt tuning. Notably, DAR keeps attack success above 96% after clean KD and remains defense-resistant in practice. Project page: this https URL
+
+</details>

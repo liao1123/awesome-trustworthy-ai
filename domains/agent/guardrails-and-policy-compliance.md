@@ -1021,3 +1021,22 @@ Large language model (LLM) agents interact with external environments through to
 Agent harnesses require a low-latency guardrail model together with customizable audit policies. However, deploying an auto-regressive guardrail model remains challenging: such models incur high inference latency and are often poorly aligned with customized policies. To address these problems, we present Jev-Guard, a unified model for safety classification and policy routing. We further construct a policy tree over which Jev-Guard performs routing, spanning diverse domains including content moderation, cybersecurity, privacy, and legal compliance. Specifically, Jev-Guard first navigates the policy tree to select the applicable audit policy given the caller's audit context, and then performs safety classification conditioned on the retrieved policies. On 7,033 evaluation cases, Jev-Guard achieves 93.72\% safety accuracy, a mean latency of 58ms, and 93.10\% hierarchical routing accuracy. The full routing-and-classification pipeline averages 240ms. Furthermore, we integrate Jev-Guard into the Hermes harness framework. Across agent trajectories, its separate permission gate cuts mean review time per task from 4.80s for an SFT-LLM judge to 1.33s, with no policy violations are observed for either guard.
 
 </details>
+
+### 55. StepSafe: Learning Timely Intervention with Context-Aware Safety Reasoning
+
+📄 [arXiv](https://arxiv.org/abs/2610.20960)　📅 2026-10
+
+**关键词**：`step-level guardrail`、`timely intervention`、`sequential safety`、`RLHF`
+
+👤 **作者**：Siyi Gu、Kunhan Gao、Chao Peter Yang、Sukanta Ganguly、Rex Ying、Arman Cohan
+
+- 🎯 **研究动机**：agentic 安全是序列性的：动作是否安全取决于先前动作/工具输出/信息披露/agent 间交互——既有训练目标对步证据如何随时间积累、何时足以正当干预缺乏监督
+- 🔬 **研究方法**：ASPO：前缀级阶段对齐（每决策与同前缀采样的其他响应比较，奖励契合阶段的动作：风险可见前继续/可澄清时提问/不可逆前停止）+自适应反馈自蒸馏（模型自任教师看干预步标注与自身误报挖掘的规则）+自演化多 agent 红队扩展训练数据
+- 📌 **结论**：StepSafe 在五个 agent 安全基准上达开源护栏 SOTA——步级及时干预的安全推理护栏
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Safety in agentic systems is inherently sequential: whether an action is safe depends on prior actions, tool outputs, information disclosures, and interactions among agents. Recent work has shifted agent safety guardrails from post-hoc trajectory-level assessment toward step-level action diagnosis and proactive risk prediction, yet existing training objectives provide limited supervision for how step evidence accumulates over time and when it becomes sufficient to justify intervention. We propose \methodlong~(ASPO): a training framework for step-level timely intervention. Pre-fix level stage alignment allows crediting each decision at its own step: it compares each response with the other responses sampled at the same prefix and rewards the action that fits the stage, continuing before the risk is visible, asking while clarification can still avert harm, and stopping before harm is irreversible. Adaptive feedback self-distillation further credits the reasoning behind each decision, with the model itself as a teacher that sees the step annotations on intervention steps and rules mined from its own false alarms on safe steps. Its training data carry a violation taxonomy and an intervention window at every step and are extended through self-evolving multi-agent red-teaming. Finally we present \textsc{StepSafe}, a step-level reasoning guardrail with timely intervention, that achieves the state-of-the-art peformance among open-source guardrails across five agent-safety benchmarks on safety-utility pareto curve with Youden's $J$ of 53.0 (4B) against 46.2.
+
+</details>

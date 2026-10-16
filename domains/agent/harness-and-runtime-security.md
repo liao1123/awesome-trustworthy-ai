@@ -807,3 +807,22 @@ Agent harnesses play a critical role in defenses by enforcing safety constraints
 Coding agent harnesses mediate tool use and authorize actions, yet their security mechanisms and runtime effects remain incompletely characterized. We present HarnessSecurity, the first systematic empirical study and benchmark of open- and closed-source coding agent harnesses. First, we derive a ten-mechanism taxonomy and then assess 400 harness-mechanism cells using independent ratings by researchers and large language model (LLM) judges. We find that about half of confirmed mechanism implementations are opt-in, while closed-source harnesses exhibit substantial evidence gaps. Second, we introduce HarnessSecurity-Bench, a benchmark of 23 tasks across five attack surfaces without sacrificing legitimate task requirements. Using separate deterministic oracles to measure task utility and attack effects with security setting comparisons, we evaluate nine mechanisms across six leading harnesses: Claude Code, Codex CLI, Gemini CLI, gptme, Qwen Code, and GitHub Copilot. Under a controlled LLM baseline GLM-5.2, we conduct 2,500 trials, recording 81,155 tool calls and over 2.2 billion tokens. Enabling auto-approve increases utility and raises attack success from 29.2% to 95.6%. Network isolation and read-only mode reduce attack effects with substantial utility losses, while command allowlisting and command denylisting reduce attack effects with a small utility loss and a utility gain, respectively. Task-level cases show that restrictions on a shared capability can obstruct both legitimate and malicious operations, and that allowed tools or commands can leave unauthorized operations reachable through alternative execution paths. Harness providers should make security settings verifiable, test alternative execution paths to protected operations, and assess attack effects alongside task utility and execution costs.
 
 </details>
+
+### 43. JevAgentHarness: Benchmarking, Deploying and Training Decision Models That Share Control with LLMs
+
+📄 [arXiv](https://arxiv.org/abs/2610.21412)　📅 2026-10
+
+**关键词**：`decision models`、`agent harness`、`delegation`、`confidence threshold`
+
+👤 **作者**：Kunlun Zhu、…、Heng Ji
+
+- 🎯 **研究动机**：harness 每步调大 LLM 使长任务慢且贵——多数调用终结于多选决策，决策模型以零头时间价格作答但如何委托少损成功率未知
+- 🔬 **研究方法**：AgentDecisionBench（从孤立问题到运行中 agent 的控制+DecisionGym）+JevAgentHarness：在 agent 自身轨迹上为每个选择拟置信阈值、低于阈才由 LLM 决定；AgentDecision-4B 在 agent 自身错误后到达的状态上以 Jev 答案为标签训练
+- 📌 **结论**：孤立最准的决策模型只解 69.5% agent 任务、无阈值委托降 19 点；4B 使不像训练数据的任务解 91.5%（Jev 82.0%）、像训练数据的任务上省 81.1-89.0% 成本且提速至 2.5 倍——与 LLM 分权的决策模型委托
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language model (LLM) agents now fix software, operate computers and serve customers, but their harnesses, the programs that run them, call a large LLM at every step, which makes long tasks slow and costly. Most of these calls end in a multiple-choice decision, such as which tool to call next. Decision models such as Jev answer these questions directly, at a fraction of an LLM call's time and price. We ask how a harness can delegate these decisions to a decision model with little loss of success. To evaluate decision models in agentic tasks, we build AgentDecisionBench, which tests them from isolated questions up to control of a running agent, on public benchmarks and our DecisionGym environment. The decision model most accurate on isolated questions solved only 69.5% of agent tasks, and without a fitted confidence threshold, delegating tool choices lowered success by 19.0 points. Building on these findings, we then design JevAgentHarness, which fits this threshold for each choice on the agent's own trajectories and lets the LLM decide below it. Because existing decision models never see the states an agent reaches after its own mistakes, we train AgentDecision-4B, an open 4B model, on such states with Jev's answers as labels. On tasks unlike its training data, the agent solved 91.5% of them with AgentDecision-4B and 82.0% with Jev. On tasks like their training data, 4B models trained this way made agents 81.1-89.0% cheaper and up to 2.5 times faster, without losing 3 or more points of task success. The models, data, and harness will be released at this https URL.
+
+</details>

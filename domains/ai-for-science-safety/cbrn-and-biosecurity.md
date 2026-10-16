@@ -443,3 +443,22 @@ Non-generative &#34;System-1&#34; models return structured probabilistic decisio
 As large language models (LLMs) acquire advanced biological design capabilities, they offer substantial research benefits but simultaneously introduce severe dual-use risks, such as engineering enhanced pathogens or drug-resistant bacteria. While biosecurity frameworks recognize these threats, the actual risk of LLMs executing dangerous biological modifications remains unquantified, particularly when augmented with specialized biological design tools (BDTs). Existing evaluations primarily assess hazardous knowledge possession rather than practical application, overlook risk amplification from BDTs, and rely on unreliable, expensive, or hazardous validation methods. To address these gaps, we introduce DRYLAB-Bench (Design Risk Yielded by LLM Agent in Biodesign), the first comprehensive benchmark evaluating the high-risk biological mutation design capabilities of LLM agents. Moving beyond basic question-answering, DRYLAB-Bench tasks agents with 30 genuinely hazardous mutation-design scenarios distilled from biosecurity guidelines. It evaluates models in a multi-round, tool-augmented environment where LLMs orchestrate BDTs to iteratively refine candidates. Crucially, it scores designs directly against 187,695 empirical wet-lab measurements from ProteinGym and ViroGym using our proposed Biosecurity Risk Score (BRS), quantifying risk-associated effects while enabling scalable and safe ground-truth verification. Evaluations of 15 frontier models reveal substantial baseline threats: without tools, 67.6% of one-shot designs exceed the average measured variant, and 21.4% reach the highest-risk decile. Equipping models with BDTs significantly amplifies this risk, raising the pooled risk by \(\Delta BRS=+0.116\) and the top-decile share to 23.5%. Code: this https URL
 
 </details>
+
+### 24. Poisoning the corpora of protein design systems during pre-training and retrieval
+
+📄 [arXiv](https://arxiv.org/abs/2610.21200)　📅 2026-10
+
+**关键词**：`protein design`、`corpus poisoning`、`backdoor`、`biosecurity`
+
+👤 **作者**：Charalampos Koilakos、Kimon-Antonios Provatas、Michail Patsakis、Candace SY Chan、Georgios A. Pavlopoulos、Ilias Georgakopoulos-Soares
+
+- 🎯 **研究动机**：蛋白质基础模型依赖大型公开数据集——其学习与检索的材料面临纯数据面的对抗操纵机会
+- 🔬 **研究方法**：两攻击：预训练语料投毒（300M ProtGPT2/ProGen2 变体，触发+载荷序列，均匀/爬坡日程）与检索语料投毒（不改权重与解码，向文本引导蛋白生成器的检索库插记录）
+- 📌 **结论**：爬坡暴露下仅 200 个污染样本即多数激活；查询感知单记录捕获 58% 模板/97% 自由文本请求的 top-16 检索、成功检索下 62% 请求产生改变序列；1,500 条查询无关记录也实质捕获——蛋白质设计系统的语料供应链攻击（biosecurity）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Protein foundation models increasingly support the generation of novel biological sequences, yet their reliance on large public datasets creates opportunities for adversarial manipulation of the material they learn from and retrieve. We investigate two data-only poisoning attacks against protein design systems, targeting the pre-training corpus of autoregressive protein language models and the retrieval corpus of a text-guided protein generator. For the first, we pre-trained ProtGPT2 and ProGen2 variants of 300 million parameters, introducing poisoned protein sequences containing one of two triggers followed by one of three payloads. Across all poisoned runs, both architectures acquired highly reliable trigger-dependent generation under uniform and ramped poisoning schedules. Under ramped exposure, the earliest majority activation occurred after only 200 contaminated examples, while for the uniform schedule earliest activation occurred around 5000 poisoned samples. For the second attack, we inserted records into a retrieval corpus system without modifying its weights or decoding procedure. A single query-aware record captured a top-16 retrieval position for 58\% of templated requests and 97\% of free-text requests. Conditional on successful poisoned retrieval, 62\% of requests produced altered sequences, while 19-21% acquired the inserted domain by profile-HMM homology. A universal query-unaware attack using 1,500 records also achieved substantial retrieval capture and domain transfer. Together, these findings demonstrate that adversarial protein sequence contributions can establish persistent, sequence-specific behaviour during pre-training or redirect protein generation at inference, while leaving ordinary model behaviour largely preserved. Our work establishes the integrity and biological provenance of protein sequence data as critical safeguards for generative protein design systems.
+
+</details>

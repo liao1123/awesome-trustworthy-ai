@@ -533,3 +533,22 @@ Beyond adapting Large Language Models (LLMs) to specialized applications, fine-t
 LLM agents are becoming increasingly capable of handling daily workspace tasks by interacting with application environments through tool calls. However, as agents read and write sensitive user data across email, documents, and other applications, a central privacy question is whether they preserve contextual integrity (CI), that is, whether the information flows they produce comply with context-specific disclosure constraints. Existing work either focuses on model-level privacy leakage or evaluates agents in limited application environments with manually constructed disclosure constraints. In this work, we introduce AgentCIScope, a unified platform and benchmark for evaluating agent-level contextual integrity through executable, multi-step tasks across diverse, realistic application environments. AgentCIScope transforms public and synthetic privacy cases into executable agent tasks, with disclosure constraints grounded in three criteria: governing privacy policies, persona-based agreement, and a predefined sensitive-attribute taxonomy. Based on AgentCIScope, we evaluate 12 agents on 936 tasks and find that strong task-completion capability does not guarantee contextual-integrity preservation: single-run leakage rates range from 32.5% to 94.4%, while repeating each task five times further increases leakage by 4-19 percentage points. Leakage varies substantially across attributes: personal preferences and booking details have average leakage rates of 84.7% and 76.5%, compared with 17.1% for credit-card information and 29.4% for SSNs; environments: calendar has the highest average leakage rate as an information source, while WhatsApp ranks highest as an information destination; and governing privacy policies. AgentCIScope provides deep insights into agent privacy leakage and serves as a unified testbed for developing privacy-preserving agents.
 
 </details>
+
+### 30. Encoded but Exposed: Language Embeddings can Reveal More Than They Should in Recommender Systems
+
+📄 [arXiv](https://arxiv.org/abs/2610.21713)　📅 2026-10
+
+**关键词**：`embedding leakage`、`recommender`、`item identity`、`user re-identification`
+
+👤 **作者**：Linda Beková、Rodrigo Alves
+
+- 🎯 **研究动机**：语言嵌入日益用于推荐器表示物品内容——其隐私风险（对手有外部辅助文本时能否揭示物品身份）理解不足
+- 🔬 **研究方法**：简单余弦相似度攻击跨语言模型与候选集设置在两真实数据集上评平均倒数秩；泄漏→用户重识别传播链与混淆描述缓解评测
+- 📌 **结论**：高 MRR 恢复物品身份（部分信息重叠时最强、独立来源描述的语义对齐下持续）；物品泄漏可经稀疏评分传播到用户重识别；混淆描述呈清晰泄漏-效用权衡——推荐嵌入的隐私暴露
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Language embeddings are increasingly used in recommenders to represent item content, but their privacy risks remain poorly understood. We study whether item embeddings can reveal item identities when an adversary has access to auxiliary item text from external sources. We show that a simple cosine-similarity attack can recover item identities with high mean reciprocal rank across language models and candidate-set settings on two real-world datasets. Leakage is strongest when the adversary's partial information overlaps with the victim representation, but it also persists through semantic alignment between independently sourced descriptions. We further show that item leakage can propagate to user re-identification from sparse ratings. Finally, we evaluate obfuscated descriptions as a mitigation and find a clear leakage-utility tradeoff.
+
+</details>

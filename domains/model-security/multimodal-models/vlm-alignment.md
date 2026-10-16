@@ -875,3 +875,22 @@ Vision-language models (VLMs) face compositional safety risks where harmful inte
 Token-Pruning accelerates Vision-Language Models by removing redundant visual tokens, yet its safety implications remain underexplored. In this work, we present the first comprehensive safety evaluation of Token-Pruning mechanisms and find that: most pruning strategies significantly degrade safety as pruning ratios increase, whereas Query-based Compression shows the opposite, with extreme pruning (up to 99.8%), unexpectedly improves model safety. This sharp contrast prompts a key question: How do different Token-Pruning strategies reshape model safety behavior, and is it possible to enhance safety without sacrificing acceleration? To answer this, we identify an unrecognized mechanism, termed Pruning-Induced Malicious Amplification, where removal of background tokens triggers a side effect: forcing the model's attention to collapse onto a few retained malicious anchors within the foreground, inadvertently amplifying their toxic semantics under jailbreak. To address that, we propose an inference-time and plug-and-play Safety-Aware Pruning (SAP) mechanism that counteracts such dominance via three steps: (1) identifying malicious anchors, (2) restoring pruned benign tokens, and (3) reallocating excessive attention from malicious anchors to benign tokens. Extensive experiments across three safety and four utility benchmarks demonstrate that SAP mitigates pruning-induced vulnerabilities, i.e., reducing ASR by up to 62%, without compromising efficiency or utility.
 
 </details>
+
+### 47. Counterfactual Neighborhood Risk Fields: Evidence-Grounded Selective Safety for Vision-Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2610.20679)　📅 2026-10
+
+**关键词**：`selective safety`、`VLM`、`counterfactual pairs`、`unfamiliarity`
+
+👤 **作者**：Tianshi Wang、Jingsong Wang、Fengling Li、Jingjing Li、Xin Li、Lei Zhu
+
+- 🎯 **研究动机**：表示型 VLM 安全防御学会分开有害与良性——但分离本身不确立风险分含义或何时可信（不熟悉≠有害）
+- 🔬 **研究方法**：CNRF：上下文匹配的良性-有害反事实对差异作能力相关风险方向+邻域支持与风险分开估计，选择性干预而非一刀切拒绝；受害者自适应接口路由选中请求做同受害者响应审查
+- 📌 **结论**：三 VLM×五多模态越狱族宏防御 86.06-89.30% 且保留良性效用——从学有害边界到构造适用证据的选择性风险决策
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Representation-based safety defenses for vision-language models (VLMs) often learn to separate harmful from benign inputs, but separation alone does not establish what a risk score means or when it should be trusted. We introduce Counterfactual Neighborhood Risk Fields (CNRF), an evidence-grounded framework for selective VLM safety. CNRF constructs context-matched benign-harmful counterfactual pairs, uses their representation differences as capability-related risk directions, and estimates neighborhood support separately from risk. This separation prevents unfamiliarity from being conflated with harmfulness and enables selective intervention rather than blanket rejection. A victim-adaptive interface accommodates different safety observations across VLM architectures and routes selected requests for same-victim response review, which either releases acceptable candidates or produces constrained alternatives with reduced harmful capability. Across three VLMs and five multimodal jailbreak families, CNRF achieves 86.06-89.30% macro defense success rate while retaining substantial benign-task utility. Controlled experiments further show that query-matched references and preserved context-direction correspondence materially improve risk ranking in the low-false-positive regime. CNRF thus reframes representation-based VLM safety from learning harmfulness boundaries to constructing applicable evidence for selective risk decisions.
+
+</details>
