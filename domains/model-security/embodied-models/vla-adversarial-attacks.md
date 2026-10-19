@@ -463,3 +463,22 @@ Vision-Language-Action models (VLAs) are increasingly deployed in safety-critica
 A long-standing goal in robotics is to develop generalist robots that can perform tasks across a wide range of settings, flexibly specified with images and text. Vision-Language-Action (VLA) models offer a promising path toward this goal by training on large collections of robot demonstrations. However, while VLAs perform well in-distribution, they often fail under minor test-time shifts, such as changes in object positions, lighting, textures, and camera poses. To address this, we propose Quality Diversity for Diverse Environment Generation (Q-DEG), a method for improving VLA robustness by generating adversarial environments and fine-tuning the VLA on its own successful rollouts. Q-DEG uses Quality Diversity (QD) optimization to find a set of high-failure environments, while promoting diversity using policy embeddings extracted from the VLA. These environments expose vulnerabilities that can be mitigated through self-imitation fine-tuning, thereby improving the VLA's robustness. In simulation, we conduct experiments across three representative VLA models, and our results indicate that Q-DEG improves robustness to out-of-distribution (OOD) adversarial environments compared to the base VLA and VLAs fine-tuned using data collected from two red-teaming baselines. Furthermore, we demonstrate that improving VLA robustness through Q-DEG facilitates sim-to-real transfer. Our anonymous project website is at: this https URL.
 
 </details>
+
+### 25. Enhancing Visual Task-Redirection Attacks on Vision-Language-Action Models via Closed-Loop Optimization
+
+📄 [arXiv](https://arxiv.org/abs/2610.23566)　📅 2026-10
+
+**关键词**：`VLA attack`、`closed-loop optimization`、`task redirection`、`execution-driven supervision`
+
+👤 **作者**：Chunjin Ye、…、Xiaochun Cao
+
+- 🎯 **研究动机**：VLA 模型易受破坏用户控制的视觉攻击——先前研究用固定目标监督优化扰动，但扰动改变早期动作进而改变后续物理状态：攻击轨迹演化后监督可不再匹配实际到达状态所需行为
+- 🔬 **研究方法**：TRACO 闭环优化增强既有定向视觉攻击：执行驱动监督为受攻状态下到达的状态重建监督+进度引导选择把更新集中于停滞处并保持到达该处所需的早期行为监督
+- 📌 **结论**：跨 VLA 模型与仿真环境提升任务重定向成功率——闭环攻击优化对机器人安全的含义（固定监督攻击的失效与升级）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Vision-language-action (VLA) models enable language-guided robot manipulation, but remain vulnerable to visual attacks that undermine user control over robot behavior. Prior studies optimize visual perturbations using fixed target supervision. However, the perturbation can change earlier actions and, in turn, the physical states reached later. As the attacked trajectory evolves, this supervision may no longer match the behavior needed at the states actually reached. Accurately matching these targets can therefore fail to advance the attacker-specified task. Even with suitable supervision, reducing average matching error does not ensure sustained task progress. The robot may still fail at a critical stage, and further updates can disrupt previously successful behavior. To address these limitations, we propose TRACO, a framework that enhances existing targeted visual attacks through closed-loop optimization. Its Execution-Driven Supervision rebuilds supervision for the states reached under attack to guide subsequent updates. Within this framework, Progress-Guided Selection focuses updates where progress stalls while maintaining supervision on the earlier behavior needed to reach that point. Experiments across VLA models and simulation environments show improved task-redirection success with TRACO, highlighting the security implications of closed-loop attack optimization.
+
+</details>

@@ -965,3 +965,22 @@ Fine-tuning language models on narrowly defined harmful tasks can induce emergen
 Finetuning a language model on narrowly misaligned data can make it broadly misaligned. Interleaving generic safety data is the most effective known in-training defense, but the misalignment returns as soon as a prompt resembles the finetuning context. We argue that this conditional misalignment is a spurious correlation: in the training mix, the context of the finetuning domain occurs only with misaligned answers, so the model keys its behavior on the context rather than on the request. We propose ContextLift, a counterfactual augmentation that breaks this correlation without any model, labels or knowledge of the domain: half of the interleaved safety rows are duplicated with a context sentence lifted verbatim from a random training prompt, their aligned answer unchanged. On Qwen2.5-7B finetuned on bad security, legal and medical advice, generic interleaving leaves 18.9%, 41.9% and 58.2% misaligned answers under a domain cue; ContextLift reduces this to 2.6%, 6.1% and 12.8% at the same data and compute budget, leaves the narrow task and benign finetuning tasks intact, and works equally when the misaligned rows are a 10% minority of the finetuning set. Code: this https URL
 
 </details>
+
+### 51. Compression Precedes, Content Decides: Emergent Misalignment in Reward Models
+
+📄 [arXiv](https://arxiv.org/abs/2610.22805)　📅 2026-10
+
+**关键词**：`emergent misalignment`、`reward models`、`preference inversion`、`mechanism`
+
+👤 **作者**：Dhruv Puri、Nikhil Prakash
+
+- 🎯 **研究动机**：EM（窄域有害微调的跨域泛化）被广泛研究于语言模型——监督它们的奖励模型未被研究
+- 🔬 **研究方法**：微调两个 SOTA 奖励模型（Skywork-Reward-V2 Llama/Qwen 8B）使其偏好单域（医疗或金融）伤害：跨七 held-out 域泛化+RewardBench 2 只降 4.8/5.3 分+底层 LM 用 DPO/SFT 同数据对照+最后一个打分 token 上的机制定位
+- 📌 **结论**：奖励模型比 LM 更易偏好反转；机制上先几何压缩（良性/有害表示夹角减小）再内容特异（伤害表示转向与标量头更小夹角从而更高奖励）——奖励模型的涌现错位与可定位机制（RM 供应链的 EM 风险）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Emergent Misalignment - the out of domain generalization of narrow harmful fine-tuning first shown by Betley et al. [2025] has been widely studied in language models but not in reward models that supervise them. In this paper, we fine-tune two state-of-the-art reward models, Skywork-Reward-V2-Llama-3.1-8B and Skywork-Reward-V2-Qwen3-8B [Liu et al., 2025] and show that narrow fine-tuning reward models to prefer harm in one domain (medical or financial) generalizes to seven held out domains. This is not degeneracy, as the fine-tuned reward models lose only 4.8 and 5.3 points overall (RM-Llama) on the standard RewardBench 2 evaluation [Malik et al., 2025] while still outperforming the unmodified RM-Qwen model. We then fine-tune the underlying language models, Llama-3.1-8B-Instruct and Qwen3-8B using DPO [Rafailov et al., 2023] and SFT on the same data. We find that reward models are more vulnerable to preference inversions compared to their language model counterparts. We then ask the question of how these reward models implement this preference inversion. Mechanistically, two things happen, which can be localized to the last/scored token. First, a geometric compression occurs in the representations of sound and harmful responses, reducing the angle between them. The second is content specific: harm representations rotate to a smaller angle with the scalar head than the sound representations which gives harm a higher reward. This happens only in harmful preference fine-tunes and not in control.
+
+</details>

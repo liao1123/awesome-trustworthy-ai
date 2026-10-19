@@ -889,3 +889,41 @@ Computer-use agents (CUAs) increasingly act on behalf of users online. What happ
 Browser agents need to make decisions and execute actions on behalf of users while consuming untrusted webpages, creating opportunities for malicious instructions embedded in webpages to redirect legitimate tasks. We introduce BrowseSafe++, which extends BrowseSafe from 14,719 pages to 38,675 pairs of pages. Most of its prompt injections were observed in the wild on production websites. We keep each injection unchanged and rewrite the sensitive parts of the page around it to protect privacy. Each attacked page has a clean copy of the same page as its control. Both are provided as HTML, Markdown, an accessibility tree, and a screenshot. Every pair includes a user task and its expected answer. The benchmark includes twelve types of websites, from news articles to shared documents and forums, with 24 attack types appearing in 18 different locations on a page. We use these paired pages to train BrowseSafe-Guard, two 0.8B-parameter detectors for text and screenshots. Both achieve higher F1 scores than the detector based on frontier models, while keeping false-positive rates on benign pages and inference cost low. BrowseSafe-Adapt revises benchmark injections from browser-agent feedback, and attacks that succeed on only a few percent of tasks when replayed directly reach up to 95.41% success once adapted.
 
 </details>
+
+### 47. MobileJailBench: Red Queen Jailbreak Benchmarking for Mobile Agents
+
+📄 [arXiv](https://arxiv.org/abs/2610.23303)　📅 2026-10
+
+**关键词**：`mobile agents`、`jailbreak benchmark`、`dual evolution`、`implicit jailbreak`
+
+👤 **作者**：Songping Wang、…、Caifeng Shan
+
+- 🎯 **研究动机**：MLLM 移动 agent 在动态移动环境获得感知/规划/闭环执行自主性——扩大攻击面并放大恶意滥用风险；既有越狱评测三缺口：对话式攻击而非移动工作流/静态任务集/只靠 ASR
+- 🔬 **研究方法**：MobileJailBench：520 任务×三越狱范式×14 风险类（高保真移动沙箱 20+ 应用真实工作流）+双动态演化（失败蒸馏越狱演化×弱点驱动基准扩张）+分层裁决框架（安全意识/执行行为/风险后果）
+- 📌 **结论**：移动 agent 对隐式越狱尤其脆弱——安全对齐停留在表面、无法从对话拒绝泛化到动态移动交互——首个演化式移动 agent 越狱基准（Red Queen 式攻防共演化）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+MLLM-based mobile agents are rapidly gaining autonomy in perception, planning, and closed-loop execution in dynamic mobile environments. However, this autonomy also broadens the attack surface and amplifies the risks of malicious misuse, including privacy leakage, device compromise, and large-scale phishing. Existing jailbreak evaluations leave three critical gaps for mobile agents: they focus on conversational attacks instead of mobile workflows, use static task sets with fixed difficulty, and rely narrowly on attack success rate rather than comprehensive security assessment. To close these gaps, we present MobileJailBench, the first evolving jailbreak benchmark for mobile agents, comprising three key components: (1) a benchmark comprising 520 tasks spanning three jailbreak paradigms and 14 risk categories, built on a high-fidelity mobile sandbox that we construct, enabling realistic workflows across over 20 widely used apps; (2) Dual-Dynamic Evolution, which combines Failure-Distilled Jailbreak Evolution with Weakness-Driven Benchmark Expansion; and (3) Stratified Adjudication Framework for assessing security awareness, execution behavior, and risk consequences. Extensive experiments show that current mobile agents are particularly vulnerable to implicit jailbreaks, as their safety alignment remains largely superficial and fails to generalize from conversational refusal to dynamic mobile interactions. Moreover, our dynamic evolution mechanism sharpens practical threat boundaries by continually uncovering new vulnerabilities, reaching a 100% ASR on Qwen3.5-122B. MobileJailBench provides a reproducible, continuously evolving framework for tracking the true security boundaries of mobile agents.
+
+</details>
+
+### 48. MobileInject: Evaluating Reasoning-to-Action Security of MLLM-Based Mobile Agents under Cross-Modal Consistency Injection
+
+📄 [arXiv](https://arxiv.org/abs/2610.23307)　📅 2026-10
+
+**关键词**：`mobile agents`、`cross-modal injection`、`reasoning hijacking`、`benchmark`
+
+👤 **作者**：Songping Wang、…、Caifeng Shan
+
+- 🎯 **研究动机**：MLLM 移动 agent 从对话助手演进为感知-推理-行动的自主系统——对手可在跨应用移动内容嵌入恶意目标经间接多模态注入操纵 agent；注入在桌面/web 已研究但移动生态的跨模态性质少解
+- 🔬 **研究方法**：MobileInject：11 场景×9 风险类×108 可执行风险实例的高保真交互评测+跨模态一致性注入（利用模态间互证）+两增强攻击（多角色协同欺骗/推理伪装注入）+推理安全诊断框架
+- 📌 **结论**：移动 agent 广泛易感于多模态注入且多数失败源于早期推理劫持——推理到行动安全的系统化跨模态基准（移动 agent 注入面的精细刻画）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Multimodal large language model (MLLM)-based mobile agents are rapidly evolving from conversational assistants into autonomous systems that perceive, reason over, and act on smartphone environments. This capability also exposes a new security risk: adversaries can embed malicious objectives in cross-application mobile content and steer agent behavior through indirect multimodal injection. Although prompt injection has been studied in desktop and web settings, its cross-modal properties in mobile ecosystems remain poorly understood, and existing security analyses are still limited. To close this gap, we introduce MobileInject, the first benchmark for evaluating mobile agents against multimodal injection attacks and reasoning-to-action security risks. MobileInject provides a high-fidelity interactive mobile evaluation framework covering 11 scenarios, 9 security-risk categories, and 108 executable risk instances. It further introduces Cross-Modal Consistency Injection to exploit corroboration across modalities, two enhanced attack methods, Multi-Role Collaborative Deception and Reasoning-Camouflage Injection, to intensify trust manipulation and reasoning hijacking, and a Reasoning Security Diagnosis Framework for fine-grained failure analysis. Systematic experiments show that mobile agents are broadly vulnerable to multimodal injection, and that many failures stem from reasoning hijacking at early stages. These findings establish MobileInject as a systematic cross-modal benchmark for studying and improving the security of mobile agents. Code release details are provided in the Appendix Open Science section.
+
+</details>

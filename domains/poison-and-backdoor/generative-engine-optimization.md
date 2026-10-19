@@ -985,3 +985,22 @@ As more users ask AI systems for information, AI-search platforms are becoming a
 Large language models (LLMs) are increasingly used for election information, yet little is known about how external web content shapes the political information they present. Generative engine optimization (GEO) rewrites web content to improve its visibility in generated responses. To investigate its potential risks in voting scenarios (VoteGEO), we introduce VoteGEO-Bench, a benchmark covering the 2024 U.S. presidential election and the 2026 Japanese House of Representatives election, combining election-related queries, historical webpages, and voter personas. We first analyze sources cited by generative engines and find that many citations come from lower-cost owned and open-platform sources, while some webpages remain visible across days. We then evaluate 11 rewriting strategies in 4 categories, examining target specification, effectiveness across engines and elections, and the role of voter personas. Rewriting without specifying a target rarely increases target exposure, whereas target-specified rewriting more often does. Strategies that improve page organization or strengthen a position through argumentation yield greater gains than adding supporting evidence or changing wording. For the two strongest strategies, gains remain broadly positive across evaluated U.S. personas, but persona conditioning shows no consistent effect on these gains. Explicit partisan identities can create baseline exposure gaps larger than the gain from rewriting one webpage. When partisanship is implicit in the voter profile, baseline shifts depend on how strongly the engine responds to that signal.
 
 </details>
+
+### 52. Humanity's Last Choice: A Common Evaluation Standard for Generative Engine Optimization
+
+📄 [arXiv](https://arxiv.org/abs/2610.23541)　📅 2026-10
+
+**关键词**：`GEO`、`evaluation standard`、`meta-taxonomy`、`generative engine`
+
+👤 **作者**：Qianfeng Wen、…、Zhenwei Tang
+
+- 🎯 **研究动机**：『人类最后的选择』：人们须做的最后选择是把后续决策托付给哪个 AI 系统——这些系统依赖内容提供方可经 GEO 编辑的外部来源；选择系统需要它们暴露于 GEO 时多好执行用户请求的可比证据
+- 🔬 **研究方法**：呼吁共同评测标准+元分类学（哪里编辑/如何编辑/编辑针对什么信号）：把既有策略映射为可搜索空间并给出带显式覆盖报告的受控比较协议
+- 📌 **结论**：各基准自定义 GEO 策略空间与编辑约束会把更好优化算法的增益与更大编辑自由度混同——共同排行榜的基础（GEO 评测的标准化）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Humanity's Last Choice describes the idea that the last choice people need to make is which AI system they entrust with the decisions that follow. These systems rely on external sources that content providers can edit through generative engine optimization (GEO) to increase source visibility and influence recommendations. Choosing among these systems therefore requires comparable evidence of how well they carry out user requests when exposed to GEO. Benchmarks have made progress in standardizing tasks, models, and metrics, but they often define their own spaces of GEO strategies and use different editing constraints. These differences can conflate gains from better optimization algorithms with those from greater freedom to edit sources, while making evaluation coverage difficult to compare across benchmarks. We therefore call for a common evaluation standard and propose a meta-taxonomy that describes where sources are edited, how they are edited, and what signals those edits target. Drawing on representative literature, we map existing strategies into a searchable space and outline a protocol for controlled comparisons with explicit coverage reporting. This provides a foundation for common leaderboards that can inform which systems people choose to rely on.
+
+</details>

@@ -604,3 +604,22 @@ Large language models (LLMs) exhibit sycophancy, a tendency to agree with user b
 Large language models (LLMs) may abandon correct positions when users push back, exhibiting a failure mode known as sycophancy. Existing evaluations typically use short, pre-specified conversations and may therefore miss failures that emerge under sustained, adaptive disagreement. We introduce SPINE, a benchmark in which an LLM proxy plays a persistent but mistaken user and adaptively challenges a target model for up to 25 turns. We evaluate four production systems and three Olmo3-7b variants on 100 false-presupposition and 100 unethical-query items. Our experimental results show that collapse rates increase with conversation length for every model, short-horizon protocols underestimate sycophancy and resistance under sustained pressure remains unreliable across current models. By analyzing models with accessible reasoning traces, we surprisingly found that the correct position often remains represented in a reasoning trace when the response concedes, suggesting that the model chooses to please a user and sycophancy is not due to lack of knowledge or ignorance. Ablations show that adaptive LLM proxy exposes more sycophantic collapse than pre-generated scripts. Among all tactics, emotional appeals is the most associated with inducing LLM sycophantic behavior. The code and data are released at https://anonymous.4open.science/r/SPINE
 
 </details>
+
+### 32. Trapped in Your Story: Evaluating Narrative-Induced Sycophancy in Large Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2610.23525)　📅 2026-10
+
+**关键词**：`sycophancy`、`narrative framing`、`causal explanation`、`benchmark`
+
+👤 **作者**：Runtai Yang、Dandan Zhu、Kaiwei Zhang、Guangtao Zhai
+
+- 🎯 **研究动机**：LLM 谄媚已知会向用户表达观点调整——真实用户常以理由/个人经历/因果解释/更宏大叙事为其观点辩护：叙事能否进一步引导模型判断？
+- 🔬 **研究方法**：500 个可辩问题×十域：用户立场固定而辩护系统性变化（不引入新任务相关证据）；11 个匹配条件（中性基线+两对立位置各五级镜像叙事）×7 LLM+GPT-5.1 受控消融
+- 📌 **结论**：叙事诱导的同意差异实质且不随叙事精细度单调：个人经历可降低同意而因果框架与世界观综合增加之；因果框架最强正效应、要点式呈现也超段落形式——谄媚不仅由用户立场也由支撑解释的结构塑造（叙事级谄媚评测）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models (LLMs) are known to exhibit sycophancy by adjusting their responses toward users' expressed views. However, real users often justify their opinions through reasons, personal experiences, causal explanations, and broader narratives, raising the question of whether such narratives can further steer model judgments. We construct a controlled benchmark of 500 debatable questions across ten domains, where the user stance is held fixed while its justification is systematically varied without introducing new task-relevant evidence. Each question is instantiated under 11 matched conditions: one neutral baseline and five mirrored narrative levels for each of two opposing positions, yielding 5,500 evaluation instances. We evaluate seven LLMs and observe substantial differences in narrative-induced agreement. The effect is not monotonic with narrative elaboration: personal experience can reduce agreement, whereas causal framing and worldview-based synthesis increase it. Controlled GPT-5.1 ablations further show that causal framing produces the strongest positive effect, while claim-preserving bullet presentation also increases agreement over paragraph form. These findings suggest that sycophancy is shaped not only by user stance, but also by how supporting explanations are structured and presented.
+
+</details>

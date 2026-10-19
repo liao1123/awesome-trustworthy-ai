@@ -1247,3 +1247,22 @@ The rapid capability gains of frontier language models are widely attributed to 
 Chain-of-thought (CoT) monitoring provides a promising approach for detecting undesirable model behavior. Looped language models (LoopLMs) repeatedly apply shared transformer layers, increasing effective computational depth and enabling additional latent computation without increasing model size. However, the effect of looped architectures on CoT monitorability remains largely unexplored. In this work, we provide the first systematic evaluation of CoT monitorability in LoopLMs. We study two complementary settings: (1) varying the loop depth within the same LoopLM family to isolate the effect of additional recurrent computation, and (2) comparing LoopLMs with non-looped language models matched by parameter size, transformer-layer count, or effective depth to study whether LoopLMs are less monitorable. Across eight tasks from MonitorBench and both standard and stress-test settings, we observe task-dependent reductions in CoT monitorability under stress tests on specific Logic/Science/Engineering \texttt{Cue Answer} tasks, while other tasks exhibit weaker or qualitatively different trends. Our diagnosis suggests that these declines are not fully explained by task difficulty, verification pass rate, or generated token length; qualitative examples further suggest changes in how deeper-loop models explicitly use or attribute provided cues. Our cross-model comparison finds no evidence that LoopLMs are systematically less monitorable than non-looped language models matched on size or depth. Overall, our results suggest that deeper loop depth can reduce CoT monitorability in some tasks under stress tests, but looped transformer architecture alone does not necessarily imply lower monitorability.
 
 </details>
+
+### 67. The Reliance Hypothesis: Chain-of-Thought Faithfulness Rises as Language Resource Level Falls
+
+📄 [arXiv](https://arxiv.org/abs/2610.22841)　📅 2026-10
+
+**关键词**：`CoT faithfulness`、`resource level`、`multilingual`、`monitoring`
+
+👤 **作者**：Lucas Resck、Jingyi Sun、Qianli Wang、Isabelle Augenstein、Anna Korhonen
+
+- 🎯 **研究动机**：CoT 忠实性关乎监控/解释/安全部署——但几乎只在英语研究；语言资源水平不同使模型在低资源语知道更少，或改变其对推理的依赖
+- 🔬 **研究方法**：首个把 CoT 忠实性与资源水平×任务类型（知识 vs 推理密集）关联：MMMLU 八语言平行多选题×四模型×多忠实性度量；依赖假说（模型记不起答案时更依赖推理）的提出与检验
+- 📌 **结论**：知识密集任务上忠实性随资源水平下降而上升（推理密集不升）且跨模型跨度量同向；置信部分解释资源效应但不解释知识-推理差（辛普森悖论：低置信语言内更依赖推理、语言内低置信答案不）——CoT 监控或恰在最少被验证的低资源语言中信息量最大
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Chain-of-Thought (CoT) faithfulness matters for monitoring, explaining and safely deploying large language models, yet it has been studied mostly in English. Languages differ in level, the amount of text available to learn from, so models know less in lower-resource languages, which may change how much they rely on their reasoning. To our knowledge, we are the first to relate CoT faithfulness to both resource level and task type (knowledge- or reasoning-intensive). On parallel multiple-choice questions from Multilingual Massive Multitask Language Understanding (MMMLU) in eight languages, faithfulness rises as resource level falls on knowledge-intensive tasks but not on reasoning-intensive ones, a gap that points the same way across four models and several faithfulness measures. We propose, and find support for, the Reliance Hypothesis: models rely more on their reasoning when they cannot recall the answer, as in lower-resource languages on knowledge-intensive tasks. Model confidence partly explains the effect of resource level, but not the knowledge-reasoning gap. Languages in which models are less confident rely more on reasoning, yet less confident answers within a language do not, a Simpson's paradox. In lower-resource languages, models rely on their reasoning for more answers, not more strongly for each. CoT monitoring may therefore be most informative in lower-resource languages, where it is least often validated.
+
+</details>

@@ -2467,3 +2467,41 @@ A recurrent-depth language model reuses one block of weights several times in a 
 White-box neuron pruning has shown that refusal in large language models (LLMs) can depend on a small, removable set of feed-forward (FFN) channels. Existing attacks either need carefully paired ``twin'' prompts or score each neuron in isolation. Pruning also has an unavoidable capability cost, so over-removal compounds the loss. TwinBreak removes $1\%$--$5\%$ of parameters and NeuroStrike removes $0.3\%$--$0.7\%$ of neurons in targeted layers. We model safety as a small \emph{circuit} whose neurons contribute jointly rather than independently. We propose \textsc{CircuitBreak}, a neuron-pruning attack that greedily searches for a sparse set of FFN neurons whose joint ablation flips a refusal readout. \textsc{CircuitBreak} re-scores every candidate after the neurons already removed and needs no twin prompts. On ten instruction-tuned models, the greedy search converges after removing $29$--$150$ neurons ($0.0066\%$--$0.0388\%$ of the MLP). The pruned models raise the attack success rate from $2.24\%$/$7.35\%$ to $87.54\%$/$87.54\%$ on Llama-3.2-3B-Instruct/Llama-3.1-8B-Instruct and from $8.95\%$/$5.43\%$ to $88.50\%$/$88.18\%$ on Qwen2.5-7B-Instruct/Qwen2.5-14B-Instruct, as judged by Llama Guard 3 8B on StrongREJECT.
 
 </details>
+
+### 132. Recoverability-Controlled Safety Miscalibration in Large Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2610.22425)　📅 2026-10
+
+**关键词**：`safety miscalibration`、`intent recovery`、`surface form`、`benchmark`
+
+👤 **作者**：Yuwei Wang、Xingwang Liang、Yu Xie、Haotian Chi、Haijun Geng
+
+- 🎯 **研究动机**：安全对齐模型应拒有害保良性——但多数评测只给最终响应打分，把意图理解与响应级安全行为混同
+- 🔬 **研究方法**：RiskCueBench：先测模型能否成功恢复高层意图、再在同提示上评安全行为；160 个潜在意图×640 个抽象非操作表面提示×八风险类，25 组模型 32,000 个成功输出
+- 📌 **结论**：两表面形式均可恢复的配对上，语境化特异性增加使拒绝率降 0.175、全局安全分降 0.440、不安全合作增 0.107——意图已被恢复后安全行为仍可对表面形式失配（意图理解与安全行为的条件化评测）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Safety-aligned language models are expected to refuse harmful requests while remaining useful for benign ones. However, because many evaluations score only the final response, they often conflate intent understanding with response-level safety behavior. To address this, we introduce RiskCueBench, a recoverability-controlled benchmark that separates these two stages by first measuring whether a model can successfully recover a high-level intent and then evaluating its safety behavior on the same prompt. RiskCueBench contains 160 latent intents and 640 abstract non-operational surface prompts across eight risk categories. The benchmark covers 25 completed model groups and 32,000 successful model outputs with final rubric-adjudicated labels. When conditioning on pairs where both surface forms are recoverable, we find that increased contextualized specificity induces a shift toward less safe behavior. Specifically, paired bootstrap estimates show that the refusal rate and global safety score decrease by 0.175 and 0.440, respectively. Furthermore, mixed effects modeling corroborates a 0.107 increase in unsafe cooperation. These results show that the safety behavior can be miscalibrated to the surface form even after the intent has been recovered, motivating safety evaluations that report response behavior conditional on semantic recoverability.
+
+</details>
+
+### 133. Rethinking GRPO for Large Reasoning Model Safety Alignment
+
+📄 [arXiv](https://arxiv.org/abs/2610.23085)　📅 2026-10
+
+**关键词**：`GRPO`、`safety alignment`、`advantage collapse`、`over-refusal`
+
+👤 **作者**：Jiawei Chen、…、Zhaoxia Yin
+
+- 🎯 **研究动机**：GRPO 广泛用于大推理模型安全对齐——组相对优化可提供不足的安全导向学习信号
+- 🔬 **研究方法**：识别两失效模式：优势坍塌（同质 rollout 组致优势消失）与不安全多样化（不安全行为持续并愈加多样）；Beacon=安全信号恢复（优势引导轨迹过滤+安全参照监督）+安全-效用解耦对齐（类别感知奖励+仅良性 KL 锚定）
+- 📌 **结论**：四 Qwen3/DeepSeek-R1-Distill 变体×八基准：最佳平均安全与推理性能、平均安全错误最多降 32.83pp 且保持低过度拒绝——GRPO 安全对齐的失效诊断与修复
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large reasoning models (LRMs) exhibit strong reasoning capabilities but remain vulnerable to unsafe outputs. While Group Relative Policy Optimization (GRPO) is widely used for safety alignment, its group-relative optimization may provide insufficient safety-directed learning signals. In this paper, we identify two failure modes: advantage collapse, where homogeneous rollout groups yield vanishing advantages, and unsafe diversification, where unsafe behaviors persist and become increasingly diverse. Our theoretical analysis reveals that behavioral consistency weakens within-group safety contrasts, while entropy regularization can diversify unsafe responses when relative signals vanish. To address these challenges, we propose Beacon, comprising Safety Signal Recovery (SSR) and Safety-Utility Decoupled Alignment (SUDA). SSR combines advantage-guided trajectory filtering and safe reference supervision to recover effective safety learning signals, while SUDA employs category-aware rewards and benign-only KL anchoring to mitigate over-refusal without compromising safety. Experiments across four Qwen3 and DeepSeek-R1-Distill variants and eight benchmarks show that our framework achieves the best average safety and reasoning performance, reducing average safety error by up to 32.83 percentage points while maintaining low over-refusal.
+
+</details>

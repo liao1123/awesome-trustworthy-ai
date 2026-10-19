@@ -355,3 +355,22 @@ Supervised fine-tuning (SFT) is widely used to adapt large language models to do
 Safety-aligned Large Language Models remain vulnerable to fine-tuning on small sets of harmful or benign-looking samples. However, prior studies typically assume that poisoned samples directly enter downstream fine-tuning, overlooking quality-based selection in practical training pipelines. To fill this gap, we systematically evaluate both the filtering effects against poisoning and the downstream safety impact of retained data. The results reveal that selection removes many overtly harmful samples, yet some retained high-quality samples can still degrade model safety alignment possibly due to their harmful-like training-update patterns at the layer-wise gradient level. Together, these findings expose a practical vulnerability: safety-degrading influence can pass through quality-based selection via retained high-quality samples. To examine its systematic exploitability, we propose Bi-Stage Quality-Constrained Safety-Degradation Text Optimization (Bi-QSTO), which optimizes poisoned samples under an explicit quality constraint to survive selection while preserving their safety-degrading influence. Across poisoning settings, target models, and filtering rates, Bi-QSTO maintains attack effectiveness before and after selection. Even at 90% filtering, harmful-seeded samples achieve a Poisoning Retention Rate above 90% and Harmful Score of 3.30--4.01. Their attack effectiveness strongly transfers across models and their retention advantage generalizes to additional selection methods.
 
 </details>
+
+### 19. Stealthy Poisoning Attacks via Reused KV Cache of Reasoning
+
+📄 [arXiv](https://arxiv.org/abs/2610.22873)　📅 2026-10
+
+**关键词**：`KV cache poisoning`、`reasoning traces`、`black-box attack`、`residual influence`
+
+👤 **作者**：L. Zhu、Y. Jung、S. Szyller
+
+- 🎯 **研究动机**：LLM 系统复用 KV 缓存加速推理——复用推理轨迹的 KV 缓存还能如 RAG 提升任务性能：该复用引入新投毒漏洞
+- 🔬 **研究方法**：R²ECAP 黑盒攻击仅经聊天界面植入毒推理轨迹：前导轨迹把模型引向对抗目标+保留轨迹承载该目标（保留轨迹以前导为条件生成，其 KV 缓存保留残余对抗影响——即使前导轨迹及其缓存条目被丢弃）
+- 📌 **结论**：三开源 LLM×三数据集 ASR 至 79%、9 个资源受限设置中 8 个超白盒 HijackKV；真实推理轨迹检索系统中 46% ASR；主流注入检测器只检出 1% 保留响应——被复用推理缓存的残余影响投毒（推理缓存供应链新面）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Modern large language model (LLM) systems reuse key-value (KV) caches to accelerate inference. Recent work has shown that reusing KV caches from reasoning traces can also improve task performance, similar to retrieval-augmented generation (RAG). We demonstrate that this form of KV cache reuse introduces new poisoning vulnerabilities. We propose R$^2$ECAP (Reused Reasoning-Cache Poisoning), a black-box attack that plants poisoned reasoning traces solely through interactions with a system's chat interface. R$^2$ECAP constructs two traces: a preceding trace that steers the model toward an adversarial target and a retained trace that carries this target. Because the retained trace is generated conditioned on the preceding trace, its KV cache preserves residual adversarial influence, even after the preceding trace and its cache entries are discarded. We evaluate R$^2$ECAP on three open-weight LLMs and three datasets. R$^2$ECAP achieves up to 79% attack success rate (ASR) and outperforms HijackKV, a state-of-the-art white-box KV poisoning attack, in 8 of 9 resource-constrained settings. It also achieves 46% ASR in a realistic reasoning-trace retrieval system. Finally, R$^2$ECAP remains stealthy, with only 1% of its retained responses detected by a popular prompt injection detector.
+
+</details>

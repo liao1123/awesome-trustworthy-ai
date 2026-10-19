@@ -1652,3 +1652,24 @@ Adversarial attacks on Large Language Models (LLMs) aim to induce harmful conten
 Automated jailbreak attacks rely on evaluation feedback to optimize adversarial prompts, but existing methods often lack fine-grained diagnostic information. We propose Jev-Guided Strategy Bandit (JSB), a query-based jailbreak framework that leverages multi-dimensional probabilistic feedback to guide prompt optimization. JSB combines continuous jailbreak scoring with targeted refinement, strategy switching, and best-state reseeding to balance exploration and refinement. We evaluate JSB on two harmful request datasets across five open-source and three closed-source LLMs. Under a budget of only 10 target-model queries, JSB achieves an average HarmBench attack success rate of 89.8\% across ten open-source settings, consistently outperforming existing automated jailbreak attacks. Further analyses demonstrate its effectiveness under varying query budgets and attacker models. Defense experiments also reveal limitations in existing filtering mechanisms and highlight the potential of Jev-based output filtering.
 
 </details>
+
+### 88. RedDarwin: Evolving Jailbreak Skills against Frontier LLMs
+
+📄 [arXiv](https://arxiv.org/abs/2610.23726)　📅 2026-10
+
+**关键词**：`jailbreak evolution`、`attack skills`、`agentic red-team`、`skill composition`
+
+👤 **作者**：Zhouyuan Ma、Yutao Wu、Hanxun Huang、Xiang Zheng、Yi Liu、Xingjun Ma
+
+- 🎯 **研究动机**：红队须随前沿防护演化持续适应——既有方法大抵搜对抗提示或在固定攻击程序内优化；攻击失效时其底层机制仍可有用于修订重组更强攻击
+- 🔬 **研究方法**：RedDarwin：越狱演化单位从提示与固定攻击改为可执行攻击技能——47 个可复用基础技能，自主修订/组合/执行/选择（凭目标模型反馈），成功发现成为后续演化的构建块
+- 📌 **结论**：65 个演化技能改进 47 基础攻击中的 44、AdvBench 平均 ASR 18.8%→47.3%；held-out StrongREJECT 与演化未见前沿 LLM 上持续超基线；仅 10 次目标查询即 GPT-5.6-Sol 100%、Claude-Sonnet-5 92%、Gemini-3.8-Flash 80%——强攻击常出自可复用机制的新组合（技能级攻击演化）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Red teaming must continually adapt as frontier LLM safeguards evolve, yet existing approaches largely search for adversarial prompts or optimize within fixed attack procedures. We observe that even when an attack becomes ineffective, its underlying mechanisms can remain useful and can be revised or recombined to construct stronger attacks. Based on this insight, we introduce RedDarwin, an agentic framework that shifts the unit of jailbreak evolution from prompts and fixed attacks to executable attack skills. RedDarwin consists of 47 reusable base skills and autonomously revises, composes, executes, and selects them using target-model feedback, allowing successful discoveries to become building blocks for subsequent evolution. RedDarwin produces 65 evolved skills, improving 44 of 47 base attacks and increasing their mean attack success rate (ASR) on AdvBench from 18.8% to 47.3%. These evolved skills consistently outperform baselines on the held-out StrongREJECT and frontier LLMs unseen during evolution; with only 10 target-model queries, RedDarwin achieves 100% ASR on GPT-5.6-Sol, 92% on Claude-Sonnet-5, and 80% on Gemini-3.8-Flash. Analysis of the evolution trajectories further shows that strong attacks often emerge from novel combinations of reusable mechanisms rather than from individually dominant ones. We believe this paradigm can accelerate adaptive red teaming and inform stronger safeguards, creating complementary value for both safety evaluation and defense.
+
+</details>
+
+## 常规收录

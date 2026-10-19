@@ -775,3 +775,22 @@ Conventional vulnerability analysis relies on either system access or dynamic in
 Large Language Model (LLM) agents have demonstrated impressive capabilities across a variety of domains, particularly when integrated with external tools for multi-step task completion. However, they are increasingly vulnerable to adversarial attacks, including direct prompt injection, indirect prompt injection, memory poisoning, and backdoor attacks, which exploit the model's openness to prompt injection and tool manipulation. In this work, we explore practical and generalizable defense strategies within a unified framework across these four attack types. We introduce two universal tool-based defenses: Attacker Tool Filtering, which uses anomaly detection (e.g., Isolation Forest) to identify and remove suspicious tools, and Normal Tool Recalling, a white-box method that restores the agent's original toolset prior to planning. Additionally, we incorporate prompt-based defenses: Chain-of-Thought prompting and self-reflection techniques to enhance reasoning and task paraphrasing to mitigate attacks. Experimental results across both four open-source LLMs (Gemma2-9B, Qwen2-7B, LLaMA3-8B, and LLaMA3.1-8B) and three proprietary LLMs (GPT-3.5, GPT-4, and GPT-5) show that our methods significantly reduce the Attack Success Rates (ASR), achieving 0% ASR in many settings, while preserving or even improving the original task success rate. These findings highlight the promise of simple, modular, multi-layered defenses for strengthening the security and robustness of tool-integrated LLM agents. The code is available at https://github.com/Xiaoyan-Lisa/Defenses-for-Tool-Integrated-LLM-Agents-Against-Adversarial-Attacks.
 
 </details>
+
+### 42. GatewayBench: Unified Capability and Security Evaluation Platform for MCP Gateways
+
+📄 [arXiv](https://arxiv.org/abs/2610.23449)　📅 2026-10
+
+**关键词**：`MCP gateway`、`capability and security`、`benchmark`、`tool surface`
+
+👤 **作者**：Yitian Zheng、Zhaorun Chen、Haoyu Li、Bo Li
+
+- 🎯 **研究动机**：MCP 网关成为聚合/治理/塑造 agent 可见工具面的关键中间件——网关设计如何影响 agent 能力/效率/安全从未被系统研究
+- 🔬 **研究方法**：GatewayBench：524 任务×六域+251 个真实 MCP 服务器的 11,118 工具池；系统注入任务无关工具模拟大规模部署（可控扩展工具面）；七广泛部署网关×多样 agent 配置×良性与对抗任务
+- 📌 **结论**：扁平化 vs 层级化两种网关范式在任务完成/工具使用效率/攻击韧性上差异实质且与 agent 配置强交互——MCP 网关的统一能力+安全评测（agentic 中间件层的首个基准）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+AI agents have increasingly interacted with external environments by invoking tools, with Model Context Protocol (MCP) emerging as a standard interface for connecting agents to heterogeneous tools and services. As organizations deploy agents at scale, MCP gateways have become a critical middleware layer for aggregating, governing, and shaping the tool surface exposed to agents. Despite the growing importance of MCP gateways in agentic systems, no prior work has systematically studied how gateway design affects agent capability, efficiency, and security. To address this gap, we introduce GatewayBench, the first unified evaluation framework and benchmark for MCP gateways. We characterize gateway architectures into two major paradigms: flattened gateways and hierarchical gateways. GatewayBench comprises 524 tasks across six domains, together with a pool of 11,118 real-world tools from 251 authentic MCP servers. To emulate large-scale deployments, we systematically inject task-irrelevant tools sampled from this pool into each agent environment, enabling controlled evaluation as the accessible tool surface scales. Based on GatewayBench, we conduct extensive experiments across seven widely deployed MCP gateways and diverse agent configurations, covering both benign and adversarial tasks. Our results reveal substantial differences across gateway designs in task completion, tool-use efficiency, and resilience to attacks, and further demonstrate that these effects interact strongly with the underlying model and agent harness. These findings highlight the MCP gateway as a consequential yet underexplored component of the agentic AI stack. By enabling controlled evaluation of gateway architectures under realistic tool ecosystems, GatewayBench provides both practical guidance for MCP gateway design and a rigorous testbed for developing more capable, efficient, and secure agentic systems.
+
+</details>
