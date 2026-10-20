@@ -1272,3 +1272,22 @@ Agent skills package task-specific knowledge and procedures that can be composed
 Self-improving LLM agents increasingly distill successful experiences into persistent, reusable skills. Existing skill attack methods corrupt this learning pipeline by injecting malicious triggers, behaviors, or false facts into individual experiences or extracted skills. However, such attacks are easily detected, and the injected malicious behaviors often fail to accumulate as persistent skills. In this paper, we show that skill poisoning can arise even from verified successful experiences, without making any individual trajectory malicious. Based on this insight, we propose SkillPoison, a novel framework that progressively poisons skill via successful experiences. SkillPoison first constructs a set of successful experiences that reinforce a target behavior, and then removes the contextual conditions that constrain when the behavior applies. Rather than injecting malicious content, SkillPoison shapes how the skill extractor generalizes, allowing useful behavior to support task success while inducing harmful behavior when they are misapplied. Extensive experiments on three benchmarks show that SkillPoison achieves 95.71% attack success rates, while all injected experiences remain task-correct and pass verification and lexical inspection. Our code, data and implementation details are available for the community at https://github.com/DEEP-JLU/SkillPoison.
 
 </details>
+
+### 67. SEAL: Towards Persistent Tool Poisoning Attack against LLM Agents via Prefix-Eliciting Trigger
+
+📄 [arXiv](https://arxiv.org/abs/2610.25372)　📅 2026-10
+
+**关键词**：`persistent tool poisoning`、`prefix-eliciting trigger`、`multi-round`、`LLM agents`
+
+👤 **作者**：Nanjun Zhou、Yiming Li、Yukun Chen、Ting Qiao、Enhao Huang、Zhan Qin
+
+- 🎯 **研究动机**：工具投毒把恶意指令嵌入工具描述或外部资源操纵 agent 工具选择——既有攻击依赖『单交互轮内生效』的理想假设而在现实多轮设置中急剧退化（agent 不随规划上下文演化一致地呈现攻击相关信号）
+- 🔬 **研究方法**：SEAL 两阶段：前缀引导触发优化 PETE（优化诱发攻击相关推理前缀的上下文特异触发）+局部到通用触发聚合 L2U（合并局部触发为单一通用触发以跨上下文与执行轮泛化）
+- 📌 **结论**：七个代表多轮场景×多模型上有效且跨目标迁移——工具投毒的多轮持久化（skill 供应链的时序攻击面扩展）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Tool poisoning has emerged as a critical security threat to LLM agents, where adversaries embed malicious instructions in tool descriptions or external resources that enter the agent's context, allowing adversaries to manipulate agent's tool selection process. However, existing tool poisoning attacks primarily rely on an idealized assumption that the attacks task effect within a single interaction round. We show that their effectiveness degrades sharply in realistic multi-round agentic settings. We further reveal that this degradation stems from the fact that agents do not consistently surface attack-relevant signals in their reasoning as the planning context evolves, thereby weakening the attack's influence across rounds. To investigate whether tool poisoning remains a practical threat in such realistic settings, we propose SEAL, a two-stage method for persistent tool poisoning. Specifically, SEAL first performs Prefix-Eliciting Trigger Optimization (PETO) to optimize context-specific triggers that elicit attack-relevant reasoning prefixes, improving effectiveness within individual contexts. It then applies Local-to-Universal Trigger Aggregation (L2U) to combine these local triggers into a single universal trigger, improving generalization across different contexts and execution rounds. Extensive experiments across seven representative multi-round scenarios and different models demonstrate the attack effectiveness of SEAL, its transferability across target models, and its resistance to potential defenses.
+
+</details>

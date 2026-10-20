@@ -1004,3 +1004,22 @@ Large language models (LLMs) are increasingly used for election information, yet
 Humanity's Last Choice describes the idea that the last choice people need to make is which AI system they entrust with the decisions that follow. These systems rely on external sources that content providers can edit through generative engine optimization (GEO) to increase source visibility and influence recommendations. Choosing among these systems therefore requires comparable evidence of how well they carry out user requests when exposed to GEO. Benchmarks have made progress in standardizing tasks, models, and metrics, but they often define their own spaces of GEO strategies and use different editing constraints. These differences can conflate gains from better optimization algorithms with those from greater freedom to edit sources, while making evaluation coverage difficult to compare across benchmarks. We therefore call for a common evaluation standard and propose a meta-taxonomy that describes where sources are edited, how they are edited, and what signals those edits target. Drawing on representative literature, we map existing strategies into a searchable space and outline a protocol for controlled comparisons with explicit coverage reporting. This provides a foundation for common leaderboards that can inform which systems people choose to rely on.
 
 </details>
+
+### 53. Location, Location, Generation: Where You Ask Matters for Generative Engine Optimization
+
+📄 [arXiv](https://arxiv.org/abs/2610.24081)　📅 2026-10
+
+**关键词**：`GEO`、`location`、`generative search`、`audit`
+
+👤 **作者**：Mahe Chen、Nick Koudas
+
+- 🎯 **研究动机**：GEO 审计通常从单一地点监控生成引擎引用的来源——用户位置如何改变被引来源缺乏受控审计
+- 🔬 **研究方法**：300 问题×ChatGPT 19 个声明位置+ChatGPT/Gemini 五个网络位置×两次（31,200 答案测运行间噪声）
+- 📌 **结论**：ChatGPT 跟随应用声明的位置到城市级（写进自身搜索、后端本地化）而忽略网络；Gemini 忽略声明位置跟随网络国家（不依赖地点的问题也换掉多数来源）——生成搜索的可见性随用户位置而变，审计须双通道控制
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Generative search engines answer local and commercial questions with a written answer and a few cited sources. A growing practice of generative engine optimization (GEO) monitors which sources and brands these answers show, typically from a single place. In this paper, we present a controlled audit of how the user's location changes the sources that generative engines cite. We ask 300 questions of ChatGPT with 19 declared locations, and of ChatGPT and Gemini from five network locations, each twice to measure run-to-run noise (31,200 answers). The engines take location from different channels. ChatGPT follows the location an application declares, down to the city: it writes the place into its own searches, and its search backend localizes results even when the queries name no place. It ignores the network. Gemini ignores the declared location and follows the country of the network, changing most of its sources even for questions that do not depend on place. The businesses the answers recommend change with the sources. Thus, visibility in generative search is specific to the user's location, and audits must control both channels.
+
+</details>

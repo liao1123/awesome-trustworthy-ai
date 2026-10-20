@@ -2505,3 +2505,24 @@ Safety-aligned language models are expected to refuse harmful requests while rem
 Large reasoning models (LRMs) exhibit strong reasoning capabilities but remain vulnerable to unsafe outputs. While Group Relative Policy Optimization (GRPO) is widely used for safety alignment, its group-relative optimization may provide insufficient safety-directed learning signals. In this paper, we identify two failure modes: advantage collapse, where homogeneous rollout groups yield vanishing advantages, and unsafe diversification, where unsafe behaviors persist and become increasingly diverse. Our theoretical analysis reveals that behavioral consistency weakens within-group safety contrasts, while entropy regularization can diversify unsafe responses when relative signals vanish. To address these challenges, we propose Beacon, comprising Safety Signal Recovery (SSR) and Safety-Utility Decoupled Alignment (SUDA). SSR combines advantage-guided trajectory filtering and safe reference supervision to recover effective safety learning signals, while SUDA employs category-aware rewards and benign-only KL anchoring to mitigate over-refusal without compromising safety. Experiments across four Qwen3 and DeepSeek-R1-Distill variants and eight benchmarks show that our framework achieves the best average safety and reasoning performance, reducing average safety error by up to 32.83 percentage points while maintaining low over-refusal.
 
 </details>
+
+### 134. Safety Mid-Training: Internalizing LLM Safety as a Foundational Capability
+
+📄 [arXiv](https://arxiv.org/abs/2610.26809)　📅 2026-10
+
+**关键词**：`safety mid-training`、`internalized safety`、`training stage`、`safety-utility frontier`
+
+👤 **作者**：Zhengyue Zhao、Liwei Jiang、Yejin Choi、Chaowei Xiao1
+
+- 🎯 **研究动机**：安全对齐主要在后训练进行而近期也开始把安全数据纳入预训练——后续训练不再含安全数据时安全退化且安全增益常以一般能力为代价：安全与一般推理不应作分离训练目标（经与一般任务共享的推理结构学习：理解意图/应用知识/推理后果）
+- 🔬 **研究方法**：safety mid-training（预训练与后训练之间的阶段）：安全与效用提示让基座生成结构化文档与推理轨迹再用于中训；Qwen3-1.7B/4B/8B
+- 📌 **结论**：平均 ASR 相对基座降 72-81% 同时改善一般能力；收益穿透后续 post-training（一般-only SFT 后基本保持安全且低于基线 ASR、一般-only GRPO 无安全奖励下保持、后续 RL 从中训初始化达更好安全-效用前沿）——安全作为基础能力的中训内化
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Safety alignment for large language models (LLMs) is primarily performed during post-training, while recent work has also begun incorporating safety data into pre-training. Yet safety can degrade when later training no longer includes safety data, and gains in safety often come at the cost of general capability. This tension suggests that safety and general reasoning should not be treated as separate training goals. We instead view safety as an LLM capability that can be learned through a reasoning structure shared with general tasks. Both require the model to understand intent or task goals, apply relevant knowledge, and reason about potential consequences. We introduce safety mid-training, a stage between pre-training and post-training that jointly develops safety and general reasoning through this shared structure. Given safety and utility prompts, the base model generates structured documents and reasoning traces that are then used for mid-training. Safety mid-training reduces average attack success rate (ASR) by 72% to 81% relative to Qwen3-1.7B, 4B, and 8B base models, while also improving general capability. The benefits persist through subsequent post-training. After general-only SFT, mid-trained models largely retain their safety, achieving lower ASR than the baselines without sacrificing general capability. They also retain safety under general-only GRPO without safety rewards, while subsequent RL reaches a better safety-utility frontier when initialized from the mid-trained models. Together, these results suggest that learning safety and general reasoning within a shared mid-training stage can reduce the safety-utility trade-off and make safety more robust to subsequent training.
+
+</details>
+
+## 常规收录

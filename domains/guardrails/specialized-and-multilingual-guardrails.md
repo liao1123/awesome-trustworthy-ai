@@ -1205,3 +1205,22 @@ AI companions provide users with emotional support and ongoing companionship, bu
 Large language models (LLMs) are increasingly deployed across languages, yet their safety and reasoning capabilities remain predominantly evaluated in English. Translating existing benchmarks offers a scalable approach to multilingual evaluation, but preserving task-specific meaning across languages presents significant challenges, particularly for harmful requests, mathematical reasoning, and conversational interactions. We introduce a reasoning-guided translation framework for constructing multilingual evaluations designed to preserve the structure and intended meaning of diverse benchmark tasks. Our approach separates translation strategy selection from large-scale generation, combining reasoning-guided configuration selection with task-aware validation, targeted repair, and independent quality screening. Using this framework, we develop a source-aligned evaluation collection spanning seven safety, conversational, and mathematical reasoning resources across 11 languages. The resulting collection achieves 99.94\% coverage of intended item--language pairs in the two subsets requiring repair. Evaluations of open-source LLMs reveal distinct language-dependent vulnerabilities, including inconsistent refusal behaviour and substantial reasoning degradation in lower-resource languages. These findings highlight the importance of task-sensitive benchmark construction and systematic quality assessment for understanding multilingual model behaviour beyond English.
 
 </details>
+
+### 64. AfriGuard: Safety and Robust Refusal For African Languages
+
+📄 [arXiv](https://arxiv.org/abs/2610.26474)　📅 2026-10
+
+**关键词**：`African languages`、`safety`、`refusal behavior`、`guardrail`
+
+👤 **作者**：Israel Abebe Azime、…、Julia Kreutzer
+
+- 🎯 **研究动机**：确保对有害/有毒内容的适当响应在多样语言文化语境更难（安全风险的表达或解读不同）——构建安全 AI 须检测风险/理解其性质/适当响应并计入语言文化变异
+- 🔬 **研究方法**：AfriGuard：十个非洲语言+英语的文化接地多语数据集（有害意图/安全类别理解/拒绝行为）；guardrail 模型 vs 开闭源 LLM 对照+拒绝检测器+监督微调
+- 📌 **结论**：guardrail 在安全意图与类别分类上落后开闭源 LLM；模型对不安全提示的适当响应失败常非显式拒绝而是语言不足响应导致的偶发不协助；高效 guardrail 与至多 30 倍大模型竞争、拒绝检测器超既有 43.9%——非洲语言的安全与鲁棒拒绝
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models (LLMs) designed to interact with users are typically trained to respond appropriately to harmful or toxic content. However, ensuring appropriate responses becomes more challenging in diverse linguistic and cultural contexts, where safety risks may be expressed or interpreted differently. Building safe AI systems therefore requires detecting safety risks, understanding their nature, and responding appropriately, while accounting for linguistic and cultural variations that add complexity to each stage. In this work, we introduce AfriGuard, a culturally grounded multilingual dataset for studying harmful intent, safety-category understanding, and refusal behavior across 10 African languages and English. Our findings reveal that guardrail models underperform both open- and closed-source LLMs on safety-intent and safety-category classification, while models show limited understanding of appropriate safety behavior, scoring below 60% F1. We further find that models often fail to respond appropriately to unsafe prompts not because they explicitly refuse, but because they produce linguistically inadequate responses that result in incidental non-assistance rather than proper refusals. Finally, using AfriGuard, we develop efficient guardrail models that achieve performance competitive with models up to 30x larger, introduce refusal detectors that improve average performance by 43.9% over existing detectors, and demonstrate that supervised fine-tuning can substantially improve overall safety performance.
+
+</details>

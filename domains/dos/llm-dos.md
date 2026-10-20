@@ -355,3 +355,22 @@ Large Language Models (LLMs) have significantly advanced text understanding and 
 In pay-per-token LLM services, the more a model says, the more users pay. Dishonest providers can covertly manipulate generation to inflate output tokens while largely preserving task utility. We define such manipulation as a Provider-Side Token Inflation Attack (PTIA) and instantiate five representative attacks at the query, prompt, representation, and model levels of the provider-controlled pipeline. Our experiments show that each attack increases mean output length to more than 10.2x the clean baseline, demonstrating PTIA's financial appeal and feasibility at multiple stages of generation. Yet auditing PTIA from black-box responses is difficult for users. Our key observation is PTIA saturation: an initial attack sharply lengthens output, but further strengthening or composition has much less effect. We trace this saturation to stopping behavior: an initial PTIA sharply lowers the end-of-sequence token probability, whereas further intervention lowers it only marginally. Building on this insight, we design a lightweight single-probe audit that applies a controlled lengthening intervention. Under PTIA, the probe induces far fewer additional tokens than under normal service. The audit requires neither a trusted local reference model nor historical clean responses, and its separately issued original and probed requests resemble ordinary traffic, making evasion difficult. Across four open-weight models, it achieves an average detection rate of 85.1% with false-positive rates below 2%. Across 15 real LLM API services, the audit flags 7 for PTIA-consistent behavior.
 
 </details>
+
+### 19. LLM Trojans that Increase Response Lengths and Cost
+
+📄 [arXiv](https://arxiv.org/abs/2610.24784)　📅 2026-10
+
+**关键词**：`Trojan`、`cost attack`、`response length`、`data poisoning`
+
+👤 **作者**：Zhengxing Li、Guangmingmei Yang、Nader Alfares、David J. Miller、George Kesidis
+
+- 🎯 **研究动机**：token 成本管理已成重大问题——前沿提供者每响应 token 收五倍于提示 token 的费用：构造在提示含触发器时增加响应长度（从而用户成本）的特洛伊
+- 🔬 **研究方法**：新数据投毒攻击植入增长响应长度的特洛伊+语义相似指令触发的隐蔽性演示+对应防御
+- 📌 **结论**：指令微调 LLM 上微妙特洛伊可在语义相似指令上触发——面向钱包的 token 成本攻击与防御（DoW 的投毒变体）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Management of the token-based costs of using LLMs has emerged as a significant problem. Some frontier-model providers charge five times per response token than per prompt token, while others offer prefilling discounts for prompt tokens. In this paper, we devise a defense against a new data-poisoning attack that plants a Trojan which increases the length of the response (and hence the cost to the user) when its trigger is present in the prompt. In particular, we demonstrate how a subtle Trojan may trigger on semantically similar instructions of an instruction fine-tuned LLM.
+
+</details>

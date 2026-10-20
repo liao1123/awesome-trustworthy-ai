@@ -340,3 +340,22 @@ On-policy distillation (OPD) has attracted growing attention as an effective way
 On-Policy Distillation (OPD) trains a student on its own generations using teacher feedback. With different tokenizers, comparing teacher and student predictions requires alignment at both sequence and vocabulary levels. In this paper, we examine whether expanding this alignment coverage improves learning. Across three heterogeneous teacher--student pairs on mathematical reasoning and code generation, strict 1:1 groups already cover most student-generated tokens despite substantial vocabulary mismatch. On responses sampled from the students before distillation, the shared vocabulary retains nearly all teacher and student probability mass at strictly aligned positions on average. Restricting reverse KL to a student-selected top-16 subset of the shared vocabulary at each strict position achieves accuracy comparable to full shared-vocabulary OPD, outperforming the evaluated cross-tokenizer baselines. Adding mean squared error supervision on span log-probabilities in mismatch groups gives complete supervision coverage, yet reduces accuracy. At checkpoints from training with only the strict loss, the span gradients show weak or negative directional agreement with the strict gradients and grow in magnitude relative to them. These diagnostics may help explain the accuracy drop from adding span supervision. Our findings motivate a shift from maximizing alignment coverage to prioritizing supervision reliability: compact supervision at strict positions can be more effective than broader coverage that introduces weakly aligned or conflicting training signals.
 
 </details>
+
+### 19. Safety Offset Learning: When Benign Fine-Tuning Misaligns LLMs
+
+📄 [arXiv](https://arxiv.org/abs/2610.25611)　📅 2026-10
+
+**关键词**：`benign fine-tuning`、`refusal-to-compliance transition`、`SAFEOFF`、`misalignment mechanism`
+
+👤 **作者**：Jesson Wang、Zhanhao Hu、Minghao Lin、Yuchen Wu、Aylin Caliskan、Mengyuan Li
+
+- 🎯 **研究动机**：微调安全风险常按训练数据有害性刻画（有害=危险、良性=假设保持对齐）——漏掉更根本的因素：监督诱导的行为转变。有害微调与降安全的良性微调可统一为同一『拒绝到顺从』转变在不同数据分布上的学习
+- 🔬 **研究方法**：构造对齐模型初始倾向拒绝的良性示例并配其原始无害答案（初始拒绝与监督答案间的差异）；两条件共同才升有害顺从：差异足够大且不能经窄表面捷径消解（差异匹配下仅是否局域化改变有害顺从一个数量级）→SAFEOFF 数据集（重写良性指令抬高拒绝似然并配原答案）
+- 📌 **结论**：跨三对齐 LLM×三安全基准——安全侵蚀的共同机制是拒绝到顺从的转变而非数据有害性本身（微调安全的行为转变理论）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Safety risks from fine-tuning are commonly characterized by the harmfulness of the training data:harmful fine-tuning is considered dangerous, while benign fine-tuning is often assumed to preservealignment. We argue that this view misses a more fundamental factor-the behavioral transition inducedby supervision. Harmful fine-tuning and safety-degrading benign fine-tuning can both be understoodas learning the same refusal-to-compliance transition, but on different data distributions. We studywhether such a transition learned on benign inputs can generalize to harmful requests. We constructbenign examples that an aligned model initially tends to refuse and pair them with their originalharmless responses, creating a discrepancy between the model's initial refusal and the supervisedanswer. Fine-tuning on these examples increases harmful compliance, but only when two conditionshold together: the discrepancy is large enough, and it cannot be resolved through a narrow surface-levelshortcut. With the induced discrepancy matched, varying only whether it is localized changes harmfulcompliance by an order of magnitude; raising the discrepancy does not help while a shortcut remainsavailable, and removing the shortcut does not help while the discrepancy is small. Building on thisobservation, we introduce SAFEOFF, a dataset of benign instructions rewritten to raise the alignedmodel's refusal likelihood and paired with their original answers. Across three aligned LLMs and threesafety benchmarks, SAFEOFF substantially weakens safety alignment despite containing no explicitharmful supervision, suggesting that fine-tuning safety depends not only on what data a model sees, butalso on which behavioral boundary the supervision moves.
+
+</details>

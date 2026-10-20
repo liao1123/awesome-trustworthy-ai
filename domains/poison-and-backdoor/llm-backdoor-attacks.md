@@ -3523,3 +3523,22 @@ Backdoor Attacks on Large Language Models (LLMs) typically follow a trigger-resp
 Model merging has become widely adopted for enhancing the task-specific performance of Large Language Models (LLMs) without additional training. While the specialized model from third-party platforms may undergo safety audits (e.g., backdoor detection), we reveal a novel and critical threat: One-sided Merging-Conditional Backdoor (OMCB). OMCB remains dormant and undetectable within one standalone model but activates upon merging, triggering safety unalignment. We first theoretically analyze the existence and geometric location of OMCB, revealing that the parameter shift crossing safety decision boundaries is the main cause of backdoor activation. Building upon this insight, we propose SMOKE, a meta-learning-based attack framework. SMOKE implants OMCB via a bi-level optimization strategy: the inner loop synthesizes surrogate meta-vectors through random low-rank initialization and finite-step maximization, while the outer loop optimizes the target model by simulating the merging process. Furthermore, preliminary analysis shows that the injected OMCB has bounded generalization loss under unknown merging configurations. Extensive experiments across diverse model architectures and merging techniques validate the effectiveness of SMOKE and its resistance to existing backdoor detections, highlighting a significant yet previously overlooked vulnerability in the model merging paradigm.
 
 </details>
+
+### 187. Selective Transfer through Sequence Distillation: From Benchmark Knowledge to Backdoor Behaviour
+
+📄 [arXiv](https://arxiv.org/abs/2610.26311)　📅 2026-10
+
+**关键词**：`distillation selectivity`、`refusal backdoor transfer`、`logit distillation`、`supply chain`
+
+👤 **作者**：Jonibek Mansurov、Sholpan Bolatzhanova、Filbert Aurelian Tjiaranta、Vallerie Alexandara Putra、Alham Fikri Aji
+
+- 🎯 **研究动机**：知识蒸馏被广泛用于从教师向学生迁移能力——但也可迁移教师非预期属性：不同隐藏教师属性经同一蒸馏信道的存活情况（基准关联知识 vs 拒绝后门）
+- 🔬 **研究方法**：教师微调于基准数据经全部四蒸馏信道传给学生（含学生只见教师生成数字序列而无任何自然语言或领域内容）；拒绝后门教师近完美触发拒绝而序列蒸馏学生基本不继承；logit 蒸馏实质迁移（零后门样本学生达 85.5% 触发拒绝）
+- 📌 **结论**：蒸馏是选择性的且选择标准不是学生看到什么数据而是教师属性的结构——基准知识全面迁移而拒绝后门仅 logit 通道（蒸馏供应链的属性特异传递）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Knowledge distillation is widely used to transfer capabilities from teacher models to student models, but recent work shows that it can also transfer unintended teacher properties. We study whether different hidden teacher properties survive the same distillation channels. Specifically, we compare two properties: benchmark-associated knowledge and refusal backdoors, and show that distillation treats them very differently. Teachers fine-tuned on benchmark data successfully pass that knowledge to students through all four distillation channels we test, including when students are trained only on teacher-generated number sequences containing no natural language or domain content whatsoever. Refusal backdoors tell the opposite story: backdoored teachers achieve near-perfect triggered refusal, yet sequence-distilled students inherit essentially none of this behaviour. Logit-based distillation transfers it substantially, reaching up to 85.5\% triggered refusal in students that saw zero backdoor examples. Distillation is therefore selective, and the selection criterion is not what data the student sees, but what structure the teacher's property has. The code is available at this https URL.
+
+</details>

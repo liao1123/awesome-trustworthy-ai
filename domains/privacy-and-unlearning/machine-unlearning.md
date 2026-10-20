@@ -1722,3 +1722,22 @@ As multimodal large language models (MLLMs) become more capable and widely deplo
 Large Language Model (LLM) unlearning is often evaluated primarily by target suppression and clean retain utility. These metrics can miss a local failure mode: a model may perform well on standard retain prompts, yet degrade on benign reasoning when prompts lie near the forgotten domain. This phenomenon is termed forget-adjacent utility loss. A fundamental question is: where should forget representations go after they leave the removed behavior? Successful unlearning depends not only on whether forget-conditioned representations depart from the harmful computation, but also on the direction in which they are redirected afterward. We propose RA$^2$ (Retain-Anchored Attraction), a latent-space unlearning method that redirects forget-token states toward nearby retain-supported representations while preserving higher-layer behavior on retain data. On WMDP and MUSE, RA$^2$ yields higher forget-adjacent utility than strong unlearning baselines at similar broad-utility levels. These results show that the migration direction of forget representations materially affects benign behavior near the forget boundary. Our code is available at https://github.com/ZacLing/retain_anchored_attraction.
 
 </details>
+
+### 93. Towards Architectural-Level Safety Control: Relocating Hazardous Knowledge into Removable Experts in Mixture-of-Experts Models
+
+📄 [arXiv](https://arxiv.org/abs/2610.25791)　📅 2026-10
+
+**关键词**：`hazardous knowledge`、`removable experts`、`MoE`、`architectural safety`
+
+👤 **作者**：Cheng Jin、…、Qiaosheng Zhang
+
+- 🎯 **研究动机**：从模型本身移除危险知识而不降一般能力是理想的但困难（与一般能力深度纠缠于相同参数）——既有对齐与遗忘方法调共享参数、倾向抑制表达而非移除（知识仍在且易被后续微调恢复）
+- 🔬 **研究方法**：REX：利用 MoE 模块结构扩展一组新的物理可移除专家——专家扩展+选择性梯度掩蔽+路由差异把危险知识迁出原专家并集中到新专家；切除新专家即得可公开发布的模型
+- 📌 **结论**：跨 Intern-S2/Qwen3.5-35B/Gemma-4-26B 一致：切除使 WMDP-Bio 降 48.4 点而 MMLU 变化 <3 点；切除模型匹配九个遗忘方法中最强者——架构级危险知识重定位（可物理移除的安全控制）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models acquire broad knowledge from web-scale corpora during pretraining, including knowledge that could be hazardous if misused. Removing such knowledge from the model itself without degrading general capability is desirable but difficult, as it is deeply entangled with general capability within the same parameters. Existing safety alignment and unlearning methods typically adjust these shared parameters, tending to suppress the expression of hazardous knowledge rather than remove it. As a result, the knowledge remains in the model and is readily recoverable by subsequent fine-tuning. To address this limitation, we propose REX (Relocating into Removable EXperts), a knowledge relocation method that separates hazardous knowledge from general capability at the architectural level. Exploiting the modular structure of Mixture-of-Experts models, REX expands the model with a set of new, physically removable experts designated to hold hazardous knowledge. Through expert expansion, selective gradient masking and routing differentiation, it relocates hazardous knowledge out of the original experts and concentrates it in the new ones. Excising these new experts yields a model suitable for public release. This removal holds consistently across Intern-S2, Qwen3.5-35B-A3B and Gemma-4-26B-A4B; on Qwen3.5-35B-A3B, for instance, excision lowers WMDP-Bio accuracy by 48.4 points while MMLU changes by less than 3 points. The excised model matches the strongest of nine unlearning baselines in removing hazardous knowledge, and it is the only one that preserves this removal under subsequent fine-tuning. After 250M tokens of standard fine-tuning on Qwen3.5, the best baseline rebounds on WMDP-Bio from 44.1% to 78.3%, whereas REX rises only from 32.4% to 42.8%.
+
+</details>

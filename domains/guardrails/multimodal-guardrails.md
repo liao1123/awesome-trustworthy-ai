@@ -1411,3 +1411,22 @@ Large audio-language models (LALMs) expand language models to process and interp
 Multimodal large language models (MLLMs) can act unsafely when individually benign images and texts are interpreted jointly. Beyond implicit reasoning risk, where reasoning drifts toward harm, we identify intent-level risk, where cross-modal ambiguity silently commits the model to a hazardous premise that path-level optimization alone cannot correct. We propose SAFE-PRO, which uses a Risk-Conditioned Uncertainty (RCU) signal, combining predictive entropy with a learned cross-modal risk score, to decide when to ask safety-grounded clarifying questions and where to apply path optimization, under a reward that prioritizes safety and penalizes over-refusal. We also build SSUI-Dialog, a multimodal multi-turn dataset with dual-intent supervision, and theoretically analyze gradient variance and unsafe-completion risk under RCU. Across seven benchmarks and two base MLLMs, SAFE-PRO consistently improves safety over SRPO, roughly halves its over-refusal, and surpasses GPT-4o and Claude-3.5-Sonnet in average single-turn safety.
 
 </details>
+
+### 75. ContraSafe-VL: A Contrastive Safety Preference Dataset for Vision-Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2610.23908)　📅 2026-10
+
+**关键词**：`VLM safety`、`contrastive preference`、`visual context`、`over-refusal`
+
+👤 **作者**：Di Wu、Yanyan Zhao、Xin Lu、Hao Yang、Taotao Zhang、Yunzhen Zhao
+
+- 🎯 **研究动机**：VLM 安全取决于文视交互——模型可忽视安全相关视觉内容或过度解读敏感内容（不安全或过度拒绝）；既有响应偏好范式教如何回应却少监督视觉语境应如何影响安全判断
+- 🔬 **研究方法**：ContraSafe-VL：每个固定文本查询构造产生不同安全标签的配对视觉语境（视觉语境如何影响多模态安全判断的直接监督）+基于无害与有帮助的响应偏好对
+- 📌 **结论**：三 VLM 架构多基准：改善跨模态安全识别并取得更好安全-过度拒绝权衡——视觉语境条件化的安全对齐数据
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Vision-Language Models (VLMs) are increasingly deployed as general-purpose multimodal assistants, making multimodal safety alignment an important challenge. Safety depends on the interplay between textual and visual content, with visual context often playing a critical role. However, VLMs may fail to use visual information appropriately, either overlooking safety-relevant visual content or over-interpreting sensitive visual content, leading to unsafe responses or over-refusal. Existing multimodal safety alignment datasets largely follow the response-preference paradigm, which teaches models how to respond but provides limited supervision on how visual context should inform the safety judgment, making it difficult to balance safety and over-refusal. To address this limitation, we introduce ContraSafe-VL, a Contrastive Safety preference dataset for Vision-Language Models. For each fixed textual query, ContraSafe-VL constructs paired visual contexts that result in multimodal queries with different safety labels, providing direct supervision for how visual context should inform multimodal safety judgments. It further provides response preference pairs based on harmlessness and helpfulness to encourage models to generate responses that are both safe and helpful. Experiments across three VLM architectures and multiple benchmarks demonstrate that training with ContraSafe-VL improves cross-modal safety recognition and achieves a better safety--over-refusal trade-off while preserving general multimodal capabilities. The dataset will be publicly released.
+
+</details>

@@ -1680,3 +1680,22 @@ Vision-language models (VLMs) have recently shown excellent progress in open-end
 Direct Preference Optimization (DPO) has become a widely adopted approach for aligning vision-language models (VLMs), yet the security of multimodal preference data remains largely unexplored. Existing preference poisoning attacks either corrupt explicit supervision signals or require visible triggers, making them detectable under human inspection. We introduce DPOison-VL, the first clean preference poisoning attack against VLM-DPO, which manipulates model alignment solely through imperceptible perturbations on a small fraction of training images, while leaving all prompts, responses, and preference annotations semantically intact. We formulate poison construction as a bilevel optimization and derive a gradient alignment surrogate that efficiently steers image perturbations toward the attacker-specified preference. We further introduce a preference displacement score for principled poison selection with provable first-order optimality under a fixed poison budget, and derive a sufficient condition for preference inversion. Extensive experiments across diverse attack tasks, different VLM architectures and scales, and baseline comparisons demonstrate that DPOison-VL achieves up to 98\% ASR with only 2\% poisoned data and exhibits cross-model transferability, while largely preserving clean accuracy and general utility. Our findings reveal a critical vulnerability in VLM-DPO, where imperceptible image perturbations in preference training data can silently redirect alignment.
 
 </details>
+
+### 96. Under the Skin: Backdoor Infection in Multimodal Large Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2610.24058)　📅 2026-10
+
+**关键词**：`cross-modal backdoor`、`infection`、`shared latent space`、`MLLM`
+
+👤 **作者**：Jiawen Wang、Ruo Yang、Haoran Dai、Binghui Wang、Ning Luo
+
+- 🎯 **研究动机**：MLLM 已在一模态被注入后门——能否不改不毒另一模态地构造其触发器（经共享潜空间激活恶意行为）？
+- 🔬 **研究方法**：后门感染：从已感染模态的后门出发在另一『被感染模态』构造对应触发器（训练期不修改不投毒该模态）；轻量约束感知优化生成触发器
+- 📌 **结论**：LLaVA/InternVL/Qwen-VL/Gemma 上跨模态触发器比直接优化更高效有效且更难检测——多模态系统的新威胁向量（跨模态后门迁移）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Multimodal Large Language Models (MLLMs) have achieved impressive performance in generating text conditioned on inputs from different modalities. In this work, we introduce backdoor infection, a cross-modal attack framework targeting MLLMs. Starting from a model already injected with a backdoor in one modality, our attack constructs a corresponding trigger in another modality, called the infected modality. Exploiting the model's shared latent space, the trigger in the infected modality reliably activates the malicious behavior, without modifying or poisoning the infected modality during training. We further develop a lightweight, constraint-aware optimization method for efficient and practical trigger generation. Extensive experiments across several state-of-the-art MLLMs, including LLaVA, InternVL, Qwen-VL, and Gemma, demonstrate that our approach identifies cross-modal triggers that are more efficient, effective, and less detectable than direct optimization baselines, highlighting a critical new threat vector in multimodal systems.
+
+</details>

@@ -2360,3 +2360,41 @@ Retrieval-augmented generation (RAG) aggregates evidence from multiple external 
 Retrieval-augmented generation (RAG) mitigates hallucinations and knowledge staleness in large language models using external knowledge. However, ingestion from public and third-party sources exposes RAG systems to poisoning attacks. Existing attacks are designed and evaluated under exact retrieval, where poisoned documents participate in global ranking. Deployment-scale systems instead rely on approximate nearest-neighbor (ANN) indexes such as hierarchical navigable small world (HNSW), where limited search budgets, graph-search reachability, and local benign-document competition invalidate this assumption and degrade existing attacks. We present a topology-aware topic-level poisoning attack against large-scale HNSW-RAG that generalizes to unseen topic queries. We organize poisoned documents into a Hub-Satellite structure: Satellites provide competitive entry points across semantic regions, while Hubs strengthen local cohesion and facilitate cascading retrieval. For generation, we propose an entity-claim promotion attack combining evidence anchoring and entity-claim coupling to promote the target entity via a target claim across different query regions. On 2M-document Wikipedia, our attack maintains over 72% retrieval success and reaches 31.29% attack success, substantially outperforming baselines; domain-specific experiments further support its effectiveness. Structural analyses show that the Hub-Satellite topology forms in HNSW, indicating that graph structure contributes to improved poisoned-document retrieval. Existing poisoning defenses cannot mitigate the attack, exposing graph-structural risks in HNSW-RAG systems.
 
 </details>
+
+### 123. Consistency Is the Attack Surface: Detecting Coordinated Retrieval Poisoning with Embedding Geometry
+
+📄 [arXiv](https://arxiv.org/abs/2610.24834)　📅 2026-10
+
+**关键词**：`coordinated poisoning`、`embedding geometry`、`RAG defense`、`attack fingerprint`
+
+👤 **作者**：Zeyan Li、Qirong Guo、Jianfeng Xu
+
+- 🎯 **研究动机**：基于一致性的 RAG 防御依赖『稀疏对手』假设——投毒战役可只改语料可忽略比例却把段落集中进读者上下文：一致性本身成为攻击面
+- 🔬 **研究方法**：四 NQ 检索种子：≥94.1% 目标行有注入进 top-5、52.9% 形成检索多数；协调留下指纹=证据嵌入几何中稠密查询锚定分量——CoordGuard 从鲁棒归一化的查询加权亲和审计该结构（免毒标签/正确答案/读者梯度），always-filter 或良性校准门
+- 📌 **结论**：e5 always-filter 把暴露条件 ASR 降到 0.167（代价 13.6 点干净）；Contriever 门保 0.315 干净于 ASR 0.331；跨两读者三任务多检索器-审计者对迁移——协调投毒的几何指纹检测
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Consistency-based defenses for retrieval-augmented generation (RAG) rest on an assumption that a sparse adversary breaks: a poisoning campaign may modify a negligible fraction of the corpus, yet retrieval concentrates its passages into the reader's context. Across four Natural Questions retrieval seeds, at least one injection reaches the top-5 in 94.1% of targeted query--seed rows, and all three form a retrieved majority in 52.9%. Under our short-answer protocol, RobustRAG and ReliabilityRAG reach exposure-conditional attack success 0.512, against 0.576 for undefended RAG, while lowering clean accuracy from 0.328 to 0.216. Coordination, however, leaves a fingerprint: a dense, query-anchored component in the evidence embedding geometry. CoordGuard audits this structure from robustly normalized query-weighted affinities, without poison labels, correct answers, or reader gradients. Its always-filter mode suppresses the selected component whenever one forms; a benign-calibrated gate suppresses it only at unusually high scores and traces a robustness--utility frontier. Pooling four retrieval seeds, e5 always-filtering reduces $\mathrm{ASR}_{\mathrm{exp}}$ to 0.167 overall and 0.138 on parametrically unknown queries, at a 13.6-point clean cost, while a Contriever gate retains clean accuracy 0.315 at $\mathrm{ASR}_{\mathrm{exp}}=0.331$. The reduction transfers across two readers, three tasks, and multiple retriever--auditor pairs, and count-matched controls attribute it to component-targeted removal rather than deletion volume. These findings recast poison detection from judging truth to auditing the structure of retrieved evidence.
+
+</details>
+
+### 124. RAGLeak: Supply-Chain Privacy Backdoors in Retrieval-Augmented Generation
+
+📄 [arXiv](https://arxiv.org/abs/2610.25937)　📅 2026-10
+
+**关键词**：`RAG privacy backdoor`、`reversible obfuscation`、`supply chain`、`data extraction`
+
+👤 **作者**：Yuchen Chen、…、Zhenyu Chen
+
+- 🎯 **研究动机**：RAG 依赖外部知识库引入新攻击面——既有数据抽取攻击靠提示注入（依赖生成器指令遵循）或复述检索文档的后门（难平衡抽取保真与隐蔽）
+- 🔬 **研究方法**：RAGLeak 供应链隐私后门：把信息泄漏与直接文本暴露解耦——触发时生成器对检索到的私有文档做可逆混淆供辅助 LLM 高保真恢复；三模型族×三应用域
+- 📌 **结论**：ASR 至 100% 且良性效用影响有限；代表性检测防御下至多降 10 点；干净微调后仍有效并跨模型规模与版本——RAG 的供应链隐私风险（后门×隐私抽取的新组合）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Retrieval-Augmented Generation (RAG) enables large language models to access external knowledge during inference, but its reliance on external knowledge bases also introduces new attack surfaces. Existing data extraction attacks against RAG systems rely on either prompt injection, which heavily depends on the generator's instruction-following capability, or backdoors that reproduce or paraphrase retrieved documents but struggle to balance extraction fidelity and stealthiness. In this paper, we propose RAGLeak, a supply-chain privacy backdoor attack that decouples information leakage from direct textual exposure. When triggered, the generator reversibly obfuscates retrieved private documents for high-fidelity recovery by an auxiliary LLM. Across three model families and three application domains, RAGLeak achieves up to $100\%$ ASR with limited impact on benign utility and at most a $10$-percentage-point ASR drop under representative detection-based defenses. The backdoor remains effective after clean fine-tuning and across model scales and versions, revealing an underexplored supply-chain privacy risk in RAG systems. The source code is available at this https URL.
+
+</details>
