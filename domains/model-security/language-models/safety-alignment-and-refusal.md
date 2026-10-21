@@ -2526,3 +2526,22 @@ Safety alignment for large language models (LLMs) is primarily performed during 
 </details>
 
 ## 常规收录
+
+### 135. Can Native Safety Travel? Reusing Safety Pretraining Across Models via On-Policy Distillation
+
+📄 [arXiv](https://arxiv.org/abs/2610.27555)　📅 2026-10
+
+**关键词**：`原生安全`、`安全预训练`、`在线策略蒸馏`
+
+👤 **作者**：Bingqi Shang、…、Sijia Liu
+
+- 🎯 **研究动机**：安全预训练获得的鲁棒性昂贵且被锁定在单个模型内，能否迁移到标准预训练的学生
+- 🔬 **研究方法**：提出原生安全复用：学生用标准预训练权重对安全预训练提示做在线策略生成，小型安全预训练教师在其轨迹上监督词元级预测，跨分词器对齐支持跨家族迁移
+- 📌 **结论**：学生继承鲁棒性且保留更高通用性：后续微调仅使 1.7B 学生平均 ASR 升 5.00%（安全后训练为 11.58%）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Safety pretraining has emerged as a promising paradigm for embedding safety deeply into a model during pretraining, yielding robustness to subsequent fine-tuning that conventional safety post-training often lacks. We refer to this safety acquired during model pretraining as native safety. Yet native safety is expensive to acquire, confined to the model in which it was pretrained, and often accompanied by lower general utility. In this work, we rethink the practical value of safety-pretrained models and introduce, for the first time, the native safety reuse problem: Can native safety be transferred from a specialized, potentially smaller, safety-pretrained "teacher" to standard-pretrained "students," enabling them to inherit its robustness while preserving their general utility? We show that native safety can "travel" through on-policy distillation. A standard-pretrained student generates responses to safety-pretraining prompts, while a small safety-pretrained teacher supervises the student's token-level predictions along its own generated trajectories; cross-tokenizer alignment further enables transfer across model families. The resulting students exhibit substantially greater safety robustness than their safety-post-trained counterparts while retaining higher general utility than the teacher: subsequent fine-tuning raises the average attack success rate (ASR) of the 1.7B student by only 5.00%, compared with 11.58% for safety post-training, and its average utility of 48.20% far exceeds the aligned teacher's 27.42%. Unlike conventional large-to-small knowledge distillation, our framework enables selective, small-to-large safety transfer: it reuses the robust safety expertise of a smaller pretrained teacher without inheriting its utility limitations. These findings establish native safety as a reusable model property rather than one permanently tied to the originally pretrained model.
+
+</details>

@@ -908,3 +908,22 @@ LLM-based agents increasingly operate in environments where they interact with u
 Multimodal agents increasingly rely on visual interfaces to perceive state and select actions, creating an attack surface not captured by text-only safety evaluations. We study Visual Semantic Hijacking, in which deceptive but semantically meaningful interface elements, such as forged system alerts, cause an agent to depart from its authorized task. We propose a trajectory-guided procedure that identifies candidate injection points and inserts reproducible visual payloads into the observation stream. Using this procedure, we construct MMA-SafetyBench, which contains 1,083 adversarial trajectories across web automation, desktop GUI control, mobile navigation, document understanding, and video processing. Across nine evaluated models, Attack Success Rate (ASR) reaches 87.96%, while Semantic Compromise Rate (SCR) reaches 98.09%. A 1--3--5 scoring scheme distinguishes target-matching outputs, semantic disruption without a target match, and successful preservation of the benign task. Controls covering all nine models and five domains show that attacks persist under neutral prompts. A safety-priority prompt lowers ASR without eliminating the failure mode.
 
 </details>
+
+### 48. AutoRedClaw: Automated Red-Teaming for Claw-Style Agents
+
+📄 [arXiv](https://arxiv.org/abs/2610.27244)　📅 2026-10
+
+**关键词**：`红队测试`、`claw 式 agent`、`持久化威胁`
+
+👤 **作者**：Hao Li、…、Chaowei Xiao
+
+- 🎯 **研究动机**：OpenClaw 类持久化个人助理的配置文件、长期记忆与技能一旦被投毒会跨任务跨会话反复重载，人工构造的安全评测无法覆盖
+- 🔬 **研究方法**：AutoRedClaw 自动生成端到端攻击及配套执行环境：严格质量检查+执行验证+按风险类别/攻击策略/阶段/表面组织的经验引导探索
+- 📌 **结论**：单条有效攻击成本低于 0.10 美元、有效攻击率超 30%，产出持续演化的攻击面评测
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Agent systems are shifting from task-scoped tool-use agents to persistent, personalized assistants such as OpenClaw. These claw-style agents maintain configuration files (e.g., this http URL), long-term memory, and reusable skills. Once poisoned, this persistent state is repeatedly reloaded into the agent's context, creating persistent threats across tasks and sessions. Existing security evaluation systems struggle to evaluate these complex claw-style systems since they rely heavily on manually constructed test cases and environments, which limits their scale and coverage; in addition, these manually designed cases quickly become outdated as agents evolve, and their evaluation settings leave a gap with how claw-style agents are deployed in practice. To address this, we introduce AutoRedClaw, an automated red-teaming framework that generates end-to-end attacks together with the environments needed to execute them. AutoRedClaw combines a strict quality-checking protocol with execution-based validation to ensure the correctness, realism, and effectiveness of generated samples, and adopts task-driven environment construction to keep costs low. To achieve broad coverage, it organizes generation along risk categories, attack strategies, attack stages, and attack surfaces, and uses experience-guided exploration to steer generation toward under-explored regions. AutoRedClaw achieves an effective attack rate above 30% at less than $0.10 per successful sample. From its outputs, we construct RedClaw-Bench, a 330-case benchmark that yields substantially higher attack success rates (ASRs) than AgentDojo, AgentDyn, and DTap. Across seven harnesses and four frontier models, most agent systems exceed 50% ASR, showing that our red-teaming pipeline provides a strong evaluation signal even for the most advanced agent systems. Our code and benchmark are released at this https URL.
+
+</details>

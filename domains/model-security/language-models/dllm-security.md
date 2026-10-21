@@ -676,3 +676,60 @@ The Safety-Aware Denoiser (SAD) is a recent, training-free, safety-guidance fram
 Diffusion large language models (dLLMs) have emerged as a promising alternative to autoregressive LLMs, yet remain susceptible to hallucination. Activation steering offers a promising mitigation approach by guiding parallel token predictions through internal representations. However, existing steering methods largely overlook two characteristics of dLLMs: dynamic denoising states and temporal hallucination risks, which challenge predefined steering vectors and uniform intervention strengths. We propose TRACESTEER, a trace-driven activation steering framework that uses preceding denoising predictions as feedback to jointly adapt steering direction and strength. Specifically, Denoising Feedback Steering (DF-Steering) constructs step-specific steering vectors from preceding predictions and current hidden states. Trajectory-Guided Steering Gate (TS-Gate) regulates their strength using prediction uncertainty and the denoising timestep. With the backbone frozen, factual supervision and magnitude regularization jointly guide the learning of adaptive steering interventions, promoting factual reliability and stability throughout denoising. Experiments on two dLLMs show improved factual reliability on TruthfulQA and generalization across five downstream benchmarks.
 
 </details>
+
+### 37. Factual Access States in Diffusion Language Models: From Mechanism to Knowledge Editing and Retrieval
+
+📄 [arXiv](https://arxiv.org/abs/2610.27580)　📅 2026-10
+
+**关键词**：`扩散语言模型`、`事实访问状态`、`知识编辑`
+
+👤 **作者**：Yuchen Guo、Zhuoyuan Mao、Yiwen Guo
+
+- 🎯 **研究动机**：事实回忆是查表：网络内某表征充当键，键的构成决定哪些查询可检索、编辑须覆盖什么、检索器能读到什么——作者称事实访问状态
+- 🔬 **研究方法**：对比 AR 与掩码扩散语言模型：AR 中主语位置独立于关系富集属性、读出位置做关系选择；DLM 中关系措辞在首个注意力层路由进可见实体位置、早期 FFN 在融合表征上查表
+- 📌 **结论**：DLM 访问状态随关系表层形式与查询方向变化，一事实的查询占据状态空间区域而非点；据此提出 Multi-View Edit：改写提升 paraphrase/反向问答而 AR 编辑器近乎零增益，状态还可作检索接口
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Factual recall is a lookup: some representation inside the network serves as the key, and what that key is made of decides which queries can retrieve the fact, what an edit must cover, and what a retriever can read. We call it the factual access state. In autoregressive (AR) models the subject position enriches attributes largely independently of the relation, and relation-specific selection happens later, at the readout position. In masked diffusion language models (DLMs) we find the state is assembled differently, and much earlier: in the first attention layer the wording of the relation is routed into the position of whichever entity is visible and the early feed-forward layers look the fact up on this fused representation. The state therefore varies with the relation's surface form and with the query direction, so the queries about one fact occupy a region of state space rather than a point, and an operation on the fact succeeds only for queries that enter it. We treat the state as an interface to a DLM's factual knowledge, and put it to two uses. Writing to the state gives a knowledge editor: from one declarative statement, Multi-View Edit fits one shared value per direction across that region and installs it in the early-MLP block, preserving source-prompt reliability while substantially improving paraphrase and reverse question answering, where AR editors gain near zero. Reading it suggests a complementary use: the state at each entity position can serve as a relation-specific retrieval vector with no training, returning both pieces of evidence for two-entity queries on which pooled, prompted and lexical retrievers almost never return both.
+
+</details>
+
+### 38. TeCoP: Accelerating Diffusion Large Language Model Decoding via Tentative Context Pipelining
+
+📄 [arXiv](https://arxiv.org/abs/2610.27583)　📅 2026-10
+
+**关键词**：`dLLM 解码`、`上下文流水线`、`吞吐加速`
+
+👤 **作者**：Jui-Chien Tsou、Hsuan-Chi Liu、Wei-Chin Wang、Yu-Syuan Xu、Chun-Yi Lee
+
+- 🎯 **研究动机**：dLLM 每次前向预测多词元，但块式解码器串行生成并重复计算已稳定预测，低效源于把预测的可提交性与上下文效用耦合
+- 🔬 **研究方法**：TeCoP 免训练解码器：交错块并行流水线与草稿-验证分离两角色，用稳定但未提交预测作跨块临时上下文，置信与稳定性检查治理提交
+- 📌 **结论**：四个 LLaDA/Dream 模型三基准上前向评估最多减少 87%，无 KV 缓存 7.50 倍、有缓存 11.77 倍吞吐，全部 12 设置超越 Fast-dLLM/DSB 且精度损失小于 1 点
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Diffusion large language models (dLLMs) predict multiple token positions per forward pass, yet block-wise decoders serialize generation and repeatedly recompute stable predictions. We attribute this inefficiency to coupling a prediction's readiness for irreversible commitment with its utility as context. We introduce Tentative Context Pipelining (TeCoP), a training-free decoder that decouples these roles through staggered block-parallel pipelining and draft-and-verify. TeCoP reuses stable but uncommitted predictions as provisional cross-block context, with commitment governed by confidence and stability checks. Across four LLaDA and Dream dLLMs on GSM8K, Minerva MATH, and MBPP, TeCoP reduces number of forward evaluations by up to 87% and achieves up to 7.50-fold throughput without KV caching and 11.77-fold with caching over the uncached original decoder. It outperforms Fast-dLLM and DSB in throughput across all 12 model-benchmark settings, with and without caching, while keeping average cached accuracy within one percentage point of the original decoder.
+
+</details>
+
+### 39. Beyond Model Weights: Sampling-Dependent Fairness in Diffusion Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2610.27584)　📅 2026-10
+
+**关键词**：`dLLM 公平性`、`采样依赖`、`社会偏见`
+
+👤 **作者**：Koshiro Saito、Diasuke Oba、Danushka Bollegala、Naoaki Okazaki
+
+- 🎯 **研究动机**：扩散语言模型引入块长度与重掩码策略等 AR 没有的采样控制，其测得社会偏见是否随配置稳定未知
+- 🔬 **研究方法**：LLaDA/LLaDA-1.5/Dream 在 Open-BBQ 上扫描采样配置，测量偏见幅度与模型排序的稳定性并测试 AR 缓解策略迁移
+- 📌 **结论**：三模型均显社会偏见，但偏见幅度与模型相对排序对采样配置高度敏感；AR 缓解可迁移且不损性能，但缓解后采样依赖依旧存在——DLM 公平性不可脱离采样配置刻画
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Diffusion language models (DLMs) are emerging as a practical alternative to autoregressive language models (ARLMs), yet their fairness remains largely uncharacterized. DLMs introduce sampling controls with no direct autoregressive counterpart, such as block length and remasking strategy, that directly set their speed--quality operating point. This raises a basic question: does a DLM's measured social bias remain stable across these settings? Across LLaDA, LLaDA-1.5, and Dream on Open-BBQ, we find that all three models exhibit social bias, but both the magnitude of measured bias and the relative ordering of models by bias are highly sensitive to the sampling configuration. This sampling dependence also changes what successful debiasing means. While mitigation strategies established for ARLMs transfer effectively to DLMs and reduce bias without degrading downstream performance, sampling dependence persists even after mitigation. Our results show that fairness in DLMs cannot be characterized independently of the sampling configuration, even after debiasing. Project page is available at this https URL.
+
+</details>

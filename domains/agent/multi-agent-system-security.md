@@ -1012,3 +1012,22 @@ LLM-based multi-agent systems have demonstrated impressive capabilities, but the
 Large language models (LLMs) are increasingly deployed in multi-agent systems where a principal agent decomposes tasks and delegates them to subordinate agents that may invoke external tools. Safety alignment, however, is still evaluated almost exclusively under a single-agent threat model, treating safety as a property of the individual LLM. We show that this assumption breaks down: \emph{individual safety alignment fails to transfer to multi-agent settings}. Two failure mechanisms emerge under delegation: \emph{responsibility diffusion} on the principal side and \emph{role-bias compliance} on the subordinate side, jointly converting language-level refusal into actionable harm. We refer to this phenomenon as \textit{delegated misalignment} and study it through a three-condition protocol across 6 frontier LLMs on 49 hazardous tasks. Delegation amplifies end-to-end harm substantially: DeepSeek-V3.2's full-execution rate rises from 30.6\% to 77.6\% once delegation is introduced, and the same model behaves very differently across roles (GPT-5: 22.5\% as a single agent vs.\ 61.2\% as a subordinate). Ablations further show that standard single-layer defenses each fail on their own and can even backfire. We call on the community to move beyond per-model alignment and toward composite safety mechanisms before multi-agent LLM systems are deployed at scale.
 
 </details>
+
+### 54. The Show-Up Attack: When Subagents Win Over Their Supervisor
+
+📄 [arXiv](https://arxiv.org/abs/2610.27574)　📅 2026-10
+
+**关键词**：`多智能体攻击`、`越权子代理`、`监督者操纵`
+
+👤 **作者**：Maosen Zhang、Jianshuo Dong、Yutong Zhang、Jie Zhang、Tianwei Zhang、Han Qiu
+
+- 🎯 **研究动机**：多智能体系统创造新攻击面：恶意子代理可能操纵监督者让其参与超出指派范围的任务
+- 🔬 **研究方法**：提出 show-up 攻击并构建 SUA-Arena（6 种攻击策略 188 用例），评测六个前沿 LLM 作为监督者的脆弱性
+- 📌 **结论**：全部监督者可被攻陷，GPT-5.6-Sol 监督者 ASR 最高 0.93；提示与限制通信等缓解不能稳定降低风险，多智能体系统需要显式权威边界执行机制
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Multi-agent systems are increasingly deployed to coordinate multiple large language model (LLM) agents. However, this also creates new attack surfaces: malicious agents may have chances to exploit the coordination. In this paper, we propose and study the \textit{show-up attack}, in which a malicious subagent manipulates the supervisor into involving it in tasks beyond its assigned scope. To evaluate this risk, we propose SUA-Arena, which implements 6 attack strategies and contains 188 test cases. Then, we evaluate 6 frontier LLMs and find that all of them are vulnerable to show-up attacks. For example, GPT-5.6-Sol as a supervisor suffers an ASR of up to 0.93. Mitigation strategies such as prompting and restricted communication fail to reduce the risk consistently. These results show that multi-agent systems need explicit mechanisms for enforcing authority boundaries.
+
+</details>

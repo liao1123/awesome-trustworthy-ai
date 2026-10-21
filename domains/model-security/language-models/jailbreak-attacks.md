@@ -1673,3 +1673,22 @@ Red teaming must continually adapt as frontier LLM safeguards evolve, yet existi
 </details>
 
 ## 常规收录
+
+### 89. Global Security Blind Spots: Translation as a Safety Bypass in Low-Resource Languages
+
+📄 [arXiv](https://arxiv.org/abs/2610.27304)　📅 2026-10
+
+**关键词**：`多语言越狱`、`翻译绕过`、`安全盲区`
+
+👤 **作者**：Jalil Alva、…、Fernando F. Migone
+
+- 🎯 **研究动机**：安全对齐集中于英语，英语中被拒绝的有害请求翻译成低资源语言可能获得不安全补全
+- 🔬 **研究方法**：翻译绕过威胁模型下评估十个广泛部署 LLM×79 种语言，用英语安全条件化指标分离翻译绕过与英语本身不安全
+- 📌 **结论**：条件于安全英语补全的平均绕过率 21.9-44.4%，风险集中于部分语族且跨模型共享排序；三种条件化方案下十个模型中九个排名变化，提示排名不稳定
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language models are deployed globally, yet safety alignment and evaluation remain concentrated in English: harmful requests refused in English can elicit unsafe completions when translated into low-resource languages. We evaluate ten widely deployed LLMs across 79 languages (English plus 78 low-resource) under a translation-bypass threat model, using a metric conditioned on English safety, which separates translation bypass from unsafety already present in English. English safety does not transfer reliably: conditioned on safe English completions, mean bypass rates range from 21.9% to 44.4%. Bypass risk concentrates in a subset of language families, a pattern broadly shared across models. The shared ordering is confounded with translation degeneracy, but its variation across models is significant and survives every control we apply. We also show that per-model bypass rates do not identify a stable ranking: nine of ten models change rank across three conditioning schemes that estimate the same quantity, with no change to any underlying response.
+
+</details>
