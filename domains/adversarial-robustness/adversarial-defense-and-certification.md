@@ -901,3 +901,22 @@ While adversarial prompt tuning can enhance robustness of vision-language models
 Adversarial Training (AT) is a leading defense against adversarial examples but often suffers from Catastrophic Overfitting (CO) in efficient single-step variants, where robustness to multi-step attacks collapses despite high single-step performance. We address this failure mode with two contributions. First, we formalize Epsilon Overfitting (EO), a perspective in which fixed perturbation magnitudes and directions exacerbate CO, and show that introducing perturbation variability significantly improves robust generalization across different architectures and datasets. Second, we propose PertAlign (Perturbation Alignment), a theoretically grounded, computationally negligible metric that predicts CO onset by measuring gradient alignment across attack stages. Leveraging these insights, we introduce SORA, an adaptive step-size AT method that dynamically adjusts perturbations based on loss surface geometry. SORA consistently prevents CO, achieves state-of-the-art robustness and clean accuracy, and generalizes across datasets and architectures using a single fixed set of hyperparameters, which is essential for applicability in fast AT. Extensive experiments on diverse datasets and architectures show that SORA matches or surpasses the robustness of prior methods while delivering higher clean accuracy and superior efficiency. Code is available at https://github.com/SecondOrderAT/SORA.
 
 </details>
+
+### 48. CertMoE: Robustness Certification for Mixture-of-Experts LLMs via Routing-Aware Smoothing
+
+📄 [arXiv](https://arxiv.org/abs/2610.29395)　📅 2026-10
+
+**关键词**：`MoE 鲁棒性认证`、`路由感知平滑`、`可证鲁棒`
+
+👤 **作者**：Qingyue Wang、…、Shuai Wang
+
+- 🎯 **研究动机**：现有认证框架假设固定计算图，而 MoE LLM 输入依赖路由诱导离散动态执行路径，认证对象变为输入依赖子函数复合，保证不可靠
+- 🔬 **研究方法**：CertMoE 首个路由感知认证：松弛路由包含准则认证扰动 Top-K 路由含于更大专家池，构造诱导子网认证预测一致性，得路由包含×子网鲁棒的联合概率保证
+- 📌 **结论**：跨近期 MoE LLM 给出输入扰动下预测不变的可证充分条件
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Provable robustness is a cornerstone of trustworthy machine learning, aiming to guarantee model predictions under adversarial perturbations. Existing certification frameworks, inspired by abstract interpretation or symbolic execution, typically assume a fixed computation graph, where input perturbations or variations affect only model outputs but not the underlying execution path. This assumption, however, is violated in Mixture-of-Experts (MoE) Large Language Models (LLMs), whose input-dependent routing induces discrete and dynamic execution paths. Crucially, this dynamic computation changes the certified object from a single fixed function to a composition of input-dependent sub-functions, leading to unreliable certification guarantees. This paper presents \textsc{CertMoE}, the first routing-aware robustness certification framework for MoE LLMs, which explicitly accounts for input-induced routing dynamics in certification. Specifically, we introduce a relaxed routing-containment criterion, which certifies that perturbed Top-$K$ routing is contained within a larger certified expert pool. Based on this guarantee, \textsc{CertMoE} then constructs the corresponding induced sub-network and certifies its prediction consistency. This hierarchical certification procedure yields a joint probabilistic guarantee over routing containment and sub-network robustness, providing sufficient conditions under which the original prediction remains invariant. Extensive experiments across recent MoE LLMs demonstrate that dynamic routing makes certificates issued by existing methods frequently violated, while \textsc{CertMoE} reduces the empirical violation rate with routing-aware guarantees, e.g., from more than $30\%$ to $0$, yielding certificates that more faithfully reflect the robustness of MoE models.
+
+</details>

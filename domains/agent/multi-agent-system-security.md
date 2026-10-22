@@ -1031,3 +1031,22 @@ Large language models (LLMs) are increasingly deployed in multi-agent systems wh
 Multi-agent systems are increasingly deployed to coordinate multiple large language model (LLM) agents. However, this also creates new attack surfaces: malicious agents may have chances to exploit the coordination. In this paper, we propose and study the \textit{show-up attack}, in which a malicious subagent manipulates the supervisor into involving it in tasks beyond its assigned scope. To evaluate this risk, we propose SUA-Arena, which implements 6 attack strategies and contains 188 test cases. Then, we evaluate 6 frontier LLMs and find that all of them are vulnerable to show-up attacks. For example, GPT-5.6-Sol as a supervisor suffers an ASR of up to 0.93. Mitigation strategies such as prompting and restricted communication fail to reduce the risk consistently. These results show that multi-agent systems need explicit mechanisms for enforcing authority boundaries.
 
 </details>
+
+### 55. Black-Box Red-Teaming of Multi-Agent Systems via Reinforcement Learning
+
+📄 [arXiv](https://arxiv.org/abs/2610.28966)　📅 2026-10
+
+**关键词**：`多智能体红队`、`系统提示抽取`、`强化学习攻击者`
+
+👤 **作者**：Yuqi Jia、Hangsheng Zhang、Chenxi Liu、Junjie Liang、Xun Chen
+
+- 🎯 **研究动机**：黑盒红队攻击主要面向单 agent，而 MAS 中多个子 agent 可能不与用户直接交互，单 agent 方法在 MAS 上远为低效
+- 🔬 **研究方法**：ReMAS：首个面向 MAS 的 RL 红队框架，微调攻击者 LLM 生成对抗提示抽取系统提示——重写阶段提高抽取成功率，模板生成阶段构造更易唤起特定子 agent 的攻击模板
+- 📌 **结论**：攻击成功率大幅超现有黑盒攻击并跨后端 LLM 与 MAS 结构迁移，凸显 MAS 暴露的子 agent 提示面
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Large language model (LLM) agents are increasingly deployed in multi-agent systems (MAS) to accomplish complex tasks. Prior black-box red-teaming attacks mainly focus on single agents, but we find that these methods are far less effective in MAS, where multiple sub-agents may not directly interact with the user. Therefore, we introduce ReMAS, the first reinforcement learning-based red-teaming framework tailored to MASs, which fine-tunes attacker LLMs to generate effective adversarial prompts for system prompt extraction. The framework follows a two-step process: first, a rewrite stage refines base attack prompts to increase extraction success, and second, a template generation stage constructs attack templates that improve the likelihood of invoking specific sub-agents and thus revealing their system prompts. Extensive experiments show that our method substantially improves attack success rates compared to existing black-box attacks, with transferability across different backend LLMs and MAS structures. These results underscore the vulnerabilities of multi-agent systems and the importance of developing stronger defenses against adaptive black-box adversaries.
+
+</details>

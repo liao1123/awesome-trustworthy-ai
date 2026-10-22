@@ -2545,3 +2545,60 @@ Safety alignment for large language models (LLMs) is primarily performed during 
 Safety pretraining has emerged as a promising paradigm for embedding safety deeply into a model during pretraining, yielding robustness to subsequent fine-tuning that conventional safety post-training often lacks. We refer to this safety acquired during model pretraining as native safety. Yet native safety is expensive to acquire, confined to the model in which it was pretrained, and often accompanied by lower general utility. In this work, we rethink the practical value of safety-pretrained models and introduce, for the first time, the native safety reuse problem: Can native safety be transferred from a specialized, potentially smaller, safety-pretrained "teacher" to standard-pretrained "students," enabling them to inherit its robustness while preserving their general utility? We show that native safety can "travel" through on-policy distillation. A standard-pretrained student generates responses to safety-pretraining prompts, while a small safety-pretrained teacher supervises the student's token-level predictions along its own generated trajectories; cross-tokenizer alignment further enables transfer across model families. The resulting students exhibit substantially greater safety robustness than their safety-post-trained counterparts while retaining higher general utility than the teacher: subsequent fine-tuning raises the average attack success rate (ASR) of the 1.7B student by only 5.00%, compared with 11.58% for safety post-training, and its average utility of 48.20% far exceeds the aligned teacher's 27.42%. Unlike conventional large-to-small knowledge distillation, our framework enables selective, small-to-large safety transfer: it reuses the robust safety expertise of a smaller pretrained teacher without inheriting its utility limitations. These findings establish native safety as a reusable model property rather than one permanently tied to the originally pretrained model.
 
 </details>
+
+### 136. Is Refusal Direction Universal across Low-Resourced Languages?
+
+📄 [arXiv](https://arxiv.org/abs/2610.28897)　📅 2026-10
+
+**关键词**：`拒绝方向`、`低资源语言`、`安全机制迁移`
+
+👤 **作者**：Anastasiia Ivanova
+
+- 🎯 **研究动机**：拒绝方向被报道跨语言近乎完美迁移，但真正低资源语言仅测过强错位的约鲁巴语，普遍性存疑
+- 🔬 **研究方法**：把 PolyRefuse 扩展到白俄罗斯语、巴什基尔语与塔吉克语，在 Qwen2.5-14B-Instruct 上复现原管线
+- 📌 **结论**：普遍性是分级的而非二值：安全对齐与部分对齐语言的方向广泛迁移，强错位语言的方向在包括其他错位语言在内的任何目标上都不能可靠调节拒绝；几何对齐与行为迁移部分解离——最弱资源语言用户面临更弱安全保证
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Refusal directions have been shown to transfer cross-lingually with near-perfect effectiveness across safety-aligned languages (Wang et al., 2025), reportedly regardless of resource level. However, the only truly low-resourced language evaluated is Yoruba, which is strongly misaligned and shows limited transfer, leaving open how refusal directions behave for other low-resourced languages. We extend PolyRefuse to three additional low-resourced languages (Belarusian, Bashkir, and Tajik) and replicate the pipeline of (Wang et al., 2025) on Qwen2.5-14B-Instruct. We find that universality is graded rather than binary: directions from safety-aligned and partially-aligned languages transfer broadly, while those from strongly misaligned languages fail to reliably modulate refusal behavior on any target tested, including other misaligned languages, once ceiling effects are accounted for. Geometric alignment and behavioral transfer are further shown to be partially dissociated. These findings complicate the universality claim and suggest that users of the least-resourced, most strongly misaligned languages may face weaker safety guarantees.
+
+</details>
+
+### 137. Uncensored Is Not Unbiased: Abliteration Removes Refusals but Not Script-Dependent Bias About Taiwan
+
+📄 [arXiv](https://arxiv.org/abs/2610.29342)　📅 2026-10
+
+**关键词**：`去审查模型`、`脚本依赖偏见`、`拒绝方向移除`
+
+👤 **作者**：Ju-Chun Ko
+
+- 🎯 **研究动机**：去审查（abliterated）构建移除拒绝方向，流行部分基于“不再拒绝即无政治审查”的假设——该假设未被检验
+- 🔬 **研究方法**：两对 2-bit 模型（Nemotron 3.5 Bolt 与 Qwen3.8-Flash-Next 各对社区 abliteration）判 22 组台湾/1989/对照国陈述（繁中/简中/英）+27 开放题
+- 📌 **结论**：脚本远比去审查重要：Bolt 繁中 +0.58 vs 简中 +0.05，“台湾是 PRC 一部分”简中概率 0.91 vs 繁中 0.06；abliteration 改变至多 0.06；Qwen 去 reviewers 后仍在全部三脚本肯定该命题——移除拒绝不等于移除偏见
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+"Abliterated" ("uncensored") builds of open-weight language models remove the activation direction that mediates refusal, and are popular partly on the assumption that a model that no longer refuses is also free of political censorship. We test this on two matched pairs of 2-bit models: NVIDIA's Nemotron 3.5 Bolt 74B-A9B and Qwen3.8-Flash-Next, each against a community abliteration. Each model judged 22 statement pairs (on the Republic of China (Taiwan), 1989 Tiananmen, control countries) in Traditional Chinese, Simplified Chinese (a character-level conversion) and English, and answered 27 open questions per script. Script mattered far more than abliteration: the original Bolt scored +0.58 on Index S (-1: People's Republic of China (PRC) position; +1: ROC position) in Traditional Chinese, +0.57 in English and +0.05 in Simplified Chinese, and affirmed "Taiwan is part of the PRC" with probability 0.91 in Simplified but 0.06 in Traditional characters; abliteration changed its scores by at most 0.06, mostly by raising "yes" on both sides. In Qwen, abliteration removed every refusal on 1989 and raised scores by 0.21 to 0.34, yet the abliterated Qwen still affirmed that Taiwan is part of the PRC in all three scripts. Naming the state the Republic of China (Taiwan) raised every model's score by 0.10 to 0.33 but left the script gap. Control pairs showed no script gap; each abliteration changed only its declared tensors. In 740,000 web documents, Simplified text on Taiwan contained PRC-framing terms 3.7 times as often as Traditional text. A script direction could not be steered away; a contrastive stance direction raised scores in every script, and its negation lowered them. A four-sentence system prompt raised the abliterated Qwen to +0.93 to +0.97. Keyword scoring rules failed the models closest to the ROC position mostly for attributing or denying the PRC claim. Uncensored is not unbiased.
+
+</details>
+
+### 138. WRDO: Weighted Refusal Direction Optimization in Aligned Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2610.29555)　📅 2026-10
+
+**关键词**：`拒绝方向优化`、`攻击与修复`、`权重干预`
+
+👤 **作者**：Grigoriy Evseev、Vladimir Solodkin、Dmitry Bylinkin、Daniil Medyakov、Vladimir Aletov、Aleksandr Beznosikov
+
+- 🎯 **研究动机**：拒绝行为主要由单一残差流方向介导（伤害/无害均差向量），但该构造把异质伤害提示聚合成单一平均可能混杂不同拒绝现象
+- 🔬 **研究方法**：WRDO 从逐提示方向库用学习的聚合权重构造复合拒绝方向，允许不同伤害提示不等贡献；评测攻击侧并反向用于恢复去审查检查点的拒绝
+- 📌 **结论**：三开源模型×三守卫裁判+HarmBench 外部评估下优于单方向方法，同一优化机制可攻可守
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Aligned large language models are trained to comply with benign requests while refusing harmful ones. However, recent work shows that this refusal behavior is fragile and can often be disrupted by simple activation- or weight-space interventions. In particular, refusal has been shown to be largely mediated by a single residual-stream direction, typically computed as a difference-of-means vector between harmful and harmless prompts. However, this standard construction aggregates heterogeneous harmful prompts into one uniform average, potentially conflating distinct refusal-related phenomena. In this work, we study whether refusal interventions can be strengthened by learning how to combine prompt-specific refusal directions. We propose Weighted Refusal Direction Optimization (WRDO), a procedure that constructs a composite refusal direction from a bank of per-prompt directions using learned aggregation weights. This approach allows different harmful prompts to contribute unequally to the final intervention direction. We evaluate WRDO against prior single-direction methods on three open-weight language models using three guard judges and HarmBench as an external evaluator. We further measure the effect of the intervention on general model capability through standard utility benchmarks. Finally, we investigate a defense-oriented setting in which the same optimization machinery is used in reverse to restore refusal behavior in an abliterated model checkpoint. Our results show that weighted aggregation provides a more effective and flexible mechanism for manipulating refusal representations.
+
+</details>
