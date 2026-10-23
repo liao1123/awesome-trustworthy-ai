@@ -1283,3 +1283,22 @@ Membership inference attacks (MIAs) have emerged as critical tools for auditing 
 Retrieval-augmented generation (RAG) systems ground large language models on external knowledge bases, enabling access to private, domain-specific, and up-to-date knowledge without retraining. However, the same retrieval interface can expose whether a candidate document is contained in the knowledge base. This paper studies knowledge base membership inference against RAG systems under both gray-box and text-only black-box access. Existing RAG membership inference attacks rely on signals such as direct membership prompts, response similarity, mask recovery, or query perturbation, which can be sensitive to prompt defenses, semantically related retrieved documents, and the generator&#39;s parametric knowledge. We introduce CIG-MIA, a membership inference attack based on context-induced information gain. The key insight is that explicit candidate-document injection affects members and non-members differently: if a document is already available through retrieval, injection provides little additional support for document-derived answers; if it is absent, injection introduces new evidence and yields a larger likelihood gain. In the gray-box setting, CIG-MIA computes this gain directly from token-level likelihoods. In the black-box setting, it estimates the same gain from generated text by scoring selected answer tokens with a lightweight surrogate-based estimator using semantic similarity and exact-match features. We evaluate CIG-MIA on Natural Questions, MS-MARCO, and HealthCareMagic against recent RAG membership inference baselines. On Natural Questions, CIG-MIA achieves an AUC of 0.99 in the gray-box setting and 0.93 in the black-box setting. We further analyze the information-gain signal, RAG configuration effects, ablations, and robustness to paraphrasing and generation randomness.
 
 </details>
+
+### 70. OP-Print: Tracing Membership Imprints in On-Policy Self-Distillation
+
+📄 [arXiv](https://arxiv.org/abs/2610.31616)　📅 2026-10
+
+**关键词**：`成员推理`、`在线策略自蒸馏`、`隐私`
+
+👤 **作者**：Qi Li、Xinchao Wang
+
+- 🎯 **研究动机**：在线策略自蒸馏免外部教师而实用，但同一训练例的两个耦合视图可能强化记忆化——隐私风险未探
+- 🔬 **研究方法**：OP-Print 首个针对在线策略自蒸馏的 MIA：发现监督印记稀疏且结构化、集中于不确定敏感纠正点；灰盒聚合特权师生残差纠正，黑盒测重启输出盆地稳定性作代理
+- 📌 **结论**：多样模型与蒸馏方案下基线攻击近随机而 OP-Print 显著有效
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+On-policy distillation has been widely adopted for alleviating the distribution mismatch of off-policy distillation. Self-distillation further removes the need for an external teacher by using the student's own outputs, enhanced with extra context or demonstrations, as supervision. This teacher-free design makes on-policy self-distillation practical, yet its privacy risks remain largely unexplored. In particular, using two coupled views of the same training example may strengthen its memorization. Motivated by this, we present the first study of membership inference attacks against on-policy self-distillation. We investigate both gray-box and black-box threat models and propose a unified attack framework, named OP-Print. OP-Print builds on our finding that the supervision imprint in on-policy self-distillation is sparse and structured, concentrating on uncertainty-sensitive correction sites rather than across the entire rollout. Exploiting this property, we construct attack signals tailored to the two access levels: in the gray-box setting, OP-Print directly aggregates the privileged teacher-student residual correction along the same rollout; in the black-box setting, it measures restart-based output-basin stability as an observable surrogate for the hidden correction process. Across diverse models and distillation schemes, all baseline attacks remain essentially at random guessing even under gray-box access, whereas OP-Print is broadly validated to be effective in both gray-box and black-box settings.
+
+</details>

@@ -733,3 +733,22 @@ Diffusion large language models (dLLMs) predict multiple token positions per for
 Diffusion language models (DLMs) are emerging as a practical alternative to autoregressive language models (ARLMs), yet their fairness remains largely uncharacterized. DLMs introduce sampling controls with no direct autoregressive counterpart, such as block length and remasking strategy, that directly set their speed--quality operating point. This raises a basic question: does a DLM's measured social bias remain stable across these settings? Across LLaDA, LLaDA-1.5, and Dream on Open-BBQ, we find that all three models exhibit social bias, but both the magnitude of measured bias and the relative ordering of models by bias are highly sensitive to the sampling configuration. This sampling dependence also changes what successful debiasing means. While mitigation strategies established for ARLMs transfer effectively to DLMs and reduce bias without degrading downstream performance, sampling dependence persists even after mitigation. Our results show that fairness in DLMs cannot be characterized independently of the sampling configuration, even after debiasing. Project page is available at this https URL.
 
 </details>
+
+### 40. Harmful Responses Are Jailbreak Templates: Transferring Autoregressive Jailbreaks to Diffusion Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2610.31331)　📅 2026-10
+
+**关键词**：`dLLM 越狱迁移`、`越狱模板`、`跨范式攻击`
+
+👤 **作者**：Jinwei Gan、Zifeng Cheng、Zhiwei Jiang、Ran Sun、Shiping Ge、Qing Gu
+
+- 🎯 **研究动机**：dLLM 双向上下文建模的灵活掩码生成引入独特越狱攻击面——AR 越狱能否迁移
+- 🔬 **研究方法**：发现对给定查询的有害回应天然充当越狱模板：RMT-Jailbreak 把 AR 攻击诱导的有害回应经均匀词元保留转为高掩码率模板，提示式安全过滤掩掉残留可见有害内容，交目标 dLLM 双向重建
+- 📌 **结论**：多种 AR 越狱方法×目标 dLLM 上验证有效与通用——越狱攻击的跨范式强迁移性
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Diffusion large language models (dLLMs) enable flexible masked generation through bidirectional context modeling, but this capability also introduces a distinct jailbreak attack surface. We find that a harmful response to a given query naturally serves as an effective jailbreak template: simply masking a subset of its tokens can induce a dLLM to reconstruct harmful content. Based on this observation, we propose RMT-Jailbreak, a general framework that transfers existing autoregressive (AR) jailbreak attacks to dLLMs through their induced harmful responses. RMT-Jailbreak converts an AR-generated harmful response into a high-mask-ratio template using uniform token retention, and further applies prompt-based safety filtering to mask any remaining visible harmful content. The refined template is then provided to the target dLLM for bidirectional reconstruction. Extensive experiments across multiple AR jailbreak methods and target dLLMs demonstrate the effectiveness and generality of RMT-Jailbreak, revealing strong cross-paradigm transferability of jailbreak attacks.
+
+</details>

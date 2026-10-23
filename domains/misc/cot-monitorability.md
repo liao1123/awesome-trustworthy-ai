@@ -1266,3 +1266,22 @@ Chain-of-thought (CoT) monitoring provides a promising approach for detecting un
 Chain-of-Thought (CoT) faithfulness matters for monitoring, explaining and safely deploying large language models, yet it has been studied mostly in English. Languages differ in level, the amount of text available to learn from, so models know less in lower-resource languages, which may change how much they rely on their reasoning. To our knowledge, we are the first to relate CoT faithfulness to both resource level and task type (knowledge- or reasoning-intensive). On parallel multiple-choice questions from Multilingual Massive Multitask Language Understanding (MMMLU) in eight languages, faithfulness rises as resource level falls on knowledge-intensive tasks but not on reasoning-intensive ones, a gap that points the same way across four models and several faithfulness measures. We propose, and find support for, the Reliance Hypothesis: models rely more on their reasoning when they cannot recall the answer, as in lower-resource languages on knowledge-intensive tasks. Model confidence partly explains the effect of resource level, but not the knowledge-reasoning gap. Languages in which models are less confident rely more on reasoning, yet less confident answers within a language do not, a Simpson's paradox. In lower-resource languages, models rely on their reasoning for more answers, not more strongly for each. CoT monitoring may therefore be most informative in lower-resource languages, where it is least often validated.
 
 </details>
+
+### 68. Scaling Laws for Safety Probes
+
+📄 [arXiv](https://arxiv.org/abs/2610.30678)　📅 2026-10
+
+**关键词**：`安全探针`、`标度律`、`监控`
+
+👤 **作者**：Yuchen Wu、Jerry Wei
+
+- 🎯 **研究动机**：激活安全探针是实时监控标配，但每次新模型或新伤害域都需重训，性能无法预先知道
+- 🔬 **研究方法**：构建六个够大够难的新安全数据集，两种探针架构×20 个基座模型（五家族）×32 到 10^6 标签，测探针错误（1-AUROC）
+- 📌 **结论**：两条简单标度律：模型可达最低探针错误随规模幂律下降；错误随标签数向地板衰减且斜率随目标模型规模增大——跨任务家族架构成立，可提前预测探针性能
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Safety probes trained on a model's activations are a standard tool for monitoring language models in real time. Each time a new model is released or a new harm area needs to be monitored, the probe must be retrained, which requires new labels and a choice of probe architecture. Yet neither the model nor the labels tell us in advance how well the resulting probe will perform. Finding out requires training and comparing many probe configurations. In this paper, we ask whether probe performance can instead be predicted in advance from model size and the number of labels. Existing safety datasets are insufficient for this, as they are either limited in scale or already saturated. We therefore construct six new safety datasets of sufficient size and difficulty. On these datasets, we train two probe architectures on 20 base models from five model families, with 32 to $10^{6}$ labels for each model. We measure performance using probe error, defined as 1 - AUROC, where lower values are better. We find that probe error follows two simple scaling laws. First, the lowest probe error a model can reach falls as a power law in its size. Second, probe error decreases towards its floor as the number of examples increases; the slope increases as the target model size increases. Both laws hold across tasks, model families and probe architectures, and only their fitted constants differ. When fitted on the smallest models of a family, the laws predict the error of the next larger model to within 0.02 in 72% of cases. They also identify whether more labels or a larger model is the cheaper way to reach a target error in 73% of cases. Finally, they choose the probe architecture with an extra error of only 0.006 on average when they pick the worse one. These laws allow safety researchers to determine how to create the best probe for any given model and label budget.
+
+</details>

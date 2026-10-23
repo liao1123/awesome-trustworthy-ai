@@ -728,3 +728,22 @@ Red-teaming Text-to-Image (T2I) models is essential for safe deployment, yet it 
 Image-generation models can now produce text-rich, natural-looking visual artifacts that are hard to distinguish from real-world evidence, such as news reports and textbook pages. Yet, the same capability introduces a new risk: these models can just as easily fabricate visual misinformation. Even commercial models (e.g., GPT-Image-2) readily produce it. Curiously, we find that these models can recognize a claim as false when asked, yet still render that very claim as credible visual evidence. This discrepancy points to a blind spot in current alignment: safeguards judge what an image shows, not what it asserts; however, existing red-teaming benchmarks target conventional harmful content, such as violent or explicit imagery, and say little about where the alignment boundaries lie for visual misinformation, especially in commercial models. To fill this gap, we introduce EpiReal-Bench, the first systematic benchmark for evaluating visual misinformation risks in commercial image generators, comprising 10k false-claim prompts and 10k corresponding generated images that span 10 real-world claim categories and 10 credible visual formats. We further introduce EpiReal-Attack, a skill-guided black-box optimization framework that uses Pareto-based selection and multimodal feedback to identify commands that bypass alignment safeguards while preserving visual realism, textual legibility, and semantic fidelity. Experiments on four commercial models reveal that more than 70% of false-claim prompts elicit images that faithfully depict the corresponding misinformation, and EpiReal-Attack pushes this rate to 95%. Most worryingly, these models are only a click away, and their outputs are cheap to spread yet hard to disbelieve, leaving this dimension of alignment largely unguarded.
 
 </details>
+
+### 39. Mirage: Targeted Jailbreaks Against Post-Generation Safety Checkers in Multimodal Diffusion Models
+
+📄 [arXiv](https://arxiv.org/abs/2610.30348)　📅 2026-10
+
+**关键词**：`生成后安全检查器`、`多模态越狱`、`扩散模型`
+
+👤 **作者**：Shanghao Shi、…、Wenjing Lou
+
+- 🎯 **研究动机**：扩散管线普遍部署生成后安全检查器拦截不安全内容——能否被定向绕过
+- 🔬 **研究方法**：Mirage 把对抗目标（NSFW 参照图或恶意描述）藏进良性输入图的不可感知扰动：利用多模态编码器共享表征空间同时对齐目标并推离被过滤概念，跨表征空间迁移实现黑箱规避，轻量查询精化逼近未知安全边界
+- 📌 **结论**：SD1.5/SDXL/Kandinsky 2.2 上以有限黑箱查询对多种异构安全检查器实现强定向越狱且保持语义对齐
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Post-generation safety checkers are widely employed in diffusion-model pipelines to prevent unsafe generated content from reaching users. In this paper, we show that these safety checkers can still be bypassed by our proposed multimodal jailbreak attack, Mirage. Given an adversarial target, which can be either a reference NSFW image or a malicious text description, Mirage conceals the target within an imperceptible perturbation applied to a benign input image. Mirage exploits the shared representation space of multimodal encoders to jointly align the perturbed image with the cross-modal adversarial target while repelling its representation from commonly filtered NSFW concepts. Such semantic separation can transfer across representation spaces, enabling Mirage to evade heterogeneous safety checkers without accessing their internal details. We further employ lightweight black-box query refinement to improve evasion near the unknown safety boundary. We implemented Mirage on Stable Diffusion 1.5, Stable Diffusion XL, and Kandinsky 2.2, and evaluated it on two cross-modal NSFW datasets, covering both text-to-image and image-to-image generation scenarios. The experimental results demonstrate that Mirage achieves strong targeted jailbreak performance across diverse post-generation safety checkers with limited black-box queries while preserving high semantic alignment with the adversarial targets.
+
+</details>

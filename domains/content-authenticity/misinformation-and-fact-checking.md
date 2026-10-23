@@ -741,3 +741,22 @@ Visualizations play a pivotal role in daily communication in an increasingly dat
 Platform abuse campaigns conceal redirection instructions with emojis, homophones, character decomposition, and redundant symbols, then route users through disguised links to services associated with pornography, fraud, gambling, or illicit transactions. Existing benchmarks evaluate obfuscated text and risky webpages separately, obscuring how target recovery affects downstream evidence acquisition. We introduce RiskChainBench, pairing 3,600 synthetic token-text restoration inputs from 600 source sessions with 600 corresponding human-labeled local web environments. A model first restores the message, operational intent, and destination; the same underlying model then acts as a VLM-driven web agent that investigates the correctly associated website and produces a frozen, evidence-cited risk report without message-side semantics or domain-reputation cues. We score restoration and correct-routing web investigation separately and compose them offline by applying the frozen primary-entry prediction as a gate to the same Task 2 result. Human labels determine task correctness, while a fixed multimodal evidence judge assesses faithfulness, sufficiency, completeness, and consistency. Across ten models, Entry Top-1 ranges from 35.2% to 95.2% and web decision accuracy from 26.3% to 62.8%; the leading systems differ across entry recovery, full reconstruction, website decisions, and fine-grained typing. Execution failures account for 31.9% of web runs, whereas post-decision type errors account for only 0.9%, identifying stable exploration and risk judgment as the principal bottlenecks. We release the benchmark, protocol, and resettable local sandbox.
 
 </details>
+
+### 41. Data-Void Exploits in Web-Searching LLMs
+
+📄 [arXiv](https://arxiv.org/abs/2610.30365)　📅 2026-10
+
+**关键词**：`数据空洞`、`web搜索LLM`、`虚假信息`
+
+👤 **作者**：Michele Guerra、Wuyeh Jobe、Sanjana Nambiar、Christina Pöpper、Azza Abouzied
+
+- 🎯 **研究动机**：web 搜索 LLM 把排名列表换成合成答案：虚假信息者可在可靠内容稀缺的数据空洞发布叙事并被 LLM 检索引用
+- 🔬 **研究方法**：变化用户提示语气（怀疑/兴奋/中性）、三 LLM（ChatGPT/Gemini/Sonar Pro）与攻击者三控制（五种空洞构建策略、域名可见度层级、生成式优化特征）
+- 📌 **结论**：单一攻击者页面即可成功：全部条件下攻击内容 31% 出现在 LLM 回应中；怀疑语气仅略微降低——合成答案掩盖了对稀疏未验证源的依赖
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Web-searching Large Language Models (LLMs) have changed how users seek online information: instead of sifting through ranked lists of links, users read synthesized answers. This shift creates a new LLM vulnerability: a data-void exploit. Disinformers publish their narratives in search spaces where relevant and reliable content is scarce, i.e. data voids, then rely on the LLM's web-search to retrieve and then use, cite, or list those pages in its responses to data-void seeking prompts. Unlike classical search, where users see ranking cues and competing results, LLMs can obscure when an answer relies on sparse, unverified, or adversarial sources. We study this threat by varying the user's prompt tone - skeptical, excited, or neutral - and LLM choice - ChatGPT, Gemini, or Sonar Pro - as well as three attacker controls. The attacker can use one of five known strategies to construct and fill a data void with their narrative, host their content at varying levels of visibility from well-established, indexed domains to less established ones, and include generative-optimization engine features thought to boost citing by web-searching LLMs. We find that data-void exploits can succeed with only a single attacker controlled page. Across all conditions, attacker-content appears in LLM responses 31% of the time. User controls offer limited protection: while skeptical prompts slightly reduce success and slightly increase flagging or warnings in LLM responses, we find no evidence of large effects of prompt tone or model choice on success rates, although smaller effects cannot be ruled out. Overall, our results establish data voids as a practical inference-time attack surface for manipulating web-searching LLMs through strategically placed web content and highlight the urgent need for defenses against such exploits.
+
+</details>

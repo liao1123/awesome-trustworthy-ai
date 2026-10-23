@@ -1629,3 +1629,22 @@ Open-weight large language models (LLMs) can be copied, modified, and redeployed
 LLMs increasingly operate through coding-agent harnesses that inspect repositories, invoke tools, and modify files. Substituting the model behind such an agent can therefore change security-relevant decisions, including whether it verifies changes or recovers safely from failures. Existing LLM fingerprints largely infer identity from direct text or token distributions. In coding agents, these signals are mediated by system instructions, controller logic, tools, and execution feedback, limiting their transfer. We present LIDAR (LLM Identification from Decisions and Actions at Runtime), an active black-box fingerprinting method for coding-agent execution. Three coding probe pairs expose post-edit verification, transient-failure recovery, and specification--test conflict resolution under controlled changes. LIDAR represents the resulting trajectories with complementary instance-level and distribution-level features and compares them with clean references using a lightweight probabilistic identifier. It requires no access to model weights, logits, or provider internals. Across 36 models from seven families and two agent harnesses, LIDAR achieves high Top-1 accuracy and MRR and outperforms four existing fingerprinting and API-auditing baselines. Ablations confirm that the two feature levels, all probe pairs, and their controlled variants contribute. These results show that agent execution behavior provides model-identity evidence beyond final outputs.
 
 </details>
+
+### 87. Model-intrinsic, Weight-level, and Training-free Spectral Fingerprinting for Large Language Models
+
+📄 [arXiv](https://arxiv.org/abs/2610.30626)　📅 2026-10
+
+**关键词**：`模型指纹`、`权重谱特征`、`免训练`
+
+👤 **作者**：Yanan He、Yanli Chen、Ling Xiong、Gejian Zhao、Hanzhou Wu
+
+- 🎯 **研究动机**：开放权重 LLM 的所有权保护与离线审计需要不受提示/解码/推理环境影响的指纹
+- 🔬 **研究方法**：从门控 FFN 的 GATE 投影权重奇异值分布构造谱标量特征，深度分段池化聚合成模型级指纹，线性中心核对齐算相似度
+- 📌 **结论**：免训练、无需输入输出或前向激活，支持跨深度模型比较，代表 LLM 家族上验证
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+The increasing release and reuse of Large Language Models (LLMs) as open-weight checkpoints make model fingerprinting important for ownership protection and offline auditing. Existing fingerprinting methods typically construct evidence from query responses, generated outputs, or input-induced activations. Although effective in representation-based settings, they can be affected by prompt selection, decoding configuration, inference environment, and forward-pass implementation, which may limit their applicability. Here we introduce a model-intrinsic weight-level framework that derives compact fingerprints from spectral structures encoded in LLM parameters. Specifically, the framework constructs GATE spectral scalar features from the singular-value distributions of GATE projection weights in gated feed-forward networks (FFNs), and aggregates the resulting layer-wise features through depth-wise segmented pooling to form a model-level fingerprint. Such representation preserves coarse layer-depth organization while reducing dependence on strict layer-to-layer alignment, enabling comparison across LLMs with different depths. The similarity between fingerprints is computed by linear centered kernel alignment. The entire pipeline is training-free and does not require input samples, generated outputs, forward activations, or an auxiliary verifier. Experiments on representative LLM families and post-training variants have demonstrated a clear separation between source-related models and unrelated ones, and stable similarity under instruction tuning, quantization, pruning, and distillation-related modifications, which verify that spectral features are robust evidence for LLM fingerprinting.
+
+</details>

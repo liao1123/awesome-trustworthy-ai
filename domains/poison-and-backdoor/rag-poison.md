@@ -2398,3 +2398,22 @@ Consistency-based defenses for retrieval-augmented generation (RAG) rest on an a
 Retrieval-Augmented Generation (RAG) enables large language models to access external knowledge during inference, but its reliance on external knowledge bases also introduces new attack surfaces. Existing data extraction attacks against RAG systems rely on either prompt injection, which heavily depends on the generator's instruction-following capability, or backdoors that reproduce or paraphrase retrieved documents but struggle to balance extraction fidelity and stealthiness. In this paper, we propose RAGLeak, a supply-chain privacy backdoor attack that decouples information leakage from direct textual exposure. When triggered, the generator reversibly obfuscates retrieved private documents for high-fidelity recovery by an auxiliary LLM. Across three model families and three application domains, RAGLeak achieves up to $100\%$ ASR with limited impact on benign utility and at most a $10$-percentage-point ASR drop under representative detection-based defenses. The backdoor remains effective after clean fine-tuning and across model scales and versions, revealing an underexplored supply-chain privacy risk in RAG systems. The source code is available at this https URL.
 
 </details>
+
+### 125. Protection Is Not One Event: A Survey of RAG Protection Research by Measured Endpoint
+
+📄 [arXiv](https://arxiv.org/abs/2610.30193)　📅 2026-10
+
+**关键词**：`RAG 防护`、`按端点综述`、`评测缺口`
+
+👤 **作者**：Peiyang Liu、Xi Wang、Di Liang、Youru Li、Zhi Cai、Wei Ye
+
+- 🎯 **研究动机**：RAG 防护研究使用互不兼容的指标、数据集与威胁模型，无法比较
+- 🔬 **研究方法**：118 篇全文确认的防护论文按测量端点（而非声称目标或机制）人工编码（32 人双标 κ=0.867），七族分类法+受控测试床
+- 📌 **结论**：三大缺口：机制不标识防护结果（重排/改写各跨五六族）；仅 17.8% 以内容披露/重建为主端点；多非自适应攻击与通用 QA 数据——且阻止逐字复制不阻止泄密
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Retrieval-augmented generation (RAG) systems face security, privacy, and copyright risks including content leakage, source reconstruction, unauthorized access, data poisoning, and prompt injection. Yet RAG protection studies use incompatible evaluation metrics, datasets, and threat models. We present a systematic survey and human-coded evidence map of 118 full-text-confirmed RAG defense papers, organized by measured endpoint rather than claimed goal or defense mechanism. Our seven-family taxonomy covers content disclosure, formal privacy proxies, access control and suppression, corpus-use detection, and pipeline integrity and attribution. Thirty-two annotators double-coded the papers kappa=0.867. The survey identifies three gaps. First, retrieval reranking and context rewriting each span five or six endpoint families, so mechanisms do not identify protection outcomes. Second, only 17.8% of studies use content disclosure or reconstruction as their primary endpoint; under the frozen copyright/ownership relation label, 73.3% of records have corpus-use detection as their primary endpoint, and none have an emitted-expression primary endpoint. Third, most evaluations use general-purpose question-answering datasets and non-adaptive attacks rather than sensitive data and adaptive, multi-turn extraction. Our controlled RAG testbed shows that preventing verbatim copying does not prevent private-fact recovery: a normalized 8-gram guard reduces 20-token copying to 0.0%, but a three-query adaptive attacker recovers 48.3% of hidden facts on Qwen3-8B. We release the taxonomy, dataset, coding protocols, and testbed to enable comparable, claim-aligned RAG security evaluation.
+
+</details>
