@@ -965,3 +965,22 @@ Agent skills extend AI agents with reusable instructions, scripts, and configura
 Agent skills combine instructions with executable resources, giving third-party packages access to an agent's runtime. Existing skill scanners inspect documentation and visible source, but Python may execute a bundled bytecode cache with different behavior. We study this gap between inspection and execution through PyCache Trap, which pairs benign source with a substituted cache accepted by the loader and connects it to a task-relevant invocation. Scanner-guided rewriting changes the invocation wording while preserving the cache body, separating package admission from recognition of the concealed behavior. Across 100 skills and seven scanners, PyCache Trap achieves 94-100% attack success, with no semantic recognition of the cache-resident behavior. We propose execution-aware validation (EAV) to connect inspected instructions, scripts, imports, and runtime artifacts in a typed execution graph. EAV combines grounded behavioral analysis with trusted reproduction of compiled artifacts. It detects all 100 evaluated source-present cache substitutions and reaches 92.8% Recall at 10.0% FPR across five attack families and 200 benign skills. The results support checking the executable artifacts a runtime can select as part of skill admission, within the supported loaders and code-object normalization. The code is released at this https URL.
 
 </details>
+
+### 51. Detecting Insecure Compositions of Clean Agent Skills via Capability-Flow Graph Analysis
+
+📄 [arXiv](https://arxiv.org/abs/2610.32155)　📅 2026-10
+
+**关键词**：`技能组合安全`、`能力流图`、`干净技能危险链`
+
+👤 **作者**：Yihao Li、Chuanpu Fu、Yizhou Zhao、Miao Chen、Qi Li、Ke Xu
+
+- 🎯 **研究动机**：部署多个良性技能引入组合安全风险：单独干净的技能经 agent 把上游输出传给下游输入可组成违规链——风险在运行时编排而非任何单一技能
+- 🔬 **研究方法**：KnotScryer 把技能抽象为类型化能力摘要构造技能能力流图（边=跨技能信息流），搜索策略沿交接边追踪受保护/不可信数据定位到达不安全操作的路径，两层验证（重放可达性+任务锚定 LLM 链审计）确认
+- 📌 **结论**：分析 ClawHub 13598 个干净技能，检出跨三个 agent 框架验证的违规链——现有恶意技能检测无法覆盖的组合面
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+AI agents increasingly extend their capabilities by invoking third-party skills, where each skill encapsulates instructions, scripts, and resources for agents to execute on demand. This paper reveals that deploying many benign skills together introduces compositional security risks: multiple individually clean skills can compose into safety-violation chains, because the agent passes an upstream skill's output to a downstream skill's input across invocations. The risk arises not from any single skill, but from the agent's runtime orchestration, and thus cannot be captured by existing malicious skill detection methods. To this end, we develop KnotScryer to detect insecure skill compositions by treating skills as typed capability flows. In particular, we abstract each skill into a capability summary, and construct the Skill Capability-Flow Graph (SCFG), where edges denote cross-skill information flow. Moreover, we design a search policy that tracks protected or untrusted data along handoff edges to locate paths reaching insecure operations. Finally, a two-layer verification method replays the insecure information flow for reachability analysis and applies a task-anchored LLM chain audit to confirm the semantic plausibility of the identified violation chains. We deploy KnotScryer to analyze 13,598 clean skills from ClawHub, and validate the detected chains across three agent frameworks and three LLMs. KnotScryer identifies 612 insecure compositions, which are consistently exploited across agent frameworks. Meanwhile, under GLM-5.1, it outperforms tag-match and graph-only baselines by improving the exploitation rate from 16.5%-18.2% to 85.6%, while reducing the search space by 85.3%. Furthermore, 13.7% of the detected chains consist entirely of skills labeled safe by a single-skill scanner, showing that KnotScryer effectively identifies insecure compositions that per-skill auditing cannot.
+
+</details>

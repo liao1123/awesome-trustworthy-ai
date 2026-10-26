@@ -1741,3 +1741,22 @@ Large Language Model (LLM) unlearning is often evaluated primarily by target sup
 Large language models acquire broad knowledge from web-scale corpora during pretraining, including knowledge that could be hazardous if misused. Removing such knowledge from the model itself without degrading general capability is desirable but difficult, as it is deeply entangled with general capability within the same parameters. Existing safety alignment and unlearning methods typically adjust these shared parameters, tending to suppress the expression of hazardous knowledge rather than remove it. As a result, the knowledge remains in the model and is readily recoverable by subsequent fine-tuning. To address this limitation, we propose REX (Relocating into Removable EXperts), a knowledge relocation method that separates hazardous knowledge from general capability at the architectural level. Exploiting the modular structure of Mixture-of-Experts models, REX expands the model with a set of new, physically removable experts designated to hold hazardous knowledge. Through expert expansion, selective gradient masking and routing differentiation, it relocates hazardous knowledge out of the original experts and concentrates it in the new ones. Excising these new experts yields a model suitable for public release. This removal holds consistently across Intern-S2, Qwen3.5-35B-A3B and Gemma-4-26B-A4B; on Qwen3.5-35B-A3B, for instance, excision lowers WMDP-Bio accuracy by 48.4 points while MMLU changes by less than 3 points. The excised model matches the strongest of nine unlearning baselines in removing hazardous knowledge, and it is the only one that preserves this removal under subsequent fine-tuning. After 250M tokens of standard fine-tuning on Qwen3.5, the best baseline rebounds on WMDP-Bio from 44.1% to 78.3%, whereas REX rises only from 32.4% to 42.8%.
 
 </details>
+
+### 94. TRACE: Data-Free Text Reconstruction Attacks against Approximate Unlearning in LLMs
+
+📄 [arXiv](https://arxiv.org/abs/2610.31995)　📅 2026-10
+
+**关键词**：`遗忘重建攻击`、`快照侧信道`、`训练数据恢复`
+
+👤 **作者**：Mengying Zhang、Derui Wang、Ibrahim Khalil、Bowen Liu、Xiaoyu Xia、Minhui Xue
+
+- 🎯 **研究动机**：近似遗忘的前后模型快照常被保留用于审计回滚——这一被忽视的侧信道可重建被遗忘训练数据
+- 🔬 **研究方法**：TRACE：从嵌入级参数差识别候选词元约束搜索空间，用两模型困惑度差的对比评分组装序列，两阶段探索-补全恢复多个不同样本
+- 📌 **结论**：TOFU/MUSE/WMDP×多 LLM×六种遗忘方法上高保真重建被遗忘数据——当前近似遗忘惯例存在重大隐私风险
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+As large language models (LLMs) face growing demands for data removal driven by regulatory compliance, copyright concerns, and privacy protection, approximate unlearning has emerged as a practical alternative to expensive full retraining. In practice, pre- and post-unlearning model snapshots are often maintained for auditing and rollback, introducing a previously overlooked side channel. This paper demonstrates that approximate unlearning in LLM can leave residual traces within model snapshots, which may be recoverable and thus enable the privacy breaches that approximate unlearning is intended to prevent. Here, we propose TRACE, a framework that reconstructs unlearned training data given access to pre- and post-unlearning model snapshots, without any data-specific prior knowledge. To achieve this, TRACE identifies a compact set of candidate tokens from embedding-level parameter differences to constrain the search space, and assembles sequences via a contrastive scoring mechanism based on the perplexity gap between the two models. A two-stage exploration-then-completion strategy enables the recovery of multiple distinct samples. Extensive experiments on various datasets, including TOFU, MUSE, and WMDP, across multiple LLMs and six representative unlearning methods, demonstrate that TRACE achieves high-fidelity reconstruction. This paper exposes significant privacy risks in current LLM approximate unlearning deployments and highlights the need for defenses against parameter-difference leakage and appropriate management of model snapshot access.
+
+</details>

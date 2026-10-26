@@ -978,3 +978,22 @@ Large Language Model (LLM) agents have demonstrated impressive capabilities acro
 Prompt injection against LLM agents becomes much stronger when the injected instruction is wrapped in the model's own chat template. A forged template marker such as <|im_start|> can reach the model either as a single reserved control token or as a sequence of ordinary subword tokens. The two decode to exactly the same text, and because tokenization runs on the server, the defender rather than the attacker decides which one the model receives. We use this to measure how much of the injected instruction's authority comes from the reserved token's learned representation. Encoding the forged markers as subwords, with the text held fixed and a control for the extra tokens this adds, lowers attack success on the InjecAgent benchmark by 39 to 66 percentage points on three of four open-weight families, and the gap carries over to multi-turn agent tasks in AgentDojo. On Qwen3-8B the gap is 8 points, because without reserved ids the model still recognises the forged turn from its text by reasoning; suppressing the reasoning block widens the gap to 50. The authority sits in the single learned vector at the marker position: the mean of the marker's subword vectors does not reproduce it, the vector of the nearest ordinary token restores the attack on Llama-3.1, and an adaptive attacker who searches for non-reserved markers finds such embedding neighbours on three of four families. In every base and instruction-tuned pair we test, instruction tuning strengthens the model's preference for reserved markers. The standard mitigation, a tokenizer option that encodes special tokens as ordinary subwords, applies only to tokens a configuration declares special, so in 33 of 67 distinct tokenizer configurations, covering 255 of the 400 most-downloaded chat models on Hugging Face, it leaves intact the tool-protocol tokens through which agents read untrusted tool output, and the gap persists on that channel.
 
 </details>
+
+### 52. On Task, Off Track: Benchmarking LLM and Agent Robustness to Near-Target Prompt Injection
+
+📄 [arXiv](https://arxiv.org/abs/2610.32531)　📅 2026-10
+
+**关键词**：`近目标注入`、`基准`、`合法外形有害偏差`
+
+👤 **作者**：Yuyang Gong、Zihao Wang、Jiawei Liu、XiaoFeng Wang
+
+- 🎯 **研究动机**：注入基准可因系统拒掉明显抛弃用户请求的攻击而虚高——保留合法答案大部分外形但引入不正确或有害改变的注入未被测
+- 🔬 **研究方法**：NTBench：从现有数据集合法任务出发以合法参照结果引导生成目标-指令对，分别针对不正确与有害结果（响应或工具调用）两轨，LLM 检查+人工验证预期偏差
+- 📌 **结论**：七 LLM×十数据集+两 agent 基准，共同三次攻击预算下两轨获得更高整体 ASR——近似合法的注入比明显注入更有效，抗注入评测需覆盖近目标攻击
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Prompt injection benchmarks assess whether large language models (LLMs) and agents resist malicious instructions embedded in external content. However, a system could perform well by rejecting attacks that obviously abandon the user's request, while still accepting changes that retain most of a legitimate answer but make it incorrect or harmful. Testing more instructions for unrelated outcomes would not necessarily reveal this weakness. We call attacks seeking responses designed to resemble legitimate answers while introducing incorrect or harmful changes near-target prompt injection. We introduce NTBench, the Near-Target Benchmark, which builds on legitimate tasks from existing datasets. For each task, a legitimate reference outcome guides the generation of target--instruction pairs, with separate tracks targeting incorrect and harmful outcomes in responses or agent tool invocations. Harmful targets can also accompany otherwise correct task completion. We combine LLM-based checks with human validation of the intended deviations, then assess whether injected instructions induce them using response judgments or tool-call checks, excluding deviations already observed without injection. We evaluate seven LLMs on ten datasets for language tasks and two agent benchmarks. Under a common budget of three attack executions per sample, both tracks achieve higher overall attack success rates than the fixed-target baseline for every evaluated model in each setting. On language tasks, the increases range from 9.3 to 35.8 percentage points for incorrect targets and 1.7 to 17.3 percentage points for harmful targets. These results show that resistance to the tested fixed-target attacks does not imply resistance to related incorrect or harmful outcomes, and that reference-guided targets broaden the failures revealed by robustness evaluation.
+
+</details>

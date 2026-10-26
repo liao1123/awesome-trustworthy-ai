@@ -826,3 +826,22 @@ Coding agent harnesses mediate tool use and authorize actions, yet their securit
 Large language model (LLM) agents now fix software, operate computers and serve customers, but their harnesses, the programs that run them, call a large LLM at every step, which makes long tasks slow and costly. Most of these calls end in a multiple-choice decision, such as which tool to call next. Decision models such as Jev answer these questions directly, at a fraction of an LLM call's time and price. We ask how a harness can delegate these decisions to a decision model with little loss of success. To evaluate decision models in agentic tasks, we build AgentDecisionBench, which tests them from isolated questions up to control of a running agent, on public benchmarks and our DecisionGym environment. The decision model most accurate on isolated questions solved only 69.5% of agent tasks, and without a fitted confidence threshold, delegating tool choices lowered success by 19.0 points. Building on these findings, we then design JevAgentHarness, which fits this threshold for each choice on the agent's own trajectories and lets the LLM decide below it. Because existing decision models never see the states an agent reaches after its own mistakes, we train AgentDecision-4B, an open 4B model, on such states with Jev's answers as labels. On tasks unlike its training data, the agent solved 91.5% of them with AgentDecision-4B and 82.0% with Jev. On tasks like their training data, 4B models trained this way made agents 81.1-89.0% cheaper and up to 2.5 times faster, without losing 3 or more points of task success. The models, data, and harness will be released at this https URL.
 
 </details>
+
+### 44. Do AI-for-Science Agents Preserve Model Safety?
+
+📄 [arXiv](https://arxiv.org/abs/2610.32045)　📅 2026-10
+
+**关键词**：`AI4S agent 安全`、`harness 安全侵蚀`、`自适应攻击`
+
+👤 **作者**：Michael Yew Chuan Lee、Manya Sriram、N. Benjamin Erichson
+
+- 🎯 **研究动机**：AI4S agent 把 LLM 集成进领域 harness 增强科学能力——模型安全行为是否在 harness 中保持
+- 🔬 **研究方法**：五个 agent harness×50 个有害化学请求，直接提示/两种简单对抗提示/自适应攻击四条件下评四个 GPT 变体
+- 📌 **结论**：harness 即使直接提示也增加有害依从；对基础 LLM 基本无效的自适应攻击在引入 harness 后突然高度成功——基础模型的安全行为在 harness 引入后不持久，需领域特定 agent 安全基准
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+AI-for-Science agents are increasingly being used for formulating scientific hypotheses, running autonomous experiments, and interpreting evidence. These agents are constructed by integrating a large language model (LLM) into a domain-specific agent harness, which in turn can improve the LLM's scientific capability and enable the model to orchestrate scientific tools. In this work, we ask whether model safety is preserved when an LLM is integrated in an AI-for-Science agent harness. We evaluate five agent harnesses on 50 harmful chemistry requests. Specifically, we study how the safety behavior changes under direct prompting, two simple adversarial prompting strategies, and an adaptive attack. Across four recent GPT variants, our results show that the agent harness can increase harmful compliance even under direct prompting. More critically, we find that adaptive attacks that are largely unsuccessful against the base LLM suddenly become highly successful after the agent harness is introduced. Our results show that the safety behavior of the base LLM is not durable once a harness is introduced. Thus, as AI-for-Science agents become more capable and autonomous, the community needs to evaluate and align the agent using domain-specific safety benchmarks.
+
+</details>

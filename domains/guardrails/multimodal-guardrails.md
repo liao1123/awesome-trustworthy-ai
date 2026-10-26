@@ -1430,3 +1430,22 @@ Multimodal large language models (MLLMs) can act unsafely when individually beni
 Vision-Language Models (VLMs) are increasingly deployed as general-purpose multimodal assistants, making multimodal safety alignment an important challenge. Safety depends on the interplay between textual and visual content, with visual context often playing a critical role. However, VLMs may fail to use visual information appropriately, either overlooking safety-relevant visual content or over-interpreting sensitive visual content, leading to unsafe responses or over-refusal. Existing multimodal safety alignment datasets largely follow the response-preference paradigm, which teaches models how to respond but provides limited supervision on how visual context should inform the safety judgment, making it difficult to balance safety and over-refusal. To address this limitation, we introduce ContraSafe-VL, a Contrastive Safety preference dataset for Vision-Language Models. For each fixed textual query, ContraSafe-VL constructs paired visual contexts that result in multimodal queries with different safety labels, providing direct supervision for how visual context should inform multimodal safety judgments. It further provides response preference pairs based on harmlessness and helpfulness to encourage models to generate responses that are both safe and helpful. Experiments across three VLM architectures and multiple benchmarks demonstrate that training with ContraSafe-VL improves cross-modal safety recognition and achieves a better safety--over-refusal trade-off while preserving general multimodal capabilities. The dataset will be publicly released.
 
 </details>
+
+### 76. Omni-UBench: Benchmarking Omni-Modal LLM-based Guardrails Across Safety, Utility, and Reliability
+
+📄 [arXiv](https://arxiv.org/abs/2610.31713)　📅 2026-10
+
+**关键词**：`全模态护栏`、`基准`、`安全幻觉`
+
+👤 **作者**：Junhao Wang、…、Kui Ren
+
+- 🎯 **研究动机**：全模态 LLM 统一处理异质模态扩大攻击面，全模态护栏的能力与局限缺乏综合评测
+- 🔬 **研究方法**：Omni-UBench：35+ 异构源 18.3 万样本跨文/图/音/视/跨模态组合，统一风险分类法标注；15 个代表性 OLLM 与护栏评测
+- 📌 **结论**：现代 OLLM 无护栏微调已有强内容审核潜力；现有护栏仍难识别隐藏有害意图或复杂越狱的跨模态查询，且存在显著安全幻觉与过度拒绝
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Advances in Omni-modal Large Language Models (OLLMs) have enabled increasingly seamless human-AI interaction, but their unified processing of heterogeneous modalities also expands the attack surface, allowing adversaries to exploit richer input compositions to circumvent safety alignment. To counter such risks, omni-modal guardrails have been proposed to detect and filter unsafe queries across arbitrary modalities. However, their capabilities and limitations remain insufficiently understood due to the absence of a comprehensive evaluation benchmark. In this paper, we present Omni-UBench, the first comprehensive framework for omni-modal safety assessment, evaluating guardrail models along three critical dimensions, i.e., safety, utility, and reliability. Omni-UBench curates over 183k samples drawn from 35+ heterogeneous sources spanning text, image, audio, video, and their cross-modal combinations, annotated with safety labels under a unified risk taxonomy. Benchmarking under Omni-UBench on 15 representative OLLMs and omni-modal guardrails yields several key findings, including: (1) modern OLLMs exhibit strong content moderation potential even without guardrail-specific tuning; (2) existing guardrails still struggle to identify cross-modal queries that conceal harmful intent or involve sophisticated jailbreaks; (3) they further exhibit substantial safety hallucination and over-sensitivity to textual patterns, revealing a deficient understanding of cross-modal safety semantics. Our findings provide valuable insights for developing more trustworthy omni-modal guardrails in future research.
+
+</details>

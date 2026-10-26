@@ -894,3 +894,22 @@ Token-Pruning accelerates Vision-Language Models by removing redundant visual to
 Representation-based safety defenses for vision-language models (VLMs) often learn to separate harmful from benign inputs, but separation alone does not establish what a risk score means or when it should be trusted. We introduce Counterfactual Neighborhood Risk Fields (CNRF), an evidence-grounded framework for selective VLM safety. CNRF constructs context-matched benign-harmful counterfactual pairs, uses their representation differences as capability-related risk directions, and estimates neighborhood support separately from risk. This separation prevents unfamiliarity from being conflated with harmfulness and enables selective intervention rather than blanket rejection. A victim-adaptive interface accommodates different safety observations across VLM architectures and routes selected requests for same-victim response review, which either releases acceptable candidates or produces constrained alternatives with reduced harmful capability. Across three VLMs and five multimodal jailbreak families, CNRF achieves 86.06-89.30% macro defense success rate while retaining substantial benign-task utility. Controlled experiments further show that query-matched references and preserved context-direction correspondence materially improve risk ranking in the low-false-positive regime. CNRF thus reframes representation-based VLM safety from learning harmfulness boundaries to constructing applicable evidence for selective risk decisions.
 
 </details>
+
+### 48. Depth-Dependent Safety Geometry in Vision-Language Models: Layer-Wise Localization and Bidirectional Refusal Control
+
+📄 [arXiv](https://arxiv.org/abs/2610.32182)　📅 2026-10
+
+**关键词**：`VLM 安全几何`、`深度依赖`、`双向拒绝控制`
+
+👤 **作者**：Muhammad Zeeshan Karamat、Syed Talal Hassan、Christiana Chamon Garcia
+
+- 🎯 **研究动机**：VLM 安全行为的内部机制不明——轻量推理时框架定位并操纵冻结 VLM 的安全敏感表征
+- 🔬 **研究方法**：Qwen3-VL-4B 层级激活散度分析+因果干预：早期视觉层沿学习安全方向的激活转向支持强双向拒绝控制（不安全拒绝跨度 6%-96%）；深层表征分离良好却对转向不敏感
+- 📌 **结论**：表征可分性≠因果可控性；InternVL2.5-4B 定性相似——暴露 VLM 视觉编码器中的白盒拒绝绕过攻击面
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Vision-Language Models (VLMs) are widely deployed, yet the internal mechanisms behind their safety behavior remain poorly understood. We present a lightweight inference-time framework for localizing and manipulating safety-sensitive representations in frozen VLMs, without retraining or modifying parameters. On Qwen3-VL-4B, layer-wise activation divergence analysis reveals non-uniform safety geometry across depth. Causal interventions show that early vision layers support strong bidirectional refusal control through activation steering along a learned safety direction, with unsafe rejection spanning 6%-96%, whereas later layers respond more to activation magnitude scaling and exhibit a substantial safety-selectivity trade-off. Deeper layers remain well separated along the safety direction yet are largely insensitive to steering, distinguishing representational separability from causal controllability. InternVL2.5-4B shows qualitatively similar depth-dependent activation geometry despite differences in layer location and magnitude. Our results expose a white-box, representation-level refusal-bypass attack surface in VLM vision encoders and motivate inference-time stabilization of safety-sensitive representations.
+
+</details>
