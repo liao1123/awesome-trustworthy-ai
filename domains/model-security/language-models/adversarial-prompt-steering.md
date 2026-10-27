@@ -339,3 +339,22 @@ Difference-in-means steering requires activations recorded while a model shows t
 Activation steering provides a lightweight and flexible way to control large language model (LLM) behavior. However, effective steering requires more than inducing the intended behavior: it should also limit unintended changes and remain robust across inputs and training data. Existing evaluations cover these dimensions only in fragments. As a result, the trade-offs between efficacy and side effects have not been systematically characterized. We introduce SteerScope, a two-axis, multi-dimensional evaluation suite that jointly characterizes steering outcomes and method properties through 15 metrics. We score target efficacy and side effects on language quality, task capabilities, and safety and reliability, and further assess generalization and data dependence through steering-specific metrics for sample efficiency and sample sensitivity. Rather than comparing methods at a single operating point, we characterize the trade-offs between efficacy and side effects. Under matched models, tasks, and evaluation protocols, we benchmark 23 methods spanning 4 families, including prompting, LoRA, and SFT as baseline methods, and release the suite as an extensible codebase. We find that current activation steering methods do not yet surpass the Prompt Steering baseline in their overall balance between steering efficacy and side effects: across both model scales, no evaluated activation steering method achieves higher efficacy without incurring greater composite side effects. We further uncover a consistent coupling between steering efficacy and side effects. Under OOD prompts, target efficacy is often preserved, whereas side effects tend to become more pronounced, particularly through declines in instruction relevance and fluency. Methods also exhibit sharply different sample-efficiency profiles.
 
 </details>
+
+### 18. Steering for Safety, Hijacking for Profit: Trojan Threats in the LLM Activation Steering Supply Chain
+
+📄 [arXiv](https://arxiv.org/abs/2610.35043)　📅 2026-10
+
+**关键词**：`转向供应链木马`、`恶意插件`、`注入层定位`
+
+👤 **作者**：Yu Yan、…、Qingjun Yuan
+
+- 🎯 **研究动机**：转向向量插件生态增长——开放生态引入供应链风险：恶意插件可伪装合法功能隐蔽操纵输出而不显著影响性能
+- 🔬 **研究方法**：审计八个主流开源转向插件库揭示三结构漏洞（分发完整性验证不足/插件权限过大/缺运行时监控）；IDH 恶意插件：范数门控互斥路由+信息衰减拐点定位自动选注入层，同时实现良性恶意双功能
+- 📌 **结论**：LLM 转向供应链的首个系统安全研究——激活干预插件成为新攻击面
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+As large language models (LLMs) are increasingly integrated into Web search, online recommendation, and intelligent decision-making, the third-party plugin ecosystem centered on model customization continues to grow. Among these, Steering Vectors guide model behavior by intervening in internal representations. However, the open plugin ecosystem also introduces new supply-chain security risks: malicious plugins can disguise themselves as having legitimate functionality and covertly manipulate outputs without significantly affecting model performance. Although this risk poses a real threat, the security issues of Steering plugins in the LLM supply-chain ecosystem still lack systematic research. This paper audits eight mainstream open-source Steering plugin libraries and reveals three structural vulnerabilities: insufficient distribution integrity verification, excessive plugin privileges, and missing runtime monitoring, which offers an attack surface for attackers. To investigate this threat, we propose a malicious plugin, IDH. Specifically, IDH designs a norm-gated mutually exclusive routing mechanism and proposes an information-decay inflection point localization method to automatically select the injection layer, thereby simultaneously achieving benign and malicious functions. To counter such threats, we propose a runtime defense framework, by suppressing anomalous activation interventions and orthogonalizing inter-layer trajectory. We evaluate IDH across five mainstream LLMs, using safety-refusal steering as the legitimate functionality and commercial recommendation manipulation as the hijack objective. Experiments covering six brands across three commercial domains demonstrate that IDH achieves an attack success rate (ASR) of up to 97.8% while preserving high refusal rates on harmful requests.
+
+</details>

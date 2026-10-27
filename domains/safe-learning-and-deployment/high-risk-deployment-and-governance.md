@@ -475,3 +475,22 @@ Flaw reporting for deployed AI systems is fundamental to identifying system fail
 As vendors adopt AI technologies, security researchers are working to uncover and fix related vulnerabilities, which is important given AI systems handle sensitive data and critical functions. This process relies on vendors receiving and rewarding AI vulnerability reports. To assess current practices, we analyzed the vulnerability disclosure policies of 264 AI vendors. We employed a mixed-methods approach, combining snapshot and longitudinal qualitative analysis, as well as comparing alignment with 320 AI incidents and 260 academic articles. Our analysis reveals that 36% of AI vendors have no established policy, and only 18% mention AI risks. Data access, authorization, and model extraction vulnerabilities are most consistently declared in-scope. Jailbreaking and hallucination are most commonly declared out-of-scope. We identify three profiles that reflect vendors' different positions toward AI vulnerabilities: proactive clarification (n = 46), silent (n = 115), and restrictive (n = 103). Our alignment results suggest that vendors may address AI vulnerability disclosure later than academic research and real-world incidents.
 
 </details>
+
+### 26. Can Open Be Too Open? On the Security and Trustworthiness of Fully Transparent LLMs
+
+📄 [arXiv](https://arxiv.org/abs/2610.35199)　📅 2026-10
+
+**关键词**：`全透明LLM`、`开放=安全质疑`、`可复现性鸿沟`
+
+👤 **作者**：Sheila Zingg、Florian Tramèr、Martin Vechev、Srdjan Čapkun
+
+- 🎯 **研究动机**：“更透明=更安全”类比软件安全被广泛接受——全透明 LLM（权重+数据+管线全开）语境下须批判重估
+- 🔬 **研究方法**：文献综述分析透明度对安全与可信的影响
+- 📌 **结论**：管线可复现性有限使用户无法验证权重与数据/管线的对应——仍须信任开发者诚实，透明的好处打折；且即使可信，开放也偏向对手：开放权重/数据/管线可提高攻击成功率（同一机制可用于防御但当前研究更利于攻击）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+There are different levels of transparency for LLMs: open weights, open data, and/or open pipeline. Recently, more interest has emerged in fully transparent LLMs, i.e., LLMs with fully open weights, data, and training pipeline. Drawing analogies to other fields such as software security, it is often believed that increasing transparency inherently increases the security and trustworthiness of the LLM. However, we argue that such claims need to be critically re-evaluated in the context of LLMs. In this paper, we analyze the impact of transparency on LLM security and trustworthiness by reviewing the relevant literature. Our core findings are that, due to the limited reproducibility of LLM pipelines, in practice, users cannot verify the correspondence between open weights and the associated open data and pipeline. Thus, in order to trust a model, users still need to trust that developers acted honestly, reducing the benefits over models that provide less "transparency". Moreover, we find that even when LLMs are fully transparent and trusted, this openness can favor adversaries. Open weights in particular, but also open data and pipelines, can increase the success rate of attacks. Although the same mechanisms can be used to improve the model and protect it against attacks, the current lack of robust lightweight mechanisms to patch LLM vulnerabilities limits the benefits of openness at this time. We note that our analysis is based on current LLM capabilities and analysis tools, and that future developments may require a re-evaluation of these points.
+
+</details>

@@ -752,3 +752,22 @@ Diffusion language models (DLMs) are emerging as a practical alternative to auto
 Diffusion large language models (dLLMs) enable flexible masked generation through bidirectional context modeling, but this capability also introduces a distinct jailbreak attack surface. We find that a harmful response to a given query naturally serves as an effective jailbreak template: simply masking a subset of its tokens can induce a dLLM to reconstruct harmful content. Based on this observation, we propose RMT-Jailbreak, a general framework that transfers existing autoregressive (AR) jailbreak attacks to dLLMs through their induced harmful responses. RMT-Jailbreak converts an AR-generated harmful response into a high-mask-ratio template using uniform token retention, and further applies prompt-based safety filtering to mask any remaining visible harmful content. The refined template is then provided to the target dLLM for bidirectional reconstruction. Extensive experiments across multiple AR jailbreak methods and target dLLMs demonstrate the effectiveness and generality of RMT-Jailbreak, revealing strong cross-paradigm transferability of jailbreak attacks.
 
 </details>
+
+### 41. How To Build A Modern Diffusion Language Model
+
+📄 [arXiv](https://arxiv.org/abs/2610.33391)　📅 2026-10
+
+**关键词**：`dLLM 综述`、`并行生成`、`构建指南`
+
+👤 **作者**：Volodymyr Kuleshov、Marianne Arriola、Yair Schiff、Gilad Turok、Guanghan Wang
+
+- 🎯 **研究动机**：自回归逐词元生成使并行 GPU 推理利用不足且不可撤销提交——离散扩散并行去噪、内置纠错与可控生成
+- 🔬 **研究方法**：综述离散扩散关键思想+现代 dLLM 构建入门：过去两年扩展到数十亿参数（生物序列与自然语言、开源与商业发布）
+- 📌 **结论**：数千词元/秒速度、推理时算力新缩放轴——⑥类 dLLM 全谱的系统性参考
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+The frontier of large language model (LLM) performance has advanced rapidly in recent years, fueled by scaling laws for pretraining on large text corpora. However, mainstream LLMs have fundamental limitations: they generate text autoregressively, producing outputs sequentially from left to right one token at a time. This sequential process leaves parallel GPU hardware underutilized during inference--a bottleneck that has grown acute as progress shifts toward scaling post-training and inference-time compute--and commits irreversibly to each token without the ability to revise earlier mistakes. Discrete diffusion models address these limitations by generating tokens in parallel, starting from a noisy or masked sequence and iteratively refining the entire output over a series of denoising steps. This parallel generative process enables speeds of thousands of tokens per second, provides a new axis of inference-time compute scaling, and supports built-in error correction and controllable generation. Over the past two years, discrete diffusion has scaled to billions of parameters across biological sequence modeling and natural language, with open-weights and commercial releases from leading labs. This article provides a survey of key ideas in discrete diffusion and a high-level introduction to how modern diffusion LLMs are built, covering their foundations, core algorithmic and architectural building blocks, applications in biology and language, and implications for future LLM scaling laws.
+
+</details>

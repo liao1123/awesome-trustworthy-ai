@@ -755,3 +755,22 @@ Large language model (LLM) routing has emerged as a crucial strategy for balanci
 Recent studies report that automated red-teaming finds more vulnerabilities, at lower cost, than human red-teaming on standard AI safety benchmarks, and some read this as evidence that human evaluators are becoming dispensable. The comparison measures one thing and the conclusion claims another. A benchmark measures how thoroughly an attacker searches a predefined set of harms, fixed in advance by the developers, and a harm left out of that set is invisible to any attacker working inside it, automated or not. The same blind spot appeared in academic cryptography and in clinical drug trials, where an evaluation that was internally valid stayed silent about the population it was never pointed at. We call the AI-safety version the \emph{threat-model coverage gap}, and find that it persists in a current open-weight model, where harms surface in non-English prompts that English benchmarks miss. Closing it requires evaluators whose deployment context differs from the developers'. The case for those evaluators is methodological, grounded in coverage, and the existing evaluation frame is unlikely to produce them on its own.
 
 </details>
+
+### 40. Evaluating DeepSeek V4.1 Flash-1017 for loss of control and harmful manipulation risks
+
+📄 [arXiv](https://arxiv.org/abs/2610.35671)　📅 2026-10
+
+**关键词**：`失控风险评测`、`DeepSeek独立评估`、`AEF-1`
+
+👤 **作者**：Yao Huang、…、Xiaojian Li
+
+- 🎯 **研究动机**：闭源发布常伴系统卡而开源权重模型的前沿风险审查较少——独立第三方对失控与有害操纵风险的评估关键
+- 🔬 **研究方法**：DeepSeek V4.1 Flash-1017 独立安全评估：依 EU GPAI 行为准则跨 34 基准（含 5 自建）覆盖评估完整性/失控/有害操纵；AEF-1 标准对比 V4.1 Flash/早期 V4/三大闭源
+- 📌 **结论**：较 V4 代显著安全改进并在若干维度接近闭源基线，仍有值得持续关注的行为；关键观察：安全可随版本突变而评测须跟上——开源权重模型的系统卡式独立评估
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+As frontier language models grow increasingly capable and autonomous, independent third-party evaluations are critical for characterizing their systemic safety risks. While closed-source releases are routinely accompanied by comprehensive system cards, open-weight models receive less scrutiny regarding frontier risks. To address this gap, we present an independent safety evaluation of DeepSeek V4.1 Flash-1017, the latest version of V4.1 Flash that departs from V4 with a new architecture, scaled-up training, and strong agentic capabilities. Drawing on the EU General-Purpose AI Code of Practice, we evaluate the model across 34 benchmarks, including 5 in-house suites, spanning evaluation integrity, loss of control, and harmful manipulation. Conforming to the AEF-1 standard, we compare V4.1 Flash-1017 against V4.1 Flash, earlier DeepSeek V4 models, and leading closed-source systems (GPT-6 Astra, GPT-5.6 Sol, and Gemini 3.8 Flash). Overall, V4.1 Flash-1017 shows substantial safety improvements over the V4 generation and approaches or matches leading closed-source baselines on several dimensions, while still exhibiting notable behaviors that warrant continued attention. Building on our findings, we highlight three key observations and recommendations. First, because safety can shift and even regress across minor updates, developers should integrate safety evaluation into incremental releases. Second, as final-turn outputs and end-state checks alone cannot reliably detect loss-of-control behaviors, deployments require process-level observability across both reasoning traces and action logs. Third, because public benchmarks elicit strong evaluation awareness and face data contamination risks, developing private benchmarks is essential for trustworthy frontier evaluation.
+
+</details>

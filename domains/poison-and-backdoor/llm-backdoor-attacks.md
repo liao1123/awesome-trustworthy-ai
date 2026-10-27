@@ -3542,3 +3542,22 @@ Model merging has become widely adopted for enhancing the task-specific performa
 Knowledge distillation is widely used to transfer capabilities from teacher models to student models, but recent work shows that it can also transfer unintended teacher properties. We study whether different hidden teacher properties survive the same distillation channels. Specifically, we compare two properties: benchmark-associated knowledge and refusal backdoors, and show that distillation treats them very differently. Teachers fine-tuned on benchmark data successfully pass that knowledge to students through all four distillation channels we test, including when students are trained only on teacher-generated number sequences containing no natural language or domain content whatsoever. Refusal backdoors tell the opposite story: backdoored teachers achieve near-perfect triggered refusal, yet sequence-distilled students inherit essentially none of this behaviour. Logit-based distillation transfers it substantially, reaching up to 85.5\% triggered refusal in students that saw zero backdoor examples. Distillation is therefore selective, and the selection criterion is not what data the student sees, but what structure the teacher's property has. The code is available at this https URL.
 
 </details>
+
+### 188. All-in-One: A Composable Attack on LLM Transformations
+
+📄 [arXiv](https://arxiv.org/abs/2610.33298)　📅 2026-10
+
+**关键词**：`组合攻击`、`量化/剪枝/合并后门`、`权重扰动模拟`
+
+👤 **作者**：Xiaohua Zhan、Kazuki Egashira、Robin Staab、Mark Vero、Martin Vechev
+
+- 🎯 **研究动机**：量化、剪枝、模型合并等部署变换可被利用：攻击者训练通过预变换安全检查、变换后才变恶——先前攻击各针对单一变换难以组合
+- 🔬 **研究方法**：可组合攻击框架：把每变换效果近似为权重扰动，单训练目标内在每次迭代联合模拟多样变换（良性损失于原模型+恶意损失于各模拟变换模型），任一变换被应用即触发
+- 📌 **结论**：跨攻击场景、模型家族与部署变换范围的统一攻击——同时目标量化+剪枝+合并的供应链威胁
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Quantization, pruning, and model merging are popular transformations applied to deployment-ready LLMs to improve efficiency and downstream performance. Recent work has shown that these transformations can introduce a security threat: an adversary can train a model that passes safety checks in its pre-transformed state, only turning malicious once it is transformed for deployment. However, prior attacks target one specific transformation (e.g., quantization) and generally rely on transformation-specific techniques, making them difficult to combine in practice. In this work, we introduce a simple, composable attack framework that targets multiple transformations simultaneously and triggers when any one of them is applied by a user. Our key insight is that the effect of each transformation can be approximated as a perturbation to the model weights, allowing us to jointly train the model with a benign loss on the original model and a malicious loss on each simulated transformed model. These perturbations are simple enough to simulate at every training iteration across diverse transformations, making them practically combinable within a single training objective, enabling a unified attack. Through extensive experiments across attack scenarios, model families, and a wide range of deployment-time model transformations, we show that our attack achieves high success rates. This demonstrates that model transformations may be utilized to trigger significantly different behavior from the original model and reinforces the associated security concerns by demonstrating that a single attack can jointly target diverse transformations.
+
+</details>

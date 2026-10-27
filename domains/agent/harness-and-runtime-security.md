@@ -845,3 +845,22 @@ Large language model (LLM) agents now fix software, operate computers and serve 
 AI-for-Science agents are increasingly being used for formulating scientific hypotheses, running autonomous experiments, and interpreting evidence. These agents are constructed by integrating a large language model (LLM) into a domain-specific agent harness, which in turn can improve the LLM's scientific capability and enable the model to orchestrate scientific tools. In this work, we ask whether model safety is preserved when an LLM is integrated in an AI-for-Science agent harness. We evaluate five agent harnesses on 50 harmful chemistry requests. Specifically, we study how the safety behavior changes under direct prompting, two simple adversarial prompting strategies, and an adaptive attack. Across four recent GPT variants, our results show that the agent harness can increase harmful compliance even under direct prompting. More critically, we find that adaptive attacks that are largely unsuccessful against the base LLM suddenly become highly successful after the agent harness is introduced. Our results show that the safety behavior of the base LLM is not durable once a harness is introduced. Thus, as AI-for-Science agents become more capable and autonomous, the community needs to evaluate and align the agent using domain-specific safety benchmarks.
 
 </details>
+
+### 45. Ring-0 by Default: Agents as Operating Systems (AaOS)
+
+📄 [arXiv](https://arxiv.org/abs/2610.33753)　📅 2026-10
+
+**关键词**：`AaOS`、`OS机制清单`、`保护缺失`
+
+👤 **作者**：Xiang Li、Aichun Huang、Zuyao Xu、Fasheng Miao、Zheli Liu
+
+- 🎯 **研究动机**：LLM agent 三年内获得读写文件/启进程/取网络/载扩展/存恢复状态等 OS 职责却没有 OS 五十年积累的保护——模型输出不论听谁的都以宿主用户全权运行，事实上的 ring 0
+- 🔬 **研究方法**：以标准 OS 教科书机制为清单，把 19 子系统 116 个机制映射到 agent 对应物并标记同构/退化/缺失/变异/新颖
+- 📌 **结论**：仅 11 个同构、65 个缺失且多为保护（特权分离/资源配额/事务/防篡改审计）；按 Anderson 引用监视器准则现有 runtime 防御不达标——agent 即 OS 的系统安全分析
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+LLM agents now read and write files, start processes and subagents, fetch network content, load third-party extensions, and save and resume state, which are the responsibilities of an operating system. They gained these functions within about three years, but not the protections that operating systems built over five decades: whatever the model outputs, whether it follows the user, a tool result, or a downloaded skill, runs with the full authority of the host user, in effect at ring 0. Prior work builds an operating system for agents (OS4A); we argue that a deployed agent already is like an operating system (AaOS) and analyze it as one. Taking the mechanisms of standard OS textbooks as a checklist, we map 116 mechanisms in 19 subsystems to their agent counterparts, from product documentation, source code, and the literature, and label each as isomorphic, degraded (function present, protection dependent on the model), missing, mutated, or novel. Only 11 are isomorphic and 65 are missing, most of them protections: privilege separation, resource quotas, transactions, and tamper-proof audit. Existing defenses confine the whole agent or review its extensions and leave this interior unprotected, and by Anderson's reference-monitor criteria (non-bypassable, tamper-proof, verifiable), rules written in the prompt satisfy none. We test the map with thirteen experiments on Claude Code, Codex CLI, and Gemini CLI, covering 25 mechanisms whose enforcement documentation cannot settle: 16 match the analysis, 7 gain a more precise description, and 2 change verdict. Checks sit in single tools, so the shell bypasses them; all three CLIs load forged transcript records on resume; and task control, sub-agent permissions, and model-based monitors are weak. We identify five problems for which no OS defense transfers and derive a prioritized list of open problems from the gaps of the map.
+
+</details>

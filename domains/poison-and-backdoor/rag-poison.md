@@ -2417,3 +2417,79 @@ Retrieval-Augmented Generation (RAG) enables large language models to access ext
 Retrieval-augmented generation (RAG) systems face security, privacy, and copyright risks including content leakage, source reconstruction, unauthorized access, data poisoning, and prompt injection. Yet RAG protection studies use incompatible evaluation metrics, datasets, and threat models. We present a systematic survey and human-coded evidence map of 118 full-text-confirmed RAG defense papers, organized by measured endpoint rather than claimed goal or defense mechanism. Our seven-family taxonomy covers content disclosure, formal privacy proxies, access control and suppression, corpus-use detection, and pipeline integrity and attribution. Thirty-two annotators double-coded the papers kappa=0.867. The survey identifies three gaps. First, retrieval reranking and context rewriting each span five or six endpoint families, so mechanisms do not identify protection outcomes. Second, only 17.8% of studies use content disclosure or reconstruction as their primary endpoint; under the frozen copyright/ownership relation label, 73.3% of records have corpus-use detection as their primary endpoint, and none have an emitted-expression primary endpoint. Third, most evaluations use general-purpose question-answering datasets and non-adaptive attacks rather than sensitive data and adaptive, multi-turn extraction. Our controlled RAG testbed shows that preventing verbatim copying does not prevent private-fact recovery: a normalized 8-gram guard reduces 20-token copying to 0.0%, but a three-query adaptive attacker recovers 48.3% of hidden facts on Qwen3-8B. We release the taxonomy, dataset, coding protocols, and testbed to enable comparable, claim-aligned RAG security evaluation.
 
 </details>
+
+### 126. Ranking Is Not Deciding: Benchmark Shortcuts and Operating-Point Collapse in Query-Time RAG Poisoning Defenses
+
+📄 [arXiv](https://arxiv.org/abs/2610.33849)　📅 2026-10
+
+**关键词**：`RAG投毒防御评测失效`、`基准捷径`、`工作点坍塌`
+
+👤 **作者**：Pushkal Kumar、Arvin Sahaym
+
+- 🎯 **研究动机**：查询时过滤是 RAG 投毒的主导防御且报告近完美检测——性能由毒集构造方式而非过滤器读取内容预测
+- 🔬 **研究方法**：两标签自由统计画像毒集（containment 目标问题逐字出现率+长度重叠）；只删 PoisonedRAG 自带攻击代码的目标问题前缀（目标仍 0.93 被检索）；调查 21 个已发表防御评测
+- 📌 **结论**：8 个可验证运行此构造毒集、5 个替换长度线索、12 个不报部署工作点假阳率；删前缀使 RAGuard AUROC 0.953→0.758、漏检率 0.191→0.763——近完美检测是基准捷径
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Query-time filters that screen each retrieved document before it reaches the generator are the dominant published defense against retrieval-augmented generation poisoning, and they report near-perfect detection on domain benchmarks. We show that this performance is predicted by how the poison set was built rather than by what the filter reads: removing a single construction cue destroys the deployed decision before it destroys the ranking. Two label-free statistics of a poison set and its clean corpus profile the cue: containment, how often the target question appears verbatim in the poison, and length overlap. PoisonedRAG's released code prepends the target question to every inserted passage. Of the 21 published defense evaluations we survey, 8 verifiably run poison built this way and 5 substitute a length cue; separately, 12 report no false-positive rate at the operating point they deploy. Deleting only that prefix from the attack authors' own passages (0.93 still retrieved for their target) takes RAGuard, a published content filter we re-implement, from AUROC 0.953 to 0.758 and its miss rate from 0.191 to 0.763. Across four corpora, four attack families and ten per-document defenses on one shared candidate set, the profile predicts where detection saturates. Padding medical poison to clean length with word-shuffled filler that carries no content takes TrustRAG's set-level stage from a miss rate of 0.000 to 0.827, and one learned scorer of ours from 0.000 to 0.986 (0.321 at a matched 5% false-positive rate) while its AUROC holds at 0.953. The ranking survives; the decision does not. A defense-aware attacker defeats our own scorer, so we claim no defense. A detection result is evidence only when it is reported with its poison set's construction profile and the false-positive rate at the threshold actually deployed; we release the script that computes the profile.
+
+</details>
+
+### 127. Factual Yet One-Sided: Stance Poisoning and Evidence Balancing in Retrieval-Augmented Generation
+
+📄 [arXiv](https://arxiv.org/abs/2610.34294)　📅 2026-10
+
+**关键词**：`立场投毒`、`事实正确单侧`、`平衡中间件`
+
+👤 **作者**：Puyuan Yang、Shaoxuan Dong、Liujie Wu、Xiaochun Cheng、Bo Li
+
+- 🎯 **研究动机**：RAG 系统回应立场显著受检索材料立场分布影响——知识投毒研究主要针对事实错误，事实正确但立场单侧的注入未被研究
+- 🔬 **研究方法**：平均 18.9% 主题级投毒份额下四厂商生成模型全部向投毒方向立场偏移且随浓度单调增加；立场平衡中间件（立场检测+固定 2正2反1中+去偏提示，零额外 LLM 调用）
+- 📌 **结论**：八个浓度-方向设置全部沿正确方向移动，偏差幅度减 0.106-0.350（Holm 校正后六设置显著）
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+The stance expressed in responses from retrieval-augmented generation systems is significantly influenced by the stance distribution of the retrieved materials. Existing research on knowledge poisoning has primarily targeted factual errors. In contrast, this study focuses on injection attacks in which the facts are correct but the stance on a controversial issue is one-sided. At a mean topic-level poisoning share of 18.9% within the post-injection ProCon documents, all four generation models from different vendors exhibited stance shifts aligned with the poisoning direction; across four concentration levels, the shifts increased monotonically. This paper proposes a Stance-Balancing Middleware positioned between the retriever and the generator. It consists of stance detection, fixed balancing (2 supporting + 2 opposing + 1 neutral), and a debiasing prompt, without introducing additional large language model calls. Across all eight concentration-direction settings, the complete method reduced the magnitude of stance deviation by an estimated 0.106 to 0.350; the six settings at poisoning shares of 11.9%-18.9% remained significant after Holm adjustment (adjusted p <= 0.009). In the cross-model experiment, all eight model-direction combinations moved along the stance axis in the corrective direction, and seven of eight showed a clearly detected reduction in absolute distance from 0. In the concentration sweep, the post-defense intervals included 0 in all eight settings, while the cross-model pro-poisoning results retained small positive residual point estimates of +0.045 to +0.063. For 20 candidate documents, stance detection took approximately 1.5% of the median generation time on a single GPU and approximately 16% on CPU.
+
+</details>
+
+### 128. Logic Hijacking of RAG: Single-Document Poisoning via Local Optimization
+
+📄 [arXiv](https://arxiv.org/abs/2610.34829)　📅 2026-10
+
+**关键词**：`逻辑劫持`、`单文档投毒`、`离线局部优化`
+
+👤 **作者**：Hangyi Zhao、Bonan Zhang、Fusen Guo、Jiaheng Wei、Chao Chen、Tianqing Zhu
+
+- 🎯 **研究动机**：单文档语料投毒现多依赖显式事实反驳或命令覆盖——对齐 LLM 保守仲裁此类冲突（拒收显式矛盾转向参数记忆或干净检索）并触发护栏
+- 🔬 **研究方法**：MONOLOGUE 逻辑劫持：不争议真值而是承认其为权威历史基线再引入更新，编织有据的记录更正叙事（如注日期的机构重新归属）把反事实目标呈现为最新更新；载荷完全离线经多维门控优化精炼（自动文本质量审计+代理行为验证）
+- 📌 **结论**：三基准×三检索后端×四开源生成器上最强单文档投毒攻击效能——无显式反驳的 RAG 劫持
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Single-document corpus poisoning under black-box access poses a severe threat to Retrieval-Augmented Generation (RAG). However, existing attacks predominantly rely on explicit factual refutations or imperative instruction overrides. Modern aligned LLMs often arbitrate such conflicts conservatively, rejecting overt contradictions in favor of parametric memory or clean retrieved context while triggering input guardrails. We propose MONOLOGUE, a single-document poisoning framework based on Logic Hijacking without explicit refutation. Rather than disputing the ground truth, our method concedes it as an authoritative historical baseline before introducing the update, weaving a grounded record-correction narrative (e.g., dated institutional reattributions) that presents the counterfactual target as the most recent update. To prevent suspicious live writes, payloads are refined entirely offline via local multi-dimensional gated optimization, coupling automated text quality audits with surrogate behavioral verification. Evaluations across three benchmarks, three retrieval backends, and four open-weight generator regimes show that our method achieves the strongest overall attack efficacy among the evaluated single-document poisoning attacks.
+
+</details>
+
+### 129. GuardRAG: A Post-Retrieval Defense against Poisoning Attacks in Retrieval-Augmented Generation
+
+📄 [arXiv](https://arxiv.org/abs/2610.35071)　📅 2026-10
+
+**关键词**：`检索后防御`、`聚类剪枝`、`协同投毒`
+
+👤 **作者**：Linghui Jiao、…、Jun Li
+
+- 🎯 **研究动机**：协同攻击向检索上下文引入多个互相强化的毒化文档——可靠证据过滤困难
+- 🔬 **研究方法**：GuardRAG 免训练即插即用：扩检索范围去近重复→查询自适应阈值层次凝聚聚类→按查询相关性/簇大小/语义紧致度评分剪枝可疑簇
+- 📌 **结论**：三 QA 数据集×多投毒攻击×六 LLM 上大幅降 ASR 且干净检索下保持答案效用
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Retrieval-Augmented Generation (RAG) enhances the factual grounding of Large Language Models (LLMs) by incorporating external evidence, but also exposes them to corpus poisoning attacks. In particular, coordinated attacks can introduce multiple mutually reinforcing poisoned documents into retrieved contexts, making reliable evidence filtering challenging. To address this problem, we propose GuardRAG, a training-free and plug-and-play post-retrieval defense that exploits the semantic structure of retrieved evidence to identify suspicious document groups. Specifically, GuardRAG first expands the retrieval range and removes near-duplicate candidates, then partitions the retained documents using Hierarchical Agglomerative Clustering (HAC) with a query-adaptive threshold. Finally, it scores and prunes suspicious clusters based on query relevance, cluster size, and semantic compactness. Experiments across three question-answering datasets, multiple poisoning attacks, and six LLMs demonstrate that GuardRAG substantially reduces attack success rates while maintaining answer utility under clean retrieval.
+
+</details>

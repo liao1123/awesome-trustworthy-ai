@@ -1569,3 +1569,22 @@ Large language models (LLMs) are rapidly evolving from conversational assistants
 Reliable AI safeguards require both control mechanisms that reduce unsafe behavior and monitoring mechanisms that detect safety risks during model interactions. Established behavioral safeguards include alignment methods that optimize model outputs and text monitors that assess interaction text. Representation engineering instead reads or modifies internal model states, but the relative strengths of these approaches remain unclear because they are often evaluated under different settings. We present a matched evaluation across two tracks. For safety control, we compare DPO, a behavioral alignment method, with three representation steering methods across robustness, practicality, and granularity. DPO provides the strongest overall control and generally improves with increasing training data, although its safety can degrade after subsequent benign fine-tuning. Representation steering remains competitive primarily in low-data settings, particularly with high-quality contrastive data. For safety monitoring, we compare representation probes with fine-tuned and open-weight text monitors across full-response detection, early detection, and computational cost. Specialized text monitors achieve the strongest overall detection accuracy, while representation probes remain competitive at substantially lower marginal cost. Finally, monitor-guided interventions recover much of the safety lost by DPO after benign fine-tuning, with little additional over-refusal. Overall, representation engineering does not generally replace behavioral safeguards, but offers practical advantages under specific conditions and can provide complementary safety benefits.
 
 </details>
+
+### 83. Identically Trained Language Models Break on Different Jailbreaks
+
+📄 [arXiv](https://arxiv.org/abs/2610.34074)　📅 2026-10
+
+**关键词**：`越狱脆弱性指纹`、`预训练种子`、`基准方差`
+
+👤 **作者**：Chi-Wei Chang、Mu-Tien Kuo、Kuan-Wei Lee、Meng-Hsun Tsai
+
+- 🎯 **研究动机**：越狱基准测一个检查点并把“哪些越狱破它”当作预训练数据与安全训练的属性——同数据再训一次会破同样的越狱吗
+- 🔬 **研究方法**：25 个预训练数据配方×3 个预训练种子 1B 基座×同安全后训练×2 后训练种子=150 模型；共享越狱提示集上每模型 20 响应，对每对模型按提示关联非拒绝率
+- 📌 **结论**：同预训练运行两副本相关 0.984，换预训练种子降到 0.811（换数据配方仅再降到 0.779）——哪些越狱破检查点更多取决于预训练运行而非数据；一检查点最佳攻击模板在新预训练种子后仅 27% 保持最佳；每个预训练运行留下指纹
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Jailbreak benchmarks test one checkpoint and treat which jailbreaks break it as a property of its pretraining data and safety training. We ask whether another pretraining run of the same data, given the same safety training, would break on the same jailbreaks. For each of 25 pretraining data recipes, we take 1B base models from 3 pretraining seeds and give each the same safety post-training with 2 post-training seeds, for 150 models in all. We then collect 20 responses from every model to a shared set of jailbreak prompts and correlate the per-prompt non-refusal rates between every pair of models. On average, two post-trained copies of the same pretraining run have per-prompt non-refusal rates that correlate at 0.984. A different pretraining seed lowers the correlation to 0.811, and a different data recipe lowers it only slightly further, to 0.779. These results indicate that which jailbreaks break a checkpoint depends much more on its pretraining run than on its data, a pattern that holds in all 25 data recipes and at 150M and 300M parameters. In practice, the best of 91 attack templates found on one checkpoint stays the best after a new pretraining seed in only 27% of model pairs, against 67% after a new post-training seed. Each pretraining run also leaves a fingerprint: across 3,211 prompts, a model's per-prompt non-refusal rates identify its pretraining run among all 75 runs every time, and a random subset of 50 prompts still does so 98% of the time.
+
+</details>
