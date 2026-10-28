@@ -1793,3 +1793,22 @@ Harmful fine-tuning can rapidly erode the safety alignment of large language mod
 Fine-tuning large language models (LLMs) on downstream tasks often weakens their previously aligned safety behavior, creating an inherent trade-off between task adaptation and safety preservation. Existing approaches attempt to mitigate this issue by identifying safety-relevant neurons, layers, or update directions in the original parameter space. However, safety-related information is often distributed across many directions in this space, causing downstream updates to overwrite parameters that encode safety behavior. We propose WSR-Tune, a Weight Space Reparameterization-based fine-tuning framework that preserves safety during downstream adaptation. Our approach constructs a safety-conditioned basis and reparameterizes the weight matrices such that safety-relevant information becomes concentrated in a small subset of directions. We then identify safety-critical directions and freeze them in the reparameterized space, while updating the remaining complementary directions for downstream adaptation. By explicitly structuring the parameter space to disentangle safety and task information, our method reduces interference between objectives and enables simultaneous preservation of safety and improvement in downstream performance. Experimental results show that our method achieves a more favorable trade-off between downstream performance and safety retention, demonstrating its effectiveness for reliable LLM fine-tuning.
 
 </details>
+
+### 96. Follow the Gradient: Tracing Safety Degradation Back to Training Data
+
+📄 [arXiv](https://arxiv.org/abs/2610.37481)　📅 2026-10
+
+**关键词**：`梯度溯源`、`安全退化数据`、`百万级过滤`
+
+👤 **作者**：Saket Reddy、Amro Abbas、Anshuman Suri、Ari Morcos、David Schwab、Pratyush Maini
+
+- 🎯 **研究动机**：指令微调可悄悄侵蚀 LLM 安全即使无训练例看起来有害——内容过滤器难抓看似良性的安全退化数据
+- 🔬 **研究方法**：SimpleLoRIF 可扩展梯度嵌入：简化低秩归因+反传限制到最后四个 transformer 块，可嵌入百万级示例的数据集；先在涌现错位上验证（梯度连接不安全代码数据与微调后广泛有害行为，AUC 至 0.865）；SafeTulu 移除与不安全响应梯度对齐最强的 20% 例
+- 📌 **结论**：SafeTulu 训练使 GCG 攻击成功率降最多 22%（Qwen/Llama/Olmo）且大体保持或改进效用——把梯度归因从小型分析工具升为全后训练数据集实用过滤器
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Fine-tuning Large Language Models (LLMs) on instruction data can quietly erode their safety, even when no training example looks harmful. Because this safety-degrading data looks benign, standard content filters struggle to catch it. We tackle this problem by developing SimpleLoRIF, a scalable gradient embedding method that identifies fine-tuning examples whose gradients align with unsafe behavior. By simplifying a low-rank attribution method and restricting backpropagation to the final four transformer blocks, SimpleLoRIF can embed datasets on the order of a million examples, boosting gradient attribution from a small-scale analysis tool into a practical filter for full post-training datasets. We first validate it on emergent misalignment, where we find that gradients can connect insecure-code training data to the broadly harmful behaviors that appear after fine-tuning, with AUC as high as 0.865 in the gradient space of misaligned models. We then use SimpleLoRIF to build SafeTulu, a version of Tulu 3 with the 20% of examples most gradient-aligned with unsafe responses removed. Training on SafeTulu reduces GCG attack success rate by up to 22% across Qwen, Llama, and Olmo, outperforming both LLM-as-a-judge and prior gradient-based filtering, while largely preserving or even improving capability. Finally, we analyzed the removed data and identify possibly under-studied sources of safety degradation, such as tool-execution failures and narrative arithmetic. We release SafeTulu along with a Hugging Face Space that lets researchers build their own customized versions of SafeTulu to fine-tune on, such as by changing the removal fraction or filtering only certain subsets.
+
+</details>

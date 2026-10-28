@@ -1588,3 +1588,22 @@ Reliable AI safeguards require both control mechanisms that reduce unsafe behavi
 Jailbreak benchmarks test one checkpoint and treat which jailbreaks break it as a property of its pretraining data and safety training. We ask whether another pretraining run of the same data, given the same safety training, would break on the same jailbreaks. For each of 25 pretraining data recipes, we take 1B base models from 3 pretraining seeds and give each the same safety post-training with 2 post-training seeds, for 150 models in all. We then collect 20 responses from every model to a shared set of jailbreak prompts and correlate the per-prompt non-refusal rates between every pair of models. On average, two post-trained copies of the same pretraining run have per-prompt non-refusal rates that correlate at 0.984. A different pretraining seed lowers the correlation to 0.811, and a different data recipe lowers it only slightly further, to 0.779. These results indicate that which jailbreaks break a checkpoint depends much more on its pretraining run than on its data, a pattern that holds in all 25 data recipes and at 150M and 300M parameters. In practice, the best of 91 attack templates found on one checkpoint stays the best after a new pretraining seed in only 27% of model pairs, against 67% after a new post-training seed. Each pretraining run also leaves a fingerprint: across 3,211 prompts, a model's per-prompt non-refusal rates identify its pretraining run among all 75 runs every time, and a random subset of 50 prompts still does so 98% of the time.
 
 </details>
+
+### 84. SpecGuard: Detecting Multi-Turn LLM Jailbreaks via Specification-Based Runtime Monitoring
+
+📄 [arXiv](https://arxiv.org/abs/2610.36258)　📅 2026-10
+
+**关键词**：`多轮越狱监控`、`线性时序逻辑`、`符号自动机`
+
+👤 **作者**：Junle Li、Siqi Chen、Jiakai Li、Bingzhuo Zhong
+
+- 🎯 **研究动机**：多轮越狱把对话安全变成轨迹性质——违规可能只有跨多轮看用户意图与助手行为才可辨识，而现有护栏只分类单条消息且无可执行安全语义
+- 🔬 **研究方法**：SpecGuard 免训练规约驱动：固定原子命题契约把 NL 观测映射为因果限定的事实，禁止交互模式表达为 LTL 规约并编译为符号有限自动机增量消费对话轨迹；支持缓冲运行时检查与回溯审计，接受运行产生可重放见证
+- 📌 **结论**：多轮安全基准上持续超代表性开源护栏且假阳率可控——从启发式风险分类到可检查安全语义的路径
+
+<details>
+<summary>📝 展开完整英文摘要（Abstract）</summary>
+
+Multi-turn jailbreaks turn dialogue safety into a trace property: a violation may become identifiable only when user intent and assistant behavior are considered across multiple turns. Existing guard models largely classify individual messages or exchanges and return risk scores or labels, without executable safety semantics or a formally checkable decision trail. We present SpecGuard, a training-free, specification-driven framework for monitoring multi-turn LLM interactions. SpecGuard uses a fixed atomic-proposition contract to map natural-language observations into causally scoped, evidence-backed facts, and expresses forbidden interaction patterns as Linear Temporal Logic specifications. Each specification is compiled into a symbolic finite automaton that incrementally consumes the resulting dialogue trace. The same monitoring mechanism supports buffered runtime checking and retrospective auditing, while accepting runs produce replayable witnesses that identify the triggered specification, supporting facts, and relevant dialogue turns. Experiments on multi-turn safety benchmarks show that SpecGuard consistently outperforms representative open-source guard models while maintaining controlled false-positive rates. These results demonstrate a practical path from heuristic risk classification toward formally specified, verifiable, and auditable LLM safety monitoring, without learned detector parameters or access to the protected model.
+
+</details>
